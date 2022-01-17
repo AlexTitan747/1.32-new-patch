@@ -100,25 +100,23 @@ country_decisions = {
 					duration = 3650
 				}
 				set_capital = 400 # Muscat
-				OME {
-				    if = {
-					    limit = {
-						 NOT = { government = monarchy }
-						 is_revolutionary = no
-					    }
+				if = {
+					limit = {
+						NOT = { government = monarchy }
+						is_revolutionary = no
+					}
 					change_government_to_monarchy = yes
-				    }
-				    if = {
-					 limit = { is_revolutionary = no }
-					 add_government_reform = plutocracy
-				    }
 				}
 				if = {
-				limit = {
-					NOT = { technology_group = muslim }
+					limit = { is_revolutionary = no }
+					change_government_to_republic = yes
 				}
-				change_technology_group = muslim
-				change_unit_type = muslim
+				if = {
+					limit = {
+						NOT = { technology_group = muslim }
+					}
+					change_technology_group = muslim
+					change_unit_type = muslim
 				}
 				
 				set_country_flag = formed_omani_flag
@@ -127,6 +125,5 @@ country_decisions = {
 				country_event = { id = ideagroups.1 } #Swap Ideas
 				}
 			}
-			
 		}
-	}
+}
