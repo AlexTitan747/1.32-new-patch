@@ -1,0 +1,121 @@
+country_decisions = {
+
+	baltic_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_baltic_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			NOT = { exists = BLC }
+			NOT = { tag = PAP }
+			NOT = { tag = HLR }
+			NOT = { tag = PRU }
+			NOT = { tag = MOS }
+			NOT = { tag = RUS }
+			NOT = { tag = SCA }
+			OR = {
+			primary_culture = swedish
+			primary_culture = danish
+			primary_culture = prussian
+			primary_culture = pomeranian
+			primary_culture = finnish
+			primary_culture = karelian
+			primary_culture = novgorodian
+			primary_culture = lituanian
+			primary_culture = latvian
+			primary_culture = estonian
+			}
+			
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 10
+					adm_tech = 10
+				}
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 38 	
+				province_id = 36	
+				province_id = 33	
+				province_id = 12	
+				province_id = 1		
+				province_id = 25
+				province_id = 27
+				province_id = 41
+				province_id = 43
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			adm_tech = 10
+			is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			owns_core_province = 38		# Riga
+			owns_core_province = 36		# Reval
+			owns_core_province = 33		# Neva
+			owns_core_province = 12		# Sjaelland
+			owns_core_province = 1		# Stockholm
+			owns_core_province = 25		# gotland
+			owns_core_province = 27		# Abo
+			owns_core_province = 41		# konigsberg
+			owns_core_province = 43		# danzig
+		}
+		effect = {
+			change_tag = BLC
+			if = {
+				limit = { NOT = { government_rank = 2 } }
+				set_government_rank = 2
+			}
+			
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 10
+			set_country_flag = formed_baltic_flag
+			scandinavia_region = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = BLC
+				}
+				baltic_region = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = BLC
+				}
+				holstein_area = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = BLC
+				}
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+				}
+		}
+	
+	}
+	
+}

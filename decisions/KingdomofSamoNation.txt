@@ -1,0 +1,165 @@
+country_decisions = {
+
+		kingdomofsamo_nation = {
+			major = yes
+			potential = {
+				normal_or_historical_nations = yes
+				was_never_end_game_tag_trigger = yes
+				NOT = { has_country_flag = formed_kingdomofsamo_flag }
+				OR = {
+					ai = no
+					is_playing_custom_nation = no
+				}
+				NOT = { tag = PAP }
+				NOT = { tag = HLR }
+				NOT = { tag = HUN }
+				NOT = { tag = POL }
+				NOT = { tag = HAB }
+				NOT = { tag = BRA }
+				is_colonial_nation = no
+				OR = {
+					is_former_colonial_nation = no
+					AND = {
+						is_former_colonial_nation = yes
+						ai = no
+					}
+				}
+				OR = {
+					primary_culture = czech
+					primary_culture = sorbian
+					primary_culture = silesian
+				}
+				
+				OR = {
+					ai = no
+					AND = {
+						NOT = { exists = KSM }
+						num_of_cities = 10
+						
+					}
+				}
+			}
+			
+			provinces_to_highlight = {
+				OR = {
+				province_id = 4237			# Olomouc
+				province_id = 132			# Steiermark
+				province_id = 134			# Wien
+				province_id = 4723			# Opole
+				province_id = 2967			# Eger
+				
+				}
+					
+				OR = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_core = ROOT }
+				}
+			}
+			
+			allow = {
+				NOT = { exists = KSM }
+				is_nomad = no
+				is_free_or_tributary_trigger = yes
+				is_at_war = no
+				is_tribal = no
+				religion = hussite
+				owns_core_province = 4237			# Olomouc
+				owns_core_province = 132			# Steiermark
+				owns_core_province = 134			# Wien
+				owns_core_province = 4723			# Opole
+				owns_core_province = 2967			# Eger
+				
+			}
+			effect = {
+				4237 = {	#Marava
+					move_capital_effect = yes
+				}
+				
+				change_tag = KSM
+				set_ruler_culture = czech
+				set_heir_culture = czech
+				swap_non_generic_missions = yes
+				if = {
+					limit = {
+						NOT = { government_rank = 2 }
+					}
+					set_government_rank = 2
+				}
+				add_prestige = 25
+				add_country_modifier = {
+					name = centralization_modifier
+					duration = 3650
+				}
+				set_capital = 4237 # Marava
+				if = {
+					limit = {
+						NOT = { primary_culture = czech }
+					}
+					change_primary_culture = czech
+				}
+				bohemia_area = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+						}
+					}
+					add_permanent_claim = KSM
+				}
+				erzgebirge_area = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+						}
+					}
+					add_permanent_claim = KSM
+				}
+				moravia_area = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+						}
+					}
+					add_permanent_claim = KSM
+				}
+				lusatia_area = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+						}
+					}
+					add_permanent_claim = KSM
+				}
+				austria_proper_area = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+						}
+					}
+					add_permanent_claim = KSM
+				}
+				inner_austria_area = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+						}
+					}
+					add_permanent_claim = KSM
+				}
+				silesia_area = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+						}
+					}
+					add_permanent_claim = KSM
+				}
+				
+				set_country_flag = formed_kingdomofsamo_flag
+				if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+				}
+			}
+			
+		}
+	}

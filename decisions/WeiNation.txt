@@ -1,0 +1,102 @@
+country_decisions = {
+
+	wei_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			NOT = { has_country_flag = formed_wei_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			NOT = { exists = WEI }
+			technology_group = chinese
+			culture_group = han
+			mil_tech = 9
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				
+					
+			owns_core_province = 685		# jiangsu capital state
+			owns_core_province = 1821		
+			owns_core_province = 2145		
+			owns_core_province = 1822		
+				
+			owns_core_province = 1816		# liaoning capital state
+			owns_core_province = 2136		
+			owns_core_province = 703		
+			owns_core_province = 4194		
+				
+			owns_core_province = 691
+			owns_core_province = 688
+			owns_core_province = 693
+			owns_core_province = 702
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			
+				
+			owns_core_province = 685		# jiangsu capital state
+			owns_core_province = 1821		
+			owns_core_province = 2145		
+			owns_core_province = 1822		
+			
+			owns_core_province = 1816		# liaoning capital state
+			owns_core_province = 2136		
+			owns_core_province = 703		
+			owns_core_province = 4194		
+				
+			owns_core_province = 691
+			owns_core_province = 688
+			owns_core_province = 693
+			owns_core_province = 702
+		}
+		effect = {
+			if = {
+			limit = { has_country_flag = chinagov_kingdom }
+			country_event = { id = chinagov.2 }
+			}
+			
+			change_tag = WEI
+			swap_non_generic_missions = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			
+			
+			add_prestige = 25
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			set_country_flag = formed_wei_flag
+			
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+	
+	
+	}
+	
+}

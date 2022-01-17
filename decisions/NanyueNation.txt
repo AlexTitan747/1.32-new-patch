@@ -1,0 +1,110 @@
+country_decisions = {
+
+		nanyue_nation = {
+			major = yes
+			potential = {
+				normal_or_historical_nations = yes
+				was_never_end_game_tag_trigger = yes
+				NOT = { has_country_flag = formed_nanyue_flag }
+				OR = {
+					ai = no
+					is_playing_custom_nation = no
+				}
+				NOT = { exists = NYU }
+				NOT = { tag = MRY }
+				NOT = { tag = TIM }
+				NOT = { tag = BAH }
+				is_colonial_nation = no
+				OR = {
+					is_former_colonial_nation = no
+					AND = {
+						is_former_colonial_nation = yes
+						ai = no
+					}
+				}
+				OR = {
+					primary_culture = vietnamese
+					primary_culture = zhuang
+					primary_culture = cantonese
+				}
+				
+				OR = {
+					ai = no
+					AND = {
+						NOT = { exists = NYU }
+						num_of_cities = 10
+						adm_tech = 7
+					}
+				}
+			}
+			
+			provinces_to_highlight = {
+				OR = {
+				province_id = 667			# Guangzhou
+				province_id = 666			# Kingchow
+				province_id = 668			# Macau
+				province_id = 2373			# Hue
+				province_id = 1840			# Guilin
+				
+				
+				}
+				
+				OR = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_core = ROOT }
+				}
+			}
+			
+			allow = {
+				adm_tech = 7
+				NOT = { exists = NYU }
+				is_free_or_tributary_trigger = yes
+				is_at_war = no
+				owns_core_province = 667			# Guangzhou
+				owns_core_province = 666			# Kingchow
+				owns_core_province = 668			# Macau
+				owns_core_province = 2373			# Hue
+				owns_core_province = 1840			# Guilin
+				
+				
+			}
+			effect = {
+				667 = {	#Guangzhou
+					move_capital_effect = yes
+				}
+				change_tag = NYU
+				swap_non_generic_missions = yes
+				remove_non_electors_emperors_from_empire_effect = yes
+				if = {
+					limit = {
+						NOT = { government_rank = 2 }
+					}
+					set_government_rank = 2
+				}
+				add_prestige = 25
+				add_country_modifier = {
+					name = centralization_modifier
+					duration = 3650
+				}
+				set_capital = 667 # Guangzhou
+				if = {
+                limit = { is_revolutionary = no }
+                change_government = monarchy
+            }
+				
+				south_china_region = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = NYU
+				}
+				
+				set_country_flag = formed_nanyue_flag
+				if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+				}
+			}
+			
+		}
+	}

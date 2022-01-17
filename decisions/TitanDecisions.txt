@@ -1,0 +1,153 @@
+country_decisions = {
+			
+	enlist_rajputs = {
+		potential = {
+				has_estate = estate_rajput
+				NOT = { has_country_flag = enlist_rajputs }
+			}
+			allow = { 
+				has_estate_privilege = estate_rajput_rajput_regiments
+			}
+			effect = {
+				add_country_modifier = {
+				name = "enlist_rajputs"
+				duration = -1
+				}
+				set_country_flag = enlist_rajputs
+			}
+		}
+	
+	PR_critical_events = {
+		major = yes
+		potential = {
+			ai = no
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		allow = {
+			custom_trigger_tooltip = {
+				tooltip = PR_radical_reform_decision
+				NOT = { has_country_flag = radical_mercantilist_reforms }
+			}
+			custom_trigger_tooltip = {
+				tooltip = PR_military_reform_decision
+				NOT = { has_country_flag = military_reform }
+			}
+			custom_trigger_tooltip = {
+				tooltip = PR_commandant_decision
+				NOT = { has_country_flag = commandant }
+			}
+			custom_trigger_tooltip = {
+				tooltip = PR_grand_captain_decision
+				NOT = { has_country_flag = grand_captain }
+			}
+			always = no
+		}
+		effect = {
+		}
+	}
+	
+	# Apply Edict
+	PR_manpower_edict = {
+		major = yes
+		potential = {
+			AND = {
+				ai = no
+				NOT = { has_country_modifier = PR_manpower_edict_cooldown }
+				NOT = { has_country_flag = PR_manpower_edict_activated }
+			}
+		}
+		allow = {
+		}
+		effect = {
+			custom_tooltip = PR_manpower_edict_tooltip
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						is_state_core = ROOT
+						NOT = {
+							OR = {
+								has_state_edict = edict_advancement_effort
+								has_state_edict = edict_defensive_edict
+								has_state_edict = edict_feudal_de_jure_law
+								has_state_edict = edict_promote_military_recruitment
+								has_state_edict = edict_protect_trade
+								has_state_edict = edict_religion_enforced
+								has_state_edict = edict_religious_unity
+								has_state_edict = edict_devastation_edict
+							}
+						}
+					}
+					add_province_modifier = {
+						name = PR_manpower_edict_province
+						duration = -1
+					}
+				}
+				add_country_modifier = {
+				name = "PR_manpower_edict_cooldown"
+				duration = 365
+				}
+			}
+			set_country_flag = PR_manpower_edict_activated
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	# Remove Edict
+	PR_manpower_edict_removal = {
+		major = yes
+		potential = {
+			AND = {
+				ai = no
+				has_country_flag = PR_manpower_edict_activated
+			}
+		}
+		allow = {
+			custom_trigger_tooltip = {
+				tooltip = PR_manpower_edict_removal_tooltip
+				NOT = { 
+					has_country_modifier = PR_manpower_edict_cooldown 
+				}
+			}
+		}
+		effect = {
+			hidden_effect = {
+				every_owned_province = {
+					if = {
+						limit = {
+							has_province_modifier = PR_manpower_edict_province
+						}
+						remove_province_modifier = PR_manpower_edict_province
+					}
+				}
+			}
+			clr_country_flag = PR_manpower_edict_activated
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	dev_sum_clicks_decision = {
+		major = yes
+		potential = {
+			always = yes
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		allow = {
+			custom_trigger_tooltip = {
+				tooltip = dev_sum_clicks_decision_tooltip
+				always = no
+			}
+		}
+		effect = {
+		}
+	}	
+}			
+
+		

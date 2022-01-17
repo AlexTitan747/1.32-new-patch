@@ -1,0 +1,185 @@
+country_decisions = {
+
+		mauryan_nation = {
+			major = yes
+			potential = {
+				normal_or_historical_nations = yes
+				was_never_end_game_tag_trigger = yes
+				NOT = { has_country_flag = formed_mauryan_flag }
+				OR = {
+					ai = no
+					is_playing_custom_nation = no
+				}
+				NOT = { exists = MRY }
+				NOT = { tag = KUS }
+				NOT = { tag = RUS }
+				NOT = { tag = TIM }
+				NOT = { tag = PER }
+				NOT = { tag = SLU }
+				NOT = { tag = GUP }
+				is_colonial_nation = no
+				OR = {
+					is_former_colonial_nation = no
+					AND = {
+						is_former_colonial_nation = yes
+						ai = no
+					}
+				}
+				OR = {
+					primary_culture = avadhi
+					primary_culture = hindavi
+					primary_culture = kashmiri
+					primary_culture = panjabi
+					primary_culture = bundelkhand
+					culture_group = western_aryan
+				}
+				
+				OR = {
+					ai = no
+					AND = {
+						ai = yes
+						num_of_cities = 10
+						adm_tech = 15
+					}
+				}
+			}
+			
+			provinces_to_highlight = {
+				OR = {
+				province_id = 558			# Pataliputra
+				province_id = 515			# Girnir
+				province_id = 522			# Delhi
+				province_id = 506			# Multan
+				province_id = 510			# Sirhind
+				
+				}
+				
+				AND = {
+					region = hindusthan_region
+					ROOT = {
+						NOT = {
+							num_of_owned_provinces_with = {
+								value = 30
+								region = hindusthan_region
+								is_core = root
+							}
+						}
+					}
+				}
+				AND = {
+					region = west_india_region
+					ROOT = {
+						NOT = {
+							num_of_owned_provinces_with = {
+								value = 20
+								region = west_india_region
+								is_core = root
+							}
+						}
+					}
+				}
+					
+				OR = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_core = ROOT }
+				}
+			}
+			
+			allow = {
+				adm_tech = 15
+				NOT = { exists = MRY }
+				is_free_or_tributary_trigger = yes
+				is_at_war = no
+				owns_core_province = 558			# Pataliputra
+				owns_core_province = 515			# Girnir
+				owns_core_province = 522			# Delhi
+				owns_core_province = 506			# Multan
+				owns_core_province = 510			# Sirhind
+				
+				num_of_owned_provinces_with = {
+				value = 30
+				region = hindusthan_region
+				is_core = root
+				
+				}
+				num_of_owned_provinces_with = {
+				value = 20
+				region = west_india_region
+				is_core = root
+				
+				}
+				
+			}
+			effect = {
+				558 = {	#Pataliputra
+					move_capital_effect = yes
+					change_religion = buddhism
+				}
+				change_tag = MRY
+				change_religion = buddhism
+				set_ruler_religion = buddhism
+				set_heir_religion = buddhism
+				add_stability = 1
+				swap_non_generic_missions = yes
+				remove_non_electors_emperors_from_empire_effect = yes
+				if = {
+					limit = {
+						NOT = { government_rank = 3 }
+					}
+					set_government_rank = 3
+				}
+				add_prestige = 75
+				add_country_modifier = {
+					name = centralization_modifier
+					duration = 3650
+				}
+				add_country_modifier = {
+					name = return_of_the_true_faith
+					duration = 7300
+				}
+				set_capital = 558 # Pataliputra
+				if = {
+                limit = { is_revolutionary = no }
+                change_government = monarchy
+            }
+			if = {
+				limit = {
+					NOT = { primary_culture = rajput }
+				}
+				change_primary_culture = rajput
+				add_dip_power = 200
+			}
+				bengal_region = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = MRY
+				}
+				hindusthan_region = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = MRY
+				}
+				west_india_region = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = MRY
+				}
+				deccan_region = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = MRY
+				}
+				
+				set_country_flag = formed_mauryan_flag
+				if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+				}
+			}
+			
+		}
+	}

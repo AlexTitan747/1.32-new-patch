@@ -1,0 +1,172 @@
+country_decisions = {
+
+		babylonia_nation = {
+			major = yes
+			potential = {
+				normal_or_historical_nations = yes
+				was_never_end_game_tag_trigger = yes
+				NOT = { has_country_flag = formed_babylonia_flag }
+				OR = {
+					ai = no
+					is_playing_custom_nation = no
+				}
+				NOT = { tag = MOS }
+				NOT = { tag = RUS }
+				NOT = { tag = TIM }
+				NOT = { tag = PER }
+				NOT = { tag = PLC }
+				NOT = { exists = BAB }
+				is_colonial_nation = no
+				OR = {
+					is_former_colonial_nation = no
+					AND = {
+						is_former_colonial_nation = yes
+						ai = no
+					}
+				}
+				OR = {
+					primary_culture = kurdish
+					primary_culture = al_iraqiya_arabic
+				}
+				
+				OR = {
+					ai = no
+					AND = {
+						ai = yes
+						num_of_cities = 10
+						adm_tech = 10
+					}
+				}
+			}
+			
+			provinces_to_highlight = {
+				OR = {
+				province_id = 410			# baghdad
+				province_id = 411		    # mosul
+				province_id = 4290			# hoveyzeh
+				province_id = 408			# basrah
+				province_id = 2315			# rahba
+				province_id = 418			# diyarbekir
+				}
+				OR = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_core = ROOT }
+				}
+			}
+			
+			allow = {
+				NOT = { exists = BAB }
+				is_free_or_tributary_trigger = yes
+				is_at_war = no
+				owns_core_province = 410		    # Baghdad
+				owns_core_province = 411			# mosul
+				owns_core_province = 4290			# hoveyzeh
+				owns_core_province = 408			# basrah
+				owns_core_province = 2314			# rahba
+				owns_core_province = 418			# diyarbekir
+				}
+			effect = {
+				410 = {	#Baghdad
+					move_capital_effect = yes
+					change_religion = zoroastrian
+				}
+				change_tag = BAB
+				change_religion = zoroastrian
+				set_ruler_religion = zoroastrian
+				set_heir_religion = zoroastrian
+				change_primary_culture = babylonian
+				add_stability = 1
+				swap_non_generic_missions = yes
+				remove_non_electors_emperors_from_empire_effect = yes
+				if = {
+					limit = {
+						NOT = { government_rank = 3 }
+					}
+					set_government_rank = 3
+				}
+				add_prestige = 50
+				add_country_modifier = {
+					name = centralization_modifier
+					duration = 3650
+				}
+				add_country_modifier = {
+					name = return_of_the_true_faith
+					duration = 7300
+				}
+				set_capital = 410 # Babylon
+				if = {
+					limit = { is_revolutionary = no }
+						change_government_to_monarchy = yes 
+				}
+				if = {
+				limit = { is_revolutionary = no }
+				add_government_reform = persian_zoroastrian_state
+				}
+				hidden_effect = {
+					2309 = {
+					change_culture = babylonian
+					}
+					2314 = {
+					change_culture = babylonian
+					}
+					2310 = {
+					change_culture = babylonian
+					}
+					406 = {
+					change_culture = babylonian
+					}
+					409 = {
+					change_culture = babylonian
+					}
+					410 = {
+					change_culture = babylonian
+					}
+					4291 = {
+					change_culture = babylonian
+					}
+					2312 = {
+					change_culture = babylonian
+					}
+					2311 = {
+					change_culture = babylonian
+					}
+					4288 = {
+					change_culture = babylonian
+					}
+					4290 = {
+					change_culture = babylonian
+					}
+					412 = {
+					change_culture = babylonian
+					}
+					408 = {
+					change_culture = babylonian
+					}
+				}
+				mashriq_region = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = BAB
+				}
+				khuzestan_area = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = BAB
+				}
+				cukurova_area = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = BAB
+				}
+				set_country_flag = formed_babylonia_flag
+				if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+				}
+			}
+			
+		}
+	}

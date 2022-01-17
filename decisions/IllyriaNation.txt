@@ -1,0 +1,128 @@
+country_decisions = {
+
+		illyrian_nation = {
+			major = yes
+			potential = {
+				normal_or_historical_nations = yes
+				was_never_end_game_tag_trigger = yes
+				NOT = { has_country_flag = formed_illyrian_flag }
+				OR = {
+					ai = no
+					is_playing_custom_nation = no
+				}
+				NOT = { exists = ILY }
+				NOT = { tag = MOS }
+				NOT = { tag = RUS }
+				NOT = { tag = TIM }
+				NOT = { tag = PER }
+				NOT = { tag = PLC }
+				is_colonial_nation = no
+				OR = {
+					is_former_colonial_nation = no
+					AND = {
+						is_former_colonial_nation = yes
+						ai = no
+					}
+				}
+				OR = {
+					culture_group = south_slavic
+				}
+				
+				OR = {
+					ai = no
+					AND = {
+						NOT = { exists = ILY }
+						num_of_cities = 10
+						
+					}
+				}
+			}
+			
+			provinces_to_highlight = {
+				OR = {
+				AND = {
+					region = balkan_region
+					ROOT = {
+						NOT = {
+							num_of_owned_provinces_with = {
+								value = 20
+								region = balkan_region
+								is_core = root
+							}
+						}
+					}
+				}
+				
+				}
+					
+				OR = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_core = ROOT }
+				}
+			}
+			
+			allow = {
+				NOT = { exists = ILY }
+				is_free_or_tributary_trigger = yes
+				is_at_war = no
+				
+				AND = {
+						adm_tech = 8
+					}
+				AND = {
+					ROOT = {
+							num_of_owned_provinces_with = {
+								value = 20
+								region = balkan_region
+								is_core = root
+							}
+					}
+				}
+			
+				OR = {
+					AND = {
+					total_development = 250
+					}
+				}
+			}
+			
+			effect = {
+				140 = {	#Bosnia
+					move_capital_effect = yes
+				}
+				change_tag = ILY
+				
+				swap_non_generic_missions = yes
+				remove_non_electors_emperors_from_empire_effect = yes
+				if = {
+					limit = {
+						NOT = { government_rank = 2 }
+					}
+					set_government_rank = 2
+				}
+				add_prestige = 25
+				add_country_modifier = {
+					name = centralization_modifier
+					duration = 3650
+				}
+				set_capital = 140 # Bosnia
+				if = {
+                limit = { is_revolutionary = no }
+                change_government = monarchy
+				
+            }
+				set_country_flag = formed_illyrian_flag
+				if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+				}
+				balkan_region = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = ILY
+				}
+			}
+			
+		}
+	}

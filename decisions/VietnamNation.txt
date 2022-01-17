@@ -1,0 +1,169 @@
+country_decisions = {
+
+		vietnam_nation = {
+			major = yes
+			potential = {
+				normal_or_historical_nations = yes
+				was_never_end_game_tag_trigger = yes
+				NOT = { has_country_flag = formed_vietnam_flag }
+				OR = {
+					ai = no
+					is_playing_custom_nation = no
+				}
+				NOT = { exists = VTM }
+				NOT = { tag = MRY }
+				NOT = { tag = TIM }
+				NOT = { tag = BAH }
+				is_colonial_nation = no
+				OR = {
+					is_former_colonial_nation = no
+					AND = {
+						is_former_colonial_nation = yes
+						ai = no
+					}
+				}
+				OR = {
+					primary_culture = vietnamese
+					primary_culture = lao
+					primary_culture = khmer
+				}
+				
+				OR = {
+					ai = no
+					AND = {
+						NOT = { exists = VTM }
+						num_of_cities = 10
+						dip_tech = 10
+					}
+				}
+			}
+			
+			provinces_to_highlight = {
+				OR = {
+				province_id = 613			# Dong Kinh
+				province_id = 605			# Prey Nokor
+				province_id = 2373			# Hue
+				province_id = 2374			# Kauthara
+				AND = {
+					culture = vietnamese
+					region = indo_china_region
+					ROOT = {
+						NOT = {
+							num_of_owned_provinces_with = {
+								value = 10 
+								culture = vietnamese
+								region = indo_china_region
+								is_core = root
+							}
+						}
+					}
+				}
+				
+				}
+				
+				OR = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_core = ROOT }
+				}
+			}
+			
+			allow = {
+				dip_tech = 10
+				NOT = { exists = VTM }
+				is_free_or_tributary_trigger = yes
+				is_at_war = no
+				owns_core_province = 613			# Dong Kinh
+				owns_core_province = 605			# Prey Nokor
+				owns_core_province = 2373			# Hue
+				owns_core_province = 2374			# Kauthara
+				
+				num_of_owned_provinces_with = {
+				value = 10
+				region = indo_china_region
+				culture = vietnamese
+				is_core = root
+				
+			}
+				
+			}
+			effect = {
+				2373 = {	#Hue
+					move_capital_effect = yes
+				}
+				change_tag = VTM
+				change_religion = mahayana
+				swap_non_generic_missions = yes
+				remove_non_electors_emperors_from_empire_effect = yes
+				if = {
+					limit = {
+						NOT = { government_rank = 2 }
+					}
+					set_government_rank = 2
+				}
+				add_prestige = 25
+				add_country_modifier = {
+					name = centralization_modifier
+					duration = 3650
+				}
+				set_capital = 2373 # Hue
+				if = {
+                limit = { is_revolutionary = no }
+                change_government = monarchy
+            }
+			if = {
+				limit = {
+					NOT = { primary_culture = vietnamese }
+				}
+				change_primary_culture = vietnamese
+			}
+				south_china_region = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = VTM
+				}
+				indo_china_region = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = VTM
+				}
+				north_tenasserim_area = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = VTM
+				}
+				tenasserim_area = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = VTM
+				}
+				luzon_area = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = VTM
+				}
+				southern_luzon_area = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = VTM
+				}
+				brunei_area = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = VTM
+				}
+				set_country_flag = formed_vietnam_flag
+				if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+				}
+			}
+			
+		}
+	}

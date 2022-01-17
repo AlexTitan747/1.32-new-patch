@@ -1,0 +1,180 @@
+country_decisions = {
+
+		carpathian_nation = {
+			major = yes
+			potential = {
+				normal_or_historical_nations = yes
+				was_never_end_game_tag_trigger = yes
+				NOT = { has_country_flag = formed_carpathia_flag }
+				OR = {
+					ai = no
+					is_playing_custom_nation = no
+				}
+				NOT = { exists = CRP }
+				NOT = { tag = PAP }
+				NOT = { tag = HLR }
+				NOT = { tag = ROM }
+				NOT = { tag = UKR }
+				is_colonial_nation = no
+				OR = {
+					is_former_colonial_nation = no
+					AND = {
+						is_former_colonial_nation = yes
+						ai = no
+					}
+				}
+				OR = {
+					primary_culture = ruthenian
+					primary_culture = transylvanian
+					primary_culture = hungarian
+					primary_culture = slovak
+				}
+				
+				OR = {
+					ai = no
+					AND = {
+						NOT = { exists = CRP }
+						num_of_cities = 10
+						
+					}
+				}
+			}
+			
+			provinces_to_highlight = {
+				OR = {
+				province_id = 1953			# Szabolcs
+				
+				AND = {
+					region = carpathia_region
+					ROOT = {
+						NOT = {
+							num_of_owned_provinces_with = {
+								value = 15
+								region = carpathia_region
+								is_core = root
+							}
+						}
+					}
+				}
+			}
+			AND = {
+				province_id = 4128
+					NOT = {
+						AND = {
+							owned_by = root
+							is_state_core = root
+							development = 15
+						}
+					}
+				}
+			AND = {
+				province_id = 162
+					NOT = {
+						AND = {
+							owned_by = root
+							is_state_core = root
+							development = 15
+						}
+					}	
+				}
+				AND = {
+				province_id = 4236
+					NOT = {
+						AND = {
+							owned_by = root
+							is_state_core = root
+							development = 10
+						}
+					}
+				}
+				AND = {
+				province_id = 156
+					NOT = {
+						AND = {
+							owned_by = root
+							is_state_core = root
+							development = 10
+						}
+					}
+				}
+				OR = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_core = ROOT }
+				}
+			}
+			
+			allow = {
+				adm_tech = 10
+				NOT = { exists = CRP }
+				is_nomad = no
+				is_free_or_tributary_trigger = yes
+				is_at_war = no
+				is_tribal = no
+				
+				owns_core_province = 1953			# Szabolcs
+				owns_core_province = 4128
+				owns_core_province = 162
+				owns_core_province = 4236
+				owns_core_province = 156
+				
+				162 = {
+				development = 15
+				}
+				4128 = {
+				development = 15
+				}
+				4236 = {
+				development = 10
+				}
+				156 = {
+				development = 10
+				}
+				num_of_owned_provinces_with = {
+				value = 15
+				region = carpathia_region
+				is_core = root
+				
+				}
+			}
+			effect = {
+				1953 = {	#Szabolcs
+					move_capital_effect = yes
+					change_religion = orthodox
+				}
+				
+				change_tag = CRP
+				change_religion = orthodox
+				set_ruler_religion = orthodox
+				set_heir_religion = orthodox
+				swap_non_generic_missions = yes
+				remove_non_electors_emperors_from_empire_effect = yes
+				add_prestige = 25
+				add_country_modifier = {
+					name = centralization_modifier
+					duration = 3650
+				}
+				add_country_modifier = {
+					name = return_of_the_true_faith
+					duration = 7300
+				}
+				if = {
+				limit = { is_revolutionary = no }
+				add_government_reform = panslavic_state
+				}
+				set_capital = 1953 # Szabolcs
+				carpathia_region = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = CRP
+				}
+				
+				set_country_flag = formed_carpathia_flag
+				if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+				}
+			}
+			
+		}
+	}
