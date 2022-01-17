@@ -15,7 +15,6 @@ country_decisions = {
 				tag = SHU
 				tag = WEI
 			}
-			has_country_flag = chinagov_empire
 			technology_group = chinese
 			OR = {
 				culture_group = tibetan
@@ -72,6 +71,11 @@ country_decisions = {
 		effect = {
 			change_tag = EPC
 			swap_non_generic_missions = yes
+			
+			if = {
+			limit = { NOT = { has_country_flag = chinagov_empire } }
+			country_event = { id = chinagov.3 }
+			}
 			
 			if = {
 					limit = {

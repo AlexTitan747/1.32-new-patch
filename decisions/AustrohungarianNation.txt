@@ -15,7 +15,6 @@ country_decisions = {
 			OR = {
 				primary_culture = austrian
 				primary_culture = hungarian
-				
 			}
 			OR = {
 				ai = no
@@ -52,10 +51,41 @@ country_decisions = {
 			is_free_or_tributary_trigger = yes
 			is_nomad = no
 			is_at_war = no
+			OR = {
+			AND = {
 			owns_core_province = 266		# prague
 			owns_core_province = 134		# wien
 			owns_core_province = 153		# pest
 			owns_core_province = 131		# zagreb
+			}
+			AND = {
+					tag = HAB
+						AND = {
+							HUN = {	is_subject_of = HAB	}
+							#This overlaps with allow for AI, is meant to negate do_not_integrate
+							HUN = { NOT = { num_of_cities = 35 } } #Keep this number the same as in allow
+						}
+						AND = {
+							BOH = {	is_subject_of = HAB	}
+							#This overlaps with allow for AI, is meant to negate do_not_integrate
+							BOH = { NOT = { num_of_cities = 23 } } #Keep this number the same as in allow
+						}
+				}
+			AND = {
+					tag = HUN
+						AND = {
+							HAB = {	is_subject_of = HUN	}
+							#This overlaps with allow for AI, is meant to negate do_not_integrate
+							HAB = { NOT = { num_of_cities = 20 } } #Keep this number the same as in allow
+						}
+						AND = {
+							BOH = {	is_subject_of = HUN	}
+							#This overlaps with allow for AI, is meant to negate do_not_integrate
+							BOH = { NOT = { num_of_cities = 23 } } #Keep this number the same as in allow
+						}
+					}
+				}
+
 			
 		}
 		effect = {
@@ -80,7 +110,34 @@ country_decisions = {
 				duration = 7300
 			}
 			set_country_flag = formed_austria_hungary_flag
-			
+			if = {
+				limit = {
+					tag = HAB
+					HUN = {	ai = yes }
+				}
+				inherit = HUN
+			}
+			if = {
+				limit = {
+					tag = HUN
+					HAB = {	ai = yes }
+				}
+				inherit = HAB
+			}
+			if = {
+				limit = {
+					tag = HAB
+					BOH = {	ai = yes }
+				}
+				inherit = BOH
+			}
+			if = {
+				limit = {
+					tag = HUN
+					BOH = {	ai = yes }
+				}
+				inherit = BOH
+			}
 			if = {
 				limit = { has_custom_ideas = no }
 				country_event = { id = ideagroups.1 } #Swap Ideas
