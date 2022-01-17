@@ -1,0 +1,42 @@
+
+namespace = titanmerc
+
+country_event = {
+	id = 	titanmerc.1
+	title = "titanmerc.1"
+	desc = "titanmerc.desc1"
+	picture = COURT_eventPicture
+
+	trigger = {
+	
+	ai = yes
+	NOT = {
+		any_owned_province = {
+				has_province_flag = titan_banner_0
+			}
+		}
+		any_owned_province = {
+			culture = ROOT
+			is_core = ROOT
+			is_state_core = root
+		}
+	
+	}
+	mean_time_to_happen = {
+		days = 5
+	}
+
+	option = {		
+		name = "titanmerc.1"
+		random_owned_province = {
+				limit = {
+					culture = ROOT
+					is_core = ROOT
+					is_state_core = root
+				}
+				set_province_flag = titan_banner_0
+				add_province_triggered_modifier = titan_banner_0
+			}	
+				
+	}
+}
