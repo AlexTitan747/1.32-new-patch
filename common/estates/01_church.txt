@@ -26,7 +26,13 @@ estate_church =
 			NOT = { tag = USA }
 			government = theocracy
 		}
-		is_nomad = no
+		OR = {
+			is_nomad = no
+			AND = {
+				is_nomad = yes
+				NOT = { religion_group = pagan }
+			}
+		}
 		is_colonial_nation = no
 		NOT = { has_reform = revolutionary_empire_reform }
 	}
@@ -146,7 +152,26 @@ estate_church =
 		}
 		loyalty = -20
 	}
-	
+	influence_modifier = {
+		desc = EST_VAL_NOMAD
+		trigger = {
+			is_nomad = yes
+		}	
+		influence = -10
+	}
+	custom_name = {
+		desc = estate_ogboni
+		trigger = {
+			tag = OYO
+		}
+	}
+	custom_name = {
+		desc = estate_tengbiise
+		trigger = {
+			primary_culture = mossi
+			religion = shamanism
+		}
+	}
 	custom_name = {
 		desc = estate_monasteries
 		trigger = {
@@ -167,6 +192,78 @@ estate_church =
 		desc = estate_brahmins
 		trigger = {
 			religion = hinduism
+		}
+	}
+	custom_name = {
+		desc = estate_pastors
+		trigger = {
+			OR = {
+				religion = protestant
+				religion = reformed
+			}
+		}
+	}
+	custom_name = {
+		desc = estate_popes
+		trigger = {
+			AND = {
+				religion = orthodox
+				OR = {
+					culture_group = east_slavic
+					culture_group = south_slavic
+					culture_group = west_slavic
+				}
+			}
+		}
+	}
+	custom_name = {
+		desc = estate_shamans
+		trigger = {
+			OR = {
+				religion = tengri_pagan_reformed
+			}
+		}
+	}
+	custom_name = {
+		desc = estate_gurus
+		trigger = {
+			religion = sikhism
+		}
+	}
+	custom_name = {
+		desc = estate_medicine_men
+		trigger = {
+			religion = totemism
+		}
+	}
+	custom_name = {
+		desc = estate_godar
+		trigger = {
+			religion = norse_pagan_reformed
+		}
+	}
+	custom_name = {
+		desc = estate_rabbis
+		trigger = {
+			religion = jewish
+		}
+	}
+	custom_name = {
+		desc = estate_mobeds
+			trigger = {
+				religion = zoroastrian
+			}
+	}
+	custom_name = {
+		desc = estate_kannushi
+			trigger = {
+				religion = shinto
+			}
+	}
+	custom_name = {
+		desc = estate_panacas
+		trigger = {
+			religion = inti
 		}
 	}
 	custom_name = {
@@ -196,7 +293,49 @@ estate_church =
 			tag = KOR
 			religion = confucianism
 		}
+	}
+	custom_name = {
+		desc = estate_kahuna
+		trigger = {
+			capital_scope = {
+				area = northern_polynesia_area
+			}
+			primary_culture = polynesian
+			religion = animism
+		}
+	}
+	custom_name = {
+		desc = estate_tohunga
+		trigger = {
+			primary_culture = maori
+			religion = animism
+		}
+	}		
+	custom_name = {
+		desc = estate_taula_otua
+		trigger = {
+			tag = TOG
+			religion = animism
+		}
 	}	
+	custom_name = {
+		desc = estate_taula_aitu
+		trigger = {
+			tag = SAM
+			religion = animism
+		}
+	}
+	custom_name = {
+		desc = estate_bete
+		trigger = {
+			OR = {
+				tag = LAI
+				tag = VIL
+				tag = VNL
+			}
+			religion = animism
+		}
+	}
 
 	contributes_to_curia_treasury = yes
 	color = { 200 150 0 }
@@ -213,6 +352,10 @@ estate_church =
 		estate_church_inwards_perfection
 		estate_church_enforced_one_faith
 		estate_church_for_the_faith
+		estate_church_karma_temples
+		estate_church_influence_temples
+		estate_church_brahmins_at_court
+		estate_church_lao_animism
 		estate_church_monopoly_of_incense
 		estate_church_monopoly_of_wool
 		estate_church_monopoly_of_wine
