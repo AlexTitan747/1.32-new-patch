@@ -142,6 +142,26 @@ expansion_ideas = {
 
 	ai_will_do = {
 		factor = 0.65
+		modifier = {
+			factor = 0
+			NOT = { is_colonial_nation = yes }
+			NOT = {
+				any_owned_province = {
+					has_empty_adjacent_province = yes
+				}
+			}
+		}
+		modifier = {
+			factor = 0.66
+			OR = {
+				technology_group = chinese
+				technology_group = muslim
+			}
+		}
+		modifier = {
+			factor = 0.3
+			is_year = 1600
+		}
 	}
 }
 
@@ -384,6 +404,45 @@ religious_ideas = {
 
 	ai_will_do = {
 		factor = 0.7
+		modifier = {
+			factor = 0.75
+			NOT = { has_border_with_religious_enemy = yes }
+		}
+		modifier = {
+			factor = 0.75
+			is_absolutism_active = yes
+		}
+		modifier = {
+			factor = 0.15
+			religious_unity = 1
+		}
+		modifier = {
+			factor = 0.66
+			religious_unity = 0.85
+		}
+		modifier = {
+			factor = 1.1
+			has_border_with_religious_enemy = yes
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { religious_unity = 0.5 }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { religious_unity = 0.2 }
+		}
+		modifier = {
+			factor = 0.35
+			OR = {
+				technology_group = indian
+				technology_group = chinese
+			}
+		}
+		modifier = {
+			factor = 2
+			government = theocracy
+		}
 	}
 }
 
@@ -594,6 +653,27 @@ diplomatic_ideas = {
 
 	ai_will_do = {
 		factor = 0.7
+		modifier = {
+			factor = 0.5
+			NOT = { is_emperor = yes }
+			NOT = { num_of_subjects = 1 }
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 15 }
+		}
+		modifier = {
+			factor = 1.5
+			is_emperor = yes
+		}
+		modifier = {
+			factor = 1.5
+			vassal = 3
+		}
+		modifier = {
+			factor = 0.25
+			has_idea_group = influence_ideas
+		}
 	}
 }
 
@@ -667,6 +747,27 @@ influence_ideas = {
 
 	ai_will_do = {
 		factor = 0.7
+		modifier = {
+			factor = 0.5
+			NOT = { is_emperor = yes }
+			NOT = { num_of_subjects = 1 }
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 15 }
+		}
+		modifier = {
+			factor = 1.5
+			is_emperor = yes
+		}
+		modifier = {
+			factor = 1.5
+			vassal = 3
+		}
+		modifier = {
+			factor = 0.25
+			has_idea_group = diplomatic_ideas
+		}
 	}
 }
 
@@ -955,6 +1056,10 @@ trade_ideas = {
 			factor = 3
 			has_government_attribute = is_merchant_republic
 		}
+		modifier = {
+			factor = 0.15
+			NOT = { adm_tech = 10 }
+		}
 	}
 }
 
@@ -989,6 +1094,40 @@ shipbuilding_ideas = {
 
 	ai_will_do = {
 		factor = 0.75
+		modifier = {
+			factor = 0
+			is_tribal = yes
+		}
+		modifier = {
+			factor = 0
+			primitives = yes
+		}
+		modifier = {
+			factor = 0
+			NOT = { num_of_ports = 1 }
+			NOT = { is_colonial_nation = yes }
+		}
+		modifier = {
+			factor = 0.31
+			NOT = { num_of_ports = 10 }
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 10 }
+		}
+		modifier = {
+			factor = 2.5
+			capital_scope = {
+				OR = {
+					region = indonesia_region
+					region = malaya_region
+					region = moluccas_region
+					region = japan_region
+					region = british_isles_region
+					region = carribeans_region
+				}
+			}
+		}
 	}
 }
 
@@ -1023,6 +1162,40 @@ grand_navy_ideas = {
 
 	ai_will_do = {
 		factor = 0.76
+		modifier = {
+			factor = 0
+			is_tribal = yes
+		}
+		modifier = {
+			factor = 0
+			primitives = yes
+		}
+		modifier = {
+			factor = 0
+			NOT = { num_of_ports = 1 }
+			NOT = { is_colonial_nation = yes }
+		}
+		modifier = {
+			factor = 0.31
+			NOT = { num_of_ports = 10 }
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 10 }
+		}
+		modifier = {
+			factor = 2.5
+			capital_scope = {
+				OR = {
+					region = indonesia_region
+					region = malaya_region
+					region = moluccas_region
+					region = japan_region
+					region = british_isles_region
+					region = carribeans_region
+				}
+			}
+		}
 	}
 }
 
@@ -1056,7 +1229,7 @@ assault_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 0.80
+		factor = 3
 	}
 }
 
@@ -1090,7 +1263,7 @@ drill_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 0.79
+		factor = 3
 	}
 }
 
@@ -1124,7 +1297,7 @@ quantity_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 0.85
+		factor = 3
 	}
 }
 
@@ -1158,7 +1331,7 @@ firepower_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 0.90
+		factor = 3
 	}
 }
 
@@ -1192,7 +1365,7 @@ shock_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 0.93
+		factor = 3.1
 	}
 }
 
@@ -1226,7 +1399,7 @@ maneuver_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 0.94
+		factor = 3.1
 	}
 }
 
@@ -1260,7 +1433,294 @@ defensive_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 0.96
+		factor = 3.1
 	}
 }
 
+#blank vanilla ideas
+aristocracy_ideas = {
+	category = MIL
+	trigger = {
+		always = no
+	}
+	bonus = {
+	}
+	noble_knights = {
+	}
+	military_traditions = {
+	}
+	local_nobility = {
+	}
+	serfdom = {
+	}
+	noble_officers = {
+	}
+	international_nobility = {
+	}
+	noble_resilience = {
+	}
+}
+plutocracy_ideas = {
+	category = MIL
+	trigger = {
+		always = no
+	}
+	bonus = {
+	}
+	tradition_of_payment = {
+	}
+	abolished_serfdom = {
+	}
+	bill_of_rights = {
+	}
+	free_merchants = {
+	}
+	free_subjects = {
+	}
+	free_cities = {
+	}
+	emancipation = {
+	}
+}
+horde_gov_ideas = {
+	category = MIL
+	trigger = {
+		always = no
+	}
+	bonus = {
+	}
+	horse_lords = {
+	}
+	beyond_the_sun = {
+	}
+	mandate_of_the_khan = {
+	}
+	there_shall_be_no_grass = {
+	}
+	horde_loyalty = {
+	}
+	watchers_of_the_silk_road = {	
+	}
+	a_magnanimous_empire = {
+	}
+}
+theocracy_gov_ideas = {
+	category = MIL
+	trigger = {
+		always = no
+	}
+	bonus = {
+	}
+	servants_of_god = {
+	}
+	by_the_grace_of_god = {
+	}
+	friends_in_high_places = {
+	}
+	flesh_is_weak = {
+	}
+	alpha_and_omega = {
+	}
+	conviction_of_sin = {
+	}
+	martyrs = {
+	}
+}
+indigenous_ideas = {
+	category = MIL
+	trigger = {
+		always = no
+	}
+	bonus = {
+	}
+	indigenous_bountiful_land = {
+	}
+	indigenous_irregular_warfare = {
+	}
+	indigenous_constitution = {
+	}
+	indigenous_braves = {
+	}
+	indigenous_controlled_burns = {
+	}
+	indigenous_trade_with_foreigners = {
+	}
+	indigenous_treaties = {
+	}
+}
+innovativeness_ideas = {
+	category = MIL
+	trigger = {
+		always = no
+	}
+	bonus = {
+	}
+	patron_of_art  = {
+	}
+	empiricism = {
+	}
+	scientific_revolution = {
+	}
+	dynamic_court = {
+	}
+	print_culture = {
+	}
+	optimism = {
+	}
+	formalized_officer_corps = {
+	}
+}
+spy_ideas = {
+	category = MIL
+	trigger = {
+		always = no
+	}
+	bonus = {
+	}
+	efficient_spies = {
+	}	
+	agent_training = {
+	}
+	vetting = {
+	}
+	state_propaganda = {
+	}
+	claim_fabrication = {
+	}
+	privateers = {
+	}
+	audit_checks = {
+	}
+}
+offensive_ideas = {
+	category = MIL
+	trigger = {
+		always = no
+	}
+	bonus = {
+	}
+	bayonet_leaders = {
+	}
+	national_conscripts = {
+	}
+	superior_firepower = {
+	}
+	glorious_arms = {
+	}
+	engineer_corps = {
+	}
+	grand_army = {
+	}
+	napoleonic_warfare = {
+	}
+}
+economic_ideas = {
+	category = MIL
+	trigger = {
+		always = no
+	}
+	bonus = {
+	}
+	bureaucracy = {
+	}
+	organised_construction = {
+	}
+	national_bank = {
+	}
+	debt_and_loans = {
+	}
+	centralization = {
+	}
+	nationalistic_enthusiasm = {
+	}
+	smithian_economics = {
+ 	}
+}
+quality_ideas = {
+	category = MIL
+	trigger = {
+		always = no
+	}
+	bonus = {
+	}
+	private_to_marshal = {
+	}
+	quality_education = {
+	}
+	finest_of_horses = {
+	}
+	escort_ships = {
+	}
+	naval_drill = {
+	}
+	copper_bottoms = {
+	}
+	massed_battery = {
+	}
+}
+administrative_ideas = {
+	category = MIL
+	trigger = {
+		always = no
+	}
+	bonus = {
+	}
+	organised_mercenary_payment = {
+	}
+	adaptability = {
+	}
+	benefits_for_mercenaries = {
+	}
+	bookkeeping = {
+	}
+	organised_mercenary_recruitment = {
+	}
+	administrative_efficiency_idea = {
+	}
+	civil_servants = {
+	}
+}
+humanist_ideas = {
+	category = MIL
+	trigger = {
+		always = no
+	}
+	bonus = {
+	}
+	tolerance_idea = {
+	}
+	local_traditions = {
+	}
+	ecumenism = {
+	}
+	indirect_rule = {
+	}
+	cultural_ties = {
+	}
+	benevolence = {
+	}
+	humanist_tolerance = {
+	}
+}
+naval_ideas = {
+	category = MIL
+	trigger = {
+		always = no
+	}
+	bonus = {
+	}
+	boarding_parties = {
+	}
+	improved_rams = {
+	}
+	naval_cadets = {
+	}
+	naval_glory = {
+	}
+	press_gangs = {
+	}
+	oak_forests_for_ships = {
+	}
+	superior_seamanship = {
+	}
+}
