@@ -1,0 +1,109 @@
+country_decisions = {
+
+	ottoman_empire = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			tag = TUR
+			NOT = { has_country_flag = is_ottoman_empire_flag }
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 15
+				}
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				region = anatolia_region
+				region = egypt_region
+				region = mashriq_region
+				region = balkan_region
+				province_id = 101	# Genoa
+				
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			NOT = { exists = MAM }
+			is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			anatolia_region = {
+				type = all
+				OR = {
+					is_empty = yes
+					owned_by = ROOT
+				}
+			}
+			egypt_region = {
+				type = all
+				OR = {
+					is_empty = yes
+					owned_by = ROOT
+				}
+			}
+			mashriq_region = {
+				type = all
+				OR = {
+					is_empty = yes
+					owned_by = ROOT
+				}
+			}
+			balkan_region = {
+				type = all
+				OR = {
+					is_empty = yes
+					owned_by = ROOT
+				}
+			}
+			owns_core_province = 101	# Genoa
+			
+		}
+		effect = {
+
+			mashriq_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			anatolia_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			egypt_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			balkan_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			override_country_name = ottoman_empire
+			set_country_flag = is_ottoman_empire_flag
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+				}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+}
