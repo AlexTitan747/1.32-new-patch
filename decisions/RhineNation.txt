@@ -80,25 +80,37 @@ country_decisions = {
 				}
 		}
 	 	effect = {
-	  			change_primary_culture = rhenish
+	  			change_primary_culture = hessian
 				1876 = {
 					move_capital_effect = yes
 				}
 			change_tag = CFR
-			 = {
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
 				limit = {
-					NOT = { owned_by = ROOT }
-					NOT = { is_permanent_claim = ROOT }
+					all_province = {
+						OR = {
+						NOT = { owned_by = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+						culture = swabian
+						culture = hessian
+						culture = hannoverian
+						culture = dutch
+						culture = flemish
+						culture = frisian
+						}
+					}
+					
 				}
 				add_permanent_claim = CFR
 			}
 			if = {
 				limit = {
 					NOT = {
-						government_rank = 2
+						government_rank = 3
 					}
 				}
-				CFR = { set_government_rank = 2 }
+				CFR = { set_government_rank = 3 }
 			}
 			set_country_flag = formed_rhine_flag
 			add_prestige = 25
@@ -109,14 +121,6 @@ country_decisions = {
 				country_event = { id = ideagroups.1 } #Swap Ideas
 			}
 		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				tag = BUR
-			}
-		}
-		ai_importance = 400
 	}
 	
 }
