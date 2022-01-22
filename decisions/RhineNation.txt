@@ -86,24 +86,51 @@ country_decisions = {
 				}
 			change_tag = CFR
 			remove_non_electors_emperors_from_empire_effect = yes
-			if = {
+			south_german_region = {
 				limit = {
-					all_province = {
-						OR = {
 						NOT = { owned_by = ROOT }
 						NOT = { is_permanent_claim = ROOT }
-						culture = swabian
-						culture = hessian
-						culture = hannoverian
-						culture = dutch
-						culture = flemish
-						culture = frisian
+						OR = {
+							culture = hessian
+							culture = hannoverian
+							culture = swabian
+							culture = flemish
+							culture = dutch
+							culture = frisian
 						}
 					}
-					
+					add_permanent_claim = CFR	
 				}
-				add_permanent_claim = CFR
-			}
+			north_german_region = {
+					limit = {
+							NOT = { owned_by = ROOT }
+							NOT = { is_permanent_claim = ROOT }
+							OR = {
+								culture = hessian
+								culture = hannoverian
+								culture = swabian
+								culture = flemish
+								culture = dutch
+								culture = frisian
+							}
+						}
+						add_permanent_claim = CFR	
+				}
+				low_countries_region = {
+					limit = {
+							NOT = { owned_by = ROOT }
+							NOT = { is_permanent_claim = ROOT }
+							OR = {
+								culture = hessian
+								culture = hannoverian
+								culture = swabian
+								culture = flemish
+								culture = dutch
+								culture = frisian
+							}
+						}
+						add_permanent_claim = CFR	
+				}
 			if = {
 				limit = {
 					NOT = {
