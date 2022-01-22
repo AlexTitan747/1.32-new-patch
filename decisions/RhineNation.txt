@@ -1,0 +1,122 @@
+country_decisions = {
+
+	rhine_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_rhine_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			OR = {
+				NOT = { exists = CFR }
+				ai = no
+			}
+			NOT = { tag = PAP }
+			NOT = { tag = HAB }
+			NOT = { tag = HLR }
+			NOT = { tag = FRA }
+			culture_group = rhenish
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 3
+				}
+			}
+		}
+		provinces_to_highlight = {
+			AND = {
+				province_id = 4714 # Durlach
+				province_id = 77 # heidenburg
+				province_id = 70 # stutgart
+				province_id = 78 # mainz
+				province_id = 1760 # coblenz
+				province_id = 80 # trier
+				province_id = 85 # koln
+				province_id = 1876 # frankfurt
+				AND = {
+					ROOT = {
+							num_of_owned_provinces_with = {
+								value = 20
+								culture_group = rhenish
+								is_core = root
+							}
+						}
+						
+					}
+				}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			is_free_or_tributary_trigger = yes
+			is_nomad = no
+			is_at_war = no
+			NOT = { exists = CFR }
+			AND = {
+				owns_core_province = 4714 # Durlach
+				owns_core_province = 77 # heidenburg
+				owns_core_province = 70 # stutgart
+				owns_core_province = 78 # mainz
+				owns_core_province = 1760 # coblenz
+				owns_core_province = 80 # trier
+				owns_core_province = 85 # koln
+				owns_core_province = 1876 # frankfurt
+				AND = {
+					ROOT = {
+							num_of_owned_provinces_with = {
+								value = 20
+								culture_group = rhenish
+								is_core = root
+							}
+						}
+						
+					}
+				}
+		}
+	 	effect = {
+	  			change_primary_culture = rhenish
+				1876 = {
+					move_capital_effect = yes
+				}
+			change_tag = CFR
+			 = {
+				limit = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = CFR
+			}
+			if = {
+				limit = {
+					NOT = {
+						government_rank = 2
+					}
+				}
+				CFR = { set_government_rank = 2 }
+			}
+			set_country_flag = formed_rhine_flag
+			add_prestige = 25
+			if = {
+				limit = {
+					has_custom_ideas = no
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				tag = BUR
+			}
+		}
+		ai_importance = 400
+	}
+	
+}
