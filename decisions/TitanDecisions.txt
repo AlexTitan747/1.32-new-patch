@@ -53,12 +53,12 @@ country_decisions = {
 		major = yes
 		potential = {
 			AND = {
-				ai = no
 				NOT = { has_country_modifier = PR_manpower_edict_cooldown }
 				NOT = { has_country_flag = PR_manpower_edict_activated }
 			}
 		}
 		allow = {
+			ai = no
 		}
 		effect = {
 			custom_tooltip = PR_manpower_edict_tooltip
@@ -92,7 +92,7 @@ country_decisions = {
 			set_country_flag = PR_manpower_edict_activated
 		}
 		ai_will_do = {
-			factor = 1
+			factor = 0
 		}
 	}
 	
@@ -101,11 +101,11 @@ country_decisions = {
 		major = yes
 		potential = {
 			AND = {
-				ai = no
 				has_country_flag = PR_manpower_edict_activated
 			}
 		}
 		allow = {
+			ai = no
 			custom_trigger_tooltip = {
 				tooltip = PR_manpower_edict_removal_tooltip
 				NOT = { 
@@ -127,7 +127,7 @@ country_decisions = {
 			clr_country_flag = PR_manpower_edict_activated
 		}
 		ai_will_do = {
-			factor = 1
+			factor = 0
 		}
 	}
 
