@@ -47,7 +47,7 @@ country_decisions = {
 			}
 		}
 		allow = {
-			adm_tech = 10
+			adm_tech = 8
 			is_free_or_tributary_trigger = yes
 			is_nomad = no
 			is_at_war = no
@@ -89,27 +89,6 @@ country_decisions = {
 			
 		}
 		effect = {
-			134 = {
-				move_capital_effect = yes
-			}
-			set_capital = 134
-			
-			change_tag = AUH
-			swap_non_generic_missions = yes
-			if = {
-				limit = {
-					NOT = { government_rank = 3 }
-				}
-				set_government_rank = 3
-			}
-			add_government_reform = austrian_dual_monarchy
-			
-			add_prestige = 25
-			add_country_modifier = {
-				name = "centralization_modifier"
-				duration = 7300
-			}
-			set_country_flag = formed_austria_hungary_flag
 			if = {
 				limit = {
 					tag = HAB
@@ -138,6 +117,27 @@ country_decisions = {
 				}
 				inherit = BOH
 			}
+			134 = {
+				move_capital_effect = yes
+			}
+			set_capital = 134
+			
+			change_tag = AUH
+			swap_non_generic_missions = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 3 }
+				}
+				set_government_rank = 3
+			}
+			add_government_reform = austrian_dual_monarchy
+			
+			add_prestige = 25
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			set_country_flag = formed_austria_hungary_flag
 			if = {
 				limit = { has_custom_ideas = no }
 				country_event = { id = ideagroups.1 } #Swap Ideas
