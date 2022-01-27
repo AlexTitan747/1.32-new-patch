@@ -18,6 +18,8 @@ steppe_horde = {
 		}
 		has_reform = steppe_horde
 		NOT = { has_reform = great_mongol_state_reform }
+		NOT = { has_reform = great_horde_state_reform }
+		NOT = { tag = CMN }
 	}
 	legacy_equivalent = steppe_horde_legacy
 	nomad = yes
@@ -55,7 +57,7 @@ great_horde_state_reform = {
 		OR = {
 			has_reform = great_horde_state_reform
 			have_had_reform = great_horde_state_reform
-
+			tag = CMN
 		}
 	}
 	legacy_equivalent = great_mongol_state_legacy
@@ -82,6 +84,7 @@ great_mongol_state_reform = {
 			have_had_reform = great_mongol_state_reform
 			tag = MGE
 		}
+		NOT = { tag = CMN }
 	}
 	legacy_equivalent = great_mongol_state_legacy
 	fixed_rank = 3
