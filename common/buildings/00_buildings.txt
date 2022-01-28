@@ -80,6 +80,10 @@ marketplace = {
 				}
 			}
 		}
+		modifier = {
+			factor = 0.1
+			building_slot_for_manufactory_trigger = yes
+		}
 	}
 }
 
@@ -119,6 +123,10 @@ workshop = {
 		modifier = {
 			factor = 0.75
 			NOT = { base_production = 3 }
+		}
+		modifier = {
+			factor = 0.1
+			building_slot_for_manufactory_trigger = yes
 		}
 	}
 }
@@ -213,6 +221,10 @@ temple = {
 			NOT = { base_tax = 5 }
 			NOT = { trade_goods = gold }
 		}
+		modifier = {
+			factor = 0
+			building_slot_for_manufactory_trigger = yes
+		}
 	}
 }
 
@@ -298,6 +310,10 @@ barracks = {
 			factor = 2
 			has_building = soldier_households
 		}
+		modifier = {
+			factor = 0
+			building_slot_for_manufactory_trigger = yes
+		}
 	}
 }
 
@@ -332,6 +348,10 @@ shipyard = {
 
 	ai_will_do = {
 		factor = 0.4
+		modifier = {
+			factor = 0
+			building_slot_for_manufactory_trigger = yes
+		}
 	}
 }
 
@@ -491,6 +511,10 @@ coastal_defence = {
 
 	ai_will_do = {
 		factor = 1
+		modifier = {
+			factor = 0
+			building_slot_for_manufactory_trigger = yes
+		}
 	}
 }
 
@@ -573,6 +597,10 @@ courthouse = {
 			factor = 5
 			FROM = { governing_capacity_percentage = 1.1 }
 		}
+		modifier = {
+			factor = 0
+			building_slot_for_manufactory_trigger = yes
+		}
 	}
 }
 
@@ -641,6 +669,10 @@ dock = {
 				}
 			}
 		}
+		modifier = {
+			factor = 0
+			building_slot_for_manufactory_trigger = yes
+		}
 	}
 }
 
@@ -707,6 +739,10 @@ regimental_camp = {
 		modifier = {
 			factor = 0.25
 			NOT = { is_state = yes }
+		}
+		modifier = {
+			factor = 0
+			building_slot_for_manufactory_trigger = yes
 		}
 	}
 }
@@ -870,6 +906,10 @@ naval_battery = {
 
 	ai_will_do = {
 		factor = 1
+		modifier = {
+			factor = 0
+			building_slot_for_manufactory_trigger = yes
+		}
 	}
 }
 
@@ -971,6 +1011,11 @@ cathedral = {
 			factor = 0.1
 			NOT = { base_tax = 5 }
 			NOT = { trade_goods = gold }
+		}
+		modifier = {
+			factor = 0
+			building_slot_for_manufactory_trigger = yes
+			NOT = { has_building = temple }
 		}
 	}
 }
@@ -1076,6 +1121,11 @@ trade_depot = {
 				}
 			}
 		}
+		modifier = {
+			factor = 0
+			building_slot_for_manufactory_trigger = yes
+			NOT = { has_building = marketplace }
+		}
 	}
 }
 
@@ -1115,6 +1165,11 @@ grand_shipyard = {
 
 	ai_will_do = {
 		factor = 0.4
+		modifier = {
+			factor = 0
+			building_slot_for_manufactory_trigger = yes
+			NOT = { has_building = shipyard }
+		}
 	}
 }
 
@@ -1205,6 +1260,11 @@ training_fields = {
 		modifier = {
 			factor = 2
 			has_building = soldier_households
+		}
+		modifier = {
+			factor = 0
+			building_slot_for_manufactory_trigger = yes
+			NOT = { has_building = barracks }
 		}
 	}
 }
@@ -1437,6 +1497,15 @@ stock_exchange = {
 				}
 			}
 		}
+		modifier = {
+			factor = 0
+			building_slot_for_manufactory_trigger = yes
+			OR = {
+				NOT = { has_building = marketplace }
+				NOT = { has_building = trade_depot }
+			}
+			
+		}
 	}
 }
 
@@ -1480,6 +1549,11 @@ counting_house = {
 		modifier = {
 			factor = 0.75
 			NOT = { base_production = 3 }
+		}
+		modifier = {
+			factor = 0.1
+			building_slot_for_manufactory_trigger = yes
+			NOT = { has_building = workshop }
 		}
 	}
 }
@@ -1567,6 +1641,11 @@ town_hall = {
 			factor = 5
 			FROM = { governing_capacity_percentage = 1.1 }
 		}
+		modifier = {
+			factor = 0
+			building_slot_for_manufactory_trigger = yes
+			NOT = { has_building = courthouse }
+		}
 	}
 }
 
@@ -1641,6 +1720,11 @@ drydock = {
 				}
 			}
 		}
+		modifier = {
+			factor = 0
+			building_slot_for_manufactory_trigger = yes
+			NOT = { has_building = dock }
+		}
 	}
 }
 
@@ -1713,6 +1797,11 @@ conscription_center = {
 		modifier = {
 			factor = 0.25
 			NOT = { is_state = yes }
+		}
+		modifier = {
+			factor = 0
+			building_slot_for_manufactory_trigger = yes
+			NOT = { has_building = regimental_camp }
 		}
 	}
 }
@@ -1919,6 +2008,13 @@ wharf = {
 			factor = 0.8
 			has_latent_trade_goods = coal
 		}
+		modifier = { 
+			factor = 1.2
+			OR = {
+				has_building = workshop
+				has_building = counting_house
+			}
+		}
 	}
 }
 
@@ -1961,6 +2057,13 @@ weapons = {
 		modifier = {
 			factor = 0.8
 			has_latent_trade_goods = coal
+		}
+		modifier = { 
+			factor = 1.2
+			OR = {
+				has_building = workshop
+				has_building = counting_house
+			}
 		}
 	}
 }
@@ -2013,6 +2116,13 @@ textile = {
 			factor = 0.8
 			has_latent_trade_goods = coal
 		}
+		modifier = { 
+			factor = 1.2
+			OR = {
+				has_building = workshop
+				has_building = counting_house
+			}
+		}
 	}
 }
 
@@ -2063,6 +2173,13 @@ plantations = {
 		modifier = {
 			factor = 0.8
 			has_latent_trade_goods = coal
+		}
+		modifier = { 
+			factor = 1.2
+			OR = {
+				has_building = workshop
+				has_building = counting_house
+			}
 		}
 	}
 }
@@ -2119,6 +2236,13 @@ tradecompany = {
 			factor = 0.8
 			has_latent_trade_goods = coal
 		}
+		modifier = { 
+			factor = 1.2
+			OR = {
+				has_building = workshop
+				has_building = counting_house
+			}
+		}
 	}
 }
 
@@ -2167,6 +2291,13 @@ farm_estate = {
 		modifier = {
 			factor = 0.5
 			FROM = { adm_tech = 15 }
+		}
+		modifier = { 
+			factor = 1.2
+			OR = {
+				has_building = workshop
+				has_building = counting_house
+			}
 		}
 	}
 }
@@ -2225,6 +2356,13 @@ mills = {
 			factor = 0.8
 			has_latent_trade_goods = coal
 		}
+		modifier = { 
+			factor = 1.2
+			OR = {
+				has_building = workshop
+				has_building = counting_house
+			}
+		}
 	}
 }
 
@@ -2265,6 +2403,13 @@ furnace = {
 			factor = 0.1
 			NOT = { is_state = yes }
 			is_owned_by_trade_company = no
+		}
+		modifier = { 
+			factor = 1.2
+			OR = {
+				has_building = workshop
+				has_building = counting_house
+			}
 		}
 	}
 }
@@ -2312,31 +2457,6 @@ ramparts = {
 			OR = {
 				has_province_modifier = arid
 				has_province_modifier = tropical
-			}
-		}
-		modifier = {
-			factor = 1.5
-			FROM = {
-				has_idea_group = defensive_ideas
-			}
-		}
-		modifier = {
-			factor = 0
-			NOT = { num_free_building_slots = 2 }
-			NOT = { trade_goods = gold }
-			NOT = {
-				OR = {
-					has_building = wharf 
-					has_building = weapons 
-					has_building = textile 
-					has_building = tradecompany 
-					has_building = farm_estate 
-					has_building = mills 
-					has_building = plantations 
-					has_building = furnace 
-					has_building = soldier_households 
-					has_building = impressment_offices
-				}
 			}
 		}
 	}
