@@ -2155,7 +2155,7 @@ estate_nobles_levies = {
 	}
 	modifier_by_land_ownership = {
 		global_tax_modifier = -0.10
-		global_manpower_modifier = 0.25
+		global_manpower_modifier = 0.50
 	}
 	penalties = {
 	}
@@ -2824,6 +2824,76 @@ estate_church_enforced_one_faith = {
 	}
 	ai_will_do = {
 		factor = 0
+	}
+}
+
+estate_burghers_encourage_production = {
+	icon = privilege_give_money
+	#
+	influence = 0.1
+	is_valid = {
+		NOT = { has_estate = estate_vaisyas }
+	}
+	modifier_by_land_ownership = {
+		land_maintenance_modifier = 0.10
+		production_efficiency = 0.50
+	}
+	penalties = {
+	}
+	ai_will_do = {
+		factor = 5
+		modifier = {
+			factor = 2
+			estate_territory = {
+				estate = estate_burghers
+				territory = 50
+			}
+		}
+		modifier = {
+			factor = 1.5
+			estate_territory = {
+				estate = estate_burghers
+				territory = 40
+			}
+		}
+		modifier = {
+			factor = 1.5
+			estate_territory = {
+				estate = estate_burghers
+				territory = 30
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				estate_territory = {
+					estate = estate_burghers
+					territory = 15
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				estate_territory = {
+					estate = estate_burghers
+					territory = 10
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				estate_territory = {
+					estate = estate_burghers
+					territory = 5
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_absolutism_active = yes
+		}
 	}
 }
 
@@ -3816,6 +3886,77 @@ estate_brahmins_guaranteed_autonomy = {
 	}
 }
 
+estate_jains_encourage_production = {
+	icon = privilege_give_money
+	#
+	influence = 0.1
+	is_valid = {
+		NOT = { has_estate = estate_vaisyas }
+	}
+	modifier_by_land_ownership = {
+		land_maintenance_modifier = 0.10
+		production_efficiency = 0.50
+	}
+	penalties = {
+	}
+	ai_will_do = {
+		factor = 5
+		modifier = {
+			factor = 2
+			estate_territory = {
+				estate = estate_jains
+				territory = 50
+			}
+		}
+		modifier = {
+			factor = 1.5
+			estate_territory = {
+				estate = estate_jains
+				territory = 40
+			}
+		}
+		modifier = {
+			factor = 1.5
+			estate_territory = {
+				estate = estate_jains
+				territory = 30
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				estate_territory = {
+					estate = estate_jains
+					territory = 15
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				estate_territory = {
+					estate = estate_jains
+					territory = 10
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				estate_territory = {
+					estate = estate_jains
+					territory = 5
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_absolutism_active = yes
+		}
+	}
+}
+
+
 estate_jains_diplomacy = {
 	icon = privilege_diplo_power
 	land_share = 10
@@ -4081,7 +4222,7 @@ estate_maratha_levies = {
 	}
 	modifier_by_land_ownership = {
 		global_tax_modifier = -0.10
-		global_manpower_modifier = 0.25
+		global_manpower_modifier = 0.50
 	}
 	penalties = {
 	}
