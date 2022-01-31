@@ -17,7 +17,7 @@ country_decisions = {
 			}
 			technology_group = chinese
 			OR = {
-				culture_group = tibetan
+				culture_group = tibetan_group
 				culture_group = han
 				culture_group = yue
 			}
@@ -33,15 +33,14 @@ country_decisions = {
 		}
 		provinces_to_highlight = {
 			OR = {
-			owns_core_province = 667		
-			owns_core_province = 2159		
-			owns_core_province = 2149
-			owns_core_province = 1821
-			owns_core_province = 1816
-			owns_core_province = 700
-			owns_core_province = 691
-			owns_core_province = 671
-			
+				province_id = 667		
+				province_id = 2159		
+				province_id = 2149
+				province_id = 1821
+				province_id = 1816
+				province_id = 700
+				province_id = 691
+				province_id = 671
 			}
 			OR = {
 				NOT = { owned_by = ROOT }
@@ -78,16 +77,21 @@ country_decisions = {
 			}
 			
 			if = {
-					limit = {
-						NOT = { primary_culture = chinese }
-					}
-					change_primary_culture = chinese
+				limit = {
+					NOT = { primary_culture = chinese }
 				}
+				change_primary_culture = chinese
+			}
 			hidden_effect = {
+				if = {
+					limit = {
+						FROM = { continent = asia }
+					}
 					every_owned_province = {
-					change_culture = chinese
+						change_culture = chinese
 					}
 				}
+			}
 			add_prestige = 50
 			add_country_modifier = {
 				name = "centralization_modifier"
