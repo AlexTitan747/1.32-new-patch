@@ -1065,51 +1065,55 @@ veche_republic = {
 	}
 	modifiers = {
 		merchants = 1
-		governing_capacity = 50
+		global_own_trade_power = 0.1
+		governing_capacity = 100
 		max_absolutism = -50
 	}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 40
-
-	factions = {
-		mr_aristocrats
-		mr_traders
-		mr_guilds
-	}
 	boost_income = yes
-	fixed_rank = 1
+	conditional = {
+		allow = {
+			has_dlc = "Third Rome"
+			NOT = { has_dlc = "Mare Nostrum" }
+			NOT = { has_dlc = "Res Publica" }
+		}
+		government_abilities = {
+			russian_mechanic
+		}
+	}
+	duration = 4
+}
 
-	custom_attributes = {
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
-	}
-	conditional = {
-		allow = {
-			has_dlc = "Res Publica"
-			NOT = { has_dlc = "Mare Nostrum" }
-			NOT = { has_dlc = "Third Rome" }
+russian_republic = {
+	icon = "russian_principality"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			AND = {
+				tag = RUS
+			}
+			AND = {
+				is_playing_custom_nation = yes
+				have_had_reform = veche_republic
+			}
 		}
-		can_use_trade_post = yes
 	}
-	conditional = {
-		allow = {
-			has_dlc = "Mare Nostrum"
-			NOT = { has_dlc = "Res Publica" }
-			NOT = { has_dlc = "Third Rome" }
-		}
-		can_form_trade_league = yes
-		trade_city_reform = trading_city
+	legacy_equivalent = veche_republic_legacy
+	nation_designer_trigger = {
+		culture_group = east_slavic
 	}
-	conditional = {
-		allow = {
-			has_dlc = "Res Publica"
-			has_dlc = "Mare Nostrum"
-			NOT = { has_dlc = "Third Rome" }
-		}
-		can_use_trade_post = yes
-		can_form_trade_league = yes
-		trade_city_reform = trading_city
+	modifiers = {
+		merchants = 1
+		global_own_trade_power = 0.15
+		land_morale = 0.05
+		governing_capacity = 250
+		max_absolutism = -50
 	}
+	fixed_rank = 3
+	valid_for_nation_designer = yes
+	nation_designer_cost = 40
+	boost_income = yes
 	conditional = {
 		allow = {
 			has_dlc = "Third Rome"
@@ -1119,42 +1123,6 @@ veche_republic = {
 		government_abilities = {
 			russian_mechanic
 		}
-	}
-	conditional = {
-		allow = {
-			has_dlc = "Third Rome"
-			has_dlc = "Mare Nostrum"
-			NOT = { has_dlc = "Res Publica" }
-		}
-		government_abilities = {
-			russian_mechanic
-		}
-		can_form_trade_league = yes
-		trade_city_reform = trading_city
-	}
-	conditional = {
-		allow = {
-			has_dlc = "Third Rome"
-			NOT = { has_dlc = "Mare Nostrum" }
-			has_dlc = "Res Publica"
-		}
-		government_abilities = {
-			russian_mechanic
-		}
-		can_use_trade_post = yes
-	}
-	conditional = {
-		allow = {
-			has_dlc = "Third Rome"
-			has_dlc = "Mare Nostrum"
-			has_dlc = "Res Publica"
-		}
-		government_abilities = {
-			russian_mechanic
-		}
-		can_use_trade_post = yes
-		can_form_trade_league = yes
-		trade_city_reform = trading_city
 	}
 	duration = 4
 }
