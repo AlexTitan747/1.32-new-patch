@@ -1,0 +1,160 @@
+country_decisions = {
+
+	bulgar_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_country_flag = formed_bulgars_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			NOT = { tag = MUG }
+			NOT = { tag = HLR }
+			NOT = { tag = ROM }
+			NOT = { tag = PAP }
+			NOT = { tag = TUR }
+			NOT = { tag = BYZ }
+			NOT = { tag = GLH }
+			NOT = { exists = BGR }
+			OR = {
+				primary_culture = crimean
+				primary_culture = circassian
+				primary_culture = dagestani
+				primary_culture = mishary
+				primary_culture = astrakhani
+			}
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+			OR = {
+				ai = no
+				num_of_cities = 20
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						NOT = { owned_by = ROOT }
+						NOT = { is_core = ROOT }
+					}
+					OR = {
+						province_id = 425 #Dagestani
+						province_id = 464 #Astrakhan
+						province_id = 463 #Circassia
+						province_id = 1971 #Beljamen
+						province_id = 298 #Kursk
+						province_id = 280 #Kiev
+						province_id = 1756 #Beserabia
+					}
+				}
+			}
+		}
+		allow = {
+			NOT = { exists = BGR }
+			has_reform = steppe_horde
+			owns_core_province = 425 #Dagestani
+			owns_core_province = 464 #Astrakhan
+			owns_core_province = 463 #Circassia
+			owns_core_province = 1971 #Beljamen
+			owns_core_province = 298 #Kursk
+			owns_core_province = 280 #Kiev
+			owns_core_province = 1756 #Beserabia
+			crimea_area = {
+				is_core = ROOT
+			}
+			azov_area = {
+				is_core = ROOT
+			}
+			zaporizhia_area = {
+				is_core = ROOT
+			}
+			yedisan_area = {
+				is_core = ROOT
+			}
+			num_of_cities = 20
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+		}
+		effect = {
+			change_tag = BGR
+			swap_non_generic_missions = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = { NOT = { government_rank = 3 } }
+				set_government_rank = 3
+			}
+			if = {
+				limit = {
+					has_custom_ideas = no
+				}
+				set_country_flag = formed_bulgars_flag
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			crimea_region = {
+				add_permanent_claim = BGR
+			}
+			ruthenia_region = {
+				limit = {
+						NOT = { owned_by = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+						OR = {
+							culture = romanian
+							culture = ruthenian
+							culture = bulgarian
+							culture = ryazanian
+						}
+					}
+					add_permanent_claim = BGR	
+			}
+			carpathia_region = {
+				limit = {
+						NOT = { owned_by = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+						OR = {
+							culture = romanian
+							culture = ruthenian
+							culture = bulgarian
+							culture = ryazanian
+						}
+					}
+					add_permanent_claim = BGR	
+			}
+			balkan_region = {
+				limit = {
+						NOT = { owned_by = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+						OR = {
+							culture = romanian
+							culture = ruthenian
+							culture = bulgarian
+							culture = ryazanian
+						}
+					}
+					add_permanent_claim = BGR	
+			}
+			circassia_area = {
+				add_permanent_claim = BGR
+			}
+			dagestan_area = {
+				add_permanent_claim = BGR
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 25
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400
+	}
+}
