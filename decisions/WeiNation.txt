@@ -11,8 +11,7 @@ country_decisions = {
 			}
 			NOT = { exists = WEI }
 			technology_group = chinese
-			culture_group = han
-			mil_tech = 9
+			culture_group = han_group
 			is_colonial_nation = no
 			OR = {
 				is_former_colonial_nation = no
@@ -23,23 +22,21 @@ country_decisions = {
 			}
 		}
 		provinces_to_highlight = {
-			OR = {
-				
+			OR = {	
+				province_id = 685		# jiangsu capital state
+				province_id = 1821		
+				province_id = 2145		
+				province_id = 1822		
 					
-			owns_core_province = 685		# jiangsu capital state
-			owns_core_province = 1821		
-			owns_core_province = 2145		
-			owns_core_province = 1822		
-				
-			owns_core_province = 1816		# liaoning capital state
-			owns_core_province = 2136		
-			owns_core_province = 703		
-			owns_core_province = 4194		
-				
-			owns_core_province = 691
-			owns_core_province = 688
-			owns_core_province = 693
-			owns_core_province = 702
+				province_id = 1816		# liaoning capital state
+				province_id = 2136		
+				province_id = 703		
+				province_id = 4194		
+					
+				province_id = 691
+				province_id = 688
+				province_id = 693
+				province_id = 702
 			}
 			OR = {
 				NOT = { owned_by = ROOT }
@@ -50,7 +47,7 @@ country_decisions = {
 			is_free_or_tributary_trigger = yes
 			is_nomad = no
 			is_at_war = no
-			
+			adm_tech = 8
 				
 			owns_core_province = 685		# jiangsu capital state
 			owns_core_province = 1821		
@@ -77,10 +74,17 @@ country_decisions = {
 			swap_non_generic_missions = yes
 			if = {
 				limit = {
+					government = monarchy
+				}
+				add_government_reform = warring_kingdom_reform
+			}
+			if = {
+				limit = {
 					NOT = { government_rank = 2 }
 				}
 				set_government_rank = 2
 			}
+
 			
 			
 			add_prestige = 25

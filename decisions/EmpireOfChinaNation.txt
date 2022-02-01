@@ -14,14 +14,15 @@ country_decisions = {
 				tag = WUU
 				tag = SHU
 				tag = WEI
+				#tag = NYU
 			}
+			government_rank = 2
 			technology_group = chinese
 			OR = {
-				culture_group = tibetan
-				culture_group = han
-				culture_group = yue
+				culture_group = tibetan_group
+				culture_group = han_group
+				culture_group = yue_group
 			}
-			is_year = 1550
 			is_colonial_nation = no
 			OR = {
 				is_former_colonial_nation = no
@@ -33,15 +34,14 @@ country_decisions = {
 		}
 		provinces_to_highlight = {
 			OR = {
-			owns_core_province = 667		
-			owns_core_province = 2159		
-			owns_core_province = 2149
-			owns_core_province = 1821
-			owns_core_province = 1816
-			owns_core_province = 700
-			owns_core_province = 691
-			owns_core_province = 671
-			
+				province_id = 667		
+				province_id = 2159		
+				province_id = 2149
+				province_id = 1821
+				province_id = 1816
+				province_id = 700
+				province_id = 691
+				province_id = 671
 			}
 			OR = {
 				NOT = { owned_by = ROOT }
@@ -52,7 +52,8 @@ country_decisions = {
 			is_free_or_tributary_trigger = yes
 			is_nomad = no
 			is_at_war = no
-			
+			#is_year = 1550
+
 			owns_core_province = 667		
 			owns_core_province = 2159		
 			owns_core_province = 2149
@@ -76,18 +77,30 @@ country_decisions = {
 			limit = { NOT = { has_country_flag = chinagov_empire } }
 			country_event = { id = chinagov.3 }
 			}
-			
 			if = {
-					limit = {
-						NOT = { primary_culture = chinese }
-					}
-					change_primary_culture = chinese
+				limit = {
+					government = monarchy
 				}
+				add_government_reform = chinese_empire_reform
+			}
+			if = {
+				limit = {
+					NOT = { government_rank = 3 }
+				}
+				set_government_rank = 3
+			}
+			if = {
+				limit = {
+					NOT = { primary_culture = chinese_culture }
+				}
+				change_primary_culture = chinese_culture
+			}
 			hidden_effect = {
-					every_owned_province = {
-					change_culture = chinese
-					}
+				every_owned_province = {
+					change_culture = ROOT
 				}
+			}
+
 			add_prestige = 50
 			add_country_modifier = {
 				name = "centralization_modifier"
