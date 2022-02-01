@@ -1,0 +1,90 @@
+country_decisions = {
+	
+	arab_nation = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			NOT = { has_country_flag = formed_arabia_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			NOT = { exists = ARB }
+			NOT = { tag = HLR }
+			NOT = { tag = PAP }
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
+				AND = {
+					is_former_colonial_nation = yes
+					ai = no
+				}
+			}
+			culture_group = arabian #Arabic
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 384			#Medina
+				province_id = 385			#Mecca
+				province_id = 388			#Aden
+				province_id = 390			#Sanaa
+				province_id = 392			#Al-Arid
+				province_id = 394			#Qatif
+				province_id = 400			#Muscat
+				province_id = 403			#Nizwa
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			owns_core_province = 384			#Medina
+			owns_core_province = 385			#Mecca
+			owns_core_province = 388			#Aden
+			owns_core_province = 390			#Sanaa
+			owns_core_province = 392			#Al-Arid
+			owns_core_province = 394			#Qatif
+			owns_core_province = 400			#Muscat
+			owns_core_province = 403			#Nizwa
+		}
+		effect = {
+			remove_non_electors_emperors_from_empire_effect = yes
+			mashriq_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ARB
+			}
+			egypt_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+					NOT = { area = lower_nubia_area }
+				}
+				add_permanent_claim = ARB
+			}
+			arabia_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ARB
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 25
+			set_country_flag = formed_arabia_flag
+			change_tag = ARB
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+				}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
