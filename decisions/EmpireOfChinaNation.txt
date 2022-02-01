@@ -14,14 +14,15 @@ country_decisions = {
 				tag = WUU
 				tag = SHU
 				tag = WEI
+				#tag = NYU
 			}
+			government_rank = 2
 			technology_group = chinese
 			OR = {
 				culture_group = tibetan_group
-				culture_group = han
-				culture_group = yue
+				culture_group = han_group
+				culture_group = yue_group
 			}
-			is_year = 1550
 			is_colonial_nation = no
 			OR = {
 				is_former_colonial_nation = no
@@ -51,7 +52,8 @@ country_decisions = {
 			is_free_or_tributary_trigger = yes
 			is_nomad = no
 			is_at_war = no
-			
+			#is_year = 1550
+
 			owns_core_province = 667		
 			owns_core_province = 2159		
 			owns_core_province = 2149
@@ -75,23 +77,30 @@ country_decisions = {
 			limit = { NOT = { has_country_flag = chinagov_empire } }
 			country_event = { id = chinagov.3 }
 			}
-			
 			if = {
 				limit = {
-					NOT = { primary_culture = chinese }
+					government = monarchy
 				}
-				change_primary_culture = chinese
+				add_government_reform = chinese_empire_reform
+			}
+			if = {
+				limit = {
+					NOT = { government_rank = 3 }
+				}
+				set_government_rank = 3
+			}
+			if = {
+				limit = {
+					NOT = { primary_culture = chinese_culture }
+				}
+				change_primary_culture = chinese_culture
 			}
 			hidden_effect = {
-				if = {
-					limit = {
-						FROM = { continent = asia }
-					}
-					every_owned_province = {
-						change_culture = chinese
-					}
+				every_owned_province = {
+					change_culture = ROOT
 				}
 			}
+
 			add_prestige = 50
 			add_country_modifier = {
 				name = "centralization_modifier"
