@@ -44,8 +44,6 @@ country_decisions = {
 						province_id = 464 #Astrakhan
 						province_id = 465 #Nogai
 						province_id = 466 #Sarai
-						province_id = 476 #Kypchak
-						province_id = 1075 #Chimgi-Tura
 						province_id = 1082 #Kazan
 						province_id = 1778 #Qasim
 					}
@@ -59,8 +57,6 @@ country_decisions = {
 			owns_core_province = 464 #Astrakhan
 			owns_core_province = 465 #Nogai
 			owns_core_province = 466 #Sarai
-			owns_core_province = 476 #Kypchak
-			owns_core_province = 1075 #Chimgi-Tura
 			owns_core_province = 1082 #Kazan
 			owns_core_province = 1778 #Qasim
 			num_of_cities = 30
@@ -74,6 +70,10 @@ country_decisions = {
 			if = {
 				limit = { NOT = { government_rank = 3 } }
 				set_government_rank = 3
+			}
+			if = {
+				limit = { has_reform = steppe_horde }
+				add_government_reform = great_horde_state_reform
 			}
 			if = {
 				limit = {
