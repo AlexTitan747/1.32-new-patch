@@ -17,6 +17,7 @@ country_decisions = {
 			NOT = { tag = TUR }
 			NOT = { tag = BYZ }
 			NOT = { tag = GLH }
+			NOT = { tag = CMN }
 			NOT = { exists = BGR }
 			OR = {
 				primary_culture = crimean
@@ -85,12 +86,15 @@ country_decisions = {
 		}
 		effect = {
 			change_tag = BGR
-			swap_non_generic_missions = yes
 			remove_non_electors_emperors_from_empire_effect = yes
 			if = {
 				limit = { NOT = { government_rank = 3 } }
 				set_government_rank = 3
-			}
+			}	
+			if = {
+				limit = { has_reform = steppe_horde }
+				add_government_reform = great_horde_state_reform
+				}
 			if = {
 				limit = {
 					has_custom_ideas = no

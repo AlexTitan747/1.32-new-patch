@@ -95,26 +95,15 @@ mnd_siam_1 = {
 		required_missions = { mnd_siam_great_monument }
 		provinces_to_highlight = {
 			has_discovered = ROOT
-			OR = {
 				AND = {
 					is_capital = yes
 					owned_by = ROOT
-					NOT = { development = 50 }
+					NOT = { development = 40 }
 				}
-				any_province = {
-					is_capital_of = root
-					NOT = { higher_development_than = prev }
-				}
-			}
 		}
 		trigger = {
 			capital_scope = {
 				development = 40
-				NOT = {
-					any_province = {
-						higher_development_than = PREV
-					}
-				}
 			}
 		}
 		effect = {
