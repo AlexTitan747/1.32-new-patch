@@ -6,14 +6,35 @@ country_decisions = {
 			NOT = { has_country_modifier = great_wall_reparations }
 			OR = {
 				culture_group = tibetan_group
-				culture_group = yue
-				culture_group = han
+				culture_group = yue_group
+				culture_group = han_group
 			}
 			normal_or_historical_nations = yes
 			OR = {
 				ai = no
 				is_playing_custom_nation = no
 			}
+			MIL = 5
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 693
+				province_id = 695
+				province_id = 696
+				province_id = 697
+				province_id = 699
+				province_id = 700
+				province_id = 707
+				province_id = 709
+				province_id = 1816
+			}
+			
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
 			owns = 693
 			owns = 695
 			owns = 696
@@ -23,9 +44,6 @@ country_decisions = {
 			owns = 707
 			owns = 709
 			owns = 1816
-		}
-		allow = {
-			MIL = 5
 		}
 		effect = {
 			add_country_modifier = {
@@ -51,8 +69,8 @@ country_decisions = {
 			NOT = {	has_dlc = "Leviathan" }
 			OR = {
 				culture_group = tibetan_group
-				culture_group = yue
-				culture_group = han
+				culture_group = yue_group
+				culture_group = han_group
 			}
 			normal_or_historical_nations = yes
 			OR = {
