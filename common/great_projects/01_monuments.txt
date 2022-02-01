@@ -1147,9 +1147,7 @@ forbidden_city = {
 
 	#can we build it?
 	build_trigger = {
-		owner = {
-			has_reform = celestial_empire
-		}
+		province_is_or_accepts_culture = yes
 	}
 
 	#what to do when it's built
@@ -1164,16 +1162,12 @@ forbidden_city = {
 
 	#can our country use it?
 	can_use_modifiers_trigger = {
-		owner = {
-			has_reform = celestial_empire
-		}
+		province_is_or_accepts_culture = yes
 	}
 
 	#can our country upgrade it?
 	can_upgrade_trigger = {
-		owner = {
-			has_reform = celestial_empire
-		}
+		province_is_or_accepts_culture = yes
 	}
 
 	#can our country keep it or is it destroyed when we get hold of it?
@@ -1222,6 +1216,7 @@ forbidden_city = {
 
 		#what modifiers are added to the province when we have this project here on this tier
 		province_modifiers = {
+			local_defensiveness = 0.10
 		}
 
 		#what modifiers are added to the provinces in the map area when we have this project here on this tier
@@ -1231,7 +1226,7 @@ forbidden_city = {
 		#what modifiers are added to the country when we have this project here on this tier
 		country_modifiers = {
 			yearly_absolutism = 0.25
-			imperial_mandate = 0.03
+			global_tax_modifier = 0.15
 		}
 
 		#what effects happen when this tier is achieved
@@ -1252,6 +1247,7 @@ forbidden_city = {
 
 		#what modifiers are added to the province when we have this project here on this tier
 		province_modifiers = {
+			local_defensiveness = 0.15
 		}
 
 		#what modifiers are added to the provinces in the map area when we have this project here on this tier
@@ -1261,8 +1257,8 @@ forbidden_city = {
 		#what modifiers are added to the country when we have this project here on this tier
 		country_modifiers = {
 			yearly_absolutism = 0.5
-			imperial_mandate = 0.03
 			prestige_decay = -0.01
+			global_tax_modifier = 0.25
 		}
 
 		#what effects happen when this tier is achieved
@@ -1283,6 +1279,7 @@ forbidden_city = {
 
 		#what modifiers are added to the province when we have this project here on this tier
 		province_modifiers = {
+			local_defensiveness = 0.25
 		}
 
 		#what modifiers are added to the provinces in the map area when we have this project here on this tier
@@ -1292,8 +1289,9 @@ forbidden_city = {
 		#what modifiers are added to the country when we have this project here on this tier
 		country_modifiers = {
 			yearly_absolutism = 0.5
-			imperial_mandate = 0.05
 			prestige_decay = -0.02
+			global_tax_modifier = 0.35
+			governing_capacity_modifier = 0.1
 		}
 
 		#what effects happen when this tier is achieved
