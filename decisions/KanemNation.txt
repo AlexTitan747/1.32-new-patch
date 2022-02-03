@@ -1,10 +1,10 @@
 country_decisions = {
 
-		kanem_nation = {
+		kanem_empire_nation = {
 			major = yes
 			potential = {
 				normal_or_historical_nations = yes
-				NOT = { has_country_flag = formed_kanem_flag }
+				NOT = { has_country_flag = formed_kanem_empire_flag }
 				OR = {
 					ai = no
 					is_playing_custom_nation = no
@@ -88,11 +88,10 @@ country_decisions = {
 				if = {
                 limit = { is_revolutionary = no }
 				}
-				set_country_flag = formed_kanem_flag
 				if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
-				}
+					limit = { has_custom_ideas = no }
+					country_event = { id = ideagroups.1 } #Swap Ideas
+					}
 				niger_region = {
 					limit = {
 						NOT = { owned_by = ROOT }
@@ -123,6 +122,7 @@ country_decisions = {
 					}
 					add_permanent_claim = ROOT
 				}
+				set_country_flag = formed_kanem_empire_flag
 			}
 			
 		}
