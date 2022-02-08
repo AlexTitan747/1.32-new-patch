@@ -6,6 +6,7 @@ estate_nobles =
 	trigger = {
 		NOT = { has_government_attribute = is_merchant_republic }
 		NOT = { has_reform = pirate_republic_reform }
+		NOT = { has_reform = veche_republic }
 		NOT = { has_reform = cossacks_reform }
 		NOT = { government = native }
 		NOT = { has_reform = trading_city }
@@ -13,9 +14,9 @@ estate_nobles =
 		NOT = { is_revolutionary_republic_trigger = yes }
 		NOT = { has_reform = revolutionary_empire_reform }
 		NOT = { has_reform = peasants_republic }
+		NOT = { has_reform = kongsi_federation }
 		NOT = { has_reform = american_republic }
 		NOT = { has_reform = federal_republic }
-		NOT = { has_reform = kongsi_federation }
 		if = {
 			limit = {
 				NOT = { religion_group = muslim }
@@ -33,15 +34,16 @@ estate_nobles =
 		}
 		is_nomad = no
 		is_colonial_nation = no
-		
-		if = {
-			limit = {
-				NOT = { has_dlc = "Dharma" }
-			}
-			has_parliament = no
-		}
+		NOT = { has_government_attribute = disables_nobility }
 		NOT = { has_reform = revolutionary_empire_reform }
-		NOT = { has_reform = parliamentary_reform }
+		AND = {
+			NOT = { has_country_flag = ikko_ikki_peasants_flag }
+			OR = {
+				NOT = { has_reform = leading_clergy_reform }
+				NOT = { has_reform = monastic_order_reform }
+				NOT = { has_reform = peasants_republic }
+			}
+		}
 	}
 
 	country_modifier_happy = {
@@ -340,7 +342,6 @@ estate_nobles =
 			}
 		}
 	}
-
 	custom_name = {
 		desc = estate_alii
 		trigger = {
@@ -395,7 +396,9 @@ estate_nobles =
 		trigger = {
 			tag = KON
 		}
-	}	color = { 200 0 50 }
+	}
+	
+	color = { 200 0 50 }
 	
 	privileges = {
 		estate_nobles_land_rights

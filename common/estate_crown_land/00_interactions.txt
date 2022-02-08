@@ -4,7 +4,7 @@ interaction = {
 	cooldown_months = 96
 
     trigger = {
-        crown_land_share = 0.1
+        crown_land_share = 10
         NOT = { num_of_rebel_armies = 1 }
 		NOT = { num_of_rebel_controlled_provinces = 1 }
 		hidden_trigger = { has_any_estates = yes }
@@ -187,7 +187,34 @@ interaction = {
         }
     }
 	ai_will_do = {
-		factor = 0 # AI won't do agendas
+		# Only use if it will bring loyalty above 50 for all estates
+		# AI will most likely fail to complete the task
+		factor = 10
+		modifier = {
+			factor = 10
+			can_use_crown_land_interaction = seize_land
+			
+			estate_loyalty = {
+				estate = all
+				loyalty = 45.5
+			}
+			NOT = {
+				estate_loyalty = {
+					estate = all
+					loyalty = 50
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				estate_influence = {
+					estate = all
+					less_than = yes
+					influence = 90
+				}
+			}
+		}
 	}
 }
 
@@ -308,6 +335,10 @@ interaction = {
 						loyalty = 30
 					}
 				}
+				estate_influence = {
+					estate = all
+					influence = 1
+				}				
 			}
 			spawn_rebels_seize_land_switch = yes
 		}

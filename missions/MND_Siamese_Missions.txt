@@ -24,6 +24,10 @@ mnd_siam_1 = {
 			capital_scope = {
 				development = 30
 			}
+			OR = {
+				num_of_times_used_transfer_development = 2
+				capital_scope = { num_of_times_improved = 5 }
+			}
 		}
 		effect = {
 			change_government_reform_progress = 50
@@ -38,7 +42,9 @@ mnd_siam_1 = {
 			NOT = { development = 40 }
 		}
 		trigger = {
-			total_development = 300
+			capital_scope = {
+				development = 40
+			}
 			vassal = 3
 		}
 		effect = {
@@ -95,15 +101,26 @@ mnd_siam_1 = {
 		required_missions = { mnd_siam_great_monument }
 		provinces_to_highlight = {
 			has_discovered = ROOT
+			OR = {
 				AND = {
 					is_capital = yes
 					owned_by = ROOT
 					NOT = { development = 40 }
 				}
+				any_province = {
+					is_capital_of = root
+					NOT = { higher_development_than = prev }
+				}
+			}
 		}
 		trigger = {
 			capital_scope = {
 				development = 40
+				NOT = {
+					any_province = {
+						higher_development_than = PREV
+					}
+				}
 			}
 		}
 		effect = {
@@ -522,7 +539,10 @@ mnd_siam_3 = {
 			if = {
 				limit = {
 					any_country = {
-						primary_culture = vietnamese
+						OR = {
+							primary_culture = vietnamese
+							primary_culture = vietnamese_new
+						}
 						capital_scope = {
 							region = indo_china_region
 						}
@@ -531,7 +551,10 @@ mnd_siam_3 = {
 				}
 				every_country = {
 					limit = {
-						primary_culture = vietnamese
+						OR = {
+							primary_culture = vietnamese
+							primary_culture = vietnamese_new
+						}
 						capital_scope = {
 							region = indo_china_region
 						}
@@ -578,12 +601,18 @@ mnd_siam_3 = {
 				limit = {
 					any_country = {
 						is_subject_of = ROOT
-						primary_culture = vietnamese
+						OR = {
+							primary_culture = vietnamese
+							primary_culture = vietnamese_new
+						}
 					}
 				}
 				NOT = {
 					any_subject_country = {
-						primary_culture = vietnamese
+						OR = {
+							primary_culture = vietnamese
+							primary_culture = vietnamese_new
+						}
 						liberty_desire = 50
 					}
 				}

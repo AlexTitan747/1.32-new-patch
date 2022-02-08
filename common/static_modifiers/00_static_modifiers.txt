@@ -190,6 +190,7 @@ mild_winter = {
 normal_winter = {
 	local_hostile_attrition = 2
 	supply_limit_modifier = -0.2
+	migration_cost = 0.1
 
 	picture = "winter_normal"
 }
@@ -197,6 +198,7 @@ normal_winter = {
 severe_winter = {
 	local_hostile_attrition = 3
 	supply_limit_modifier = -0.3
+	migration_cost = 0.2
 
 	picture = "winter_severe"
 }
@@ -254,9 +256,6 @@ cardinals_spread_institution = {
 
 manpower = {
 	garrison_growth = 0.01					#1% increase from manpower.
-}
-
-sailors = {
 }
 
 # Caps at 600
@@ -332,17 +331,17 @@ core = {
 	local_development_cost = -0.1
 }
 
+non_core = {
+	local_missionary_strength = -0.02
+}
+
 colonial_core = {
 	local_tax_modifier = 0.75				#90% more in a core
 	local_manpower_modifier = 0.75			#75% more in a core
 	local_sailors_modifier = 0.75
 	local_missionary_strength = -0.02
 	min_local_autonomy = 50
-	local_governing_cost = -0.75
-}
-
-non_core = {
-	local_missionary_strength = -0.02
+	local_governing_cost = -0.5
 }
 
 territory_core = {
@@ -350,7 +349,7 @@ territory_core = {
 	local_manpower_modifier = 0.75			#75% more in a core
 	local_sailors_modifier = 0.75
 	local_missionary_strength = -0.02
-	min_local_autonomy = 75
+	min_local_autonomy = 90
 	local_governing_cost = -0.75
 }
 
@@ -490,6 +489,7 @@ local_autonomy_trade_company = {
 
 recent_uprising = {
 	local_unrest = -100
+	picture = "recent_uprising"
 }
 
 
@@ -508,8 +508,9 @@ national_defense = {
 }
 
 
+# penalty when migrant have been there recently.
 resource_depleted = {
-	local_tax_modifier = -0.50				# penalty when migrant have been there recently.
+	# Not used anymore, however if you add it, will be applied again. Kept it for modders
 }
 
 in_trade_company = {
@@ -539,7 +540,7 @@ base_values = {
 	diplomats = 2							#Start with 2 diplomats..
 	missionaries = 1						#1 missionary
 	army_tradition_decay = 0.05				#lose 5% yearly
-	navy_tradition_decay = 0.05			#lose 5% yearly
+	navy_tradition_decay = 0.05				#lose 5% yearly
 	prestige_decay = 0.05					#lose 5% prestige each year
 	tolerance_own = 3
 	diplomatic_upkeep = 4
@@ -548,7 +549,7 @@ base_values = {
 	global_missionary_strength = 0.02
 	global_manpower = 10.0
 	advisor_pool = 3
-	colonist_placement_chance = 0.05
+	colonist_placement_chance = 0.1
 	free_leader_pool = 1
 	republican_tradition = 1
 	monthly_fervor_increase = 1
@@ -565,6 +566,7 @@ base_values = {
 	monthly_heir_claim_increase = 0.208
 	tolerance_of_heretics_capacity = 3
 	tolerance_of_heathens_capacity = 3
+
 }
 
 # AI 'cheats' that compensate for flaws in its long-term decision making, removing these may severely cripple the AI
@@ -591,6 +593,7 @@ positive_stability = {
 	global_unrest = -1					#-1% revolt risk each step
 	global_tax_modifier = 0.05
 	global_missionary_strength = 0.005
+	temples_influence = 0.02
 	mr_aristocrats_influence = 0.03
 	rr_jacobins_influence = 0.03
 	stability_cost_modifier = 0.50
@@ -599,6 +602,8 @@ positive_stability = {
 	yearly_corruption = -0.02
 	global_institution_spread = 0.05
 	yearly_harmony = 0.25
+	
+	
 }
 
 privateering = {
@@ -609,8 +614,10 @@ negative_stability = {
 	global_unrest = -2					#-1% EXTRA revolt risk each step
 	legitimacy = 1
 	interest = -1
+	migration_cost = 0.1
 	devotion = 1
 	caravan_power = 0.05
+	yearly_harmony = 0.25
 }
 
 positive_mandate = {	# 100% strength at 100 mandate, 0% at 50 mandate
@@ -669,12 +676,12 @@ bankruptcy = {
 	land_morale = -0.5
 	naval_morale = -0.5
 	reinforce_speed = -0.25					#Slower reinforce
+	bureaucrats_influence = 0.25
 	mr_guilds_influence = 0.25
 	manpower_recovery_speed = -1.0
 	sailors_recovery_speed = -1.0
 	advisor_cost = 0.5
 	monthly_fervor_increase = -1
-	global_colonial_growth = -200
 	global_autonomy = 0.05
 	global_institution_spread = -0.50
 	monthly_militarized_society = -0.5
@@ -682,6 +689,7 @@ bankruptcy = {
 	technology_cost = 0.5
 	idea_cost = 0.5
 	imperial_mandate = -0.1
+	great_project_upgrade_cost = 0.5
 }
 
 
@@ -713,6 +721,7 @@ war_exhaustion = {
 	global_regiment_recruit_speed = 0.02
 	global_ship_recruit_speed = 0.02
 	core_creation = 0.03
+	temples_influence = -0.05
 	mr_aristocrats_influence = -0.05
 	rr_girondists_influence = -0.05
 	rr_royalists_influence = 0.05
@@ -762,6 +771,7 @@ army_tradition = {
 	land_morale = 0.20
 	manpower_recovery_speed = 0.1
 	siege_ability = 0.05
+	temples_influence = 0.1
 	mr_aristocrats_influence = 0.1
 	rr_girondists_influence = 0.1
 	monthly_militarized_society = 0.1
@@ -810,6 +820,8 @@ defender_of_faith = {
 	prestige = 1							#1% extra prestige yearly
 	missionaries = 1
 	devotion = 0.5
+	
+	
 }
 
 defender_of_faith_refused_cta = {
@@ -941,6 +953,7 @@ corruption = {
 	dhimmi_loyalty_modifier = 0.1
 	jains_loyalty_modifier = 0.1
 	rajput_loyalty_modifier = 0.1
+	monthly_heir_claim_increase = 0.025
 
 	nomadic_aristocracy_loyalty_modifier = 0.1
 	sedentary_subdjects_loyalty_modifier = 0.1
@@ -980,12 +993,11 @@ luck = {
 	#economy
 	mercenary_cost = -0.2
 	embracement_cost = -0.2
-	advisor_cost = -0.2
 	interest = -1
 	missionary_maintenance_cost = -0.1
 
 	#military
-	manpower_recovery_speed = 0.25
+	manpower_recovery_speed = 0.15
 	defensiveness = 0.1
 	siege_ability = 0.05
 
@@ -997,7 +1009,8 @@ luck = {
 	global_unrest = -1
 	republican_tradition = 0.5
 	legitimacy = 1
-	ae_impact = -0.25
+	ae_impact = -0.2
+	governing_capacity_modifier = 0.25
 
 }
 
@@ -1020,6 +1033,8 @@ prestige = {
 	monthly_fervor_increase = 1
 	ae_impact = -0.10
 	embracement_cost = -0.1
+
+	monthly_heir_claim_increase = 0.05
 
 	brahmins_hindu_loyalty_modifier = 0.05
 	brahmins_muslim_loyalty_modifier = 0.05
@@ -1082,6 +1097,7 @@ religious_unity = {
 	max_absolutism = 5
 	church_loyalty_modifier = 0.05
 	brahmins_hindu_loyalty_modifier = 0.05
+	yearly_harmony = 1
 }
 
 inverse_religious_unity = {
@@ -1205,19 +1221,54 @@ power_projection_25 = {
 	free_leader_pool = 1
 }
 
+#100 Land Forcelimit = 1
+land_forcelimit = {
+    free_land_leader_pool = 1.25 #80 Army forcelimit -> +1 free leader
+}
+
+#100 Naval Forcelimit = 1
+naval_forcelimit = {
+    free_navy_leader_pool = 1.25 #80 Naval Forcelimit -> +1 Free Leader
+}
+
 trade_company_strong = {
 	merchants = 1
 }
-
-trade_company_dominant = {
-}
-
 
 large_colonial_nation = {
 	merchants = 1
 	global_trade_power = 0.05
 	naval_forcelimit = 10
 	land_forcelimit = 5
+}
+
+crown_colony_overlord = {
+}
+
+private_enterprise_overlord = {
+	global_tariffs = -0.05
+}
+
+self_governing_colony_overlord = {
+	global_tariffs = -0.10
+}
+
+crown_colony_subject = {
+	global_autonomy = -0.1
+	global_colonial_growth = 10
+}
+
+private_enterprise_subject = {
+	global_ship_trade_power = 0.2
+	global_trade_goods_size_modifier = 0.2
+	naval_tradition_from_trade = 0.1
+	ship_power_propagation = 0.1
+}
+
+self_governing_colony_subject = {
+	colonists = 1
+	development_cost = -0.15
+	liberty_desire = 25
 }
 
 march_subject = {
@@ -1294,6 +1345,8 @@ gov_rank_10 = {
 # For autonomy mechanics
 autonomy_increased = {
 	local_unrest = -10
+	
+	picture="autonomy_increased"
 }
 
 autonomy_decreased = {
@@ -1694,7 +1747,8 @@ cossacks_modifier = {
 ########################################
 
 expand_administation_modifier = {
-	governing_capacity = 100
+	expand_administration_cost = 0.20
+	governing_capacity = 20
 }
 
 # At 100% over capacity, this modifier will be fully used
@@ -1705,57 +1759,48 @@ over_governing_capacity_modifier = {
 	core_creation = 0.2
 	advisor_cost = 1.0
 	monthly_militarized_society = -1.0
-	
 }
 
 
 lost_hegemony = {
 	all_power_cost	= 0.10
 }
+
 at_peace_revolutionary = { # Applied if at peace while reactionaries are bordering you
 	yearly_revolutionary_zeal = -4
 }
 
-#leviathan modifiers
-
 expanded_infrastructure = {
 	allowed_num_of_buildings = 1
 	allowed_num_of_manufactories = 1
+	regiment_recruit_speed = -0.15
+	ship_recruit_speed = -0.15
+	local_defensiveness = 0.2
+	garrison_growth = 0.25
+	local_development_cost = -0.05
+	local_production_efficiency = 0.05
+	local_tax_modifier = 0.1
+	local_manpower_modifier = 0.05
+	local_sailors_modifier = 0.05
+	local_ship_repair = 0.05
+	local_autonomy = -0.001
+	local_build_cost = -0.05
+	local_build_time = -0.05
+	province_trade_power_modifier = 0.05
+	trade_goods_size_modifier = 0.05
 	local_governing_cost_increase = 50
-	local_governing_cost = 1.0
+	local_governing_cost = 0.25
+	local_great_project_upgrade_cost = -0.05
 }
 
 centralize_state = {
-	state_governing_cost_increase = -20
+	state_governing_cost = -0.1
+	local_prosperity_growth = 0.1
+	local_state_maintenance_modifier = -0.1
 	picture = "centralize_state"
 }
+
 # Applied once for each guru teaching
 guru_teaching = {
 	global_missionary_strength = -0.01
-}
-crown_colony_overlord = {
-	trade_steering = 0.15
-	production_efficiency = 0.10
-}
-private_enterprise_overlord = {
-	global_tariffs = -0.10
-}
-
-self_governing_colony_overlord = {	
-}
-
-crown_colony_subject = {
-	global_autonomy = -0.05
-	colonists = 1
-	global_colonial_growth = 10
-}
-
-private_enterprise_subject = {
-	global_trade_goods_size_modifier = 0.1
-	development_cost = -0.05
-	colonists = 1
-	global_colonial_growth = 25
-}
-
-self_governing_colony_subject = {	
 }

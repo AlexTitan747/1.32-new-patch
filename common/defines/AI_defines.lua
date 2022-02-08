@@ -7,8 +7,9 @@ NDefines.NAI.CALL_IN_ALLIES_POWER_RATIO = 2.5  --AI will only call in allies in 
 NDefines.NAI.DEBASE_THRESHOLD = -5000 -- AI will not debase if it has more gold than this.
 NDefines.NAI.ADVISOR_BUDGET_FRACTION = 1 -- AI will spend a maximum of this fraction of monthly income on advisor maintenance
 
+NDefines.NAI.REGION_PLANNING_HOMELAND_PRIORIZATION = 6 --Homeland priorization when assigning armies to regions (only applied when actually threatened)
 NDefines.NAI.ARMY_DISTANCE_SCORE_IMPACT	= 1	--Army <-> province distance impact on province evaluation / divides total score by this amount
-NDefines.NAI.BORDER_DISTANCE_SCORE_IMPACT =	20 --Border <-> province distance impact on province evaluation / actual distance penalty
+NDefines.NAI.BORDER_DISTANCE_SCORE_IMPACT =	10 --Border <-> province distance impact on province evaluation / actual distance penalty
 NDefines.AI_TOTAL_DEV_CULTURE_MULTIPLIER = 10			-- Multiplier for how much the AI values having much development in accepted cultures.
 
 NDefines.NAI.MIN_SCORE_TO_CONCENTRATE_DEVELOPMENT = -1

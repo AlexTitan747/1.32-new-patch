@@ -10,9 +10,7 @@ mnd_dai_1 = {
 			tag = DAI
 			tag = TOK
 			tag = ANN
-			AND = {
-				tag = VTM
-			}
+			tag = VTM
 		}
 		has_dlc = "Leviathan"
 		NOT = { map_setup = map_setup_random }
@@ -44,8 +42,119 @@ mnd_dai_1 = {
 			}
 		}
 	}
+	mnd_dai_defy_ming = {
+		icon = mission_great_wall
+		required_missions = { mnd_dai_prevent_division }
+		provinces_to_highlight = {
+			is_capital = yes
+			owned_by = MNG
+		}
+		position = 3
+		trigger = {
+			is_subject = no
+			NOT = { truce_with = MNG }
+			if = {
+				limit = {
+					exists = MNG
+				}
+				MNG = {
+					OR = {
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = insulted
+						}
+						has_opinion_modifier = {
+							who = ROOT
+							modifier = scornfully_insulted
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					exists = YUE
+					YUE = { 
+						is_subject_of = MNG
+						OR = {
+							is_subject_of_type = vassal
+							is_subject_of_type = march
+						}
+					}
+				}
+				army_size = YUE
+				total_development = YUE
+				YUE = {
+					has_opinion = {
+						who = ROOT
+						value = 100
+					}
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					has_dlc = "Mandate of Heaven"
+					MNG = {
+						is_emperor_of_china = yes
+					}
+				}
+				MNG = {
+					add_mandate = -20
+				}
+			}
+			else_if = {
+				limit = {
+					exists = MNG
+				}
+				MNG = {
+					add_legitimacy = -20
+				}
+			}
+			if = {
+				limit = {
+					exists = YUE
+					YUE = { 
+						is_subject_of = MNG 
+						OR = {
+							is_subject_of_type = vassal
+							is_subject_of_type = march
+						}
+					}
+				}
+				create_subject = {
+					subject_type = vassal
+					subject = YUE
+				}
+			}
+			else = {
+				guangdong_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				west_guangdong_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				guangxi_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	}
 	mnd_dai_conquer_canton = {
 		icon = mission_chinese_general_riding
+		required_missions = { mnd_dai_defy_ming }
 		provinces_to_highlight = {
 			OR = {
 				AND = {
@@ -61,7 +170,6 @@ mnd_dai_1 = {
 				}
 			}
 		}
-		position = 3
 		trigger = {
 			667 = {
 				owned_by = ROOT
@@ -145,9 +253,7 @@ mnd_dai_2 = {
 			tag = DAI
 			tag = TOK
 			tag = ANN
-			AND = {
-				tag = VTM
-			}
+			tag = VTM
 		}
 		has_dlc = "Leviathan"
 		NOT = { map_setup = map_setup_random }
@@ -293,9 +399,7 @@ mnd_dai_3 = {
 			tag = DAI
 			tag = TOK
 			tag = ANN
-			AND = {
-				tag = VTM
-			}
+			tag = VTM
 		}
 		has_dlc = "Leviathan"
 		NOT = { map_setup = map_setup_random }
@@ -519,9 +623,7 @@ mnd_dai_4 = {
 			tag = DAI
 			tag = TOK
 			tag = ANN
-			AND = {
-				tag = VTM
-			}
+			tag = VTM
 		}
 		has_dlc = "Leviathan"
 		NOT = { map_setup = map_setup_random }
@@ -536,13 +638,17 @@ mnd_dai_4 = {
 			OR = {
 				NOT = { owned_by = ROOT }
 				NOT = { culture = vietnamese }
+				NOT = { culture = vietnamese_new }
 			}
 		}
 		trigger = {
 			champa_area = {
 				type = all
 				owned_by = ROOT
-				culture = vietnamese
+				OR = {
+					culture = vietnamese
+					culture = vietnamese_new
+				}
 			}
 		}
 		effect = {
@@ -637,9 +743,7 @@ mnd_dai_5 = {
 			tag = DAI
 			tag = TOK
 			tag = ANN
-			AND = {
-				tag = VTM
-			}
+			tag = VTM
 		}
 		has_dlc = "Leviathan"
 		NOT = { map_setup = map_setup_random }

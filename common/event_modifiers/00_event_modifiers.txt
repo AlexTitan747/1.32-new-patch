@@ -868,6 +868,7 @@ counter_reformation = {
 	global_heretic_missionary_strength = 0.03
 	papal_influence = 0.5
 	missionaries = 2
+	tolerance_heretic = -2
 	technology_cost = 0.05
 	idea_cost = 0.05
 	religion = yes
@@ -1033,8 +1034,10 @@ dutch_india_trade_co = {
 
 
 portuguese_india_trade_co = {
-	#merchants = 1
-	#global_trade_power = 0.05
+	trade_efficiency = 0.10
+}
+
+scottish_india_trade_co = {
 	trade_efficiency = 0.10
 }
 
@@ -1506,8 +1509,30 @@ south_german_organ_tradition = {
 }
 
 rome_reborn = {
-	prestige = 1
+	picture = "imperial_authority"
+	prestige = 3
+	technology_cost = -0.05
+	global_institution_spread = 0.1
 	global_tax_modifier = 0.05
+	spy_offence = 0.1
+	advisor_pool = 1
+	free_leader_pool = 1
+	diplomats = 1
+	diplomatic_reputation = 3
+	diplomatic_upkeep = 1
+	land_forcelimit = 50
+	global_manpower = 50
+	tax_income = 50
+	build_cost = -0.05
+	build_time = -0.05
+	global_unrest = -2
+	state_maintenance_modifier = -0.25
+	core_creation = -0.1
+	stability_cost_modifier = -0.1
+	legitimacy = 0.25
+	tolerance_own = 1
+	global_missionary_strength = 0.01
+	mercenary_cost = -0.25
 }
 
 rebel_sentiment = {
@@ -1523,6 +1548,8 @@ conversion_zeal = {
 religious_zeal_at_conv = {
 	local_missionary_strength = -1
 }
+
+
 
 papal_sanction_for_church_taxes = {
 	global_tax_modifier = 0.15
@@ -1555,11 +1582,6 @@ papal_blessing = {
 	prestige = 1
 	land_morale = 0.1
 	religion = yes
-}
-
-anglican_trade_increase = {
-	trade_efficiency = 0.15
-	ship_power_propagation = 0.15
 }
 
 papal_sanction_for_holy_war = {
@@ -1795,10 +1817,6 @@ spread_of_enlightenment_ideals = {
 #Special places
 stora_kopparberget_modifier = { #Great Copper Mountain
 	trade_goods_size = 5.0
-}
-
-cerro_rico_modifier = { #Mountain of Riches - Potosí Silver Mines
-	trade_goods_size = 3.0
 }
 
 spice_islands_modifier = { #Main entrepots of the Mollucas, point of origin for a large portion of the worlds spices
@@ -2183,6 +2201,11 @@ kongo_estuary_modifier = {
 	picture = "estuary_icon"
 }
 
+amur_estuary_modifier = {
+	province_trade_power_value = 10
+	picture = "estuary_icon"
+}
+
 # England flavor modifiers
 
 lollards = {
@@ -2473,6 +2496,7 @@ local_free_trade = {
 }
 
 dhimmi_building_restrictions = {
+	religion = yes
 	tolerance_own = 0.5
 	tolerance_heathen = -0.5
 }
@@ -3224,6 +3248,7 @@ the_triumphal_procession = {
 
 burgundian_succession_crisis = {
 	heir_chance = -0.95
+	monthly_heir_claim_increase = -1
 	block_introduce_heir = yes
 }
 
@@ -3372,6 +3397,10 @@ pol_zebrzydowski_rebellion_flag = {
 	global_unrest = 10
 	stability_cost_modifier = 0.25
 	global_trade_goods_size_modifier = -0.25
+}
+
+plc_polish_lithuanian_union = {
+	num_accepted_cultures = 1
 }
 
 economic_development_of_mazovia = {
@@ -4105,7 +4134,7 @@ eth_mount_geshen = {
 }
 
 eth_negusa_nagast_issues = {
-	
+	global_autonomy = 0.2
 }
 
 #Bahmanis
@@ -5424,7 +5453,6 @@ pow_indigenous_trade_goods = {
 	local_production_efficiency = 0.25
 }
 
-
 ##################################################
 # Trade Companies
 ##################################################
@@ -6462,6 +6490,7 @@ royal_fires_modifier = {
 	prestige = 0.5
 	legitimacy = 0.5
 	devotion = 0.5
+	manpower_in_true_faith_provinces= 0.2
 	religion = yes
 }
 
@@ -6978,6 +7007,10 @@ alhambra_decree = {
 	trade_efficiency = -0.10
 	stability_cost_modifier = -0.1
 	tolerance_own = 1
+}
+
+alhambra_working_force = {
+	great_project_upgrade_cost = -0.25
 }
 
 unification_of_spain = {
@@ -9015,28 +9048,28 @@ overlord_military_mission = {
 
 # Religions
 harmonized_vajrayana = {
-	production_efficiency = 0.05
+	production_efficiency = 0.1
 	religion = yes
 }
 
 harmonized_buddhism = { #Theravada
-	advisor_cost = -0.05
+	advisor_cost = -0.1
 	religion = yes
 }
 
 harmonized_mahayana = {
-	idea_cost = -0.07
+	idea_cost = -0.1
 	religion = yes
 }
 
 harmonized_shinto = {
-	infantry_power = 0.05
+	infantry_power = 0.1
 	religion = yes
 }
 
 # Religion Groups
 harmonized_pagan = {
-	global_unrest = -0.5
+	global_unrest = -1
 	religion = yes
 }
 
@@ -9046,22 +9079,22 @@ harmonized_jewish_group = {
 }
 
 harmonized_zoroastrian_group = {
-	trade_efficiency = 0.1
+	global_trade_goods_size_modifier = 0.1
 	religion = yes
 }
 
 harmonized_dharmic = {
-	tolerance_own = 1
+	diplomatic_reputation = 1
 	religion = yes
 }
 
 harmonized_muslim = {
-	trade_efficiency = 0.05
+	trade_efficiency = 0.1
 	religion = yes
 }
 
 harmonized_christian = {
-	stability_cost_modifier = -0.05
+	stability_cost_modifier = -0.1
 	religion = yes
 }
 
@@ -10849,6 +10882,11 @@ warriors_do_not_read_books = {
 
 new_mandate_holder = {
 	imperial_mandate = 0.05
+	land_maintenance_modifier = -0.1
+	land_forcelimit = 20
+	manpower_recovery_speed = 0.15
+	global_tax_income = 60
+	global_monthly_devastation = -0.1
 }
 
 
@@ -10915,10 +10953,12 @@ borgia_diplomacy = {
 #Estate Privileges
 
 estate_dhimmi_lighter_dhimmi_taxes_privilege_mod = {
+	religion = yes
 	local_tax_modifier = 0.15
 }
 
 estate_dhimmi_manpower_mod = {
+	religion = yes
 	local_manpower_modifier = 0.3
 }
 
@@ -10927,11 +10967,13 @@ estate_maratha_levies_for_muslims_mod = {
 }
 
 estate_dhimmi_guaranteed_autonomy_mod = {
+	religion = yes
 	local_religious_unity_contribution = -1
 	local_missionary_strength = -1
 }
 
 estate_brahmins_guaranteed_autonomy_mod = {
+	religion = yes
 	local_missionary_strength = -1
 	local_religious_unity_contribution = -1
 }
@@ -11432,6 +11474,7 @@ medici_pope_modifier = {
 	diplomatic_reputation = 1
 	papal_influence = 2
 }
+
 # Joan of Arc event chain modifiers
 
 rebuilt_joan_of_arc_statue_catholic = {
@@ -11640,11 +11683,11 @@ honour_pole = {
 }
 
 travois_no_dogs = {
-	migration_cost = -0.1
+	migration_cost = 0.5
 }
 
 travois_no_horses = {
-	migration_cost = -0.1
+	migration_cost = 0.5
 }
 
 lovely_place = {

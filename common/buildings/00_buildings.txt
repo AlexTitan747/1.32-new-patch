@@ -93,7 +93,6 @@ workshop = {
 	modifier = {
 		local_production_efficiency = 0.5
 	}
-
 	on_built = {
 		add_development_from_building = {
 			building = workshop
@@ -328,7 +327,6 @@ shipyard = {
 		ship_recruit_speed = -0.25
 		local_ship_repair = 0.25
 	}
-
 	on_built = {
 		add_development_from_building = {
 			building = shipyard
@@ -530,7 +528,6 @@ courthouse = {
 		local_autonomy = -0.1
 		local_governing_cost = -0.25
 	}
-
 	on_built = {
 		add_development_from_building = {
 			building = courthouse
@@ -683,22 +680,6 @@ regimental_camp = {
 		land_forcelimit = 1
 	}
 
-	on_built = {
-		add_development_from_building = {
-			building = regimental_camp
-			type = manpower
-			value = 1
-		}
-	}
-	on_destroyed = {
-		remove_development_from_building = {
-			building = regimental_camp
-			type = manpower
-			value = 1
-		}
-	}
-	on_obsolete = {
-	}
 #	# THIS = Province, FROM = Builder(not nessecairly owner, can be overlord)
 #	on_built = {
 #		FROM = {
@@ -721,6 +702,22 @@ regimental_camp = {
 #			}
 #		}
 #	}
+	on_built = {
+		add_development_from_building = {
+			building = regimental_camp
+			type = manpower
+			value = 1
+		}
+	}
+	on_destroyed = {
+		remove_development_from_building = {
+			building = regimental_camp
+			type = manpower
+			value = 1
+		}
+	}
+	on_obsolete = {
+	}
 
 	ai_will_do = {
 		factor = 1
@@ -954,7 +951,7 @@ cathedral = {
 		}
 		add_development_from_upgrading_or_building = {
 			building = cathedral
-			obsolete_building = church
+			obsolete_building = temple
 			type = tax
 			value = 2
 			upgrade_value = 1
@@ -1027,6 +1024,23 @@ university = {
 	modifier = {
 		local_development_cost = -0.20
 		allowed_num_of_buildings = 1
+	}
+
+	on_built = {
+		add_development_from_building = {
+			building = university
+			type = tax
+			value = 2
+		}
+	}
+	on_destroyed = {
+		remove_development_from_building = {
+			building = university
+			type = tax
+			value = 2
+		}
+	}
+	on_obsolete = {
 	}
 
 	ai_will_do = {
@@ -1218,7 +1232,7 @@ training_fields = {
 			}
 		}
 		add_development_from_upgrading_or_building = {
-			building = training_field
+			building = training_fields
 			obsolete_building = barracks
 			type = manpower
 			value = 2
@@ -1239,7 +1253,7 @@ training_fields = {
 	}
 	on_obsolete = {
 		remove_development_from_building = {
-			building = training_field
+			building = training_fields
 			type = manpower
 			value = 2
 		}
@@ -1442,7 +1456,7 @@ stock_exchange = {
 		}
 		else_if = {
 			limit = {
-				has_province_flag = build_dev_marketplace
+				has_province_flag = built_dev_marketplace
 			}
 			add_development_from_building = {
 				building = stock_exchange
@@ -1703,6 +1717,7 @@ drydock = {
 	on_obsolete = {
 	}
 
+
 	ai_will_do = {
 		factor = 1
 		modifier = {
@@ -1735,24 +1750,6 @@ conscription_center = {
 
 	make_obsolete = regimental_camp
 
-	on_built = {
-		add_development_from_upgrading_or_building = {
-			building = conscription_center
-			obsolete_building = regimental_camp
-			type = manpower
-			value = 2
-			upgrade_value = 1
-		}
-	}
-	on_destroyed = {
-		remove_development_from_building = {
-			building = conscription_center
-			type = manpower
-			value = 2
-		}
-	}
-	on_obsolete = {
-	}
 #	# THIS = Province, FROM = Builder(not nessecairly owner, can be overlord)
 #	on_built = {
 #		FROM = {
@@ -1778,6 +1775,24 @@ conscription_center = {
 
 	modifier = {
 		land_forcelimit = 2
+	}
+	on_built = {
+		add_development_from_upgrading_or_building = {
+			building = conscription_center
+			obsolete_building = regimental_camp
+			type = manpower
+			value = 2
+			upgrade_value = 1
+		}
+	}
+	on_destroyed = {
+		remove_development_from_building = {
+			building = conscription_center
+			type = manpower
+			value = 2
+		}
+	}
+	on_obsolete = {
 	}
 
 	ai_will_do = {

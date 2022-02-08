@@ -57,17 +57,17 @@ country_decisions = {
 			owns_core_province = 730		#Girin
 			730 = {							#Girin
 				is_state = yes
-			}			
-			custom_trigger_tooltip = {
-				tooltip = manchu_manchuria_decision.tooltip
-				num_of_owned_provinces_with = {
+			}		
+			num_of_owned_provinces_with = {
+				custom_trigger_tooltip = {
+					tooltip = manchu_manchuria_decision.tooltip
 					is_core = ROOT
 					OR = {
 						culture = manchu_new
 						culture = manchu
 					}
-					value = 20
 				}
+				value = 20
 			}
 		}
 		effect = {
@@ -113,6 +113,21 @@ country_decisions = {
 						set_consort_culture = manchu_new
 					}
 				}
+				if = {
+					limit = {
+						KOR = { 
+							exists = yes
+							is_subject = yes
+							NOT = { is_subject_of = ROOT }
+						}
+					}
+					KOR = {
+						country_event = {
+							id = flavor_kor.13
+							days = 20
+						}
+					}
+				}
 			}
 			custom_tooltip = manchu_culture_tt
 			730 = {
@@ -140,7 +155,7 @@ country_decisions = {
 				country_event = { id = ideagroups.1 } #Swap Ideas
 			}
 		}
-		ai_importance = 500		
+		ai_importance = 5000
 	}
 
 	form_manchu_dynasty = {

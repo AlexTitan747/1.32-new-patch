@@ -150,7 +150,13 @@ country_decisions = {
 			set_capital = 65
 			65 = { add_base_tax = 2 }
 			set_country_flag = formed_bavaria_flag
-
+			if = {
+				limit = { 
+					has_custom_ideas = no
+					NOT = { has_idea_group = BAV_ideas }
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
 			if = {
 				limit = {
 					NOT = { tag = UBV }
@@ -350,12 +356,7 @@ country_decisions = {
 			if = {
 				limit = {
 					has_custom_ideas = no
-					NOT = { tag = WOL }
-					NOT = { tag = STE }
-					NOT = { tag = RUG }
-					NOT = { was_tag = WOL }
-					NOT = { was_tag = STE }
-					NOT = { was_tag = RUG }
+					NOT = { has_idea_group = POM_ideas }
 				}
 				country_event = { id = ideagroups.1 } #Swap Ideas
 			}
