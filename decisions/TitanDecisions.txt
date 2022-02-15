@@ -134,6 +134,7 @@ country_decisions = {
 	titan_african_colonising = {
 		major = yes
 		potential = {
+			ai = no
 			OR = {
 				technology_group = central_african
 				technology_group = east_african
@@ -160,6 +161,7 @@ country_decisions = {
 	titan_african_colonising_plus = {
 		major = yes
 		potential = {
+			ai = no
 			OR = {
 				technology_group = central_african
 				technology_group = east_african
@@ -180,6 +182,43 @@ country_decisions = {
 				duration = 3650
 			}
 			add_treasury = -500
+		}
+	}
+
+	titan_afr_tech_group = {
+		major = yes
+		potential = {
+			ai = no
+			OR = {
+				technology_group = central_african
+				technology_group = east_african
+				technology_group = sub_saharan
+				technology_group = nomad_group
+			}
+			mil_tech = 15
+		}
+		allow = {
+			mil_tech = 15
+			is_at_war = no
+			treasury = 2500
+			OR = {
+				technology_group = central_african
+				technology_group = east_african
+				technology_group = sub_saharan
+				technology_group = nomad_group
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = titan_modernising_army
+				duration = 1825
+			}
+			add_treasury = -2500
+			country_event = {
+				id = extras.6
+			}
+			add_army_tradition = -50
+			add_army_professionalism = -1
 		}
 	}
 }			
