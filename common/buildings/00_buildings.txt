@@ -2415,18 +2415,36 @@ furnace = {
 }
 
 ramparts = {
-	manufactory = {
-		all
+	cost = 500
+	time = 60
+	#manufactory = {
+	#	all
+	#}
+	keep_trigger = {
+		OR = {
+			has_building = fort_15th
+			has_building = fort_16th
+			has_building = fort_17th
+			has_building = fort_18th
+		}
+	}
+	build_trigger = {
+		OR = {
+			has_building = fort_15th
+			has_building = fort_16th
+			has_building = fort_17th
+			has_building = fort_18th
+		}
 	}
 	modifier = {
-		local_hostile_attrition = 1
+		fort_level = 1
 		local_defensiveness = 0.15
 	}
 	onmap = no
 	show_separate = yes # Means as a manufactory it will be shown according to the old way	
 
 	ai_will_do = {
-		factor = 4
+		factor = 6
 		modifier = {
 			factor = 0
 			NOT = {

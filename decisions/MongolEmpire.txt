@@ -207,15 +207,20 @@ country_decisions = {
 			NOT = { dynasty = "Timurid" }
 		}
 		provinces_to_highlight = {
-			province_id = 340
-			province_id	= 2213
-			province_id = 433
-			province_id = 2218
-			province_id = 2220
-			province_id = 446
-			province_id = 2214
-			province_id = 416
-			NOT = { owned_by = ROOT }
+			OR = {
+				province_id = 340
+				province_id	= 2213
+				province_id = 433
+				province_id = 2218
+				province_id = 2220
+				province_id = 446
+				province_id = 2214
+				province_id = 416
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
 		}
 		allow = {
 			NOT = { exists = ILK }
@@ -244,7 +249,7 @@ country_decisions = {
 			set_country_flag = formed_ilkhanate_flag
 		}
 		ai_will_do = {
-			factor = 0
+			factor = 1
 		}
 	}
 }

@@ -48,8 +48,10 @@ NDefines.NMilitary.ARTILLERY_SPEED = 0.6
 NDefines.NMilitary.WARGOAL_MAX_BONUS = 40
 NDefines.NMilitary.SUPERIORITY_WARGOAL_WARSCORE_THRESHOLD = 25
 NDefines.NMilitary.WARSCORE_MAX_FROM_BATTLES = 50
-
---moved to AI defines
+NDefines.NMilitary.SUPPLY_DEPOT_DURATION_MONTHS = 120			-- Time until supply depot is removed.
+NDefines.NMilitary.SUPPLY_DEPOT_MIL_COST = 10					-- Mil power cost to build a supply depot in an area.
+NDefines.NMilitary.MARINE_SHOCK_DAMAGE_TAKEN = -0.10
+NDefines.NMilitary.MARINE_DISEMBARK_SPEED_BONUS = 1.0			-- marine disembark speed bonus
 
 NDefines.NReligion.KARMA_RESTORE_ON_RULER_DEATH = 50
 
