@@ -929,7 +929,7 @@ collapse_of_cairo = {
 		}	
 
 	war_exhaustion = -0.05
-	caravan_power = 0.5
+	caravan_power = 0.05
 	infantry_power = 0.025
 	
 	#Province scope
@@ -972,7 +972,7 @@ stolen_swedish_stockholm = {
 owner_of_novgorod = {
 	potential = {
 		normal_or_historical_nations = yes
-		was_player = yes
+		ai = no
 	}
 
 	trigger = {
@@ -983,7 +983,7 @@ owner_of_novgorod = {
 			}
 		controlled_by = ROOT	
 		}	
-		
+	
 
 	discipline = 0.025
 	prestige = 0.025
@@ -1001,7 +1001,7 @@ owner_of_novgorod = {
 owner_of_moscow = {
 	potential = {
 		normal_or_historical_nations = yes
-		was_player = yes
+		ai = no
 	}
 
 	trigger = {
@@ -1014,6 +1014,32 @@ owner_of_moscow = {
 		}	
 
 	discipline = 0.025
+	prestige = 0.025
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}
+
+destruction_of_delhi = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+
+	trigger = {
+		owner = {
+				NOT = { tag = DLH }
+				NOT = { tag = SRH }
+			}
+		controlled_by = ROOT	
+		}
+
+	cavalry_power = 0.05
 	prestige = 0.025
 	
 	#Province scope
@@ -1040,6 +1066,87 @@ silk_road_trade = {
 
 	trade_steering = 0.05
 	local_autonomy = -0.02
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}
+
+birthplace_of_civilisation = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+
+	trigger = {
+		
+		controlled_by = ROOT	
+		}	
+
+	local_development_cost = -0.05
+	local_build_cost = -0.05
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}
+
+portuguese_portugal = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+
+	trigger = {
+		owner = {
+				tag = POR
+				tag = PBR
+			}
+		controlled_by = ROOT	
+		}
+
+	trade_efficiency = 0.05
+	prestige = 0.015
+	global_ship_trade_power = 0.05
+	ship_durability = 0.01
+
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}
+
+great_british_singapour = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+
+	trigger = {
+		owner = {
+				tag = ENG
+				tag = GBR
+			}
+		controlled_by = ROOT	
+		}
+
+	trade_efficiency = 0.05
+	prestige = 0.015
+	global_ship_trade_power = 0.05
+	ship_durability = 0.01
+
 	
 	#Province scope
 	on_activation = {
