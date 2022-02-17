@@ -972,6 +972,7 @@ stolen_swedish_stockholm = {
 owner_of_novgorod = {
 	potential = {
 		normal_or_historical_nations = yes
+		was_player = yes
 	}
 
 	trigger = {
@@ -1000,6 +1001,7 @@ owner_of_novgorod = {
 owner_of_moscow = {
 	potential = {
 		normal_or_historical_nations = yes
+		was_player = yes
 	}
 
 	trigger = {
@@ -1013,6 +1015,31 @@ owner_of_moscow = {
 
 	discipline = 0.025
 	prestige = 0.025
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}
+
+silk_road_trade = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+
+	trigger = {
+		owner = {
+				province_has_center_of_trade_of_level = 3
+			}
+		controlled_by = ROOT	
+		}	
+
+	trade_steering = 0.05
+	local_autonomy = -0.02
 	
 	#Province scope
 	on_activation = {
