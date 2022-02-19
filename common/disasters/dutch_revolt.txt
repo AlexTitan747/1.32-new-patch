@@ -5,36 +5,7 @@ dutch_revolt_disaster = {
 	}
 	
 	can_start = {
-		OR = {
-			AND = {
-				low_countries_region = {
-					owned_by = ROOT
-					NOT = { province_religion = ROOT }
-				}
-				NOT = { full_idea_group = humanist_ideas }
-			}
-			custom_trigger_tooltip = {
-				tooltip = dutch_revolt_disaster_tt
-				AND = {
-					any_owned_province = {
-						culture = dutch
-					}
-					NOT = { accepted_culture = dutch }
-				}
-				AND = {
-					any_owned_province = {
-						culture = flemish
-					}
-					NOT = { accepted_culture = flemish }
-				}
-				AND = {
-					any_owned_province = {
-						culture = frisian
-					}
-					NOT = { accepted_culture = frisian }
-				}
-			}
-		}
+		exists = HIN
 	}
 	
 	can_stop = {
