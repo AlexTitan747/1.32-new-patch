@@ -51,72 +51,165 @@ country_event = {
 	picture = COURT_eventPicture
 
 	trigger = {
-	
-	ai = no
-	NOT = {
-		any_owned_province = {
+		#always = no
+		OR = {
+			AND = {
+				ai = yes
+				any_owned_province = {
+					has_province_flag = titan_player_has_mercs
+				}
+			}
+			AND = {
+				ai = no
+				all_owned_province = {
+					NOT = {
+						has_province_flag = titan_player_has_mercs
+					}
+				}
+			}
+			NOT = { has_country_flag = titan_banner_set_up }
+			num_of_owned_provinces_with = {
+				value = 2
 				has_province_flag = titan_player_has_mercs
 			}
 		}
-		any_owned_province = {
-			culture = ROOT
-			is_core = ROOT
-			is_state_core = root
-		}
-	
-}
-	mean_time_to_happen = {
-		days = 5
 	}
-	
-	
-option = {		
-	name = "extras.true2"
-	random_owned_province = {
+	immediate = {
+		if = {
 			limit = {
-				culture = ROOT
-				is_core = ROOT
-				is_state_core = root
+				any_owned_province = {
+					has_province_modifier = titan_banner_0
+					has_province_modifier = titan_banner_100
+					has_province_modifier = titan_banner_200
+					has_province_modifier = titan_banner_300
+					has_province_modifier = titan_banner_400
+					has_province_modifier = titan_banner_500
+					has_province_modifier = titan_banner_600
+					has_province_modifier = titan_banner_700
+					has_province_modifier = titan_banner_800
+					has_province_modifier = titan_banner_900
+					has_province_modifier = titan_banner_1000
+					has_province_modifier = titan_banner_1100
+					has_province_modifier = titan_banner_1200
+					has_province_modifier = titan_banner_1300
+					has_province_modifier = titan_banner_1400
+					has_province_modifier = titan_banner_1500
+					has_province_modifier = titan_banner_1600
+					has_province_modifier = titan_banner_1700
+					has_province_modifier = titan_banner_1800
+					has_province_modifier = titan_banner_1900
+					has_province_modifier = titan_banner_2000
+					has_province_modifier = titan_banner_2200
+					has_province_modifier = titan_banner_2400
+					has_province_modifier = titan_banner_2600
+					has_province_modifier = titan_banner_2800
+					has_province_modifier = titan_banner_3000
+					has_province_modifier = titan_banner_3200
+					has_province_modifier = titan_banner_3400
+					has_province_modifier = titan_banner_3600
+					has_province_modifier = titan_banner_3800
+					has_province_modifier = titan_banner_4000
+					has_province_modifier = titan_banner_4200
+					has_province_modifier = titan_banner_4400
+					has_province_modifier = titan_banner_4600
+					has_province_modifier = titan_banner_4800
+				}
 			}
-			set_province_flag = titan_player_has_mercs
-			add_province_triggered_modifier = titan_banner_0
-			add_province_triggered_modifier = titan_banner_100
-			add_province_triggered_modifier = titan_banner_200
-			add_province_triggered_modifier = titan_banner_300
-			add_province_triggered_modifier = titan_banner_400
-			add_province_triggered_modifier = titan_banner_500
-			add_province_triggered_modifier = titan_banner_600
-			add_province_triggered_modifier = titan_banner_700
-			add_province_triggered_modifier = titan_banner_800
-			add_province_triggered_modifier = titan_banner_900
-			add_province_triggered_modifier = titan_banner_1000
-			add_province_triggered_modifier = titan_banner_1100
-			add_province_triggered_modifier = titan_banner_1200
-			add_province_triggered_modifier = titan_banner_1300
-			add_province_triggered_modifier = titan_banner_1400
-			add_province_triggered_modifier = titan_banner_1500
-			add_province_triggered_modifier = titan_banner_1600
-			add_province_triggered_modifier = titan_banner_1700
-			add_province_triggered_modifier = titan_banner_1800
-			add_province_triggered_modifier = titan_banner_1900
-			add_province_triggered_modifier = titan_banner_2000
-			add_province_triggered_modifier = titan_banner_2200
-			add_province_triggered_modifier = titan_banner_2400
-			add_province_triggered_modifier = titan_banner_2600
-			add_province_triggered_modifier = titan_banner_2800
-			add_province_triggered_modifier = titan_banner_3000
-			add_province_triggered_modifier = titan_banner_3200
-			add_province_triggered_modifier = titan_banner_3400
-			add_province_triggered_modifier = titan_banner_3600
-			add_province_triggered_modifier = titan_banner_3800
-			add_province_triggered_modifier = titan_banner_4000
-			add_province_triggered_modifier = titan_banner_4200
-			add_province_triggered_modifier = titan_banner_4400
-			add_province_triggered_modifier = titan_banner_4600
-			add_province_triggered_modifier = titan_banner_4800
-		}	
-			
-}
+			every_owned_province = {
+				remove_province_triggered_modifier = titan_banner_0
+				remove_province_triggered_modifier = titan_banner_100
+				remove_province_triggered_modifier = titan_banner_200
+				remove_province_triggered_modifier = titan_banner_300
+				remove_province_triggered_modifier = titan_banner_400
+				remove_province_triggered_modifier = titan_banner_500
+				remove_province_triggered_modifier = titan_banner_600
+				remove_province_triggered_modifier = titan_banner_700
+				remove_province_triggered_modifier = titan_banner_800
+				remove_province_triggered_modifier = titan_banner_900
+				remove_province_triggered_modifier = titan_banner_1000
+				remove_province_triggered_modifier = titan_banner_1100
+				remove_province_triggered_modifier = titan_banner_1200
+				remove_province_triggered_modifier = titan_banner_1300
+				remove_province_triggered_modifier = titan_banner_1400
+				remove_province_triggered_modifier = titan_banner_1500
+				remove_province_triggered_modifier = titan_banner_1600
+				remove_province_triggered_modifier = titan_banner_1700
+				remove_province_triggered_modifier = titan_banner_1800
+				remove_province_triggered_modifier = titan_banner_1900
+				remove_province_triggered_modifier = titan_banner_2000
+				remove_province_triggered_modifier = titan_banner_2200
+				remove_province_triggered_modifier = titan_banner_2400
+				remove_province_triggered_modifier = titan_banner_2600
+				remove_province_triggered_modifier = titan_banner_2800
+				remove_province_triggered_modifier = titan_banner_3000
+				remove_province_triggered_modifier = titan_banner_3200
+				remove_province_triggered_modifier = titan_banner_3400
+				remove_province_triggered_modifier = titan_banner_3600
+				remove_province_triggered_modifier = titan_banner_3800
+				remove_province_triggered_modifier = titan_banner_4000
+				remove_province_triggered_modifier = titan_banner_4200
+				remove_province_triggered_modifier = titan_banner_4400
+				remove_province_triggered_modifier = titan_banner_4600
+				remove_province_triggered_modifier = titan_banner_4800
+			}
+		}
+		if = {
+			limit = {
+				any_owned_province = {
+					has_province_flag = titan_player_has_mercs
+				}
+			}
+			every_owned_province = {
+				clr_province_flag = titan_player_has_mercs
+			}	
+		}
+		if = {
+			limit = {
+				ai = no
+			}
+			capital_scope = {
+				add_province_triggered_modifier = titan_banner_0
+				add_province_triggered_modifier = titan_banner_100
+				add_province_triggered_modifier = titan_banner_200
+				add_province_triggered_modifier = titan_banner_300
+				add_province_triggered_modifier = titan_banner_400
+				add_province_triggered_modifier = titan_banner_500
+				add_province_triggered_modifier = titan_banner_600
+				add_province_triggered_modifier = titan_banner_700
+				add_province_triggered_modifier = titan_banner_800
+				add_province_triggered_modifier = titan_banner_900
+				add_province_triggered_modifier = titan_banner_1000
+				add_province_triggered_modifier = titan_banner_1100
+				add_province_triggered_modifier = titan_banner_1200
+				add_province_triggered_modifier = titan_banner_1300
+				add_province_triggered_modifier = titan_banner_1400
+				add_province_triggered_modifier = titan_banner_1500
+				add_province_triggered_modifier = titan_banner_1600
+				add_province_triggered_modifier = titan_banner_1700
+				add_province_triggered_modifier = titan_banner_1800
+				add_province_triggered_modifier = titan_banner_1900
+				add_province_triggered_modifier = titan_banner_2000
+				add_province_triggered_modifier = titan_banner_2200
+				add_province_triggered_modifier = titan_banner_2400
+				add_province_triggered_modifier = titan_banner_2600
+				add_province_triggered_modifier = titan_banner_2800
+				add_province_triggered_modifier = titan_banner_3000
+				add_province_triggered_modifier = titan_banner_3200
+				add_province_triggered_modifier = titan_banner_3400
+				add_province_triggered_modifier = titan_banner_3600
+				add_province_triggered_modifier = titan_banner_3800
+				add_province_triggered_modifier = titan_banner_4000
+				add_province_triggered_modifier = titan_banner_4200
+				add_province_triggered_modifier = titan_banner_4400
+				add_province_triggered_modifier = titan_banner_4600
+				add_province_triggered_modifier = titan_banner_4800
+				set_province_flag = titan_player_has_mercs
+			}	
+			set_country_flag = titan_banner_set_up
+		}
+	}
+	option = {					
+	}
 }
 
 country_event = {
@@ -126,14 +219,13 @@ country_event = {
 	picture = COURT_eventPicture
 
 	trigger = {
-	
-	ai = no
+		always = no
+		ai = no
 		num_of_owned_provinces_with = {
 			value = 2
 			has_province_flag = titan_player_has_mercs
 		}
-	
-}
+	}
 	mean_time_to_happen = {
 		days = 5
 	}
@@ -181,9 +273,8 @@ option = {
 			remove_province_triggered_modifier = titan_banner_4400
 			remove_province_triggered_modifier = titan_banner_4600
 			remove_province_triggered_modifier = titan_banner_4800
-		}	
-			
-}
+		}			
+	}
 }
 
 country_event = {
@@ -193,6 +284,7 @@ country_event = {
 	picture = COURT_eventPicture
 
 	trigger = {
+		always = no
 	
 	ai = yes
 	NOT = {
@@ -235,6 +327,7 @@ country_event = {
 	picture = COURT_eventPicture
 	
 	trigger = {
+		always = no
 		OR = {
 		num_of_owned_provinces_with = {
 			value = 2
