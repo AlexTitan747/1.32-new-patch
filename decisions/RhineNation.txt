@@ -28,7 +28,7 @@ country_decisions = {
 			}
 		}
 		provinces_to_highlight = {
-			AND = {
+			OR = {
 				province_id = 4714 # Durlach
 				province_id = 77 # heidenburg
 				province_id = 70 # stutgart
@@ -37,17 +37,27 @@ country_decisions = {
 				province_id = 80 # trier
 				province_id = 85 # koln
 				province_id = 1876 # frankfurt
-				AND = {
-					ROOT = {
-							num_of_owned_provinces_with = {
-								value = 20
-								culture_group = rhenish
-								is_core = root
+			}
+			AND = {
+				culture_group = rhenish
+				OR = {
+					region = north_german_region
+					region = south_german_region
+				}
+				ROOT = {
+					NOT = {
+						num_of_owned_provinces_with = {
+							value = 20 #out of 22
+							culture_group = rhenish
+							OR = {
+								region = north_german_region
+								region = south_german_region
 							}
+							is_core = root
 						}
-						
 					}
 				}
+			}
 			OR = {
 				NOT = { owned_by = ROOT }
 				NOT = { is_core = ROOT }
@@ -59,26 +69,22 @@ country_decisions = {
 			is_at_war = no
 			adm_tech = 10
 			NOT = { exists = CFR }
-			AND = {
-				owns_core_province = 4714 # Durlach
-				owns_core_province = 77 # heidenburg
-				owns_core_province = 70 # stutgart
-				owns_core_province = 78 # mainz
-				owns_core_province = 1760 # coblenz
-				owns_core_province = 80 # trier
-				owns_core_province = 85 # koln
-				owns_core_province = 1876 # frankfurt
-				AND = {
-					ROOT = {
-							num_of_owned_provinces_with = {
-								value = 20
-								culture_group = rhenish
-								is_core = root
-							}
-						}
-						
-					}
-				}
+			owns_core_province = 4714 # Durlach
+			owns_core_province = 77 # heidenburg
+			owns_core_province = 70 # stutgart
+			owns_core_province = 78 # mainz
+			owns_core_province = 1760 # coblenz
+			owns_core_province = 80 # trier
+			owns_core_province = 85 # koln
+			owns_core_province = 1876 # frankfurt
+			ROOT = {
+				num_of_owned_provinces_with = {
+					value = 20
+					culture_group = rhenish
+					is_core = root
+					owned_by = root
+				}	
+			}	
 		}
 	 	effect = {
 	  			change_primary_culture = hessian

@@ -8,7 +8,7 @@ country_decisions = {
 				tag = YUA
 				tag = GLH
 				tag = ILK
-				was_never_end_game_tag_trigger = yes
+				#was_never_end_game_tag_trigger = yes
 			}
 			OR = {
 				culture_group = altaic
@@ -208,8 +208,8 @@ country_decisions = {
 		}
 		provinces_to_highlight = {
 			OR = {
-				province_id = 340
 				province_id	= 2213
+				province_id = 2213
 				province_id = 433
 				province_id = 2218
 				province_id = 2220
@@ -242,6 +242,10 @@ country_decisions = {
 				duration = 7300
 			}
 			add_prestige = 25
+			if = {
+				limit = { government = tribal }
+				add_government_reform = great_horde_state_reform
+			}
 			if = {
 				limit = { has_custom_ideas = no }
 				country_event = { id = ideagroups.1 } #Swap Ideas

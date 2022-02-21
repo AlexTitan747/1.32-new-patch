@@ -60,6 +60,8 @@ great_horde_state_reform = {
 			tag = CMN
 			tag = GLH
 			tag = BGR
+			tag = ILK
+			tag = YUA
 		}
 	}
 	legacy_equivalent = great_mongol_state_legacy
@@ -359,6 +361,7 @@ horde_barbaric_despoilers_reform = {
 		OR = {
 			has_reform = steppe_horde
 			has_reform = great_mongol_state_reform
+			has_reform = great_horde_state_reform
 		}
 		has_dlc = "The Cossacks"
 	}
@@ -378,6 +381,7 @@ horde_tribal_unity_reform = {
 		OR = {
 			has_reform = steppe_horde
 			has_reform = great_mongol_state_reform
+			has_reform = great_horde_state_reform
 		}
 		has_dlc = "The Cossacks"
 	}
@@ -719,6 +723,7 @@ tribe_becomes_horde_reform = {
 			has_reform = tribe_becomes_horde_reform
 		}
 		NOT = { has_reform = great_mongol_state_reform }
+		NOT = { has_reform = great_horde_state_reform }
 		NOT = { has_government_attribute_short_desc = locked_government_type }
 	}
 	ai = {
@@ -730,17 +735,14 @@ tribe_remain_tribal_reform = {
 	icon = "rioting_burning_2"
 	allow_normal_conversion = yes
 	potential = {
-		OR = {
-			AND = {
-				NOT = { has_reform = steppe_horde }
-				NOT = { has_reform = great_mongol_state_reform }
-			}
-			NOT = { has_dlc = "The Cossacks" }
-		}
 	}
 	modifiers = {
+		horde_unity = 1
 		legitimacy = 0.5
 		war_exhaustion = -0.02
+	}
+	ai = {
+		factor = 2.5
 	}
 }
 
@@ -748,17 +750,20 @@ tribe_tribal_unity = {
 	icon = "fist_in_air"
 	allow_normal_conversion = yes
 	potential = {
-		has_reform = tribal_federation
-		has_dlc = "Cradle of Civilization"
+		#has_reform = tribal_federation
+		#has_dlc = "Cradle of Civilization"
 	}
 	modifiers = {
+		state_maintenance_modifier = -0.25
 		yearly_tribal_allegiance = 1
 		church_loyalty_modifier = 0.05
 		nobles_loyalty_modifier = 0.05
 		dhimmi_loyalty_modifier = 0.05
 		burghers_loyalty_modifier = 0.05
+		nomadic_aristocracy_loyalty_modifier = 0.05
+		nomadic_tribes_loyalty_modifier = 0.05
 	}
 	ai = {
-		factor = 2
+		factor = 5
 	}
 }
