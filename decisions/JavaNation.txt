@@ -1,0 +1,119 @@
+country_decisions = {
+
+		javan_nation = {
+			major = yes
+			potential = {
+				normal_or_historical_nations = yes
+				was_never_end_game_tag_trigger = yes
+				NOT = { has_country_flag = formed_javan_flag }
+				OR = {
+					ai = no
+					is_playing_custom_nation = no
+				}
+				NOT = { exists = EJA }
+				NOT = { tag = PAP }
+				#NOT = { tag = TIM }
+				is_colonial_nation = no
+				OR = {
+					is_former_colonial_nation = no
+					AND = {
+						is_former_colonial_nation = yes
+						ai = no
+					}
+				}
+				OR = {
+					primary_culture = javanese
+					primary_culture = sundanese
+				}
+				religion = hinduism
+				
+			}
+			
+			provinces_to_highlight = {
+				OR = {
+				province_id = 624			# Banten
+				province_id = 631			# Bali
+				area = west_java_area
+				area = east_java_area
+				area = central_java_area
+				area = surabaya_area
+
+				}
+				
+				OR = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_core = ROOT }
+				}
+			}
+			
+			allow = {
+				adm_tech = 7
+				NOT = { exists = EJA }
+				is_free_or_tributary_trigger = yes
+				is_at_war = no
+				owns_core_province = 624			# Banten
+				owns_core_province = 631			# Bali
+
+				west_java_area = {
+					type = all
+					owned_by = ROOT
+				}
+				east_java_area = {
+					type = all
+					owned_by = ROOT
+				}
+				central_java_area = {
+					type = all
+					owned_by = ROOT
+				}
+				surabaya_area = {
+					type = all
+					owned_by = ROOT
+				}
+
+			}
+			effect = {
+				change_tag = EJA
+				remove_non_electors_emperors_from_empire_effect = yes
+				if = {
+					limit = {
+						NOT = { government_rank = 2 }
+					}
+					set_government_rank = 2
+				}
+				add_prestige = 25
+				add_country_modifier = {
+					name = centralization_modifier
+					duration = 3650
+				}
+				if = {
+                limit = { is_revolutionary = no }
+                change_government = monarchy
+				}
+				if = {
+				limit = {
+					NOT = { primary_culture = javanese }
+				}
+				change_primary_culture = javanese
+				}
+				indonesia_region = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				malaya_region = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				set_country_flag = formed_javan_flag
+				if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+				}
+			}
+			
+		}
+	}
