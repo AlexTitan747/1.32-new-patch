@@ -969,45 +969,15 @@ stolen_swedish_stockholm = {
 	}
 }
 
-owner_of_novgorod = {
-	potential = {
-		normal_or_historical_nations = yes
-		ai = no
-	}
-
-	trigger = {
-		owner = {
-				NOT = { tag = MOS }
-				NOT = { tag = NOV }
-				NOT = { tag = RUS }
-			}
-		controlled_by = ROOT	
-		}	
-	
-
-	discipline = 0.025
-	prestige = 0.025
-	
-	#Province scope
-	on_activation = {
-	
-	}
-	
-	on_deactivation = {
-	
-	}
-}
 
 owner_of_moscow = {
 	potential = {
 		normal_or_historical_nations = yes
-		ai = no
+		has_province_flag = russia_existed
 	}
 
 	trigger = {
 		owner = {
-				NOT = { tag = MOS }
-				NOT = { tag = NOV }
 				NOT = { tag = RUS }
 			}
 		controlled_by = ROOT	
@@ -1033,15 +1003,25 @@ destruction_of_delhi = {
 
 	trigger = {
 		owner = {
-				NOT = { tag = DLH }
-				NOT = { tag = SRH }
+				NOT = {
+					OR = {
+						was_tag = DLH 
+						tag = DLH
+					} 
+				} 
+				NOT = {
+					OR = {
+						was_tag = SRH 
+						tag = SRH
+					} 
+				} 
 			}
 		controlled_by = ROOT	
 		}
 
 	cavalry_power = 0.05
 	prestige = 0.025
-	
+		
 	#Province scope
 	on_activation = {
 	
