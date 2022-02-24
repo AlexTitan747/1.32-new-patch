@@ -790,8 +790,12 @@ occupation_of_copinghagen = {
 
 	trigger = {
 		owner = {
-				NOT = { tag = DAN }
-				NOT = { tag = PRU }
+				NOT = {
+					OR = {
+						was_tag = DAN
+						tag = DAN
+					}
+				}  
 			}
 		controlled_by = ROOT	
 		}
@@ -815,8 +819,12 @@ new_ruler_of_the_waves = {
 
 	trigger = {
 		owner = {
-				NOT = { tag = ENG }
-				NOT = { tag = GBR }
+				NOT = {
+					OR = {
+						was_tag = ENG
+						tag = ENG
+					}
+				}  
 			}
 		controlled_by = ROOT	
 		}	
@@ -841,7 +849,12 @@ french_traditions = {
 
 	trigger = {
 		owner = {
-				NOT = { tag = FRA }
+				NOT = {
+					OR = {
+						was_tag = FRA
+						tag = FRA
+					}
+				}  
 			}
 		controlled_by = ROOT	
 		}	
@@ -865,11 +878,24 @@ fall_of_toledo_fortress = {
 
 	trigger = {
 		owner = {
-				NOT = { tag = CAS }
-				NOT = { tag = SPA }
-				NOT = { tag = ARA }
-				NOT = { tag = POR }
-				NOT = { tag = PBR }
+				NOT = {
+					OR = {
+						was_tag = CAS
+						tag = CAS
+					} 
+				} 
+				NOT = {
+					OR = {
+						was_tag = ARA 
+						tag = ARA
+					} 
+				} 
+				NOT = {
+					OR = {
+						was_tag = POR
+						tag = POR
+					} 
+				}
 			}
 		controlled_by = ROOT	
 		}	
@@ -894,9 +920,18 @@ fall_of_constantinople = {
 
 	trigger = {
 		owner = {
-				NOT = { tag = TUR }
-				NOT = { tag = BYZ }
-				NOT = { tag = SLU }
+				NOT = {
+					OR = {
+						was_tag = TUR
+						tag = TUR
+					} 
+				} 
+				NOT = {
+					OR = {
+						was_tag = BYZ
+						tag = BYZ
+					} 
+				} 
 			}
 		controlled_by = ROOT	
 		}	
@@ -921,9 +956,12 @@ collapse_of_cairo = {
 
 	trigger = {
 		owner = {
-				NOT = { tag = ARB }
-				NOT = { tag = MAM }
-				NOT = { tag = EGY }
+				NOT = {
+					OR = {
+						was_tag = MAM 
+						tag = MAM
+					} 
+				} 
 			}
 		controlled_by = ROOT	
 		}	
@@ -949,7 +987,12 @@ stolen_swedish_stockholm = {
 
 	trigger = {
 		owner = {
-				NOT = { tag = SWE }
+				NOT = {
+					OR = {
+						was_tag = SWE 
+						tag = SWE
+					} 
+				}  
 			}
 		controlled_by = ROOT	
 		}	
@@ -1118,6 +1161,7 @@ great_british_singapore = {
 		owner = {
 				tag = ENG
 				tag = GBR
+				tag = ANG
 			}
 		controlled_by = ROOT	
 		}
