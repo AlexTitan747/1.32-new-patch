@@ -53,6 +53,8 @@ NDefines.NMilitary.SUPPLY_DEPOT_DURATION_MONTHS = 120			-- Time until supply dep
 NDefines.NMilitary.SUPPLY_DEPOT_MIL_COST = 10					-- Mil power cost to build a supply depot in an area.
 NDefines.NMilitary.MARINE_SHOCK_DAMAGE_TAKEN = -0.10
 NDefines.NMilitary.MARINE_DISEMBARK_SPEED_BONUS = 1.0			-- marine disembark speed bonus
+NDefines.NMilitary.NOMAD_PLAINS_SHOCK_BONUS = 0.10
+NDefines.NMilitary.NOMAD_NON_PLAINS_SHOCK_PENALTY = -0.10
 
 NDefines.NReligion.KARMA_RESTORE_ON_RULER_DEATH = 50
 
