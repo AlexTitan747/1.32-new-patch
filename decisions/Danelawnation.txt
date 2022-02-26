@@ -55,7 +55,7 @@ country_decisions = {
 			}
 			
 			allow = {
-				adm_tech = 10
+				adm_tech = 7
 				NOT = { exists = DNL }
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
@@ -67,8 +67,33 @@ country_decisions = {
 				}
 				
 			effect = {
+				if = {
+					limit = {
+						tag = DAN
+						NOR = {	junior_union_with = DAN	}
+						NOR = {	is_subject_of = DAN	}
+						NOR = {
+							ai = yes
+						}
+					}
+					inherit = NOR
+				}
 				245 = {	#York
-					move_capital_effect = yes
+					change_religion = norse_pagan_reformed
+				}
+				248 = {	#Lothian
+					change_religion = norse_pagan_reformed
+				}
+				17 = {	#Akershus
+					change_religion = norse_pagan_reformed
+				}
+				14 = {	#Funen
+					change_religion = norse_pagan_reformed
+				}
+				1983 = {	#Lolland
+					change_religion = norse_pagan_reformed
+				}
+				12 = {	#Seeland
 					change_religion = norse_pagan_reformed
 				}
 				change_tag = DNL
@@ -93,7 +118,6 @@ country_decisions = {
 					name = return_of_the_true_faith
 					duration = 7300
 				}
-				set_capital = 245 # York
 				if = {
 					limit = { is_revolutionary = no }
 						change_government_to_monarchy = yes 
