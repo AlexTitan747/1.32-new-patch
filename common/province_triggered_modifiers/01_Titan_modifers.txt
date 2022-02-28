@@ -1182,3 +1182,104 @@ great_british_singapore = {
 	}
 }
 
+owner_of_vienna = {
+	potential = {
+		normal_or_historical_nations = yes
+		has_province_flag = austrohungary_existed
+	}
+
+	trigger = {
+		owner = {
+				NOT = {
+					OR = {
+						was_tag = HAB 
+						tag = HAB
+					} 
+				} 
+				NOT = {
+					OR = {
+						was_tag = AUH 
+						tag = AUH
+					} 
+				} 
+			}
+		controlled_by = ROOT	
+		}	
+
+	discipline = 0.025
+	prestige = 0.025
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}
+
+trade_city_of_the_adriatic = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+
+	trigger = {
+		owner = {
+				NOT = {
+					OR = {
+						was_tag = VEN
+						tag = VEN
+					} 
+				} 
+			}
+		controlled_by = ROOT	
+		}
+
+	trade_efficiency = 0.05
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}
+
+training_fields_of_the_hussars = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+
+	trigger = {
+		owner = {
+				NOT = {
+					OR = {
+						was_tag = POL
+						tag = POL
+					} 
+				} 
+				NOT = {
+					OR = {
+						was_tag = MAZ
+						tag = MAZ
+					} 
+				} 
+			}
+		controlled_by = ROOT	
+		}	
+
+	cavalry_power = 0.05
+	prestige = 0.025
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}

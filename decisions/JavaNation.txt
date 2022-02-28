@@ -31,12 +31,12 @@ country_decisions = {
 			
 			provinces_to_highlight = {
 				OR = {
-				province_id = 624			# Banten
 				province_id = 631			# Bali
 				area = west_java_area
 				area = east_java_area
 				area = central_java_area
 				area = surabaya_area
+				area = banten_area
 
 				}
 				
@@ -51,7 +51,6 @@ country_decisions = {
 				NOT = { exists = EJA }
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
-				owns_core_province = 624			# Banten
 				owns_core_province = 631			# Bali
 
 				west_java_area = {
@@ -67,6 +66,10 @@ country_decisions = {
 					owned_by = ROOT
 				}
 				surabaya_area = {
+					type = all
+					owned_by = ROOT
+				}
+				banten_area = {
 					type = all
 					owned_by = ROOT
 				}
@@ -102,7 +105,37 @@ country_decisions = {
 					}
 					add_permanent_claim = ROOT
 				}
-				malaya_region = {
+				south_sumatra_area = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				jambi_area = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				minangkabau_area = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				batak_area = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				north_sumatra_area = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				central_sumatra_area = {
 					limit = {
 						NOT = { owned_by = ROOT }
 					}
