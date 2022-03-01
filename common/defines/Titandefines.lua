@@ -6,6 +6,9 @@ NDefines.NDiplomacy.HRE_VOTE_ROYAL_MARRIAGE = 30
 NDefines.NDiplomacy.MONTHS_BEFORE_TOTAL_OCCUPATION = 12
 NDefines.NDiplomacy.NUM_OF_GREAT_POWERS = 4
 NDefines.NDiplomacy.MIN_RELATIONS_TO_ALLY = -200
+NDefines.NDiplomacy.SHAREMAP_PRESTIGE_TRANSFER_LOSE = 0
+NDefines.NDiplomacy.SHAREMAP_PRESTIGE_TRANSFER_GAIN = 0
+NDefines.NDiplomacy.CHANGE_RIVAL_YEARS = 10
 
 NDefines.NCountry.CONCENTRATE_DEVELOPMENT_COOLDOWN_DURATION = -1
 NDefines.NCountry.GOLDEN_ERA_YEARS = 20
@@ -55,6 +58,15 @@ NDefines.NMilitary.MARINE_SHOCK_DAMAGE_TAKEN = -0.10
 NDefines.NMilitary.MARINE_DISEMBARK_SPEED_BONUS = 1.0			-- marine disembark speed bonus
 NDefines.NMilitary.NOMAD_PLAINS_SHOCK_BONUS = 0.10
 NDefines.NMilitary.NOMAD_NON_PLAINS_SHOCK_PENALTY = -0.10
+NDefines.NMilitary.MERCENARY_COMPANY_HIRING_COST_MONTHS = 0,		-- Initial hiring cost in months of maintenance
+NDefines.NMilitary.MERCENARY_COMPANY_STARTING_MORALE = 0.1,		-- Starting morale
+NDefines.NMilitary.MERCENARY_COMPANY_MIN_REGIMENTS = 4,			-- Minimum regiments
+NDefines.NMilitary.MERCENARY_COMPANY_MAX_REGIMENTS = 40,			-- Maximum regiments
+NDefines.NMilitary.MERCENARY_COMPANY_MANPOWER_PER_REGIMENT = 2.0,	-- Manpower reserve factor (multiplied by 1000 per regiment)
+NDefines.NMilitary.MERCENARY_COMPANY_MANPOWER_RECOVERY = 60,				-- How many months to recover mercenary manpower fully
+NDefines.NMilitary.MERCENARY_COMPANY_HIRED_MANPOWER_RECOVERY_MOD = 2.0,		-- How much to modify the length for manpower recovery if they are hired
+NDefines.NMilitary.MERCENARY_COMPANY_LOW_MANPOWER_THRESHOLD = 0.1,	-- Percentage of remaining manpower under which we warn the player
+NDefines.NMilitary.MERCENARY_COMPANY_BUILDING_TIME = 0.25,			-- Multiply province distance with this
 
 NDefines.NReligion.KARMA_RESTORE_ON_RULER_DEATH = 50
 
