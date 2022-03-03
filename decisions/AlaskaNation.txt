@@ -3,41 +3,7 @@ country_decisions = {
 	alaska_nation = {
 		major = yes
 		potential = {
-			NOT = { has_country_flag = changed_from_colonial_nation }
-			was_never_end_game_tag_trigger = yes
-			is_nomad = no
-			is_random_new_world = no
-			NOT = { tag = HLR }
-			NOT = { tag = PAP }
-			OR = {
-				is_former_colonial_nation = yes
-				is_colonial_nation = yes
-				AND = {
-					NOT = {
-						OR = {
-							technology_group = north_american
-							technology_group = mesoamerican
-							technology_group = andean
-							technology_group = high_american
-							technology_group = south_american
-						}
-					}
-					capital_scope = {
-						colonial_region = colonial_alaska
-						is_core = ROOT
-					}
-				}
-			}
-			colonial_alaska = {
-				owned_by = ROOT
-			}
-			OR = {
-				ai = no
-				AND = {
-					ai = yes
-					num_of_cities = 3	
-				}
-			}
+			exists = HIN
 		}
 		provinces_to_highlight = {
 			OR = {
@@ -50,21 +16,7 @@ country_decisions = {
 			}
 		}
 		allow = {
-			adm_tech = 10
-			is_at_war = no
-			NOT = { exists = ALA }
-			capital_scope = {
-				colonial_region = colonial_alaska
-				is_core = ROOT
-			}
-			num_of_owned_provinces_with = {
-				value = 5
-				is_city = yes
-				OR = {
-					area = alaska_area
-					area = east_alaska_area
-				}
-			}
+			exists = HIN
 		}
 		effect = {
 			hidden_effect = {

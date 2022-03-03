@@ -3,73 +3,10 @@ country_decisions = {
 	usa_nation = {
 		major = yes
 		potential = {
-			OR = {
-				tag = TEX
-				tag = FLO
-				tag = CAL
-				tag = ALA
-				tag = LOU
-				tag = ILI
-				tag = VRM
-				AND = {
-					tag = UHW
-					capital_scope = {
-						OR = {
-							continent = north_america
-							continent = south_america
-						}
-					}
-				}
-				NOT = { has_country_flag = changed_from_colonial_nation }
-			}
-			was_never_end_game_tag_trigger = yes
-			is_nomad = no
-			is_random_new_world = no
-			NOT = { tag = HLR }
-			NOT = { tag = PAP }
-			OR = {
-				is_former_colonial_nation = yes
-				is_colonial_nation = yes
-				AND = {
-					NOT = {
-						OR = {
-							technology_group = north_american
-							technology_group = mesoamerican
-							technology_group = andean
-							technology_group = high_american
-							technology_group = south_american
-						}
-					}
-					capital_scope = {
-						colonial_region = colonial_eastern_america
-						is_core = ROOT
-					}
-				}
-			}
-			colonial_eastern_america = {
-				owned_by = ROOT
-			}
-			OR = {
-				ai = no
-				AND = {
-					ai = yes
-					num_of_cities = 3	
-				}
-			}
+			exists = HIN
 		}
 		allow = {
-			adm_tech = 10
-			is_at_war = no
-			capital_scope = {
-				colonial_region = colonial_eastern_america
-				is_core = ROOT
-			}
-			num_of_owned_provinces_with = {
-				value = 10
-				colonial_region = colonial_eastern_america
-				is_city = yes
-			}
-			NOT = { exists = USA }
+			exists = HIN
 		}
 		effect = {
 			hidden_effect = {
