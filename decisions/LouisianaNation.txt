@@ -23,7 +23,7 @@ country_decisions = {
 						}
 					}
 					capital_scope = {
-						colonial_region = colonial_louisiana
+						region = mississippi_region
 						is_core = ROOT
 					}
 				}
@@ -40,7 +40,7 @@ country_decisions = {
 			}
 		}
 		provinces_to_highlight = {
-			colonial_region = colonial_louisiana
+			region = mississippi_region
 			OR = {
 				NOT = { owned_by = ROOT }
 				is_city = no
@@ -48,15 +48,19 @@ country_decisions = {
 		}
 		allow = {
 			adm_tech = 10
-			is_free_or_tributary_trigger = yes
 			is_at_war = no
 			capital_scope = {
-				colonial_region = colonial_louisiana
+				region = mississippi_region
 				is_core = ROOT
+			}
+			893 = {
+				owned_by = ROOT
+				is_core = root
+				is_city = yes
 			}
 			num_of_owned_provinces_with = {
 				value = 10
-				colonial_region = colonial_louisiana
+				region = mississippi_region
 				is_city = yes
 			}
 			NOT = { exists = LOU }
@@ -71,6 +75,7 @@ country_decisions = {
 				}
 			}
 			change_tag = LOU
+			set_capital = 893
 			if = {
 				limit = {
 					NOT = { is_former_colonial_nation = yes }
