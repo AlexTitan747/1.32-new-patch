@@ -1,19 +1,14 @@
 country_decisions = {
 
-	upca_nation = {
+	illinois_nation = {
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
+			NOT = { has_country_flag = changed_from_colonial_nation }
 			was_never_end_game_tag_trigger = yes
 			is_nomad = no
 			is_random_new_world = no
 			NOT = { tag = HLR }
 			NOT = { tag = PAP }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
-			NOT = { has_country_flag = changed_from_colonial_nation }
 			OR = {
 				is_former_colonial_nation = yes
 				is_colonial_nation = yes
@@ -28,12 +23,12 @@ country_decisions = {
 						}
 					}
 					capital_scope = {
-						region = central_america_region
+						region = great_lakes_region
 						is_core = ROOT
 					}
 				}
 			}
-			central_america_region = {
+			colonial_louisiana = {
 				owned_by = ROOT
 			}
 			OR = {
@@ -45,8 +40,9 @@ country_decisions = {
 			}
 		}
 		provinces_to_highlight = {
-			region = central_america_region
+			region = great_lakes_region
 			OR = {
+				NOT = { owned_by = ROOT }
 				NOT = { owned_by = ROOT }
 				is_city = no
 			}
@@ -54,12 +50,22 @@ country_decisions = {
 		allow = {
 			adm_tech = 10
 			is_at_war = no
-			NOT = { exists = CAM }
-			num_of_owned_provinces_with = {
-				value = 10
-				region = central_america_region
+			capital_scope = {
+				region = great_lakes_region
+				is_core = ROOT
+			}
+			944 = {
+				owned_by = ROOT
+				is_core = root
 				is_city = yes
 			}
+			num_of_owned_provinces_with = {
+				value = 10
+				region = great_lakes_region
+				is_core = root
+				is_city = yes
+			}
+			NOT = { exists = ILI }
 		}
 		effect = {
 			hidden_effect = {
@@ -68,9 +74,11 @@ country_decisions = {
 						NOT = { is_former_colonial_nation = yes }
 					}
 					ROOT = { save_event_target_as = old_tag_target }
+					set_country_flag = was_not_former_colonial_nation
 				}
 			}
-			change_tag = CAM
+			change_tag = ILI
+			set_capital = 944
 			if = {
 				limit = {
 					NOT = { is_former_colonial_nation = yes }
@@ -84,23 +92,25 @@ country_decisions = {
 				}
 				set_government_rank = 2
 			}
-			remove_non_electors_emperors_from_empire_effect = yes
 			if = {
-				limit = { NOT = { government_rank = 2 } }
-				set_government_rank = 2
+				limit = {
+					culture_group = british
+					NOT = { primary_culture = american }
+				}
+				change_primary_culture = american
 			}
 			if = {
 				limit = {
-					culture_group = iberian
-					NOT = { primary_culture = mexican }
+					culture_group = french
+					NOT = { primary_culture = louisianans }
 				}
-				change_primary_culture = mexican
+				change_primary_culture = louisianans
 			}
-			colonial_mexico = {
+			great_lakes_region = {
 				limit = {
 					NOT = { owned_by = ROOT }
 				}
-				add_permanent_claim = CAM
+				add_permanent_claim = ILI
 			}
 			add_country_modifier = {
 				name = "centralization_modifier"
