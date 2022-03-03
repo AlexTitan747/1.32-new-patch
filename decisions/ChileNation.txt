@@ -1,12 +1,16 @@
 country_decisions = {
 
-	paraguay_nation = {
+	chile_nation = {
 		major = yes
 		potential = {
 			exists = HIN
 		}
 		provinces_to_highlight = {
-			area = paraguay_area
+			OR = {
+				area = central_chile_area
+				area = southern_chile_area
+				area = northern_chile_area
+			}
 			OR = {
 				NOT = { owned_by = ROOT }
 				is_city = no
@@ -22,9 +26,10 @@ country_decisions = {
 						NOT = { is_former_colonial_nation = yes }
 					}
 					ROOT = { save_event_target_as = old_tag_target }
+					set_country_flag = was_not_former_colonial_nation
 				}
 			}
-			change_tag = PRG
+			change_tag = CHL
 			if = {
 				limit = {
 					NOT = { is_former_colonial_nation = yes }
@@ -42,7 +47,7 @@ country_decisions = {
 				limit = {
 					NOT = { owned_by = ROOT }
 				}
-				add_permanent_claim = PRG
+				add_permanent_claim = CHL
 			}
 			add_country_modifier = {
 				name = "centralization_modifier"
