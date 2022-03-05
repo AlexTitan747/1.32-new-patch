@@ -1185,7 +1185,6 @@ great_british_singapore = {
 owner_of_vienna = {
 	potential = {
 		normal_or_historical_nations = yes
-		has_province_flag = austrohungary_existed
 	}
 
 	trigger = {
@@ -1201,7 +1200,7 @@ owner_of_vienna = {
 						was_tag = AUH 
 						tag = AUH
 					} 
-				} 
+				}
 			}
 		controlled_by = ROOT	
 		}	
@@ -1283,3 +1282,97 @@ training_fields_of_the_hussars = {
 	
 	}
 }
+
+bastion_of_beijing = {
+	potential = {
+		normal_or_historical_nations = yes
+		has_province_flag = wei_existed
+	}
+
+	trigger = {
+		owner = {
+				NOT = {
+					OR = {
+						was_tag = WEI
+						tag = WEI
+					} 
+				} 
+			}
+		controlled_by = ROOT	
+		}	
+
+	cavalry_power = 0.05
+	prestige = 0.025
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}
+
+capture_of_canton = {
+	potential = {
+		normal_or_historical_nations = yes
+		has_province_flag = wuu_existed
+	}
+
+	trigger = {
+		owner = {
+				NOT = {
+					OR = {
+						was_tag = WUU 
+						tag = WUU
+					} 
+				} 
+			}
+		controlled_by = ROOT	
+		}	
+
+	land_morale = 0.05
+	prestige = 0.025
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}
+
+occupation_of_chengdu = {
+	potential = {
+		normal_or_historical_nations = yes
+		has_province_flag =shu_existed
+	}
+
+	trigger = {
+		owner = {
+				NOT = {
+					OR = {
+						was_tag = SHU
+						tag = SHU
+					} 
+				} 
+			}
+		controlled_by = ROOT	
+		}	
+
+	artillery_power = 0.025
+	infantry_power = 0.025
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}
+
