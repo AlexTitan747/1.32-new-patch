@@ -28,6 +28,58 @@
 	}
 }
 
+italian_defensive_effort = {
+	potential = {
+		normal_or_historical_nations = yes
+		has_province_flag = italy_existed
+	}
+
+	trigger = {
+		owner = {
+			OR = {
+				tag = ITA
+				tag = ROM
+				}
+			}
+	}
+
+	garrison_size = 0.1
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}
+
+defense_of_france = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+
+	trigger = {
+		owner = {
+			OR = {
+				tag = FRA
+				}
+			}
+		}
+
+	defensiveness = 0.15
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}
+
 occupation_of_copinghagen = {
 	potential = {
 		normal_or_historical_nations = yes
@@ -358,6 +410,28 @@ birthplace_of_civilisation = {
 
 	local_development_cost = -0.05
 	local_build_cost = -0.05
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}
+
+rhine_prosperity = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+
+	trigger = {
+		
+		controlled_by = ROOT	
+		}	
+
+	local_development_cost = -0.05
 	
 	#Province scope
 	on_activation = {
