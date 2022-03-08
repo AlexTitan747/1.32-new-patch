@@ -1,5 +1,129 @@
 ##################TITAN MONUMENTS#####################################
 
+agadez = {
+	start = 2274 #air
+	date = 1431.01.01
+	time = { months = 0	}
+	build_cost = 0
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 0
+	type = monument
+
+	build_trigger = {
+	
+	}
+
+	on_built = {
+	}
+
+	on_destroyed = {
+	}
+
+	can_use_modifiers_trigger = {
+		AND = {
+			owner = {
+				capital_scope = {
+					continent = africa
+				}
+			}
+			religion_group = muslim
+		}
+	}
+
+	can_upgrade_trigger = {
+		AND = {
+			owner = {
+				capital_scope = {
+					continent = africa
+				}
+			}
+			religion_group = muslim
+		}
+	}
+
+	keep_trigger = {
+	}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+		}
+		on_upgraded = {
+		}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1000
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+			local_institution_spread = 0.1
+		}
+		country_modifiers = {
+			caravan_power = 0.1
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+			local_institution_spread = 0.15
+		}
+		country_modifiers = {
+			caravan_power = 0.15
+			inflation_reduction = 0.05
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+			local_institution_spread = 0.20
+		}
+		country_modifiers = {
+			caravan_power = 0.20
+			inflation_reduction = 0.1
+			interest = -0.5
+		}
+		on_upgraded = {
+		}
+	}
+	
+}
+
 mbanza_kongo = {
 	start = 1170 #mpemba
 	date = 1431.01.01
@@ -187,7 +311,7 @@ ancient_city_of_qalhat = {
 			factor = 1000
 		}
 		province_modifiers = {
-			trade_value = 10
+			province_trade_power_value = 10
 		}
 		area_modifier = {
 			trade_goods_size_modifier = 0.05
@@ -207,7 +331,7 @@ ancient_city_of_qalhat = {
 			factor = 2500
 		}
 		province_modifiers = {
-			trade_value = 15
+			province_trade_power_value = 15
 		}
 		area_modifier = {
 			trade_goods_size_modifier = 0.10
@@ -228,7 +352,7 @@ ancient_city_of_qalhat = {
 			factor = 5000
 		}
 		province_modifiers = {
-			trade_value = 20
+			province_trade_power_value = 20
 		}
 		area_modifier = {
 		}
