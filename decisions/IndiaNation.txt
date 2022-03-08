@@ -1,22 +1,20 @@
 country_decisions = {
 
-		mauryan_nation = {
+		indian_nation = {
 			major = yes
 			potential = {
 				normal_or_historical_nations = yes
 				was_never_end_game_tag_trigger = yes
-				NOT = { has_country_flag = formed_mauryan_flag }
+				NOT = { has_country_flag = formed_india_flag }
 				OR = {
 					ai = no
 					is_playing_custom_nation = no
 				}
-				NOT = { exists = MRY }
-				NOT = { tag = KUS }
+				NOT = { exists = IDA }
 				NOT = { tag = RUS }
 				#NOT = { tag = TIM }
 				NOT = { tag = PER }
 				NOT = { tag = SLU }
-				NOT = { tag = GUP }
 				is_colonial_nation = no
 				OR = {
 					is_former_colonial_nation = no
@@ -26,8 +24,9 @@ country_decisions = {
 					}
 				}
 				OR = {
-					culture_group = hindusthani # not nepal culture?
+					culture_group = hindusthani 
 					culture_group = western_aryan
+					culture_group = eastern_aryan
 					culture_group = central_indic
 					culture_group = dravidian
 				}
@@ -44,33 +43,26 @@ country_decisions = {
 			
 			provinces_to_highlight = {
 				OR = {
-				province_id = 558			# Pataliputra
-				province_id = 515			# Girnir
+				province_id = 541			# Vijanigar
+				province_id = 552			# Cuttack
 				province_id = 522			# Delhi
-				province_id = 506			# Multan
-				province_id = 510			# Sirhind
+				province_id = 563			# Gauda
+				province_id = 564			# dakha
+				province_id = 555			# Jaunpur
+				province_id = 1948			# Bidar
+				province_id = 2054 			# Ahmedabad
+				province_id = 507 			# Lahore
 				
 				}
 				
+				
 				AND = {
-					region = hindusthan_region
+					superregion = india_superregion
 					ROOT = {
 						NOT = {
 							num_of_owned_provinces_with = {
-								value = 30
-								region = hindusthan_region
-								is_core = root
-							}
-						}
-					}
-				}
-				AND = {
-					region = west_india_region
-					ROOT = {
-						NOT = {
-							num_of_owned_provinces_with = {
-								value = 20
-								region = west_india_region
+								value = 150
+								superregion = india_superregion
 								is_core = root
 							}
 						}
@@ -87,37 +79,25 @@ country_decisions = {
 				NOT = { exists = MRY }
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
-				owns_core_province = 558			# Pataliputra
-				owns_core_province = 515			# Girnir
+				owns_core_province = 541			# Vijanigar
+				owns_core_province = 552			# Cuttack
 				owns_core_province = 522			# Delhi
-				owns_core_province = 506			# Multan
-				owns_core_province = 510			# Sirhind
-				
+				owns_core_province = 563			# Gauda
+				owns_core_province = 564			# dakha
+				owns_core_province = 555			# Jaunpur
+				owns_core_province = 1948			# Bidar
+				owns_core_province = 2054 			# Ahmedabad
+				owns_core_province = 507 			# Lahore
+				total_development = 1000
 				num_of_owned_provinces_with = {
-				value = 30
-				region = hindusthan_region
-				is_core = root
-				
+					value = 150
+					superregion = india_superregion
+					is_core = root
+					
 				}
-				num_of_owned_provinces_with = {
-				value = 20
-				region = west_india_region
-				is_core = root
-				
-				}
-				
 			}
 			effect = {
-				558 = {	#Pataliputra
-					move_capital_effect = yes
-					change_religion = buddhism
-				}
-				change_tag = MRY
-				change_religion = buddhism
-				set_ruler_religion = buddhism
-				set_heir_religion = buddhism
-				add_stability = 1
-				swap_non_generic_missions = yes
+				change_tag = IDA
 				remove_non_electors_emperors_from_empire_effect = yes
 				if = {
 					limit = {
@@ -125,51 +105,18 @@ country_decisions = {
 					}
 					set_government_rank = 3
 				}
-				add_prestige = 75
+				add_prestige = 100
 				add_country_modifier = {
 					name = centralization_modifier
 					duration = 3650
 				}
-				add_country_modifier = {
-					name = return_of_the_true_faith
-					duration = 7300
-				}
-				set_capital = 558 # Pataliputra
-				if = {
-                limit = { is_revolutionary = no }
-                change_government = monarchy
-            }
-			if = {
-				limit = {
-					NOT = { primary_culture = rajput }
-				}
-				change_primary_culture = rajput
-				add_dip_power = 200
-			}
-				bengal_region = {
+				india_superregion = {
 					limit = {
 						NOT = { owned_by = ROOT }
 					}
 					add_permanent_claim = ROOT
 				}
-				hindusthan_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				west_india_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				deccan_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
+				
 				
 				set_country_flag = formed_mauryan_flag
 				if = {
