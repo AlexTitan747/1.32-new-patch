@@ -1,5 +1,218 @@
 ##################TITAN MONUMENTS#####################################
 
+rammelsberg_mine_and_metalworks = {
+	start = 4742 #goslar
+	date = 1431.01.01
+	time = { months = 0	}
+	build_cost = 0
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 1
+	type = monument
+
+	build_trigger = {
+	
+	}
+
+	on_built = {
+	}
+
+	on_destroyed = {
+	}
+
+	can_use_modifiers_trigger = {
+	}
+
+	can_upgrade_trigger = {
+	}
+
+	keep_trigger = {
+	}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+		}
+		on_upgraded = {
+		}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1000
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+			local_production_efficiency = 0.10
+		}
+		country_modifiers = {
+			infantry_cost = -0.1
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+			local_production_efficiency = 0.15
+		}
+		country_modifiers = {
+			infantry_cost = -0.15
+			artillery_cost = -0.1
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+			infantry_cost = -0.15
+			artillery_cost = -0.15
+			trade_goods_size_modifier = 0.1
+		}
+		on_upgraded = {
+		}
+	}
+	
+}
+
+carcassonne = {
+	start = 4695 #carcassonne
+	date = 1431.01.01
+	time = { months = 0	}
+	build_cost = 0
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 1
+	type = monument
+
+	build_trigger = {
+	
+	}
+
+	on_built = {
+	}
+
+	on_destroyed = {
+	}
+
+	can_use_modifiers_trigger = {
+	}
+
+	can_upgrade_trigger = {
+	}
+
+	keep_trigger = {
+	}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+		}
+		on_upgraded = {
+		}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1000
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+			defensiveness = 0.1
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+			defensiveness = 0.15
+			global_autonomy = -0.05
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+			local_manpower_modifier = 0.20
+		}
+		country_modifiers = {
+			defensiveness = 0.20
+			global_autonomy = -0.1
+			garrison_size = 0.15
+		}
+		on_upgraded = {
+		}
+	}
+	
+}
+
 bolgar = {
 	start = 4267 #bolgar
 	date = 1431.01.01
@@ -21,18 +234,11 @@ bolgar = {
 	}
 
 	can_use_modifiers_trigger = {
-		AND = {
-			owner = {
-				capital_scope = {
-					continent = africa
-				}
-			}
-			religion_group = muslim
-		}
+		has_reform = steppe_horde
 	}
 
 	can_upgrade_trigger = {
-		
+		has_reform = steppe_horde
 	}
 
 	keep_trigger = {
