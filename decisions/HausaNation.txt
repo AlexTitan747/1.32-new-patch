@@ -1,0 +1,64 @@
+country_decisions = {
+	hausa_nation = {
+		major = yes
+		potential = {
+			exists = HIN
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1148 # Gobir
+				province_id = 1149 # Katsina
+				province_id = 1154 # Zazzau
+				province_id = 1155 # Kano
+				province_id = 2279 # Daura
+				province_id = 2280 # Biram
+				province_id = 2281 # Rano
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			exists = HIN
+		}
+		effect = {
+			change_tag = HAU
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = { NOT = { government_rank = 2 } }
+				set_government_rank = 2
+			}
+			set_capital = 1155
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 25
+			zazzau_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			if = {
+				limit = {
+					has_custom_ideas = no
+					NOT = { has_idea_group = hausa_ideas }
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			set_country_flag = formed_hausa_flag
+			if = {
+				limit = { has_dlc = "Origins" }
+				swap_non_generic_missions = yes
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400 #
+	}
+	
+}
