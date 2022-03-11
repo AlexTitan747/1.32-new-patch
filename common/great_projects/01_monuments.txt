@@ -1,5 +1,122 @@
 ##################TITAN MONUMENTS#####################################
 
+carthaginian_cothon = {
+	start = 341 #tunis
+	date = 1431.01.01
+	time = { months = 0	}
+	build_cost = 0
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 0
+	type = monument
+
+	build_trigger = {
+	
+	}
+
+	on_built = {
+	}
+
+	on_destroyed = {
+	}
+
+	can_use_modifiers_trigger = {
+		OR = {
+			tag = CRG
+			culture_group = lost_cultures_group
+		}
+	}
+	
+
+	can_upgrade_trigger = {
+		OR = {
+			tag = CRG
+			culture_group = lost_cultures_group
+		}
+	}
+
+	keep_trigger = {
+	}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+		}
+		on_upgraded = {
+		}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1000
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+			naval_forcelimit_modifier = 0.1
+			own_coast_naval_combat_bonus = 1.0
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+			naval_forcelimit_modifier = 0.15
+			own_coast_naval_combat_bonus = 1.0
+			merc_maintenance_modifier = -0.15
+			
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+			naval_forcelimit_modifier = 0.20
+			own_coast_naval_combat_bonus = 1.0
+			merc_maintenance_modifier = -0.30
+		}
+		on_upgraded = {
+		}
+	}
+	
+}
+
 hanging_gardens = {
 	start = 410 #baghdad
 	date = 1431.01.01
@@ -84,7 +201,7 @@ hanging_gardens = {
 		province_modifiers = {
 		}
 		area_modifier = {
-			local_manpower_modifier = 0.10
+			local_manpower_modifier = 0.15
 		}
 		country_modifiers = {
 			production_efficiency = 0.10
@@ -105,7 +222,7 @@ hanging_gardens = {
 		province_modifiers = {
 		}
 		area_modifier = {
-			local_manpower_modifier = 0.15
+			local_manpower_modifier = 0.20
 		}
 		country_modifiers = {
 			production_efficiency = 0.15

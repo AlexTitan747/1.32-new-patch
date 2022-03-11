@@ -380,7 +380,7 @@ silk_road_trade = {
 
 	trigger = {
 		owner = {
-				province_has_center_of_trade_of_level = 3
+				
 			}
 		controlled_by = ROOT	
 		}	
@@ -696,3 +696,62 @@ occupation_of_chengdu = {
 	}
 }
 
+occupation_of_ayutthaya = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+
+	trigger = {
+		owner = {
+				NOT = {
+					OR = {
+						was_tag = AYU
+						tag = AYU
+					}
+				}  
+			}
+		controlled_by = ROOT	
+		}
+
+	cavalry_power = 0.05
+	prestige = 0.025
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}
+
+fall_of_pest = {
+	potential = {
+		normal_or_historical_nations = yes
+	}
+
+	trigger = {
+		owner = {
+				NOT = {
+					OR = {
+						was_tag = HUN
+						tag = HUN
+					} 
+				} 
+			}
+		controlled_by = ROOT	
+		}	
+
+	infantry_power = 0.025
+	prestige = 0.025
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}
