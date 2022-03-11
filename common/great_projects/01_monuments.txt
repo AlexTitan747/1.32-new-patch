@@ -216,7 +216,7 @@ rammelsberg_mine_and_metalworks = {
 		country_modifiers = {
 			infantry_cost = -0.15
 			artillery_cost = -0.15
-			trade_goods_size_modifier = 0.1
+			production_efficiency = 0.15
 		}
 		on_upgraded = {
 		}
@@ -351,11 +351,19 @@ bolgar = {
 	}
 
 	can_use_modifiers_trigger = {
+		OR = {
 		has_reform = steppe_horde
+		has_reform = great_horde_state_reform
+		has_reform = great_mongol_state_reform
+		}
 	}
 
 	can_upgrade_trigger = {
-		has_reform = steppe_horde
+		OR = {
+			has_reform = steppe_horde
+			has_reform = great_horde_state_reform
+			has_reform = great_mongol_state_reform
+			}
 	}
 
 	keep_trigger = {
@@ -512,7 +520,7 @@ agadez = {
 		province_modifiers = {
 		}
 		area_modifier = {
-			build_cost = 0.1
+			build_cost = -0.1
 		}
 		country_modifiers = {
 			caravan_power = 0.1
@@ -531,7 +539,7 @@ agadez = {
 		province_modifiers = {
 		}
 		area_modifier = {
-			build_cost = 0.15
+			build_cost = -0.15
 		}
 		country_modifiers = {
 			caravan_power = 0.15
@@ -551,7 +559,7 @@ agadez = {
 		province_modifiers = {
 		}
 		area_modifier = {
-			build_cost = 0.20
+			build_cost = -0.20
 		}
 		country_modifiers = {
 			caravan_power = 0.20
