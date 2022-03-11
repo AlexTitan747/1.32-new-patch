@@ -1,5 +1,228 @@
 ##################TITAN MONUMENTS#####################################
 
+danevirke = {
+	start = 13 #schleswig
+	date = 1431.01.01
+	time = { months = 0	}
+	build_cost = 0
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 0
+	type = monument
+
+	build_trigger = {
+	
+	}
+
+	on_built = {
+	}
+
+	on_destroyed = {
+	}
+
+	can_use_modifiers_trigger = {
+			culture_group = scandinavian
+	}
+	
+
+	can_upgrade_trigger = {
+		culture_group = scandinavian
+	}
+
+	keep_trigger = {
+	}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+		}
+		on_upgraded = {
+		}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1000
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+			local_defensiveness = 0.1
+		}
+		country_modifiers = {
+			manpower_recovery_speed = 0.1
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+			local_defensiveness = 0.2
+		}
+		country_modifiers = {
+			manpower_recovery_speed = 0.15
+			war_exhaustion = -0.05
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+			local_defensiveness = 0.3
+		}
+		country_modifiers = {
+			manpower_recovery_speed = 0.2
+			war_exhaustion = -0.1
+			army_tradition = 0.5
+		}
+		on_upgraded = {
+		}
+	}
+	
+}
+
+drottingholm_palace = {
+	start = 1 #stockholm
+	date = 1431.01.01
+	time = { months = 0	}
+	build_cost = 0
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 0
+	type = monument
+
+	build_trigger = {
+	
+	}
+
+	on_built = {
+	}
+
+	on_destroyed = {
+	}
+
+	can_use_modifiers_trigger = {
+			culture_group = scandinavian
+	}
+	
+
+	can_upgrade_trigger = {
+		culture_group = scandinavian
+	}
+
+	keep_trigger = {
+	}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+		}
+		on_upgraded = {
+		}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1000
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+			local_tax_modifier = 0.1
+		}
+		country_modifiers = {
+			governing_capacity_modifier = 0.1
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+			local_tax_modifier = 0.2
+		}
+		country_modifiers = {
+			governing_capacity_modifier = 0.15
+			global_unrest = -1
+			prestige = 1
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+			local_tax_modifier = 0.3
+		}
+		country_modifiers = {
+			governing_capacity_modifier = 0.2
+			global_unrest = -2
+			prestige = 1
+		}
+		on_upgraded = {
+		}
+	}
+	
+}
+
 carthaginian_cothon = {
 	start = 341 #tunis
 	date = 1431.01.01
@@ -348,7 +571,7 @@ carcassonne = {
 	build_cost = 0
 	can_be_moved = no
 	move_days_per_unit_distance = 10
-	starting_tier = 1
+	starting_tier = 0
 	type = monument
 
 	build_trigger = {
@@ -397,9 +620,10 @@ carcassonne = {
 		province_modifiers = {
 		}
 		area_modifier = {
+			local_manpower_modifier = 0.1
 		}
 		country_modifiers = {
-			defensiveness = 0.1
+			defensiveness = 0.05
 		}
 		on_upgraded = {
 		}
@@ -415,10 +639,11 @@ carcassonne = {
 		province_modifiers = {
 		}
 		area_modifier = {
+			local_manpower_modifier = 0.15
 		}
 		country_modifiers = {
-			defensiveness = 0.15
-			global_autonomy = -0.05
+			defensiveness = 0.1
+			garrison_size = 0.1
 		}
 		on_upgraded = {
 		}
@@ -437,8 +662,8 @@ carcassonne = {
 			local_manpower_modifier = 0.20
 		}
 		country_modifiers = {
-			defensiveness = 0.20
-			global_autonomy = -0.1
+			defensiveness = 0.15
+			global_autonomy = -0.05
 			garrison_size = 0.15
 		}
 		on_upgraded = {
