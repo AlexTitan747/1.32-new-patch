@@ -1,6 +1,228 @@
+########################################
+# Flavor Events for Crimea
+#
+# Scripted by Henrik Lohmander
+########################################
+
 namespace = flavor_cri
 normal_or_historical_nations = yes
 
+# Death of Haji I Giray
+country_event = {
+	id = flavor_cri.1
+	title = "flavor_cri.1.t"
+	desc = "flavor_cri.1.d"
+	picture = RELIGION_eventPicture
+	
+	fire_only_once = yes
+	major = yes
+	
+	trigger = {
+		exists = HIN
+	}
+	
+	immediate = { set_global_flag = death_of_haji_giray }
+	
+	option = {
+		name = "flavor_cri.1.a" #We must seek Ottoman Protection!
+	}
+	option = {
+		name = "flavor_cri.1.b" #We will be better of without Ottoman involvement.
+	}
+}
+
+# Crimean Ruler asks for Ottoman Support
+country_event = {
+	id = flavor_cri.2
+	title = "flavor_cri.2.t"
+	desc = "flavor_cri.2.d"
+	picture = RELIGION_eventPicture
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	option = {
+		name = "flavor_cri.2.a" #Let us help this new found friend!
+		
+	}
+	option = {
+		name = "flavor_cri.2.b" #Let us not risk upsetting the balance of power in the area.
+	}
+}
+
+#Crimean Pretender Asks for Ottoman Support
+country_event = {
+	id = flavor_cri.3
+	title = "flavor_cri.3.t"
+	desc = "flavor_cri.3.d"
+	picture = RELIGION_eventPicture
+	
+	is_triggered_only = yes
+	fire_only_once = yes
+	
+	
+	option = {
+		name = "flavor_cri.3.a" #Let us help this new found friend!
+	}
+	option = {
+		name = "flavor_cri.3.b" #Let us not risk upsetting the balance of power in the area.
+		
+	}
+}
+
+#The Ottoman Sultan sends support
+country_event = {
+	id = flavor_cri.4
+	title = "flavor_cri.4.t"
+	desc = "flavor_cri.4.d"
+	picture = RELIGION_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	
+	option = {
+	}
+}
+
+#The Ottomans Refuse to Help
+country_event = {
+	id = flavor_cri.5
+	title = "flavor_cri.5.t"
+	desc = "flavor_cri.5.d"
+	picture = RELIGION_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	
+	option = {
+	}
+}
+
+#The Ottomans have installed Mengli Giray
+country_event = {
+	id = flavor_cri.6
+	title = "flavor_cri.6.t"
+	desc = "flavor_cri.6.d"
+	picture = RELIGION_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		TUR = {
+			has_country_flag = ottoman_promise_to_crimea
+			NOT = { had_country_flag = { flag = ottoman_promise_to_crimea days = 23725 } } #Mengli was supposedly 30 when he fled to the Ottomans and 95 when he died.
+		}
+		tag = CRI
+		is_subject_of = TUR
+	}
+	
+	
+	option = {
+		name = "flavor_cri.6.a"
+		ai_chance = {
+			factor = 100
+		}
+		define_ruler  = {
+			name = "Mengli"
+			dynasty = "Giray"
+			age = 33
+			claim = 75
+		}
+		if = {
+			limit = {
+				has_states_general_mechanic = yes
+			}
+			change_statists_vs_orangists = 1
+		}
+		if = {
+			limit = {
+				has_dlc = "Rights of Man" 
+			}
+			hidden_effect = { add_ruler_personality_ancestor = { key = conqueror } }
+		}
+		add_opinion = {
+			who = TUR
+			modifier = installed_ruler_crimean_succession
+		}
+		TUR = {
+			create_march = CRI
+			hidden_effect = {
+				country_event = { id = flavor_cri.7 }
+			}
+		}
+		if = {
+			limit = {
+				285 = {
+					owned_by = CRI
+					is_capital = no
+				}
+			}
+			285 = {
+				cede_province = TUR
+				add_core = TUR
+			}
+		}
+		if = {
+			limit = {
+				286 = {
+					owned_by = CRI
+					is_capital = no
+				}
+			}
+			286 = {
+				cede_province = TUR
+				add_core = TUR
+			}
+		}
+		if = {
+			limit = {
+				2410 = {
+					owned_by = CRI
+					is_capital = no
+				}
+			}
+			2410 = {
+				cede_province = TUR
+				add_core = TUR
+			}
+		}
+		if = {
+			limit = {
+				2447 = {
+					owned_by = CRI
+					is_capital = no
+				}
+			}
+			2447 = {
+				cede_province = TUR
+				add_core = TUR
+			}
+		}
+	}
+}
+
+#Mengli Giray Installed in the Crimean Khanate
+country_event = {
+	id = flavor_cri.7
+	title = "flavor_cri.7.t"
+	desc = "flavor_cri.7.d"
+	picture = RELIGION_eventPicture
+	
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	
+	option = {
+		name = "flavor_cri.7.a" #
+		custom_tooltip = flavor_cri.7.a.tt
+	}
+}
+
+# Restoration of the Ilkhanate (alt history)
+# by Daniel Tolman
 country_event = {
 	id = flavor_cri.8
 	title = "flavor_cri.8.t"
@@ -42,4 +264,4 @@ country_event = {
 			add_base_production = 2
 		}
 	}
-} #
+}
