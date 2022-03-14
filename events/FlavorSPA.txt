@@ -314,7 +314,10 @@ country_event = {
 	
 	trigger = {
 		NOT = { has_global_flag = columbus_happened }
-		has_idea = quest_for_the_new_world
+		OR = {
+			has_idea = 150
+			has_idea = 64
+			}
 		OR = {
 			NOT = {
 				north_america = {
@@ -351,7 +354,10 @@ country_event = {
 			limit = {
 				NOT = { has_country_flag = turned_down_columbus }
 				religion = catholic
-				has_idea = quest_for_the_new_world
+				OR = {
+					has_idea = 150
+					has_idea = 64
+					}
 			}
 			country_event = { id = flavor_spa.1 }
 		}
