@@ -2241,6 +2241,309 @@ country_event = {
 # Spy Ideas
 #######################################
 
+# New Spy techniques
+country_event = {
+	id = ideagroups.500
+	title = "EVTNAME6152"
+	desc = "EVTDESC6152"
+	picture = SPY_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_idea_group = spy_ideas
+		NOT = { has_country_modifier = enhanced_spies }
+		NOT = { has_country_modifier = spy_defections }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTA6152"
+		add_country_modifier = {
+			name = "enhanced_spies"
+			duration = 3650
+		}
+	}
+}
+
+# Spy Defections
+country_event = {
+	id = ideagroups.501
+	title = "EVTNAME6153"
+	desc = "EVTDESC6153"
+	picture = SPY_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_idea_group = spy_ideas
+		NOT = { has_country_modifier = enhanced_spies }
+		NOT = { has_country_modifier = spy_defections }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = "EVTOPTA6153"
+		add_country_modifier = {
+			name = "spy_defections"
+			duration = 3650
+		}
+	}
+
+	option = {
+		name = "EVTOPTB6153"
+		add_corruption = 0.5
+		add_years_of_income = -0.1
+	}
+}
+
+# A well-placed man
+country_event = {
+	id = ideagroups.502
+	title = ideagroups.502.t
+	desc = ideagroups.502.d
+	picture = SPY_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_idea_group = spy_ideas
+		is_at_war = yes
+		any_rival_country = {
+			war_with = root
+		}
+		ai = no #no use for it anyway.
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = ideagroups.502.a
+		random_rival_country = {
+			limit = {
+				war_with = root
+			}
+			remove_fow = 3
+		}
+	}
+
+}
+
+# Hidden Activities
+country_event = {
+	id = ideagroups.503
+	title = ideagroups.503.t
+	desc = ideagroups.503.d
+	picture = SPY_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_idea_group = spy_ideas
+		NOT = {	has_country_modifier =  "hidden_agents" }
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = ideagroups.503.a
+		add_country_modifier = {
+			name = "hidden_agents"
+			duration = 3650
+		}
+	}
+}
+
+# Rebel Supporting
+country_event = {
+	id = ideagroups.504
+	title = ideagroups.504.t
+	desc = ideagroups.504.d
+	picture = ANGRY_MOB_eventPicture
+
+	is_triggered_only = yes
+	
+	trigger = {
+		has_idea_group = spy_ideas
+		NOT = {	has_country_modifier =  "better_rebel_support" }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = ideagroups.504.a
+		add_country_modifier = {
+			name = "better_rebel_support"
+			duration = 3650
+		}
+	}
+}
+
+# Diplomats Exposed
+country_event = {
+	id = ideagroups.505
+	title = ideagroups.505.t
+	desc = ideagroups.505.d
+	picture = DIPLOMACY_eventPicture
+	
+	trigger = {
+		has_idea_group = spy_ideas
+	}
+
+	is_triggered_only = yes
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = ideagroups.505.a
+		add_prestige = -25
+
+		hidden_effect = {
+			if = {
+				limit = {
+					any_ally = {
+						root = {
+							has_spy_network_in = {
+								who = prev
+								value = 30
+							}
+						}
+					}
+				}
+				random = {
+					chance = 25
+					random_ally = {
+						limit = {
+							root = {
+								has_spy_network_in = {
+									who = prev
+									value = 30
+								}
+							}
+						}
+						country_event = { id = espionage_events.9 days = 30 random = 120 }
+					}
+				}
+			}
+		}
+	}
+}
+
+# Spies get you better heirs....
+country_event = {
+	id = ideagroups.506
+	title = ideagroups.506.t
+	desc = ideagroups.506.d
+	picture = SPY_eventPicture
+
+	is_triggered_only = yes
+	
+	trigger = {
+		has_idea_group = spy_ideas
+		government = monarchy
+		is_lesser_in_union = no
+		has_heir = no
+		has_regency = no
+		is_female = no
+		religion_group = christian
+		has_government_attribute = heir
+		NOT = {	has_ruler_modifier =  "extra_heir" }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = ideagroups.506.a
+		add_ruler_modifier = {
+			name = "extra_heir"
+			duration = -1
+		}
+	}
+	option = {
+		name = ideagroups.506.b
+		define_heir = {
+			dynasty = ROOT
+			claim = 10
+			change_adm = 3
+			change_dip = 3
+			change_mil = 3
+		}
+	}
+}
+
+# Reduced Upkeep
+country_event = {
+	id = ideagroups.507
+	title = ideagroups.507.t
+	desc = ideagroups.507.d
+	picture = SPY_eventPicture
+
+	is_triggered_only = yes
+	
+	trigger = {
+		has_idea_group = spy_ideas
+		NOT = {	has_country_modifier =  "focus_on_covert_actions" }
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = ideagroups.507.a
+		add_country_modifier = {
+			name = "focus_on_covert_actions"
+			duration = 3650
+		}
+	}
+}
+
+# Spy Ideas give you power
+country_event = {
+	id = ideagroups.508
+	title = ideagroups.508.t
+	desc = ideagroups.508.d
+	picture = SPY_eventPicture
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_idea_group = spy_ideas
+	}
+
+	mean_time_to_happen = {
+		days = 1
+	}
+
+	option = {
+		name = ideagroups.508.a
+		add_adm_power = 25
+	}
+	option = {
+		name = ideagroups.508.b
+		add_dip_power = 25
+	}
+	option = {
+		name = ideagroups.508.c
+		add_mil_power = 25
+	}
+}
 
 #######################################
 # Diplomatic Ideas
