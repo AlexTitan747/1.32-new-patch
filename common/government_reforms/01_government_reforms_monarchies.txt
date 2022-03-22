@@ -2156,7 +2156,7 @@ regional_representation_reform = {
 	icon = "assembly_hall"
 	allow_normal_conversion = yes
 	modifiers = {
-		min_autonomy_in_territories = -0.10
+		min_autonomy_in_territories = -0.15
 	}
 }
 
@@ -2175,6 +2175,53 @@ consulate_reform = {
 	}
 }
 
+#dominions of the empire
+
+rights_of_vassalage = {
+	icon = "revolutionary_republic"
+	allow_normal_conversion = yes
+	potential = {
+		is_revolutionary = yes
+	}
+	modifiers = {
+		vassal_forcelimit_bonus = 0.15
+		vassal_income = 0.15
+	}
+	ai = {
+		factor = 2.5
+	}
+}
+
+colonial_dominions = {
+	icon = "revolutionary_republic"
+	allow_normal_conversion = yes
+	potential = {
+		is_revolutionary = yes
+	}
+	modifiers = {
+		global_colonial_growth = 15
+		trade_company_governing_cost = -0.5
+	}
+	ai = {
+		factor = 2.5
+	}
+}
+
+unity_assimilation_and_integration = {
+	icon = "revolutionary_republic"
+	allow_normal_conversion = yes
+	potential = {
+		is_revolutionary = yes
+	}
+	modifiers = {
+		culture_conversion_cost = -0.1
+		core_creation = -0.1
+	}
+	ai = {
+		factor = 2.5
+	}
+}
+
 #separation_of_power
 
 political_absolutism_reform = {
@@ -2184,7 +2231,7 @@ political_absolutism_reform = {
 		is_revolutionary = no
 	}
 	modifiers = {
-		max_absolutism = 5
+		max_absolutism = 10
 		yearly_absolutism = 0.5
 	}
 	ai = {
