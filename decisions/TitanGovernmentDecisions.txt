@@ -24,6 +24,48 @@ country_decisions = {
 		}
 		effect = {
 			change_government_to_republic = yes
+			
+			#nomad
+
+			if = {
+				limit = {
+					technology_group = nomad_group
+					OR = {
+						religion_group = muslim
+						secondary_religion = sunni
+						secondary_religion = shiite
+						secondary_religion = ibadi
+					}
+				}
+				change_technology_group = muslim
+				change_unit_type = muslim
+			}
+			else_if = {
+				limit = {
+					technology_group = nomad_group
+					religion_group = christian
+				}
+				change_technology_group = eastern
+				change_unit_type = eastern
+			}
+			if = {
+				limit = {
+					technology_group = nomad_group
+					NOT = { religion_group = muslim }
+					NOT = { religion_group = christian }
+					NOT = { secondary_religion = sunni }
+					NOT = { secondary_religion = shiite }
+					NOT = { secondary_religion = ibadi }
+					NOT = { religion = totemism }
+					NOT = { religion = inti }
+					NOT = { religion = nahuatl }
+					NOT = { religion = mesoamerican_religion }
+					NOT = { religion = dreamtime }
+				}
+				change_technology_group = chinese
+				change_unit_type = chinese
+			}
+			
 			if = {
 				limit = { has_reform = prussian_monarchy }
 				add_government_reform = prussian_republic
@@ -55,6 +97,47 @@ country_decisions = {
 			change_government_to_theocracy = yes
 			set_country_flag = used_government_switch_theocracy
 
+			#nomad
+
+			if = {
+				limit = {
+					technology_group = nomad_group
+					OR = {
+						religion_group = muslim
+						secondary_religion = sunni
+						secondary_religion = shiite
+						secondary_religion = ibadi
+					}
+				}
+				change_technology_group = muslim
+				change_unit_type = muslim
+			}
+			else_if = {
+				limit = {
+					technology_group = nomad_group
+					religion_group = christian
+				}
+				change_technology_group = eastern
+				change_unit_type = eastern
+			}
+			if = {
+				limit = {
+					technology_group = nomad_group
+					NOT = { religion_group = muslim }
+					NOT = { religion_group = christian }
+					NOT = { secondary_religion = sunni }
+					NOT = { secondary_religion = shiite }
+					NOT = { secondary_religion = ibadi }
+					NOT = { religion = totemism }
+					NOT = { religion = inti }
+					NOT = { religion = nahuatl }
+					NOT = { religion = mesoamerican_religion }
+					NOT = { religion = dreamtime }
+				}
+				change_technology_group = chinese
+				change_unit_type = chinese
+			}
+
 		}
 	}
 
@@ -75,10 +158,66 @@ country_decisions = {
 					government = tribal
 					is_year = 1500
 				}
+				AND = {
+					religion_group = muslim
+					government = theocracy
+				}
 			}
 		}
 		effect = {
 			change_government_to_monarchy = yes
+
+			
+			#nomad
+
+			if = {
+				limit = {
+					technology_group = nomad_group
+					OR = {
+						religion_group = muslim
+						secondary_religion = sunni
+						secondary_religion = shiite
+						secondary_religion = ibadi
+					}
+				}
+				change_technology_group = muslim
+				change_unit_type = muslim
+			}
+			else_if = {
+				limit = {
+					technology_group = nomad_group
+					religion_group = christian
+				}
+				change_technology_group = eastern
+				change_unit_type = eastern
+			}
+			if = {
+				limit = {
+					technology_group = nomad_group
+					NOT = { religion_group = muslim }
+					NOT = { religion_group = christian }
+					NOT = { secondary_religion = sunni }
+					NOT = { secondary_religion = shiite }
+					NOT = { secondary_religion = ibadi }
+					NOT = { religion = totemism }
+					NOT = { religion = inti }
+					NOT = { religion = nahuatl }
+					NOT = { religion = mesoamerican_religion }
+					NOT = { religion = dreamtime }
+				}
+				change_technology_group = chinese
+				change_unit_type = chinese
+			}
+
+			if = {
+				limit = { 
+					AND = {
+					religion_group = muslim
+					government = theocracy
+				}
+			}
+			add_government_reform = feudal_theocracy
+			}
 			set_country_flag = used_government_switch_monarchy
 
 		}
