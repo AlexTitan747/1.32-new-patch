@@ -4,6 +4,8 @@ country_decisions = {
 		major = yes
 		potential = {
 			ai = no
+			NOT = { government = republic }
+			NOT = { has_country_flag = used_government_switch_republic }
 			adm_tech = 7
 		}
 		allow = {
@@ -11,6 +13,10 @@ country_decisions = {
 			is_at_war = no
 			OR = {
 				is_year = 1600
+				AND = {
+					government = tribal
+					is_year = 1500
+				}
 				has_reform = english_monarchy
 				has_reform = prussian_monarchy
 				has_reform = elective_monarchy
@@ -22,7 +28,7 @@ country_decisions = {
 				limit = { has_reform = prussian_monarchy }
 				add_government_reform = prussian_republic
 			}
-
+			set_country_flag = used_government_switch_republic
 		}
 	}
 
@@ -30,6 +36,8 @@ country_decisions = {
 		major = yes
 		potential = {
 			ai = no
+			NOT = { government = theocracy }
+			NOT = { has_country_flag = used_government_switch_theocracy }
 			adm_tech = 7
 		}
 		allow = {
@@ -37,12 +45,15 @@ country_decisions = {
 			is_at_war = no
 			OR = {
 				is_year = 1600
-				
+				AND = {
+					government = tribal
+					is_year = 1500
+				}
 			}
 		}
 		effect = {
 			change_government_to_theocracy = yes
-			
+			set_country_flag = used_government_switch_theocracy
 
 		}
 	}
@@ -51,6 +62,8 @@ country_decisions = {
 		major = yes
 		potential = {
 			ai = no
+			NOT = { government = monarchy }
+			NOT = { has_country_flag = used_government_switch_monarchy }
 			adm_tech = 7
 		}
 		allow = {
@@ -58,12 +71,15 @@ country_decisions = {
 			is_at_war = no
 			OR = {
 				is_year = 1600
-				
+				AND = {
+					government = tribal
+					is_year = 1500
+				}
 			}
 		}
 		effect = {
 			change_government_to_monarchy = yes
-			
+			set_country_flag = used_government_switch_monarchy
 
 		}
 	}
