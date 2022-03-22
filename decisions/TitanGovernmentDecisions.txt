@@ -1,0 +1,72 @@
+country_decisions = {
+		
+	titan_government_switch_republic = {
+		major = yes
+		potential = {
+			ai = no
+			adm_tech = 7
+		}
+		allow = {
+			adm_tech = 7
+			is_at_war = no
+			OR = {
+				is_year = 1600
+				has_reform = english_monarchy
+				has_reform = prussian_monarchy
+				has_reform = elective_monarchy
+			}
+		}
+		effect = {
+			change_government_to_republic = yes
+			if = {
+				limit = { has_reform = prussian_monarchy }
+				add_government_reform = prussian_republic
+			}
+
+		}
+	}
+
+	titan_government_switch_theocracy = {
+		major = yes
+		potential = {
+			ai = no
+			adm_tech = 7
+		}
+		allow = {
+			adm_tech = 7
+			is_at_war = no
+			OR = {
+				is_year = 1600
+				
+			}
+		}
+		effect = {
+			change_government_to_theocracy = yes
+			
+
+		}
+	}
+
+	titan_government_switch_monarchy = {
+		major = yes
+		potential = {
+			ai = no
+			adm_tech = 7
+		}
+		allow = {
+			adm_tech = 7
+			is_at_war = no
+			OR = {
+				is_year = 1600
+				
+			}
+		}
+		effect = {
+			change_government_to_monarchy = yes
+			
+
+		}
+	}
+}			
+
+		
