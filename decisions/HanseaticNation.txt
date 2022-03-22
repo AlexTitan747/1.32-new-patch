@@ -1,0 +1,126 @@
+country_decisions = {
+
+		hanseatic_nation = {
+			major = yes
+			potential = {
+				normal_or_historical_nations = yes
+				NOT = { has_country_flag = formed_hanseatic_flag }
+				OR = {
+					ai = no
+					is_playing_custom_nation = no
+				}
+				NOT = { tag = PRU }
+				NOT = { tag = HAN }
+				#NOT = { tag = TIM }
+				NOT = { tag = ENG }
+				NOT = { tag = PLC }
+				NOT = { tag = GBR }
+				NOT = { tag = SCO }
+				NOT = { exists = HSL }
+				is_colonial_nation = no
+				OR = {
+					is_former_colonial_nation = no
+					AND = {
+						is_former_colonial_nation = yes
+						ai = no
+					}
+				}
+				OR = {
+					primary_culture = lower_saxon
+					primary_culture = saxon
+					primary_culture = pommeranian
+				}
+				
+				OR = {
+					ai = no
+					AND = {
+						ai = yes
+						num_of_cities = 10
+						adm_tech = 10
+					}
+				}
+			}
+			
+			provinces_to_highlight = {
+				OR = {
+				province_id = 45			# lubeck
+				province_id = 44		    # hamburg
+				province_id = 1874			# bremen
+				province_id = 47		    # stralsund
+
+				}
+				OR = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_core = ROOT }
+				}
+			}
+			
+			allow = {
+				adm_tech = 7
+				NOT = { exists = HSL }
+				is_free_or_tributary_trigger = yes
+				is_at_war = no
+				owns_core_province = 45		    # lubeck
+				owns_core_province = 44			# hamburg
+				owns_core_province = 1874		# bremen
+				owns_core_province = 47			# stralsund
+
+				num_of_owned_provinces_with = {
+					value = 8
+					culture = lower_saxon
+					is_core = root
+					}
+				
+				num_of_owned_provinces_with = {
+					value = 5
+					culture = saxon
+					is_core = root
+					}
+				
+				num_of_owned_provinces_with = {
+					value = 5
+					culture = pommeranian
+					is_core = root
+					}
+				
+			}
+			effect = {
+				change_tag = HSL
+				add_stability = 1
+				remove_non_electors_emperors_from_empire_effect = yes
+
+				if = {
+					limit = {
+						NOT = { government_rank = 2 }
+					}
+					set_government_rank = 2
+				}
+				add_prestige = 50
+				add_country_modifier = {
+					name = centralization_modifier
+					duration = 3650
+				}
+				if = {
+					limit = {
+						NOT = { government = republic }
+						is_revolutionary = no
+					}
+					change_government_to_republic = yes 
+				}
+				if = {
+				limit = { is_revolutionary = no }
+				add_government_reform = merchant_republic
+				}
+				HSL = {
+					set_capital = 45
+				}
+				
+				set_country_flag = formed_hanseatic_flag
+				if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+				}
+			}
+			
+		}
+	}
