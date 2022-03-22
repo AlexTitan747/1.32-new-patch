@@ -1337,6 +1337,9 @@ enforce_privileges_reform = {
 	}
 	modifiers = {
 		global_manpower_modifier = 0.15
+		nobles_influence_modifier = 0.1
+		maratha_exclusive_influence_modifier = 0.1
+		rajput_exclusive_influence_modifier = 0.1
 	}
 	ai = {
 		factor = 1
@@ -1347,17 +1350,35 @@ enforce_privileges_reform = {
 	}
 }
 
-quash_noble_power_reform = {
-	icon = "king_2"
+encourage_guild_membership = {
+	icon = "merchant_ship"
 	allow_normal_conversion = yes
 	potential = {
 		is_revolutionary = no
 	}
 	modifiers = {
 		production_efficiency = 0.15
-		nobles_influence_modifier = -0.1
-		maratha_exclusive_influence_modifier = -0.1
-		rajput_exclusive_influence_modifier = -0.1
+		clergy_influence_modifier = 0.1
+	}
+	ai = {
+		factor = 1
+		modifier = {
+			factor = 1.5
+			is_in_deficit = yes
+		}
+	}
+}
+
+support_clergy_taxation = {
+	icon = "king_2"
+	allow_normal_conversion = yes
+	potential = {
+		is_revolutionary = no
+	}
+	modifiers = {
+		global_tax_modifier = 0.15
+		burghers_influence_modifier = 0.1
+		jains_influence_modifier = 0.1
 	}
 	ai = {
 		factor = 1
