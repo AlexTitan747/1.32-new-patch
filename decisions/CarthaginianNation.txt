@@ -41,39 +41,42 @@ country_decisions = {
 			
 			provinces_to_highlight = {
 				OR = {
-				province_id = 341			# Tunis
-				province_id = 2473			# Susa
-				province_id = 4566			# Kairwan
-				province_id = 2454			# kef
-				province_id = 2455			# Bizerte
-				province_id = 126			# Malta
-				province_id = 2986			# Caller
-				province_id = 4735			# Arborea
-				province_id = 127			# sasa
-				province_id = 4560			# Ibiza
-				province_id = 333			# Balares
-				province_id = 4559			# Minorca
-				}
+					province_id = 341			# Tunis
+					province_id = 2473			# Susa
+					province_id = 4566			# Kairwan
+					province_id = 2454			# kef
+					province_id = 2455			# Bizerte
+					province_id = 126			# Malta
+					province_id = 2986			# Caller
+					province_id = 4735			# Arborea
+					province_id = 127			# sasa
+					province_id = 4560			# Ibiza
+					province_id = 333			# Balares
+					province_id = 4559			# Minorca
 					AND = {
 						OR = {
 							province_id = 125
 							province_id = 4736
 							province_id = 4737
 						}
-					
-				}
-
-				
+						ROOT = { NOT = { owns_core_province = 4546 } }
+						ROOT = { NOT = { owns_core_province = 226 } }
+						ROOT = { NOT = { owns_core_province = 223 } }
+						ROOT = { NOT = { owns_core_province = 222 } }
+					}
 					AND = {
 						OR = {
 							province_id = 4546
 							province_id = 226
 							province_id = 223
-							province_id = 222
-							
+							province_id = 222	
 						}
-								
+						ROOT = { NOT = { owns_core_province = 125 } }
+						ROOT = { NOT = { owns_core_province = 4736 } }
+						ROOT = { NOT = { owns_core_province = 4737 } }
+					}
 				}
+
 				OR = {
 					NOT = { owned_by = ROOT }
 					NOT = { is_core = ROOT }
