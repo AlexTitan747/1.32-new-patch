@@ -221,6 +221,183 @@ country_decisions = {
 			add_army_professionalism = -1
 		}
 	}
+
+	sm_hire_general = {
+		potential = {
+			is_bankrupt = no
+			ai = no
+			NOT = { has_country_flag = sm_hire_general }
+		}
+		allow = {
+			NOT = { army_tradition = 40 }
+		}
+		effect = {
+			add_years_of_income = -0.3
+			create_general = { tradition = 40 }
+			set_country_flag = sm_hire_general
+		}
+	}
+	educate_ruler = {
+		major = yes
+		potential = {
+			ai = no
+			NOT = { has_country_flag = educate_ruler_flag }
+			NOT = {
+				government = republic
+			}
+		}
+		allow = {
+			custom_trigger_tooltip = {
+				tooltip = educate_ruler_tooltip
+				OR = {
+					NOT = {
+						adm = 3
+						dip = 3
+						mil = 3
+					}
+					NOT = {
+						adm = 4
+						dip = 1
+						mil = 4
+					}
+					NOT = {
+						adm = 1
+						dip = 4
+						mil = 4
+					}
+					NOT = {
+						adm = 4
+						dip = 4
+						mil = 1
+					}
+					NOT = {
+						adm = 4
+						dip = 2
+						mil = 3
+					}
+					NOT = {
+						adm = 4
+						dip = 3
+						mil = 2
+					}
+					NOT = {
+						adm = 5
+						dip = 1
+						mil = 3
+					}
+					NOT = {
+						adm = 5
+						dip = 3
+						mil = 1
+					}
+					NOT = {
+						adm = 5
+						dip = 2
+						mil = 2
+					}
+					NOT = {
+						adm = 6
+						dip = 1
+						mil = 2
+					}
+					NOT = {
+						adm = 6
+						dip = 2
+						mil = 1
+					}
+					NOT = {
+						dip = 1
+						mil = 1
+					}
+					NOT = {
+						dip = 4
+						adm = 2
+						mil = 3
+					}
+					NOT = {
+						dip = 4
+						adm = 3
+						mil = 2
+					}
+					NOT = {
+						dip = 5
+						dip = 1
+						mil = 3
+					}
+					NOT = {
+						dip = 5
+						adm = 3
+						mil = 1
+					}
+					NOT = {
+						dip = 5
+						adm = 2
+						mil = 2
+					}
+					NOT = {
+						dip = 6
+						adm = 1
+						mil = 2
+					}
+					NOT = {
+						dip = 6
+						adm = 2
+						mil = 1
+					}
+					NOT = {
+						adm = 1
+						mil = 1
+					}
+					NOT = {
+						mil = 4
+						adm = 2
+						dip = 3
+					}
+					NOT = {
+						mil = 4
+						adm = 3
+						dip = 2
+					}
+					NOT = {
+						mil = 5
+						mil = 1
+						dip = 3
+					}
+					NOT = {
+						mil = 5
+						adm = 3
+						dip = 1
+					}
+					NOT = {
+						mil = 5
+						adm = 2
+						dip = 2
+					}
+					NOT = {
+						mil = 6
+						adm = 1
+						dip = 2
+					}
+					NOT = {
+						mil = 6
+						adm = 2
+						dip = 1
+					}
+					NOT = {
+						adm = 1
+						dip = 1
+					}
+				}
+			}
+		}
+		effect = {
+			change_adm = 1
+			change_dip = 1
+			change_mil = 1
+			add_years_of_income = -0.4
+			set_country_flag = educate_ruler_flag
+		}
+	}
 }			
 
 		
