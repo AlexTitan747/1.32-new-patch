@@ -1599,7 +1599,7 @@ cb_empire_superiority = {
 	war_goal = superiority_empire_wars
 }
 
-cb_one_v_one = {
+cb_one_vs_one = {
 	valid_for_subject = no
 
 	prerequisites = {
@@ -1607,5 +1607,18 @@ cb_one_v_one = {
 		to = { ai = no }
 	}
 
-	war_goal = honorable_one_v_one
+	war_goal = honorable_one_vs_one
+}
+
+cb_imperial_consolidation = {
+	valid_for_subject = no
+
+	prerequisites = {
+		FROM = {
+		is_part_of_hre = yes
+		NOT = { has_country_flag = imperial_consolidation_cooldown }
+		}
+	}
+
+	war_goal = take_capital_imperial_consolidation
 }
