@@ -1569,7 +1569,32 @@ cb_unite_china = {
 			is_revolutionary = no
 		}
 	
-		war_goal = take_province_china
+		war_goal = take_capital_china
 	
 }
 
+cb_empire_conquest = {
+	valid_for_subject = no
+
+	prerequisites = {
+		government_rank = 3
+		total_development = 1000
+		is_neighbor_of = FROM
+		is_revolutionary = no
+	}
+
+	war_goal = take_capital_empire_wars
+}
+
+cb_empire_superiority = {
+	valid_for_subject = no
+
+	prerequisites = {
+		government_rank = 3
+		total_development = 1000
+		is_neighbor_of = FROM
+		is_revolutionary = no
+	}
+
+	war_goal = superiority_empire_wars
+}
