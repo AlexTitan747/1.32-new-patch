@@ -1581,9 +1581,9 @@ cb_empire_conquest = {
 		government_rank = 3
 		total_development = 1000
 		}
-		to = {
-			government_rank = 3
-			total_development = 1000
+		ROOT = {
+		government_rank = 3
+		total_development = 1000
 		}
 		is_neighbor_of = FROM
 		is_revolutionary = no
@@ -1596,10 +1596,16 @@ cb_empire_superiority = {
 	valid_for_subject = no
 
 	prerequisites = {
-		government_rank = 3
-		total_development = 1000
-		is_neighbor_of = FROM
-		is_revolutionary = no
+		FROM = {
+			government_rank = 3
+			total_development = 1000
+			}
+			ROOT = {
+			government_rank = 3
+			total_development = 1000
+			}
+			is_neighbor_of = FROM
+			is_revolutionary = no
 	}
 
 	war_goal = superiority_empire_wars
@@ -1610,7 +1616,7 @@ cb_one_vs_one = {
 
 	prerequisites = {
 		FROM = { ai = no }
-		to = { ai = no }
+		ROOT = { ai = no }
 	}
 
 	war_goal = honorable_one_vs_one
@@ -1620,9 +1626,12 @@ cb_imperial_consolidation = {
 	valid_for_subject = no
 
 	prerequisites = {
-		FROM = {
+		ROOT = {
 		is_part_of_hre = yes
 		NOT = { has_country_flag = imperial_consolidation_cooldown }
+		}
+		FROM = {
+			is_part_of_hre = yes
 		}
 	}
 
