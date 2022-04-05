@@ -398,45 +398,4 @@ country_decisions = {
 			set_country_flag = educate_ruler_flag
 		}
 	}			
-
-	titan_develop_siberia = {
-		major = yes
-		potential = {
-			capital_scope = {
-				OR = {
-				region = east_siberia_region
-				region = west_siberia_region
-				region = central_asia_region
-				region = mongolia_region
-				region = ural_region
-				}
-			}
-		NOT = { has_country_flag = titan_developing_siberia }
-		}
-		allow = {
-			OR = {
-			has_idea_group = expansion_ideas
-			has_idea_group = colonialism_ideas
-			has_idea_group = exploration_ideas
-			}
-			adm_tech = 7
-			treasury = 500
-			NOT = { has_country_flag = titan_developing_siberia }
-		}
-		effect = {
-			every_owned_province = {
-				if = {
-					limit = {
-						has_province_modifier = arctic
-					}
-					add_province_modifier = {
-						name = titan_developing_siberia
-						duration = 3650
-					}
-				}
-			}
-			add_treasury = -500
-			add_country_flag = titan_developing_siberia
-		}
-	}
 }		
