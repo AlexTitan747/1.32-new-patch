@@ -11,10 +11,12 @@ country_decisions = {
 		allow = {
 			adm_tech = 7
 			is_at_war = no
+			has_reform_on_level = 9
 			OR = {
 				is_year = 1600
 				has_reform = english_monarchy
 				has_reform = prussian_monarchy
+				has
 				AND = {
 					government = tribal
 					is_year = 1500
@@ -89,6 +91,7 @@ country_decisions = {
 				limit = { OR = {
 					has_reform = parliamentary_reform
 					has_reform = states_general_reform
+					has_reform = theocratic_democracy_reform
 				}
 			}
 			adm_power_cost = 200
@@ -108,10 +111,21 @@ country_decisions = {
 		allow = {
 			adm_tech = 7
 			is_at_war = no
+			has_reform_on_level = 9
 			OR = {
 				is_year = 1600
 				AND = {
 					government = tribal
+					is_year = 1500
+				}
+				AND = {
+					has_reform = mon_state_religion
+					adm_power = 200
+					is_year = 1500
+				}
+				AND = {
+					has_reform = clerical_influencers
+					adm_power = 200
 					is_year = 1500
 				}
 			}
@@ -160,7 +174,14 @@ country_decisions = {
 				change_technology_group = chinese
 				change_unit_type = chinese
 			}
-
+			if = {
+				limit = { OR = {
+					has_reform = mon_state_religion
+					has_reform = clerical_influencers
+				}
+			}
+			adm_power_cost = 200
+			}
 		}
 	}
 
@@ -175,6 +196,7 @@ country_decisions = {
 		allow = {
 			adm_tech = 7
 			is_at_war = no
+			has_reform_on_level = 9
 			OR = {
 				is_year = 1600
 				AND = {
@@ -184,6 +206,21 @@ country_decisions = {
 				AND = {
 					religion_group = muslim
 					government = theocracy
+				}
+				AND = {
+					has_reform = maintain_religious_head_reform
+					adm_power = 200
+					is_year = 1500
+				}
+				AND = {
+					has_reform = hereditary_religious_leadership_reform
+					adm_power = 200
+					is_year = 1500
+				}
+				AND = {
+					has_reform = broaden_executive_powers_reform
+					adm_power = 200
+					is_year = 1500
 				}
 			}
 		}
@@ -240,6 +277,15 @@ country_decisions = {
 				}
 			}
 			add_government_reform = feudal_theocracy
+			}
+			if = {
+				limit = { OR = {
+					has_reform = maintain_religious_head_reform
+					has_reform = hereditary_religious_leadership_reform
+					has_reform = broaden_executive_powers_reform
+				}
+			}
+			adm_power_cost = 200
 			}
 			set_country_flag = used_government_switch_monarchy
 
