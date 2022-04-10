@@ -19,6 +19,21 @@ country_decisions = {
 					government = tribal
 					is_year = 1500
 				}
+				AND = {
+					has_reform = parliamentary_reform
+					adm_power = 200
+					is_year = 1500
+				}
+				AND = {
+					has_reform = states_general_reform
+					adm_power = 200
+					is_year = 1500
+				}
+				AND = {
+					has_reform = theocratic_democracy_reform
+					adm_power = 200
+					is_year = 1500
+				}
 			}
 		}
 		effect = {
@@ -68,6 +83,15 @@ country_decisions = {
 			if = {
 				limit = { has_reform = prussian_monarchy }
 				add_government_reform = prussian_republic
+			}
+
+			if = {
+				limit = { OR = {
+					has_reform = parliamentary_reform
+					has_reform = states_general_reform
+				}
+			}
+			adm_power_cost = 200
 			}
 			set_country_flag = used_government_switch_republic
 		}
