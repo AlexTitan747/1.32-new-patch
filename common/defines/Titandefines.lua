@@ -34,7 +34,8 @@ NDefines.NCountry.PS_REPLACE_RIVAL = 0
 NDefines.NCountry.PS_HARSH_TREATMENT_REDUCE = 50
 NDefines.NCountry.PS_ADD_ACCEPTED_CULTURE = 80
 NDefines.NCountry.BREAK_ALLIANCE_REQUIRED_OPINION = -200
-NDefines.NCountry.PS_NAVAL_BARRAGE = 25
+NDefines.NCountry.PS_ARTILLERY_BARRAGE = 40
+NDefines.NCountry.PS_NAVAL_BARRAGE = 20
 NDefines.NCountry.NOMAD_DEVELOPMENT_SCALE = 1000
 
 NDefines.NEconomy.AUTONOMY_AT_DIPLO_ANNEX = 40
@@ -66,6 +67,7 @@ NDefines.NMilitary.MERCENARY_COMPANY_MANPOWER_PER_REGIMENT = 2.0	-- Manpower res
 NDefines.NMilitary.MERCENARY_COMPANY_MANPOWER_RECOVERY = 60				-- How many months to recover mercenary manpower fully
 NDefines.NMilitary.MERCENARY_COMPANY_HIRED_MANPOWER_RECOVERY_MOD = 2.0	-- How much to modify the length for manpower recovery if they are hired
 NDefines.NMilitary.MERCENARY_COMPANY_BUILDING_TIME = 0			-- Multiply province distance with this
+NDefines.NMilitary.GARRISON_SIZE = 2000
 
 NDefines.NReligion.KARMA_RESTORE_ON_RULER_DEATH = 50
 
