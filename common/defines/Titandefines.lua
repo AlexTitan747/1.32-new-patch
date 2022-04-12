@@ -67,7 +67,7 @@ NDefines.NMilitary.MERCENARY_COMPANY_MANPOWER_PER_REGIMENT = 2.0	-- Manpower res
 NDefines.NMilitary.MERCENARY_COMPANY_MANPOWER_RECOVERY = 60				-- How many months to recover mercenary manpower fully
 NDefines.NMilitary.MERCENARY_COMPANY_HIRED_MANPOWER_RECOVERY_MOD = 2.0	-- How much to modify the length for manpower recovery if they are hired
 NDefines.NMilitary.MERCENARY_COMPANY_BUILDING_TIME = 0			-- Multiply province distance with this
-NDefines.NMilitary.GARRISON_SIZE = 2000
+NDefines.NMilitary.GARRISON_SIZE = 1000
 
 NDefines.NReligion.KARMA_RESTORE_ON_RULER_DEATH = 50
 
