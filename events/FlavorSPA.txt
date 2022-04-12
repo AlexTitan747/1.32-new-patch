@@ -18,64 +18,7 @@ country_event = {
 	
 	
 	trigger = {
-		NOT = { exists = SPA }
-		OR = {
-			AND = {
-				tag = CAS
-				NOT = { war_with = ARA }
-				is_subject = no
-				ARA = {
-					exists = yes
-					ai = yes
-					was_player = no
-					is_subject = no
-					is_neighbor_of = ROOT
-					NOT = { is_in_war = { attacker_leader = ARA } }
-					NOT = { is_in_war = { defender_leader = ARA } }
-				}
-				num_of_cities = 25
-			}
-			AND = {
-				tag = ARA
-				NOT = { war_with = CAS }
-				is_subject = no
-				ai = no
-				CAS = {
-					exists = yes
-					ai = yes
-					was_player = no
-					is_subject = no
-					is_neighbor_of = ROOT
-					NOT = { is_in_war = { attacker_leader = CAS } }
-					NOT = { is_in_war = { defender_leader = CAS } }
-				}
-				num_of_cities = 16
-			}
-			is_year = 1480
-		}
-		is_year = 1450
-		NOT = { is_year = 1530 }
-		is_subject = no
-		num_of_cities = 10
-		OR = {
-			AND = {
-				CAS = { is_female = yes }
-				ARA = { is_female = no }
-			}
-			AND = {
-				CAS = { is_female = no }
-				ARA = { is_female = yes }
-			}
-			ARA = {
-				ai = yes
-				has_regency = yes
-			}
-			CAS = {
-				ai = yes
-				has_regency = yes
-			}
-			is_year = 1480
-		}
+		exists = HIN
 	}
 
 	mean_time_to_happen = {
