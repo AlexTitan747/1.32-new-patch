@@ -1,0 +1,39 @@
+tm_aquitaine_slot_1 = {
+	slot = 1
+	generic = no
+	ai = no
+	potential = {
+		tag = MJO
+		NOT = { map_setup = map_setup_random }
+		NOT = { has_dlc = "Emperor" }
+	}
+	has_country_shield = yes
+
+	tm_AQI_prepare_conquest = {
+		icon = mission_conquer_50_development
+		required_missions = { }
+		position = 1
+
+		provinces_to_highlight = {
+			area = languedoc_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			languedoc_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			brittany_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+}
