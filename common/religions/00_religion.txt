@@ -2206,6 +2206,39 @@ dharmic = {
 			}
 		}
 	}
+
+	jainism = {
+		allow_female_defenders_of_the_faith = yes
+		declare_war_in_regency = yes
+		color = { 219 192 39 }
+		icon = 8
+		allowed_conversion = {
+			sikhism
+			hinduism
+		}
+		country = {
+			global_trade_goods_size_modifier = 0.1
+			governing_capacity_modifier = 0.1
+		}
+		country_as_secondary = {
+			global_trade_goods_size_modifier = 0.05
+			global_unrest = -1
+		}
+		
+		
+		
+		on_convert = {
+			change_religion = jainism
+			add_prestige = -100
+			
+			add_country_modifier = {
+				name = "conversion_zeal"
+				duration = 3650
+			}
+		}
+		
+		heretic = { BHAKTI }
+	}
 	
 	harmonized_modifier = harmonized_dharmic
 	
