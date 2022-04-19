@@ -42,12 +42,62 @@ tm_aquitaine_slot_1 = {
 			}
 		}
 		effect = {
+			add_manpower = 5
+			add_prestige = 15
+		}
+	}
+	tm_AQI_retake_labourd = {
+		icon = mission_ne_palisades
+		required_missions = { tm_AQI_take_toulouse }
+		provinces_to_highlight = {
+			province_id = 174
+			province_id = 174
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			owns_core_province = 174
+			
+		}
+		effect = {
 			brittany_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
+			}
+			173 = {
+			add_province_modifier = {
+				name = "prepare_against_iberia"
+				duration = 7300
+				}
+			}
+		}
+	}
+	tm_AQI_lockdown_bordeaux_trade = {
+		icon = mission_trade_company_region_abroad
+		required_missions = { tm_AQI_retake_labourd }
+		provinces_to_highlight = {
+			area = brittany_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			brittany_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			bordeaux_area = {
+                add_base_production = 1
+            }
+			174 = {
+				add_base_production = 1
+				add_base_manpower = 1
 			}
 		}
 	}
@@ -83,7 +133,7 @@ tm_aquitaine_slot_5 = {
 		}
 		effect = {
 			174 = {
-				fort_level = 2
+				add_building = fort_15th
 				owned_by = ROOT
 			}
 		}
