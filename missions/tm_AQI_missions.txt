@@ -138,8 +138,8 @@ tm_aquitaine_slot_5 = {
 			}
 		}
 	}
-	tm_AQI_colonial_asparations = {
-		icon = mission_early_game_buildings
+	tm_AQI_colonial_aspirations = {
+		icon = mission_establish_high_seas_navy
 		required_missions = { tm_AQI_bordeaux_investment }
 
 		provinces_to_highlight = {
@@ -151,9 +151,57 @@ tm_aquitaine_slot_5 = {
 			}
 		}
 		effect = {
-			174 = {
-				add_building = fort_15th
-				owned_by = ROOT
+			add_country_modifier = {
+				name = "aquitaine_colonial_ambition"
+				duration = 18250
+			}
+			define_explorer = {
+				name = "Jacques Cartier"
+				shock = 2
+				fire = 2
+				manuever = 5
+			}
+		}
+	}
+	tm_AQI_colonial_focus = {
+		icon = mission_colonial
+		required_missions = { tm_AQI_colonial_aspirations }
+
+		provinces_to_highlight = {
+			OR = {
+				colonial_region = colonial_canada
+				colonial_region = colonial_louisiana
+				colonial_region = colonial_the_carribean
+				colonial_region = colonial_eastern_america
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+				OR = {
+					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+						value = 5
+						colonial_region = colonial_canada
+					}
+					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+						value = 5
+						colonial_region = colonial_louisiana
+					}
+					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+						value = 5
+						colonial_region = colonial_the_carribean
+					}
+					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+						value = 5
+						colonial_region = colonial_eastern_america
+					}
+				}
+			}
+		effect = {
+			add_country_modifier = {
+				name = "aquitaine_colonial_focus"
+				duration = -1
 			}
 		}
 	}
