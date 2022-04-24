@@ -1,15 +1,59 @@
 country_decisions = {
 
-	chile_nation = {
+	patagonia_nation = {
 		major = yes
 		potential = {
-			exists = HIN
+			NOT = { has_country_flag = changed_from_colonial_nation }
+			is_nomad = no
+			was_never_end_game_tag_trigger = yes
+			is_random_new_world = no
+			NOT = { tag = HLR }
+			NOT = { tag = PAP }
+			OR = {
+				is_former_colonial_nation = yes
+				is_colonial_nation = yes
+				AND = {
+					NOT = {
+						OR = {
+							technology_group = north_american
+							technology_group = mesoamerican
+							technology_group = andean
+							technology_group = high_american
+							technology_group = south_american
+						}
+					}
+					capital_scope = {
+						OR = {
+							area = bahia_blanca_area
+							area = patagonia_area
+							area = patagonian_andes
+							area = southern_chile_area
+							area = central_chile_area
+							area = nehuenken_area	
+						}
+						is_core = ROOT
+					}
+				}
+			}
+			colonial_la_plata = {
+				owned_by = ROOT
+			}
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 3	
+				}
+			}
 		}
 		provinces_to_highlight = {
 			OR = {
-				area = central_chile_area
+				area = bahia_blanca_area
+				area = patagonia_area
+				area = patagonian_andes
 				area = southern_chile_area
-				area = northern_chile_area
+				area = central_chile_area
+				area = nehuenken_area	
 			}
 			OR = {
 				NOT = { owned_by = ROOT }
@@ -17,7 +61,22 @@ country_decisions = {
 			}
 		}
 		allow = {
-			exists = HIN
+			is_at_war = no
+			capital_scope = {
+				colonial_region = colonial_la_plata
+				is_core = ROOT
+			}
+			2868 = {
+				owned_by = ROOT
+				is_core = root
+				is_city = yes
+			}
+			num_of_owned_provinces_with = {
+				value = 10
+				colonial_region = colonial_la_plata
+				is_city = yes
+			}
+			NOT = { exists = CHL }
 		}
 		effect = {
 			hidden_effect = {
@@ -30,6 +89,7 @@ country_decisions = {
 				}
 			}
 			change_tag = CHL
+			set_capital = 2868
 			if = {
 				limit = {
 					NOT = { is_former_colonial_nation = yes }
