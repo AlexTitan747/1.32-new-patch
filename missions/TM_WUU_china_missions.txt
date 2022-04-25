@@ -1,0 +1,547 @@
+tm_wuu_slot_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = WUU
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	tm_WUU_stabilisation = {
+		icon = mission_asian_city
+		required_missions = {  }
+		
+		trigger = {
+			stability = 2
+			
+		}
+		effect = {
+			add_prestige = 15
+			add_country_modifier = {
+				name = "wu_stabilisation"
+				duration = 3650
+			}
+			red_river_delta_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_WUU_move_on_vietnam = {
+		icon = mission_chinese_general_riding
+		required_missions = { tm_WUU_stabilisation }
+		
+		provinces_to_highlight = {
+			area = red_river_delta_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			red_river_delta_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			vietnam_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			champa_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			tay_nguyen_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_WUU_south_east_asia_invasion = {
+		icon = mission_impaled_soldies
+		required_missions = { tm_WUU_move_on_vietnam }
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = vietnam_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			AND = {
+					area = champa_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			AND = {
+					area = tay_nguyen_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			vietnam_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			champa_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			tay_nguyen_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "wu_infantry_experience"
+				duration = 3650
+			}
+			angkor_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			cambodia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			mekong_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_WUU_remove_khmer = {
+		icon = mission_asian_cannon
+		required_missions = { tm_WUU_south_east_asia_invasion }
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = angkor_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			AND = {
+					area = cambodia_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			AND = {
+					area = mekong_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			angkor_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			cambodia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			mekong_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			600 = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			4831 = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = "wu_siamese_trade_influence"
+				duration = 3650
+			}
+		}
+	}
+	tm_WUU_major_siamese_cities = {
+		icon = mission_central_asian_city
+		required_missions = { tm_WUU_remove_khmer }
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					province_id = 600
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			AND = {
+					province_id = 4831
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			owns_core_province = 600
+			owns_core_province = 4831
+		}
+		effect = {
+			lower_burma_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = "wu_siamese_infrastructure"
+				duration = -1
+			}
+		}
+	}
+	tm_WUU_invade_lower_burma = {
+		icon = mission_central_asian_city
+		required_missions = { tm_WUU_major_siamese_cities }
+		
+		provinces_to_highlight = {
+				area = lower_burma_area
+				NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			lower_burma_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			burma_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+}
+
+tm_wuu_slot_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = WUU
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	tm_WUU_naval_influence = {
+		icon = mission_naval_dominance
+		required_missions = {  }
+		position = 2
+		
+		trigger = {
+			shipyard = 3
+		}
+		effect = {
+			668 = {
+			add_unit_construction = {
+				amount = 2
+				type = heavy_ship
+				speed = 0.5
+				cost = 0
+				}
+			}
+			667 = {
+				add_unit_construction = {
+					amount = 2
+					type = heavy_ship
+					speed = 0.5
+					cost = 0
+				}
+			}
+			if = {
+				limit = {
+					2154 = {
+						is_empty = yes
+					}
+					2155 = {
+						is_empty = yes
+					}
+					738 = {
+						is_empty = yes
+					}
+				}
+				set_country_flag = wuu_taiwan_expansion
+				country_event = { id = chinawuu.1 }
+			}
+		}
+	}
+	tm_WUU_prepare_a_chinese_navy = {
+		icon = mission_junk_boat
+		required_missions = { tm_WUU_naval_influence }
+		
+		trigger = {
+			num_of_heavy_ship = 4
+			num_of_transport = 10
+		}
+		effect = {
+			add_country_modifier = {
+				name = "wu_new_settlements"
+				duration = 7300
+			}
+		}
+	}
+	tm_WUU_a_philippine_presence = {
+		icon = mission_mnd_dai_imperial_citadel
+		required_missions = { tm_WUU_prepare_a_chinese_navy }
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					province_id = 656
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			AND = {
+					area = luzon_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			owns_core_province = 656
+			num_of_owned_provinces_with = {
+				value = 3
+				area = luzon_area
+				is_core = root
+				}
+		}
+		effect = {
+			southern_luzon_area = {
+				limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			visayas_area = {
+				limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			west_mindanao_area = {
+				limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			mindanao_area = {
+				limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			palawan_area = {
+				limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_WUU_lockdown_the_philippines = {
+		icon = mission_mnd_dai_control_the_army
+		required_missions = { tm_WUU_a_philippine_presence }
+		
+		provinces_to_highlight = {
+				OR = {
+					AND = {
+						area = visayas_area
+						NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+						}
+					}
+				AND = {
+					area = west_mindanao_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+						}
+					}
+				}
+			}
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 4
+				area = visayas_area
+				is_core = root
+				}
+				num_of_owned_provinces_with = {
+					value = 2
+					area = west_mindanao_area
+					is_core = root
+					}
+			}
+		effect = {
+			sabah_area = {
+				limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kutai_area = {
+				limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_WUU_brunei_foothold = {
+		icon = mission_mnd_maj_rein_in_brunei
+		required_missions = { tm_WUU_lockdown_the_philippines }
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = sabah_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			AND = {
+				area = kutai_area
+				NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			sabah_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			kutai_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			indonesia_region = {
+				limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = "wu_bruneian_military_tactics"
+				duration = -1
+			}
+		}
+	}
+}
+tm_wuu_slot_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = WUU
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	tm_WUU_control_spice_islands = {
+		icon = mission_market_place_with_asian_traders
+		required_missions = { tm_WUU_lockdown_the_philippines }
+		position = 6
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					province_id = 649
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			AND = {
+					area = makassar_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			owns_core_province = 649
+			makassar_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			moluccas_region = {
+				limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = "wu_philippine_trading"
+				duration = -1
+			}
+		}
+	}
+}

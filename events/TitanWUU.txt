@@ -1,0 +1,56 @@
+namespace = chinawuu
+#these are the event that change you government type and form 
+
+#every time you reach a dev point you get a choice between a republic, theocracy or monarchy
+#it gives you a specialised reform based on what you choose
+
+#duchy rank
+country_event = {
+	id = chinawuu.1
+	title = "chinawuu.title1"
+	desc = "chinawuu.desc1"
+	picture = EXPLORERS_eventPicture
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = WUU
+		2154 = {
+			is_empty = yes
+		}
+		2155 = {
+			is_empty = yes
+		}
+		738 = {
+			is_empty = yes
+		}
+		has_country_flag = wuu_taiwan_expansion
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+option = {
+		name = "chinawuu.taiwan1"
+		ai_chance = { factor = 1 }
+		2154 = {
+			add_core = WUU
+			cede_province = WUU
+		}
+		2155 = {
+			add_core = WUU
+			cede_province = WUU
+		}
+		738 = {
+			add_core = WUU
+			cede_province = WUU
+		}
+		hidden_effect = {
+		set_country_flag = chinawuu.tainwan
+		}
+		every_country = {
+			limit = { has_country_flag = chinawuu.tainwan }
+		}
+	}
+}
