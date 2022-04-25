@@ -295,13 +295,19 @@ tm_wuu_slot_1 = {
 			position = 6
 		
 			provinces_to_highlight = {
-					area = north_tenasserim_area
-					NOT = {
-					country_or_non_sovereign_subject_holds = ROOT
-				}
-				area = tenasserim_area
-					NOT = {
-					country_or_non_sovereign_subject_holds = ROOT
+				OR = {
+					AND = {
+						area = north_tenasserim_area
+						NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+						}
+					}
+				AND = {
+						area = tenasserim_area
+						NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+						}
+					}
 				}
 			}
 		trigger = {
@@ -350,21 +356,31 @@ tm_wuu_slot_1 = {
 		required_missions = { tm_WUU_enter_into_malaya }
 		
 		provinces_to_highlight = {
-				area = north_malaya_area
-				NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-				area = malaya_area
-				NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-				area = malacca_area
-				NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-				area = johor_area
-				NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
+			OR = {
+				AND = {
+					area = north_malaya_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = malaya_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = malacca_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = johor_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
 			}
 		}
 		trigger = {
