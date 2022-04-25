@@ -876,24 +876,20 @@ veche_republic = {
 	}
 	modifiers = {
 		merchants = 1
-		trade_goods_size_modifier = 0.05
+		global_trade_goods_size_modifier = 0.05
 		land_morale = 0.05
 		governing_capacity = 100
 		max_absolutism = -50
 	}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 40
+	duration = 5
 	conditional = {
-		allow = {
-			has_dlc = "Third Rome"
-			NOT = { has_dlc = "Mare Nostrum" }
-			NOT = { has_dlc = "Res Publica" }
-		}
+	allow = { has_dlc = "Third Rome" }
 		government_abilities = {
 			russian_mechanic
 		}
 	}
-	duration = 5
 }
 
 russian_republic = {
@@ -925,14 +921,11 @@ russian_republic = {
 	valid_for_nation_designer = yes
 	nation_designer_cost = 40
 	conditional = {
-		allow = {
-			has_dlc = "Third Rome"
-			NOT = { has_dlc = "Mare Nostrum" }
-			NOT = { has_dlc = "Res Publica" }
-		}
+		allow = { has_dlc = "Third Rome" }
 		government_abilities = {
 			russian_mechanic
 		}
+		claim_states = yes
 	}
 	duration = 5
 }
