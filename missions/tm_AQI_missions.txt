@@ -1060,4 +1060,48 @@ tm_aquitaine_slot_5 = {
 				duration = 3650
 			}
 		}
+	}
+	tm_AQI_capture_toledo_fortress = {
+		icon = mission_medieval_siege
+		required_missions = { tm_AQI_valencia_and_zaragoza }
+		position = 8
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+			province_id = 219
+				}
+				AND = {
+					province_id = 2754
+				}
+			}
+		}
+		trigger = {
+			owns_core_province = 219
+			owns_core_province = 2754
+		}
+		effect = {
+			lower_andalucia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			upper_andalucia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_treasury = 500
+			2754 = {
+				add_province_modifier = {
+					name = "work_the_gold_mines"
+					duration = 3650
+				}
+			}
+		}
+	}
 }
