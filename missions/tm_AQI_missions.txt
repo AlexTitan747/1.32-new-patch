@@ -50,9 +50,13 @@ tm_aquitaine_slot_1 = {
 		icon = mission_ne_palisades
 		required_missions = { tm_AQI_take_toulouse }
 		provinces_to_highlight = {
-			province_id = 174
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
+			OR = {
+				AND = {
+				province_id = 174
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
 			}
 		}
 		trigger = {
@@ -76,7 +80,7 @@ tm_aquitaine_slot_1 = {
 		}
 	}
 	tm_AQI_lockdown_bordeaux_trade = {
-		icon = mission_trade_company_region_abroad
+		icon = brest_dockyards
 		required_missions = { tm_AQI_retake_labourd }
 		provinces_to_highlight = {
 			area = brittany_area
@@ -91,12 +95,713 @@ tm_aquitaine_slot_1 = {
 			}
 		}
 		effect = {
+			add_treasury = 300
 			bordeaux_area = {
                 add_base_production = 1
             }
 			174 = {
 				add_base_production = 1
 				add_base_manpower = 1
+			}
+			montpellier_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_AQI_reign_in_montpellier = {
+		icon = les_invalides
+		required_missions = { tm_AQI_lockdown_bordeaux_trade }
+		provinces_to_highlight = {
+			area = montpellier_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			montpellier_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			catalonia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			provence_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			normandy_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_AQI_take_central_france = {
+		icon = mission_coa_shield_france
+		required_missions = { tm_AQI_reign_in_montpellier }
+		provinces_to_highlight = {
+			OR = {
+			AND = {
+				area = orleans_area
+				NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+				}
+			}
+			AND = {
+				area = massif_central_area
+				NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+				}
+			}
+			AND = {
+				area = loire_area
+				NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+				}
+			}
+		}
+	}
+		trigger = {
+			orleans_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			massif_central_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			loire_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_mil_power = 150
+			add_adm_power = 150
+			add_prestige = 15
+			ile_de_france_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+}
+
+tm_aquitaine_slot_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = AQI
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	tm_AQI_plan_for_the_channel = {
+		icon = english_alliance
+		required_missions = { tm_AQI_reign_in_montpellier }
+		position = 6
+
+		provinces_to_highlight = {
+			area = normandy_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			normandy_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			NOT = { mission_completed = tm_AQI_plan_for_italy }
+			NOT = { mission_completed = tm_AQI_plan_for_aragon }
+		}
+		effect = {
+			add_adm_power = 100
+			picardy_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			flanders_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+}
+
+tm_aquitaine_slot_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = AQI
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	tm_AQI_plan_for_italy = {
+		icon = spagna_tarraconense
+		required_missions = { tm_AQI_reign_in_montpellier }
+		position = 6
+
+		provinces_to_highlight = {
+			area = provence_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			provence_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			NOT = { mission_completed = tm_AQI_plan_for_the_channel }
+			NOT = { mission_completed = tm_AQI_plan_for_aragon }
+		}
+		effect = {
+			add_adm_power = 100
+			piedmont_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			liguria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_AQI_reign_in_milan = {
+		icon = mission_milan_flag
+		required_missions = { tm_AQI_plan_for_italy }
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = lombardy_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = po_valley_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			lombardy_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			po_valley_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			tuscany_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_AQI_secure_the_ligurian_sea = {
+		icon = mission_italy_map
+		required_missions = { tm_AQI_reign_in_milan }
+
+		provinces_to_highlight = {
+			area = tuscany_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			tuscany_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			corsica_sardinia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			venetia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			lazio_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = "aquitaine_italian_trading_techniques"
+				duration = 7300
+			}
+		}
+	}
+	tm_AQI_a_judge_of_faith = {
+		icon = mission_mf_papal_states_coa
+		required_missions = { tm_AQI_secure_the_ligurian_sea }
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = lazio_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = central_italy_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 3
+				area = lazio_area
+				is_core = root
+				}
+		}
+		effect = {
+			apulia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			naples_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			calabria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = "dealing_with_the_pope"
+				duration = 7300
+			}
+			add_country_modifier = {
+				name = "proven_faith"
+				duration = -1
+			}
+		}
+	}
+	tm_AQI_land_of_the_napolese = {
+		icon = mission_mf_two_sicilies_coa
+		required_missions = { tm_AQI_a_judge_of_faith }
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = apulia_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = naples_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = calabria_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			apulia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			naples_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			calabria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			sicily_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			western_sicily_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+}
+
+tm_aquitaine_slot_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = AQI
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	tm_AQI_plan_for_aragon = {
+		icon = mission_aragon_flag2
+		required_missions = { tm_AQI_reign_in_montpellier }
+		position = 6
+
+		provinces_to_highlight = {
+			area = catalonia_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			catalonia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			NOT = { mission_completed = tm_AQI_plan_for_italy }
+			NOT = { mission_completed = tm_AQI_plan_for_the_channel }
+		}
+		effect = {
+			add_adm_power = 150
+			add_treasury = 300
+			add_prestige = 25
+			aragon_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			valencia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_AQI_valencia_and_zaragoza = {
+		icon = mission_aragon_flag
+		required_missions = { tm_AQI_plan_for_aragon }
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = aragon_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+			}
+				AND = {
+					area = valencia_area
+					NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			aragon_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			valencia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			basque_country = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			baleares_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = "aragonese_discipline"
+				duration = 7300
+			}
+			add_country_modifier = {
+				name = "aragonese_taxation_methods"
+				duration = -1
+			}
+		}
+	}
+	tm_AQI_the_navarre = {
+		icon = mission_subjugate_navarra
+		required_missions = { tm_AQI_valencia_and_zaragoza }
+
+		provinces_to_highlight = {
+					area = basque_country
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+				}	
+		}
+		trigger = {
+			basque_country = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			basque_country = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_treasury = 200
+			2989 = {
+				add_building = fort_15th
+				owned_by = ROOT
+			}
+		}
+	}
+
+	tm_AQI_deal_with_the_venetians = {
+		icon = mission_venetian_flag
+		required_missions = { tm_AQI_secure_the_ligurian_sea }
+		position = 9
+
+		provinces_to_highlight = {
+			area = venetia_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			venetia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "aquitaine_venetian_adriatic_trading"
+				duration = -1
+			}
+		}
+	}
+	tm_AQI_ruler_of_mainland_italy = {
+		icon = mission_mf_italy_coa
+		required_missions = { tm_AQI_deal_with_the_venetians }
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+			area = venetia_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = piedmont_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = liguria_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = lombardy_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = po_valley_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = emilia_romagna_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = tuscany_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = lazio_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = central_italy_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = apulia_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = naples_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = calabria_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+		}
+	}
+		trigger = {
+			venetia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			piedmont_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			liguria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			lombardy_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			po_valley_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			emilia_romagna_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			central_italy_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			num_of_owned_provinces_with = {
+				value = 3
+				area = lazio_area
+				is_core = root
+				}
+			tuscany_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			apulia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			naples_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			calabria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "ruler_of_italy"
+				duration = -1
+			}
+			add_country_modifier = {
+				name = "veterans_of_the_italian_wars"
+				duration = 3650
 			}
 		}
 	}
@@ -204,4 +909,155 @@ tm_aquitaine_slot_5 = {
 			}
 		}
 	}
+	tm_AQI_rule_over_spain = {
+		icon = mission_spain_heraldry
+		required_missions = { tm_AQI_plan_for_aragon }
+		position = 7
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+			area = catalonia_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = aragon_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = valencia_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = baleares_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = basque_country
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = asturias_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = lower_andalucia_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = upper_andalucia_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = castille_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = toledo_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = galicia_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = leon_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+			AND = {
+			area = extremadura_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+		}	
+		}
+		trigger = {
+			catalonia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			aragon_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			valencia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			baleares_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			basque_country = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			asturias_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			lower_andalucia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			upper_andalucia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			extremadura_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			castille_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			toledo_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			galicia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			leon_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "ruler_of_spain"
+				duration = -1
+			}
+			add_country_modifier = {
+				name = "veterans_of_the_iberian_wars"
+				duration = 3650
+			}
+		}
 }

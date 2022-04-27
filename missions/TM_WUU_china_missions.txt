@@ -232,6 +232,20 @@ tm_wuu_slot_1 = {
 				}
 				add_permanent_claim = ROOT
 			}
+			north_tenasserim_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			tenasserim_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 			add_country_modifier = {
 				name = "wu_siamese_infrastructure"
 				duration = -1
@@ -261,6 +275,138 @@ tm_wuu_slot_1 = {
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
+			}
+		}
+	}
+}
+	tm_wuu_slot_2 = {
+		slot = 2
+		generic = no
+		ai = yes
+		potential = {
+			tag = WUU
+			NOT = { map_setup = map_setup_random }
+		}
+		has_country_shield = yes
+
+		tm_WUU_enter_into_malaya = {
+			icon = mission_mnd_siam_royal_duel
+			required_missions = { tm_WUU_major_siamese_cities }
+			position = 6
+		
+			provinces_to_highlight = {
+				OR = {
+					AND = {
+						area = north_tenasserim_area
+						NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+						}
+					}
+				AND = {
+						area = tenasserim_area
+						NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+						}
+					}
+				}
+			}
+		trigger = {
+			north_tenasserim_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			tenasserim_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			}
+		effect = {
+			north_malaya_area = {
+				limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			malaya_area = {
+				limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			malacca_area = {
+				limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			johor_area = {
+				limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_WUU_conquer_malacca = {
+		icon = mission_mnd_dai_prevent_division
+		required_missions = { tm_WUU_enter_into_malaya }
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = north_malaya_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = malaya_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = malacca_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = johor_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			north_malaya_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			malaya_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			malacca_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			johor_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_adm_power = 200
+			add_prestige = 25
+			add_country_modifier = {
+				name = "wu_malaccan_goods"
+				duration = -1
 			}
 		}
 	}
