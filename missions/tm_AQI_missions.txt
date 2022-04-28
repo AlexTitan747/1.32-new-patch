@@ -52,7 +52,7 @@ tm_aquitaine_slot_1 = {
 		provinces_to_highlight = {
 			OR = {
 				AND = {
-				province_id = 174
+				province_id = 173
 					NOT = {
 					country_or_non_sovereign_subject_holds = ROOT
 					}
@@ -60,7 +60,7 @@ tm_aquitaine_slot_1 = {
 			}
 		}
 		trigger = {
-			owns_core_province = 174
+			owns_core_province = 173
 			
 		}
 		effect = {
@@ -201,6 +201,261 @@ tm_aquitaine_slot_1 = {
 				}
 				add_permanent_claim = ROOT
 			}
+			west_burgundy_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			bourgogne_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			
+		}
+	}
+	tm_AQI_throne_of_france = {
+		icon = mission_crowned_by_clergy
+		required_missions = { tm_AQI_take_central_france }
+		provinces_to_highlight = {
+			area = ile_de_france_area
+				NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+				}
+			}
+		trigger = {
+			ile_de_france_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			champagne_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			reims_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = "paris_throne"
+				duration = 7300
+			}
+		}
+	}
+	tm_AQI_secure_the_french_crown = {
+		icon = mission_french_flag
+		required_missions = { tm_AQI_throne_of_france }
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = champagne_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = reims_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			champagne_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			reims_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_treasury = 1000
+		}
+	}
+
+	tm_AQI_ruler_of_england = {
+		icon = mission_mf_england_coa
+		required_missions = { tm_AQI_invade_the_english }
+		position = 9
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = normandy_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = picardy_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = home_counties_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = wessex_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = wales_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = west_midlands_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = east_midlands_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = east_anglia_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = yorkshire_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = scottish_marches_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			normandy_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			picardy_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			home_counties_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			wessex_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			wales_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			west_midlands_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			east_midlands_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			east_anglia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			yorkshire_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			scottish_marches_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "ruler_of_england"
+				duration = -1
+			}
+			add_country_modifier = {
+				name = "veterans_of_the_english_wars"
+				duration = 3650
+			}
+		}
+	}
+	tm_AQI_mainland_channel_trade = {
+		icon = mission_rb_monopolize_the_channel
+		required_missions = { tm_AQI_move_inland }
+		position = 10
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = brabant_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = holland_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			brabant_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			holland_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			picardy_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			flanders_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 }
@@ -250,6 +505,224 @@ tm_aquitaine_slot_2 = {
 				}
 				add_permanent_claim = ROOT
 			}
+		}
+	}
+	tm_AQI_a_staple_port = {
+		icon = imperial_navy
+		required_missions = { tm_AQI_plan_for_the_channel }
+
+		provinces_to_highlight = {
+			province_id = 87
+		}
+		trigger = {
+			owns_core_province = 87
+		}
+		effect = {
+			brabant_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			holland_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			wessex_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			home_counties_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = "prepare_for_english_invasion"
+				duration = 7300
+			}
+			174 = {
+				add_unit_construction = {
+					amount = 3
+					type = heavy_ship
+					speed = 0.5
+					cost = 0
+					}
+				}
+			4111 = {
+				add_unit_construction = {
+					amount = 2
+					type = heavy_ship
+					speed = 0.5
+					cost = 0
+				}
+			}
+		}
+	}
+	tm_AQI_invade_the_english = {
+		icon = mission_map_london_britannia
+		required_missions = { tm_AQI_a_staple_port }
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = home_counties_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = wessex_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			brabant_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			holland_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "captured_tower_of_london"
+				duration = 7300
+			}
+			east_anglia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			east_midlands_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			west_midlands_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			wales_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_AQI_move_inland = {
+		icon = mission_march_on_england
+		required_missions = { tm_AQI_invade_the_english }
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = east_anglia_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = east_midlands_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = west_midlands_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			east_anglia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			east_midlands_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			west_midlands_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			yorkshire_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			scottish_marches_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_AQI_march_on_the_northerners = {
+		icon = mission_rb_conquer_the_highlands
+		required_missions = { tm_AQI_move_inland }
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = yorkshire_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = scottish_marches_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			yorkshire_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			scottish_marches_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_treasury = 300
+			add_adm_power = 100
 		}
 	}
 }
@@ -319,8 +792,21 @@ tm_aquitaine_slot_3 = {
 					country_or_non_sovereign_subject_holds = ROOT
 					}
 				}
+				AND = {
+					area = piedmont_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = liguria_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
 			}
 		}
+	
 		trigger = {
 			lombardy_area = {
 				type = all
@@ -330,9 +816,24 @@ tm_aquitaine_slot_3 = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
+			piedmont_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			liguria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		effect = {
 			tuscany_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			emilia_romagna_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -406,6 +907,10 @@ tm_aquitaine_slot_3 = {
 			}
 		}
 		trigger = {
+			central_italy_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 			num_of_owned_provinces_with = {
 				value = 3
 				area = lazio_area
@@ -857,13 +1362,34 @@ tm_aquitaine_slot_5 = {
 		effect = {
 			add_country_modifier = {
 				name = "aquitaine_colonial_ambition"
-				duration = 18250
+				duration = 10950
 			}
 			define_explorer = {
 				name = "Jacques Cartier"
 				shock = 2
 				fire = 2
 				manuever = 5
+			}
+			colonial_eastern_america = {
+				discover_country = ROOT
+			}
+			colonial_the_carribean = {
+				discover_country = ROOT
+			}
+			colonial_louisiana = {
+				discover_country = ROOT
+			}
+			north_atlantic_region = {
+				discover_country = ROOT
+			}
+			carribeans_region = {
+				discover_country = ROOT
+			}
+			american_east_coast_region = {
+				discover_country = ROOT
+			}
+			sargasso_sea_area = {
+				discover_country = ROOT
 			}
 		}
 	}
@@ -1101,6 +1627,114 @@ tm_aquitaine_slot_5 = {
 					name = "work_the_gold_mines"
 					duration = 3650
 				}
+			}
+		}
+	}
+	tm_AQI_the_late_moorish_land = {
+		icon = mission_camel_cataphracts_prt_sas
+		required_missions = { tm_AQI_capture_toledo_fortress }
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = lower_andalucia_area
+					NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = upper_andalucia_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			lower_andalucia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			upper_andalucia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			castille_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			leon_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = "moorish_naval_combat"
+				duration = 3650
+			}
+			
+		}
+	}
+	tm_AQI_remnants_of_a_kingdom = {
+		icon = mission_iberian_map
+		required_missions = { tm_AQI_the_late_moorish_land }
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = castille_area
+					NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = leon_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			castille_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			leon_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_adm_power = 150
+			add_mil_power = 150
+			asturias_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			galicia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			extremadura_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
 		}
 	}
