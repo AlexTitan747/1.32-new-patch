@@ -332,7 +332,7 @@ tm_MAM_slot_1 = {
 	}
 	mam_face_ottoman_empire = {
 		icon = mission_ottoman_army_1830s
-		required_missions = { tm_MAM_guard_the_desert_pass }
+		required_missions = { mam_subjugate_beyliks }
 		provinces_to_highlight = {
 			OR = {
 				area = hudavendigar_area
@@ -569,6 +569,34 @@ tm_MAM_slot_3 = {
 				}
 				add_permanent_claim = ROOT
 			}
+			red_sea_coast_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			tigray_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			aussa_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			ifat_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 	mam_yemeni_trade = {
@@ -613,13 +641,291 @@ tm_MAM_slot_3 = {
 			}
 		}
 		effect = {
+			mahra_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			dhofar_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			oman_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			mascat_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
 			add_country_modifier = {
 				name = "yemeni_trade_modifier"
 				duration = 7300
 			}
 		}
 	}
+	mam_invade_from_the_south = {
+		icon = mission_portuguese_oman
+		required_missions = { mam_yemeni_trade }
+
+		provinces_to_highlight = {
+			OR = {
+				area = mahra_area
+				area = dhofar_area
+				area = oman_area
+				area = mascat_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			mahra_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			dhofar_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			oman_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			mascat_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			kanara_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			malabar_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			madura_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			lanka_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			south_lanka_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
 }
+tm_MAM_slot_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = MAM
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	mam_gulf_of_aden = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { mam_holy_cities }
+		position = 7
+
+		provinces_to_highlight = {
+			OR = {
+				area = red_sea_coast_area
+				area = tigray_area
+				area = aussa_area
+				area = ifat_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			tihama_al_yemen_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			upper_yemen_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			yemen_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			asir_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			hadramut_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			2757 = {
+				add_permanent_claim = ROOT
+			}
+			2762 = {
+				add_permanent_claim = ROOT
+			}
+			ogaden_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			somaliland_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			majarteen_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			ajuuran_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			mogadishu_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	mam_ethiopian_gold_mines = {
+		icon = mission_zambezi_gold
+		required_missions = { mam_gulf_of_aden }
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 2757
+				province_id = 2762
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			2757 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			2762 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "pure_gold"
+				duration = 3650
+			}
+			2757 = {
+				add_province_modifier = {
+					name = "management_of_the_mines"
+					duration = 14600
+				}
+			}
+			2762 = {
+				add_province_modifier = {
+					name = "management_of_the_mines"
+					duration = 14600
+				}
+			}
+		}
+	}
+	mam_egyptian_horn = {
+		icon = mission_african_trade_post
+		required_missions = { mam_ethiopian_gold_mines }
+
+		provinces_to_highlight = {
+			OR = {
+				area = ogaden_area
+				area = somaliland_area
+				area = majarteen_area
+				area = ajuuran_area
+				area = mogadishu_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			ogaden_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			somaliland_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			majarteen_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			ajuuran_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			mogadishu_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "somali_mercenaries"
+				duration = 7300
+			}
+		}
+	}
+}
+
 tm_MAM_slot_5 = {
 	slot = 5
 	generic = no
