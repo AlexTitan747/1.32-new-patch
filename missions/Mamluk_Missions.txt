@@ -129,7 +129,6 @@ tm_MAM_slot_1 = {
 			}
 			364 = {
 				add_building = fort_15th
-				owned_by = ROOT
 			}
 		}
 	}
@@ -155,23 +154,16 @@ tm_MAM_slot_1 = {
 			}
 		}
 		trigger = {
-			palestine_area = {
+			syria_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			trans_jordan_area = {
+			aleppo_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		effect = {
-			syria_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
 			syrian_desert_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -199,9 +191,11 @@ tm_MAM_slot_1 = {
 		trigger = {
 			380 = {
 				has_building = fort_15th
+				owned_by = root
 			}
 			382 = {
 				has_building = fort_15th
+				owned_by = root
 			}
 		}
 		effect = {
@@ -230,18 +224,24 @@ tm_MAM_slot_1 = {
 			}
 		}
 		effect = {
-			syria_area = {
+			karaman_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			syrian_desert_area = {
+			dulkadir_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
+				add_permanent_claim = ROOT
+			}
+			327 = {
+				add_permanent_claim = ROOT
+			}
+			2302 = {
 				add_permanent_claim = ROOT
 			}
 			add_country_modifier = {
@@ -375,7 +375,7 @@ tm_MAM_slot_1 = {
 		effect = {
 			add_country_modifier = {
 				name = "silk_road_trade"
-				duration = 3650
+				duration = 7300
 			}
 		}
 	}
@@ -492,7 +492,7 @@ tm_MAM_slot_2 = {
 		effect = {
 			add_mil_power = 150
 			add_country_modifier = {
-				name = "experiance_from_the_tunisians"
+				name = "experience_from_the_tunisians"
 				duration = -1
 			}
 		}

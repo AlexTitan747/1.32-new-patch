@@ -442,19 +442,17 @@ tm_aquitaine_slot_1 = {
 			}
 		}
 		effect = {
-			picardy_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
+			add_country_modifier = {
+				name = "trading_in_the_channel"
+				duration = 7300
 			}
-			flanders_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
+			brittany_area = {
+				add_unit_construction = {
+					amount = 5
+					type = light_ship
+					speed = 0.5
+					cost = 0
 				}
-				add_permanent_claim = ROOT
 			}
 		}
 	}
@@ -589,11 +587,11 @@ tm_aquitaine_slot_2 = {
 			}
 		}
 		trigger = {
-			brabant_area = {
+			home_counties_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			holland_area = {
+			wessex_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
@@ -772,6 +770,20 @@ tm_aquitaine_slot_3 = {
 				}
 				add_permanent_claim = ROOT
 			}
+			po_valley_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			lombardy_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 	tm_AQI_reign_in_milan = {
@@ -874,6 +886,13 @@ tm_aquitaine_slot_3 = {
 				add_permanent_claim = ROOT
 			}
 			lazio_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			central_italy_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -1139,7 +1158,6 @@ tm_aquitaine_slot_4 = {
 			add_treasury = 200
 			2989 = {
 				add_building = fort_15th
-				owned_by = ROOT
 			}
 		}
 	}
@@ -1343,7 +1361,6 @@ tm_aquitaine_slot_5 = {
 		effect = {
 			174 = {
 				add_building = fort_15th
-				owned_by = ROOT
 			}
 		}
 	}
