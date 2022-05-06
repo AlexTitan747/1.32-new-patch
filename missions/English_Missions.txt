@@ -61,6 +61,13 @@ eng_british_conquest = {
 				}
 				add_permanent_claim = ROOT
 			}
+			normandy_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 			
 			4361 = {
 				add_permanent_claim = ROOT
@@ -280,51 +287,33 @@ eng_french_conquest = {
 	}
 	has_country_shield = yes
 	
-	eng_war_france = {
+	tm_eng_retake_normandy = {
 		icon = mission_conquer_50_development
 		required_missions = { }
 		position = 1
 		
-		trigger = {
-			if = {
-				limit = {
-					exists = FRA
-				}
-				OR = {
-					war_with = FRA
-					custom_trigger_tooltip = {
-						tooltip = eng_war_france.tooltip
-						has_country_flag = rb_gave_up_maine
-					}
-				}
+		provinces_to_highlight = {
+			area = normandy_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
 			}
-			else_if = {
-				limit = { 
-					NOT = { exists = FRA }
-				}
-				OR = {
-					183 = {
-						owner = {
-							war_with = ROOT
-						}
-					}
-					183 = {
-						owned_by = ROOT
-						is_core = ROOT
-					}
-				}
+		}
+		trigger = {
+			normandy_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		
 		effect = {
-			ile_de_france_area = {
+			picardy_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			champagne_area = {
+			flanders_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -334,148 +323,128 @@ eng_french_conquest = {
 		}
 	}
 	
-	eng_reclaim_arm_paris = {
+	tm_eng_secure_the_mainland = {
 		icon = mission_assemble_an_army
-		required_missions = { eng_war_france }
+		required_missions = { tm_eng_retake_normandy }
 		position = 3
 		
 		provinces_to_highlight = {
 			OR = {
 				AND = {
-					owned_by = FRA
-					is_capital = yes
+					area = picardy_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
 				}
 				AND = {
-					province_id = 183
-					NOT = { owned_by = FRA }
-					owner = {
-						NOT = { exists = FRA }
+					area = flanders_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
 					}
 				}
 			}
-			NOT = { controlled_by = ROOT }
 		}
-		
 		trigger = {
-			if = {
-				limit = {
-					exists = FRA
-				}
-				FRA = {
-					capital_scope = {
-						OR = {
-							controlled_by = ROOT
-							AND = {
-								controller = {
-									OR = {
-										is_subject_of = ROOT
-										alliance_with = ROOT
-										overlord = {
-											alliance_with = ROOT
-										}
-									}
-									custom_trigger_tooltip = {
-										tooltip = joint_war_with_root_vs_france
-										OR = {
-											is_in_war = {
-												attackers = root
-												attackers = this
-												defenders = FRA
-											}
-											is_in_war = {
-												defenders = root
-												defenders = this
-												attackers = FRA
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-				else = {
-					183 = {
-						owned_by = ROOT
-					}
-				}
+			picardy_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			flanders_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		
 		effect = {
-			if = {
+			holland_area = {
 				limit = {
-					FRA = {
-						is_subject = NO
-					}
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
 				}
-				add_casus_belli = {
-					target = FRA
-					type = cb_hundred_years_union
-				}
+				add_permanent_claim = ROOT
 			}
-			if = {
+			brabant_area = {
 				limit = {
-					has_dlc = "Rule Britannia"
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
 				}
-				brittany_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
+				add_permanent_claim = ROOT
 			}
+			north_brabant_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			frisia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			
 		}
 	}
 	
-	vassalize_france = {
+	tm_eng_remove_channel_rivals = {
 		icon = mission_monarch_in_throne_room
-		required_missions = { eng_reclaim_arm_paris }
+		required_missions = { tm_eng_secure_the_mainland }
 		position = 5
 		
 		provinces_to_highlight = {
 			OR = {
-				area = ile_de_france_area
-				province_id = 186
-				province_id = 4390
+				AND = {
+					area = holland_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = brabant_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = north_brabant_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = frisia_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
-			OR = {
-				FRA = { is_subject_of = ROOT }
-				AND = {
-					ile_de_france_area = {
-						type = all
-						country_or_non_sovereign_subject_holds = ROOT
-					}
-					186 = {
-						country_or_non_sovereign_subject_holds = ROOT
-					}
-					4390 = {
-						country_or_non_sovereign_subject_holds = ROOT
-					}
-				}
+			holland_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			brabant_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			north_brabant_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			frisia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		
 		effect = {
-			if = {
-				limit = {
-					has_heir = yes
-					has_ruler_flag = henry_vi_lancaster
-					NOT = { has_country_flag = rb_gave_up_maine }
-				}
-				change_adm = 1
-				change_dip = 1
-				change_mil = 1
-			}
-			add_prestige = 25
 			add_country_modifier = {
-				name = "eng_french_recovery"
-				duration = 5475
+				name = bur_channel_trading
+				duration = -1
 			}
 		}
 	}
