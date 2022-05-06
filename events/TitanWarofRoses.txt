@@ -1,0 +1,218 @@
+namespace = twarofroses
+
+#war of roses
+country_event = {
+	id = 	twarofroses.1
+	title = "twarofroses.1"
+	desc = "twarofroses.desc1"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+	tag = HLA
+	NOT = {
+		exists = HYK
+	}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	
+option = {		
+	name = "twarofroses.win.1"
+
+	set_country_flag = war_of_the_roses_was_had
+	set_country_flag = war_of_the_roses_ended
+	# Clear Flags
+	clr_country_flag = supports_house_of_lancaster
+	clr_country_flag = supports_house_of_york
+
+	# Clear Country Modifiers
+	remove_country_modifier = importing_food
+	remove_country_modifier = plundering_soldiers
+	remove_country_modifier = legitimacy_questioned
+	remove_country_modifier = low_fertility
+
+	change_tag = ENG
+	set_capital = 236
+	236 = {
+			move_capital_effect = yes
+			}
+	swap_non_generic_missions = yes
+	if = {
+		limit = {
+			NOT = { government_rank = 2 }
+		}
+		set_government_rank = 2
+	}
+	add_core = 4365
+	add_core = 4367
+	add_core = 4785
+	add_core = 4375
+	add_core = 247
+	add_core = 246
+	add_core = 245
+	add_core = 244
+	add_core = 243
+	add_core = 1861
+	add_core = 239
+	add_core = 240
+	add_core = 4376
+	add_core = 1860
+	add_core = 4372
+	add_core = 4370
+	add_core = 238
+	add_core = 237
+	add_core = 235
+	add_core = 4371
+	add_core = 4374
+	add_core = 4373
+	add_core = 4130
+	add_core = 233
+	add_core = 236
+	add_core = 234
+	add_dip_power = 150
+	remove_country_modifier = titan_war_of_roses
+	if = {
+		limit = { has_custom_ideas = no }
+		country_event = { id = ideagroups.1 } #Swap Ideas
+	}
+}
+}
+
+country_event = {
+	id = 	twarofroses.2
+	title = "twarofroses.2"
+	desc = "twarofroses.desc2"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+	tag = HYK
+	NOT = {
+		exists = HLA
+	}
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	
+option = {		
+	name = "twarofroses.win.2"
+
+	set_country_flag = war_of_the_roses_was_had
+	set_country_flag = war_of_the_roses_ended
+	# Clear Flags
+	clr_country_flag = supports_house_of_lancaster
+	clr_country_flag = supports_house_of_york
+
+	# Clear Country Modifiers
+	remove_country_modifier = importing_food
+	remove_country_modifier = plundering_soldiers
+	remove_country_modifier = legitimacy_questioned
+	remove_country_modifier = low_fertility
+
+	change_tag = ENG
+	set_capital = 236
+	236 = {
+			move_capital_effect = yes
+			}
+	swap_non_generic_missions = yes
+	if = {
+		limit = {
+			NOT = { government_rank = 2 }
+		}
+		set_government_rank = 2
+	}
+	add_core = 4365
+	add_core = 4367
+	add_core = 4785
+	add_core = 4375
+	add_core = 247
+	add_core = 246
+	add_core = 245
+	add_core = 244
+	add_core = 243
+	add_core = 1861
+	add_core = 239
+	add_core = 240
+	add_core = 4376
+	add_core = 1860
+	add_core = 4372
+	add_core = 4370
+	add_core = 238
+	add_core = 237
+	add_core = 235
+	add_core = 4371
+	add_core = 4374
+	add_core = 4373
+	add_core = 4130
+	add_core = 233
+	add_core = 236
+	add_core = 234
+	add_dip_power = 150
+	remove_country_modifier = titan_war_of_roses
+	if = {
+		limit = { has_custom_ideas = no }
+		country_event = { id = ideagroups.1 } #Swap Ideas
+	}
+}
+}
+
+#start event
+country_event = {
+	id = 	twarofroses.3
+	title = "twarofroses.3"
+	desc = "twarofroses.desc3"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+	tag = HYK
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	
+option = {		
+	name = "twarofroses.begin.1"
+
+	add_country_modifier = {
+		name = titan_war_of_roses
+		duration = -1
+	}
+}
+}
+
+#start event
+country_event = {
+	id = 	twarofroses.4
+	title = "twarofroses.4"
+	desc = "twarofroses.desc4"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+	tag = HLA
+	}
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	
+option = {		
+	name = "twarofroses.begin.2"
+
+	add_country_modifier = {
+		name = titan_war_of_roses
+		duration = -1
+	}
+}
+}
