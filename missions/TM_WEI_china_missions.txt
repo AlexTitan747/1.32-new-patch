@@ -1,0 +1,425 @@
+tm_wuu_slot_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = WEI
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	tm_WEI_prepare_war_machine = {
+		icon = mission_chinese_officials_in_line
+		required_missions = {  }
+		
+		trigger = {
+			army_size_percentage = 1
+			manpower_percentage = 0.5
+		}
+		effect = {
+			add_prestige = 15
+			add_country_modifier = {
+				name = "war_horses"
+				duration = 3650
+			}
+			western_korea_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			zhejiang_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			chahar_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			inner_mongolia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			pyongan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_WEI_invade_korea = {
+		icon = mission_chinese_officials_in_line
+		required_missions = { tm_WEI_prepare_war_machine }
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = pyongan_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			AND = {
+					area = western_korea_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			pyongan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			western_korea_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_treasury = 500
+			south_korea_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			eastern_korea_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			hamgyeong_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_WEI_secure_korean_borders = {
+		icon = mission_chinese_officials_in_line
+		required_missions = { tm_WEI_invade_korea }
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = south_korea_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = eastern_korea_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = hamgyeong_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			south_korea_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			eastern_korea_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			hamgyeong_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			hebei_area = {
+                add_base_production = 2
+				add_base_manpower = 2
+            }
+			furdan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			central_jilin_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			ilan_hala_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			sakhalin_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_WEI_northern_march = {
+		icon = mission_chinese_officials_in_line
+		required_missions = { tm_WEI_secure_korean_borders }
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = furdan_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = central_jilin_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = ilan_hala_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			furdan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			central_jilin_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			ilan_hala_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			furdan_area = {
+				add_base_tax = 1
+                add_base_production = 1
+				add_base_manpower = 1
+            }
+			central_jilin_area = {
+                add_base_tax = 1
+                add_base_production = 1
+				add_base_manpower = 1
+            }
+			ilan_hala_area = {
+                add_base_tax = 1
+                add_base_production = 1
+				add_base_manpower = 1
+            }
+		}
+	}
+}
+tm_wuu_slot_1 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = WEI
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	tm_WEI_a_turtle_ship_navy = {
+		icon = mission_korean_turtleship
+		required_missions = {  }
+		
+		trigger = {
+			num_of_heavy_ship = 8
+			num_of_galley = 20
+		}
+		effect = {
+			add_country_modifier = {
+				name = "war_preparation_for_japan"
+				duration = 7300
+			}
+		}
+	}
+	tm_WEI_war_with_japan = {
+		icon = mission_chinese_officials_in_line
+		required_missions = { tm_WEI_a_turtle_ship_navy }
+		
+		provinces_to_highlight = {
+			area = northern_kyushu
+			NOT = {
+			country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			northern_kyushu = {
+			type = all
+			country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			1014 = {
+				add_building = fort_15th
+			}
+			kyushu_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			saigoku_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			shikoku_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			sanindo_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_WEI_expand_east = {
+		icon = mission_chinese_officials_in_line
+		required_missions = { tm_WEI_a_turtle_ship_navy }
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = sanindo_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = saigoku_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = shikoku_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			sanindo_area = {
+			type = all
+			country_or_non_sovereign_subject_holds = ROOT
+			}
+			saigoku_area = {
+			type = all
+			country_or_non_sovereign_subject_holds = ROOT
+			}
+			shikoku_area = {
+			type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			kinai_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			chubu_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = "adopt_japanese_taxation_and_trading_techniques"
+				duration = -1
+			}
+		}
+	}
+	tm_WEI_besiege_kyoto = {
+		icon = mission_chinese_fortress_siege
+		required_missions = { tm_WEI_expand_east }
+		
+		provinces_to_highlight = {
+			province_id = 1020
+		}
+		trigger = {
+			owns_core_province = 1020
+		}
+		effect = {
+			eastern_chubu_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			hokuriku_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kanto_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = "influence_over_daimyos"
+				duration = 3650
+			}
+		}
+	}
+}
