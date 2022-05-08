@@ -1,0 +1,225 @@
+namespace = ai_event
+#AI only events
+
+country_event = { # Autonomy decreased
+	id = ai_event.1
+	title = "ai_event.EVTNAME1"
+	desc = "ai_event.EVTDESC1"
+	picture = LAND_MILITARY_eventPicture
+	
+	
+	trigger = {
+		ai = yes
+		#is_free_or_tributary_trigger = yes
+		is_at_war = no
+		is_bankrupt = no
+		num_of_cities = 10
+		manpower_percentage = 0.2
+		army_size = 15
+		NOT = { overextension_percentage = 0.1 }
+		NOT = { num_of_rebel_armies = 1 }
+		NOT = { num_of_rebel_controlled_provinces = 1 }
+		any_owned_province = {
+			OR = {
+				development = 10
+				trade_goods = gold
+			}
+			controlled_by = ROOT
+			is_island = no
+			is_state_core = ROOT
+			local_autonomy_above_min = 25
+			NOT = { 
+				has_province_modifier = autonomy_decreased
+			}
+		}
+	}
+
+	immediate = {
+		random_owned_province = {
+			limit = {
+				OR = {
+					development = 10
+					trade_goods = gold
+				}
+				controlled_by = ROOT
+				is_island = no
+				is_state_core = ROOT
+				local_autonomy_above_min = 25
+				NOT = { 
+					has_province_modifier = autonomy_decreased
+				}
+			}
+			add_province_modifier = {
+				name = autonomy_decreased
+				duration = 10950
+			}
+			add_local_autonomy = -25
+		}
+	}	
+	option = {
+	}
+}
+
+country_event = { # to make sure AI mam diplo vassals small tags
+	id = ai_event.2
+	title = "ai_event.EVTNAME2"
+	desc = "ai_event.EVTDESC2"
+	picture = LAND_MILITARY_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		ai = yes
+		tag = MAM
+		#exists = MDA
+	}
+
+	#mean_time_to_happen = {
+	#	months = 1
+	#}
+	
+	option = {
+		name = "ai_event.EVTOPTA2"
+		set_ai_personality = {
+			personality = ai_balanced
+			locked = no
+		}
+	}
+}
+
+country_event = { 
+	id = ai_event.3
+	title = "ai_event.EVTNAME2"
+	desc = "ai_event.EVTDESC2"
+	picture = LAND_MILITARY_eventPicture
+	is_triggered_only = yes
+	
+	trigger = {
+		ai = yes
+		OR = {
+			NOT = {
+				OR = {
+					AND = {
+						NOT = { has_country_modifier = ai_advisers_adm }
+						employed_advisor = {
+							category = ADM
+						}
+					}
+					AND = {
+						NOT = { has_country_modifier = ai_advisers_dip }
+						employed_advisor = {
+							category = DIP
+						}
+					}
+					AND = {
+						NOT = { has_country_modifier = ai_advisers_mil }
+						employed_advisor = {
+							category = MIL
+						}
+					}
+				}
+			}
+			AND = { 
+				employed_advisor = {
+					category = ADM
+				}
+				has_country_modifier = ai_advisers_adm
+			}
+			AND = { 
+				employed_advisor = {
+					category = DIP
+				}
+				has_country_modifier = ai_advisers_dip
+			}
+			AND = { 
+				employed_advisor = {
+					category = MIL
+				}
+				has_country_modifier = ai_advisers_mil
+			}
+		}
+		is_bankrupt = no
+		num_of_cities = 10
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				AND = { 
+					employed_advisor = {
+						category = ADM
+					}
+					has_country_modifier = ai_advisers_adm
+				}
+			}
+			remove_country_modifier = ai_advisers_adm
+		}
+		if = {
+			limit = {
+				AND = { 
+					employed_advisor = {
+						category = DIP
+					}
+					has_country_modifier = ai_advisers_dip
+				}
+			}
+			remove_country_modifier = ai_advisers_dip
+		}
+		if = {
+			limit = {
+				AND = { 
+					employed_advisor = {
+						category = MIL
+					}
+					has_country_modifier = ai_advisers_mil
+				}
+			}
+			remove_country_modifier = ai_advisers_mil
+		}
+		if = {
+			limit = {
+				NOT = { 
+					employed_advisor = {
+						category = ADM
+					}
+				}
+				NOT = { has_country_modifier = ai_advisers_adm }
+			}
+			add_country_modifier = {
+				name = ai_advisers_adm 
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				NOT = { 
+					employed_advisor = {
+						category = DIP
+					}
+				}
+				NOT = { has_country_modifier = ai_advisers_dip }
+			}
+			add_country_modifier = {
+				name = ai_advisers_dip 
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				NOT = { 
+					employed_advisor = {
+						category = MIL
+					}
+				}
+				NOT = { has_country_modifier = ai_advisers_mil }
+			}
+			add_country_modifier = {
+				name = ai_advisers_mil 
+				duration = -1
+			}
+		}
+	}
+	
+	option = {
+	}
+}
