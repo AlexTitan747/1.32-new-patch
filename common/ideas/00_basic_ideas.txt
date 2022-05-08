@@ -37,7 +37,13 @@ justice_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 0.7
+		factor = 1
+		modifier = {
+			factor = 3
+			has_idea_group = assault_ideas
+			has_idea_group = quantity_ideas
+			has_idea_group = assimilation_ideas
+		}
 	}
 }
 
@@ -73,7 +79,14 @@ guild_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 0.7
+		factor = 1
+		modifier = {
+			factor = 3
+			OR = {
+				has_idea_group = maneuver_ideas
+				has_idea_group = empire_ideas
+			}
+		}
 	}
 }
 
@@ -108,6 +121,10 @@ education_ideas = {
 
 	ai_will_do = {
 		factor = 0.7
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 11 }
+		}
 	}
 }
 
@@ -319,15 +336,13 @@ colonialism_ideas = {
 		}
 		modifier = {
 			factor = 1000
-			OR = {
-				tag = POR
-				tag = CAS
-				tag = SPA
-			}
+			tag = POR
 		}
 		modifier = {
 			factor = 2
 			OR = {
+				tag = CAS
+				tag = SPA
 				tag = GBR
 				tag = NED
 				tag = ENG
@@ -442,6 +457,14 @@ religious_ideas = {
 		}
 		modifier = {
 			factor = 2
+			OR = {
+				has_idea_group = assault_ideas
+				has_idea_group = quantity_ideas
+				has_idea_group = maneuver_ideas
+			}
+		}
+		modifier = {
+			factor = 2
 			government = theocracy
 		}
 	}
@@ -486,6 +509,10 @@ bureaucratic_ideas = {
 
 	ai_will_do = {
 		factor = 0.7
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 11 }
+		}
 	}
 }
 
@@ -523,6 +550,10 @@ development_ideas = {
 
 	ai_will_do = {
 		factor = 0.7
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 9 }
+		}
 	}
 }
 
@@ -558,6 +589,18 @@ assimilation_ideas = {
 
 	ai_will_do = {
 		factor = 0.7
+		modifier = {
+			factor = 3
+			OR = {
+				has_idea_group = assault_ideas
+				has_idea_group = justice_ideas
+				has_idea_group = bureaucratic_ideas
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 9 }
+		}
 	}
 }
 
@@ -593,6 +636,10 @@ manufacturing_ideas = {
 
 	ai_will_do = {
 		factor = 0.7
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 9 }
+		}
 	}
 }
 
@@ -628,6 +675,14 @@ empire_ideas = {
 
 	ai_will_do = {
 		factor = 0.7
+		modifier = {
+			factor = 3
+			OR = {
+				has_idea_group = colonialism_ideas
+				has_idea_group = defensive_ideas
+				has_idea_group = guild_ideas
+			}
+		}
 	}
 }
 
@@ -720,6 +775,10 @@ enterprise_ideas = {
 
 	ai_will_do = {
 		factor = 0.7
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 11 }
+		}
 	}
 }
 
@@ -1004,15 +1063,14 @@ exploration_ideas = {
 		}
 		modifier = {
 			factor = 1000
-			OR = {
-				tag = POR
-				tag = CAS
-				tag = SPA
-			}
+			tag = POR
 		}
 		modifier = {
 			factor = 2
+			adm_tech = 7
 			OR = {
+				tag = CAS
+				tag = SPA
 				tag = GBR
 				tag = NED
 				tag = ENG
@@ -1065,7 +1123,11 @@ trade_ideas = {
 		}
 		modifier = {
 			factor = 0.15
-			NOT = { adm_tech = 10 }
+			NOT = { adm_tech = 9 }
+		}
+		modifier = {
+			factor = 2
+			has_idea_group = quantity_ideas
 		}
 	}
 }
@@ -1236,7 +1298,20 @@ assault_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 3
+		factor = 7.5
+		modifier = {
+			factor = 2
+			mil = 4
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_idea_group = justice_ideas
+				has_idea_group = colonialism_ideas
+				has_idea_group = expansion_ideas
+				has_idea_group = assimilation_ideas
+			}
+		}
 	}
 }
 
@@ -1270,7 +1345,15 @@ drill_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 3
+		factor = 7.5
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 9 }
+		}
+		modifier = {
+			factor = 2
+			mil = 4
+		}
 	}
 }
 
@@ -1304,7 +1387,22 @@ quantity_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 3
+		factor = 5
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 9 }
+		}
+		modifier = {
+			factor = 2
+			mil = 4
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_idea_group = trade_ideas
+				has_idea_group = religious_ideas
+			}
+		}
 	}
 }
 
@@ -1338,7 +1436,15 @@ firepower_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 3
+		factor = 7.5
+		modifier = {
+			factor = 0.2
+			NOT = { adm_tech = 13 }
+		}
+		modifier = {
+			factor = 2
+			mil = 4
+		}
 	}
 }
 
@@ -1372,7 +1478,24 @@ shock_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 3.1
+		factor = 7.5
+		modifier = {
+			factor = 0
+			NOT = { cav_nation_trigger = yes } 
+		}
+		modifier = {
+			factor = 1.5
+			army_size = 15
+			cavalry_fraction = 0.4
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 9 }
+		}
+		modifier = {
+			factor = 2
+			mil = 4
+		}
 	}
 }
 
@@ -1406,7 +1529,24 @@ maneuver_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 3.1
+		factor = 7.5
+		modifier = {
+			factor = 0
+			NOT = { cav_nation_trigger = yes } 
+		}
+		modifier = {
+			factor = 1.5
+			army_size = 15
+			cavalry_fraction = 0.4
+		}
+		modifier = {
+			factor = 2
+			mil = 4
+		}
+		modifier = {
+			factor = 2
+			has_idea_group = guild_ideas
+		}
 	}
 }
 
@@ -1440,7 +1580,15 @@ defensive_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 3.1
+		factor = 5
+		modifier = {
+			factor = 2
+			mil = 4
+		}
+		modifier = {
+			factor = 2
+			has_idea_group = empire_ideas
+		}
 	}
 }
 

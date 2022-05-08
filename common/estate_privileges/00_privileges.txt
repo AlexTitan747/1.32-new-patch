@@ -2125,6 +2125,15 @@ estate_nobles_nobility_primacy = {
 			NOT = { has_estate_privilege = estate_maratha_military }
 		}
 	}
+	is_valid = {
+		OR = {
+			ai = no
+			num_of_cities = 3
+			capital_scope = {
+				region = japan_region
+			}
+		}
+	}
 	on_granted = {
 	}
 	penalties = {
@@ -2416,6 +2425,15 @@ estate_church_religious_state = {
 			is_nomad = no
 			has_reform = horde_tribal_unity_reform
 		}	
+	}
+	is_valid = {
+		OR = {
+			ai = no
+			num_of_cities = 3
+			capital_scope = {
+				region = japan_region
+			}
+		}
 	}
 	on_granted = {
 	}
@@ -2983,6 +3001,15 @@ estate_burghers_land_of_commerce = {
 	#
 	loyalty = -0.05
 	can_select = {
+	}
+	is_valid = {
+		OR = {
+			ai = no
+			num_of_cities = 3
+			capital_scope = {
+				region = japan_region
+			}
+		}
 	}
 	on_granted = {
 	}
@@ -3726,6 +3753,13 @@ estate_brahmins_brahmin_governance = {
 	loyalty = -0.05
 	is_valid = {
 		NOT = { religion_group = muslim }
+		OR = {
+			ai = no
+			num_of_cities = 3
+			capital_scope = {
+				region = japan_region
+			}
+		}
 	}
 	can_select = {
 	}
@@ -4060,6 +4094,13 @@ estate_jains_diplomacy = {
 	loyalty = -0.05
 	is_valid = {
 		NOT = { religion_group = muslim }
+		OR = {
+			ai = no
+			num_of_cities = 3
+			capital_scope = {
+				region = japan_region
+			}
+		}
 	}
 	can_select = {
 	}
@@ -4203,6 +4244,13 @@ estate_maratha_military = {
 	#
 	loyalty = -0.05
 	is_valid = {
+		OR = {
+			ai = no
+			num_of_cities = 3
+			capital_scope = {
+				region = japan_region
+			}
+		}
 	}
 	can_select = {
 		custom_trigger_tooltip = {
@@ -4533,7 +4581,10 @@ estate_rajput_military = {
 	is_valid = {
 		OR = {
 			ai = no
-			num_of_cities = 2
+			num_of_cities = 3
+			capital_scope = {
+				region = japan_region
+			}
 		}
 	}
 	can_select = {
