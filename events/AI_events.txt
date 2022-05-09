@@ -1,0 +1,401 @@
+namespace = ai_event
+#AI only events
+
+country_event = { # Autonomy decreased
+	id = ai_event.1
+	title = "ai_event.EVTNAME1"
+	desc = "ai_event.EVTDESC1"
+	picture = LAND_MILITARY_eventPicture
+	
+	
+	trigger = {
+		ai = yes
+		#is_free_or_tributary_trigger = yes
+		is_at_war = no
+		is_bankrupt = no
+		num_of_cities = 8
+		manpower_percentage = 0.2
+		army_size = 15
+		NOT = { overextension_percentage = 0.1 }
+		NOT = { num_of_rebel_armies = 1 }
+		NOT = { num_of_rebel_controlled_provinces = 1 }
+		any_owned_province = {
+			OR = {
+				development = 10
+				trade_goods = gold
+			}
+			controlled_by = ROOT
+			is_island = no
+			is_state_core = ROOT
+			local_autonomy_above_min = 25
+			NOT = { 
+				has_province_modifier = autonomy_decreased
+			}
+		}
+	}
+
+	immediate = {
+		every_owned_province = {
+			limit = {
+				OR = {
+					development = 8
+					trade_goods = gold
+				}
+				controlled_by = ROOT
+				is_island = no
+				is_state_core = ROOT
+				local_autonomy_above_min = 25
+				NOT = { 
+					has_province_modifier = autonomy_decreased
+				}
+			}
+			add_province_modifier = {
+				name = autonomy_decreased
+				duration = 10950
+			}
+			add_local_autonomy = -25
+		}
+	}	
+	option = {
+	}
+}
+
+country_event = { # to make sure AI mam diplo vassals small tags
+	id = ai_event.2
+	title = "ai_event.EVTNAME2"
+	desc = "ai_event.EVTDESC2"
+	picture = LAND_MILITARY_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		ai = yes
+		tag = MAM
+		#exists = MDA
+	}
+
+	#mean_time_to_happen = {
+	#	months = 1
+	#}
+	
+	option = {
+		name = "ai_event.EVTOPTA2"
+		set_ai_personality = {
+			personality = ai_balanced
+			locked = no
+		}
+	}
+}
+
+country_event = { 
+	id = ai_event.3
+	title = "ai_event.EVTNAME2"
+	desc = "ai_event.EVTDESC2"
+	picture = LAND_MILITARY_eventPicture
+	is_triggered_only = yes
+	
+	trigger = {
+		ai = yes
+		OR = {
+			NOT = {
+				OR = {
+					AND = {
+						NOT = { has_country_modifier = ai_advisers_adm }
+						employed_advisor = {
+							category = ADM
+						}
+					}
+					AND = {
+						NOT = { has_country_modifier = ai_advisers_dip }
+						employed_advisor = {
+							category = DIP
+						}
+					}
+					AND = {
+						NOT = { has_country_modifier = ai_advisers_mil }
+						employed_advisor = {
+							category = MIL
+						}
+					}
+				}
+			}
+			AND = { 
+				employed_advisor = {
+					category = ADM
+				}
+				has_country_modifier = ai_advisers_adm
+			}
+			AND = { 
+				employed_advisor = {
+					category = DIP
+				}
+				has_country_modifier = ai_advisers_dip
+			}
+			AND = { 
+				employed_advisor = {
+					category = MIL
+				}
+				has_country_modifier = ai_advisers_mil
+			}
+		}
+		is_bankrupt = no
+		num_of_cities = 10
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				AND = { 
+					employed_advisor = {
+						category = ADM
+					}
+					has_country_modifier = ai_advisers_adm
+				}
+			}
+			remove_country_modifier = ai_advisers_adm
+		}
+		if = {
+			limit = {
+				AND = { 
+					employed_advisor = {
+						category = DIP
+					}
+					has_country_modifier = ai_advisers_dip
+				}
+			}
+			remove_country_modifier = ai_advisers_dip
+		}
+		if = {
+			limit = {
+				AND = { 
+					employed_advisor = {
+						category = MIL
+					}
+					has_country_modifier = ai_advisers_mil
+				}
+			}
+			remove_country_modifier = ai_advisers_mil
+		}
+		if = {
+			limit = {
+				NOT = { 
+					employed_advisor = {
+						category = ADM
+					}
+				}
+				NOT = { has_country_modifier = ai_advisers_adm }
+			}
+			add_country_modifier = {
+				name = ai_advisers_adm 
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				NOT = { 
+					employed_advisor = {
+						category = DIP
+					}
+				}
+				NOT = { has_country_modifier = ai_advisers_dip }
+			}
+			add_country_modifier = {
+				name = ai_advisers_dip 
+				duration = -1
+			}
+		}
+		if = {
+			limit = {
+				NOT = { 
+					employed_advisor = {
+						category = MIL
+					}
+				}
+				NOT = { has_country_modifier = ai_advisers_mil }
+			}
+			add_country_modifier = {
+				name = ai_advisers_mil 
+				duration = -1
+			}
+		}
+	}
+	
+	option = {
+	}
+}
+
+country_event = { # Disbands Merc companies one at time, if AI went over the force limit.
+	id = ai_event.3
+	title = disband_mercs.2.t
+	desc = disband_mercs.2.d
+	picture = SCOTTISH_MERCENARIES_eventPicture
+	
+	hidden = yes
+	
+	trigger = {
+		ai = yes
+		is_at_war = yes
+		army_size_percentage = 1.25
+		num_of_hired_mercenary_companies = 2
+	}
+	
+	immediate = {
+		hidden_effect = {
+			random_hired_mercenary_company = {
+				limit = {
+					hired_for_months = 1
+				}
+				disband_mercenary_company = THIS
+			}
+			add_yearly_manpower = 0.25
+			log = "[This.GetName] disband_mercs.2"
+		}
+	}
+	
+	option = {
+		#hidden
+	}
+}
+
+province_event = { # To prevent Endless wars. Nasty bug caused by rebels.
+	id = disband_mercs.4
+	title = "MODEVTNAME5089"
+	desc = "MODEVTDESC5089"
+	picture = COURT_eventPicture
+	goto = ROOT
+	hidden = yes
+
+	
+	trigger = {
+		ai = yes
+		sieged_by = REB
+		OR = {
+			fort_level = 1
+			NOT = { 
+				num_of_units_in_province = {
+					amount = 2
+				}
+			}
+		}
+		#NOT = { fort_level = 10 }
+		OR = {
+			owner = { NOT = { num_of_cities = 5 } }
+			NOT = { num_of_units_in_province = { amount = 6 } }
+		}
+		NOT = { 
+			num_of_units_in_province = {
+				amount = 28
+			}
+		}
+		
+		OR = {
+			AND = {
+				owner = { NOT = { num_of_cities = 3 } }
+				NOT = { 
+					num_of_units_in_province = {
+						amount = 3
+					}
+				}
+			}
+			AND = {
+				#fort_level = 1
+				NOT = { fort_level = 2 }
+				NOT = { 
+					num_of_units_in_province = {
+						amount = 6
+					}
+				}
+			}
+			AND = {
+				fort_level = 2
+				NOT = { fort_level = 3 }
+				NOT = { 
+					num_of_units_in_province = {
+						amount = 7
+					}
+				}
+			}
+			AND = {
+				fort_level = 3
+				NOT = { fort_level = 4 }
+				NOT = { 
+					num_of_units_in_province = {
+						amount = 10
+					}
+				}
+			}
+			AND = {
+				owner = { NOT = { num_of_cities = 3 } }
+				fort_level = 4
+				NOT = { fort_level = 5 }
+				NOT = { 
+					num_of_units_in_province = {
+						amount = 13
+					}
+				}
+			}
+			AND = {
+				owner = { NOT = { num_of_cities = 3 } }
+				fort_level = 5
+				NOT = { fort_level = 6 }
+				NOT = { 
+					num_of_units_in_province = {
+						amount = 16
+					}
+				}
+			}
+			AND = {
+				owner = { NOT = { num_of_cities = 3 } }
+				fort_level = 6
+				NOT = { fort_level = 7 }
+				NOT = { 
+					num_of_units_in_province = {
+						amount = 19
+					}
+				}
+			}
+			AND = {
+				owner = { NOT = { num_of_cities = 3 } }
+				fort_level = 7
+				NOT = { fort_level = 8 }
+				NOT = { 
+					num_of_units_in_province = {
+						amount = 22
+					}
+				}
+			}
+			AND = {
+				owner = { NOT = { num_of_cities = 3 } }
+				fort_level = 8
+				NOT = { fort_level = 9 }
+				NOT = { 
+					num_of_units_in_province = {
+						amount = 25
+					}
+				}
+			}
+			#AND = {
+			#	fort_level = 9
+				#NOT = { fort_level = 10 }
+				#NOT = { 
+				#	num_of_units_in_province = {
+				#		amount = 28
+				#	}
+				#}
+			#}
+		}
+	}
+	immediate = {	
+		kill_units = {
+			who = REB
+		}
+		owner = {
+			add_prestige = -5
+			log = "[This.GetName] rebels [Prev.GetName]"
+		}
+		add_local_autonomy = 10
+	}
+	
+	option = {
+	}
+}

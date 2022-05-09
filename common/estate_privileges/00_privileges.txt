@@ -182,6 +182,14 @@ estate_brahmins_land_rights = {
 			factor = 0.75
 			has_estate_privilege = estate_rajput_land_rights
 		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_brahmins_brahmin_governance }
+			num_of_estate_privileges = {
+				estate = estate_brahmins
+				value = 3
+			}
+		}
 	}
 }
 
@@ -368,6 +376,14 @@ estate_nobles_land_rights = {
 		modifier = {
 			factor = 0.75
 			has_estate_privilege = estate_rajput_land_rights
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_nobles_nobility_primacy }
+			num_of_estate_privileges = {
+				estate = estate_nobles
+				value = 3
+			}
 		}
 	}
 }
@@ -556,6 +572,14 @@ estate_church_land_rights = {
 			factor = 0.75
 			has_estate_privilege = estate_rajput_land_rights
 		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_church_religious_state }
+			num_of_estate_privileges = {
+				estate = estate_church
+				value = 3
+			}
+		}
 	}
 }
 
@@ -743,6 +767,14 @@ estate_maratha_land_rights = {
 			factor = 0.75
 			has_estate_privilege = estate_rajput_land_rights
 		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_maratha_military }
+			num_of_estate_privileges = {
+				estate = estate_maratha
+				value = 3
+			}
+		}
 	}
 }
 
@@ -929,6 +961,14 @@ estate_burghers_land_rights = {
 		modifier = {
 			factor = 0.75
 			has_estate_privilege = estate_rajput_land_rights
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_burghers_land_of_commerce }
+			num_of_estate_privileges = {
+				estate = estate_burghers
+				value = 3
+			}
 		}
 	}
 }
@@ -1865,6 +1905,14 @@ estate_jains_land_rights = {
 			factor = 0.75
 			has_estate_privilege = estate_rajput_land_rights
 		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_jains_diplomacy }
+			num_of_estate_privileges = {
+				estate = estate_jains
+				value = 3
+			}
+		}
 	}
 }
 
@@ -2052,6 +2100,14 @@ estate_rajput_land_rights = {
 			factor = 0.75
 			has_estate_privilege = estate_jains_land_rights
 		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_rajput_military }
+			num_of_estate_privileges = {
+				estate = estate_rajput
+				value = 3
+			}
+		}
 	}
 }
 
@@ -2072,7 +2128,10 @@ estate_nobles_nobility_primacy = {
 	is_valid = {
 		OR = {
 			ai = no
-			num_of_cities = 2
+			num_of_cities = 3
+			capital_scope = {
+				region = japan_region
+			}
 		}
 	}
 	on_granted = {
@@ -2083,11 +2142,11 @@ estate_nobles_nobility_primacy = {
 		country_military_power = 1
 	}
 	ai_will_do = {
-		factor = 12
+		factor = 25
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { crown_land_share = 25 }
+				NOT = { crown_land_share = 15 }
 				estate_influence = {
 					estate = estate_nobles
 					influence = 80
@@ -2105,10 +2164,6 @@ estate_nobles_nobility_primacy = {
 				}
 			}
 			NOT = { has_estate_privilege = estate_nobles_nobility_primacy }
-		}
-		modifier = {
-			factor = 0.8
-			is_absolutism_active = yes
 		}
 		modifier = {
 			factor = 1.25
@@ -2239,8 +2294,12 @@ estate_nobles_levies = {
 			NOT = { current_income_balance = 0 }
 		}
 		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_nobles_nobility_primacy }
+			num_of_estate_privileges = {
+				estate = estate_nobles
+				value = 3
+			}
 		}
 	}
 }
@@ -2257,11 +2316,7 @@ estate_nobles_advisors = {
 		mil_advisor_cost = -0.25
 	}
 	ai_will_do = {
-		factor = 10
-		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
-		}
+		factor = 15
 		modifier = {
 			factor = 1.25
 			NOT = { mil = 2 }
@@ -2269,6 +2324,14 @@ estate_nobles_advisors = {
 		modifier = {
 			factor = 0.8
 			mil = 5
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_nobles_nobility_primacy }
+			num_of_estate_privileges = {
+				estate = estate_nobles
+				value = 3
+			}
 		}
 	}
 }
@@ -2285,8 +2348,12 @@ estate_nobles_right_of_counsel = {
 	ai_will_do = {
 		factor = 10
 		modifier = {
-			factor = 0
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_nobles_nobility_primacy }
+			num_of_estate_privileges = {
+				estate = estate_nobles
+				value = 3
+			}
 		}
 	}
 }
@@ -2362,7 +2429,10 @@ estate_church_religious_state = {
 	is_valid = {
 		OR = {
 			ai = no
-			num_of_cities = 2
+			num_of_cities = 3
+			capital_scope = {
+				region = japan_region
+			}
 		}
 	}
 	on_granted = {
@@ -2373,11 +2443,11 @@ estate_church_religious_state = {
 		country_admin_power = 1
 	}
 	ai_will_do = {
-		factor = 10
+		factor = 20
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { crown_land_share = 25 }
+				NOT = { crown_land_share = 15 }
 				estate_influence = {
 					estate = estate_church
 					influence = 80
@@ -2419,11 +2489,7 @@ estate_church_independent_inquisition = {
 		adm_advisor_cost = -0.25
 	}
 	ai_will_do = {
-		factor = 10
-		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
-		}
+		factor = 15
 		modifier = {
 			factor = 1.25
 			NOT = { adm = 2 }
@@ -2431,6 +2497,14 @@ estate_church_independent_inquisition = {
 		modifier = {
 			factor = 0.8
 			adm = 5
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_church_religious_state }
+			num_of_estate_privileges = {
+				estate = estate_church
+				value = 3
+			}
 		}
 	}
 }
@@ -2452,7 +2526,11 @@ estate_church_new_world_mission = {
 		native_assimilation = 0.5
 	}
 	ai_will_do = {
-		factor = 0
+		factor = 5
+		modifier = {
+			factor = 2
+			has_estate_privilege = estate_church_new_world_mission
+		}
 	}
 }
 
@@ -2494,16 +2572,20 @@ estate_church_papal_emissary = {
 			}
 		}
 		modifier = {
-			factor = 0
-			is_absolutism_active = yes
-		}
-		modifier = {
 			factor = 0.75
 			NOT = {
 				reverse_has_opinion = {
 					who = PAP
 					value = 50
 				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_church_religious_state }
+			num_of_estate_privileges = {
+				estate = estate_church
+				value = 3
 			}
 		}
 	}
@@ -2658,10 +2740,6 @@ estate_church_clerical_ministers = {
 		factor = 10
 		modifier = {
 			factor = 0.5
-			is_absolutism_active = yes
-		}
-		modifier = {
-			factor = 0.5
 			OR = {
 				religion = protestant
 				religion = anglican
@@ -2673,6 +2751,14 @@ estate_church_clerical_ministers = {
 			factor = 10
 			religion = orthodox
 			has_dlc = "Third Rome"
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_church_religious_state }
+			num_of_estate_privileges = {
+				estate = estate_church
+				value = 3
+			}
 		}
 	}
 }
@@ -2710,8 +2796,12 @@ estate_church_new_prophets = {
 	ai_will_do = {
 		factor = 10
 		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_church_religious_state }
+			num_of_estate_privileges = {
+				estate = estate_church
+				value = 3
+			}
 		}
 	}
 }
@@ -2728,8 +2818,12 @@ estate_church_clerical_oversight = {
 	ai_will_do = {
 		factor = 10
 		modifier = {
-			factor = 0
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_church_religious_state }
+			num_of_estate_privileges = {
+				estate = estate_church
+				value = 3
+			}
 		}
 	}
 }
@@ -2891,8 +2985,12 @@ estate_burghers_encourage_production = {
 			}
 		}
 		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_burghers_land_of_commerce }
+			num_of_estate_privileges = {
+				estate = estate_burghers
+				value = 3
+			}
 		}
 	}
 }
@@ -2907,7 +3005,10 @@ estate_burghers_land_of_commerce = {
 	is_valid = {
 		OR = {
 			ai = no
-			num_of_cities = 2
+			num_of_cities = 3
+			capital_scope = {
+				region = japan_region
+			}
 		}
 	}
 	on_granted = {
@@ -2918,11 +3019,11 @@ estate_burghers_land_of_commerce = {
 		country_diplomatic_power = 1
 	}
 	ai_will_do = {
-		factor = 10
+		factor = 20
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { crown_land_share = 25 }
+				NOT = { crown_land_share = 15 }
 				estate_influence = {
 					estate = estate_burghers
 					influence = 80
@@ -2985,11 +3086,7 @@ estate_burghers_commercial_board_of_advice = {
 		dip_advisor_cost = -0.25
 	}
 	ai_will_do = {
-		factor = 10
-		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
-		}
+		factor = 15
 		modifier = {
 			factor = 1.25
 			NOT = { dip = 2 }
@@ -2997,6 +3094,14 @@ estate_burghers_commercial_board_of_advice = {
 		modifier = {
 			factor = 0.8
 			dip = 5
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_burghers_land_of_commerce }
+			num_of_estate_privileges = {
+				estate = estate_burghers
+				value = 3
+			}
 		}
 	}
 }
@@ -3034,8 +3139,12 @@ estate_burghers_new_world_charter = {
 			}
 		}
 		modifier = {
-			factor = 0
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_burghers_land_of_commerce }
+			num_of_estate_privileges = {
+				estate = estate_burghers
+				value = 3
+			}
 		}
 	}
 }
@@ -3102,8 +3211,12 @@ estate_burghers_free_enterprise = {
 	ai_will_do = {
 		factor = 10
 		modifier = {
-			factor = 0
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_burghers_land_of_commerce }
+			num_of_estate_privileges = {
+				estate = estate_burghers
+				value = 3
+			}
 		}
 	}
 }
@@ -3640,14 +3753,15 @@ estate_brahmins_brahmin_governance = {
 	loyalty = -0.05
 	is_valid = {
 		NOT = { religion_group = muslim }
-	}
-	can_select = {
-	}
-	is_valid = {
 		OR = {
 			ai = no
-			num_of_cities = 2
+			num_of_cities = 3
+			capital_scope = {
+				region = japan_region
+			}
 		}
+	}
+	can_select = {
 	}
 	on_granted = {
 	}
@@ -3657,11 +3771,11 @@ estate_brahmins_brahmin_governance = {
 		country_admin_power = 1
 	}
 	ai_will_do = {
-		factor = 10
+		factor = 20
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { crown_land_share = 25 }
+				NOT = { crown_land_share = 15 }
 				estate_influence = {
 					estate = estate_church
 					influence = 80
@@ -3733,8 +3847,12 @@ estate_brahmins_legitimacy_to_rule = {
 			}
 		}
 		modifier = {
-			factor = 0.75
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_brahmins_brahmin_governance }
+			num_of_estate_privileges = {
+				estate = estate_brahmins
+				value = 3
+			}
 		}
 	}
 }
@@ -3754,11 +3872,7 @@ estate_brahmins_brahmin_leadership = {
 		adm_advisor_cost = -0.25
 	}
 	ai_will_do = {
-		factor = 10
-		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
-		}
+		factor = 15
 		modifier = {
 			factor = 1.25
 			NOT = { adm = 2 }
@@ -3766,6 +3880,14 @@ estate_brahmins_brahmin_leadership = {
 		modifier = {
 			factor = 0.8
 			adm = 5
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_brahmins_brahmin_governance }
+			num_of_estate_privileges = {
+				estate = estate_brahmins
+				value = 3
+			}
 		}
 	}
 }
@@ -3811,8 +3933,12 @@ estate_brahmins_loyalty_privilege = {
 	ai_will_do = {
 		factor = 10
 		modifier = {
-			factor = 0
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_brahmins_brahmin_governance }
+			num_of_estate_privileges = {
+				estate = estate_brahmins
+				value = 3
+			}
 		}
 	}
 }
@@ -3950,8 +4076,12 @@ estate_jains_encourage_production = {
 			}
 		}
 		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_jains_diplomacy }
+			num_of_estate_privileges = {
+				estate = estate_jains
+				value = 3
+			}
 		}
 	}
 }
@@ -3964,14 +4094,15 @@ estate_jains_diplomacy = {
 	loyalty = -0.05
 	is_valid = {
 		NOT = { religion_group = muslim }
-	}
-	can_select = {
-	}
-	is_valid = {
 		OR = {
 			ai = no
-			num_of_cities = 2
+			num_of_cities = 3
+			capital_scope = {
+				region = japan_region
+			}
 		}
+	}
+	can_select = {
 	}
 	on_granted = {
 	}
@@ -3981,11 +4112,11 @@ estate_jains_diplomacy = {
 		country_diplomatic_power = 1
 	}
 	ai_will_do = {
-		factor = 10
+		factor = 20
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { crown_land_share = 25 }
+				NOT = { crown_land_share = 15 }
 				estate_influence = {
 					estate = estate_jains
 					influence = 80
@@ -4033,8 +4164,12 @@ estate_jains_clerical_class = {
 	ai_will_do = {
 		factor = 10
 		modifier = {
-			factor = 0.75
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_jains_diplomacy }
+			num_of_estate_privileges = {
+				estate = estate_jains
+				value = 3
+			}
 		}
 	}
 }
@@ -4109,17 +4244,18 @@ estate_maratha_military = {
 	#
 	loyalty = -0.05
 	is_valid = {
+		OR = {
+			ai = no
+			num_of_cities = 3
+			capital_scope = {
+				region = japan_region
+			}
+		}
 	}
 	can_select = {
 		custom_trigger_tooltip = {
 			tooltip = no_other_mil_privilege
 			NOT = { has_estate_privilege = estate_nobles_nobility_primacy }
-		}
-	}
-	is_valid = {
-		OR = {
-			ai = no
-			num_of_cities = 2
 		}
 	}
 	on_granted = {
@@ -4130,11 +4266,11 @@ estate_maratha_military = {
 		country_military_power = 1
 	}
 	ai_will_do = {
-		factor = 12
+		factor = 25
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { crown_land_share = 25 }
+				NOT = { crown_land_share = 15 }
 				estate_influence = {
 					estate = estate_maratha
 					influence = 80
@@ -4179,11 +4315,7 @@ estate_maratha_advisor = {
 		mil_advisor_cost = -0.25
 	}
 	ai_will_do = {
-		factor = 10
-		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
-		}
+		factor = 15
 		modifier = {
 			factor = 1.25
 			NOT = { mil = 2 }
@@ -4191,6 +4323,14 @@ estate_maratha_advisor = {
 		modifier = {
 			factor = 0.8
 			mil = 5
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_maratha_military }
+			num_of_estate_privileges = {
+				estate = estate_maratha
+				value = 3
+			}
 		}
 	}
 }
@@ -4207,8 +4347,12 @@ estate_maratha_loyalty_privilege = {
 	ai_will_do = {
 		factor = 10
 		modifier = {
-			factor = 0
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_maratha_military }
+			num_of_estate_privileges = {
+				estate = estate_maratha
+				value = 3
+			}
 		}
 	}
 }
@@ -4298,8 +4442,12 @@ estate_maratha_levies = {
 			}
 		}
 		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_maratha_military }
+			num_of_estate_privileges = {
+				estate = estate_maratha
+				value = 3
+			}
 		}
 	}
 }
@@ -4381,10 +4529,14 @@ estate_maratha_special_privilege = {
 	}
 	ai_will_do = {
 		factor = 12
-		#modifier = {
-		#	factor = 0
-		#	is_absolutism_active = yes
-		#}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_maratha_military }
+			num_of_estate_privileges = {
+				estate = estate_maratha
+				value = 3
+			}
+		}
 	}
 }
 
@@ -4410,6 +4562,14 @@ estate_rajput_rajput_regiments = {
 	}
 	ai_will_do = {
 		factor = 10
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_rajput_military }
+			num_of_estate_privileges = {
+				estate = estate_rajput
+				value = 3
+			}
+		}
 	}
 }
 
@@ -4421,7 +4581,10 @@ estate_rajput_military = {
 	is_valid = {
 		OR = {
 			ai = no
-			num_of_cities = 2
+			num_of_cities = 3
+			capital_scope = {
+				region = japan_region
+			}
 		}
 	}
 	can_select = {
@@ -4438,11 +4601,11 @@ estate_rajput_military = {
 		country_military_power = 1
 	}
 	ai_will_do = {
-		factor = 12
+		factor = 25
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { crown_land_share = 25 }
+				NOT = { crown_land_share = 15 }
 				estate_influence = {
 					estate = estate_rajput
 					influence = 80
@@ -4487,10 +4650,14 @@ estate_rajput_advisor = {
 		mil_advisor_cost = -0.25
 	}
 	ai_will_do = {
-		factor = 10
+		factor = 15
 		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_rajput_military }
+			num_of_estate_privileges = {
+				estate = estate_rajput
+				value = 3
+			}
 		}
 		modifier = {
 			factor = 1.25
@@ -4515,8 +4682,12 @@ estate_rajput_loyalty_privilege = {
 	ai_will_do = {
 		factor = 10
 		modifier = {
-			factor = 0
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_rajput_military }
+			num_of_estate_privileges = {
+				estate = estate_rajput
+				value = 3
+			}
 		}
 	}
 }
@@ -4544,8 +4715,12 @@ estate_rajput_officer_corp = {
 			NOT = { army_tradition = 75 }
 		}
 		modifier = {
-			factor = 0
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_rajput_military }
+			num_of_estate_privileges = {
+				estate = estate_rajput
+				value = 3
+			}
 		}
 	}
 }
@@ -4614,6 +4789,14 @@ estate_rajput_look_up_purbias = {
 			}
 			NOT = { has_estate_privilege = estate_rajput_look_up_purbias }
 		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_rajput_military }
+			num_of_estate_privileges = {
+				estate = estate_rajput
+				value = 3
+			}
+		}
 	}
 }
 
@@ -4647,7 +4830,7 @@ estate_vaisyas_advisor = {
 		dip_advisor_cost = -0.25
 	}
 	ai_will_do = {
-		factor = 10
+		factor = 15
 		modifier = {
 			factor = 0.5
 			is_absolutism_active = yes
@@ -4727,6 +4910,14 @@ estate_burghers_patronage_of_the_arts = {
 	}
 	ai_will_do = {
 		factor = 10
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_burghers_land_of_commerce }
+			num_of_estate_privileges = {
+				estate = estate_burghers
+				value = 3
+			}
+		}
 	}
 }
 
@@ -7540,8 +7731,12 @@ estate_nobles_junker_primacy = {
 			has_dlc = "Rights of Man"
 		}
 		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_nobles_nobility_primacy }
+			num_of_estate_privileges = {
+				estate = estate_nobles
+				value = 3
+			}
 		}
 	}
 }
@@ -7600,6 +7795,18 @@ estate_nobles_strong_duchies = {
 		modifier = { #will lose it via invalid sooner or later
 			factor = 10
 			has_estate_privilege = estate_nobles_strong_duchies
+		}
+		modifier = {
+			factor = 10
+			num_of_subjects = 2
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_nobles_nobility_primacy }
+			num_of_estate_privileges = {
+				estate = estate_nobles
+				value = 3
+			}
 		}
 	}
 }
@@ -8144,8 +8351,12 @@ estate_jains_control_over_monetary_policy = {
 			}
 		}
 		modifier = {
-			factor = 0
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_jains_diplomacy }
+			num_of_estate_privileges = {
+				estate = estate_jains
+				value = 3
+			}
 		}
 	}
 }
@@ -8183,8 +8394,12 @@ estate_burghers_private_trade_fleets = {
 			num_of_light_ship = 100
 		}
 		modifier = {
-			factor = 0.75
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_burghers_land_of_commerce }
+			num_of_estate_privileges = {
+				estate = estate_burghers
+				value = 3
+			}
 		}
 	}
 }
@@ -8262,8 +8477,12 @@ estate_jains_private_trade_fleets = {
 			num_of_light_ship = 100
 		}
 		modifier = {
-			factor = 0.75
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_jains_diplomacy }
+			num_of_estate_privileges = {
+				estate = estate_jains
+				value = 3
+			}
 		}
 	}
 }
@@ -8977,6 +9196,14 @@ estate_burghers_orang_laut_alliances = {
 	}
 	ai_will_do = {
 		factor = 10
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_burghers_land_of_commerce }
+			num_of_estate_privileges = {
+				estate = estate_burghers
+				value = 3
+			}
+		}
 	}
 }
 
@@ -9015,6 +9242,18 @@ estate_nobles_better_integration = {
 	cooldown_years = 10
 	ai_will_do = {
 		factor = 10
+		modifier = {
+			factor = 0
+			NOT = { num_of_subjects = 2 }
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_nobles_nobility_primacy }
+			num_of_estate_privileges = {
+				estate = estate_nobles
+				value = 3
+			}
+		}
 	}
 }
 
@@ -9582,8 +9821,12 @@ estate_nobles_cawa_peace_keepers = {
 			NOT = { stability = 0 }
 		}
 		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_nobles_nobility_primacy }
+			num_of_estate_privileges = {
+				estate = estate_nobles
+				value = 3
+			}
 		}
 	}
 }
@@ -9645,8 +9888,12 @@ estate_nobles_cawa_offensive_fighters = {
 			is_in_important_war = yes
 		}
 		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_nobles_nobility_primacy }
+			num_of_estate_privileges = {
+				estate = estate_nobles
+				value = 3
+			}
 		}
 	}
 }
@@ -9733,8 +9980,12 @@ estate_burghers_control_over_the_mint = {
 			gold_income_percentage = 1
 		}
 		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_burghers_land_of_commerce }
+			num_of_estate_privileges = {
+				estate = estate_burghers
+				value = 3
+			}
 		}
 	}
 }
@@ -9927,8 +10178,12 @@ estate_nobles_grant_power_to_the_bashorun = {
 	ai_will_do = {
 		factor = 25
 		modifier = {
-			factor = 0
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_nobles_nobility_primacy }
+			num_of_estate_privileges = {
+				estate = estate_nobles
+				value = 3
+			}
 		}
 	}
 }
