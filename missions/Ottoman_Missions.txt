@@ -13,56 +13,100 @@ tur_conquerors_of_the_near_east = {
 		required_missions = {  } #None
 		completed_by = 1453.5.30
 		trigger = {
-			owns = 151
-		}
-		provinces_to_highlight = {
-			province_id = 151
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			stability = 1
 		}
 		effect = {
 			add_country_modifier = {
 				name = "defeated_byzantine_empire"
 				duration = 5475
 			}
-			every_province = {
+			macedonia_area = {
 				limit = {
-					OR = {
-						province_id = 145
-						province_id = 146
-						province_id = 1773
-						province_id = 4701
-						province_id = 4699
-						province_id = 4698
-					}
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
+			}
+			every_province = {
+				limit = {
+					area = northern_greece_area
+					NOT = { is_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+					NOT = { province_id = 142 }
+				}
+				add_claim = ROOT
+			}
+		}
+	}
+	tm_TUR_invasion_of_greece = {
+		icon = mission_destroy_byzantium
+		required_missions = { defeat_the_byzantine_empire }
+
+		provinces_to_highlight = {
+			OR = {
+				area = macedonia_area
+				province_id = 144
+				province_id = 147
+				province_id = 4699
+				province_id = 4698
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			macedonia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			144 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			147 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			4699 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			4698 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			morea_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			every_province = {
+				limit = {
+					area = aegean_archipelago_area
+					NOT = { is_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+					NOT = { province_id = 320 }
+				}
+				add_claim = ROOT
 			}
 		}
 	}
 	conquer_southern_greece = {
 		icon = mission_early_game_buildings
-		required_missions = { defeat_the_byzantine_empire }
-		position = 3
+		required_missions = { tm_TUR_invasion_of_greece }
+
 		provinces_to_highlight = {
-			OR = {
-				province_id = 145
-				province_id = 146
-				province_id = 1773
-				province_id = 4701
-				province_id = 4699
-				province_id = 4698
+			area = morea_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			owns = 145
-			owns = 146
-			owns = 1773
-			owns = 4701
-			owns = 4699
-			owns = 4698
+			morea_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
-		completed_by = 1460.1.1
 		effect = {
 			add_country_modifier = {
 				name = "ottoman_naval_expansion"
@@ -100,10 +144,50 @@ tur_conquerors_of_the_near_east = {
 			}
 		}
 	}
+	tm_TUR_battle_for_bulgaria = {
+		icon = mission_ottoman_army_1830s
+		required_missions = { conquer_southern_greece }
+
+		provinces_to_highlight = {
+			OR = {
+			AND = {
+				area = bulgaria_area
+				NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+				}
+			}
+			AND = {
+				area = silistria_area
+				NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			bulgaria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			silistria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_adm_power = 150
+			moldavia_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
 	conquer_serbia = {
 		icon = mission_non-western_soldiers
-		required_missions = { conquer_southern_greece }
-		position = 5
+		required_missions = { tm_TUR_battle_for_bulgaria }
 		
 		ai_weight = {
 			factor = 3
