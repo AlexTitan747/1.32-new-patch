@@ -295,7 +295,7 @@ barracks = {
 #	}
 
 	ai_will_do = {
-		factor = 6.75
+		factor = 7
 		modifier = {
 			factor = 0.2
 			NOT = { base_manpower = 3 }
@@ -347,10 +347,18 @@ shipyard = {
 	}
 
 	ai_will_do = {
-		factor = 0.4
+		factor = 0.3
 		modifier = {
 			factor = 0
 			building_slot_for_manufactory_trigger = yes
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { NOT = { navy_size = 10 } }
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { NOT = { navy_size = 25 } }
 		}
 	}
 }
@@ -485,6 +493,10 @@ fort_15th = {
 		modifier = {
 			factor = 2.5
 			has_terrain = mountain
+		}
+		modifier = {
+			factor = 1.25
+			trade_goods = salt
 		}
 		modifier = {
 			factor = 1.25
@@ -881,6 +893,10 @@ fort_16th = {
 		}
 		modifier = {
 			factor = 1.25
+			trade_goods = salt
+		}
+		modifier = {
+			factor = 1.25
 			OR = {
 				has_province_modifier = arid
 				has_province_modifier = tropical
@@ -1164,11 +1180,19 @@ grand_shipyard = {
 	}
 
 	ai_will_do = {
-		factor = 0.4
+		factor = 0.3
 		modifier = {
 			factor = 0
 			building_slot_for_manufactory_trigger = yes
 			NOT = { has_building = shipyard }
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { NOT = { navy_size = 10 } }
+		}
+		modifier = {
+			factor = 0.5
+			FROM = { NOT = { navy_size = 25 } }
 		}
 	}
 }
@@ -1246,7 +1270,7 @@ training_fields = {
 	}
 
 	ai_will_do = {
-		factor = 6.75
+		factor = 7
 		modifier = {
 			factor = 0.2
 			NOT = { base_manpower = 3 }
@@ -1403,6 +1427,10 @@ fort_17th = {
 		modifier = {
 			factor = 2.5
 			has_terrain = mountain
+		}
+		modifier = {
+			factor = 1.25
+			trade_goods = salt
 		}
 		modifier = {
 			factor = 1.25
@@ -1945,6 +1973,10 @@ fort_18th = {
 		}
 		modifier = {
 			factor = 1.25
+			trade_goods = salt
+		}
+		modifier = {
+			factor = 1.25
 			OR = {
 				has_province_modifier = arid
 				has_province_modifier = tropical
@@ -2001,7 +2033,7 @@ wharf = {
 	ai_will_do = {
 		factor = 4
 		modifier = { 
-			factor = 0.5
+			factor = 0.15
 			trade_goods = fish
 		}
 		modifier = {
@@ -2278,7 +2310,7 @@ farm_estate = {
 	onmap = yes
 
 	ai_will_do = {
-		factor = 0.8
+		factor = 0.5
 		modifier = {
 			factor = 0.75
 			NOT = { is_state = yes }
@@ -2472,6 +2504,10 @@ ramparts = {
 		}
 		modifier = {
 			factor = 1.25
+			trade_goods = salt
+		}
+		modifier = {
+			factor = 1.25
 			OR = {
 				has_province_modifier = arid
 				has_province_modifier = tropical
@@ -2518,7 +2554,7 @@ soldier_households = {
 	}
 
 	ai_will_do = {
-		factor = 8.5
+		factor = 9
 		modifier = {
 			factor = 0.3
 			NOT = {
@@ -2786,7 +2822,7 @@ road = {
 	}
 
 	ai_will_do = {
-		factor = 1
+		factor = 25
 	} 
 }
 
