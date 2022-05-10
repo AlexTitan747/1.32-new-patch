@@ -37,7 +37,7 @@ justice_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 1
+		factor = 0.7
 		modifier = {
 			factor = 3
 			has_idea_group = assault_ideas
@@ -79,7 +79,7 @@ guild_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 1
+		factor = 0.7
 		modifier = {
 			factor = 3
 			OR = {
@@ -158,18 +158,39 @@ expansion_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 0.65
+		factor = 0.75
 		modifier = {
-			factor = 0
-			NOT = { is_colonial_nation = yes }
-			NOT = {
-				any_owned_province = {
-					has_empty_adjacent_province = yes
+			factor = 0.25
+			OR = {
+				capital_scope = {
+					NOT = {
+						region = france_region
+						region = iberia_region
+						region = british_isles_region
+						region = low_countries_region
+						superregion = southern_africa_superregion
+						region = moluccas_region
+						region = indonesia_region
+					}
+				}
+				NOT = { 
+					any_owned_province = { 
+						is_in_capital_area = yes
+						has_empty_adjacent_province = yes
+					} 
 				}
 			}
 		}
 		modifier = {
-			factor = 0.66
+			factor = 0
+			is_subject = yes
+		}		
+		modifier = {
+			factor = 0
+			primitives = yes
+		}
+		modifier = {
+			factor = 0.5
 			OR = {
 				technology_group = chinese
 				technology_group = muslim
@@ -178,6 +199,61 @@ expansion_ideas = {
 		modifier = {
 			factor = 0.3
 			is_year = 1600
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { has_institution = renaissance }
+			NOT = { tag = POR }
+			NOT = { tag = CAS }
+		}
+		modifier = {
+			factor = 0.5
+			tag = ARA
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { is_year = 1490 }
+			capital_scope = {
+				NOT = {
+					region = iberia_region
+				}
+			}
+		}
+		modifier = {
+			factor = 10
+			technology_group = high_american
+		}
+		modifier = {
+			factor = 100
+			tag = POR
+			NOT = { has_idea_group = exploration_ideas }
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				tag = CAS
+				tag = SPA
+				tag = GBR
+				tag = NED
+				tag = ENG
+				tag = FRA
+				tag = KUR
+			}
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_idea_group = maneuver_ideas
+				has_idea_group = assault_ideas
+				AND = {
+					has_idea_group = empire_ideas
+					arty_nation_trigger = yes
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			has_idea_group = exploration_ideas
 		}
 	}
 }
@@ -554,6 +630,19 @@ development_ideas = {
 			factor = 0.5
 			NOT = { adm_tech = 9 }
 		}
+		modifier = {
+			factor = 2
+			capital_scope = {
+				OR = {
+					superregion = china_superregion
+					superregion = india_superregion
+				}
+			}
+		}
+		modifier = {
+			factor = 2.5
+			tag = KOR
+		}
 	}
 }
 
@@ -640,6 +729,19 @@ manufacturing_ideas = {
 			factor = 0.5
 			NOT = { adm_tech = 9 }
 		}
+		modifier = {
+			factor = 2.5
+			capital_scope = {
+				OR = {
+					superregion = china_superregion
+					superregion = india_superregion
+				}
+			}
+		}
+		modifier = {
+			factor = 2.5
+			tag = KOR
+		}
 	}
 }
 
@@ -674,9 +776,9 @@ empire_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 0.7
+		factor = 1
 		modifier = {
-			factor = 3
+			factor = 2.5
 			OR = {
 				has_idea_group = colonialism_ideas
 				has_idea_group = defensive_ideas
@@ -893,7 +995,10 @@ maritime_ideas = {
 			factor = 0.41
 			num_of_cities = 50
 		}
-
+		modifier = {
+			factor = 0.25
+			NOT = { adm_tech = 11 }
+		}
 		modifier = {
 			factor = 10
 			OR = {
@@ -939,7 +1044,7 @@ exploration_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 0.75
+		factor = 0.55
 		modifier = {
 			factor = 0
 			is_colonial_nation = yes
@@ -1046,37 +1151,29 @@ exploration_ideas = {
 			technology_group = high_american
 		}
 		modifier = {
-			factor = 2.0
+			factor = 1.5
 			num_of_ports = 5
 		}
 		modifier = {
-			factor = 2.0
+			factor = 1.5
 			num_of_ports = 10
 		}
 		modifier = {
-			factor = 2.0
+			factor = 1.5
 			num_of_ports = 15
 		}
 		modifier = {
-			factor = 2.0
+			factor = 1.5
 			num_of_ports = 20
 		}
 		modifier = {
 			factor = 1000
 			tag = POR
+			NOT = { has_idea_group = expansion_ideas }
 		}
 		modifier = {
-			factor = 2
-			adm_tech = 7
-			OR = {
-				tag = CAS
-				tag = SPA
-				tag = GBR
-				tag = NED
-				tag = ENG
-				tag = FRA
-				tag = KUR
-			}
+			factor = 0.5
+			has_idea_group = expansion_ideas
 		}
 	}
 }
@@ -1185,7 +1282,7 @@ shipbuilding_ideas = {
 			NOT = { adm_tech = 10 }
 		}
 		modifier = {
-			factor = 2.5
+			factor = 5
 			capital_scope = {
 				OR = {
 					region = indonesia_region
@@ -1253,7 +1350,7 @@ grand_navy_ideas = {
 			NOT = { adm_tech = 10 }
 		}
 		modifier = {
-			factor = 2.5
+			factor = 5
 			capital_scope = {
 				OR = {
 					region = indonesia_region
@@ -1298,7 +1395,7 @@ assault_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 7.5
+		factor = 10
 		modifier = {
 			factor = 2
 			mil = 4
@@ -1345,7 +1442,7 @@ drill_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 7.5
+		factor = 10
 		modifier = {
 			factor = 0.5
 			NOT = { adm_tech = 9 }
@@ -1353,6 +1450,10 @@ drill_ideas = {
 		modifier = {
 			factor = 2
 			mil = 4
+		}
+		modifier = {
+			factor = 1.5
+			arty_nation_trigger = yes
 		}
 	}
 }
@@ -1387,9 +1488,9 @@ quantity_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 5
+		factor = 7.5
 		modifier = {
-			factor = 0.5
+			factor = 0.75
 			NOT = { adm_tech = 9 }
 		}
 		modifier = {
@@ -1402,6 +1503,10 @@ quantity_ideas = {
 				has_idea_group = trade_ideas
 				has_idea_group = religious_ideas
 			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { army_size = 40 }
 		}
 	}
 }
@@ -1436,7 +1541,7 @@ firepower_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 7.5
+		factor = 10
 		modifier = {
 			factor = 0.2
 			NOT = { adm_tech = 13 }
@@ -1444,6 +1549,10 @@ firepower_ideas = {
 		modifier = {
 			factor = 2
 			mil = 4
+		}
+		modifier = {
+			factor = 2
+			arty_nation_trigger = yes
 		}
 	}
 }
@@ -1478,10 +1587,18 @@ shock_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 7.5
+		factor = 10
 		modifier = {
 			factor = 0
 			NOT = { cav_nation_trigger = yes } 
+		}
+		modifier = {
+			factor = 2
+			cav_nation_trigger = yes 
+		}
+		modifier = {
+			factor = 2
+			is_nomad = yes 
 		}
 		modifier = {
 			factor = 1.5
@@ -1495,6 +1612,10 @@ shock_ideas = {
 		modifier = {
 			factor = 2
 			mil = 4
+		}
+		modifier = {
+			factor = 2
+			has_idea_group = maneuver_ideas 
 		}
 	}
 }
@@ -1529,10 +1650,18 @@ maneuver_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 7.5
+		factor = 10
 		modifier = {
 			factor = 0
 			NOT = { cav_nation_trigger = yes } 
+		}
+		modifier = {
+			factor = 2
+			cav_nation_trigger = yes 
+		}
+		modifier = {
+			factor = 2
+			is_nomad = yes 
 		}
 		modifier = {
 			factor = 1.5
@@ -1546,6 +1675,10 @@ maneuver_ideas = {
 		modifier = {
 			factor = 2
 			has_idea_group = guild_ideas
+		}
+		modifier = {
+			factor = 1.5
+			has_idea_group = expansion_ideas
 		}
 	}
 }
@@ -1580,7 +1713,7 @@ defensive_ideas = {
 	}
 
 	ai_will_do = {
-		factor = 5
+		factor = 6.5
 		modifier = {
 			factor = 2
 			mil = 4
