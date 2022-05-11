@@ -399,3 +399,48 @@ province_event = { # To prevent Endless wars. Nasty bug caused by rebels.
 	option = {
 	}
 }
+
+country_event = { # Clean up event 
+	id = ai_event.5
+	title = disband_mercs.2.t
+	desc = disband_mercs.2.d
+	picture = SCOTTISH_MERCENARIES_eventPicture
+	
+	hidden = yes
+	
+	trigger = {
+		ai = no
+		OR = {
+			has_country_modifier = ai_advisers_adm
+			has_country_modifier = ai_advisers_dip
+			has_country_modifier = ai_advisers_mil
+		}
+	}
+	
+	immediate = {
+		hidden_effect = {
+			if = {
+				limit = {
+					has_country_modifier = ai_advisers_adm
+				}
+				remove_country_modifier = ai_advisers_adm
+			}
+			if = {
+				limit = {
+					has_country_modifier = ai_advisers_dip
+				}
+				remove_country_modifier = ai_advisers_dip
+			}
+			if = {
+				limit = {
+					has_country_modifier = ai_advisers_mil
+				}
+				remove_country_modifier = ai_advisers_mil
+			}
+		}
+	}
+	
+	option = {
+		#hidden
+	}
+}

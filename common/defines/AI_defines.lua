@@ -1,5 +1,5 @@
 NDefines.NAI.ARTILLERY_FRACTION = 0.25
-NDefines.NAI.FORCE_COMPOSITION_CHANGE_TECH_LEVEL = 16
+NDefines.NAI.FORCE_COMPOSITION_CHANGE_TECH_LEVEL = 13
 NDefines.NAI.NAVY_BUDGET_FRACTION = 0.4 -- AI will spend a maximum of this fraction of monthly income on navy maintenance (based off wartime costs)
 NDefines.NAI.TRANSPORT_FRACTION = 0.35
 NDefines.NAI.BIGSHIP_FRACTION = 0.4
