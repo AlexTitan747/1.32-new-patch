@@ -660,75 +660,41 @@ gc_por_3 = {
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
-	gc_por_english_alliance = {
-		icon = mission_anglo_portuguese_alliance
+
+	tm_POR_colonial_preparation = {
+		icon = mission_empire
 		required_missions = {  }
 		
 		trigger = {
-			if = {
-				limit = {
-					NOT = {
-						exists = GBR
-					}
-				}
-				OR = {
-					AND = {
-						alliance_with = ENG
-						reverse_has_opinion = {
-							who = ENG
-							value = 100
-						}
-					}
-					is_rival = ENG
-					NOT = { exists = ENG }
-				}
-			}
-			else = {
-				OR = {
-					AND = {
-						alliance_with = GBR
-						reverse_has_opinion = {
-							who = GBR
-							value = 100
-						}
-					}
-					is_rival = GBR
-				}
-			}
+			navy_size_percentage = 1
+			army_size_percentage = 0.8
+			
 		}
 		effect = {
-			if = {
-				limit = {
-					alliance_with = ENG
-				}
-				ENG = {
-					add_opinion = {
-						who = root
-						modifier = anglo_portuguese_alliance
-					}
-				}
-				hidden_effect = {
-					root = {
-						add_opinion = {
-							who = ENG
-							modifier = anglo_portuguese_alliance
-						}
-					}
-				}
-			}
-			galicia_area = {
+			jolof_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			asturias_area = {
+			futa_jallon_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
+			}
+			tekrur_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = "army_and_navy_preparation"
+				duration = 3650
 			}
 		}
 	}
@@ -1131,68 +1097,81 @@ gc_por_4 = {
 		}
 		effect = {
 			add_navy_tradition = 20
-			leon_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
+			sahel_region = {
+				discover_country = ROOT
 			}
-			extremadura_area = {
-				limit = {
-					NOT = { is_permanent_claim = ROOT }
-					NOT = { is_core = ROOT	}
-				}
-				add_permanent_claim = ROOT
+			niger_region = {
+				discover_country = ROOT
 			}
-			lower_andalucia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
+			guinea_region = {
+				discover_country = ROOT
 			}
 		}
 	}
-	gc_por_intervene_in_castile = {
-		icon = mission_intervene_in_castile
-		required_missions = { gc_por_flagship gc_por_english_alliance }
+	tm_POR_west_african_holdings = {
+		icon = mal_restore_the_mali_empire
+		required_missions = { gc_por_flagship tm_POR_colonial_preparation }
 		
 		provinces_to_highlight = {
 			OR = {
-				area = leon_area
-				area = extremadura_area
-				area = lower_andalucia_area
-				area = galicia_area
-				area = asturias_area
+				area = futa_jallon_area
+				area = jolof_area
+				area = tekrur_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
-			leon_area = {
+			futa_jallon_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			extremadura_area = {
+			jolof_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			lower_andalucia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			galicia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			asturias_area = {
+			tekrur_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		effect = {
-			iberia_region = {
+			manding_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kong_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			baghena_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			massina_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			jenne_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			niger_bend_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -1201,31 +1180,58 @@ gc_por_4 = {
 			}
 		}
 	}
-	gc_por_lusitanian_empire = {
-		icon = mission_lusitanian_empire
-		required_missions = { gc_por_intervene_in_castile }
+	tm_POR_mali_gold_hoards = {
+		icon = mission_zambezi_gold
+		required_missions = { tm_POR_west_african_holdings }
 		
 		provinces_to_highlight = {
-			region = iberia_region
+			OR = {
+				area = manding_area
+				area = kong_area
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
-			iberia_region = {
+			manding_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
+			kong_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1120 = {
+				development = 20
+			}
+			1124 = {
+				development = 20
+			}
+			2252 = {
+				development = 20
+			}
 		}
 		effect = {
-			if = {
-				limit = {
-					NOT = {
-						government_rank = 3
-					}
-				}
-				set_government_rank = 3
-			}
 			add_prestige = 25
+			add_treasury = 1500
+			1120 = {
+				add_province_modifier = {
+					name = "portuguese_gold_mining"
+					duration = 14600
+				}
+			}
+			1124 = {
+				add_province_modifier = {
+					name = "portuguese_gold_mining"
+					duration = 14600
+				}
+			}
+			2252 = {
+				add_province_modifier = {
+					name = "portuguese_gold_mining"
+					duration = 14600
+				}
+			}
 		}
 	}
 	gc_por_discovers_horn_africa = {
@@ -1502,109 +1508,161 @@ gc_por_5 = {
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
-	gc_por_build_the_navy = {
-		icon = mission_sea_battles
-		required_missions = {}
-		completed_by = 1470.1.1
-		
-		trigger = {
-			navy_size_percentage = 1
-		}
-		
-		effect = {
-			add_dip_power = 50
-			add_navy_tradition = 15
-			334 = {
-				if = {
-					limit = {
-						NOT = {
-							is_permanent_claim = ROOT
-							is_core = ROOT
-						}
-					}
-					add_permanent_claim = ROOT
-				}
-			}
-		}
-	}
-	gc_por_conquer_tangiers = {
-		icon = mission_unite_home_region
-		required_missions = { gc_por_build_the_navy }
-		completed_by = 1472.1.1
+	
+	tm_POR_march_on_timbuktu = {
+		icon = mission_arabian_fort
+		required_missions = { tm_POR_west_african_holdings }
+		postiion = 3
 		
 		provinces_to_highlight = {
-			province_id = 334
-			NOT = { owned_by = ROOT }
+			OR = {
+				area = baghena_area
+				area = massina_area
+				area = jenne_area
+				area = niger_bend_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
-			owns = 334
+			baghena_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			massina_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			jenne_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			niger_bend_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		
 		effect = {
-			add_adm_power = 150
-			add_prestige = 5
-			western_morocco_area = {
+			sahel_region = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			southern_morocco_area = {
+			niger_region = {
 				limit = {
 					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
+					NOT = { is_permanent_claim = ROOT }
 				}
-				add_claim = ROOT
+				add_permanent_claim = ROOT
 			}
 		}
 	}
-	
-	gc_conquer_the_north_african_coast = {
-		icon = mission_arabian_fort
-		required_missions = { gc_por_conquer_tangiers }
-		completed_by = 1488.1.1
+	tm_POR_secure_grip_on_africa = {
+		icon = mal_west_african_great_power
+		required_missions = { tm_POR_march_on_timbuktu }
+		postiion = 3
 		
 		provinces_to_highlight = {
-			area = western_morocco_area
-			NOT = { owned_by = ROOT }
+			OR = {
+				area = western_sahara_area
+				area = azbin_area
+				area = east_azbin_area
+				area = dendi_area
+				area = upper_volta_area
+				area = lower_volta_area
+				area = atacora_oueme_area
+				area = benin_area
+				area = lower_niger_area
+				area = zazzau_area
+				area = katsina_area
+				area = hausa_area
+				area = adamawa_plateau_area
+				area = bornu_area
+				area = kanem_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
-			western_morocco_area = {
+			western_sahara_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			azbin_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			east_azbin_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			dendi_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			upper_volta_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			lower_volta_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			atacora_oueme_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			benin_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			lower_niger_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			zazzau_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			katsina_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			hausa_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			adamawa_plateau_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			bornu_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			kanem_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		
 		effect = {
-			western_morocco_area = {
-				limit = { 
-					owned_by = ROOT
+			sahel_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
 				}
-				add_province_modifier = {
-					name = "buffer_zone_commerce"
-					duration = 5475
-				}
+				add_permanent_claim = ROOT
 			}
-			northern_morocco_area = {
-				limit = { 
-					owned_by = ROOT
+			niger_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
 				}
-				add_province_modifier = {
-					name = "buffer_zone_commerce"
-					duration = 5475
-				}
-			}
-			southern_morocco_area = {
-				limit = { 
-					owned_by = ROOT
-				}
-				add_province_modifier = {
-					name = "buffer_zone_commerce"
-					duration = 5475
-				}
+				add_permanent_claim = ROOT
 			}
 		}
 	}
