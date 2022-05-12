@@ -784,12 +784,19 @@ gc_spain_3 = {
 		completed_by = 1492.1.1
 
 		provinces_to_highlight = {
-			area = upper_andalucia_area
+			OR = {
+				area = upper_andalucia_area
+				area = lower_andalucia_area
+			}
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
 			upper_andalucia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			lower_andalucia_area = {
 				type = all
 				owned_by = ROOT
 			}
@@ -799,6 +806,9 @@ gc_spain_3 = {
 			set_country_flag = fate_of_granada_mission_flag
 			country_event = {
 				id = flavor_spa.8
+			}
+			224 = {
+				add_center_of_trade_level = 1
 			}
 		}
 	}
@@ -1351,10 +1361,10 @@ gc_spain_4 = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			4547 = {
+			2755 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			221 = {
+			2751 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
