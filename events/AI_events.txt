@@ -258,7 +258,7 @@ country_event = { # Disbands Merc companies one at time, if AI went over the for
 }
 
 province_event = { # To prevent Endless wars. Nasty bug caused by rebels.
-	id = disband_mercs.4
+	id = ai_event.4
 	title = "MODEVTNAME5089"
 	desc = "MODEVTDESC5089"
 	picture = COURT_eventPicture
@@ -267,16 +267,9 @@ province_event = { # To prevent Endless wars. Nasty bug caused by rebels.
 
 	
 	trigger = {
-		ai = yes
+		owner = { ai = yes }
 		sieged_by = REB
-		OR = {
-			fort_level = 1
-			NOT = { 
-				num_of_units_in_province = {
-					amount = 2
-				}
-			}
-		}
+		
 		#NOT = { fort_level = 10 }
 		OR = {
 			owner = { NOT = { num_of_cities = 5 } }
@@ -290,7 +283,7 @@ province_event = { # To prevent Endless wars. Nasty bug caused by rebels.
 		
 		OR = {
 			AND = {
-				owner = { NOT = { num_of_cities = 3 } }
+				#owner = { NOT = { num_of_cities = 3 } }
 				NOT = { 
 					num_of_units_in_province = {
 						amount = 3

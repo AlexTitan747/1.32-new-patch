@@ -10,6 +10,8 @@ NDefines.NAI.ARMY_BUDGET_FRACTION = 0.9
 NDefines.NAI.MAX_CAV_PERCENTAGE = 100
 NDefines.NAI.MIN_CAV_PERCENTAGE = 0
 NDefines.NAI.OVER_FORCELIMIT_AVOIDANCE_FACTOR = 2 --The higher this number is the less willing the AI will be to exceed forcelimits.
+NDefines.NAI.CALL_IN_ALLIES_POWER_RATIO = 2.5  --AI will only call in allies in an offensive war if their military power ratio to the enemy is less than this.
+NDefines.NAI.DIPLOMATIC_ACTION_GUARANTEE_POWERBALANCE_FACTOR = 25
 
 NDefines.NAI.ARMY_DISTANCE_SCORE_IMPACT	= 1	--Army <-> province distance impact on province evaluation / divides total score by this amount
 NDefines.NAI.BORDER_DISTANCE_SCORE_IMPACT =	20 --Border <-> province distance impact on province evaluation / actual distance penalty
