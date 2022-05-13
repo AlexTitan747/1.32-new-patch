@@ -242,6 +242,20 @@ tm_SRV_slot_1 = {
 				}
 				add_permanent_claim = ROOT
 			}
+			merv_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			transoxiana_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 			add_country_modifier = {
 				name = "increase_value_of_trade"
 				duration = 3650
@@ -324,9 +338,255 @@ tm_SRV_slot_1 = {
 				}
 				add_permanent_claim = ROOT
 			}
+			bahrain_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			pirate_coast_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			mascat_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			oman_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_SRV_fight_for_the_gardens = {
+		icon = mission_saladin_takes_jerusalem
+		required_missions = { tm_SRV_the_gulf_of_hormuz }
+		
+		provinces_to_highlight = {
+			OR = {
+				area = khuzestan_area
+				area = basra_area
+				area = iraq_arabi_area
+				area = al_jazira_area
+				area = shahrizor_area
+				area = luristan_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			khuzestan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			basra_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			iraq_arabi_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			al_jazira_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			shahrizor_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			luristan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_treasury = 1000
+			add_mil_power = 100
+			add_country_modifier = {
+				name = "riches_from_babylon"
+				duration = 5475
+			}
+			set_country_flag = tm_srv_owns_babylon
 		}
 	}
 }
+tm_SRV_slot_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = SRV
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	tm_SRV_claim_arabian_gulf = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_the_gulf_of_hormuz }
+		position = 6
+		
+		provinces_to_highlight = {
+			OR = {
+				area = bahrain_area
+				area = pirate_coast_area
+				area = mascat_area
+				area = oman_area
+				area = mogostan_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			bahrain_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			pirate_coast_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			mascat_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			oman_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			mogostan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "hormuz_trade"
+				duration = 5475
+			}
+		}
+	}
+}
+
+tm_SRV_slot_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = SRV
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	tm_SRV_invade_samarkand = {
+		icon = a_strong_government
+		required_missions = {  }
+		position = 6
+		
+		provinces_to_highlight = {
+			OR = {
+				area = merv_area
+				area = transoxiana_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			merv_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			transoxiana_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			central_asia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	tm_SRV_deal_with_the_hordes = {
+		icon = mission_hephthalites_white_huns
+		required_missions = { tm_SRV_invade_samarkand }
+		
+		
+		provinces_to_highlight = {
+			OR = {
+				area = khiva_area
+				area = transcaspia_area
+				area = nogai_area
+				area = kyzylkum_area
+				area = syr_darya_area
+				area = kashgaria_area
+				area = tarim_basin_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			khiva_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			transcaspia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			nogai_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			kyzylkum_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			syr_darya_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			kashgaria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			tarim_basin_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 10
+			add_dip_power = 100
+			add_adm_power = 100
+			add_treasury = 500
+			add_country_modifier = {
+				name = "horde_traditions"
+				duration = -1
+			}
+		}
+	}
+}
+
 tm_SRV_slot_5 = {
 	slot = 5
 	generic = no
@@ -337,7 +597,7 @@ tm_SRV_slot_5 = {
 	}
 	has_country_shield = yes
 
-	tm_SRV_southern_caucasian_trade = {
+	tm_SRV_caucasian_trade = {
 		icon = mission_dominate_persian_gulf
 		required_missions = {  }
 		position = 3
@@ -387,7 +647,7 @@ tm_SRV_slot_5 = {
 			}
 		}
 		effect = {
-			add_treasury = 1000
+			add_treasury = 500
 			dagestan_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -406,7 +666,7 @@ tm_SRV_slot_5 = {
 	}
 	tm_SRV_gold_rush = {
 		icon = mission_zambezi_gold
-		required_missions = { tm_SRV_southern_caucasian_trade }
+		required_missions = { tm_SRV_caucasian_trade }
 		
 		provinces_to_highlight = {
 			province_id = 2201
