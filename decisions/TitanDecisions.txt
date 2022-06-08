@@ -397,5 +397,45 @@ country_decisions = {
 			add_years_of_income = -0.4
 			set_country_flag = educate_ruler_flag
 		}
-	}			
+	}
+	tm_hire_explorer = {
+		potential = {
+				is_bankrupt = no
+				ai = no
+				#has_institution = new_world_i
+				NOT = { has_country_modifier = hired_explorer }
+			}
+			allow = {
+				#has_institution = new_world_i
+			}
+			effect = {
+				add_years_of_income = -0.1
+				create_explorer = { tradition = 10 }
+				add_country_modifier = {
+				name = "hired_explorer"
+				duration = 1825
+				hidden = yes
+			}
+		}
+	}
+	tm_hire_conquistador = {
+		potential = {
+				is_bankrupt = no
+				ai = no
+				#has_institution = new_world_i
+				NOT = { has_country_modifier = hired_conquistador }
+			}
+			allow = {
+				#has_institution = new_world_i
+			}
+			effect = {
+				add_years_of_income = -0.3
+				create_conquistador = { tradition = 10 }
+				add_country_modifier = {
+				name = "hired_conquistador"
+				duration = 1825
+				hidden = yes
+				}
+			}	
+		}			
 }		
