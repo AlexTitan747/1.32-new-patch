@@ -1,6 +1,83 @@
 
+imperial_duchy = {
+    icon = "king"
+    allow_normal_conversion = no
+    potential = {
+		OR = {
+	  tag = FKN
+      tag = WES
+	  tag = BAV
+	  tag = SWA
+	  tag = HAN
+		}
+    }
+    valid_for_nation_designer = yes
+    nation_designer_cost = 30
+	legacy_equivalent = despotic_monarchy
+    nation_designer_trigger = {
+		OR = {
+			tag = FKN
+			tag = WES
+			tag = BAV
+			tag = SWA
+			tag = HAN
+			  }
+    }
+    modifiers = {
+        imperial_authority = 1
+        defensiveness = 0.1
+		land_forcelimit_modifier = 0.1
+    }
+
+} 
+
+islamic_emirate = {
+    icon = "peacock_throne"
+    allow_normal_conversion = no
+    potential = {
+      tag = ZRD
+    }
+    valid_for_nation_designer = yes
+    nation_designer_cost = 30
+	legacy_equivalent = iqta_legacy
+    nation_designer_trigger = {
+		tag = ZRD 
+    }
+    modifiers = {
+        tolerance_own = 1
+		state_maintenance_modifier = -0.1
+		advisor_cost = -0.05
+    }
+	conditional = {
+		allow = { has_dlc = "Cradle of Civilization" }
+		government_abilities = {
+			iqta_mechanic
+		}
+	}
+} 
+
+vikking_kingdom = {
+    icon = "chieftain"
+    allow_normal_conversion = no
+    potential = {
+      tag = DNL
+    }
+    valid_for_nation_designer = yes
+    nation_designer_cost = 30
+	legacy_equivalent = despotic_monarchy
+    nation_designer_trigger = {
+		tag = DNL 
+    }
+    modifiers = {
+        may_perform_slave_raid = yes
+		governing_capacity_modifier = 0.1
+		naval_maintenance_modifier = -0.1
+    }
+
+}
+
 slavic_union = {
-    icon = "castle"
+    icon = "russian_principality"
     allow_normal_conversion = no
     potential = {
       tag = KSM
@@ -12,7 +89,7 @@ slavic_union = {
 		tag = KSM 
     }
     modifiers = {
-        num_accepted_cultures = 2
+        tolerance_own = 2
         governing_capacity = 200
 		fire_damage_received = -0.05
     }
