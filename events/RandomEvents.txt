@@ -11331,7 +11331,18 @@ country_event = {
 				NOT = { legitimacy = 70 }
 			}
 		}
-		create_general = { tradition = 100 }
+		if = {
+			limit = {
+				ai = yes
+			}
+			create_general = { tradition = 60 }
+		}
+		else_if = {
+			limit = {
+				ai = no
+			}
+			create_general = { tradition = 100 }
+		}
 		add_prestige = -25
 		add_legitimacy = -25
 	}
