@@ -131,3 +131,21 @@ trade_monopoly = {
 	global_prov_trade_power_modifier = 0.05
 	
 }
+
+return_of_lost_cultures = {
+	potential = {
+		OR = {
+			culture_group = lost_cultures_group
+			ai = no
+		}	
+	}
+
+	trigger = {
+		if = {
+			limit = { culture_group = lost_cultures_group }
+		}
+				
+	}
+	culture_conversion_cost = -0.25
+	
+}
