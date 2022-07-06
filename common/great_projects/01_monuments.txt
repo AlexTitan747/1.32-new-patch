@@ -1,5 +1,132 @@
 ##################TITAN MONUMENTS#####################################
 
+roman_colosseum = {
+	start = 118 #roma
+	date = 1431.01.01
+	time = { months = 0	}
+	build_cost = 0
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 0
+	type = monument
+
+	build_trigger = {
+	
+	}
+
+	on_built = {
+	}
+
+	on_destroyed = {
+	}
+
+	can_use_modifiers_trigger = {
+		owner = {
+			OR = {
+				culture_group = lost_cultures_group
+				tag = ROM
+			}
+		}
+	}
+	
+
+	can_upgrade_trigger = {
+		owner = {
+			OR = {
+				culture_group = lost_cultures_group
+				tag = ROM
+			}
+		}
+	}
+
+	keep_trigger = {
+	}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+		}
+		on_upgraded = {
+		}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1000
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+			local_tax_modifier = 0.1
+		}
+		country_modifiers = {
+			manpower_recovery_speed = 0.05
+			global_unrest = -1
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+			local_tax_modifier = 0.1
+		}
+		country_modifiers = {
+			manpower_recovery_speed = 0.05
+			infantry_power = 0.1
+			global_unrest = -1
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+			local_tax_modifier = 0.1
+		}
+		country_modifiers = {
+			manpower_recovery_speed = 0.05
+			infantry_power = 0.1
+			global_unrest = -1
+			discipline = 0.025
+		}
+		on_upgraded = {
+			owner = {
+			set_country_flag = tier_3_roman_colosseum
+			}
+		}
+	}
+	
+}
+
 danevirke = {
 	start = 13 #schleswig
 	date = 1431.01.01
