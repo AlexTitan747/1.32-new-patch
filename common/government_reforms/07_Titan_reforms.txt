@@ -1,4 +1,37 @@
 
+seleucid_monarchy = {
+	lock_level_when_selected = yes
+	allow_normal_conversion = yes
+	icon = "ottoman_government"
+	potential = {
+		religion = orthodox
+		OR = {
+			AND = {
+				tag = SLU
+				NOT = { map_setup = map_setup_random }
+			}
+		}
+	}
+	valid_for_nation_designer = yes
+	nation_designer_cost = 20
+	nation_designer_trigger = {
+		religion = orthodox
+	}
+	legacy_equivalent = ottoman_government_legacy
+	maintain_dynasty = yes
+	modifiers = {
+		unjustified_demands = -0.1
+		legitimacy = 0.5
+		max_absolutism = 5
+		governing_capacity = 150
+	}
+
+	custom_attributes = {
+		locked_government_type = yes
+	}
+
+}
+
 imperial_duchy = {
     icon = "king"
     allow_normal_conversion = no

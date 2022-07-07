@@ -72,7 +72,19 @@ country_decisions = {
 				change_tag = SLU
 				change_religion = orthodox
 				swap_non_generic_missions = yes
-				remove_non_electors_emperors_from_empire_effect = yes
+				SLU = {
+					if = {
+						limit = {
+							NOT = { government = monarchy }
+							is_revolutionary = no
+						}
+						change_government_to_monarchy = yes
+					}
+					if = {
+						limit = { is_revolutionary = no }
+						add_government_reform = seleucid_monarchy
+					}
+				}
 				if = {
 					limit = {
 						NOT = { government_rank = 3 }
@@ -90,20 +102,9 @@ country_decisions = {
 					add_base_manpower = 4
 				}
 				add_dip_power = 400
-				add_stability = 2
+				add_stability = 1
 
-				if = {
-					limit = { is_revolutionary = no }
-					add_government_reform = great_antiquity
-				}
 				set_capital = 2313 # Antakiya
-				if = {
-					limit = {
-						NOT = { government = monarchy }
-						is_revolutionary = no
-					}
-					change_government_to_monarchy = yes 
-				}
 				if = {
 				limit = {
 					NOT = { primary_culture = greek }

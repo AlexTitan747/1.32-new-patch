@@ -1,0 +1,89 @@
+namespace = titanslu
+#these are the event that change you government type and form 
+
+#every time you reach a dev point you get a choice between a republic, theocracy or monarchy
+#it gives you a specialised reform based on what you choose
+
+#duchy rank
+country_event = {
+	id = titanslu.1
+	title = "titanslu.title1"
+	desc = "titanslu.desc1"
+	picture = GOOD_WITH_MONARCH_eventPicture
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SLU
+		government = monarchy
+		has_country_flag = formed_seleucid_flag
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+option = {
+		name = "titanslu.ruler1"
+			add_meritocracy_effect = yes
+			define_ruler = {
+				name = "Seleucus I"
+				dynasty = "Nicator"
+				culture = greek
+				claim = 95
+				adm = 5
+				dip = 6
+				mil = 5
+				age = 20
+				male = yes
+		}
+		if = {
+			limit = {
+				has_dlc = "Rights of Man" 
+			}
+			hidden_effect = { add_ruler_personality_ancestor = { key = industrious } }	
+			hidden_effect = { add_ruler_personality_ancestor = { key = strict } }	
+		}
+	}
+}
+
+country_event = {
+	id = titanslu.2
+	title = "titanslu.title2"
+	desc = "titanslu.desc2"
+	picture = NEW_HEIR_eventPicture
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SLU
+		government = monarchy
+		has_country_flag = formed_seleucid_flag
+	}
+
+	mean_time_to_happen = {
+		months = 9125
+	}
+	
+option = {
+		name = "titanslu.ruler2"
+			add_meritocracy_effect = yes
+			define_ruler = {
+				name = "Antiochus I"
+				dynasty = "Nicator"
+				culture = greek
+				claim = 95
+				adm = 5
+				dip = 4
+				mil = 5
+				age = 0
+				male = yes
+		}
+		if = {
+			limit = {
+				has_dlc = "Rights of Man" 
+			}
+			hidden_effect = { add_heir_personality_ancestor = { key = entrepreneur } }	
+		}
+	}
+}
