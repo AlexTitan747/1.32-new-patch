@@ -1,8 +1,73 @@
 
+portuguese_monarchy_reform = {
+	icon = "portuguese_monarchy"
+	allow_normal_conversion = yes
+	legacy_equivalent = feudal_monarchy
+	valid_for_nation_designer = yes
+	nation_designer_cost = 0
+	potential = {
+		tag = POR
+	}
+	modifiers = {
+		burghers_loyalty_modifier = 0.1
+		monarch_diplomatic_power = 1
+		global_colonial_growth = 25
+		great_project_upgrade_cost = -0.15
+		vassal_forcelimit_bonus = 0.25
+		global_tax_modifier = 0.1
+	}
+	ai = {
+		factor = 0.5 #generic
+	}
+}
+
+spanish_catholic_monarchy_reform = {
+	icon = "spanish_catholic_monarchy"
+	allow_normal_conversion = yes
+	legacy_equivalent = feudal_monarchy
+	valid_for_nation_designer = yes
+	nation_designer_cost = 0
+	potential = {
+		tag = SPA
+	}
+	modifiers = {
+		missionaries = 1
+		global_missionary_strength = 0.01
+		global_colonial_growth = 25
+		heavy_ship_cost = -0.10
+		governing_capacity = 150
+		legitimacy = 0.5
+	}
+	ai = {
+		factor = 0.5 #generic
+	}
+}
+
+french_monarchy_reform = {
+	icon = "royaume_de_france"
+	allow_normal_conversion = yes
+	legacy_equivalent = feudal_monarchy
+	valid_for_nation_designer = yes
+	nation_designer_cost = 0
+	potential = {
+		tag = FRA
+	}
+	modifiers = {
+		nobles_influence_modifier = 0.05
+		monarch_lifespan = 0.25
+		global_tax_modifier = 0.1
+		army_tradition_decay = -0.005
+		yearly_army_professionalism = 0.0025
+	}
+	ai = {
+		factor = 0.5 #generic
+	}
+}
+
 seleucid_monarchy = {
 	lock_level_when_selected = yes
 	allow_normal_conversion = yes
-	icon = "ottoman_government"
+	icon = "seleucid_monarchy"
 	potential = {
 		religion = orthodox
 		OR = {
@@ -20,10 +85,12 @@ seleucid_monarchy = {
 	legacy_equivalent = ottoman_government_legacy
 	maintain_dynasty = yes
 	modifiers = {
-		unjustified_demands = -0.1
+		monarch_admin_power = 1
+		monarch_military_power = 1
+		global_autonomy = -0.05
+		shock_damage_received = -0.1
 		legitimacy = 0.5
-		max_absolutism = 5
-		governing_capacity = 150
+		governing_capacity = 200
 	}
 
 	custom_attributes = {
@@ -202,9 +269,11 @@ union_of_crowns = {
 		
 	}
 	modifiers = {
-		global_colonial_growth = 20
+		global_colonial_growth = 25
 		governing_capacity_modifier = 0.1
 		autonomy_change_time = -0.25
+		hostile_attrition = -1
+		infantry_power = 0.1
 	}
 
 conditional = {

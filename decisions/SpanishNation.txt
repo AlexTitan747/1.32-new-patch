@@ -105,6 +105,19 @@ country_decisions = {
 				swap_non_generic_missions = yes
 			}
 			remove_non_electors_emperors_from_empire_effect = yes
+			SPA = {
+				if = {
+					limit = {
+						NOT = { government = monarchy }
+						is_revolutionary = no
+					}
+					change_government_to_monarchy = yes
+				}
+				if = {
+					limit = { is_revolutionary = no }
+					add_government_reform = spanish_catholic_monarchy_reform
+				}
+			}
 			if = {
 				limit = { NOT = { government_rank = 2 } }
 				set_government_rank = 2
