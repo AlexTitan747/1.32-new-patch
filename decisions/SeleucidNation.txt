@@ -23,8 +23,14 @@ country_decisions = {
 						ai = no
 					}
 				}
-
-				primary_culture = greek
+				OR = {
+					AND = {
+						primary_culture = greek
+					}
+					AND = {
+						tag = TUR
+					}
+				}
 
 				OR = {
 					ai = no
@@ -53,6 +59,7 @@ country_decisions = {
 			}
 			
 			allow = {
+				adm_tech = 10
 				NOT = { exists = SLU }
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
