@@ -1426,6 +1426,35 @@ fraternite_reform = {
 		factor = 2.5
 	}
 }
+ 
+expansion_plans_reform = {
+	icon = "parliament_hall"
+	allow_normal_conversion = yes
+	potential = {
+		is_revolutionary = no
+		if = {
+			limit = {
+				OR = {
+					culture_group = french
+					culture_group = germanic
+					culture_group = latin
+				}
+			}
+		}
+	}
+	modifiers = {
+		ae_impact = -0.1
+		core_creation = -0.05
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
+	ai = {
+		factor = 1
+	}
+}
 
 #Frequency of Elections / Consolidation of Power
 

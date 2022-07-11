@@ -1,0 +1,114 @@
+namespace = titancriticalevent
+#these are the event that change you government type and form 
+
+#every time you reach a dev point you get a choice between a republic, theocracy or monarchy
+#it gives you a specialised reform based on what you choose
+
+#duchy rank
+country_event = {
+	id = titancriticalevent.1
+	title = "titancriticalevent.title1"
+	desc = "titancriticalevent.desc1"
+	picture = ADVISOR_eventPicture	
+	
+	trigger = {
+		fortification_expert = 3
+		NOT = { has_country_flag = cannoneer_expert }
+	}
+	
+	mean_time_to_happen = {
+		months = 180
+
+		modifier = {
+			factor = 0.9
+			innovativeness_ideas = 4
+		}
+		modifier = {
+			factor = 0.9
+			innovativeness_ideas = 6
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { innovativeness_ideas = 4 }
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { innovativeness_ideas = 2 }
+		}
+	}
+
+	option = {
+		name = "titancriticalevent.advisor1"	# His reputation will reach further than our borders
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				stability = 1
+			}
+		}
+		add_meritocracy_effect = yes
+		add_prestige = 25
+		add_country_modifier = {
+			name = "cannoneer_expert_boost"
+			duration = 3650
+		}
+		set_country_flag = cannoneer_expert
+	}
+}
+
+#######################################################
+
+country_event = {
+	id = titancriticalevent.2
+	title = "titancriticalevent.title2"
+	desc = "titancriticalevent.desc2"
+	picture = ADVISOR_eventPicture	
+	
+	trigger = {
+			OR = {
+				artillery_bearer = 3
+				shield_bearer = 3
+			}
+		NOT = { has_country_flag = new_recruitment_boost }
+	}
+	
+	mean_time_to_happen = {
+		months = 240
+
+		modifier = {
+			factor = 0.9
+			innovativeness_ideas = 4
+		}
+		modifier = {
+			factor = 0.9
+			innovativeness_ideas = 6
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { innovativeness_ideas = 4 }
+		}
+		modifier = {
+			factor = 1.1
+			NOT = { innovativeness_ideas = 2 }
+		}
+	}
+
+	option = {
+		name = "titancriticalevent.advisor2"	# His reputation will reach further than our borders
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				stability = 1
+			}
+		}
+		add_meritocracy_effect = yes
+		add_prestige = 25
+		add_treasury = 550
+		add_country_modifier = {
+			name = "new_recruitment_boost"
+			duration = 1825
+		}
+		set_country_flag = new_recruitment_boost
+	}
+}
