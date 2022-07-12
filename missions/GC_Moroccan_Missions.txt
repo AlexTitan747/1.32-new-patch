@@ -592,16 +592,7 @@ gc_morocco_3 = {
 		icon = mission_ottoman_harem
 		required_missions = {  }
 		trigger = {
-			stability = 1
-			NOT = { num_of_rebel_armies = 1 }
-			NOT = { num_of_rebel_controlled_provinces = 1 }
-			OR = {
-				custom_trigger_tooltip = {
-					tooltip = gc_mor_wattasid_tt
-					has_country_flag = wattasid_resolution
-				}
-				is_year = 1460
-			}
+			army_size_percentage = 1
 		}
 		effect = {
 			algiers_area = {
@@ -651,6 +642,16 @@ gc_morocco_3 = {
 		}
 		
 		trigger = {
+			stability = 1
+			NOT = { num_of_rebel_armies = 1 }
+			NOT = { num_of_rebel_controlled_provinces = 1 }
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = gc_mor_wattasid_tt
+					has_country_flag = wattasid_resolution
+				}
+				is_year = 1460
+			}
 			algiers_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT	

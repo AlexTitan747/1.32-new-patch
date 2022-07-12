@@ -1,4 +1,116 @@
 
+merc_winged_hussars_1 = {
+    regiments_per_development = 0.025
+    cavalry_weight = 1
+    artillery_weight = 0
+	cost_modifier = 0.75
+	sprites = { dlc080_alh_sprite_pack muslimgfx_sprite_pack }
+	trigger = {
+		has_reform = hussar_recruitment_plan_reform
+		OR = {
+			tag = POL
+			tag = HUN
+			was_tag = HUN
+		}
+	}
+    modifier = {
+        shock_damage = 0.1
+		shock_damage_received = 0.05
+		fire_damage_received = 0.05
+
+    }
+}
+
+merc_holy_roman_empire = {
+    regiments_per_development = 0.05
+    cavalry_weight = 0
+    #artillery_weight = 0
+	cost_modifier = 0.75
+	sprites = { dlc080_alh_sprite_pack muslimgfx_sprite_pack }
+	trigger = {
+		AND = {
+			is_part_of_hre = yes
+			hre_reform_passed = emperor_reichsstabilitaet
+		}
+	}
+    modifier = {
+		fire_damage_received = -0.1
+		shock_damage_received = -0.1
+    }
+}
+
+merc_french_musketeer_2 = {
+    regiments_per_development = 0.025
+    cavalry_weight = 0
+    #artillery_weight = 0
+	cost_modifier = 0.75
+	sprites = { dlc080_alh_sprite_pack muslimgfx_sprite_pack }
+	trigger = {
+		AND = {
+			tag = FRA
+			has_reform = french_musketeers_reform
+		}
+	}
+    modifier = {
+		fire_damage_received = -0.1
+		land_morale	= 0.05
+    }
+}
+
+merc_french_musketeer_1 = {
+    regiments_per_development = 0.025
+    cavalry_weight = 0
+    #artillery_weight = 0
+	cost_modifier = 0.75
+	sprites = { dlc080_alh_sprite_pack muslimgfx_sprite_pack }
+	trigger = {
+		AND = {
+			tag = FRA
+			has_reform = french_musketeers_reform
+		}
+	}
+    modifier = {
+		fire_damage = 0.1
+		land_morale	= 0.05
+    }
+}
+
+merc_tercio_infantry_2 = {
+    regiments_per_development = 0.025
+    cavalry_weight = 0
+    #artillery_weight = 0
+	cost_modifier = 0.75
+	sprites = { dlc080_alh_sprite_pack muslimgfx_sprite_pack }
+	trigger = {
+		AND = {
+			tag = SPA
+			has_reform = spanish_tercios_reform
+		}
+	}
+    modifier = {
+		fire_damage = 0.1
+		land_morale	= 0.05
+    }
+}
+
+merc_tercio_infantry_1 = {
+    regiments_per_development = 0.025
+    cavalry_weight = 0
+    #artillery_weight = 0
+	cost_modifier = 0.75
+	sprites = { dlc080_alh_sprite_pack muslimgfx_sprite_pack }
+	trigger = {
+		AND = {
+			tag = SPA
+			has_reform = spanish_tercios_reform
+		}
+	}
+    modifier = {
+		fire_damage = 0.1
+		land_morale	= 0.05
+    }
+}
+
 merc_xii_legion_of_auxiliaries = {
     regiments_per_development = 0.05
     cavalry_weight = 0
