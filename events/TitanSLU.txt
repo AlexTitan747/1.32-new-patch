@@ -87,3 +87,125 @@ country_event = {
 		}
 	}
 }
+
+country_event = {
+	id = titanslu.3
+	title = "titanslu.title3"
+	desc = "titanslu.desc3"
+	picture = CITY_DEVELOPMENT_eventPicture
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SLU
+		2313 = {
+			development = 28
+		}
+		
+	}
+
+	mean_time_to_happen = {
+		months = 120
+	}
+	
+	option = {
+		name = "titanslu.eco1"
+		2313 = {
+			add_base_tax = 2
+			add_base_production = 4
+			add_base_manpower = 2
+		}
+	}
+}
+
+country_event = {
+	id = titanslu.4
+	title = "titanslu.title4"
+	desc = "titanslu.desc4"
+	picture = SPY_eventPicture
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SLU
+	}
+
+	mean_time_to_happen = {
+		months = 1200
+	}
+	
+	option = {
+		name = "titanslu.penalty1"
+		add_treasury = -435
+		add_country_modifier = {
+			name = seleucid_unrest
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = titanslu.5
+	title = "titanslu.title5"
+	desc = "titanslu.desc5"
+	picture = RELIGION_eventPicture
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SLU
+	}
+
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	option = {
+		name = "titanslu.religion1"
+		add_country_modifier = {
+			name = a_seleucid_religious_effort
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = titanslu.6
+	title = "titanslu.title6"
+	desc = "titanslu.desc6"
+	picture = RELIGION_eventPicture
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = SLU
+		num_of_owned_provinces_with = {
+			value = 30
+			religion = orthodox
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 3
+	}
+	
+	option = {	# Let us make a clean sweep for the Glory of God
+		name = "titanslu.religion2"
+		define_advisor = {
+			type = inquisitor
+			location = 2313 # Antioch 
+			discount = yes
+			skill = 2
+			}
+			every_owned_province = {
+				limit = {
+					region = anatolia_region		
+					religion_group = muslim
+					owned_by = ROOT
+					development = 10
+				}
+			change_religion = orthodox
+		}
+	}
+}
+

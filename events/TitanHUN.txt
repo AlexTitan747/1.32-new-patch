@@ -1,0 +1,46 @@
+namespace = titanhun
+#these are the event that change you government type and form 
+
+#every time you reach a dev point you get a choice between a republic, theocracy or monarchy
+#it gives you a specialised reform based on what you choose
+
+#duchy rank
+country_event = {
+	id = titanhun.1
+	title = "titanhun.title1"
+	desc = "titanhun.desc1"
+	picture = BIG_BOOK_eventPicture
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = HUN
+		is_year = 1450
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = "titanhun.infantry1"
+		
+		add_country_modifier = {
+			name = hun_infantry_focus
+			duration = -1
+		}
+		custom_tooltip = "flavor_titanhun.infantry1"
+	}
+
+	option = {
+		name = "titanhun.cavalry1"
+		
+		add_country_modifier = {
+			name = hun_cavalry_focus
+			duration = -1
+		}
+		custom_tooltip = "flavor_titanhun.cavalry1"
+	}
+}
+
+

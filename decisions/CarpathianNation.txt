@@ -11,10 +11,8 @@ country_decisions = {
 					is_playing_custom_nation = no
 				}
 				NOT = { exists = CRP }
-				NOT = { tag = PAP }
-				NOT = { tag = HLR }
-				NOT = { tag = ROM }
-				NOT = { tag = UKR }
+				tag = HUN
+				
 				is_colonial_nation = no
 				OR = {
 					is_former_colonial_nation = no
@@ -104,6 +102,7 @@ country_decisions = {
 			}
 			
 			allow = {
+				has_country_modifier = hun_infantry_focus
 				adm_tech = 7
 				NOT = { exists = CRP }
 				is_nomad = no
@@ -140,7 +139,6 @@ country_decisions = {
 				1953 = {	#Szabolcs
 					move_capital_effect = yes
 				}
-				
 				change_tag = CRP
 				remove_non_electors_emperors_from_empire_effect = yes
 				add_prestige = 25
@@ -166,7 +164,7 @@ country_decisions = {
 					}
 					add_permanent_claim = ROOT
 				}
-				
+				remove_country_modifier = hun_infantry_focus
 				set_country_flag = formed_carpathia_flag
 				if = {
 				limit = { has_custom_ideas = no }
