@@ -1693,6 +1693,25 @@ federal_state_model = {
 	}
 }
 
+compulsory_military_service = {
+	icon = "black_army_reform"
+	allow_normal_conversion = yes
+	potential = {
+		is_revolutionary = no
+		OR = {
+		tag = BRA
+		}
+
+	}
+	modifiers = {
+		global_tax_modifier = -0.1
+		infantry_power = 0.075
+	}
+	ai = {
+		factor = 1
+	}
+}
+
 sidhi_recruitment = {
 	icon = "siddhi_recruitment"
 	allow_normal_conversion = yes
@@ -1987,6 +2006,29 @@ innovative_court_reform = {
 	allow_normal_conversion = yes
 	modifiers = {
 		technology_cost = -0.05
+	}
+	ai = {
+		factor = 1
+	}
+}
+
+privy_council_for_the_electorate = {
+	icon = "council_meeting"
+	allow_normal_conversion = yes
+	potential = {
+		is_revolutionary = no
+		OR = {
+		tag = BRA
+		tag = PRU
+		}
+
+	}
+	modifiers = {
+		nobles_influence_modifier = -0.1
+		burghers_influence_modifier = -0.1
+		church_influence_modifier = -0.1
+		monthly_militarized_society = 0.02
+		governing_capacity = 100
 	}
 	ai = {
 		factor = 1
@@ -2312,6 +2354,25 @@ constitutional_amendment_reform = {
 	allow_normal_conversion = yes
 	modifiers = {
 		liberty_desire_from_subject_development = -0.20
+	}
+}
+
+amtskammer_chambers = {
+	icon = "amtskammer_chambers"
+	allow_normal_conversion = yes
+	potential = {
+		is_revolutionary = no
+		OR = {
+		tag = BRA
+		tag = PRU
+		}
+	}
+	modifiers = {
+		infantry_cost = -0.05
+		global_tax_modifier = 0.1
+	}
+	ai = {
+		factor = 1
 	}
 }
 
