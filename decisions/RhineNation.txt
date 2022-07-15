@@ -93,6 +93,20 @@ country_decisions = {
 				}
 			change_tag = CFR
 			remove_non_electors_emperors_from_empire_effect = yes
+
+			CFR = {
+				if = {
+					limit = {
+						NOT = { government = monarchy }
+						is_revolutionary = no
+					}
+					change_government_to_monarchy = yes
+				}
+				if = {
+					limit = { is_revolutionary = no }
+					add_government_reform = college_of_kings
+				}
+			}
 			south_german_region = {
 				limit = {
 						NOT = { owned_by = ROOT }

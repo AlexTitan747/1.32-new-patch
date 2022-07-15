@@ -1983,6 +1983,26 @@ zabt_reform = {
 	}
 }
 
+establish_hessian_trade_stations = {
+	icon = "paper_money_map"
+	allow_normal_conversion = yes
+	potential = {
+		is_revolutionary = no
+		OR = {
+		tag = HES
+		was_tag = HES
+		}
+
+	}
+	modifiers = {
+		build_cost = -0.05
+		trade_steering = 0.1
+	}
+	ai = {
+		factor = 1
+	}
+}
+
 #deliberative_assembly
 
 # parliamentary_reform defined in common file
@@ -2027,7 +2047,7 @@ privy_council_for_the_electorate = {
 		nobles_influence_modifier = -0.1
 		burghers_influence_modifier = -0.1
 		church_influence_modifier = -0.1
-		monthly_militarized_society = 0.02
+		monthly_militarized_society = 0.01
 		governing_capacity = 100
 	}
 	ai = {
