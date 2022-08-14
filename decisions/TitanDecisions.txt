@@ -1,22 +1,44 @@
 country_decisions = {
-			
-	#enlist_rajputs = {
-		#potential = {
-			#	has_estate = estate_rajput
-			#	NOT = { has_country_flag = enlist_rajputs }
-			#}
-			#allow = { 
-			#	has_estate_privilege = estate_rajput_rajput_regiments
-			#}
-			#effect = {
-				#add_country_modifier = {
-			#	name = "enlist_rajputs"
-			#	duration = -1
-			#	}
-			#	set_country_flag = enlist_rajputs
-			#}
-		#}
-	
+		
+	found_the_cape_company = {
+		major = no
+		potential = {
+			ai = no
+			capital_scope = {
+				NOT = {
+					continent = africa
+				}
+			}
+			NOT = {
+				has_country_flag = founded_cape_company
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		allow = {
+			owns_core_province = 1175
+			owns_core_province = 1177
+			owns_core_province = 1179
+			owns_core_province = 833
+			owns_core_province = 1180
+			owns_core_province = 1181
+			treasury = 500
+			adm_power = 100
+			NOT = {
+				has_country_flag = founded_cape_company
+			}
+		}
+		effect = {
+			set_country_flag = founded_cape_company
+			add_province_triggered_modifier = home_of_the_cape_company
+			add_country_modifier = founders_of_the_cape_company
+			add_treasury = -500
+			adm_power_cost = 100
+		}
+		}
+	}
+
 	PR_critical_events = {
 		major = yes
 		potential = {
