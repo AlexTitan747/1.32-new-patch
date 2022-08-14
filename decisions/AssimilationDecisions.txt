@@ -1,0 +1,46 @@
+country_decisions = {
+			
+	balkan_assimilation = {
+		major = yes
+		potential = {
+			ai = no
+			culture_group = carpathian
+		}
+		allow = {
+			government_rank = 3
+			num_of_owned_provinces_with = {
+				value = 25
+				culture_group = south_slavic
+				is_city = yes
+			}
+			NOT = { has_country_flag = assimilated_balkans }
+		}
+		effect = {
+			set_country_flag = assimilated_balkans
+			every_owned_province = {
+				limit = {
+					owned_by = ROOT
+					OR = {
+						culture = croatian
+						culture = serbian
+						culture = albanian
+						culture = slovene
+						culture = bosnian
+					}
+				}
+				change_culture = hbalkanite
+			}
+			every_owned_province = {
+				limit = {
+					owned_by = ROOT
+					OR = {
+						culture = bulgarian
+					}
+				}
+				change_culture = hbulgarian
+			}
+		}
+	}
+	
+			
+}		
