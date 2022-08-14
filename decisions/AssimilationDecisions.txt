@@ -9,7 +9,7 @@ country_decisions = {
 		allow = {
 			government_rank = 3
 			num_of_owned_provinces_with = {
-				value = 25
+				value = 30
 				culture_group = south_slavic
 				is_city = yes
 			}
@@ -38,6 +38,41 @@ country_decisions = {
 					}
 				}
 				change_culture = hbulgarian
+			}
+		}
+	}
+
+	czech_assimilation = {
+		major = yes
+		potential = {
+			ai = no
+			culture_group = germanic
+		}
+		allow = {
+			government_rank = 3
+			num_of_owned_provinces_with = {
+				value = 15
+				OR = {
+					culture = czech
+					culture = schlesian
+					culture = sorbian
+				}
+				is_city = yes
+			}
+			NOT = { has_country_flag = assimilated_czechs }
+		}
+		effect = {
+			set_country_flag = assimilated_czechs
+			every_owned_province = {
+				limit = {
+					owned_by = ROOT
+					OR = {
+						culture = czech
+						culture = schlesian
+						culture = sorbian
+					}
+				}
+				change_culture = gczech
 			}
 		}
 	}
