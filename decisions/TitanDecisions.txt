@@ -1,16 +1,28 @@
 country_decisions = {
 		
 	found_the_cape_company = {
-		major = no
 		potential = {
 			ai = no
+			any_owned_province = {
+				has_port = yes	
+			}
+			root = {
+				OR = {
+				has_idea_group = colonialism_ideas
+				has_idea_group = expansion_ideas
+				has_idea_group = exploration_ideas
+				}
+			}
 			capital_scope = {
 				NOT = {
 					continent = africa
 				}
 			}
 			NOT = {
-				has_country_flag = founded_cape_company
+				any_country = {
+					has_country_flag = founded_cape_company
+				}
+		
 			}
 		}
 		ai_will_do = {
