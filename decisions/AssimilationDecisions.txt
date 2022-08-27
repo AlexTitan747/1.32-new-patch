@@ -1,4 +1,114 @@
 country_decisions = {
+
+	kurdish_assimilation = {
+		major = yes
+		potential = {
+			ai = no
+			culture_group = caucasian
+			NOT = { has_country_flag = assimilated_kurds }
+		}
+		allow = {
+			government_rank = 3
+			num_of_owned_provinces_with = {
+				value = 10
+				culture = kurdish
+				is_city = yes
+			}
+			NOT = { has_country_flag = assimilated_kurds }
+		}
+		effect = {
+			set_country_flag = assimilated_kurds
+			every_owned_province = {
+				limit = {
+					owned_by = ROOT
+					OR = {
+						culture = kurdish
+					}
+				}
+				add_province_modifier = {
+					name = recently_assimilated
+					duration = 3650
+				}
+				change_culture = ckurdish
+			}
+		}
+	}
+
+	esyrian_assimilation = {
+		major = yes
+		potential = {
+			ai = no
+			culture_group = egyptian
+			NOT = { has_country_flag = assimilated_esyrian }
+		}
+		allow = {
+			government_rank = 3
+			num_of_owned_provinces_with = {
+				value = 10
+				OR = {
+				culture = al_suryah_arabic
+				culture = asyrian
+				}
+				is_city = yes
+			}
+			NOT = { has_country_flag = assimilated_esyrian }
+		}
+		effect = {
+			set_country_flag = assimilated_esyrian
+			every_owned_province = {
+				limit = {
+					owned_by = ROOT
+					OR = {
+						culture = al_suryah_arabic
+						culture = asyrian
+					}
+				}
+				add_province_modifier = {
+					name = recently_assimilated
+					duration = 3650
+				}
+				change_culture = esyrian
+			}
+		}
+	}
+
+	asyrian_assimilation = {
+		major = yes
+		potential = {
+			ai = no
+			culture_group = arabian
+			NOT = { has_country_flag = assimilated_asyrian }
+		}
+		allow = {
+			government_rank = 3
+			num_of_owned_provinces_with = {
+				value = 10
+				OR = {
+				culture = al_suryah_arabic
+				culture = esyrian
+				}
+				is_city = yes
+			}
+			NOT = { has_country_flag = assimilated_asyrian }
+		}
+		effect = {
+			set_country_flag = assimilated_asyrian
+			every_owned_province = {
+				limit = {
+					owned_by = ROOT
+					OR = {
+						culture = al_suryah_arabic
+						culture = esyrian
+					}
+				}
+				add_province_modifier = {
+					name = recently_assimilated
+					duration = 3650
+				}
+				change_culture = asyrian
+			}
+		}
+	}
 			
 	balkan_assimilation = {
 		major = yes
