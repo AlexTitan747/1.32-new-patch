@@ -90,6 +90,7 @@ NDefines.NMilitary.MERCENARY_COMPANY_MANPOWER_RECOVERY = 60				-- How many month
 NDefines.NMilitary.MERCENARY_COMPANY_HIRED_MANPOWER_RECOVERY_MOD = 2.0	-- How much to modify the length for manpower recovery if they are hired
 NDefines.NMilitary.MERCENARY_COMPANY_BUILDING_TIME = 0			-- Multiply province distance with this
 NDefines.NMilitary.GARRISON_SIZE = 2000
+NDefines.NMilitary.FORTRESS_COST = 0.25
 NDefines.NMilitary.SIEGE_FORCE_NEEDED_MULTIPLIER = 0.5
 NDefines.NMilitary.TRANSPORT_SHIP_SAILORS_COST = 25
 
