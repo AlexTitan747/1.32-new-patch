@@ -1,4 +1,112 @@
 
+moroccan_monarchy = {
+	icon = "castle"
+	allow_normal_conversion = yes
+	potential = {
+		tag = MOR
+		was_tag = MOR
+	}
+	valid_for_nation_designer = yes
+	nation_designer_cost = 0
+	legacy_equivalent = iqta_legacy
+
+	modifiers = {
+		legitimacy = 0.5
+		prestige = 0.2
+		monarch_lifespan = 0.25
+		global_tax_modifier = 0.05
+		stability_cost_modifier = -0.1
+		galley_cost = -0.1
+	}
+
+	conditional = {
+		allow = { has_dlc = "Cradle of Civilization" }
+		government_abilities = {
+			iqta_mechanic
+		}
+	}
+
+	ai = {
+		factor = 0.5 #generic
+	}
+}
+
+fragmented_moroccan_monarchy = {
+	icon = "castle"
+	allow_normal_conversion = yes
+	potential = {
+		tag = MOR
+	}
+	valid_for_nation_designer = yes
+	nation_designer_cost = 0
+	legacy_equivalent = iqta_legacy
+
+	modifiers = {
+		heir_chance = -0.25
+		legitimacy = -0.5
+		power_projection_from_insults = -0.5
+		prestige = -0.2
+		global_autonomy = 0.025
+		global_tax_modifier = 0.05
+	}
+
+	conditional = {
+		allow = { has_dlc = "Cradle of Civilization" }
+		government_abilities = {
+			iqta_mechanic
+		}
+	}
+
+	ai = {
+		factor = 0.5 #generic
+	}
+}
+
+kingdom_of_the_two_sicilies = {
+	icon = "castle"
+	allow_normal_conversion = yes
+	potential = {
+		tag = TTS
+	}
+	valid_for_nation_designer = yes
+	nation_designer_cost = 0
+	legacy_equivalent = feudal_monarchy
+
+	modifiers = {
+		prestige = 0.5
+		galley_power = 0.05
+		warscore_cost_vs_other_religion = 0.1
+		reinforce_cost_modifier = 0.1
+		global_missionary_strength = 0.01
+	}
+
+	ai = {
+		factor = 0.5 #generic
+	}
+}
+
+kingdom_of_naples = {
+	icon = "castle"
+	allow_normal_conversion = yes
+	potential = {
+		tag = NAP
+	}
+	valid_for_nation_designer = yes
+	nation_designer_cost = 0
+	legacy_equivalent = feudal_monarchy
+
+	modifiers = {
+		legitimacy = 0.5
+		galley_power = 0.025
+		warscore_cost_vs_other_religion = 0.1
+		reinforce_cost_modifier = 0.1
+	}
+
+	ai = {
+		factor = 0.5 #generic
+	}
+}
+
 kingdom_of_bohemia = {
 	icon = "castle"
 	allow_normal_conversion = yes
@@ -153,7 +261,7 @@ crown_of_poland_reform = {
 	potential = {
 		OR = {
 			tag = POL
-			tag = PLC
+			was_tag = POL
 		}
 	}
 	modifiers = {
@@ -254,7 +362,7 @@ seleucid_monarchy = {
 	modifiers = {
 		monarch_admin_power = 1
 		monarch_military_power = 1
-		global_autonomy = -0.05
+		global_autonomy = -0.025
 		shock_damage_received = -0.1
 		legitimacy = 0.5
 		governing_capacity = 100
@@ -467,8 +575,10 @@ persian_zoroastrian_state = {
 		technology_group = muslim
 	}
 	modifiers = {
-		free_dip_policy = 1
+		center_of_trade_upgrade_cost = -0.25
+		reinforce_cost_modifier = -0.1
 		interest = -0.5
+		monarch_diplomatic_power = 1
 	}
 
 }
@@ -549,7 +659,7 @@ panslavic_state = {
 	modifiers = {
 		num_accepted_cultures = 2
 		global_regiment_cost = -0.1
-		manpower_recovery_speed = 0.2
+		manpower_recovery_speed = 0.1
 	}
 
 }

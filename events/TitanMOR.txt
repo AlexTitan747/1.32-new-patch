@@ -1,0 +1,33 @@
+namespace = titanmor
+#these are the event that change you government type and form 
+
+#every time you reach a dev point you get a choice between a republic, theocracy or monarchy
+#it gives you a specialised reform based on what you choose
+
+#duchy rank
+country_event = {
+	id = titanmor.1
+	title = "titanmor.title1"
+	desc = "titanmor.desc1"
+	picture = GOOD_WITH_MONARCH_eventPicture
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = MOR
+		has_country_flag = wattasid_resolution
+	}
+
+	mean_time_to_happen = {
+		months = 24
+	}
+	
+	option = {
+		name = "titanmor.event1"
+		if = {
+				limit = { is_revolutionary = no }
+				add_government_reform = moroccan_monarchy
+		}
+	}
+}
+
