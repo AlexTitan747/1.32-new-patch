@@ -195,16 +195,24 @@ italian_defensive_effort = {
 	}
 
 	trigger = {
-		owner = {
-			OR = {
-				tag = ITA
-				tag = ROM
+			AND = {
+				owner = {
+					OR = {
+					tag = ITA
+					tag = ROM
+					}
+				}	
+				OR = {
+					has_building = fort_15th
+					has_building = fort_16th
+					has_building = fort_17th
+					has_building = fort_18th
 				}
 			}
 	}
 
-	local_defensiveness = 0.05
-	garrison_growth = 0.1
+	defensiveness = 0.01
+	global_garrison_growth = 0.05
 	
 	#Province scope
 	on_activation = {
