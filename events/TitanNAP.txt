@@ -1,0 +1,48 @@
+namespace = titannap
+#these are the event that change you government type and form 
+
+#every time you reach a dev point you get a choice between a republic, theocracy or monarchy
+#it gives you a specialised reform based on what you choose
+
+#duchy rank
+
+country_event = {
+	id = titannap.1
+	title = "titannap.title1"
+	desc = "titannap.desc1"
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+		OR = {
+		tag = NAP
+		tag = TTS
+		}
+		has_country_flag = nap_faceting
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = "titannap.diamond1"
+		1933 = {
+			if = {
+				limit = {
+					NOT = { trade_goods = gems }
+				}
+				change_trade_goods = gems
+			}
+			add_permanent_province_modifier = {
+				name = diamond_district
+				duration = -1
+			}
+		}
+		add_country_modifier = {
+			name = napolese_diamond_district
+			duration = 1825
+		}
+	}
+}
