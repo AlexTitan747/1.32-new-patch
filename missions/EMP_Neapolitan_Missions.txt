@@ -572,4 +572,28 @@ emp_naples_5 = {
 			}
 		}
 	}
+	emp_nap_neapolitan_faceting = {
+		icon = mission_empire
+		required_missions = {  }
+		position = 7
+		
+		trigger = {
+			1933 = {
+				development = 15
+				has_building = workshop
+			}
+			has_institution = renaissance
+			is_at_war = no
+			italy_region = {
+				NOT = { trade_goods = gems }
+			}
+		}
+		effect = {
+			add_prestige = 15
+			country_event = { id = titannap.1 }
+			hidden_effect = {
+				set_country_flag = nap_faceting
+			}
+		}
+	}
 }
