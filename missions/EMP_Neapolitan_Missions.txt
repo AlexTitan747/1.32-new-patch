@@ -503,11 +503,6 @@ emp_naples_5 = {
 				owned_by = ROOT
 				development = 30
 			}
-			num_of_owned_provinces_with = {
-				value = 10
-				development = 10
-				region = italy_region
-			}
 		}
 		effect = {
 			change_government_reform_progress = 50
@@ -572,9 +567,32 @@ emp_naples_5 = {
 			}
 		}
 	}
-	emp_nap_neapolitan_faceting = {
+
+	emp_nap_infrastructure_and_industry = {
 		icon = mission_empire
 		required_missions = {  }
+		position = 6
+		
+		trigger = {
+			workshop = 4
+			num_of_owned_provinces_with = {
+				value = 8
+				development = 10
+				or = {
+				area = calabria_area
+				area = naples_area
+				area = apulia_area
+				}
+			}
+		}
+		effect = {
+			add_adm_power = 75
+			add_treasury = 350
+		}
+	}
+	emp_nap_neapolitan_faceting = {
+		icon = mission_empire
+		required_missions = { emp_nap_infrastructure_and_industry }
 		position = 7
 		
 		trigger = {
