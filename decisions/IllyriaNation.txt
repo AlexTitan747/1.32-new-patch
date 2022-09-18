@@ -16,6 +16,7 @@ country_decisions = {
 				#NOT = { tag = TIM }
 				NOT = { tag = PER }
 				NOT = { tag = PLC }
+				has_country_flag = illyria_forming
 				is_colonial_nation = no
 				OR = {
 					is_former_colonial_nation = no
@@ -73,15 +74,21 @@ country_decisions = {
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
 
-				owns_core_province = 4752			# Rijeka
-				owns_core_province = 137			# Ragusa
-				owns_core_province = 4174			# Durres
-
-							num_of_owned_provinces_with = {
-								value = 10
-								region = balkan_region
-								is_core = root
-							}
+				OR = {
+					AND = {
+						owns_core_province = 4752			# Rijeka
+						owns_core_province = 137			# Ragusa
+						owns_core_province = 4174			# Durres
+						}
+					AND = {
+						has_country_flag = illyria_forming
+						}
+				}
+					num_of_owned_provinces_with = {
+					value = 10
+					region = balkan_region
+					is_core = root
+				}
 			
 				OR = {
 					AND = {

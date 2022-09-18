@@ -617,6 +617,170 @@ emp_naples_4 = {
 			}
 		}
 	}
+	emp_nap_defeat_skanderbeg = {
+		icon = mission_medieval_siege
+		required_missions = { emp_nap_two_sicilies }
+
+		provinces_to_highlight = {
+				area = albania_area
+				NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+				}
+		}
+		trigger = {
+			albania_area = {
+				type = all
+				owned_by = ROOT
+				}
+			}
+		effect = {
+			morea_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			macedonia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			northern_greece_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			east_adriatic_coast_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			rascia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			bosnia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = "skanderbeg_defensive_techniques"
+				duration = 5475
+			}
+		}
+	}
+
+	emp_nap_major_adriatic_port_control = {
+		icon = capture_adriatic_ports
+		required_missions = { emp_nap_defeat_skanderbeg }
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					province_id = 137
+				}
+				AND = {
+					area = east_adriatic_coast_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		trigger = {
+			east_adriatic_coast_area = {
+				type = all
+				owned_by = ROOT
+				}
+				4174 = {
+				province_has_center_of_trade_of_level = 2
+				}
+				137 = {
+					province_has_center_of_trade_of_level = 3
+				}
+			}
+		effect = {
+			137 = {
+				add_base_manpower = 7
+				add_base_production = 3
+				add_base_tax = 3
+			}
+			croatia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = "ragusa_trading"
+				duration = 5475
+			}
+		}
+	}
+
+	emp_nap_lands_of_illyria = {
+		icon = mission_lands_of_illyria
+		required_missions = { emp_nap_major_adriatic_port_control }
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = bosnia_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = east_adriatic_coast_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = albania_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		
+		trigger = {
+			bosnia_area = {
+				type = all
+				owned_by = ROOT
+				}
+			east_adriatic_coast_area = {
+				type = all
+				owned_by = ROOT
+				}
+			albania_area = {
+				type = all
+				owned_by = ROOT
+				}
+			}
+		effect = {
+			add_country_modifier = {
+				name = "illyrian_heritage"
+				duration = -1
+			}
+			set_country_flag = illyria_forming
+		}
+	}
 
 	emp_nap_a_royal_coup = {
 		icon = king_of_aragon
@@ -631,11 +795,10 @@ emp_naples_4 = {
 		}
 		effect = {
 			country_event = {
-				id = flavor_nap.55
+				id = titannap.2
 			}
 		}
 	}
-	
 }
 
 emp_naples_5 = {
