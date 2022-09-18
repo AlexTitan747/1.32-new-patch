@@ -66,8 +66,8 @@ fragmented_moroccan_monarchy = {
 	}
 }
 
-kingdom_of_the_two_sicilies = {
-	icon = "castle"
+sicilian_emirate = {
+	icon = "muslim"
 	allow_normal_conversion = yes
 	potential = {
 		tag = TTS
@@ -81,9 +81,14 @@ kingdom_of_the_two_sicilies = {
 		galley_power = 0.05
 		warscore_cost_vs_other_religion = -0.1
 		reinforce_cost_modifier = -0.1
-		global_missionary_strength = 0.01
+		global_missionary_strength = 0.02
 	}
-
+	conditional = {
+		allow = { has_dlc = "Cradle of Civilization" }
+		government_abilities = {
+			iqta_mechanic
+		}
+	}
 	ai = {
 		factor = 0.5 #generic
 	}

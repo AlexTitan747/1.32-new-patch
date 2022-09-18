@@ -1,10 +1,134 @@
 namespace = titannap
-#these are the event that change you government type and form 
 
-#every time you reach a dev point you get a choice between a republic, theocracy or monarchy
-#it gives you a specialised reform based on what you choose
+country_event = {
+	id = titannap.3
+	title = "titannap.title3"
+	desc = "titannap.desc3"
+	picture = COURT_eventPicture
 
-#duchy rank
+	fire_only_once = yes
+
+	trigger = {
+		has_country_flag = fired_sunni_revolt
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	option = {
+		name = "titannap.coup1"
+		change_religion = sunni
+		define_ruler = {
+			claim = 100
+			name = "Abdullah"
+			dynasty = "al-Aghlab"
+			culture = sicilian
+			religion = sunni
+			adm = 4
+			dip = 4
+			mil = 5
+			age = 24
+		}
+		add_country_modifier = {
+			name = accepted_muslim_cultures
+			duration = -1
+		}
+		add_accepted_culture = berber
+		add_accepted_culture = tunisian
+		add_accepted_culture = algerian
+		set_country_flag = naples_has_sunni_ruler
+	}
+}
+
+country_event = {
+	id = titannap.2
+	title = "titannap.title2"
+	desc = "titannap.desc2"
+	picture = ANGRY_MOB_eventPicture
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+	
+	option = {
+		name = "titannap.sunni1"
+		125 = {
+			if = {
+				limit = {
+					owned_by = ROOT
+				}
+				change_religion = sunni
+			}
+		}
+		set_country_flag = fired_sunni_revolt
+	}
+	option = {
+		name = "titannap.sunni2"
+		set_country_flag = fired_sunni_revolt
+		add_stability = -2
+		125 = {
+			if = {
+				limit = {
+					owned_by = ROOT
+				}
+				change_religion = sunni
+				spawn_rebels = {
+					type = sunni_rebels
+					size = 1
+				}
+			}
+		}
+		124 = {
+			if = {
+				limit = {
+					owned_by = ROOT
+				}
+				change_religion = sunni
+			}
+		}
+		2982 = {
+			if = {
+				limit = {
+					owned_by = ROOT
+				}
+				change_religion = sunni
+			}
+		}
+		123 = {
+			if = {
+				limit = {
+					owned_by = ROOT
+				}
+				change_religion = sunni
+			}
+		}
+		2984 = {
+			if = {
+				limit = {
+					owned_by = ROOT
+				}
+				change_religion = sunni
+			}
+		}
+		2983 = {
+			if = {
+				limit = {
+					owned_by = ROOT
+				}
+				change_religion = sunni
+			}
+		}
+		121 = {
+			if = {
+				limit = {
+					owned_by = ROOT
+				}
+				change_religion = sunni
+			}
+		}
+	}
+}
 
 country_event = {
 	id = titannap.1

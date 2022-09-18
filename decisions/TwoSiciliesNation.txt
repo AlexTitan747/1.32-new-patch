@@ -1,5 +1,5 @@
 country_decisions = {
-	two_sicilies_nation = {
+	sicilian_emirate_nation = {
 		major = yes
 		potential = {
 			normal_or_historical_nations = yes
@@ -10,47 +10,15 @@ country_decisions = {
 				is_playing_custom_nation = no
 			}
 			NOT = { exists = TTS }
-			OR = {
-				primary_culture = neapolitan
-				primary_culture = sicilian
-			}
-			is_colonial_nation = no
-			OR = {
-				is_former_colonial_nation = no
-				AND = {
-					is_former_colonial_nation = yes
-					ai = no
-				}
-			}
+			has_country_flag = naples_has_sunni_ruler
+			religion = sunni
 		}
 		provinces_to_highlight = {
 			OR = {
 				OR = {
 					province_id = 121
 					province_id = 125
-				}
-				OR = {
-					AND = {
-						OR = {
-							culture = sicilian
-							culture = neapolitan
-						}
-						ROOT = {
-							NOT = {
-								num_of_owned_provinces_with = {
-									value = 10
-									OR = {
-										culture = sicilian
-										culture = neapolitan
-									}
-									region = italy_region
-									owned_by = ROOT
-								}
-							}
-							owns_core_province = 121
-							owns_core_province = 125
-						}
-					}
+					province_id = 341
 				}
 			}
 			OR = {
@@ -59,30 +27,18 @@ country_decisions = {
 			}
 		}
 		allow = {
-			adm_tech = 7
 			is_free_or_tributary_trigger = yes
 			is_nomad = no
 			is_at_war = no
 			owns_core_province = 121
 			owns_core_province = 125
-			num_of_owned_provinces_with = {
-				OR = {
-					culture = sicilian
-					culture = neapolitan
-				}
-				region = italy_region
-				value = 10
-			}
+			owns_core_province = 341
+			has_country_flag = naples_has_sunni_ruler
+			religion = sunni
 		}
 		effect = {
 			change_tag = TTS
-			if = {
-				limit = {
-					NOT = { tag = NAP }
-					NOT = { was_tag = NAP }
-				}
-				swap_non_generic_missions = yes
-			}
+			swap_non_generic_missions = yes
 			remove_non_electors_emperors_from_empire_effect = yes
 			TTS = {
 				if = {
@@ -94,7 +50,7 @@ country_decisions = {
 				}
 				if = {
 					limit = { is_revolutionary = no }
-					add_government_reform = kingdom_of_the_two_sicilies
+					add_government_reform = sicilian_emirate
 				}
 			}
 			if = {
@@ -106,7 +62,8 @@ country_decisions = {
 				set_government_rank = 2
 			}
 			set_country_flag = formed_two_sicilies_flag
-			add_prestige = 10
+			add_prestige = 30
+			add_stability = 1
 			if = {
 				limit = {
 					has_custom_ideas = no
@@ -118,6 +75,5 @@ country_decisions = {
 		ai_will_do = {
 			factor = 1
 		}
-		ai_importance = 400
 	}
 }
