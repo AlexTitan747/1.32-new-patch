@@ -726,10 +726,47 @@ emp_naples_4 = {
 				add_base_production = 3
 				add_base_tax = 3
 			}
+			croatia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 			add_country_modifier = {
 				name = "ragusa_trading"
 				duration = 5475
 			}
+		}
+	}
+
+	emp_nap_lands_of_illyria = {
+		icon = mission_lands_of_illyria
+		required_missions = { emp_nap_major_adriatic_port_control }
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = bosnia_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		
+		trigger = {
+			bosnia_area = {
+				type = all
+				owned_by = ROOT
+				}
+			}
+		effect = {
+			add_country_modifier = {
+				name = "illyrian_heritage"
+				duration = -1
+			}
+			set_country_flag = illyria_forming
 		}
 	}
 
@@ -750,7 +787,6 @@ emp_naples_4 = {
 			}
 		}
 	}
-	
 }
 
 emp_naples_5 = {
