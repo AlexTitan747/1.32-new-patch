@@ -12,31 +12,31 @@ country_event = {
 	picture = BUDDHA_eventPicture
 
 	trigger = {
-	OR = {
-		tag = JNG 
-		tag = ZHJ
-		tag = FUA
-		tag = GDO
-		tag = GXI
-		tag = HNA
-		tag = JIX
-		tag = AUI
-		tag = SAN
-		tag = LNI
-		tag = HEN
-		tag = HEI
-		tag = SCH
-		tag = SXI
-		tag = YNA
-		tag = ALI
-		tag = GSU
-		tag = ORO
-		tag = SHU
-		tag = WEI
-		tag = WUU
+		OR = {
+			tag = JNG 
+			tag = ZHJ
+			tag = FUA
+			tag = GDO
+			tag = GXI
+			tag = HNA
+			tag = JIX
+			tag = AUI
+			tag = SAN
+			tag = LNI
+			tag = HEN
+			tag = HEI
+			tag = SCH
+			tag = SXI
+			tag = YNA
+			tag = ALI
+			tag = GSU
+			tag = ORO
+			tag = SHU
+			tag = WEI
+			tag = WUU
 		}
 		NOT = {
-		has_country_flag = chinagov_duchy
+			has_country_flag = chinagov_duchy
 		}
 	}
 
@@ -44,26 +44,24 @@ country_event = {
 		months = 1
 	}
 	
-option = {		
+	option = {		
 		name = "chinagov.king1"
 		if = {
 			limit = {
-				NOT = {
-				has_reform = warring_state_reform
-				}
+				NOT = { has_reform = warring_state_reform }
 			}
 			add_government_reform = warring_state_reform
 		}
 		hidden_effect = {
-		set_country_flag = chinagov_duchy
-		add_country_modifier = { 
-				name = china_fractured
-				duration = -1
-				#hidden = no
+			set_country_flag = chinagov_duchy
+			add_country_modifier = { 
+					name = china_fractured
+					duration = -1
+					#hidden = no
 			}
 		}
-}
-option = {		
+	}
+	option = {		
 		name = "chinagov.repu1"
 		remove_government_reform = warring_state_reform
 		change_government_to_republic = yes
@@ -76,21 +74,20 @@ option = {
 			#hidden = no
 			}
 		}
-}
-option = {		
+	}
+	option = {		
 		name = "chinagov.theo1"
 		remove_government_reform = warring_state_reform
 		change_government_to_theocracy = yes
 		add_government_reform = chinese_monastic_state_reform
 		hidden_effect = {
 		set_country_flag = chinagov_duchy
-		add_country_modifier = { 
-			name = china_fractured
-			duration = -1
+			add_country_modifier = { 
+				name = china_fractured
+				duration = -1
 			}
 		}
-}
-
+	}
 }
 
 #kingdom rank
@@ -101,32 +98,32 @@ country_event = {
 	picture = BUDDHA_eventPicture
 
 	trigger = {
-	OR = {
-		tag = JNG 
-		tag = ZHJ
-		tag = FUA
-		tag = GDO
-		tag = GXI
-		tag = HNA
-		tag = JIX
-		tag = AUI
-		tag = SAN
-		tag = LNI
-		tag = HEN
-		tag = HEI
-		tag = SCH
-		tag = SXI
-		tag = YNA
-		tag = ALI
-		tag = GSU
-		tag = ORO
-		tag = SHU
-		tag = WEI
-		tag = WUU
+		OR = {
+			tag = JNG 
+			tag = ZHJ
+			tag = FUA
+			tag = GDO
+			tag = GXI
+			tag = HNA
+			tag = JIX
+			tag = AUI
+			tag = SAN
+			tag = LNI
+			tag = HEN
+			tag = HEI
+			tag = SCH
+			tag = SXI
+			tag = YNA
+			tag = ALI
+			tag = GSU
+			tag = ORO
+			tag = SHU
+			tag = WEI
+			tag = WUU
 		}
 		total_development = 400
 		NOT = {
-		has_country_flag = chinagov_kingdom
+			has_country_flag = chinagov_kingdom
 		}
 	}
 
@@ -135,44 +132,38 @@ country_event = {
 	}
 	
 	
-option = {		
+	option = {		
 		name = "chinagov.king2"
 		if = {
 			limit = {
-				
 				has_reform = warring_state_reform
 			}
-		remove_government_reform = warring_state_reform
-		add_government_reform = warring_kingdom_reform
+			remove_government_reform = warring_state_reform
+			add_government_reform = warring_kingdom_reform
 		}	
-		
 		if = {
 			limit = {
-				
 				has_reform = chinese_merchant_state_reform
 			}
-		remove_government_reform = chinese_merchant_state_reform
-		change_government_to_monarchy = yes
-		add_government_reform = warring_kingdom_reform
+			remove_government_reform = chinese_merchant_state_reform
+			change_government_to_monarchy = yes
+			add_government_reform = warring_kingdom_reform
 		}	
-		
 		if = {
 			limit = {
-			
 				has_reform = chinese_monastic_state_reform
 			}
-		remove_government_reform = chinese_monastic_state_reform
-		change_government_to_monarchy = yes
-		add_government_reform = warring_kingdom_reform
+			remove_government_reform = chinese_monastic_state_reform
+			change_government_to_monarchy = yes
+			add_government_reform = warring_kingdom_reform
 		}
-		
 		hidden_effect = {
-		set_country_flag = chinagov_kingdom
-		remove_country_modifier = china_fractured
-		add_country_modifier = { 
-			name = china_semiconsolidated
-			duration = -1
-			#hidden = no
+			set_country_flag = chinagov_kingdom
+			remove_country_modifier = china_fractured
+			add_country_modifier = { 
+				name = china_semiconsolidated
+				duration = -1
+				#hidden = no
 			}
 		}
 	}
@@ -180,39 +171,34 @@ option = {
 		name = "chinagov.repu2"
 		if = {
 			limit = {
-				
 				has_reform = warring_state_reform
 			}
-		remove_government_reform = warring_state_reform
-		change_government_to_republic = yes
-		add_government_reform = chinese_trading_kingdom_reform
+			remove_government_reform = warring_state_reform
+			change_government_to_republic = yes
+			add_government_reform = chinese_trading_kingdom_reform
 		}	
-		
 		if = {
 			limit = {
-				
 				has_reform = chinese_merchant_state_reform
 			}
-		remove_government_reform = chinese_merchant_state_reform
-		add_government_reform = chinese_trading_kingdom_reform
+			remove_government_reform = chinese_merchant_state_reform
+			add_government_reform = chinese_trading_kingdom_reform
 		}	
-		
 		if = {
 			limit = {
-			
 				has_reform = chinese_monastic_state_reform
 			}
-		remove_government_reform = chinese_monastic_state_reform
-		change_government_to_republic = yes
-		add_government_reform = chinese_trading_kingdom_reform
+			remove_government_reform = chinese_monastic_state_reform
+			change_government_to_republic = yes
+			add_government_reform = chinese_trading_kingdom_reform
 		}
 		hidden_effect = {
-		set_country_flag = chinagov_kingdom
-		remove_country_modifier = china_fractured
-		add_country_modifier = { 
-			name = china_semiconsolidated
-			duration = -1
-			#hidden = no
+			set_country_flag = chinagov_kingdom
+			remove_country_modifier = china_fractured
+			add_country_modifier = { 
+				name = china_semiconsolidated
+				duration = -1
+				#hidden = no
 			}
 		}
 	}
@@ -220,43 +206,37 @@ option = {
 		name = "chinagov.theo2"
 		if = {
 			limit = {
-				
 				has_reform = warring_state_reform
 			}
-		remove_government_reform = warring_state_reform
-		change_government_to_theocracy = yes
-		add_government_reform = chinese_harmonious_kingdom_reform
+			remove_government_reform = warring_state_reform
+			change_government_to_theocracy = yes
+			add_government_reform = chinese_harmonious_kingdom_reform
 		}	
-		
 		if = {
 			limit = {
-				
 				has_reform = chinese_merchant_state_reform
 			}
-		remove_government_reform = chinese_merchant_state_reform
-		change_government_to_theocracy = yes
-		add_government_reform = chinese_harmonious_kingdom_reform
+			remove_government_reform = chinese_merchant_state_reform
+			change_government_to_theocracy = yes
+			add_government_reform = chinese_harmonious_kingdom_reform
 		}	
-		
 		if = {
 			limit = {
-			
 				has_reform = chinese_monastic_state_reform
 			}
-		remove_government_reform = chinese_monastic_state_reform
-		add_government_reform = chinese_harmonious_kingdom_reform
+			remove_government_reform = chinese_monastic_state_reform
+			add_government_reform = chinese_harmonious_kingdom_reform
 		}
 		hidden_effect = {
-		set_country_flag = chinagov_kingdom
-		remove_country_modifier = china_fractured
-		add_country_modifier = { 
-			name = china_semiconsolidated
-			duration = -1
-			#hidden = no
+			set_country_flag = chinagov_kingdom
+			remove_country_modifier = china_fractured
+			add_country_modifier = { 
+				name = china_semiconsolidated
+				duration = -1
+				#hidden = no
 			}
 		}		
 	}
-
 }
 #empire rank
 country_event = {
@@ -266,32 +246,32 @@ country_event = {
 	picture = BUDDHA_eventPicture
 
 	trigger = {
-	OR = {
-		tag = JNG 
-		tag = ZHJ
-		tag = FUA
-		tag = GDO
-		tag = GXI
-		tag = HNA
-		tag = JIX
-		tag = AUI
-		tag = SAN
-		tag = LNI
-		tag = HEN
-		tag = HEI
-		tag = SCH
-		tag = SXI
-		tag = YNA
-		tag = ALI
-		tag = GSU
-		tag = ORO
-		tag = SHU
-		tag = WEI
-		tag = WUU
+		OR = {
+			tag = JNG 
+			tag = ZHJ
+			tag = FUA
+			tag = GDO
+			tag = GXI
+			tag = HNA
+			tag = JIX
+			tag = AUI
+			tag = SAN
+			tag = LNI
+			tag = HEN
+			tag = HEI
+			tag = SCH
+			tag = SXI
+			tag = YNA
+			tag = ALI
+			tag = GSU
+			tag = ORO
+			tag = SHU
+			tag = WEI
+			tag = WUU
 		}
 		total_development = 1000
 		NOT = {
-		has_country_flag = chinagov_empire
+			has_country_flag = chinagov_empire
 		}
 	}
 
@@ -300,127 +280,112 @@ country_event = {
 	}
 	
 	
-option = {		
+	option = {		
 		name = "chinagov.king3"
 		if = {
 			limit = {
-				
 				has_reform = warring_kingdom_reform
 			}
-		remove_government_reform = warring_kingdom_reform
-		add_government_reform = chinese_empire_reform
+			remove_government_reform = warring_kingdom_reform
+			add_government_reform = chinese_empire_reform
 		}	
-		
 		if = {
 			limit = {
-				
 				has_reform = chinese_trading_kingdom_reform
 			}
-		remove_government_reform = chinese_trading_kingdom_reform
-		change_government_to_monarchy = yes
-		add_government_reform = chinese_empire_reform
+			remove_government_reform = chinese_trading_kingdom_reform
+			change_government_to_monarchy = yes
+			add_government_reform = chinese_empire_reform
 		}	
-		
 		if = {
 			limit = {
-			
 				has_reform = chinese_harmonious_kingdom_reform
 			}
-		remove_government_reform = chinese_harmonious_kingdom_reform
-		change_government_to_monarchy = yes
-		add_government_reform = chinese_empire_reform
+			remove_government_reform = chinese_harmonious_kingdom_reform
+			change_government_to_monarchy = yes
+			add_government_reform = chinese_empire_reform
 		}
 		hidden_effect = {
-		set_country_flag = chinagov_empire
-		remove_country_modifier = china_semiconsolidated
-		add_country_modifier = { 
-			name = china_consolidated
-			duration = -1
-			#hidden = no
+			set_country_flag = chinagov_empire
+			remove_country_modifier = china_semiconsolidated
+			add_country_modifier = { 
+				name = china_consolidated
+				duration = -1
+				#hidden = no
 			}
 		}
-}
-option = {		
+	}
+	option = {		
 		name = "chinagov.repu3"
 		if = {
 			limit = {
-				
 				has_reform = warring_kingdom_reform
 			}
-		remove_government_reform = warring_kingdom_reform
-		change_government_to_republic = yes
-		add_government_reform = grand_plutocratic_empire_reform
+			remove_government_reform = warring_kingdom_reform
+			change_government_to_republic = yes
+			add_government_reform = grand_plutocratic_empire_reform
 		}	
-		
 		if = {
 			limit = {
-				
 				has_reform = chinese_trading_kingdom_reform
 			}
-		remove_government_reform = chinese_trading_kingdom_reform
-
-		add_government_reform = grand_plutocratic_empire_reform
+			remove_government_reform = chinese_trading_kingdom_reform
+			add_government_reform = grand_plutocratic_empire_reform
 		}	
-		
 		if = {
 			limit = {
-			
 				has_reform = chinese_harmonious_kingdom_reform
 			}
-		remove_government_reform = chinese_harmonious_kingdom_reform
-		change_government_to_republic = yes
-		add_government_reform = grand_plutocratic_empire_reform
+			remove_government_reform = chinese_harmonious_kingdom_reform
+			change_government_to_republic = yes
+			add_government_reform = grand_plutocratic_empire_reform
 		}
 		hidden_effect = {
-		set_country_flag = chinagov_empire
-		remove_country_modifier = china_semiconsolidated
-		add_country_modifier = { 
-			name = china_consolidated
-			duration = -1
-			#hidden = no
+			set_country_flag = chinagov_empire
+			remove_country_modifier = china_semiconsolidated
+			add_country_modifier = { 
+				name = china_consolidated
+				duration = -1
+				#hidden = no
 			}
 		}
-}
-option = {		
+	}
+	option = {		
 		name = "chinagov.theo3"
 		if = {
 			limit = {
-				
 				has_reform = warring_kingdom_reform
 			}
-		remove_government_reform = warring_kingdom_reform
-		change_government_to_theocracy = yes
-		add_government_reform = confucian_empire_of_harmony_reform
+			remove_government_reform = warring_kingdom_reform
+			change_government_to_theocracy = yes
+			add_government_reform = confucian_empire_of_harmony_reform
 		}	
-		
 		if = {
 			limit = {
-				
 				has_reform = chinese_trading_kingdom_reform
 			}
-		remove_government_reform = chinese_trading_kingdom_reform
-		change_government_to_theocracy = yes
-		add_government_reform = confucian_empire_of_harmony_reform
+			remove_government_reform = chinese_trading_kingdom_reform
+			change_government_to_theocracy = yes
+			add_government_reform = confucian_empire_of_harmony_reform
 		}	
 		
 		if = {
 			limit = {
-			
 				has_reform = chinese_harmonious_kingdom_reform
 			}
-		remove_government_reform = chinese_harmonious_kingdom_reform
-		add_government_reform = confucian_empire_of_harmony_reform
+			remove_government_reform = chinese_harmonious_kingdom_reform
+			add_government_reform = confucian_empire_of_harmony_reform
 		}
 		hidden_effect = {
-		set_country_flag = chinagov_empire
-		remove_country_modifier = china_semiconsolidated
-		add_country_modifier = { 
-			name = china_consolidated
-			duration = -1
-			#hidden = no
+			set_country_flag = chinagov_empire
+			remove_country_modifier = china_semiconsolidated
+			add_country_modifier = { 
+				name = china_consolidated
+				duration = -1
+				#hidden = no
 			}
 		}
-}
+	}
 }
 
 
