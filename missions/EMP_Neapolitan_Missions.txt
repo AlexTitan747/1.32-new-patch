@@ -944,7 +944,6 @@ emp_naples_5 = {
 		provinces_to_highlight = {
 			province_id = 1933
 		}
-
 		trigger = {
 			1933 = {
 				development = 15
@@ -952,8 +951,15 @@ emp_naples_5 = {
 			}
 			has_institution = renaissance
 			is_at_war = no
-			italy_region = {
-				NOT = { trade_goods = gems }
+			if = {
+				limit = { has_dlc = Emperor
+				}
+				OR = { 
+					NOT = { 
+						117 = {
+							has_province_modifier = diamond_district }
+					}
+				}
 			}
 		}
 		effect = {
