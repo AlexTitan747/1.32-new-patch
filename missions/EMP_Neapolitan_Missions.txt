@@ -443,6 +443,7 @@ emp_naples_3 = {
 		effect = {
 			add_manpower = 3
 			add_treasury = 100
+			add_adm_power = 200
 			add_country_modifier = {
 				name = "victor_of_the_sicilian_wars"
 				duration = 5475
@@ -943,7 +944,6 @@ emp_naples_5 = {
 		provinces_to_highlight = {
 			province_id = 1933
 		}
-
 		trigger = {
 			1933 = {
 				development = 15
@@ -951,8 +951,15 @@ emp_naples_5 = {
 			}
 			has_institution = renaissance
 			is_at_war = no
-			italy_region = {
-				NOT = { trade_goods = gems }
+			if = {
+				limit = { has_dlc = Emperor
+				}
+				OR = { 
+					NOT = { 
+						117 = {
+							has_province_modifier = diamond_district }
+					}
+				}
 			}
 		}
 		effect = {
