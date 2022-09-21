@@ -14,10 +14,9 @@ tm_tts_slot_1 = {
 		position = 10
 		
 		trigger = {
-
 			num_of_owned_provinces_with = {
-				value = 2
-				NOT = { religion = catholic }
+				value = 6
+				NOT = { religion = sunni }
 				region = italy_region
 				owned_by = root
 				}
@@ -28,8 +27,92 @@ tm_tts_slot_1 = {
 			add_country_modifier = {
 				name = "adoption_of_a_new_religion"
 				duration = 3650
-				}
+			}
 		}
+	}
+
+	tm_TTS_control_central_mediterranean = {
+		icon = mission_galleys_in_port
+		required_missions = { tm_TTS_spread_the_true_faith }
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = corsica_sardinia_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = baleares_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+
+		trigger = {
+			corsica_sardinia_area = {
+				type = all
+				owned_by = ROOT
+				}
+			baleares_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+
+		effect = {
+			add_adm_power = 50
+			add_country_modifier = {
+				name = "control_over_the_med"
+				duration = 3650
+			}
+		}
+	}
+	tm_TTS_carthage_reborn = {
+		icon = carthage_flag
+		required_missions = { tm_TTS_control_central_mediterranean }
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = corsica_sardinia_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = baleares_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+
+		trigger = {
+			stability = 3
+			corsica_sardinia_area = {
+				type = all
+				owned_by = ROOT
+				}
+			baleares_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+
+		effect = {
+			add_adm_power = 50
+			add_country_modifier = {
+				name = "control_over_the_med"
+				duration = 3650
+				}
+				set_country_flag = carthage_reborn
+		}
+	}
 }
 
 tm_tts_slot_2 = {
@@ -43,7 +126,7 @@ tm_tts_slot_2 = {
 	has_country_shield = yes
 
 	tm_TTS_algeria_and_barbary_coast = {
-		icon = a_strong_government
+		icon = mission_control_the_barbary_coast
 		required_missions = { tm_TTS_build_african_industry tm_TTS_spread_the_true_faith }
 		position = 11
 		
@@ -99,9 +182,74 @@ tm_tts_slot_2 = {
 				}
 				add_permanent_claim = ROOT
 			}
-			}
 		}
 	}
+
+	tm_TTS_conquer_the_moroccans = {
+		icon = mission_camel_cataphracts_prt_sas
+		required_missions = { tm_TTS_algeria_and_barbary_coast }
+		position = 11
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+						area = marrekesh_area
+						NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+						}
+					}
+					AND = {
+						area = northern_morocco_area
+						NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+						}
+					}
+					AND = {
+						area = tafilalt_area
+						NOT = {
+						country_or_non_sovereign_subject_holds = ROOT
+						}
+					}
+				}
+			}
+	
+			trigger = {
+					marrekesh_area = {
+						type = all
+						owned_by = ROOT
+						}
+					northern_morocco_area = {
+						type = all
+						owned_by = ROOT
+					}
+					tafilalt_area = {
+						type = all
+						owned_by = ROOT
+					}
+			}
+			
+			effect = {
+				add_country_modifier = {
+					name = "elite_generation"
+					duration = 3650
+					}
+					lower_andalucia_area = {
+						limit = {
+							NOT = { is_core = ROOT }
+							NOT = { is_permanent_claim = ROOT }
+						}
+						add_permanent_claim = ROOT
+					}
+					upper_andalucia_area = {
+						limit = {
+							NOT = { is_core = ROOT }
+							NOT = { is_permanent_claim = ROOT }
+						}
+						add_permanent_claim = ROOT
+				}
+			}
+		}
+}
 
 tm_tts_slot_3 = {
 	slot = 3
@@ -143,17 +291,16 @@ tm_tts_slot_3 = {
 						NOT = { has_building = fort_15th }
 					}
 					add_building = fort_15th
-					}
 				}
 			}
 		}
+	}
 
 	tm_TTS_build_african_industry = {
 		icon = muslim_factory
 		required_missions = { tm_TTS_restructure_the_cabinet }
 		
 		trigger = {
-
 			num_of_owned_provinces_with = {
 				value = 8
 				region = maghreb_region
@@ -166,10 +313,10 @@ tm_tts_slot_3 = {
 			add_country_modifier = {
 				name = "emirate_growing_industry"
 				duration = 3650
-				}
 			}
 		}
 	}
+}
 
 tm_tts_slot_4 = {
 	slot = 4
@@ -287,7 +434,7 @@ tm_tts_slot_5 = {
 					}
 				}
 				AND = {
-					area = north_saharan_area
+					area = djerba_area
 					NOT = {
 					country_or_non_sovereign_subject_holds = ROOT
 					}
@@ -300,7 +447,7 @@ tm_tts_slot_5 = {
 				type = all
 				owned_by = ROOT
 				}
-			north_saharan_area = {
+				djerba_area = {
 				type = all
 				owned_by = ROOT
 				}
@@ -321,8 +468,8 @@ tm_tts_slot_5 = {
 				}
 				add_permanent_claim = ROOT
 			}
-			}
 		}
+	}
 
 	tm_TTS_entrance_to_west_africa = {
 		icon = mission_sw_against_the_desert
@@ -330,28 +477,14 @@ tm_tts_slot_5 = {
 		position = 11
 
 		provinces_to_highlight = {
-			OR = {
-				AND = {
 					area = fezzan_area
 					NOT = {
 					country_or_non_sovereign_subject_holds = ROOT
 					}
-				}
-				AND = {
-					area = north_saharan_area
-					NOT = {
-					country_or_non_sovereign_subject_holds = ROOT
-					}
-				}
-			}
 		}
 		
 		trigger = {
 			fezzan_area = {
-				type = all
-				owned_by = ROOT
-				}
-			north_saharan_area = {
 				type = all
 				owned_by = ROOT
 				}
@@ -372,7 +505,7 @@ tm_tts_slot_5 = {
 				}
 				add_permanent_claim = ROOT
 			}
-			}
 		}
 	}
+}
 

@@ -163,21 +163,13 @@ emp_naples_2 = {
 			is_rival = MLO
 			is_rival = SPI
 			}
+			NOT = { mission_completed = emp_nap_a_royal_coup }
 		}
 		effect = {
-			corsica_sardinia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			albania_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
+			add_adm_power = 100
+			add_country_modifier = {
+				name = "the_nepolese_expand"
+				duration = 7300
 			}
 		}
 	}
@@ -262,13 +254,6 @@ emp_naples_2 = {
 		}
 		effect = {
 			corsica_sardinia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			albania_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -793,6 +778,8 @@ emp_naples_4 = {
 				value = 5
 				religion = sunni
 			}
+			NOT = { mission_completed = emp_nap_dispute_over_central_italy }
+
 		}
 		effect = {
 			country_event = {
