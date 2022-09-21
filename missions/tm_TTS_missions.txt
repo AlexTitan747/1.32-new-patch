@@ -1,4 +1,4 @@
-tm_aquitaine_slot_1 = {
+tm_tts_slot_1 = {
 	slot = 1
 	generic = no
 	ai = yes
@@ -16,36 +16,23 @@ tm_aquitaine_slot_1 = {
 		trigger = {
 
 			num_of_owned_provinces_with = {
-				value = 5
-				area = lazio_area
+				value = 2
+				NOT = { religion = catholic }
+				region = italy_region
 				owned_by = root
 				}
-
 		}
 		
 		effect = {
-			add_prestige = 30
-			125 = {
-				if = {
-					limit = {
-						NOT = { trade_goods = paper }
-					}
-					change_trade_goods = paper
+			add_treasury = 300
+			add_country_modifier = {
+				name = "adoption_of_a_new_religion"
+				duration = 3650
 				}
-			}
-			125 = {
-				if = {
-					limit = {
-						NOT = { has_building = fort_15th }
-					}
-					add_building = fort_15th
-					}
-				}
-			}
 		}
 }
 
-tm_aquitaine_slot_2 = {
+tm_tts_slot_2 = {
 	slot = 2
 	generic = no
 	ai = yes
@@ -60,39 +47,63 @@ tm_aquitaine_slot_2 = {
 		required_missions = { tm_TTS_build_african_industry tm_TTS_spread_the_true_faith }
 		position = 11
 		
-		trigger = {
-
-			num_of_owned_provinces_with = {
-				value = 5
-				area = lazio_area
-				owned_by = root
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = barbary_coast_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
 				}
+				AND = {
+					area = algiers_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
 
+		trigger = {
+				barbary_coast_area = {
+					type = all
+					owned_by = ROOT
+					}
+				algiers_area = {
+					type = all
+					owned_by = ROOT
+				}
 		}
 		
 		effect = {
-			add_prestige = 30
-			125 = {
-				if = {
-					limit = {
-						NOT = { trade_goods = paper }
-					}
-					change_trade_goods = paper
+			add_prestige = 10
+			add_adm_power = 75
+			marrekesh_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
 				}
+				add_permanent_claim = ROOT
 			}
-			125 = {
-				if = {
-					limit = {
-						NOT = { has_building = fort_15th }
-					}
-					add_building = fort_15th
-					}
+			northern_morocco_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
 				}
+				add_permanent_claim = ROOT
+			}
+			tafilalt_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 			}
 		}
 	}
 
-tm_aquitaine_slot_3 = {
+tm_tts_slot_3 = {
 	slot = 3
 	generic = no
 	ai = yes
@@ -158,9 +169,9 @@ tm_aquitaine_slot_3 = {
 				}
 			}
 		}
-}
+	}
 
-tm_aquitaine_slot_4 = {
+tm_tts_slot_4 = {
 	slot = 4
 	generic = no
 	ai = yes
@@ -244,16 +255,15 @@ tm_aquitaine_slot_4 = {
 			}
 
 		effect = {
-			add_country_modifier = {
-				name = "illyrian_heritage"
-				duration = -1
+			country_event = {
+				id = titannap.2
 			}
-			set_country_flag = illyria_forming
+			set_country_flag = upgrade_in_arms
 		}
 	}
 }
 
-tm_aquitaine_slot_5 = {
+tm_tts_slot_5 = {
 	slot = 5
 	generic = no
 	ai = yes
@@ -263,9 +273,60 @@ tm_aquitaine_slot_5 = {
 	}
 	has_country_shield = yes
 
+	tm_TTS_secure_the_tripoli_coast = {
+		icon = mission_grand_bengali_shipyards
+		required_missions = { tm_TTS_restructure_the_cabinet }
+		position = 10
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					area = tripolitania_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+				AND = {
+					area = north_saharan_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+		
+		trigger = {
+			fezzan_area = {
+				type = all
+				owned_by = ROOT
+				}
+			north_saharan_area = {
+				type = all
+				owned_by = ROOT
+				}
+			}
+
+		effect = {
+			fezzan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			north_saharan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			}
+		}
+
 	tm_TTS_entrance_to_west_africa = {
 		icon = mission_sw_against_the_desert
-		required_missions = { tm_TTS_restructure_the_cabinet }
+		required_missions = { tm_TTS_secure_the_tripoli_coast }
 		position = 11
 
 		provinces_to_highlight = {
@@ -294,55 +355,23 @@ tm_aquitaine_slot_5 = {
 				type = all
 				owned_by = ROOT
 				}
-			albania_area = {
-				type = all
-				owned_by = ROOT
-				}
 			}
 
 		effect = {
-			delta_area = {
+			east_azbin_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			bahari_area = {
+			azbin_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			cyrenaica_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			siwa_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			butnan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			zaltan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-				}
 			}
 		}
 	}
