@@ -249,7 +249,7 @@ tm_tts_slot_2 = {
 				}
 			}
 		}
-}
+	}
 
 tm_tts_slot_3 = {
 	slot = 3
@@ -328,9 +328,99 @@ tm_tts_slot_4 = {
 	}
 	has_country_shield = yes
 
+	tm_TTS_develop_and_prepare = {
+		icon = mission_saladin_takes_jerusalem
+		required_missions = { tm_TTS_build_african_industry tm_TTS_secure_the_tripoli_coast }
+		position = 11
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 353
+				province_id = 2452
+				province_id = 354
+				province_id = 2451
+				province_id = 2954
+				area = zaltan_area
+			}
+		}
+		
+		trigger = {
+			353 = {
+				development = 6
+			}
+			2452 = {
+				development = 6
+			}
+			354 = {
+				development = 14
+				province_has_center_of_trade_of_level = 2
+			}
+			2451 = {
+				development = 6
+			}
+			2954 = {
+				development = 6
+				province_has_center_of_trade_of_level = 2
+			}
+			zaltan_area = {
+				OR = {
+				has_building = fort_15th
+				has_building = fort_16th
+				has_building = fort_17th
+				has_building = fort_18th
+				}
+			}
+			}
+
+		effect = {
+			delta_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			bahari_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			siwa_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			cyrenaica_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			butnan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			zaltan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
 	tm_TTS_face_the_sultans_in_egypt = {
 		icon = mission_saladin_takes_jerusalem
-		required_missions = { tm_TTS_entrance_to_west_africa }
+		required_missions = { tm_TTS_entrance_to_west_africa tm_TTS_develop_and_prepare }
 		position = 12
 
 		provinces_to_highlight = {
@@ -405,7 +495,9 @@ tm_tts_slot_4 = {
 			country_event = {
 				id = titannap.2
 			}
+			hidden_effect = {
 			set_country_flag = upgrade_in_arms
+			}
 		}
 	}
 }
@@ -443,11 +535,11 @@ tm_tts_slot_5 = {
 		}
 		
 		trigger = {
-			fezzan_area = {
+			tripolitania_area = {
 				type = all
 				owned_by = ROOT
 				}
-				djerba_area = {
+			djerba_area = {
 				type = all
 				owned_by = ROOT
 				}
@@ -467,6 +559,23 @@ tm_tts_slot_5 = {
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
+			}
+			hidden_effect = {
+				353 = {
+					set_province_flag = develop_desert_coast
+				}
+				354 = {
+					set_province_flag = develop_desert_coast
+				}
+				2452 = {
+					set_province_flag = develop_desert_coast
+				}
+				2451 = {
+					set_province_flag = develop_desert_coast
+				}
+				2954 = {
+					set_province_flag = develop_desert_coast
+				}
 			}
 		}
 	}
@@ -507,5 +616,29 @@ tm_tts_slot_5 = {
 			}
 		}
 	}
+	tm_TTS_draw_in_the_trade = {
+		icon = mal_riches_of_trade
+		required_missions = { tm_TTS_entrance_to_west_africa }
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1149
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			1149 = {
+				is_strongest_trade_power = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "trading_giant"
+				duration = 7300
+			}
+		}
+	}
 }
+
 
