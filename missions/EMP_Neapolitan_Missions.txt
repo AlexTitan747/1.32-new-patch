@@ -84,7 +84,7 @@ emp_naples_1 = {
 	emp_nap_dalmatian_conquest = {
 		icon = albania_siege_won
 		required_missions = { emp_nap_seize_roma }
-		position = 8
+		position = 7
 		provinces_to_highlight = {
 			OR = {
 				area = albania_area
@@ -210,6 +210,13 @@ emp_naples_2 = {
 				name = "the_nepolese_expand"
 				duration = 7300
 			}
+			corsica_sardinia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 	
@@ -263,9 +270,9 @@ emp_naples_2 = {
 		}
 	}
 	emp_nap_seize_roma = {
-		icon = despot_of_epirus
-		required_missions = { emp_nap_neapolitan_navy }
-		position = 7
+		icon = mission_mf_papal_states_coa
+		required_missions = { emp_nap_the_sicilian_wars }
+		position = 6
 
 		provinces_to_highlight = {
 			OR = {
@@ -340,6 +347,10 @@ emp_naples_2 = {
 				name = "greek_dominance"
 				duration = 7300
 			}
+			add_country_modifier = {
+				name = "athenian_scholors"
+				duration = 3650
+			}
 		}
 	}
 
@@ -350,15 +361,16 @@ emp_naples_2 = {
 		provinces_to_highlight = {
 			province_id = 151
 		}
-		
+
 		trigger = {
 			owns_core_province = 151
 		}
 
 		effect = {
+			add_prestige = 30
 			add_country_modifier = {
-				name = "greek_dominance"
-				duration = 7300
+				name = "overthrown_the_ottomans"
+				duration = 3650
 			}
 		}
 	}
@@ -394,8 +406,9 @@ emp_naples_3 = {
 				limit = {
 					government = monarchy
 				}
-				add_legitimacy = 50
+				add_legitimacy = 25
 			}
+			add_mil_power = 50
 			add_dip_power = 50
 			apulia_area = {
 				limit = {
