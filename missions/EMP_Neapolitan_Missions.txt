@@ -82,24 +82,23 @@ emp_naples_1 = {
 		}
 	}
 	emp_nap_dalmatian_conquest = {
-		icon = dalmatian_conquest
+		icon = albania_siege_won
 		required_missions = { emp_nap_seize_roma }
-		position = 8
+		position = 7
 		provinces_to_highlight = {
 			OR = {
-				area = east_adriatic_coast_area
-				area = croatia_area
-				province_id = 4754
+				area = albania_area
+				area = rascia_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 4
+				value = 5
 				OR = {
-					area = east_adriatic_coast_area
-					area = croatia_area
-					province_id = 4754
+					area = albania_area
+					area = rascia_area
+
 				}
 			}
 			137 = {
@@ -107,18 +106,58 @@ emp_naples_1 = {
 			}
 		}
 		effect = {
+			east_adriatic_coast_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 			if = {
 				limit = {
 					has_dlc = "Dharma"
-					137 = {
+					4174 = {
 						NOT = { province_has_center_of_trade_of_level = 2 }
 					}
 				}
-				137 = { add_center_of_trade_level = 1 }
+				4174 = { add_center_of_trade_level = 1 }
 			}
 			else = {
 				add_country_modifier = {
 					name = "nap_ragusa_trade"
+					duration = 7300
+				}
+			}
+		}
+	}
+
+	emp_nap_main_power_in_adriatic = {
+		icon = adriatic_access
+		required_missions = { emp_nap_dalmatian_conquest }
+
+		provinces_to_highlight = {
+			OR = {
+				area = east_adriatic_coast_area
+				area = central_italy_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			east_adriatic_coast_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			central_italy_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_treasury = 350
+			add_dip_power = 125
+			else = {
+				add_country_modifier = {
+					name = "nap_quality_fleet"
 					duration = 7300
 				}
 			}
@@ -170,6 +209,13 @@ emp_naples_2 = {
 			add_country_modifier = {
 				name = "the_nepolese_expand"
 				duration = 7300
+			}
+			corsica_sardinia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
 		}
 	}
@@ -224,9 +270,9 @@ emp_naples_2 = {
 		}
 	}
 	emp_nap_seize_roma = {
-		icon = despot_of_epirus
-		required_missions = { emp_nap_neapolitan_navy }
-		position = 7
+		icon = mission_mf_papal_states_coa
+		required_missions = { emp_nap_the_sicilian_wars }
+		position = 6
 
 		provinces_to_highlight = {
 			OR = {
@@ -240,12 +286,9 @@ emp_naples_2 = {
 				NOT = { exists = PAP }
 				PAP = { is_subject_of = ROOT }
 			}
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 6
-				OR = {
-					area = lazio_area
-					area = central_italy_area
-				}
+			lazio_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 			118 = {
 				country_or_non_sovereign_subject_holds = ROOT
@@ -253,7 +296,28 @@ emp_naples_2 = {
 			religion = sunni
 		}
 		effect = {
-			corsica_sardinia_area = {
+			macedonia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			northern_greece_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			morea_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			rascia_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -263,28 +327,50 @@ emp_naples_2 = {
 		}
 	}
 	emp_nap_expand_horizons = {
-		icon = jerusalem
+		icon = fortify_the_passes
 		required_missions = { emp_nap_seize_roma }
 		provinces_to_highlight = {
 			OR = {
-				area = albania_area
-				area = corsica_sardinia_area
+				province_id = 148
+				province_id = 146
+				province_id = 145
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 5
-				OR = {
-					area = albania_area
-					area = corsica_sardinia_area
-				}
-			}
+			owns_core_province = 148
+			owns_core_province = 146
+			owns_core_province = 145
 		}
 		effect = {
 			add_country_modifier = {
-				name = "mediteranian_dominance"
+				name = "greek_dominance"
 				duration = 7300
+			}
+			add_country_modifier = {
+				name = "athenian_scholors"
+				duration = 3650
+			}
+		}
+	}
+
+	emp_nap_seat_of_ottoman_power = {
+		icon = mission_ottomans_return_to_full_strength
+		required_missions = { emp_nap_expand_horizons }
+
+		provinces_to_highlight = {
+			province_id = 151
+		}
+
+		trigger = {
+			owns_core_province = 151
+		}
+
+		effect = {
+			add_prestige = 30
+			add_country_modifier = {
+				name = "overthrown_the_ottomans"
+				duration = 3650
 			}
 		}
 	}
@@ -320,8 +406,9 @@ emp_naples_3 = {
 				limit = {
 					government = monarchy
 				}
-				add_legitimacy = 50
+				add_legitimacy = 25
 			}
+			add_mil_power = 50
 			add_dip_power = 50
 			apulia_area = {
 				limit = {

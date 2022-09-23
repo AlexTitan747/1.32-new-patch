@@ -112,13 +112,20 @@ age_of_discovery = {
 	
 	
 	abilities = {
-		ab_allow_feudal_de_jure_law = {
+		ab_titan_building_dev = {
+			allow = {
+				NOT = {total_own_and_non_tributary_subject_development = 250 }
+				NOT = { is_emperor = yes }
+				is_colonial_nation = no
+			}
 			effect = {
-				custom_tooltip = feudal_de_jure_law
-				set_country_flag = feudal_de_jure_law
+				enable_development_on_buildings_built = yes
+			}
+			modifier = {
+				
 			}
 			ai_will_do = {
-				factor = 10
+				factor = 100
 			}
 		}
 		
