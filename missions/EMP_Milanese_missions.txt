@@ -65,28 +65,9 @@ emp_mlo_conquest_branch = {
 			}
 		}
 	}
-	emp_mlo_emilia_romagna = {
-		icon = expand_to_the_south
-		position = 3
-		required_missions = { emp_mlo_subdue_genoa }
-		provinces_to_highlight = {
-			area = emilia_romagna_area
-			NOT = { country_or_non_sovereign_subject_holds = root }
-		}
-		trigger = {
-			emilia_romagna_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = root
-			}
-			is_subject = no
-		}
-		effect = {
-			add_adm_power = 75
-		}
-	}
 	emp_mlo_tuscany = {
 		icon = conquer_tuscany
-		required_missions = { emp_mlo_emilia_romagna }
+		required_missions = { emp_mlo_subdue_genoa }
 		provinces_to_highlight = {
 			area = tuscany_area
 			NOT = { country_or_non_sovereign_subject_holds = root }
@@ -113,6 +94,25 @@ emp_mlo_conquest_branch = {
 					}
 				}
 			}
+		}
+	}
+	emp_mlo_emilia_romagna = {
+		icon = expand_to_the_south
+		position = 3
+		required_missions = { emp_mlo_tuscany }
+		provinces_to_highlight = {
+			area = emilia_romagna_area
+			NOT = { country_or_non_sovereign_subject_holds = root }
+		}
+		trigger = {
+			emilia_romagna_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = root
+			}
+			is_subject = no
+		}
+		effect = {
+			add_adm_power = 75
 		}
 	}
 	emp_mlo_union_with_naples = {
@@ -253,7 +253,15 @@ emp_mlo_venice_branch = {
 			add_legitimacy = 20
 			add_devotion = 20
 			add_republican_tradition = 10
-
+			109 = {
+				if = {
+					limit = {
+						NOT = { is_core = root }
+						NOT = { is_permanent_claim = root }
+					}
+					add_permanent_claim = root
+				}
+			}
 			VEN = {
 				every_owned_province = {
 					limit = {
@@ -372,15 +380,6 @@ emp_mlo_venice_branch = {
 				add_permanent_claim = root
 			}
 			112 = {
-				if = {
-					limit = {
-						NOT = { is_core = root }
-						NOT = { is_permanent_claim = root }
-					}
-					add_permanent_claim = root
-				}
-			}
-			109 = {
 				if = {
 					limit = {
 						NOT = { is_core = root }
