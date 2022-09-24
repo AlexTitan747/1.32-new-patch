@@ -147,13 +147,12 @@ tm_MAM_slot_1 = {
 			}
 		}
 		trigger = {
-			syria_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			aleppo_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 5
+				OR = {
+					area = syria_area
+					area = aleppo_area
+				}
 			}
 		}
 		effect = {
