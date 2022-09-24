@@ -73,12 +73,7 @@ NDefines.NMilitary.BANNER_STARTING_STRENGTH = 0.1
 NDefines.NMilitary.BANNER_REINFORCE_SPEED = -0.50
 NDefines.NMilitary.CAVALRY_SPEED = 0.8
 NDefines.NMilitary.ARTILLERY_SPEED = 0.6
-<<<<<<< Updated upstream
-NDefines.NMilitary.WARGOAL_MAX_BONUS = 50
-=======
-NDefines.NMilitary.DEFAULT_WARGOAL_TICKINGWARSCORE_BONUS = 0.9
 NDefines.NMilitary.WARGOAL_MAX_BONUS = 40
->>>>>>> Stashed changes
 NDefines.NMilitary.SUPERIORITY_WARGOAL_WARSCORE_THRESHOLD = 25
 NDefines.NMilitary.WARSCORE_MAX_FROM_BATTLES = 50
 NDefines.NMilitary.SUPPLY_DEPOT_DURATION_MONTHS = 120			-- Time until supply depot is removed.
