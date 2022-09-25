@@ -47,7 +47,14 @@ country_event = {
 	option = { #discard the Elective Monarchy
 		name = estate_privileges_and_agendas_events.1.B
 		
-		remove_government_reform = elective_monarchy
+		if = { 
+			limit = { has_reform = elective_monarchy }
+			remove_government_reform = elective_monarchy
+		}
+		else_if = { 
+			limit = { has_reform = polish_elective_monarchy } 
+			remove_government_reform = polish_elective_monarchy
+		}
 		#set_legacy_government = administrative_monarchy
 		remove_heir = {}
 		add_absolutism = 10
@@ -116,26 +123,26 @@ country_event = {
 			AND = {
 				government = monarchy
 				has_estate = estate_nobles
-				NOT = {	num_of_estate_privileges = { estate = estate_nobles	value = 4 } }
+				NOT = {	num_of_estate_privileges = { estate = estate_nobles	value = 6 } }
 			}
 			AND = {
 				government = republic
 				has_estate = estate_burghers
-				NOT = {	num_of_estate_privileges = { estate = estate_burghers value = 4 } }
+				NOT = {	num_of_estate_privileges = { estate = estate_burghers value = 6 } }
 			}
 			AND = {
 				government = theocracy
 				has_estate = estate_church
-				NOT = {	num_of_estate_privileges = { estate = estate_church value = 4 } }
+				NOT = {	num_of_estate_privileges = { estate = estate_church value = 6 } }
 			}
 			AND = {
 				religion = hinduism
 				has_estate = estate_brahmins
-				NOT = {	num_of_estate_privileges = { estate = estate_brahmins	value = 4 } }
+				NOT = {	num_of_estate_privileges = { estate = estate_brahmins	value = 6 } }
 			}
 			AND = {
 				has_estate = nomadic_aristocracy
-				NOT = {	num_of_estate_privileges = { estate = estate_brahmins	value = 4 } }
+				NOT = {	num_of_estate_privileges = { estate = estate_brahmins	value = 6 } }
 			}
 		}
 		NOT = {
