@@ -87,145 +87,8 @@ country_event = { # to make sure AI mam diplo vassals small tags
 	}
 }
 
-country_event = { 
-	id = ai_event.3
-	title = "ai_event.EVTNAME2"
-	desc = "ai_event.EVTDESC2"
-	picture = LAND_MILITARY_eventPicture
-	is_triggered_only = yes
-	
-	trigger = {
-		ai = yes
-		OR = {
-			NOT = {
-				OR = {
-					AND = {
-						NOT = { has_country_modifier = ai_advisers_adm }
-						employed_advisor = {
-							category = ADM
-						}
-					}
-					AND = {
-						NOT = { has_country_modifier = ai_advisers_dip }
-						employed_advisor = {
-							category = DIP
-						}
-					}
-					AND = {
-						NOT = { has_country_modifier = ai_advisers_mil }
-						employed_advisor = {
-							category = MIL
-						}
-					}
-				}
-			}
-			AND = { 
-				employed_advisor = {
-					category = ADM
-				}
-				has_country_modifier = ai_advisers_adm
-			}
-			AND = { 
-				employed_advisor = {
-					category = DIP
-				}
-				has_country_modifier = ai_advisers_dip
-			}
-			AND = { 
-				employed_advisor = {
-					category = MIL
-				}
-				has_country_modifier = ai_advisers_mil
-			}
-		}
-		is_bankrupt = no
-		num_of_cities = 10
-	}
-
-	immediate = {
-		if = {
-			limit = {
-				AND = { 
-					employed_advisor = {
-						category = ADM
-					}
-					has_country_modifier = ai_advisers_adm
-				}
-			}
-			remove_country_modifier = ai_advisers_adm
-		}
-		if = {
-			limit = {
-				AND = { 
-					employed_advisor = {
-						category = DIP
-					}
-					has_country_modifier = ai_advisers_dip
-				}
-			}
-			remove_country_modifier = ai_advisers_dip
-		}
-		if = {
-			limit = {
-				AND = { 
-					employed_advisor = {
-						category = MIL
-					}
-					has_country_modifier = ai_advisers_mil
-				}
-			}
-			remove_country_modifier = ai_advisers_mil
-		}
-		if = {
-			limit = {
-				NOT = { 
-					employed_advisor = {
-						category = ADM
-					}
-				}
-				NOT = { has_country_modifier = ai_advisers_adm }
-			}
-			add_country_modifier = {
-				name = ai_advisers_adm 
-				duration = -1
-			}
-		}
-		if = {
-			limit = {
-				NOT = { 
-					employed_advisor = {
-						category = DIP
-					}
-				}
-				NOT = { has_country_modifier = ai_advisers_dip }
-			}
-			add_country_modifier = {
-				name = ai_advisers_dip 
-				duration = -1
-			}
-		}
-		if = {
-			limit = {
-				NOT = { 
-					employed_advisor = {
-						category = MIL
-					}
-				}
-				NOT = { has_country_modifier = ai_advisers_mil }
-			}
-			add_country_modifier = {
-				name = ai_advisers_mil 
-				duration = -1
-			}
-		}
-	}
-	
-	option = {
-	}
-}
-
 country_event = { # Disbands Merc companies one at time, if AI went over the force limit.
-	id = ai_event.4
+	id = ai_event.3
 	title = disband_mercs.2.t
 	desc = disband_mercs.2.d
 	picture = SCOTTISH_MERCENARIES_eventPicture
@@ -258,7 +121,7 @@ country_event = { # Disbands Merc companies one at time, if AI went over the for
 }
 
 province_event = { # To prevent Endless wars. Nasty bug caused by rebels.
-	id = ai_event.5
+	id = ai_event.4
 	title = "MODEVTNAME5089"
 	desc = "MODEVTDESC5089"
 	picture = COURT_eventPicture
@@ -390,50 +253,5 @@ province_event = { # To prevent Endless wars. Nasty bug caused by rebels.
 	}
 	
 	option = {
-	}
-}
-
-country_event = { # Clean up event 
-	id = ai_event.6
-	title = disband_mercs.2.t
-	desc = disband_mercs.2.d
-	picture = SCOTTISH_MERCENARIES_eventPicture
-	
-	hidden = yes
-	
-	trigger = {
-		ai = no
-		OR = {
-			has_country_modifier = ai_advisers_adm
-			has_country_modifier = ai_advisers_dip
-			has_country_modifier = ai_advisers_mil
-		}
-	}
-	
-	immediate = {
-		hidden_effect = {
-			if = {
-				limit = {
-					has_country_modifier = ai_advisers_adm
-				}
-				remove_country_modifier = ai_advisers_adm
-			}
-			if = {
-				limit = {
-					has_country_modifier = ai_advisers_dip
-				}
-				remove_country_modifier = ai_advisers_dip
-			}
-			if = {
-				limit = {
-					has_country_modifier = ai_advisers_mil
-				}
-				remove_country_modifier = ai_advisers_mil
-			}
-		}
-	}
-	
-	option = {
-		#hidden
 	}
 }
