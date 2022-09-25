@@ -110,7 +110,7 @@ estate_brahmins_convert_province_x = {
 		OR = {
 			religion = hinduism
 			religion = jainism
-			}
+		}
 		num_of_missionaries = 1
 		any_owned_province = {
 			is_state_core = root
@@ -269,16 +269,14 @@ estate_brahmins_convert_province_x = {
 #Stop Converting a province
 estate_brahmins_stop_converting_province_x = {
 	can_select = {
-		OR = {
 		NOT = { religion = hinduism }
 		NOT = { religion = jainism }
-		}
 		num_of_missionaries = 1
 		any_owned_province = {
 			has_missionary = yes
 			OR = {
-			religion = hinduism
-			religion = jainism
+				religion = hinduism
+				religion = jainism
 			}
 			missionary_strength = 0.01
 		}
@@ -291,9 +289,9 @@ estate_brahmins_stop_converting_province_x = {
 		random_owned_province = {
 			limit = {
 				has_missionary = yes
-			OR = {
-				religion = hinduism
-				religion = jainism
+				OR = {
+					religion = hinduism
+					religion = jainism
 				}
 				missionary_strength = 0.01
 			}
@@ -307,8 +305,7 @@ estate_brahmins_stop_converting_province_x = {
 		event_target:agenda_province = {
 			OR = {
 				NOT = { owned_by = root }
-				NOT = { religion = hinduism }
-				NOT = { religion = jainism }
+				NOT = { religion = root }
 			}
 		}
 	}
@@ -318,7 +315,7 @@ estate_brahmins_stop_converting_province_x = {
 			OR = {
 				religion = hinduism
 				religion = jainism
-				}
+			}
 		}
 	}
     task_completed_effect = {
@@ -497,8 +494,8 @@ estate_brahmins_restore_devotion = {
 		NOT = { legitimacy_equivalent = 65 }
 		government = theocracy
 		OR = {
-		religion = hinduism
-		religion = jainism
+			religion = hinduism
+			religion = jainism
 		}
 		has_dlc = "Common Sense"
 	}
@@ -526,10 +523,7 @@ estate_brahmins_restore_devotion = {
 		}
 		generate_scaled_advisor_of_type_and_religion_effect = {
 			type = theologian
-			OR = {
-				religion = hinduism
-				religion = jainism
-				}
+			religion = root
 			discount = yes
 		}
     }
@@ -559,7 +553,7 @@ estate_brahmins_crush_religious_revolts = {
 		OR = {
 			religion = hinduism
 			religion = jainism
-			}
+		}
 	}
 	selection_weight = {
 		factor = 2
@@ -606,7 +600,7 @@ estate_brahmins_get_allies = {
 		OR = {
 			religion = hinduism
 			religion = jainism
-			}
+		}
 		NOT = { num_of_allies = 3 }
 		NOT = { num_of_subjects = 3 }
 		is_at_war = no
@@ -696,13 +690,13 @@ estate_brahmins_befriend_rival_of_rival = {
 		OR = {
 			religion = hinduism
 			religion = jainism
-			}
+		}
 		any_rival_country = {
 			any_rival_country = {
 				OR = {
 					religion = hinduism
 					religion = jainism
-					}
+				}
 				NOT = { tag = root }
 				root = { knows_country = prev }
 				NOT = { is_rival = root }
@@ -731,7 +725,7 @@ estate_brahmins_befriend_rival_of_rival = {
 					OR = {
 						religion = hinduism
 						religion = jainism
-						}
+					}
 					NOT = { tag = root }
 					root = { knows_country = prev }
 					NOT = { is_rival = root }
@@ -762,7 +756,7 @@ estate_brahmins_befriend_rival_of_rival = {
 					OR = {
 						religion = hinduism
 						religion = jainism
-						}
+					}
 					NOT = { tag = root }
 					root = { knows_country = prev }
 					NOT = { is_rival = root }
@@ -786,7 +780,7 @@ estate_brahmins_befriend_rival_of_rival = {
 					OR = {
 						religion = hinduism
 						religion = jainism
-						}
+					}
 					NOT = { tag = root }
 					root = { knows_country = prev }
 					NOT = { is_rival = root }
@@ -812,7 +806,7 @@ estate_brahmins_befriend_rival_of_rival = {
 					OR = {
 						religion = hinduism
 						religion = jainism
-						}
+					}
 					NOT = { tag = root }
 					army_size = root
 					root = { knows_country = prev }
@@ -837,7 +831,7 @@ estate_brahmins_befriend_rival_of_rival = {
 					OR = {
 						religion = hinduism
 						religion = jainism
-						}
+					}
 					NOT = { tag = root }
 					army_size = root
 					root = { knows_country = prev }
@@ -886,10 +880,7 @@ estate_brahmins_befriend_rival_of_rival = {
 		}
 		generate_scaled_advisor_of_type_and_religion_effect = {
 			type = diplomat
-			OR = {
-				religion = hinduism
-				religion = jainism
-				}
+			religion = root
 			discount = yes
 		}
 	}
@@ -1015,7 +1006,7 @@ estate_brahmins_relations_with_X = {
 					OR = {
 						religion = hinduism
 						religion = jainism
-						}
+					}
 				}
 				NOT = { is_rival = root }
 				ROOT = { NOT = { is_rival = prev } }
@@ -1110,7 +1101,7 @@ estate_brahmins_break_coalition = {
 		OR = {
 			religion = hinduism
 			religion = jainism
-			}
+		}
 		any_country = {
 			coalition_target = root
 			has_opinion_modifier = {
@@ -1225,7 +1216,7 @@ estate_brahmins_protect_brethren = {
 		OR = {
 			religion = hinduism
 			religion = jainism
-			}
+		}
 		is_free_or_tributary_trigger = yes
 		is_at_war = no
 		any_neighbor_country = {
