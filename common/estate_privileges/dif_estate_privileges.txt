@@ -454,9 +454,10 @@ sedentary_subjects_protection_of_trade_routes = {
 	can_select = {
 	}
 	penalties = {
+		state_maintenance_modifier = 0.15
 	}
 	benefits = {
-		trade_efficiency = 0.10
+		center_of_trade_upgrade_cost = -0.2
 	}
 	ai_will_do = {
 		factor = 10
@@ -481,6 +482,64 @@ sedentary_subjects_weapons_tribute = {
 	}
 	ai_will_do = {
 		factor = 10
+	}
+}
+
+estate_sedentary_subjects_marketplace_bonus = {
+	icon = privilege_comission_merchant_ships_for_war
+	max_absolutism = -5
+	land_share = 5
+	#loyalty = 0.05
+	influence = 0.1
+	can_select = {
+	}
+	on_granted = {
+		custom_tooltip = marketplace_bonus_tt
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_trade_building_trigger = yes
+					province_has_center_of_trade_of_level = 1
+				}
+				add_province_modifier = {
+					name = marketplace_bonus_m
+					duration = -1
+				}
+			}
+		}
+	}
+	on_revoked = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_province_modifier = marketplace_bonus_m
+				}
+				remove_province_modifier = marketplace_bonus_m
+			}
+		}
+	}
+	on_invalid = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_province_modifier = marketplace_bonus_m
+				}
+				remove_province_modifier = marketplace_bonus_m
+			}
+		}
+	}
+	penalties = {
+	}
+	benefits = {
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			any_owned_province = {
+				has_trade_building_trigger = yes
+			}
+		}
 	}
 }
 
@@ -667,5 +726,261 @@ estate_nomadic_aristocracy_share_of_tribute = {
 			factor = 0.5
 			is_absolutism_active = yes
 		}
+	}
+}
+
+estate_nomadic_aristocracy_landowners = {
+	icon = privilege_better_integration
+	max_absolutism = -10
+	land_share = 5
+	loyalty = 0.05
+	influence = 0.1
+	can_select = {
+	}
+	on_granted = {
+		custom_tooltip = farm_estate_landowners_tt
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_building = farm_estate
+				}
+				add_province_modifier = {
+					name = farm_estate_manpower_m
+					duration = -1
+				}
+			}
+		}
+	}
+	on_revoked = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_province_modifier = farm_estate_manpower_m
+				}
+				remove_province_modifier = farm_estate_manpower_m
+			}
+		}
+	}
+	on_invalid = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_province_modifier = farm_estate_manpower_m
+				}
+				remove_province_modifier = farm_estate_manpower_m
+			}
+		}
+	}
+	penalties = {
+	}
+	benefits = {
+	}
+	ai_will_do = {
+		factor = 10
+	}
+}
+
+estate_burghers_dock_trade_power = {
+	icon = privilege_comission_merchant_ships_for_war
+	max_absolutism = -5
+	land_share = 5
+	#loyalty = 0.05
+	influence = 0.1
+	can_select = {
+	}
+	on_granted = {
+		custom_tooltip = dock_trade_power_tt
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_dock_building_trigger = yes
+				}
+				add_province_modifier = {
+					name = dock_trade_power_m
+					duration = -1
+				}
+			}
+		}
+	}
+	on_revoked = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_province_modifier = dock_trade_power_m
+				}
+				remove_province_modifier = dock_trade_power_m
+			}
+		}
+	}
+	on_invalid = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_province_modifier = dock_trade_power_m
+				}
+				remove_province_modifier = dock_trade_power_m
+			}
+		}
+	}
+	penalties = {
+	}
+	benefits = {
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			any_owned_province = {
+				has_dock_building_trigger = no
+			}
+		}
+	}
+}
+
+estate_vaisyas_dock_trade_power = {
+	icon = privilege_comission_merchant_ships_for_war
+	max_absolutism = -5
+	land_share = 5
+	#loyalty = 0.05
+	influence = 0.1
+	is_valid = {
+		NOT = { has_estate = estate_burghers }
+	}
+	can_select = {	
+	}
+	on_granted = {
+		custom_tooltip = dock_trade_power_tt
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_dock_building_trigger = yes
+				}
+				add_province_modifier = {
+					name = dock_trade_power_m
+					duration = -1
+				}
+			}
+		}
+	}
+	on_revoked = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_province_modifier = dock_trade_power_m
+				}
+				remove_province_modifier = dock_trade_power_m
+			}
+		}
+	}
+	on_invalid = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_province_modifier = dock_trade_power_m
+				}
+				remove_province_modifier = dock_trade_power_m
+			}
+		}
+	}
+	penalties = {
+	}
+	benefits = {
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			any_owned_province = {
+				has_dock_building_trigger = no
+			}
+		}
+	}
+}
+
+estate_jains_dock_trade_power = {
+	icon = privilege_comission_merchant_ships_for_war
+	max_absolutism = -5
+	land_share = 5
+	#loyalty = 0.05
+	influence = 0.1
+	is_valid = {
+		NOT = { has_estate = estate_burghers }
+		NOT = { has_estate = estate_vaisyas }
+	}
+	can_select = {	
+	}
+	on_granted = {
+		custom_tooltip = dock_trade_power_tt
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_dock_building_trigger = yes
+				}
+				add_province_modifier = {
+					name = dock_trade_power_m
+					duration = -1
+				}
+			}
+		}
+	}
+	on_revoked = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_province_modifier = dock_trade_power_m
+				}
+				remove_province_modifier = dock_trade_power_m
+			}
+		}
+	}
+	on_invalid = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_province_modifier = dock_trade_power_m
+				}
+				remove_province_modifier = dock_trade_power_m
+			}
+		}
+	}
+	penalties = {
+	}
+	benefits = {
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0
+			any_owned_province = {
+				has_dock_building_trigger = no
+			}
+		}
+	}
+}
+
+estate_nobles_obligated_to_serve = {
+	icon = privilege_promote_purbias
+	#land_share = 0
+	max_absolutism = 5
+	influence = 0.05
+	loyalty = -0.1
+	is_valid = {
+		has_idea_group = aristocracy_ideas
+	}
+	can_select = {
+		has_idea_group = aristocracy_ideas
+	}
+	on_granted = {
+		#custom_tooltip = estate_nobles_command_of_the_military_tt
+	}
+	penalties = {
+		leader_cost = 0.2
+	}
+	benefits = {
+		cavalry_power = 0.05
+		governing_capacity = 50
+	}
+	ai_will_do = {
+		factor = 10
 	}
 }
