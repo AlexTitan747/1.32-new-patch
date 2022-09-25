@@ -1,0 +1,190 @@
+estate_church_new_prophets = {
+	icon = privilege_recruit_minister
+	influence = 0.10
+
+	conditional_modifier = {
+		trigger = {
+			has_dlc = "Common Sense"
+			OR = {
+				religion = buddhism
+				religion = vajrayana
+				religion = mahayana
+			}
+		}
+		modifier = {
+			yearly_karma_decay = -0.005
+		}
+	}
+	conditional_modifier = {
+		trigger = {
+			has_dlc = "Cradle of Civilization"
+			religion_group = muslim
+		}
+		modifier = {
+			monthly_piety = -0.001
+		}
+	}
+	penalties = {
+	}
+	benefits = {
+	}
+	ai_will_do = {
+		factor = 10
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_church_religious_state }
+			num_of_estate_privileges = {
+				estate = estate_church
+				value = 3
+			}
+		}
+	}
+}
+
+estate_burghers_encourage_production = {
+	icon = privilege_give_money
+	#
+	influence = 0.1
+	is_valid = {
+		NOT = { has_estate = estate_vaisyas }
+	}
+	modifier_by_land_ownership = {
+		land_maintenance_modifier = 0.10
+		production_efficiency = 0.50
+	}
+	penalties = {
+	}
+	ai_will_do = {
+		factor = 5
+		modifier = {
+			factor = 2
+			estate_territory = {
+				estate = estate_burghers
+				territory = 50
+			}
+		}
+		modifier = {
+			factor = 1.5
+			estate_territory = {
+				estate = estate_burghers
+				territory = 40
+			}
+		}
+		modifier = {
+			factor = 1.5
+			estate_territory = {
+				estate = estate_burghers
+				territory = 30
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				estate_territory = {
+					estate = estate_burghers
+					territory = 15
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				estate_territory = {
+					estate = estate_burghers
+					territory = 10
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				estate_territory = {
+					estate = estate_burghers
+					territory = 5
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_burghers_land_of_commerce }
+			num_of_estate_privileges = {
+				estate = estate_burghers
+				value = 3
+			}
+		}
+	}
+}
+
+estate_jains_encourage_production = {
+	icon = privilege_give_money
+	#
+	influence = 0.1
+	is_valid = {
+		NOT = { has_estate = estate_vaisyas }
+	}
+	modifier_by_land_ownership = {
+		land_maintenance_modifier = 0.10
+		production_efficiency = 0.50
+	}
+	penalties = {
+	}
+	ai_will_do = {
+		factor = 5
+		modifier = {
+			factor = 2
+			estate_territory = {
+				estate = estate_jains
+				territory = 50
+			}
+		}
+		modifier = {
+			factor = 1.5
+			estate_territory = {
+				estate = estate_jains
+				territory = 40
+			}
+		}
+		modifier = {
+			factor = 1.5
+			estate_territory = {
+				estate = estate_jains
+				territory = 30
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				estate_territory = {
+					estate = estate_jains
+					territory = 15
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				estate_territory = {
+					estate = estate_jains
+					territory = 10
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				estate_territory = {
+					estate = estate_jains
+					territory = 5
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_jains_diplomacy }
+			num_of_estate_privileges = {
+				estate = estate_jains
+				value = 3
+			}
+		}
+	}
+}
