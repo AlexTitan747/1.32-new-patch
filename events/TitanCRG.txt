@@ -1,0 +1,47 @@
+namespace = titantts
+
+country_event = {
+	id = titancrg.1
+	title = "titancrg.title1"
+	desc = "titancrg.desc1"
+	picture = NAVAL_MILITARY_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+		tag = CRG
+		}
+	}
+	
+	option = {
+		name = "titancrg.cothon1"
+		341 = { 
+			add_great_project_tier = {
+				type = carthaginian_cothon
+				tier = 2
+			}
+			add_base_tax = 1 
+			add_base_production = 2
+			add_base_manpower = 1
+		}
+		hidden_effect = {
+		set_country_flag = carthage_cothon
+		}
+	}
+	option = {
+		name = "titancrg.cothon2"
+		define_advisor = {
+			type = commandant
+			location = 121 # Naples
+			discount = yes
+			skill = 3
+		}
+		add_treasury = 350
+		341 = {
+		add_base_manpower = 2
+		add_base_production = 2
+		}
+	}
+}

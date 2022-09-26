@@ -16,17 +16,63 @@ country_event = {
 	}
 	
 	option = {
-		name = "titannap.upgrade1"
+		name = "titantts.upgrade1"
 		add_country_modifier = {
 			name = learn_new_cavalry_training
 			duration = -1
 		}
 	}
 	option = {
-		name = "titannap.upgrade2"
+		name = "titantts.upgrade2"
 		add_country_modifier = {
 			name = expertise_in_foot_combat
 			duration = -1
+		}
+	}
+}
+
+country_event = {
+	id = titantts.2
+	title = "titantts.title2"
+	desc = "titantts.desc2"
+	picture = FORT_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+		tag = TTS
+		was_tag = TTS
+		}
+	}
+	
+	option = {
+		name = "titantts.malta1"
+		126 = { 
+			add_great_project_tier = {
+				type = malta_forts
+				tier = 2
+			}
+			add_base_tax = 2
+			add_base_manpower = 1
+		}
+		hidden_effect = {
+		set_country_flag = malta_forts_built
+		}
+	}
+	option = {
+		name = "titantts.malta2"
+		define_advisor = {
+			type = fortification_expert
+			location = 121 # Naples
+			discount = yes
+			skill = 3
+		}
+		add_dip_power = 100
+		126 = {
+			add_base_tax = 2
+			add_base_production = 2
 		}
 	}
 }
