@@ -9,6 +9,7 @@ emp_naples_1 = {
 		OR = {
 			tag = NAP
 			tag = TTS
+			tag = CRG
 		}
 		NOT = { map_setup = map_setup_random }
 		has_dlc = "Emperor"
@@ -71,8 +72,7 @@ emp_naples_1 = {
 		trigger = {
 			religion = catholic
 			is_defender_of_faith = yes
-			is_defender_of_faith_of_tier = 4
-			power_projection = 75
+			power_projection = 50
 		}
 		effect = {
 			add_country_modifier = {
@@ -176,6 +176,7 @@ emp_naples_2 = {
 		OR = {
 			tag = NAP
 			tag = TTS
+			tag = CRG
 		}
 		NOT = { map_setup = map_setup_random }
 		has_dlc = "Emperor"
@@ -387,6 +388,7 @@ emp_naples_3 = {
 		OR = {
 			tag = NAP
 			tag = TTS
+			tag = CRG
 		}
 		NOT = { map_setup = map_setup_random }
 		has_dlc = "Emperor"
@@ -595,6 +597,7 @@ emp_naples_4 = {
 		OR = {
 			tag = NAP
 			tag = TTS
+			tag = CRG
 		}
 		NOT = { map_setup = map_setup_random }
 		has_dlc = "Emperor"
@@ -705,6 +708,7 @@ emp_naples_4 = {
 				type = all
 				owned_by = ROOT
 				}
+				religion = catholic
 			}
 		effect = {
 			morea_area = {
@@ -787,8 +791,8 @@ emp_naples_4 = {
 			}
 		effect = {
 			137 = {
-				add_base_manpower = 7
-				add_base_production = 3
+				add_base_manpower = 5
+				add_base_production = 2
 				add_base_tax = 3
 			}
 			croatia_area = {
@@ -887,6 +891,7 @@ emp_naples_5 = {
 		OR = {
 			tag = NAP
 			tag = TTS
+			tag = CRG
 		}
 		NOT = { map_setup = map_setup_random }
 		has_dlc = "Emperor"
@@ -928,6 +933,7 @@ emp_naples_5 = {
 		}
 		effect = {
 			change_government_reform_progress = 50
+			country_event = { id = titannap.4 }
 		}
 	}
 	emp_nap_rein_in_nobility = {
@@ -959,6 +965,10 @@ emp_naples_5 = {
 			}
 			else = {
 				add_revolutionary_zeal = 15
+			}
+			add_estate_loyalty = {
+				estate = estate_nobles
+				loyalty = 10
 			}
 		}
 	}

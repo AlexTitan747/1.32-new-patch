@@ -3,7 +3,10 @@ tm_tts_slot_1 = {
 	generic = no
 	ai = yes
 	potential = {
-		tag = TTS
+		OR = {
+			tag = TTS
+			tag = CRG
+			}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -15,8 +18,8 @@ tm_tts_slot_1 = {
 		
 		trigger = {
 			num_of_owned_provinces_with = {
-				value = 6
-				NOT = { religion = sunni }
+				value = 16
+				NOT = { religion = catholic }
 				region = italy_region
 				owned_by = root
 				}
@@ -140,6 +143,10 @@ tm_tts_slot_1 = {
 				duration = 3650
 				}
 				set_country_flag = carthage_reborn
+				341 = {
+					add_base_production = 2
+					add_base_manpower = 1
+				}
 		}
 	}
 }
@@ -149,7 +156,10 @@ tm_tts_slot_2 = {
 	generic = no
 	ai = yes
 	potential = {
-		tag = TTS
+		OR = {
+			tag = TTS
+			tag = CRG
+			}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -285,7 +295,10 @@ tm_tts_slot_3 = {
 	generic = no
 	ai = yes
 	potential = {
-		tag = TTS
+		OR = {
+			tag = TTS
+			tag = CRG
+			}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -360,6 +373,34 @@ tm_tts_slot_3 = {
 			
 		}
 	}
+	tm_TTS_invest_in_malta_forts = {
+		icon = mission_malta_forts
+		required_missions = { tm_TTS_build_african_industry }
+		position = 12
+		
+		provinces_to_highlight = {
+			province_id = 126
+		}
+
+		trigger = {
+			126 = {
+				development = 16
+				OR = {
+					has_building = fort_15th
+					has_building = fort_16th
+					has_building = fort_17th
+					has_building = fort_18th
+					}
+					has_building = workshop
+			}
+			prestige = 75
+			army_tradition = 50
+		}
+		
+		effect = {
+			country_event = { id = titantts.2 } 
+		}
+	}
 }
 
 tm_tts_slot_4 = {
@@ -367,7 +408,10 @@ tm_tts_slot_4 = {
 	generic = no
 	ai = yes
 	potential = {
+		OR = {
 		tag = TTS
+		tag = CRG
+		}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -537,10 +581,7 @@ tm_tts_slot_4 = {
 
 		effect = {
 			country_event = {
-				id = titannap.2
-			}
-			hidden_effect = {
-			set_country_flag = upgrade_in_arms
+				id = titantts.1
 			}
 		}
 	}
@@ -551,7 +592,10 @@ tm_tts_slot_5 = {
 	generic = no
 	ai = yes
 	potential = {
-		tag = TTS
+		OR = {
+			tag = TTS
+			tag = CRG
+			}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes

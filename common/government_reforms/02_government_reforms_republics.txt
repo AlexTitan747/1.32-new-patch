@@ -1940,6 +1940,22 @@ union_of_states_reform = {
 	}
 }
 
+maltese_forts = {
+	icon = "malta_forts"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+		tag = TTS
+		was_tag = TTS
+		}
+		has_country_flag = malta_forts_built
+	}
+	modifiers = {
+		defensiveness = 0.125
+		fort_maintenance_modifier = -0.15
+	}
+}
+
 #Parliamentary vs Presidential
 
 # parliamentary_reform defined in common file
@@ -2215,6 +2231,22 @@ revolutionary_council_reform = {
 	}
 	ai = {
 		factor = 2
+	}
+}
+
+carthaginian_cothon = {
+	icon = "carthaginian_cothon"
+	allow_normal_conversion = yes
+	potential = {
+		tag = CRG
+		has_country_flag = carthage_cothon
+	}
+	modifiers = {
+		naval_forcelimit_modifier = 0.05
+		naval_maintenance_modifier = -0.125
+		navy_tradition = 0.5
+		leader_naval_manuever = 2
+		leader_naval_fire = 1
 	}
 }
 
