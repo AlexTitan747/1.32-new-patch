@@ -147,6 +147,7 @@ tm_tts_slot_1 = {
 					add_base_production = 2
 					add_base_manpower = 1
 				}
+				custom_tooltip = tts_unlock_carthage
 		}
 	}
 }
@@ -290,7 +291,60 @@ tm_tts_slot_2 = {
 		}
 	}
 
-tm_tts_slot_3 = {
+#	#titan_tts_branching_mission_slot_3 = { 
+#		slot = 3
+#		generic = no
+#		ai = yes
+#		potential_on_load = {
+#			has_dlc = "Lions of the North"
+#		}
+#		potential = {
+#			OR = {
+#				tag = TTS
+#				tag = CRG
+#				}
+#			NOT = { map_setup = map_setup_random }
+#		}
+#		has_country_shield = yes
+#		
+#		tm_tts_branching_slot_3_mission_2 = {
+#			icon = mission_unknown_mission 
+#			required_missions = { tm_TTS_restructure_the_cabinet } 
+#			position = 10
+#			trigger = { 
+#				custom_trigger_tooltip = {
+#					tooltip = selectable_mission_trigger_tt
+#					always = no
+#				}
+#				custom_trigger_tooltip = {
+#					tooltip = tm_hidden_mission_tooltip
+#					always = no
+#				}
+#			}
+#			effect = {
+#				add_country_modifier = {
+#					name = "emirate_growing_industry"
+#					duration = 3650
+#				}
+#				hautes_plaines_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_permanent_claim = ROOT
+#				}
+#				ouled_nail_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_permanent_claim = ROOT
+#					}
+#				}
+#			}				
+#		}
+
+tm_tts_slot_3_a = {
 	slot = 3
 	generic = no
 	ai = yes
@@ -341,6 +395,7 @@ tm_tts_slot_3 = {
 	tm_TTS_build_african_industry = {
 		icon = muslim_factory
 		required_missions = { tm_TTS_restructure_the_cabinet }
+		position = 10
 		
 		trigger = {
 			num_of_owned_provinces_with = {
@@ -399,6 +454,172 @@ tm_tts_slot_3 = {
 		
 		effect = {
 			country_event = { id = titantts.2 } 
+		}
+	}
+}
+
+tm_TTS_slot_3_b = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = CRG
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	tm_CRG_construct_the_cothon = {
+		icon = carthage_cothon_mission
+		required_missions = { tm_TTS_carthage_reborn }
+		position = 13
+		
+		provinces_to_highlight = {
+				province_id = 341
+		}
+
+		trigger = {
+			341 = {
+				development = 28
+			}
+			prestige = 85
+			army_tradition = 60
+		}
+		
+		effect = {
+			country_event = { id = titancrg.1 } 
+		}
+	}
+
+	tm_CRG_fall_of_rome = {
+		icon = mission_rome_banner
+		required_missions = { tm_CRG_construct_the_cothon }
+		position = 14
+		
+		provinces_to_highlight = {
+				province_id = 118
+		}
+
+		trigger = {
+			118 = {
+				has_owner_culture = yes
+				OR = {
+					has_great_project = {
+					type = roman_colosseum
+					tier = 1 
+					}
+					has_great_project = {
+					type = roman_colosseum
+					tier = 2 
+					}
+					has_great_project = {
+					type = roman_colosseum
+					tier = 3 
+					}
+				}
+			}
+		}
+		
+		effect = {
+			emilia_romagna_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			tuscany_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			liguria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_dip_power = 125
+		}
+	}
+
+	tm_CRG_take_war_to_milan = {
+		icon = mission_milan_flag
+		required_missions = { tm_CRG_fall_of_rome }
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					province_id = 101
+					province_id = 2992
+				}
+				AND = {
+					area = liguria_area
+					NOT = {
+					country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
+			}
+		}
+	
+		trigger = {
+			tuscany_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			owns_core_province = 101
+			owns_core_province = 2992
+		}
+		
+		effect = {
+			italy_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_stat_or_monarch_power = {
+				stat = mil
+				amount = 1
+			}
+			add_stability_or_adm_power = yes
+		}
+	}
+
+	tm_CRG_carthaginian_empire = {
+		icon = mission_milan_flag
+		required_missions = { tm_CRG_take_war_to_milan }
+		
+		provinces_to_highlight = {
+			region = italy_region
+			NOT = {
+			country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+	
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 55
+				region = italy_region
+				is_core = root
+				}
+		}
+		
+		effect = {
+			italy_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = "empire_of_carthage"
+				duration = -1
+			}
 		}
 	}
 }
@@ -503,6 +724,7 @@ tm_tts_slot_4 = {
 				}
 				add_permanent_claim = ROOT
 			}
+			add_stability_or_adm_power = yes
 		}
 	}
 
