@@ -13,6 +13,7 @@ republic_mechanic = {
 	modifiers = {
 		burghers_influence_modifier = 0.15
 		vaisyas_influence_modifier = 0.15
+		max_absolutism = -40
 	}
 
 	valid_for_nation_designer = no
@@ -33,29 +34,29 @@ oligarchy_reform = {
 		NOT = { has_reform = private_enterprise_colony_government }
 		NOT = { has_reform = self_governing_colony_government }
 		NOT = {	
-		OR = {	
-			tag = JNG 
-			tag = ZHJ
-			tag = FUA
-			tag = GDO 
-			tag = GXI
-			tag = HNA 
-			tag = JIX
-			tag = AUI
-			tag = SAN
-			tag = LNI
-			tag = HEN
-			tag = HEI
-			tag = SCH
-			tag = SXI
-			tag = YNA
-			tag = ALI
-			tag = GSU
-			tag = ORO
-			tag = WEI
-			tag = SHU
-			tag = WUU
-			tag = EPC
+			OR = {	
+				tag = JNG 
+				tag = ZHJ
+				tag = FUA
+				tag = GDO 
+				tag = GXI
+				tag = HNA 
+				tag = JIX
+				tag = AUI
+				tag = SAN
+				tag = LNI
+				tag = HEN
+				tag = HEI
+				tag = SCH
+				tag = SXI
+				tag = YNA
+				tag = ALI
+				tag = GSU
+				tag = ORO
+				tag = WEI
+				tag = SHU
+				tag = WUU
+				tag = EPC
 			}
 		}
 	}
@@ -63,8 +64,7 @@ oligarchy_reform = {
 		NOT = { culture_group = latin }
 	}
 	modifiers = {
-		global_tax_modifier = 0.10
-		max_absolutism = -20
+		global_tax_modifier = 0.05
 	}
 	custom_attributes = {
 		enables_plutocratic_idea_group = yes
@@ -91,8 +91,8 @@ signoria_reform = {
 	}
 	modifiers = {
 		candidate_random_bonus = 1
-		global_tax_modifier = 0.10
-		max_absolutism = -25
+		global_tax_modifier = 0.05
+		max_absolutism = 10
 	}
 	custom_attributes = {
 		enables_plutocratic_idea_group = yes
@@ -118,7 +118,7 @@ protectorate_parliament_reform = {
 	modifiers = {
 		global_autonomy = -0.05
 		land_morale = 0.05
-		max_absolutism = -20
+		max_absolutism = 20
 		republican_tradition = -0.5
 	}
 
@@ -127,6 +127,7 @@ protectorate_parliament_reform = {
 		has_parliament = yes
 		custom_attributes = {
 			blocked_call_diet = yes
+			disables_estate_nobles = yes
 		}
 	}
 	has_term_election = no
@@ -134,6 +135,7 @@ protectorate_parliament_reform = {
 		locked_government_type = yes
 		enables_plutocratic_idea_group = yes
 		enables_aristocratic_idea_group = no
+		cannot_become_dictatorship = yes
 	}
 }
 
@@ -151,6 +153,8 @@ prussian_republic_reform = {
 				OR = {
 					have_had_reform = prussian_monarchy
 					have_had_reform = prussian_republic_reform
+					have_had_reform = prussian_theocratic_reform
+					was_tag = TEU
 				}
 			}
 			AND = {
@@ -158,7 +162,11 @@ prussian_republic_reform = {
 				OR = {
 					have_had_reform = prussian_monarchy
 					have_had_reform = prussian_republic_reform
+					have_had_reform = prussian_theocratic_reform
 				}
+			}
+			has_unlocked_government_reform = {
+				government_reform = prussian_republic_reform
 			}
 		}
 	}
@@ -169,6 +177,9 @@ prussian_republic_reform = {
 			religion = reformed
 			religion = hussite
 			religion = anglican
+			has_unlocked_government_reform_tooltip = {
+				government_reform = prussian_republic_reform
+			}
 		}
 	}
 	valid_for_nation_designer = yes
@@ -180,7 +191,7 @@ prussian_republic_reform = {
 		monthly_militarized_society = 0.05
 		global_autonomy = -0.075
 		republican_tradition = -0.5
-		max_absolutism = -10
+		max_absolutism = 30
 		governing_capacity_modifier = -0.5
 	}
 	
@@ -202,7 +213,7 @@ merchants_reform = {
 	icon = "politician"
 	allow_normal_conversion = yes
 	modifiers = {
-		max_absolutism = -50
+		max_absolutism = -10
 		merchants = 1
 	}
 	valid_for_nation_designer = yes
@@ -464,7 +475,8 @@ noble_elite_reform = {
 			}
 	}
 	modifiers = {
-		army_tradition = 0.10
+		army_tradition = 0.5
+		max_absolutism = 20
 		nobles_influence_modifier = 0.05
 		maratha_exclusive_influence_modifier = 0.05
 		rajput_exclusive_influence_modifier = 0.05
@@ -513,12 +525,13 @@ military_dictatorship_reform = {
 		has_reform = military_dictatorship_reform
 	}
 	valid_for_nation_designer = yes
+	nation_designer_cost = 25
 	legacy_equivalent = military_dictatorship
 	has_term_election = no
 	modifiers = {
 		global_autonomy = -0.075
 		land_morale = 0.1
-		max_absolutism = -10
+		max_absolutism = 30
 	}
 	custom_attributes = {
 		generals_become_rulers = yes
@@ -706,7 +719,8 @@ junior_revolutionary_republic_reform = {
 		}
 		factions = {
 			rr_jacobins
-			rr_royalists			rr_girondists
+			rr_royalists
+			rr_girondists
 		}
 	}
 }
@@ -720,14 +734,6 @@ peasants_republic = {
 			has_country_flag = great_peasants_war_peasant_republic
 			have_had_reform = peasants_republic
 			have_had_reform = stateless_society
-			AND = {
-				ROOT = {
-				capital_scope = { development = 20 }
-				}
-				ROOT = { 
-				NOT = { num_of_cities = 5 }
-				}
-			}
 		}
 	}
 	valid_for_nation_designer = yes
@@ -808,8 +814,7 @@ free_city = {
 	modifiers = {
 		trade_efficiency = 0.1
 		development_cost = -0.1
-		max_absolutism = -20
-		burghers_influence_modifier = 0.15
+		burghers_influence_modifier = 0.1
 	}
 	fixed_rank = 1
 
@@ -838,9 +843,8 @@ trading_city = {
 		mr_guilds
 	}
 	modifiers = {
-		max_absolutism = -20
 		global_trade_power = 0.1
-		max_absolutism = -20
+		max_absolutism = 20
 	}
 
 	custom_attributes = {
@@ -888,7 +892,7 @@ ambrosian_republic = {
 	}
 	legacy_equivalent = ambrosian_republic_legacy
 	valid_for_nation_designer = yes
-	nation_designer_cost = 10
+	nation_designer_cost = 25
 	modifiers = {
 		global_tax_modifier = 0.1
 		land_morale = 0.05
@@ -906,10 +910,10 @@ veche_republic = {
 	icon = "merchant"
 	allow_normal_conversion = yes
 	potential = {
+		NOT = { has_reform = great_veche_republic }
+		NOT = { have_had_reform = great_veche_republic }
 		OR = {
-			AND = {
-				culture_group = east_slavic
-			}
+			culture_group = east_slavic
 			AND = {
 				is_playing_custom_nation = yes
 				have_had_reform = veche_republic
@@ -925,55 +929,216 @@ veche_republic = {
 		global_trade_goods_size_modifier = 0.05
 		land_morale = 0.05
 		governing_capacity = 100
-		max_absolutism = -50
+		max_absolutism = 10
 	}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 40
-	duration = 5
+
+	factions = {
+		mr_aristocrats
+		mr_traders
+		mr_guilds
+	}
+	boost_income = yes
+	fixed_rank = 1
+
+	custom_attributes = {
+		enables_plutocratic_idea_group = yes
+		enables_aristocratic_idea_group = no
+		elections_increase_factions_influence = yes
+	}
 	conditional = {
-	allow = { has_dlc = "Third Rome" }
+		allow = {
+			has_dlc = "Res Publica"
+			NOT = { has_dlc = "Mare Nostrum" }
+			NOT = { has_dlc = "Third Rome" }
+		}
+		can_use_trade_post = yes
+	}
+	conditional = {
+		allow = {
+			has_dlc = "Mare Nostrum"
+			NOT = { has_dlc = "Res Publica" }
+			NOT = { has_dlc = "Third Rome" }
+		}
+		can_form_trade_league = yes
+		trade_city_reform = trading_city
+	}
+	conditional = {
+		allow = {
+			has_dlc = "Res Publica"
+			has_dlc = "Mare Nostrum"
+			NOT = { has_dlc = "Third Rome" }
+		}
+		can_use_trade_post = yes
+		can_form_trade_league = yes
+		trade_city_reform = trading_city
+	}
+	conditional = {
+		allow = {
+			has_dlc = "Third Rome"
+			NOT = { has_dlc = "Mare Nostrum" }
+			NOT = { has_dlc = "Res Publica" }
+		}
 		government_abilities = {
 			russian_mechanic
 		}
 	}
+	conditional = {
+		allow = {
+			has_dlc = "Third Rome"
+			has_dlc = "Mare Nostrum"
+			NOT = { has_dlc = "Res Publica" }
+		}
+		government_abilities = {
+			russian_mechanic
+		}
+		can_form_trade_league = yes
+		trade_city_reform = trading_city
+	}
+	conditional = {
+		allow = {
+			has_dlc = "Third Rome"
+			NOT = { has_dlc = "Mare Nostrum" }
+			has_dlc = "Res Publica"
+		}
+		government_abilities = {
+			russian_mechanic
+		}
+		can_use_trade_post = yes
+	}
+	conditional = {
+		allow = {
+			has_dlc = "Third Rome"
+			has_dlc = "Mare Nostrum"
+			has_dlc = "Res Publica"
+		}
+		government_abilities = {
+			russian_mechanic
+		}
+		can_use_trade_post = yes
+		can_form_trade_league = yes
+		trade_city_reform = trading_city
+	}
+	duration = 4
 }
 
-russian_republic = {
-	icon = "russian_principality"
+great_veche_republic = {
+	icon = "merchant"
 	allow_normal_conversion = yes
 	potential = {
+		culture_group = east_slavic
+		religion = orthodox
 		OR = {
 			AND = {
 				tag = RUS
+				NOT = { map_setup = map_setup_random }
+			}
+			AND = {
+				tag = UKR
+				NOT = { map_setup = map_setup_random }
 			}
 			AND = {
 				is_playing_custom_nation = yes
-				have_had_reform = veche_republic
+				have_had_reform = tsardom
 			}
 		}
-	}
-	legacy_equivalent = veche_republic_legacy
-	nation_designer_trigger = {
-		culture_group = east_slavic
-	}
-	modifiers = {
-		merchants = 1
-		production_efficiency = 0.1
-		land_morale = 0.1
-		governing_capacity = 250
-		max_absolutism = -50
 	}
 	fixed_rank = 3
 	valid_for_nation_designer = yes
 	nation_designer_cost = 40
+
+	nation_designer_trigger = {
+		culture_group = east_slavic
+		religion = orthodox
+	}
+
+	modifiers = {
+		global_manpower_modifier = 0.2
+		merchants = 1
+		governing_capacity = 50
+		max_absolutism = 30
+		governing_capacity = 300
+	}
+
+	custom_attributes = {
+		enables_plutocratic_idea_group = yes
+		enables_aristocratic_idea_group = no
+	}
 	conditional = {
-		allow = { has_dlc = "Third Rome" }
+		allow = {
+			has_dlc = "Res Publica"
+			NOT = { has_dlc = "Mare Nostrum" }
+			NOT = { has_dlc = "Third Rome" }
+		}
+		can_use_trade_post = yes
+	}
+	conditional = {
+		allow = {
+			has_dlc = "Mare Nostrum"
+			NOT = { has_dlc = "Res Publica" }
+			NOT = { has_dlc = "Third Rome" }
+		}
+		can_form_trade_league = yes
+		trade_city_reform = trading_city
+	}
+	conditional = {
+		allow = {
+			has_dlc = "Res Publica"
+			has_dlc = "Mare Nostrum"
+			NOT = { has_dlc = "Third Rome" }
+		}
+		can_use_trade_post = yes
+		can_form_trade_league = yes
+		trade_city_reform = trading_city
+	}
+	conditional = {
+		allow = {
+			has_dlc = "Third Rome"
+			NOT = { has_dlc = "Mare Nostrum" }
+			NOT = { has_dlc = "Res Publica" }
+		}
 		government_abilities = {
 			russian_mechanic
 		}
-		claim_states = yes
 	}
-	duration = 5
+	conditional = {
+		allow = {
+			has_dlc = "Third Rome"
+			has_dlc = "Mare Nostrum"
+			NOT = { has_dlc = "Res Publica" }
+		}
+		government_abilities = {
+			russian_mechanic
+		}
+		can_form_trade_league = yes
+		trade_city_reform = trading_city
+	}
+	conditional = {
+		allow = {
+			has_dlc = "Third Rome"
+			NOT = { has_dlc = "Mare Nostrum" }
+			has_dlc = "Res Publica"
+		}
+		government_abilities = {
+			russian_mechanic
+		}
+		can_use_trade_post = yes
+	}
+	conditional = {
+		allow = {
+			has_dlc = "Third Rome"
+			has_dlc = "Mare Nostrum"
+			has_dlc = "Res Publica"
+		}
+		government_abilities = {
+			russian_mechanic
+		}
+		can_use_trade_post = yes
+		can_form_trade_league = yes
+		trade_city_reform = trading_city
+	}
+	duration = 4
 }
 
 american_republic = {
@@ -1004,7 +1169,7 @@ american_republic = {
 	modifiers = {
 		war_exhaustion = -0.04
 		stability_cost_modifier = -0.1
-		max_absolutism = -20
+		max_absolutism = 20
 	}
 
 	custom_attributes = {
@@ -1048,7 +1213,7 @@ federal_republic = {
 	modifiers = {
 		diplomatic_reputation = 1
 		global_spy_defence = 0.1
-		max_absolutism = -30
+		max_absolutism = 10
 	}
 
 	custom_attributes = {
@@ -1088,6 +1253,7 @@ colonial_government = {
 		recover_army_morale_speed = 0.02
 		embracement_cost = -0.1
 		governing_capacity = 100
+		max_absolutism = 40
 	}
 
 	custom_attributes = {
@@ -1418,7 +1584,6 @@ cossacks_reform = {
 		cavalry_cost = -0.2
 		cav_to_inf_ratio = 0.2
 		governing_capacity = 50
-		max_absolutism = -40
 	}
 	duration = 4
 }
@@ -1438,12 +1603,8 @@ republican_authoritarianism_reform = {
 		}
 	}
 	modifiers = {
-		yearly_army_professionalism = 0.005
-	}
-	conditional = {
-		allow = {
-		}
-		claim_states = yes
+		global_unrest = -1
+		max_absolutism = 5
 	}
 	ai = {
 		factor = 1
@@ -1483,7 +1644,6 @@ nepotism_reform = {
 
 	custom_attributes = {
 		enables_nepotism = yes
-		claim_states = yes
 	}
 	ai = {
 		factor = 1
@@ -1505,13 +1665,87 @@ republicanism_reform = {
 	modifiers = {
 		republican_tradition = 0.2
 	}
-	conditional = {
-		allow = {
-		}
-		claim_states = yes
-	}
 	ai = {
 		factor = 1.5
+	}
+}
+
+democratic_values_reform = {
+	icon = "equal_electorate_reform"
+	allow_normal_conversion = yes
+	potential = {
+		NOT = {
+			has_government_attribute = is_pirate_republic_reform
+		}
+		OR = {
+			is_revolutionary = no
+			NOT = { has_dlc = "Emperor" }
+		}
+	}
+	modifiers = {
+		global_trade_goods_size_modifier = 0.05
+		maratha_muslim_influence_modifier = 0.1
+		rajput_muslim_influence_modifier = 0.1
+		burghers_influence_modifier = 0.1
+		burghers_loyalty_modifier = 0.05
+		vaisyas_non_muslim_influence_modifier = 0.1
+		may_recruit_female_generals = yes
+		female_advisor_chance = 0.25
+	}
+	ai = {
+		factor = 1
+	}
+}
+
+aristocratic_values_reform = {
+	icon = "politeia"
+	allow_normal_conversion = yes
+	potential = {
+		NOT = {
+			has_government_attribute = is_pirate_republic_reform
+		}
+		OR = {
+			is_revolutionary = no
+			NOT = { has_dlc = "Emperor" }
+		}
+	}
+	modifiers = {
+		global_manpower_modifier = 0.1
+		nobles_influence_modifier = 0.1
+		maratha_exclusive_influence_modifier = 0.1
+		rajput_exclusive_influence_modifier = 0.1
+		nobles_loyalty_modifier = 0.05
+		maratha_exclusive_loyalty_modifier = 0.05
+		rajput_exclusive_loyalty_modifier = 0.05
+	}
+	ai = {
+		factor = 1
+	}
+}
+
+religious_values_reform = {
+	icon = "religious_leader"
+	allow_normal_conversion = yes
+	potential = {
+		NOT = {
+			has_government_attribute = is_pirate_republic_reform
+		}
+		OR = {
+			is_revolutionary = no
+			NOT = { has_dlc = "Emperor" }
+		}
+	}
+	modifiers = {
+		missionaries = 1
+		
+		brahmins_hindu_influence_modifier = 0.1
+		brahmins_hindu_loyalty_modifier = 0.05
+
+		church_influence_modifier = 0.1
+		church_loyalty_modifier = 0.05
+	}
+	ai = {
+		factor = 1
 	}
 }
 
@@ -1734,6 +1968,9 @@ consolidation_of_power_reform = {
 		max_absolutism = 10
 		election_cycle = 1
 	}
+	custom_attributes = {
+		reelection_depowers_estates = yes
+	}
 }
 
 lottery_reform = {
@@ -1745,6 +1982,7 @@ lottery_reform = {
 			is_revolutionary = no
 			NOT = { has_dlc = "Emperor" }
 		}
+		NOT = { has_government_attribute = is_pirate_republic_reform }
 	}
 	trigger = {
 		NOT = { 
@@ -1754,20 +1992,85 @@ lottery_reform = {
 				has_reform = presidential_despot_reform
 				has_reform = military_dictatorship_reform
 				has_reform = admiralty_reform
+				has_reform = military_rulership_reform
 				has_reform = prussian_republic
+				has_reform = prussian_republic_reform
 			}
 		}
 	}
 	modifiers = {
-		yearly_corruption = -0.1
+		monarch_lifespan = 0.25
 	}
 	custom_attributes = {
 		lottery_election = yes
 		election_on_death = yes
+		bonus_stats_for_elected_ruler = yes
 	}
 	has_term_election = no
 	ai = {
 		factor = 1
+	}
+}
+
+force_reelection_reform = {
+	icon = "paper_with_seal"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			is_revolutionary = no
+			NOT = { has_dlc = "Emperor" }
+		}
+	}
+	trigger = {
+		custom_trigger_tooltip = {
+			tooltip = "NEEDS_REGULAR_ELECTIONS"
+			has_government_attribute = has_term_election
+		}
+	}
+	modifiers = {
+		max_absolutism = -10
+		yearly_corruption = -0.1
+	}
+	custom_attributes = {
+		can_force_election = yes
+	}
+}
+
+devotee_to_the_people_reform = {
+	icon = "revolutionary_republic"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			is_revolutionary = no
+			NOT = { has_dlc = "Emperor" }
+		}
+		OR = {
+			has_reform = venice_merchants_reform 
+			has_reform = dutch_republic
+			has_reform = presidential_despot_reform
+			has_reform = military_dictatorship_reform
+			has_reform = admiralty_reform
+			has_reform = military_rulership_reform
+			has_reform = prussian_republic
+			has_reform = prussian_republic_reform
+		}
+	}
+	trigger = {
+		OR = {
+			has_reform = venice_merchants_reform 
+			has_reform = dutch_republic
+			has_reform = presidential_despot_reform
+			has_reform = military_dictatorship_reform
+			has_reform = admiralty_reform
+			has_reform = military_rulership_reform
+			has_reform = prussian_republic
+			has_reform = prussian_republic_reform
+		}
+	}
+	modifiers = {
+		max_absolutism = -10
+		years_of_nationalism = -5
+		republican_tradition = 0.1
 	}
 }
 
@@ -1779,6 +2082,7 @@ consolidate_power_in_doge_reform = {
 			has_reform = venice_merchants_reform
 			has_reform = merchants_reform
 			has_reform = veche_republic
+			has_reform = great_veche_republic
 		}
 	}
 	trigger = {
@@ -1786,6 +2090,7 @@ consolidate_power_in_doge_reform = {
 			has_reform = venice_merchants_reform
 			has_reform = merchants_reform
 			has_reform = veche_republic
+			has_reform = great_veche_republic
 		}
 	}
 	modifiers = {
@@ -1811,6 +2116,7 @@ consolidate_power_in_cities_reform = {
 			has_reform = venice_merchants_reform
 			has_reform = merchants_reform
 			has_reform = veche_republic
+			has_reform = great_veche_republic
 		}
 	}
 	trigger = {
@@ -1818,6 +2124,7 @@ consolidate_power_in_cities_reform = {
 			has_reform = venice_merchants_reform
 			has_reform = merchants_reform
 			has_reform = veche_republic
+			has_reform = great_veche_republic
 		}
 	}
 	modifiers = {
@@ -1845,6 +2152,9 @@ legislative_assembly_reform = {
 	modifiers = {
 		yearly_revolutionary_zeal = 1.5
 	}
+	custom_attributes = {
+		can_force_election = yes
+	}
 	ai = {
 		factor = 10
 	}
@@ -1860,9 +2170,138 @@ national_constituent_reform = {
 	modifiers = {
 		improve_relation_modifier = 0.15
 		diplomatic_upkeep = 1
+		reelection_cost = -0.15
 	}
 	ai = {
 		factor = 10
+	}
+}
+
+national_assembly_reform = {
+	icon = "national_assembly"
+	allow_normal_conversion = yes
+	potential = {
+		is_revolutionary = yes
+		has_dlc = "Emperor"
+	}
+	modifiers = {
+		candidate_random_bonus = 2
+	}
+	custom_attributes = {
+		elections_increase_factions_influence = yes
+	}
+	ai = {
+		factor = 2
+	}
+}
+
+#Religion within Republic
+establish_religious_institution_for_pirates_reform = {
+	icon = "religious_leader"
+	allow_normal_conversion = yes
+	potential = {
+		has_government_attribute = is_pirate_republic_reform
+	}
+	trigger = {	
+		OR = {
+			NOT = { has_estate = estate_church }
+			crown_stronger_than_estate = { estate = estate_church }
+			has_reform = establish_religious_institution_for_pirates_reform
+		}
+	}
+	modifiers = {
+		tolerance_own = 2
+		max_absolutism = -15
+	}
+	custom_attributes = {
+		enables_estate_church = yes
+	}
+	effect = {
+		change_estate_land_share = {
+			estate = estate_church
+			share = 20
+		}
+	}
+	ai = {
+		factor = 2.5
+	}
+}
+
+crew_before_faith_reform = {
+	icon = "pirate_crew"
+	allow_normal_conversion = yes
+	potential = {
+		has_government_attribute = is_pirate_republic_reform
+	}
+	trigger = {
+		if = {
+			limit = {
+				has_government_attribute = enables_estate_church
+			}
+			can_swap_out_of_estate_granting_reform = {
+				estate = estate_church
+			}
+		}
+	}
+	modifiers = {
+		pr_buccaneers_influence = 0.1
+		war_exhaustion = -0.1
+	}
+	ai = {
+		factor = 2.5
+	}
+}
+
+respect_for_the_sea_reform = {
+	icon = "great_sea"
+	allow_normal_conversion = yes
+	potential = {
+		has_government_attribute = is_pirate_republic_reform
+	}
+	trigger = {
+		if = {
+			limit = {
+				has_government_attribute = enables_estate_church
+			}
+			can_swap_out_of_estate_granting_reform = {
+				estate = estate_church
+			}
+		}
+	}
+	modifiers = {
+		global_unrest = -1
+		navy_tradition = 0.5
+		pr_captains_influence = 0.1
+	}
+	ai = {
+		factor = 2.5
+	}
+}
+
+relgious_freedom_reform = {
+	icon = "partial_secularisation_reform"
+	allow_normal_conversion = yes
+	potential = {
+		has_government_attribute = is_pirate_republic_reform
+	}
+	trigger = {
+		if = {
+			limit = {
+				has_government_attribute = enables_estate_church
+			}
+			can_swap_out_of_estate_granting_reform = {
+				estate = estate_church
+			}
+		}
+	}
+	modifiers = {
+		development_cost = -0.05
+		tolerance_heathen = 1
+		tolerance_heretic = 1
+		pr_smugglers_influence = 0.1
+	}
+	ai = {
+		factor = 2.5
 	}
 }
 
@@ -1873,7 +2312,7 @@ provincial_governments_reform = {
 	allow_normal_conversion = yes
 	modifiers = {
 		state_maintenance_modifier = -0.25
-		culture_conversion_cost = -0.15
+		global_prosperity_growth = 0.5
 	}
 	ai = {
 		factor = 1
@@ -1920,9 +2359,22 @@ administrative_divisions_reform = {
 union_of_states_reform = {
 	icon = "merchant_ship"
 	allow_normal_conversion = yes
+	potential = {
+		NOT = { has_government_attribute = is_pirate_republic_reform }
+	}
 	modifiers = {
 		global_trade_power = 0.1
 	}
+	conditional = {
+		allow = {
+			has_dlc = "Res Publica"
+		}
+		can_use_trade_post = yes
+	}
+	trigger = {
+		NOT = { has_government_attribute = is_pirate_republic_reform }
+	}
+	boost_income = yes
 	ai = {
 		factor = 1
 		modifier = {
@@ -1940,19 +2392,24 @@ union_of_states_reform = {
 	}
 }
 
-maltese_forts = {
-	icon = "malta_forts"
+cultural_administration_reform = {
+	icon = "conciliarism_reform"
 	allow_normal_conversion = yes
-	potential = {
-		OR = {
-		tag = TTS
-		was_tag = TTS
-		}
-		has_country_flag = malta_forts_built
-	}
 	modifiers = {
-		defensiveness = 0.125
-		fort_maintenance_modifier = -0.15
+		num_accepted_cultures = 2
+		promote_culture_cost = -0.5
+	}
+	ai = {
+		factor = 1
+		modifier = {
+			factor = 0.25
+			NOT = {
+				any_owned_province = {
+					has_owner_accepted_culture = no
+					has_owner_culture = no
+				}
+			}
+		}
 	}
 }
 
@@ -1964,8 +2421,8 @@ presidential_reform = {
 	icon = "man_on_podium"
 	allow_normal_conversion = yes
 	modifiers = {
-		embracement_cost = -0.2
-		innovativeness_gain = 0.25
+		embracement_cost = -0.1
+		max_absolutism = 5
 	}
 	ai = {
 		factor = 1
@@ -1980,11 +2437,48 @@ presidential_reform = {
 	}
 }
 
-advising_council = {
-	icon = "politician"
+estate_council_reform = {
+	icon = "council"
 	allow_normal_conversion = yes
 	modifiers = {
-		idea_cost = -0.05
+		all_estate_loyalty_equilibrium = 0.1
+		max_absolutism = -25
+	}
+	potential = {
+		is_revolutionary = no
+		NOT = { has_government_attribute = is_pirate_republic_reform }
+	}
+	trigger = {
+		has_any_estates = yes
+	}
+	custom_attributes = {
+		diet_increases_not_influence = yes
+		elections_influence_estates = yes
+		republican_tradition_from_diets = yes
+	}
+	ai = {
+		factor = 1
+		modifier = {
+			factor = 0
+			has_reform = free_city
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { num_of_cities = 2 }
+		}
+	}
+}
+
+attorney_general_reform = {
+	icon = "three_classes_reform"
+	allow_normal_conversion = yes
+	modifiers = {
+		same_culture_advisor_cost = -0.15
+	}
+	custom_attributes = {
+		#seizing_land_no_rebels = yes
+		republican_tradition_from_advisors = yes
+		can_not_seize_land = yes
 	}
 	ai = {
 		factor = 1
@@ -2106,31 +2600,132 @@ broaden_executive_powers_reform = {
 	allow_normal_conversion = yes
 	modifiers = {
 		stability_cost_modifier = -0.15
+		all_power_cost = -0.02
 	}
 	ai = {
 		factor = 1
 	}
 }
 
-further_administrative_duties_reform = {
+devolution_of_powers_reform = {
 	icon = "generic_people"
 	allow_normal_conversion = yes
 	modifiers = {
-		country_admin_power = 1
+		advisor_pool = 2
+		global_autonomy = -0.05
 	}
 	ai = {
 		factor = 1.5
 	}
 }
 
-devolution_of_powers_reform = {
-	icon = "government_for_people_reform"
+power_to_the_raiders_reform = {
+	icon = "sea_raiders"
 	allow_normal_conversion = yes
+	potential = {
+		has_government_attribute = is_pirate_republic_reform
+	}
 	modifiers = {
-		country_diplomatic_power = 1
+		pr_buccaneers_influence = 0.1
+		allowed_marine_fraction = 0.25
+		global_sailors_modifier = 0.25
 	}
 	ai = {
-		factor = 1.5
+		factor = 2.5
+	}
+}
+
+power_to_the_captains_reform = {
+	icon = "pirate_queen"
+	allow_normal_conversion = yes
+	potential = {
+		has_government_attribute = is_pirate_republic_reform
+	}
+	modifiers = {
+		pr_captains_influence = 0.1
+		heavy_ship_power = 0.1
+		movement_speed_in_fleet_modifier = 1
+	}
+	ai = {
+		factor = 2.5
+	}
+}
+
+power_to_the_smugglers_reform = {
+	icon = "blackmailing"
+	allow_normal_conversion = yes
+	potential = {
+		has_government_attribute = is_pirate_republic_reform
+	}
+	modifiers = {
+		pr_smugglers_influence = 0.1
+		merchants = 1
+		ship_power_propagation = 0.25
+	}
+	ai = {
+		factor = 2.5
+	}
+}
+
+consolidate_power_to_the_ruler_reform = {
+	icon = "nobleman"
+	allow_normal_conversion = yes
+	potential = {
+		NOT = { has_government_attribute = is_pirate_republic_reform }
+		OR = {
+			is_revolutionary = no
+			NOT = { has_dlc = "Emperor" }
+		}
+	}
+	modifiers = {
+		yearly_absolutism = 2
+		max_absolutism = 25
+		reelection_cost = -0.1
+	}
+	custom_attributes = {
+		absolutism_reduction_on_ruler_death = yes
+		reelection_increases_absolutism = yes
+	}
+	effect = {
+		hidden_effect = {
+			set_variable = {
+				which = election_term
+				value = 1
+			}
+		}
+	}
+	removed_effect = {
+		hidden_effect = {
+			set_variable = {
+				which = election_term
+				value = 1
+			}
+		}
+	}
+	ai = {
+		factor = 0
+	}
+}
+
+consolidate_power_into_different_candidates_reform = {
+	icon = "dutch_republic"
+	allow_normal_conversion = yes
+	potential = {
+		NOT = { has_government_attribute = is_pirate_republic_reform }
+	}
+	trigger = {
+		custom_trigger_tooltip = {
+			tooltip = "NEEDS_REGULAR_ELECTIONS"
+			has_government_attribute = has_term_election
+		}
+	}
+	modifiers = {
+		max_absolutism = -20
+		election_cycle = -1
+		candidate_random_bonus = 1
+	}
+	ai = {
+		factor = 0
 	}
 }
 
@@ -2234,19 +2829,151 @@ revolutionary_council_reform = {
 	}
 }
 
-carthaginian_cothon = {
-	icon = "carthaginian_cothon"
+#Economical Matters
+empowered_quartermasters_reform = {
+	icon = "merchant"
 	allow_normal_conversion = yes
 	potential = {
-		tag = CRG
-		has_country_flag = carthage_cothon
+		has_government_attribute = is_pirate_republic_reform
+	}
+	trigger = {	
+		OR = {
+			NOT = { has_estate = estate_burghers }
+			crown_stronger_than_estate = { estate = estate_burghers }
+			has_reform = empowered_quartermasters_reform
+		}
 	}
 	modifiers = {
-		naval_forcelimit_modifier = 0.05
-		naval_maintenance_modifier = -0.125
-		navy_tradition = 0.5
-		leader_naval_manuever = 2
-		leader_naval_fire = 1
+		naval_maintenance_modifier = -0.15
+		max_absolutism = -15
+	}
+	effect = {
+		change_estate_land_share = {
+			estate = estate_burghers
+			share = 20
+		}
+	}
+	custom_attributes = {
+		enables_estate_burghers = yes
+	}
+	ai = {
+		factor = 1
+	}
+}
+
+open_naval_services_reform = {
+	icon = "merchant_ship"
+	allow_normal_conversion = yes
+	potential = {
+		has_government_attribute = is_pirate_republic_reform
+	}
+	trigger = {
+		if = {
+			limit = {
+				has_government_attribute = enables_estate_burghers
+			}
+			can_swap_out_of_estate_granting_reform = {
+				estate = estate_burghers
+			}
+		}
+	}
+	modifiers = {
+		pr_buccaneers_influence = 0.1
+		global_ship_cost = -0.05
+		global_ship_repair = 0.15
+	}
+	effect = {
+		hidden_effect = {
+			every_owned_province = {
+				if = {
+					limit = {
+						trade_goods = naval_supplies
+					}
+					add_province_modifier = { 
+						name = naval_supplies_bonus_prod
+						duration = -1
+						hidden = yes
+					}
+				}
+			}
+		}
+	}
+	removed_effect = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_province_modifier = naval_supplies_bonus_prod
+				}
+				remove_province_modifier = naval_supplies_bonus_prod
+			}
+		}
+	}
+	custom_attributes = {
+		extra_trade_goods_from_naval_supplies = yes
+	}
+	ai = {
+		factor = 1
+	}
+}
+
+master_smugglers_reform = {
+	icon = "black_army_reform"
+	allow_normal_conversion = yes
+	potential = {
+		has_government_attribute = is_pirate_republic_reform
+	}
+	trigger = {
+		if = {
+			limit = {
+				has_government_attribute = enables_estate_burghers
+			}
+			can_swap_out_of_estate_granting_reform = {
+				estate = estate_burghers
+			}
+		}
+	}
+	modifiers = {
+		pr_smugglers_influence = 0.1
+		mercenary_cost = -0.2
+	}
+	custom_attributes = {
+		mercs_do_not_cost_army_professionalism = yes
+	}
+	ai = {
+		factor = 1
+	}
+}
+
+cutthroat_approach_reform = {
+	icon = "pirate_republic"
+	allow_normal_conversion = yes
+	potential = {
+		has_government_attribute = is_pirate_republic_reform
+	}
+	trigger = {
+		if = {
+			limit = {
+				has_government_attribute = enables_estate_burghers
+			}
+			can_swap_out_of_estate_granting_reform = {
+				estate = estate_burghers
+			}
+		}
+	}
+	modifiers = {
+		naval_tradition_from_battle = 0.5
+		prestige_from_naval = 0.5
+		capture_ship_chance = 0.33
+		pr_captains_influence = 0.1
+	}
+	conditional = {
+		allow = { has_dlc = "Golden Century" }
+		custom_attributes = {
+			flagship_bounty_hunter = yes
+		}
+	}
+	ai = {
+		factor = 1
 	}
 }
 
@@ -2265,6 +2992,41 @@ moral_principle_reform = {
 	allow_normal_conversion = yes
 	modifiers = {
 		possible_dip_policy = 1
+	}
+}
+
+stability_principle_reform = {
+	icon = "soldiers_6"
+	allow_normal_conversion = yes
+	modifiers = {
+		possible_mil_policy = 1
+	}
+}
+
+enlightened_principle_reform = {
+	icon = "enlightenment"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			full_idea_group = innovativeness_ideas
+			has_institution = enlightenment
+		}
+	}
+	modifiers = {
+		years_of_nationalism = -10
+	}
+}
+
+military_principle_reform = {
+	icon = "soldiers_3"
+	allow_normal_conversion = yes
+	modifiers = {
+		republican_tradition = -0.5
+		max_absolutism = 10
+		years_of_nationalism = -5
+	}
+	custom_attributes = {
+		winning_wars_gives_rt = yes
 	}
 }
 
@@ -2359,17 +3121,87 @@ citizenry_reform = {
 admiralty_reform = {
 	icon = "admiralty_reform"
 	allow_normal_conversion = yes
-	# no legacy equivalent. own Dharama or Emperor
 	potential = {
-		OR = {
-			is_revolutionary = no
-			NOT = { has_dlc = "Emperor" }
-		}
+		is_revolutionary = no
+		NOT = { has_government_attribute = is_pirate_republic_reform }
+	}
+	trigger = {
+		num_of_ports = 1
+		NOT = { has_government_attribute = is_pirate_republic_reform }
 	}
 	modifiers = {
 		leader_naval_fire = 1
-		naval_morale = 0.05
+		naval_tradition_from_battle = 1
+		republican_tradition = -0.5
+		max_absolutism = 10
 	}
+	custom_attributes = {
+		admirals_become_rulers = yes
+		cannot_become_dictatorship = yes
+	}
+	has_term_election = no
+	
+	ai = {
+		factor = 0
+	}
+}
+
+military_rulership_reform = {
+	icon = "soldiers_2"
+	allow_normal_conversion = yes
+	potential = {
+		is_revolutionary = no
+		NOT = { has_government_attribute = is_pirate_republic_reform }
+	}
+	modifiers = {
+		leader_land_shock = 1
+		army_tradition = 0.5
+		republican_tradition = -0.5
+		max_absolutism = 10
+	}
+	custom_attributes = {
+		generals_become_rulers = yes
+	}
+	has_term_election = no
+	
+	ai = {
+		factor = 0
+	}
+}
+
+dynastic_rulership_reform = {
+	icon = "king"
+	allow_normal_conversion = yes
+	potential = {
+		is_revolutionary = no
+	}
+	modifiers = {
+		diplomatic_reputation = 2
+		republican_tradition = -0.25
+	}
+	queen = yes
+	royal_marriage = yes
+	custom_attributes = {
+		election_on_death = yes
+	}
+	has_term_election = no
+	
+	ai = {
+		factor = 0
+	}
+}
+
+rule_through_plunder_reform = {
+	icon = "rioting_burning_2"
+	allow_normal_conversion = yes
+	potential = {
+		has_government_attribute = is_pirate_republic_reform
+	}
+	modifiers = {
+		loot_amount = 1
+		land_attrition = -0.05
+	}
+	raze_province = yes
 	
 	ai = {
 		factor = 0
@@ -2449,28 +3281,61 @@ bureaucratic_aparatus_reform = {
 	icon = "map_2"
 	allow_normal_conversion = yes
 	modifiers = {
-		interest = -0.5
+		min_autonomy_in_territories = -0.10
 	}
 }
-
 
 universal_suffrage_reform = {
 	icon = "paper_with_seal"
 	allow_normal_conversion = yes
 	modifiers = {
-		num_accepted_cultures = 2
+		free_dip_policy = 1
 	}
 	ai = {
 		factor = 1
-		modifier = {
-			factor = 0.1
-			NOT = {
-				any_owned_province = {
-					NOT = { has_owner_accepted_culture = yes }
-					NOT = { has_owner_culture = yes }
-				}
+	}
+}
+
+pirate_representation_reform = {
+	icon = "council"
+	allow_normal_conversion = yes
+	potential = {
+		has_government_attribute = is_pirate_republic_reform
+	}
+	trigger = {	
+		if = {
+			limit = { has_dlc = "Common Sense" }
+			OR = {
+				NOT = { has_estate = estate_nobles }
+				crown_stronger_than_estate = { estate = estate_nobles }
+				has_reform = pirate_representation_reform
 			}
+		}	
+		if = {
+			limit = { has_dlc = "Res Publica" }
+			NOT = { has_reform = elective_monarchy }
 		}
+		if = {
+			limit = { has_dlc = "Lions of the North" }
+			NOT = { has_reform = polish_elective_monarchy }
+		}
+		if = {
+			limit = { NOT = { has_dlc = "Mandate of Heaven" } }
+			NOT = { has_reform = celestial_empire }
+			NOT = { is_revolutionary_republic_trigger = yes }
+		}
+	}
+	modifiers = {
+		republican_tradition = 0.5
+		max_absolutism = -15
+	}
+	conditional = {
+		allow = { has_dlc = "Common Sense" }
+		has_parliament = yes
+	}
+
+	ai = {
+		factor = 0
 	}
 }
 
@@ -2495,10 +3360,10 @@ pirates_become_republic_reform = {
 seize_executive_power_reform = {
 	icon = "king_2_highlighted"
 	allow_normal_conversion = yes
-	potential = {
-		exists = HIN
-	}
+
 	trigger = {
+		NOT = { has_government_attribute_short_desc = locked_government_type }
+		stability = 2
 	}
 
 	modifiers = {
@@ -2509,7 +3374,7 @@ seize_executive_power_reform = {
 			set_country_flag = had_states_general_mechanic
 		}
 		set_country_flag = populists_in_government
-		lose_reforms = 7
+		add_stability = -3
 		change_government = monarchy
 		if = {
 			limit = { has_country_flag = had_states_general_mechanic }
@@ -2525,16 +3390,15 @@ seize_executive_power_reform = {
 proclaim_divine_guidance_reform = {
 	icon = "religious_leader_highlighted"
 	allow_normal_conversion = yes
-	potential = {
-		exists = HIN
-	}
 	trigger = {
+		NOT = { has_government_attribute_short_desc = locked_government_type }
+		stability = 2
 	}
 	modifiers = {
 	}
 	effect = {
 		set_country_flag = populists_in_government
-		lose_reforms = 7
+		add_stability = -3
 		change_government = theocracy
 	}
 	ai = {
@@ -2543,14 +3407,13 @@ proclaim_divine_guidance_reform = {
 }
 
 strengthen_executive_powers_reform = {
-	icon = "soldiers_2"
+	icon = "queen"
 	allow_normal_conversion = yes
 	potential = { 
 		is_revolutionary = no 
 	}
 	modifiers = {
 		max_absolutism = 25
-		yearly_absolutism = 0.5
 	}
 }
 
@@ -2558,16 +3421,28 @@ reinforce_republican_values_reform = {
 	icon = "parliament_hall"
 	allow_normal_conversion = yes
 	modifiers = {
-		prestige = 1
-		reelection_cost = -0.25
+		free_adm_policy = 1
+		reelection_cost = -0.1
 	}
 }
 
-give_control_to_the_guilds = {
-	icon = "merchant"
+federal_senate_reform = {
+	icon = "judge"
 	allow_normal_conversion = yes
+	potential = {
+		NOT = { has_government_attribute = is_pirate_republic_reform }
+	}
 	modifiers = {
-		production_efficiency = 0.1
+		expand_administration_cost = -1
+		candidate_random_bonus = 1
+	}
+
+	conditional = {
+		allow = { has_dlc = "Common Sense" }
+		has_parliament = yes
+		custom_attributes = {
+			halved_parliament_bribes = yes
+		}
 	}
 }
 
@@ -2716,6 +3591,7 @@ millenarian_theocracy_reform = {
 		devotion = 1
 		tolerance_own = 2
 		global_missionary_strength = 0.02
+		max_absolutism = 40
 	}
 	custom_attributes = {
 		election_on_death = yes

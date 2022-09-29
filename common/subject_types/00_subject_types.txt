@@ -104,13 +104,9 @@ default = {
 	liberty_desire_same_dynasty = 0.0
 	liberty_desire_revolution = 30.0					# Liberty desire at 100% revolution spread in country
 	pays_overlord = 0.0									# 1.0 represents the amount payed by vassals
-	forcelimit_bonus = 0.0								# 1.0 represents bonus from having a vassal
 	forcelimit_to_overlord = 0.0						# Percent of subject FL to use as base for modifiers
-	naval_forcelimit_bonus = 0.0						# 1.0 represents bonus from having a vassal
 	naval_forcelimit_to_overlord = 0.0					# Percent of subject FL to use as base for modifiers
-	manpower_bonus = 0.0								# 1.0 represents bonus from having a vassal
 	manpower_to_overlord = 0.0							# Percent of subject FL to use as base for modifiers
-	sailors_bonus = 0.0									# 1.0 represents bonus from having a vassal
 	sailors_to_overlord = 0.0							# Percent of subject FL to use as base for modifiers
 	military_focus = 1.0								# How much the AI subject should spend etc. on army and forts. 0 should make them spend nothing. Very high values will probably not make a big difference since there will be sanity checks.
 	annex_cost_per_development = 8.0					# annex/integrate cost per development
@@ -205,7 +201,6 @@ vassal = {
 	liberty_desire_development_ratio = 0.25
 	liberty_desire_same_dynasty = -5.0
 	pays_overlord = 1.0
-	forcelimit_bonus = 1.0
 	forcelimit_to_overlord = 0.1
 
 	relative_power_class = 2
@@ -506,11 +501,6 @@ colony = {
 	relative_power_class = 0
 	should_quit_wars_on_activation = yes
 
-	forcelimit_bonus = 1.0
-	manpower_bonus = 1.0
-	naval_forcelimit_bonus = 1.0
-	sailors_bonus = 1.0
-
 	can_fight = {
 		other_overlord = colony
 		other_overlord = crown_colony
@@ -566,6 +556,11 @@ crown_colony = {
 	can_send_missionary_to_subject = yes	
 	count = colony
 
+	forcelimit_to_overlord = 0.3
+	manpower_to_overlord = 0.3
+	naval_forcelimit_to_overlord = 0.01
+	sailors_to_overlord = 0.01
+
 	# Subject Interactions:
 	embargo_rivals = yes
 	support_loyalists = yes
@@ -575,8 +570,10 @@ crown_colony = {
 	takeondebt = yes
 	block_settlement_growth = yes
 	allow_settlement_growth = yes
+	enforce_culture = yes
 	
 	# Modifiers:
+	modifier_overlord = clear
 	modifier_overlord = {
 		modifier = crown_colony_overlord
 	}
@@ -594,6 +591,10 @@ private_enterprise = {
 	is_colony_subtype = yes
 	count = colony
 
+	forcelimit_to_overlord = 0.0
+	manpower_to_overlord = 0.0
+	naval_forcelimit_to_overlord = 0.3
+	sailors_to_overlord = 0.3
 
 	# Subject Interactions:
 	embargo_rivals = yes
@@ -606,6 +607,7 @@ private_enterprise = {
 	allow_settlement_growth = yes
 	
 	# Modifiers:	
+	modifier_overlord = clear
 	modifier_overlord = {
 		modifier = private_enterprise_overlord
 	}
@@ -623,14 +625,20 @@ self_governing_colony = {
 	is_colony_subtype = yes
 	count = colony
 
+	forcelimit_to_overlord = 0.002
+	manpower_to_overlord = 0.002
+	naval_forcelimit_to_overlord = 0.002
+	sailors_to_overlord = 0.002
 
 	# Subject Interactions:
 	replace_governor = no
 	block_settlement_growth = no
 	allow_settlement_growth = no
 	press_sailors = no
+	enforce_culture = yes
 	
 	# Modifiers:	
+	modifier_overlord = clear
 	modifier_overlord = {
 		modifier = self_governing_colony_overlord
 	}
@@ -646,22 +654,28 @@ tributary_state = {
 	#is_subject_except_tributary_trigger
 	#is_free_or_tributary_trigger
 	copy_from = default
+	can_have_great_projects_moved_by_overlord = no
 
 	# Triggers:
 	is_potential_overlord = {
-		has_dlc = "Mandate of Heaven"
-		NOT = { 
-			is_subject_of_type = tributary_state
-		}
 		OR = {
-			has_reform = celestial_empire
-			has_government_attribute = has_tributaries
-			has_country_flag = can_create_tributaries_flag
-			has_country_flag = can_create_tributaries_flag_estate
-			is_nomad = yes
-			religion_group = eastern
-			technology_group = chinese
-			technology_group = polynesian_tech
+			AND = {
+				has_dlc = "Mandate of Heaven"
+				NOT = { 
+					is_subject_of_type = tributary_state
+				}
+				OR = {
+					has_reform = celestial_empire
+					has_government_attribute = has_tributaries
+					has_country_flag = can_create_tributaries_flag
+					has_country_flag = can_create_tributaries_flag_estate
+					is_nomad = yes
+					religion_group = eastern
+					technology_group = chinese
+					technology_group = polynesian_tech
+				}
+			}
+			has_country_flag = forced_tributary_state	#A special flag for the Ottomans so they can get Crimea without allowing them to make tributaries by default
 		}
 	}
 	
