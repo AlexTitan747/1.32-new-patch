@@ -1,5 +1,56 @@
 country_decisions = {
 		
+	tm_tts_crownland_regain = {
+		major = yes
+		potential = {
+			tag = TTS
+		}
+		ai_will_do = {
+			factor = 0
+		}
+		allow = {
+			has_country_flag = formed_two_sicilies_flag
+		}
+		effect = {
+			if = {
+				limit = {
+					has_estate = estate_burghers
+				}
+				change_estate_land_share = {
+					estate = estate_burghers
+					share = -2.5
+				}
+			}
+			if = {
+				limit = {
+					has_estate = estate_church
+				}
+				change_estate_land_share = {
+					estate = estate_church
+					share = -2.5
+				}
+			}
+			if = {
+				limit = {
+					has_estate = estate_nobles
+				}
+				change_estate_land_share = {
+					estate = estate_burghers
+					share = -2.5
+				}
+			}
+			if = {
+				limit = {
+					has_estate = estate_dhimmi
+				}
+				change_estate_land_share = {
+					estate = estate_dhimmi
+					share = -2.5
+				}
+			}
+		}
+	}
+
 
 	PR_critical_events = {
 		major = yes
