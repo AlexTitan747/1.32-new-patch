@@ -121,6 +121,35 @@ emp_ita_development_branch = {
 			}
 		}
 	}
+
+	emp_nap_protector_of_rome = {
+		icon = mission_coa_shield_templar
+		required_missions = { emp_nap_defender_of_the_faith }
+		position = 6
+
+		provinces_to_highlight = {
+			province_id = 118
+		}
+
+		trigger = {	
+			religion = catholic
+			exists = PAP
+			PAP = {
+				is_subject = no
+			}
+			118 = {
+				owned_by = PAP
+			}
+			is_year = 1550
+			alliance_with = PAP
+		}
+		effect = {
+			add_country_modifier = {
+				name = "protector_of_rome"
+				duration = -1
+			}
+		}
+	}
 }
 
 tm_ROM_slot_1 = {
