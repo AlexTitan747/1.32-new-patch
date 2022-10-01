@@ -492,6 +492,7 @@ emp_naples_3 = {
 					NOT = { is_rival = MLO }
 					NOT = { is_rival = SPI }
 					}
+					NOT = { has_country_flag = illyria_forming }
 				}
 			effect = {
 				italy_region = {
@@ -503,8 +504,11 @@ emp_naples_3 = {
 			}
 			add_country_modifier = {
 				name = "victor_in_the_war_for_italy"
-				duration = 3650
+				duration = -1
 			}
+			set_country_flag = nap_aims_for_italy
+			custom_tooltip = nap_unlock_ita
+			custom_tooltip = nap_locked_ily
 			add_stability_or_adm_power = yes
 		}
 	}
@@ -536,7 +540,7 @@ emp_naples_3 = {
 		effect = {
 			add_manpower = 3
 			add_treasury = 100
-			add_adm_power = 200
+			add_adm_power = 100
 			add_country_modifier = {
 				name = "victor_of_the_sicilian_wars"
 				duration = 5475
@@ -666,23 +670,23 @@ emp_naples_4 = {
 			AND = {
 			apulia_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 			sicily_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 			western_sicily_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 			naples_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 			calabria_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 	}
@@ -725,7 +729,7 @@ emp_naples_4 = {
 		trigger = {
 			albania_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 				}
 				religion = catholic
 			}
@@ -799,7 +803,7 @@ emp_naples_4 = {
 		trigger = {
 			east_adriatic_coast_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 				}
 				4174 = {
 				province_has_center_of_trade_of_level = 2
@@ -858,16 +862,17 @@ emp_naples_4 = {
 		trigger = {
 			bosnia_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 				}
 			east_adriatic_coast_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 				}
 			albania_area = {
 				type = all
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 				}
+				NOT = { has_country_flag = nap_aims_for_italy }
 			}
 		effect = {
 			add_country_modifier = {
@@ -876,6 +881,7 @@ emp_naples_4 = {
 			}
 			set_country_flag = illyria_forming
 			custom_tooltip = nap_unlock_ily
+			custom_tooltip = nap_locked_ita
 		}
 	}
 
