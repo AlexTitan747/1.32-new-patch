@@ -727,7 +727,8 @@ dan_trade_and_colonial_mission_slot = {
 		trigger = {
 			OR = {
 				has_institution = new_world_i
-				has_idea = quest_for_the_new_world
+				has_idea = i64
+				has_idea = i150
 			}
 			share_of_starting_income = 2
 			is_in_deficit = no
@@ -2062,29 +2063,8 @@ dan_england_mission_slot = {
 			}
 		}
 		trigger = {
+			is_year = 1450
 			if = {
-				limit = { exists = GBR }
-				OR = {
-					AND = {
-						OR = {
-							is_rival = GBR
-							is_enemy = GBR
-						}
-						trade_embargoing = GBR
-					}
-					AND = {
-						alliance_with = GBR
-						GBR = {
-							has_opinion = {
-								who = ROOT
-								value = 100
-							}
-						}
-					}
-					total_development = GBR
-				}
-			}
-			else_if = {
 				limit = { exists = ENG }
 				OR = {
 					AND = {
@@ -2106,10 +2086,6 @@ dan_england_mission_slot = {
 					total_development = ENG
 				}
 			}
-			else = {
-				NOT = { exists = ENG }
-				NOT = { exists = GBR }
-			}
 		}
 		effect = {
 			add_country_modifier = {
@@ -2129,6 +2105,7 @@ dan_england_mission_slot = {
 				limit = { has_dlc = "Golden Century" }
 				has_flagship = yes
 			}
+			OR = {
 			if = {
 				limit = {
 					exists = GBR
@@ -2167,7 +2144,10 @@ dan_england_mission_slot = {
 					num_of_heavy_ship = 20
 				}
 			}
-			naval_forcelimit = 30
+			num_of_galley = 60
+		}
+			naval_forcelimit = 45
+			
 		}
 		effect = {
 			add_navy_tradition = 20
