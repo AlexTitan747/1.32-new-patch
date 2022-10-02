@@ -1459,6 +1459,20 @@ poland_sca_slot_3_a = {
 		required_missions = { } 
 		position = 1 
 		trigger = {
+<<<<<<< Updated upstream
+=======
+			OR = {
+				custom_trigger_tooltip = { 
+					tooltip = pol_had_kasimir_election_event_tt
+					OR = { 
+						has_country_flag = pol_chose_pu_flag
+						has_country_flag = pol_denied_pu_flag
+					}
+				}
+				tag = PLC 
+				current_age = age_of_reformation
+			}
+>>>>>>> Stashed changes
 			num_of_allies = 2 
 			army_size_percentage = 0.9 
 			BOH = { 
@@ -1493,6 +1507,22 @@ poland_sca_slot_3_a = {
 			}
 		}
 		effect = {
+<<<<<<< Updated upstream
+=======
+			custom_tooltip = pol_if_antagonize_poland_or_hungary_pu_tt
+			tooltip = {
+				add_casus_belli = {
+					type = cb_restore_personal_union
+					months = 300
+					target = HUN
+				} 
+				add_casus_belli = {
+					type = cb_restore_personal_union
+					months = 300
+					target = BOH
+				} 
+			}
+>>>>>>> Stashed changes
 			custom_tooltip = pol_alternatively_tt 
 			tooltip = { 
 				add_favors = {
@@ -1508,7 +1538,10 @@ poland_sca_slot_3_a = {
 				HUN = { add_historical_friend = ROOT }
 				add_historical_friend = HUN 
 			}
+<<<<<<< Updated upstream
 			custom_tooltip = tm_pol_claims
+=======
+>>>>>>> Stashed changes
 			custom_tooltip = pol_impact_future_missions_tt 
 			hidden_effect = { 
 				swap_non_generic_missions = yes 
@@ -1522,6 +1555,33 @@ poland_sca_slot_3_a = {
 					add_historical_friend = BOH 
 				}
 				else_if = {
+<<<<<<< Updated upstream
+=======
+					limit = {
+						valid_for_personal_unions_trigger = yes 
+						BOH = { 
+							OR = { 
+								is_rival = ROOT 
+								has_opinion_modifier = {
+									who = ROOT
+									modifier = insulted
+								}
+								has_opinion_modifier = {
+									who = ROOT
+									modifier = scornfully_insulted
+								} 
+							}
+							valid_for_personal_unions_trigger = yes 
+						}
+					}
+					add_casus_belli = {
+						type = cb_restore_personal_union
+						months = 300
+						target = BOH
+					} 
+				}
+				else = {
+>>>>>>> Stashed changes
 					moravia_area = { 
 						limit = { 
 							NOT = { is_core = ROOT } 
@@ -1568,6 +1628,33 @@ poland_sca_slot_3_a = {
 					add_historical_friend = HUN 
 				}
 				else_if = {
+<<<<<<< Updated upstream
+=======
+					limit = {
+						valid_for_personal_unions_trigger = yes 
+						HUN = { 
+							OR = { 
+								is_rival = ROOT 
+								has_opinion_modifier = {
+									who = ROOT
+									modifier = insulted
+								}
+								has_opinion_modifier = {
+									who = ROOT
+									modifier = scornfully_insulted
+								} 
+							}
+							valid_for_personal_unions_trigger = yes 
+						}
+					}
+					add_casus_belli = {
+						type = cb_restore_personal_union
+						months = 300
+						target = HUN
+					} 
+				}
+				else = {
+>>>>>>> Stashed changes
 					slovakia_area = { 
 						limit = { 
 							NOT = { is_core = ROOT } 
@@ -1604,6 +1691,7 @@ poland_sca_slot_3_a = {
 						add_permanent_claim = ROOT 
 					}
 				}
+<<<<<<< Updated upstream
 				podlasie_area = { 
 					limit = { 
 						NOT = { is_core = ROOT } 
@@ -1653,6 +1741,8 @@ poland_sca_slot_3_a = {
 					}
 					add_permanent_claim = ROOT 
 				}
+=======
+>>>>>>> Stashed changes
 			}
 		}
 	}		
@@ -4674,7 +4764,11 @@ poland_sca_slot_5_b = {
 					NOT = { religion = catholic } 
 					religious_unity = 0.9 
 				}
+<<<<<<< Updated upstream
 				full_idea_group = humanist_ideas 
+=======
+				full_idea_group = justice_ideas 
+>>>>>>> Stashed changes
 				full_idea_group = religious_ideas 
 			}
 		}
@@ -4714,7 +4808,11 @@ poland_sca_slot_5_b = {
 			}
 			hidden_effect = {
 				if = { 
+<<<<<<< Updated upstream
 					limit = { full_idea_group = humanist_ideas }
+=======
+					limit = { full_idea_group = justice_ideas }
+>>>>>>> Stashed changes
 					add_country_modifier = { 
 						name = pol_guarantee_religious_rights_modifier
 						duration = -1 
