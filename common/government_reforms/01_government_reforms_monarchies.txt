@@ -5,9 +5,7 @@ monarchy_mechanic = {
 	queen = yes
 	basic_reform = yes # = invisible/does not take up a slot
 	valid_for_nation_designer = no
-	custom_attributes = {
-		enables_aristocratic_idea_group = yes
-	}
+
 	modifiers = {
 		nobles_influence_modifier = 0.05
 	}
@@ -155,10 +153,6 @@ plutocratic_reform = {
 		nobles_influence_modifier = -0.05
 		burghers_influence_modifier = 0.05
 		vaisyas_influence_modifier = 0.05
-	}
-	custom_attributes = {
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
 	}
 	boost_income = yes
 	conditional = {
@@ -1049,10 +1043,6 @@ feudal_theocracy = {
 		government_abilities = {
 			feudal_theocracy_mechanic
 		}
-	}
-	custom_attributes = {
-		enables_divine_idea_group = yes
-		enables_aristocratic_idea_group = no
 	}
 }
 
@@ -2008,10 +1998,6 @@ livonian_trade_monarchy = {
 		burghers_influence_modifier = 0.1
 		governing_capacity_modifier = -0.5		
 	}
-	custom_attributes = {
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
-	}
 	boost_income = yes
 	conditional = {
 		allow = {
@@ -2085,10 +2071,6 @@ livonian_theocratic_monarchy = {
 		church_influence_modifier = 0.25
 		church_loyalty_modifier = 0.05
 		no_stability_loss_on_monarch_death = yes
-	}
-	custom_attributes = {
-		enables_aristocratic_idea_group = no
-		enables_divine_idea_group = yes
 	}
 }
 
@@ -2625,6 +2607,11 @@ enforce_privileges_reform = {
 		maratha_exclusive_influence_modifier = 0.1
 		rajput_exclusive_influence_modifier = 0.1
 	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
 	ai = {
 		factor = 1
 		modifier = {
@@ -2645,6 +2632,11 @@ quash_noble_power_reform = {
 		nobles_influence_modifier = -0.1
 		maratha_exclusive_influence_modifier = -0.1
 		rajput_exclusive_influence_modifier = -0.1
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	ai = {
 		factor = 1
@@ -2669,6 +2661,11 @@ grant_noble_castle_rights_reform = {
 	}
 	custom_attributes = {
 		on_fort_built_nobles_loyalty = yes	#5 Loyalty
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	ai = {
 		factor = 1
@@ -2699,6 +2696,11 @@ maintain_nobles_status_quo_reform = {
 	custom_attributes = {
 		free_noble_levies = yes
 	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
 	ai = {
 		factor = 1
 	}
@@ -2719,6 +2721,11 @@ grant_military_command_reform = {
 	}
 	custom_attributes = {
 		recruiting_generals_increases_nobles_loyalty = yes
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	ai = {
 		factor = 1
@@ -2776,6 +2783,11 @@ grant_nobles_electorate_reform = {
 	custom_attributes = {
 		improved_nobles_regency = yes
 	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
 	ai = {
 		factor = 1
 	}
@@ -2804,6 +2816,11 @@ blackmail_nobility_reform = {
 	custom_attributes = {
 		seizing_land_no_rebels_from_estate_nobles = yes
 	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
 	ai = {
 		factor = 0
 	}
@@ -2827,6 +2844,11 @@ enforce_trader_privileges_reform = {
 	modifiers = {
 		trade_range_modifier = 0.3
 		trade_efficiency = 0.05
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	ai = {
 		factor = 2
@@ -2855,6 +2877,11 @@ bengali_reform = {
 		merchants = 1
 		trade_efficiency = 0.1
 	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
 	ai = {
 		factor = 5
 	}
@@ -2871,6 +2898,11 @@ sufi_syncretism_reform = {
 	modifiers = {
 		global_missionary_strength = 0.01
 		development_cost = -0.05
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	ai = {
 		factor = 3
@@ -2893,6 +2925,11 @@ poligar_reform = {
 		infantry_power = 0.1
 		development_cost = -0.05
 	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
 	ai = {
 		factor = 3
 	}
@@ -2909,6 +2946,11 @@ khalsa_reform = {
 		tolerance_heathen = 1
 		tolerance_heretic = 1
 		land_morale = 0.05
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	ai = {
 		factor = 5
@@ -2930,6 +2972,11 @@ deccani_society_reform = {
 	}
 	modifiers = {
 		free_dip_policy = 1
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	ai = {
 		factor = 3
@@ -2953,6 +3000,11 @@ black_army_reform = {
 	}
 	custom_attributes = {
 		mercs_do_not_cost_army_professionalism = yes
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	ai = {
 		factor = 3
@@ -2983,6 +3035,11 @@ legion_of_honor_reform = {
 	custom_attributes = {
 		winning_battles_increases_legitimacy = yes
 	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
 	ai = {
 		factor = 2.5
 	}
@@ -3002,6 +3059,11 @@ imperial_nobility_reform = {
 	custom_attributes = {
 		enables_estate_nobles = yes
 		seizing_land_no_rebels_from_estate_nobles = yes
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	ai = {
 		factor = 2.5

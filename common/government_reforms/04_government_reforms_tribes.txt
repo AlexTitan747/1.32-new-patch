@@ -5,9 +5,6 @@ tribe_mechanic = {
 	valid_for_nation_designer = no
 	heir = yes
 	queen = yes
-	custom_attributes = {
-		enables_aristocratic_idea_group = yes
-	}
 }
 
 steppe_horde = {
@@ -50,7 +47,6 @@ steppe_horde = {
 	}
 	custom_attributes = {
 		enables_horde_idea_group = yes
-		enables_aristocratic_idea_group = no
 	}
 	ai = {
 		factor = 1000
@@ -90,7 +86,6 @@ great_mongol_state_reform = {
 	}
 	custom_attributes = {
 		enables_horde_idea_group = yes
-		enables_aristocratic_idea_group = no
 	}
 	ai = {
 		factor = 1000
@@ -480,6 +475,11 @@ martial_society_reform = {
 	modifiers = {
 		global_manpower_modifier = 0.2
 	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
 	ai = {
 		factor = 1
 		modifier = {
@@ -497,6 +497,11 @@ civil_society_reform = {
 	modifiers = {
 		global_tax_modifier = 0.05
 		yearly_corruption = -0.05
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	ai = {
 		factor = 1

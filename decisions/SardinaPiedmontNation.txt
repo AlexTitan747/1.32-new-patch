@@ -33,7 +33,8 @@ country_decisions = {
 				area = piedmont_area
 				area = savoy_dauphine_area
 				area = liguria_area
-				area = corsica_sardinia_area
+				province_id = 1247
+				province_id = 5050
 			}	
 			OR = {
 				NOT = { owned_by = ROOT }
@@ -46,10 +47,6 @@ country_decisions = {
 			is_nomad = no
 			is_at_war = no
 			OR = {
-				AND = {
-					tag = SAR
-					NOT = { exists = SAV }
-				}
 				AND = {
 					tag = SAV
 					NOT = { exists = SAR }
@@ -67,7 +64,6 @@ country_decisions = {
 					NOT = { exists = SAR }
 				}
 			}
-			owns_core_province = 2986		# Cagliari
 			owns_core_province = 103		# Piedmont
 			103 = {							# Piedmont
 				is_state = yes

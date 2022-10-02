@@ -10,10 +10,6 @@ theocracy_mechanic = {
 	can_customise_heir = no
 	basic_reform = yes # = invisible/does not take up a slot
 	valid_for_nation_designer = no
-	custom_attributes = {
-		enables_divine_idea_group = yes
-		enables_aristocratic_idea_group = no
-	}
 
 	modifiers = {
 		brahmins_hindu_influence_modifier = 0.1
@@ -357,8 +353,6 @@ merchant_theocracy_reform = {
 	custom_attributes = {
 		is_merchant_republic = yes
 		can_sell_indulgences = yes
-		enables_divine_idea_group = no
-		enables_plutocratic_idea_group = yes
 		elections_increase_factions_influence = yes
 	}
 	ai = {
@@ -431,8 +425,6 @@ reformer_state_reform = {
 	custom_attributes = {
 		is_merchant_republic = yes
 		can_loot_heretic_churches = yes
-		enables_divine_idea_group = no
-		enables_plutocratic_idea_group = yes
 		elections_increase_factions_influence = yes
 	}
 	conditional = {
@@ -477,6 +469,11 @@ internal_mission_reform = {
 	modifiers = {
 		tolerance_own = 2
 	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
 }
 
 external_mission_reform = {
@@ -484,6 +481,11 @@ external_mission_reform = {
 	allow_normal_conversion = yes
 	modifiers = {
 		manpower_recovery_speed = 0.1
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 }
 
@@ -502,6 +504,11 @@ mission_to_civilize_reform = {
 		colonist_placement_chance = 0.1
 		native_uprising_chance = -0.5
 	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
 }
 
 mission_to_kill_pirates_reform = {
@@ -516,6 +523,11 @@ mission_to_kill_pirates_reform = {
 		capture_ship_chance = 0.33
 		allowed_marine_fraction = 0.1
 	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
 }
 
 balanced_mission_reform = {
@@ -524,6 +536,11 @@ balanced_mission_reform = {
 	modifiers = {
 		devotion = 0.5
 		national_focus_years = -10
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 }
 
@@ -534,6 +551,11 @@ commercial_mission_reform = {
 		global_trade_power = 0.1
 		merchants = 1
 	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
 }
 
 mission_to_protect_reform = {
@@ -543,6 +565,11 @@ mission_to_protect_reform = {
 		defensiveness = 0.1
 		missionaries = 1
 		prestige_per_development_from_conversion = 0.2
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 }
 
