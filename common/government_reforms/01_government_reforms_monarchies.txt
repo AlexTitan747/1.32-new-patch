@@ -2684,17 +2684,21 @@ grant_noble_castle_rights_reform = {
 	}
 }
 
-maintain_nobles_status_quo_reform = {
-	icon = "conciliarism_reform"
+encourage_guild_membership = {
+	icon = "merchant_ship"
 	allow_normal_conversion = yes
 	potential = {
 		is_revolutionary = no
 	}
 	modifiers = {
-		stability_cost_modifier = -0.1
+		production_efficiency = 0.15
+		burghers_influence_modifier = 0.1
+		jains_influence_modifier = 0.1
 	}
-	custom_attributes = {
-		free_noble_levies = yes
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	conditional = {
 		allow = {
@@ -2703,8 +2707,13 @@ maintain_nobles_status_quo_reform = {
 	}
 	ai = {
 		factor = 1
+		modifier = {
+			factor = 1.5
+			is_in_deficit = yes
+		}
 	}
 }
+
 
 grant_military_command_reform = {
 	icon = "soldiers"
@@ -4123,50 +4132,6 @@ presidential_monarchy_reform = {
 		national_focus_years = -5
 		no_stability_loss_on_monarch_death = yes
 		monarch_diplomatic_power = 1
-	}
-}
-
-become_a_republic_reform = {
-	icon = "parliament_highlighted"
-	allow_normal_conversion = yes
-	potential = {
-		is_revolutionary = no
-	}
-	trigger = {
-		NOT = { has_government_attribute_short_desc = locked_government_type }
-		is_emperor = no
-		NOT = { is_lesser_in_union = yes }
-		stability = 2
-	}
-	effect = {
-		set_country_flag = populists_in_government
-		add_stability = -3
-		change_government = republic
-	}
-	ai = {
-		factor = 0
-	}
-}
-
-install_theocratic_government_reform = {
-	icon = "pope_highlighted"
-	allow_normal_conversion = yes
-	potential = {
-		is_revolutionary = no
-	}
-	trigger = {
-		NOT = { has_government_attribute_short_desc = locked_government_type }
-		is_emperor = no
-		NOT = { is_lesser_in_union = yes }
-		stability = 2
-	}
-	effect = {
-		set_country_flag = populists_in_government
-		add_stability = -3
-		change_government = theocracy
-	}
-	ai = {
-		factor = 0
 	}
 }
 

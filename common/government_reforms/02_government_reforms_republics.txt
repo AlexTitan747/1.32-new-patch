@@ -890,13 +890,9 @@ veche_republic = {
 	valid_for_nation_designer = yes
 	nation_designer_cost = 40
 
-	factions = {
-		mr_aristocrats
-		mr_traders
-		mr_guilds
-	}
 	boost_income = yes
 	fixed_rank = 1
+<<<<<<< Updated upstream
 
 	custom_attributes = {
 		elections_increase_factions_influence = yes
@@ -928,6 +924,8 @@ veche_republic = {
 		can_form_trade_league = yes
 		trade_city_reform = trading_city
 	}
+=======
+>>>>>>> Stashed changes
 	conditional = {
 		allow = {
 			has_dlc = "Third Rome"
@@ -937,79 +935,31 @@ veche_republic = {
 		government_abilities = {
 			russian_mechanic
 		}
-	}
-	conditional = {
-		allow = {
-			has_dlc = "Third Rome"
-			has_dlc = "Mare Nostrum"
-			NOT = { has_dlc = "Res Publica" }
-		}
-		government_abilities = {
-			russian_mechanic
-		}
-		can_form_trade_league = yes
-		trade_city_reform = trading_city
-	}
-	conditional = {
-		allow = {
-			has_dlc = "Third Rome"
-			NOT = { has_dlc = "Mare Nostrum" }
-			has_dlc = "Res Publica"
-		}
-		government_abilities = {
-			russian_mechanic
-		}
-		can_use_trade_post = yes
-	}
-	conditional = {
-		allow = {
-			has_dlc = "Third Rome"
-			has_dlc = "Mare Nostrum"
-			has_dlc = "Res Publica"
-		}
-		government_abilities = {
-			russian_mechanic
-		}
-		can_use_trade_post = yes
-		can_form_trade_league = yes
-		trade_city_reform = trading_city
 	}
 	duration = 4
 }
 
-great_veche_republic = {
-	icon = "merchant"
+russian_republic = {
+	icon = "russian_principality"
 	allow_normal_conversion = yes
 	potential = {
-		culture_group = east_slavic
-		religion = orthodox
 		OR = {
 			AND = {
 				tag = RUS
-				NOT = { map_setup = map_setup_random }
-			}
-			AND = {
-				tag = UKR
-				NOT = { map_setup = map_setup_random }
 			}
 			AND = {
 				is_playing_custom_nation = yes
-				have_had_reform = tsardom
+				have_had_reform = veche_republic
 			}
 		}
 	}
-	fixed_rank = 3
-	valid_for_nation_designer = yes
-	nation_designer_cost = 40
-
+	legacy_equivalent = veche_republic_legacy
 	nation_designer_trigger = {
 		culture_group = east_slavic
-		religion = orthodox
 	}
-
 	modifiers = {
-		global_manpower_modifier = 0.2
 		merchants = 1
+<<<<<<< Updated upstream
 		governing_capacity = 50
 		max_absolutism = 30
 		governing_capacity = 300
@@ -1074,21 +1024,24 @@ great_veche_republic = {
 			russian_mechanic
 		}
 		can_use_trade_post = yes
+=======
+		production_efficiency = 0.1
+		land_morale = 0.1
+		governing_capacity = 250
+		max_absolutism = -50
+>>>>>>> Stashed changes
 	}
+	fixed_rank = 3
+	valid_for_nation_designer = yes
+	nation_designer_cost = 40
 	conditional = {
-		allow = {
-			has_dlc = "Third Rome"
-			has_dlc = "Mare Nostrum"
-			has_dlc = "Res Publica"
-		}
+		allow = { has_dlc = "Third Rome" }
 		government_abilities = {
 			russian_mechanic
 		}
-		can_use_trade_post = yes
-		can_form_trade_league = yes
-		trade_city_reform = trading_city
+		claim_states = yes
 	}
-	duration = 4
+	duration = 5
 }
 
 american_republic = {
@@ -3339,55 +3292,6 @@ pirates_become_republic_reform = {
 	effect = {
 		remove_government_reform = pirate_republic_reform
 		set_country_flag = populists_in_government
-	}
-	ai = {
-		factor = 0
-	}
-}
-
-seize_executive_power_reform = {
-	icon = "king_2_highlighted"
-	allow_normal_conversion = yes
-
-	trigger = {
-		NOT = { has_government_attribute_short_desc = locked_government_type }
-		stability = 2
-	}
-
-	modifiers = {
-	}
-	effect = {
-		if = {
-			limit = { has_government_attribute = states_general_mechanic }
-			set_country_flag = had_states_general_mechanic
-		}
-		set_country_flag = populists_in_government
-		add_stability = -3
-		change_government = monarchy
-		if = {
-			limit = { has_country_flag = had_states_general_mechanic }
-			country_event = { id = dutch_republic.33 }
-			clr_country_flag = had_states_general_mechanic
-		}
-	}
-	ai = {
-		factor = 0
-	}
-}
-
-proclaim_divine_guidance_reform = {
-	icon = "religious_leader_highlighted"
-	allow_normal_conversion = yes
-	trigger = {
-		NOT = { has_government_attribute_short_desc = locked_government_type }
-		stability = 2
-	}
-	modifiers = {
-	}
-	effect = {
-		set_country_flag = populists_in_government
-		add_stability = -3
-		change_government = theocracy
 	}
 	ai = {
 		factor = 0
