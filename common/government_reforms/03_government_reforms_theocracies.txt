@@ -468,6 +468,9 @@ internal_mission_reform = {
 	allow_normal_conversion = yes
 	modifiers = {
 		tolerance_own = 2
+		defensiveness = 0.1
+		missionaries = 1
+		prestige_per_development_from_conversion = 0.2
 	}
 	conditional = {
 		allow = {
@@ -550,21 +553,6 @@ commercial_mission_reform = {
 	modifiers = {
 		global_trade_power = 0.1
 		merchants = 1
-	}
-	conditional = {
-		allow = {
-		}
-		claim_states = yes
-	}
-}
-
-mission_to_protect_reform = {
-	icon = "castle"
-	allow_normal_conversion = yes
-	modifiers = {
-		defensiveness = 0.1
-		missionaries = 1
-		prestige_per_development_from_conversion = 0.2
 	}
 	conditional = {
 		allow = {
@@ -670,6 +658,24 @@ education_of_the_people_reform = {
 	modifiers = {
 		idea_cost = -0.05
 		institution_spread_from_true_faith = 0.33
+	}
+}
+
+battle_pope_reform = {
+	icon = "soldiers_6"
+	allow_normal_conversion = yes
+	potential = {
+		has_reform = papacy_reform
+	}
+
+	rulers_can_be_generals = yes
+
+	modifiers = {
+		manpower_in_true_faith_provinces = 0.10
+		leader_land_fire = 1
+	}
+	ai = {
+		factor = 3
 	}
 }
 
@@ -831,60 +837,26 @@ guru_advisors_reform = {
 	}
 }
 
-#Secularization
-
-maintain_religious_head_reform = {
-	icon = "politician"
-	allow_normal_conversion = yes
-	modifiers = {
-		yearly_absolutism = 1
-		max_absolutism = 10
-	}
-}
-
-partial_secularisation_reform = {
-	icon = "partial_secularisation_reform"
-	allow_normal_conversion = yes
-	modifiers = {
-		tolerance_of_heathens_capacity = 1
-		tolerance_of_heretics_capacity = 1
-	}
-}
-
-battle_pope_reform = {
-	icon = "soldiers_6"
-	allow_normal_conversion = yes
-	potential = {
-		has_reform = papacy_reform
-	}
-
-	rulers_can_be_generals = yes
-
-	modifiers = {
-		manpower_in_true_faith_provinces = 0.10
-		leader_land_fire = 1
-	}
-	ai = {
-		factor = 3
-	}
-}
-
-conciliarism_reform = {
-	icon = "conciliarism_reform"
-	allow_normal_conversion = yes
-	potential = {
-		tag = PAP
-	}
-	modifiers = {
-		appoint_cardinal_cost = -0.33
-		monthly_favor_modifier = 0.5
-	}
-	ai = {
-		factor = 3
-	}
-}
-
 #Divine Cause
+
+taxation_of_the_foreigners_reform = {
+	icon = "government_for_people_reform"
+	allow_normal_conversion = yes
+
+	modifiers = {
+		global_tax_modifier = 0.5
+	}
+	conditional = {
+		allow = { has_dlc = "Cradle of Civilization" }
+		custom_attributes = {
+			may_not_reduce_tax_on_own_exploitation = yes	#25% Chance
+			may_not_reduce_tax_on_foreign_exploitation = yes	#50% Chance
+		}
+	}
+	ai = {
+		factor = 1
+	}
+}
 
 safeguard_holy_sites_reform = {
 	icon = "church"
@@ -943,22 +915,6 @@ clerical_commission_reform = {
 	
 	ai = {
 		factor = 1
-	}
-}
-
-divine_guidance_reform = {
-	icon = "divine_guidance_reform"
-	allow_normal_conversion = yes
-	modifiers = {
-		max_absolutism = 15
-	}
-	
-	ai = {
-		factor = 1
-		modifier = {
-			factor = 20	#High priority for the Papal State so they are always a Kingdom rank country
-			tag = PAP
-		}
 	}
 }
 
@@ -1295,27 +1251,12 @@ belief_and_unity_reform = {
 	}
 }
 
-#Culture, Faith and State
-
 religious_culture_reform = {
 	icon = "mission_to_civilize_reform"
 	allow_normal_conversion = yes
 
 	modifiers = {
 		governing_capacity = 250
-	}
-	ai = {
-		factor = 1
-	}
-}
-
-harmonization_of_cultures_reform = {
-	icon = "generic_people"
-	allow_normal_conversion = yes
-
-	modifiers = {
-		promote_culture_cost = -0.5
-		same_culture_advisor_cost = -0.2
 	}
 	ai = {
 		factor = 1
@@ -1333,25 +1274,6 @@ cultural_safe_haven_reform = {
 	#custom_attributes = {
 	#	unrest_per_accepted_culture = yes	#Reduces Global Unrest by 0.25 per accepted culture	#For 1.35, not implemented yet.
 	#}
-	ai = {
-		factor = 1
-	}
-}
-
-taxation_of_the_foreigners_reform = {
-	icon = "government_for_people_reform"
-	allow_normal_conversion = yes
-
-	modifiers = {
-		global_tax_modifier = 0.5
-	}
-	conditional = {
-		allow = { has_dlc = "Cradle of Civilization" }
-		custom_attributes = {
-			may_not_reduce_tax_on_own_exploitation = yes	#25% Chance
-			may_not_reduce_tax_on_foreign_exploitation = yes	#50% Chance
-		}
-	}
 	ai = {
 		factor = 1
 	}
@@ -1443,7 +1365,7 @@ state_of_theologians_reform = {
 	allow_normal_conversion = yes
 	modifiers = {
 		advisor_pool = 2
-		advisor_cost = -0.2
+		advisor_cost = -0.1
 	}
 	ai = {
 		factor = 3
@@ -1455,7 +1377,7 @@ divinity_through_craftsmanship_reform = {
 	allow_normal_conversion = yes
 	modifiers = {
 		development_cost_modifier = -0.025
-		global_trade_goods_size_modifier = 0.1
+		global_trade_goods_size_modifier = 0.05
 	}
 	ai = {
 		factor = 3
