@@ -75,7 +75,6 @@ parliamentary_reform = {
 		allow = { has_dlc = "Common Sense" }
 		has_parliament = yes
 		custom_attributes = {
-			disables_estate_nobles = yes
 			blocked_call_diet = yes
 		}
 	}
@@ -920,25 +919,6 @@ secure_clergy_power_reform = {
 	}
 }
 
-maintain_clergy_balance_of_power_reform = {
-	icon = "consolidate_power_in_cities_reform"
-	allow_normal_conversion = yes
-	potential = {
-		NOT = { has_government_attribute = is_pirate_republic_reform }
-		OR = {
-			is_revolutionary = no
-			NOT = { has_dlc = "Emperor" }
-		}
-	}
-	modifiers = {
-		all_estate_loyalty_equilibrium = 0.05
-	}
-	
-	ai = {
-		factor = 1
-	}
-}
-
 separate_clergy_from_state_affairs_reform = {
 	icon = "partial_secularisation_reform"
 	allow_normal_conversion = yes
@@ -1086,29 +1066,6 @@ empower_the_burghers_reform = {
 	}
 }
 
-curtail_the_burghers_reform = {
-	icon = "assembly_hall"
-	allow_normal_conversion = yes
-	potential = {
-		NOT = { has_government_attribute = is_pirate_republic_reform }
-		OR = {
-			is_revolutionary = no
-			NOT = { has_dlc = "Emperor" }
-		}
-	}
-	modifiers = {
-		trade_company_governing_cost = -0.1
-		yearly_corruption = -0.1
-		burghers_influence_modifier = -0.1
-	}
-	custom_attributes = {
-		seizing_land_no_rebels_from_estate_burghers = yes
-	}
-	ai = {
-		factor = 1
-	}
-}
-
 reestablish_the_burgeoisie_reform = {
 	icon = "dutch_republic"
 	allow_normal_conversion = yes
@@ -1192,6 +1149,7 @@ mercantilistic_approach_reform = {
 	}
 	modifiers = {
 		mercantilism_cost = -0.1
+		trade_company_governing_cost = -0.1
 		global_own_trade_power = 0.15
 		placed_merchant_power = 5
 	}
