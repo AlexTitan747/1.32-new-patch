@@ -569,7 +569,7 @@ emp_naples_3 = {
 		effect = {
 			add_manpower = 3
 			add_treasury = 100
-			add_adm_power = 150
+			add_adm_power = 50
 			add_country_modifier = {
 				name = "victor_of_the_sicilian_wars"
 				duration = 5475
@@ -1095,9 +1095,11 @@ emp_naples_5 = {
 				limit = { has_dlc = Emperor
 				}
 				OR = { 
-					NOT = { 
-						117 = {
-							has_province_modifier = diamond_district }
+					AND = {
+					NOT = { 117 = { has_province_modifier = diamond_district }	}
+					}
+					AND = {
+					NOT = { 1993 = { has_province_modifier = diamond_district }	}
 					}
 				}
 			}
