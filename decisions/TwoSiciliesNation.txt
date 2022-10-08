@@ -14,13 +14,8 @@ country_decisions = {
 			religion = sunni
 		}
 		provinces_to_highlight = {
-			OR = {
-				OR = {
-					province_id = 121
-					province_id = 125
-					province_id = 341
-				}
-			}
+				area = tunisia_area
+				NOT = { country_or_non_sovereign_subject_holds = ROOT }
 			OR = {
 				NOT = { owned_by = ROOT }
 				NOT = { is_core = ROOT }
@@ -30,10 +25,13 @@ country_decisions = {
 			is_free_or_tributary_trigger = yes
 			is_nomad = no
 			is_at_war = no
-			owns_core_province = 121
-			owns_core_province = 125
-			owns_core_province = 341
-			has_country_flag = naples_has_sunni_ruler
+			tunisia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			hidden_trigger = {
+				has_country_flag = naples_has_sunni_ruler
+			}
 			religion = sunni
 		}
 		effect = {
