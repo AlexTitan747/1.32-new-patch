@@ -108,23 +108,37 @@ age_of_discovery = {
 	}		
 
 	abilities = {
-		ab_titan_building_dev = {
-			allow = {
-				NOT = {total_own_and_non_tributary_subject_development = 300 }
-				NOT = { is_emperor = yes }
-				is_colonial_nation = no
-				current_age = age_of_discovery
-			}
+
+		ab_allow_feudal_de_jure_law = {
 			effect = {
-				enable_development_on_buildings_built = yes
+				custom_tooltip = feudal_de_jure_law
+				set_country_flag = feudal_de_jure_law
 			}
 			modifier = {
-				
+				war_exhaustion = -0.05
+				global_autonomy = -0.025
 			}
 			ai_will_do = {
-				factor = 100
+				factor = 10
 			}
 		}
+		#ab_titan_building_dev = {
+		#	allow = {
+		#		NOT = {total_own_and_non_tributary_subject_development = 300 }
+		#		NOT = { is_emperor = yes }
+		#		is_colonial_nation = no
+		#		age_
+		#	}
+		#	effect = {
+		#		enable_development_on_buildings_built = yes
+		#	}
+		#	modifier = {
+		#		
+		#	}
+		#	ai_will_do = {
+		#		factor = 100
+		#	}
+		#}
 		
 		ab_justified_wars = {
 			modifier = {
