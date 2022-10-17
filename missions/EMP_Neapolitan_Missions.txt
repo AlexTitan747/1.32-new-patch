@@ -1091,18 +1091,8 @@ emp_naples_5 = {
 			}
 			has_institution = renaissance
 			is_at_war = no
-			if = {
-				limit = { has_dlc = Emperor
-				}
-				OR = { 
-					AND = {
-					NOT = { 117 = { has_province_modifier = diamond_district }	}
-					}
-					AND = {
-					NOT = { 1993 = { has_province_modifier = diamond_district }	}
-					}
-				}
-			}
+			NOT = { 117 = { has_province_modifier = diamond_district }	}
+			NOT = { 1993 = { has_province_modifier = diamond_district }	}
 		}
 		effect = {
 			add_prestige = 15
