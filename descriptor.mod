@@ -4,4 +4,4 @@ tags={
 }
 name="1.34 new patch"
 supported_version="1.34.*"
-picture="titan_mod.png"
+picture="thumbnail.png"
