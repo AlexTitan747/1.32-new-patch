@@ -551,8 +551,6 @@ mali_conquest_slot = {
 		required_missions = {  }
 		position = 1
 		trigger = {
-			is_monarch_leader = yes
-			legitimacy_equivalent = 90
 			army_size_percentage = 1
 		}
 		effect = {
@@ -578,6 +576,13 @@ mali_conquest_slot = {
 				add_permanent_claim = ROOT
 			}
 			baghena_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kong_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -960,13 +965,6 @@ mali_empire_slot = {
 			country_event = {
 				id = flavor_mal.29
 			}
-			kong_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
 		}
 	}
 
@@ -1345,27 +1343,12 @@ mali_slot_disaster_slot = {
 			mal_give_gold_away
 		}
 		position = 7
-		provinces_to_highlight = {
-			owner = {
-				capital_scope = {
-					continent = europe
-				}
-				total_development = ROOT
-			}
-		}
+
 		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = mal_west_african_great_power_ct
-				NOT = {
-					any_country = {
-						capital_scope = {
-							continent = europe
-						}
-						total_development = ROOT
-					}
-				}
-			}
+			is_great_power = yes
+			total_development = 2000
 		}
+
 		effect = {
 			add_country_modifier = {
 				name = mal_great_imperial_power
