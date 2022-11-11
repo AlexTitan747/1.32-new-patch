@@ -14,6 +14,7 @@ country_event = {
 	trigger = {
 		fortification_expert = 3
 		NOT = { has_country_flag = cannoneer_expert }
+		NOT = { has_country_modifier = cannoneer_expert_cooldown }
 	}
 	
 	mean_time_to_happen = {
@@ -38,7 +39,21 @@ country_event = {
 	}
 
 	option = {
-		name = "titancriticalevent.advisor1"	# His reputation will reach further than our borders
+		name = "titancriticalevent.advisor1.b" #Advisor Event Cooldown
+		ai_chance = {
+			factor = 100
+		}
+		add_country_modifier = {
+			name = "cannoneer_expert_cooldown"
+			duration = 9125
+			hidden = yes
+		}
+
+	}
+
+
+	option = {
+		name = "titancriticalevent.advisor1.a"	# His reputation will reach further than our borders
 		ai_chance = {
 			factor = 50
 			modifier = {
@@ -51,6 +66,7 @@ country_event = {
 		add_country_modifier = {
 			name = "cannoneer_expert_boost"
 			duration = 3650
+			hidden = yes
 		}
 		set_country_flag = cannoneer_expert
 	}
@@ -70,6 +86,7 @@ country_event = {
 			shield_bearer = 3
 		}
 		NOT = { has_country_flag = new_recruitment_boost }
+		NOT = { has_country_modifier = new_recruitment_cooldown }
 	}
 	
 	mean_time_to_happen = {
@@ -94,7 +111,19 @@ country_event = {
 	}
 
 	option = {
-		name = "titancriticalevent.advisor2"	# His reputation will reach further than our borders
+		name = "titancriticalevent.advisor2.b" #Advisor Event Cooldown
+		ai_chance = {
+			factor = 100
+		}
+		add_country_modifier = {
+			name = "new_recruitment_cooldown"
+			duration = 9125
+		}
+
+	}
+
+	option = {
+		name = "titancriticalevent.advisor2.a"	# His reputation will reach further than our borders
 		ai_chance = {
 			factor = 50
 			modifier = {
