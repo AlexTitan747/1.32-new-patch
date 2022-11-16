@@ -1,0 +1,245 @@
+westphalia_missions_1 = {
+	slot = 1
+	generic = no
+	has_country_shield = yes
+
+	potential = {
+		OR = {
+			tag = HES
+			was_tag = HES
+			was_tag = WES
+		}
+	}
+
+	strength_of_paper = {
+		icon = mission_early_modern_university
+		position = 2
+
+		required_missions = {
+			hessian_armament
+		}
+
+		trigger = {
+			1876 = { base_production = 15 }
+			78 = { base_production = 15 }
+		}
+
+		effect = {
+			add_adm_power = 100
+			add_dip_power = 100
+			add_prestige = 50
+
+			hesse_area = {
+				add_prosperity = 100
+			}
+		}
+
+	}
+}
+
+westphalia_missions_2 = {
+	slot = 2
+	generic = no
+	has_country_shield = yes
+
+	potential = {
+		OR = {
+			tag = HES
+			was_tag = HES
+			was_tag = WES
+		}
+	}
+
+	hessian_stability = {
+		icon = mission_hands_praying
+		position = 3
+
+		required_missions = {
+			strength_of_paper
+			unification_of_rhenish_people
+		}
+
+		trigger = {
+			stability = 2
+		}
+
+		effect = {
+			add_adm_power = 50
+			
+		}
+	}
+}
+
+westphalia_missions_3 = {
+	slot = 3
+	generic = no
+	has_country_shield = yes
+
+	potential = {
+		OR = {
+			tag = HES
+			was_tag = HES
+			was_tag = WES
+		}
+	}
+
+	hessian_armament = {
+		icon = mission_assemble_an_army
+		position = 1
+
+		required_missions = {}
+
+		trigger = {
+			army_size_percentage = 1
+		}
+
+		effect = {
+			thuringia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			upper_franconia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			lower_rhineland_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			north_rhine_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+
+			add_country_modifier = {
+				name = "thriving_arms_industry"
+				duration = 1825
+			}
+		}
+	}
+
+	unification_of_rhenish_people = {
+		icon = unification_of_rhenish_people
+		position = 2
+
+		required_missions = { hessian_armament }
+
+		trigger = {
+			lower_rhineland_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			north_rhine_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			lower_rhineland_area = {
+				add_base_manpower = 1
+				add_base_tax = 1
+			}
+			north_rhine_area = {
+				add_base_manpower = 1
+				add_base_production = 1
+			}
+		}
+	}
+}
+
+westphalia_missions_4 = {
+	slot = 4
+	generic = no
+	has_country_shield = yes
+
+	potential = {
+		OR = {
+			tag = HES
+			was_tag = HES
+			was_tag = WES
+		}
+	}
+
+	secure_upper_franconia = {
+		icon = mission_conquer_50_development
+		position = 2
+
+		required_missions = {
+			hessian_armament
+			nurnberg_purchase
+		}
+
+		trigger = {
+			treasury = 200
+			num_of_loans = 0
+			upper_franconia_area = {
+				type = all
+				is_core = ROOT
+			}
+		}
+
+		effect = {
+			66 = {
+				add_building = fort_15th
+			}
+			treasury = 200
+		}
+	}
+}
+
+westphalia_missions_5 = {
+	slot = 5
+	generic = no
+	has_country_shield = yes
+
+	potential = {
+		OR = {
+			tag = HES
+			was_tag = HES
+			was_tag = WES
+		}
+	}
+
+	nurnberg_purchase = {
+		icon = a_question_of_spain
+		position = 1
+
+		required_missions = {}
+
+		trigger = { 
+			treasury = 300
+			num_of_loans = 0
+			
+			66 = {
+				is_core = HES
+			}
+			4716 = {
+				is_core = HES
+			}
+			4717 = {
+				is_core = HES
+			}
+		}
+
+		effect = {
+			add_treasury = -300
+			67 = {
+				cede_province = ROOT
+				add_core = ROOT
+			}
+		}
+	}
+}
