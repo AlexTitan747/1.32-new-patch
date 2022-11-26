@@ -67,7 +67,6 @@ merc__winged_hussars_2 = {
     }
 }
 
-
 merc__winged_hussars_1 = {
     regiments_per_development = 0.05
     cavalry_weight = 1
@@ -124,7 +123,7 @@ merc__french_musketeer_2 = {
 		is_allowed_to_recruit_mercenaries = yes
 	}
     modifier = {
-		fire_damage_received = -0.1
+		fire_damage = 0.1
 		land_morale	= 0.05
     }
 }
@@ -185,6 +184,25 @@ merc__tercio_infantry_1 = {
 		land_morale	= 0.05
     }
 }
+
+merc__xii_legion_of_auxiliaries = {
+    regiments_per_development = 0.05
+    cavalry_weight = 0
+    artillery_weight = 0
+	cost_modifier = 0.50
+	sprites = { dlc080_alh_sprite_pack muslimgfx_sprite_pack }
+	trigger = {
+		AND = {
+			tag = ROM
+			has_country_flag = auxiliary_camps_1
+		}
+		is_allowed_to_recruit_mercenaries = yes
+	}
+    modifier = {
+		shock_damage = 0.1
+    }
+}
+
 merc__xi_legion_of_auxiliaries = {
     regiments_per_development = 0.05
     cavalry_weight = 0
@@ -194,7 +212,7 @@ merc__xi_legion_of_auxiliaries = {
 	trigger = {
 		AND = {
 			tag = ROM
-			has_country_flag = auxiliary_camps_2
+			has_country_flag = auxiliary_camps_1
 		}
 		is_allowed_to_recruit_mercenaries = yes
 	}
