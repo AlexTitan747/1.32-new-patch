@@ -1,4 +1,41 @@
+united_alpine_cantons_reform = {
+	icon = "united_cantons_reform"
+	allow_normal_conversion = yes
+	modifiers = {
+		governing_capacity = -50
+		free_policy = 1
+		mercenary_manpower = 0.5
+	}
+	valid_for_nation_designer = yes
+	nation_designer_cost = 40
+	legacy_equivalent = united_cantons_legacy
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		OR = {
+			primary_culture = swiss
+			have_had_reform = united_alpine_cantons_reform
+		}
+	}
+	ai = {
+		factor = 10 #unique
+		
+		modifier = {
+			factor = 2
+			NOT = {
+				num_of_cities = 11
+			}
+		}
+		
+		modifier = {
+			factor = 0
+			is_subject = yes
+		}
+	}
 
+	custom_attributes = {
+		mercs_do_not_cost_army_professionalism = yes
+	}
+}
 
 moroccan_monarchy = {
 	icon = "castle"
