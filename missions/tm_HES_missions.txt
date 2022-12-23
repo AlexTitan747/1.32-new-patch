@@ -11,7 +11,7 @@ westphalia_missions_1 = {
 		}
 	}
 
-	strength_of_paper = {
+	improved_paper_mills = {
 		icon = mission_early_modern_university
 		position = 2
 
@@ -19,21 +19,141 @@ westphalia_missions_1 = {
 			hessian_armament
 		}
 
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1876
+				province_id = 78
+			}
+		}
+
 		trigger = {
-			1876 = { base_production = 15 }
-			78 = { base_production = 15 }
+			1876 = { base_production = 12 }
+			78 = { 
+				base_production = 12 
+				is_state = yes
+				has_state_edict = edict_protect_trade 
+			}
+			if = {
+				limit = {
+					75 = {
+						owned_by = ROOT
+					}
+				}
+				75 = { base_production = 12 }
+			}
+			if = {
+				limit = {
+					85 = {
+						owned_by = ROOT
+					}
+				}
+				85 = { base_production = 12 }
+			}
+			if = {
+				limit = {
+					67 = {
+						owned_by = ROOT
+					}
+				}
+				67 = { base_production = 12 }
+			}
 		}
 
 		effect = {
 			add_adm_power = 100
 			add_dip_power = 100
-			add_prestige = 50
 
-			hesse_area = {
+			if = {
+				limit = {
+					NOT = { is_year = 1500 }
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 6
+					trigger = {
+						trade_goods = paper
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_year = 1500 
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 3
+					trigger = {
+						trade_goods = paper
+					}
+				}
+			}
+
+			frankfurt_area = {
 				add_prosperity = 100
 			}
 		}
+	}
 
+	rapid_construction_of_the_state = {
+		icon = develop_our_capital
+		position = 3
+
+		required_missions = { improved_paper_mills }
+
+		trigger = {
+			grown_by_states = 4
+			grown_by_development = 100
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_construction_of_hesse
+				duration = 4562.5
+			}
+		}
+	}
+
+	tm_HES_copper_and_iron = {
+		icon = mission_iron_and_copper
+		position = 4
+
+		required_missions = { rapid_construction_of_the_state }
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 57
+				province_id = 5079
+				province_id = 83
+				province_id = 5082
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			57 = {
+				base_production = 10
+				owned_by = ROOT
+			}
+			5079 = {
+				base_production = 10
+				owned_by = ROOT
+			}
+			83 = {
+				base_production = 13
+				owned_by = ROOT
+			}
+			5082 = {
+				base_production = 13
+				owned_by = ROOT
+			}
+		}
+
+		effect = { 
+			83 = {
+				add_building = weapons
+			}
+			country_event = {
+				id = titanhes.1
+			}
+		}
 	}
 }
 
@@ -55,7 +175,7 @@ westphalia_missions_2 = {
 		position = 3
 
 		required_missions = {
-			strength_of_paper
+			improved_paper_mills
 			unification_of_rhenish_people
 		}
 
@@ -64,8 +184,13 @@ westphalia_missions_2 = {
 		}
 
 		effect = {
-			add_adm_power = 50
-			
+			add_mil_power = 100
+			add_stability = 1
+			define_advisor = {
+				type = theologian
+				skill = 3 
+				cost_multiplier = 0.75
+			}
 		}
 	}
 }
@@ -90,7 +215,7 @@ westphalia_missions_3 = {
 		required_missions = {}
 
 		trigger = {
-			army_size_percentage = 1
+			army_size_percentage = 0.75
 		}
 
 		effect = {
@@ -131,10 +256,19 @@ westphalia_missions_3 = {
 	}
 
 	unification_of_rhenish_people = {
-		icon = unification_of_rhenish_people
+		icon = mission_diplomatic_relation
 		position = 2
 
 		required_missions = { hessian_armament }
+
+		
+		provinces_to_highlight = {
+			OR = {
+				area = lower_rhineland_area
+				area = north_rhine_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
 
 		trigger = {
 			lower_rhineland_area = {
@@ -156,6 +290,112 @@ westphalia_missions_3 = {
 				add_base_manpower = 1
 				add_base_production = 1
 			}
+
+			franconia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	path_to_confederacy = {
+		icon = mission_build_up_to_force_limit
+		position = 4
+		
+		required_missions = {
+			unification_of_rhenish_people
+			salt_of_lower_franconia
+			hessian_stability
+		}
+
+		provinces_to_highlight = {
+			area = palatinate_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			palatinate_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+
+		effect = {
+			1761 = {
+				add_base_production = 2
+			}
+			5085 = {
+				add_base_production = 2
+			}
+			77 = {
+				add_base_production = 2
+			}
+			upper_rhineland_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			wurttemburg_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			upper_swabia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	bordering_the_alps = {
+		icon = control_swabia
+		position = 5
+
+		required_missions = {
+			path_to_confederacy
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				area = wurttemburg_area
+				area = upper_rhineland_area
+				area =  upper_swabia_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = { 
+			upper_rhineland_area = {
+				type = all
+				owned_by = ROOT
+			}
+			wurttemburg_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			upper_swabia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			add_prestige = 100
+			add_treasury = 500
+			add_stat_or_monarch_power = {
+				stat = mil
+				amount = 2
+			}
 		}
 	}
 }
@@ -173,8 +413,8 @@ westphalia_missions_4 = {
 		}
 	}
 
-	secure_upper_franconia = {
-		icon = mission_conquer_50_development
+	secure_eastern_front = {
+		icon = mission_castle_construction
 		position = 2
 
 		required_missions = {
@@ -182,9 +422,21 @@ westphalia_missions_4 = {
 			nurnberg_purchase
 		}
 
+		provinces_to_highlight = {
+			OR = {
+				area = upper_franconia_area 
+				area = thuringia_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
 		trigger = {
 			treasury = 200
 			num_of_loans = 0
+			thuringia_area = {
+				type = all
+				is_core = ROOT
+			}
 			upper_franconia_area = {
 				type = all
 				is_core = ROOT
@@ -194,8 +446,46 @@ westphalia_missions_4 = {
 		effect = {
 			66 = {
 				add_building = fort_15th
+				add_province_modifier = {
+					name = tm_HES_bamburg_castle
+					duration = -1
+				}
 			}
-			treasury = 200
+			add_treasury = -200
+		}
+	}
+
+	salt_of_lower_franconia = {
+		icon = mission_conquer_50_development
+		position = 3
+
+		required_missions = {
+			unification_of_rhenish_people
+			secure_eastern_front
+		}
+
+		provinces_to_highlight = {
+			area = franconia_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			franconia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			add_prestige = 50
+
+			palatinate_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 }
