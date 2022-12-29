@@ -490,17 +490,17 @@ emp_burgundy_3 = {
 		}
 	}
 	
-	tm_bur_enter_the_lowlands = {
+	tm_bur_road_to_paris = {
 		icon = mission_conquer_50_development
 		required_missions = { tm_bur_champagne_and_reims }
 		
 		provinces_to_highlight = {
-			area = wallonia_area
+			area = champagne_area
 			NOT = { owned_by = ROOT }
 		}
 		
 		trigger = {
-			wallonia_area = {
+			champagne_area = {
 				type = all
 				owned_by = ROOT
 			}
@@ -542,7 +542,7 @@ emp_burgundy_3 = {
 	
 	tm_bur_securing_the_rhine = {
 		icon = mission_have_two_subjects
-		required_missions = { tm_bur_enter_the_lowlands }
+		required_missions = { tm_bur_road_to_paris }
 		
 		provinces_to_highlight = {
 			OR = {
@@ -775,12 +775,11 @@ emp_burgundy_4 = {
 			
 		}
 		effect = {
-			champagne_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
+			182 = {
+				add_core = BUR
+			}
+			5013 = {
+				add_core = BUR
 			}
 			savoy_dauphine_area = {
 				limit = {
@@ -1313,6 +1312,10 @@ emp_burgundy_5 = {
 					name = bur_pope_is_hated
 					duration = 7300
 				}
+			}
+			add_country_modifier = {
+				name = "bur_pope_sanctions_conquest"
+				duration = 7300
 			}
 		}
 	}
