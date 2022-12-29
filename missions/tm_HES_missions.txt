@@ -23,15 +23,20 @@ westphalia_missions_1 = {
 			OR = {
 				province_id = 1876
 				province_id = 78
+				province_id = 75
+				province_id = 85
+				province_id = 67
 			}
+			country_or_non_sovereign_subject_holds = ROOT 
 		}
 
 		trigger = {
 			1876 = { base_production = 12 }
 			78 = { 
 				base_production = 12 
-				is_state = yes
-				has_state_edict = edict_protect_trade 
+			}
+			frankfurt_area = {
+				has_state_edict = edict_protect_trade
 			}
 			if = {
 				limit = {
@@ -124,7 +129,6 @@ westphalia_missions_1 = {
 				province_id = 83
 				province_id = 5082
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
 		trigger = {
@@ -152,6 +156,101 @@ westphalia_missions_1 = {
 			}
 			country_event = {
 				id = titanhes.1
+			}
+		}
+	}
+
+	tm_HES_develop_cloth = {
+		icon = mission_develop_cloth
+		position = 5
+		
+		required_missions = { tm_HES_copper_and_iron }
+
+		trigger = {
+			4718 = {
+				owned_by = ROOT
+				has_building = workshop
+				base_production = 12
+			}
+			5084 = {
+				owned_by = ROOT
+				has_building = workshop
+				base_production = 12
+
+			}
+			if = {
+				limit = {
+					4746 = { owned_by = ROOT }
+				}
+				4746 = { 
+					base_production = 12 
+					has_building = workshop
+				}
+			}
+			if = {
+				limit = {
+					84 = { owned_by = ROOT }
+				}
+				84 = { 
+					base_production = 12
+					has_building = workshop
+				}
+			}
+			if = {
+				limit = {
+					2975 = { owned_by = ROOT }
+				}
+				2975 = { 
+					base_production = 12 
+					has_building = workshop
+				}
+			}
+			if = {
+				limit = {
+					4773 = { owned_by = ROOT }
+				}
+				4773 = { 
+					base_production = 12 
+					has_building = workshop
+				}
+			}
+			if = {
+				limit = {
+					1758 = { owned_by = ROOT }
+				}
+				1758 = { 
+					base_production = 12 
+					has_building = workshop
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					NOT = { is_year = 1500 }
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 6
+					trigger = {
+						trade_goods = cloth
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_year = 1500
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 3
+					trigger = {
+						trade_goods = cloth
+					}
+				}
+			}
+
+			add_country_modifier = {
+				name = production_improvements
+				duration = 10950
 			}
 		}
 	}
@@ -190,6 +289,73 @@ westphalia_missions_2 = {
 				type = theologian
 				skill = 3 
 				cost_multiplier = 0.75
+			}
+		}
+	}
+	
+	multicultural_hesse = {
+		icon = multicultural_empire 
+		position = 4
+
+		required_missions = {
+			hessian_stability
+		}
+
+		trigger = {
+			ROOT = {
+				num_of_owned_provinces_with = {
+					value = 15
+					NOT = { culture_group = root }
+				}
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_HES_cultures
+				duration = -1
+			}
+		}
+	}
+
+	bordering_the_alps = {
+		icon = control_swabia
+		position = 5
+
+		required_missions = {
+			path_to_confederacy
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				area = wurttemburg_area
+				area = upper_rhineland_area
+				area =  upper_swabia_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = { 
+			upper_rhineland_area = {
+				type = all
+				owned_by = ROOT
+			}
+			wurttemburg_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			upper_swabia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			add_prestige = 100
+			add_treasury = 500
+			add_stat_or_monarch_power = {
+				stat = mil
+				amount = 2
 			}
 		}
 	}
@@ -357,44 +523,52 @@ westphalia_missions_3 = {
 		}
 	}
 
-	bordering_the_alps = {
-		icon = control_swabia
+	develop_our_vinyards = {
+		icon = mission_wine_monopolies
 		position = 5
 
-		required_missions = {
-			path_to_confederacy
-		}
+		required_missions = { path_to_confederacy }
 
-		provinces_to_highlight = {
-			OR = {
-				area = wurttemburg_area
-				area = upper_rhineland_area
-				area =  upper_swabia_area
-			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-
-		trigger = { 
-			upper_rhineland_area = {
-				type = all
+		trigger = {
+			1761 = {
+				base_production = 10
+				has_building = farm_estate
 				owned_by = ROOT
 			}
-			wurttemburg_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+			5085 = {
+				base_production = 10
+				has_building = farm_estate
+				owned_by = ROOT
 			}
-			upper_swabia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+			77 = {
+				base_production = 10
+				has_building = farm_estate
+				owned_by = ROOT
 			}
 		}
 
 		effect = {
-			add_prestige = 100
-			add_treasury = 500
-			add_stat_or_monarch_power = {
-				stat = mil
-				amount = 2
+			if = {
+				limit = {
+					NOT = { is_year = 1500 }
+				}
+			add_years_of_owned_provinces_production_income = {
+				years = 10
+				trigger = {
+					trade_goods = wine
+				}
+			}
+		}
+			else_if = {
+				limit = {
+					is_year = 1500
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 6
+					trigger = {
+						trade_goods = wine
+					}
+				}
 			}
 		}
 	}
@@ -509,27 +683,131 @@ westphalia_missions_5 = {
 
 		required_missions = {}
 
+		provinces_to_highlight = {
+			province_id = 67 
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
 		trigger = { 
-			treasury = 300
-			num_of_loans = 0
-			
-			66 = {
-				is_core = HES
+			OR = {
+				ROOT = {
+					treasury = 300
+					num_of_loans = 0
+					NOT = { 67 = { owned_by = ROOT } }
+				}
+
+				ROOT = {
+					67 = { owned_by = ROOT }
+				}
 			}
-			4716 = {
-				is_core = HES
+
+		}
+
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						67 = { owned_by = ROOT }
+					}
+				}
+				add_treasury = -300
+
+				67 = {
+					cede_province = ROOT
+					add_core = ROOT
+				}
+
+				braunschweig_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
 			}
-			4717 = {
-				is_core = HES
+			else_if = {
+				limit = {
+					67 = { owned_by = ROOT }
+				}
+				add_adm_power = 100
+
+				braunschweig_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	}
+
+	duchy_of_brunswick = {
+		icon = conquer_brunswick
+		position = 3
+
+		required_missions = { 
+			nurnberg_purchase 
+		}
+
+		provinces_to_highlight = {
+			area = braunschweig_area 
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			braunschweig_area = {
+				owned_by = ROOT
 			}
 		}
 
 		effect = {
-			add_treasury = -300
-			67 = {
-				cede_province = ROOT
-				add_core = ROOT
+			add_prestige = 50
+
+			north_westphalia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
+			westphalia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	take_on_the_bishoprics = {
+		icon = take_the_bishoprics
+		position = 4
+
+		required_missions = {
+			duchy_of_brunswick
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				area = westphalia_area 
+				area = north_westphalia_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			westphalia_area = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			north_westphalia_area = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			change_government_reform_progress = 50
 		}
 	}
 }
