@@ -166,6 +166,19 @@ westphalia_missions_1 = {
 		
 		required_missions = { tm_HES_copper_and_iron }
 
+		provinces_to_highlight = {
+			OR = {
+				province_id = 4718
+				province_id = 5084
+				province_id = 4746
+				province_id = 84
+				province_id = 2975
+				province_id = 4773
+				province_id = 1758
+			}
+			country_or_non_sovereign_subject_holds = ROOT
+		}
+
 		trigger = {
 			4718 = {
 				owned_by = ROOT
@@ -662,6 +675,39 @@ westphalia_missions_4 = {
 			}
 		}
 	}
+
+	unified_northern_rhineland = {
+		icon = mission_alliances
+		position = 5
+
+		required_missions = {
+			salt_of_lower_franconia
+			path_to_confederacy
+			take_on_the_bishoprics
+		}
+
+		trigger = {
+			westphalia_area = {
+				type = all
+				owned_by = ROOT
+				NOT = { local_autonomy = 1 }
+			}
+			north_westphalia_area = {
+				type = all
+				owned_by = ROOT
+				NOT = { local_autonomy = 1 }
+			}
+			braunschweig_area = {
+				type = all
+				owned_by = ROOT
+				NOT = { local_autonomy = 1 }
+				}
+			}
+
+		effect = {
+			add_prestige = 1
+		}
+	}
 }
 
 westphalia_missions_5 = {
@@ -757,6 +803,7 @@ westphalia_missions_5 = {
 
 		trigger = {
 			braunschweig_area = {
+				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
@@ -799,9 +846,11 @@ westphalia_missions_5 = {
 
 		trigger = {
 			westphalia_area = {
+				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 			north_westphalia_area = {
+				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
