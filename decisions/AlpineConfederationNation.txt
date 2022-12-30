@@ -93,7 +93,7 @@ country_decisions = {
 					}
 					set_government_rank = 2
 				}
-				rem_government_reform = united_cantons_reform
+				remove_government_reform = united_cantons_reform
 				add_government_reform = united_alpine_cantons_reform
 				add_prestige = 25
 				add_country_modifier = {
@@ -102,6 +102,14 @@ country_decisions = {
 				}
 				set_capital = 1869 # Zurich
 				bern_area = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+				brig_area = {
 					limit = {
 						NOT = {
 							owned_by = ROOT
@@ -125,7 +133,7 @@ country_decisions = {
 					}
 					add_permanent_claim = ROOT
 				}
-				south_swabia_area = {
+				inntal_area = {
 					limit = {
 						NOT = {
 							owned_by = ROOT
@@ -149,7 +157,7 @@ country_decisions = {
 					}
 					add_permanent_claim = ROOT
 				}
-				east_bavaria_area = {
+				upper_austria_area = {
 					limit = {
 						NOT = {
 							owned_by = ROOT
@@ -157,7 +165,7 @@ country_decisions = {
 					}
 					add_permanent_claim = ROOT
 				}
-				upper_bavaria_area = {
+				east_bavaria_area = {
 					limit = {
 						NOT = {
 							owned_by = ROOT
