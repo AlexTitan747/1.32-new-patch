@@ -1,0 +1,39 @@
+namespace = titanboh
+
+
+
+country_event = {
+	id = titanboh.1
+	title = "titanboh.title1"
+	desc = "titanboh.desc1"
+	picture = ADVISOR_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			tag = BOH
+			was_tag = BOH
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = "titanboh.religion1"
+		change_religion = sunni
+		set_country_flag = bohemian_prussia
+	}
+
+	option = {
+		name = "titanboh.religion2"
+		add_country_modifier = {
+			name = adopted_prussian_military_tactics
+			duration = 7300
+		}
+		
+	}
+}
