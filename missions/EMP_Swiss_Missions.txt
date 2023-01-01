@@ -17,11 +17,25 @@ swiss_missions_1 = {
 		required_missions = { emp_swi_start }
 		position = 2
 
-		trigger = {
+		provinces_to_highlight = {
 			OR = {
-				has_country_flag = humiliated_rival
-				has_country_flag = tm_show_strength
+				area = savoy_dauphine_area
+				area = west_burgundy_area
+				area = bourgogne_area
 			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+				custom_trigger_tooltip = {
+					tooltip = tag_hum_or_stg
+				}
+				hidden_trigger = {
+					OR = {
+						has_country_flag = humiliated_rival
+						has_country_flag = tm_show_strength
+					}
+				}
 			OR = {
 				is_rival = NEV
 				is_rival = DAU
@@ -29,7 +43,7 @@ swiss_missions_1 = {
 		}
 
 		effect = {
-			add_prestige = 25
+			add_prestige = 15
 			add_country_modifier = {
 				name = swi_integration
 				duration = 3650
@@ -42,13 +56,10 @@ swiss_missions_1 = {
 		position = 3
 
 		provinces_to_highlight = {
-			province_id = 4720
-			province_id = 1867
-			province_id = 5056
 			OR = {
-				NOT = { owned_by = ROOT }
-				NOT = { is_core = ROOT }
+				area = romandie_area
 			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
 		trigger = {
@@ -313,7 +324,7 @@ swiss_missions_3 = {
 		}
 	}
 
-	tm_emp_swi_integrate_south_germany = {
+	tm_emp_swi_south_german_holdings = {
 		icon = integrate_the_three_leagues
 		required_missions = { tm_emp_swi_bavarian_consolidation tm_emp_swi_march_east tm_emp_swi_secure_austrian_pass }
 		position = 4
@@ -340,7 +351,7 @@ swiss_missions_3 = {
 	}
 	tm_emp_swi_diplomatic_connections = {
 		icon = polish_diplomacy
-		required_missions = { tm_emp_swi_integrate_south_germany }
+		required_missions = { tm_emp_swi_south_german_holdings }
 		position = 5
 		provinces_to_highlight = {
 			OR = {
@@ -357,7 +368,7 @@ swiss_missions_3 = {
 		effect = {
 			add_power_projection = {
 				type = mission_rewards_power_projection
-				amount = 50
+				amount = 35
 			}
 			add_country_modifier = {
 				name = swi_diplomatic_ties
@@ -772,8 +783,12 @@ tm_swiss_missions_5 = {
 		}
 		effect = {
 			add_country_modifier = {
-				name = swi_production_development
+				name = swi_efficient_development
 				duration = 1825
+			}
+			add_country_modifier = {
+				name = swi_advance_in_production
+				duration = 5475
 			}
 			set_country_flag = swi_mission_unlock_mountain_dev
 		}
