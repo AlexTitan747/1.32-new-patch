@@ -26,7 +26,11 @@ country_decisions = {
 					adm_tech = 20
 				}
 			}
-			culture_group = germanic
+			OR = {
+				culture_group = rhenish
+				culture_group = germanic
+				tag = BOH
+			}
 			NOT = { primary_culture = dutch }
 			is_colonial_nation = no
 			OR = {
@@ -56,22 +60,15 @@ country_decisions = {
 									region = north_german_region
 									region = south_german_region
 								}
-								value = 50
+								value = 75
 							}
 						}
 					}
 				}
-				province_id = 50
-				province_id = 57
-				province_id = 65
 				AND = {
 					ROOT = {
 						NOT = { owns_core_province = 75 }
 						NOT = { owns_core_province = 41 }
-					}
-					OR = {
-						province_id = 75
-						province_id = 41
 					}
 				}
 				AND = {
@@ -79,59 +76,11 @@ country_decisions = {
 						NOT = { owns_core_province = 1868 }
 						NOT = { owns_core_province = 70 }
 					}
-					OR = {
-						province_id = 1868
-						province_id = 70
-					}
 				}
 				AND = {
 					ROOT = {
 						NOT = { owns_core_province = 1876 }
 						NOT = { owns_core_province = 67 }
-					}
-					OR = {
-						province_id = 1876
-						province_id = 67
-					}
-				}
-				AND = {
-					ROOT = {
-						NOT = { owns_core_province = 1762 }
-						NOT = { owns_core_province = 85 }
-					}
-					OR = {
-						province_id = 1762
-						province_id = 85
-					}
-				}
-				AND = {
-					ROOT = {
-						NOT = { owns_core_province = 41 }
-						NOT = { owns_core_province = 75 }
-					}
-					OR = {
-						province_id = 41
-						province_id = 75
-					}
-				}
-				AND = {
-					ROOT = {
-						NOT = { owns_core_province = 44 }
-						NOT = { owns_core_province = 45 }
-					}
-					OR = {
-						province_id = 44
-						province_id = 45
-					}
-				}
-				AND = {
-					ROOT = {
-						NOT = { owns_core_province = 61 }
-						NOT = { owns_core_province = 63 }
-					}
-					OR = {
-						province_id = 61
-						province_id = 63
 					}
 				}
 			}
