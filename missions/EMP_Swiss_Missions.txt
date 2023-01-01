@@ -26,7 +26,7 @@ swiss_missions_1 = {
 			}
 		}
 		effect = {
-			prestige = 25
+			add_prestige = 25
 			add_country_modifier = {
 				name = swi_integration
 				duration = 3650
@@ -49,25 +49,13 @@ swiss_missions_1 = {
 		trigger = {
 			GNV = {
 				NOT = { 
-					is_subject_of = SWI 
+					is_subject_of = ROOT 
 				}
 			}
-			if = {
-				limit  = { tag  = SWI }
-				SWI = {
-					owns_core_province = 4720
-					owns_core_province = 1867
-					owns_core_province = 5056
-				}
-			}
-
-			if = {
-				limit  = { tag  = ALP }
-				ALP = {
-					owns_core_province = 4720
-					owns_core_province = 1867
-					owns_core_province = 5056
-				}
+			ROOT = {
+				owns_core_province = 4720
+				owns_core_province = 1867
+				owns_core_province = 5056
 			}
 		}
 		effect = {
@@ -91,9 +79,10 @@ swiss_missions_1 = {
 			}
 		}
 		trigger = {
-			savoy_area = {
-				type = all
-				owned_by = ROOT
+			ROOT = {
+				owns_core_province = 4719
+				owns_core_province = 204
+				owns_core_province = 205
 			}
 		}
 		effect = {
@@ -186,7 +175,7 @@ swiss_missions_2 = {
 	emp_swi_march_east = {
 		icon = reorganize_the_confederacy
 		required_missions = { emp_swi_swabian_expansion }
-		position = 4
+		position = 3
 		provinces_to_highlight = {
 			OR = {
 				area = baden_area
@@ -197,13 +186,12 @@ swiss_missions_2 = {
 			}
 		}
 		trigger = {
-			baden_area = {
-				type = all
-				owned_by = ROOT
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+			value = 4
+			OR ={
+			area = baden_area
+			area = wuttenburg_area
 			}
-			wuttenburg_area = {
-				type = all
-				owned_by = ROOT
 			}
 		}
 		effect = {
@@ -305,7 +293,7 @@ swiss_missions_3 = {
 	emp_swi_bavarian_consolidation = {
 		icon = integrate_the_three_leagues
 		required_missions = { emp_swi_eastern_expansion }
-		position = 4
+		position = 3
 		provinces_to_highlight = {
 			area = west_swabia_area
 			NOT = {
@@ -331,7 +319,7 @@ swiss_missions_3 = {
 	emp_swi_integrate_south_germany = {
 		icon = integrate_the_three_leagues
 		required_missions = { emp_swi_bavarian_consolidation emp_swi_march_east emp_swi_secure_austrian_pass }
-		position = 6
+		position = 4
 		provinces_to_highlight = {
 			area = west_swabia_area
 			NOT = {
@@ -351,7 +339,104 @@ swiss_missions_3 = {
 			}
 		}
 	}
-
+	emp_swi_diplomatic_connections = {
+		icon = polish_diplomacy
+		required_missions = { emp_swi_integrate_south_germany }
+		position = 2
+		provinces_to_highlight = {
+			OR = {
+				owned_by = MLO
+				owned_by = HES
+				owned_by = WES
+				owned_by = BOH
+				owned_by = KSM
+			}
+		}
+		trigger = {
+		AND = {
+			OR = {
+				if = {
+					limit = { 
+						MLO = exists
+					}
+					is_rival = MLO
+					has_been_insulted_by_root = yes
+				}
+				if = {
+					limit = { 
+						HES = exists
+					}
+					is_rival = HES
+					has_been_insulted_by_root = yes
+				}
+				if = {
+					limit = { 
+						WES = exists
+					}
+					is_rival = WES
+					has_been_insulted_by_root = yes
+				}
+				if = {
+					limit = { 
+						BOH = exists
+					}
+					is_rival = BOH
+					has_been_insulted_by_root = yes
+				}
+				if = {
+					limit = { 
+						KSM = exists
+					}
+					is_rival = KSM
+					has_been_insulted_by_root = yes
+				}
+			}
+			OR = {
+				if = {
+					limit = { 
+						MLO = exists
+					}
+					alliance_with = MLO
+				}
+				if = {
+					limit = { 
+						HES = exists
+					}
+					alliance_with = HES
+				}
+				if = {
+					limit = { 
+						WES = exists
+					}
+					alliance_with = WES
+				}
+				if = {
+					limit = { 
+						BOH = exists
+					}
+					alliance_with = BOH
+				}
+				if = {
+					limit = { 
+						KSM = exists
+					}
+					alliance_with = KSM
+				}
+			}
+			is_subject = no
+		}
+		}
+		effect = {
+			add_power_projection = {
+				type = mission_rewards_power_projection
+				amount = 50
+			}
+			add_country_modifier = {
+				name = swi_diplomatic_ties
+				duration = 1825
+			}
+		}
+	}
 	#emp_swi_swiss_guard = {
 	#	icon = expand_the_swiss_guard
 	#	required_missions = { }
@@ -578,7 +663,7 @@ swiss_missions_4 = {
 	emp_swi_secure_austrian_pass = {
 		icon = integrate_the_three_leagues
 		required_missions = { emp_swi_eastern_expansion }
-		position = 4
+		position = 3
 		provinces_to_highlight = {
 			area = west_swabia_area
 			NOT = {
@@ -708,7 +793,7 @@ swiss_missions_5 = {
 		trigger = {
 			num_of_owned_provinces_with = {
 				has_tax_building_trigger = yes
-				value = 5
+				value = 3
 			}
 			if = {
 				limit = { religion = catholic }
@@ -814,6 +899,172 @@ swiss_missions_5 = {
 				duration = 1825
 			}
 			set_country_flag = swi_mission_unlock_mountain_dev
+		}
+	}
+	emp_swi_develop_artisans = {
+		icon = integrate_the_three_leagues
+		required_missions = { emp_swi_eastern_expansion }
+		position = 6
+		provinces_to_highlight = {
+		}
+		trigger = {
+			4720 = {
+				owned_by = ROOT
+				base_production = 8
+			}
+			if = {
+				limit = {
+					72 = {
+						owned_by = ROOT
+					}
+				}
+				72 = {
+					base_production = 8
+				}
+			}
+			if = {
+				limit = {
+					4712 = {
+						owned_by = ROOT
+					}
+				}
+				4712 = {
+					base_production = 8
+				}
+			}
+			if = {
+				limit = {
+					4765 = {
+						owned_by = ROOT
+					}
+				}
+				4765 = {
+					base_production = 8
+				}
+			}
+			if = {
+				limit = {
+					68 = {
+						owned_by = ROOT
+					}
+				}
+				68 = {
+					base_production = 8
+				}
+			}
+			if = {
+				limit = {
+					5060 = {
+						owned_by = ROOT
+					}
+				}
+				5060 = {
+					base_production = 8
+				}
+			}
+		}
+		effect = {
+			4720 = {
+				if = {
+					limit = {
+						NOT = {
+							has_building = workshop
+						}
+					}
+					add_building = workshop
+				}
+				add_base_manpower = 2
+			}
+			if = {
+				limit = {
+				72 = {
+					owned_by = ROOT
+				}
+			}
+			72 = {
+				if = {
+					limit = {
+						NOT = {
+							has_building = workshop
+						}
+					}
+					add_building = workshop
+				}
+				add_base_manpower = 2
+				}
+			}
+			if = {
+				limit = {
+				4712 = {
+					owned_by = ROOT
+				}
+			}
+			4712 = {
+				if = {
+					limit = {
+						NOT = {
+							has_building = workshop
+						}
+					}
+					add_building = workshop
+				}
+				add_base_manpower = 2
+				}
+			}
+			if = {
+				limit = {
+				4765 = {
+					owned_by = ROOT
+				}
+			}
+			4765 = {
+				if = {
+					limit = {
+						NOT = {
+							has_building = workshop
+						}
+					}
+					add_building = workshop
+				}
+				add_base_manpower = 2
+				}
+			}
+			if = {
+				limit = {
+				68 = {
+					owned_by = ROOT
+				}
+			}
+			68 = {
+				if = {
+					limit = {
+						NOT = {
+							has_building = workshop
+						}
+					}
+					add_building = workshop
+				}
+				add_base_manpower = 2
+				}
+			}
+			if = {
+				limit = {
+				5060 = {
+					owned_by = ROOT
+				}
+			}
+			5060 = {
+				if = {
+					limit = {
+						NOT = {
+							has_building = workshop
+						}
+					}
+					add_building = workshop
+				}
+				add_base_manpower = 2
+				}
+			}
 		}
 	}
 	#emp_swi_evangelize = { # Geneva Conventions
