@@ -326,7 +326,7 @@ swiss_missions_3 = {
 
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 30
+				value = 50
 				region = south_germany_region
 			}
 		}
@@ -506,6 +506,145 @@ tm_swiss_missions_4 = {
 			}
 		}
 	}
+	tm_emp_swi_develop_mining = {
+		icon = integrate_the_three_leagues
+		required_missions = { tm_emp_swi_establish_production_centres }
+		position = 5
+		provinces_to_highlight = {
+		}
+		trigger = {
+			5055 = {
+				owned_by = ROOT
+				base_production = 6
+			}
+			166 = {
+				owned_by = ROOT
+				base_production = 6
+			}
+			5057 = {
+				owned_by = ROOT
+				base_production = 6
+			}
+			if = {
+				limit = {
+					1880 = {
+						owned_by = ROOT
+					}
+				}
+				1880 = {
+					base_production = 6
+				}
+			}
+			if = {
+				limit = {
+					5067 = {
+						owned_by = ROOT
+					}
+				}
+				5067 = {
+					base_production = 6
+				}
+			}
+			if = {
+				limit = {
+					1768 = {
+						owned_by = ROOT
+					}
+				}
+				1768 = {
+					base_production = 6
+				}
+			}
+		}
+		effect = {
+			5055 = {
+				if = {
+					limit = {
+						NOT = {
+							has_building = workshop
+						}
+					}
+					add_building = workshop
+				}
+			}
+			166 = {
+				if = {
+					limit = {
+						NOT = {
+							has_building = workshop
+						}
+					}
+					add_building = workshop
+				}
+			}
+			5057 = {
+				if = {
+					limit = {
+						NOT = {
+							has_building = workshop
+						}
+					}
+					add_building = workshop
+				}
+			}
+			if = {
+				limit = {
+				1880 = {
+					owned_by = ROOT
+				}
+			}
+			1880 = {
+				if = {
+					limit = {
+						NOT = {
+							has_building = workshop
+						}
+					}
+					add_building = workshop
+				}
+				}
+			}
+			if = {
+				limit = {
+				5067 = {
+					owned_by = ROOT
+				}
+			}
+			5067 = {
+				if = {
+					limit = {
+						NOT = {
+							has_building = workshop
+						}
+					}
+					add_building = workshop
+				}
+				}
+			}
+			if = {
+				limit = {
+				1768 = {
+					owned_by = ROOT
+				}
+			}
+			1768 = {
+				if = {
+					limit = {
+						NOT = {
+							has_building = workshop
+						}
+					}
+					add_building = workshop
+				}
+				}
+			}
+			add_country_modifier = {
+				name = swi_weapon_production_increase
+				duration = 3650
+			}
+			
+		}
+	}
 }
 
 tm_swiss_missions_5 = {
@@ -584,7 +723,7 @@ tm_swiss_missions_5 = {
 	tm_emp_swi_establish_production_centres = {
 		icon = integrate_the_three_leagues
 		required_missions = { tm_emp_swi_develop_key_cities }
-		position = 5
+		position = 4
 		provinces_to_highlight = {
 		}
 		trigger = {
@@ -640,7 +779,7 @@ tm_swiss_missions_5 = {
 	tm_emp_swi_develop_artisans = {
 		icon = integrate_the_three_leagues
 		required_missions = { tm_emp_swi_establish_production_centres }
-		position = 6
+		position = 5
 		provinces_to_highlight = {
 		}
 		trigger = {
@@ -675,7 +814,7 @@ tm_swiss_missions_5 = {
 					}
 				}
 				4765 = {
-					base_production = 8
+					base_production = 6
 				}
 			}
 			if = {
@@ -695,7 +834,7 @@ tm_swiss_missions_5 = {
 					}
 				}
 				5060 = {
-					base_production = 8
+					base_production = 6
 				}
 			}
 		}
