@@ -65,7 +65,7 @@ swiss_missions_1 = {
 		}
 
 		effect = {
-			savoy_area = {
+			savoy_dauphine_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -80,7 +80,7 @@ swiss_missions_1 = {
 		position = 4
 
 		provinces_to_highlight = {
-			area = savoy_area
+			area = savoy_dauphine_area
 			NOT = {
 				owned_by = ROOT
 			}
@@ -131,7 +131,7 @@ swiss_missions_2 = {
 		}
 
 		effect = {
-			west_swabia_area = {
+			lower_swabia_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -153,14 +153,14 @@ swiss_missions_2 = {
 		required_missions = { emp_swi_start }
 		position = 2
 		provinces_to_highlight = {
-			area = west_swabia_area
+			area = lower_swabia_area
 			NOT = {
 				owned_by = ROOT
 			}
 		}
 		trigger = {
 			OR = {
-				west_swabia_area = {
+				lower_swabia_area = {
 					type = all
 					owned_by = ROOT
 				}
@@ -214,7 +214,7 @@ swiss_missions_2 = {
 				}
 				add_permanent_claim = ROOT
 			}
-			east_swabia_area = {
+			upper_swabia_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -269,7 +269,7 @@ swiss_missions_3 = {
 		position = 2
 
 		provinces_to_highlight = {
-			area = west_swabia_area
+			area = inntal_area
 			NOT = {
 				owned_by = ROOT
 			}
@@ -312,7 +312,7 @@ swiss_missions_3 = {
 		required_missions = { emp_swi_eastern_expansion }
 		position = 3
 		provinces_to_highlight = {
-			area = west_swabia_area
+			area = east_bavaria_area
 			NOT = {
 				owned_by = ROOT
 			}
@@ -341,7 +341,7 @@ swiss_missions_3 = {
 		required_missions = { emp_swi_bavarian_consolidation emp_swi_march_east emp_swi_secure_austrian_pass }
 		position = 4
 		provinces_to_highlight = {
-			area = west_swabia_area
+			area = lower_swabia_area
 			NOT = {
 				owned_by = ROOT
 			}
@@ -689,7 +689,10 @@ swiss_missions_4 = {
 		required_missions = { emp_swi_eastern_expansion }
 		position = 3
 		provinces_to_highlight = {
-			area = west_swabia_area
+			OR = {
+				area = upper_austria_area
+				area = inner_austria_area
+			}
 			NOT = {
 				owned_by = ROOT
 			}
@@ -813,7 +816,6 @@ swiss_missions_5 = {
 
 	emp_swi_appease_the_pope = {
 		icon = integrate_the_three_leagues
-		required_missions = { emp_swi_eastern_expansion }
 		position = 1
 		
 		provinces_to_highlight = {
@@ -838,7 +840,7 @@ swiss_missions_5 = {
 	}
 	emp_swi_develop_key_cities = {
 		icon = integrate_the_three_leagues
-		required_missions = { emp_swi_eastern_expansion }
+		required_missions = { emp_swi_appease_the_pope }
 		position = 3
 		provinces_to_highlight = {
 		}
@@ -876,7 +878,7 @@ swiss_missions_5 = {
 	}
 	emp_swi_establish_production_centres = {
 		icon = integrate_the_three_leagues
-		required_missions = { emp_swi_eastern_expansion }
+		required_missions = { emp_swi_develop_key_cities }
 		position = 5
 		provinces_to_highlight = {
 		}
@@ -932,7 +934,7 @@ swiss_missions_5 = {
 	}
 	emp_swi_develop_artisans = {
 		icon = integrate_the_three_leagues
-		required_missions = { emp_swi_eastern_expansion }
+		required_missions = { emp_swi_establish_production_centres }
 		position = 6
 		provinces_to_highlight = {
 		}
