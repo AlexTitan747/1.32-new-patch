@@ -117,7 +117,7 @@ swiss_missions_1 = {
 	}
 	tm_emp_swi_further_defensive_measures = {
 		icon = vaud_and_wallis
-		required_missions = { emp_swi_start }
+		required_missions = { tm_emp_swi_diplomatic_connections }
 		position = 2
 
 		provinces_to_highlight = {
@@ -130,18 +130,61 @@ swiss_missions_1 = {
 		}
 
 		trigger = {
-				custom_trigger_tooltip = {
-					tooltip = tag_hum_or_stg
+			manpower = 150
+			forcelimit = 100
+			1869 = {
+				owned_by = ROOT
+				OR = {
+					has_building = fort_15th
+					has_building = fort_16th
+					has_building = fort_17th
+					has_building = fort_18th
 				}
-				hidden_trigger = {
-					OR = {
-						has_country_flag = humiliated_rival
-						has_country_flag = tm_show_strength
-					}
+			}
+			5067 = {
+				owned_by = ROOT
+				OR = {
+					has_building = fort_15th
+					has_building = fort_16th
+					has_building = fort_17th
+					has_building = fort_18th
 				}
-			OR = {
-				is_rival = NEV
-				is_rival = DAU
+			}
+			110 = {
+				owned_by = ROOT
+				OR = {
+					has_building = fort_15th
+					has_building = fort_16th
+					has_building = fort_17th
+					has_building = fort_18th
+				}
+			}
+			1873 = {
+				owned_by = ROOT
+				OR = {
+					has_building = fort_15th
+					has_building = fort_16th
+					has_building = fort_17th
+					has_building = fort_18th
+				}
+			}
+			4710 = {
+				owned_by = ROOT
+				OR = {
+					has_building = fort_15th
+					has_building = fort_16th
+					has_building = fort_17th
+					has_building = fort_18th
+				}
+			}
+			72 = {
+				owned_by = ROOT
+				OR = {
+					has_building = fort_15th
+					has_building = fort_16th
+					has_building = fort_17th
+					has_building = fort_18th
+				}
 			}
 		}
 
@@ -401,7 +444,45 @@ swiss_missions_3 = {
 			}
 		}
 		trigger = {
-			
+			OR = {
+				ROOT = {
+					is_rival = MLO
+					has_been_insulted_by_root = yes
+				}
+				ROOT = {
+					is_rival = HES
+					has_been_insulted_by_root = yes
+				}
+				ROOT = {
+					is_rival = WES
+					has_been_insulted_by_root = yes
+				}
+				ROOT = {
+					is_rival = BOH
+					has_been_insulted_by_root = yes
+				}
+				ROOT = {
+					is_rival = KSM
+					has_been_insulted_by_root = yes
+				}
+			}
+			OR = {
+				ROOT = {
+					alliance_with = MLO
+				}
+				ROOT = {
+					alliance_with = HES
+				}
+				ROOT = {
+					alliance_with = WES
+				}
+				ROOT = {
+					alliance_with = BOH
+				}
+				ROOT = {
+					alliance_with = KSM
+				}
+			}
 		}
 		effect = {
 			add_power_projection = {
