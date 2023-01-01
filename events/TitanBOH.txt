@@ -24,6 +24,7 @@ country_event = {
 		name = "titanboh.focus1"
 		change_religion = protestant
 		set_country_flag = bohemian_prussia
+		custom_tooltip = "boh_unlock_pru"
 	}
 
 	option = {
@@ -90,14 +91,17 @@ country_event = {
 			limit = { 
 				is_revolutionary = no
 				tag = BOH
-		 }
+		}
+		hidden_effect = {
+		 	set_country_flag = boh_unlock_bradenburg_reform
+		}
 			add_government_reform = margraviate_of_Brandenburg
 		}
 		else_if = {
 			limit = { is_revolutionary = no }
 			add_country_modifier = {
-				name = abadoned_religious_rebels
-				duration = x
+				name = respect_our_traditions
+				duration = 3650
 			}
 		}
 	}
@@ -105,5 +109,43 @@ country_event = {
 	option = {
 		name = "titanboh.reform2"
 		add_stability_or_adm_power = yes
+		add_dip_power = 50
+	}
+}
+
+country_event = {
+	id = titanboh.4
+	title = "titanboh.title4"
+	desc = "titanboh.desc4"
+	picture = ADVISOR_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			tag = BOH
+			was_tag = BOH
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "titanboh.plan1"
+		hidden_effect = {
+		set_country_flag = boh_poland_plan
+		}
+		custom_tooltip = "boh_poland_plan"
+	}
+
+	option = {
+		name = "titanboh.plan2"
+		hidden_effect = {
+			set_country_flag = boh_hungary_plan
+		}
+		custom_tooltip = "boh_hungary_plan"
 	}
 }
