@@ -12,7 +12,7 @@ swiss_missions_1 = {
 	}
 	has_country_shield = yes
 
-	emp_swi_humiliate_french = {
+	tm_emp_swi_humiliate_french = {
 		icon = vaud_and_wallis
 		required_missions = { emp_swi_start }
 		position = 2
@@ -36,9 +36,9 @@ swiss_missions_1 = {
 			}
 		}
 	}
-	emp_swi_geneva = {
+	tm_emp_swi_geneva = {
 		icon = sway_geneva
-		required_missions = { emp_swi_humiliate_french }
+		required_missions = { tm_emp_swi_humiliate_french }
 		position = 3
 
 		provinces_to_highlight = {
@@ -74,9 +74,9 @@ swiss_missions_1 = {
 			}
 		}
 	}
-	emp_swi_savoy_defense = {
+	tm_emp_swi_savoy_defense = {
 		icon = sway_geneva
-		required_missions = { emp_swi_geneva }
+		required_missions = { tm_emp_swi_geneva }
 		position = 4
 
 		provinces_to_highlight = {
@@ -148,7 +148,7 @@ swiss_missions_2 = {
 		}
 	}
 
-	emp_swi_swabian_expansion = {
+	tm_emp_swi_swabian_expansion = {
 		icon = integrate_the_three_leagues
 		required_missions = { emp_swi_start }
 		position = 2
@@ -184,9 +184,9 @@ swiss_missions_2 = {
 		}
 	}
 
-	emp_swi_march_east = {
+	tm_emp_swi_march_east = {
 		icon = reorganize_the_confederacy
-		required_missions = { emp_swi_swabian_expansion }
+		required_missions = { tm_emp_swi_swabian_expansion }
 		position = 3
 		provinces_to_highlight = {
 			OR = {
@@ -240,7 +240,7 @@ swiss_missions_3 = {
 	}
 	has_country_shield = yes
 
-	emp_swi_eastern_expansion = {
+	tm_emp_swi_eastern_expansion = {
 		icon = integrate_the_three_leagues
 		required_missions = { emp_swi_start }
 		position = 2
@@ -284,9 +284,9 @@ swiss_missions_3 = {
 		}
 	}
 
-	emp_swi_bavarian_consolidation = {
+	tm_emp_swi_bavarian_consolidation = {
 		icon = integrate_the_three_leagues
-		required_missions = { emp_swi_eastern_expansion }
+		required_missions = { tm_emp_swi_eastern_expansion }
 		position = 3
 		provinces_to_highlight = {
 			area = east_bavaria_area
@@ -313,9 +313,9 @@ swiss_missions_3 = {
 		}
 	}
 
-	emp_swi_integrate_south_germany = {
+	tm_emp_swi_integrate_south_germany = {
 		icon = integrate_the_three_leagues
-		required_missions = { emp_swi_bavarian_consolidation emp_swi_march_east emp_swi_secure_austrian_pass }
+		required_missions = { tm_emp_swi_bavarian_consolidation emp_swi_march_east emp_swi_secure_austrian_pass }
 		position = 4
 		provinces_to_highlight = {
 			area = lower_swabia_area
@@ -338,9 +338,9 @@ swiss_missions_3 = {
 			}
 		}
 	}
-	emp_swi_diplomatic_connections = {
+	tm_emp_swi_diplomatic_connections = {
 		icon = polish_diplomacy
-		required_missions = { emp_swi_integrate_south_germany }
+		required_missions = { tm_emp_swi_integrate_south_germany }
 		position = 2
 		provinces_to_highlight = {
 			OR = {
@@ -352,7 +352,6 @@ swiss_missions_3 = {
 			}
 		}
 		trigger = {
-		AND = {
 			OR = {
 				if = {
 					limit = { 
@@ -424,7 +423,6 @@ swiss_missions_3 = {
 			}
 			is_subject = no
 		}
-		}
 		effect = {
 			add_power_projection = {
 				type = mission_rewards_power_projection
@@ -438,7 +436,7 @@ swiss_missions_3 = {
 	}
 }
 
-swiss_missions_4 = {
+tm_swiss_missions_4 = {
 	slot = 4
 	generic = no
 	ai = yes
@@ -548,7 +546,7 @@ swiss_missions_4 = {
 
 	emp_swi_secure_austrian_pass = {
 		icon = integrate_the_three_leagues
-		required_missions = { emp_swi_eastern_expansion }
+		required_missions = { tm_emp_swi_eastern_expansion }
 		position = 3
 		provinces_to_highlight = {
 			OR = {
@@ -579,7 +577,7 @@ swiss_missions_4 = {
 	}
 }
 
-swiss_missions_5 = {
+tm_swiss_missions_5 = {
 	slot = 5
 	generic = no
 	ai = yes
@@ -593,7 +591,7 @@ swiss_missions_5 = {
 	}
 	has_country_shield = yes
 
-	emp_swi_appease_the_pope = {
+	tm_emp_swi_appease_the_pope = {
 		icon = integrate_the_three_leagues
 		position = 1
 
@@ -614,9 +612,9 @@ swiss_missions_5 = {
 			}
 		}
 	}
-	emp_swi_develop_key_cities = {
+	tm_emp_swi_develop_key_cities = {
 		icon = integrate_the_three_leagues
-		required_missions = { emp_swi_appease_the_pope }
+		required_missions = { tm_emp_swi_appease_the_pope }
 		position = 3
 		provinces_to_highlight = {
 		}
@@ -652,9 +650,9 @@ swiss_missions_5 = {
 				}
 		}
 	}
-	emp_swi_establish_production_centres = {
+	tm_emp_swi_establish_production_centres = {
 		icon = integrate_the_three_leagues
-		required_missions = { emp_swi_develop_key_cities }
+		required_missions = { tm_emp_swi_develop_key_cities }
 		position = 5
 		provinces_to_highlight = {
 		}
@@ -708,9 +706,9 @@ swiss_missions_5 = {
 			set_country_flag = swi_mission_unlock_mountain_dev
 		}
 	}
-	emp_swi_develop_artisans = {
+	tm_emp_swi_develop_artisans = {
 		icon = integrate_the_three_leagues
-		required_missions = { emp_swi_establish_production_centres }
+		required_missions = { tm_emp_swi_establish_production_centres }
 		position = 6
 		provinces_to_highlight = {
 		}
