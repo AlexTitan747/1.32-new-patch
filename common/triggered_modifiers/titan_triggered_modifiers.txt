@@ -35,6 +35,62 @@
 	#trade_efficiency = 0.05	
 #}
 
+planned_invasion_of_hungary = {
+	potential = {
+		ROOT = {
+			ai = no	
+		}
+		OR = {
+			tag = BOH
+			was_tag = BOH
+		}
+	}
+	trigger  = {
+		OR = {
+			tag = BOH
+			was_tag = BOH
+		}
+		has_country_flag = boh_hungary_plan
+		offensive_war_with = HUN
+			any_country = {
+				total_development = ROOT
+				}
+			NOT = { is_year = 1480 }
+		}
+
+	land_morale = 0.05
+	infantry_power = 0.05
+	
+}
+
+planned_invasion_of_poland = {
+	potential = {
+		ROOT = {
+			ai = no	
+		}
+		OR = {
+			tag = BOH
+			was_tag = BOH
+		}
+	}
+	trigger  = {
+		OR = {
+			tag = BOH
+			was_tag = BOH
+		}
+		has_country_flag = boh_poland_plan
+		offensive_war_with = POL
+				any_country = {
+					total_development = ROOT
+					}
+				NOT = { is_year = 1480 }
+			}
+
+	land_morale = 0.05
+	infantry_power = 0.05
+	
+}
+
 moroccan_last_stand = {
 	potential = {
 		ROOT = {
