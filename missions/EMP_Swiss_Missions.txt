@@ -11,20 +11,23 @@ swiss_missions_1 = {
 		has_dlc = "Emperor"
 	}
 	has_country_shield = yes
+
 	emp_swi_humiliate_french = {
 		icon = vaud_and_wallis
 		required_missions = { emp_swi_start }
 		position = 2
+
 		trigger = {
 			OR = {
 				has_country_flag = humiliated_rival
 				has_country_flag = tm_show_strength
-				}
+			}
 			OR = {
 				is_rival = NEV
 				is_rival = DAU
 			}
 		}
+
 		effect = {
 			add_prestige = 25
 			add_country_modifier = {
@@ -37,6 +40,7 @@ swiss_missions_1 = {
 		icon = sway_geneva
 		required_missions = { emp_swi_humiliate_french }
 		position = 3
+
 		provinces_to_highlight = {
 			province_id = 4720
 			province_id = 1867
@@ -46,6 +50,7 @@ swiss_missions_1 = {
 				NOT = { is_core = ROOT }
 			}
 		}
+
 		trigger = {
 			GNV = {
 				NOT = { 
@@ -58,6 +63,7 @@ swiss_missions_1 = {
 				owns_core_province = 5056
 			}
 		}
+
 		effect = {
 			savoy_area = {
 				limit = {
@@ -72,12 +78,14 @@ swiss_missions_1 = {
 		icon = sway_geneva
 		required_missions = { emp_swi_geneva }
 		position = 4
+
 		provinces_to_highlight = {
 			area = savoy_area
 			NOT = {
 				owned_by = ROOT
 			}
 		}
+
 		trigger = {
 			ROOT = {
 				owns_core_province = 4719
@@ -85,6 +93,7 @@ swiss_missions_1 = {
 				owns_core_province = 205
 			}
 		}
+
 		effect = {
 			205 = {
 				add_building = fort_15th
@@ -110,16 +119,17 @@ swiss_missions_2 = {
 		has_dlc = "Emperor"
 	}
 	has_country_shield = yes
+
 	emp_swi_start = {
 		icon = consolidate_switzerland
 		required_missions = { }
 		position = 1
-		provinces_to_highlight = {
-		}
+
 		trigger = {
 			army_size_percentage = 0.9
 			num_of_generals = 1
 		}
+
 		effect = {
 			west_swabia_area = {
 				limit = {
@@ -137,6 +147,7 @@ swiss_missions_2 = {
 			}
 		}
 	}
+
 	emp_swi_swabian_expansion = {
 		icon = integrate_the_three_leagues
 		required_missions = { emp_swi_start }
@@ -172,6 +183,7 @@ swiss_missions_2 = {
 			}
 		}
 	}
+
 	emp_swi_march_east = {
 		icon = reorganize_the_confederacy
 		required_missions = { emp_swi_swabian_expansion }
@@ -250,22 +262,26 @@ swiss_missions_3 = {
 		has_dlc = "Emperor"
 	}
 	has_country_shield = yes
+
 	emp_swi_eastern_expansion = {
 		icon = integrate_the_three_leagues
 		required_missions = { emp_swi_start }
 		position = 2
+
 		provinces_to_highlight = {
 			area = west_swabia_area
 			NOT = {
 				owned_by = ROOT
 			}
 		}
+
 		trigger = {
 			inntal_area = {
 				type = all
 				owned_by = ROOT
 			}
 		}
+
 		effect = {
 			east_bavaria_area = {
 				limit = {
@@ -290,6 +306,7 @@ swiss_missions_3 = {
 			}
 		}
 	}
+
 	emp_swi_bavarian_consolidation = {
 		icon = integrate_the_three_leagues
 		required_missions = { emp_swi_eastern_expansion }
@@ -300,12 +317,14 @@ swiss_missions_3 = {
 				owned_by = ROOT
 			}
 		}
+
 		trigger = {
 			east_bavaria_area = {
 				type = all
 				owned_by = ROOT
 			}
 		}
+
 		effect = {
 			upper_bavaria_area = {
 				limit = {
@@ -316,6 +335,7 @@ swiss_missions_3 = {
 			}
 		}
 	}
+
 	emp_swi_integrate_south_germany = {
 		icon = integrate_the_three_leagues
 		required_missions = { emp_swi_bavarian_consolidation emp_swi_march_east emp_swi_secure_austrian_pass }
@@ -326,12 +346,14 @@ swiss_missions_3 = {
 				owned_by = ROOT
 			}
 		}
+
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				value = 30
 				region = south_germany_region
 			}
 		}
+
 		effect = {
 			add_country_modifier = {
 			name = reorganzied_swiss_confederacy
@@ -566,12 +588,12 @@ swiss_missions_4 = {
 		has_dlc = "Emperor"
 	}
 	has_country_shield = yes
+
 	emp_swi_reformation = {
 		icon = join_the_reformation
 		required_missions = { }
 		position = 1
-		provinces_to_highlight = {
-		}
+
 		trigger = {
 			OR = {
 				religion = reformed
@@ -581,6 +603,7 @@ swiss_missions_4 = {
 				council_position = harsh
 			}
 		}
+
 		effect = {
 			add_dip_power = 50
 			if = {
@@ -625,12 +648,12 @@ swiss_missions_4 = {
 			}
 		}
 	}
+
 	emp_swi_convert = {
 		icon = religious_resolution
 		required_missions = { emp_swi_reformation }
-		provinces_to_highlight = {
-		}
 		position = 2
+
 		trigger = {
 			religious_unity = 1
 		}
@@ -660,6 +683,7 @@ swiss_missions_4 = {
 			}
 		}
 	}
+
 	emp_swi_secure_austrian_pass = {
 		icon = integrate_the_three_leagues
 		required_missions = { emp_swi_eastern_expansion }
@@ -670,6 +694,7 @@ swiss_missions_4 = {
 				owned_by = ROOT
 			}
 		}
+
 		trigger = {
 			upper_austria_area = {
 				type = all
@@ -680,6 +705,7 @@ swiss_missions_4 = {
 				owned_by = ROOT
 			}
 		}
+
 		effect = {
 			add_country_modifier = {
 
@@ -784,12 +810,15 @@ swiss_missions_5 = {
 		has_dlc = "Emperor"
 	}
 	has_country_shield = yes
+
 	emp_swi_appease_the_pope = {
 		icon = integrate_the_three_leagues
 		required_missions = { emp_swi_eastern_expansion }
 		position = 1
+		
 		provinces_to_highlight = {
 		}
+
 		trigger = {
 			num_of_owned_provinces_with = {
 				has_tax_building_trigger = yes
