@@ -118,7 +118,7 @@ swiss_missions_1 = {
 	tm_emp_swi_further_defensive_measures = {
 		icon = vaud_and_wallis
 		required_missions = { tm_emp_swi_diplomatic_connections }
-		position = 2
+		position = 6
 
 		provinces_to_highlight = {
 			OR = {
@@ -323,6 +323,119 @@ swiss_missions_2 = {
 			}
 		}
 	}
+	tm_emp_swi_german_unification = {
+		icon = consolidate_switzerland
+		required_missions = { tm_emp_swi_diplomatic_connections }
+		position = 6
+
+		trigger = {
+			OR = {
+				if = {
+					limit = {
+						exists = HES
+					}
+					ROOT = {
+						is_rival = HES
+					}
+				}
+				if = {
+					limit = {
+						exists = WES
+					}
+					ROOT = {
+						is_rival = WES
+					}
+				}
+				if = {
+					limit = {
+						exists = CFR
+					}
+					ROOT = {
+						is_rival = CFR
+					}
+				}
+				if = {
+					limit = {
+						exists = BOH
+					}
+					ROOT = {
+						is_rival = BOH
+					}
+				}
+				if = {
+					limit = {
+						exists = PRU
+					}
+					ROOT = {
+						is_rival = PRU
+					}
+				}
+				if = {
+					limit = {
+						exists = KSM
+					}
+					ROOT = {
+						is_rival = KSM				
+					}
+				}
+			}
+			army_size_percentage = 0.9
+			manpower_percentage = 0.6
+			num_of_generals = 1
+		}
+
+		effect = {
+			south_germany_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}	
+			lower_rhineland_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			thuringia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			bohemia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			nymburk_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			erzgebirge_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			moravia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
 }
 
 swiss_missions_3 = {
@@ -445,42 +558,160 @@ swiss_missions_3 = {
 		}
 		trigger = {
 			OR = {
-				ROOT = {
-					is_rival = MLO
-					has_been_insulted_by_root = yes
+				if = {
+					limit = {
+						exists = MLO
+					}
+					ROOT = {
+						is_rival = MLO
+						has_been_insulted_by_root = yes
+					}
 				}
-				ROOT = {
-					is_rival = HES
-					has_been_insulted_by_root = yes
+				if = {
+					limit = {
+						exists = SPI
+					}
+					ROOT = {
+						is_rival = SPI
+						has_been_insulted_by_root = yes
+					}
 				}
-				ROOT = {
-					is_rival = WES
-					has_been_insulted_by_root = yes
+				if = {
+					limit = {
+						exists = ITA
+					}
+					ROOT = {
+						is_rival = ITA
+						has_been_insulted_by_root = yes
+					}
 				}
-				ROOT = {
-					is_rival = BOH
-					has_been_insulted_by_root = yes
+				if = {
+					limit = {
+						exists = HES
+					}
+					ROOT = {
+						is_rival = HES
+						has_been_insulted_by_root = yes
+					}
 				}
-				ROOT = {
-					is_rival = KSM
-					has_been_insulted_by_root = yes
+				if = {
+					limit = {
+						exists = WES
+					}
+					ROOT = {
+						is_rival = WES
+						has_been_insulted_by_root = yes
+					}
+				}
+				if = {
+					limit = {
+						exists = CFR
+					}
+					ROOT = {
+						is_rival = CFR
+						has_been_insulted_by_root = yes
+					}
+				}
+				if = {
+					limit = {
+						exists = BOH
+					}
+					ROOT = {
+						is_rival = BOH
+						has_been_insulted_by_root = yes
+					}
+				}
+				if = {
+					limit = {
+						exists = PRU
+					}
+					ROOT = {
+						is_rival = PRU
+						has_been_insulted_by_root = yes
+					}
+				}
+				if = {
+					limit = {
+						exists = KSM
+					}
+					ROOT = {
+						is_rival = KSM
+						has_been_insulted_by_root = yes
+					}
 				}
 			}
 			OR = {
-				ROOT = {
-					alliance_with = MLO
+				if = {
+					limit = {
+						exists = MLO
+					}
+					ROOT = {
+						alliance_with = MLO
+					}
 				}
-				ROOT = {
-					alliance_with = HES
+				if = {
+					limit = {
+						exists = SPI
+					}
+					ROOT = {
+						alliance_with = SPI
+					}
 				}
-				ROOT = {
-					alliance_with = WES
+				if = {
+					limit = {
+						exists = ITA
+					}
+					ROOT = {
+						alliance_with = ITA
+					}
 				}
-				ROOT = {
-					alliance_with = BOH
+				if = {
+					limit = {
+						exists = HES
+					}
+					ROOT = {
+						alliance_with = HES
+					}
 				}
-				ROOT = {
-					alliance_with = KSM
+				if = {
+					limit = {
+						exists = WES
+					}
+					ROOT = {
+						alliance_with = WES
+					}
+				}
+				if = {
+					limit = {
+						exists = CFR
+					}
+					ROOT = {
+						alliance_with = CFR
+					}
+				}
+				if = {
+					limit = {
+						exists = BOH
+					}
+					ROOT = {
+						alliance_with = BOH
+					}
+				}
+				if = {
+					limit = {
+						exists = PRU
+					}
+					ROOT = {
+						alliance_with = PRU
+					}
+				}
+				if = {
+					limit = {
+						exists = KSM
+					}
+					ROOT = {
+						alliance_with = KSM
+					}
 				}
 			}
 		}
@@ -492,6 +723,116 @@ swiss_missions_3 = {
 			add_country_modifier = {
 				name = swi_diplomatic_ties
 				duration = 1825
+			}
+		}
+	}
+	tm_emp_swi_press_italian_claims = {
+		icon = consolidate_switzerland
+		required_missions = { tm_emp_swi_diplomatic_connections }
+		position = 6
+
+		trigger = {
+			OR = {
+				if = {
+					limit = {
+						exists = MLO
+					}
+					ROOT = {
+						is_rival = MLO
+					}
+				}
+				if = {
+					limit = {
+						exists = SPI
+					}
+					ROOT = {
+						is_rival = SPI
+					}
+				}
+				if = {
+					limit = {
+						exists = ITA
+					}
+					ROOT = {
+						is_rival = ITA
+					}
+				}
+			}
+			army_size_percentage = 0.9
+			manpower_percentage = 0.6
+			num_of_generals = 1
+		}
+
+		effect = {	
+			venetia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			lombardy_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			parma_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			verona_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			po_valley_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			piedmont_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			tuscany_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			liguria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			emilia_romagna_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			carinthia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
 		}
 	}
@@ -806,7 +1147,7 @@ tm_swiss_missions_4 = {
 		}
 		trigger = {
 			num_of_owned_provinces_with = {
-				tradecompany = trade_company_alpine
+				trade_company = trade_company_alpine
 				value = 40
 			}
 			165 = {
