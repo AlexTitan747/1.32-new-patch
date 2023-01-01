@@ -1,7 +1,5 @@
 namespace = titanboh
 
-
-
 country_event = {
 	id = titanboh.1
 	title = "titanboh.title1"
@@ -17,11 +15,11 @@ country_event = {
 			was_tag = BOH
 		}
 	}
-	
+
 	mean_time_to_happen = {
 		months = 1
 	}
-	
+
 	option = {
 		name = "titanboh.focus1"
 		change_religion = protestant
@@ -35,5 +33,77 @@ country_event = {
 			duration = 7300
 		}
 		
+	}
+}
+
+country_event = {
+	id = titanboh.2
+	title = "titanboh.title2"
+	desc = "titanboh.desc2"
+	picture = ADVISOR_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			tag = BOH
+			was_tag = BOH
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "titanboh.court1"
+		country_event = {
+			id = flavor_boh.1
+		}
+	}
+}
+
+country_event = {
+	id = titanboh.3
+	title = "titanboh.title3"
+	desc = "titanboh.desc3"
+	picture = ADVISOR_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			tag = BOH
+			was_tag = BOH
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "titanboh.reform1"
+		if = {
+			limit = { 
+				is_revolutionary = no
+				tag = BOH
+		 }
+			add_government_reform = margraviate_of_Brandenburg
+		}
+		else_if = {
+			limit = { is_revolutionary = no }
+			add_country_modifier = {
+				name = abadoned_religious_rebels
+				duration = x
+			}
+		}
+	}
+
+	option = {
+		name = "titanboh.reform2"
+		add_stability_or_adm_power = yes
 	}
 }
