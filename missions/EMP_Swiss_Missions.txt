@@ -115,6 +115,46 @@ swiss_missions_1 = {
 			}
 		}
 	}
+	tm_emp_swi_further_defensive_measures = {
+		icon = vaud_and_wallis
+		required_missions = { emp_swi_start }
+		position = 2
+
+		provinces_to_highlight = {
+			OR = {
+				area = savoy_dauphine_area
+				area = west_burgundy_area
+				area = bourgogne_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+				custom_trigger_tooltip = {
+					tooltip = tag_hum_or_stg
+				}
+				hidden_trigger = {
+					OR = {
+						has_country_flag = humiliated_rival
+						has_country_flag = tm_show_strength
+					}
+				}
+			OR = {
+				is_rival = NEV
+				is_rival = DAU
+			}
+		}
+
+		effect = {
+			hidden_effect = {
+			set_country_flag = swiss_mercs_enabled
+			}
+			add_country_modifier = {
+				name = swi_expanded_papal_guard
+				duration = -1
+			}
+		}
+	}
 }
 
 swiss_missions_2 = {
@@ -209,6 +249,7 @@ swiss_missions_2 = {
 			}
 		}
 		trigger = {
+			OR = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 			value = 4
 			OR ={
@@ -216,6 +257,11 @@ swiss_missions_2 = {
 			area = wurttemburg_area
 			}
 			}
+			AND = {
+				alliance_with = HES
+				is_year = 1490
+			}
+		}
 		}
 		effect = {
 			augsburg_area = {
@@ -277,14 +323,7 @@ swiss_missions_3 = {
 				}
 				add_permanent_claim = ROOT
 			}
-			upper_austria_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			inner_austria_area = {
+			tirol_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -336,7 +375,7 @@ swiss_missions_3 = {
 
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 50
+				value = 45
 				region = south_germany_region
 			}
 		}
@@ -367,7 +406,7 @@ swiss_missions_3 = {
 		effect = {
 			add_power_projection = {
 				type = mission_rewards_power_projection
-				amount = 35
+				amount = 25
 			}
 			add_country_modifier = {
 				name = swi_diplomatic_ties
@@ -511,8 +550,22 @@ tm_swiss_missions_4 = {
 		}
 
 		effect = {
-			4759 = {
+			5067 = {
 				add_building = fort_15th
+			}
+			upper_austria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			inner_austria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
 		}
 	}
@@ -662,6 +715,49 @@ tm_swiss_missions_4 = {
 				duration = 3650
 			}
 			
+		}
+	}
+	tm_emp_swi_control_trade = {
+		icon = integrate_the_three_leagues
+		required_missions = { tm_emp_swi_expand_artisans tm_emp_swi_mining_operations }
+		position = 6
+		provinces_to_highlight = {
+		}
+		trigger = {
+			num_of_owned_provinces_with = {
+				tradecompany = trade_company_alpine
+				value = 40
+			}
+			165 = {
+				province_has_center_of_trade_of_level = 3
+			}
+			1869 = {
+				province_has_center_of_trade_of_level = 3
+			}
+			4720 = {
+				province_has_center_of_trade_of_level = 2
+			}
+			5058 = {
+				province_has_center_of_trade_of_level = 2
+			}
+			4712 = {
+				province_has_center_of_trade_of_level = 2
+			}
+			73 = {
+				province_has_center_of_trade_of_level = 2
+			}
+			4759 = {
+				province_has_center_of_trade_of_level = 2
+			}
+			76 = {
+				province_has_center_of_trade_of_level = 2
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = swi_controlling_trade
+				duration = 3650
+			}
 		}
 	}
 }
@@ -847,7 +943,7 @@ tm_swiss_missions_5 = {
 		trigger = {
 			4720 = {
 				owned_by = ROOT
-				base_production = 8
+				base_production = 10
 			}
 			if = {
 				limit = {
@@ -1001,6 +1097,53 @@ tm_swiss_missions_5 = {
 				}
 				add_base_manpower = 2
 				}
+			}
+		}
+	}
+	tm_emp_swi_construct_manufactories = {
+		icon = integrate_the_three_leagues
+		required_missions = { tm_emp_swi_expand_artisans tm_emp_swi_mining_operations }
+		position = 6
+		provinces_to_highlight = {
+		}
+		trigger = {
+			4720 = {
+				owned_by = ROOT
+				has_building = textile
+			}
+			165 = {
+				owned_by = ROOT
+				has_building = weapons
+			}
+			5055 = {
+				owned_by = ROOT
+				has_building = weapons
+			}
+			166 = {
+				owned_by = ROOT
+				has_building = weapons
+			}
+			5057 = {
+				owned_by = ROOT
+				has_building = weapons
+			}
+			1880 = {
+				owned_by = ROOT
+				has_building = weapons
+			}
+			72 = {
+				owned_by = ROOT
+				has_building = mills
+			}
+			4712 = {
+				owned_by = ROOT
+				has_building = textile
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = swi_centre_of_industry
+				duration = -1
 			}
 		}
 	}
