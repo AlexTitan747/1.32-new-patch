@@ -328,6 +328,29 @@ swiss_missions_3 = {
 			}
 		}
 	}
+	emp_swi_integrate_south_germany = {
+		icon = integrate_the_three_leagues
+		required_missions = { emp_swi_bavarian_consolidation emp_swi_march_east emp_swi_secure_austrian_pass }
+		position = 6
+		provinces_to_highlight = {
+			area = west_swabia_area
+			NOT = {
+				owned_by = ROOT
+			}
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 30
+				region = south_germany_region
+			}
+		}
+		effect = {
+			add_country_modifier = {
+			name = reorganzied_swiss_confederacy
+			duration = 3650
+			}
+		}
+	}
 
 	#emp_swi_swiss_guard = {
 	#	icon = expand_the_swiss_guard
@@ -676,7 +699,123 @@ swiss_missions_5 = {
 		has_dlc = "Emperor"
 	}
 	has_country_shield = yes
-	
+	emp_swi_appease_the_pope = {
+		icon = integrate_the_three_leagues
+		required_missions = { emp_swi_eastern_expansion }
+		position = 1
+		provinces_to_highlight = {
+		}
+		trigger = {
+			num_of_owned_provinces_with = {
+				has_tax_building_trigger = yes
+				value = 5
+			}
+			if = {
+				limit = { religion = catholic }
+				papal_influence = 50
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = swi_levy_church_taxes
+				duration = 1825
+			}
+		}
+	}
+	emp_swi_develop_key_cities = {
+		icon = integrate_the_three_leagues
+		required_missions = { emp_swi_eastern_expansion }
+		position = 3
+		provinces_to_highlight = {
+		}
+		trigger = {
+			73 = {
+				owned_by = ROOT
+				base_production = 8
+			}
+			165 = {
+				owned_by = ROOT
+				development = 15
+			}
+			4720 = {
+				owned_by = ROOT
+				development = 15
+			}
+		}
+		effect = {
+			73 = {
+				add_base_tax = 1
+				add_base_production = 2
+				add_base_manpower = 2
+				}
+			165 = {
+				add_base_tax = 1
+				add_base_production = 2
+				add_base_manpower = 2
+				}
+			4720 = {
+				add_base_tax = 1
+				add_base_production = 2
+				add_base_manpower = 2
+				}
+		}
+	}
+	emp_swi_establish_production_centres = {
+		icon = integrate_the_three_leagues
+		required_missions = { emp_swi_eastern_expansion }
+		position = 5
+		provinces_to_highlight = {
+		}
+		trigger = {
+			OR = {
+				165 = {
+					owned_by = ROOT
+					has_building = workshop
+				}
+				5055 = {
+					owned_by = ROOT
+					has_building = workshop
+				}
+			}
+			OR = {
+				166 = {
+					owned_by = ROOT
+					has_building = workshop
+				}
+				5057 = {
+					owned_by = ROOT
+					has_building = workshop
+				}
+			}
+			OR = {
+				4720 = {
+					owned_by = ROOT
+					has_building = workshop
+				}
+				4712 = {
+					owned_by = ROOT
+					has_building = workshop
+				}
+			}
+			OR = {
+				1880 = {
+					owned_by = ROOT
+					has_building = workshop
+				}
+				72 = {
+					owned_by = ROOT
+					has_building = workshop
+				}
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = swi_production_development
+				duration = 1825
+			}
+			set_country_flag = swi_mission_unlock_mountain_dev
+		}
+	}
 	#emp_swi_evangelize = { # Geneva Conventions
 		#icon = evengelize_the_faith
 		#required_missions = { emp_swi_convert }

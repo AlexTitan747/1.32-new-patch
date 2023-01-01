@@ -43,6 +43,55 @@ estate_church_new_prophets = {
 
 estate_burghers_encourage_production = {
 	icon = privilege_give_money
+	loyalty = 0.1
+	influence = 0.1
+	potential = {
+		tag = SWI
+		has_country_flag = swi_mission_unlock_mountain_dev
+	}
+	is_valid = {
+		NOT = { has_estate = estate_vaisyas }
+	}
+	on_granted_province = {
+		if = {
+			limit = { has_terrain = mountain }
+			add_province_modifier = {
+				name = estate_burghers_mountain_development_mod
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_province_modifier = estate_burghers_mountain_development_mod
+			}
+			remove_province_modifier = estate_burghers_mountain_development_mod
+		}
+	}
+	on_revoked_province = {
+		if = {
+			limit = {
+				has_province_modifier = estate_burghers_mountain_development_mod
+			}
+			remove_province_modifier = estate_burghers_mountain_development_mod
+		}
+	}
+	on_invalid_province = {
+		if = {
+			limit = {
+				has_province_modifier = estate_burghers_mountain_development_mod
+			}
+			remove_province_modifier = estate_burghers_mountain_development_mod
+		}
+	}
+	penalties = {
+	}
+	ai_will_do = {
+		factor = 5
+	}
+}
+
+estate_burghers_encourage_production = {
+	icon = privilege_give_money
 	#
 	influence = 0.1
 	is_valid = {
