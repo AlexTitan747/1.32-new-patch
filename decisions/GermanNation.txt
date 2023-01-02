@@ -48,39 +48,33 @@ country_decisions = {
 		provinces_to_highlight = {
 			OR = {
 				AND = {
-					OR = {
-						region = north_german_region
-						region = south_german_region
-					}
-					root = {
-						NOT = {
-							num_of_owned_provinces_with = {
-								is_core = ROOT
-								OR = {
-									region = north_german_region
-									region = south_german_region
-								}
-								value = 75
-							}
-						}
-					}
-				}
-				AND = {
-					ROOT = {
-						NOT = { owns_core_province = 75 }
-						NOT = { owns_core_province = 41 }
-					}
-				}
-				AND = {
-					ROOT = {
-						NOT = { owns_core_province = 1868 }
-						NOT = { owns_core_province = 70 }
-					}
-				}
-				AND = {
 					ROOT = {
 						NOT = { owns_core_province = 1876 }
-						NOT = { owns_core_province = 67 }
+						NOT = { owns_core_province = 266 }
+					}
+					OR = {
+						province_id = 1876
+						province_id = 266
+					}
+				}
+				AND = {
+					ROOT = {
+						NOT = { owns_core_province = 266 }
+						NOT = { owns_core_province = 1869 }
+					}
+					OR = {
+						province_id = 266
+						province_id = 1869
+					}
+				}
+				AND = {
+					ROOT = {
+						NOT = { owns_core_province = 1869 }
+						NOT = { owns_core_province =1876 }
+					}
+					OR = {
+						province_id = 1869
+						province_id = 1876
 					}
 				}
 			}
@@ -96,16 +90,16 @@ country_decisions = {
 			is_at_war = no
 			OR= {
 			AND = {
-				owns_core_province = 266 # prague
 				owns_core_province = 1876 # frankfurt
+				owns_core_province = 266 # prague
 			}
 			AND = {
 				owns_core_province = 266 # prague
 				owns_core_province = 1869 # zurich
 			}
 			AND = {
-				owns_core_province = 1876 # frankfurt
 				owns_core_province = 1869 # zurich
+				owns_core_province = 1876 # frankfurt
 			}
 			}
 			num_of_owned_provinces_with = {
