@@ -2,7 +2,7 @@ namespace = extras
 
 #applies exodus penalties
 country_event = {
-	id = 	extras.1
+	id = extras.1
 	title = "extras.1"
 	desc = "extras.desc1"
 	picture = BUDDHA_eventPicture
@@ -71,5 +71,146 @@ country_event = {
 		name = "extras.tech4"
 		change_technology_group = chinese
 		change_unit_type = chinese
+	}
+}
+
+country_event = {
+	id = extras.7
+	title = "titanextras.title7"
+	desc = "titanextras.desc7"
+	picture = RELIGION_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			AND = {
+				tag = HES
+				was_tag = HES
+			}
+		}
+		KSM = {
+			has_country_flag = hussite_missionaries_sent
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "titanextras.religion1"
+		change_religion = hussite
+		add_country_modifier = {
+			name = converted_hussite
+			duration = 7300
+		}
+		1876 = {
+			add_reform_center = hussite
+		}
+	}
+
+	option = {
+		name = "titanextras.religion2"
+		add_prestige = 20
+		add_country_modifier = {
+			name = abadoned_religious_rebels
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = extras.8
+	title = "titanextras.title8"
+	desc = "titanextras.desc8"
+	picture = RELIGION_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			AND = {
+				tag = SWI
+				was_tag = SWI
+			}	
+		}
+		KSM = {
+			has_country_flag = hussite_missionaries_sent
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "titanextras.religion1"
+		change_religion = hussite
+		add_country_modifier = {
+			name = converted_hussite
+			duration = 7300
+		}
+		169 = {
+			add_reform_center = hussite
+		}
+	}
+
+	option = {
+		name = "titanextras.religion2"
+		add_prestige = 20
+		add_country_modifier = {
+			name = abadoned_religious_rebels
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = extras.9
+	title = "titanextras.title9"
+	desc = "titanextras.desc9"
+	picture = RELIGION_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			AND = {
+				tag = DAN
+				was_tag = DAN
+			}	
+		}
+		KSM = {
+			has_country_flag = hussite_missionaries_sent
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "titanextras.religion1"
+		change_religion = hussite
+		add_country_modifier = {
+			name = converted_hussite
+			duration = 7300
+		}
+		12 = {
+			add_reform_center = hussite
+		}
+	}
+
+	option = {
+		name = "titanextras.religion2"
+		add_prestige = 20
+		add_country_modifier = {
+			name = abadoned_religious_rebels
+			duration = 3650
+		}
 	}
 }
