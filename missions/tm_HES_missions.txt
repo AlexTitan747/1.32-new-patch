@@ -1320,6 +1320,29 @@ tm_HES_alpine_4 = {
 	} 
 	
 	has_country_shield = yes
+
+	tm_HES_new_strategic_minds = {
+		icon = professional_army
+		position = 8
+		required_missions = { tm_HES_alpine_mountains }
+
+		trigger = {
+			land_maintenance = 1
+			army_size_percentage = 1
+			army_professionalism = 0.25
+			army_tradition = 50
+		}
+
+		effect = {
+			define_general = {
+				shock = 5
+				fire = 4
+				manuever = 4
+				siege = 3
+				trait = inspiring_leader
+			}
+		}
+	}
 	
 	tm_HES_secure_eastern_alps = {
 		icon = mission_cannons_firing
