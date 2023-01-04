@@ -30,24 +30,20 @@ swiss_missions_1 = {
 				if = {
 					limit = {
 						OR = {
-							AND = {
-								exists = NEV
-								NOT = {
-									NEV = {
-										is_subject_of = ROOT
-									}
+							exists = NEV
+							NOT = {
+								NEV = {
+								is_subject_of = ROOT
 								}
 							}
-							AND = {
-								exists = DAU
-								NOT = {
-									DAU = {
-										is_subject_of = ROOT
-									}
+							exists = DAU
+							NOT = {
+								DAU = {
+								is_subject_of = ROOT
 								}
+							}
 							}
 						}
-					}
 					hidden_trigger = {
 						OR = {
 							has_country_flag = humiliated_rival
