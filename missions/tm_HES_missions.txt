@@ -477,6 +477,7 @@ westphalia_missions_3 = {
 				}
 				add_permanent_claim = ROOT
 			}
+			manpower = 12
 		}
 	}
 
@@ -587,7 +588,7 @@ westphalia_missions_3 = {
 	}
 
 	tm_HES_choose_path = {
-		icon = mission_monarch_in_throne_room
+		icon = mission_unknown_mission
 		position = 6
 
 		required_missions = {
@@ -758,7 +759,10 @@ westphalia_missions_5 = {
 		required_missions = {}
 
 		provinces_to_highlight = {
+			province_id = 66 
 			province_id = 67 
+			province_id = 4716 
+			province_id = 4717
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
@@ -768,6 +772,12 @@ westphalia_missions_5 = {
 					treasury = 300
 					num_of_loans = 0
 					NOT = { 67 = { owned_by = ROOT } }
+
+					AND = { # Rest of the state
+						66 =  { owned_by = ROOT }
+						4716 =  { owned_by = ROOT }  
+						4717 =  { owned_by = ROOT }
+					}
 				}
 
 				ROOT = {
@@ -894,24 +904,6 @@ westphalia_missions_5 = {
 # Alpine Route
 ########
 
-tm_HES_alpine_1 = {
-	slot = 1
-	generic = no
-	ai = yes
-	potential = {
-		OR = {
-			tag = HES
-			tag = WES
-			was_tag = WES
-		}
-		has_country_flag = alpine_route
-	} 
-
-	has_country_shield = yes
-
-
-}
-
 tm_HES_alpine_2 = {
 	slot = 2
 	generic = no
@@ -922,13 +914,137 @@ tm_HES_alpine_2 = {
 			tag = WES
 			was_tag = WES
 		}
-		has_country_flag = alpine_route
+		has_country_flag = tm_alpine_route
 	} 
 	
 	has_country_shield = yes
 
-}
+	tm_HES_swiss_morale = {
+		icon = reorganize_the_confederacy
+		position = 9
 
+		required_missions = { tm_HES_conquer_swiss }
+
+		trigger = {
+			land_maintenance = 1
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_HES_morale_mission
+				duration = 3650
+			}
+		}
+	}
+
+	tm_HES_securing_alpine_border = {
+		icon = fortify_the_passes
+		position = 10 
+
+		required_missions = { tm_HES_into_swiss_heartland }
+
+		provinces_to_highlight = {
+			OR = {
+				area = lombardy_area
+				area = verona_area
+				area = romandie_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			lombardy_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			verona_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			romandie_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = { 
+			5057 = {
+				add_building = fort_15th
+			}
+			205 = {
+				add_building = fort_15th
+			}
+			107 = {
+				add_building = fort_15th
+			}
+		}
+	}
+
+	tm_HES_developing_our_new_acquisitions = {
+		icon = the_alpine_wall
+		position = 10 
+
+		required_missions = { tm_HES_securing_alpine_border }
+
+		provinces_to_highlight = {
+			OR = {
+				area = alpine_area
+				area = verona_area
+				area = romandie_area
+			}
+			country_or_non_sovereign_subject_holds = ROOT
+		}
+
+		trigger = {
+			205 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_production = 10
+				has_building = workshop
+			}
+			4720 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_production = 10
+				has_building = workshop
+			}
+			4739 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_production = 10
+				has_building = workshop
+			}
+			4740 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_production = 10
+				has_building = workshop
+			}
+			107 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_production = 10
+				has_building = workshop
+			}
+		}
+
+		effect = { 
+			4720 = {
+					custom_tooltip = will_upgrade_center_of_trade_to_level_2_tt
+					hidden_effect = {
+						if = {
+							limit = { NOT = { province_has_center_of_trade_of_level = 2 } }
+							add_center_of_trade_level = 1
+						}
+					}
+					if = {
+						limit = {
+							province_has_center_of_trade_of_level = 2
+						}
+						add_dip_power = 100
+					}
+			}
+			4740 = {
+				center_of_trade = 1
+			}
+		}
+	}
+}
 tm_HES_alpine_3 = {
 	slot = 3
 	generic = no
@@ -939,11 +1055,255 @@ tm_HES_alpine_3 = {
 			tag = WES
 			was_tag = WES
 		}
-		has_country_flag = alpine_route
+		has_country_flag = tm_alpine_route
 	} 
 	
 	has_country_shield = yes
-	
+
+	tm_HES_alpine_mountains = {
+		icon = mission_assemble_an_army
+		position = 7 
+
+		required_missions = { tm_HES_choose_path }
+
+		trigger = {
+			manpower_percentage = 0.8
+		}
+
+		effect = {
+			lower_swabia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			bern_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	tm_HES_conquer_swiss = {
+		icon = consolidate_switzerland
+		position = 8 
+
+		required_missions = { tm_HES_alpine_mountains }
+
+		provinces_to_highlight = {
+			OR = {
+				area = lower_swabia_area
+				area = bern_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			lower_swabia_area = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			} 
+			bern_area = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			inntal_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			switzerland_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			tirol_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	tm_HES_into_swiss_heartland = {
+		icon = austria_prospers
+		position = 9
+
+		required_missions = { tm_HES_conquer_swiss }
+
+		provinces_to_highlight = {
+			OR = {
+				area = inntal_area
+				area = switzerland_area
+				area = tirol_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			inntal_area = { 
+				country_or_non_sovereign_subject_holds = ROOT
+			} 
+			switzerland_area = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			tirol_area = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			lombardy_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			verona_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			romandie_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			east_bavaria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			upper_austria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			inner_austria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	tm_HES_cattle_farming = {
+		icon = prosper_in_piedmont
+		position = 10
+
+		required_missions = { tm_HES_into_swiss_heartland }
+
+		provinces_to_highlight = {
+			OR = {
+				area = switzerland_area
+				province_id = 4721
+				province_id = 1870
+			}
+			country_or_non_sovereign_subject_holds = ROOT
+		}
+
+		trigger = {
+			5059 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_manpower = 10
+				has_building = barracks
+				has_building = farm_estate
+			}
+			4722 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_manpower = 10
+				has_building = barracks
+				has_building = farm_estate
+			} 
+			1873 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_manpower = 10
+				has_building = barracks
+				has_building = farm_estate
+			}
+			5058 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_manpower = 10
+				has_building = barracks
+				has_building = farm_estate
+			} 
+			4721 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_manpower = 10
+				has_building = barracks
+				has_building = farm_estate
+			}
+			1870 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_manpower = 10
+				has_building = barracks
+				has_building = farm_estate
+			} 
+		}
+
+		effect = {
+			ROOT = {
+				add_yearly_manpower = 0.25
+				add_army_professionalism = 0.075
+			}
+		}
+	}
+
+	tm_HES_conquered_the_alps = {
+		icon = swiss_mercenaries
+		position = 12
+		required_missions = {
+			tm_HES_cattle_farming
+			tm_HES_new_iron_mines
+			tm_HES_developing_our_new_acquisitions
+		}
+
+		trigger = {
+
+		}
+
+		effect = {
+			add_prestige = 50
+			add_country_modifier = {
+				name = tm_HES_conquered_the_alps
+				duration = -1
+			}
+			add_stat_or_monarch_power = {
+				stat = mil
+				amount = 2
+			}
+			add_stat_or_monarch_power = {
+				stat = dip
+				amount = 2
+			}
+			add_stat_or_monarch_power = {
+				stat = adm
+				amount = 2
+			}
+		}
+	}
 }
 
 tm_HES_alpine_4 = {
@@ -956,11 +1316,151 @@ tm_HES_alpine_4 = {
 			tag = WES
 			was_tag = WES
 		}
-		has_country_flag = alpine_route
+		has_country_flag = tm_alpine_route
 	} 
 	
 	has_country_shield = yes
+
+	tm_HES_new_strategic_minds = {
+		icon = professional_army
+		position = 8
+		required_missions = { tm_HES_alpine_mountains }
+
+		trigger = {
+			land_maintenance = 1
+			army_size_percentage = 1
+			army_professionalism = 0.25
+			army_tradition = 50
+		}
+
+		effect = {
+			define_general = {
+				shock = 5
+				fire = 4
+				manuever = 4
+				siege = 3
+				trait = inspiring_leader
+			}
+		}
+	}
 	
+	tm_HES_secure_eastern_alps = {
+		icon = mission_cannons_firing
+		position = 10
+		required_missions = { tm_HES_into_swiss_heartland }
+
+		province_to_highlight = {
+			OR = {
+				area = inner_austria_area
+				area = upper_austria_area
+				area = east_bavaria_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			inner_austria_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			upper_austria_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			east_bavaria_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			5078 = {
+				add_building = fort_15th
+			}
+		}
+	}
+
+	tm_HES_new_iron_mines = {
+		icon = mission_industrial_furnace
+		position = 11 
+		required_missions = { tm_HES_secure_eastern_alps }
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 4759
+				province_id = 5071
+				province_id = 128
+				province_id = 5072
+				province_id = 1768
+				province_id = 5067
+				province_id = 110
+			}
+		}
+
+		trigger = {
+			4759 = {
+				country_or_non_sovereign_subject_holds = ROOT 
+				base_production = 12
+				has_building = workshop
+			}
+			5071 = {
+				country_or_non_sovereign_subject_holds = ROOT 
+				base_production = 12
+				has_building = workshop
+			}
+			128 = {
+				country_or_non_sovereign_subject_holds = ROOT 
+				base_production = 12
+				has_building = workshop
+			}
+			5072 = {
+				country_or_non_sovereign_subject_holds = ROOT 
+				base_production = 12
+				has_building = workshop
+			}
+			1768 = {
+				country_or_non_sovereign_subject_holds = ROOT 
+				base_production = 12
+				has_building = workshop
+			}
+			5067 = {
+				country_or_non_sovereign_subject_holds = ROOT 
+				base_production = 12
+				has_building = workshop
+			}
+			110 = {
+				country_or_non_sovereign_subject_holds = ROOT 
+				base_production = 12
+				has_building = workshop
+			}
+		}
+
+		effect = {
+			add_dip_power = 150
+			if = {
+				limit = {
+					NOT = { is_year = 1550 }
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 4
+					trigger = {
+						trade_goods = iron
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_year = 1550 
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 2
+					trigger = {
+						trade_goods = iron
+					}
+				}
+			}
+		}
+	}
 }
 
 tm_HES_alpine_5 = {
@@ -973,11 +1473,41 @@ tm_HES_alpine_5 = {
 			tag = WES
 			was_tag = WES
 		}
-		has_country_flag = alpine_route
+		has_country_flag = tm_alpine_route
 	} 
 	
 	has_country_shield = yes
 	
+	tm_HES_develop_inntal = {
+		icon = mission_war_chest 
+		position = 10 
+
+		required_missions = { tm_HES_into_swiss_heartland }
+
+		provinces_to_highllight = {
+			province_id = 73
+		}
+
+		trigger = {
+			73 = {
+				owned_by = ROOT
+				base_production = 14
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_HES_reduced_gold_inflation
+				duration = -1
+			}
+			73 = {
+				add_province_modifier = {
+					name = tm_HES_reduced_gold_depletion
+					duration = -1
+				}
+			}
+		}
+	}
 }
 
 
@@ -997,7 +1527,7 @@ tm_HES_prague_1 = {
 			tag = WES
 			was_tag = WES
 		}
-		has_country_flag = prague_route
+		has_country_flag = tm_prague_route
 	} 
 	
 	has_country_shield = yes
@@ -1014,7 +1544,7 @@ tm_HES_prague_2 = {
 			tag = WES
 			was_tag = WES
 		}
-		has_country_flag = prague_route
+		has_country_flag = tm_prague_route
 	} 
 	
 	has_country_shield = yes
@@ -1031,11 +1561,38 @@ tm_HES_prague_3 = {
 			tag = WES
 			was_tag = WES
 		}
-		has_country_flag = prague_route
+		has_country_flag = tm_prague_route
 	} 
 	
 	has_country_shield = yes
 
+	tm_HES_prague_mountains = {
+		icon = mission_assemble_an_army
+		position = 7  
+
+		required_missions = { tm_HES_choose_path }
+
+		trigger = {
+			manpower_percentage = 0.8
+		}
+
+		effect = {
+			northern_saxony_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			mittelmark_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
 }
 
 tm_HES_prague_4 = {
@@ -1048,24 +1605,7 @@ tm_HES_prague_4 = {
 			tag = WES
 			was_tag = WES
 		}
-		has_country_flag = prague_route
-	} 
-	
-	has_country_shield = yes
-
-}
-
-tm_HES_prague_5 = {
-	slot = 5
-	generic = no
-	ai = yes
-	potential = {
-		OR = {
-			tag = HES
-			tag = WES
-			was_tag = WES
-		}
-		has_country_flag = prague_route
+		has_country_flag = tm_prague_route
 	} 
 	
 	has_country_shield = yes
