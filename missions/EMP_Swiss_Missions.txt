@@ -27,16 +27,46 @@ swiss_missions_1 = {
 				custom_trigger_tooltip = {
 					tooltip = tag_hum_or_stg
 				}
-				hidden_trigger = {
+				if = {
+					limit = {
+						OR = {
+							AND = {
+								exists = NEV
+								NOT = {
+									NEV = {
+										is_subject_of = any_country
+									}
+								}
+							}
+							AND = {
+								exists = DAU
+								NOT = {
+									DAU = {
+										is_subject_of = any_country
+									}
+								}
+							}
+						}
+					}
+					hidden_trigger = {
+						OR = {
+							has_country_flag = humiliated_rival
+							has_country_flag = tm_show_strength
+						}
+					}
 					OR = {
-						has_country_flag = humiliated_rival
-						has_country_flag = tm_show_strength
+						is_rival = NEV
+						is_rival = DAU
+					}
+					else = {
+						hidden_trigger = {
+							OR = {
+								has_country_flag = humiliated_rival
+								has_country_flag = tm_show_strength
+							}
+						}
 					}
 				}
-			OR = {
-				is_rival = NEV
-				is_rival = DAU
-			}
 		}
 
 		effect = {
@@ -1139,7 +1169,7 @@ tm_swiss_missions_4 = {
 				value = 40
 			}
 			165 = {
-				province_has_center_of_trade_of_level = 3
+				province_has_center_of_trade_of_level = 2
 			}
 			1869 = {
 				province_has_center_of_trade_of_level = 3
