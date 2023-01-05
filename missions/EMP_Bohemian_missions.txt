@@ -1405,19 +1405,20 @@ tm_emp_bohemia_5 = {
 			owned_by = HAB
 		}
 		trigger = {
-			if = {
-				limit = {
-					is_subject = no
+			OR = {
+				if = {
+					limit = {
+						is_subject = no
+					}
+					is_rival = HAB
+					HAB = {
+						has_been_insulted_by_root = yes
+					}
 				}
-				is_rival = HAB
-				HAB = {
-					has_been_insulted_by_root = yes
+				if = {
+					NOT = { exists = HAB }
 				}
 			}
-			else = {
-				NOT = { exists = HAB }
-			}
-
 		}
 		effect = {
 			austria_proper_area = {
