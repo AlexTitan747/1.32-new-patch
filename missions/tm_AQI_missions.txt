@@ -61,10 +61,9 @@ tm_aquitaine_slot_1 = {
 		}
 		trigger = {
 			owns_core_province = 173
-			
 		}
 		effect = {
-			brittany_area = {
+			massif_central_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -83,13 +82,13 @@ tm_aquitaine_slot_1 = {
 		icon = brest_dockyards
 		required_missions = { tm_AQI_retake_labourd }
 		provinces_to_highlight = {
-			area = brittany_area
+			area = massif_central_area
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		trigger = {
-			brittany_area = {
+			massif_central_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
@@ -163,7 +162,7 @@ tm_aquitaine_slot_1 = {
 				}
 				add_permanent_claim = ROOT
 			}
-			massif_central_area = {
+			brittany_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -184,12 +183,6 @@ tm_aquitaine_slot_1 = {
 				}
 			}
 			AND = {
-				area = massif_central_area
-				NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-				}
-			}
-			AND = {
 				area = loire_area
 				NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
@@ -199,10 +192,6 @@ tm_aquitaine_slot_1 = {
 	}
 		trigger = {
 			orleans_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			massif_central_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
