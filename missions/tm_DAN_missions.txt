@@ -1059,9 +1059,17 @@ dan_norway_holstein_mission_slot = {
 			}
 		}
 		trigger = {
-			reverse_has_opinion = {
-				who = SHL
-				value = 150
+			if = {
+				limit = {
+					exists = SHL
+				}
+				reverse_has_opinion = {
+					who = SHL
+					value = 150
+				}
+			}
+			else = {
+				NOT = { exists = SHL }
 			}
 		}
 		effect = {
