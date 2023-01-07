@@ -22,9 +22,9 @@ emperor_reichsregiment = {
 		has_dlc = "Emperor"
 	}
 	province = {
-		local_unrest = -2
+		tolerance_own = 2
 	}
-	elector = {
+	all = {
 		diplomatic_reputation = 1
 		diplomats = 1
 	}
@@ -76,7 +76,7 @@ emperor_perpetual_diet = {
 		local_governing_cost = -0.2
 	}
 	emperor = {
-		governing_capacity = 200
+		governing_capacity = 150
 	}
 }
 
@@ -121,7 +121,7 @@ emperor_reichstag_collegia = {
 	potential = {
 		has_dlc = "Emperor"
 	}
-	elector = {
+	all = {
 		idea_cost = -0.05
 	}
 }
@@ -135,7 +135,7 @@ emperor_expand_gemeiner_pfennig = {
 	potential = {
 		has_dlc = "Emperor"
 	}
-	elector = {
+	all = {
 		global_manpower_modifier = 0.1
 	}
 	province = {
@@ -187,12 +187,12 @@ emperor_reichskrieg = {
 	potential = {
 		has_dlc = "Emperor"
 	}
+	all = {
+		infantry_power = 0.05
+	}
 	on_effect = {
 		enable_imperial_realm_war = yes
 		custom_tooltip = REICHSKRIEG_DEFENSE_OF_REALM_MODIFIER
-		elector = {
-			infantry_combat_ability = 0.05
-		}
 	}
 
 	off_effect = {
@@ -235,6 +235,7 @@ emperor_erbkaisertum = {
 	}
 	emperor = {
 		imperial_authority = 0.25
+		land_morale = 0.05
 	}
 	on_effect = {
 		if = {
@@ -262,7 +263,7 @@ emperor_privilegia_de_non_appelando = {
 		has_dlc = "Emperor"
 	}
 	emperor = {
-		governing_capacity = 200
+		governing_capacity = 150
 	}
 	required_reform = emperor_erbkaisertum
 	gui_container = right_branch
