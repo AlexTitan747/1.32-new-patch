@@ -1,10 +1,5 @@
 namespace = titancriticalevent
-#these are the event that change you government type and form 
 
-#every time you reach a dev point you get a choice between a republic, theocracy or monarchy
-#it gives you a specialised reform based on what you choose
-
-#duchy rank
 country_event = {
 	id = titancriticalevent.1
 	title = "titancriticalevent.title1"
@@ -19,7 +14,7 @@ country_event = {
 	
 	mean_time_to_happen = {
 		months = 180
-
+	
 		modifier = {
 			factor = 0.9
 			innovativeness_ideas = 4
@@ -37,21 +32,7 @@ country_event = {
 			NOT = { innovativeness_ideas = 2 }
 		}
 	}
-
-	option = {
-		name = "titancriticalevent.advisor1.b" #Advisor Event Cooldown
-		ai_chance = {
-			factor = 100
-		}
-		add_country_modifier = {
-			name = "cannoneer_expert_cooldown"
-			duration = 9125
-			hidden = yes
-		}
-
-	}
-
-
+	
 	option = {
 		name = "titancriticalevent.advisor1.a"	# His reputation will reach further than our borders
 		ai_chance = {
@@ -64,12 +45,24 @@ country_event = {
 		add_meritocracy_effect = yes
 		add_prestige = 25
 		add_country_modifier = {
-			name = "cannoneer_expert_boost"
+			name = cannoneer_expert_boost
 			duration = 3650
-			hidden = yes
 		}
 		set_country_flag = cannoneer_expert
 	}
+
+	option = {
+		name = "titancriticalevent.advisor1.b" #Advisor Event Cooldown
+		ai_chance = {
+			factor = 100
+		}
+		add_country_modifier = {
+			name = cannoneer_expert_cooldown
+			duration = 9125
+			hidden = yes
+		}
+	}
+
 }
 
 #######################################################
@@ -111,18 +104,6 @@ country_event = {
 	}
 
 	option = {
-		name = "titancriticalevent.advisor2.b" #Advisor Event Cooldown
-		ai_chance = {
-			factor = 100
-		}
-		add_country_modifier = {
-			name = "new_recruitment_cooldown"
-			duration = 9125
-		}
-
-	}
-
-	option = {
 		name = "titancriticalevent.advisor2.a"	# His reputation will reach further than our borders
 		ai_chance = {
 			factor = 50
@@ -135,9 +116,23 @@ country_event = {
 		add_prestige = 25
 		add_treasury = 550
 		add_country_modifier = {
-			name = "new_recruitment_boost"
+			name = new_recruitment_boost
 			duration = 1825
 		}
 		set_country_flag = new_recruitment_boost
 	}
+
+	option = {
+		name = "titancriticalevent.advisor2.b" #Advisor Event Cooldown
+		ai_chance = {
+			factor = 100
+		}
+		add_country_modifier = {
+			name = new_recruitment_cooldown
+			duration = 9125
+			hidden = yes
+		}
+
+	}
+
 }
