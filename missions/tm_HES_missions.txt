@@ -685,7 +685,7 @@ westphalia_missions_4 = {
 		}
 
 		effect = {
-			add_prestige = 50
+			add_prestige = 15
 
 			palatinate_area = {
 				limit = {
@@ -847,7 +847,7 @@ westphalia_missions_5 = {
 		}
 
 		effect = {
-			add_prestige = 50
+			add_prestige = 15
 
 			north_westphalia_area = {
 				limit = {
@@ -1801,7 +1801,34 @@ tm_HES_prague_3 = {
 		}
 
 		effect = {
-			add_prestige = 1
+			nymburk_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			moravia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			lusatia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			silesia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 
@@ -1840,7 +1867,10 @@ tm_HES_prague_3 = {
 		}
 
 		effect = {
-			add_prestige = 1
+			add_country_modifier = {
+				name = tm_HES_admin_efficiency 
+				duration = -1
+			}
 		}
 	}
 
