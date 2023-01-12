@@ -100,61 +100,20 @@ tm_hun_slot_1 = {
 		}
 		
 		effect = {
-			if = {
-				limit = {
-					OR = {
-						NOT = { alliance_with = POL }
-						NOT = {
-							moldavia_area = {
-								type = all
-								country_or_non_sovereign_subject_holds = POL
-							}
-						}
-					}
-				}
-				moldavia_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-			}
-			else = {
-				add_dip_power = 100
-			}
-			wallachia_area = {
+			southern_transylvania_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-		}
-		ai_weight = {
-			factor = 500	#Mission itself is rather ignorable, but the next one should be important for AI Hungary
-		}
-	}
-	
-	hun_vassal_states = {
-		icon = mission_unite_home_region
-		required_missions = { hun_poland_alliance }
-		position = 2
-		
-		provinces_to_highlight = {
-			area = wallachia_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		
-		trigger = {
-			wallachia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+			transylvania_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
-			is_subject = no
-		}
-		
-		effect = {
 			serbia_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -171,14 +130,15 @@ tm_hun_slot_1 = {
 			}
 		}
 		ai_weight = {
-			factor = 500
+			factor = 500	#Mission itself is rather ignorable, but the next one should be important for AI Hungary
 		}
 	}
 	
+	
 	hun_vassal_states_three = {
 		icon = mission_eastern_european_city
-		required_missions = { hun_vassal_states }
-		position = 3
+		required_missions = { hun_poland_alliance }
+		position = 2
 		
 		provinces_to_highlight = {
 			OR = {
@@ -244,6 +204,104 @@ tm_hun_slot_1 = {
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
+			}
+		}
+		ai_weight = {
+			factor = 500
+		}
+	}
+
+	hun_vassal_states_four = {
+		icon = mission_cannons_firing
+		required_missions = { hun_vassal_states_three }
+		position = 3
+		
+		provinces_to_highlight = {
+			OR = {
+				area = bosnia_area
+				area = croatia_area
+				area = east_adriatic_coast_area
+				province_id = 4754
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			bosnia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			croatia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			east_adriatic_coast_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			owns_or_non_sovereign_subject_of = 4754
+			is_subject = no
+		}
+		
+		effect = {
+			add_dip_power = 100
+			bosnia_area = {
+				add_province_modifier = {
+					name = "hun_moldavia_mod"
+					duration = 10950
+				}
+			}
+			croatia_area = {
+				add_province_modifier = {
+					name = "hun_moldavia_mod"
+					duration = 10950
+				}
+			}
+			east_adriatic_coast_area = {
+				add_province_modifier = {
+					name = "hun_moldavia_mod"
+					duration = 10950
+				}
+			}
+			if = {
+				limit = { has_dlc = "Emperor" }
+				if = {
+					limit = {
+						exists = NAP
+						valid_for_personal_unions_trigger = yes
+						NAP = {
+							valid_for_personal_unions_trigger = yes
+						}
+					}
+					add_casus_belli = {
+						type = cb_restore_personal_union
+						months = 300
+						target = NAP
+					}
+				}
+				else = {
+					naples_area = {
+						limit = {
+							NOT = { is_claim = root }
+							NOT = { is_core = root }
+						}
+						add_claim = root
+					}
+					apulia_area = {
+						limit = {
+							NOT = { is_claim = root }
+							NOT = { is_core = root }
+						}
+						add_claim = root
+					}
+					calabria_area = {
+						limit = {
+							NOT = { is_claim = root }
+							NOT = { is_core = root }
+						}
+						add_claim = root
+					}
+				}
 			}
 		}
 		ai_weight = {
@@ -461,19 +519,26 @@ tm_hun_slot_2 = {
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
-	
-	hun_vassal_states_two = {
-		icon = mission_eastern_european_city
+
+	hun_vassal_states_five = {
+		icon = mission_unite_home_region
 		required_missions = { hun_poland_alliance }
 		position = 2
 		
 		provinces_to_highlight = {
-			area = moldavia_area
+			OR = {
+			area = transylvania_area
+			area = southern_transylvania_area
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
-			moldavia_area = {
+			transylvania_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			southern_transylvania_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
@@ -481,38 +546,19 @@ tm_hun_slot_2 = {
 		}
 		
 		effect = {
-			moldavia_area = {
-				add_province_modifier = {
-					name = "hun_moldavia_mod"
-					duration = 10950
-				}
-			}
-
-			if = {
+			wallachia_area = {
 				limit = {
-					has_dlc = "Emperor"
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
 				}
-				malopolska_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
+				add_permanent_claim = ROOT
+			}
+			moldavia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
 				}
-				red_ruthenia_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				sandomierz_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
+				add_permanent_claim = ROOT
 			}
 		}
 		ai_weight = {
@@ -520,103 +566,32 @@ tm_hun_slot_2 = {
 		}
 	}
 
-	hun_vassal_states_four = {
-		icon = mission_cannons_firing
-		required_missions = { hun_vassal_states_three }
-		position = 4
+	
+	hun_vassal_states = {
+		icon = mission_unite_home_region
+		required_missions = { hun_vassal_states_five }
+		position = 3
 		
 		provinces_to_highlight = {
-			OR = {
-				area = bosnia_area
-				area = croatia_area
-				area = east_adriatic_coast_area
-				province_id = 4754
-			}
+			area = wallachia_area
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
-			bosnia_area = {
+			wallachia_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			croatia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			east_adriatic_coast_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			owns_or_non_sovereign_subject_of = 4754
 			is_subject = no
 		}
 		
 		effect = {
-			add_dip_power = 100
-			bosnia_area = {
-				add_province_modifier = {
-					name = "hun_moldavia_mod"
-					duration = 10950
-				}
-			}
-			croatia_area = {
-				add_province_modifier = {
-					name = "hun_moldavia_mod"
-					duration = 10950
-				}
-			}
-			east_adriatic_coast_area = {
-				add_province_modifier = {
-					name = "hun_moldavia_mod"
-					duration = 10950
-				}
-			}
-			if = {
-				limit = { has_dlc = "Emperor" }
-				if = {
-					limit = {
-						exists = NAP
-						valid_for_personal_unions_trigger = yes
-						NAP = {
-							valid_for_personal_unions_trigger = yes
-						}
-					}
-					add_casus_belli = {
-						type = cb_restore_personal_union
-						months = 300
-						target = NAP
-					}
-				}
-				else = {
-					naples_area = {
-						limit = {
-							NOT = { is_claim = root }
-							NOT = { is_core = root }
-						}
-						add_claim = root
-					}
-					apulia_area = {
-						limit = {
-							NOT = { is_claim = root }
-							NOT = { is_core = root }
-						}
-						add_claim = root
-					}
-					calabria_area = {
-						limit = {
-							NOT = { is_claim = root }
-							NOT = { is_core = root }
-						}
-						add_claim = root
-					}
-				}
-			}
 		}
 		ai_weight = {
 			factor = 500
 		}
 	}
+
 }
 
 tm_hun_slot_3 = {
@@ -676,9 +651,66 @@ tm_hun_slot_3 = {
 		}
 	}
 
+	hun_vassal_states_two = {
+		icon = mission_eastern_european_city
+		required_missions = { hun_vassal_states_five }
+		position = 3
+		
+		provinces_to_highlight = {
+			area = moldavia_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			moldavia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			moldavia_area = {
+				add_province_modifier = {
+					name = "hun_moldavia_mod"
+					duration = 10950
+				}
+			}
+
+			if = {
+				limit = {
+					has_dlc = "Emperor"
+				}
+				malopolska_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				red_ruthenia_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				sandomierz_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+		ai_weight = {
+			factor = 500
+		}
+	}
 	emp_hun_take_galicia = {
 		icon = mission_partition_poland
-		required_missions = { hun_vassal_states_two }
+		required_missions = {  }
 		position = 4
 		provinces_to_highlight = {
 			OR = {
