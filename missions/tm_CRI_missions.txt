@@ -1,0 +1,124 @@
+tm_CRI_branch_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		OR = {
+			tag = CRI
+			was_tag = CRI
+		}
+	}
+	
+	tm_CRI_branch1_mission_1 = {
+		icon = mission_enter_moldavia
+		position = 2
+		required_missions = { tm_CRI_branch3_mission_1 }
+
+		provinces_to_highlight = {
+			area = moldavia_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			MOL = {
+				is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
+			}
+		}
+
+		effect = {
+			moldavia_area = {
+				add_base_tax = 2 
+				add_base_production = 3
+				add_base_manpower = 2
+			}
+		}
+	}
+}
+
+tm_CRI_branch_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		OR = {
+			tag = CRI
+			was_tag = CRI
+		}
+	}
+
+	tm_CRI_branch2_mission_1 = {
+		icon = 
+		position = 2
+	}
+}
+
+tm_CRI_branch_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		OR = {
+			tag = CRI
+			was_tag = CRI
+		}
+	}
+
+	tm_CRI_branch3_mission_1 = {
+		icon = mission_cossack_cavalry
+		position = 1
+		required_missions = {  }
+
+		trigger = {
+			army_size_percentage = 0.75
+			horde_unity = 90
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_CRI_early_expansion
+				duration = 3650
+			}
+		}
+	}
+
+
+}
+
+tm_CRI_branch_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		OR = {
+			tag = CRI
+			was_tag = CRI
+		}
+	}
+}
+
+tm_CRI_branch_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		OR = {
+			tag = CRI
+			was_tag = CRI
+		}
+	}
+}

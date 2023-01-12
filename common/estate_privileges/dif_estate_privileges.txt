@@ -315,9 +315,8 @@ sedentary_subdjects_increased_tribute = {
 
 sedentary_subdjects_trade_rights = {
 	icon = privilege_grant_autonomy
-	land_share = 5
-	loyalty = 0.1
-	influence = 0.1
+	loyalty = 0.05
+	influence = 0.05
 	is_valid = {
 		any_owned_province = {
 			province_has_center_of_trade_of_level = 1
@@ -679,13 +678,9 @@ estate_nomadic_tribes_raise_tribal_levies = {
 
 estate_nomadic_aristocracy_greater_war_support = {
 	icon = privilege_conscript_cossack_elite
-	loyalty = 0.05
+	loyalty = 0.1
 	influence = 0.05
 	can_select = {
-		prestige = 0
-	}
-	on_granted = {
-		add_prestige = -15
 	}
 	penalties = {
 	}
@@ -778,6 +773,86 @@ estate_nomadic_aristocracy_landowners = {
 	}
 	ai_will_do = {
 		factor = 10
+	}
+}
+
+estate_nomadic_aristocracy_advisors = {
+	icon = privilege_recruit_minister
+	#
+	influence = 0.1
+	loyalty = 0.05
+	penalties = {
+		stability_cost_modifier = 0.1
+	}
+	can_select = { 
+		NOT = { has_estate_privilege = estate_maratha_advisor }
+		NOT = { has_estate_privilege = estate_rajput_advisor }
+	}
+	benefits = {
+		mil_advisor_cost = -0.10
+	}
+	ai_will_do = {
+		factor = 15
+		modifier = {
+			factor = 0.75
+			is_absolutism_active = yes
+		}
+		modifier = {
+			factor = 1.25
+			government = monarchy
+		}
+		modifier = {
+			factor = 1.25
+			has_idea_group = aristocracy_ideas
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { mil = 2 }
+		}
+		modifier = {
+			factor = 0.8
+			mil = 5
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_nobles_nobility_primacy }
+			num_of_estate_privileges = {
+				estate = estate_nobles
+				value = 5
+			}
+		}
+	}
+}
+
+estate_sedentary_subdjects__commercial_board_of_advice = {
+	icon = privilege_recruit_minister
+	#
+	influence = 0.1
+	loyalty = 0.05
+	penalties = {
+		stability_cost_modifier = 0.1
+	}
+	benefits = {
+		dip_advisor_cost = -0.10
+	}
+	ai_will_do = {
+		factor = 15
+		modifier = {
+			factor = 1.25
+			NOT = { dip = 2 }
+		}
+		modifier = {
+			factor = 0.8
+			dip = 5
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_burghers_land_of_commerce }
+			num_of_estate_privileges = {
+				estate = estate_burghers
+				value = 5
+			}
+		}
 	}
 }
 
