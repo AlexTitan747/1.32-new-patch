@@ -19,7 +19,7 @@ tm_CRI_branch_1 = {
 
 		provinces_to_highlight = {
 			area = moldavia_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			owned_by = MOL
 		}
 
 		trigger = {
@@ -53,8 +53,70 @@ tm_CRI_branch_2 = {
 	}
 
 	tm_CRI_branch2_mission_1 = {
-		icon = 
+		icon = mission_coa_shield_kiev
 		position = 2
+		required_missions = { tm_CRI_branch3_mission_1 }
+
+		provinces_to_highlight = {
+			OR = {
+				area = west_dniepr_area
+				area = podolia_volhynia_area
+				owned_by = KIE
+			} 
+		}
+
+		trigger = {
+			KIE = {
+				is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
+			}
+		}
+		
+		effect = {
+			podolia_volhynia_area = {
+				add_base_tax = 4
+				add_base_manpower = 3
+				add_base_production = 2
+			}
+		}
+	}
+
+	tm_CRI_branch2_mission_2 = {
+		icon = mission_arabian_fort
+		position = 3
+		required_missions = {
+			tm_CRI_branch1_mission_1
+			tm_CRI_branch2_mission_1
+			tm_CRI_branch3_mission_2
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				area = moldavia_area
+				area = west_dniepr_area
+				area = podolia_volhynia_area
+				area = chernigov_area
+				area = east_dniepr_area
+				area = sloboda_ukraine_area
+				owned_by = KIE
+				owned_by = MOL
+				owned_by = CHR
+			}
+		}
+
+		trigger = {
+			KIE = {
+				total_development = 100
+				is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
+			}
+			MOL = {
+				total_development = 100
+				is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
+			}
+			CHR = {
+				total_development = 100
+				is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
+			}
+		}
 	}
 }
 
@@ -90,7 +152,39 @@ tm_CRI_branch_3 = {
 		}
 	}
 
+	tm_CRI_branch3_mission_2 = {
+		icon = mission_principality_of_chernigov
+		position = 2 
+		required_missions = { tm_CRI_branch3_mission_1 }
 
+		provinces_to_highlight = {
+			OR = {
+				area = chernigov_area
+				area = east_dniepr_area
+				area = sloboda_ukraine_area
+			}
+		}
+
+		trigger = {
+			CHR = {
+				is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
+			}
+			sloboda_ukraine_area = {
+				type = all
+				owned_by = CHR
+			}
+		}
+
+		effect = {
+			chernigov_area = {
+				add_base_production = 4 
+				add_base_manpower = 2
+			}
+			east_dniepr_area = {
+				add_base_manpower = 5
+			}
+		}
+	}
 }
 
 tm_CRI_branch_4 = {
