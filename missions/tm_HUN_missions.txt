@@ -1708,13 +1708,30 @@ tm_hun_slot_5 = {
 		required_missions = { emp_hun_great_city_of_pest }
 		position = 4
 		trigger = {
-			reform_level = 7
-			crown_land_share = 80
+			num_of_loans = 0
 		}
 		effect = {
-			add_country_modifier = {
-				name = hun_golden_age_of_hungary
-				duration = 9125
+			custom_tooltip = hun_estuary_expanded_tt
+			hidden_effect = {
+				4173 = { 
+					remove_province_modifier = danube_estuary_modifier
+					add_province_modifier = {
+						name = hun_danube_estuary_modifier_1
+						duration = -1 
+					}
+				}
+			}
+			1772 = {
+				add_province_modifier = {
+					name = hun_danube_estuary_modifier_1
+					duration = -1 
+				}
+			}
+			4240 = {
+				add_province_modifier = {
+					name = hun_danube_estuary_modifier_2
+					duration = -1 
+				}
 			}
 		}
 	}
