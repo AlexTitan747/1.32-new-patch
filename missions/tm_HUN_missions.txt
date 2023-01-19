@@ -749,7 +749,7 @@ tm_hun_slot_3 = {
 	}
 
 	hun_croatian_union = {
-		icon = mission_eastern_european_city
+		icon = mission_war_for_the_crown
 		required_missions = { hun_vassal_states_five }
 		position = 3
 		
@@ -838,13 +838,13 @@ tm_hun_slot_3 = {
 		}
 
 		effect = {
-			4752 = {
+			131 = {
+				add_center_of_trade_level = 1
 				add_base_tax = 1
 				add_base_production = 1
 				add_base_manpower = 1
 			}
-			131 = {
-				add_center_of_trade_level = 1
+			4752 = {
 				add_base_tax = 1
 				add_base_production = 1
 				add_base_manpower = 1
@@ -1286,6 +1286,100 @@ tm_hun_slot_4 = {
 			}
 		}
 	}
+
+	tm_hun_mine_investment = {
+		icon = mission_dalaskogen
+		position = 4
+		
+		required_missions = { emp_hun_great_city_of_pest }
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1951
+				province_id = 4128
+				province_id = 158
+				province_id = 4127
+				province_id = 5111
+				province_id = 1952
+			}
+			country_or_non_sovereign_subject_holds = ROOT
+		}
+
+		trigger = {
+			1951 = {
+				owned_by = ROOT
+				has_building = workshop
+				base_production = 7
+			}
+			4128 = {
+				owned_by = ROOT
+				has_building = workshop
+				base_production = 6
+			}
+			158 = {
+				owned_by = ROOT
+				has_building = workshop
+				base_production = 6
+			}
+			4127 = {
+				owned_by = ROOT
+				has_building = workshop
+				base_production = 7
+			}
+			5111 = {
+				owned_by = ROOT
+				has_building = workshop
+				base_production = 10
+			}
+			1952 = {
+				owned_by = ROOT
+				has_building = workshop
+				base_production = 6
+			}
+		}
+		effect = {
+			4128 = {
+				change_trade_goods = salt
+			}
+			158 = {
+				change_trade_goods = copper
+			}
+
+			if = {
+				limit = {
+					NOT = { is_year = 1500 }
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 6
+					trigger = {
+						trade_goods = salt
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_year = 1500
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 3
+					trigger = {
+						trade_goods = salt
+					}
+				}
+			}
+
+			add_country_modifier = {
+				name = hungarian_production
+				duration = 7300
+			}
+			add_country_modifier = {
+				name = development_improvments
+				duration = -1
+			}
+		}
+	}
+
+
 	emp_hun_hungarian_succession = {
 		icon = the_hungarian_succession
 		required_missions = {  }
@@ -1564,21 +1658,21 @@ tm_hun_slot_5 = {
 		provinces_to_highlight = {
 			OR = {
 				AND = {
-					province_id = 134
+					province_id = 262
 					ROOT = {
 						capital_scope = {
 							NOT = {
-								higher_development_than = 134
+								higher_development_than = 262
 							}
 						}
 					}
 				}
 				AND = {
-					province_id = 266
+					province_id = 257
 					ROOT = {
 						capital_scope = {
 							NOT = {
-								higher_development_than = 266
+								higher_development_than = 257
 							}
 						}
 					}
@@ -1587,8 +1681,11 @@ tm_hun_slot_5 = {
 		}
 		trigger = {
 			capital_scope = {
-				higher_development_than = 134
-				higher_development_than = 266
+				higher_development_than = 262
+				higher_development_than = 257
+			}
+			153 = {
+				development = 25
 			}
 		}
 		effect = {
@@ -1598,13 +1695,34 @@ tm_hun_slot_5 = {
 					duration = 7300
 				}
 			}
+
+			add_country_modifier = {
+				name = hun_inrastructure_focus
+				duration = 3650
+			}
+		}
+	}
+
+	tm_hun_advanced_farm_work = {
+		icon = hungarian_farm
+		required_missions = { emp_hun_great_city_of_pest }
+		position = 4
+		trigger = {
+			reform_level = 7
+			crown_land_share = 80
+		}
+		effect = {
+			add_country_modifier = {
+				name = hun_golden_age_of_hungary
+				duration = 9125
+			}
 		}
 	}
 	
 	emp_hun_strong_government = {
 		icon = a_strong_government
-		required_missions = { emp_hun_great_city_of_pest }
-		position = 4
+		required_missions = { tm_hun_advanced_farm_work tm_hun_mine_investment }
+		position = 5
 		trigger = {
 			reform_level = 7
 			crown_land_share = 80
