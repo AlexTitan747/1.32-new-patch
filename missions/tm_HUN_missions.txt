@@ -8,136 +8,52 @@ tm_hun_slot_1 = {
 	}
 	has_country_shield = yes
 	
-	hun_poland_alliance = {
-		icon = mission_noble_council
-		required_missions = {  }
+	emp_hun_black_army_supreme = {
+		icon = gory_to_the_black_army
+		required_missions = { hun_poland_alliance }
 		position = 2
-
 		provinces_to_highlight = {
-			OR = {
-				owned_by = POL
-				AND = {
-					NOT = { exists = POL }
-					region = poland_region
-					ROOT = {
-						NOT = {
-							num_of_owned_provinces_with = {
-								value = 6
-								region = poland_region
-							}
-						}
-					}
-				}
+			is_capital = yes
+			owner = {
+				is_neighbor_of = root
+				land_morale = root
+				NOT = { is_subject_of = root }
 			}
+			NOT = { owned_by = root }
 		}
-		
 		trigger = {
-			if = {
-				limit = {
-					exists = POL
-					has_dlc = "Res Publica"
-					POL = {
-						OR = { 
-							has_reform = polish_elective_monarchy
-							has_reform = elective_monarchy
-						}
-					}
-				}
-				OR = { 
-					POL = { dynasty = root }
-					AND = {
-						alliance_with = POL
-						POL = {
-							has_opinion = {
-								who = ROOT
-								value = 190
-							}
-						}
-					}
-					overlord_of = POL
-					AND = { 
-						OR = {
-							is_rival = POL
-							POL = { is_rival = ROOT }
-						}
-						army_size = POL
+			OR = {
+				has_country_modifier = hun_black_army
+				has_reform = black_army_reform
+				custom_trigger_tooltip = {
+					tooltip = emp_hun_black_army_supreme_trigger_tooltip
+					OR = {
+						current_age = age_of_absolutism
+						current_age = age_of_revolutions
 					}
 				}
 			}
-			else_if = {
-				limit = { exists = POL }
+			army_size_percentage = 1
+			land_morale = 4
+			all_neighbor_country = {
 				OR = {
-					alliance_with = POL
-					overlord_of = POL
-					POL = {
-						has_opinion = {
-							who = ROOT
-							value = 190
-						}
-					}
-					AND = { 
-						OR = {
-							is_rival = POL
-							POL = { is_rival = ROOT }
-						}
-						army_size = POL
-					}
+					NOT = { land_morale = root }
+					is_subject_of = root
 				}
 			}
-			else_if = {
-				limit = {
-					NOT = { exists = POL }
-				}
-				OR = {
-					army_size_percentage = 1
-					num_of_owned_provinces_with = {
-						value = 6
-						region = poland_region
-					}
-				}
-			}
-			is_subject = no
 		}
-		
 		effect = {
-			southern_transylvania_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
+			add_army_tradition = 20
+			add_country_modifier = {
+				name = hun_supreme_black_army
+				duration = 7300
 			}
-			transylvania_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			serbia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			rascia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-		ai_weight = {
-			factor = 500	#Mission itself is rather ignorable, but the next one should be important for AI Hungary
 		}
 	}
 	
-	
 	hun_vassal_states_three = {
 		icon = mission_eastern_european_city
-		required_missions = { hun_poland_alliance }
+		required_missions = { hun_vassal_states_five }
 		position = 3
 		
 		provinces_to_highlight = {
@@ -192,13 +108,12 @@ tm_hun_slot_1 = {
 
 	hun_vassal_states_four = {
 		icon = mission_cannons_firing
-		required_missions = { hun_vassal_states_three hun_vassal_states_five }
+		required_missions = { hun_vassal_states_three }
 		position = 4
 		
 		provinces_to_highlight = {
 			OR = {
 				area = bosnia_area
-				area = croatia_area
 				area = east_adriatic_coast_area
 				province_id = 4754
 			}
@@ -207,10 +122,6 @@ tm_hun_slot_1 = {
 		
 		trigger = {
 			bosnia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			croatia_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
@@ -225,12 +136,6 @@ tm_hun_slot_1 = {
 		effect = {
 			add_dip_power = 100
 			bosnia_area = {
-				add_province_modifier = {
-					name = "hun_moldavia_mod"
-					duration = 10950
-				}
-			}
-			croatia_area = {
 				add_province_modifier = {
 					name = "hun_moldavia_mod"
 					duration = 10950
@@ -481,53 +386,143 @@ tm_hun_slot_2 = {
 	}
 	has_country_shield = yes
 
-	emp_hun_black_army_supreme = {
-		icon = gory_to_the_black_army
-		required_missions = { }
+	hun_poland_alliance = {
+		icon = mission_noble_council
+		required_missions = {  }
 		position = 1
+
 		provinces_to_highlight = {
-			is_capital = yes
-			owner = {
-				is_neighbor_of = root
-				land_morale = root
-				NOT = { is_subject_of = root }
-			}
-			NOT = { owned_by = root }
-		}
-		trigger = {
 			OR = {
-				has_country_modifier = hun_black_army
-				has_reform = black_army_reform
-				custom_trigger_tooltip = {
-					tooltip = emp_hun_black_army_supreme_trigger_tooltip
-					OR = {
-						current_age = age_of_absolutism
-						current_age = age_of_revolutions
+				owned_by = POL
+				AND = {
+					NOT = { exists = POL }
+					region = poland_region
+					ROOT = {
+						NOT = {
+							num_of_owned_provinces_with = {
+								value = 6
+								region = poland_region
+							}
+						}
 					}
 				}
 			}
-			army_size_percentage = 1
-			land_morale = 4
-			all_neighbor_country = {
-				OR = {
-					NOT = { land_morale = root }
-					is_subject_of = root
+		}
+		
+		trigger = {
+			if = {
+				limit = {
+					exists = POL
+					has_dlc = "Res Publica"
+					POL = {
+						OR = { 
+							has_reform = polish_elective_monarchy
+							has_reform = elective_monarchy
+						}
+					}
+				}
+				OR = { 
+					POL = { dynasty = root }
+					AND = {
+						alliance_with = POL
+						POL = {
+							has_opinion = {
+								who = ROOT
+								value = 190
+							}
+						}
+					}
+					overlord_of = POL
+					AND = { 
+						OR = {
+							is_rival = POL
+							POL = { is_rival = ROOT }
+						}
+						army_size = POL
+					}
 				}
 			}
-		}
-		effect = {
-			add_army_tradition = 20
-			add_country_modifier = {
-				name = hun_supreme_black_army
-				duration = 7300
+			else_if = {
+				limit = { exists = POL }
+				OR = {
+					alliance_with = POL
+					overlord_of = POL
+					POL = {
+						has_opinion = {
+							who = ROOT
+							value = 190
+						}
+					}
+					AND = { 
+						OR = {
+							is_rival = POL
+							POL = { is_rival = ROOT }
+						}
+						army_size = POL
+					}
+				}
 			}
+			else_if = {
+				limit = {
+					NOT = { exists = POL }
+				}
+				OR = {
+					army_size_percentage = 1
+					num_of_owned_provinces_with = {
+						value = 6
+						region = poland_region
+					}
+				}
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			southern_transylvania_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			transylvania_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			serbia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			rascia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			moldavia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+		ai_weight = {
+			factor = 500	#Mission itself is rather ignorable, but the next one should be important for AI Hungary
 		}
 	}
 
 	hun_vassal_states_five = {
 		icon = mission_unite_home_region
 		required_missions = { hun_poland_alliance }
-		position = 3
+		position = 2
 		
 		provinces_to_highlight = {
 			OR = {
@@ -557,14 +552,14 @@ tm_hun_slot_2 = {
 				}
 				add_permanent_claim = ROOT
 			}
-			moldavia_area = {
+			croatia_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			croatia_area = {
+			slavonia_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -585,6 +580,18 @@ tm_hun_slot_2 = {
 				}
 				add_permanent_claim = ROOT
 			}
+
+			add_country_modifier = {
+				name = expansion_plans
+				duration = 7300
+			}
+
+			add_casus_belli = {
+				type = cb_restore_personal_union
+				months = 240
+				target = CRO
+			}
+
 			add_prestige = 15
 		}
 		ai_weight = {
@@ -592,11 +599,10 @@ tm_hun_slot_2 = {
 		}
 	}
 
-	
 	hun_vassal_states = {
 		icon = mission_unite_home_region
 		required_missions = { hun_vassal_states_five }
-		position = 4
+		position = 3
 		
 		provinces_to_highlight = {
 			area = wallachia_area
@@ -624,57 +630,40 @@ tm_hun_slot_2 = {
 
 	tm_hun_kingdom_consolidation = {
 		icon = mission_eastern_european_city
-		required_missions = { hun_vassal_states_four hun_vassal_states }
+		required_missions = { hun_vassal_states_four hun_vassal_states tm_hun_zagreb_cloth_trading }
 		position = 5
 		
 		provinces_to_highlight = {
-			area = moldavia_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			owned_by = ROOT
 		}
 		
 		trigger = {
-			moldavia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			is_subject = no
+			num_of_loans = 0
 		}
 		
 		effect = {
-			moldavia_area = {
-				add_province_modifier = {
-					name = "hun_moldavia_mod"
-					duration = 10950
-				}
+			central_hungary_area = {
+				add_prosperity = 100
 			}
+			add_treasury = 200
+			add_adm_power = 75
+			add_mil_power = 50
+			add_country_modifier = {
+				name = hungarian_kingdom
+				duration = 3650
+			}
+			153 = { 
+				add_base_tax = 1 
+				add_base_production = 2
+				add_base_manpower = 1
 
-			if = {
-				limit = {
-					has_dlc = "Emperor"
-				}
-				malopolska_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				red_ruthenia_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				sandomierz_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
+				add_great_project_tier = {
+					type = buda_castle
+					tier = 2
 				}
 			}
 		}
+
 		ai_weight = {
 			factor = 500
 		}
@@ -696,41 +685,10 @@ tm_hun_slot_3 = {
 	}
 	has_country_shield = yes
 
-	tm_hun_hont_gold_mine = {
-		icon = mission_war_chest
-		required_missions = {  }
-		position = 1
-		provinces_to_highlight = {
-			OR = {
-				province_id = 154
-			}
-		}
-		trigger = {
-			154 = {
-				owned_by = ROOT
-				is_core = ROOT
-				base_production = 10
-			}
-		}
-		effect = {
-			154 = {
-				add_local_autonomy = -100
-				add_base_production = 2
-				add_province_modifier = {
-					name = hont_gold_mines
-					duration = 7300
-				}
-			}
-		}
-		ai_weight = {
-			factor = 500	#Also gold is important too
-		}
-	}
-
 	hun_vassal_states_two = {
 		icon = mission_eastern_european_city
-		required_missions = { hun_vassal_states_five }
-		position = 4
+		required_missions = { hun_poland_alliance }
+		position = 2
 		
 		provinces_to_highlight = {
 			area = moldavia_area
@@ -753,25 +711,30 @@ tm_hun_slot_3 = {
 				}
 			}
 
+			add_country_modifier = {
+				name = cavalry_experience
+				duration = 3650
+			}
+
 			if = {
 				limit = {
 					has_dlc = "Emperor"
 				}
-				malopolska_area = {
+				podolia_volhynia_area = {
 					limit = {
 						NOT = { is_core = ROOT }
 						NOT = { is_permanent_claim = ROOT }
 					}
 					add_permanent_claim = ROOT
 				}
-				red_ruthenia_area = {
+				yedisan_area = {
 					limit = {
 						NOT = { is_core = ROOT }
 						NOT = { is_permanent_claim = ROOT }
 					}
 					add_permanent_claim = ROOT
 				}
-				sandomierz_area = {
+				crimea_area = {
 					limit = {
 						NOT = { is_core = ROOT }
 						NOT = { is_permanent_claim = ROOT }
@@ -784,6 +747,116 @@ tm_hun_slot_3 = {
 			factor = 500
 		}
 	}
+
+	hun_croatian_union = {
+		icon = mission_eastern_european_city
+		required_missions = { hun_vassal_states_five }
+		position = 3
+		
+		provinces_to_highlight = {
+			owner = {
+				tag = CRO
+			}
+		}
+		
+		trigger = {
+			moldavia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			croatia_area = {
+				add_province_modifier = {
+					name = "hun_moldavia_mod"
+					duration = 10950
+					}
+				}
+
+			if = {
+				limit = {
+					has_dlc = "Emperor"
+				}
+				podolia_volhynia_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				yedisan_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				crimea_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+		ai_weight = {
+			factor = 500
+		}
+	}
+
+	tm_hun_zagreb_cloth_trading = {
+		icon = mission_develop_cloth
+		position = 4
+		required_missions = { hun_croatian_union }
+
+		provinces_to_highlight = {
+			province_id = 4752
+			province_id = 131
+			province_id = 152
+		}
+
+		trigger = {
+			4752 = {
+				owned_by = ROOT
+				base_production = 13
+				has_building = workshop
+			}
+			131 = {
+				owned_by = ROOT
+				base_production = 12
+				province_has_center_of_trade_of_level = 2
+				has_building = workshop
+			}
+			152 = {
+				owned_by = ROOT
+				base_production = 13
+				has_building = workshop
+			}
+		}
+
+		effect = {
+			4752 = {
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+			}
+			131 = {
+				add_center_of_trade_level = 1
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+			}
+			152 = {
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+			}
+		}
+	}
+
 	emp_hun_take_galicia = {
 		icon = mission_partition_poland
 		required_missions = {  }
@@ -1157,7 +1230,7 @@ tm_hun_slot_4 = {
 	
 	emp_hun_religious_unity = {
 		icon = spread_piety
-		required_missions = { emp_hun_fund_monasteries tm_hun_hont_gold_mine }
+		required_missions = { emp_hun_fund_monasteries }
 		provinces_to_highlight = {
 			owned_by = ROOT
 			NOT = { religion = ROOT }
@@ -1167,6 +1240,10 @@ tm_hun_slot_4 = {
 		}
 		effect = {
 			add_stability_or_adm_power = yes
+			add_stat_or_monarch_power = {
+				stat = adm
+				amount = 1
+			}
 		}
 	}
 	
@@ -1404,25 +1481,45 @@ tm_hun_slot_5 = {
 	}
 	has_country_shield = yes
 	
-	emp_hun_improve_economy = {
-		icon = mission_african_gold
-		position = 1
+	tm_hun_hont_gold_mine = {
+		icon = mission_war_chest
 		required_missions = {  }
+		position = 1
+		provinces_to_highlight = {
+			OR = {
+				province_id = 154
+			}
+		}
 		trigger = {
-			share_of_starting_income = 2
+			154 = {
+				owned_by = ROOT
+				is_core = ROOT
+				base_production = 10
+			}
 		}
 		effect = {
+			154 = {
+				add_local_autonomy = -100
+				add_base_production = 2
+				add_province_modifier = {
+					name = hont_gold_mines
+					duration = 7300
+				}
+			}
 			add_country_modifier = {
 				name = hun_strong_economy
 				duration = 7300
 			}
 		}
+		ai_weight = {
+			factor = 500	#Also gold is important too
+		}
 	}
-	
+
 	emp_hun_corviana_library = {
 		icon = bibliotheca_corviana
 		position = 2
-		required_missions = { emp_hun_improve_economy emp_hun_fund_monasteries }
+		required_missions = { tm_hun_hont_gold_mine emp_hun_fund_monasteries }
 		provinces_to_highlight = {
 			province_id = 153
 			OR = {
@@ -1507,7 +1604,7 @@ tm_hun_slot_5 = {
 	emp_hun_strong_government = {
 		icon = a_strong_government
 		required_missions = { emp_hun_great_city_of_pest }
-		position = 5
+		position = 4
 		trigger = {
 			reform_level = 7
 			crown_land_share = 80
