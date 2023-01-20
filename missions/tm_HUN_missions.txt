@@ -1232,67 +1232,6 @@ tm_hun_anatolia_slot_2 = {
 			factor = 75	#Tapping into Alt-History, but plausible
 		}
 	}
-	
-	hun_ottoman_borders_four = {
-		icon = mission_ottoman_harem
-		required_missions = { 
-		hun_ottoman_borders_two 
-		hun_ottoman_borders_three
-		}
-		position = 9
-		
-		provinces_to_highlight = {
-			area = thrace_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		
-		trigger = {
-			thrace_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			is_subject = no
-		}
-		
-		effect = {
-			add_adm_power = 100
-			add_prestige = 30
-			add_country_modifier = {
-				name = "hun_constantinople"
-				duration = 7300
-			}
-			northern_greece_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			morea_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			albania_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			if = {
-				limit = {
-					151 = { culture = turkish }
-				}
-				country_event = { id = new_flavour_hun.3 } #event used by Austria too
-			}
-		}
-		ai_weight = {
-			factor = 50	#Less relevant
-		}
-	}
 }
 
 tm_hun_anatolia_slot_3 = {
@@ -1336,6 +1275,86 @@ tm_hun_anatolia_slot_3 = {
 			}
 		}
 	}
+	
+	tm_hun_ottoman_trading_ports = {
+		icon = mission_ottoman_harem
+		required_missions = { 
+			tm_hun_new_fortifications
+			hun_ottoman_borders_four
+			tm_hun_greek_holdings
+		}
+		position = 8
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 328
+				province_id = 317
+				province_id = 318
+			}
+			country_or_non_sovereign_subject_holds = ROOT
+		}
+		
+		trigger = {
+			328 = {
+				owned_by = ROOT
+				has_building = shipyard
+				OR = {
+				has_building = marketplace
+				has_building = trade_depot
+				}
+			}
+			317 = {
+				owned_by = ROOT
+				has_building = shipyard
+				OR = {
+				has_building = marketplace
+				has_building = trade_depot
+				}
+			}
+			318 = {
+				owned_by = ROOT
+				has_building = shipyard
+				OR = {
+				has_building = marketplace
+				has_building = trade_depot
+				}
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			add_adm_power = 100
+			add_prestige = 30
+			add_country_modifier = {
+				name = "hun_constantinople"
+				duration = 7300
+			}
+			hudavendigar_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			kastamonu_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			aydin_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+		}
+		ai_weight = {
+			factor = 50	#Less relevant
+		}
+	}
 
 }
 
@@ -1352,7 +1371,7 @@ tm_hun_anatolia_slot_4 = {
 
 	tm_hun_advance_into_bulgaria = {
 		icon = mission_non-western_soldiers
-		required_missions = { hun_ottoman_borders_two }
+		required_missions = { tm_hun_kingdom_consolidation }
 		position = 6
 		
 		provinces_to_highlight = {
@@ -1381,14 +1400,7 @@ tm_hun_anatolia_slot_4 = {
 		}
 		
 		effect = {
-			bulgaria_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			silistria_area = {
+			thrace_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -1401,18 +1413,20 @@ tm_hun_anatolia_slot_4 = {
 		}
 	}
 
-	hun_ottoman_borders_two = {
-		icon = mission_conquer_5_states
-		required_missions = { hun_ottoman_borders }
-		position = 8
+	hun_ottoman_borders_four = {
+		icon = mission_ottoman_harem
+		required_missions = { 
+			tm_hun_advance_into_bulgaria
+		}
+		position = 7
 		
 		provinces_to_highlight = {
-			area = macedonia_area
+			area = thrace_area
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
-			macedonia_area = {
+			thrace_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
@@ -1421,13 +1435,37 @@ tm_hun_anatolia_slot_4 = {
 		
 		effect = {
 			add_adm_power = 100
-			add_prestige = 10
-			thrace_area = {
+			add_prestige = 30
+			add_country_modifier = {
+				name = "hun_constantinople"
+				duration = 7300
+			}
+			hudavendigar_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			kastamonu_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			aydin_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
-				add_permanent_claim = ROOT
+				add_claim = ROOT
+			}
+			if = {
+				limit = {
+					151 = { culture = turkish }
+				}
+				country_event = { id = new_flavour_hun.3 } #event used by Austria too
 			}
 		}
 		ai_weight = {
