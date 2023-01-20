@@ -173,206 +173,6 @@ tm_hun_slot_1 = {
 			factor = 500
 		}
 	}
-	hun_ottoman_borders = {
-		icon = mission_non-western_soldiers
-		required_missions = { }
-		position = 6
-		
-		trigger = {
-			OR = {
-				AND = {
-					is_rival = TUR
-				}
-				AND = {
-			if = {
-				limit = {
-					TUR = {
-						any_owned_province = {
-							region = balkan_region
-						}
-					}
-				}
-				calc_true_if = {
-					desc = hun_ottoman_borders.tooltip
-					amount = 3
-					all_owned_province = {
-						fort_level = 1
-						any_neighbor_province = {
-							owned_by = TUR
-						}
-					}
-				}
-				else = {
-					any_owned_province = {
-						fort_level = 3
-							}
-						}
-					}
-				}
-			}
-			is_subject = no
-		}
-		
-		effect = {
-			bulgaria_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			silistria_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-		ai_weight = {
-			factor = 500	#AI HUngary should WANT to survive against the Ottoman threat
-		}
-	}
-	
-	hun_ottoman_borders_three = {
-		icon = mission_crusade_for_varna
-		required_missions = { hun_ottoman_borders }
-		position = 7
-		
-		provinces_to_highlight = {
-			OR = {
-				area = bulgaria_area
-				area = silistria_area
-			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		
-		trigger = {
-			bulgaria_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			silistria_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			is_subject = no
-		}
-		
-		effect = {
-			add_adm_power = 100
-			add_prestige = 10
-			macedonia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			add_stat_or_monarch_power = {
-				stat = mil
-				amount = 1
-			}
-		}
-		ai_weight = {
-			factor = 75	#Tapping into Alt-History, but plausible
-		}
-	}
-
-	hun_ottoman_borders_two = {
-		icon = mission_conquer_5_states
-		required_missions = { hun_ottoman_borders }
-		position = 8
-		
-		provinces_to_highlight = {
-			area = macedonia_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		
-		trigger = {
-			macedonia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			is_subject = no
-		}
-		
-		effect = {
-			add_adm_power = 100
-			add_prestige = 10
-			thrace_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-		ai_weight = {
-			factor = 50	#Less relevant
-		}
-	}
-	
-	hun_ottoman_borders_four = {
-		icon = mission_ottoman_harem
-		required_missions = { 
-		hun_ottoman_borders_two 
-		hun_ottoman_borders_three
-		}
-		position = 9
-		
-		provinces_to_highlight = {
-			area = thrace_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		
-		trigger = {
-			thrace_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			is_subject = no
-		}
-		
-		effect = {
-			add_adm_power = 100
-			add_prestige = 30
-			add_country_modifier = {
-				name = "hun_constantinople"
-				duration = 7300
-			}
-			northern_greece_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			morea_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			albania_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			if = {
-				limit = {
-					151 = { culture = turkish }
-				}
-				country_event = { id = new_flavour_hun.3 } #event used by Austria too
-			}
-		}
-		ai_weight = {
-			factor = 50	#Less relevant
-		}
-	}
 }
 
 
@@ -813,9 +613,11 @@ tm_hun_slot_3 = {
 		required_missions = { hun_croatian_union }
 
 		provinces_to_highlight = {
+			OR = {
 			province_id = 4752
 			province_id = 131
 			province_id = 152
+			}
 		}
 
 		trigger = {
@@ -1196,7 +998,6 @@ tm_hun_slot_4 = {
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
-	
 	
 	emp_hun_fund_monasteries = {
 		icon = fund_the_monasteries
@@ -1708,7 +1509,43 @@ tm_hun_slot_5 = {
 		required_missions = { emp_hun_great_city_of_pest }
 		position = 4
 		trigger = {
-			num_of_loans = 0
+			1772 = {
+				owned_by = ROOT
+				base_manpower = 10
+				has_building = barracks
+			}
+			5106 = {
+				owned_by = ROOT
+				base_manpower = 9
+				has_building = barracks
+			}
+			4240 = {
+				owned_by = ROOT
+				base_manpower = 9
+				has_building = barracks
+			}
+			153 = {
+				owned_by = ROOT
+				base_manpower = 10
+				province_has_center_of_trade_of_level = 3
+				has_building = barracks
+			}
+			4125 = {
+				owned_by = ROOT
+				base_manpower = 9
+				has_building = barracks
+			}
+			155 = {
+				owned_by = ROOT
+				base_manpower = 9
+				has_building = barracks
+			}
+			4173 = {
+				owned_by = ROOT
+				base_manpower = 10
+				province_has_center_of_trade_of_level = 2
+				has_building = barracks
+			}
 		}
 		effect = {
 			custom_tooltip = hun_estuary_expanded_tt
@@ -1733,6 +1570,24 @@ tm_hun_slot_5 = {
 					}
 				}
 			}
+			153 = {
+				add_building = soldier_households
+			}
+			4240 = {
+				add_building = soldier_households
+			}
+			central_hungary_area = {
+				add_base_tax = 2
+				add_base_production = 3
+			}
+			alfold_area = {
+				add_base_tax = 2 
+				add_base_production = 3
+			}
+			slavonia_area = {
+				add_base_tax = 2 
+				add_base_production = 3
+			}
 		}
 	}
 	
@@ -1751,4 +1606,672 @@ tm_hun_slot_5 = {
 			}
 		}
 	}
+}
+
+
+# HUN Anatolia DIRECTION
+
+tm_hun_anatolia_slot_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = HUN
+		NOT = { map_setup = map_setup_random }
+		has_country_flag = hun_anatolia_direction
+	}
+	has_country_shield = yes
+	
+	tm_hun_macedonian_occupation = {
+		icon = mission_crusade_for_varna
+		required_missions = { tm_hun_kingdom_consolidation }
+		position = 6
+		
+		provinces_to_highlight = {
+			OR = {
+				area = macedonia_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			macedonia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			148 = {
+				province_has_center_of_trade_of_level = 2
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			add_adm_power = 75
+			add_army_tradition = 10
+			northern_greece_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			albania_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			morea_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_stat_or_monarch_power = {
+				stat = mil
+				amount = 1
+			}
+		}
+		ai_weight = {
+			factor = 75	#Tapping into Alt-History, but plausible
+		}
+	}
+
+	tm_hun_greek_holdings = {
+		icon = mission_crusade_for_varna
+		required_missions = { tm_hun_kingdom_consolidation }
+		position = 7
+		
+		provinces_to_highlight = {
+			OR = {
+				area = northern_greece_area
+				area = morea_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			macedonia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			morea_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			add_adm_power = 75
+			add_army_tradition = 10
+			northern_greece_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			albania_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			morea_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_stat_or_monarch_power = {
+				stat = mil
+				amount = 1
+			}
+		}
+		ai_weight = {
+			factor = 75	#Tapping into Alt-History, but plausible
+		}
+	}
+
+	hun_ottoman_borders_two = {
+		icon = mission_conquer_5_states
+		required_missions = { hun_ottoman_borders }
+		position = 8
+		
+		provinces_to_highlight = {
+			area = macedonia_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			macedonia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			add_adm_power = 100
+			add_prestige = 10
+			thrace_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+		ai_weight = {
+			factor = 50	#Less relevant
+		}
+	}
+	
+	hun_ottoman_borders_four = {
+		icon = mission_ottoman_harem
+		required_missions = { 
+		hun_ottoman_borders_two 
+		hun_ottoman_borders_three
+		}
+		position = 9
+		
+		provinces_to_highlight = {
+			area = thrace_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			thrace_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			add_adm_power = 100
+			add_prestige = 30
+			add_country_modifier = {
+				name = "hun_constantinople"
+				duration = 7300
+			}
+			northern_greece_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			morea_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			albania_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			if = {
+				limit = {
+					151 = { culture = turkish }
+				}
+				country_event = { id = new_flavour_hun.3 } #event used by Austria too
+			}
+		}
+		ai_weight = {
+			factor = 50	#Less relevant
+		}
+	}
+}
+
+tm_hun_anatolia_slot_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = HUN
+		NOT = { map_setup = map_setup_random }
+		has_country_flag = hun_anatolia_direction
+	}
+	has_country_shield = yes
+
+	tm_hun_advance_into_bulgaria = {
+		icon = mission_non-western_soldiers
+		required_missions = { tm_hun_kingdom_consolidation }
+		position = 6
+		
+		provinces_to_highlight = {
+			OR = {
+				area = bulgaria_area
+				area = plovdiv_area
+				area = silistria_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			bulgaria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			plovdiv_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			silistria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			bulgaria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			silistria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+		ai_weight = {
+			factor = 500	#AI HUngary should WANT to survive against the Ottoman threat
+		}
+	}
+
+}
+
+tm_hun_anatolia_slot_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = HUN
+		NOT = { map_setup = map_setup_random }
+		has_country_flag = hun_anatolia_direction
+	}
+	has_country_shield = yes
+
+	tm_hun_new_fortifications = {
+		icon = alpine_fortifications
+		required_missions = { tm_hun_kingdom_consolidation }
+		position = 6
+
+		provinces_to_highlight = {
+			area = savoy_dauphine_area
+			NOT = {
+				owned_by = ROOT
+			}
+		}
+
+		trigger = {
+			ROOT = {
+				owns_core_province = 4719
+				owns_core_province = 204
+				owns_core_province = 205
+			}
+		}
+
+		effect = {
+			205 = {
+				add_building = fort_15th
+			}
+			add_country_modifier = {
+				name = "swiss_mountains_modifier"
+				duration = -1
+			}
+		}
+	}
+
+}
+
+# HUN WEST EUROPE
+
+
+tm_hun_anatolia_slot_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = HUN
+		NOT = { map_setup = map_setup_random }
+		has_country_flag = hun_anatolia_direction
+	}
+	has_country_shield = yes
+	
+	tm_hun_macedonian_occupation = {
+		icon = mission_crusade_for_varna
+		required_missions = { tm_hun_kingdom_consolidation }
+		position = 6
+		
+		provinces_to_highlight = {
+			OR = {
+				area = macedonia_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			macedonia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			148 = {
+				province_has_center_of_trade_of_level = 2
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			add_adm_power = 75
+			add_army_tradition = 10
+			northern_greece_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			albania_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			morea_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_stat_or_monarch_power = {
+				stat = mil
+				amount = 1
+			}
+		}
+		ai_weight = {
+			factor = 75	#Tapping into Alt-History, but plausible
+		}
+	}
+
+	tm_hun_greek_holdings = {
+		icon = mission_crusade_for_varna
+		required_missions = { tm_hun_kingdom_consolidation }
+		position = 7
+		
+		provinces_to_highlight = {
+			OR = {
+				area = northern_greece_area
+				area = morea_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			macedonia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			morea_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			add_adm_power = 75
+			add_army_tradition = 10
+			northern_greece_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			albania_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			morea_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_stat_or_monarch_power = {
+				stat = mil
+				amount = 1
+			}
+		}
+		ai_weight = {
+			factor = 75	#Tapping into Alt-History, but plausible
+		}
+	}
+
+	hun_ottoman_borders_two = {
+		icon = mission_conquer_5_states
+		required_missions = { hun_ottoman_borders }
+		position = 8
+		
+		provinces_to_highlight = {
+			area = macedonia_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			macedonia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			add_adm_power = 100
+			add_prestige = 10
+			thrace_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+		ai_weight = {
+			factor = 50	#Less relevant
+		}
+	}
+	
+	hun_ottoman_borders_four = {
+		icon = mission_ottoman_harem
+		required_missions = { 
+		hun_ottoman_borders_two 
+		hun_ottoman_borders_three
+		}
+		position = 9
+		
+		provinces_to_highlight = {
+			area = thrace_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			thrace_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			add_adm_power = 100
+			add_prestige = 30
+			add_country_modifier = {
+				name = "hun_constantinople"
+				duration = 7300
+			}
+			northern_greece_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			morea_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			albania_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			if = {
+				limit = {
+					151 = { culture = turkish }
+				}
+				country_event = { id = new_flavour_hun.3 } #event used by Austria too
+			}
+		}
+		ai_weight = {
+			factor = 50	#Less relevant
+		}
+	}
+}
+
+tm_hun_anatolia_slot_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = HUN
+		NOT = { map_setup = map_setup_random }
+		has_country_flag = hun_anatolia_direction
+	}
+	has_country_shield = yes
+
+	tm_hun_advance_into_bulgaria = {
+		icon = mission_non-western_soldiers
+		required_missions = { tm_hun_kingdom_consolidation }
+		position = 6
+		
+		provinces_to_highlight = {
+			OR = {
+				area = bulgaria_area
+				area = plovdiv_area
+				area = silistria_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			bulgaria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			plovdiv_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			silistria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			bulgaria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			silistria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+		ai_weight = {
+			factor = 500	#AI HUngary should WANT to survive against the Ottoman threat
+		}
+	}
+
+}
+
+tm_hun_anatolia_slot_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = HUN
+		NOT = { map_setup = map_setup_random }
+		has_country_flag = hun_anatolia_direction
+	}
+	has_country_shield = yes
+
+	tm_hun_new_fortifications = {
+		icon = alpine_fortifications
+		required_missions = { tm_hun_kingdom_consolidation }
+		position = 6
+
+		provinces_to_highlight = {
+			area = savoy_dauphine_area
+			NOT = {
+				owned_by = ROOT
+			}
+		}
+
+		trigger = {
+			ROOT = {
+				owns_core_province = 4719
+				owns_core_province = 204
+				owns_core_province = 205
+			}
+		}
+
+		effect = {
+			205 = {
+				add_building = fort_15th
+			}
+			add_country_modifier = {
+				name = "swiss_mountains_modifier"
+				duration = -1
+			}
+		}
+	}
+
 }

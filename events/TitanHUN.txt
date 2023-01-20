@@ -45,4 +45,68 @@ country_event = {
 	}
 }
 
+country_event = {
+	id = titanhun.2
+	title = "titanhun.title2"
+	desc = "titanhun.desc2"
+	picture = LAND_MILITARY_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "hun_direction_1"
+
+		set_country_flag = hun_anatolia_direction
+		bulgaria_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		plovdiv_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		silistria_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		macedonia_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		hidden_effect = {
+			swap_non_generic_missions = yes
+		}
+	}
+
+	option = {
+		name = "hun_direction_2"
+
+		set_country_flag = hun_west_direction
+		hidden_effect = {
+			swap_non_generic_missions = yes
+		}
+	}
+
+	option = {
+		name = "hun_direction_3"
+
+		set_country_flag = hun_west_direction
+		hidden_effect = {
+			swap_non_generic_missions = yes
+		}
+	}
+}
+
 
