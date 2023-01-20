@@ -200,6 +200,36 @@ tm_CRI_branch_4 = {
 			was_tag = CRI
 		}
 	}
+
+	tm_CRI_branch4_mission_1 = {
+		icon = mission_unite_home_region
+		position = 2
+		required_missions = { tm_CRI_branch3_mission_1 }
+
+		provinces_to_highlight = {
+			OR = {
+				area = majar_area
+				area = lower_don_area 
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			majar_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			lower_don_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			add_dip_power = 100
+			add_manpower = 17.5
+		}
+	}
 }
 
 tm_CRI_branch_5 = {
@@ -213,6 +243,115 @@ tm_CRI_branch_5 = {
 		OR = {
 			tag = CRI
 			was_tag = CRI
+		}
+	}
+
+	tm_CRI_branch5_mission_1 = {
+		icon = mission_central_asian_city
+		position = 1 
+		required_missions = {}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 284
+				province_id = 2447
+				province_id = 463
+			}
+		country_or_non_sovereign_subject_holds = ROOT
+		}
+
+		trigger = {
+			284 = {
+				province_has_center_of_trade_of_level = 3
+				base_production = 10
+			}
+			2447 = {
+				province_has_center_of_trade_of_level = 3
+				base_production = 14
+			}
+			463 = {
+				province_has_center_of_trade_of_level = 3
+				base_production = 10
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = tm_CRI_development_of_crimea
+				duration = 3650
+			}
+		}
+	}
+
+	tm_CRI_branch5_mission_2 = {
+		icon = mission_war_chest
+		position = 2
+		required_missions = { tm_CRI_branch3_mission_1 }
+
+		provinces_to_highlight = {
+			OR = {
+				area = abaza_area
+				area = alania_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			abaza_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			alania_area = {
+				type = all
+				owned_by = ROOT
+			}
+			2201 = {
+				base_production = 10
+			}
+		}
+
+		effect = {
+			2201 = {
+				add_base_production = 2
+			}
+		}
+	}
+
+	tm_CRI_branch5_mission_3 = {
+		icon = mission_hands_praying
+		position = 3
+		required_missions = { tm_CRI_branch5_mission_2 }
+
+		provinces_to_highlight = {
+			OR = {
+				area = circassia_area
+				area = abaza_area
+				area = alania_area
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			religion = orthodox
+		}
+
+		trigger = {
+			circassia_area = {
+				type = all
+				religion = sunni
+			}
+			abaza_area = {
+				type = all
+				religion = sunni
+			}
+			alania_area = {
+				type = all
+				religion = sunni
+			}
+		}
+
+		effect = {
+			define_advisor = {
+				type = master_of_mint
+				skill = 3 
+				cost_multiplier = 0.75
+			}
 		}
 	}
 }
