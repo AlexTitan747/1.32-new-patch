@@ -115,7 +115,7 @@ tm_hun_slot_1 = {
 			OR = {
 				area = bosnia_area
 				area = east_adriatic_coast_area
-				province_id = 4754
+				area = herzegovina_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -129,12 +129,14 @@ tm_hun_slot_1 = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			owns_or_non_sovereign_subject_of = 4754
+			herzegovina_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 			is_subject = no
 		}
 		
 		effect = {
-			add_dip_power = 100
 			bosnia_area = {
 				add_province_modifier = {
 					name = "hun_moldavia_mod"
@@ -313,6 +315,13 @@ tm_hun_slot_2 = {
 				}
 				add_permanent_claim = ROOT
 			}
+			north_moldavia = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 		ai_weight = {
 			factor = 500	#Mission itself is rather ignorable, but the next one should be important for AI Hungary
@@ -335,16 +344,23 @@ tm_hun_slot_2 = {
 		trigger = {
 			transylvania_area = {
 				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+				is_core = ROOT
 			}
 			southern_transylvania_area = {
 				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+				is_core = ROOT
 			}
 			is_subject = no
 		}
 		
 		effect = {
+			eastern_wallachia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 			wallachia_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -380,6 +396,13 @@ tm_hun_slot_2 = {
 				}
 				add_permanent_claim = ROOT
 			}
+			herzegovina_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+			add_permanent_claim = ROOT
+			}
 
 			add_country_modifier = {
 				name = expansion_plans
@@ -400,17 +423,24 @@ tm_hun_slot_2 = {
 	}
 
 	hun_vassal_states = {
-		icon = mission_unite_home_region
+		icon = mission_impaled_soldies
 		required_missions = { hun_vassal_states_five }
 		position = 3
 		
 		provinces_to_highlight = {
-			area = wallachia_area
+			OR = {
+				area = wallachia_area
+				area = eastern_wallachia_area
+				}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
 			wallachia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			eastern_wallachia_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
@@ -429,7 +459,7 @@ tm_hun_slot_2 = {
 	}
 
 	tm_hun_kingdom_consolidation = {
-		icon = mission_eastern_european_city
+		icon = king_of_hungary
 		required_missions = { hun_vassal_states_four hun_vassal_states tm_hun_zagreb_cloth_trading }
 		position = 5
 		
@@ -438,7 +468,9 @@ tm_hun_slot_2 = {
 		}
 		
 		trigger = {
-			num_of_loans = 0
+			NOT = {
+				num_of_loans = 1
+			}
 		}
 		
 		effect = {
@@ -461,6 +493,9 @@ tm_hun_slot_2 = {
 					type = buda_castle
 					tier = 2
 				}
+			}
+			country_event = {
+				id = titanhun.2
 			}
 		}
 
@@ -491,12 +526,19 @@ tm_hun_slot_3 = {
 		position = 2
 		
 		provinces_to_highlight = {
+			OR = {
 			area = moldavia_area
+			area = north_moldavia
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
 			moldavia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			north_moldavia = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
@@ -560,9 +602,9 @@ tm_hun_slot_3 = {
 		}
 		
 		trigger = {
-			moldavia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+			OR = {
+				CRO = { is_subject_of = ROOT }
+				CRO = { exists = no }
 			}
 			is_subject = no
 		}
@@ -1090,6 +1132,11 @@ tm_hun_slot_5 = {
 		icon = a_strong_government
 		required_missions = { tm_hun_advanced_farm_work tm_hun_mine_investment }
 		position = 5
+
+		provinces_to_highlight = {
+			province_id = 153
+		}
+
 		trigger = {
 			reform_level = 7
 			crown_land_share = 80
@@ -1106,6 +1153,173 @@ tm_hun_slot_5 = {
 
 # HUN Anatolia DIRECTION
 
+tm_hun_anatolia_slot_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = HUN
+		NOT = { map_setup = map_setup_random }
+		has_country_flag = hun_anatolia_direction
+	}
+	has_country_shield = yes
+
+	tm_hun_the_great_greek_road = {
+		icon = mission_grand_trunk_road_mug
+		required_missions = { 
+			tm_hun_macedonian_occupation
+		}
+		position = 7
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 148
+				province_id = 5125
+				province_id = 3001
+				province_id = 3000
+				province_id = 5126
+				province_id = 141
+				province_id = 4239
+				province_id = 4173
+				province_id = 4126
+				province_id = 153
+			}
+		}
+		
+		trigger = {
+			148 = {
+				owned_by = ROOT
+				has_building = road
+			}
+			5125 = {
+				owned_by = ROOT
+				has_building = road
+			}
+			3001 = {
+				owned_by = ROOT
+				has_building = road
+			}
+			3000 = {
+				owned_by = ROOT
+				has_building = road
+			}
+			5126 = {
+				owned_by = ROOT
+				has_building = road
+			}
+			141 = {
+				owned_by = ROOT
+				has_building = road
+			}
+			4239 = {
+				owned_by = ROOT
+				has_building = road
+			}
+			4173 = {
+				owned_by = ROOT
+				has_building = road
+			}
+			4126 = {
+				owned_by = ROOT
+				has_building = road
+			}
+			153 = {
+				owned_by = ROOT
+				has_building = road
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "the_great_greek_road"
+				duration = -1
+			}
+		}
+		ai_weight = {
+			factor = 50	#Less relevant
+		}
+	}
+
+	tm_hun_greek_textiles_and_paper = {
+		icon = mission_dalaskogen
+		required_missions = { 
+			tm_hun_greek_holdings
+			tm_hun_the_great_greek_road
+		}
+		position = 8
+
+		provinces_to_highlight = {
+			OR = {
+			province_id = 148
+			province_id = 147
+			province_id = 5123
+			}
+		}
+
+		trigger = {
+			148 = {
+				owned_by = ROOT
+				base_production = 13
+				has_building = textile
+			}
+			147 = {
+				owned_by = ROOT
+				base_production = 12
+				has_building = workshop
+			}
+			5123 = {
+				owned_by = ROOT
+				base_production = 13
+				has_building = workshop
+			}
+		}
+		effect = {
+			148 = {
+				change_trade_goods = paper
+			}
+			147 = {
+				change_trade_goods = cloth
+			}
+			5123 = {
+				change_trade_goods = cloth
+			}
+
+			if = {
+				limit = {
+					NOT = { is_year = 1500 }
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 6
+					trigger = {
+						trade_goods = cloth
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_year = 1500
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 3
+					trigger = {
+						trade_goods = cloth
+					}
+				}
+			}
+
+			add_country_modifier = {
+				name = hungarian_production
+				duration = 7300
+			}
+			add_country_modifier = {
+				name = development_improvments
+				duration = -1
+			}
+		}
+	}
+}
+
+
 tm_hun_anatolia_slot_2 = {
 	slot = 2
 	generic = no
@@ -1118,13 +1332,14 @@ tm_hun_anatolia_slot_2 = {
 	has_country_shield = yes
 	
 	tm_hun_macedonian_occupation = {
-		icon = mission_crusade_for_varna
+		icon = mission_city_of_the_world's_desire
 		required_missions = { tm_hun_kingdom_consolidation }
 		position = 6
 		
 		provinces_to_highlight = {
 			OR = {
 				area = macedonia_area
+				province_id = 148
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -1136,6 +1351,7 @@ tm_hun_anatolia_slot_2 = {
 			}
 			148 = {
 				province_has_center_of_trade_of_level = 2
+				is_core = ROOT
 			}
 			is_subject = no
 		}
@@ -1144,6 +1360,13 @@ tm_hun_anatolia_slot_2 = {
 			add_adm_power = 75
 			add_army_tradition = 10
 			northern_greece_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			western_greece_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -1175,20 +1398,25 @@ tm_hun_anatolia_slot_2 = {
 	}
 
 	tm_hun_greek_holdings = {
-		icon = mission_crusade_for_varna
+		icon = foothold_in_greece
 		required_missions = { tm_hun_macedonian_occupation }
 		position = 7
 		
 		provinces_to_highlight = {
 			OR = {
 				area = northern_greece_area
+				area = western_greece_area
 				area = morea_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		trigger = {
-			macedonia_area = {
+			northern_greece_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			western_greece_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
@@ -1200,23 +1428,7 @@ tm_hun_anatolia_slot_2 = {
 		}
 		
 		effect = {
-			add_adm_power = 75
-			add_army_tradition = 10
-			northern_greece_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			albania_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			morea_area = {
+			aegean_archipelago_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -1227,9 +1439,46 @@ tm_hun_anatolia_slot_2 = {
 				stat = mil
 				amount = 1
 			}
+			add_country_modifier = {
+				name = greek_veterans
+				duration = 3650
+			}
 		}
 		ai_weight = {
 			factor = 75	#Tapping into Alt-History, but plausible
+		}
+	}
+
+	tm_hun_secure_anatolian_center = {
+		icon = mission_ottoman_army_1830s
+		required_missions = { tm_hun_ottoman_trading_ports }
+		position = 9
+		
+		provinces_to_highlight = {
+			OR = {
+				area = germiyan_area
+				area = ankara_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			germiyan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			ankara_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			add_prestige = 15
+		}
+		ai_weight = {
+			factor = 500	#AI HUngary should WANT to survive against the Ottoman threat
 		}
 	}
 }
@@ -1251,33 +1500,60 @@ tm_hun_anatolia_slot_3 = {
 		position = 6
 
 		provinces_to_highlight = {
-			area = savoy_dauphine_area
-			NOT = {
-				owned_by = ROOT
+			OR = {
+				area = silistria_area
+				area = plovdiv_area
+				area = bulgaria_area
+				area = rascia_area
 			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
 		trigger = {
-			ROOT = {
-				owns_core_province = 4719
-				owns_core_province = 204
-				owns_core_province = 205
+			treasury = 450
+			silistria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			plovdiv_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			bulgaria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			rascia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 
-		effect = {
-			205 = {
+		effect = { 
+			add_treasury = -450
+			159 = {
 				add_building = fort_15th
 			}
-			add_country_modifier = {
-				name = "swiss_mountains_modifier"
-				duration = -1
+			5104 = {
+				add_building = fort_15th
+			}
+			4703 = {
+				add_building = fort_15th
+			}
+			5126 = {
+				add_building = fort_15th
+			}
+
+			define_advisor = {
+				type = fortification_expert
+				skill = 3 
+				cost_multiplier = 0.5
 			}
 		}
 	}
 	
 	tm_hun_ottoman_trading_ports = {
-		icon = mission_ottoman_harem
+		icon = mission_galleys_in_port
 		required_missions = { 
 			tm_hun_new_fortifications
 			hun_ottoman_borders_four
@@ -1291,7 +1567,6 @@ tm_hun_anatolia_slot_3 = {
 				province_id = 317
 				province_id = 318
 			}
-			country_or_non_sovereign_subject_holds = ROOT
 		}
 		
 		trigger = {
@@ -1324,26 +1599,40 @@ tm_hun_anatolia_slot_3 = {
 		
 		effect = {
 			add_adm_power = 100
-			add_prestige = 30
+			add_prestige = 15
 			add_country_modifier = {
-				name = "hun_constantinople"
+				name = "surge_of_trade"
 				duration = 7300
 			}
-			hudavendigar_area = {
+			cukurova_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_claim = ROOT }
 				}
 				add_claim = ROOT
 			}
-			kastamonu_area = {
+			karaman_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_claim = ROOT }
 				}
 				add_claim = ROOT
 			}
-			aydin_area = {
+			germiyan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			ankara_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			rum_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -1353,6 +1642,77 @@ tm_hun_anatolia_slot_3 = {
 		}
 		ai_weight = {
 			factor = 50	#Less relevant
+		}
+	}
+
+	tm_hun_secure_the_anatolian_south = {
+		icon = mission_egyptian_mamluk_soldier
+		required_missions = { tm_hun_ottoman_trading_ports }
+		position = 9
+		
+		provinces_to_highlight = {
+			OR = {
+				area = karaman_area
+				area = cukurova_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			karaman_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			cukurova_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			add_prestige = 15
+		}
+		ai_weight = {
+			factor = 500	#AI HUngary should WANT to survive against the Ottoman threat
+		}
+	}
+
+	tm_hun_ottoman_annihilation = {
+		icon = mission_ottoman_flag
+		required_missions = { 
+			tm_hun_secure_anatolian_center 
+			tm_hun_secure_the_anatolian_south 
+			tm_hun_secure_the_anatolian_east
+		}
+		position = 10
+		
+		provinces_to_highlight = {
+			owner = {
+				tag = TUR
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			NOT = {
+				exists = TUR
+			}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 40
+				region = anatolia_region
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = scourge_of_the_turks
+				duration = -1
+			}
+		}
+		ai_weight = {
+			factor = 500	#AI HUngary should WANT to survive against the Ottoman threat
 		}
 	}
 
@@ -1370,7 +1730,7 @@ tm_hun_anatolia_slot_4 = {
 	has_country_shield = yes
 
 	tm_hun_advance_into_bulgaria = {
-		icon = mission_non-western_soldiers
+		icon = push_on_to_bulgaria
 		required_missions = { tm_hun_kingdom_consolidation }
 		position = 6
 		
@@ -1400,6 +1760,10 @@ tm_hun_anatolia_slot_4 = {
 		}
 		
 		effect = {
+			add_country_modifier = {
+				name = bulgarian_arms
+				duration = 2737
+			}
 			thrace_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -1414,7 +1778,7 @@ tm_hun_anatolia_slot_4 = {
 	}
 
 	hun_ottoman_borders_four = {
-		icon = mission_ottoman_harem
+		icon = mission_assemble_an_army
 		required_missions = { 
 			tm_hun_advance_into_bulgaria
 		}
@@ -1434,8 +1798,6 @@ tm_hun_anatolia_slot_4 = {
 		}
 		
 		effect = {
-			add_adm_power = 100
-			add_prestige = 30
 			add_country_modifier = {
 				name = "hun_constantinople"
 				duration = 7300
@@ -1473,9 +1835,133 @@ tm_hun_anatolia_slot_4 = {
 		}
 	}
 
+	tm_hun_secure_the_anatolian_east = {
+		icon = mission_arabian_fort
+		required_missions = { tm_hun_ottoman_trading_ports }
+		position = 9
+		
+		provinces_to_highlight = {
+			area = rum_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			rum_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			is_subject = no
+		}
+		
+		effect = {
+			add_prestige = 15
+		}
+		ai_weight = {
+			factor = 500	#AI HUngary should WANT to survive against the Ottoman threat
+		}
+	}
+
 }
 
-# HUN WEST EUROPE
+tm_hun_anatolia_slot_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = HUN
+		NOT = { map_setup = map_setup_random }
+		has_country_flag = hun_anatolia_direction
+	}
+	has_country_shield = yes
+
+	tm_hun_fate_of_constantinople = {
+		icon = take_constantinople
+		position = 7
+		
+		required_missions = { 
+			tm_hun_advance_into_bulgaria
+		}
+	
+		provinces_to_highlight = {
+			province_id = 151
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+	
+		trigger = {
+			151 = {
+				controlled_by = ROOT
+			}
+		}
+		effect = {
+			country_event = {
+				id = titanhun.3
+			}
+		}
+	}
+
+	tm_hun_search_for_lovech_gems = {
+		icon = mission_gems
+		position = 8
+		
+		required_missions = { 
+			tm_hun_fate_of_constantinople
+			hun_ottoman_borders_four
+		}
+	
+		provinces_to_highlight = {
+			OR = {
+			province_id = 1765
+			province_id = 5104
+			province_id = 4704
+			}
+		}
+	
+		trigger = {
+			1765 = {
+				owned_by = ROOT
+				base_production = 12
+				has_building = weapons
+			}
+			5104 = {
+				owned_by = ROOT
+				base_production = 12
+				has_building = workshop
+			}
+			4704 = {
+				owned_by = ROOT
+				base_production = 12
+				has_building = workshop
+			}
+		}
+		effect = {
+			random_list = {
+				25 = { 
+					5104 = {
+						change_trade_goods = gems
+					}
+				}
+				35 = {
+					5104 = {
+						change_trade_goods = salt
+					}
+				}
+				40 = {
+					5104 = {
+						change_trade_goods = iron
+					}
+				}
+			}
+	
+			add_country_modifier = {
+				name = learning_from_decisions
+				duration = 3650
+			}
+		}
+	}
+
+}
+
+# HUN WEST EUROPE EUROPE
 
 tm_hun_west_europe_slot_2 = {
 	slot = 2
@@ -1488,108 +1974,73 @@ tm_hun_west_europe_slot_2 = {
 	}
 	has_country_shield = yes
 	
-	emp_hun_take_galicia = {
-		icon = mission_partition_poland
-		required_missions = {  }
+	tm_hun_adriatic_focus = {
+		icon = adriatic_access
+		required_missions = { 
+			tm_hun_kingdom_consolidation
+		}
 		position = 6
+		
 		provinces_to_highlight = {
 			OR = {
-				area = malopolska_area
-				area = red_ruthenia_area
-				area = sandomierz_area
+			area = carinthia_area
+			area = venetia_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
+		
 		trigger = {
-			OR = {
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					value = 9
-					OR = {
-						area = malopolska_area
-						area = red_ruthenia_area
-						area = sandomierz_area
-					}
-				}
-				if = {
-					limit = {
-						exists = PLC
-					}
-					total_own_and_non_tributary_subject_development = PLC
-					army_size = PLC
-				}
-				else_if = {
-					limit = {
-						exists = POL
-					}
-					total_own_and_non_tributary_subject_development = POL
-					army_size = POL
-				}
+			carinthia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
 			}
-			is_subject = no
+			venetia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		effect = {
-			if = {
-				limit = {
-					valid_for_personal_unions_trigger = yes
-					exists = PLC
-					PLC = {
-						valid_for_personal_unions_trigger = yes
-					}
-				}
-				add_casus_belli = {
-					type = cb_restore_personal_union
-					months = 300
-					target = PLC
+			112 = {
+				add_great_project_tier = {
+					type = doges_palace
+					tier = 2
 				}
 			}
-			else_if = {
-				limit = {
-					valid_for_personal_unions_trigger = yes
-					exists = POL
-					POL = {
-						valid_for_personal_unions_trigger = yes
-					}
-				}
-				add_casus_belli = {
-					type = cb_restore_personal_union
-					months = 300
-					target = POL
-				}
+
+			define_advisor = {
+				type = trader
+				skill = 2
+				cost_multiplier = 0.25
+				culture = venetian
 			}
-				mazovia_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT }
-					}
-					add_permanent_claim = ROOT
+
+			po_valley_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
 				}
-				central_poland_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT }
-					}
-					add_permanent_claim = ROOT
+				add_claim = ROOT
+			}
+			verona_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
 				}
-				wielkopolska_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT }
-					}
-					add_permanent_claim = ROOT
+				add_claim = ROOT
+			}
+			emilia_romagna_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
 				}
-				kuyavia_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				add_stat_or_monarch_power = {
-					stat = mil
-					amount = 1
+				add_claim = ROOT
 			}
 		}
+		ai_weight = {
+			factor = 50	#Less relevant
+		}
 	}
+
 }
 
 tm_hun_west_europe_slot_3 = {
@@ -1602,6 +2053,124 @@ tm_hun_west_europe_slot_3 = {
 		has_country_flag = hun_west_europe_direction
 	}
 	has_country_shield = yes
+
+	tm_hun_austrian_vinyards = {
+		icon = mission_vinyards_of_austria
+		position = 7
+		
+		required_missions = { 
+			emp_hun_duchy_of_austria
+		}
+	
+		provinces_to_highlight = {
+			OR = {
+				province_id = 134
+				province_id = 4762
+				province_id = 1770
+				province_id = 1863
+				province_id = 5069
+				province_id = 5087
+			}
+		}
+
+		trigger = {
+			134 = {
+				owned_by = ROOT
+				base_production = 10
+				has_building = workshop
+				has_building = farm_estate
+			}
+			4762 = {
+				base_production = 14
+				has_building = workshop
+				has_building = farm_estate
+			}
+			1770 = {
+				base_production = 10
+				has_building = workshop
+				has_building = farm_estate
+			}
+			1863 = {
+				base_production = 10
+				has_building = workshop
+				has_building = farm_estate
+			}
+			5069 = {
+				base_production = 10
+				has_building = workshop
+				has_building = farm_estate
+			}
+			5087 = {
+				base_production = 10
+				has_building = workshop
+				has_building = farm_estate
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					NOT = { is_year = 1500 }
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 6
+					trigger = {
+						trade_goods = wine
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_year = 1500
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 3
+					trigger = {
+						trade_goods = wine
+					}
+				}
+			}
+			134 = {
+				add_permanent_province_modifier = {
+					name = tm_hun_vinyards
+					duration = -1
+				}
+			}
+			4762 = {
+				add_permanent_province_modifier = {
+					name = tm_hun_vinyards
+					duration = -1
+				}
+			}
+			1770 = {
+				add_permanent_province_modifier = {
+					name = tm_hun_vinyards
+					duration = -1
+				}
+			}
+			1863 = {
+				change_trade_goods = wine
+				add_permanent_province_modifier = {
+					name = tm_hun_vinyards
+					duration = -1
+				}
+			}
+			5069 = {
+				change_trade_goods = wine
+				add_permanent_province_modifier = {
+					name = tm_hun_vinyards
+					duration = -1
+				}
+			}
+			5087 = {
+				change_trade_goods = wine
+				add_permanent_province_modifier = {
+					name = tm_hun_vinyards
+					duration = -1
+				}
+			}
+		}
+	}
 	
 	emp_hun_jagiellonian_union = {
 		icon = jageillonian_union
@@ -1782,24 +2351,24 @@ tm_hun_west_europe_slot_4 = {
 
 	emp_hun_duchy_of_austria = {
 		icon = mission_the_austrian_succession
-		required_missions = { emp_hun_bulwark_of_christianity }
+		required_missions = { tm_hun_kingdom_consolidation }
+		position = 6
+
 		provinces_to_highlight = {
 			OR = {
 				AND = {
 					OR = {
 						area = austria_proper_area
 						area = inner_austria_area
-						area = carinthia_area
 					}
 					NOT = { country_or_non_sovereign_subject_holds = ROOT }
 					NOT = {
 						ROOT = {
 							num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-								value = 9
+								value = 8
 								OR = {
 									area = austria_proper_area
 									area = inner_austria_area
-									area = carinthia_area
 								}
 							}
 						}
@@ -1814,12 +2383,15 @@ tm_hun_west_europe_slot_4 = {
 		trigger = {
 			owns_or_non_sovereign_subject_of = 134 #Vienna
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 9
+				value = 8
 				OR = {
 					area = austria_proper_area
 					area = inner_austria_area
-					area = carinthia_area
 				}
+			}
+
+			NOT = {
+				exists = HAB
 			}
 		}
 		effect = {
@@ -1831,13 +2403,206 @@ tm_hun_west_europe_slot_4 = {
 			}
 			else = { add_prestige = 50 }
 
+			upper_austria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			tirol_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			east_bavaria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			upper_bavaria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+
 			add_country_modifier = {
 				name = hun_hungarian_austria
 				duration = -1
 			}
 		}
 	}
+
+	tm_hun_entrance_into_bohemia = {
+		icon = adriatic_access
+		required_missions = { 
+			emp_hun_duchy_of_austria
+		}
+		position = 7
+		
+		provinces_to_highlight = {
+			area = moravia_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			moravia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1768 = {
+				OR = {
+				has_building = fort_15th
+				has_building = fort_16th
+				}
+			}
+		}
+		effect = {
+			inntal_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			if = {
+				limit = {
+						num_of_owned_provinces_with = {
+						value = 4
+						religion = hussite
+						area = moravia_area
+						}
+						HUN = {
+							NOT = { religion = hussite }
+						}
+					}
+				country_event = {
+					id = titanhun.4
+				}
+			}
+			else = {
+				add_stability = 1
+			}
+		}
+		ai_weight = {
+			factor = 50	#Less relevant
+		}
+	}
 }
+
+tm_hun_west_europe_slot_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = HUN
+		NOT = { map_setup = map_setup_random }
+		has_country_flag = hun_west_europe_direction
+	}
+	has_country_shield = yes
+
+	tm_hun_face_the_alps = {
+		icon = adriatic_access
+		required_missions = { 
+			emp_hun_duchy_of_austria
+		}
+		position = 7
+		
+		provinces_to_highlight = {
+			OR = {
+			area = upper_austria_area
+			area = tirol_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			upper_austria_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			tirol_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			4758 = {
+				OR = {
+				has_building = fort_15th
+				has_building = fort_16th
+				}
+			}
+			110 = {
+				OR = {
+				has_building = fort_15th
+				has_building = fort_16th
+				}
+			}
+			1768 = {
+				OR = {
+				has_building = fort_15th
+				has_building = fort_16th
+				}
+			}
+		}
+		effect = {
+			define_advisor = {
+				type = fortification_expert
+				skill = 3
+				cost_multiplier = 0.5
+				culture = hungarian
+			}
+
+			inntal_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+		}
+		ai_weight = {
+			factor = 50	#Less relevant
+		}
+	}
+
+	tm_hun_inntal_gold = {
+		icon = mission_war_chest 
+		position = 8
+
+		required_missions = { tm_hun_face_the_alps }
+
+		provinces_to_highlight = {
+			province_id = 73
+		}
+
+		trigger = {
+			73 = {
+				owned_by = ROOT
+				base_production = 10
+			}
+		}
+
+		effect = {
+			add_treasury = 355
+			73 = {
+				add_base_production = 2
+				add_province_modifier = {
+					name = hont_gold_mines
+					duration = -1
+				}
+			}
+		}
+	}
+}
+
+
+
 
 # HUN Steppe Direction
 
@@ -1896,6 +2661,109 @@ tm_hun_steppe_slot_2 = {
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	emp_hun_take_galicia = {
+		icon = mission_partition_poland
+		required_missions = {  }
+		position = 7
+		provinces_to_highlight = {
+			OR = {
+				area = malopolska_area
+				area = red_ruthenia_area
+				area = sandomierz_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			OR = {
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 9
+					OR = {
+						area = malopolska_area
+						area = red_ruthenia_area
+						area = sandomierz_area
+					}
+				}
+				if = {
+					limit = {
+						exists = PLC
+					}
+					total_own_and_non_tributary_subject_development = PLC
+					army_size = PLC
+				}
+				else_if = {
+					limit = {
+						exists = POL
+					}
+					total_own_and_non_tributary_subject_development = POL
+					army_size = POL
+				}
+			}
+			is_subject = no
+		}
+		effect = {
+			if = {
+				limit = {
+					valid_for_personal_unions_trigger = yes
+					exists = PLC
+					PLC = {
+						valid_for_personal_unions_trigger = yes
+					}
+				}
+				add_casus_belli = {
+					type = cb_restore_personal_union
+					months = 300
+					target = PLC
+				}
+			}
+			else_if = {
+				limit = {
+					valid_for_personal_unions_trigger = yes
+					exists = POL
+					POL = {
+						valid_for_personal_unions_trigger = yes
+					}
+				}
+				add_casus_belli = {
+					type = cb_restore_personal_union
+					months = 300
+					target = POL
+				}
+			}
+				mazovia_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				central_poland_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				wielkopolska_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				kuyavia_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				add_stat_or_monarch_power = {
+					stat = mil
+					amount = 1
 			}
 		}
 	}
