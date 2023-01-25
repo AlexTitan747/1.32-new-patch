@@ -2029,9 +2029,10 @@ tm_hun_west_europe_slot_1 = {
 	tm_hun_tuscany_invasion = {
 		icon = all_roads_lead_to_milan
 		required_missions = {
-			tm_hun_adriatic_focus
+			tm_hun_road_to_milan
+			tm_hun_italian_east_coast
 		}
-		position = 7
+		position = 8
 		
 		provinces_to_highlight = {
 			OR = {
@@ -2075,6 +2076,31 @@ tm_hun_west_europe_slot_1 = {
 		}
 		ai_weight = {
 			factor = 50	#Less relevant
+		}
+	}
+
+	tm_hun_fall_of_milan = {
+		icon = milan_victorious
+		position = 9
+		
+		required_missions = {
+			tm_hun_tuscany_invasion
+		}
+	
+		provinces_to_highlight = {
+			province_id = 104
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+	
+		trigger = {
+			104 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			tooltip = {
+				country_event = { id = new_flavour_hun.1 }
+			}
 		}
 	}
 }
@@ -2657,6 +2683,7 @@ tm_hun_west_europe_slot_4 = {
 		}
 
 		trigger = {
+			has_country_modifier = hun_cavalry_focus
 			266 = {
 				owned_by = ROOT
 			}
