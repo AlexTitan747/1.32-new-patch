@@ -10,8 +10,16 @@ country_decisions = {
 		}
 
 		allow = {
+			custom_trigger_tooltip = {
+				tooltip = nra_one_time_use
+			}
+			custom_trigger_tooltip = {
+				tooltip = lost_war_tooltip
+			}
 			num_of_loans = 25
-			has_country_modifier = recovery_war_act_trigger
+			hidden_trigger = {
+				has_country_modifier = recovery_war_act_trigger
+			}
 		}
 
 		effect = {
@@ -57,8 +65,8 @@ country_decisions = {
 			mil_tech = 10
 			NOT = {
 				OR = {
-					has_country_modifier = professional_army_act
-					has_country_modifier = milita_act
+					has_country_modifier = established_professional_army_act
+					has_country_modifier = established_militia_act
 				}
 			}
 		}
@@ -68,6 +76,9 @@ country_decisions = {
 			treasury = 1000
 			stability = 2
 			NOT = { has_country_modifier = established_professional_army_act }
+			custom_trigger_tooltip = {
+				tooltip = m_act_mutually_exclusive
+			}
 		}
 
 		effect = {
@@ -86,8 +97,8 @@ country_decisions = {
 			mil_tech = 10
 			NOT = {
 				OR = {
-					has_country_modifier = professional_army_act
-					has_country_modifier = milita_act
+					has_country_modifier = established_professional_army_act
+					has_country_modifier = established_militia_act
 					}
 			}
 		}
@@ -97,6 +108,9 @@ country_decisions = {
 			treasury = 1000
 			stability = 2
 			NOT = { has_country_modifier = established_militia_act }
+			custom_trigger_tooltip = {
+				tooltip = m_act_mutually_exclusive
+			}
 		}
 
 		effect = {
