@@ -29,8 +29,13 @@ tm_CRI_branch_1 = {
 		}
 
 		effect = {
+			north_moldavia = {
+				add_base_tax = 1 
+				add_base_production = 2
+				add_base_manpower = 3
+			}
 			moldavia_area = {
-				add_base_tax = 2 
+				add_base_tax = 1
 				add_base_production = 3
 				add_base_manpower = 2
 			}
@@ -59,20 +64,20 @@ tm_CRI_branch_2 = {
 
 		provinces_to_highlight = {
 			OR = {
-				area = west_dniepr_area
-				area = podolia_volhynia_area
-				owned_by = KIE
+				area = kremenchuk_area 
+				area = yedisan_area 	
 			} 
+			owned_by = ZAZ
 		}
 
 		trigger = {
-			KIE = {
+			ZAZ = {
 				is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
 			}
 		}
 		
 		effect = {
-			podolia_volhynia_area = {
+			kremenchuk_area = {
 				add_base_tax = 4
 				add_base_manpower = 3
 				add_base_production = 2
@@ -91,20 +96,21 @@ tm_CRI_branch_2 = {
 
 		provinces_to_highlight = {
 			OR = {
+				area = north_moldavia
 				area = moldavia_area
-				area = west_dniepr_area
-				area = podolia_volhynia_area
+				area = kremenchuk_area 
+				area = yedisan_area 
 				area = chernigov_area
 				area = east_dniepr_area
 				area = sloboda_ukraine_area
-				owned_by = KIE
-				owned_by = MOL
-				owned_by = CHR
 			}
+			owned_by = ZAZ
+			owned_by = MOL
+			owned_by = CHR
 		}
 
 		trigger = {
-			KIE = {
+			ZAZ = {
 				total_development = 100
 				is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
 			}
@@ -115,6 +121,17 @@ tm_CRI_branch_2 = {
 			CHR = {
 				total_development = 100
 				is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
+			}
+		}
+
+		effect = {
+			add_adm_power = 50
+			add_dip_power = 100
+			add_mil_power = 50
+
+			add_country_modifier = {
+				name = tm_CRI_integration_of_the_tributaries
+				duration = 9125
 			}
 		}
 	}
@@ -149,6 +166,27 @@ tm_CRI_branch_3 = {
 				name = tm_CRI_early_expansion
 				duration = 3650
 			}
+			lower_don_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			majar_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			alania_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 
@@ -177,11 +215,30 @@ tm_CRI_branch_3 = {
 
 		effect = {
 			chernigov_area = {
-				add_base_production = 4 
+				add_base_production = 2
 				add_base_manpower = 2
 			}
 			east_dniepr_area = {
-				add_base_manpower = 5
+				add_base_manpower = 3
+			}
+		}
+	}
+	tm_CRI_branch3_mission_3 = {
+		icon = mission_unknown_mission
+		position = 4
+		required_missions = { 
+			tm_CRI_branch2_mission_2
+			tm_CRI_branch4_mission_2 
+		}
+
+		trigger = {}
+
+		effect = {
+			custom_tooltip = tm_CRI_choose_the_path_of_our_nation_tt
+			hidden_effect = {
+				country_event = {
+					id = titanCRI.1
+				}
 			}
 		}
 	}
@@ -228,6 +285,115 @@ tm_CRI_branch_4 = {
 		effect = {
 			add_dip_power = 100
 			add_manpower = 17.5
+
+			tambov_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			saratov_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			astrakhan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			lower_yik_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			nogai_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	tm_CRI_branch4_mission_2 = {
+		icon = mission_non-western_cavalry_raid
+		position = 3
+		required_missions = { tm_CRI_branch4_mission_1 }
+
+		provinces_to_highlight = {
+			OR = {
+				area = tambov_area
+				area = saratov_area
+				area = astrakhan_area
+				area = lower_yik_area
+				area = nogai_area
+			}
+		}
+
+		trigger = {
+			tambov_area = {
+				type = all
+				owned_by = ROOT
+			}
+			saratov_area = {
+				type = all
+				owned_by = ROOT
+			}
+			astrakhan_area = {
+				type = all
+				owned_by = ROOT
+			}
+			lower_yik_area = {
+				type = all
+				owned_by = ROOT
+			}
+			nogai_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+
+		effect = {
+			custom_tooltip = tm_CRI_hold_on_astrakhan_tt
+			hidden_effect = {
+				303 = {
+					add_province_modifier = {
+						name = tm_CRI_hold_over_astrakhan
+						duration = -1
+						add_building = church
+					}
+				}
+				464 = {
+					add_province_modifier = {
+						name = tm_CRI_hold_over_astrakhan
+						duration = -1
+						add_building = barracks
+					}
+				}
+				465 = {
+					add_province_modifier = {
+						name = tm_CRI_hold_over_astrakhan
+						duration = -1
+						add_building = barracks
+					}
+				}
+				466 = {
+					add_province_modifier = {
+						name = tm_CRI_hold_over_astrakhan
+						duration = -1
+						add_building = barracks
+					}
+				}
+			}
 		}
 	}
 }
@@ -288,18 +454,11 @@ tm_CRI_branch_5 = {
 		required_missions = { tm_CRI_branch3_mission_1 }
 
 		provinces_to_highlight = {
-			OR = {
-				area = abaza_area
-				area = alania_area
-			}
+			area = alania_area
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
 		trigger = {
-			abaza_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
 			alania_area = {
 				type = all
 				owned_by = ROOT
@@ -312,6 +471,10 @@ tm_CRI_branch_5 = {
 		effect = {
 			2201 = {
 				add_base_production = 2
+				add_province_modifier = {
+					name = tm_CRI_stability_of_gold
+					duration = -1
+				}
 			}
 		}
 	}
@@ -324,7 +487,6 @@ tm_CRI_branch_5 = {
 		provinces_to_highlight = {
 			OR = {
 				area = circassia_area
-				area = abaza_area
 				area = alania_area
 				country_or_non_sovereign_subject_holds = ROOT
 			}
@@ -333,10 +495,6 @@ tm_CRI_branch_5 = {
 
 		trigger = {
 			circassia_area = {
-				type = all
-				religion = sunni
-			}
-			abaza_area = {
 				type = all
 				religion = sunni
 			}
