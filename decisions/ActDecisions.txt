@@ -192,4 +192,44 @@ country_decisions = {
 			}
 		}
 	}
+
+	tm_BGR_start_the_centralisation = {
+		major = yes
+		potential = {
+			tag = BGR 
+			has_country_flag = tm_CRI_bulgars
+			NOT = { has_country_flag = bgr_begin_centralisation }
+		}
+
+		allow = {
+			horde_unity = 100
+			NOT = { has_country_flag = bgr_begin_centralisation }
+		}
+
+		effect = {
+			custom_tooltip = bgr_begin_centralisation_tt
+			set_country_flag = bgr_begin_centralisation
+		}
+	}
+	tm_BGR_restart_the_migration = {
+		major = yes
+		potential = {
+			tag = BGR
+			has_country_flag = bgr_centralisation_complete
+			NOT = { has_country_flag = bgr_migration_restarted }
+		}
+		allow = {
+			legitimacy = 90
+		}
+
+		effect = {
+			set_country_flag = bgr_migration_restarted
+			custom_tooltip = bgr_migration_restarted_tt
+			add_country_modifier = {
+				name = bgr_migration_restart
+				duration = 9125
+			}
+		}
+	}
 }
+
