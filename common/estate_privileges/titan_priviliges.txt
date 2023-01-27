@@ -2,6 +2,15 @@ estate_church_new_prophets = {
 	icon = privilege_recruit_minister
 	influence = 0.10
 
+	is_valid = {
+		OR = {
+			religion = buddhism
+			religion = vajrayana
+			religion = mahayana
+			religion_group = muslim
+		}
+	}
+
 	conditional_modifier = {
 		trigger = {
 			has_dlc = "Common Sense"
@@ -12,7 +21,7 @@ estate_church_new_prophets = {
 			}
 		}
 		modifier = {
-			yearly_karma_decay = -0.005
+			yearly_karma_decay = -0.05
 		}
 	}
 	conditional_modifier = {
@@ -21,7 +30,7 @@ estate_church_new_prophets = {
 			religion_group = muslim
 		}
 		modifier = {
-			monthly_piety = -0.001
+			monthly_piety = -0.002
 		}
 	}
 	penalties = {
