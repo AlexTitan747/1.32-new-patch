@@ -10,6 +10,9 @@ merc__local_free_company = {
     trigger = {
         total_development = 150
         is_allowed_to_recruit_mercenaries = yes
+        NOT = {
+            has_country_flag = cav_mercs_activated
+        }
     }
     # No home province means local mercenary company
 }
@@ -21,6 +24,9 @@ merc__local_small_company = {
     trigger = {
         NOT = { total_development = 150 }
         is_allowed_to_recruit_mercenaries = yes
+        NOT = {
+            has_country_flag = cav_mercs_activated
+        }
     }
     cost_modifier = 1
     modifier = {
@@ -36,6 +42,9 @@ merc__local_free_city_company = {
     trigger = {
         has_reform = free_city
         is_allowed_to_recruit_mercenaries = yes
+        NOT = {
+            has_country_flag = cav_mercs_activated
+        }
     }
     cost_modifier = 1
     modifier = {
@@ -52,6 +61,9 @@ merc__local_grand_company = {
         total_development = 200
         is_year = 1470
         is_allowed_to_recruit_mercenaries = yes
+        NOT = {
+            has_country_flag = cav_mercs_activated
+        }
     }
     # No home province means local mercenary company
 }
@@ -64,6 +76,9 @@ merc__local_independent_army = {
     trigger = {
         total_development = 400
         is_allowed_to_recruit_mercenaries = yes
+        NOT = {
+            has_country_flag = cav_mercs_activated
+        }
     }
     # No home province means local mercenary company
 }
@@ -76,6 +91,9 @@ merc__local_colonialism_army = {
     trigger = {
         is_year = 1500
         is_allowed_to_recruit_mercenaries = yes
+        NOT = {
+            has_country_flag = cav_mercs_activated
+        }
     }
     # No home province means local mercenary company
 }
@@ -88,6 +106,9 @@ merc__local_printingpress_army = {
     trigger = {
         is_year = 1550
         is_allowed_to_recruit_mercenaries = yes
+        NOT = {
+            has_country_flag = cav_mercs_activated
+        }
     }
     # No home province means local mercenary company
 }
@@ -100,6 +121,9 @@ merc__local_globaltrade_army = {
     trigger = {
         is_year = 1600
         is_allowed_to_recruit_mercenaries = yes
+        NOT = {
+            has_country_flag = cav_mercs_activated
+        }
     }
     # No home province means local mercenary company
 }
@@ -112,6 +136,9 @@ merc__local_manufactories_army = {
     trigger = {
         is_year = 1650
         is_allowed_to_recruit_mercenaries = yes
+        NOT = {
+            has_country_flag = cav_mercs_activated
+        }
     }
     # No home province means local mercenary company
 }
@@ -124,6 +151,147 @@ merc__local_enlightenment_army = {
     trigger = {
         is_year = 1700
         is_allowed_to_recruit_mercenaries = yes
+        NOT = {
+            has_country_flag = cav_mercs_activated
+        }
+    }
+    # No home province means local mercenary company
+}
+
+#cav mercs
+
+merc__cav_local_free_company = {
+    regiments_per_development = 0.025
+    artillery_weight = 0
+    cavalry_weight = 1
+    cost_modifier = 1
+    trigger = {
+        total_development = 150
+        is_allowed_to_recruit_mercenaries = yes
+        has_country_flag = cav_mercs_activated
+    }
+    # No home province means local mercenary company
+}
+
+merc__cav_local_small_company = {
+    regiments_per_development = 0.05
+    artillery_weight = 0
+    cavalry_weight = 1
+    trigger = {
+        NOT = { total_development = 150 }
+        is_allowed_to_recruit_mercenaries = yes
+        has_country_flag = cav_mercs_activated
+    }
+    cost_modifier = 1
+    modifier = {
+
+    }
+    # No home province means local mercenary company
+}
+
+merc__cav_local_free_city_company = {
+    regiments_per_development = 0.05
+    artillery_weight = 0
+    cavalry_weight = 1
+    trigger = {
+        has_reform = free_city
+        is_allowed_to_recruit_mercenaries = yes
+        has_country_flag = cav_mercs_activated
+    }
+    cost_modifier = 1
+    modifier = {
+    }
+    # No home province means local mercenary company
+}
+
+merc__cav_local_grand_company = {
+    regiments_per_development = 0.05
+    artillery_weight = 0
+    cavalry_weight = 1
+    cost_modifier = 1
+    trigger = {
+        total_development = 200
+        is_year = 1470
+        is_allowed_to_recruit_mercenaries = yes
+        has_country_flag = cav_mercs_activated
+    }
+    # No home province means local mercenary company
+}
+
+merc__cav_local_independent_army = {
+    regiments_per_development = 0.05
+    artillery_weight = 0
+    cavalry_weight = 1
+    cost_modifier = 1
+    trigger = {
+        total_development = 400
+        is_allowed_to_recruit_mercenaries = yes
+        has_country_flag = cav_mercs_activated
+    }
+    # No home province means local mercenary company
+}
+
+merc__cav_local_colonialism_army = {
+    regiments_per_development = 0.05
+    artillery_weight = 0
+    cavalry_weight = 1
+    cost_modifier = 1
+    trigger = {
+        is_year = 1500
+        is_allowed_to_recruit_mercenaries = yes
+        has_country_flag = cav_mercs_activated
+    }
+    # No home province means local mercenary company
+}
+
+merc__cav_local_printingpress_army = {
+    regiments_per_development = 0.05
+    artillery_weight = 0
+    cavalry_weight = 1
+    cost_modifier = 1
+    trigger = {
+        is_year = 1550
+        is_allowed_to_recruit_mercenaries = yes
+        has_country_flag = cav_mercs_activated
+    }
+    # No home province means local mercenary company
+}
+
+merc__cav_local_globaltrade_army = {
+    regiments_per_development = 0.05
+    artillery_weight = 0
+    cavalry_weight = 1
+    cost_modifier = 1
+    trigger = {
+        is_year = 1600
+        is_allowed_to_recruit_mercenaries = yes
+        has_country_flag = cav_mercs_activated
+    }
+    # No home province means local mercenary company
+}
+
+merc__cav_local_manufactories_army = {
+    regiments_per_development = 0.05
+    artillery_weight = 0
+    cavalry_weight = 1
+    cost_modifier = 1
+    trigger = {
+        is_year = 1650
+        is_allowed_to_recruit_mercenaries = yes
+        has_country_flag = cav_mercs_activated
+    }
+    # No home province means local mercenary company
+}
+
+merc__cav_local_enlightenment_army = {
+    regiments_per_development = 0.05
+    artillery_weight = 0
+    cavalry_weight = 1
+    cost_modifier = 1
+    trigger = {
+        is_year = 1700
+        is_allowed_to_recruit_mercenaries = yes
+        has_country_flag = cav_mercs_activated
     }
     # No home province means local mercenary company
 }
