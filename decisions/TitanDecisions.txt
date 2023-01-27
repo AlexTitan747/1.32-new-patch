@@ -487,11 +487,17 @@ country_decisions = {
 		potential = {
 			NOT = { has_country_flag = cav_mercs_activated }
 			OR = {
-				has_idea_group = shock_ideas
+				AND = {
 				has_idea_group = maneuver_ideas
+				has_idea = i44
+				}
+				AND = {
+				has_idea_group = shock_ideas
+				has_idea = i37
+				}
 			}
 			NOT = {
-				has_loans = 5
+				num_of_loans = 5
 			}
 		}
 		allow = {
