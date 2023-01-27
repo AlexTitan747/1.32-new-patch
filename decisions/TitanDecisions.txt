@@ -486,6 +486,13 @@ country_decisions = {
 	tm_cav_mercs = {
 		potential = {
 			NOT = { has_country_flag = cav_mercs_activated }
+			OR = {
+				has_idea_group = shock_ideas
+				has_idea_group = maneuver_ideas
+			}
+			NOT = {
+				has_loans = 5
+			}
 		}
 		allow = {
 			ai = no
