@@ -54,11 +54,11 @@ NDefines.NDiplomacy.HRE_VOTE_ROYAL_MARRIAGE = 30
 NDefines.NDiplomacy.HRE_VOTE_CORE_CLAIM = 0
 NDefines.NDiplomacy.DAYS_TO_DECLARE_WAR = 30
 
-NDefines.NDiplomacy.TRIBUTE_BASE_CASH = 0.12
-NDefines.NDiplomacy.TRIBUTE_BASE_ADM = 0.12
-NDefines.NDiplomacy.TRIBUTE_BASE_DIP = 0.12
-NDefines.NDiplomacy.TRIBUTE_BASE_MIL = 0.12
-NDefines.NDiplomacy.TRIBUTE_BASE_MANPOWER = 0.1
+NDefines.NDiplomacy.TRIBUTE_BASE_CASH = 0.16
+NDefines.NDiplomacy.TRIBUTE_BASE_ADM = 0.16
+NDefines.NDiplomacy.TRIBUTE_BASE_DIP = 0.16
+NDefines.NDiplomacy.TRIBUTE_BASE_MIL = 0.16
+NDefines.NDiplomacy.TRIBUTE_BASE_MANPOWER = 0.16
 
 -- NCountry
 
