@@ -2000,26 +2000,22 @@ tm_hun_west_europe_slot_1 = {
 			}
 		}
 		effect = {
-			112 = {
-				add_great_project_tier = {
-					type = doges_palace
-					tier = 1
-				}
-			}
-
-			define_advisor = {
-				type = trader
-				skill = 2
-				cost_multiplier = 0.25
-				culture = venetian
-			}
-			emilia_romagna_area = {
+			lombardy_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_claim = ROOT }
 				}
 				add_claim = ROOT
 			}
+
+			liguria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+
 		}
 		ai_weight = {
 			factor = 50	#Less relevant
@@ -2045,7 +2041,22 @@ tm_hun_west_europe_slot_1 = {
 			}
 		}
 		effect = {
-			lombardy_area = {
+
+			116 = {
+				add_great_project_tier = {
+					type = santa_maria_del_fiore
+					tier = 1
+				}
+			}
+
+			alps_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_claim = ROOT }
+				}
+				add_claim = ROOT
+			}
+			piedmont_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_claim = ROOT }
@@ -2610,13 +2621,6 @@ tm_hun_west_europe_slot_4 = {
 			}
 		}
 		effect = {
-			inntal_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
 			if = {
 				limit = {
 						num_of_owned_provinces_with = {
