@@ -1093,15 +1093,18 @@ tm_hun_slot_5 = {
 				name = hun_golden_age_of_hungary
 				duration = 9125
 			}
-			every_owned_province = { 
-				limit = {
-					OR = { 
-						has_manpower_building_trigger = yes 
-						has_forcelimit_building_trigger = yes 
-						has_fort_building_trigger = yes 
-					}
-				} 
-				add_base_manpower = 1 
+			custom_tooltip = pol_every_mil_building_1_base_development_mil_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						OR = {
+							has_manpower_building_trigger = yes 
+							has_forcelimit_building_trigger = yes
+							has_fort_building_trigger = yes
+						}
+					} 
+					add_base_manpower = 1 
+				}
 			}
 		}
 	}
@@ -2935,6 +2938,57 @@ tm_hun_steppe_slot_1 = {
 			}
 		}
 	}
+
+	tm_hun_krakow_city = {
+		icon = mission_pol_revival_krakow
+		position = 9
+
+		required_missions = { tm_hun_eastern_frontier }
+
+		provinces_to_highlight = {
+			province_id = 262
+		}
+
+		trigger = {
+			262 = {
+				is_core = yes
+				owned_by = ROOT
+				total_development = 30
+			}
+		}
+
+		effect = {
+			262 = {
+				add_great_project_tier = {
+					type = krakow_cloth_hall
+					tier = 1
+				}
+				add_building = university
+			}
+			if = {
+				limit = {
+					NOT = { is_year = 1535 }
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 8
+					trigger = {
+						trade_goods = cloth
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_year = 1535
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 5
+					trigger = {
+						trade_goods = cloth
+					}
+				}
+			}
+		}
+	}
 }
 
 tm_hun_steppe_slot_2 = {
@@ -3001,99 +3055,27 @@ tm_hun_steppe_slot_2 = {
 		}
 	}
 
-	tm_hun_krakow_city = {
-		icon = mission_pol_revival_krakow
-		position = 9
-
-		required_missions = { emp_hun_take_galicia tm_hun_eastern_frontier tm_hun_new_dyeworks }
-
-		provinces_to_highlight = {
-			province_id = 2201
-		}
-
-		trigger = {
-			262 = {
-				is_core = yes
-				owned_by = ROOT
-				total_development = 30
-			}
-		}
-
-		effect = {
-			262 = {
-				add_great_project_tier = {
-					type = krakow_cloth_hall
-					tier = 1
-				}
-				add_building = university
-			}
-			if = {
-				limit = {
-					NOT = { is_year = 1535 }
-				}
-				add_years_of_owned_provinces_production_income = {
-					years = 8
-					trigger = {
-						trade_goods = cloth
-					}
-				}
-			}
-			else_if = {
-				limit = {
-					is_year = 1535
-				}
-				add_years_of_owned_provinces_production_income = {
-					years = 5
-					trigger = {
-						trade_goods = cloth
-					}
-				}
-			}
-		}
-	}
-
 	tm_hun_poland_under_our_wing = {
-		icon = jageillonian_union
-		required_missions = { tm_hun_krakow_city }
-		position = 10
+		icon = mission_polish_hussar_1
+		required_missions = { emp_hun_take_galicia tm_hun_eastern_frontier tm_hun_new_dyeworks }
+		position = 9
 		provinces_to_highlight = {
 			OR = {
-				area = mazovia_area
-				area = central_poland_area
-				area = wielkopolska_area
-				area = kuyavia_area
+				province_id = 257
+				province_id = 262
+				province_id = 2961
+				province_id = 260
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-			ROOT = {
-				NOT = {
-					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-						value = 12 #out of 15
-						OR = {
-							area = mazovia_area
-							area = central_poland_area
-							area = wielkopolska_area
-							area = kuyavia_area
-						}
-					}
-				}
-			}
+			
 		}
 		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 12 #out of 15
-				OR = {
-					area = mazovia_area
-					area = central_poland_area
-					area = wielkopolska_area
-					area = kuyavia_area
-				}
-			}
+			owns_core_province = 257
+			owns_core_province = 262
+			owns_core_province = 2961
+			owns_core_province = 260
 		}
 		effect = {
-			add_country_modifier = {
-				name = hun_hungary_poland
-				duration = -1
-			}
 			add_mil_power = 125
 		}
 	}
@@ -3138,8 +3120,8 @@ tm_hun_steppe_slot_3 = {
 		}
 		effect = {
 			add_country_modifier = {
-				name = hun_steppe_horses
-				duration = 3650
+				name = planned_expansion
+				duration = 5475
 			}
 			volhynia_area = {
 				limit = {
@@ -3286,6 +3268,35 @@ tm_hun_steppe_slot_3 = {
 					name = hont_gold_mines
 					duration = -1
 				}
+			}
+		}
+	}
+
+	tm_hun_eastern_hegemony = {
+		icon = mission_restore_faith_in_the_throne
+		position = 10
+
+		required_missions = { tm_hun_poland_under_our_wing tm_hun_astrakanian_trade_centers }
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+		}
+
+		trigger = {
+			government_rank = 3
+			prestige = 100
+		}
+
+		effect = {
+			custom_tooltip = hun_proclaim_hegemon
+			add_country_modifier = {
+				name = hun_hegemon
+				duration = -1
+			}
+			if = {
+				limit = { has_dlc = "Emperor" }
+				custom_tooltip = lit_halve_hegemony_reqs_tt
+				set_country_flag = halve_hegemony_requirements
 			}
 		}
 	}
@@ -3497,10 +3508,6 @@ tm_hun_steppe_slot_5 = {
 			}
 		}
 		effect = {
-			add_country_modifier = {
-				name = hun_steppe_horses
-				duration = 3650
-			}
 			lower_don_area = {
 				limit = {
 					NOT = { is_core = ROOT }
