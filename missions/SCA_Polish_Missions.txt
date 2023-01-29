@@ -673,8 +673,45 @@ poland_sca_slot_2_a = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
 		trigger = { 
+			280 = {
+				trade_share = {
+					country = ROOT
+					share = 50
+				}
+				province_has_center_of_trade_of_level = 2
+			}
+			272 = {
+				province_has_center_of_trade_of_level = 2
+			}
+			4545 = {
+				province_has_center_of_trade_of_level = 2
+			}
+			if = {
+				limit = {
+					298 = {
+						owned_by = ROOT
+					}
+				}
+				298 = {
+					province_has_center_of_trade_of_level = 2
+				}
+			}
+			if = {
+				limit = {
+					293 = {
+						owned_by = ROOT
+					}
+				}
+				293 = {
+					province_has_center_of_trade_of_level = 2
+				}
+			}
 		}
 		effect = { 
+			add_country_modifier = {
+				name = pol_kievan_control
+				duration = 3650
+			}
 		}
 	}
 
@@ -687,8 +724,20 @@ poland_sca_slot_2_a = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
 		trigger = { 
+			num_of_owned_provinces_with = {
+				OR = {
+				region = baltic_region
+				region = ruthenia_region
+				region = poland_region
+				}
+				value = 100
+			}
 		}
-		effect = { 		
+		effect = { 
+			add_country_modifier = {
+				name = pol_centralise_the_state
+				duration = 3650
+			}		
 		}
 	}
 
