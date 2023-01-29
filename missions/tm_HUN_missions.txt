@@ -557,38 +557,11 @@ tm_hun_slot_3 = {
 				name = cavalry_experience
 				duration = 3650
 			}
-
-			if = {
-				limit = {
-					has_dlc = "Emperor"
-				}
-				podolia_volhynia_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				yedisan_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				crimea_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-			}
 		}
 		ai_weight = {
 			factor = 500
+			}
 		}
-	}
 
 	hun_croatian_union = {
 		icon = mission_war_for_the_crown
@@ -616,34 +589,8 @@ tm_hun_slot_3 = {
 					duration = 10950
 					}
 				}
-
-			if = {
-				limit = {
-					has_dlc = "Emperor"
-				}
-				podolia_volhynia_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				yedisan_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				crimea_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
 			}
-		}
+
 		ai_weight = {
 			factor = 500
 		}
@@ -1145,6 +1092,16 @@ tm_hun_slot_5 = {
 			add_country_modifier = {
 				name = hun_golden_age_of_hungary
 				duration = 9125
+			}
+			every_owned_province = { 
+				limit = {
+					OR = { 
+						has_manpower_building_trigger = yes 
+						has_forcelimit_building_trigger = yes 
+						has_fort_building_trigger = yes 
+					}
+				} 
+				add_base_manpower = 1 
 			}
 		}
 	}
@@ -2850,7 +2807,7 @@ tm_hun_steppe_slot_1 = {
 		trigger = {
 			army_tradition = 75
 			government_rank = 3
-			army_professionalism = 0.8
+			army_professionalism = 0.6
 			prestige = 80
 			is_at_war = no
 			OR = {
@@ -2858,6 +2815,7 @@ tm_hun_steppe_slot_1 = {
 				full_idea_group = shock_ideas
 				full_idea_group = assault_ideas
 			}
+			mission_completed = emp_hun_take_galicia
 		}
 
 		effect = {
@@ -2933,9 +2891,50 @@ tm_hun_steppe_slot_1 = {
 				name = hungarian_fort_blueprints
 				duration = 7300
 			}
+			malopolska_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			sandomierz_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			mazovia_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			central_poland_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			wielkopolska_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kuyavia_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
-
 }
 
 tm_hun_steppe_slot_2 = {
@@ -2989,45 +2988,74 @@ tm_hun_steppe_slot_2 = {
 			is_subject = no
 		}
 		effect = {
-				mazovia_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				central_poland_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				wielkopolska_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				kuyavia_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				add_stat_or_monarch_power = {
-					stat = mil
-					amount = 1
+			add_stat_or_monarch_power = {
+				stat = mil
+				amount = 1
+			}
+			define_general = {
+				shock = 5
+				fire = 4
+				manuever = 2
+				siege = 2
 			}
 		}
 	}
 
-	emp_hun_jagiellonian_union = {
-		icon = jageillonian_union
-		required_missions = { emp_hun_take_galicia tm_hun_eastern_frontier tm_hun_new_dyeworks }
+	tm_hun_krakow_city = {
+		icon = mission_pol_revival_krakow
 		position = 9
+
+		required_missions = { emp_hun_take_galicia tm_hun_eastern_frontier tm_hun_new_dyeworks }
+
+		provinces_to_highlight = {
+			province_id = 2201
+		}
+
+		trigger = {
+			262 = {
+				is_core = yes
+				owned_by = ROOT
+				total_development = 30
+			}
+		}
+
+		effect = {
+			262 = {
+				add_great_project_tier = {
+					type = krakow_cloth_hall
+					tier = 1
+				}
+				add_building = university
+			}
+			if = {
+				limit = {
+					NOT = { is_year = 1535 }
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 8
+					trigger = {
+						trade_goods = cloth
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					is_year = 1535
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 5
+					trigger = {
+						trade_goods = cloth
+					}
+				}
+			}
+		}
+	}
+
+	tm_hun_poland_under_our_wing = {
+		icon = jageillonian_union
+		required_missions = { tm_hun_krakow_city }
+		position = 10
 		provinces_to_highlight = {
 			OR = {
 				area = mazovia_area
@@ -3113,7 +3141,35 @@ tm_hun_steppe_slot_3 = {
 				name = hun_steppe_horses
 				duration = 3650
 			}
-			bohemia_area = {
+			volhynia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			red_ruthenia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			belz_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kremenchuk_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			zaporizhia_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -3205,6 +3261,34 @@ tm_hun_steppe_slot_3 = {
 			}
 		}
 	}
+
+	tm_hun_alanian_gold = {
+		icon = mission_war_chest
+		position = 9
+
+		required_missions = { tm_hun_crimean_homelands }
+
+		provinces_to_highlight = {
+			province_id = 2201
+		}
+
+		trigger = {
+			2201 = {
+				owned_by = ROOT
+				base_production = 10
+			}
+		}
+
+		effect = {
+			2201 = {
+				add_base_production = 2
+				add_province_modifier = {
+					name = hont_gold_mines
+					duration = -1
+				}
+			}
+		}
+	}
 }
 
 tm_hun_steppe_slot_4 = {
@@ -3230,7 +3314,7 @@ tm_hun_steppe_slot_4 = {
 		provinces_to_highlight = {
 			OR = {
 				area = kremenchuk_area
-				area = yedisan_area
+				area = zaporizhia_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -3239,7 +3323,7 @@ tm_hun_steppe_slot_4 = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			yedisan_area = {
+			zaporizhia_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
@@ -3249,7 +3333,28 @@ tm_hun_steppe_slot_4 = {
 				name = hun_steppe_horses
 				duration = 3650
 			}
-			bohemia_area = {
+			crimea_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kerch_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			yedisan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			azov_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -3259,4 +3364,171 @@ tm_hun_steppe_slot_4 = {
 		}
 	}
 
+	tm_hun_crimean_homelands = {
+		icon = mission_sca_lit_conquer_crimea
+		required_missions = { tm_hun_zaporozhian_cossacks }
+		position = 8
+
+		ai_weight = {
+			factor = 5
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				area = crimea_area
+				area = kerch_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			crimea_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			kerch_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 15
+			circassia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			majar_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			alania_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	tm_hun_astrakanian_trade_centers = {
+		icon = mission_market_place_with_asian_traders
+		required_missions = { tm_hun_crimean_homelands tm_hun_the_remnants }
+		position = 9
+
+		ai_weight = {
+			factor = 5
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 465
+				province_id = 303
+				province_id = 466
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			465 = {
+				owned_by = ROOT
+				base_production = 8
+				province_has_center_of_trade_of_level = 2
+			}
+			303 = {
+				owned_by = ROOT
+				base_production = 12
+				province_has_center_of_trade_of_level = 2
+			}
+			466 = {
+				owned_by = ROOT
+				base_production = 12
+				province_has_center_of_trade_of_level = 2
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = eastern_wares
+				duration = -1
+			}
+		}
+	}
+}
+
+tm_hun_steppe_slot_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = HUN
+		NOT = { map_setup = map_setup_random }
+		has_country_flag = hun_steppe_direction
+	}
+	has_country_shield = yes
+
+	tm_hun_the_remnants = {
+		icon = mission_steppe_warriors
+		required_missions = { tm_hun_zaporozhian_cossacks }
+		position = 8
+
+		ai_weight = {
+			factor = 5
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				area = yedisan_area
+				area = azov_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			yedisan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			azov_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = hun_steppe_horses
+				duration = 3650
+			}
+			lower_don_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			astrakhan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			saratov_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			nogai_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
 }
