@@ -1364,10 +1364,62 @@ poland_sca_slot_5_branching_lit_hre = {
 		}
 	}
 
+	tm_pol_textile_developments = {
+		icon = mission_develop_cloth
+		position = 2
+		required_missions = { pol_support_mercantile_class pol_deal_mazovia }
+
+		provinces_to_highlight = {
+			OR = {
+			province_id = 4752
+			province_id = 131
+			province_id = 152
+			}
+		}
+
+		trigger = {
+			4752 = {
+				owned_by = ROOT
+				base_production = 13
+				has_building = workshop
+			}
+			131 = {
+				owned_by = ROOT
+				base_production = 12
+				province_has_center_of_trade_of_level = 2
+				has_building = workshop
+			}
+			152 = {
+				owned_by = ROOT
+				base_production = 13
+				has_building = workshop
+			}
+		}
+
+		effect = {
+			131 = {
+				add_center_of_trade_level = 1
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+			}
+			4752 = {
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+			}
+			152 = {
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+			}
+		}
+	}
+
 	pol_breadbasket_europe = {
 		icon = mission_pol_breadbasket_europe
-		required_missions = { pol_support_mercantile_class pol_deal_mazovia }
-		position = 2
+		required_missions = { tm_pol_textile_developments }
+		position = 3
 		provinces_to_highlight = { 
 			country_or_non_sovereign_subject_holds = ROOT  
 			trade_goods = grain 
@@ -1378,21 +1430,29 @@ poland_sca_slot_5_branching_lit_hre = {
 				has_production_building_trigger = yes 
 				value = 14
 			}
-			if = { 
-				limit = { has_dlc = "Mandate of Heaven" }
-				OR = {	
-					trading_part = {
-						trade_goods = grain
-						value = 0.15
-					}
-					has_age_ability = ab_polish_legitimacy
-				}
+			4528 = {
+				owned_by = ROOT
+				base_manpower = 10
+				base_production = 8
+				has_building = barracks
 			}
-			else = { 
-				trading_part = {
-					trade_goods = grain
-					value = 0.15
-				}
+			1939 = {
+				owned_by = ROOT
+				base_manpower = 10
+				base_production = 8
+				has_building = barracks
+			}
+			258 = {
+				owned_by = ROOT
+				base_manpower = 10
+				base_production = 8
+				has_building = barracks
+			}
+			2959 = {
+				owned_by = ROOT
+				base_manpower = 10
+				base_production = 8
+				has_building = barracks
 			}
 		}
 		effect = { 
@@ -1402,6 +1462,12 @@ poland_sca_slot_5_branching_lit_hre = {
 					name = pol_breadbasket_europe_modifier
 					duration = 7300 
 				}
+			}
+			1939 = {
+				add_building = soldier_households
+			}
+			258 = {
+				add_building = soldier_households
 			}
 			change_price = {
 				trade_goods = grain
