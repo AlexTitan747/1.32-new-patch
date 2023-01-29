@@ -651,23 +651,22 @@ poland_sca_slot_4_a = {
 		}
 	}
 
-	plc_cultural_flowering = { 
+	plc_cultural_flowering = {
 		icon = mission_plc_cultural_flowering 
 		required_missions = { pol_negotiate_nunciature } 
 		position = 3
 		trigger = { 
-			if = { 
+			if = {
 				limit = { has_dlc = "Rule Britannia" } 
 				OR = { 
 					monthly_adm = 15 
-					innovativeness = 75
+					innovativeness = 35
 				}
 			}
 			else = { prestige = 90 } 
 			if = {
 				limit = { has_dlc = "Rights of Man" } 
 				OR = { 
-					full_idea_group = innovativeness_ideas 
 					ruler_has_personality = free_thinker_personality 
 					ruler_has_personality = scholar_personality 
 					ruler_total_stats = {
@@ -677,9 +676,8 @@ poland_sca_slot_4_a = {
 					}
 				}
 			}
-			else = { 
-				OR = { 
-					full_idea_group = innovativeness_ideas 
+			else = {
+				OR = {
 					ruler_total_stats = {
 						custom_tooltip = pol_ruler_ts_14
 						stats = 14 
@@ -687,7 +685,7 @@ poland_sca_slot_4_a = {
 					}
 				}
 			}
-			if = {	
+			if = {
 				limit = { has_dlc = "Mandate of Heaven" }
 				OR = { 
 					in_golden_age = yes 
@@ -702,7 +700,7 @@ poland_sca_slot_4_a = {
 				name = pol_cultural_flowering_polish_domain_modifier
 				duration = 9125 
 			}
-			if = { 
+			if = {
 				limit = { 
 					NOT = { innovativeness = 97 } 
 					has_dlc = "Rule Britannia" 
@@ -726,11 +724,6 @@ poland_sca_slot_4_a = {
 				limit = { has_dlc = "Leviathan" } 
 				262 = { 
 					OR = { 
-						num_of_times_improved = 10 
-						has_great_project = {
-							type = krakow_cloth_hall
-							tier = 2 
-						}
 						has_great_project = {
 							type = krakow_cloth_hall
 							tier = 3 
@@ -746,12 +739,12 @@ poland_sca_slot_4_a = {
 				262 = { 
 					prosperity = 80 
 					OR = { 
-						base_production = 10 
+						base_production = 12
 						has_manufactory_trigger = yes 
 					}
 				}
 			}
-			else = { 
+			else = {
 				OR = {
 					trading_part = {
 						trade_goods = cloth
@@ -773,7 +766,7 @@ poland_sca_slot_4_a = {
 	}
 
 
-	plc_invest_eastern_poland = { 
+	plc_invest_eastern_poland = {
 		icon = reclaim_the_ducal_lands
 		required_missions = { pol_revival_krakow pol_develop_countryside }
 		position = 5
@@ -792,7 +785,6 @@ poland_sca_slot_4_a = {
 				}
 				num_of_trading_bonuses = 7 
 				AND = { 
-					full_idea_group = economic_ideas
 					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 						has_manufactory_trigger = yes 
 						development = 35 
