@@ -10,7 +10,7 @@ tm_hun_slot_1 = {
 	
 	emp_hun_black_army_supreme = {
 		icon = gory_to_the_black_army
-		required_missions = { hun_poland_alliance }
+		required_missions = { tm_hun_army }
 		position = 2
 		provinces_to_highlight = {
 			is_capital = yes
@@ -188,95 +188,14 @@ tm_hun_slot_2 = {
 	}
 	has_country_shield = yes
 
-	hun_poland_alliance = {
-		icon = mission_noble_council
-		required_missions = {  }
+	tm_hun_army = {
+		icon = army_reforms
+		required_missions = { }
 		position = 1
 
-		provinces_to_highlight = {
-			OR = {
-				owned_by = POL
-				AND = {
-					NOT = { exists = POL }
-					region = poland_region
-					ROOT = {
-						NOT = {
-							num_of_owned_provinces_with = {
-								value = 6
-								region = poland_region
-							}
-						}
-					}
-				}
-			}
-		}
-		
 		trigger = {
-			if = {
-				limit = {
-					exists = POL
-					has_dlc = "Res Publica"
-					POL = {
-						OR = { 
-							has_reform = polish_elective_monarchy
-							has_reform = elective_monarchy
-						}
-					}
-				}
-				OR = { 
-					POL = { dynasty = root }
-					AND = {
-						alliance_with = POL
-						POL = {
-							has_opinion = {
-								who = ROOT
-								value = 190
-							}
-						}
-					}
-					overlord_of = POL
-					AND = { 
-						OR = {
-							is_rival = POL
-							POL = { is_rival = ROOT }
-						}
-						army_size = POL
-					}
-				}
-			}
-			else_if = {
-				limit = { exists = POL }
-				OR = {
-					alliance_with = POL
-					overlord_of = POL
-					POL = {
-						has_opinion = {
-							who = ROOT
-							value = 190
-						}
-					}
-					AND = { 
-						OR = {
-							is_rival = POL
-							POL = { is_rival = ROOT }
-						}
-						army_size = POL
-					}
-				}
-			}
-			else_if = {
-				limit = {
-					NOT = { exists = POL }
-				}
-				OR = {
-					army_size_percentage = 1
-					num_of_owned_provinces_with = {
-						value = 6
-						region = poland_region
-					}
-				}
-			}
-			is_subject = no
+			army_size_percentage = 1
+
 		}
 		
 		effect = {
@@ -288,20 +207,6 @@ tm_hun_slot_2 = {
 				add_permanent_claim = ROOT
 			}
 			transylvania_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			serbia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			rascia_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -330,7 +235,7 @@ tm_hun_slot_2 = {
 
 	hun_vassal_states_five = {
 		icon = mission_unite_home_region
-		required_missions = { hun_poland_alliance }
+		required_missions = { tm_hun_army }
 		position = 2
 		
 		provinces_to_highlight = {
@@ -354,6 +259,18 @@ tm_hun_slot_2 = {
 		}
 		
 		effect = {
+			add_country_modifier = {
+				name = expansion_plans
+				duration = 7300
+			}
+
+			add_casus_belli = {
+				type = cb_restore_personal_union
+				months = 240
+				target = CRO
+			}
+			add_prestige = 15
+
 			eastern_wallachia_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -403,19 +320,21 @@ tm_hun_slot_2 = {
 				}
 			add_permanent_claim = ROOT
 			}
-
-			add_country_modifier = {
-				name = expansion_plans
-				duration = 7300
+			serbia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			rascia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
 
-			add_casus_belli = {
-				type = cb_restore_personal_union
-				months = 240
-				target = CRO
-			}
-
-			add_prestige = 15
 		}
 		ai_weight = {
 			factor = 500
@@ -522,7 +441,7 @@ tm_hun_slot_3 = {
 
 	hun_vassal_states_two = {
 		icon = mission_eastern_european_city
-		required_missions = { hun_poland_alliance }
+		required_missions = { tm_hun_army }
 		position = 2
 		
 		provinces_to_highlight = {
@@ -2198,12 +2117,12 @@ tm_hun_west_europe_slot_2 = {
 		}
 	
 		provinces_to_highlight = {
-			province_id = 114
+			province_id = 118
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 	
 		trigger = {
-			114 = {
+			118 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
