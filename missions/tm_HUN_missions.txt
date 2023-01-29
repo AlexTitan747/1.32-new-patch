@@ -2023,7 +2023,7 @@ tm_hun_west_europe_slot_1 = {
 	}
 
 	tm_hun_tuscany_invasion = {
-		icon = all_roads_lead_to_milan
+		icon = conquer_tuscany
 		required_missions = {
 			tm_hun_road_to_milan
 		}
@@ -2084,7 +2084,8 @@ tm_hun_west_europe_slot_1 = {
 	
 		trigger = {
 			104 = {
-				country_or_non_sovereign_subject_holds = ROOT
+				is_core = yes
+				owned_by = ROOT
 			}
 		}
 		effect = {
@@ -2823,10 +2824,119 @@ tm_hun_west_europe_slot_5 = {
 	}
 }
 
-
-
-
 # HUN Steppe Direction
+
+tm_hun_steppe_slot_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = HUN
+		NOT = { map_setup = map_setup_random }
+		has_country_flag = hun_steppe_direction
+	}
+	has_country_shield = yes
+
+	tm_hun_recruit_the_hussars = {
+		icon = mission_polish_hussar_2
+		position = 6
+
+		required_missions = { tm_hun_kingdom_consolidation }
+
+		provinces_to_highlight = {
+			province_id = 153
+		}
+
+		trigger = {
+			army_tradition = 75
+			government_rank = 3
+			army_professionalism = 0.8
+			prestige = 80
+			is_at_war = no
+			OR = {
+				full_idea_group = maneuver_ideas
+				full_idea_group = shock_ideas
+				full_idea_group = assault_ideas
+			}
+		}
+
+		effect = {
+			custom_tooltip = hun_unlock_hussars
+			hidden_effect = {
+				set_country_flag = hungarian_empire_unlock
+			}
+		}
+	}
+
+	tm_hun_eastern_frontier = {
+		icon = fortress_of_belgrade
+		required_missions = { emp_hun_take_galicia }
+		position = 8
+
+		ai_weight = {
+			factor = 5
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				area = moldavia_area
+				area = north_moldavia
+				area = red_ruthenia_area
+				area = volhynia_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			moldavia_area = {
+				owned_by = ROOT
+				OR = {
+					has_building = fort_15th
+					has_building = fort_16th
+					has_building = fort_17th
+					has_building = fort_18th
+				}
+			}
+			north_moldavia = {
+				owned_by = ROOT
+				OR = {
+					has_building = fort_15th
+					has_building = fort_16th
+					has_building = fort_17th
+					has_building = fort_18th
+				}
+			}
+			red_ruthenia_area = {
+				owned_by = ROOT
+				OR = {
+					has_building = fort_15th
+					has_building = fort_16th
+					has_building = fort_17th
+					has_building = fort_18th
+				}
+			}
+			volhynia_area = {
+				owned_by = ROOT
+				OR = {
+					has_building = fort_15th
+					has_building = fort_16th
+					has_building = fort_17th
+					has_building = fort_18th
+				}
+			}
+			
+		}
+
+		effect = {
+			add_treasury = 300
+			add_country_modifier = {
+				name = hungarian_fort_blueprints
+				duration = 7300
+			}
+		}
+	}
+
+}
 
 tm_hun_steppe_slot_2 = {
 	slot = 2
@@ -2839,63 +2949,15 @@ tm_hun_steppe_slot_2 = {
 	}
 	has_country_shield = yes
 
-	emp_hun_hungarian_succession = {
-		icon = the_hungarian_succession
-		required_missions = {  }
-		position = 6
-		trigger = {
-			custom_trigger_tooltip = {
-				OR = {
-					has_country_flag = hun_has_had_matthias_corvinus_event
-					is_year = 1457
-				}
-				tooltip = emp_hun_hungarian_succession_tooltip
-			}
-			is_subject = no
-			has_regency = no
-			if = {
-				limit = {
-					government = monarchy
-					has_government_attribute = heir
-				}
-				has_heir = yes
-			}
-		}
-		effect = {
-			add_prestige = 20
-			moravia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			silesia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			lusatia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-	}
-
 	emp_hun_take_galicia = {
 		icon = mission_partition_poland
-		required_missions = {  }
+		required_missions = { tm_hun_training_in_the_steppes }
 		position = 7
 		provinces_to_highlight = {
 			OR = {
-				area = malopolska_area
+				area = volhynia_area
 				area = red_ruthenia_area
-				area = sandomierz_area
+				area = belz_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -2927,34 +2989,6 @@ tm_hun_steppe_slot_2 = {
 			is_subject = no
 		}
 		effect = {
-			if = {
-				limit = {
-					valid_for_personal_unions_trigger = yes
-					exists = PLC
-					PLC = {
-						valid_for_personal_unions_trigger = yes
-					}
-				}
-				add_casus_belli = {
-					type = cb_restore_personal_union
-					months = 300
-					target = PLC
-				}
-			}
-			else_if = {
-				limit = {
-					valid_for_personal_unions_trigger = yes
-					exists = POL
-					POL = {
-						valid_for_personal_unions_trigger = yes
-					}
-				}
-				add_casus_belli = {
-					type = cb_restore_personal_union
-					months = 300
-					target = POL
-				}
-			}
 				mazovia_area = {
 					limit = {
 						NOT = { is_permanent_claim = ROOT }
@@ -2992,8 +3026,8 @@ tm_hun_steppe_slot_2 = {
 
 	emp_hun_jagiellonian_union = {
 		icon = jageillonian_union
-		required_missions = { emp_hun_take_galicia }
-		position = 8
+		required_missions = { emp_hun_take_galicia tm_hun_eastern_frontier tm_hun_new_dyeworks }
+		position = 9
 		provinces_to_highlight = {
 			OR = {
 				area = mazovia_area
@@ -3048,65 +3082,129 @@ tm_hun_steppe_slot_3 = {
 	}
 	has_country_shield = yes
 
-	emp_hun_bohemian_crown = {
-		icon = bohemian_commonwealth
-		required_missions = { emp_hun_bohemian_borderlands }
+	tm_hun_training_in_the_steppes = {
+		icon = mission_lit_harness_steppes
+		required_missions = { tm_hun_kingdom_consolidation }
+		position = 6
+
 		ai_weight = {
 			factor = 5
 		}
 
 		provinces_to_highlight = {
 			OR = {
-				area = bohemia_area
-				area = erzgebirge_area
+				area = moldavia_area
+				area = north_moldavia
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
-		trigger = { #8 provinces so fine for demanding all
-			bohemia_area = {
+		trigger = {
+			moldavia_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			erzgebirge_area = {
+			north_moldavia = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			is_subject = no
-			NOT = { active_imperial_incident = any }
 		}
 		effect = {
-			add_prestige = 25
+			add_country_modifier = {
+				name = hun_steppe_horses
+				duration = 3650
+			}
+			bohemia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	tm_hun_new_dyeworks = {
+		icon = mission_dyeworks
+		position = 8
+		required_missions = { tm_hun_training_in_the_steppes emp_hun_take_galicia }
+
+		provinces_to_highlight = {
+			OR = {
+			province_id = 2961
+			province_id = 5116
+			province_id = 281
+			province_id = 4539
+			}
+		}
+
+		trigger = {
+			2961 = {
+				owned_by = ROOT
+				base_production = 13
+				province_has_center_of_trade_of_level = 3
+				has_building = workshop
+			}
+			5116 = {
+				owned_by = ROOT
+				base_production = 12
+				has_building = workshop
+			}
+			281 = {
+				owned_by = ROOT
+				base_production = 13
+				has_building = workshop
+			}
+			4539 = {
+				owned_by = ROOT
+				base_production = 13
+				has_building = workshop
+			}
+		}
+
+		effect = {
+			2961 = {
+				add_building = textile
+				add_base_production = 1
+				add_base_manpower = 1
+			}
+			5116 = {
+				add_building = textile
+				add_base_production = 1
+				add_base_manpower = 1
+			}
+			281 = {
+				add_base_production = 2
+				add_base_manpower = 2
+			}
+			4539 = {
+				add_base_production = 2
+				add_base_manpower = 2
+			}
 
 			if = {
 				limit = {
-					is_elector = no
-					BOH = { is_elector = yes }
-					OR = {
-						hre_religion_locked = no
-						hre_religion = root
+					NOT = { is_year = 1500 }
+				}
+				add_years_of_owned_provinces_production_income = {
+					years = 10
+					trigger = {
+						trade_goods = dyes
 					}
 				}
-				if = {
-					limit = {
-						NOT = { senior_union_with = BOH }
-					}
-					custom_tooltip = emp_hun_bohemian_crown_effect_tooltip
+			}
+			else_if = {
+				limit = {
+					is_year = 1500
 				}
-				tooltip = {
-					country_event = { id = new_flavour_hun.1 }
-				}
-				hidden_effect = {
-					if = {
-						limit = {
-							senior_union_with = BOH
-						}
-						country_event = { id = new_flavour_hun.1 }
+				add_years_of_owned_provinces_production_income = {
+					years = 8
+					trigger = {
+						trade_goods = dyes
 					}
 				}
 			}
 		}
 	}
-
 }
 
 tm_hun_steppe_slot_4 = {
@@ -3120,76 +3218,45 @@ tm_hun_steppe_slot_4 = {
 	}
 	has_country_shield = yes
 
-	emp_hun_bohemian_borderlands = {
-		icon = bohemian_borderlands
-		required_missions = { emp_hun_hungarian_succession }
+	tm_hun_zaporozhian_cossacks = {
+		icon = mission_recruit_the_cossacks
+		required_missions = { tm_hun_training_in_the_steppes }
+		position = 7
+
 		ai_weight = {
 			factor = 5
 		}
 
 		provinces_to_highlight = {
 			OR = {
-				area = moravia_area
-				area = silesia_area
-				area = lusatia_area
+				area = kremenchuk_area
+				area = yedisan_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-			ROOT = {
-				NOT = {
-					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-						value = 5
-						OR = {
-							area = moravia_area
-							area = silesia_area
-							area = lusatia_area
-						}
-					}
-				}
-			}
 		}
 		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 5
-				OR = {
-					area = moravia_area
-					area = silesia_area
-					area = lusatia_area
-				}
+			kremenchuk_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
 			}
-			is_subject = no
+			yedisan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		effect = {
-			add_adm_power = 50
-			
-			if = {
-				limit = {
-					exists = BOH
-					valid_for_personal_unions_trigger = yes
-					BOH = {
-						valid_for_personal_unions_trigger = yes
-					}
-				}
-				add_casus_belli = {
-					type = cb_restore_personal_union
-					months = 300
-					target = BOH
-				}
+			add_country_modifier = {
+				name = hun_steppe_horses
+				duration = 3650
 			}
-				bohemia_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
+			bohemia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
 				}
-				erzgebirge_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
+				add_permanent_claim = ROOT
 			}
 		}
+	}
 
 }

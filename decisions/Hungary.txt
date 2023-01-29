@@ -1,0 +1,80 @@
+country_decisions = {
+
+	abolish_black_army = {
+		potential = {
+			normal_or_historical_nations = yes
+			has_country_modifier = hun_black_army
+		}
+		allow = {
+			has_country_modifier = hun_black_army
+			is_at_war = no
+		}
+		effect = {
+			remove_country_modifier = hun_black_army
+			add_prestige = -10
+			if = {
+				limit = {
+					has_estate = estate_nobles
+				}
+				custom_tooltip = abolishing_black_army_tooltip
+				hidden_effect = {
+					add_estate_influence_modifier = {
+							estate = estate_nobles
+							desc = EST_VAL_ABOLISHED_BLACK_ARMY
+							influence = 5
+							duration = 3650
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	hungary_empire = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
+			}
+			tag = HUN
+			NOT = { has_country_flag = is_hungarian_empire }
+			hidden_trigger = {
+				has_country_flag = hungarian_empire_unlock
+			}
+			OR = {
+				ai = no
+				AND = {
+					ai = yes
+					num_of_cities = 15
+				}
+			}
+		}
+		provinces_to_highlight = {
+				owned_by = ROOT
+			}
+		allow = {
+			mission_completed = tm_hun_recruit_the_hussars
+			is_at_war = no
+		}
+		effect = {
+
+			override_country_name = HUNARGIAN_EMPIRE
+			set_country_flag = is_hungarian_empire
+			if = {
+				limit = {
+					has_custom_ideas = no
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+
+}
