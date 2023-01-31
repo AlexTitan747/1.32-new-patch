@@ -979,6 +979,35 @@ poland_sca_slot_2_a = {
 			}
 		}
 	}
+
+	tm_pol_duchy_of_finland = {
+		icon = mission_pol_moldavia 
+		required_missions = { tm_pol_warplan_scandinavia }
+		position = 15
+		provinces_to_highlight = { 
+			area = finland_area 
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+		trigger = { 
+			FIN = {
+				is_subject_of = ROOT
+				finland_area = {
+					owned_by = FIN
+					is_core = FIN
+				}
+				ostrobothnia_area = {
+					owned_by = FIN
+					is_core = FIN
+				}
+			}
+		}
+		effect = { 
+			add_country_modifier = {
+				name = pol_annex_vassals
+				duration = 3650
+			}
+		}
+	}
 }
 
 poland_sca_slot_3_a = { 
@@ -1261,11 +1290,36 @@ poland_sca_slot_3_a = {
 			country_event = { id = flavor_pol.27 }
 		}
 	}
-	
+
+	tm_pol_warplan_russia = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = {  } 
+		position = 18
+		trigger = {
+			has_country_flag = warplan_russia_activated
+		}
+		effect = { 
+			finland_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			ostrobothnia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
 	plc_break_the_rus = {
 		icon = mission_plc_break_the_rus
-		required_missions = {  }
-		position = 9
+		required_missions = { tm_pol_warplan_russia }
+		position = 19
 		provinces_to_highlight = {
 			owner = {
 				capital_scope = {
@@ -1908,6 +1962,73 @@ poland_sca_slot_4_a = {
 					NOT = { is_core = ROOT }
 				}
 				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
+	tm_pol_decapitate_swedish_emipire = {
+		icon = mission_pol_moldavia 
+		required_missions = { tm_pol_warplan_scandinavia }
+		position = 15
+		provinces_to_highlight = { 
+			area = finland_area 
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+		trigger = { 
+			1 = {
+				owned_by = ROOT
+			}
+			SWE = {
+				is_great_power = no
+				NOT = {
+					development = 150
+				}
+			}
+		}
+		effect = { 
+			add_country_modifier = {
+				name = pol_swedish_annexation
+				duration = 3650
+			}
+
+		}
+	}
+
+	tm_pol_claim_swedish_crown = {
+		icon = mission_pol_moldavia 
+		required_missions = { tm_pol_warplan_scandinavia }
+		position = 15
+		provinces_to_highlight = { 
+			area = finland_area 
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+		trigger = { 
+			stability = 3
+			prestige = 75
+			legitimacy = 100
+			NOT = {
+				exists = SWE
+			}
+		}
+		effect = { 
+			if = {
+				limit = {
+					exists = NOR
+				}
+				add_casus_belli = { 
+					type = cb_restore_personal_union
+					months = 300
+					target = NOR
+				}
+			}
+			else = {
+				ostrobothnia_area = {
+					limit = { 
+						NOT = { owned_by = ROOT } 
+						NOT = { is_core = ROOT }
+					}
+					add_permanent_claim = ROOT 
+				}
 			}
 		}
 	}
