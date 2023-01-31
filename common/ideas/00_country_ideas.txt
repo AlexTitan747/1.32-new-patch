@@ -1559,42 +1559,43 @@ LIT2_ideas = {
 
 PLC_ideas = {
 	start = {
-		nobles_loyalty_modifier = 0.1
-		num_accepted_cultures = 2 
+		global_manpower_modifier = 0.25
+		num_accepted_cultures = 1
 	}
 	
 	bonus = {
-		tolerance_heretic = 3
+	 	tolerance_heretic = 3
 	}
 	
 	trigger = {
 		tag = PLC
-		NOT = { primary_culture = lithuanian }
 	}
-	free = yes
+	free = yes		#will be added at load.
 	
-	plc_prosperous_folwarks = { #Same for all of them
-		global_trade_goods_size_modifier = 0.10
+	foreign_section = {
+		discipline = 0.05
 	}
-	pol_jagiellonian_university = {
-		idea_cost = -0.10
+	folwark_system = {
+		production_efficiency = 0.1
 	}
-	plc_the_obrona_potoczna = { #Same for all of them
-		drill_gain_modifier = 0.25
-		army_tradition = 1
+	peichota_wybraniecka = {
+		cavalry_cost = -0.1
+		infantry_power = 0.1
 	}
-	winged_hussars = { 
-		cavalry_power = 0.3
+	winged_hussars_2 = {
+		cavalry_power = 0.20
+		cav_to_inf_ratio = 0.25
 		can_recruit_hussars = yes
 	}
-	plc_refine_our_golden_liberty = { #Same for all of them
-		country_admin_power = 1 
+	nihil_novi = {
+		stability_cost_modifier = -0.1
+		war_exhaustion = -0.02
 	}
-	pol_royal_guards = {
-		infantry_power = 0.15
+	wojsko_komputoe = {
+		global_regiment_cost = -0.10
 	}
-	plc_tempered_by_neighbors = { #Same for all of them
-		discipline = 0.05
+	focus_on_field_defences = {
+		land_morale = 0.15
 	}
 }
 
