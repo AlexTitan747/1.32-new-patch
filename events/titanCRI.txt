@@ -11,118 +11,31 @@ country_event = {
 	option = {
 		name = "titanCRI.1.a"
 
-		set_country_flag = tm_CRI_cumania
-		set_country_flag = formed_cumania_flag
-		change_tag = CMN 
-		country_event = { id = ideagroups.1 }
-
-		hidden_effect = {
-			swap_non_generic_missions = yes
+		add_country_modifier = {
+			name = tm_CRI_integration_of_the_tributaries
+			duration = 9125
 		}
+		add_dip_power = -75
 	}
 
 	option = {
 		name = "titanCRI.1.b"
 
-		set_country_flag = tm_CRI_golden_horde
-		set_country_flag = formed_golden_horde_flag
-		change_tag = GLH
-		country_event = { id = ideagroups.1 }
+
+		custom_tooltip = inherit_the_tributaries_TT
+
 		hidden_effect = {
-			swap_non_generic_missions = yes
+			if = {
+				limit = {
+					MOL = { is_subject_of_type_with_overlord = { who = CRI type = tributary_state } }
+				}
+				inherit = MOL
+			}
+			inherit = ZAZ
+			inherit = CHR
 		}
-	}
 
-	option = {
-		name = "titanCRI.1.c"
-
-		custom_tooltip = tm_CRI_future_ilkhanate_tt
-		set_country_flag = tm_CRI_Ilkhanate
-		hidden_effect = {
-			swap_non_generic_missions = yes
-		}
-	}
-	option = {
-		name = "titanCRI.1.d"
-
-		set_country_flag = tm_CRI_bulgars
-		set_country_flag = formed_bulgars_flag
-		change_tag = BGR
-		country_event = { id = ideagroups.1 }
-		hidden_effect = {
-			swap_non_generic_missions = yes
-		}
-	}
-}
-
-country_event = {
-	id = titanCRI.2
-	title = "titanCRI.2.title"
-	desc = "titanCRI.2.desc"
-
-	fire_only_once = yes
-
-	mean_time_to_happen = {
-		months = 12
-	}
-
-	trigger = {
-		has_country_flag = bgr_begin_centralisation
-	}
-
-	option = {
-		custom_tooltip = bgr_sweeping_laws_tt
-		set_country_flag = bgr_sweeping_laws
-		change_government_reform_progress = 50
-		add_horde_unity = 10
-	}
-}
-
-country_event = {
-	id = titanCRI.3
-	title = "titanCRI.3.title"
-	desc = "titanCRI.3.desc"
-
-	fire_only_once = yes
-
-	mean_time_to_happen = {
-		months = 12
-	}
-
-	trigger = {
-		has_country_flag = bgr_sweeping_laws
-	}
-
-	option = {
-		custom_tooltip = bgr_quelling_tribal_unrest_tt
-		set_country_flag = bgr_quelling_tribal_unrest
-		change_government_reform_progress = 50
-		add_horde_unity = 10
-	}
-}
-
-country_event = {
-	id = titanCRI.4
-	title = "titanCRI.4.title"
-	desc = "titanCRI.4.desc"
-
-	fire_only_once = yes
-
-	mean_time_to_happen = {
-		months = 12
-	}
-
-	trigger = {
-		has_country_flag = bgr_quelling_tribal_unrest
-	}
-
-	option = {
-		custom_tooltip = bgr_centralisation_complete_tt
-		set_country_flag = bgr_centralisation_complete
-		change_government_reform_progress = 25
-		hidden_effect = {
-			change_government = monarchy
-			set_government_rank = 2
-		}
+		add_adm_power = -150
+		add_dip_power = -200
 	}
 }

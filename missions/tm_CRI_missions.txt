@@ -139,12 +139,11 @@ tm_CRI_branch_2 = {
 
 		effect = {
 			add_adm_power = 50
-			add_dip_power = 100
+			add_dip_power = 75
 			add_mil_power = 50
 
-			add_country_modifier = {
-				name = tm_CRI_integration_of_the_tributaries
-				duration = 9125
+			country_event = {
+				id = titanCRI.1	
 			}
 		}
 	}
@@ -508,161 +507,5 @@ tm_CRI_branch_5 = {
 				cost_multiplier = 0.75
 			}
 		}
-	}
-}
-
-### 
-#Choose Path 
-###
-
-tm_CRI_branch3_2 = {
-	slot = 3 
-	generic = no
-	ai = yes
-
-	has_country_shield = yes 
-
-	potential = {
-		tag = CRI
-		NOT = {
-			OR = {
-				has_country_flag = tm_CRI_cumania
-				has_country_flag = tm_CRI_golden_horde
-				has_country_flag = tm_CRI_Ilkhanate
-				has_country_flag = tm_CRI_bulgars
-			}
-		}
-	}
-
-	tm_CRI_branch3_mission_3 = {
-		icon = mission_unknown_mission
-		position = 4
-		required_missions = { 
-			tm_CRI_branch2_mission_2
-			tm_CRI_branch4_mission_2 
-		}
-
-		trigger = {}
-
-		effect = {
-			custom_tooltip = tm_CRI_choose_the_path_of_our_nation_tt
-			hidden_effect = {
-				country_event = {
-					id = titanCRI.1
-				}
-			}
-		}
-	}
-}
-
-### CNM
-#Cumania Path
-###
-
-
-### GLH
-#Golden Horde Path
-###
-
-
-
-### ILK
-#Ilkhanate Path
-###
-
-
-
-### BGR
-#Bulgar Path
-###
-tm_BGR_branch_1 = {
-	slot = 1 
-	generic = no
-	ai = yes
-
-	has_country_shield = yes 
-
-	potential = {
-		tag = BGR
-		has_country_flag = tm_CRI_bulgars
-	}
-}
-
-tm_BGR_branch_2 = {
-	slot = 2 
-	generic = no
-	ai = yes
-
-	has_country_shield = yes 
-
-	potential = {
-		tag = BGR
-		has_country_flag = tm_CRI_bulgars
-	}
-}
-
-tm_BGR_branch_3 = {
-	slot = 3 
-	generic = no
-	ai = yes
-
-	has_country_shield = yes 
-
-	potential = {
-		tag = BGR
-		has_country_flag = tm_CRI_bulgars
-	}
-
-	tm_BGR_branch3_1 = {
-		icon = mission_hands_praying
-		position = 4
-		required_missions = {
-			tm_CRI_branch2_mission_2
-			tm_CRI_branch4_mission_2 
-		}
-
-		provinces_to_highlight = {
-		}
-
-		trigger = {
-			OR = {
-				government_rank = Kingdom
-				government_rank = Empire
-			}
-		}
-
-		effect = {
-			custom_tooltip = tm_BGR_the_migration_begins_tt
-			add_stat_or_monarch_power = {
-				stat = adm
-				amount = 2
-			}
-		}
-	}
-}
-
-tm_BGR_branch_4 = {
-	slot = 4 
-	generic = no
-	ai = yes
-
-	has_country_shield = yes 
-
-	potential = {
-		tag = BGR
-		has_country_flag = tm_CRI_bulgars
-	}
-}
-
-tm_BGR_branch_5 = {
-	slot = 5
-	generic = no
-	ai = yes
-
-	has_country_shield = yes 
-
-	potential = {
-		tag = BGR
-		has_country_flag = tm_CRI_bulgars
 	}
 }
