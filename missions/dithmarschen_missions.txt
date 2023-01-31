@@ -869,14 +869,14 @@ poland_sca_slot_4_a = {
 				tooltip = pol_highest_eu_income_tt
 				NOT = {
 					any_country = { 
-						capital_scope = { continent = europe } 
+						capital_scope = { superregion = eastern_europe_superregion } 
 						monthly_income = ROOT
 					}
 				}
 			}
-			if = { 
+			if = {
 				limit = { has_dlc = "Emperor" } 
-				is_hegemon = yes  
+				is_great_power = yes 
 			}
 			else = { 
 				OR = { 
@@ -886,24 +886,15 @@ poland_sca_slot_4_a = {
 			}
 			if = { 
 				limit = { has_dlc = "Mandate of Heaven" }
-				OR = { 
-					has_had_golden_age = yes 
 					in_golden_age = yes 
-				}
 			}
 		}
 		effect = {
 			if = { 
 				limit = { has_dlc = "Mandate of Heaven" }
 				custom_tooltip = pol_if_used_ge_rest_else_30_years_extension_tt 
-				if = {
-					limit = { has_had_golden_age = yes } 
-					reset_golden_age = yes 
-				}
-				else_if = {
 					limit = { in_golden_age = yes } 
-					extend_golden_age = 360 
-				}
+					extend_golden_age = 120
 			}
 			else = {
 				add_country_modifier = {
@@ -1614,16 +1605,19 @@ poland_sca_slot_5_branching_lit_hre = {
 		icon = mission_develop_kiev 
 		required_missions = { pol_develop_countryside } 
 		position = 5
-		provinces_to_highlight = { 
-			OR = { 
-				AND = { 
-					OR = { 
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
 						area = west_dniepr_area
 						area = east_dniepr_area
 						area = podolia_volhynia_area
+						area = volhynia_area
+						area = kremenchuk_area
+						province_id = 2407
 					}
-					NOT = { 
-						num_of_times_improved = 1
+					NOT = {
+						num_of_times_improved = 2
 					}
 				}
 				AND = {
@@ -1632,43 +1626,57 @@ poland_sca_slot_5_branching_lit_hre = {
 						province_id = 283
 						province_id = 2406
 					}
-					NOT = { 
-						num_of_times_improved = 2 
+					NOT = {
+						num_of_times_improved = 3
 					}
 				}
 			}
-		}	 
-		trigger = { 
+		}
+		trigger = {
 			west_dniepr_area = {
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT 
-				num_of_times_improved = 1 
+				num_of_times_improved = 2 
 			}
 			east_dniepr_area = {
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT 
-				num_of_times_improved = 1 
+				num_of_times_improved = 2 
 			}
 			podolia_volhynia_area = {
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT
-				num_of_times_improved = 1 
+				num_of_times_improved = 2
+			}
+			volhynia_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+				num_of_times_improved = 2
+			}
+			kremenchuk_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+				num_of_times_improved = 2
+			}
+			2407 = {
+				country_or_non_sovereign_subject_holds = ROOT 
+				num_of_times_improved = 2
 			}
 			282 = { 
 				country_or_non_sovereign_subject_holds = ROOT 
-				num_of_times_improved = 2 
+				num_of_times_improved = 3
 			}
 			283 = { 
 				country_or_non_sovereign_subject_holds = ROOT 
-				num_of_times_improved = 2 
+				num_of_times_improved = 3
 			}
 			2406 = { 
 				country_or_non_sovereign_subject_holds = ROOT 
-				num_of_times_improved = 2 
+				num_of_times_improved = 3
 			}
 			if = {
 				limit = { has_dlc = "Leviathan" }
-				280 = { 
+				280 = {
 					OR = {
 						AND = {
 							num_of_times_improved = 5 
@@ -1697,26 +1705,7 @@ poland_sca_slot_5_branching_lit_hre = {
 				}
 			}
 		}
-		effect = { 
-			if = {
-				limit = {
-					west_dniepr_area = {
-						type = all 
-						owned_by = LIT 
-					}
-					east_dniepr_area = {
-						type = all
-						owned_by = LIT 
-					}
-					podolia_volhynia_area = {
-						type = all 
-						country_or_non_sovereign_subject_holds = ROOT 
-					}
-					LIT = { is_subject_of = ROOT }
-				}
-				country_event = { id = flavor_pol.32 } 
-			}
-			else = {
+		effect = {
 				west_dniepr_area = {
 					add_province_modifier = {
 						name = pol_prosperity_in_ukraine_modifier
@@ -1746,6 +1735,15 @@ poland_sca_slot_5_branching_lit_hre = {
 						limit = { has_dlc = "Mandate of Heaven" } 
 						add_prosperity = 15 
 					}
+				volhynia_area = {
+					add_province_modifier = {
+						name = pol_prosperity_in_ukraine_modifier
+						duration = 7300 
+					}
+					if = {
+						limit = { has_dlc = "Mandate of Heaven" } 
+						add_prosperity = 15 
+					}
 				}
 			}
 		}				
@@ -1754,27 +1752,27 @@ poland_sca_slot_5_branching_lit_hre = {
 	pol_tend_east = {
 		icon = mission_pol_tend_east 
 		required_missions = { pol_develop_ukraine } 
-		position = 7
+		position = 6
 		provinces_to_highlight = { 
 			OR = {
-				area = smolensk_area 
+				area = samogitia_area 
 				area = lithuania_area 
 			}
 			OR = {
 				NOT = { country_or_non_sovereign_subject_holds = ROOT }
-				NOT = { development = 10 }
+				NOT = { development = 15 }
 			}
 		}
 		trigger = { 
 			lithuania_area = {
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT
-				development = 10 
+				development = 15 
 			}
-			smolensk_area = {
+			samogitia_area = {
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT 
-				development = 10
+				development = 15
 			}
 			if = {
 				limit = {
@@ -1785,12 +1783,12 @@ poland_sca_slot_5_branching_lit_hre = {
 					NOT = { num_of_loans = 1 }
 				}
 			}
-			272 = { 
+			272 = {
 				country_or_non_sovereign_subject_holds = ROOT 
-				num_of_buildings_in_province = 4 
+				num_of_buildings_in_province = 5
 			}
 		}
-		effect = { 
+		effect = {
 			add_country_modifier = {
 				name = pol_efficient_taxation_lit_lands_modifier
 				duration = 5475
@@ -1821,6 +1819,16 @@ poland_sca_slot_5_branching_lit_hre = {
 				add_estate_loyalty = {
 					estate = estate_cossacks 
 					loyalty = 10 
+				}
+			}
+			add_country_modifier = {
+				name = development_improvments
+				duration = -1
+			}
+			270 = {
+				add_great_project_tier = {
+					type = trakai_castle
+					tier = 1
 				}
 			}
 			LIT = {
