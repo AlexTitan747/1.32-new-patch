@@ -860,6 +860,74 @@ poland_sca_slot_4_a = {
 		}
 	}
 
+	plc_dominate_european_markets = {
+		icon = mission_plc_dominate_european_markets 
+		required_missions = { plc_invest_eastern_poland }
+		position = 6
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = pol_highest_eu_income_tt
+				NOT = {
+					any_country = { 
+						capital_scope = { continent = europe } 
+						monthly_income = ROOT
+					}
+				}
+			}
+			if = { 
+				limit = { has_dlc = "Emperor" } 
+				is_hegemon = yes  
+			}
+			else = { 
+				OR = { 
+					num_of_provinces_in_states = 120 
+					total_development = 2000
+				}
+			}
+			if = { 
+				limit = { has_dlc = "Mandate of Heaven" }
+				OR = { 
+					has_had_golden_age = yes 
+					in_golden_age = yes 
+				}
+			}
+		}
+		effect = {
+			if = { 
+				limit = { has_dlc = "Mandate of Heaven" }
+				custom_tooltip = pol_if_used_ge_rest_else_30_years_extension_tt 
+				if = {
+					limit = { has_had_golden_age = yes } 
+					reset_golden_age = yes 
+				}
+				else_if = {
+					limit = { in_golden_age = yes } 
+					extend_golden_age = 360 
+				}
+			}
+			else = {
+				add_country_modifier = {
+					name = pol_golden_era_modifier
+					duration = 10950 
+				}
+			}
+			custom_tooltip = pol_every_province_with_40_dev_tt
+			hidden_effect = { 
+				every_owned_province = {
+					limit = { development = 40 } 
+					add_province_modifier = { 
+						name = pol_enable_2nd_manufactory_modifier
+						duration = -1 
+						hidden = yes 
+					}
+				}
+			}
+		}
+	}
+
+
+
+
 	plc_lifetime_of_war = {
 		icon = mission_plc_lifetime_of_war 
 		position = 8
@@ -1363,25 +1431,54 @@ poland_sca_slot_5_branching_lit_hre = {
 
 		provinces_to_highlight = {
 			OR = {
-			province_id = 4752
-			province_id = 131
-			province_id = 152
+			province_id = 4526
+			province_id = 255
+			province_id = 4533
+			province_id = 4527
+			province_id = 259
+			province_id = 5120
+			province_id = 260
+			province_id = 257
 			}
 		}
 
 		trigger = {
-			4752 = {
+			4526 = {
 				owned_by = ROOT
 				base_production = 13
 				has_building = workshop
 			}
-			131 = {
+			255 = {
 				owned_by = ROOT
 				base_production = 12
-				province_has_center_of_trade_of_level = 2
 				has_building = workshop
 			}
-			152 = {
+			4533 = {
+				owned_by = ROOT
+				base_production = 13
+				has_building = workshop
+			}
+			4527 = {
+				owned_by = ROOT
+				base_production = 13
+				has_building = workshop
+			}
+			259 = {
+				owned_by = ROOT
+				base_production = 12
+				has_building = workshop
+			}
+			5120 = {
+				owned_by = ROOT
+				base_production = 13
+				has_building = workshop
+			}
+			260 = {
+				owned_by = ROOT
+				base_production = 12
+				has_building = workshop
+			}
+			257 = {
 				owned_by = ROOT
 				base_production = 13
 				has_building = workshop
