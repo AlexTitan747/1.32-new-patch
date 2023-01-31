@@ -292,22 +292,54 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 		icon = mission_plc_cross_wild_field  
 		required_missions = { pol_wallachia }
 		position = 9
-		provinces_to_highlight = { 
-			region = balkan_region 
+		provinces_to_highlight = {
+			region = balkan_region
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
-		trigger = { 
+		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				region = balkan_region 
 				value = 10 
-			}		
+			}
 		}
-		effect = { 
+		effect = {
 			set_country_flag = enable_unite_balkans_cb_flag
 			custom_tooltip = enable_unite_balkans_cb_tt
 			add_country_modifier = {
 				name = pol_uniting_the_fractures_modifier
 				duration = 5475 
+			}
+		}
+	}
+
+	tm_pol_polish_silesia = {
+		icon = mission_pol_moldavia
+		required_missions = { tm_pol_warplan_germany }
+		position = 11
+		provinces_to_highlight = {
+			area = silesia_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+		trigger = {
+			silesia_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			moravia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			nymburk_area = {
+				limit = {
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
 			}
 		}
 	}
@@ -866,7 +898,7 @@ poland_sca_slot_2_a = {
 		}
 	}
 
-	tm_pol_warplan_bohemia = {
+	tm_pol_warplan_germany = {
 		icon = mission_pol_imperial_commonwealth 
 		required_missions = {  } 
 		position = 10
@@ -1202,6 +1234,53 @@ poland_sca_slot_3_a = {
 		}
 	}
 
+	tm_pol_march_for_berlin = {
+		icon = mission_pol_moldavia
+		required_missions = { tm_pol_warplan_germany }
+		position = 11
+		provinces_to_highlight = {
+			province_id = 50
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			50 = {
+				owned_by = ROOT
+				is_core = ROOT
+			}
+		}
+
+		effect = {
+			50 = {
+				add_great_project_tier = {
+					type = brandenburg_gate
+					tier = 1
+				}
+			}
+			south_saxony_area = {
+				limit = {
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			northern_saxony_area = {
+				limit = {
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			lusatia_area = {
+				limit = {
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
 	plc_duchy_pomerania = { 
 		icon = mission_conquer_pomerania		
 		required_missions = { tm_pol_warplan_scandinavia } 
@@ -1223,7 +1302,7 @@ poland_sca_slot_3_a = {
 				country_or_non_sovereign_subject_holds = ROOT 
 			}
 		}
-		effect = { 
+		effect = {
 			custom_tooltip = pol_if_chose_hre_path
 			custom_tooltip = generic_more_mercs_available_tt
 			custom_tooltip = pol_alternatively_tt
