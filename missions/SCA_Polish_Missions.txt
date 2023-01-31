@@ -1302,60 +1302,108 @@ poland_sca_slot_3_a = {
 				country_or_non_sovereign_subject_holds = ROOT 
 			}
 		}
-		effect = {
-			custom_tooltip = pol_if_chose_hre_path
-			custom_tooltip = generic_more_mercs_available_tt
-			custom_tooltip = pol_alternatively_tt
-			tooltip = {
-				vorpommern_area = {
-					change_culture = ROOT 
-					add_province_modifier = {
-						name = pol_wave_of_migration_modifier 
-						duration = 5475 
-					}
-					add_base_manpower = 1 
+		effect = { 
+			vorpommern_area = {
+				change_culture = ROOT 
+				add_province_modifier = {
+				name = pol_wave_of_migration_modifier
+				duration = 5475 
 				}
-				hinter_pommern_area = {
-					change_culture = ROOT 
-					add_province_modifier = {
-						name = pol_wave_of_migration_modifier
-						duration = 5475 
-					}
-					add_base_manpower = 1 
+				add_base_manpower = 1 
+			}
+			hinter_pommern_area = {
+				change_culture = ROOT 
+				add_province_modifier = {
+				name = pol_wave_of_migration_modifier
+				duration = 5475 
+				}
+				add_base_manpower = 1 
+			}
+
+			lower_saxony_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			mecklenburg_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			holstein_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			altmark_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
+	tm_pol_seize_lubeck = { 
+		icon = mission_conquer_pomerania		
+		required_missions = { plc_duchy_pomerania } 
+		position = 15
+		provinces_to_highlight = { 
+			OR = {
+				area = vorpommern_area 
+				area = hinter_pommern_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+		trigger = { 
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				OR = {
+					area = holstein_area
+					area = mecklenburg_area
+					area = lower_saxony_area
+				}
+				value = 6
+			}
+			45 = {
+				owned_by = ROOT
+			}
+			1775 = {
+				owned_by = ROOT
+			}
+		}
+		effect = { 
+			45 = {
+				add_center_of_trade_level = 2
+				add_province_modifier = {
+					name = pol_lubeck_ports
+					duration = 7300
 				}
 			}
-			hidden_effect = {
-				if = { 
-					limit = { has_country_flag = pol_chose_pu_flag }
-					vorpommern_area = {
-						change_culture = ROOT 
-						add_province_modifier = {
-							name = pol_wave_of_migration_modifier
-							duration = 5475 
-						}
-						add_base_manpower = 1 
-					}
-					hinter_pommern_area = {
-						change_culture = ROOT 
-						add_province_modifier = {
-							name = pol_wave_of_migration_modifier
-							duration = 5475 
-						}
-						add_base_manpower = 1 
+			1775 = {
+				add_center_of_trade_level = 1
+				add_province_modifier = {
+					name = pol_lubeck_ports
+					duration = 7300
+				}
+			}
+			if = {
+				limit = {
+					45 = {
+						owned_by = ROOT
 					}
 				}
-				else = {
-					hidden_effect = {
-						add_country_modifier = {
-							name = pol_cheap_ap_mercs_modifier
-							duration = 7300 
-							hidden = yes
-						}
-					}
-					add_country_modifier = {
-						name = "mercenaries_to_the_standard"
-						duration = 3650
-						hidden = yes
+				45 = {
+					add_center_of_trade_level = 1
+					add_province_modifier = {
+					name = pol_lubeck_ports
+					duration = 7300
 					}
 				}
 			}
@@ -2083,7 +2131,7 @@ poland_sca_slot_4_a = {
 		}
 	}
 
-	tm_pol_decapitate_swedish_emipire = {
+	tm_pol_decapitate_scandinavia = {
 		icon = mission_pol_moldavia 
 		required_missions = { tm_pol_warplan_scandinavia }
 		position = 15
@@ -2154,7 +2202,7 @@ poland_sca_slot_4_a = {
 
 	tm_pol_claim_swedish_crown = {
 		icon = mission_pol_moldavia 
-		required_missions = { tm_pol_warplan_scandinavia }
+		required_missions = { tm_pol_decapitate_scandinavia }
 		position = 15
 		provinces_to_highlight = { 
 			area = finland_area 
@@ -2163,12 +2211,21 @@ poland_sca_slot_4_a = {
 		trigger = { 
 			stability = 3
 			prestige = 75
-			legitimacy = 100
+			legitimacy = 90
 			NOT = {
 				exists = SWE
 			}
+			ostra_svealand_area = {
+				owned_by = ROOT
+			}
 		}
 		effect = { 
+			1 = {
+			add_great_project_tier = {
+				type = drottingholm_palace
+				tier = 1
+			}
+			}
 			if = {
 				limit = {
 					exists = NOR
@@ -2201,6 +2258,34 @@ poland_sca_slot_4_a = {
 					}
 					add_permanent_claim = ROOT 
 				}
+			}
+		}
+	}
+
+	tm_pol_claim_baltic_hegemony = {
+		icon = mission_pol_moldavia 
+		required_missions = { tm_pol_claim_swedish_crown tm_pol_seize_lubeck }
+		position = 16
+		provinces_to_highlight = { 
+			area = finland_area 
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+		trigger = { 
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				region = scandinavia_region
+				value = 60
+			}
+			NOT = {
+				OR = {
+				exists = DAN
+				exists = SCA
+				}
+			}
+		}
+		effect = { 
+			add_country_modifier = {
+				name = pol_baltic_dominance
+				duration = -1
 			}
 		}
 	}
