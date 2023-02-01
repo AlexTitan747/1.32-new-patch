@@ -956,6 +956,53 @@ poland_sca_slot_2_a = {
 		}
 	}
 
+	tm_pol_wien_node_control = {
+		icon = mission_pol_moldavia
+		required_missions = { tm_pol_bohemian_demise }
+		position = 14
+
+		provinces_to_highlight = {
+			OR = {
+			area = upper_bavaria_area
+			area = lower_bavaria_area
+			area = austria_proper_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			upper_bavaria_area = {
+				type = all
+				owned_by = ROOT
+			}
+			lower_bavaria_area = {
+				type = all
+				owned_by = ROOT
+			}
+			austria_proper_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+
+		effect = {
+			bohemia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			erzgebirge_area = {
+				limit = {
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
 	tm_pol_duchy_of_finland = {
 		icon = mission_pol_moldavia 
 		required_missions = { tm_pol_warplan_scandinavia }
@@ -1508,9 +1555,43 @@ poland_sca_slot_3_a = {
 			}
 		}
 	}
-		
-		
-	
+
+	tm_pol_bohemian_demise = {
+		icon = mission_pol_moldavia
+		required_missions = { tm_pol_polish_silesia }
+		position = 13
+		provinces_to_highlight = {
+			area = moravia_area
+			area = nymburk_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			moravia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			nymburk_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		effect = {
+			bohemia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			erzgebirge_area = {
+				limit = {
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
 
 	plc_duchy_pomerania = { 
 		icon = mission_conquer_pomerania		
@@ -2080,7 +2161,7 @@ poland_sca_slot_4_a = {
 			262 = { num_of_buildings_in_province = 4 } 
 			has_institution = renaissance 
 		}
-		effect = { 	
+		effect = {
 			262 = {
 				add_center_of_trade_level = 1 
 				add_base_production = 2 
@@ -2088,7 +2169,6 @@ poland_sca_slot_4_a = {
 			}
 		}
 	}
-
 
 	plc_invest_eastern_poland = {
 		icon = reclaim_the_ducal_lands
@@ -2208,7 +2288,7 @@ poland_sca_slot_4_a = {
 					total_development = 2000
 				}
 			}
-			if = { 
+			if = {
 				limit = { has_dlc = "Mandate of Heaven" }
 					in_golden_age = yes 
 			}
