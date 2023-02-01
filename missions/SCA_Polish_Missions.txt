@@ -2266,39 +2266,16 @@ poland_sca_slot_4_a = {
 			4128 = {
 				add_province_modifier = {
 					name = pol_hungarian_borderlands
+					duration = -1
 				}
 			}
 			156 = {
 				add_province_modifier = {
 					name = pol_hungarian_borderlands
+					duration = -1
 				}
 			}
-			prestige = 25
-		}
-	}
-
-	tm_pol_warplan_scandinavia = {
-		icon = mission_pol_imperial_commonwealth 
-		required_missions = {  } 
-		position = 16
-		trigger = {
-			has_country_flag = warplan_sweden_activated
-		}
-		effect = { 
-			finland_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
-			}
-			bothnia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
-			}
+			add_prestige = 25
 		}
 	}
 
@@ -2433,6 +2410,31 @@ poland_sca_slot_4_a = {
 			
 			mittelmark_area = {
 				add_prosperity = 100
+			}
+		}
+	}
+
+	tm_pol_warplan_scandinavia = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = {  } 
+		position = 16
+		trigger = {
+			has_country_flag = warplan_sweden_activated
+		}
+		effect = { 
+			finland_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			bothnia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
 			}
 		}
 	}
