@@ -200,6 +200,49 @@ country_decisions = {
 			}
 		}
 	}
+
+	carpathian_assimilation = {
+		major = yes
+		potential = {
+			ai = no
+			culture_group = west_slavic
+			NOT = { has_country_flag = assimilated_carpathia }
+			has_country_flag = pol_hungarian_assimilation_unlocked
+		}
+		allow = {
+			government_rank = 3
+			NOT = { has_country_flag = assimilated_carpathia }
+		}
+		effect = {
+			set_country_flag = assimilated_kurds
+			every_owned_province = {
+				limit = {
+					owned_by = ROOT
+					OR = {
+						culture = hungarian
+						culture = transylvanian
+						culture = slovak
+					}
+				}
+				add_province_modifier = {
+					name = recently_assimilated
+					duration = 3650
+				}
+				change_culture = pcarpathian
+			}
+			every_owned_province = {
+				limit = {
+					owned_by = ROOT
+					culture = romanian
+				}
+				add_province_modifier = {
+					name = recently_assimilated
+					duration = 3650
+				}
+				change_culture = promanian
+			}
+		}
+	}
 	
 			
 }		
