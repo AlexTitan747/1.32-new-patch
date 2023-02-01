@@ -1725,19 +1725,84 @@ poland_sca_slot_3_a = {
 	tm_pol_warplan_russia = {
 		icon = mission_pol_imperial_commonwealth 
 		required_missions = {  } 
-		position = 20
+		position = 22
 		trigger = {
 			has_country_flag = warplan_russia_activated
 		}
 		effect = { 
-			finland_area = {
+			pskov_area = {
 				limit = { 
 					NOT = { owned_by = ROOT } 
 					NOT = { is_core = ROOT }
 				}
 				add_permanent_claim = ROOT 
 			}
-			bothnia_area = {
+			white_ruthenia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			if = {
+				limit = {
+					exists = SMO
+				}
+				add_casus_belli = {
+					type = cb_vassalize_mission
+					months = 300
+					target = SMO
+				} 
+			}
+			else = {
+				smolensk_area = {
+					limit = { 
+						NOT = { owned_by = ROOT } 
+						NOT = { is_core = ROOT }
+					}
+					add_permanent_claim = ROOT 
+				}
+			}
+		}
+	}
+
+	tm_pol_subjugate_smolensk = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_warplan_russia } 
+		position = 23
+		trigger = {
+			smolensk_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			white_ruthenia_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+		}
+		effect = { 
+			moscow_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			oka_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			ryazan_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			vladimir_area = {
 				limit = { 
 					NOT = { owned_by = ROOT } 
 					NOT = { is_core = ROOT }
@@ -1747,10 +1812,37 @@ poland_sca_slot_3_a = {
 		}
 	}
 
+	tm_pol_destroy_muscovy = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_subjugate_smolensk } 
+		position = 24
+		trigger = {
+			moscow_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			oka_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			ryazan_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			vladimir_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+		}
+		effect = { 
+			prestige = 50
+		}
+	}
+
 	plc_break_the_rus = {
 		icon = mission_plc_break_the_rus
-		required_missions = { tm_pol_warplan_russia }
-		position = 21
+		required_missions = {  }
+		position = 25
 		provinces_to_highlight = {
 			owner = {
 				capital_scope = {
@@ -3306,35 +3398,34 @@ poland_sca_slot_5_branching_lit_hre = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
 		trigger = { 
-			transylvania_area = {
-				type = all 
-				country_or_non_sovereign_subject_holds = ROOT
+			4236 = {
+				base_production = 8
+				has_building = workshop
 			}
-			southern_transylvania_area = {
-				type = all 
-				country_or_non_sovereign_subject_holds = ROOT
+			1318 = {
+				base_production = 8
+				has_building = workshop
 			}
-			western_transylvania_area = {
-				type = all 
-				country_or_non_sovereign_subject_holds = ROOT
+			162 = {
+				base_production = 8
+				has_building = workshop
+			}
+			5107 = {
+				base_production = 8
+				has_building = workshop
+			}
+			154 = {
+				base_production = 10
 			}
 		}
 		effect = { 
-			slavonia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
+			add_country_modifier = {
+				name = pol_expanding_hungarian_industry
+				duration = 3650
 			}
-			croatia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
+			154 = {
+				add_base_production = 2
 			}
-			#fort bonus
 		}
 	}
 
@@ -3347,35 +3438,69 @@ poland_sca_slot_5_branching_lit_hre = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
 		trigger = { 
-			transylvania_area = {
+			central_hungary_area = {
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			southern_transylvania_area = {
+			alfold_area = {
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			western_transylvania_area = {
-				type = all 
-				country_or_non_sovereign_subject_holds = ROOT
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				region = carpathia_region
+				has_manufactory_trigger = yes
+				value = 10
 			}
 		}
 		effect = { 
-			slavonia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
+			4240 = {
+				if = {
+					NOT = {
+						OR = {
+						has_building = barracks
+						has_building = training_fields
+						}
+					}
+					add_building = barracks
 				}
-				add_permanent_claim = ROOT 
+				add_base_manpower = 2
 			}
-			croatia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
+			153 = {
+				if = {
+					NOT = {
+						OR = {
+						has_building = barracks
+						has_building = training_fields
+						}
+					}
+					add_building = barracks
 				}
-				add_permanent_claim = ROOT 
+				add_base_manpower = 2
 			}
-			#fort bonus
+			4125 = {
+				if = {
+					NOT = {
+						OR = {
+						has_building = barracks
+						has_building = training_fields
+						}
+					}
+					add_building = barracks
+				}
+				add_base_manpower = 2
+			}
+			155 = {
+				if = {
+					NOT = {
+						OR = {
+						has_building = barracks
+						has_building = training_fields
+						}
+					}
+					add_building = barracks
+				}
+				add_base_manpower = 2
+			}
 		}
 	}
 
