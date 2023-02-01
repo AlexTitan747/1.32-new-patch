@@ -989,6 +989,13 @@ poland_sca_slot_2_a = {
 				}
 				add_permanent_claim = ROOT 
 			}
+			mittelmark_area = {
+				limit = {
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
 		}
 	}
 
@@ -1511,6 +1518,94 @@ poland_sca_slot_3_a = {
 					NOT = { is_core = ROOT }
 				}
 				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
+	tm_pol_battle_the_bishops = {
+		icon = take_the_bishoprics
+		required_missions = { tm_pol_march_for_berlin }
+		position = 12
+
+		provinces_to_highlight = {
+			area = northern_saxony_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			northern_saxony_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = pious_influences
+				duration = -1
+			}
+		}
+	}
+
+	tm_pol_western_trade_routes = {
+		icon = personal_diplomacy
+		required_missions = { tm_pol_battle_the_bishops tm_pol_war_of_the_counts }
+		position = 13
+		provinces_to_highlight = {
+			province_id = 52
+			province_id = 61
+			province_id = 50
+		}
+
+		trigger = {
+			52 = {
+				owned_by = ROOT
+				province_has_center_of_trade_of_level = 2
+				base_production = 10
+				is_core = ROOT
+			}
+			61 = {
+				owned_by = ROOT
+				province_has_center_of_trade_of_level = 2
+				base_production = 10
+				is_core = ROOT
+			}
+			50 = {
+				owned_by = ROOT
+				province_has_center_of_trade_of_level = 3
+				base_production = 10
+				is_core = ROOT
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = western_trade_routes_established
+				duration = -1
+			}
+			61 = {
+				add_province_modifier = {
+					name = new_iron_mines
+					duration = -1
+				}
+			}
+			4748 = {
+				add_province_modifier = {
+					name = new_iron_mines
+					duration = -1
+				}
+			}
+			if = {
+				limit = { owned_by = ROOT }
+				2966 = {
+					add_province_modifier = {
+						name = new_iron_mines
+						duration = -1
+					}
+				}
+			}
+			mittelmark_area = {
+				add_prosperity = 100
 			}
 		}
 	}
@@ -2378,6 +2473,43 @@ poland_sca_slot_4_a = {
 					}
 				}
 			}	
+		}
+	}
+
+	tm_pol_war_of_the_counts = {
+		icon = influence_the_princes
+		required_missions = { tm_pol_march_for_berlin }
+		position = 12
+		provinces_to_highlight = {
+			owned_by = SAX
+			owned_by = ANH
+			owned_by = SOR
+			province_id = 61
+			province_id = 58
+			province_id = 60
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			61 = {
+				owned_by = ROOT
+				is_core = ROOT
+			}
+			58 = {
+				owned_by = ROOT
+				is_core = ROOT
+			}
+			60 = {
+				owned_by = ROOT
+				is_core = ROOT
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = victorous_against_the_counts
+				duration = 3650
+			}
 		}
 	}
 
