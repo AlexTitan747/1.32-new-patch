@@ -199,7 +199,6 @@ tm_CRI_branch_2 = {
 		icon = mission_arabian_fort
 		position = 3
 		required_missions = {
-			tm_CRI_branch1_mission_1
 			tm_CRI_branch2_mission_1
 			tm_CRI_branch3_mission_2
 		}
@@ -220,11 +219,18 @@ tm_CRI_branch_2 = {
 		}
 
 		trigger = {
-			ZAZ = {
-				total_development = 75
-				is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
+			if = {
+				limit = {
+					MOL = {
+						is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
+					}
+				}
+				MOL = {
+					total_development = 75
+					is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
+				}
 			}
-			MOL = {
+			ZAZ = {
 				total_development = 75
 				is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
 			}
@@ -293,6 +299,53 @@ tm_CRI_branch_2 = {
 			add_country_modifier = {
 				name = tm_CRI_feeding_the_people
 				duration = 10950
+			}
+			ruthenia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	tm_CRI_branch2_mission_4 = {
+		icon = mission_steppe_warriors
+		position = 6
+		required_missions = { 
+			tm_CRI_branch2_mission_3 
+			tm_CRI_branch3_mission_4
+		}
+
+		provinces_to_highlight = {
+			region = ruthenia_region
+			NOT = { country_or_non_sovereign_subject_owns = ROOT }
+		}
+
+		trigger = {
+			ruthenia_region = {
+				type = all
+				country_or_non_sovereign_subject_owns = ROOT
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_CRI_ruthenia_ruined
+				duration = -1
+			}
+			add_stat_or_monarch_power = {
+				stat = mil
+				amount = 2
+			}
+			add_stat_or_monarch_power = {
+				stat = dip
+				amount = 2
+			}
+			add_stat_or_monarch_power = {
+				stat = adm
+				amount = 2
 			}
 		}
 	}
@@ -470,8 +523,40 @@ tm_CRI_branch_3 = {
 					duration = -1 
 				}
 			}
-			add_prestige = 40
+			add_prestige = 25
 			add_treasury = 1000
+			russia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_CRI_branch3_mission_5 = {
+		icon = mission_destroy_the_veche
+		position = 6
+		required_missions = { tm_CRI_branch3_mission_4 }
+
+		provinces_to_highlight = {
+			region = russia_region 
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			russia_region = {
+				type = all
+				owneed_by = ROOT
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_CRI_destroy_the_veche
+				duration = -1
+			}
+			add_prestige = 50
 		}
 	}
 }
@@ -662,7 +747,71 @@ tm_CRI_branch_4 = {
 					add_permanent_claim = ROOT
 				}
 			}
+		}
+	}
+	tm_CRI_branch4_mission_3 = {
+		icon = mission_cossack_cavalry
+		position = 4 
+		required_missions = { tm_CRI_branch4_mission_2 }
 
+		trigger = {}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_CRI_call_for_war
+				duration = 3650
+			}
+		}
+	}
+
+	tm_CRI_branch4_mission_4 = {
+		icon = mission_confed_of_cumania
+		position = 5
+		required_missions = {
+			tm_CRI_branch5_mission_4
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				area = kazan_area
+				area = bashkiria_area 
+				area = kazakhstan_area
+				area = kyzylkum_area 
+				area = syr_darya_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			kazan_area = {
+				type = ALL
+				owned_by = ROOT
+			}
+			bashkiria_area = {
+				type = ALL
+				owned_by = ROOT
+			}
+			kazakhstan_area = {
+				type = ALL
+				owned_by = ROOT
+			}
+			kyzylkum_area = {
+				type = ALL
+				owned_by = ROOT
+			}
+			syr_darya_area = {
+				type = ALL
+				owned_by = ROOT
+			}
+			NOT = { exists = NOG }
+			NOT = { exists = KAZ }
+			NOT = { exists = SHY }
+		}
+
+		effect = {
+			add_adm_power = 150
+			add_mil_power = 50
+			add_dip_power = 25
 		}
 	}
 }
@@ -778,6 +927,110 @@ tm_CRI_branch_5 = {
 				type = master_of_mint
 				skill = 3 
 				cost_multiplier = 0.75
+			}
+		}
+	}
+	
+	tm_CRI_branch5_mission_4 = {
+		icon = mission_the_pass_to_the_caucasus
+		position = 4
+		required_missions = { tm_CRI_branch4_mission_2 }
+
+		provinces_to_highlight = {
+			area = dagestan_area 
+			not = { owned_by = ROOT }
+		}
+
+		trigger = {
+			dagestan_area = {
+				type = all
+				owned_by = ROOT
+			}
+
+			4306 = {
+				OR = {
+					has_building = fort_15th
+					has_building = fort_16th
+					has_building = fort_17th
+					has_building = fort_18th
+				}
+			}
+			5099 = {
+				OR = {
+					has_building = fort_15th
+					has_building = fort_16th
+					has_building = fort_17th
+					has_building = fort_18th
+				}
+			}
+		}
+
+		effect = {
+			4306 = {
+				add_province_modifier = {
+					name = tm_CRI_defend_the_caucasus
+					duration = -1
+				}
+			}
+			5099 = {
+				add_province_modifier = {
+					name = tm_CRI_defend_the_caucasus
+					duration = -1
+				}
+			}
+			persia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			caucasia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			2444 = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	tm_CRI_branch5_mission_5 = {
+		icon = mission_push_into_persia 
+		position = 5
+		required_missions = {
+			tm_CRI_branch5_mission_4
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				region = caucasia_region
+				region = persia_region
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			caucasia_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			persia_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_CRI_conquerer_of_persia
+				duration = -1
 			}
 		}
 	}
