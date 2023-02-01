@@ -898,6 +898,75 @@ poland_sca_slot_2_a = {
 		}
 	}
 
+	tm_pol_cultral_assimilation = {
+		icon = mission_pol_moldavia 
+		required_missions = { tm_pol_seize_slovakia }
+		position = 8
+		provinces_to_highlight = { 
+			area = finland_area 
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+		trigger = { 
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				region = carpathia_region
+				value = 25
+			}
+			stability = 2
+		}
+		effect = { 
+			bosnia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			herzegovina_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
+	tm_pol_serbian_claims = {
+		icon = mission_pol_moldavia 
+		required_missions = { pol_wallachia }
+		position = 9
+		provinces_to_highlight = { 
+			area = finland_area 
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+		trigger = { 
+			serbia_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			rascia_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			bosnia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			herzegovina_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
 	tm_pol_warplan_germany = {
 		icon = mission_pol_imperial_commonwealth 
 		required_missions = {  } 
@@ -1231,6 +1300,171 @@ poland_sca_slot_3_a = {
 		}
 		effect = { 
 			country_event = { id = flavor_pol.27 }
+		}
+	}
+
+	tm_pol_seize_slovakia = {
+		icon = mission_pol_moldavia 
+		required_missions = { tm_pol_warplan_hungary }
+		position = 7
+		provinces_to_highlight = { 
+			area = finland_area 
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+		trigger = { 
+			slovakia_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			eastern_slovakia_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			transdanubia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			northern_hungary_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			alfold_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			central_hungary_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
+	tm_pol_integrate_hungary = {
+		icon = mission_pol_moldavia 
+		required_missions = { tm_pol_seize_slovakia }
+		position = 8
+		provinces_to_highlight = { 
+			area = finland_area 
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+		trigger = { 
+			transdanubia_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			northern_hungary_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			alfold_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			central_hungary_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			slavonia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			croatia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
+	tm_pol_kingdom_of_croatia = {
+		icon = mission_pol_moldavia 
+		required_missions = { tm_pol_integrate_hungary }
+		position = 9
+		provinces_to_highlight = { 
+			area = finland_area 
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+		trigger = { 
+			slavonia_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			croatia_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			bosnia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			herzegovina_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
+	tm_pol_carpathian_dominance = {
+		icon = mission_pol_moldavia 
+		required_missions = { tm_pol_kingdom_of_croatia }
+		position = 10
+		provinces_to_highlight = { 
+			area = finland_area 
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+		trigger = { 
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				OR = {
+					region = carpathia_region
+					region = balkan_region
+				}
+				value = 50
+			}
+		}
+		effect = { 
+			carpathia_region = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			balkan_region = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
 		}
 	}
 
@@ -2006,6 +2240,47 @@ poland_sca_slot_4_a = {
 					}
 				}
 			}
+		}
+	}
+
+	tm_pol_control_the_borderlands = {
+		icon = mission_pol_moldavia 
+		required_missions = { tm_pol_seize_slovakia }
+		position = 8
+		provinces_to_highlight = { 
+			area = finland_area 
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+		trigger = { 
+			transylvania_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			southern_transylvania_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			western_transylvania_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			slavonia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			croatia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			#fort bonus
 		}
 	}
 
@@ -2807,6 +3082,88 @@ poland_sca_slot_5_branching_lit_hre = {
 					}
 				}
 			}
+		}
+	}
+
+	tm_pol_hungarian_industry_1 = {
+		icon = mission_pol_moldavia 
+		required_missions = { tm_pol_warplan_hungary }
+		position = 7
+		provinces_to_highlight = { 
+			area = finland_area 
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+		trigger = { 
+			transylvania_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			southern_transylvania_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			western_transylvania_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			slavonia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			croatia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			#fort bonus
+		}
+	}
+
+	tm_pol_hungarian_industry_2 = {
+		icon = mission_pol_moldavia 
+		required_missions = { tm_pol_hungarian_industry_1 }
+		position = 8
+		provinces_to_highlight = { 
+			area = finland_area 
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+		trigger = { 
+			transylvania_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			southern_transylvania_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			western_transylvania_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = { 
+			slavonia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			croatia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			#fort bonus
 		}
 	}
 
