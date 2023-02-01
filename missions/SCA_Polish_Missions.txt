@@ -846,7 +846,12 @@ poland_sca_slot_2_a = {
 		required_missions = {  } 
 		position = 6
 		trigger = {
-			has_country_flag = warplan_hungary_activated
+			custom_trigger_tooltip = {
+				tooltip = pol_warplan_hungary_tt
+			}
+			hidden_trigger = {
+				has_country_flag = warplan_hungary_activated
+			}
 		}
 		effect = { 
 			north_moldavia = {
@@ -957,7 +962,7 @@ poland_sca_slot_2_a = {
 	}
 
 	tm_pol_wien_node_control = {
-		icon = mission_pol_moldavia
+		icon = mission_dominate_home_trade_node
 		required_missions = { tm_pol_bohemian_demise }
 		position = 14
 
@@ -1004,7 +1009,7 @@ poland_sca_slot_2_a = {
 	}
 
 	tm_pol_duchy_of_finland = {
-		icon = mission_pol_moldavia 
+		icon = mission_conquer_finland
 		required_missions = { tm_pol_warplan_scandinavia }
 		position = 17
 		provinces_to_highlight = { 
@@ -1529,7 +1534,12 @@ poland_sca_slot_3_a = {
 		required_missions = {  } 
 		position = 11
 		trigger = {
-			has_country_flag = warplan_bohemia_activated
+			custom_trigger_tooltip = {
+				tooltip = pol_warplan_germany_tt
+			}
+			hidden_trigger = {
+				has_country_flag = warplan_bohemia_activated
+			}
 		}
 		effect = { 
 			neumark_area = {
@@ -1561,8 +1571,10 @@ poland_sca_slot_3_a = {
 		required_missions = { tm_pol_polish_silesia }
 		position = 13
 		provinces_to_highlight = {
+			OR = {
 			area = moravia_area
 			area = nymburk_area
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
@@ -1727,7 +1739,12 @@ poland_sca_slot_3_a = {
 		required_missions = {  } 
 		position = 22
 		trigger = {
-			has_country_flag = warplan_russia_activated
+			custom_trigger_tooltip = {
+				tooltip = pol_warplan_russia_tt
+			}
+			hidden_trigger = {
+				has_country_flag = warplan_russia_activated
+			}
 		}
 		effect = { 
 			pskov_area = {
@@ -1812,7 +1829,7 @@ poland_sca_slot_3_a = {
 		}
 	}
 
-	tm_pol_destroy_muscovy = {
+	tm_pol_occupation_of_muscovy = {
 		icon = mission_pol_imperial_commonwealth 
 		required_missions = { tm_pol_subjugate_smolensk } 
 		position = 24
@@ -2591,7 +2608,12 @@ poland_sca_slot_4_a = {
 		required_missions = {  } 
 		position = 16
 		trigger = {
-			has_country_flag = warplan_sweden_activated
+			custom_trigger_tooltip = {
+				tooltip = pol_warplan_scandinavia_tt
+			}
+			hidden_trigger = {
+				has_country_flag = warplan_sweden_activated
+			}
 		}
 		effect = { 
 			finland_area = {
@@ -2612,7 +2634,7 @@ poland_sca_slot_4_a = {
 	}
 
 	tm_pol_decapitate_scandinavia = {
-		icon = mission_pol_moldavia 
+		icon = mission_conquer_sweden
 		required_missions = { tm_pol_warplan_scandinavia }
 		position = 17
 		provinces_to_highlight = { 
@@ -2681,7 +2703,7 @@ poland_sca_slot_4_a = {
 	}
 
 	tm_pol_claim_swedish_crown = {
-		icon = mission_pol_moldavia 
+		icon = mission_crown_of_sweden
 		required_missions = { tm_pol_decapitate_scandinavia }
 		position = 18
 		provinces_to_highlight = { 
@@ -2743,7 +2765,7 @@ poland_sca_slot_4_a = {
 	}
 
 	tm_pol_claim_baltic_hegemony = {
-		icon = mission_pol_moldavia 
+		icon = mission_baltic_empire
 		required_missions = { tm_pol_claim_swedish_crown tm_pol_seize_lubeck }
 		position = 19
 		provinces_to_highlight = { 
