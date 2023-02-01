@@ -882,20 +882,8 @@ poland_sca_slot_2_a = {
 			stability = 2
 		}
 		effect = { 
-			bosnia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
-			}
-			herzegovina_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
-			}
+			custom_tooltip = unlock_hungarian_assimilation
+			set_country_flag = pol_hungarian_assimilation_unlocked
 		}
 	}
 
@@ -918,19 +906,20 @@ poland_sca_slot_2_a = {
 			}
 		}
 		effect = { 
-			bosnia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
+			1766 = {
+				add_base_production = 2
 			}
-			herzegovina_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
+			serbia_area = {
+				add_local_modifier = {
+					name = pol_serbian_development
+					duration = 3650
 				}
-				add_permanent_claim = ROOT 
+			}
+			rascia_area = {
+				add_local_modifier = {
+					name = pol_serbian_development
+					duration = 3650
+				}
 			}
 		}
 	}
@@ -1325,6 +1314,27 @@ poland_sca_slot_3_a = {
 				}
 				add_permanent_claim = ROOT 
 			}
+			western_transylvania_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			southern_transylvania_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			transylvania_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
 		}
 	}
 
@@ -1369,6 +1379,10 @@ poland_sca_slot_3_a = {
 				}
 				add_permanent_claim = ROOT 
 			}
+			add_country_modifier = {
+				name = pol_hungarian_integration
+				duration = 3650
+			}
 		}
 	}
 
@@ -1391,6 +1405,21 @@ poland_sca_slot_3_a = {
 			}
 		}
 		effect = { 
+			131 = {
+				add_base_production = 2
+				add_base_manpower = 1
+				add_base_tax = 1
+			}
+			4752 = {
+				add_base_production = 2
+				add_base_manpower = 1
+				add_base_tax = 1
+			}
+			152 = {
+				add_base_production = 2
+				add_base_manpower = 1
+				add_base_tax = 1
+			}
 			bosnia_area = {
 				limit = { 
 					NOT = { owned_by = ROOT } 
@@ -1422,7 +1451,7 @@ poland_sca_slot_3_a = {
 					region = carpathia_region
 					region = balkan_region
 				}
-				value = 50
+				value = 80
 			}
 		}
 		effect = { 
@@ -1440,6 +1469,11 @@ poland_sca_slot_3_a = {
 				}
 				add_permanent_claim = ROOT 
 			}
+			add_country_modifier = {
+				name = pol_carpathian_dominance
+				duration = -1
+			}
+			add_prestige = 50
 		}
 	}
 
@@ -2229,21 +2263,17 @@ poland_sca_slot_4_a = {
 			}
 		}
 		effect = { 
-			slavonia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
+			4128 = {
+				add_province_modifier = {
+					name = pol_hungarian_borderlands
 				}
-				add_permanent_claim = ROOT 
 			}
-			croatia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
+			156 = {
+				add_province_modifier = {
+					name = pol_hungarian_borderlands
 				}
-				add_permanent_claim = ROOT 
 			}
-			#fort bonus
+			prestige = 25
 		}
 	}
 
