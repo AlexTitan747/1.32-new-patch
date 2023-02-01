@@ -1442,6 +1442,38 @@ poland_sca_slot_3_a = {
 			}
 		}
 	}
+
+	tm_pol_warplan_germany = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = {  } 
+		position = 11
+		trigger = {
+			has_country_flag = warplan_bohemia_activated
+		}
+		effect = { 
+			neumark_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			silesia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			mittelmark_area = {
+				limit = {
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
 		
 		
 	
@@ -2212,38 +2244,6 @@ poland_sca_slot_4_a = {
 				add_permanent_claim = ROOT 
 			}
 			#fort bonus
-		}
-	}
-
-	tm_pol_warplan_germany = {
-		icon = mission_pol_imperial_commonwealth 
-		required_missions = {  } 
-		position = 11
-		trigger = {
-			has_country_flag = warplan_bohemia_activated
-		}
-		effect = { 
-			neumark_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
-			}
-			silesia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
-			}
-			mittelmark_area = {
-				limit = {
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
-			}
 		}
 	}
 
