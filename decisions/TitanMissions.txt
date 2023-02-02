@@ -8,29 +8,27 @@ country_decisions = {
 				tag = PLC
 				}
 			has_country_flag = unlocked_warplans
-			NOT = {
-				has_country_modifier = warplan_pol_cooldown
-			}
-		}
-		ai_will_do = {
-			factor = 0
 		}
 		allow = {
 			OR = {
 			tag = POL
 			tag = PLC
 			}
+			NOT = {
+				has_country_modifier = warplan_pol_cooldown
+			}
 		}
 		effect = {
-		event = titanpol.1
+		country_event = {
+			id = titanpol.1
+		}
 		custom_tooltip = warplan_cooldown
 		hidden_effect = {
 			add_country_modifier = {
 				name = warplan_pol_cooldown
-				duration = 14600
+				duration = 7300
+				}
 			}
 		}
-	}
-
 	}
 }
