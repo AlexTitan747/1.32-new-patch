@@ -643,26 +643,66 @@ poland_sca_slot_2_a = {
 				}
 				add_permanent_claim = ROOT 
 			}
-			pskov_area = {
+			memel_area = {
 				limit = { 
 					NOT = { owned_by = ROOT } 
 					NOT = { is_core = ROOT }
 				}
 				add_permanent_claim = ROOT 
 			}
-			novgorod_area = {
+			belz_area = {
 				limit = { 
 					NOT = { owned_by = ROOT } 
 					NOT = { is_core = ROOT }
 				}
 				add_permanent_claim = ROOT 
 			}
-			moscow_area = {
+			volhynia_area = {
 				limit = { 
 					NOT = { owned_by = ROOT } 
 					NOT = { is_core = ROOT }
 				}
 				add_permanent_claim = ROOT 
+			}
+			pripyat_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			podlasie_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			samogitia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			lithuania_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			minsk_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			add_casus_belli = {
+				type = cb_vassalize_mission
+				months = 300
+				target = KIE
 			}
 			if = { 
 				limit = { has_estate = estate_nobles }
@@ -749,15 +789,24 @@ poland_sca_slot_2_a = {
 			280 = {
 				trade_share = {
 					country = ROOT
-					share = 50
+					share = 30
 				}
+				OR = {
 				province_has_center_of_trade_of_level = 2
+				province_has_center_of_trade_of_level = 3
+				}
 			}
 			272 = {
-				province_has_center_of_trade_of_level = 2
+				OR = {
+					province_has_center_of_trade_of_level = 2
+					province_has_center_of_trade_of_level = 3
+					}
 			}
 			4545 = {
-				province_has_center_of_trade_of_level = 2
+				OR = {
+					province_has_center_of_trade_of_level = 2
+					province_has_center_of_trade_of_level = 3
+					}
 			}
 			if = {
 				limit = {
@@ -766,7 +815,10 @@ poland_sca_slot_2_a = {
 					}
 				}
 				298 = {
-					province_has_center_of_trade_of_level = 2
+					OR = {
+						province_has_center_of_trade_of_level = 2
+						province_has_center_of_trade_of_level = 3
+						}
 				}
 			}
 			if = {
@@ -776,7 +828,10 @@ poland_sca_slot_2_a = {
 					}
 				}
 				293 = {
-					province_has_center_of_trade_of_level = 2
+					OR = {
+						province_has_center_of_trade_of_level = 2
+						province_has_center_of_trade_of_level = 3
+						}
 				}
 			}
 		}
@@ -803,7 +858,7 @@ poland_sca_slot_2_a = {
 				region = ruthenia_region
 				region = poland_region
 				}
-				value = 100
+				value = 75
 			}
 		}
 		effect = { 
@@ -1186,7 +1241,6 @@ poland_sca_slot_3_a = {
 					}
 				}
 				else = { num_of_times_improved = 5 } 
-				has_trade_building_trigger = yes 
 			}
 		}
 		effect = { 
