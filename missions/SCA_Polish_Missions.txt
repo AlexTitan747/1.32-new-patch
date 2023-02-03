@@ -598,6 +598,19 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 		icon = mission_pol_imperial_commonwealth 
 		required_missions = { tm_pol_take_novgorodian_heartland } 
 		position = 24
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 33
+				province_id = 274
+				province_id = 308
+				province_id = 4253
+				province_id = 295
+				province_id = 310
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
 		trigger = {
 			33 = {
 				OR = {
@@ -630,11 +643,11 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 				province_has_center_of_trade_of_level = 3
 			}
 		}
-		effect = { 
-			33 = {
-				add_base_manpower = 1
-				add_base_tax = 1
-				add_base_production = 1
+		effect = {
+				33 = {
+					add_base_manpower = 1
+					add_base_tax = 1
+					add_base_production = 1
 				if = {
 					limit = {
 						NOT = {
@@ -1279,7 +1292,11 @@ poland_sca_slot_2_a = {
 		required_missions = { tm_pol_warplan_scandinavia }
 		position = 17
 		provinces_to_highlight = { 
+			OR = {
 			area = finland_area 
+			province_id = 19
+			province_id = 30
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
 		trigger = { 
@@ -1307,6 +1324,17 @@ poland_sca_slot_2_a = {
 		icon = mission_pol_imperial_commonwealth 
 		required_missions = { tm_pol_warplan_russia } 
 		position = 23
+
+		provinces_to_highlight = { 
+			OR = {
+			area = pskov_area
+			area = novgorod_area
+			area = tver_area
+			area = karelia_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			pskov_area = {	
 				type = all 
@@ -1938,6 +1966,16 @@ poland_sca_slot_3_a = {
 		icon = mission_pol_imperial_commonwealth 
 		required_missions = {  } 
 		position = 11
+
+		provinces_to_highlight = {
+			OR = {
+				area = neumark_area
+				area = silesia_area
+				area = mittelmark_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			custom_trigger_tooltip = {
 				tooltip = pol_warplan_germany_tt
@@ -1946,6 +1984,7 @@ poland_sca_slot_3_a = {
 				has_country_flag = warplan_bohemia_activated
 			}
 		}
+
 		effect = { 
 			neumark_area = {
 				limit = { 
@@ -2086,8 +2125,11 @@ poland_sca_slot_3_a = {
 		position = 18
 		provinces_to_highlight = { 
 			OR = {
-				area = vorpommern_area 
-				area = hinter_pommern_area
+				area = mecklenburg_area
+				area = lower_saxony_area
+				area = holstein_area
+				province_id = 45
+				province_id = 1775
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
@@ -2143,6 +2185,15 @@ poland_sca_slot_3_a = {
 		icon = mission_pol_imperial_commonwealth 
 		required_missions = {  } 
 		position = 22
+
+		provinces_to_highlight = { 
+			OR = {
+				area = pskov_area
+				area = white_ruthenia_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			custom_trigger_tooltip = {
 				tooltip = pol_warplan_russia_tt
@@ -2192,6 +2243,15 @@ poland_sca_slot_3_a = {
 		icon = mission_pol_imperial_commonwealth 
 		required_missions = { tm_pol_warplan_russia } 
 		position = 23
+
+		provinces_to_highlight = { 
+			OR = {
+				area = smolensk_area
+				area = white_ruthenia_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			smolensk_area = {	
 				type = all 
@@ -2202,6 +2262,7 @@ poland_sca_slot_3_a = {
 				country_or_non_sovereign_subject_holds = ROOT 
 			}
 		}
+
 		effect = { 
 			moscow_area = {
 				limit = { 
@@ -2232,6 +2293,7 @@ poland_sca_slot_3_a = {
 				add_permanent_claim = ROOT 
 			}
 		}
+
 	}
 
 	tm_pol_occupation_of_muscovy = {
@@ -3016,6 +3078,15 @@ poland_sca_slot_4_a = {
 		icon = mission_pol_imperial_commonwealth 
 		required_missions = {  } 
 		position = 16
+
+		provinces_to_highlight = {
+			OR = {
+			area = bothnia_area
+			area = finland_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			custom_trigger_tooltip = {
 				tooltip = pol_warplan_scandinavia_tt
@@ -3024,6 +3095,7 @@ poland_sca_slot_4_a = {
 				has_country_flag = warplan_sweden_activated
 			}
 		}
+
 		effect = { 
 			finland_area = {
 				limit = { 
@@ -3046,11 +3118,13 @@ poland_sca_slot_4_a = {
 		icon = mission_conquer_sweden
 		required_missions = { tm_pol_warplan_scandinavia }
 		position = 17
-		provinces_to_highlight = { 
-			area = finland_area 
+
+		provinces_to_highlight = {
+			province_id = 1
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
-		trigger = { 
+
+		trigger = {
 			1 = {
 				owned_by = ROOT
 			}
@@ -3061,6 +3135,7 @@ poland_sca_slot_4_a = {
 				}
 			}
 		}
+
 		effect = { 
 			add_country_modifier = {
 				name = pol_swedish_annexation
@@ -3115,10 +3190,12 @@ poland_sca_slot_4_a = {
 		icon = mission_crown_of_sweden
 		required_missions = { tm_pol_decapitate_scandinavia }
 		position = 18
+
 		provinces_to_highlight = { 
-			area = finland_area 
+			area = ostra_svealand_area
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
+
 		trigger = { 
 			stability = 3
 			prestige = 75
@@ -3130,7 +3207,8 @@ poland_sca_slot_4_a = {
 				owned_by = ROOT
 			}
 		}
-		effect = { 
+
+		effect = {
 			1 = {
 			add_great_project_tier = {
 				type = drottingholm_palace
@@ -3177,10 +3255,12 @@ poland_sca_slot_4_a = {
 		icon = mission_baltic_empire
 		required_missions = { tm_pol_claim_swedish_crown tm_pol_seize_lubeck }
 		position = 19
+
 		provinces_to_highlight = { 
-			area = finland_area 
+			region = scandinavia_region
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
+
 		trigger = { 
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				region = scandinavia_region
@@ -3193,6 +3273,7 @@ poland_sca_slot_4_a = {
 				}
 			}
 		}
+
 		effect = { 
 			add_country_modifier = {
 				name = pol_baltic_dominance
@@ -4034,10 +4115,20 @@ poland_sca_slot_5_branching_lit_hre = {
 	pol_embellish_gdansk = {
 		icon = mission_danzig_or_war 
 		required_missions = { tm_pol_warplan_scandinavia } 
-		position = 17 
-		trigger = { 
-			43 = { country_or_non_sovereign_subject_holds = ROOT }
-			if = { 
+		position = 17
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 43
+			}	
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			43 = {
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			if = {
 				limit = { has_dlc = "Dharma" }
 				43 = { 
 					OR = {
@@ -4047,17 +4138,19 @@ poland_sca_slot_5_branching_lit_hre = {
 					has_trade_building_trigger = yes 
 				}
 			}
-			else = { 
-				43 = { 
+			else = {
+				43 = {
 					development = 40 
 					has_trade_building_trigger = yes 
 				}
 			}
 			43 = { has_production_building_trigger = yes }
 		}
+
 		effect = {
 			country_event = { id = flavor_pol.31 }
-		} 
+		}
+
 	}
 
 	plc_dominate_baltic = {
@@ -4073,7 +4166,7 @@ poland_sca_slot_5_branching_lit_hre = {
 			}
 			has_trade_building_trigger = no 
 		}
-		trigger = { 
+		trigger = {
 			1926 = { 
 				trade_share = {
 					country = ROOT
