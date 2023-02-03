@@ -103,7 +103,6 @@ emp_bohemia_1 = {
 			5076 = {
 				add_building = fort_15th
 			}
-			add_treasury = -150
 		}
 
 		ai_weight = {
@@ -171,11 +170,18 @@ emp_bohemia_2 = {
 
 
 		provinces_to_highlight = {
+			OR = {
 			area = slovakia_area
+			area = eastern_slovakia_area
+			}
 			NOT = { owned_by = ROOT }
 		}
 		trigger = {
 			slovakia_area = {
+				type = all
+				owned_by = ROOT
+			}
+			eastern_slovakia_area = {
 				type = all
 				owned_by = ROOT
 			}
@@ -190,6 +196,13 @@ emp_bohemia_2 = {
 					add_permanent_claim = ROOT
 				}
 				alfold_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				central_hungary_area = {
 					limit = {
 						NOT = { is_core = ROOT }
 						NOT = { is_permanent_claim = ROOT }
@@ -217,11 +230,16 @@ emp_bohemia_2 = {
 			OR = {
 				area = transdanubia_area
 				area = alfold_area
+				area = central_hungary_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		position = 3
 		trigger = {
+			central_hungary_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 			transdanubia_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -245,6 +263,13 @@ emp_bohemia_2 = {
 				add_permanent_claim = ROOT
 			}
 			southern_transylvania_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			western_transylvania_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -553,7 +578,7 @@ emp_bohemia_3 = {
 		}
 		effect = {
 			add_adm_power = 75
-			add_manpower = 3
+			add_manpower = 8500
 			if = {	
 				limit = {
 					exists = SAX
