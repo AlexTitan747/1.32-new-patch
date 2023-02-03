@@ -581,6 +581,124 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 			country_event = { id = flavor_pol.24 }
 		}
 	}
+
+	tm_pol_novgordian_trade = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_take_novgorodian_heartland } 
+		position = 24
+		trigger = {
+			33 = {
+				OR = {
+				province_has_center_of_trade_of_level = 2
+				province_has_center_of_trade_of_level = 3
+				}
+			}
+			274 = {
+				OR = {
+				province_has_center_of_trade_of_level = 2
+				province_has_center_of_trade_of_level = 3
+				}
+			}
+			308 = {
+				OR = {
+				province_has_center_of_trade_of_level = 2
+				province_has_center_of_trade_of_level = 3
+				}
+			}
+			4253 = {
+				OR = {
+				province_has_center_of_trade_of_level = 2
+				province_has_center_of_trade_of_level = 3
+				}
+			}
+			295 = {
+				province_has_center_of_trade_of_level = 3
+			}
+			310 = {
+				province_has_center_of_trade_of_level = 3
+			}
+		}
+		effect = { 
+			33 = {
+				add_base_manpower = 1
+				add_base_tax = 1
+				add_base_production = 1
+				if = {
+					limit = {
+						NOT = {
+							has_trade_building_trigger = yes
+						}
+					}
+					add_building = marketplace
+				}
+			}
+			274 = {
+				add_base_manpower = 1
+				add_base_tax = 1
+				add_base_production = 1
+				if = {
+					limit = {
+						NOT = {
+							has_trade_building_trigger = yes
+						}
+					}
+					add_building = marketplace
+				}
+			}
+			308 = {
+				add_base_manpower = 1
+				add_base_tax = 1
+				add_base_production = 1
+				if = {
+					limit = {
+						NOT = {
+							has_trade_building_trigger = yes
+						}
+					}
+					add_building = marketplace
+				}
+			}
+			4253 = {
+				add_base_manpower = 1
+				add_base_tax = 1
+				add_base_production = 1
+				if = {
+					limit = {
+						NOT = {
+							has_trade_building_trigger = yes
+						}
+					}
+					add_building = marketplace
+				}
+			}
+			295 = {
+				add_base_manpower = 2
+				add_base_tax = 2
+				add_base_production = 2
+				if = {
+					limit = {
+						NOT = {
+							has_trade_building_trigger = yes
+						}
+					}
+					add_building = marketplace
+				}
+			}
+			310 = {
+				add_base_manpower = 2
+				add_base_tax = 2
+				add_base_production = 2
+				if = {
+					limit = {
+						NOT = {
+							has_trade_building_trigger = yes
+						}
+					}
+					add_building = marketplace
+				}
+			}
+		}
+	}
 }
 
 
@@ -1087,6 +1205,135 @@ poland_sca_slot_2_a = {
 		effect = { 
 			add_country_modifier = {
 				name = pol_annex_vassals
+				duration = 3650
+			}
+		}
+	}
+
+	tm_pol_take_novgorodian_heartland = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_warplan_russia } 
+		position = 23
+		trigger = {
+			pskov_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			novgorod_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			tver_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			karelia_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+		}
+		effect = { 
+			north_karelia = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			pomor_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			arkhangelsk_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			vologda_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			beloozero_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
+	tm_pol_control_white_sea = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_take_novgorodian_heartland } 
+		position = 24
+		trigger = {
+			north_karelia = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			pomor_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			arkhangelsk_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			vologda_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			beloozero_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+		}
+		effect = { 
+			add_country_modifier = {
+				name = pol_northern_control
+				duration = 3650
+			}
+		}
+	}
+
+	tm_pol_to_the_urals = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_take_novgorodian_heartland } 
+		position = 25
+		trigger = {
+			north_karelia = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			pomor_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			arkhangelsk_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			vologda_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			beloozero_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+		}
+		effect = { 
+			add_country_modifier = {
+				name = pol_northern_control
 				duration = 3650
 			}
 		}
@@ -1912,7 +2159,7 @@ poland_sca_slot_3_a = {
 
 	plc_break_the_rus = {
 		icon = mission_plc_break_the_rus
-		required_missions = {  }
+		required_missions = { tm_pol_subjugate_smolensk  }
 		position = 25
 		provinces_to_highlight = {
 			owner = {
