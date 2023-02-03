@@ -19,10 +19,15 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 		icon = mission_coa_shield_kiev
 		required_missions = { pol_raise_noble_host }
 		position = 2
+
 		provinces_to_highlight = { 
-			area = moldavia_area 
+			OR = {
+			area = west_dniepr_area
+			area = podolia_volhynia_area 
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
+
 		trigger = { 
 			if = {
 				limit = {
@@ -143,9 +148,13 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 		required_missions = { tm_pol_warplan_hungary }
 		position = 7
 		provinces_to_highlight = { 
-			area = moldavia_area 
+			OR = {
+				area = north_moldavia
+				area = moldavia_area
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
+
 		trigger = { 
 			moldavia_area = {
 				type = all 
@@ -223,7 +232,10 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 		required_missions = { pol_moldavia }
 		position = 8
 		provinces_to_highlight = { 
-			area = wallachia_area 
+			OR = {
+			area = wallachia_area
+			area = eastern_wallachia_area
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
 		trigger = { 
@@ -723,6 +735,11 @@ poland_sca_slot_2_a = {
 		icon = mission_pol_raise_noble_host 
 		required_missions = { } 
 		position = 1
+
+		provinces_to_highlight = {
+			province_id = 262
+		}
+
 		trigger = { 
 			army_size_percentage = 0.9
 			if = { 
@@ -810,6 +827,13 @@ poland_sca_slot_2_a = {
 				}
 				add_permanent_claim = ROOT 
 			}
+			west_dniepr_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
 			minsk_area = {
 				limit = { 
 					NOT = { owned_by = ROOT } 
@@ -843,7 +867,16 @@ poland_sca_slot_2_a = {
 		required_missions = { pol_raise_noble_host }
 		position = 2
 		provinces_to_highlight = { 
-			area = moldavia_area 
+			OR = {
+			area = podolia_volhynia_area
+			area = volhynia_area
+			area = belz_area
+			area = pripyat_area
+			area = samogitia_area
+			area = west_dniepr_area
+			area = minsk_area
+			area = lithuania_area
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
 		trigger = { 
@@ -871,22 +904,26 @@ poland_sca_slot_2_a = {
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT	
 			}
+			west_dniepr_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT	
+			}
 			minsk_area = {
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT	
 			}
 		}
-		effect = { 
+		effect = {
 		272 = {
 			add_base_manpower = 2
 			add_base_tax = 1
 			add_base_production = 1
-		}	
+		}
 		4242 = {
 			add_base_manpower = 2
 			add_base_tax = 1
 			add_base_production = 3
-		}		
+		}
 		4545 = {
 			add_base_manpower = 2
 			add_base_tax = 1
@@ -900,7 +937,11 @@ poland_sca_slot_2_a = {
 		required_missions = { tm_pol_eastern_expansion tm_pol_subjugate_kiev }
 		position = 3
 		provinces_to_highlight = { 
-			area = moldavia_area 
+			OR = {
+				province_id = 280
+				province_id = 4545
+				province_id = 272
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
 		trigger = { 
@@ -966,7 +1007,11 @@ poland_sca_slot_2_a = {
 		required_missions = { tm_pol_kievan_control plc_break_livonia }
 		position = 4
 		provinces_to_highlight = { 
-			area = moldavia_area 
+			OR = {
+				region = poland_region
+				region = ruthenia_region
+				region = baltic_region
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
 		trigger = { 
@@ -1018,6 +1063,15 @@ poland_sca_slot_2_a = {
 		icon = mission_pol_imperial_commonwealth 
 		required_missions = {  } 
 		position = 6
+
+		provinces_to_highlight = { 
+			OR = {
+				area = north_moldavia
+				area = moldavia_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			custom_trigger_tooltip = {
 				tooltip = pol_warplan_hungary_tt
@@ -1048,10 +1102,12 @@ poland_sca_slot_2_a = {
 		icon = bavarian_cultural_dominance
 		required_missions = { tm_pol_seize_slovakia }
 		position = 8
+
 		provinces_to_highlight = { 
-			area = finland_area 
+			region = carpathia_region
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
+
 		trigger = { 
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				region = carpathia_region
@@ -1059,10 +1115,12 @@ poland_sca_slot_2_a = {
 			}
 			stability = 2
 		}
+
 		effect = { 
 			custom_tooltip = unlock_hungarian_assimilation
 			set_country_flag = pol_hungarian_assimilation_unlocked
 		}
+
 	}
 
 	tm_pol_serbian_claims = {
@@ -1070,7 +1128,10 @@ poland_sca_slot_2_a = {
 		required_missions = { pol_wallachia }
 		position = 9
 		provinces_to_highlight = { 
-			area = finland_area 
+			OR = {
+			area = serbia_area
+			area = rascia_area 
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
 		trigger = { 
@@ -1106,16 +1167,22 @@ poland_sca_slot_2_a = {
 		icon = take_silesia
 		required_missions = { tm_pol_warplan_germany }
 		position = 12
-		provinces_to_highlight = {
-			area = silesia_area
+
+		provinces_to_highlight = { 
+			OR = {
+			area = slovakia_area
+			area = eastern_slovakia_area
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
+
 		trigger = {
 			silesia_area = {
 				type = all
 				owned_by = ROOT
 			}
 		}
+
 		effect = {
 			moravia_area = {
 				limit = { 
@@ -1696,7 +1763,12 @@ poland_sca_slot_3_a = {
 		required_missions = { tm_pol_seize_slovakia }
 		position = 8
 		provinces_to_highlight = { 
-			area = finland_area 
+			OR = {
+			area = transdanubia_area
+			area = northern_hungary_area
+			area = alfold_area
+			area = central_hungary_area
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
 		trigger = { 
@@ -1743,11 +1815,14 @@ poland_sca_slot_3_a = {
 		icon = mission_war_for_the_crown
 		required_missions = { tm_pol_integrate_hungary }
 		position = 9
-		provinces_to_highlight = { 
-			area = finland_area 
+		provinces_to_highlight = {
+			OR = {
+			area = slavonia_area
+			area = croatia_area
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
-		trigger = { 
+		trigger = {
 			slavonia_area = {
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT
@@ -1794,8 +1869,11 @@ poland_sca_slot_3_a = {
 		icon = army_reforms
 		required_missions = { tm_pol_kingdom_of_croatia }
 		position = 10
-		provinces_to_highlight = { 
-			area = finland_area 
+		provinces_to_highlight = {
+			OR = {
+			region = carpathia_region
+			region = balkan_region
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
 		trigger = { 
@@ -2735,7 +2813,11 @@ poland_sca_slot_4_a = {
 		required_missions = { tm_pol_seize_slovakia }
 		position = 8
 		provinces_to_highlight = { 
-			area = finland_area 
+			OR = {
+			area = transylvania_area
+			area = southern_transylvania_area
+			area = western_transylvania_area
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
 		trigger = { 
@@ -3717,7 +3799,13 @@ poland_sca_slot_5_branching_lit_hre = {
 		required_missions = { tm_pol_warplan_hungary }
 		position = 7
 		provinces_to_highlight = { 
-			area = finland_area 
+			OR = {
+				province_id = 4236
+				province_id = 1318
+				province_id = 162
+				province_id = 5107
+				province_id = 154
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
 		trigger = { 
@@ -3743,6 +3831,7 @@ poland_sca_slot_5_branching_lit_hre = {
 			}
 			154 = {
 				base_production = 10
+				owned_by = ROOT
 			}
 		}
 		effect = { 
@@ -3761,9 +3850,10 @@ poland_sca_slot_5_branching_lit_hre = {
 		required_missions = { tm_pol_hungarian_industry_1 }
 		position = 8
 		provinces_to_highlight = { 
-			area = finland_area 
+			region = carpathia_region
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
+
 		trigger = {
 			central_hungary_area = {
 				type = all 
@@ -3779,6 +3869,7 @@ poland_sca_slot_5_branching_lit_hre = {
 				value = 10
 			}
 		}
+
 		effect = {
 			4240 = {
 				if = {
