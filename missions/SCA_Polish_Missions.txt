@@ -729,6 +729,7 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 		icon = mission_pol_imperial_commonwealth 
 		required_missions = { tm_pol_novgordian_trade } 
 		position = 25
+
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				region = russia 
@@ -1415,6 +1416,18 @@ poland_sca_slot_2_a = {
 		icon = mission_pol_imperial_commonwealth 
 		required_missions = { tm_pol_take_novgorodian_heartland } 
 		position = 24
+
+		provinces_to_highlight = { 
+			OR = {
+			area = north_karelia
+			area = pomor_area
+			area = arkhangelsk_area
+			area = vologda_area
+			area = beloozero_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			north_karelia = {	
 				type = all 
@@ -1449,6 +1462,18 @@ poland_sca_slot_2_a = {
 		icon = mission_pol_imperial_commonwealth 
 		required_missions = { tm_pol_control_white_sea tm_pol_occupation_of_muscovy } 
 		position = 25
+
+		provinces_to_highlight = { 
+			OR = {
+			area = suzdal_area
+			area = ural_area
+			area = galich_area
+			area = kama_area
+			area = kazan_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			suzdal_area = {	
 				type = all 
@@ -2487,6 +2512,17 @@ poland_sca_slot_3_a = {
 		icon = mission_pol_imperial_commonwealth 
 		required_missions = { tm_pol_subjugate_smolensk } 
 		position = 24
+
+		provinces_to_highlight = { 
+			OR = {
+			area = moscow_area
+			area = oka_area
+			area = ryazan_area
+			area = vladimir_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			moscow_area = {	
 				type = all 
@@ -3668,10 +3704,23 @@ poland_sca_slot_4_a = {
 		icon = mission_pol_imperial_commonwealth 
 		required_missions = { tm_pol_russian_production_centres } 
 		position = 24
+
+		provinces_to_highlight = { 
+			region = russia_region
+			NOT = {
+				OR = {
+					has_building = fort_15th
+					has_building = fort_16th
+					has_building = fort_17th
+					has_building = fort_18th
+				}
+			}
+		}
+
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				has_fort_building_trigger = yes
-				region = russia
+				region = russia_region
 				value  =  8
 			}
 		}
