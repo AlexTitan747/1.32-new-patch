@@ -711,6 +711,32 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 			}
 		}
 	}
+
+	tm_pol_dominate_the_fur_trade = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_novgordian_trade } 
+		position = 25
+		trigger = {
+			310 = {
+				province_has_center_of_trade_of_level = 3
+			}
+		}
+		effect = { 
+			310 = {
+				add_base_manpower = 2
+				add_base_tax = 2
+				add_base_production = 2
+				if = {
+					limit = {
+						NOT = {
+							has_trade_building_trigger = yes
+						}
+					}
+					add_building = marketplace
+				}
+			}
+		}
+	}
 }
 
 
@@ -1374,7 +1400,7 @@ poland_sca_slot_2_a = {
 
 	tm_pol_to_the_urals = {
 		icon = mission_pol_imperial_commonwealth 
-		required_missions = { tm_pol_take_novgorodian_heartland } 
+		required_missions = { tm_pol_control_white_sea tm_pol_occupation_of_muscovy } 
 		position = 25
 		trigger = {
 			north_karelia = {	
@@ -2237,7 +2263,7 @@ poland_sca_slot_3_a = {
 
 	plc_break_the_rus = {
 		icon = mission_plc_break_the_rus
-		required_missions = { tm_pol_subjugate_smolensk  }
+		required_missions = { tm_pol_occupation_of_muscovy tm_pol_control_white_sea }
 		position = 25
 		provinces_to_highlight = {
 			owner = {
@@ -3272,7 +3298,51 @@ poland_sca_slot_4_a = {
 		}
 	}
 
+	tm_pol_russian_production_centres = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_warplan_russia } 
+		position = 23
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				region = russia 
+				trade_goods = fur
+				base_production = 8
+				has_building = workshop
+				value = 8
+			}
+		}
+		effect = { 
+			every_owned_province = {
+				limit = {
+					region = russia 
+					trade_goods = fur
+					base_production = 8
+					has_building = workshop
+				}
+				add_building = tradecompany
+				add_base_production = 1
+			}
+		}
+	}
 
+	tm_pol_defend_the_conquests = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_russian_production_centres } 
+		position = 24
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				has_fort_building_trigger = yes
+				region = russia
+				value  =  8
+			}
+		}
+		effect = { 
+			add_country_modifier = {
+				name = pol_rus_defense_cost
+				duration = -1
+			}
+		}
+	}
 }
 
 
