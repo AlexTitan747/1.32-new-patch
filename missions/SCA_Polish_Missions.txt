@@ -730,23 +730,54 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 		required_missions = { tm_pol_novgordian_trade } 
 		position = 25
 		trigger = {
-			310 = {
-				province_has_center_of_trade_of_level = 3
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				region = russia 
+				trade_goods = fur
+				base_production = 8
+				has_building = workshop
+				value = 8
 			}
 		}
 		effect = { 
-			310 = {
-				add_base_manpower = 2
-				add_base_tax = 2
-				add_base_production = 2
-				if = {
-					limit = {
-						NOT = {
-							has_trade_building_trigger = yes
-						}
-					}
-					add_building = marketplace
+			every_owned_province = {
+				limit = {
+					region = russia 
+					trade_goods = fur
+					base_production = 8
+					has_building = workshop
 				}
+				add_building = tradecompany
+				add_base_production = 1
+			}
+		}
+	}
+
+	tm_pol_consolidate_the_steppes = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_destroy_crimea } 
+		position = 29
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = pol_warplan_crimea_tt
+			}
+			hidden_trigger = {
+				has_country_flag = warplan_crimea_activated
+			}
+		}
+		effect = { 
+			pskov_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			white_ruthenia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
 			}
 		}
 	}
@@ -1423,6 +1454,41 @@ poland_sca_slot_2_a = {
 				name = pol_northern_control
 				duration = 3650
 			}
+			suzdal_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			ural_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			galich_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			kama_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			kazan_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
 		}
 	}
 
@@ -1431,34 +1497,174 @@ poland_sca_slot_2_a = {
 		required_missions = { tm_pol_control_white_sea tm_pol_occupation_of_muscovy } 
 		position = 25
 		trigger = {
-			north_karelia = {	
+			suzdal_area = {	
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT 
 			}
-			pomor_area = {	
+			ural_area = {	
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT 
 			}
-			arkhangelsk_area = {	
+			galich_area = {	
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT 
 			}
-			vologda_area = {	
+			kama_area = {	
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT 
 			}
-			beloozero_area = {	
+			kazan_area = {	
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT 
 			}
 		}
 		effect = { 
 			add_country_modifier = {
-				name = pol_northern_control
+				name = pol_control_of_russia
 				duration = 3650
 			}
 		}
 	}
+
+	tm_pol_warplan_crimea = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = {  } 
+		position = 26
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = pol_warplan_crimea_tt
+			}
+			hidden_trigger = {
+				has_country_flag = warplan_crimea_activated
+			}
+		}
+		effect = { 
+			kremenchuk_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			zaporizhia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			chernigov_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			east_dniepr_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
+	tm_pol_through_zaporizhia = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_warplan_crimea } 
+		position = 27
+		trigger = {
+			kremenchuk_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			zaporizhia_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+		}
+		effect = { 
+			crimea_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			kerch_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
+	tm_pol_destroy_crimea = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_through_zaporizhia } 
+		position = 28
+		trigger = {
+			crimea_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			kerch_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+		}
+		effect = { 
+			yedisan_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			azov_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			
+		}
+	}
+
+	tm_pol_finish_crimea = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_destroy_crimea } 
+		position = 29
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = pol_warplan_crimea_tt
+			}
+			hidden_trigger = {
+				has_country_flag = warplan_crimea_activated
+			}
+		}
+		effect = { 
+			pskov_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			white_ruthenia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
 }
 
 poland_sca_slot_3_a = { 
@@ -1486,6 +1692,7 @@ poland_sca_slot_3_a = {
 			OR = { 
 				area = east_prussia_area 
 				area = west_prussia_area 
+				area = memel_area 
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
@@ -1497,6 +1704,10 @@ poland_sca_slot_3_a = {
 						country_or_non_sovereign_subject_holds = ROOT	
 					}
 					east_prussia_area = {
+						type = all 
+						country_or_non_sovereign_subject_holds = ROOT 
+					}
+					memel_area = {
 						type = all 
 						country_or_non_sovereign_subject_holds = ROOT 
 					}
@@ -2355,32 +2566,11 @@ poland_sca_slot_3_a = {
 				}
 				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 					region = russia_region
-					value = 15 
+					value = 30
 				}
 			}
 		}
 		effect = {
-			custom_tooltip = pol_hold_moscow_and_novgorod_and_neva_tt
-			tooltip = { 
-				if = { 
-					limit = { has_dlc = "Third Rome" } 
-					custom_tooltip = pol_10_streltsy_in_capital
-					hidden_effect = { 
-						capital_scope = { 
-							streltsy_infantry = ROOT 
-							streltsy_infantry = ROOT 
-							streltsy_infantry = ROOT 
-							streltsy_infantry = ROOT 
-							streltsy_infantry = ROOT 
-							streltsy_infantry = ROOT 
-							streltsy_infantry = ROOT 
-							streltsy_infantry = ROOT 
-							streltsy_infantry = ROOT 
-							streltsy_infantry = ROOT 
-						}
-					}
-				}
-				else = { add_yearly_manpower = 2 } 
 				russia_region = {
 					limit = { 
 						NOT = { owned_by = ROOT } 
@@ -2388,92 +2578,100 @@ poland_sca_slot_3_a = {
 					}
 					add_permanent_claim = ROOT 
 				}
-			}
-			custom_tooltip = pol_alternatively_tt
-			tooltip = {
 				add_country_modifier = { 
 					name = broke_the_rus
-					duration = 9125 
+					duration = -1
 				}
 				add_yearly_manpower = 2
-				karelia_area = {
-					limit = { 
-						NOT = { country_or_non_sovereign_subject_holds = ROOT } 
-						NOT = { is_core = ROOT } 
-					}
-					add_permanent_claim = ROOT 
-				}
-				novgorod_area = { 
-					limit = { 
-						NOT = { country_or_non_sovereign_subject_holds = ROOT } 
-						NOT = { is_core = ROOT } 
-					}
-					add_permanent_claim = ROOT 
-				}
-				moscow_area = {
-					limit = { 
-						NOT = { country_or_non_sovereign_subject_holds = ROOT } 
-						NOT = { is_core = ROOT } 
-					}
-					add_permanent_claim = ROOT
-				}
 			}
-			hidden_effect = {
-				if = { 
-					limit = { 
-						has_dlc = "Third Rome" 
-						295 = { owned_by = ROOT } 
-						33 = { owned_by = ROOT }
-						310 = { owned_by = ROOT } 
-					}
-					capital_scope = { 
-						streltsy_infantry = ROOT 
-						streltsy_infantry = ROOT 
-						streltsy_infantry = ROOT 
-						streltsy_infantry = ROOT 
-						streltsy_infantry = ROOT 
-						streltsy_infantry = ROOT 
-						streltsy_infantry = ROOT 
-						streltsy_infantry = ROOT 
-						streltsy_infantry = ROOT 
-						streltsy_infantry = ROOT 
-					}
-					russia_region = {
-						limit = { 
-							NOT = { owned_by = ROOT } 
-							NOT = { is_core = ROOT } 
-						}
-						add_permanent_claim = ROOT 
-					}
+	}
+
+	tm_pol_control_chernigov = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_warplan_crimea } 
+		position = 27
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = pol_warplan_crimea_tt
+			}
+			hidden_trigger = {
+				has_country_flag = warplan_crimea_activated
+			}
+		}
+		effect = { 
+			pskov_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
 				}
-				else = { 
-					add_yearly_manpower = 2 
-					add_country_modifier = { 
-						name = broke_the_rus
-						duration = 9125 
-					}
-					karelia_area = {
-						limit = { 
-							NOT = { country_or_non_sovereign_subject_holds = ROOT } 
-							NOT = { is_core = ROOT } 
-						}
-						add_permanent_claim = ROOT 
-					}
-					novgorod_area = { 
-						limit = { 
-							NOT = { country_or_non_sovereign_subject_holds = ROOT } 
-							NOT = { is_core = ROOT } 
-						}
-						add_permanent_claim = ROOT 
-					}
-					moscow_area = {
-						limit = { 
-							NOT = { country_or_non_sovereign_subject_holds = ROOT } 
-							NOT = { is_core = ROOT } 
-						}
-						add_permanent_claim = ROOT
-					}
-				} 
+				add_permanent_claim = ROOT 
+			}
+			white_ruthenia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
+	tm_pol_onto_the_steppe = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_control_chernigov } 
+		position = 28
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = pol_warplan_crimea_tt
+			}
+			hidden_trigger = {
+				has_country_flag = warplan_crimea_activated
+			}
+		}
+		effect = { 
+			pskov_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			white_ruthenia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
+	tm_pol_forward_to_astrkhan = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_onto_the_steppe tm_pol_destroy_crimea } 
+		position = 29
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = pol_warplan_crimea_tt
+			}
+			hidden_trigger = {
+				has_country_flag = warplan_crimea_activated
+			}
+		}
+		effect = { 
+			pskov_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			white_ruthenia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
 			}
 		}
 	}
@@ -3385,23 +3583,29 @@ poland_sca_slot_4_a = {
 		position = 23
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				region = russia 
-				trade_goods = fur
+				region = russia
+				OR = { 
+				trade_goods = iron
+				trade_goods = copper
+				}
 				base_production = 8
-				has_building = workshop
-				value = 8
+				has_building = weapons
+				value = 5
 			}
 		}
 		effect = { 
 			every_owned_province = {
 				limit = {
 					region = russia 
-					trade_goods = fur
+					OR = { 
+						trade_goods = iron
+						trade_goods = copper
+						}
 					base_production = 8
-					has_building = workshop
+					has_building = weapons
 				}
-				add_building = tradecompany
-				add_base_production = 1
+				add_base_production = 2
+				add_building = barracks
 			}
 		}
 	}
@@ -3424,6 +3628,66 @@ poland_sca_slot_4_a = {
 			}
 		}
 	}
+
+	tm_pol_please_the_cossacks = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_warplan_crimea } 
+		position = 27
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = pol_warplan_crimea_tt
+			}
+			hidden_trigger = {
+				has_country_flag = warplan_crimea_activated
+			}
+		}
+		effect = { 
+			pskov_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			white_ruthenia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+	tm_pol_men_of_the_steppes = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_please_the_cossacks } 
+		position = 28
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = pol_warplan_crimea_tt
+			}
+			hidden_trigger = {
+				has_country_flag = warplan_crimea_activated
+			}
+		}
+		effect = { 
+			pskov_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			white_ruthenia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+
 }
 
 
@@ -4547,5 +4811,63 @@ poland_sca_slot_5_branching_lit_hre = {
 		}
 	}
 
+	tm_pol_mines_of_salt = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_please_the_cossacks } 
+		position = 28
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = pol_warplan_crimea_tt
+			}
+			hidden_trigger = {
+				has_country_flag = warplan_crimea_activated
+			}
+		}
+		effect = { 
+			pskov_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			white_ruthenia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
+	tm_pol_tales_of_gems_and_gold = {
+		icon = mission_pol_imperial_commonwealth 
+		required_missions = { tm_pol_mines_of_salt } 
+		position = 29
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = pol_warplan_crimea_tt
+			}
+			hidden_trigger = {
+				has_country_flag = warplan_crimea_activated
+			}
+		}
+		effect = { 
+			pskov_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			white_ruthenia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+		}
+	}
 }
 
