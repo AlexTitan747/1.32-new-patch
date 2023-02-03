@@ -757,27 +757,15 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 		required_missions = { tm_pol_destroy_crimea } 
 		position = 29
 		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = pol_warplan_crimea_tt
-			}
-			hidden_trigger = {
-				has_country_flag = warplan_crimea_activated
+			pontic_steppe_region = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		effect = { 
-			pskov_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
-			}
-			white_ruthenia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
+			add_country_modifier = {
+				name = pol_control_steppe
+				duration = -1
 			}
 		}
 	}
@@ -1454,41 +1442,6 @@ poland_sca_slot_2_a = {
 				name = pol_northern_control
 				duration = 3650
 			}
-			suzdal_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
-			}
-			ural_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
-			}
-			galich_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
-			}
-			kama_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
-			}
-			kazan_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
-			}
 		}
 	}
 
@@ -1631,7 +1584,20 @@ poland_sca_slot_2_a = {
 				}
 				add_permanent_claim = ROOT 
 			}
-			
+			circassia_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			alania_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
 		}
 	}
 
@@ -1640,27 +1606,37 @@ poland_sca_slot_2_a = {
 		required_missions = { tm_pol_destroy_crimea } 
 		position = 29
 		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = pol_warplan_crimea_tt
+			yedisan_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
 			}
-			hidden_trigger = {
-				has_country_flag = warplan_crimea_activated
+			azov_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			circassia_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			alania_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			OR = {
+				NOT = {
+					exists = CRI
+				}
+				CRI = {
+					NOT = {
+						total_development = 100
+					}
+				}
 			}
 		}
 		effect = { 
-			pskov_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
-			}
-			white_ruthenia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
+			add_country_modifier = {
+				name = pol_crimea_destroyed
+				duration = 3650
 			}
 		}
 	}
@@ -2530,7 +2506,42 @@ poland_sca_slot_3_a = {
 			}
 		}
 		effect = { 
-			prestige = 50
+			prestige = 25
+			suzdal_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			ural_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			galich_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			kama_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			kazan_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
 		}
 	}
 
@@ -2591,22 +2602,38 @@ poland_sca_slot_3_a = {
 		required_missions = { tm_pol_warplan_crimea } 
 		position = 27
 		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = pol_warplan_crimea_tt
+			chernigov_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
 			}
-			hidden_trigger = {
-				has_country_flag = warplan_crimea_activated
+			east_dniepr_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
 			}
 		}
 		effect = { 
-			pskov_area = {
+			sloboda_ukraine_area = {
 				limit = { 
 					NOT = { owned_by = ROOT } 
 					NOT = { is_core = ROOT }
 				}
 				add_permanent_claim = ROOT 
 			}
-			white_ruthenia_area = {
+			lower_don_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			tambov_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			saratov_area = {
 				limit = { 
 					NOT = { owned_by = ROOT } 
 					NOT = { is_core = ROOT }
@@ -2621,22 +2648,39 @@ poland_sca_slot_3_a = {
 		required_missions = { tm_pol_control_chernigov } 
 		position = 28
 		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = pol_warplan_crimea_tt
+			sloboda_ukraine_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
 			}
-			hidden_trigger = {
-				has_country_flag = warplan_crimea_activated
+			lower_don_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			tambov_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			saratov_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
 			}
 		}
 		effect = { 
-			pskov_area = {
+			majar_area = {
 				limit = { 
 					NOT = { owned_by = ROOT } 
 					NOT = { is_core = ROOT }
 				}
 				add_permanent_claim = ROOT 
 			}
-			white_ruthenia_area = {
+			astrakhan_area = {
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT 
+			}
+			lower_yik_area = {
 				limit = { 
 					NOT = { owned_by = ROOT } 
 					NOT = { is_core = ROOT }
@@ -2651,27 +2695,37 @@ poland_sca_slot_3_a = {
 		required_missions = { tm_pol_onto_the_steppe tm_pol_destroy_crimea } 
 		position = 29
 		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = pol_warplan_crimea_tt
+			majar_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
 			}
-			hidden_trigger = {
-				has_country_flag = warplan_crimea_activated
+			astrakhan_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			lower_yik_area = {	
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
 			}
 		}
 		effect = { 
-			pskov_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
+			303 = {
+				add_center_of_trade_level = 1
+				add_base_production = 2
+				add_base_manpower = 1
+				add_base_tax = 1
 			}
-			white_ruthenia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
+			466 = {
+				add_center_of_trade_level = 1
+				add_base_production = 2
+				add_base_manpower = 1
+				add_base_tax = 1
+			}
+			464 = {
+				add_building = marketplace
+				add_base_production = 2
+				add_base_manpower = 1
+				add_base_tax = 1
 			}
 		}
 	}
@@ -3634,11 +3688,13 @@ poland_sca_slot_4_a = {
 		required_missions = { tm_pol_warplan_crimea } 
 		position = 27
 		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = pol_warplan_crimea_tt
+			estate_loyalty = {
+				estate = estate_burghers 
+				loyalty = 60 
 			}
-			hidden_trigger = {
-				has_country_flag = warplan_crimea_activated
+			num_of_estate_privileges = {
+				estate = estate_nobles 
+				value = 4
 			}
 		}
 		effect = { 
