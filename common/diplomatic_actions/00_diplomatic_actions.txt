@@ -92,13 +92,13 @@ declarewar = {
 	condition = {
 		tooltip = tm_Tributary_dec_tt
 		potential = {
-			FROM = { is_subject_of_type = tributary_state }
+
 		}
 		allow = {
 			NOT = {
 				any_country = {
-					FROM = { is_subject_type_with_overlord	= { who = PREV type = tributary_state } }
-					ROOT = { is_subject_type_with_overlord	= { who = PREV type = tributary_state } }
+					FROM = { is_subject_of_type_with_overlord	= { who = PREV type = tributary_state } }
+					ROOT = { is_subject_of_type_with_overlord	= { who = PREV type = tributary_state } }
 				}
 			}
 		}
@@ -106,7 +106,7 @@ declarewar = {
 	condition = {
 		tooltip = tm_Call_in_trib_tt
 		potential = {
-
+			FROM = { is_subject_of_type = tributary_state }
 		}
 		allow = {
 			NOT = {
@@ -115,7 +115,7 @@ declarewar = {
 					war_with = ROOT
 				}
 			}
-		}
+		}	
 	}
 #	condition = {
 #		tooltip = GRAND_CRUSADE_NO_OTHER_WAR
