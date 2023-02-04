@@ -652,7 +652,7 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 	}
 
 	tm_pol_dominate_the_fur_trade = {
-		icon = mission_pol_imperial_commonwealth 
+		icon = mission_market_place_with_asian_traders
 		required_missions = { tm_pol_novgordian_trade } 
 		position = 23
 
@@ -682,7 +682,7 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 	}
 
 	tm_pol_consolidate_the_steppes = {
-		icon = mission_pol_imperial_commonwealth 
+		icon = mission_marwari_horses
 		required_missions = { tm_pol_destroy_crimea } 
 		position = 27
 		trigger = {
@@ -2649,7 +2649,7 @@ poland_sca_slot_3_a = {
 	}
 
 	tm_pol_subjugate_smolensk = {
-		icon = mission_pol_imperial_commonwealth 
+		icon = polish_subjects
 		required_missions = { tm_pol_warplan_russia } 
 		position = 21
 
@@ -3796,6 +3796,8 @@ poland_sca_slot_4_a = {
 			}
 		
 		effect = { 
+			custom_tooltip = pol_mission_production_centers_tt
+			hidden_effect = {	
 			every_owned_province = {
 				limit = {
 					region = russia_region
@@ -3808,6 +3810,7 @@ poland_sca_slot_4_a = {
 				}
 				add_base_production = 2
 				add_building = barracks
+				}
 			}
 		}
 	}
@@ -3874,16 +3877,17 @@ poland_sca_slot_4_a = {
 			num_of_owned_provinces_with = {
 				value = 15
 				region = crimea_region
-				terrain = steppe
+				has_terrain = steppe
 				base_manpower = 11
 				has_building = soldier_households
 			}
 		}
 		effect = { 
+			custom_tooltip = pol_mission_production_centers_tt
 			every_owned_province = {
 				limit = {
 				region = crimea_region
-				terrain = steppe
+				has_terrain = steppe
 				base_manpower = 11
 				has_building = soldier_households
 				}
@@ -4864,6 +4868,7 @@ poland_sca_slot_5_branching_lit_hre = {
 			}
 		}
 		effect = { 
+			custom_tooltip = pol_mission_salt_mines_tt
 			every_owned_province = {
 				limit = {
 					region = crimea_region
