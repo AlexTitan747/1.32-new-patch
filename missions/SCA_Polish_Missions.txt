@@ -685,6 +685,14 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 		icon = mission_marwari_horses
 		required_missions = { tm_pol_destroy_crimea } 
 		position = 27
+		
+		provinces_to_highlight = { 
+			OR = {
+				region = crimea_region
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			crimea_region = {
 				type = all 
@@ -1185,7 +1193,7 @@ poland_sca_slot_2_a = {
 		}
 	}
 
-	tm_hun_hont_gold_mine = {
+	tm_hun_cheb_gold_mine = {
 		icon = mission_war_chest
 		required_missions = { tm_pol_polish_silesia }
 		position = 12
@@ -1657,6 +1665,15 @@ poland_sca_slot_2_a = {
 		icon = mission_impaled_soldies 
 		required_missions = { tm_pol_warplan_crimea } 
 		position = 25
+
+		provinces_to_highlight = { 
+			OR = {
+			area = kremenchuk_area
+			area = zaporizhia_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			kremenchuk_area = {	
 				type = all 
@@ -1689,6 +1706,15 @@ poland_sca_slot_2_a = {
 		icon = mission_steppe_warriors 
 		required_missions = { tm_pol_through_zaporizhia } 
 		position = 26
+
+		provinces_to_highlight = { 
+			OR = {
+			area = crimea_area
+			area = kerch_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			crimea_area = {	
 				type = all 
@@ -1735,16 +1761,27 @@ poland_sca_slot_2_a = {
 		icon = mission_sca_lit_conquer_crimea 
 		required_missions = { tm_pol_destroy_crimea } 
 		position = 27
+
+		provinces_to_highlight = { 
+			OR = {
+			area = yedisan_area
+			area = azov_area
+			area = circassia_area
+			area = alania_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			yedisan_area = {	
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT 
 			}
-			azov_area = {	
+			azov_area = {
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT 
 			}
-			circassia_area = {	
+			circassia_area = {
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT 
 			}
@@ -2889,6 +2926,15 @@ poland_sca_slot_3_a = {
 		icon = mission_advance_to_the_dnieper 
 		required_missions = { tm_pol_warplan_crimea } 
 		position = 25
+
+		provinces_to_highlight = { 
+			OR = {
+			area = chernigov_area
+			area = east_dniepr_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			chernigov_area = {	
 				type = all 
@@ -2935,6 +2981,17 @@ poland_sca_slot_3_a = {
 		icon = mission_lit_harness_steppes 
 		required_missions = { tm_pol_control_chernigov } 
 		position = 26
+
+		provinces_to_highlight = { 
+			OR = {
+			area = sloboda_ukraine_area
+			area = lower_don_area
+			area = tambov_area
+			area = saratov_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			sloboda_ukraine_area = {	
 				type = all 
@@ -2982,6 +3039,16 @@ poland_sca_slot_3_a = {
 		icon = mission_break_the_tatar_yoke 
 		required_missions = { tm_pol_onto_the_steppe tm_pol_destroy_crimea } 
 		position = 27
+
+		provinces_to_highlight = { 
+			OR = {
+			area = majar_area
+			area = astrakhan_area
+			area = lower_yik_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			majar_area = {	
 				type = all 
@@ -3786,6 +3853,7 @@ poland_sca_slot_4_a = {
 		trigger = {
 			num_of_owned_provinces_with = {
 				value = 5
+				region = russia_region
 				OR = { 
 					trade_goods = iron
 					trade_goods = copper
@@ -3794,7 +3862,7 @@ poland_sca_slot_4_a = {
 				has_building = weapons
 				}
 			}
-		
+
 		effect = { 
 			custom_tooltip = pol_mission_production_centers_tt
 			hidden_effect = {	
@@ -3884,6 +3952,7 @@ poland_sca_slot_4_a = {
 		}
 		effect = { 
 			custom_tooltip = pol_mission_production_centers_tt
+			hidden_effect = {
 			every_owned_province = {
 				limit = {
 				region = crimea_region
@@ -3892,6 +3961,7 @@ poland_sca_slot_4_a = {
 				has_building = soldier_households
 				}
 				add_building = barracks
+				}
 			}
 		}
 	}
@@ -4869,6 +4939,7 @@ poland_sca_slot_5_branching_lit_hre = {
 		}
 		effect = { 
 			custom_tooltip = pol_mission_salt_mines_tt
+			hidden_effect = {
 			every_owned_province = {
 				limit = {
 					region = crimea_region
@@ -4877,6 +4948,7 @@ poland_sca_slot_5_branching_lit_hre = {
 					has_building = workshop
 				}
 				add_building = wharf
+				}
 			}
 		}
 	}
@@ -4884,6 +4956,15 @@ poland_sca_slot_5_branching_lit_hre = {
 		icon = mission_sw_torquoise_mining 
 		required_missions = { tm_pol_mines_of_salt } 
 		position = 27
+
+		provinces_to_highlight = { 
+			OR = {
+			province_id = 2201
+			province_id = 2447
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
+		}
+
 		trigger = {
 			2201 = {
 				owned_by = ROOT
