@@ -767,12 +767,12 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 		position = 25
 
 		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				region = russia 
-				trade_goods = fur
-				base_production = 8
-				has_building = workshop
+			num_of_owned_provinces_with = {
 				value = 8
+					trade_goods = fur
+					base_production = 8
+					has_building = workshop
+				}
 			}
 		}
 		effect = { 
@@ -3737,17 +3737,17 @@ poland_sca_slot_4_a = {
 		required_missions = { tm_pol_warplan_russia } 
 		position = 23
 		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				region = russia_region
-				OR = { 
-				trade_goods = iron
-				trade_goods = copper
-				}
-				base_production = 8
-				has_building = weapons
+			num_of_owned_provinces_with = {
 				value = 5
+				OR = { 
+					trade_goods = iron
+					trade_goods = copper
+				}
+					base_production = 8
+					has_building = weapons
+				}
 			}
-		}
+		
 		effect = { 
 			every_owned_province = {
 				limit = {
@@ -3764,6 +3764,7 @@ poland_sca_slot_4_a = {
 			}
 		}
 	}
+	
 
 	tm_pol_defend_the_conquests = {
 		icon = mission_pol_imperial_commonwealth 
