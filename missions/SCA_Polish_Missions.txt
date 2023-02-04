@@ -166,9 +166,26 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 					}
 				}
 			}
+			north_moldavia = {
+				type = all 
+				OR = { 
+					country_or_non_sovereign_subject_holds = ROOT 
+					AND = { 
+						MOL = { is_subject_of = HUN }
+						HUN = { is_subject_of = ROOT }
+					}
+				}
+			}
 		}
 		effect = { 
 			wallachia_area = { 
+				limit = { 
+					NOT = { owned_by = ROOT } 
+					NOT = { is_core = ROOT } 
+				}
+				add_permanent_claim = ROOT 
+			}
+			eastern_wallachia_area = { 
 				limit = { 
 					NOT = { owned_by = ROOT } 
 					NOT = { is_core = ROOT } 
@@ -243,15 +260,13 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT 
 			}
+			eastern_wallachia_area = { 
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
 			4531 = { 
 				has_fort_building_trigger = yes 
 				num_of_times_improved = 3 
-			}
-			if = { 
-				limit = { has_dlc = "Mandate of Heaven" } 
-				4531 = { 
-					NOT = { devastation = 1 } 
-				}
 			}
 		}
 		effect = { 
@@ -290,7 +305,7 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 				}
 				add_permanent_claim = ROOT 
 			}
-			thrace_area = { 
+			plovdiv_area = { 
 				limit = { 
 					NOT = { owned_by = ROOT } 
 					NOT = { is_core = ROOT } 
@@ -311,7 +326,7 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				region = balkan_region 
-				value = 10 
+				value = 30 
 			}
 		}
 		effect = {
@@ -3803,28 +3818,18 @@ poland_sca_slot_4_a = {
 		position = 27
 		trigger = {
 			estate_loyalty = {
-				estate = estate_burghers 
+				estate = estate_cossacks 
 				loyalty = 60 
 			}
 			num_of_estate_privileges = {
-				estate = estate_nobles 
+				estate = estate_cossacks 
 				value = 4
 			}
 		}
 		effect = { 
-			pskov_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
-			}
-			white_ruthenia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
+			add_country_modifier = {
+				name = pol_cossacks_support_government
+				duration = 3650
 			}
 		}
 	}
@@ -3833,27 +3838,23 @@ poland_sca_slot_4_a = {
 		required_missions = { tm_pol_please_the_cossacks } 
 		position = 28
 		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = pol_warplan_crimea_tt
-			}
-			hidden_trigger = {
-				has_country_flag = warplan_crimea_activated
+			num_of_owned_provinces_with = {
+				region = crimea_region
+				terrain = steppe
+				base_manpower = 11
+				has_building = soldier_households
+				value = 15
 			}
 		}
 		effect = { 
-			pskov_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
+			every_owned_province = {
+				limit = {
+				region = crimea_region
+				terrain = steppe
+				base_manpower = 11
+				has_building = soldier_households
 				}
-				add_permanent_claim = ROOT 
-			}
-			white_ruthenia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
+				add_building = barracks
 			}
 		}
 	}
@@ -4986,27 +4987,24 @@ poland_sca_slot_5_branching_lit_hre = {
 		required_missions = { tm_pol_please_the_cossacks } 
 		position = 28
 		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = pol_warplan_crimea_tt
-			}
-			hidden_trigger = {
-				has_country_flag = warplan_crimea_activated
+			every_owned_province = {
+				limit = {
+					region = crimea_region
+					trade_good = salt
+				}
+				base_production = 10
+				has_building = workshop
 			}
 		}
 		effect = { 
-			pskov_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
+			every_owned_province = {
+				limit = {
+					region = crimea_region
+					trade_good = salt
+					base_production = 10
+					has_building = workshop
 				}
-				add_permanent_claim = ROOT 
-			}
-			white_ruthenia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
+				add_building = wharf
 			}
 		}
 	}
@@ -5015,27 +5013,29 @@ poland_sca_slot_5_branching_lit_hre = {
 		required_missions = { tm_pol_mines_of_salt } 
 		position = 29
 		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = pol_warplan_crimea_tt
+			2201 = {
+				owned_by = ROOT
+				base_production = 10
 			}
-			hidden_trigger = {
-				has_country_flag = warplan_crimea_activated
+			2447 = {
+				owned_by = ROOT
+				base_production = 12
+				has_building = workshop
 			}
 		}
 		effect = { 
-			pskov_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
+			2201 = {
+				add_base_production = 2
+				add_province_modifier = {
+					name = pol_caucas_gold_mines
+					duration = -1
 				}
-				add_permanent_claim = ROOT 
 			}
-			white_ruthenia_area = {
-				limit = { 
-					NOT = { owned_by = ROOT } 
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT 
+			2447 = {
+				add_base_production = 2
+				add_base_manpower = 2
+				add_building = mill
+				add_center_of_trade_level  = 1
 			}
 		}
 	}
