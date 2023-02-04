@@ -3241,6 +3241,11 @@ poland_sca_slot_4_a = {
 					}
 				}
 			}
+			if = {
+				limit = { has_dlc = "Emperor" }
+				custom_tooltip = lit_halve_hegemony_reqs_tt
+				set_country_flag = halve_hegemony_requirements
+			}
 		}
 	}
 
@@ -3733,7 +3738,7 @@ poland_sca_slot_4_a = {
 		position = 23
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				region = russia
+				region = russia_region
 				OR = { 
 				trade_goods = iron
 				trade_goods = copper
@@ -3746,7 +3751,7 @@ poland_sca_slot_4_a = {
 		effect = { 
 			every_owned_province = {
 				limit = {
-					region = russia 
+					region = russia_region
 					OR = { 
 						trade_goods = iron
 						trade_goods = copper
