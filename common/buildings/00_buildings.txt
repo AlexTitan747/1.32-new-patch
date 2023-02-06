@@ -702,6 +702,40 @@ coastal_defence = {
 ################################################
 # Tier 2, 16th Century Buildings
 ################################################
+
+warehouse = {
+	cost = 200
+	time = 12
+
+	make_obsolete = workshop
+	modifier = {
+		local_production_efficiency = 0.75
+	}
+	on_built = {
+		add_development_from_building = {
+			building = warehouse
+			obsolete_building = workshop
+			type = production
+			value = 1
+		}
+	}
+	on_destroyed = {
+		remove_development_from_building = {
+			building = warehouse
+			type = production
+			value = 1
+		}
+	}
+	on_obsolete = {
+	}
+	
+	allow_in_gold_provinces = no
+
+	ai_will_do = {
+		factor = 1
+	}
+}
+
 courthouse = {
 	cost = 100
 	time = 12
@@ -2182,7 +2216,7 @@ counting_house = {
 	cost = 400
 	time = 12
 
-	make_obsolete = workshop
+	make_obsolete = warehouse
 	modifier = {
 		local_production_efficiency = 1
 	}
@@ -2190,7 +2224,7 @@ counting_house = {
 	on_built = {
 		add_development_from_upgrading_or_building = {
 			building = counting_house
-			obsolete_building = workshop
+			obsolete_building = warehouse
 			type = production
 			value = 2
 			upgrade_value = 1
