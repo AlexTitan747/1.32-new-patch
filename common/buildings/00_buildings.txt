@@ -3433,7 +3433,32 @@ impressment_offices = {
 	}
 
 	build_trigger = {
-		has_port = yes
+		NOT = {
+			area_for_scope_province = {
+				owner = {
+					tag = ROOT
+				}
+				OR = {
+					has_building = impressment_offices
+					has_construction = impressment_offices
+				}
+			}
+		}
+	}
+	
+	keep_trigger = {
+		NOT = {
+			area_for_scope_province = {
+				NOT = { province_id = root }
+				owner = {
+					tag = ROOT
+				}
+				OR = {
+					has_building = impressment_offices
+					has_construction = impressment_offices
+				}
+			}
+		}
 	}
 
 	modifier = {
@@ -3454,12 +3479,46 @@ impressment_offices = {
 			type = manpower
 			value = 2
 		}
+		custom_tooltip = dif_university_dev_cost_tt
+		hidden_effect = { owner = { save_event_target_as = new_owner } }
+		area = {
+			if = {
+				limit = {
+					owned_by = event_target:new_owner
+					NOT = { has_province_modifier = dif_university_dev_cost }
+				}
+				add_province_modifier = {
+					name = dif_university_dev_cost
+					duration = -1
+				}
+			}
+		}
 	}
 	on_destroyed = {
 		remove_development_from_building = {
 			building = impressment_offices
 			type = manpower
 			value = 2
+		}
+		hidden_effect = { owner = { save_event_target_as = new_owner } }
+		if = {
+			limit = {
+				NOT = {
+					area_for_scope_province = {
+						owned_by = FROM
+						has_building = university
+					}
+				}
+			}
+			area = {
+				if = {
+					limit = {
+						owned_by = event_target:new_owner
+						has_province_modifier = dif_university_dev_cost
+					}
+					remove_province_modifier = dif_university_dev_cost
+				}
+			}
 		}
 	}
 	on_obsolete = {
