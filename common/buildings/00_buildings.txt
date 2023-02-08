@@ -3643,3 +3643,177 @@ centre_of_manufacturing = {
 		}
 	}
 }
+
+imperial_tax_office = {
+	cost = 1500
+	time = 30
+	modifier = {
+		local_tax_modifier = 0.33
+	}
+
+	build_trigger = {
+		NOT = {
+			area_for_scope_province = {
+				owner = {
+					tag = ROOT
+				}
+				OR = {
+					has_building = imperial_tax_office
+					has_construction = imperial_tax_office
+				}
+			}
+		}
+	}
+	
+	keep_trigger = {
+		NOT = {
+			area_for_scope_province = {
+				NOT = { province_id = root }
+				owner = {
+					tag = ROOT
+				}
+				OR = {
+					has_building = imperial_tax_office
+					has_construction = imperial_tax_office
+				}
+			}
+		}
+	}
+
+	on_built = {
+		add_development_from_building = {
+			building = imperial_tax_office
+			type = tax
+			value = 2
+		}
+		custom_tooltip = dif_university_dev_cost_tt
+		hidden_effect = { owner = { save_event_target_as = new_owner } }
+		area = {
+			if = {
+				limit = {
+					owned_by = event_target:new_owner
+					NOT = { has_province_modifier = imperial_tax_office_local_mod }
+				}
+				add_province_modifier = {
+					name = imperial_tax_office_local_mod
+					duration = -1
+				}
+			}
+		}
+	}
+	on_destroyed = {
+		remove_development_from_building = {
+			building = imperial_tax_office
+			type = tax
+			value = 2
+		}
+		hidden_effect = { owner = { save_event_target_as = new_owner } }
+		if = {
+			limit = {
+				NOT = {
+					area_for_scope_province = {
+						owned_by = FROM
+						has_building = imperial_tax_office
+					}
+				}
+			}
+			area = {
+				if = {
+					limit = {
+						owned_by = event_target:new_owner
+						has_province_modifier = imperial_tax_office_local_mod
+					}
+					remove_province_modifier = imperial_tax_office_local_mod
+				}
+			}
+		}
+	}
+
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+		factor = 420 	# Hard coded AI sees no value in this above the 0.01 ducats base. Let's multiply that
+		modifier = {
+			factor = 1.2
+			development = 20
+			is_state = yes
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { is_state = yes }
+		}
+		modifier = {
+			factor = 0.9
+			OR = {
+				has_climate = tropical
+				has_climate = arid
+			}
+		}
+		modifier = {
+			factor = 0.4
+			has_climate = arctic
+		}
+		modifier = {
+			factor = 1.2
+			OR = {
+				has_terrain = grasslands
+				has_terrain = drylands
+			}
+		}
+		modifier = {
+			factor = 1.2
+			has_terrain = farmlands
+		}
+		modifier = {
+			factor = 5
+			has_latent_trade_goods = coal
+		}
+		modifier = {
+			factor = 1.5
+			province_has_center_of_trade_of_level = 1
+		}
+		modifier = {
+			factor = 1.5
+			province_has_center_of_trade_of_level = 2
+		}
+		modifier = {
+			factor = 1.5
+			province_has_center_of_trade_of_level = 3
+		}
+		modifier = {
+			factor = 2
+			is_capital = yes
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				trade_goods = paper
+				trade_goods = gems
+				trade_goods = glass
+				trade_goods = chinaware
+				trade_goods = copper
+				trade_goods = iron
+				trade_goods = coal
+				trade_goods = ivory
+				trade_goods = slaves
+				trade_goods = spices
+				trade_goods = fur
+				trade_goods = incense
+				trade_goods = coffee
+				trade_goods = cotton
+				trade_goods = sugar
+				trade_goods = tobacco
+				trade_goods = tea
+				trade_goods = cocoa
+				trade_goods = wool
+				trade_goods = cloth
+				trade_goods = silk
+				trade_goods = dyes
+				trade_goods = salt
+				trade_goods = gold
+			}
+		}
+	}
+}
+
