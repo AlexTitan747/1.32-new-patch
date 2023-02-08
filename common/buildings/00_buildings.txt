@@ -3682,11 +3682,13 @@ state_house = {
 	}
 }
 
-road = {
-	cost = 70
-	time = 12
+###### TITAN ROAD ######
+
+dirt_path = {
+	cost = 50
+	time = 6
 	modifier = {
-		local_friendly_movement_speed = 0.10
+		local_friendly_movement_speed = 0.05
 		local_institution_spread = 0.1
 		allowed_num_of_buildings = 1
 	}
@@ -3695,6 +3697,41 @@ road = {
 		factor = 25
 	} 
 }
+
+road = {
+	cost = 70
+	time = 12
+
+	make_obsolete = dirt_path
+	modifier = {
+		local_friendly_movement_speed = 0.10
+		local_institution_spread = 0.15
+		allowed_num_of_buildings = 1
+	}
+
+	ai_will_do = {
+		factor = 25
+	} 
+}
+
+highway = {
+	cost = 100
+	time = 18
+
+	make_obsolete = road
+	modifier = {
+		local_friendly_movement_speed = 0.10
+		local_institution_spread = 0.15
+		province_trade_power_value = 1
+		allowed_num_of_buildings = 1
+	}
+
+	ai_will_do = {
+		factor = 25
+	} 
+}
+
+###### TITAN NATIONAL WONDERS ######
 
 centre_of_manufacturing = {
 	cost = 1500
