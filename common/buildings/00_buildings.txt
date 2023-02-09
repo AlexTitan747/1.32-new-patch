@@ -3269,7 +3269,7 @@ furnace = {
 }
 
 ramparts = {
-	cost = 500
+	cost = 400
 	time = 60
 	#manufactory = {
 	#	all
@@ -3419,6 +3419,112 @@ soldier_households = {
 		}
 	}
 }
+
+###### TITAN Defences ######
+armoury = {
+	cost = 300
+	time = 60
+	#manufactory = {
+	#	all
+	#}
+	build_trigger = {
+		has_fort_building_trigger = yes
+	}
+	
+	keep_trigger = {
+		has_fort_building_trigger = yes
+	}	
+
+	modifier = {
+		fort_level = 1
+		local_defensiveness = 0.15
+		local_defender_dice_roll_bonus = 1
+	}
+	onmap = no
+	show_separate = yes # Means as a manufactory it will be shown according to the old way
+
+	ai_will_do = {
+		factor = 4
+		modifier = {
+			factor = 1.667
+			OR = {
+				has_terrain = forest
+				has_terrain = hills
+				has_terrain = marsh
+				has_terrain = highlands
+				has_terrain = jungle
+			}
+		}
+		modifier = {
+			factor = 2.5
+			has_terrain = mountain
+		}
+		modifier = {
+			factor = 1.25
+			trade_goods = salt
+		}
+		modifier = {
+			factor = 1.25
+			OR = {
+				has_province_modifier = arid
+				has_province_modifier = tropical
+			}
+		}
+	}
+}
+
+guardhouse = {
+	cost = 300
+	time = 60
+	#manufactory = {
+	#	all
+	#}
+	build_trigger = {
+		has_fort_building_trigger = yes
+	}
+	
+	keep_trigger = {
+		has_fort_building_trigger = yes
+	}	
+
+	modifier = {
+		fort_level = 1
+		local_defensiveness = 0.15
+		local_defender_dice_roll_bonus = 1
+	}
+	onmap = no
+	show_separate = yes # Means as a manufactory it will be shown according to the old way
+
+	ai_will_do = {
+		factor = 4
+		modifier = {
+			factor = 1.667
+			OR = {
+				has_terrain = forest
+				has_terrain = hills
+				has_terrain = marsh
+				has_terrain = highlands
+				has_terrain = jungle
+			}
+		}
+		modifier = {
+			factor = 2.5
+			has_terrain = mountain
+		}
+		modifier = {
+			factor = 1.25
+			trade_goods = salt
+		}
+		modifier = {
+			factor = 1.25
+			OR = {
+				has_province_modifier = arid
+				has_province_modifier = tropical
+			}
+		}
+	}
+}
+
 
 ###### TITAN ROAD ######
 
