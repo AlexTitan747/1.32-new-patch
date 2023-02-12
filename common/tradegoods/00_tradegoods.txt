@@ -2046,6 +2046,67 @@ rice = {
 	}
 }
 
+silver = {
+	color = { 0.1 0.1 0.3 }
+	modifier = {
+		inflation_reduction = -0.05
+	}
+	province = {
+		local_tax_modifier = 0.1
+	}
+	chance = {
+		factor = 4
+		modifier = {
+			factor = 0
+			continent = europe
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain = desert
+				has_terrain = glacier
+				has_terrain = coastline
+				has_climate = arctic
+			}
+		}
+		modifier = {
+			factor = 1
+			OR = {
+				has_terrain = mountain
+				has_terrain = forest
+				has_terrain = woods
+				has_terrain = hills
+				has_terrain = jungle
+				has_terrain = highlands
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_terrain = drylands
+				has_terrain = savannah
+				has_terrain = steppe
+			}
+		}
+		modifier = {
+			factor = 0
+			has_terrain = grasslands
+		}
+		modifier = {
+			factor = 0
+			has_terrain = farmlands
+		}
+		modifier = {
+			factor = 2
+				continent = north_america
+		}
+		modifier = {
+			factor = 1.5
+				continent = south_america
+		}
+	}
+}
+
 tin = {
 	color = { 0.3 0.2 0.3 }
 	modifier = {
