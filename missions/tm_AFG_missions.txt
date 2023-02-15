@@ -27,6 +27,7 @@ tm_AFG_branch_1 = {
 
 		trigger = {
 			birjand_area = {
+				type = all
 				owned_by = ROOT
 			}
 			5241 = {
@@ -59,6 +60,7 @@ tm_AFG_branch_1 = {
 
 		trigger = {
 			birjand_area = {
+				type = all
 				owned_by = ROOT
 			}
 			5242 = {
@@ -105,6 +107,203 @@ tm_AFG_branch_2 = {
 			was_tag = AFG
 		}
 	}
+
+	tm_AFG_branch2_mission_1 = {
+		icon = mission_reclaim_lost_timurid_land
+		position = 3
+		required_missions = { tm_AFG_branch3_mission_2 }
+
+		provinces_to_highlight = {
+			OR = {
+				area = merv_area
+				area = transoxiana_area
+				area = termez_area
+				area = ferghana_area
+				area = arys_area
+				area = khiva_area
+				area = transcaspia_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			merv_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			transoxiana_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			termez_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			ferghana_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			arys_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			khiva_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			transcaspia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			add_stat_or_monarch_power = {
+				stat = mil
+				amount = 2
+			}
+
+			custom_tooltip = tm_AFG_control_the_silk_road_tt
+			hidden_effect = {#Rest of the Samarkand Node
+				ustyurt_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				kyzylkum_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				syr_darya_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				kazakhstan_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				jetysuu_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				kashgaria_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				zungaria_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				tarim_basin_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				kashgaria_area = {
+					discover_country = ROOT
+				}
+				tarim_basin_area = {
+					discover_country = ROOT
+				}
+			}
+		}
+	}
+	tm_AFG_branch2_mission_2 = {
+		icon = mission_indian_soldier_elephant
+		position = 4
+		required_missions = { tm_AFG_branch2_mission_1 }
+
+		provinces_to_highlight = {
+			OR = {
+				area = ustyurt_area
+				area = kyzylkum_area
+				area = syr_darya_area
+				area = kazakhstan_area
+				area = jetysuu_area
+				area = kashgaria_area
+				area = zungaria_area
+				area = tarim_basin_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			OR = {
+				454 = { #Samarkand Node
+					trade_share = {
+						country = ROOT
+						share = 75
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = tm_AFG_acquire_rest_of_samarkand_tt
+					AND = {
+						ustyurt_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT
+						}
+						kyzylkum_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT
+						}
+						syr_darya_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT
+						}
+						kazakhstan_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT
+						}
+						jetysuu_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT
+						}
+						kashgaria_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT
+						}
+						zungaria_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT
+						}
+						tarim_basin_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT
+						}
+					}
+				}
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_AFG_control_over_the_silk_road 
+				duration = 18250 
+			}
+		}
+	}
 }
 
 tm_AFG_branch_3 = {
@@ -121,7 +320,7 @@ tm_AFG_branch_3 = {
 		}
 	}
 
-	tm_AFG_branch3_mission_1 = {
+	tm_AFG_branch3_mission_1 = { #Initial Conquest
 		icon = mission_kings_crown
 		position = 1
 
@@ -171,10 +370,150 @@ tm_AFG_branch_3 = {
 					}
 					add_permanent_claim = ROOT
 				}
-				add_country_modifier = {
+				add_country_modifier = { # -10% AE // -5% CCR
 					name = tm_AFG_early_conquests
 					duration = 3650
 					hidden = yes
+				}
+			}
+		}
+	}
+	tm_AFG_branch3_mission_2 = {
+		icon = mission_unite_home_region
+		position = 2 
+		required_missions = { tm_AFG_branch3_mission_1 }
+
+		provinces_to_highlight = {
+			OR = {
+				area = herat_area
+				area = birjand_area
+				area = mashhad_area
+				area = yazd_area
+				province_id = 435
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			herat_area = {
+				type = all
+				owned_by = ROOT
+			}
+			birjand_area = {
+				type = all
+				owned_by = ROOT
+			}
+			mashhad_area = {
+				type = all
+				owned_by = ROOT
+			}
+			yazd_area = {
+				type = all
+				owned_by = ROOT
+			}
+			435 = {
+				owned_by = ROOT
+			}
+		}
+
+		effect = {
+			add_adm_power = 100
+			add_mil_power = 100
+			custom_tooltip = tm_AFG_claim_the_rest_of_timur_tt
+			custom_tooltip = tm_AFG_push_into_india_tt
+			hidden_effect = { #Former Timurid Claims
+				merv_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				transoxiana_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				termez_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				ferghana_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				arys_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				khiva_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				transcaspia_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			hidden_effect = { #Push into India
+				kalat_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				kashmir_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				lahore_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				sirhind_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				multan_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				4511 = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
 			}
 		}
@@ -192,6 +531,57 @@ tm_AFG_branch_4 = {
 		OR = {
 			tag = AFG
 			was_tag = AFG
+		}
+	}
+
+	tm_AFG_branch4_mission_1 = {
+		icon = mission_conquer_punjab
+		position = 3
+		required_missions = { tm_AFG_branch3_mission_2 }
+
+		provinces_to_highlight = {
+			OR = {
+				area = kalat_area
+				area = kashmir_area
+				area = lahore_area
+				area = sirhind_area
+				area = multan_area
+				province_id = 4511
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			kalat_area = {
+				type = all
+				owned_by = ROOT
+			}
+			kashmir_area = {
+				type = all
+				owned_by = ROOT
+			}
+			lahore_area = {
+				type = all
+				owned_by = ROOT
+			}
+			sirhind_area = {
+				type = all
+				owned_by = ROOT
+			}
+			multan_area = {
+				type = all
+				owned_by = ROOT
+			}
+			4511 = {
+				owned_by = ROOT
+			}
+		}
+
+		effect = {
+			add_adm_power = 100
+			add_dip_power = 100
+			add_mil_power = 100
+			add_prestige = 25
 		}
 	}
 }
