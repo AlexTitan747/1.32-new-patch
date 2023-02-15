@@ -1,0 +1,212 @@
+tm_AFG_branch_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		OR = {
+			tag = AFG
+			was_tag = AFG
+		}
+	}
+
+	tm_AFG_branch1_mission_1 = {
+		icon = mission_saffron_production_begins
+		position = 2
+		required_missions = { tm_AFG_branch3_mission_1 }
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 5241
+				province_id = 5242
+				province_id = 4336
+			}
+		}
+
+		trigger = {
+			birjand_area = {
+				owned_by = ROOT
+			}
+			5241 = {
+				base_production = 7
+			}
+			4336 = {
+				base_production = 7
+			}
+		}
+
+		effect = {
+			4336 = {
+				center_of_trade = 2
+			}
+		}
+	}
+
+	tm_AFG_branch1_mission_2 = {
+		icon = mission_saffron_production_ramps_up
+		position = 3
+		required_missions = { tm_AFG_branch1_mission_1 }
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 5241
+				province_id = 5242
+				province_id = 4336
+			}
+		}
+
+		trigger = {
+			birjand_area = {
+				owned_by = ROOT
+			}
+			5242 = {
+				base_production = 15
+			}
+			5241 = {
+				base_production = 15
+			}
+			4336 = {
+				base_production = 15
+			}
+			2078 = {
+				base_production = 15
+			}
+		}
+
+		effect = {
+			5242 = {
+				add_base_production = 3
+			}
+			5241 = {
+				add_base_production = 3
+			}
+			4336 = {
+				add_base_production = 3
+			}
+			2078 = {
+				add_base_production = 3
+			}
+		}
+	}
+}
+
+tm_AFG_branch_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		OR = {
+			tag = AFG
+			was_tag = AFG
+		}
+	}
+}
+
+tm_AFG_branch_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		OR = {
+			tag = AFG
+			was_tag = AFG
+		}
+	}
+
+	tm_AFG_branch3_mission_1 = {
+		icon = mission_kings_crown
+		position = 1
+
+		required_missions = {}
+
+		trigger = {
+			stability = 1 
+			army_size_percentage = 0.75
+		}
+
+		effect = {
+			custom_tooltip = tm_AFG_claim_to_eastern_persia_tt
+
+			hidden_effect = {
+				herat_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				birjand_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				mashhad_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				yazd_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}				
+				435 = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				add_country_modifier = {
+					name = tm_AFG_early_conquests
+					duration = 3650
+					hidden = yes
+				}
+			}
+		}
+	}
+}
+
+tm_AFG_branch_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		OR = {
+			tag = AFG
+			was_tag = AFG
+		}
+	}
+}
+
+tm_AFG_branch_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		OR = {
+			tag = AFG
+			was_tag = AFG
+		}
+	}
+}
