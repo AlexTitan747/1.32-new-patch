@@ -2049,7 +2049,7 @@ rice = {
 silver = {
 	color = { 0.1 0.1 0.3 }
 	modifier = {
-		inflation_reduction = -0.05
+		inflation_reduction = 0.05
 	}
 	province = {
 		local_tax_modifier = 0.1
@@ -2193,44 +2193,46 @@ opium = {
 				has_terrain = glacier
 				has_terrain = coastline
 				has_climate = arctic
+				has_terrain = farmlands
+				has_terrain = jungle
+				has_terrain = coastal_desert
+				has_terrain = forest
+			}
+		}
+		modifier = {
+			factor = 1
+			OR = {
+				has_terrain = drylands
+				has_terrain = grasslands
+				has_terrain = hills
+				has_terrain = highlands
 			}
 		}
 		modifier = {
 			factor = 0.8
 			OR = {
 				has_terrain = mountain
-				has_terrain = coastal_desert
-				has_terrain = forest
-				has_terrain = woods
-				has_terrain = hills
-				has_terrain = jungle
-				has_terrain = highlands
-			}
-		}
-		modifier = {
-			factor = 0.2
-			OR = {
-				has_terrain = drylands
 				has_terrain = savannah
 				has_terrain = steppe
 			}
 		}
 		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
-			has_terrain = farmlands
-		}
-		modifier = {
-			factor = 1.5
+			factor = 0.4
 			OR = {
-				region = south_africa_region
+				has_terrain = drylands
+				has_terrain = savannah
+				has_terrain = steppe
+				has_terrain = grasslands
+				has_terrain = woods
+			}
+		}
+		modifier = {
+			factor = 1.2
+			OR = {
 				region = peru_region
-				region = upper_peru_region
-				region = rio_grande_region
 				region = mexico_region
+				region = colombia_region
+				region = central_america_region
 			}
 		}
 	}
@@ -2239,63 +2241,20 @@ opium = {
 saffron = {
 	color = { 0.8 0.1 0.3 }
 	modifier = {
-		artillery_cost = -0.1
+		monarch_lifespan = 0.25
 	}
 	province = {
-		local_regiment_cost = -0.15
+		province_trade_power_modifier = 0.1
 	}
 	chance = {
 		factor = 5
 		modifier = {
 			factor = 0
 			continent = europe
-		}
-		modifier = {
-			factor = 0
-			OR = {
-				has_terrain = desert
-				has_terrain = glacier
-				has_terrain = coastline
-				has_climate = arctic
-			}
-		}
-		modifier = {
-			factor = 0.8
-			OR = {
-				has_terrain = mountain
-				has_terrain = coastal_desert
-				has_terrain = forest
-				has_terrain = woods
-				has_terrain = hills
-				has_terrain = jungle
-				has_terrain = highlands
-			}
-		}
-		modifier = {
-			factor = 0.2
-			OR = {
-				has_terrain = drylands
-				has_terrain = savannah
-				has_terrain = steppe
-			}
-		}
-		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
-			has_terrain = farmlands
-		}
-		modifier = {
-			factor = 1.5
-			OR = {
-				region = south_africa_region
-				region = peru_region
-				region = upper_peru_region
-				region = rio_grande_region
-				region = mexico_region
-			}
+			continent = asia
+			continent = north_america
+			continent = south_america
+			continent = africa
 		}
 	}
 }
@@ -2303,10 +2262,10 @@ saffron = {
 crab = {
 	color = { 0.3 0.2 0.3 }
 	modifier = {
-		artillery_cost = -0.1
+		sailors_recovery_speed = 0.2
 	}
 	province = {
-		local_regiment_cost = -0.15
+		ship_recruit_speed = -0.15
 	}
 	chance = {
 		factor = 5
@@ -2316,11 +2275,14 @@ crab = {
 		}
 		modifier = {
 			factor = 0
+			NOT = { has_port = yes }
+		}
+		modifier = {
+			factor = 0
 			OR = {
 				has_terrain = desert
 				has_terrain = glacier
 				has_terrain = coastline
-				has_climate = arctic
 			}
 		}
 		modifier = {
@@ -2340,7 +2302,7 @@ crab = {
 			OR = {
 				has_terrain = drylands
 				has_terrain = savannah
-				has_terrain = steppe
+				has_terrain = steppe++
 			}
 		}
 		modifier = {
@@ -2367,10 +2329,10 @@ crab = {
 deer = {
 	color = { 0.3 0.2 0.3 }
 	modifier = {
-		artillery_cost = -0.1
+		military_tactics = 0.1
 	}
 	province = {
-		local_regiment_cost = -0.15
+		local_hostile_attrition = 1
 	}
 	chance = {
 		factor = 5
@@ -2431,10 +2393,10 @@ deer = {
 banana = {
 	color = { 1.0 0.9 0.4 }
 	modifier = {
-		artillery_cost = -0.1
+		production_efficiency = 0.1
 	}
 	province = {
-		local_regiment_cost = -0.15
+		local_unrest = -1
 	}
 	chance = {
 		factor = 5
@@ -2495,10 +2457,10 @@ banana = {
 citrus = {
 	color = { 1.0 0.6 0.2 }
 	modifier = {
-		artillery_cost = -0.1
+		naval_attrition = -0.2
 	}
 	province = {
-		local_regiment_cost = -0.15
+		local_governing_cost = -0.25
 	}
 	chance = {
 		factor = 5
@@ -2559,10 +2521,10 @@ citrus = {
 horses = {
 	color = { 0.28 0.05 0.05 }
 	modifier = {
-		artillery_cost = -0.1
+		cavalry_cost = -0.1
 	}
 	province = {
-		local_regiment_cost = -0.15
+		local_friendly_movement_speed = 0.1
 	}
 	chance = {
 		factor = 5
@@ -2623,10 +2585,10 @@ horses = {
 olives = {
 	color = { 0.05 0.4 0.25 }
 	modifier = {
-		artillery_cost = -0.1
+		global_monthly_devastation = -0.1
 	}
 	province = {
-		local_regiment_cost = -0.15
+		local_production_efficiency = 0.05
 	}
 	chance = {
 		factor = 5
