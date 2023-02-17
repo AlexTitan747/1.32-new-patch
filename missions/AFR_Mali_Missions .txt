@@ -3,12 +3,7 @@ mali_pick_religious_direction_slot = {
 	slot = 1
 	generic = no
 	ai = yes
-	potential_on_load = {
-		has_dlc = "Origins"
-	}
 	potential = {
-		has_dlc = "Origins"
-		NOT = { map_setup = map_setup_random }
 		tag = MAL
 	}
 	has_country_shield = yes
@@ -41,12 +36,7 @@ mali_choice_slot = {
 	slot = 1
 	generic = no
 	ai = yes
-	potential_on_load = {
-		has_dlc = "Origins"
-	}
 	potential = {
-		has_dlc = "Origins"
-		NOT = { map_setup = map_setup_random }
 		tag = MAL
 		NOT = { has_country_flag = mal_decide_for_conversion }
 		NOT = { has_country_flag = mal_decide_for_tolerance }
@@ -125,12 +115,7 @@ mali_jihad_slot = {
 	slot = 1
 	generic = no
 	ai = yes
-	potential_on_load = {
-		has_dlc = "Origins"
-	}
 	potential = {
-		has_dlc = "Origins"
-		NOT = { map_setup = map_setup_random }
 		tag = MAL
 		has_country_flag = mal_decide_for_conversion
 	}
@@ -174,12 +159,7 @@ mali_tolerance_slot = {
 	slot = 1
 	generic = no
 	ai = yes
-	potential_on_load = {
-		has_dlc = "Origins"
-	}
 	potential = {
-		has_dlc = "Origins"
-		NOT = { map_setup = map_setup_random }
 		tag = MAL
 		has_country_flag = mal_decide_for_tolerance
 	}
@@ -411,130 +391,11 @@ mali_trade_slot = {
 			}
 		}
 		effect = {
-			mal_add_disaster_stability = yes
+			add_stability = 1
 			add_adm_power = 200
 		}
 	}
 
-	#Trade with Maghreb
-	mal_trade_with_maghreb = {
-		icon = mission_pacify_the_berbers
-		required_missions = { mal_create_navy }
-		position = 4
-		provinces_to_highlight = {
-			province_id = 341
-		}
-		trigger = {
-			341 = {
-				trade_share = {
-					country = ROOT
-					share = 10
-				}
-				owner = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-						has_opinion = {
-							who = ROOT
-							value = 100
-						}
-						alliance_with = ROOT
-					}
-				}
-			}
-		}
-		effect = {
-			country_event = {
-				id = flavor_mal.31
-			}
-			custom_tooltip = mal_trade_with_maghreb_tt
-			hidden_effect = {
-				set_country_flag = mal_allowed_to_purchase_trade_colony
-			}
-		}
-	}
-
-	#Trade with European
-	mal_trade_with_europeans = {
-		icon = mal_trade_with_europeans
-		required_missions = { mal_trade_with_maghreb }
-		position = 5
-		provinces_to_highlight = {
-			OR = {
-				province_id = 1293
-				province_id = 1295
-				province_id = 1298
-				province_id = 1303
-			}
-			NOT = {
-				trade_share = {
-					country = ROOT
-					share = 5
-				}
-			}
-		}
-		trigger = {
-			OR = {
-				1293 = {
-					trade_share = {
-						country = ROOT
-						share = 5
-					}
-				}
-				1295 = {
-					trade_share = {
-						country = ROOT
-						share = 5
-					}
-				}
-				1298 = {
-					trade_share = {
-						country = ROOT
-						share = 5
-					}
-				}
-				1303 = {
-					trade_share = {
-						country = ROOT
-						share = 5
-					}
-				}
-			}
-		}
-		effect = {
-			add_mercantilism = 5
-			add_country_modifier = {
-				name = mal_controller_of_the_market
-				duration = -1
-			}
-		}
-	}
-
-	#Mansas new Journey
-	mal_econimical_hegemony = {
-		icon = mission_mal_riches_of_trade
-		required_missions = { 
-			mal_trade_with_europeans 
-			mal_dominate_ivory_coast_and_timbuktu
-		}
-		position = 7
-		trigger = {
-			has_any_disaster = no
-			has_regency = no
-			NOT = { num_of_loans = 1 }
-			NOT = { corruption = 1 }
-			stability = 3
-			has_adm_advisor_3 = yes
-			has_dip_advisor_3 = yes
-			has_mil_advisor_3 = yes
-			monthly_income = 50
-		}
-		effect = {
-			country_event = {
-				id = flavor_mal.40
-			}
-		}
-	}
 }
 
 #Conquest missions
@@ -542,12 +403,7 @@ mali_conquest_slot = {
 	slot = 3
 	generic = no
 	ai = yes
-	potential_on_load = {
-		has_dlc = "Origins"
-	}
 	potential = {
-		has_dlc = "Origins"
-		NOT = { map_setup = map_setup_random }
 		tag = MAL
 	}
 	has_country_shield = yes
@@ -639,7 +495,7 @@ mali_conquest_slot = {
 			}
 		}
 		effect = {
-			mal_add_disaster_stability = yes
+			add_stability = 1
 			niger_bend_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -690,7 +546,7 @@ mali_conquest_slot = {
 			total_development = SON
 		}
 		effect = {
-			mal_add_disaster_stability = yes
+			add_stability = 1
 			country_event = {
 				id = flavor_mal.30
 			}
@@ -724,7 +580,7 @@ mali_conquest_slot = {
 			}
 		}
 		effect = {
-			mal_add_disaster_stability = yes
+			add_adm_power = 50
 			if = {
 				limit = {
 					NOT = { government_rank = 3 }
@@ -984,9 +840,10 @@ mali_empire_slot = {
 			owns_core_province = 1132
 		}
 		effect = {
-			mal_add_disaster_stability = yes
+			add_stability = 1
 			country_event = {
 				id = flavor_mal.28
+				tooltip = mali_timbuktu_fate_insight
 			}
 		}
 	}
@@ -1058,17 +915,11 @@ mali_slot_disaster_slot = {
 	slot = 5
 	generic = no
 	ai = yes
-	potential_on_load = {
-		has_dlc = "Origins"
-	}
 	potential = {
-		has_dlc = "Origins"
-		NOT = { map_setup = map_setup_random }
 		tag = MAL
 	}
 	has_country_shield = yes
 
-	#Get some good monarch point income
 	mal_get_competent_court = {
 		icon = mission_restore_caliphate_of_cordoba
 		required_missions = {  }
@@ -1079,10 +930,6 @@ mali_slot_disaster_slot = {
 			monthly_mil = 6
 		}
 		effect = {
-			custom_tooltip = mal_get_competent_court_tt
-			hidden_effect = {
-				set_country_flag = mal_disaster_no_pretender_events
-			}
 			add_adm_power = 50
 			add_dip_power = 50
 			add_mil_power = 50
@@ -1109,10 +956,6 @@ mali_slot_disaster_slot = {
 			}
 		}
 		effect = {
-			custom_tooltip = mal_brace_for_decline_tt
-			hidden_effect = {
-				set_country_flag = mal_disaster_no_estate_events
-			}
 			add_stability = 1
 		}
 	}
@@ -1149,10 +992,6 @@ mali_slot_disaster_slot = {
 			NOT = { num_of_rebel_armies = 1 }
 		}
 		effect = {
-			custom_tooltip = mal_handle_the_kaabu_ct
-			hidden_effect = {
-				set_country_flag = mal_appeased_kaabu
-			}
 			add_mil_power = 150
 		}
 	}
