@@ -1,0 +1,91 @@
+namespace = butua_flavour
+
+country_event = {
+    id = butua_flavour.1
+    title = butua_flavour.1.t
+    desc = butua_flavour.1.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+		tag = RZW
+	}
+	
+	option = { #Stay Fetishist
+		name = butua_flavour.1.a
+
+        add_country_modifier = {
+            name = "butua_stays_fetishist"
+            duration = -1
+        }
+        add_stability = 1
+		
+		ai_chance = { #Keep AI as default religion
+			factor = 100
+		}
+	}
+
+	option = { #Convert to Sunni
+		name = butua_flavour.1.b
+		change_religion = sunni
+        capital_scope = { change_religion = sunni }
+        set_ruler_religion = sunni
+        set_heir_religion = sunni
+        set_consort_religion = sunni
+
+        add_country_modifier = {
+            name = "butua_converts_sunni"
+            duration = 5475
+        }
+
+        ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+country_event = {
+    id = butua_flavour.2
+    title = butua_flavour.2.t
+    desc = butua_flavour.2.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+		tag = RZW
+	}
+	
+	option = { #India
+		name = butua_flavour.2.a
+
+		hidden_effect = {
+			set_country_flag = butua_india_choice
+			swap_non_generic_missions = yes
+		}
+
+	}
+
+	option = { #China
+		name = butua_flavour.2.b
+
+		hidden_effect = {
+			set_country_flag = butua_china_choice
+			swap_non_generic_missions = yes
+		}
+	}
+
+	option = { #Indonesia
+		name = butua_flavour.2.c
+
+		hidden_effect = {
+			set_country_flag = butua_indonesia_choice
+			swap_non_generic_missions = yes
+		}
+	}
+}
