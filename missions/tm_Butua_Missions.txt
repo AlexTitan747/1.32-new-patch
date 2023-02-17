@@ -1,0 +1,1682 @@
+#Help Butua stay up to date with tech, ideas and instituion
+butua_technology = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+	}
+	has_country_shield = yes
+
+	butua_renaissance = {
+		icon = test
+		required_missions = {  }
+
+		trigger = {
+			OR = {
+				has_institution = renaissance
+
+				any_war_enemy_country = {
+					capital_scope = {
+						renaissance = 100
+						controlled_by = ROOT
+					}
+				}				
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					has_institution = renaissance
+				}
+				add_stability = 1
+			}
+			else = {
+				random_war_enemy_country = {
+					limit = {
+						capital_scope = {
+							renaissance = 100
+							controlled_by = ROOT
+						}
+					}
+					capital_scope = {
+						add_devastation = 10
+					}
+				}
+				capital_scope = {
+					add_institution_embracement = {
+						which = renaissance
+						value = 100
+					}
+				}
+			}
+        }
+	}
+
+	butua_tech_2 = {
+		icon = test
+		required_missions = { butua_renaissance }
+
+		trigger = {
+			has_institution = renaissance
+			OR = {
+				any_ally = {
+					tech_difference = 2
+					custom_trigger_tooltip = {
+						tooltip = has_5_ideas
+						OR = {
+							justice_ideas = 5
+							guild_ideas = 5
+							expansion_ideas = 5
+							colonialism_ideas = 5
+							innovative_ideas = 5
+							religious_ideas = 5
+							bureaucratic_ideas = 5
+
+							assimilation_ideas = 5
+							empire_ideas = 5
+							diplomatic_ideas = 5
+							influence_ideas = 5
+							maritime_ideas = 5
+							exploration_ideas = 5
+							trade_ideas = 5
+
+							assault_ideas = 5
+							drill_ideas = 5
+							quantity_ideas = 5
+							firepower_ideas = 5
+							shock_ideas = 5
+							maneuver_ideas = 5
+							defensive_ideas = 5
+						}
+					}
+				}
+				AND = {
+					adm_tech = 7
+					dip_tech = 7
+					mil_tech = 7
+					custom_trigger_tooltip = {
+						tooltip = has_5_ideas
+						OR = {
+							justice_ideas = 5
+							guild_ideas = 5
+							expansion_ideas = 5
+							colonialism_ideas = 5
+							innovative_ideas = 5
+							religious_ideas = 5
+							bureaucratic_ideas = 5
+
+							assimilation_ideas = 5
+							empire_ideas = 5
+							diplomatic_ideas = 5
+							influence_ideas = 5
+							maritime_ideas = 5
+							exploration_ideas = 5
+							trade_ideas = 5
+
+							assault_ideas = 5
+							drill_ideas = 5
+							quantity_ideas = 5
+							firepower_ideas = 5
+							shock_ideas = 5
+							maneuver_ideas = 5
+							defensive_ideas = 5
+						}
+					}
+				}
+			}
+		}
+
+		effect = {
+			change_innovativeness = 5
+			add_country_modifier = {
+				name = "butua_technology_better"
+				duration = 3650
+			}
+        }
+	}
+}
+
+
+#Butua South Africa (Continued)
+butua_south_afroia_continued = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+	}
+	has_country_shield = yes
+
+	butua_colonising_the_cape = {
+		icon = test
+		required_missions = { butua_push_towards_the_cape  }
+		position = 5
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			region = south_africa_region
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 15
+				region = south_africa_region
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = "butua_colonise_the_cape"
+				duration = 9125
+			}
+        }
+	}
+
+	butua_cape_secured = {
+		icon = test
+		required_missions = { butua_colonising_the_cape }
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			region = south_africa_region
+		}
+
+		trigger = {
+			OR = {
+				south_africa_region = {
+					type = all
+					owned_by = ROOT
+				}
+				1460 = {
+					trade_share = {
+						country = ROOT
+						share = 75
+					}
+					trade_node_value = 20
+				}
+			}
+			1177 = { owned_by = ROOT }
+		}
+
+		effect = {
+			1177 = {
+				add_province_modifier = {
+					name = "butua_cape_trade"
+					duration = -1
+				}
+			}
+			1460 = {
+				add_trade_node_income = 10
+				add_trade_modifier = {
+					who = ROOT
+					duration = 7300
+					power = 20
+					key = STRONG_MERCHANTS
+				}
+			}
+			4782 = {
+				add_center_of_trade_level = 1
+			}	
+        }
+	}
+}
+
+#Butua religion
+butua_religion = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+	}
+	has_country_shield = yes
+
+	butua_choose_religion = {
+		icon = test
+		required_missions = {  }
+
+		trigger = {
+			OR = {
+				AND = {
+					NOT = { religious_unity = 0.75 }
+					any_owned_province = {
+						religion = sunni
+					}
+				}
+				num_of_cities = 20
+			}
+		}
+
+		effect = {
+			country_event = { 
+				id = butua_flavour.1
+				days = 1
+				tooltip = butua_change_religion_event_tooltip
+			}
+        }
+	}
+
+	butua_religion_2 = {
+		icon = test
+		required_missions = { butua_choose_religion }
+
+		trigger = {
+			is_year = 1500
+			religious_unity = 1.0
+		}
+
+		effect = {
+			add_prestige = 15
+			add_country_modifier = {
+				name = "butua_unified_nation"
+				duration = -1
+			}
+        }
+	}
+}
+
+buta_monument = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+	}
+	has_country_shield = yes
+
+	butua_upgrade_monument = {
+		icon = test
+		required_missions = { butua_tech_2 }
+		required_missions = { butua_integrated }
+		position = 3
+
+		provinces_to_highlight = {
+			province_id = 1184
+		}
+
+		trigger = {
+			OR = {
+				AND = {
+					1184 = { 
+						development = 25
+						province_has_center_of_trade_of_level = 2
+					}
+					treasury = 500
+				}
+				1184 = {
+					has_great_project = {
+						type = any
+						tier = 3
+					}
+				}
+				AND = {
+					1184 = {
+						has_great_project = {
+							type = any
+							tier = 2
+						}
+					}
+					treasury = 250
+				}
+			}
+			
+		}
+
+		effect = {
+			if = {
+				limit = {
+					1184 = {
+						has_great_project = {
+							type = any
+							tier = 3
+						}
+					}
+				}
+				add_prestige = 50
+				add_stability = 2
+				add_adm_power = 100
+			}
+			else_if = {
+				limit = {
+					1184 = {
+						has_great_project = {
+							type = any
+							tier = 2
+						}
+					}
+				}
+				add_prestige = 25
+				add_stability = 1
+				add_adm_power = 50
+				1184 = {
+					add_great_project_tier = {
+						type = khami_ruins
+						tier = 1
+					}
+				}
+				add_treasury = -250
+			}
+			else = {
+				1184 = {
+					add_great_project_tier = {
+						type = khami_ruins
+						tier = 2
+					}
+				}
+				add_treasury = -500
+			}
+        }
+	}
+}
+
+buuta_south_afirca_start = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+	}
+	has_country_shield = yes
+
+	butua_push_towards_the_cape = {
+		icon = test
+		required_missions = { butua_consolidation }
+		position = 4
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			region = south_africa_region
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 12
+				region = south_africa_region
+			}	
+		}
+		
+		effect = {
+			south_africa_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}       
+	}
+}
+
+#Securing the Kongo/Congo Basin
+butua_kongo = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+	}
+	has_country_shield = yes
+
+	butua_further_into_kongo = {
+		icon = test
+		required_missions = { butua_into_great_lakes }
+		position = 5
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			OR = {
+				area = katanga_area
+				area = luba_area
+			}
+		}
+
+		trigger = {
+			luba_area = {
+				type = all 
+				owned_by = ROOT
+			}
+			katanga_area = {
+				type = all 
+				owned_by = ROOT
+			}
+		}
+		
+		effect = {
+			chokwe_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			sankuru_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kasai_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			lower_kasai = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}       
+	}
+
+	butua_securing_the_kongo = {
+		icon = test
+		required_missions = { butua_further_into_kongo }
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			OR = {
+				area = chokwe_area
+				area = sankuru_area
+				area = kasai_area
+				area = lower_kasai
+			}
+		}
+
+		trigger = {
+			chokwe_area = {
+				type = all
+				owned_by = ROOT
+			}
+			sankuru_area = {
+				type = all
+				owned_by = ROOT
+			}
+			kasai_area = {
+				type = all
+				owned_by = ROOT
+			}
+			lower_kasai = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		
+		effect = {
+			matamba_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kongo_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			angola_namibia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			coastal_kongo = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}       
+	}
+}
+
+butua_empire_of_sa = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+	}
+	has_country_shield = yes
+
+	butua_sa_empire = {
+		icon = test
+		position = 7
+		required_missions = { butua_lakes_secure }
+		required_missions = { butua_securing_the_kongo }
+		required_missions = { butua_cape_secured }
+
+		provinces_to_highlight = {
+			OR = {
+				region = south_africa_region
+				region = kongo_region
+				AND = {
+					region = central_africa_region
+					is_city = yes
+				}
+				AND = {
+					region = east_africa_region
+					is_city = yes
+				}
+			}
+			NOT = { is_island = yes }
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			south_africa_region = {
+				type = all
+				owned_by = ROOT
+			}
+			kongo_region = {
+				NOT = { is_island = yes }
+				type = all
+				owned_by = ROOT
+			}
+			central_africa_region = {
+				is_city = yes
+				type = all
+				owned_by = ROOT
+			}
+			east_africa_region = {
+				NOT = { is_island = yes }
+				is_city = yes
+				type = all
+				owned_by = ROOT
+			}
+			total_development = 1000
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "butua_empire_of_south_africa"
+				duration = -1
+			}
+		}       
+	}
+
+	butua_master_of_africa = {
+		icon = test
+		required_missions = { butua_sa_empire }
+
+		provinces_to_highlight = {
+
+		}
+
+		trigger = {
+			OR = {
+				all_country = {
+					capital_scope = {
+						continent = africa
+					}
+					AND = {
+						NOT = { total_development = ROOT }
+						NOT = { army_size = ROOT }
+						NOT = { monthly_income = ROOT }
+					}					
+				}
+				AND = {
+					any_country = {
+						tag = MAL
+						was_tag = MAL
+						OR = {
+							NOT = { exists = yes }
+							is_subject = yes
+						}
+					}
+					any_country = {
+						tag = MOR
+						was_tag = MOR
+						OR = {
+							NOT = { exists = yes }
+							is_subject = yes
+						}
+					}
+					any_country = {
+						tag = ETH
+						was_tag = ETH
+						OR = {
+							NOT = { exists = yes }
+							is_subject = yes
+						}
+					}
+					any_country = {
+						tag = MAM
+						was_tag = MAM
+						OR = {
+							NOT = { exists = yes }
+							is_subject = yes
+						}
+					}
+				}
+			}
+			total_development = 2000
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "butua_master_of_africa"
+				duration = -1
+			}
+		}       
+	}
+}
+
+#Integrating Mutapa
+butua_integration = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+	}
+	has_country_shield = yes
+
+	butua_help_for_integration = {
+		icon = test
+		required_missions = {  }
+
+		trigger = {
+			OR = {
+				custom_trigger_tooltip = { #Localisation is broken for this trigger so using custom to explain it
+					tooltip = butua_help_integration_mission_tooltip
+					NOT = {
+						ZIM = {
+							development_of_overlord_fraction = 0.33
+						}
+					}
+				}
+				NOT = { exists = ZIM }
+			}
+		}
+		
+
+		effect = {
+			if = {
+				limit = {
+					exists = ZIM
+					ZIM = {
+						is_subject_of = ROOT
+					}
+				}
+				add_country_modifier = {
+					name = "butua_annex_help"
+					duration = 3650
+				}
+			}
+			else = {
+				1184 = {
+					add_base_tax = 1
+					add_base_production = 1
+					add_base_manpower = 1
+				}
+				2950 = {
+					add_base_tax = 1
+					add_base_production = 1
+					add_base_manpower = 1
+				}
+				2952 = {
+					add_base_tax = 1
+					add_base_production = 1
+					add_base_manpower = 1
+				}
+			}
+        }
+	}
+
+	butua_integrated = {
+		icon = test
+		required_missions = { butua_help_for_integration }
+
+		provinces_to_highlight = {
+			province_id = 1184
+		}
+
+		trigger = {
+			NOT = { exists = ZIM }
+			1184 = { owned_by = ROOT }
+		}
+
+		effect = {
+			add_dip_power = 100
+			1184 = {
+				add_base_tax = 1
+				add_base_production = 2
+				add_base_manpower = 1
+			}
+			if = {
+				limit = {
+					has_country_modifier = annexers_legacy 
+				}
+				remove_country_modifier = annexers_legacy 
+			}
+        }
+	}
+
+	butua_consolidation = {
+		icon = test
+		required_missions = { butua_integrated }
+		required_missions = { butua_coastal_advances }
+
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			OR = {
+				area = zimbabwe_area
+				area = shire_area
+				area = uticulo_makuana_area
+				province_id = 1192
+				province_id = 1186
+				province_id = 4045
+				province_id = 4047
+				province_id = 4044
+				province_id = 4036
+				province_id = 4037
+			}
+		}
+
+		trigger = {
+			stability = 2
+			zimbabwe_area = {
+				type = all
+				owned_by = ROOT
+			}
+			shire_area = {
+				type = all 
+				owned_by = ROOT 
+			}
+			uticulo_makuana_area = {
+				type = all
+				owned_by = ROOT
+			}
+			1192 = { owned_by = ROOT }
+			1186 = { owned_by = ROOT }
+			4047 = { owned_by = ROOT }
+			4045 = { owned_by = ROOT }
+			4044 = { owned_by = ROOT }
+			4036 = { owned_by = ROOT }
+			4037 = { owned_by = ROOT }
+		}
+
+		effect = {
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						OR = {
+							culture = nyasa
+							culture = makua
+							culture = nguni
+						}
+					}
+					add_nationalism = -10
+					change_culture = shona
+					if = {
+						limit = {
+							is_state = yes
+						}
+						set_local_autonomy = 0
+					}
+				}
+			}
+			custom_tooltip = butua_consolidation_mission_tooltip
+			1183 = {
+				create_colony = 500
+				change_culture = shona
+			}
+			south_africa_region = {
+				discover_country = ROOT
+			}
+			buha_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+}
+
+#Expanding into great lakes trade node
+butua_into_lakes = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+	}
+	has_country_shield = yes
+
+	butua_into_great_lakes = {
+		icon = test
+		required_missions = { butua_consolidation }
+		position = 4
+
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			area = buha_area 
+		}
+
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 3
+				area = buha_area
+			}
+		}
+		
+		effect = {
+			rwanda_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			buzinza_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			katanga_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			luba_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}       
+	}
+
+	butua_securing_the_lakes = {
+		icon = test
+		required_missions = { butua_into_great_lakes }
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			OR = {
+				area = rwanda_area
+				area = buzinza_area
+			}
+		}
+
+		trigger = {
+			rwanda_area = {
+				type = all 
+				owned_by = ROOT
+			}
+			buzinza_area = {
+				owned_by = ROOT 
+				type = all
+			}
+		}
+		
+		effect = {
+			uganda_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			bunyoro_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}       
+	}
+
+	butua_lakes_secure = {
+		icon = test
+		required_missions = { butua_securing_the_lakes }
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			OR = {
+				area = uganda_area 
+				area = bunyoro_area
+			}
+		}
+
+		trigger = {
+			uganda_area = {
+				type = all
+				owned_by = ROOT
+			}
+			bunyoro_area = {
+				type = all 
+				owned_by = ROOT
+			}
+		}
+		
+		effect = {
+			tanzania_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kenya_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			imatong_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			set_country_flag = butua_lakes_colonisation
+			custom_tooltip = butua_lakes_colonisation_tooltip
+		}       
+	}
+}
+
+butua_egyptian_advance = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+	}
+	has_country_shield = yes
+
+	butua_up_the_nile = {
+		icon = test
+		required_missions = { butua_march_on_ethiopia }
+
+		provinces_to_highlight = {
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			region = horn_of_africa_region
+		}
+
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				region = horn_of_africa_region
+				value = 50
+			}
+		}
+
+		effect = {
+			lower_nubia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			said_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			gulf_of_arabia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			al_wahat_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			vostani_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			bahari_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			delta_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+        }
+	}
+
+	butua_egyptian_conquest = {
+		icon = test
+		required_missions = { butua_up_the_nile }
+
+		provinces_to_highlight = {
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			OR = {
+				area = lower_nubia_area
+				area = said_area
+				area = gulf_of_arabia_area
+				area = al_wahat_area
+				area = vostani_area
+				area = bahari_area
+				area = delta_area
+			}
+		}
+
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 25
+				region = egypt_region
+			}
+			361 = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = "butua_exploiting_egypt"
+				duration = -1
+			}
+			add_treasury = -1500
+			361 = {
+				add_great_project_tier = {
+					type = pyramid_of_cheops
+					tier = 2
+				}
+			}
+			add_stability = 1
+			add_prestige = 20
+			add_legitimacy = 20
+			add_republican_tradition = 10
+			add_devotion = 15
+			add_horde_unity = 10
+        }
+	}
+}
+
+#Gives claims and direction for expansion
+butua_expansion = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+	}
+	has_country_shield = yes
+
+	butua_start_claims = {
+		icon = test
+		required_missions = {  }
+
+		trigger = {
+			num_of_generals = 1
+			army_size_percentage = 1.0
+		}
+
+		effect = {
+			shire_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			4047 = {
+				add_permanent_claim = ROOT
+			}
+			uticulo_makuana_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			4044 = {
+				add_permanent_claim = ROOT
+			}
+			4045 = {
+				add_permanent_claim = ROOT
+			}
+			4036 = {
+				add_permanent_claim = ROOT
+			}
+			4037 = {
+				add_permanent_claim = ROOT
+			}
+        }
+	}
+
+	butua_coastal_advances = {
+		icon = test
+		required_missions = { butua_start_claims }
+
+		provinces_to_highlight = {
+			NOT = {
+				owned_by = ROOT
+			}
+			OR = {
+				area = shire_area
+				area = uticulo_makuana_area
+				province_id = 4047
+				province_id = 4044
+				province_id = 4045
+				province_id = 4036
+				province_id = 4037	
+			}
+		}
+
+		trigger = {
+			shire_area = { 
+				owned_by = ROOT
+				type = all
+			}
+			uticulo_makuana_area = {
+				owned_by = ROOT
+				type = all
+			}
+			4047 = { owned_by = ROOT }
+			4044 = { owned_by = ROOT }
+			4045 = { owned_by = ROOT }
+			4036 = { owned_by = ROOT }
+			4037 = { owned_by = ROOT }
+		}
+
+		effect = {
+			1192 = {
+				add_permanent_claim = ROOT
+			}
+			1186 = {
+				add_permanent_claim = ROOT
+			}
+			mozambique_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_island = yes }
+				}
+				add_permanent_claim = ROOT
+			}
+			central_swahili_coast_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+        }
+	}
+
+	butua_kill_kilwa = {
+		icon = test
+		required_missions = { butua_coastal_advances }
+
+		provinces_to_highlight = {
+			NOT = { 
+				owned_by = ROOT
+			}
+			area = central_swahili_coast_area
+		}
+
+		trigger = {
+			central_swahili_coast_area = {
+				owned_by = ROOT
+				type = all
+			}
+		}
+
+		effect = {
+			mombasa_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			northern_swahili_coast_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_adm_power = 200
+        }
+	}
+
+	butua_into_the_horn_of_africa = {
+		icon = test
+		required_missions = { butua_kill_kilwa }
+
+		provinces_to_highlight = {
+			NOT = { 
+				owned_by = ROOT
+			}
+			OR = {
+				area = mombasa_area
+				area = northern_swahili_coast_area
+			}
+		}
+
+		trigger = {
+			mombasa_area = {
+				owned_by = ROOT
+				type = all
+			}
+			northern_swahili_coast_area = {
+				owned_by = ROOT
+			}
+		}
+
+		effect = {
+			mogadishu_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			2777 = { add_permanent_claim = ROOT	}
+			ajuuran_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			majarteen_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+        }
+	}
+
+	butua_horn_of_africa_advance = {
+		icon = test
+		required_missions = { butua_into_the_horn_of_africa }
+
+		provinces_to_highlight = {
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			region = horn_of_africa_region
+			is_city = yes
+		}
+
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 10
+				region = horn_of_africa_region 
+			}
+		}
+
+		effect = {
+			ogaden_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			somaliland_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			urgoma_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			ifat_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+        }
+	}
+
+	butua_march_on_ethiopia = {
+		icon = test
+		required_missions = { butua_horn_of_africa_advance }
+
+		provinces_to_highlight = {
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			region = horn_of_africa_region 
+		}
+
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 20
+				region = horn_of_africa_region
+			}
+		}
+
+		effect = {
+			horn_of_africa_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+        }
+	}
+}
+
+butua_expansion_2 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+	}
+	has_country_shield = yes
+
+	butua_madagascar = {
+		icon = test
+		required_missions = { butua_coastal_advances }
+		position = 3
+
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			NOT = { is_island = yes }
+			OR = { 
+				area = mozambique_area
+				province_id = 1186
+				province_id = 1192
+			}
+		}
+
+		trigger = {
+			1186 = { owned_by = ROOT }
+			1192 = { owned_by = ROOT }
+			788 = { owned_by = ROOT }
+			1195 = { owned_by = ROOT }
+			4049 = { owned_by = ROOT }
+		}
+
+		effect = {
+			sakalava_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			southern_madagascar = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			betsimasaraka_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			madagascar_highlands_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			random_owned_province = {
+				limit = {
+					has_port = yes
+				}
+				add_unit_construction = {
+					type = transport_ship
+					amount = 5
+					speed = 0.1
+					cost = 0
+				}
+				add_unit_construction = {
+					type = galley
+					amount = 5
+					speed = 0.1
+					cost = 0
+				}
+			}
+        }	
+	}
+
+	butua_madagascar_secured = {
+		icon = test
+		required_missions = { butua_madagascar }
+
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			OR = {
+				area = sakalava_area
+				area = southern_madagascar
+				area = betsimasaraka_area
+				area = madagascar_highlands_area
+			}
+		}
+
+		trigger = {
+			madagascar_highlands_area = {
+				type = all
+				owned_by = ROOT
+			}
+			southern_madagascar = {
+				type = all 
+				owned_by = ROOT
+			}
+			betsimasaraka_area = {
+				type = all
+				owned_by = ROOT
+			}
+			sakalava_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+
+		effect = {
+			country_event = { 
+				id = butua_flavour.2
+				days = 1
+				tooltip = butua_future_direction_event_mission_tooltip
+			}
+			hidden_effect = {
+				west_indian_ocean_region = {
+					discover_country = ROOT
+				}
+				east_indian_ocean_region = {
+					discover_country = ROOT
+				}
+				arabian_sea_region = {
+					discover_country = ROOT
+				}
+				deccan_region = {
+					discover_country = ROOT
+				}
+				coromandel_region = {
+					discover_country = ROOT
+				}
+				south_china_sea_region = {
+					discover_country = ROOT
+				}
+				east_china_sea_region = {
+					discover_country = ROOT
+				}
+				south_china_region = {
+					discover_country = ROOT
+				}
+				north_china_region = {
+					discover_country = ROOT
+				}
+				indonesia_region = {
+					discover_country = ROOT
+				}
+				malaya_region = {
+					discover_country = ROOT
+				}
+				moluccas_region = {
+					discover_country = ROOT
+				}
+			}
+			4020 = {
+				create_colony = 1000
+			}
+        }	
+	}
+}
+
+butua_placeholder_for_future = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+		NOT = { has_country_flag = butua_india_choice }
+		NOT = { has_country_flag = butua_china_choice }
+		NOT = { has_country_flag = butua_indonesia_choice }
+	}
+	has_country_shield = yes
+
+	butua_future_direction_placeholder = {
+		icon = mission_unknown_mission
+		required_missions = { butua_madagascar_secured }
+		position = 5
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = butua_choose_future_direction_mission_tooltip
+				always = no
+			}
+		}
+
+		effect = {
+			custom_tooltip = butua_unlock_rest_of_tree_tooltip_effect
+        }	
+	}
+}
+
+butua_india = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+		has_country_flag = butua_india_choice
+	}
+	has_country_shield = yes
+
+	butua_india_1 = {
+		icon = test
+		required_missions = { butua_madagascar_secured }
+
+		trigger = {
+			
+		}
+
+		effect = {
+        }	
+	}
+}
+
+butua_china = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+		has_country_flag = butua_china_choice
+	}
+	has_country_shield = yes
+
+	butua_china_1 = {
+		icon = test
+		required_missions = { butua_madagascar_secured }
+
+		trigger = {
+			
+		}
+
+		effect = {
+        }	
+	}
+}
+
+butua_indonesia = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+		has_country_flag = butua_indonesia_choice
+	}
+	has_country_shield = yes
+
+	butua_indonesia_1 = {
+		icon = test
+		required_missions = { butua_madagascar_secured }
+
+		trigger = {
+			
+		}
+
+		effect = {
+        }	
+	}
+}
+
+#Privlages - Crown land 
+#States / Auto
+#Reform prog
+#Reforms 
+#Formable
+#Maps
+
+
+#Techs
+#Ideas
+#Innovativeness
+
+#Religion - Change / miss stre + cost
+#Stab / Prestiege
+
+#Claims
+#Navy - India, China, Indo
+#Colonist - Kongo
+
+#Great project
+#Gold
+#Dev
+#Powers
+#Trade
