@@ -1550,8 +1550,15 @@ butua_expansion_2 = {
 					discover_country = ROOT
 				}
 			}
-			4020 = {
-				create_colony = 1000
+			if = {
+				limit = {
+					NOT = {
+						4020 = { is_city = yes }
+					}
+				}
+				4020 = {
+					create_colony = 1000
+				}
 			}
         }	
 	}
