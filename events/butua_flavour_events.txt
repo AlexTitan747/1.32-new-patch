@@ -120,3 +120,206 @@ country_event = {
 		set_country_flag = butua_more_gold_in_cape
 	}
 }
+
+country_event = {
+    id = butua_flavour.4
+    title = butua_flavour.4.t
+    desc = butua_flavour.4.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+		tag = RZW
+	}
+	
+	option = { #Go it alone anyway
+		name = butua_flavour.4.a
+
+		clr_country_flag = butua_rival_eth
+		set_country_flag = butua_fight_eth_alone
+		swap_non_generic_missions = yes
+		custom_tooltip = buuta_go_it_alone_anyway
+	}
+
+	option = { 
+		name = butua_flavour.4.b
+
+		trigger = {
+			exists = TUR
+			TUR = {
+				total_development = ETH
+				total_development = SOM
+			}
+			NOT = {
+				border_distance = {
+					who = TUR
+					distance = 40
+				}
+			}
+		}
+	}
+
+	option = { 		
+		name = butua_flavour.4.c		
+		
+		trigger = {		
+			exists = SLU		
+			SLU = {		
+				total_development = ETH		
+				total_development = SOM		
+			}		
+			NOT = {		
+				border_distance = {		
+					who = SLU		
+					distance = 40		
+				}		
+			}		
+		}		
+	}		
+
+	option = { 
+		name = butua_flavour.4.d
+
+		trigger = {
+			exists = MAM
+			MAM = {
+				total_development = ETH
+				total_development = SOM
+			}
+			NOT = {
+				border_distance = {
+					who = MAM
+					distance = 30
+				}
+			}
+		}
+	}
+
+	option = { 
+		name = butua_flavour.4.e
+
+		trigger = {
+			exists = EGY
+			EGY = {
+				total_development = ETH
+				total_development = SOM
+			}
+			NOT = {
+				border_distance = {
+					who = EGY
+					distance = 30
+				}
+			}
+		}
+	}
+
+	option = { 
+		name = butua_flavour.4.f
+
+		trigger = {
+			OR = {
+				exists = OMA
+				exists = OME
+			}
+			OR = {
+				OMA = {
+					total_development = ETH
+					total_development = SOM
+				}
+				OME = {
+					total_development = ETH
+					total_development = SOM
+				}
+			}
+			OR = {
+				NOT = {
+					border_distance = {
+						who = OMA
+						distance = 20
+					}
+				}
+				NOT = {
+					border_distance = {
+						who = OME
+						distance = 20
+					}
+				}
+			}
+		}
+	}
+
+	option = { 
+		name = butua_flavour.4.g
+
+		trigger = {
+			exists = ARB
+			ARB = {
+				total_development = ETH
+				total_development = SOM
+			}
+			NOT = {
+				border_distance = {
+					who = ARB
+					distance = 20
+				}
+			}
+		}
+	}
+
+	option = { 
+		name = butua_flavour.4.h
+
+		trigger = {
+			exists = RAS
+			RAS = {
+				total_development = ETH
+				total_development = SOM
+			}
+			NOT = {
+				border_distance = {
+					who = RAS
+					distance = 20
+				}
+			}
+		}
+	}
+
+	option = { 
+		name = butua_flavour.4.i
+
+		trigger = {
+			exists = MAL
+			MAL = {
+				total_development = ETH
+				total_development = SOM
+			}
+			NOT = {
+				border_distance = {
+					who = MAL
+					distance = 30
+				}
+			}
+		}
+	}
+
+	option = { 
+		name = butua_flavour.4.j
+
+		trigger = {
+			exists = GHN
+			GHN = {
+				total_development = ETH
+				total_development = SOM
+			}
+			NOT = {
+				border_distance = {
+					who = GHN
+					distance = 30
+				}
+			}
+		}
+	}
+}
