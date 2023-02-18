@@ -804,131 +804,6 @@ butua_into_lakes = {
 	}
 }
 
-butua_egyptian_advance = {
-	slot = 3
-	generic = no
-	ai = yes
-	potential = {
-		tag = RZW
-	}
-	has_country_shield = yes
-
-	butua_up_the_nile = {
-		icon = test
-		required_missions = { butua_march_on_ethiopia }
-		position = 7 
-
-		provinces_to_highlight = {
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-			region = horn_of_africa_region
-		}
-
-		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				region = horn_of_africa_region
-				value = 50
-			}
-		}
-
-		effect = {
-			lower_nubia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			said_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			gulf_of_arabia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			al_wahat_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			vostani_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			bahari_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			delta_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-        }
-	}
-
-	butua_egyptian_conquest = {
-		icon = test
-		required_missions = { butua_up_the_nile }
-
-		provinces_to_highlight = {
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-			OR = {
-				area = lower_nubia_area
-				area = said_area
-				area = gulf_of_arabia_area
-				area = al_wahat_area
-				area = vostani_area
-				area = bahari_area
-				area = delta_area
-			}
-		}
-
-		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 25
-				region = egypt_region
-			}
-			361 = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-
-		effect = {
-			add_country_modifier = {
-				name = "butua_exploiting_egypt"
-				duration = -1
-			}
-			add_treasury = -1500
-			361 = {
-				add_great_project_tier = {
-					type = pyramid_of_cheops
-					tier = 2
-				}
-			}
-			add_stability = 1
-			add_prestige = 20
-			add_legitimacy = 20
-			add_republican_tradition = 10
-			add_devotion = 15
-			add_horde_unity = 10
-        }
-	}
-}
 
 #Gives claims and direction for expansion
 butua_expansion = {
@@ -1111,7 +986,13 @@ butua_expansion = {
 				}
 				add_permanent_claim = ROOT
 			}
-			2777 = { add_permanent_claim = ROOT	}
+			jubba_area = { 
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 			ajuuran_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -1136,74 +1017,191 @@ butua_expansion = {
 		provinces_to_highlight = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 			region = horn_of_africa_region
-			is_city = yes
 		}
 
 		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 10
-				region = horn_of_africa_region 
+			OR = {
+				AND = {
+					ETH = {
+						has_been_insulted_by_root = yes
+					}
+					is_rival = ETH
+				}
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 10
+					region = horn_of_africa_region 
+				}
+				reverse_has_opinion = {
+					who = ETH
+					value = 80
+				}
 			}
+			
 		}
 
 		effect = {
-			ogaden_area = {
+			if = {
 				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
+					reverse_has_opinion = {
+						who = ETH
+						value = 80
+					}
 				}
-				add_permanent_claim = ROOT
+				add_historical_friend = ETH
+				ETH = { add_historical_friend = ROOT }
+				mogadishu_area = { remove_claim = ROOT }
+				jubba_area = { remove_claim = ROOT }
+				ajuuran_area = { remove_claim = ROOT }
+				majarteen_area = { remove_claim = ROOT }
+				set_country_flag = butua_ally_eth
 			}
-			somaliland_area = {
+			else_if = {
 				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
+					AND = {
+						ETH = {
+							has_been_insulted_by_root = yes
+						}
+						is_rival = ETH
+					}
 				}
-				add_permanent_claim = ROOT
+				country_event = {
+					id = butua_flavour.4
+					days = 1
+					tooltip = butua_seek_help_tooltip_event
+				}
+				set_country_flag = butua_rival_eth
 			}
-			urgoma_area = {
+			else_if = {
 				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
+					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+						value = 10
+						region = horn_of_africa_region 
+					}
 				}
-				add_permanent_claim = ROOT
+				ogaden_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				somaliland_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				urgoma_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				ifat_area = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				set_country_flag = butua_fight_eth_alone
 			}
-			ifat_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
+			else = {
+				custom_tooltip = butua_ethiopia_branch_mission_1_tooltip
+			}
+			hidden_effect = {
+				swap_non_generic_missions = yes
 			}
         }
 	}
+}
 
-	butua_march_on_ethiopia = {
-		icon = test
+#Placeholder so player knows what each branch does
+butua_horn_place_holder = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+		NOT = { has_country_flag = butua_ally_eth }
+		NOT = { has_country_flag = butua_rival_eth }
+		NOT = { has_country_flag = butua_fight_eth_alone }
+	}
+	has_country_shield = yes
+
+	butua_horn_place_holder_mission_1 = {
+		icon = mission_unknown_mission
 		required_missions = { butua_horn_of_africa_advance }
-
-		provinces_to_highlight = {
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-			region = horn_of_africa_region 
-		}
+		position = 6
 
 		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 20
-				region = horn_of_africa_region
+			custom_trigger_tooltip = {
+				tooltip = butua_horn_place_holder_mission_1_trigger_tooltip
+				always = no
 			}
 		}
 
 		effect = {
-			horn_of_africa_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-        }
+			custom_tooltip = butua_horn_place_holder_mission_1_effect_tooltip
+		}
 	}
+
+	butua_horn_place_holder_mission_2 = {
+		icon = mission_unknown_mission
+		required_missions = { butua_horn_place_holder_mission_1 }
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = butua_horn_place_holder_mission_2_trigger_tooltip
+				always = no
+			}
+		}
+
+		effect = {
+			custom_tooltip = butua_horn_place_holder_mission_2_effect_tooltip
+		}
+	}
+}
+
+butua_friendly_eth = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+		has_country_flag = butua_ally_eth
+	}
+	has_country_shield = yes
+
+
+}
+
+butua_rival_eth = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+		has_country_flag = butua_rival_eth
+	}
+	has_country_shield = yes
+
+
+}
+
+butua_fight_eth_alone = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+		has_country_flag = butua_fight_eth_alone
+	}
+	has_country_shield = yes
+
+
 }
 
 #Butua Coast and Beyond
@@ -1506,3 +1504,23 @@ butua_indonesia = {
 #Dev
 #Powers
 #Trade
+
+#	effect = {
+#		add_country_modifier = {
+#			name = "butua_exploiting_egypt"
+#			duration = -1
+#		}
+#		add_treasury = -1500
+#		361 = {
+#			add_great_project_tier = {
+#				type = pyramid_of_cheops
+#				tier = 2
+#			}
+#		}
+#		add_stability = 1
+#		add_prestige = 20
+#		add_legitimacy = 20
+#		add_republican_tradition = 10
+#		add_devotion = 15
+#		add_horde_unity = 10
+#	}
