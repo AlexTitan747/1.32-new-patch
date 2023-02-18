@@ -3037,6 +3037,7 @@ tradecompany = {
 		cloves
 		opium
 		saffron
+		deer
 	}
 	keep_trigger = {
 		OR = { 
@@ -3048,6 +3049,7 @@ tradecompany = {
 			trade_goods = cloves
 			trade_goods = opium
 			trade_goods = saffron 
+			trade_goods = deer
 		}
 	}
 	on_built = {
@@ -3100,7 +3102,6 @@ farm_estate = {
 		livestock
 		wine
 		olives
-		deer
 		horses
 	}
 	keep_trigger = {
@@ -3110,7 +3111,6 @@ farm_estate = {
 			trade_goods = wine
 			trade_goods = rice
 			trade_goods = olives
-			trade_goods = deer
 			trade_goods = horses
 		}
 	}
@@ -3600,18 +3600,12 @@ centre_of_manufacturing = {
 	modifier = {
 		trade_goods_size_modifier = 0.2
 	}
-	one_per_country = yes
 
 	build_trigger = {
 		NOT = {
-			area_for_scope_province = {
-				owner = {
-					tag = ROOT
-				}
-				OR = {
-					has_building = centre_of_manufacturing
-					has_construction = centre_of_manufacturing
-				}
+			any_owned_province = {
+				has_building = centre_of_manufacturing
+				has_construction = centre_of_manufacturing
 			}
 		}
 	}
@@ -3637,7 +3631,6 @@ centre_of_manufacturing = {
 			type = production
 			value = 2
 		}
-		custom_tooltip = dif_university_dev_cost_tt
 		hidden_effect = { owner = { save_event_target_as = new_owner } }
 		area = {
 			if = {
@@ -3684,87 +3677,6 @@ centre_of_manufacturing = {
 	}
 
 	ai_will_do = {
-		factor = 420 	# Hard coded AI sees no value in this above the 0.01 ducats base. Let's multiply that
-		modifier = {
-			factor = 1.2
-			development = 20
-			is_state = yes
-		}
-		modifier = {
-			factor = 0.1
-			NOT = { is_state = yes }
-		}
-		modifier = {
-			factor = 0.9
-			OR = {
-				has_climate = tropical
-				has_climate = arid
-			}
-		}
-		modifier = {
-			factor = 0.4
-			has_climate = arctic
-		}
-		modifier = {
-			factor = 1.2
-			OR = {
-				has_terrain = grasslands
-				has_terrain = drylands
-			}
-		}
-		modifier = {
-			factor = 1.2
-			has_terrain = farmlands
-		}
-		modifier = {
-			factor = 5
-			has_latent_trade_goods = coal
-		}
-		modifier = {
-			factor = 1.5
-			province_has_center_of_trade_of_level = 1
-		}
-		modifier = {
-			factor = 1.5
-			province_has_center_of_trade_of_level = 2
-		}
-		modifier = {
-			factor = 1.5
-			province_has_center_of_trade_of_level = 3
-		}
-		modifier = {
-			factor = 2
-			is_capital = yes
-		}
-		modifier = {
-			factor = 1.5
-			OR = {
-				trade_goods = paper
-				trade_goods = gems
-				trade_goods = glass
-				trade_goods = chinaware
-				trade_goods = copper
-				trade_goods = iron
-				trade_goods = coal
-				trade_goods = ivory
-				trade_goods = slaves
-				trade_goods = spices
-				trade_goods = fur
-				trade_goods = incense
-				trade_goods = coffee
-				trade_goods = cotton
-				trade_goods = sugar
-				trade_goods = tobacco
-				trade_goods = tea
-				trade_goods = cocoa
-				trade_goods = wool
-				trade_goods = cloth
-				trade_goods = silk
-				trade_goods = dyes
-				trade_goods = salt
-				trade_goods = gold
-			}
-		}
 	}
 }
 
@@ -3777,14 +3689,9 @@ imperial_tax_office = {
 
 	build_trigger = {
 		NOT = {
-			area_for_scope_province = {
-				owner = {
-					tag = ROOT
-				}
-				OR = {
-					has_building = imperial_tax_office
-					has_construction = imperial_tax_office
-				}
+			any_owned_province = {
+				has_building = centre_of_manufacturing
+				has_construction = centre_of_manufacturing
 			}
 		}
 	}
@@ -3857,87 +3764,6 @@ imperial_tax_office = {
 	}
 
 	ai_will_do = {
-		factor = 420 	# Hard coded AI sees no value in this above the 0.01 ducats base. Let's multiply that
-		modifier = {
-			factor = 1.2
-			development = 20
-			is_state = yes
-		}
-		modifier = {
-			factor = 0.1
-			NOT = { is_state = yes }
-		}
-		modifier = {
-			factor = 0.9
-			OR = {
-				has_climate = tropical
-				has_climate = arid
-			}
-		}
-		modifier = {
-			factor = 0.4
-			has_climate = arctic
-		}
-		modifier = {
-			factor = 1.2
-			OR = {
-				has_terrain = grasslands
-				has_terrain = drylands
-			}
-		}
-		modifier = {
-			factor = 1.2
-			has_terrain = farmlands
-		}
-		modifier = {
-			factor = 5
-			has_latent_trade_goods = coal
-		}
-		modifier = {
-			factor = 1.5
-			province_has_center_of_trade_of_level = 1
-		}
-		modifier = {
-			factor = 1.5
-			province_has_center_of_trade_of_level = 2
-		}
-		modifier = {
-			factor = 1.5
-			province_has_center_of_trade_of_level = 3
-		}
-		modifier = {
-			factor = 2
-			is_capital = yes
-		}
-		modifier = {
-			factor = 1.5
-			OR = {
-				trade_goods = paper
-				trade_goods = gems
-				trade_goods = glass
-				trade_goods = chinaware
-				trade_goods = copper
-				trade_goods = iron
-				trade_goods = coal
-				trade_goods = ivory
-				trade_goods = slaves
-				trade_goods = spices
-				trade_goods = fur
-				trade_goods = incense
-				trade_goods = coffee
-				trade_goods = cotton
-				trade_goods = sugar
-				trade_goods = tobacco
-				trade_goods = tea
-				trade_goods = cocoa
-				trade_goods = wool
-				trade_goods = cloth
-				trade_goods = silk
-				trade_goods = dyes
-				trade_goods = salt
-				trade_goods = gold
-			}
-		}
 	}
 }
 

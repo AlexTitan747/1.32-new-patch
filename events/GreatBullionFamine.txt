@@ -1,0 +1,160 @@
+# The Great Bullion Famine
+# Titan Edited to add Silver
+
+namespace = bullion_famine
+
+country_event = {
+	id = bullion_famine.1
+	title = "bullion_famine.1.t"
+	desc = "bullion_famine.1.d"
+	picture = TRADE_GOODS_METALS_AND_MINING_EQUIPENT_eventPicture
+	
+	major = yes
+	
+	fire_only_once = yes
+	
+	trigger = { # Any European country that has a gold province in Europe
+		capital_scope = { continent = europe }
+		religion = catholic
+		any_owned_province = { 
+			continent = europe
+			trade_goods = gold
+		}
+		NOT = { is_year = 1490 }
+	}
+	
+	mean_time_to_happen = {
+		months = 120
+	}
+	
+	option = {	# Hint at great rewards for discovering gold or silver outside of Europe
+		name = "bullion_famine.1.a"	
+		custom_tooltip = tmbullion_famine.1.tooltip
+		change_price = {
+			trade_goods = silver
+			key = BULLION_FAMINE
+			value = 0.50
+			duration = -1
+		}
+	}
+}
+
+# Reward for owning gold provinces outside of Europe as a European country
+country_event = {
+	id = bullion_famine.2
+	title = "bullion_famine.2.t"
+	desc = "bullion_famine.2.d"
+	picture = ECONOMY_eventPicture
+	
+	major = yes
+	
+	fire_only_once = yes
+	
+	goto = noneuropean_gold_province
+	
+	trigger = {
+		capital_scope = { continent = europe }
+		religion_group = christian
+		any_owned_province = {
+			NOT = { continent = europe }
+			trade_goods = gold
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 3
+	}
+	
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					NOT = { continent = europe }
+					trade_goods = gold
+				}
+				save_event_target_as = noneuropean_gold_province
+			}
+		}
+	}
+	
+	option = {
+		name = "bullion_famine.2.a"
+		goto = noneuropean_gold_province
+		trigger = {
+			capital_scope = { continent = europe }
+			any_owned_province = {
+				NOT = { continent = europe }
+				trade_goods = gold
+			}
+		}
+		event_target:noneuropean_gold_province = {
+			add_province_modifier = {
+				name = bullion_gold_mining
+				duration = 36500
+			}
+		}
+	}
+}
+
+# Reward for owning silver provinces outside of Europe as a European country
+country_event = {
+	id = bullion_famine.3
+	title = "bullion_famine.3.t"
+	desc = "bullion_famine.3.d"
+	picture = ECONOMY_eventPicture
+	
+	major = yes
+	
+	fire_only_once = yes
+	
+	goto = noneuropean_silver_province
+	
+	trigger = {
+		capital_scope = { continent = europe }
+		religion_group = christian
+		any_owned_province = {
+			NOT = { continent = europe }
+			trade_goods = silver
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 3
+	}
+	
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					NOT = { continent = europe }
+					trade_goods = silver
+				}
+				save_event_target_as = noneuropean_silver_province
+			}
+		}
+	}
+	
+	option = {
+		name = "bullion_famine.3.a"
+		goto = noneuropean_silver_province
+		trigger = {
+			capital_scope = { continent = europe }
+			any_owned_province = {
+				NOT = { continent = europe }
+				trade_goods = silver
+			}
+		}
+		change_price = {
+			trade_goods = silver
+			key = BULLION_DISCOVERED
+			value = -0.50
+			duration = -1
+		}
+		event_target:noneuropean_gold_province = {
+			add_province_modifier = {
+				name = bullion_silver_mining
+				duration = 36500
+			}
+		}
+	}
+}
