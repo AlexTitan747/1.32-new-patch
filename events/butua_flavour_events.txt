@@ -89,3 +89,34 @@ country_event = {
 		}
 	}
 }
+
+country_event = {
+    id = butua_flavour.3
+    title = butua_flavour.3.t
+    desc = butua_flavour.3.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	trigger = {
+		tag = RZW
+	}
+	
+	option = { #Faster Colonisation
+		name = butua_flavour.3.a
+
+		add_country_modifier = {
+			name = "butua_colonise_the_cape"
+			duration = 9125
+		}
+	}
+
+	option = { #More Gold
+		name = butua_flavour.3.b
+
+		custom_tooltip = butua_find_more_gold_in_cape_tooltip
+		set_country_flag = butua_more_gold_in_cape
+	}
+}

@@ -149,30 +149,6 @@ butua_south_afroia_continued = {
 	}
 	has_country_shield = yes
 
-	butua_colonising_the_cape = {
-		icon = test
-		required_missions = { butua_push_towards_the_cape  }
-		position = 5
-		provinces_to_highlight = {
-			NOT = { owned_by = ROOT }
-			region = south_africa_region
-		}
-
-		trigger = {
-			num_of_owned_provinces_with = {
-				value = 15
-				region = south_africa_region
-			}
-		}
-
-		effect = {
-			add_country_modifier = {
-				name = "butua_colonise_the_cape"
-				duration = 9125
-			}
-        }
-	}
-
 	butua_cape_secured = {
 		icon = test
 		required_missions = { butua_colonising_the_cape }
@@ -180,6 +156,7 @@ butua_south_afroia_continued = {
 			NOT = { owned_by = ROOT }
 			region = south_africa_region
 		}
+		position = 5
 
 		trigger = {
 			OR = {
@@ -275,6 +252,7 @@ butua_religion = {
 	}
 }
 
+#Upgrading City Of Khami
 buta_monument = {
 	slot = 2
 	generic = no
@@ -369,6 +347,7 @@ buta_monument = {
 	}
 }
 
+#Start of colonising South Africa
 buuta_south_afirca_start = {
 	slot = 2
 	generic = no
@@ -378,10 +357,9 @@ buuta_south_afirca_start = {
 	}
 	has_country_shield = yes
 
-	butua_push_towards_the_cape = {
+	butua_colonising_the_cape = {
 		icon = test
 		required_missions = { butua_consolidation }
-		position = 4
 		provinces_to_highlight = {
 			NOT = { owned_by = ROOT }
 			region = south_africa_region
@@ -389,20 +367,18 @@ buuta_south_afirca_start = {
 
 		trigger = {
 			num_of_owned_provinces_with = {
-				value = 12
+				value = 15
 				region = south_africa_region
-			}	
-		}
-		
-		effect = {
-			south_africa_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
 			}
-		}       
+		}
+
+		effect = {
+			country_event = {
+				id = butua_flavour.3
+				days = 1
+				tooltip = butua_colonising_event_insight_tooltip
+			}
+        }
 	}
 }
 
@@ -416,21 +392,31 @@ butua_kongo = {
 	}
 	has_country_shield = yes
 
-	butua_further_into_kongo = {
+	butua_securing_the_kongo = {
 		icon = test
-		required_missions = { butua_into_great_lakes }
 		position = 5
+		required_missions = { butua_into_great_lakes }
 		provinces_to_highlight = {
 			NOT = { owned_by = ROOT }
 			OR = {
-				area = katanga_area
+				area = chokwe_area
+				area = sankuru_area
 				area = luba_area
+				area = katanga_area
 			}
 		}
 
 		trigger = {
+			chokwe_area = {
+				type = all
+				owned_by = ROOT
+			}
+			sankuru_area = {
+				type = all
+				owned_by = ROOT
+			}
 			luba_area = {
-				type = all 
+				type = all
 				owned_by = ROOT
 			}
 			katanga_area = {
@@ -440,92 +426,7 @@ butua_kongo = {
 		}
 		
 		effect = {
-			chokwe_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			sankuru_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			kasai_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			lower_kasai = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}       
-	}
-
-	butua_securing_the_kongo = {
-		icon = test
-		required_missions = { butua_further_into_kongo }
-		provinces_to_highlight = {
-			NOT = { owned_by = ROOT }
-			OR = {
-				area = chokwe_area
-				area = sankuru_area
-				area = kasai_area
-				area = lower_kasai
-			}
-		}
-
-		trigger = {
-			chokwe_area = {
-				type = all
-				owned_by = ROOT
-			}
-			sankuru_area = {
-				type = all
-				owned_by = ROOT
-			}
-			kasai_area = {
-				type = all
-				owned_by = ROOT
-			}
-			lower_kasai = {
-				type = all
-				owned_by = ROOT
-			}
-		}
-		
-		effect = {
-			matamba_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			kongo_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			angola_namibia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			coastal_kongo = {
+			kongo_region = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -536,6 +437,7 @@ butua_kongo = {
 	}
 }
 
+#Butua strong empire of South Africa
 butua_empire_of_sa = {
 	slot = 2
 	generic = no
@@ -547,7 +449,7 @@ butua_empire_of_sa = {
 
 	butua_sa_empire = {
 		icon = test
-		position = 7
+		position = 6
 		required_missions = { butua_lakes_secure }
 		required_missions = { butua_securing_the_kongo }
 		required_missions = { butua_cape_secured }
@@ -870,68 +772,7 @@ butua_into_lakes = {
 		}
 		
 		effect = {
-			rwanda_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			buzinza_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			katanga_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			luba_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}       
-	}
-
-	butua_securing_the_lakes = {
-		icon = test
-		required_missions = { butua_into_great_lakes }
-		provinces_to_highlight = {
-			NOT = { owned_by = ROOT }
-			OR = {
-				area = rwanda_area
-				area = buzinza_area
-			}
-		}
-
-		trigger = {
-			rwanda_area = {
-				type = all 
-				owned_by = ROOT
-			}
-			buzinza_area = {
-				owned_by = ROOT 
-				type = all
-			}
-		}
-		
-		effect = {
-			uganda_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			bunyoro_area = {
+			central_africa_region = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -943,48 +784,20 @@ butua_into_lakes = {
 
 	butua_lakes_secure = {
 		icon = test
-		required_missions = { butua_securing_the_lakes }
+		required_missions = { butua_into_great_lakes }
 		provinces_to_highlight = {
 			NOT = { owned_by = ROOT }
-			OR = {
-				area = uganda_area 
-				area = bunyoro_area
-			}
+			region = central_africa_region
 		}
 
 		trigger = {
-			uganda_area = {
-				type = all
-				owned_by = ROOT
-			}
-			bunyoro_area = {
-				type = all 
-				owned_by = ROOT
+			num_of_owned_provinces_with = {
+				value = 20
+				region = central_africa_region
 			}
 		}
 		
 		effect = {
-			tanzania_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			kenya_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			imatong_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
 			set_country_flag = butua_lakes_colonisation
 			custom_tooltip = butua_lakes_colonisation_tooltip
 		}       
@@ -1003,6 +816,7 @@ butua_egyptian_advance = {
 	butua_up_the_nile = {
 		icon = test
 		required_missions = { butua_march_on_ethiopia }
+		position = 7 
 
 		provinces_to_highlight = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
@@ -1392,6 +1206,7 @@ butua_expansion = {
 	}
 }
 
+#Butua Coast and Beyond
 butua_expansion_2 = {
 	slot = 5
 	generic = no
@@ -1564,6 +1379,7 @@ butua_expansion_2 = {
 	}
 }
 
+#Placeholder to explain tree will be unlocked
 butua_placeholder_for_future = {
 	slot = 5
 	generic = no
@@ -1594,6 +1410,7 @@ butua_placeholder_for_future = {
 	}
 }
 
+#Indian Focus
 butua_india = {
 	slot = 5
 	generic = no
@@ -1617,6 +1434,7 @@ butua_india = {
 	}
 }
 
+#China Focus
 butua_china = {
 	slot = 5
 	generic = no
@@ -1640,6 +1458,7 @@ butua_china = {
 	}
 }
 
+#Indonesia Focus
 butua_indonesia = {
 	slot = 5
 	generic = no
