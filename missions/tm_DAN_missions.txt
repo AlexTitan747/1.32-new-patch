@@ -355,14 +355,14 @@ dan_secure_baltic_mission_slot = {
 				limit = {
 					NOT = { has_any_colonist_idea = yes }
 				}
-				add_temporary_colonist = {
+				add_country_modifier = {
+					name = dan_new_world_expansion
 					duration = 27375
 				}
 			}
 			else = {
-				add_country_modifier = {
-					name = dan_new_world_expansion
-					duration = 9125
+				add_temporary_colonist = {
+					duration = 27375
 				}
 			}
 			if = {
@@ -446,7 +446,7 @@ dan_north_america_mission_slot = {
 		}
 		effect = {
 			create_conquistador = {
-				tradition = 50
+				tradition = 100
 			}
 			custom_tooltip = swe_colonize_delaware_tt
 			hidden_effect = {
@@ -773,7 +773,7 @@ dan_trade_and_colonial_mission_slot = {
 			}
 			add_country_modifier = {
 				name = dan_colonial_ambitions_mod
-				duration = 18250
+				duration = -1
 			}
 		}
 	}
