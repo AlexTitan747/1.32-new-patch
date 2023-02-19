@@ -89,34 +89,6 @@
 #Cut because the Grand Crusade war doesn't really have any place in the current content, but it could be very useful for the future.
 #Also modders should have the chance to just uncomment it all so they can experience the great 30 Years War like Crusade.
 declarewar = {
-	condition = {
-		tooltip = tm_Tributary_dec_tt
-		potential = {
-
-		}
-		allow = {
-			NOT = {
-				any_country = {
-					FROM = { is_subject_of_type_with_overlord	= { who = PREV type = tributary_state } }
-					ROOT = { is_subject_of_type_with_overlord	= { who = PREV type = tributary_state } }
-				}
-			}
-		}
-	}
-	condition = {
-		tooltip = tm_Call_in_trib_tt
-		potential = {
-			FROM = { is_subject_of_type = tributary_state }
-		}
-		allow = {
-			NOT = {
-				any_country = {
-					overlord_of = FROM
-					war_with = ROOT
-				}
-			}
-		}	
-	}
 #	condition = {
 #		tooltip = GRAND_CRUSADE_NO_OTHER_WAR
 #		potential = { }
@@ -271,7 +243,7 @@ allianceaction = {
 				}
 			}
 			AI = yes
-		 }
+		}
 		allow = {
 			always = no
 		}
