@@ -3,7 +3,7 @@ estate_nomadic_aristocracy_primacy = {
 	land_share = 10
 	loyalty = -0.05
 	can_select = {
-		has_reform = horde_tribal_unity_reform
+		#has_reform = horde_tribal_unity_reform
 		custom_trigger_tooltip = {
 			tooltip = no_other_mil_privilege
 			NOT = { has_estate_privilege = estate_rajput_military }
@@ -59,6 +59,7 @@ estate_nomadic_aristocracy_primacy = {
 
 estate_nomadic_aristocracy_guaranteed_leadgership = {
 	icon = privilege_conscript_cossack_elite
+	loyalty = 0.1
 	influence = 0.1
 	can_select = {
 		army_tradition = 30
@@ -74,7 +75,7 @@ estate_nomadic_aristocracy_guaranteed_leadgership = {
 	}
 	ai_will_do = {
 		factor = 8
-		modifier = {
+		modifier = { 	
 			factor = 0.5
 			is_absolutism_active = yes
 		}
@@ -148,7 +149,7 @@ sedentary_subdjects_land_of_commerce = {
 	land_share = 10
 	loyalty = -0.05
 	can_select = {
-		has_reform = horde_tribal_unity_reform
+		#has_reform = horde_tribal_unity_reform
 	}
 	on_granted = {
 	}
@@ -250,7 +251,7 @@ sedentary_subdjects_increased_tribute = {
 	icon = privilege_give_money
 	#land_share = 5
 	#max_absolutism = -5
-	loyalty = -0.1
+	loyalty = 0.1
 	influence = 0.05
 	is_valid = {
 		any_owned_province = {
@@ -314,9 +315,8 @@ sedentary_subdjects_increased_tribute = {
 
 sedentary_subdjects_trade_rights = {
 	icon = privilege_grant_autonomy
-	land_share = 5
-	loyalty = 0.1
-	influence = 0.1
+	loyalty = 0.05
+	influence = 0.05
 	is_valid = {
 		any_owned_province = {
 			province_has_center_of_trade_of_level = 1
@@ -466,7 +466,7 @@ sedentary_subjects_protection_of_trade_routes = {
 
 sedentary_subjects_weapons_tribute = {
 	icon = privilege_demand_more_troops
-	loyalty = -0.05
+	loyalty = 0.1
 	influence = 0.05
 	can_select = {
 		#is_nomad = yes
@@ -578,7 +578,7 @@ estate_nomadic_tribes_raise_tribal_levies = {
 	icon = privilege_raise_host
 	#land_share = 5
 	#max_absolutism = -5
-	loyalty = -0.1
+	loyalty = 0.1
 	influence = 0.05
 	#can_select = {
 	#	horde_unity = 5
@@ -678,13 +678,9 @@ estate_nomadic_tribes_raise_tribal_levies = {
 
 estate_nomadic_aristocracy_greater_war_support = {
 	icon = privilege_conscript_cossack_elite
-	land_share = 5
+	loyalty = 0.1
 	influence = 0.05
 	can_select = {
-		prestige = 0
-	}
-	on_granted = {
-		add_prestige = -15
 	}
 	penalties = {
 	}
@@ -777,6 +773,86 @@ estate_nomadic_aristocracy_landowners = {
 	}
 	ai_will_do = {
 		factor = 10
+	}
+}
+
+estate_nomadic_aristocracy_advisors = {
+	icon = privilege_recruit_minister
+	#
+	influence = 0.1
+	loyalty = 0.05
+	penalties = {
+		stability_cost_modifier = 0.1
+	}
+	can_select = { 
+		NOT = { has_estate_privilege = estate_maratha_advisor }
+		NOT = { has_estate_privilege = estate_rajput_advisor }
+	}
+	benefits = {
+		mil_advisor_cost = -0.10
+	}
+	ai_will_do = {
+		factor = 15
+		modifier = {
+			factor = 0.75
+			is_absolutism_active = yes
+		}
+		modifier = {
+			factor = 1.25
+			government = monarchy
+		}
+		modifier = {
+			factor = 1.25
+			has_idea_group = aristocracy_ideas
+		}
+		modifier = {
+			factor = 1.25
+			NOT = { mil = 2 }
+		}
+		modifier = {
+			factor = 0.8
+			mil = 5
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_nobles_nobility_primacy }
+			num_of_estate_privileges = {
+				estate = estate_nobles
+				value = 5
+			}
+		}
+	}
+}
+
+estate_sedentary_subdjects__commercial_board_of_advice = {
+	icon = privilege_recruit_minister
+	#
+	influence = 0.1
+	loyalty = 0.05
+	penalties = {
+		stability_cost_modifier = 0.1
+	}
+	benefits = {
+		dip_advisor_cost = -0.10
+	}
+	ai_will_do = {
+		factor = 15
+		modifier = {
+			factor = 1.25
+			NOT = { dip = 2 }
+		}
+		modifier = {
+			factor = 0.8
+			dip = 5
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_burghers_land_of_commerce }
+			num_of_estate_privileges = {
+				estate = estate_burghers
+				value = 5
+			}
+		}
 	}
 }
 
@@ -958,29 +1034,29 @@ estate_jains_dock_trade_power = {
 	}
 }
 
-estate_nobles_obligated_to_serve = {
-	icon = privilege_promote_purbias
-	#land_share = 0
-	max_absolutism = 5
-	influence = 0.05
-	loyalty = -0.1
-	is_valid = {
-		has_idea_group = aristocracy_ideas
-	}
-	can_select = {
-		has_idea_group = aristocracy_ideas
-	}
-	on_granted = {
-		#custom_tooltip = estate_nobles_command_of_the_military_tt
-	}
-	penalties = {
-		leader_cost = 0.2
-	}
-	benefits = {
-		cavalry_power = 0.05
-		governing_capacity = 50
-	}
-	ai_will_do = {
-		factor = 10
-	}
-}
+#estate_nobles_obligated_to_serve = {
+#	icon = privilege_promote_purbias
+#	#land_share = 0
+#	max_absolutism = 5
+#	influence = 0.05
+#	loyalty = -0.1
+#	is_valid = {
+#		has_idea_group = aristocracy_ideas
+#	}
+#	can_select = {
+#		has_idea_group = aristocracy_ideas
+#	}
+#	on_granted = {
+#		#custom_tooltip = estate_nobles_command_of_the_military_tt
+#	}
+#	penalties = {
+#		leader_cost = 0.2
+#	}
+#	benefits = {
+#		cavalry_power = 0.05
+#		governing_capacity = 50
+#	}
+#	ai_will_do = {
+#		factor = 10
+#	}
+#}

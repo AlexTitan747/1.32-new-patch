@@ -11,7 +11,6 @@ country_decisions = {
 				is_playing_custom_nation = no
 			}
 			NOT = { exists = SPI }
-			government = monarchy
 			OR = {
 				tag = SAV
 				tag = SAR
@@ -31,10 +30,10 @@ country_decisions = {
 		provinces_to_highlight = {
 			OR = {
 				area = piedmont_area
-				area = savoy_dauphine_area
 				area = liguria_area
 				province_id = 1247
 				province_id = 5050
+				province_id = 103
 			}	
 			OR = {
 				NOT = { owned_by = ROOT }
@@ -43,6 +42,7 @@ country_decisions = {
 		}
 		
 		allow = {
+			adm_tech = 7
 			is_free_or_tributary_trigger = yes
 			is_nomad = no
 			is_at_war = no
@@ -70,15 +70,14 @@ country_decisions = {
 			}
 
 			num_of_owned_provinces_with = {
-				value = 3 #there are 4 (1 is Corsica)
-				area = corsica_sardinia_area
+				value = 2 
+				area = corsica_area
 				is_core = root
 			}
 			num_of_owned_provinces_with = {
 				value = 6 #there are 12, but Savoy never owned most of them
 				OR = {
 					area = piedmont_area
-					area = savoy_dauphine_area
 					area = liguria_area
 				}
 				is_core = root

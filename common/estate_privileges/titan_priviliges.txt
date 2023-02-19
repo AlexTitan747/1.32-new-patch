@@ -2,6 +2,15 @@ estate_church_new_prophets = {
 	icon = privilege_recruit_minister
 	influence = 0.10
 
+	is_valid = {
+		OR = {
+			religion = buddhism
+			religion = vajrayana
+			religion = mahayana
+			religion_group = muslim
+		}
+	}
+
 	conditional_modifier = {
 		trigger = {
 			has_dlc = "Common Sense"
@@ -12,7 +21,7 @@ estate_church_new_prophets = {
 			}
 		}
 		modifier = {
-			yearly_karma_decay = -0.005
+			monthly_karma = -0.05
 		}
 	}
 	conditional_modifier = {
@@ -21,7 +30,7 @@ estate_church_new_prophets = {
 			religion_group = muslim
 		}
 		modifier = {
-			monthly_piety = -0.001
+			monthly_piety = -0.002
 		}
 	}
 	penalties = {
@@ -38,6 +47,57 @@ estate_church_new_prophets = {
 				value = 3
 			}
 		}
+	}
+}
+
+estate_burghers_mountain_development = {
+	icon = privilege_make_generous_donation
+	loyalty = 0.1
+	influence = 0.1
+	can_select = {
+		mission_completed = tm_emp_swi_production_centres
+	}
+	on_granted = {
+		custom_tooltip = swiss_development_mechanic
+	}
+	is_valid = {
+		NOT = { has_estate = estate_vaisyas }
+	}
+	on_granted_province = {
+		if = {
+			limit = { has_terrain = mountain }
+			add_province_modifier = {
+				name = estate_burghers_mountain_development_mod
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_province_modifier = estate_burghers_mountain_development_mod
+			}
+			remove_province_modifier = estate_burghers_mountain_development_mod
+		}
+	}
+	on_revoked_province = {
+		if = {
+			limit = {
+				has_province_modifier = estate_burghers_mountain_development_mod
+			}
+			remove_province_modifier = estate_burghers_mountain_development_mod
+		}
+	}
+	on_invalid_province = {
+		if = {
+			limit = {
+				has_province_modifier = estate_burghers_mountain_development_mod
+			}
+			remove_province_modifier = estate_burghers_mountain_development_mod
+		}
+	}
+	penalties = {
+	}
+	ai_will_do = {
+		factor = 5
 	}
 }
 

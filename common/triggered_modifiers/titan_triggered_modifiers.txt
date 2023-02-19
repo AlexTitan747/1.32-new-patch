@@ -35,11 +35,68 @@
 	#trade_efficiency = 0.05	
 #}
 
+planned_invasion_of_hungary = {
+	potential = {
+		ROOT = {
+			ai = no	
+		}
+		OR = {
+			tag = BOH
+			was_tag = BOH
+		}
+	}
+	trigger  = {
+		OR = {
+			tag = BOH
+			was_tag = BOH
+		}
+		has_country_flag = boh_hungary_plan
+		offensive_war_with = HUN
+			any_country = {
+				total_development = ROOT
+				}
+			NOT = { is_year = 1480 }
+		}
+
+	land_morale = 0.05
+	infantry_power = 0.05
+	
+}
+
+planned_invasion_of_poland = {
+	potential = {
+		ROOT = {
+			ai = no	
+		}
+		OR = {
+			tag = BOH
+			was_tag = BOH
+		}
+	}
+	trigger  = {
+		OR = {
+			tag = BOH
+			was_tag = BOH
+		}
+		has_country_flag = boh_poland_plan
+		offensive_war_with = POL
+				any_country = {
+					total_development = ROOT
+					}
+				NOT = { is_year = 1480 }
+			}
+
+	land_morale = 0.05
+	infantry_power = 0.05
+	
+}
+
 moroccan_last_stand = {
 	potential = {
-			ROOT = {
-				ai = no	
-			}	
+		ROOT = {
+			ai = no	
+		}
+		tag = MOR
 	}
 	trigger  = {
 		tag = MOR
@@ -74,6 +131,9 @@ moroccan_last_stand = {
 founders_of_the_niger_company = {
 	potential = {
 		normal_or_historical_nations = yes
+		capital_scope = {
+			continent = africa 
+		}
 	}
 
 	trigger = {
@@ -90,6 +150,9 @@ founders_of_the_niger_company = {
 founders_of_the_euphrates_company = {
 	potential = {
 		normal_or_historical_nations = yes
+		capital_scope = {
+			continent = asia
+		}
 	}
 
 	trigger = {
@@ -106,6 +169,9 @@ founders_of_the_euphrates_company = {
 founders_of_the_nile_company = {
 	potential = {
 		normal_or_historical_nations = yes
+		capital_scope = {
+			continent = africa
+		}
 	}
 
 	trigger = {
@@ -122,6 +188,9 @@ founders_of_the_nile_company = {
 founders_of_the_danube_company = {
 	potential = {
 		normal_or_historical_nations = yes
+		capital_scope = {
+			continent = europe
+		}
 	}
 
 	trigger = {
@@ -138,6 +207,9 @@ founders_of_the_danube_company = {
 founders_of_the_rhein_company = {
 	potential = {
 		normal_or_historical_nations = yes
+		capital_scope = {
+			continent = europe
+		}
 	}
 
 	trigger = {
@@ -154,6 +226,9 @@ founders_of_the_rhein_company = {
 founders_of_the_malaya_company = {
 	potential = {
 		normal_or_historical_nations = yes
+		capital_scope = {
+			continent = asia
+		}
 	}
 
 	trigger = {
@@ -170,6 +245,9 @@ founders_of_the_malaya_company = {
 founders_of_the_ceylon_company = {
 	potential = {
 		normal_or_historical_nations = yes
+		capital_scope = {
+			continent = asia
+		}
 	}
 
 	trigger = {
@@ -186,6 +264,9 @@ founders_of_the_ceylon_company = {
 founders_of_the_cape_company = {
 	potential = {
 		normal_or_historical_nations = yes
+		capital_scope = {
+			continent = africa
+		}
 	}
 
 	trigger = {

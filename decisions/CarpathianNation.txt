@@ -27,6 +27,8 @@ country_decisions = {
 					primary_culture = hungarian
 					primary_culture = slovak
 				}
+
+				has_country_modifier = hun_infantry_focus
 				
 				OR = {
 					ai = no
@@ -40,69 +42,15 @@ country_decisions = {
 			
 			provinces_to_highlight = {
 				OR = {
-				province_id = 1953			# Szabolcs
-				
-				AND = {
-					region = carpathia_region
-					ROOT = {
-						NOT = {
-							num_of_owned_provinces_with = {
-								value = 15
-								region = carpathia_region
-								is_core = root
-							}
-						}
-					}
+					province_id = 4128
+					province_id = 162
+					province_id = 4236
+					province_id = 156
 				}
-			}
-			AND = {
-				province_id = 4128
-					NOT = {
-						AND = {
-							owned_by = root
-							is_state_core = root
-							development = 15
-						}
-					}
-				}
-			AND = {
-				province_id = 162
-					NOT = {
-						AND = {
-							owned_by = root
-							is_state_core = root
-							development = 15
-						}
-					}	
-				}
-				AND = {
-				province_id = 4236
-					NOT = {
-						AND = {
-							owned_by = root
-							is_state_core = root
-							development = 10
-						}
-					}
-				}
-				AND = {
-				province_id = 156
-					NOT = {
-						AND = {
-							owned_by = root
-							is_state_core = root
-							development = 10
-						}
-					}
-				}
-				OR = {
-					NOT = { owned_by = ROOT }
-					NOT = { is_core = ROOT }
-				}
+
 			}
 			
 			allow = {
-				has_country_modifier = hun_infantry_focus
 				adm_tech = 7
 				NOT = { exists = CRP }
 				is_nomad = no
@@ -110,7 +58,6 @@ country_decisions = {
 				is_at_war = no
 				is_tribal = no
 				
-				owns_core_province = 1953			# Szabolcs
 				owns_core_province = 4128
 				owns_core_province = 162
 				owns_core_province = 4236
@@ -136,9 +83,6 @@ country_decisions = {
 				}
 			}
 			effect = {
-				1953 = {	#Szabolcs
-					move_capital_effect = yes
-				}
 				change_tag = CRP
 				remove_non_electors_emperors_from_empire_effect = yes
 				add_prestige = 25

@@ -1,4 +1,21 @@
-
+united_alpine_cantons_reform = {
+	icon = "castle"
+	allow_normal_conversion = no
+	modifiers = {
+		governing_capacity = -50
+		free_policy = 1
+		mercenary_manpower = 0.5
+	}
+	valid_for_nation_designer = yes
+	nation_designer_cost = 40
+	legacy_equivalent = feudal_monarchy
+	potential = {
+		OR = {
+			primary_culture = swiss
+			have_had_reform = united_alpine_cantons_reform
+		}
+	}
+}
 
 moroccan_monarchy = {
 	icon = "castle"
@@ -225,7 +242,10 @@ margraviate_of_Brandenburg = {
 	icon = "margraviate_of_brandenburg"
 	allow_normal_conversion = yes
 	potential = {
+		OR = {
 		tag = BRA
+		has_country_flag = boh_unlock_bradenburg_reform
+		}
 	}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 0
@@ -565,7 +585,7 @@ union_of_crowns = {
 		global_colonial_growth = 25
 		governing_capacity_modifier = 0.1
 		autonomy_change_time = -0.25
-		land_attrition = -1
+		land_attrition = -0.15
 		infantry_power = 0.1
 	}
 
@@ -1332,6 +1352,7 @@ compulsory_military_service = {
 		is_revolutionary = no
 		OR = {
 		tag = BRA
+		owns_core_province = 50
 		}
 
 	}
@@ -1387,9 +1408,9 @@ privy_council_for_the_electorate = {
 
 	}
 	modifiers = {
-		nobles_influence_modifier = -0.1
-		burghers_influence_modifier = -0.1
-		church_influence_modifier = -0.1
+		nobles_influence_modifier = -0.05
+		burghers_influence_modifier = -0.05
+		church_influence_modifier = -0.05
 		monthly_militarized_society = 0.01
 		governing_capacity = 100
 	}
@@ -1598,11 +1619,12 @@ amtskammer_chambers = {
 		OR = {
 		tag = BRA
 		tag = PRU
+		owns_core_province = 50
 		}
 	}
 	modifiers = {
 		infantry_cost = -0.05
-		global_tax_modifier = 0.1
+		global_tax_modifier = 0.075
 	}
 	ai = {
 		factor = 1

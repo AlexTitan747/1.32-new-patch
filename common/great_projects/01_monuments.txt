@@ -93,7 +93,7 @@ roman_colosseum = {
 		}
 		country_modifiers = {
 			manpower_recovery_speed = 0.05
-			infantry_power = 0.1
+			infantry_power = 0.05
 			global_unrest = -1
 		}
 		on_upgraded = {
@@ -116,7 +116,6 @@ roman_colosseum = {
 			manpower_recovery_speed = 0.05
 			infantry_power = 0.1
 			global_unrest = -1
-			discipline = 0.025
 		}
 		on_upgraded = {
 			owner = {
@@ -1440,7 +1439,7 @@ emporium_of_the_world = {
 		culture_group = han_group
 		culture_group = tibetan_group
 		culture_group = chinese_group
-	}
+		}
 	}
 
 	on_built = {
@@ -1875,8 +1874,8 @@ hagia_sophia = {
 		country_modifiers = {
 			tolerance_own = 0.5
 			tolerance_heretic = 0.5
-			monthly_piety = 0.001
 			yearly_patriarch_authority = 0.002
+			max_absolutism = 10
 			papal_influence = 0.5
 			church_loyalty_modifier = 0.05
 		}
@@ -1915,8 +1914,9 @@ hagia_sophia = {
 		country_modifiers = {
 			tolerance_own = 1
 			tolerance_heretic = 1
-			monthly_piety = 0.002
 			yearly_patriarch_authority = 0.005
+			development_cost = -0.05
+			max_absolutism = 20
 			papal_influence = 1
 			church_loyalty_modifier = 0.1
 		}
@@ -9627,7 +9627,7 @@ kiev_pechersk_lavra = {
 
 		#cost to upgrade to this level (0 for tier 0)
 		cost_to_upgrade = {
-			factor = 1000
+			factor = 700
 		}
 
 		#what modifiers are added to the province when we have this project here on this tier
@@ -9641,6 +9641,7 @@ kiev_pechersk_lavra = {
 		#what modifiers are added to the country when we have this project here on this tier
 		country_modifiers = {
 			yearly_patriarch_authority = 0.001
+			manpower_in_true_faith_provinces = 0.05
 		}
 
 		#what effects happen when this tier is achieved
@@ -9656,7 +9657,7 @@ kiev_pechersk_lavra = {
 
 		#cost to upgrade to this level (0 for tier 0)
 		cost_to_upgrade = {
-			factor = 2500
+			factor = 1750
 		}
 
 		#what modifiers are added to the province when we have this project here on this tier
@@ -9671,6 +9672,7 @@ kiev_pechersk_lavra = {
 		country_modifiers = {
 			yearly_patriarch_authority = 0.002
 			tolerance_own = 1
+			manpower_in_true_faith_provinces = 0.075
 		}
 
 		#what effects happen when this tier is achieved
@@ -9686,7 +9688,7 @@ kiev_pechersk_lavra = {
 
 		#cost to upgrade to this level (0 for tier 0)
 		cost_to_upgrade = {
-			factor = 5000
+			factor = 3500
 		}
 
 		#what modifiers are added to the province when we have this project here on this tier
@@ -9702,6 +9704,7 @@ kiev_pechersk_lavra = {
 		country_modifiers = {
 			yearly_patriarch_authority = 0.005
 			tolerance_own = 2
+			manpower_in_true_faith_provinces = 0.1
 		}
 
 		#what effects happen when this tier is achieved
@@ -12553,7 +12556,7 @@ brandenburg_gate = {
 			months = 240
 		}
 		cost_to_upgrade = {
-			factor = 2500
+			factor = 2000
 		}
 		province_modifiers = {
 		}
@@ -12573,7 +12576,7 @@ brandenburg_gate = {
 			months = 480
 		}
 		cost_to_upgrade = {
-			factor = 5000
+			factor = 4000
 		}
 		province_modifiers = {
 		}
@@ -15212,7 +15215,7 @@ krakow_cloth_hall = {
 			months = 120
 		}
 		cost_to_upgrade = {
-			factor = 1000
+			factor = 700
 		}
 		province_modifiers = {
 			trade_goods_size_modifier = 0.1
@@ -15231,7 +15234,7 @@ krakow_cloth_hall = {
 			months = 240
 		}
 		cost_to_upgrade = {
-			factor = 2500
+			factor = 1750
 		}
 		province_modifiers = {
 		}
@@ -15251,7 +15254,7 @@ krakow_cloth_hall = {
 			months = 480
 		}
 		cost_to_upgrade = {
-			factor = 5000
+			factor = 3500
 		}
 		province_modifiers = {
 		}
@@ -16898,7 +16901,7 @@ sultan_ahmed_mosque = {
 		}
 		country_modifiers = {
 			prestige_per_development_from_conversion = 0.1
-			tolerance_own = 0.1
+			monarch_diplomatic_power = 1
 		}
 		on_upgraded = {
 		}
@@ -16918,7 +16921,8 @@ sultan_ahmed_mosque = {
 		}
 		country_modifiers = {
 			prestige_per_development_from_conversion = 0.2
-			tolerance_own = 2
+			monarch_admin_power = 1
+			legitimacy = 0.10
 		}
 		on_upgraded = {
 		}
@@ -16938,7 +16942,9 @@ sultan_ahmed_mosque = {
 		}
 		country_modifiers = {
 			prestige_per_development_from_conversion = 0.3
-			tolerance_own = 3
+			legitimacy = 0.20
+			monarch_military_power = 1
+			monarch_lifespan = 0.25
 		}
 		on_upgraded = {
 		}

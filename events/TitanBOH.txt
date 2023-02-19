@@ -1,0 +1,186 @@
+namespace = titanboh
+
+country_event = {
+	id = titanboh.1
+	title = "titanboh.title1"
+	desc = "titanboh.desc1"
+	picture = ADVISOR_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			tag = BOH
+			was_tag = BOH
+		}
+	}
+
+	#mean_time_to_happen = {
+	#	months = 1
+	#}
+
+	option = {
+		name = "titanboh.focus1"
+		change_religion = protestant
+		set_country_flag = bohemian_prussia
+		custom_tooltip = "boh_unlock_pru"
+	}
+
+	option = {
+		name = "titanboh.focus2"
+		add_country_modifier = {
+			name = adopted_prussian_military_tactics
+			duration = 7300
+		}
+		set_country_flag = bohemian_germany
+		custom_tooltip = "boh_unlock_ger"
+		
+	}
+}
+
+country_event = {
+	id = titanboh.2
+	title = "titanboh.title2"
+	desc = "titanboh.desc2"
+	picture = ADVISOR_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			tag = BOH
+			was_tag = BOH
+		}
+	}
+
+	#mean_time_to_happen = {
+	#	months = 1
+	#}
+
+	option = {
+		name = "titanboh.court1"
+		country_event = {
+			id = flavor_boh.1
+		}
+	}
+}
+
+country_event = {
+	id = titanboh.3
+	title = "titanboh.title3"
+	desc = "titanboh.desc3"
+	picture = ADVISOR_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			tag = BOH
+			was_tag = BOH
+		}
+	}
+
+	#mean_time_to_happen = {
+	#	months = 1
+	#}
+
+	option = {
+		name = "titanboh.reform1"
+		if = {
+			limit = { 
+				is_revolutionary = no
+				tag = BOH
+		}
+		hidden_effect = {
+		 	set_country_flag = boh_unlock_bradenburg_reform
+		}
+			add_government_reform = margraviate_of_Brandenburg
+		}
+		else_if = {
+			limit = { is_revolutionary = no }
+			add_country_modifier = {
+				name = respect_our_traditions
+				duration = 3650
+			}
+		}
+	}
+
+	option = {
+		name = "titanboh.reform2"
+		add_stability_or_adm_power = yes
+		add_dip_power = 50
+	}
+}
+
+country_event = {
+	id = titanboh.4
+	title = "titanboh.title4"
+	desc = "titanboh.desc4"
+	picture = ADVISOR_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			tag = BOH
+			was_tag = BOH
+		}
+	}
+
+	#mean_time_to_happen = {
+	#	months = 1
+	#}
+
+	option = {
+		name = "titanboh.plan1"
+		hidden_effect = {
+		set_country_flag = boh_poland_plan
+		}
+		custom_tooltip = "boh_poland_plan"
+	}
+
+	option = {
+		name = "titanboh.plan2"
+		hidden_effect = {
+			set_country_flag = boh_hungary_plan
+		}
+		custom_tooltip = "boh_hungary_plan"
+	}
+}
+
+country_event = {
+	id = titanboh.5
+	title = "titanboh.title5"
+	desc = "titanboh.desc5"
+	picture = ADVISOR_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+		OR = {
+			tag = KSM
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = "titanboh.hussite1"
+		add_treasury = 100
+		add_dip_power = 50
+		custom_tooltip = "boh_missionaries_sent"
+	}
+
+	option = {
+		name = "titanboh.hussite2"
+		add_prestige = 15
+		add_mil_power = 50
+	}
+
+}

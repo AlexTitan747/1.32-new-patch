@@ -190,6 +190,9 @@ country_decisions = {
 			NOT = { has_country_modifier = titan_afr_colonist }
 		}
 		effect = {
+			create_conquistador = {
+				tradition = 20
+			}
 			add_country_modifier = {
 				name = titan_afr_colonist
 				duration = 18250
@@ -447,7 +450,6 @@ country_decisions = {
 				NOT = { has_country_modifier = hired_explorer }
 			}
 			allow = {
-				NOT = { army_tradition = 30 }
 				#has_institution = new_world_i
 			}
 			effect = {
@@ -469,7 +471,6 @@ country_decisions = {
 				NOT = { has_country_modifier = hired_conquistador }
 			}
 			allow = {
-				NOT = { army_tradition = 40 }
 				#has_institution = new_world_i
 			}
 			effect = {
@@ -481,5 +482,84 @@ country_decisions = {
 				hidden = yes
 				}
 			}	
-		}			
+		}
+	
+	tm_cav_mercs = {
+		potential = {
+			NOT = { has_country_flag = cav_mercs_activated }
+			NOT = {
+				has_country_modifier = cav_merc_cooldown
+			}
+			OR = {
+				AND = {
+				has_idea_group = maneuver_ideas
+				}
+				AND = {
+				has_idea_group = shock_ideas
+				}
+			}
+		}
+		allow = {
+			ai = no
+			NOT = {
+				num_of_loans = 1
+			}
+			OR = {
+				AND = {
+				has_idea = i44
+				}
+				AND = {
+				has_idea = i37
+				}
+			}
+			NOT = {
+				num_of_mercenaries = 1
+			}
+		}
+		effect = {
+			custom_tooltip = tm_cav_mercs_activate
+			set_country_flag = cav_mercs_activated
+			hidden_effect = {
+				add_country_modifier = {
+					name = cav_merc_cooldown
+					duration = 1825
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	# Remove Edict
+	tm_cav_mercs_deactive = {
+		potential = {
+			has_country_flag = cav_mercs_activated
+			NOT = {
+				has_country_modifier = cav_merc_cooldown
+			}
+		}
+		allow = {
+			ai = no
+			NOT = {
+				num_of_loans = 1
+			}
+			NOT = {
+				num_of_mercenaries = 1
+			}
+		}
+		effect = {
+			custom_tooltip = tm_cav_mercs_deactivate
+			clr_country_flag = cav_mercs_activated
+			hidden_effect = {
+				add_country_modifier = {
+					name = cav_merc_cooldown
+					duration = 1825
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
 }		

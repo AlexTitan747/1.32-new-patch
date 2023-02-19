@@ -690,15 +690,13 @@ bankruptcy = {
 	reinforce_speed = -0.25					#Slower reinforce
 	bureaucrats_influence = 0.25
 	mr_guilds_influence = 0.25
-	manpower_recovery_speed = -0.05
-	sailors_recovery_speed = -0.05
+	manpower_recovery_speed = -0.1
+	sailors_recovery_speed = -0.1
 	advisor_cost = 0.25
 	monthly_fervor_increase = -1
 	global_institution_spread = -0.50
 	monthly_militarized_society = -0.25
 	yearly_absolutism = -1.0
-	technology_cost = 0.10
-	idea_cost = 0.10
 	imperial_mandate = -0.1
 	great_project_upgrade_cost = 0.5
 }
@@ -709,6 +707,7 @@ war = {
 }
 
 peace = {
+	global_supply_limit_modifier = 1
 	war_exhaustion = -0.1
 	monthly_fervor_increase = 1
 	global_autonomy = -0.1
@@ -724,7 +723,7 @@ unconditional_surrender = {
 }
 
 call_for_peace = {
-	war_exhaustion = 0.005
+	#war_exhaustion = 0.005
 }
 
 war_exhaustion = {
@@ -850,12 +849,12 @@ emperor = {
 	advisor_pool = 1
 	diplomatic_upkeep = 1
 	free_leader_pool = 1
-	prestige = 1
+	prestige = 0.5
 }
 
 states_in_hre = {							#bonuses for each non-free city with capital in HRE.. as emperor
-	land_forcelimit	= 0.5					#each state increases forcelimit by 0.5
-	global_manpower = 0.5					#each gives 0.5 MP to the emperor.
+	land_forcelimit	= 0.1					#each state increases forcelimit by 0.5
+	global_manpower = 0.075					#each gives 0.5 MP to the emperor.
 }
 
 free_cities_in_hre = {							#bonuses for each free city in the HRE.. as emperor
@@ -880,7 +879,7 @@ occupied_imperial = {
 }
 
 emperor_revoked_reform =  {
-	diplomatic_reputation = -3
+	
 }
 
 num_of_marriages = {
@@ -1899,6 +1898,7 @@ expanded_infrastructure = {
 	allowed_num_of_manufactories = 1
 	local_governing_cost_increase = 0
 	local_governing_cost = 0.50
+	local_development_cost = -0.05
 	local_tax_modifier = 0.1
 	province_trade_power_modifier = 0.1
 }

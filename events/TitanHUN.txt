@@ -15,7 +15,7 @@ country_event = {
 	
 	trigger = {
 		tag = HUN
-		is_year = 1450
+		is_year = 1448
 	}
 
 	mean_time_to_happen = {
@@ -42,6 +42,193 @@ country_event = {
 		}
 		custom_tooltip = "flavor_titanhun.cavalry1"
 		custom_tooltip = "hun_unlock_auh"
+	}
+}
+
+country_event = {
+	id = titanhun.2
+	title = "titanhun.title2"
+	desc = "titanhun.desc2"
+	picture = LAND_MILITARY_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "hun_direction_1"
+
+		set_country_flag = hun_anatolia_direction
+		bulgaria_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		plovdiv_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		silistria_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		macedonia_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		thessaloniki_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		hidden_effect = {
+			swap_non_generic_missions = yes
+		}
+	}
+
+	option = {
+		name = "hun_direction_2"
+		custom_tooltip = tm_hun_hre_direction
+		set_country_flag = hun_west_europe_direction
+
+		carinthia_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		venetia_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		austria_proper_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		inner_austria_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		moravia_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		nymburk_area = {
+			limit = {
+				NOT = { is_core = ROOT }
+				NOT = { is_permanent_claim = ROOT }
+			}
+			add_permanent_claim = ROOT
+		}
+		hidden_effect = {
+			swap_non_generic_missions = yes
+		}
+	}
+
+	option = {
+		name = "hun_direction_3"
+		custom_tooltip = tm_hun_crimea_direction
+		set_country_flag = hun_steppe_direction
+		hidden_effect = {
+			swap_non_generic_missions = yes
+		}
+	}
+}
+
+country_event = {
+	id = titanhun.3
+	title = "titanhun.title3"
+	desc = "titanhun.desc3"
+	picture = REVOLUTION_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "hun_constantinople_1"
+
+		151 = {
+			add_base_tax = -5
+			add_base_production = -8
+			add_base_manpower = -10
+			change_trade_goods = grain
+			destroy_great_project = {
+				type = sultan_ahmed_mosque
+			}
+			remove_building = temple
+			remove_building = workshop
+		}
+		central_hungary_area = {
+			add_base_tax = 1
+			add_base_production = 2
+			add_base_manpower = 2
+		}
+		transdanubia_area = {
+			add_base_tax = 1
+			add_base_production = 2
+			add_base_manpower = 1
+		}
+		alfold_area = {
+			add_base_tax = 1
+			add_base_production = 2
+			add_base_manpower = 1
+		}
+		add_treasury = 1525
+	}
+
+	option = {
+		name = "hun_constantinople_2"
+
+		add_treasury = 250
+		add_army_professionalism = 0.075
+		add_country_modifier = {
+			name = preserved_the_great_city
+			duration = -1
+		}
+	}
+}
+
+country_event = {
+	id = titanhun.4
+	title = "titanhun.title4"
+	desc = "titanhun.desc4"
+	picture = REVOLUTION_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "hun_hussite_1"
+
+		change_religion = hussite
+	}
+
+	option = {
+		name = "hun_hussite_2"
+
+		add_stability = 1
 	}
 }
 

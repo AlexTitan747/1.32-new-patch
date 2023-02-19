@@ -1,0 +1,41 @@
+namespace = titanCRI
+
+country_event = {
+	id = titanCRI.1
+	title = "titanCRI.1.title"
+	desc = "titanCRI.1.desc"
+	picture = COURT_eventPicture
+
+	is_triggered_only = YES
+
+	option = {
+		name = "titanCRI.1.a"
+
+		add_country_modifier = {
+			name = tm_CRI_integration_of_the_tributaries
+			duration = 9125
+		}
+		add_dip_power = -75
+	}
+
+	option = {
+		name = "titanCRI.1.b"
+
+
+		custom_tooltip = inherit_the_tributaries_TT
+
+		hidden_effect = {
+			if = {
+				limit = {
+					MOL = { is_subject_of_type_with_overlord = { who = CRI type = tributary_state } }
+				}
+				inherit = MOL
+			}
+			inherit = ZAZ
+			inherit = CHR
+		}
+
+		add_adm_power = -150
+		add_dip_power = -200
+	}
+}

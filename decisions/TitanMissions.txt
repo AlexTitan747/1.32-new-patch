@@ -1,0 +1,34 @@
+country_decisions = {
+		
+	tm_pol_activate_a_warplan = {
+		major = yes
+		potential = {
+			OR = {
+				tag = POL
+				tag = PLC
+				}
+			has_country_flag = unlocked_warplans
+		}
+		allow = {
+			OR = {
+			tag = POL
+			tag = PLC
+			}
+			NOT = {
+				has_country_modifier = warplan_pol_cooldown
+			}
+		}
+		effect = {
+		country_event = {
+			id = titanpol.1
+		}
+		custom_tooltip = warplan_cooldown
+		hidden_effect = {
+			add_country_modifier = {
+				name = warplan_pol_cooldown
+				duration = 7300
+				}
+			}
+		}
+	}
+}
