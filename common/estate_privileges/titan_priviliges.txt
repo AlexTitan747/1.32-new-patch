@@ -248,3 +248,54 @@ estate_jains_encourage_production = {
 		}
 	}
 }
+
+estate_burghers_desert_development = {
+	icon = privilege_dev_cost
+	loyalty = 0.1
+	influence = 0.1
+	can_select = {
+		always = no
+	}
+	on_granted = {
+		custom_tooltip = develop_desert_cheaper_tt
+	}
+	is_valid = {
+		NOT = { has_estate = estate_vaisyas }
+	}
+	on_granted_province = {
+		if = {
+			limit = { has_terrain = desert }
+			add_province_modifier = {
+				name = estate_burghers_desert_dev_desert
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_province_modifier = estate_burghers_desert_dev_desert
+			}
+			remove_province_modifier = estate_burghers_desert_dev_desert
+		}
+	}
+	on_revoked_province = {
+		if = {
+			limit = {
+				has_province_modifier = estate_burghers_desert_dev_desert
+			}
+			remove_province_modifier = estate_burghers_desert_dev_desert
+		}
+	}
+	on_invalid_province = {
+		if = {
+			limit = {
+				has_province_modifier = estate_burghers_desert_dev_desert
+			}
+			remove_province_modifier = estate_burghers_desert_dev_desert
+		}
+	}
+	penalties = {
+	}
+	ai_will_do = {
+		factor = 5
+	}
+}
