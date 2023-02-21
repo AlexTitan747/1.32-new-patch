@@ -2,23 +2,14 @@ legitimize_government = {
 	is_blessing = yes
 
 	modifier = {
-		legitimacy = 0.5
+		legitimacy = 1.0
 		horde_unity = 0.5
-		republican_tradition = 0.2
+		republican_tradition = 0.25
 		devotion = 0.5
+		advisor_cost = -0.15
 	}
 	ai_will_do = {
-		factor = 10
-		modifier = {
-			factor = 3
-			NOT = {
-				OR = {
-					legitimacy = 70
-					republican_tradition = 70
-					devotion = 70
-				}
-			}
-		}
+		factor = 1		
 	}
 }
 
@@ -44,7 +35,7 @@ send_monks_to_expand_monasteries = {
 
 	modifier = {
 		global_missionary_strength = 0.02
-		core_creation = -0.10
+		core_creation = -0.15
 	}
 	ai_will_do = {
 		factor = 10
