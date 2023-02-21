@@ -30,7 +30,7 @@ butua_technology = {
 				limit = {
 					has_institution = renaissance
 				}
-				add_stability = 1
+				add_stability_or_adm_power = yes
 			}
 			else = {
 				random_war_enemy_country = {
@@ -311,7 +311,8 @@ buta_monument = {
 					}
 				}
 				add_prestige = 50
-				add_stability = 2
+				add_stability_or_adm_power = yes
+				add_stability_or_adm_power = yes
 				add_adm_power = 100
 			}
 			else_if = {
@@ -324,7 +325,7 @@ buta_monument = {
 					}
 				}
 				add_prestige = 25
-				add_stability = 1
+				add_stability_or_adm_power = yes
 				add_adm_power = 50
 				1184 = {
 					add_great_project_tier = {
@@ -1021,6 +1022,10 @@ butua_expansion = {
 
 		trigger = {
 			OR = {
+				reverse_has_opinion = {
+					who = ETH
+					value = 80
+				}
 				AND = {
 					ETH = {
 						has_been_insulted_by_root = yes
@@ -1031,12 +1036,7 @@ butua_expansion = {
 					value = 10
 					region = horn_of_africa_region 
 				}
-				reverse_has_opinion = {
-					who = ETH
-					value = 80
-				}
-			}
-			
+			}			
 		}
 
 		effect = {
@@ -1054,6 +1054,22 @@ butua_expansion = {
 				ajuuran_area = { remove_claim = ROOT }
 				majarteen_area = { remove_claim = ROOT }
 				set_country_flag = butua_ally_eth
+				define_advisor = {
+					type = diplomat
+					skill = 3
+					culture = ROOT
+					religion = ROOT
+					cost_multiplier = 0.25
+				}
+				ETH = {
+					define_advisor = {
+						type = diplomat
+						skill = 3
+						culture = ROOT
+						religion = ROOT
+						cost_multiplier = 0.25
+					}
+				}
 			}
 			else_if = {
 				limit = {
@@ -1120,7 +1136,7 @@ butua_expansion = {
 
 #Placeholder so player knows what each branch does
 butua_horn_place_holder = {
-	slot = 4
+	slot = 3
 	generic = no
 	ai = yes
 	potential = {
@@ -1138,6 +1154,10 @@ butua_horn_place_holder = {
 
 		trigger = {
 			custom_trigger_tooltip = {
+				custom_trigger_tooltip = {
+				tooltip = butua_horn_place_holder_trigger
+				always = yes
+			}
 				tooltip = butua_horn_place_holder_mission_1_trigger_tooltip_ally
 				always = no
 			}
@@ -1235,6 +1255,10 @@ butua_horn_place_holder = {
 
 		trigger = {
 			custom_trigger_tooltip = {
+				tooltip = butua_horn_place_holder_trigger
+				always = yes
+			}
+			custom_trigger_tooltip = {
 				tooltip = butua_horn_place_holder_mission_2_trigger_tooltip_ally
 				always = no
 			}
@@ -1303,6 +1327,10 @@ butua_horn_place_holder = {
 
 		trigger = {
 			custom_trigger_tooltip = {
+				tooltip = butua_horn_place_holder_trigger
+				always = yes
+			}
+			custom_trigger_tooltip = {
 				tooltip = butua_horn_place_holder_mission_3_trigger_tooltip_ally
 				always = no
 			}
@@ -1319,7 +1347,19 @@ butua_horn_place_holder = {
 		effect = {
 			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_ally
 			tooltip = {
-
+				add_country_modifier = {
+					name = butua_military_coop_with_eth
+					duration = -1
+				}
+				set_country_flag = butua_military_coop_but_eth
+				ETH = {
+					add_country_modifier = {
+						name = butua_military_coop_with_eth
+						duration = -1
+					}
+					set_country_flag = butua_military_coop_but_eth
+				}
+				custom_tooltip = butua_ally_3_tt
 			}
 			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_rival
 			tooltip = {
@@ -1327,14 +1367,25 @@ butua_horn_place_holder = {
 			}
 			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_conq
 			tooltip = {
+				add_stability_or_adm_power = yes
 				add_prestige = 50
+				add_legitimacy = 50
+				add_republican_tradition = 20
+				add_devotion = 20
+				add_horde_unity = 20
+				add_power_projection = {
+					type = buuta_conquest_of_eth_pp
+					amount = 10
+				}
+				custom_tooltip = butua_conquest_of_eth_pp_tt
 			}
 		}
 	}
 }
 
+#Ally Path
 butua_friendly_eth = {
-	slot = 4
+	slot = 3
 	generic = no
 	ai = yes
 	potential = {
@@ -1349,19 +1400,149 @@ butua_friendly_eth = {
 		position = 6
 
 		trigger = {
-			any_country = {
-				
+			alliance_with = ETH
+			reverse_has_opinion = {
+				who = ETH
+				value = 120
+			}
+			ETH = {
+				owes_favors = { 
+					who = ROOT 
+					value = 10 
+				}
+			}
+			trust = { who = ROOT value = 60 }
+			capital_scope ={
+				development = 25
 			}
 		}
 
 		effect = {
+			capital_scope = {
+				area = {
+					add_devastation = -100
+					add_prosperity = 100
+				}
+			}
+			add_country_modifier = {
+				name = butua_advisor_collab
+				duration = 5475
+			}
+			ETH = {
+				capital_scope = {
+					area = {
+						add_devastation = -100
+						add_prosperity = 100
+					}
+				}
+				add_country_modifier = {
+					name = butua_advisor_collab
+					duration = 5475
+				}
+			}
+		}
+	}
+
+	butua_ally_eth_path_2 = {
+		icon = test
+		required_missions = { butua_ally_eth_path_1 }
+
+		trigger = {
+			alliance_with = ETH
+			reverse_has_opinion = {
+				who = ETH
+				value = 120
+			}
+			trust = { who = ROOT value = 70 }
+			num_of_owned_provinces_with = {
+				value = 5
+				trade_goods = gold
+				base_production = 10
+			}
+			ETH = {
+				num_of_owned_provinces_with = {
+					value = 2
+					trade_goods = gold
+					base_production = 12
+				}
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = butua_coloborating_on_gold
+				duration = 7300
+			}
+			random_owned_province = {
+				limit = {
+					trade_goods = gold
+				}
+				add_base_production = 3
+				add_province_modifier = {
+					name = butua_coloborating_on_gold_prov
+				}
+			}
+			ETH = {
+				add_country_modifier = {
+					name = butua_coloborating_on_gold
+					duration = 7300
+				}
+				random_owned_province = {
+					limit = {
+						trade_goods = gold
+					}
+					add_base_production = 3
+					add_province_modifier = {
+						name = butua_coloborating_on_gold_prov
+					}
+				}
+			}
 			
+		}
+	}
+
+	butua_ally_eth_path_3 = {
+		icon = test
+		required_missions = { butua_ally_eth_path_2 }
+
+		trigger = {
+			alliance_with = ETH
+			reverse_has_opinion = {
+				who = ETH
+				value = 120
+			}
+			trust = { who = ROOT value = 75 }
+			army_size = 40
+			army_size_percentage = 0.9
+			army_professionalism = 0.10
+			ETH = {
+				army_size = 50
+				army_size_percentage = 0.75
+				army_professionalism = 0.10
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = butua_military_coop_with_eth
+				duration = -1
+			}
+			set_country_flag = butua_military_coop_but_eth
+			ETH = {
+				add_country_modifier = {
+					name = butua_military_coop_with_eth
+					duration = -1
+				}
+				set_country_flag = butua_military_coop_but_eth
+			}
+			custom_tooltip = butua_ally_3_tt
 		}
 	}
 }
 
+#Rival Path
 butua_rival_eth = {
-	slot = 4
+	slot = 3
 	generic = no
 	ai = yes
 	potential = {
@@ -1385,8 +1566,9 @@ butua_rival_eth = {
 	}
 }
 
+#Conquest Path
 butua_fight_eth_alone = {
-	slot = 4
+	slot = 3
 	generic = no
 	ai = yes
 	potential = {
@@ -1400,12 +1582,122 @@ butua_fight_eth_alone = {
 		required_missions = { butua_horn_of_africa_advance }
 		position = 6
 
+		provinces_to_highlight = {
+			region = horn_of_africa_region
+			NOT = {	country_or_non_sovereign_subject_holds = ROOT }
+		}
+
 		trigger = {
-			
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 20
+
+				region = horn_of_africa_region
+			}
 		}
 
 		effect = {
-			
+			hadiya_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			shewa_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			southern_ethiopia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			damot_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			central_ethiopia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			tigray_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	butua_conquer_eth_path_2 = {
+		icon = test
+		required_missions = { butua_conquer_eth_path_1 }
+
+		provinces_to_highlight = {
+			region = horn_of_africa_region
+			NOT = {	country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 30
+
+				region = horn_of_africa_region
+			}
+		}
+
+		effect = {
+			horn_of_africa_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	butua_conquer_eth_path_3 = {
+		icon = test
+		required_missions = { butua_conquer_eth_path_2 }
+
+		provinces_to_highlight = {
+			region = horn_of_africa_region
+			NOT = {	country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 50
+
+				region = horn_of_africa_region
+			}
+		}
+
+		effect = {
+			add_stability_or_adm_power = yes
+			add_prestige = 50
+			add_legitimacy = 50
+			add_republican_tradition = 20
+			add_devotion = 20
+			add_horde_unity = 20
+			add_power_projection = {
+				type = buuta_conquest_of_eth_pp
+				amount = 10
+			}
+			custom_tooltip = butua_conquest_of_eth_pp_tt
 		}
 	}
 }

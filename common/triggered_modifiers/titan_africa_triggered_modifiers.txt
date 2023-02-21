@@ -12,3 +12,31 @@ butua_lakes_colonisation_triggered_modifier = {
 	global_colonial_growth = 75
 	colonist_placement_chance = 0.10
 }
+
+buuta_improved_military_coop_with_eth = {
+	potential = {
+		has_country_flag = butua_military_coop_but_eth
+	}
+
+	trigger = {
+		OR = {
+			is_in_war = {
+				attacker_leader = ROOT
+			}
+			is_in_war = {
+				defender_leader = ROOT
+			}
+			is_in_war = {
+				attacker_leader = ETH
+			}
+			is_in_war = {
+				defender_leader = ETH
+			}
+		}
+	}
+
+	land_morale = 0.05
+    defensiveness = 0.15
+    reinforce_speed = 0.10
+    manpower_recovery_speed = 0.10
+}

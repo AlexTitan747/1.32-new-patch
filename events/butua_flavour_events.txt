@@ -150,12 +150,202 @@ country_event = {
 		name = butua_flavour.4.b
 
 		trigger = {
-			exists = TUR
-			TUR = {
-				total_development = ETH
-				total_development = SOM
+			any_country = {
+				any_neighbor_country = {
+					tag = ETH
+				}
+				NOT = { has_country_flag = no_help_for_but_against_eth }
 			}
-			
 		}
+
+		random_country = {
+			limit = {
+				any_neighbor_country = {
+					tag = ETH
+				}
+				NOT = { has_country_flag = no_help_for_but_against_eth }
+			}
+
+			country_event = {
+				id = butua_flavour.5
+			}
+		}
+	}
+
+	option = { 
+		name = butua_flavour.4.c
+
+		trigger = {
+			any_country = {
+				any_rival_country = {
+					tag = ETH
+				}
+				NOT = { has_country_flag = no_help_for_but_against_eth }
+			}
+		}
+
+		random_country = {
+			limit = {
+				any_rival_country = {
+					tag = ETH
+				}
+				NOT = { has_country_flag = no_help_for_but_against_eth }
+			}
+
+			country_event = {
+				id = butua_flavour.5
+			}
+		}
+	}
+
+	option = { 
+		name = butua_flavour.4.d
+
+		trigger = {
+			any_country = {
+				OR = {
+					tag = MAM
+					tag = OMA
+					tag = TUR
+					tag = MOR
+				}
+				NOT = { has_country_flag = no_help_for_but_against_eth }
+			}
+		}
+
+		random_country = {
+			limit = {
+				OR = {
+					tag = MAM
+					tag = OMA
+					tag = TUR
+					tag = MOR
+				}
+				NOT = { has_country_flag = no_help_for_but_against_eth }
+			}
+
+			country_event = {
+				id = butua_flavour.5
+			}
+		}
+	}
+}
+
+country_event = { #Ask for support against Eth
+    id = butua_flavour.5
+    title = butua_flavour.5.t
+    desc = butua_flavour.5.d
+	picture = SHWEDAGON_PAGON_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		always = yes
+	}
+	
+	option = { #Accept with claims
+		name = butua_flavour.5.a
+
+		trigger = {
+			any_neighbor_country = {
+				tag = ETH
+			}
+		}
+
+		RZW = {
+			country_event = {
+				id = butua_flavour.8
+			}
+		}
+	}
+
+	option = { #Accept with Support
+		name = butua_flavour.5.b
+
+		RZW = {
+			country_event = {
+				id = butua_flavour.7
+			}
+		}
+	}
+
+	option = { #Reject
+		name = butua_flavour.5.c
+
+		set_country_flag = no_help_for_but_against_eth
+
+		RZW = {
+			country_event = {
+				id = butua_flavour.6
+			}
+		}
+	}
+}
+
+country_event = { #They said no
+    id = butua_flavour.6
+    title = butua_flavour.6.t
+    desc = butua_flavour.6.d
+	picture = SHWEDAGON_PAGON_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		trigger = RZW
+	}
+	
+	option = { #Return to conquest
+		name = butua_flavour.6.a
+
+		clr_country_flag = butua_rival_eth
+		set_country_flag = butua_fight_eth_alone
+		hidden_effect = {
+			swap_non_generic_missions = yes
+		}
+		custom_tooltip = buuta_go_it_alone_anyway
+	}
+
+	option = { #Try again
+		name = butua_flavour.6.b
+
+		country_event = {
+			id = butua_flavour.4
+		}
+	}
+}
+
+country_event = { #Yes with support
+    id = butua_flavour.7
+    title = butua_flavour.7.t
+    desc = butua_flavour.7.d
+	picture = SHWEDAGON_PAGON_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		trigger = RZW
+	}
+	
+	option = { 
+		name = butua_flavour.7.a
+		
+	}
+}
+
+country_event = { #Yes with claims
+    id = butua_flavour.8
+    title = butua_flavour.8.t
+    desc = butua_flavour.8.d
+	picture = SHWEDAGON_PAGON_eventPicture
+	
+	is_triggered_only = yes
+
+	trigger = {
+		trigger = RZW
+	}
+	
+	option = { 
+		name = butua_flavour.8.a
+
 	}
 }
