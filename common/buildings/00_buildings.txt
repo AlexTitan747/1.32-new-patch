@@ -3717,7 +3717,6 @@ imperial_tax_office = {
 			type = tax
 			value = 2
 		}
-		custom_tooltip = dif_university_dev_cost_tt
 		hidden_effect = { owner = { save_event_target_as = new_owner } }
 		area = {
 			if = {
@@ -3767,3 +3766,134 @@ imperial_tax_office = {
 	}
 }
 
+imperial_trade_office = {
+	cost = 1500
+	time = 30
+	modifier = {
+		province_trade_power_modifier = 0.20
+	}
+
+	build_trigger = {
+		NOT = {
+			any_owned_province = {
+				has_building = imperial_trade_office
+				has_construction = imperial_trade_office
+			}
+		}
+	}
+	
+	keep_trigger = {
+		NOT = {
+			area_for_scope_province = {
+				NOT = { province_id = root }
+				owner = {
+					tag = ROOT
+				}
+				OR = {
+					has_building = imperial_trade_office
+					has_construction = imperial_trade_office
+				}
+			}
+		}
+	}
+
+	on_built = {
+		add_development_from_building = {
+			building = imperial_trade_office
+			type = production
+			value = 2
+		}
+		hidden_effect = { owner = { save_event_target_as = new_owner } }
+		area = {
+			if = {
+				limit = {
+					owned_by = event_target:new_owner
+					NOT = { has_province_modifier = imperial_trade_office_local_mod }
+				}
+				add_province_modifier = {
+					name = imperial_trade_office_local_mod
+					duration = -1
+				}
+			}
+		}
+	}
+	on_destroyed = {
+		remove_development_from_building = {
+			building = imperial_trade_office
+			type = production
+			value = 2
+		}
+		hidden_effect = { owner = { save_event_target_as = new_owner } }
+		if = {
+			limit = {
+				NOT = {
+					area_for_scope_province = {
+						owned_by = FROM
+						has_building = imperial_trade_office
+					}
+				}
+			}
+			area = {
+				if = {
+					limit = {
+						owned_by = event_target:new_owner
+						has_province_modifier = imperial_trade_office_local_mod
+					}
+					remove_province_modifier = imperial_trade_office_local_mod
+				}
+			}
+		}
+	}
+
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+	}
+}
+
+grand_fortress = {
+	cost = 1000
+	time = 30
+	modifier = {
+		local_defender_dice_roll_bonus = 1
+	}
+
+	build_trigger = {
+		NOT = {
+			any_owned_province = {
+				has_building = grand_fortress
+				has_construction = grand_fortress
+			}
+		}
+		has_fort_building_trigger = yes
+	}
+	
+	keep_trigger = {
+		NOT = {
+			area_for_scope_province = {
+				NOT = { province_id = root }
+				owner = {
+					tag = ROOT
+				}
+				OR = {
+					has_building = grand_fortress
+					has_construction = grand_fortress
+				}
+			}
+		}
+	}
+
+	on_built = {
+		
+	}
+	on_destroyed = {
+		
+	}
+
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+	}
+}
