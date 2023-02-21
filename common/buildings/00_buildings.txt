@@ -3766,6 +3766,7 @@ imperial_tax_office = {
 	}
 }
 
+<<<<<<< Updated upstream
 imperial_trade_office = {
 	cost = 1500
 	time = 30
@@ -3897,3 +3898,109 @@ grand_fortress = {
 	ai_will_do = {
 	}
 }
+
+
+## Developed Goods ##
+
+dairy_farm = {
+	cost = 1000
+	time = 12
+	
+	build_trigger = {
+		AND = {	
+			NOT = {
+				trade_goods = livestock
+			}
+		}
+		FROM = {
+			dip_tech = 7
+			root = {
+				has_production_building = yes
+				development = 10
+			}
+			trading_part = {
+                trade_goods = livestock
+                value = 0.05
+            }
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = cheese
+					value = 1.0
+				}
+			
+				change_variable = {
+					which = cheese
+					value = 1.0
+				}
+			
+				change_variable = {
+					which = dairy_farm_amount
+					value = 1
+				}
+				
+			}
+			
+			ROOT = {
+				change_trade_goods = cheese
+			}
+		}
+
+	}
+	
+	on_destroyed = {
+		hidden_effect = {
+			if = {	
+				limit = {
+					ROOT = {
+						NOT = { has_building = dairy_farm }
+					}
+				}
+				FROM = {
+					change_variable = {            
+						which = cheese
+						value = 1.0
+					}
+				
+					subtract_variable = {            
+						which = lead_used
+						value = 1.0
+					}
+				}
+			}
+			ROOT = {
+				remove_building = dairy_farm
+			}
+			
+			FROM = {
+				subtract_variable = {            
+					which = dairy_farm_amount
+					value = 1
+				}
+				
+			}
+			
+		}
+	}
+	
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}	
+	
+	ai_will_do = {
+		factor = 3000
+
+		modifier = {	
+			factor = 0
+			FROM = {
+				cheese = 2
+			}
+		}
+	}
+}
+
