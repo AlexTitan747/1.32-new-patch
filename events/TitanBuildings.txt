@@ -1,0 +1,155 @@
+namespace = tbuildings
+
+#cultural ministry events
+
+#assimilation drive
+country_event = {
+	id = tbuildings.1
+	title = "tbuildings.1"
+	desc = "tbuildings.desc1"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		advisor = master_of_assimilation
+		OR = {
+			government_rank = 3
+			has_unified_culture_group = yes
+		}
+	}
+	mean_time_to_happen = {
+		months = 240
+	}
+	
+	
+	option = {		
+	name = "tbuildings.a1"
+		
+	}
+
+	option = {		
+	name = "tbuildings.a2"
+			
+	}
+}
+
+#nobility ask for cultrual supremacy
+country_event = {
+	id = tbuildings.2
+	title = "tbuildings.2"
+	desc = "tbuildings.desc2"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		OR = {
+		has_estate_privilege = estate_nobles_supremacy_over_crown
+		has_estate_privilege = estate_brahmins_supremacy_over_crown
+		estate_influence = {
+			estate = estate_nobles
+			influence = 75
+		}
+		}
+	}
+	mean_time_to_happen = {
+		months = 240
+	}
+	
+	
+	option = {		
+	name = "tbuildings.b1"
+		
+	}
+
+	option = {		
+	name = "tbuildings.b2"
+			
+	}
+}
+
+#multicultrual approach?
+country_event = {
+	id = tbuildings.3
+	title = "tbuildings.3"
+	desc = "tbuildings.desc3"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		is_year = 1600
+		innovativeness = 20
+		legitimacy_equivalent = 95
+		num_of_different_cultures_in_court = 4
+	}
+	mean_time_to_happen = {
+		months = 240
+	}
+	
+	
+	option = {		
+	name = "tbuildings.c1"
+		
+	}
+
+	option = {		
+	name = "tbuildings.c2"
+			
+	}
+}
+
+#increased cultural unrest
+country_event = {
+	id = tbuildings.4
+	title = "tbuildings.4"
+	desc = "tbuildings.desc4"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		unrest = 2
+		legitimacy_equivalent = 75
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	
+	
+	option = {		
+	name = "tbuildings.d1"
+		
+	}
+
+	option = {		
+	name = "tbuildings.d2"
+			
+	}
+}
+
+#cultural crisis
+country_event = {
+	id = tbuildings.5
+	title = "tbuildings.5"
+	desc = "tbuildings.desc5"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		NOT = {
+			primary_culture = primary_culture
+		}
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	
+	
+	option = {		
+	name = "tbuildings.e1"
+		
+	}
+
+	option = {		
+	name = "tbuildings.e2"
+			
+	}
+}
