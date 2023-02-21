@@ -3851,3 +3851,49 @@ imperial_trade_office = {
 	ai_will_do = {
 	}
 }
+
+grand_fortress = {
+	cost = 1000
+	time = 30
+	modifier = {
+		local_defender_dice_roll_bonus = 1
+	}
+
+	build_trigger = {
+		NOT = {
+			any_owned_province = {
+				has_building = grand_fortress
+				has_construction = grand_fortress
+			}
+		}
+		has_fort_building_trigger = yes
+	}
+	
+	keep_trigger = {
+		NOT = {
+			area_for_scope_province = {
+				NOT = { province_id = root }
+				owner = {
+					tag = ROOT
+				}
+				OR = {
+					has_building = grand_fortress
+					has_construction = grand_fortress
+				}
+			}
+		}
+	}
+
+	on_built = {
+		
+	}
+	on_destroyed = {
+		
+	}
+
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+	}
+}
