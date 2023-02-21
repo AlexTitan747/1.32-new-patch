@@ -3885,8 +3885,61 @@ grand_fortress = {
 	}
 
 	on_built = {
+
+	}
+	on_destroyed = {
 		
 	}
+
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+	}
+}
+
+cultural_ministry = {
+	cost = 2000
+	time = 30
+	modifier = {
+		num_accepted_cultures = 2
+		diplomatic_reputation = 1
+	}
+
+	build_trigger = {
+		NOT = {
+			any_owned_province = {
+				has_building = diplomatic_embassy
+				has_construction = diplomatic_embassy
+			}
+		}
+		has_fort_building_trigger = yes
+	}
+	
+	keep_trigger = {
+		NOT = {
+			area_for_scope_province = {
+				NOT = { province_id = root }
+				owner = {
+					tag = ROOT
+				}
+				OR = {
+					has_building = diplomatic_embassy
+					has_construction = diplomatic_embassy
+				}
+			}
+		}
+	}
+
+	on_built = {
+		tooltip = cultural_ministry_events
+		hidden_effect = {
+			owner = {
+				set_country_flag = has_cultural_ministry
+			}
+		}
+	}
+
 	on_destroyed = {
 		
 	}
