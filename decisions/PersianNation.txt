@@ -3,6 +3,7 @@ country_decisions = {
 	persian_nation = {
 		major = yes
 		potential = {
+			has_country_flag = tm_AFG_zoro
 			normal_or_historical_nations = yes
 			was_never_end_game_tag_trigger = yes
 			NOT = { has_country_flag = formed_persia_flag }
@@ -39,34 +40,12 @@ country_decisions = {
 		}
 		provinces_to_highlight = {
 			OR = {
-				province_id = 414		# Hamadan
 				province_id = 429		# Isfahan
+				province_id = 432		# Kerman
 				province_id = 433		# Yazd
 				province_id = 2213		# Qom
 				province_id = 2215		# Qazvin
-				AND = {
-					province_id = 426
-					ROOT = { NOT = { owns_core_province = 2218 } }
-				}
-				AND = {
-					province_id = 2218
-					ROOT = { NOT = { owns_core_province = 426 } }
-				}
-				AND = {
-					province_id = 416
-					ROOT = { NOT = { owns_core_province = 432 } }
-					ROOT = { NOT = { owns_core_province = 2221 } }
-				}
-				AND = {
-					province_id = 432
-					ROOT = { NOT = { owns_core_province = 416 } }
-					ROOT = { NOT = { owns_core_province = 2221 } }
-				}
-				AND = {
-					province_id = 2221
-					ROOT = { NOT = { owns_core_province = 416 } }
-					ROOT = { NOT = { owns_core_province = 432 } }
-				}
+
 			}
 			OR = {
 				NOT = { owned_by = ROOT }
@@ -78,22 +57,12 @@ country_decisions = {
 			is_nomad = no
 			is_at_war = no
 			is_tribal = no
-			adm_tech = 10
 			NOT = { exists = PER }
-			owns_core_province = 414		# Hamadan
 			owns_core_province = 429		# Isfahan
+			owns_core_province = 432		# Kerman
 			owns_core_province = 433		# Yazd
 			owns_core_province = 2213		# Qom
-			owns_core_province = 2215		# Qazvin
-			OR = {
-				owns_core_province = 426		# Amol
-				owns_core_province = 2218		# Shiraz
-			}
-			OR = {
-				owns_core_province = 416		# Tabriz
-				owns_core_province = 432		# Kerman
-				owns_core_province = 2221		# Mashhad
-			}
+			owns_core_province = 2221		# Mashhad
 		}
 		effect = {
 			change_tag = PER
