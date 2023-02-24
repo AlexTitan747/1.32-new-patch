@@ -18,7 +18,7 @@ country_event = {
 		}
 	}
 	mean_time_to_happen = {
-		months = 240
+		months = 180
 	}
 	
 	
@@ -52,13 +52,12 @@ country_event = {
 		}
 	}
 	mean_time_to_happen = {
-		months = 240
+		months = 120
 	}
 	
 	
 	option = {		
 	name = "tbuildings.b1"
-		
 	}
 
 	option = {		
@@ -74,12 +73,15 @@ country_event = {
 	desc = "tbuildings.desc3"
 	picture = BUDDHA_eventPicture
 
+	fire_only_once = yes
+
 	trigger = {
 		has_country_flag = has_cultural_ministry
 		is_year = 1600
 		innovativeness = 20
 		legitimacy_equivalent = 95
 		num_of_different_cultures_in_court = 4
+		master_of_assimilation = 3
 	}
 	mean_time_to_happen = {
 		months = 240
@@ -106,8 +108,9 @@ country_event = {
 
 	trigger = {
 		has_country_flag = has_cultural_ministry
-		unrest = 2
+		average_unrest = 2
 		legitimacy_equivalent = 75
+		
 	}
 	mean_time_to_happen = {
 		months = 60
@@ -134,8 +137,27 @@ country_event = {
 
 	trigger = {
 		has_country_flag = has_cultural_ministry
+
+		dominant_culture = new_variable:domculture
+		culture = new_variable:culture
+		ruler_culture = new_variable:rulerculture
+		heir_culture = new_variable:heirculture
+
 		NOT = {
-			primary_culture = primary_culture
+			OR ={
+				is_variable_equal = {
+					which = domculture
+					which = culture
+				}
+				is_variable_equal = {
+					which = rulerculture
+					which = culture
+				}
+				is_variable_equal = {
+					which = heirculture
+					which = culture
+				}
+			}
 		}
 	}
 	mean_time_to_happen = {
