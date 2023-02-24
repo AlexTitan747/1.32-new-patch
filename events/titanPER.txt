@@ -46,6 +46,11 @@ country_event = {
 			name = tm_PER_armenian_march
 			duration = 5475
 		}
+		add_country_modifier = {
+			name = tm_PER_armenia_integration_event_cd
+			duration = 18250
+			hidden = yes
+		}
 	}
 
 	option = {
@@ -111,7 +116,7 @@ country_event = {
 	picture = COURT_eventPicture
 
 	fire_only_once = yes
-
+	major = yes
 	is_triggered_only = yes #Persian Mission (tm_PER_branch1_mission_3)
 
 	option = {
@@ -132,5 +137,44 @@ country_event = {
 		4330 = {
 			change_trade_goods = wine
 		}
+	}
+}
+
+country_event = {
+	id = titanper.3
+	title = titanper.3.title
+	desc = titanper.3.desc
+	picture = COURT_eventPicture
+
+	fire_only_once = yes
+
+	mean_time_to_happen = {
+		months = 600
+
+		modifier = {
+			factor = 0.5
+			NOT = { stability = 3 }
+		}
+		modifier = {
+			factor = 0.3
+			ARM = { NOT = { liberty_desire = 50 } }
+		}
+	}
+
+	trigger = {
+		NOT = { has_country_modifier = tm_PER_armenia_integration_event_cd }
+		ARM = {
+			is_subject_of_type_with_overlord = { who = PER type = march }
+		}
+	}
+
+	option = {
+		ARM = {
+			every_owned_province = {
+				cede_province = PER
+				add_core = PER
+			}
+		}
+		add_dip_power = -150
 	}
 }
