@@ -4021,6 +4021,7 @@ dairy_farm = {
 			}
 			ROOT = {
 				remove_building = dairy_farm
+				change_trade_goods = livestock
 			}
 			
 			FROM = {
@@ -4028,7 +4029,6 @@ dairy_farm = {
 					which = dairy_farm_amount
 					value = 1
 				}
-				change_trade_goods = livestock
 			}
 		}
 	}
@@ -4045,6 +4045,188 @@ dairy_farm = {
 			factor = 0
 			FROM = {
 				cheese = 2
+			}
+		}
+	}
+}
+
+ale_house = {
+		cost = 250
+		time = 12
+		
+	build_trigger = {
+	
+		trade_goods = grain
+	
+		FROM = {
+			dip_tech = 7
+				root = {
+					has_production_building = yes
+					development = 10
+				}
+			}
+		}
+		
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = ale
+					value = 1.0
+				}
+			
+				change_variable = {
+					which = ale	
+					value = 1.0
+				}			
+				change_variable = {
+					which = ale_house_amount
+					value = 1
+					}				
+				}
+				ROOT = {
+					change_trade_goods = ale
+				}
+			}
+		}
+		
+		on_destroyed = {
+			hidden_effect = {
+				if = {
+					limit = {
+						ROOT = {
+							NOT = { has_building = ale_house }
+						}
+					}
+					FROM = {
+						change_variable = {            
+							which = ale
+							value = 1.0
+						}
+					
+						subtract_variable = {            
+							which = lead_used
+							value = 1.0
+						}
+					}
+				}
+				ROOT = {
+					remove_building = ale_house
+					change_trade_goods = grain
+				}
+				
+				FROM = {
+					subtract_variable = {            
+						which = ale_house_amount
+						value = 1
+					}
+				}
+			}
+		}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}	
+		
+	ai_will_do = {
+		factor = 3000
+
+		modifier = {	
+			factor = 0
+			FROM = {
+				ale = 2
+			}
+		}
+	}
+}
+
+olive_oil_mill = {
+	cost = 250
+	time = 12
+	
+	build_trigger = {
+
+	trade_goods = olives
+
+		FROM = {
+			dip_tech = 7
+				root = {
+					has_production_building = yes
+					development = 10
+				}
+			}
+		}
+	
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = olives
+					value = 1.0
+				}
+	
+				change_variable = {
+					which = olives
+					value = 1.0
+				}			
+				change_variable = {
+					which = olive_oil_mill_amount
+					value = 1
+					}				
+				}
+				ROOT = {
+					change_trade_goods = olive_oil
+				}
+			}
+		}
+	
+	on_destroyed = {
+		hidden_effect = {
+			if = {
+				limit = {
+					ROOT = {
+						NOT = { has_building = olive_oil_mill }
+					}
+				}
+				FROM = {
+					change_variable = {            
+						which = olive_oil
+						value = 1.0
+					}
+				
+					subtract_variable = {            
+						which = lead_used
+						value = 1.0
+					}
+				}
+			}
+			ROOT = {
+				remove_building = olive_oil_mill
+				change_trade_goods = olives
+			}
+			
+			FROM = {
+				subtract_variable = {            
+					which = olive_oil_mill_amount
+					value = 1
+				}
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}	
+	
+	ai_will_do = {
+		factor = 3000
+
+		modifier = {
+			factor = 0
+			FROM = {
+				olive_oil = 2
 			}
 		}
 	}
