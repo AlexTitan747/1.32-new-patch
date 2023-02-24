@@ -44,6 +44,7 @@ country_decisions = {
 				province_id = 432		# Kerman
 				province_id = 433		# Yazd
 				province_id = 2213		# Qom
+				province_id = 2215      # Qazvin
 				province_id = 2221		# Mashhad
 
 			}
@@ -62,12 +63,26 @@ country_decisions = {
 			owns_core_province = 432		# Kerman
 			owns_core_province = 433		# Yazd
 			owns_core_province = 2213		# Qom
-			owns_core_province = 2221		# Mashhad
+			OR = {
+				owns_core_province = 2221		# Mashhad
+				owns_core_province = 2215       # Qazvin
+			}
 		}
 		effect = {
 			change_tag = PER
 			swap_non_generic_missions = yes
 			remove_non_electors_emperors_from_empire_effect = yes
+			define_ruler = {
+				male = yes
+				dynasty = "Achaemenes"
+				adm = 5
+				dip = 4
+				mil = 5
+				religion = ROOT
+				culture = ROOT
+				max_age = 22
+				claim = 100
+			}
 			if = {
 				limit = {
 					NOT = { government = monarchy }
@@ -85,13 +100,6 @@ country_decisions = {
 					has_reform = states_general_reform
 				}
 				remove_government_reform = states_general_reform
-			}
-			persia_region = {
-				limit = {
-					NOT = { owned_by = ROOT }
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = PER
 			}
 			add_country_modifier = {
 				name = "centralization_modifier"
