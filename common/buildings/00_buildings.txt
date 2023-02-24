@@ -3956,21 +3956,19 @@ dairy_farm = {
 	time = 12
 	
 	build_trigger = {
-		AND = {	
-			NOT = {
-				trade_goods = livestock
-			}
-		}
+
+		trade_goods = livestock
+
 		FROM = {
 			dip_tech = 7
 			root = {
 				has_production_building = yes
 				development = 10
-			}
-			trading_part = {
-                trade_goods = livestock
-                value = 0.05
-            }
+		}
+#			trading_part = {
+#               trade_goods = livestock
+#               value = 0.05
+#            }
 		}
 	}
 	
@@ -4003,7 +4001,7 @@ dairy_farm = {
 	
 	on_destroyed = {
 		hidden_effect = {
-			if = {	
+			if = {
 				limit = {
 					ROOT = {
 						NOT = { has_building = dairy_farm }
@@ -4030,9 +4028,8 @@ dairy_farm = {
 					which = dairy_farm_amount
 					value = 1
 				}
-				
+				change_trade_goods = livestock
 			}
-			
 		}
 	}
 	
