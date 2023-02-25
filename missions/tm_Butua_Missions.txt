@@ -349,7 +349,7 @@ buta_monument = {
 }
 
 #Start of colonising South Africa
-buuta_south_afirca_start = {
+butua_south_africa_start = {
 	slot = 2
 	generic = no
 	ai = yes
@@ -365,6 +365,7 @@ buuta_south_afirca_start = {
 			NOT = { owned_by = ROOT }
 			region = south_africa_region
 		}
+		position = 4
 
 		trigger = {
 			num_of_owned_provinces_with = {
@@ -376,7 +377,6 @@ buuta_south_afirca_start = {
 		effect = {
 			country_event = {
 				id = butua_flavour.3
-				days = 1
 				tooltip = butua_colonising_event_insight_tooltip
 			}
         }
@@ -501,6 +501,7 @@ butua_empire_of_sa = {
 				name = "butua_empire_of_south_africa"
 				duration = -1
 			}
+			override_country_name = EMPIRE_OF_SOUTH_AFRICA
 		}       
 	}
 
@@ -805,7 +806,6 @@ butua_into_lakes = {
 	}
 }
 
-
 #Gives claims and direction for expansion
 butua_expansion = {
 	slot = 4
@@ -1070,6 +1070,9 @@ butua_expansion = {
 						cost_multiplier = 0.25
 					}
 				}
+				hidden_effect = {
+					swap_non_generic_missions = yes
+				}
 			}
 			else_if = {
 				limit = {
@@ -1082,10 +1085,12 @@ butua_expansion = {
 				}
 				country_event = {
 					id = butua_flavour.4
-					days = 1
 					tooltip = butua_seek_help_tooltip_event
 				}
 				set_country_flag = butua_rival_eth
+				hidden_effect = {
+					swap_non_generic_missions = yes
+				}
 			}
 			else_if = {
 				limit = {
@@ -1123,6 +1128,9 @@ butua_expansion = {
 					add_permanent_claim = ROOT
 				}
 				set_country_flag = butua_fight_eth_alone
+				hidden_effect = {
+					swap_non_generic_missions = yes
+				}
 			}
 			else = {
 				custom_tooltip = butua_ethiopia_branch_mission_1_tooltip
@@ -1154,10 +1162,6 @@ butua_horn_place_holder = {
 
 		trigger = {
 			custom_trigger_tooltip = {
-				custom_trigger_tooltip = {
-				tooltip = butua_horn_place_holder_trigger
-				always = yes
-			}
 				tooltip = butua_horn_place_holder_mission_1_trigger_tooltip_ally
 				always = no
 			}
@@ -1179,6 +1183,9 @@ butua_horn_place_holder = {
 						add_devastation = -100
 						add_prosperity = 100
 					}
+					add_base_manpower = 2
+					add_base_production = 2
+					add_base_tax = 2
 				}
 				add_country_modifier = {
 					name = butua_advisor_collab
@@ -1190,6 +1197,9 @@ butua_horn_place_holder = {
 							add_devastation = -100
 							add_prosperity = 100
 						}
+						add_base_manpower = 2
+						add_base_production = 2
+						add_base_tax = 2
 					}
 					add_country_modifier = {
 						name = butua_advisor_collab
@@ -1199,7 +1209,12 @@ butua_horn_place_holder = {
 			}
 			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_rival
 			tooltip = {
-
+				add_casus_belli = {
+					target = ETH
+					type = cb_vassalize_mission
+					months = 240
+				}
+				custom_tooltip = butua_ask_for_help_eth_mission_tt
 			}
 			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_conq
 			tooltip = {
@@ -1255,10 +1270,6 @@ butua_horn_place_holder = {
 
 		trigger = {
 			custom_trigger_tooltip = {
-				tooltip = butua_horn_place_holder_trigger
-				always = yes
-			}
-			custom_trigger_tooltip = {
 				tooltip = butua_horn_place_holder_mission_2_trigger_tooltip_ally
 				always = no
 			}
@@ -1283,9 +1294,10 @@ butua_horn_place_holder = {
 					limit = {
 						trade_goods = gold
 					}
-					add_base_production = 2
+					add_base_production = 3
 					add_province_modifier = {
 						name = butua_coloborating_on_gold_prov
+						duration = 7300
 					}
 				}
 				ETH = {
@@ -1297,23 +1309,43 @@ butua_horn_place_holder = {
 						limit = {
 							trade_goods = gold
 						}
-						add_base_production = 2
+						add_base_production = 3
 						add_province_modifier = {
 							name = butua_coloborating_on_gold_prov
+							duration = 7300
 						}
 					}
 				}
 			}
 			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_rival
 			tooltip = {
-
+				reverse_add_opinion = {
+					who = ETH
+					modifier = opinion_friendliness
+				}
+				ETH = {
+					add_liberty_desire = -10
+				}
+				add_country_modifier = {
+					name = butua_exploiting_eth
+					duration = 3650
+				}
+				ETH = {
+					every_owned_province = {
+						limit = {
+							trade_goods = gold
+						}
+						add_base_production = 2
+						add_base_manpower = 2
+					}
+				}
 			}
 			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_conq
 			tooltip = {
 				horn_of_africa_region = {
 					limit = {
 						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_permanent_claim = ROOT }  
 					}
 					add_permanent_claim = ROOT
 				}
@@ -1326,10 +1358,6 @@ butua_horn_place_holder = {
 		required_missions = { butua_horn_place_holder_mission_2 }
 
 		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = butua_horn_place_holder_trigger
-				always = yes
-			}
 			custom_trigger_tooltip = {
 				tooltip = butua_horn_place_holder_mission_3_trigger_tooltip_ally
 				always = no
@@ -1363,7 +1391,10 @@ butua_horn_place_holder = {
 			}
 			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_rival
 			tooltip = {
-
+				inherit = ETH
+				add_country_modifier = {
+					name = butua_legacy_cawa
+				}
 			}
 			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_conq
 			tooltip = {
@@ -1423,6 +1454,9 @@ butua_friendly_eth = {
 					add_devastation = -100
 					add_prosperity = 100
 				}
+				add_base_manpower = 2
+				add_base_production = 2
+				add_base_tax = 2
 			}
 			add_country_modifier = {
 				name = butua_advisor_collab
@@ -1434,6 +1468,9 @@ butua_friendly_eth = {
 						add_devastation = -100
 						add_prosperity = 100
 					}
+					add_base_manpower = 2
+					add_base_production = 2
+					add_base_tax = 2
 				}
 				add_country_modifier = {
 					name = butua_advisor_collab
@@ -1557,11 +1594,85 @@ butua_rival_eth = {
 		position = 6
 
 		trigger = {
+			OR = {
+				army_size = ETH
+				army_size = 40
+			}
+		}
+
+		effect = {
+			add_casus_belli = {
+				target = ETH
+				type = cb_vassalize_mission
+				months = 240
+			}
+			custom_tooltip = butua_ask_for_help_eth_mission_tt
+		}
+	}
+
+	butua_rival_eth_path_2 = {
+		icon = test
+		required_missions = { butua_rival_eth_path_1 }
+
+		trigger = {
+			ETH = {
+				is_subject_of = ROOT 
+				NOT = { liberty_desire = 80 }
+			}
 			
 		}
 
 		effect = {
-			
+			reverse_add_opinion = {
+				who = ETH
+				modifier = opinion_friendliness
+			}
+			ETH = {
+				add_liberty_desire = -10
+			}
+			add_country_modifier = {
+				name = butua_exploiting_eth
+				duration = 3650
+			}
+			ETH = {
+				every_owned_province = {
+					limit = {
+						trade_goods = gold
+					}
+					add_base_production = 2
+				}
+			}
+		}
+	}
+
+	butua_rival_eth_path_3 = {
+		icon = test
+		required_missions = { butua_rival_eth_path_2 }
+
+		trigger = {
+			ETH = {
+				is_subject_of = ROOT
+				NOT = { liberty_desire = 50 }
+			}
+			reverse_has_opinion = {
+				who = ETH
+				value = 150
+			}
+			custom_trigger_tooltip = { #Localisation is broken for this trigger so using custom to explain it
+				tooltip = butua_eth_is_50_of_us_tt
+				NOT = {
+					ETH = {
+						development_of_overlord_fraction = 0.5
+					}
+				}
+			}
+		}
+
+		effect = {
+			inherit = ETH
+			add_country_modifier = {
+				name = butua_legacy_cawa
+			}
 		}
 	}
 }
@@ -1820,7 +1931,6 @@ butua_expansion_2 = {
 		effect = {
 			country_event = { 
 				id = butua_flavour.2
-				days = 1
 				tooltip = butua_future_direction_event_mission_tooltip
 			}
 			hidden_effect = {
@@ -1947,6 +2057,149 @@ butua_india = {
 			}
         }	
 	}
+
+	butua_india_2 = {
+		icon = test
+		required_missions = { butua_india_1 }
+
+		provinces_to_highlight = {
+			OR = {
+				area = south_lanka_area
+				area = lanka_area
+				province_id = 1248
+			}
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 4
+				OR = {
+					area = south_lanka_area
+					area = lanka_area
+					province_id = 1248
+				}
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = butua_india_engange
+				duration = 7300
+			}
+			madura_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			tanjore_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			malabar_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kongu_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			south_carnatic_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			mysore_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+        }	
+	}
+
+	butua_india_3 = {
+		icon = test
+		required_missions = { butua_india_2 }
+
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			OR = {
+				area = madura_area
+				area = tanjore_area
+				area = malabar_area
+				area = kongu_area
+				area = south_carnatic_area
+				area = mysore_area
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 20
+				OR = {
+					area = madura_area
+					area = tanjore_area
+					area = malabar_area
+					area = kongu_area
+					area = south_carnatic_area
+					area = mysore_area
+				}
+			}
+		}
+
+		effect = {
+			north_carnatic_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			rayalaseema_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kanara_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			raichur_doab_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			andhra_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+        }	
+	}
 }
 
 #China Focus
@@ -1973,9 +2226,7 @@ butua_china = {
 		}
 
 		effect = {
-			738 = {
-				create_colony = 800
-			}
+			738 = { create_colony = 800	}
 			fujian_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -1991,6 +2242,19 @@ butua_china = {
 				add_permanent_claim = ROOT
 			}
         }	
+	}
+
+	butua_china_reward = {
+		icon = test
+		required_missions = { }
+
+		trigger = {
+
+		}
+
+		effect = {
+			
+        }
 	}
 }
 
@@ -2034,6 +2298,22 @@ butua_indonesia = {
 			}
         }	
 	}
+
+	butua_indonesia_reward = {
+		icon = test
+		required_missions = { }
+
+		trigger = {
+
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = butua_indonesia_reward
+				duration = -1
+			}
+        }	
+	}
 }
 
 #Privlages - Crown land 
@@ -2051,11 +2331,6 @@ butua_indonesia = {
 #Religion - Change / miss stre + cost
 #Stab / Prestiege
 
-#Claims
-#Navy - India, China, Indo
-#Colonist - Kongo
-
-#Great project
 #Gold
 #Dev
 #Powers
@@ -2066,17 +2341,10 @@ butua_indonesia = {
 #			name = "butua_exploiting_egypt"
 #			duration = -1
 #		}
-#		add_treasury = -1500
 #		361 = {
 #			add_great_project_tier = {
 #				type = pyramid_of_cheops
 #				tier = 2
 #			}
 #		}
-#		add_stability = 1
-#		add_prestige = 20
-#		add_legitimacy = 20
-#		add_republican_tradition = 10
-#		add_devotion = 15
-#		add_horde_unity = 10
 #	}

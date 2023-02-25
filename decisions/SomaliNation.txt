@@ -78,7 +78,6 @@ country_decisions = {
 				}
 				change_tag = SOM
 				swap_non_generic_missions = yes
-				remove_non_electors_emperors_from_empire_effect = yes
 				if = {
 					limit = {
 						NOT = { government_rank = 2 }
@@ -92,19 +91,9 @@ country_decisions = {
 				}
 				set_capital = 1205 # 
 				
-
-				if = {
-				limit = {
-					NOT = { technology_group = muslim }
-				}
-				change_technology_group = muslim
-				change_unit_type = muslim
-				}
 				set_country_flag = formed_somali_flag
-				if = {
-				limit = { has_custom_ideas = no }
 				country_event = { id = ideagroups.1 } #Swap Ideas
-				}
+				new_mission_tree_scripted_effect = yes
 			}
 			
 		}

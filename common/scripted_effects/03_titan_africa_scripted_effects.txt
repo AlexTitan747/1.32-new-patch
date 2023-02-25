@@ -1,0 +1,56 @@
+new_mission_tree_scripted_effect = {
+    custom_tooltip = new_mission_tree_scripted_effect_tt
+    hidden_effect = {
+        swap_non_generic_missions = yes
+    }
+}
+
+additional_missions_scripted_effect = {
+    custom_tooltip = additional_missions_scripted_effect_tt
+    hidden_effect = {
+        swap_non_generic_missions = yes
+    }
+}
+
+transfer_manpower = {
+	hidden_effect = {
+		$giver$ = {
+			while = {
+				limit = {
+					check_variable = {
+						which = $variable$
+						value = 1
+					}
+				}
+				$taker$ = {
+					add_manpower = 1
+				}
+				add_manpower = -1
+				subtract_variable = {
+					which = $variable$
+					value = 1
+				}
+			}
+			multiply_variable = {
+				which = $variable$
+				value = 100
+			}
+			while = {
+				limit = {
+					check_variable = {
+						which = $variable$
+						value = 1
+					}
+				}
+				$taker$ = {
+					add_manpower = 0.01
+				}
+				add_manpower = -0.01
+				subtract_variable = {
+					which = $variable$
+					value = 1
+				}
+			}
+		}
+	}
+}

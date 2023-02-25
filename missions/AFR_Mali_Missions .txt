@@ -196,17 +196,54 @@ mali_tolerance_slot = {
 	}
 }
 
-#Colonization missions
-mali_colonization_slot = {
-	slot = 1
+#Trading missions
+mali_trade_slot = {
+	slot = 2
 	generic = no
 	ai = yes
-	potential_on_load = {
-		has_dlc = "Origins"
-	}
 	potential = {
-		has_dlc = "Origins"
-		NOT = { map_setup = map_setup_random }
+		tag = MAL
+	}
+	has_country_shield = yes
+
+	#Smash Jolof
+	mal_conquer_jol = {
+		icon = mission_control_the_barbary_coast
+		required_missions = { mal_fighting_musa }
+		position = 2
+		provinces_to_highlight = {
+			area = jolof_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			if = {
+				limit = {
+					exists = JOL
+				}
+				JOL = {
+					is_subject_other_than_tributary_trigger = yes
+					is_subject_of = ROOT
+				}
+			}
+			jolof_area = {
+				country_or_non_sovereign_subject_holds = ROOT
+				type = all
+			}
+		}
+		effect = {
+			add_stability = 1
+			add_adm_power = 200
+		}
+	}
+
+}
+
+#Colonization missions
+mali_colonization_slot = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
 		tag = MAL
 	}
 	has_country_shield = yes
@@ -349,53 +386,6 @@ mali_colonization_slot = {
 			}
 		}
 	}
-}
-
-#Trading missions
-mali_trade_slot = {
-	slot = 2
-	generic = no
-	ai = yes
-	potential_on_load = {
-		has_dlc = "Origins"
-	}
-	potential = {
-		has_dlc = "Origins"
-		NOT = { map_setup = map_setup_random }
-		tag = MAL
-	}
-	has_country_shield = yes
-
-	#Smash Jolof
-	mal_conquer_jol = {
-		icon = mission_control_the_barbary_coast
-		required_missions = { mal_fighting_musa }
-		position = 2
-		provinces_to_highlight = {
-			area = jolof_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		trigger = {
-			if = {
-				limit = {
-					exists = JOL
-				}
-				JOL = {
-					is_subject_other_than_tributary_trigger = yes
-					is_subject_of = ROOT
-				}
-			}
-			jolof_area = {
-				country_or_non_sovereign_subject_holds = ROOT
-				type = all
-			}
-		}
-		effect = {
-			add_stability = 1
-			add_adm_power = 200
-		}
-	}
-
 }
 
 #Conquest missions
@@ -795,12 +785,7 @@ mali_empire_slot = {
 	slot = 4
 	generic = no
 	ai = yes
-	potential_on_load = {
-		has_dlc = "Origins"
-	}
 	potential = {
-		has_dlc = "Origins"
-		NOT = { map_setup = map_setup_random }
 		tag = MAL
 	}
 	has_country_shield = yes

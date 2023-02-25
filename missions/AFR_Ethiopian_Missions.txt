@@ -3,12 +3,7 @@ ethiopia_european_slot = {
 	slot = 1
 	generic = no
 	ai = yes
-	potential_on_load = {
-		has_dlc = "Origins"
-	}
 	potential = {
-		has_dlc = "Origins"
-		NOT = { map_setup = map_setup_random }
 		tag = ETH
 	}
 	has_country_shield = yes
@@ -235,50 +230,14 @@ ethiopia_policy_with_the_cushitic_people = {
 	slot = 2
 	generic = no
 	ai = yes
-	potential_on_load = {
-		has_dlc = "Origins"
-	}
 	potential = {
-		has_dlc = "Origins"
-		NOT = { map_setup = map_setup_random }
 		tag = ETH
 	}
 	has_country_shield = yes
 
-	#Build to troop limit
-	eth_build_an_army = {
-		icon = mission_build_up_to_force_limit
-		required_missions = {  }
-		position = 1
-		trigger = {
-			army_size_percentage = 1
-			num_of_generals = 1
-		}
-		effect = {
-			southern_ethiopia_area = {
-				limit = {
-					NOT = { is_permanent_claim = ROOT }
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			hadiya_area = {
-				limit = {
-					NOT = { is_permanent_claim = ROOT }
-					NOT = { is_core = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-		ai_weight = {
-			factor = 500	#Ethiopia should survive...
-		}
-	}
-
 	#Kaffa, Welayta, etc
 	eth_conquer_southern_kingdoms = {
 		icon = mission_conquer_50_development
-		required_missions = { eth_build_an_army }
 		position = 2
 		provinces_to_highlight = {
 			OR = {
@@ -414,12 +373,7 @@ ethiopia_religion_slot = {
 	slot = 3
 	generic = no
 	ai = yes
-	potential_on_load = {
-		has_dlc = "Origins"
-	}
 	potential = {
-		has_dlc = "Origins"
-		NOT = { map_setup = map_setup_random }
 		tag = ETH
 	}
 	has_country_shield = yes
@@ -451,11 +405,6 @@ ethiopia_religion_slot = {
 			}
 		}
 		trigger = {
-			NOT = { num_of_rebel_armies = 1 }
-			all_owned_province = {
-				NOT = { controlled_by = REB }
-			}
-			NOT = { exists = BTI }
 			owns = 2771
 			owns = 2772
 			owns = 1227
@@ -744,12 +693,7 @@ ethiopia_trade_slot = {
 	slot = 4
 	generic = no
 	ai = yes
-	potential_on_load = {
-		has_dlc = "Origins"
-	}
 	potential = {
-		has_dlc = "Origins"
-		NOT = { map_setup = map_setup_random }
 		tag = ETH
 	}
 	has_country_shield = yes
@@ -760,30 +704,10 @@ ethiopia_trade_slot = {
 		required_missions = {  }
 		position = 1
 		provinces_to_highlight = {
-			OR = {
-				owned_by = DAM
-				owned_by = HDY
-			}
+			
 		}
 		trigger = {
-			OR = {
-				DAM = {
-					has_opinion = {
-						who = ROOT
-						value = 150
-					}
-				}
-				NOT = { exists = DAM }
-			}
-			OR = {
-				HDY = {
-					has_opinion = {
-						who = ROOT
-						value = 150
-					}
-				}
-				NOT = { exists = HDY }
-			}
+			army_size_percentage = 0.8
 		}
 		effect = {
 			#Event for Damot and Hadiya to join us
@@ -836,9 +760,20 @@ ethiopia_trade_slot = {
 				}
 				add_permanent_claim = ROOT
 			}
-		}
-		ai_weight = {
-			factor = 500	#Annexing Vassals is fun
+			shendy_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			red_sea_coast_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 
@@ -945,12 +880,7 @@ ethiopia_slot_aksumite_empire = {
 	slot = 5
 	generic = no
 	ai = yes
-	potential_on_load = {
-		has_dlc = "Origins"
-	}
 	potential = {
-		has_dlc = "Origins"
-		NOT = { map_setup = map_setup_random }
 		tag = ETH
 	}
 	has_country_shield = yes

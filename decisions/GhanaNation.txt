@@ -1,153 +1,151 @@
 country_decisions = {
 
-		ghani_nation = {
-			major = yes
-			potential = {
-				normal_or_historical_nations = yes
-				NOT = { has_country_flag = formed_ghani_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
-				NOT = { exists = GHN }
-				NOT = { tag = KNE }
-				NOT = { tag = CRG }
-				NOT = { tag = MOR }
-				is_colonial_nation = no
-				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
-				culture_group = mande
-				
-				OR = {
-					ai = no
-					AND = {
-						NOT = { exists = GHN }
-						num_of_cities = 10
-						
-					}
-				}
+	ghani_nation = {
+		major = yes
+		potential = {
+			NOT = { has_country_flag = formed_ghani_flag }
+			OR = {
+				ai = no
+				is_playing_custom_nation = no
 			}
-			
-			provinces_to_highlight = {
-				OR = {
-				province_id = 1123			# Segu
-				province_id = 1120			# Bambuk
-				province_id = 2243			# Termes
-				province_id = 1122			# Bagoe
-				}
-					
-				OR = {
-					NOT = { owned_by = ROOT }
-					NOT = { is_core = ROOT }
-				}
-			}
-			
-			allow = {
-				NOT = { exists = GHN }
-				is_free_or_tributary_trigger = yes
-				is_at_war = no
-				owns_core_province = 1123			# Segu
-				owns_core_province = 1120			# Bambuk
-				owns_core_province = 2243			# Termes
-				owns_core_province = 1122			# Bagoe
-				
+			NOT = { exists = GHN }
+			NOT = { tag = KNE }
+			NOT = { tag = CRG }
+			NOT = { tag = MOR }
+			is_colonial_nation = no
+			OR = {
+				is_former_colonial_nation = no
 				AND = {
-						adm_tech = 7
-					}
-				OR = {
-					AND = {
-					total_development = 200
-					}
+					is_former_colonial_nation = yes
+					ai = no
 				}
-				
 			}
-			effect = {
-				1123 = {	#Segu
-					move_capital_effect = yes
+			culture_group = mande
+			
+			OR = {
+				ai = no
+				AND = {
+					NOT = { exists = GHN }
+					num_of_cities = 10					
 				}
-				change_tag = GHN
+			}
+		}
+			
+		provinces_to_highlight = {
+			OR = {
+			province_id = 1123			# Segu
+			province_id = 1120			# Bambuk
+			province_id = 2243			# Termes
+			province_id = 1122			# Bagoe
+			}
 				
-				remove_non_electors_emperors_from_empire_effect = yes
-				if = {
-					limit = {
-						NOT = { government_rank = 2 }
-					}
-					set_government_rank = 2
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		
+		allow = {
+			NOT = { exists = GHN }
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			owns_core_province = 1123			# Segu
+			owns_core_province = 1120			# Bambuk
+			owns_core_province = 2243			# Termes
+			owns_core_province = 1122			# Bagoe
+			
+			AND = {
+					adm_tech = 7
 				}
-				add_prestige = 25
-				add_country_modifier = {
-					name = centralization_modifier
-					duration = 3650
-				}
-				set_capital = 1123 # Segu
-				if = {
-                limit = { is_revolutionary = no }
-				}
-				set_country_flag = formed_ghani_flag
-				if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
-				}
-				niger_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				guinea_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				sahel_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				tafilalt_area = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				sus_area = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				southern_morocco_area = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				western_morocco_area = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				marrekesh_area = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				northern_morocco_area = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
+			OR = {
+				AND = {
+				total_development = 200
 				}
 			}
 			
 		}
+		effect = {
+			1123 = {	#Segu
+				move_capital_effect = yes
+			}
+			change_tag = GHN
+			
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			add_prestige = 25
+			add_country_modifier = {
+				name = centralization_modifier
+				duration = 3650
+			}
+			set_capital = 1123 # Segu
+			if = {
+               limit = { is_revolutionary = no }
+			}
+			set_country_flag = formed_ghani_flag
+			if = {
+			limit = { has_custom_ideas = no }
+			country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			niger_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			guinea_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			sahel_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			tafilalt_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			sus_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			southern_morocco_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			western_morocco_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			marrekesh_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			northern_morocco_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			additional_missions_scripted_effect = yes
+		}
 	}
+}

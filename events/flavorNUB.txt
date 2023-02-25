@@ -20,7 +20,7 @@ province_event = {
 	trigger = {
 		province_id = 1232
 		NOT = { exists = NUB }
-		is_year = 1500
+		is_year = 1470
 		kurdufan_area = {
 			is_empty = yes
 		}
@@ -194,44 +194,5 @@ country_event = {
 				add_core = NUB
 			}
 		}
-	}
-
-	option = {	#Switch to Funj
-		name = flavor_nub.1.b
-		trigger = {
-			NOT = {	#Make sure it's not possible for Multiplayer or else we end up with +2 players in the same country...
-				calc_true_if = {
-					all_country = {
-						ai = no
-					}
-					amount = 2
-				}
-			}
-			ai = no	#Only the player should care about the option to tag switch
-		}
-		tooltip = {
-			kurdufan_area = {
-				add_core = NUB
-			}		
-			upper_nubia_area = {
-				add_core = NUB
-			}
-			sennar_area = {
-				add_core = NUB
-			}
-			1219 = {
-				add_core = NUB
-			}
-			2801 = {
-				add_core = NUB
-			}
-			2802 = {
-				add_core = NUB
-			}
-			5000 = {
-				add_core = NUB
-			}
-		}
-		switch_tag = NUB
 	}
 }
