@@ -15,15 +15,14 @@ country_event = {
 		}
 		picture = RELIGION_eventPicture
 	}
+
+	fire_only_once = yes
 	
 	major = yes
 	
 	trigger = {
 		NOT = { is_religion_enabled = protestant }
-		religion = catholic
-		is_defender_of_faith = no	
-		NOT = { has_reform = papacy_reform }
-		reform_desire = 1
+		is_year = 1500
 		capital_scope = {
 			continent = europe
 		}
@@ -35,84 +34,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 4000
-		
-		modifier = {
-			factor = 2
-			PAP = { is_part_of_hre = yes }
-			OR = {
-				culture_group = germanic
-				culture_group = scandinavian
-				culture_group = british
-				culture_group = west_slavic
-			}
-		}
-		modifier = {
-			factor = 0.9
-			reform_desire = 1.05
-		}
-		modifier = {
-			factor = 0.9
-			reform_desire = 1.10
-		}
-		modifier = {
-			factor = 0.9
-			reform_desire = 1.15
-		}
-		modifier = {
-			factor = 0.9
-			reform_desire = 1.20
-		}
-		modifier = {
-			factor = 0.9
-			reform_desire = 1.25
-		}
-		
-		modifier = {
-			factor = 0.75
-			NOT = { num_of_cities = 10 }
-		}
-		modifier = {
-			factor = 0.75
-			NOT = { num_of_cities = 2 }
-		}
-		
-		modifier = {
-			factor = 0.75
-			has_idea_group = innovativeness_ideas
-		}
-		modifier = {
-			factor = 1.25
-			has_idea_group = religious_ideas
-		}	
-		modifier = {
-			factor = 2.0
-			government = theocracy
-		}
-		modifier = {
-			factor = 8.0
-			OR = {
-				NOT = { exists = PAP }
-				PAP = { is_part_of_hre = no }
-			}
-			OR = {
-				culture_group = latin
-				culture_group = iberian
-			}
-		}
-		modifier = {
-			factor = 0.75
-			PAP = { is_part_of_hre = yes }
-			is_part_of_hre = no
-			OR = {
-				culture_group = latin
-				culture_group = iberian
-			}
-		}
-		modifier = {
-			factor = 10
-			is_year = 1500
-		}
+		days = 1
 	}
 
 	option = {
