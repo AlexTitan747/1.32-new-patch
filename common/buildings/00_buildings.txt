@@ -4232,4 +4232,367 @@ olive_oil_mill = {
 	}
 }
 
+chocolate_factory = {
+	cost = 250
+	time = 12
+	
+	build_trigger = {
+
+	trade_goods = cocoa
+
+		FROM = {
+			dip_tech = 7
+				root = {
+					has_production_building = yes
+					development = 10
+				}
+			}
+		}
+	
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = cocoa
+					value = 1.0
+				}
+	
+				change_variable = {
+					which = cocoa
+					value = 1.0
+				}			
+				change_variable = {
+					which = chocolate_factory_amount
+					value = 1
+					}				
+				}
+				ROOT = {
+					change_trade_goods = chocolate
+				}
+			}
+		}
+	
+	on_destroyed = {
+		hidden_effect = {
+			if = {
+				limit = {
+					ROOT = {
+						NOT = { has_building = chocolate_factory }
+					}
+				}
+				FROM = {
+					change_variable = {            
+						which = chocolate
+						value = 1.0
+					}
+				
+					subtract_variable = {            
+						which = lead_used
+						value = 1.0
+					}
+				}
+			}
+			ROOT = {
+				remove_building = chocolate_factory
+				change_trade_goods = cocoa
+			}
+			
+			FROM = {
+				subtract_variable = {            
+					which = chocolate_factory_amount
+					value = 1
+				}
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}	
+	
+	ai_will_do = {
+		factor = 3000
+
+		modifier = {
+			factor = 0
+			FROM = {
+				chocolate = 2
+			}
+		}
+	}
+}
+
+publishing_house = {
+	cost = 250
+	time = 12
+	
+	build_trigger = {
+
+	trade_goods = paper
+
+		FROM = {
+			dip_tech = 7
+				root = {
+					has_production_building = yes
+					development = 10
+				}
+			}
+		}
+	
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = paper
+					value = 1.0
+				}
+	
+				change_variable = {
+					which = paper
+					value = 1.0
+				}			
+				change_variable = {
+					which = publishing_house_amount
+					value = 1
+					}				
+				}
+				ROOT = {
+					change_trade_goods = books
+				}
+			}
+		}
+	
+	on_destroyed = {
+		hidden_effect = {
+			if = {
+				limit = {
+					ROOT = {
+						NOT = { has_building = publishing_house }
+					}
+				}
+				FROM = {
+					change_variable = {            
+						which = books
+						value = 1.0
+					}
+				
+					subtract_variable = {            
+						which = lead_used
+						value = 1.0
+					}
+				}
+			}
+			ROOT = {
+				remove_building = publishing_house
+				change_trade_goods = paper
+			}
+			
+			FROM = {
+				subtract_variable = {            
+					which = publishing_house_amount
+					value = 1
+				}
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 3000
+
+		modifier = {
+			factor = 0
+			FROM = {
+				books = 2
+			}
+		}
+	}
+}
+
+tailors = {
+	cost = 250
+	time = 12
+	
+	build_trigger = {
+
+	trade_goods = cloth
+
+		FROM = {
+			dip_tech = 7
+				root = {
+					has_production_building = yes
+					development = 10
+				}
+			}
+		}
+	
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = cloth
+					value = 1.0
+				}
+	
+				change_variable = {
+					which = cloth
+					value = 1.0
+				}			
+				change_variable = {
+					which = tailors_amount
+					value = 1
+					}				
+				}
+				ROOT = {
+					change_trade_goods = uniforms
+				}
+			}
+		}
+	
+	on_destroyed = {
+		hidden_effect = {
+			if = {
+				limit = {
+					ROOT = {
+						NOT = { has_building = tailors }
+					}
+				}
+				FROM = {
+					change_variable = {            
+						which = uniforms
+						value = 1.0
+					}
+				
+					subtract_variable = {            
+						which = lead_used
+						value = 1.0
+					}
+				}
+			}
+			ROOT = {
+				remove_building = tailors
+				change_trade_goods = cloth
+			}
+			
+			FROM = {
+				subtract_variable = {            
+					which = tailors_amount
+					value = 1
+				}
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 3000
+
+		modifier = {
+			factor = 0
+			FROM = {
+				uniforms = 2
+			}
+		}
+	}
+}
+
+perfumery = {
+	cost = 250
+	time = 12
+	
+	build_trigger = {
+
+	trade_goods = cloth
+
+		FROM = {
+			dip_tech = 7
+				root = {
+					has_production_building = yes
+					development = 10
+				}
+			}
+		}
+	
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = cloth
+					value = 1.0
+				}
+	
+				change_variable = {
+					which = cloth
+					value = 1.0
+				}			
+				change_variable = {
+					which = tailors_amount
+					value = 1
+					}				
+				}
+				ROOT = {
+					change_trade_goods = uniforms
+				}
+			}
+		}
+	
+	on_destroyed = {
+		hidden_effect = {
+			if = {
+				limit = {
+					ROOT = {
+						NOT = { has_building = tailors }
+					}
+				}
+				FROM = {
+					change_variable = {            
+						which = uniforms
+						value = 1.0
+					}
+				
+					subtract_variable = {            
+						which = lead_used
+						value = 1.0
+					}
+				}
+			}
+			ROOT = {
+				remove_building = tailors
+				change_trade_goods = cloth
+			}
+			
+			FROM = {
+				subtract_variable = {            
+					which = tailors_amount
+					value = 1
+				}
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 3000
+
+		modifier = {
+			factor = 0
+			FROM = {
+				uniforms = 2
+			}
+		}
+	}
+}
 
