@@ -16,9 +16,27 @@ country_event = {
 			government_rank = 3
 			has_unified_culture_group = yes
 		}
+		NOT = {
+			OR = {
+			has_country_modifier = tm_b_assimilation_encouraged
+			has_country_modifier =  tm_has_had_tbuildings1
+			}
+		}
 	}
 	mean_time_to_happen = {
 		months = 180
+		modifier = {
+			factor = 0.6
+			master_of_assimilation = 5
+		}
+		modifier = {
+			factor = 0.75
+			master_of_assimilation = 4
+		}
+		modifier = {
+			factor = 0.9
+			master_of_assimilation = 3
+		}
 	}
 	
 	
@@ -33,6 +51,12 @@ country_event = {
 	option = {		
 	name = "tbuildings.a2"
 		add_dip_power = 75
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_has_had_tbuildings1
+				duration = 3650
+			}
+		}
 	}
 }
 
@@ -53,19 +77,60 @@ country_event = {
 			influence = 75
 		}
 		}
+		NOT = {
+			has_country_modifier = tm_has_had_tbuildings2
+		}
 	}
 	mean_time_to_happen = {
-		months = 120
+		months = 180
 	}
 	
 	
 	option = {		
 	name = "tbuildings.b1"
+		random_owned_province = {
+			spawn_rebels = {
+				type = particularist_rebels
+				size = 1
+			}
+		}
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = 15
+		}
+		add_estate_influence = {
+			estate = estate_nobles
+			influence = 15
+		}
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_has_had_tbuildings2
+				duration = 3650
+			}
+		}
 	}
 
 	option = {		
 	name = "tbuildings.b2"
-			
+		add_prestige = 20	
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = -20
+		}
+		add_estate_influence = {
+			estate = estate_nobles
+			influence = -10
+		}
+		add_country_modifier = {
+			name = tm_b_nobles_denied_culture
+			duration = 3650
+		}
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_has_had_tbuildings2
+				duration = 3650
+			}
+		}
 	}
 }
 
@@ -93,12 +158,30 @@ country_event = {
 	
 	option = {		
 	name = "tbuildings.c1"
-		
+		add_country_modifier = {
+			name = tm_b_multicultrual_approach
+			duration = -1
+		}
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = -10
+		}
+		add_estate_loyalty = {
+			estate = estate_burghers
+			loyalty = -10
+		}
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = -10
+		}
 	}
 
 	option = {		
 	name = "tbuildings.c2"
-			
+		add_country_modifier = {
+			name = tm_b_multicultrual_approach_denied
+			duration = -1
+		}
 	}
 }
 
@@ -176,5 +259,39 @@ country_event = {
 	option = {		
 	name = "tbuildings.e2"
 			
+	}
+}
+
+#advisors
+country_event = {
+	id = tbuildings.6
+	title = "tbuildings.6"
+	desc = "tbuildings.desc6"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		advisor = master_of_assimilation
+		NOT = {
+			has_country_modifier = tm_b_advisors_accepted
+			has_country_modifier = new_men
+		}
+	}
+	mean_time_to_happen = {
+		months = 180
+	}
+	
+	
+	option = {		
+	name = "tbuildings.f1"
+		add_country_modifier = {
+			name = tm_b_advisors_accepted
+			duration = 3650
+		}
+	}
+
+	option = {		
+	name = "tbuildings.f2"
+		add_dip_power = 75
 	}
 }
