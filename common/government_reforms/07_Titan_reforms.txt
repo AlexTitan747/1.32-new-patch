@@ -597,12 +597,12 @@ conditional = {
 }
 
 
-persian_zoroastrian_state = {
-	icon = "king"
+empire_of_persia = {
+	icon = "empire_of_persia"
+	lock_level_when_selected = yes
 	allow_normal_conversion = no
 	potential = {
-		religion_group = zoroastrian_group
-		technology_group = muslim
+		tag = PER
 	}
 	legacy_equivalent = despotic_monarchy
 	valid_for_nation_designer = yes
@@ -613,12 +613,21 @@ persian_zoroastrian_state = {
 		technology_group = muslim
 	}
 	modifiers = {
-		center_of_trade_upgrade_cost = -0.25
-		reinforce_cost_modifier = -0.1
+		governing_capacity_modifier = 0.1
+		reinforce_speed = 0.15
 		interest = -0.5
-		monarch_diplomatic_power = 1
+		monarch_military_power = 1
 	}
 
+	custom_attributes = {
+		locked_government_type = yes
+	}
+
+	conditional = {
+		allow = { has_dlc = "Lions of the North" }
+		allow_carolean = yes
+	
+	}
 }
 
 

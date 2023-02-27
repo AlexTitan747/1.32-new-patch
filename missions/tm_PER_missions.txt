@@ -1,5 +1,5 @@
 ###
-# Persia Missions
+# Persia Missions 
 ###
 
 tm_PER_branch_1 = {
@@ -25,7 +25,7 @@ tm_PER_branch_1 = {
 		trigger = {
 			2213 = {
 				owned_by = ROOT
-				development = 35
+				development = 25
 			}
 		}
 
@@ -84,7 +84,6 @@ tm_PER_branch_1 = {
 		position = 4
 		required_missions = {
 			tm_PER_branch1_mission_2 
-			tm_PER_branch2_mission_1
 		}
 
 		provinces_to_highlight = {
@@ -105,6 +104,35 @@ tm_PER_branch_1 = {
 				id = titanper.2
 				tooltip = titanper.2.tt
 			}
+		}
+	}
+	tm_PER_branch1_mission_4 = {
+		icon = placeholder
+		position = 5
+		required_missions = { tm_PER_branch2_mission_2 }
+		
+		provinces_to_highlight = {
+			OR = {
+				area = alania_area
+				area = dagestan_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			alania_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			dagestan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			add_dip_power = 50
+			add_prestige = 15
 		}
 	}
 }
@@ -165,20 +193,194 @@ tm_PER_branch_2 = {
 
 				tooltip = titanper.1.tt
 			}
-			farsistan_area = {				
+			if = {
+				limit = { ARM = { is_subject_of_type_with_overlord = { who = PER type = march } } }
+				kartli_kakheti_area = {				
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ARM }
+						NOT = { is_permanent_claim = ARM }
+					}
+					add_permanent_claim = ARM
+				}
+				imereti_area = {				
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ARM }
+						NOT = { is_permanent_claim = ARM }
+					}
+					add_permanent_claim = ARM
+				}
+				samtskhe_area = {				
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ARM }
+						NOT = { is_permanent_claim = ARM }
+					}
+					add_permanent_claim = ARM
+				}
+			}
+			else = {
+				kartli_kakheti_area = {				
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				imereti_area = {				
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+				samtskhe_area = {				
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	}
+
+	tm_PER_branch2_mission_2 = {
+		icon = placeholder
+		position = 4
+		required_missions = { tm_PER_branch2_mission_1 }
+
+		provinces_to_highlight = {
+			OR = {
+				area = kartli_kakheti_area
+				area = imereti_area
+				area = samtskhe_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			kartli_kakheti_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			imereti_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			samtskhe_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			if = {
+				limit = { 421 = { NOT = { has_building = fort_15th }  } }
+				421 = {
+					add_building = fort_15th
+				}
+			}
+			if = {
+				limit = { 1856 = { NOT = { has_building = fort_15th }  } }
+				1856 = {
+					add_building = fort_15th
+				}
+			}
+			else = {
+				add_treasury = 400
+			}
+			erzurum_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			farsistan_area = {				
+			bayazid_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
+			alania_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			dagestan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	tm_PER_branch2_mission_3 = {
+		icon = placeholder 
+		position = 5
+		required_missions = { tm_PER_branch2_mission_2 }
+
+		provinces_to_highlight = {
+			OR = {
+				area = erzurum_area
+				area = bayazid_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			erzurum_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			bayazid_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			add_adm_power = 50
+			add_mercantilism = 10
+		}
+	}
+
+	tm_PER_branch2_mission_4 = {
+		icon = placeholder 
+		position = 6
+		required_missions = { 
+			tm_PER_branch1_mission_4 
+			tm_PER_branch2_mission_3
+		}
+
+		trigger = {
+			caucasia_region = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+		
+		effect = {
+			add_power_projection = {
+				type = tm_PER_conqueror_of_the_caucasus
+				amount = 20
+			}
+			custom_tooltip = tm_PER_caucasus_pp_perma_TT
+
+			add_adm_power = 75
+			add_dip_power = 75
+			add_mil_power = 75
+			add_treasury = 500
 		}
 	}
 }
@@ -214,6 +416,82 @@ tm_PER_branch_3 = {
 		effect = {
 			add_prestige = 10
 			add_adm_power = 50
+		}
+	}
+	tm_PER_branch3_mission_2 = {
+		icon = placeholder
+		position = 3
+		required_missions = { tm_PER_branch4_mission_2 }
+
+		provinces_to_highlight = {
+			area = farsistan_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			farsistan_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+
+		effect = {
+			add_treasury = 10
+		}
+	}
+	tm_PER_branch3_mission_3 = {
+		icon = placeholder
+		position = 4
+		required_missions ={ tm_PER_branch3_mission_2 } 
+
+		provinces_to_highlight = {
+			OR = {
+				area = persian_gulf_coast
+				area = espakh_area 
+				area = mogostan_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			persian_gulf_coast = {
+				type = all
+				owned_by = ROOT
+			}
+			espakh_area = {
+				type = all
+				owned_by = ROOT
+			}
+			mogostan_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+
+		effect = {
+			add_treasury = 10
+		}
+	}
+	tm_PER_branch3_mission_4 = {
+		icon = placeholder
+		position = 5
+		required_missions = { tm_PER_branch3_mission_3 }
+
+		provinces_to_highlight = {
+			region = persia_region
+		}
+
+		trigger = {
+			persia_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_PER_master_of_persia
+				duration = -1
+			}
 		}
 	}
 }
@@ -294,6 +572,13 @@ tm_PER_branch_4 = {
 
 		effect = {
 			add_treasury = 200
+			khorasan_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 }
