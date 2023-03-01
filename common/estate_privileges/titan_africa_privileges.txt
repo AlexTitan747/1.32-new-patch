@@ -1,0 +1,143 @@
+estate_privilege = {
+# 	is_valid = { triggers }						#Conditions for whether it is possible for the country to have this privilege (it will not display on the list if they are false, and will be revoked if it has already been granted)
+# 	can_select = { triggers } 					#Conditions for whether the country is allowed to select the privilege (with conditions for why not displayed)
+# 	on_granted = { effects } 					#Effects executed immediately upon the privilege being taken
+# 	can_revoke = { triggers } 					#Conditions for whether the country can revoke the privilege
+# 	on_revoked = { effects } 					#Effects executed upon the privilege being revoked by the country
+# 	on_invalid = { effects } 					#Effects executed upon the privilege being removed due to invalidity (is_valid becomes false or the estate is removed)
+# 	penalties = { modifiers } 					#Negative modifiers granted while the privilege is active (creates different tooltip to benefits)
+# 	conditional_modifier = { 					#Modifier that are applied if the specified conditions are true.
+# 		trigger = { triggers }
+# 		modifier = { modifiers }
+# 		is_bad = yes/no							#Specifies whether the modifier should be listed as positive or negative in the tooltips.
+# 	}
+# 	modifier_by_land_ownership = { modifiers } 	#Multiplies the modifier by the % of land owned by the estate.
+# 	mechanics = { mechanics } 					#Special mechanics the privilege enables
+# 	cooldown_years = int 						#Time limit before which the privilege cannot be revoked
+# 	on_cooldown_expires = { effects }			#Effect executed once the specified cooldown_years timer has run down
+#	ai_will_do									#If above ESTATE_PRIVILEGE_GRANT_THRESHOLD define, AI will try to apply. If below ESTATE_PRIVILEGE_REVOKE_THRESHOLD, AI will try to revoke.
+}
+
+###FETISHIST PRIVILEGES###
+#Privilege to enable cults for heirs
+estate_church_heir_shrine = {
+	icon = privilege_heir_cult
+	influence = 0.2
+	loyalty = 0.05
+	is_valid = {
+		religion = shamanism
+		NOT = { has_country_flag = heir_cult_through_missions }
+		has_government_attribute = heir
+	}
+	can_select = {
+		NOT = { has_estate_privilege = estate_church_embrace_singluar_cult }
+	}
+	on_granted = {
+		enable_cult_for_heirs = yes
+	}
+	on_revoked = {
+		disable_cult_for_heirs = yes
+	}
+	on_invalid = {
+		disable_cult_for_heirs = yes
+	}
+	penalties = {
+	}
+	benefits = {
+	}
+	conditional_modifier = {
+		trigger = { has_government_attribute = no_influence_from_fetishist_privileges }
+		modifier = {
+			church_influence_modifier = -0.2
+		}
+	}
+	ai_will_do = {
+		factor = 100
+		modifier = {
+			factor = 0
+			has_mission = kon_collect_cults
+		}
+		modifier = {
+			factor = 0
+			has_mission = zim_cults
+		}
+	}
+}
+
+#Privilege to enable primary cults
+estate_church_embrace_singluar_cult = {
+	icon = privilege_singular_cult
+	influence = 0.2
+	loyalty = 0.05
+	is_valid = {
+		religion = shamanism
+	}
+	can_select = {
+		NOT = { has_estate_privilege = estate_church_flexible_cults }
+		NOT = { has_estate_privilege = estate_church_heir_shrine }
+	}
+	on_granted = {
+		enable_primary_cult = yes
+	}
+	on_revoked = {
+		disable_primary_cult = yes
+		add_stability = -1
+	}
+	on_invalid = {
+		disable_primary_cult = yes
+	}
+	penalties = {
+	}
+	benefits = {
+		no_stability_loss_on_monarch_death = yes
+	}
+	conditional_modifier = {
+		trigger = { has_government_attribute = no_influence_from_fetishist_privileges }
+		modifier = {
+			church_influence_modifier = -0.2
+		}
+	}
+	ai_will_do = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			NOT = { has_mission = zim_cults }
+		}
+	}
+}
+
+#Privilge to enable cult switching
+estate_church_flexible_cults = {
+	icon = privilege_switch_hindu_deity
+	#
+	influence = 0.05
+	is_valid = {
+		religion = shamanism
+		NOT = { has_country_flag = enabled_cult_switching_mission }
+	}
+	can_select = {
+		NOT = { has_estate_privilege = estate_church_embrace_singluar_cult }
+	}
+	on_granted = {
+		enable_cult_switching = yes
+	}
+	on_revoked = {
+		disable_cult_switching = yes
+	}
+	on_invalid = {
+		disable_cult_switching = yes
+	}
+	penalties = {
+	}
+	benefits = {
+	}
+	conditional_modifier = {
+		trigger = { has_government_attribute = no_influence_from_fetishist_privileges }
+		modifier = {
+			church_influence_modifier = -0.05
+		}
+	}
+	ai_will_do = {
+		factor = 0	#Not really needed, the AI should choose the right Cult from the get-go
+	}
+}

@@ -530,7 +530,7 @@ butua_empire_of_sa = {
 						tag = MAL
 						was_tag = MAL
 						OR = {
-							NOT = { exists = yes }
+							exists = no
 							is_subject = yes
 						}
 					}
@@ -538,7 +538,7 @@ butua_empire_of_sa = {
 						tag = MOR
 						was_tag = MOR
 						OR = {
-							NOT = { exists = yes }
+							exists = no
 							is_subject = yes
 						}
 					}
@@ -546,15 +546,16 @@ butua_empire_of_sa = {
 						tag = ETH
 						was_tag = ETH
 						OR = {
-							NOT = { exists = yes }
+							exists = no
 							is_subject = yes
+							has_country_modifier = butua_military_coop_with_eth 
 						}
 					}
 					any_country = {
 						tag = MAM
 						was_tag = MAM
 						OR = {
-							NOT = { exists = yes }
+							exists = no
 							is_subject = yes
 						}
 					}
@@ -728,12 +729,11 @@ butua_integration = {
 				}
 			}
 			custom_tooltip = butua_consolidation_mission_tooltip
-			1183 = {
-				create_colony = 500
-				change_culture = shona
+			create_colony_mission_reward = {
+				province = 1183
 			}
-			south_africa_region = {
-				discover_country = ROOT
+			1183 = { 
+				change_culture = shona
 			}
 			buha_area = {
 				limit = {
@@ -1328,7 +1328,7 @@ butua_horn_place_holder = {
 				}
 				add_country_modifier = {
 					name = butua_exploiting_eth
-					duration = 3650
+					duration = 7300
 				}
 				ETH = {
 					every_owned_province = {
@@ -1410,6 +1410,32 @@ butua_horn_place_holder = {
 				}
 				custom_tooltip = butua_conquest_of_eth_pp_tt
 			}
+		}
+	}
+
+	butua_horn_place_holder_mission_4 = {
+		icon = mission_unknown_mission
+		required_missions = { butua_horn_place_holder_mission_3 }
+
+		trigger = {
+			
+		}
+
+		effect = {
+			
+		}
+	}
+
+	butua_horn_place_holder_mission_5 = {
+		icon = mission_unknown_mission
+		required_missions = { butua_horn_place_holder_mission_4 }
+
+		trigger = {
+			
+		}
+
+		effect = {
+			
 		}
 	}
 }
@@ -1882,13 +1908,13 @@ butua_expansion_2 = {
 				add_unit_construction = {
 					type = transport_ship
 					amount = 5
-					speed = 0.1
+					speed = 0.5
 					cost = 0
 				}
 				add_unit_construction = {
 					type = galley
 					amount = 5
-					speed = 0.1
+					speed = 0.5
 					cost = 0
 				}
 			}
@@ -1971,15 +1997,8 @@ butua_expansion_2 = {
 					discover_country = ROOT
 				}
 			}
-			if = {
-				limit = {
-					NOT = {
-						4020 = { is_city = yes }
-					}
-				}
-				4020 = {
-					create_colony = 1000
-				}
+			create_colony_mission_reward = {
+				province = 4020
 			}
         }	
 	}
@@ -2030,6 +2049,7 @@ butua_india = {
 	butua_india_1 = {
 		icon = test
 		required_missions = { butua_madagascar_secured }
+		position = 5
 
 		trigger = {
 			OR = {
@@ -2216,6 +2236,7 @@ butua_china = {
 	butua_china_1 = {
 		icon = test
 		required_missions = { butua_madagascar_secured }
+		position = 5
 
 		trigger = {
 			OR = {
@@ -2226,7 +2247,9 @@ butua_china = {
 		}
 
 		effect = {
-			738 = { create_colony = 800	}
+			create_colony_mission_reward = {
+				province = 738
+			}
 			fujian_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -2272,6 +2295,7 @@ butua_indonesia = {
 	butua_indonesia_1 = {
 		icon = test
 		required_missions = { butua_madagascar_secured }
+		position = 5
 
 		trigger = {
 			num_of_light_ship = 20
@@ -2299,18 +2323,453 @@ butua_indonesia = {
         }	
 	}
 
-	butua_indonesia_reward = {
+	butua_indonesia_2 = {
 		icon = test
-		required_missions = { }
+		required_missions = { butua_indonesia_1 }
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			OR = {
+				area = indian_ocean_islands_area
+				area = mascarenes_area
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 3
+				is_city = yes
+				owned_by = ROOT
+				OR = {
+					area = indian_ocean_islands_area
+					area = mascarenes_area
+				}
+			}
+		}
+
+		effect = {
+			south_sumatra_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			minangkabau_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			batak_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			north_sumatra_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			central_sumatra_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			jambi_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+        }	
+	}
+
+	butua_indonesia_3 = {
+		icon = test
+		required_missions = { butua_indonesia_2 }
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			OR = {
+				area = south_sumatra_area
+				area = minangkabau_area
+				area = batak_area
+				area = north_sumatra_area
+				area = central_sumatra_area
+				area = jambi_area
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 15
+				is_city = yes
+				owned_by = ROOT
+				OR = {
+					area = south_sumatra_area
+					area = minangkabau_area
+					area = batak_area
+					area = north_sumatra_area
+					area = central_sumatra_area
+					area = jambi_area
+				}
+			}
+		}
+
+		effect = {
+			banten_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			west_java_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			central_java_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			surabaya_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			east_java_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			lesser_sunda_islands_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+        }	
+	}
+
+	butua_indonesia_4 = {
+		icon = test
+		required_missions = { butua_indonesia_3 }
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			OR = {
+				area = banten_area
+				area = west_java_area
+				area = central_java_area
+				area = surabaya_area
+				area = east_java_area
+				area = lesser_sunda_islands_area
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 15
+				is_city = yes
+				owned_by = ROOT
+				OR = {
+					area = banten_area
+					area = west_java_area
+					area = central_java_area
+					area = surabaya_area
+					area = east_java_area
+					area = lesser_sunda_islands_area
+				}
+			}
+		}
+
+		effect = {
+			banjar_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kalimantan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			brunei_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			kutai_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			sabah_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+        }	
+	}
+
+	butua_indonesia_5 = {
+		icon = test
+		required_missions = { butua_indonesia_4 }
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			OR = {
+				area = banjar_area
+				area = kalimantan_area
+				area = brunei_area
+				area = kutai_area
+				area = sabah_area
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 15
+				is_city = yes
+				owned_by = ROOT
+				OR = {
+					area = banjar_area
+					area = kalimantan_area
+					area = brunei_area
+					area = kutai_area
+					area = sabah_area
+				}
+			}
+		}
+
+		effect = {
+			moluccas_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+        }	
+	}
+
+	butua_indonesia_6 = {
+		icon = test
+		required_missions = { butua_indonesia_5 }
+
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			OR = {
+				area = west_mindanao_area
+				area = mindanao_area
+				area = visayas_area
+				area = southern_luzon_area
+				area = palawan_area
+				area = luzon_area
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 5 
+				OR = {
+					area = west_mindanao_area
+					area = mindanao_area
+					area = visayas_area
+					area = southern_luzon_area
+					area = palawan_area
+					area = luzon_area
+				}
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = "butua_continuing_colonisation"
+				duration = 9125
+			}
+        }	
+	}
+
+	butua_indonesia_7 = {
+		icon = test
+		required_missions = { butua_indonesia_6 }
+
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = "butua_grand_navy"
+				duration = -1
+			}
+        }	
+	}
+}
+
+butua_indonesia_secondary_branch = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+		has_country_flag = butua_indonesia_choice
+	}
+	has_country_shield = yes
+
+	butua_sumatra = {
+		icon = test
+		required_missions = { butua_indonesia_3 }
+		position = 8
+
+		provinces_to_highlight = {
+			
+		}
 
 		trigger = {
 
 		}
 
 		effect = {
+
+        }	
+	}
+
+	butua_java = {
+		icon = test
+		required_missions = { butua_indonesia_4 }
+		position = 9
+
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+
+		}
+
+		effect = {
+
+        }	
+	}
+
+	butua_spice_islands = {
+		icon = test
+		required_missions = { butua_indonesia_5 }
+		position = 10
+
+		trigger = {
+
+		}
+
+		effect = {
+
+        }
+	}
+	
+	butua_indonesia_reward = {
+		icon = test
+		required_missions = { butua_spice_islands }
+		required_missions = { butua_indonesia_6 }
+		position = 11
+
+		trigger = {
+			
+		}
+
+		effect = {
 			add_country_modifier = {
 				name = butua_indonesia_reward
 				duration = -1
+			}
+        }	
+	}
+}
+
+butua_indonesia_tertiary_branch = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+		has_country_flag = butua_indonesia_choice
+	}
+	has_country_shield = yes
+
+	
+	butua_indonesia_cloves = {
+		icon = test
+		required_missions = { butua_spice_islands }
+		position = 11
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 648
+				province_id = 649
+				province_id = 650
+			}
+		}
+
+		trigger = {
+			648 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_production = 15
+				has_production_building_trigger = yes
+				has_manufactory_trigger = yes
+			}
+			649 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_production = 15
+				has_production_building_trigger = yes
+				has_manufactory_trigger = yes
+			}
+			650 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_production = 15
+				has_production_building_trigger = yes
+				has_manufactory_trigger = yes
+			}
+		}
+
+		effect = {
+			649 = {
+				change_trade_goods = cloves
+			}
+			648 = {
+				change_trade_goods = cloves
+			}
+			650 = {
+				change_trade_goods = cloves
 			}
         }	
 	}
