@@ -56,11 +56,11 @@ country_decisions = {
 				is_at_war = no
 				is_tribal = no
 				
-				colonial_brazil = {
+				
 				763 = {
-				country_or_non_sovereign_subject_holds = ROOT
-					}
+					country_or_non_sovereign_subject_holds = ROOT
 				}
+				
 				
 				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 					value = 20
@@ -74,39 +74,39 @@ country_decisions = {
 				remove_non_electors_emperors_from_empire_effect = yes
 				
 				every_subject_country = {
-				limit = {
-					is_colonial_nation = yes
-					capital_scope = {
-						colonial_region = colonial_brazil
-							}
+					limit = {
+						is_colonial_nation = yes
+						capital_scope = {
+							colonial_region = colonial_brazil
 						}
+					}
 					FROM = { inherit = PREV }
 				}
 				every_subject_country = {
-				limit = {
-					is_colonial_nation = yes
-					capital_scope = {
-						colonial_region = colonial_colombia
-							}
+					limit = {
+						is_colonial_nation = yes
+						capital_scope = {
+							colonial_region = colonial_colombia
 						}
+					}
 					FROM = { inherit = PREV }
 				}
 				every_subject_country = {
-				limit = {
-					is_colonial_nation = yes
-					capital_scope = {
-						colonial_region = colonial_peru
-							}
+					limit = {
+						is_colonial_nation = yes
+						capital_scope = {
+							colonial_region = colonial_peru
 						}
+					}
 					FROM = { inherit = PREV }
 				}
 				every_subject_country = {
-				limit = {
-					is_colonial_nation = yes
-					capital_scope = {
-						colonial_region = colonial_la_plata
-							}
+					limit = {
+						is_colonial_nation = yes
+						capital_scope = {
+							colonial_region = colonial_la_plata
 						}
+					}
 					FROM = { inherit = PREV }
 				}
 				if = {
@@ -121,53 +121,47 @@ country_decisions = {
 					duration = 3650
 				}
 				if = {
-					limit = {
-						NOT = { primary_culture = brazilian }
-					}
-					change_primary_culture = brazilian
-				}
-				if = {
-				limit = { is_revolutionary = no }
-				add_government_reform = union_of_crowns
+					limit = { is_revolutionary = no }
+					add_government_reform = union_of_crowns
 				}
 				hidden_effect = {
-				if = {
-					limit = {
-						763 = {
-							owned_by = ROOT
-						}
-					}
-					763 = {
-						move_capital_effect = yes
-						change_culture = brazilian
-					}
-				}
-				else = {
-					random_owned_province = {
+					if = {
 						limit = {
-							colonial_region = colonial_brazil
+							763 = {
+								owned_by = ROOT
+							}
 						}
-						move_capital_effect = yes
+						763 = {
+							move_capital_effect = yes
+							change_culture = brazilian
+						}
+					}
+					else = {
+						random_owned_province = {
+							limit = {
+								colonial_region = colonial_brazil
+							}
+							move_capital_effect = yes
+							change_culture = brazilian
+						}
+					}
+				}
+				hidden_effect = {
+					every_owned_province = {
 						change_culture = brazilian
-						}
 					}
 				}
 				hidden_effect = {
 					every_owned_province = {
-					change_culture = brazilian
-					}
-				}
-				hidden_effect = {
-					every_owned_province = {
-					change_religion = catholic
+						change_religion = ROOT
 					}
 				}
 				
-				colonial_brazil = {
-				limit = {
-					NOT = { owned_by = ROOT }
-				}
-				add_permanent_claim = ROOT
+				brazil_region = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
 				alentejo_area = {
 					limit = {
@@ -184,8 +178,8 @@ country_decisions = {
 				
 				set_country_flag = formed_portuguese_flag
 				if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
+					limit = { has_custom_ideas = no }
+					country_event = { id = ideagroups.1 } #Swap Ideas
 				}
 			}
 			
