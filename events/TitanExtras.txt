@@ -220,3 +220,83 @@ country_event = {
 		}
 	}
 }
+
+province_event = {
+	id = extras.10
+	title = "titanextras.title10"
+	desc = "titanextras.desc10"
+	picture = CITY_DEVELOPMENT_eventPicture
+	
+	fire_only_once = yes
+
+	trigger = {
+		capital_scope = {
+			NOT = {
+				superregion = east_indies_superregion
+			}
+		}
+		owns_core_province = 4815
+		OR = {
+			development = 15
+			has_building = marketplace
+			feudalism = 100
+		}
+		owner = {
+			stability = 1
+			has_institution = feudalism
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 120
+		
+		modifier = {
+			factor = 0.9
+			owner = { full_idea_group = trade_ideas }
+		}
+		modifier = {
+			factor = 0.9
+			owner = { stability = 3 }
+		}
+		modifier = {
+			factor = 0.7
+			owner = { has_institution = global_trade }
+		}
+		modifier = {
+			factor = 0.8
+			development = 20
+		}
+		modifier = {
+			factor = 0.7
+			has_building = trade_depot
+		}
+		modifier = {
+			factor = 0.9
+			has_building = dock
+		}
+		modifier = {
+			factor = 0.5
+			development = 30
+		}
+		modifier = {
+			factor = 0.95
+			current_age = age_of_reformation
+		}
+		modifier = {
+			factor = 0.9
+			current_age = age_of_absolutism
+		}
+		modifier = {
+			factor = 0.85
+			current_age = age_of_revolutions
+		}
+	}
+	
+	option = {
+		name = "titanextras.singapore1"
+		4815 = {
+		add_center_of_trade_level = 1
+		add_base_production = 2
+		}
+	}
+}
