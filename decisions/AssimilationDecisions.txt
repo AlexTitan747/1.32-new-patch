@@ -214,7 +214,7 @@ country_decisions = {
 			NOT = { has_country_flag = assimilated_carpathia }
 		}
 		effect = {
-			set_country_flag = assimilated_kurds
+			set_country_flag = assimilated_carpathia
 			every_owned_province = {
 				limit = {
 					owned_by = ROOT
@@ -244,5 +244,42 @@ country_decisions = {
 		}
 	}
 	
-			
+	east_bantu_assimilation = {
+		major = yes
+		potential = {
+			ai = no
+			culture_group = southern_african
+			NOT = { has_country_flag = assimilated_swahili }
+			has_country_flag = pol_hungarian_assimilation_unlocked
+		}
+		allow = {
+			government_rank = 3
+			NOT = { has_country_flag = assimilated_swahili }
+		}
+		effect = {
+			set_country_flag = assimilated_swahili
+			every_owned_province = {
+				limit = {
+					owned_by = ROOT
+					culture = swahili
+				}
+				add_province_modifier = {
+					name = recently_assimilated
+					duration = 5475
+				}
+				change_culture = ebswahili
+			}
+			every_owned_province = {
+				limit = {
+					owned_by = ROOT
+					culture = madagasque
+				}
+				add_province_modifier = {
+					name = recently_assimilated
+					duration = 5475
+				}
+				change_culture = ebmadagasque
+			}
+		}
+	}		
 }		
