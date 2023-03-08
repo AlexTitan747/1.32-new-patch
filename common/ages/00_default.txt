@@ -29,6 +29,7 @@ age_of_discovery = {
 					}
 				}
 		}
+
 		obj_100_development = {
 			allow = {
 				capital_scope = {
@@ -40,11 +41,7 @@ age_of_discovery = {
 				}
 			}
 			total_development = 100
-
 		}
-		
-		
-		
 	
 		obj_5_centers_of_trade = {
 			calc_true_if = {
@@ -59,6 +56,7 @@ age_of_discovery = {
 				amount = 5
 			}
 		}
+
 		obj_30_development_city = {
 			custom_trigger_tooltip = {
 				tooltip = obj_30_development_city_tooltip
@@ -71,6 +69,7 @@ age_of_discovery = {
 				}
 			}
 		}
+
 		obj_renaissance = {
 	 		has_institution = renaissance
 	 		all_state_province = {
@@ -78,17 +77,7 @@ age_of_discovery = {
 	 		}
 		}
 		
-		obj_two_unions = {
-			allow = {
-				religion_group = christian
-			}
-			num_of_subjects = 4
-		}
-		
 		obj_many_vassals = {
-			allow = {
-				NOT = { religion_group = christian }
-			}
 			num_of_subjects = 4
 		}		
 	
@@ -100,15 +89,14 @@ age_of_discovery = {
 			custom_trigger_tooltip = {
 				tooltip = obj_humiliate_rival_tooltip
 				OR = {
-				has_country_flag = humiliated_rival
-				has_country_flag = tm_show_strength
+					has_country_flag = humiliated_rival
+					has_country_flag = tm_show_strength
 				}
 			}
 		}
 	}		
 
 	abilities = {
-
 		ab_allow_feudal_de_jure_law = {
 			effect = {
 				custom_tooltip = feudal_de_jure_law
@@ -150,7 +138,6 @@ age_of_discovery = {
 			}			
 		}
 		
-
 		ab_transfer_vassal_wargoal = {
 			modifier = {
 				can_transfer_vassal_wargoal = yes
@@ -171,7 +158,6 @@ age_of_discovery = {
 			}	
 		}
 		
-
 		ab_cavalry_armies = {
 			modifier = {
 				cavalry_cost = -0.1
@@ -181,6 +167,7 @@ age_of_discovery = {
 				factor = 10
 			}
 		}
+
 		ab_colony_boost_development = {
 			modifier = {
 				can_colony_boost_development = yes
@@ -214,7 +201,6 @@ age_of_discovery = {
 		}
 
 		ab_denmark_reduced_lib_desire = {
-		
 			allow = {
 				OR = {
 					tag = DAN
@@ -237,12 +223,15 @@ age_of_discovery = {
 				}
 			}
 		}
+
 		ab_ottoman_siege_ability = {
 			allow = {
 				tag = TUR
 			}
 			modifier = {
-				siege_ability = 0.33
+				fire_damage = 0.10
+				shock_damage_received = -0.05
+				is_janissary_modifier = yes
 			}
 			ai_will_do = {
 				factor = 100
@@ -261,8 +250,8 @@ age_of_discovery = {
 				factor = 100
 			}
 		}
+
 		ab_venice_ship_trade = {
-		
 			allow = {
 				OR = {
 					tag = VEN
@@ -304,6 +293,7 @@ age_of_reformation = {
 			}
 		}
 		
+
 		obj_humanism_religious = {
 			OR = {
 				full_idea_group = justice_ideas
@@ -319,8 +309,11 @@ age_of_reformation = {
 			}
 		}
 		
-		obj_colonial_empire = {
-			colony = 5
+		obj_developed_goods = {
+			num_of_owned_provinces_with = {
+				value = 5
+				prov_has_developed_good = yes
+			}
 		}
 		
 		obj_force_converted = {
@@ -337,7 +330,7 @@ age_of_reformation = {
 					value = yes
 				}
 				trading_bonus = {
-					trade_goods = cloves
+					trade_goods = opium
 					value = yes
 				}
 				trading_bonus = {
@@ -348,18 +341,21 @@ age_of_reformation = {
 					trade_goods = silk
 					value = yes
 				}
+				trading_bonus = {
+					trade_goods = tea
+					value = yes
+				}
 			}
 		}
 		
 		obj_unify_culture = {	
 			is_subject = no
-			has_unified_culture_group = yes
+			has_200_dev_culture = yes
 		}
 	}	
 	
 	
 	abilities = {
-	
 		ab_allow_religion_enforced = {
 			modifier = {
 				artillery_levels_available_vs_fort = 1
@@ -458,6 +454,7 @@ age_of_reformation = {
 				factor = 100
 			}
 		}
+
 		ab_mughal_artillery = {
 			allow = {
 				OR = {
@@ -562,21 +559,68 @@ age_of_absolutism = {
 			absolutism = 90
 		}
 		
-		obj_emperor_of_china = {
-			is_emperor_of_china = yes
-			imperial_mandate = 50
+		obj_stable_government_mon = {
+			allow = {
+				government = monarchy
+			}
+			NOT = {
+				corruption = 0.1
+				num_of_loans = 6
+			}
+			stability = 2
+			legitimacy = 90
+		}
+
+		obj_stable_government_rep = {
+			allow = {
+				government = republic
+			}
+			NOT = {
+				corruption = 0.1
+				num_of_loans = 6
+			}
+			stability = 2
+			republican_tradition = 90
+		}
+
+		obj_stable_government_the = {
+			allow = {
+				government = theocracy
+			}
+			NOT = {
+				corruption = 0.1
+				num_of_loans = 6
+			}
+			stability = 2
+			devotion = 90
+		}
+
+		obj_stable_government_hor = {
+			allow = {
+				government = tribal
+			}
+			NOT = {
+				corruption = 0.1
+				num_of_loans = 6
+			}
+			stability = 2
+			horde_unity = 90
 		}
 		
 		obj_cultures_accepted = {
 			num_accepted_cultures = 5
 		}
 		
-		obj_win_religious_war = {
+		obj_great_project = {
 			custom_trigger_tooltip = {
-				tooltip = obj_religious_league_war_on_winning_side_tooltip
-				has_country_flag = religious_league_war_on_winning_side
+				tooltip = obj_great_project_tooltip
+				any_owned_province = {
+					has_great_project = {
+						type = any
+						tier = 3
+					}
+				}
 			}
-			
 		}
 	}	
 	
@@ -775,10 +819,8 @@ age_of_revolutions = {
 				is_emperor_of_china = yes
 			}
 		}
-		obj_large_subject = {
-			any_subject_country = {
-				total_development = 250
-			}
+		obj_innovativeness = {
+			innovativeness = 50
 		}
 		obj_disc_army = {
 			has_global_modifier_value = {
@@ -796,8 +838,8 @@ age_of_revolutions = {
 			has_commanding_three_star = yes
 		}
 	
-		obj_two_institutions = {
-			num_of_owned_and_controlled_institutions = 2
+		obj_full_drill = {
+			num_of_regiments_at_full_drill = 100
 		}
 	}
 
