@@ -230,6 +230,11 @@ province_event = {
 	fire_only_once = yes
 
 	trigger = {
+		capital_scope = {
+			NOT = {
+				superregion = east_indies_superregion
+			}
+		}
 		owns_core_province = 4815
 		OR = {
 			development = 15
@@ -289,7 +294,9 @@ province_event = {
 	
 	option = {
 		name = "titanextras.singapore1"
-		add_center_of_trade_level = 1
+		4815 = {
+		add_center_of_trade = 1
 		add_base_production = 2
+		}
 	}
 }
