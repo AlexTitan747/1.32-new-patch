@@ -1,4 +1,4 @@
-colonial_SAF_slot_1 = {
+colonial_SAF_slot_1 = { #Trade
     slot = 1
 	generic = no
 	ai = yes
@@ -10,9 +10,164 @@ colonial_SAF_slot_1 = {
 	}
 	has_country_shield = yes
 
+	saf_cape = {
+		icon = needIcon
+		required_missions = { }
+		provinces_to_highlight = {
+			province_id = 1177
+		}
+
+		trigger = {
+			1177 = {
+				owned_by = ROOT
+				base_production = 10
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					1177 = {
+						NOT = { province_has_center_of_trade_of_level = 3 }
+					}
+				}
+				1177 = {
+					add_center_of_trade_level = 1
+				}
+			}
+			else = {
+				1177 = {
+					add_base_production = 3
+				}
+			}
+		}
+	}
+
+	saf_cape_2 = {
+		icon = needIcon
+		required_missions = { saf_cape }
+		provinces_to_highlight = {
+			province_id = 1177
+		}
+
+		trigger = {
+			1177 = {
+				owned_by = ROOT
+				base_production = 15
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					1177 = {
+						NOT = { trade_goods = gold }
+						NOT = { trade_goods = gems }
+					}
+				}
+				1177 = {
+					change_trade_goods = gems
+				}
+				
+			}
+			else = {
+				1177 = {
+					add_base_production = 3
+				}
+			}
+		}
+	}
+
+	saf_cape_3 = {
+		icon = needIcon
+		required_missions = { saf_cape_2 }
+		provinces_to_highlight = {
+			province_id = 1177
+		}
+
+		trigger = {
+			1177 = {
+				owned_by = ROOT
+			}
+			1460 = {
+				trade_share = {
+					country = ROOT
+					share = 50
+				}
+				is_strongest_trade_power = ROOT
+			}
+		}
+
+		effect = {
+			1177 = {
+				add_province_modifier = {
+					name = "cape_trade"
+					duration = -1
+				}
+			}
+		}
+	}
+
+	saf_cape_4 = {
+		icon = needIcon
+		required_missions = { saf_cape_3 }
+		provinces_to_highlight = {
+			province_id = 1177
+		}
+
+		trigger = {
+			1177 = {
+				owned_by = ROOT
+			}
+			1460 = {
+				is_strongest_trade_power = ROOT
+				trade_node_value = 25
+			}
+		}
+
+		effect = {
+			1460 = {
+				add_trade_modifier = {
+					who = ROOT
+					duration = 5475
+					power = 20
+					key = STRONG_MERCHANTS
+				}
+				add_trade_node_income = 100
+			}
+		}
+	}
+
+	saf_cape_5 = {
+		icon = needIcon
+		required_missions = { saf_cape_4 }
+		provinces_to_highlight = {
+			province_id = 1177
+		}
+
+		trigger = {
+			1177 = {
+				owned_by = ROOT
+			}
+			1460 = {
+				is_strongest_trade_power = ROOT
+				trade_node_value = 30
+			}
+		}
+
+		effect = {
+			overlord = {
+				add_country_modifier = {
+					name = "colonial_subject_overlord_trade_reward"
+					duration = -1	
+				}
+			}
+		}
+	}
+
 }
 
-colonial_SAF_slot_2 = {
+colonial_SAF_slot_2 = { #Navy
     slot = 2
 	generic = no
 	ai = yes
@@ -24,9 +179,67 @@ colonial_SAF_slot_2 = {
 	}
 	has_country_shield = yes
 
+	saf_navy_1 = {
+		icon = needIcon
+		required_missions = { }
+		provinces_to_highlight = {	}
+
+		trigger = {
+
+		}
+
+		effect = {
+
+		}
+	}
+
+	saf_navy_2 = {
+		icon = needIcon
+		required_missions = { saf_navy_1 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+
+		}
+
+		effect = {
+
+		}
+	}
+
+	saf_navy_3 = {
+		icon = needIcon
+		required_missions = { saf_navy_2 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+
+		}
+
+		effect = {
+
+		}
+	}
+
+	saf_navy_4 = {
+		icon = needIcon
+		required_missions = { saf_navy_3 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = "colonial_subject_overlord_navy_reward"
+				duration = -1
+			}
+		}
+	}
 }
 
-colonial_SAF_slot_3 = {
+colonial_SAF_slot_3 = { #Army
     slot = 3
 	generic = no
 	ai = yes
@@ -38,9 +251,87 @@ colonial_SAF_slot_3 = {
 	}
 	has_country_shield = yes
 
+	saf_army_1 = {
+		icon = needIcon
+		required_missions = { }
+		provinces_to_highlight = {	}
+
+		trigger = {
+
+		}
+
+		effect = {
+
+		}
+	}
+
+	saf_army_2 = {
+		icon = needIcon
+		required_missions = { saf_army_1 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+
+		}
+
+		effect = {
+
+		}
+	}
+
+	saf_army_3 = {
+		icon = needIcon
+		required_missions = { saf_army_2 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+
+		}
+
+		effect = {
+
+		}
+	}
+
+	saf_army_4 = {
+		icon = needIcon
+		required_missions = { saf_army_3 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+
+		}
+
+		effect = {
+
+		}
+	}
+
+	saf_army_5 = {
+		icon = needIcon
+		required_missions = { saf_army_4 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 20
+				colonial_region = colonial_saf
+				base_manpower = 10
+				has_military_building = yes
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = "colonial_subject_overlord_army_reward"
+				duration = -1
+			}
+		}
+	}
+
 }
 
-colonial_SAF_slot_4 = {
+colonial_SAF_slot_4 = { #Colonisation
     slot = 4
 	generic = no
 	ai = yes
@@ -52,9 +343,127 @@ colonial_SAF_slot_4 = {
 	}
 	has_country_shield = yes
 
+	saf_colonisation_1 = {
+		icon = needIcon
+		provinces_to_highlight = {
+			colonial_region = colonial_saf
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			OR = {
+				colonial_saf = {
+					has_colonist = yes
+					owned_by = ROOT
+				}
+				NOT = {
+					colonial_saf = {
+						is_empty = yes
+					}
+				}
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					colonial_saf = {
+						has_colonist = yes
+						owned_by = ROOT
+					}
+				}
+				define_advisor = {
+					type = navigator
+					skill = 2
+					discount = yes
+					culture = ROOT
+					religion = ROOT
+				}
+			}
+			else = {
+				define_advisor = {
+					type = treasurer 
+					skill = 2
+					discount = yes
+					culture = ROOT
+					religion = ROOT
+				}
+			}
+		}
+	}
+
+	saf_colonisation_2 = {
+		icon = needIcon
+		required_missions = { saf_colonisation_1 }
+		provinces_to_highlight = {
+			colonial_region = colonial_saf
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 10
+				colonial_region = colonial_saf
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = "saf_colonising_quick"
+				duration = 3650
+			}
+		}
+	}
+
+	saf_colonisation_3 = {
+		icon = needIcon
+		required_missions = { saf_colonisation_2 }
+		provinces_to_highlight = {
+			province_id = 2864
+		}
+
+		trigger = {
+			2864 = {
+				is_city = yes
+				owned_by = ROOT
+			}
+		}
+
+		effect = {
+			2864 = {
+				center_of_trade = 2
+			}
+		}
+	}
+
+	saf_colonisation_4 = {
+		icon = needIcon
+		required_missions = { saf_colonisation_3 }
+		provinces_to_highlight = { 
+			colonial_region = colonial_saf
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			colonial_saf = {
+				type = all
+				owned_by = ROOT
+				is_city = yes
+			}
+		}
+
+		effect = {
+			overlord = {
+				add_country_modifier = {
+					name = "colonial_subject_overlord_colonisation_reward"
+					duration = 5475
+				}
+			}
+		}
+	}
 }
 
-colonial_SAF_slot_5 = {
+colonial_SAF_slot_5 = { #Gold
     slot = 5
 	generic = no
 	ai = yes
@@ -66,4 +475,125 @@ colonial_SAF_slot_5 = {
 	}
 	has_country_shield = yes
 
+	saf_gold_1 = {
+		icon = needIcon
+		required_missions = { }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			OR = {
+				any_owned_province = {
+					trade_goods = gold
+				}
+				AND = {
+					NOT = { gold = 1 }
+					any_owned_province = {
+						NOT = { province_id = 1177 }
+						base_production = 8
+					}
+				}
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					gold = 1
+				}
+				random_owned_province = {
+					limit = {
+						trade_goods = gold
+					}
+					add_base_production = 3
+				}
+				define_advisor = {
+					type = master_of_mint
+					skill = 2	
+					discount = yes
+					culture = ROOT
+					religion = ROOT
+				}
+			}
+			else = {
+				random_owned_province = {
+					limit = {
+						is_city = yes
+						NOT = { province_id = 1177 }
+					}
+					change_trade_goods = gold
+					add_base_production = 1
+				}
+			}
+		}
+	}
+
+	saf_gold_2 = {
+		icon = needIcon
+		required_missions = { saf_gold_1 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			gold = 1
+		}
+
+		effect = {
+			
+		}
+	}
+
+	saf_gold_3 = {
+		icon = needIcon
+		required_missions = { saf_gold_2 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			gold = 1
+		}
+
+		effect = {
+			add_years_of_owned_provinces_production_income = {
+				years = 2
+				trigger = {
+					trade_goods = gold
+				}
+				custom_tooltip = SAF_GOLD_GAIN
+			}
+		}
+	}
+
+	saf_gold_4 = {
+		icon = needIcon
+		required_missions = { saf_gold_3 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			gold = 1
+		}
+
+		effect = {
+			overlord = {
+				add_years_of_owned_provinces_production_income = {
+					years = 2
+					trigger = {
+						trade_goods = gold
+					}
+					custom_tooltip = SAF_GOLD_GAIN
+				}
+			}
+		}
+	}
+
+	saf_gold_5 = {
+		icon = needIcon
+		required_missions = { saf_gold_4 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			gold = 1
+		}
+
+		effect = {
+
+		}
+	}
 }
