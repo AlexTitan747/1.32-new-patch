@@ -276,19 +276,16 @@ tm_CRI_branch_2 = {
 				has_building = temple
 			}
 			5134 = {
-				type = all
 				base_tax = 8
 				base_manpower = 10
 				has_building = temple
 			}
 			2411 = {
-				type = all
 				base_tax = 8
 				base_manpower = 10
 				has_building = temple
 			}
 			5133 = {
-				type = all
 				base_tax = 8
 				base_manpower = 10
 				has_building = temple
@@ -320,13 +317,13 @@ tm_CRI_branch_2 = {
 
 		provinces_to_highlight = {
 			region = ruthenia_region
-			NOT = { country_or_non_sovereign_subject_owns = ROOT }
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
 		trigger = {
 			ruthenia_region = {
 				type = all
-				country_or_non_sovereign_subject_owns = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 
@@ -490,10 +487,6 @@ tm_CRI_branch_3 = {
 				duration = -1
 			}
 			33 = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
 				add_permanent_claim = ROOT
 			}
 		}
@@ -512,7 +505,7 @@ tm_CRI_branch_3 = {
 			33 = {
 				owned_by = ROOT
 				base_production = 13
-				has_center_of_trade_of_level = 3
+				province_has_center_of_trade_of_level = 3
 			}
 		}
 
@@ -547,7 +540,7 @@ tm_CRI_branch_3 = {
 		trigger = {
 			russia_region = {
 				type = all
-				owneed_by = ROOT
+				owned_by = ROOT
 			}
 		}
 
@@ -687,29 +680,29 @@ tm_CRI_branch_4 = {
 					add_province_modifier = {
 						name = tm_CRI_hold_over_astrakhan
 						duration = -1
-						add_building = church
 					}
+					add_building = church
 				}
 				464 = {
 					add_province_modifier = {
 						name = tm_CRI_hold_over_astrakhan
 						duration = -1
-						add_building = barracks
 					}
+					add_building = barracks
 				}
 				465 = {
 					add_province_modifier = {
 						name = tm_CRI_hold_over_astrakhan
-						duration = -1
-						add_building = barracks
+						duration = -1						
 					}
+					add_building = barracks
 				}
 				466 = {
 					add_province_modifier = {
 						name = tm_CRI_hold_over_astrakhan
 						duration = -1
-						add_building = barracks
 					}
+					add_building = barracks
 				}
 				smolensk_area = {
 					limit = {
@@ -993,10 +986,6 @@ tm_CRI_branch_5 = {
 				add_permanent_claim = ROOT
 			}
 			2444 = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
 				add_permanent_claim = ROOT
 			}
 		}

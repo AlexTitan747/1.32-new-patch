@@ -1070,8 +1070,6 @@ poland_sca_slot_2_a = {
 		trigger = {
 			custom_trigger_tooltip = {
 				tooltip = pol_warplan_hungary_tt
-			}
-			hidden_trigger = {
 				has_country_flag = warplan_hungary_activated
 			}
 		}
@@ -2290,8 +2288,6 @@ poland_sca_slot_3_a = {
 		trigger = {
 			custom_trigger_tooltip = {
 				tooltip = pol_warplan_germany_tt
-			}
-			hidden_trigger = {
 				has_country_flag = warplan_bohemia_activated
 			}
 		}
@@ -2435,8 +2431,6 @@ poland_sca_slot_3_a = {
 		trigger = {
 			custom_trigger_tooltip = {
 				tooltip = pol_warplan_scandinavia_tt
-			}
-			hidden_trigger = {
 				has_country_flag = warplan_sweden_activated
 			}
 		}
@@ -2643,8 +2637,6 @@ poland_sca_slot_3_a = {
 		trigger = {
 			custom_trigger_tooltip = {
 				tooltip = pol_warplan_russia_tt
-			}
-			hidden_trigger = {
 				has_country_flag = warplan_russia_activated
 			}
 		}
@@ -2885,8 +2877,6 @@ poland_sca_slot_3_a = {
 		trigger = {
 			custom_trigger_tooltip = {
 				tooltip = pol_warplan_crimea_tt
-			}
-			hidden_trigger = {
 				has_country_flag = warplan_crimea_activated
 			}
 		}
@@ -4564,54 +4554,70 @@ poland_sca_slot_5_branching_lit_hre = {
 		}
 
 		effect = {
-			4240 = {
-				if = {
-					NOT = {
-						OR = {
-						has_building = barracks
-						has_building = training_fields
+			if = {
+				limit = {
+					4240 = {
+						NOT = {
+							OR = {
+								has_building = barracks
+								has_building = training_fields
+							}
 						}
 					}
+				}
+				4240 = {
 					add_building = barracks
 				}
-				add_base_manpower = 2
 			}
-			153 = {
-				if = {
-					NOT = {
-						OR = {
-						has_building = barracks
-						has_building = training_fields
+			4240 = { add_base_manpower = 2 }
+			if = {
+				limit = {
+					153 = {
+						NOT = {
+							OR = {
+								has_building = barracks
+								has_building = training_fields
+							}
 						}
 					}
+				}
+				153 = {
 					add_building = barracks
 				}
-				add_base_manpower = 2
 			}
-			4125 = {
-				if = {
-					NOT = {
-						OR = {
-						has_building = barracks
-						has_building = training_fields
+			153 = { add_base_manpower = 2 }
+			if = {
+				limit = {
+					4125 = {
+						NOT = {
+							OR = {
+								has_building = barracks
+								has_building = training_fields
+							}
 						}
 					}
+				}
+				4125 = {
 					add_building = barracks
 				}
-				add_base_manpower = 2
 			}
-			155 = {
-				if = {
-					NOT = {
-						OR = {
-						has_building = barracks
-						has_building = training_fields
+			4125 = { add_base_manpower = 2 }
+			if = {
+				limit = {
+					155 = {
+						NOT = {
+							OR = {
+								has_building = barracks
+								has_building = training_fields
+							}
 						}
 					}
+				}
+				155 = {
 					add_building = barracks
 				}
-				add_base_manpower = 2
 			}
+			155 = { add_base_manpower = 2 }
 		}
 	}
 
