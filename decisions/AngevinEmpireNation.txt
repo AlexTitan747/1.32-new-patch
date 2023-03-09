@@ -31,7 +31,6 @@ country_decisions = {
 				AND = {
 					ai = yes
 					num_of_cities = 10
-					adm_tech = 10
 				}
 			}
 		}
@@ -42,8 +41,7 @@ country_decisions = {
 				area = brittany_area
 				area = loire_area
 				area = poitou_area
-				area = guyenne_area
-				area = pyrenees_area
+				area = bordeaux_area
 			}
 			OR = {
 				NOT = { owned_by = ROOT }
@@ -51,33 +49,16 @@ country_decisions = {
 			}
 		}
 		allow = {
-			adm_tech = 10
+			adm_tech = 15
 			NOT = { exists = ANG }
 			is_free_or_tributary_trigger = yes
 			is_nomad = no
 			is_at_war = no
-			legitimacy = 100
-			OR = {
-				AND = {
-					tag = ENG
-					OR = {
-						SCO = {	junior_union_with = ENG	}
-						SCO = {	is_subject_of = ENG	}
-						NOT = { exists = SCO }
-					}
-					SCO = { NOT = { num_of_cities = 15 } } #Keep this number the same as in potential
-				}
-				AND = {
-					tag = SCO
-					OR = {
-						ENG = {	junior_union_with = SCO	}
-						ENG = {	is_subject_of = SCO	}
-						NOT = { exists = ENG }
-					}
-					ENG = { NOT = { num_of_cities = 41 } } #Keep this number the same as in potential
-				}
-			}
 			normandy_area = {
+				type = all
+				owned_by = ROOT
+			}
+			bordeaux_area = {
 				type = all
 				owned_by = ROOT
 			}
@@ -93,51 +74,15 @@ country_decisions = {
 				type = all
 				owned_by = ROOT
 			}
-			guyenne_area = {
-				type = all
-				owned_by = ROOT
-			}
-			pyrenees_area = {
-				type = all
-				owned_by = ROOT
-			}
 		}
 		effect = {
-			if = {
-				limit = {
-					tag = ENG
-					SCO = {
-						ai = yes
-					}
-				}
-				inherit = SCO
-			}
-			if = {
-				limit = {
-					tag = SCO
-					ENG = {
-						ai = yes
-					}
-				}
-				inherit = ENG
-			}
-			hidden_effect = {
-				if = {
-					limit = {
-						tag = SCO
-					}
-					complete_mission = eng_mighty_army
-					complete_mission = conquer_scotland
-					complete_mission = eng_rb_war_of_roses
-				}	
-			}
 			change_tag = ANG
 			remove_non_electors_emperors_from_empire_effect = yes
 			if = {
 				limit = {
-					NOT = { government_rank = 2 }
+					NOT = { government_rank = 3 }
 				}
-				set_government_rank = 2
+				set_government_rank = 3
 			}
 			british_isles_region = {
 				limit = {
@@ -166,8 +111,6 @@ country_decisions = {
 			factor = 1
 		}
 		ai_importance = 200
-		do_not_integrate = ENG
-		do_not_integrate = SCO
 	}
 
 }
