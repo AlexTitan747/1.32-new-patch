@@ -1,7 +1,19 @@
 building_slot_for_manufactory_trigger = {
 	NOT = { num_free_building_slots = 2 }
 	NOT = { trade_goods = gold }
-	NOT = { has_building = manufactory }
+	NOT = {
+		OR = {
+			has_building = wharf
+			has_building = weapons
+			has_building = textile
+			has_building = tradecompany
+			has_building = farm_estate
+			has_building = mills
+			has_building = furnace
+			has_building = plantations
+			has_building = soldier_households
+		}
+	}
 }
 
 not_core_or_claim = {
