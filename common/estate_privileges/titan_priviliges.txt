@@ -61,7 +61,10 @@ estate_burghers_mountain_development = {
 		custom_tooltip = swiss_development_mechanic
 	}
 	is_valid = {
-		NOT = { has_estate = estate_vaisyas }
+		OR = {
+			tag = SWI
+			tag = ALP
+		}
 	}
 	on_granted_province = {
 		if = {
@@ -254,13 +257,13 @@ estate_burghers_desert_development = {
 	loyalty = 0.1
 	influence = 0.1
 	can_select = {
-		always = no
+		has_country_flag = can_dev_desert_cheap
 	}
 	on_granted = {
 		custom_tooltip = develop_desert_cheaper_tt
 	}
 	is_valid = {
-		NOT = { has_estate = estate_vaisyas }
+		has_country_flag = can_dev_desert_cheap
 	}
 	on_granted_province = {
 		if = {
