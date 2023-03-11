@@ -4624,7 +4624,7 @@ metalworks = {
 			}
 			ROOT = {
 				remove_building = metalworks
-				change_trade_goods = cloth
+				change_trade_goods = silver
 			}
 			
 			FROM = {
@@ -4648,6 +4648,94 @@ metalworks = {
 			factor = 0
 			FROM = {
 				silverware = 2
+			}
+		}
+	}
+}
+
+blacksmith = {
+	cost = 250
+	time = 12
+	
+	build_trigger = {
+		trade_goods = iron
+		has_production_building = yes
+		has_building = barracks
+		development = 12
+		FROM = {
+			dip_tech = 14
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = iron
+					value = 1.0
+				}
+	
+				change_variable = {
+					which = iron
+					value = 1.0
+				}			
+				change_variable = {
+					which = blacksmith_amount
+					value = 1
+					}				
+				}
+				ROOT = {
+					change_trade_goods = armour
+				}
+			}
+		}
+	
+	on_destroyed = {
+		hidden_effect = {
+			if = {
+				limit = {
+					ROOT = {
+						NOT = { has_building = blacksmith }
+					}
+				}
+				FROM = {
+					change_variable = {            
+						which = armour
+						value = 1.0
+					}
+				
+					subtract_variable = {            
+						which = lead_used
+						value = 1.0
+					}
+				}
+			}
+			ROOT = {
+				remove_building = blacksmith
+				change_trade_goods = iron
+			}
+			
+			FROM = {
+				subtract_variable = {            
+					which = blacksmith_amount
+					value = 1
+				}
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 3000
+
+		modifier = {
+			factor = 0
+			FROM = {
+				armour = 2
 			}
 		}
 	}
