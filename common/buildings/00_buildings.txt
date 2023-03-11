@@ -3594,92 +3594,6 @@ highway = {
 
 ###### TITAN NATIONAL WONDERS ######
 
-centre_of_manufacturing = {
-	cost = 1500
-	time = 30
-	modifier = {
-		trade_goods_size_modifier = 0.2
-	}
-
-	build_trigger = {
-		NOT = {
-			any_owned_province = {
-				has_building = centre_of_manufacturing
-				has_construction = centre_of_manufacturing
-			}
-		}
-	}
-	
-	keep_trigger = {
-		NOT = {
-			area_for_scope_province = {
-				NOT = { province_id = root }
-				owner = {
-					tag = ROOT
-				}
-				OR = {
-					has_building = centre_of_manufacturing
-					has_construction = centre_of_manufacturing
-				}
-			}
-		}
-	}
-
-	on_built = {
-		add_development_from_building = {
-			building = centre_of_manufacturing
-			type = production
-			value = 2
-		}
-		hidden_effect = { owner = { save_event_target_as = new_owner } }
-		area = {
-			if = {
-				limit = {
-					owned_by = event_target:new_owner
-					NOT = { has_province_modifier = centre_of_manufacturing_local_mod }
-				}
-				add_province_modifier = {
-					name = centre_of_manufacturing_local_mod
-					duration = -1
-				}
-			}
-		}
-	}
-	on_destroyed = {
-		remove_development_from_building = {
-			building = centre_of_manufacturing
-			type = production
-			value = 2
-		}
-		hidden_effect = { owner = { save_event_target_as = new_owner } }
-		if = {
-			limit = {
-				NOT = {
-					area_for_scope_province = {
-						owned_by = FROM
-						has_building = centre_of_manufacturing
-					}
-				}
-			}
-			area = {
-				if = {
-					limit = {
-						owned_by = event_target:new_owner
-						has_province_modifier = centre_of_manufacturing_local_mod
-					}
-					remove_province_modifier = centre_of_manufacturing_local_mod
-				}
-			}
-		}
-	}
-
-	on_obsolete = {
-	}
-
-	ai_will_do = {
-	}
-}
-
 imperial_tax_office = {
 	cost = 1500
 	time = 30
@@ -3688,10 +3602,14 @@ imperial_tax_office = {
 	}
 
 	build_trigger = {
-		NOT = {
-			any_owned_province = {
-				has_building = imperial_tax_office
-				has_construction = imperial_tax_office
+		owner = {
+			NOT = {
+				any_owned_province = {
+					OR = {
+						has_building = imperial_tax_office
+						has_construction = imperial_tax_office
+					}
+				}
 			}
 		}
 	}
@@ -3766,6 +3684,96 @@ imperial_tax_office = {
 	}
 }
 
+centre_of_manufacturing = {
+	cost = 1500
+	time = 30
+	modifier = {
+		trade_goods_size_modifier = 0.2
+	}
+
+	build_trigger = {
+		owner = {
+			NOT = {
+				any_owned_province = {
+					OR = {
+						has_building = centre_of_manufacturing
+						has_construction = centre_of_manufacturing
+					}
+				}
+			}
+		}
+	}
+	
+	keep_trigger = {
+		NOT = {
+			area_for_scope_province = {
+				NOT = { province_id = root }
+				owner = {
+					tag = ROOT
+				}
+				OR = {
+					has_building = centre_of_manufacturing
+					has_construction = centre_of_manufacturing
+				}
+			}
+		}
+	}
+
+	on_built = {
+		add_development_from_building = {
+			building = centre_of_manufacturing
+			type = production
+			value = 2
+		}
+		hidden_effect = { owner = { save_event_target_as = new_owner } }
+		area = {
+			if = {
+				limit = {
+					owned_by = event_target:new_owner
+					NOT = { has_province_modifier = centre_of_manufacturing_local_mod }
+				}
+				add_province_modifier = {
+					name = centre_of_manufacturing_local_mod
+					duration = -1
+				}
+			}
+		}
+	}
+	on_destroyed = {
+		remove_development_from_building = {
+			building = centre_of_manufacturing
+			type = production
+			value = 2
+		}
+		hidden_effect = { owner = { save_event_target_as = new_owner } }
+		if = {
+			limit = {
+				NOT = {
+					area_for_scope_province = {
+						owned_by = FROM
+						has_building = centre_of_manufacturing
+					}
+				}
+			}
+			area = {
+				if = {
+					limit = {
+						owned_by = event_target:new_owner
+						has_province_modifier = centre_of_manufacturing_local_mod
+					}
+					remove_province_modifier = centre_of_manufacturing_local_mod
+				}
+			}
+		}
+	}
+
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+	}
+}
+
 imperial_trade_office = {
 	cost = 1500
 	time = 30
@@ -3774,10 +3782,14 @@ imperial_trade_office = {
 	}
 
 	build_trigger = {
-		NOT = {
-			any_owned_province = {
-				has_building = imperial_trade_office
-				has_construction = imperial_trade_office
+		owner = {
+			NOT = {
+				any_owned_province = {
+					OR = {
+						has_building = imperial_trade_office
+						has_construction = imperial_trade_office
+					}
+				}
 			}
 		}
 	}
@@ -3860,10 +3872,14 @@ grand_fortress = {
 	}
 
 	build_trigger = {
-		NOT = {
-			any_owned_province = {
-				has_building = grand_fortress
-				has_construction = grand_fortress
+		owner = {
+			NOT = {
+				any_owned_province = {
+					OR = {
+						has_building = grand_fortress
+						has_construction = grand_fortress
+					}
+				}
 			}
 		}
 	}
@@ -3906,10 +3922,14 @@ cultural_ministry = {
 	}
 
 	build_trigger = {
-		NOT = {
-			any_owned_province = {
-				has_building = cultural_ministry
-				has_construction = cultural_ministry
+		owner = {
+			NOT = {
+				any_owned_province = {
+					OR = {
+						has_building = cultural_ministry
+						has_construction = cultural_ministry
+					}
+				}
 			}
 		}
 	}
@@ -3939,7 +3959,6 @@ cultural_ministry = {
 	}
 
 	on_destroyed = {
-		
 	}
 
 	on_obsolete = {
