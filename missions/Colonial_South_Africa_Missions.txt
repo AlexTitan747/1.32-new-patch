@@ -246,47 +246,35 @@ colonial_SAF_slot_2 = { #Navy
 		}
 
 		effect = {
-			if = {
-				limit = {
-					NOT = {
-						OR = {
-							any_owned_province = {
-								base_production = 12
-								has_port = yes
-							}
-							sailors_percentage = 0.75
+			custom_tooltip = col_navy_shipyards_tt
+			hidden_effect = {
+				random_owned_province = {
+					limit = {
+						has_port = yes
+						base_production = 12
+					}
+					if = {
+						limit = {
+							NOT = { has_building = dock }
+							NOT = { has_building = drydock }
 						}
-						
+						add_building = dock
+						add_base_production = 1
 					}
-				}
-				custom_tooltip = saf_anvy_shipyards_tt
-			}
-			random_owned_province = {
-				limit = {
-					has_port = yes
-					base_production = 12
-				}
-				if = {
-					limit = {
-						NOT = { has_building = dock }
-						NOT = { has_building = drydock }
+					else = {
+						add_base_production = 3
 					}
-					add_building = dock
-					add_base_production = 1
-				}
-				else = {
-					add_base_production = 3
-				}
-				if = {
-					limit = {
-						NOT = { has_building = shipyard }
-						NOT = { has_building = grand_shipyard }
+					if = {
+						limit = {
+							NOT = { has_building = shipyard }
+							NOT = { has_building = grand_shipyard }
+						}
+						add_building = shipyard
+						add_base_production = 1
 					}
-					add_building = shipyard
-					add_base_production = 1
-				}
-				else = {
-					add_base_production = 3
+					else = {
+						add_base_production = 3
+					}
 				}
 			}
 		}
@@ -326,7 +314,7 @@ colonial_SAF_slot_2 = { #Navy
 
 		effect = {
 			add_country_modifier = {
-				name = saf_building_navy
+				name = col_building_navy
 				duration = 3650
 			}
 		}
@@ -377,7 +365,7 @@ colonial_SAF_slot_3 = { #Army
 
 		effect = {
 			add_country_modifier = {
-				name = saf_building_army
+				name = col_building_army
 				duration = 3650
 			}
 		}
@@ -451,7 +439,7 @@ colonial_SAF_slot_3 = { #Army
 					colonial_region = colonial_saf
 					base_manpower = 10
 				}
-				custom_tooltip = saf_years_of_manpower
+				custom_tooltip = col_years_of_manpower
 			}
 			define_advisor = {
 				type = quartermaster
@@ -461,7 +449,7 @@ colonial_SAF_slot_3 = { #Army
 				religion = ROOT
 			}
 			add_country_modifier = {
-				name = saf_standing_army
+				name = col_standing_army
 				duration = 3650
 			}
 		}
@@ -513,6 +501,7 @@ colonial_SAF_slot_4 = { #Colonisation
 				colonial_saf = {
 					has_colonist = yes
 					owned_by = ROOT
+					is_city = no
 				}
 				colonial_saf = {
 					type = all
@@ -522,28 +511,31 @@ colonial_SAF_slot_4 = { #Colonisation
 		}
 
 		effect = {
-			if = {
-				limit = {
-					colonial_saf = {
-						has_colonist = yes
-						owned_by = ROOT
+			custom_tooltip = col_first_colonisng_mission_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						colonial_saf = {
+							has_colonist = yes
+							owned_by = ROOT
+						}
+					}
+					define_advisor = {
+						type = navigator
+						skill = 2
+						discount = yes
+						culture = ROOT
+						religion = ROOT
 					}
 				}
-				define_advisor = {
-					type = navigator
-					skill = 2
-					discount = yes
-					culture = ROOT
-					religion = ROOT
-				}
-			}
-			else = {
-				define_advisor = {
-					type = treasurer 
-					skill = 2
-					discount = yes
-					culture = ROOT
-					religion = ROOT
+				else = {
+					define_advisor = {
+						type = treasurer 
+						skill = 2
+						discount = yes
+						culture = ROOT
+						religion = ROOT
+					}
 				}
 			}
 		}
@@ -566,7 +558,7 @@ colonial_SAF_slot_4 = { #Colonisation
 
 		effect = {
 			add_country_modifier = {
-				name = "saf_colonising_quick"
+				name = "col_colonising_quick"
 				duration = 3650
 			}
 		}
