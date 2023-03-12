@@ -4477,7 +4477,7 @@ publishing_house = {
 	}
 }
 
-tailors = {
+uniform_maker = {
 	cost = 250
 	time = 12
 	
@@ -4503,7 +4503,7 @@ tailors = {
 					value = 1.0
 				}			
 				change_variable = {
-					which = tailors_amount
+					which = uniform_maker_amount
 					value = 1
 					}				
 				}
@@ -4518,7 +4518,7 @@ tailors = {
 			if = {
 				limit = {
 					ROOT = {
-						NOT = { has_building = tailors }
+						NOT = { has_building = uniform_maker }
 					}
 				}
 				FROM = {
@@ -4534,13 +4534,13 @@ tailors = {
 				}
 			}
 			ROOT = {
-				remove_building = tailors
+				remove_building = uniform_maker
 				change_trade_goods = cloth
 			}
 			
 			FROM = {
 				subtract_variable = {            
-					which = tailors_amount
+					which = uniform_maker_amount
 					value = 1
 				}
 			}
@@ -4889,7 +4889,7 @@ jewellery_workshop = {
 				remove_building = jewellery_workshop
 				change_trade_goods = gems
 			}
-			
+
 			FROM = {
 				subtract_variable = {            
 					which = jewellery_workshop_amount
@@ -4903,7 +4903,7 @@ jewellery_workshop = {
 		trade_goods_size = 0.2
 		local_governing_cost = 0.15
 	}
-	
+
 	ai_will_do = {
 		factor = 3000
 
@@ -4921,14 +4921,17 @@ tailors = {
 	time = 12
 	
 	build_trigger = {
-		trade_goods = copper
+		OR = {
+			trade_goods = silk
+			trade_goods = dyes
+		}
 		has_production_building = yes
 		development = 12
 		FROM = {
 			dip_tech = 14
 		}
 	}
-	
+
 	on_built = {
 		hidden_effect = {
 			FROM = {
@@ -4942,7 +4945,7 @@ tailors = {
 					value = 1.0
 				}			
 				change_variable = {
-					which = bronze_furnace_amount
+					which = tailors_amount
 					value = 1
 				}				
 			}
@@ -4951,13 +4954,13 @@ tailors = {
 			}
 		}
 	}
-	
+
 	on_destroyed = {
 		hidden_effect = {
 			if = {
 				limit = {
 					ROOT = {
-						NOT = { has_building = bronze_furnace }
+						NOT = { has_building = tailors }
 					}
 				}
 				FROM = {
@@ -4972,12 +4975,12 @@ tailors = {
 				}
 			}
 			ROOT = {
-				remove_building = bronze_furnace
-				change_trade_goods = copper
+				remove_building = tailors
+				change_trade_goods = silk
 			}
 			FROM = {
 				subtract_variable = {            
-					which = bronze_furnace_amount
+					which = tailors_amount
 					value = 1
 				}
 			}
@@ -4994,7 +4997,7 @@ tailors = {
 		modifier = {
 			factor = 0
 			FROM = {
-				bronze = 2
+				tailored_clothes = 2
 			}
 		}
 	}
