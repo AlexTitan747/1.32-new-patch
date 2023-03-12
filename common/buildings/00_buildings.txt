@@ -4916,6 +4916,90 @@ jewellery_workshop = {
 	}
 }
 
+tailors = {
+	cost = 250
+	time = 12
+	
+	build_trigger = {
+		trade_goods = copper
+		has_production_building = yes
+		development = 12
+		FROM = {
+			dip_tech = 14
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = iron
+					value = 1.0
+				}
+	
+				change_variable = {
+					which = iron
+					value = 1.0
+				}			
+				change_variable = {
+					which = bronze_furnace_amount
+					value = 1
+				}				
+			}
+			ROOT = {
+				change_trade_goods = bronze
+			}
+		}
+	}
+	
+	on_destroyed = {
+		hidden_effect = {
+			if = {
+				limit = {
+					ROOT = {
+						NOT = { has_building = bronze_furnace }
+					}
+				}
+				FROM = {
+					change_variable = {            
+						which = bronze
+						value = 1.0
+					}
+					subtract_variable = {            
+						which = lead_used
+						value = 1.0
+					}
+				}
+			}
+			ROOT = {
+				remove_building = bronze_furnace
+				change_trade_goods = copper
+			}
+			FROM = {
+				subtract_variable = {            
+					which = bronze_furnace_amount
+					value = 1
+				}
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.25
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 3000
+		modifier = {
+			factor = 0
+			FROM = {
+				bronze = 2
+			}
+		}
+	}
+}
+
 bronze_furnace = {
 	cost = 250
 	time = 12
