@@ -304,7 +304,7 @@ estate_burghers_desert_development = {
 }
 
 estate_nobles_monopoly_of_deer = {
-	icon = privilege_monopoly_of_goods_cloth
+	icon = privilege_monopoly_of_goods_deer
 	#
 	loyalty = 0.1
 	is_valid = {
@@ -386,6 +386,130 @@ estate_nobles_monopoly_of_deer = {
 				has_province_modifier = estate_nobles_monopoly_of_deer_mod
 			}
 			remove_province_modifier = estate_nobles_monopoly_of_deer_mod
+		}
+	}
+	penalties = {
+	}
+	benefits = {
+	}
+	cooldown_years = 10
+	on_cooldown_expires = {
+		country_event = { id = monopoly_privileges.1 }
+	}
+	ai_will_do = { #having the AI use these could lead to an unstoppable downwards spiral if it can't work out how to get rid of them
+		factor = 5
+		modifier = {
+			factor = 0
+			OR = {
+				#has_estate_privilege = estate_burghers_monopoly_of_textiles
+				has_estate_privilege = estate_burghers_monopoly_of_dyes
+				has_estate_privilege = estate_burghers_monopoly_of_glass
+				has_estate_privilege = estate_burghers_monopoly_of_paper
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_absolutism_active = yes
+		}
+		modifier = {
+			factor = 1.5
+			num_of_loans = 1
+		}
+		modifier = {
+			factor = 0.75
+			adm_tech = 11
+		}
+		modifier = {
+			factor = 0.5
+			production_income_percentage = 0.25
+		} 
+	}
+}
+
+
+estate_nobles_monopoly_of_horses = {
+	icon = privilege_monopoly_of_goods_horses
+	#
+	loyalty = 0.1
+	is_valid = {
+		has_dlc = "Emperor"
+		any_owned_province = {
+			trade_goods = horses
+		}
+	}
+	can_select = {
+		num_of_cities = 2
+		custom_trigger_tooltip = {
+			tooltip = unavailable_during_revolution_disaster
+			NOT = { has_disaster = revolution }
+			NOT = {
+				has_disaster_progress = {
+					disaster = revolution
+					value = 1
+				}
+			}
+			NOT = { has_disaster = french_revolution }
+			NOT = {
+				has_disaster_progress = {
+					disaster = french_revolution
+					value = 1
+				}
+			}
+		}
+	}
+	on_granted = {
+		if = {
+			limit = {
+				horses = 1
+			}
+			add_mercantilism = 1
+		}
+		add_years_of_owned_provinces_production_income = {
+			years = 8
+			trigger = {
+				trade_goods = horses
+			}
+			custom_tooltip = MONOPOLY_INCOME_HORSES_DESC
+		}
+		custom_tooltip = estate_nobles_monopoly_of_horses_effect_tooltip
+	}
+	on_granted_province = {
+		if = {
+			limit = {
+				trade_goods = horses
+			}
+			add_province_modifier = {
+				name = estate_nobles_monopoly_of_horses_mod
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_province_modifier = estate_nobles_monopoly_of_horses_mod
+			}
+			remove_province_modifier = estate_nobles_monopoly_of_horses_mod
+		}
+	}
+	on_revoked = {
+		custom_tooltip = estate_nobles_monopoly_of_horses_revoke_tooltip
+	}
+	on_revoked_province = {
+		if = {
+			limit = {
+				has_province_modifier = estate_nobles_monopoly_of_horses_mod
+			}
+			remove_province_modifier = estate_nobles_monopoly_of_horses_mod
+		}
+	}
+	on_invalid = {
+		custom_tooltip = estate_nobles_monopoly_of_horses_revoke_tooltip
+	}
+	on_invalid_province = {
+		if = {
+			limit = {
+				has_province_modifier = estate_nobles_monopoly_of_horses_mod
+			}
+			remove_province_modifier = estate_nobles_monopoly_of_horses_mod
 		}
 	}
 	penalties = {

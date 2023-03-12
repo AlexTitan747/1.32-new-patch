@@ -3977,8 +3977,8 @@ colonial_office = {
 	cost = 2000
 	time = 30
 	modifier = {
-		num_accepted_cultures = 2
-		diplomatic_reputation = 1
+		colonists = 1
+		native_assimilation = 0.30
 	}
 
 	build_trigger = {
@@ -3990,6 +3990,7 @@ colonial_office = {
 						has_construction = colonial_office
 					}
 				}
+				is_subject = yes
 			}
 		}
 	}
@@ -4915,7 +4916,7 @@ jewellery_workshop = {
 	}
 }
 
-bronze_maker = {
+tailors = {
 	cost = 250
 	time = 12
 	
@@ -4941,7 +4942,7 @@ bronze_maker = {
 					value = 1.0
 				}			
 				change_variable = {
-					which = blacksmith_amount
+					which = bronze_furnace_amount
 					value = 1
 				}				
 			}
@@ -4956,12 +4957,12 @@ bronze_maker = {
 			if = {
 				limit = {
 					ROOT = {
-						NOT = { has_building = bronze_maker }
+						NOT = { has_building = bronze_furnace }
 					}
 				}
 				FROM = {
 					change_variable = {            
-						which = armour
+						which = bronze
 						value = 1.0
 					}
 					subtract_variable = {            
@@ -4971,12 +4972,12 @@ bronze_maker = {
 				}
 			}
 			ROOT = {
-				remove_building = bronze_maker
+				remove_building = bronze_furnace
 				change_trade_goods = copper
 			}
 			FROM = {
 				subtract_variable = {            
-					which = bonze_maker_amount
+					which = bronze_furnace_amount
 					value = 1
 				}
 			}
@@ -4999,7 +5000,91 @@ bronze_maker = {
 	}
 }
 
-steel_maker = {
+bronze_furnace = {
+	cost = 250
+	time = 12
+	
+	build_trigger = {
+		trade_goods = copper
+		has_production_building = yes
+		development = 12
+		FROM = {
+			dip_tech = 14
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = iron
+					value = 1.0
+				}
+	
+				change_variable = {
+					which = iron
+					value = 1.0
+				}			
+				change_variable = {
+					which = bronze_furnace_amount
+					value = 1
+				}				
+			}
+			ROOT = {
+				change_trade_goods = bronze
+			}
+		}
+	}
+	
+	on_destroyed = {
+		hidden_effect = {
+			if = {
+				limit = {
+					ROOT = {
+						NOT = { has_building = bronze_furnace }
+					}
+				}
+				FROM = {
+					change_variable = {            
+						which = bronze
+						value = 1.0
+					}
+					subtract_variable = {            
+						which = lead_used
+						value = 1.0
+					}
+				}
+			}
+			ROOT = {
+				remove_building = bronze_furnace
+				change_trade_goods = copper
+			}
+			FROM = {
+				subtract_variable = {            
+					which = bronze_furnace_amount
+					value = 1
+				}
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.25
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 3000
+		modifier = {
+			factor = 0
+			FROM = {
+				bronze = 2
+			}
+		}
+	}
+}
+
+steel_furnace = {
 	cost = 500
 	time = 36
 	
@@ -5024,7 +5109,7 @@ steel_maker = {
 					value = 1.0
 				}			
 				change_variable = {
-					which = blacksmith_amount
+					which = steel_furnace_amount
 					value = 1
 				}				
 			}
@@ -5039,12 +5124,12 @@ steel_maker = {
 			if = {
 				limit = {
 					ROOT = {
-						NOT = { has_building = steel_maker }
+						NOT = { has_building = steel_furnace }
 					}
 				}
 				FROM = {
 					change_variable = {            
-						which = armour
+						which = steel
 						value = 1.0
 					}
 					subtract_variable = {            
@@ -5054,12 +5139,12 @@ steel_maker = {
 				}
 			}
 			ROOT = {
-				remove_building = steel_maker
+				remove_building = steel_furnace
 				change_trade_goods = iron
 			}
 			FROM = {
 				subtract_variable = {            
-					which = bonze_maker_amount
+					which = steel_furnace_amount
 					value = 1
 				}
 			}
@@ -5073,7 +5158,16 @@ steel_maker = {
 	
 	ai_will_do = {
 		factor = 3000
+		modifier = {
+			factor = 0
+			FROM = {
+				steel = 2
+			}
+		}
 	}
 }
 
 ##Unique Buildings
+
+
+
