@@ -85,7 +85,7 @@ tm_PER_branch_2 = {
 
 	tm_PER_branch2_mission_2 = {
 		icon = placeholder 
-		position = 4
+		position = 5
 		required_missions = { 
 			tm_PER_branch2_mission_1
 		}
@@ -776,7 +776,7 @@ tm_PER_branch_1 = {
 	}
 	tm_PER_branch1_mission_3 = {
 		icon = placeholder
-		position = 4
+		position = 5
 		required_missions = {
 			tm_PER_branch1_mission_2 
 		}
@@ -829,7 +829,7 @@ tm_PER_branch_1 = {
 			}
 		}
 	}
-	tm_PER_branch1_mission_4 = {
+	tm_PER_branch1_mission_5 = {
 		icon = placeholder 
 		position = 8
 		required_missions = {
@@ -848,35 +848,29 @@ tm_PER_branch_1 = {
 		effect = {
 			add_years_of_income = -3.3
 			if = {
-				limit = { ruler_has_personality = kind_hearted }
+				limit = { OR = ruler_has_personality = kind_hearted_personality ruler_has_personality = conqueror_personality }
 				add_country_modifier = {
 					name = tm_PER_for_the_common_folk  #-War Exhaustion + 5%MPR
 					duration = -1
 				}	
 			}
+
 			else_if = {
-				limit = { ruler_has_personality = conqueror }
-				add_country_modifier = {
-					name = tm_PER_conqueror_ruler #-Years of Seperatism + Monthly Autonomy Change -0.05
-					duration = -1
-				}	
-			}
-			else_if = {
-				limit = { OR = { ruler_has_personality = tactical_genius ruler_has_personality = bold_fighter } }
+				limit = { OR = { ruler_has_personality = tactical_genius_personality ruler_has_personality = bold_fighter_personality } }
 				add_country_modifier = {
 					name = tm_PER_ruler_general # +1 LLS +1LLM
 					duration = -1
 				}	
 			}
 			else_if = {
-				limit = { ruler_has_personality = strict }
+				limit = { ruler_has_personality = strict_personality }
 				add_country_modifier = {
 					name = tm_PER_strict_ruler #2.5% Disc
 					duration = -1
 				}
 			}
 			else_if = {
-				limit = { ruler_has_personality = inspiring_leader }
+				limit = { ruler_has_personality = inspiring_leader_personality }
 				add_country_modifier = {
 					name = tm_PER_inspiring_ruler #5% Morale of Armies
 					duration = x
@@ -919,7 +913,7 @@ tm_PER_branch2_2 = {
 			custom_tooltip = tm_PER_custom_ruler_personality_TT
 
 			if = {
-				limit = { ruler_has_personality = well_connected }
+				limit = { ruler_has_personality = well_connected_personality }
 				add_country_modifier = {
 					name = tm_PER_room_for_advisors #-7.5% Advisor Cost +1 Advisor Pool
 					duration = -1
@@ -928,8 +922,8 @@ tm_PER_branch2_2 = {
 			else_if = {  
 				limit = { 
 					OR = {
-						ruler_has_personality = industrious
-						ruler_has_personality = entrepeneur
+						ruler_has_personality = industrious_personality
+						ruler_has_personality = entrepeneur_personality
 					}
 				}
 				add_country_modifier = {
@@ -940,8 +934,8 @@ tm_PER_branch2_2 = {
 			else_if = {
 				limit = {
 					OR = {
-						ruler_has_personality = charismatic_negotiator
-						ruler_has_personality = silver_tongue
+						ruler_has_personality = charismatic_negotiator_personality
+						ruler_has_personality = silver_tongue_personality
 					}
 				}
 				add_country_modifier = {
@@ -951,7 +945,7 @@ tm_PER_branch2_2 = {
 			}
 			else_if = {
 				limit = {
-					ruler_has_personality = navigator
+					ruler_has_personality = navigator_personality
 				}
 				add_country_modifier = {
 					name = tm_PER_ships_of_persia #10% Ship Durability 5% Heavy Combat, 10% Galley Combat
@@ -995,82 +989,180 @@ tm_PER_branch3_2 = {
 			custom_tooltip = tm_PER_custom_ruler_personality_TT
 
 			if = {
-				limit = { ruler_has_personality = just }
+				limit = { ruler_has_personality = just_personality }
 				add_country_modifier = {
 					name = tm_PER_just_ruler #-3 Global Unrest Prestige +0.75
 					duration = -1
 				}	
 			}
 			else_if = {
-				limit = { ruler_has_personality = righteous }
+				limit = { ruler_has_personality = righteous_personality }
 				add_country_modifier = {
 					name = tm_PER_righteous_ruler # +2 Legitimacy Prestige +0.5
 					duration = -1
 				}
 			}
 			else_if = {
-				limit = { ruler_has_personality = tolerant }
+				limit = { ruler_has_personality = tolerant_personality }
 				add_country_modifier = {
 					name = tm_PER_tolerant_ruler #Heretic and Heathen Provs give no Penalty
 					duration = -1
 				}
 			}
 			else_if = {
-				limit = { ruler_has_personality = free_thinker }
+				limit = { ruler_has_personality = free_thinker_personality }
 				add_country_modifier = {
 					name = tm_PER_free_thinker #-7.5% Idea Cost, 75% Inno Gain
 					duration = -1
 				}
 			}
 			else_if = {
-				limit = { ruler_has_personality = calm }
+				limit = { ruler_has_personality = calm_personality }
 				add_country_modifier = {
 					name = tm_PER_calm_ruler #-20% Stab Cost
 					duration = -1
 				}
 			}
 			else_if = {
-				limit = { ruler_has_personality = Zealot }
+				limit = { ruler_has_personality = Zealot_personality }
 				add_country_modifier = {
 					name = tm_PER_zealots #+2 Missionaries, +2.5% Missonary Strength
 					duration = -1
 				}
 			}
 			else_if = {
-				limit = { ruler_has_personality = lawgiver }
+				limit = { ruler_has_personality = lawgiver_personality }
 				add_country_modifier = {
 					name = tm_PER_rule_of_law #-0.1 Autonomy Monthly -10% Minimum Autonomy in Territories
 					duration = -1
 				}
 			}
 			else_if = {
-				limit = { ruler_has_personality = midas_touched }
+				limit = { ruler_has_personality = midas_touched_personality }
 				add_country_modifier = {
 					name = tm_PER_taxman #+15 Tax
 					duration = -1
 				}
 			}
 			else_if = {
-				limit = { ruler_has_personality = architecural_visionary }
+				limit = { ruler_has_personality = architecural_visionary_personality }
 				add_country_modifier = {
 					name = tm_PER_architect #-7.5% Build Cost & Time
 					duration = -1
 				}
 			}
 			else_if = {
-				limit = { ruler_has_personality = scholar }
+				limit = { ruler_has_personality = scholar_personality }
 				add_country_modifier = {
 					name = tm_PER_scholar #-10% Tech Cost
 					duration = -1
 				}
 			}
 			else_if = {
-				limit = { ruler_has_personality = Reformist }
+				limit = { ruler_has_personality = Reformist_personality }
 				add_country_modifier = {
-					name = tm_PER_architect #+50% Reform Progress Growth
+					name = tm_PER_reformist #+50% Reform Progress Growth
 					duration = -1
 				}
 			}
 		}
 	}
+
+
 }
+tm_PER_branch4_2 = {
+	slot = 4
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		tag = PER
+	}
+}
+
+tm_PER_branch5_2 = {
+	slot = 5
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		tag = PER
+	}
+
+	tm_PER_branch5_mission_4 = {
+		icon = placeholder
+		position = 7
+		required_missions = {}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				development = 15
+				OR = {
+					trade_goods = silk
+					trade_goods = cloth
+				}
+				value = 5 
+			}
+		}
+
+		effect = {
+			every_owned_province = {
+				limit = {
+					OR = {
+						trade_goods = silk
+						trade_goods = cloth
+						development = 15
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_building = workshop
+						}
+					}
+					add_building = workshop
+				}
+				add_base_production = 2
+			}
+		}
+	}
+	tm_PER_branch5_mission_5 = {
+		icon = placeholder
+		position = 8
+		required_missions = { tm_PER_branch5_mission_4 }
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				development = 25
+				trade_goods = saffron
+				value = 4
+			}
+		}
+
+		effect = {
+			every_owned_province = {
+				limit = {
+					OR = {
+						trade_goods = silk
+						trade_goods = cloth
+						development = 15
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_building = workshop
+						}
+					}
+					add_building = workshop
+				}
+				add_base_production = 2
+			}
+		}
+	}
+}
+
