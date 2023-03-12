@@ -4679,7 +4679,7 @@ blacksmith = {
 	build_trigger = {
 		trade_goods = iron
 		has_production_building = yes
-		has_building = barracks
+		has_manpower_building_trigger = yes
 		development = 12
 		FROM = {
 			dip_tech = 14
@@ -4760,3 +4760,172 @@ blacksmith = {
 	}
 }
 
+## Tier 2 Goods
+bronze_maker = {
+	cost = 750
+	time = 36
+	
+	build_trigger = {
+		trade_goods = copper
+		has_production_building = yes
+		development = 12
+		FROM = {
+			dip_tech = 14
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = iron
+					value = 1.0
+				}
+	
+				change_variable = {
+					which = iron
+					value = 1.0
+				}			
+				change_variable = {
+					which = blacksmith_amount
+					value = 1
+				}				
+			}
+			ROOT = {
+				change_trade_goods = bronze
+			}
+		}
+	}
+	
+	on_destroyed = {
+		hidden_effect = {
+			if = {
+				limit = {
+					ROOT = {
+						NOT = { has_building = bronze_maker }
+					}
+				}
+				FROM = {
+					change_variable = {            
+						which = armour
+						value = 1.0
+					}
+					subtract_variable = {            
+						which = lead_used
+						value = 1.0
+					}
+				}
+			}
+			ROOT = {
+				remove_building = bronze_maker
+				change_trade_goods = copper
+			}
+			FROM = {
+				subtract_variable = {            
+					which = bonze_maker_amount
+					value = 1
+				}
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.25
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 3000
+		modifier = {
+			factor = 0
+			FROM = {
+				bronze = 2
+			}
+		}
+	}
+}
+
+steel_maker = {
+	cost = 1000
+	time = 60
+	
+	build_trigger = {
+		trade_goods = iron
+		has_production_building = yes
+		development = 20
+		FROM = {
+			dip_tech = 20
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = iron
+					value = 1.0
+				}
+				change_variable = {
+					which = iron
+					value = 1.0
+				}			
+				change_variable = {
+					which = blacksmith_amount
+					value = 1
+				}				
+			}
+			ROOT = {
+				change_trade_goods = steel
+			}
+		}
+	}
+	
+	on_destroyed = {
+		hidden_effect = {
+			if = {
+				limit = {
+					ROOT = {
+						NOT = { has_building = steel_maker }
+					}
+				}
+				FROM = {
+					change_variable = {            
+						which = armour
+						value = 1.0
+					}
+					subtract_variable = {            
+						which = lead_used
+						value = 1.0
+					}
+				}
+			}
+			ROOT = {
+				remove_building = steel_maker
+				change_trade_goods = iron
+			}
+			FROM = {
+				subtract_variable = {            
+					which = bonze_maker_amount
+					value = 1
+				}
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.25
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 3000
+		modifier = {
+			factor = 0
+			FROM = {
+				bronze = 2
+			}
+		}
+	}
+}
+
+##Unique Buildings
