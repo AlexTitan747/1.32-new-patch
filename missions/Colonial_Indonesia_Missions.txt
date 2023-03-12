@@ -5,10 +5,7 @@ colonial_IND_slot_1 = {
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            OR = {
-                colonial_region = colonial_phil
-                colonial_region = colonial_indonesia
-            }
+            colonial_region = colonial_indonesia
         }
 	}
 	has_country_shield = yes
@@ -22,13 +19,118 @@ colonial_IND_slot_2 = {
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            OR = {
-                colonial_region = colonial_phil
-                colonial_region = colonial_indonesia
-            }
+            colonial_region = colonial_indonesia
         }
 	}
 	has_country_shield = yes
+    
+    ind_navy_1 = {
+		icon = mission_heart_of_the_hansa
+		required_missions = { }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			any_owned_province = {
+				base_production = 12
+				has_port = yes
+			}
+			sailors_percentage = 0.75
+		}
+
+		effect = {
+			custom_tooltip = col_navy_shipyards_tt
+			hidden_effect = {
+				random_owned_province = {
+					limit = {
+						has_port = yes
+						base_production = 12
+					}
+					if = {
+						limit = {
+							NOT = { has_building = dock }
+							NOT = { has_building = drydock }
+						}
+						add_building = dock
+						add_base_production = 1
+					}
+					else = {
+						add_base_production = 3
+					}
+					if = {
+						limit = {
+							NOT = { has_building = shipyard }
+							NOT = { has_building = grand_shipyard }
+						}
+						add_building = shipyard
+						add_base_production = 1
+					}
+					else = {
+						add_base_production = 3
+					}
+				}
+			}
+		}
+	}
+
+	ind_navy_2 = {
+		icon = mission_south_indian_trade
+		required_missions = { ind_navy_1 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			OR = {
+				num_of_light_ship = 10
+				num_of_heavy_ship = 4
+			}
+			navy_size_percentage = 0.50
+		}
+
+		effect = {
+			add_navy_tradition = 10
+			create_admiral = { tradition = 50 }
+		}
+	}
+
+	ind_navy_3 = {
+		icon = mission_grand_bengali_shipyards
+		required_missions = { ind_navy_2 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 8
+				has_navy_building = yes
+				base_production = 8
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = col_building_navy
+				duration = 3650
+			}
+		}
+	}
+
+	ind_navy_4 = {
+		icon = mission_rb_a_mighty_fleet
+		required_missions = { ind_navy_3 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			navy_size = 60
+			navy_size_percentage = 0.90
+		}
+
+		effect = {
+			overlord = {
+				country_event = {
+					id = colonial_mission_events.2
+					tooltip = colonial_mission_events_navy_tt
+				}
+			}
+		}
+	}
 
 }
 
@@ -39,14 +141,138 @@ colonial_IND_slot_3 = {
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            OR = {
-                colonial_region = colonial_phil
-                colonial_region = colonial_indonesia
-            }
+            colonial_region = colonial_indonesia
         }
 	}
 	has_country_shield = yes
 
+    ind_army_1 = {
+		icon = NeedIcon
+		required_missions = { }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			manpower_percentage = 0.25
+			num_of_generals = 1
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = col_building_army
+				duration = 3650
+			}
+		}
+	}
+
+	ind_army_2 = {
+		icon = NeedIcon
+		required_missions = { ind_army_1 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			army_size = 30
+			army_size_percentage = 0.25
+		}
+
+		effect = {
+			random_owned_province = {
+				limit = {
+					NOT = { has_building = training_fields }
+				}
+				add_building = training_fields
+				add_base_manpower = 2
+			}
+			random_owned_province = {
+				limit = {
+					NOT = { has_building = conscription_center }
+				}
+				add_building = conscription_center
+				add_base_manpower = 2
+			}
+		}
+	}
+
+	ind_army_3 = {
+		icon = NeedIcon
+		required_missions = { ind_army_2 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			OR = {
+				army_professionalism = 0.15
+				army_tradition = 50
+			}
+		}
+
+		effect = {
+			add_army_professionalism = 0.075
+			add_army_tradition = 10
+		}
+	}
+
+	ind_army_4 = {
+		icon = mission_landsknecht_soldier
+		required_missions = { ind_army_3 }
+		provinces_to_highlight = {
+			colonial_region = colonial_indonesia
+			OR = {
+				NOT = { base_manpower = 10 }
+				NOT = { has_military_building = yes }
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 20
+				colonial_region = colonial_indonesia
+				base_manpower = 10
+				has_military_building = yes
+			}
+		}
+
+		effect = {
+			add_years_of_owned_provinces_manpower = {
+				years = 4
+				trigger = {
+					has_military_building = yes
+					colonial_region = colonial_indonesia
+					base_manpower = 10
+				}
+				custom_tooltip = col_years_of_manpower
+			}
+			define_advisor = {
+				type = quartermaster
+				skill = 3
+				discount = yes
+				culture = ROOT
+				religion = ROOT
+			}
+			add_country_modifier = {
+				name = col_standing_army
+				duration = 3650
+			}
+		}
+	}
+
+	ind_army_5 = {
+		icon = swiss_mercenaries
+		required_missions = { ind_army_4 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			army_size = 70
+			army_size_percentage = 0.9
+		}
+
+		effect = {
+			overlord = {
+				country_event = { 
+					id = colonial_mission_events.3
+					tooltip = colonial_mission_events_army_tt
+				}
+			}
+		}
+	}
 }
 
 colonial_IND_slot_4 = {
@@ -56,13 +282,133 @@ colonial_IND_slot_4 = {
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            OR = {
-                colonial_region = colonial_phil
-                colonial_region = colonial_indonesia
-            }
+           colonial_region = colonial_indonesia
         }
 	}
 	has_country_shield = yes
+
+    ind_colonisation_1 = {
+		icon = mission_colonise_brazil
+		provinces_to_highlight = {
+			colonial_region = colonial_indonesia
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			OR = {
+				colonial_indonesia = {
+					has_colonist = yes
+					owned_by = ROOT
+					is_city = no
+				}
+				colonial_indonesia = {
+					type = all
+					is_empty = no
+				}
+			}
+		}
+
+		effect = {
+			custom_tooltip = col_first_colonisng_mission_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						colonial_indonesia = {
+							has_colonist = yes
+							owned_by = ROOT
+						}
+					}
+					define_advisor = {
+						type = navigator
+						skill = 2
+						discount = yes
+						culture = ROOT
+						religion = ROOT
+					}
+				}
+				else = {
+					define_advisor = {
+						type = treasurer 
+						skill = 2
+						discount = yes
+						culture = ROOT
+						religion = ROOT
+					}
+				}
+			}
+		}
+	}
+
+	ind_colonisation_2 = {
+		icon = mission_colonial
+		required_missions = { ind_colonisation_1 }
+		provinces_to_highlight = {
+			colonial_region = colonial_indonesia
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 10
+				colonial_region = colonial_indonesia
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = "col_colonising_quick"
+				duration = 3650
+			}
+		}
+	}
+
+	ind_colonisation_3 = {
+		icon = mission_zanzibari_trade
+		required_missions = { ind_colonisation_2 }
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+			
+		}
+
+		effect = {
+			
+		}
+	}
+
+	ind_colonisation_4 = {
+		icon = colonize_the_cape
+		required_missions = { ind_colonisation_3 }
+		provinces_to_highlight = { 
+			colonial_region = colonial_indonesia
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			colonial_indonesia = {
+				type = all
+				owned_by = ROOT
+				is_city = yes
+			}
+		}
+
+		effect = {
+			overlord = {
+				add_country_modifier = {
+					name = "colonial_subject_overlord_colonisation_reward"
+					duration = 5475
+				}
+			}
+			overlord = {
+				country_event = {
+					id = colonial_mission_events.4
+					tooltip = colonial_mission_events_col_tt
+				}
+			}
+		}
+	}
 
 }
 
@@ -73,10 +419,7 @@ colonial_IND_slot_5 = {
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            OR = {
-                colonial_region = colonial_phil
-                colonial_region = colonial_indonesia
-            }
+            colonial_region = colonial_indonesia
         }
 	}
 	has_country_shield = yes

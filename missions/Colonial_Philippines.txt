@@ -1,30 +1,30 @@
-colonial_CAR_slot_1 = {
+colonial_PHIL_slot_1 = {
     slot = 1
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_the_carribean
+            colonial_region = colonial_phil
         }
 	}
 	has_country_shield = yes
 
 }
 
-colonial_CAR_slot_2 = {
+colonial_PHIL_slot_2 = {
     slot = 2
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_the_carribean
+            colonial_region = colonial_phil
         }
 	}
 	has_country_shield = yes
-	
-	car_navy_1 = {
+    
+    phil_navy_1 = {
 		icon = mission_heart_of_the_hansa
 		required_missions = { }
 		provinces_to_highlight = {	}
@@ -72,9 +72,9 @@ colonial_CAR_slot_2 = {
 		}
 	}
 
-	car_navy_2 = {
+	phil_navy_2 = {
 		icon = mission_south_indian_trade
-		required_missions = { car_navy_1 }
+		required_missions = { phil_navy_1 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -91,9 +91,9 @@ colonial_CAR_slot_2 = {
 		}
 	}
 
-	car_navy_3 = {
+	phil_navy_3 = {
 		icon = mission_grand_bengali_shipyards
-		required_missions = { car_navy_2 }
+		required_missions = { phil_navy_2 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -112,9 +112,9 @@ colonial_CAR_slot_2 = {
 		}
 	}
 
-	car_navy_4 = {
+	phil_navy_4 = {
 		icon = mission_rb_a_mighty_fleet
-		required_missions = { car_navy_3 }
+		required_missions = { phil_navy_3 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -134,19 +134,19 @@ colonial_CAR_slot_2 = {
 
 }
 
-colonial_CAR_slot_3 = {
+colonial_PHIL_slot_3 = {
     slot = 3
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_the_carribean
+            colonial_region = colonial_phil
         }
 	}
 	has_country_shield = yes
 
-	car_army_1 = {
+    phil_army_1 = {
 		icon = NeedIcon
 		required_missions = { }
 		provinces_to_highlight = {	}
@@ -164,9 +164,9 @@ colonial_CAR_slot_3 = {
 		}
 	}
 
-	car_army_2 = {
+	phil_army_2 = {
 		icon = NeedIcon
-		required_missions = { car_army_1 }
+		required_missions = { phil_army_1 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -192,9 +192,9 @@ colonial_CAR_slot_3 = {
 		}
 	}
 
-	car_army_3 = {
+	phil_army_3 = {
 		icon = NeedIcon
-		required_missions = { car_army_2 }
+		required_missions = { phil_army_2 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -210,11 +210,11 @@ colonial_CAR_slot_3 = {
 		}
 	}
 
-	car_army_4 = {
+	phil_army_4 = {
 		icon = mission_landsknecht_soldier
-		required_missions = { car_army_3 }
+		required_missions = { phil_army_3 }
 		provinces_to_highlight = {
-			colonial_region = colonial_the_carribean
+			colonial_region = colonial_phil
 			OR = {
 				NOT = { base_manpower = 10 }
 				NOT = { has_military_building = yes }
@@ -224,7 +224,7 @@ colonial_CAR_slot_3 = {
 		trigger = {
 			num_of_owned_provinces_with = {
 				value = 20
-				colonial_region = colonial_the_carribean
+				colonial_region = colonial_phil
 				base_manpower = 10
 				has_military_building = yes
 			}
@@ -235,7 +235,7 @@ colonial_CAR_slot_3 = {
 				years = 4
 				trigger = {
 					has_military_building = yes
-					colonial_region = colonial_the_carribean
+					colonial_region = colonial_phil
 					base_manpower = 10
 				}
 				custom_tooltip = col_years_of_manpower
@@ -254,9 +254,9 @@ colonial_CAR_slot_3 = {
 		}
 	}
 
-	car_army_5 = {
+	phil_army_5 = {
 		icon = swiss_mercenaries
-		required_missions = { car_army_4 }
+		required_missions = { phil_army_4 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -273,36 +273,35 @@ colonial_CAR_slot_3 = {
 			}
 		}
 	}
-
 }
 
-colonial_CAR_slot_4 = {
+colonial_PHIL_slot_4 = {
     slot = 4
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_the_carribean
+           colonial_region = colonial_phil
         }
 	}
 	has_country_shield = yes
 
-	car_colonisation_1 = {
+    phil_colonisation_1 = {
 		icon = mission_colonise_brazil
 		provinces_to_highlight = {
-			colonial_region = colonial_the_carribean
+			colonial_region = colonial_phil
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
 			OR = {
-				colonial_the_carribean = {
+				colonial_phil = {
 					has_colonist = yes
 					owned_by = ROOT
 					is_city = no
 				}
-				colonial_the_carribean = {
+				colonial_phil = {
 					type = all
 					is_empty = no
 				}
@@ -314,7 +313,7 @@ colonial_CAR_slot_4 = {
 			hidden_effect = {
 				if = {
 					limit = {
-						colonial_the_carribean = {
+						colonial_phil = {
 							has_colonist = yes
 							owned_by = ROOT
 						}
@@ -340,18 +339,18 @@ colonial_CAR_slot_4 = {
 		}
 	}
 
-	car_colonisation_2 = {
+	phil_colonisation_2 = {
 		icon = mission_colonial
-		required_missions = { car_colonisation_1 }
+		required_missions = { phil_colonisation_1 }
 		provinces_to_highlight = {
-			colonial_region = colonial_the_carribean
+			colonial_region = colonial_phil
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
 			num_of_owned_provinces_with = {
 				value = 10
-				colonial_region = colonial_the_carribean
+				colonial_region = colonial_phil
 			}
 		}
 
@@ -363,9 +362,9 @@ colonial_CAR_slot_4 = {
 		}
 	}
 
-	car_colonisation_3 = {
+	phil_colonisation_3 = {
 		icon = mission_zanzibari_trade
-		required_missions = { car_colonisation_2 }
+		required_missions = { phil_colonisation_2 }
 		provinces_to_highlight = {
 			
 		}
@@ -379,16 +378,16 @@ colonial_CAR_slot_4 = {
 		}
 	}
 
-	car_colonisation_4 = {
+	phil_colonisation_4 = {
 		icon = colonize_the_cape
-		required_missions = { car_colonisation_3 }
+		required_missions = { phil_colonisation_3 }
 		provinces_to_highlight = { 
-			colonial_region = colonial_the_carribean
+			colonial_region = colonial_phil
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
-			colonial_the_carribean = {
+			colonial_phil = {
 				type = all
 				owned_by = ROOT
 				is_city = yes
@@ -410,16 +409,17 @@ colonial_CAR_slot_4 = {
 			}
 		}
 	}
+
 }
 
-colonial_CAR_slot_5 = {
+colonial_PHIL_slot_5 = {
     slot = 5
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_the_carribean
+            colonial_region = colonial_phil
         }
 	}
 	has_country_shield = yes
