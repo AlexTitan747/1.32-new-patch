@@ -4825,3 +4825,93 @@ blacksmith = {
 	}
 }
 
+jewellery_workshop = {
+	cost = 250
+	time = 12
+
+	build_trigger = {
+		trade_goods = gems
+		OR = {
+			trade_goods = gold
+			trade_goods = silver
+		}
+		has_production_building = yes
+		development = 12
+		FROM = {
+			dip_tech = 14
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = gems
+					value = 1.0
+				}
+	
+				change_variable = {
+					which = gems
+					value = 1.0
+				}			
+				change_variable = {
+					which = jewellery_workshop_amount
+					value = 1
+					}				
+				}
+				ROOT = {
+					change_trade_goods = jewellery
+				}
+			}
+		}
+	
+	on_destroyed = {
+		hidden_effect = {
+			if = {
+				limit = {
+					ROOT = {
+						NOT = { has_building = jewellery_workshop }
+					}
+				}
+				FROM = {
+					change_variable = {            
+						which = jewellery
+						value = 1.0
+					}
+				
+					subtract_variable = {            
+						which = lead_used
+						value = 1.0
+					}
+				}
+			}
+			ROOT = {
+				remove_building = jewellery_workshop
+				change_trade_goods = gems
+			}
+			
+			FROM = {
+				subtract_variable = {            
+					which = jewellery_workshop_amount
+					value = 1
+				}
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 3000
+
+		modifier = {
+			factor = 0
+			FROM = {
+				jewellery = 2
+			}
+		}
+	}
+}
