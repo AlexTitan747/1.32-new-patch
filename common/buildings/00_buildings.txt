@@ -3959,6 +3959,71 @@ cultural_ministry = {
 	}
 
 	on_destroyed = {
+		hidden_effect = {
+			owner = {
+				remove_country_flag = has_cultural_ministry
+			}
+		}
+	}
+
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+	}
+}
+
+colonial_office = {
+	cost = 2000
+	time = 30
+	modifier = {
+		num_accepted_cultures = 2
+		diplomatic_reputation = 1
+	}
+
+	build_trigger = {
+		owner = {
+			NOT = {
+				any_owned_province = {
+					OR = {
+						has_building = colonial_office
+						has_construction = colonial_office
+					}
+				}
+			}
+		}
+	}
+	
+	keep_trigger = {
+		NOT = {
+			area_for_scope_province = {
+				NOT = { province_id = root }
+				owner = {
+					tag = ROOT
+				}
+				OR = {
+					has_building = colonial_office
+					has_construction = colonial_office
+				}
+			}
+		}
+	}
+
+	on_built = {
+		custom_tooltip = colonial_office_events
+		hidden_effect = {
+			owner = {
+				set_country_flag = has_colonial_office
+			}
+		}
+	}
+
+	on_destroyed = {
+		hidden_effect = {
+			owner = {
+				remove_country_flag = has_colonial_office
+			}
+		}
 	}
 
 	on_obsolete = {
