@@ -10,48 +10,48 @@ country_event = {
 
 	is_triggered_only = yes # Persian Mission (tm_PER_branch2_mission_1)
 
-	option = {
-		name = titanper.1.a
-
-		yerevan_area = {
-			remove_core = owner
-			cede_province = ARM
-			add_core = ARM
-		}
-		armenia_area = {
-			remove_core = owner
-			cede_province = ARM
-			add_core = ARM
-		}
-		tabriz_area = {
-			remove_core = owner
-			cede_province = ARM
-			add_core = ARM
-		}
-		create_subject = {
-			subject = ARM
-			subject_type = march
-		}
-		ARM = {
-			change_religion = zoroastrian
-			override_country_name = duchy_of_armenia
-			add_country_modifier = {
-				name = tm_PER_willful_subjugation
-				duration = 10950
-			}
-		}
-		add_yearly_manpower = 2
-		add_dip_power = 150
-		add_country_modifier = {
-			name = tm_PER_armenian_march
-			duration = 5475
-		}
-		add_country_modifier = {
-			name = tm_PER_armenia_integration_event_cd
-			duration = 18250
-			hidden = yes
-		}
-	}
+	#option = {
+	#	name = titanper.1.a
+#
+#		yerevan_area = {
+#			remove_core = owner
+#			cede_province = ARM
+#			add_core = ARM
+#		}
+#		armenia_area = {
+#			remove_core = owner
+#			cede_province = ARM
+#			add_core = ARM
+#		}
+#		tabriz_area = {
+#			remove_core = owner
+#			cede_province = ARM
+#			add_core = ARM
+#		}
+#		create_subject = {
+#			subject = ARM
+#			subject_type = march
+#		}
+#		ARM = {
+#			change_religion = zoroastrian
+#			override_country_name = duchy_of_armenia
+#			add_country_modifier = {
+#				name = tm_PER_willful_subjugation
+#				duration = 10950
+#			}
+#		}
+#		add_yearly_manpower = 2
+#		add_dip_power = 150
+#		add_country_modifier = {
+#			name = tm_PER_armenian_march
+#			duration = 5475
+#		}
+#		add_country_modifier = {
+#			name = tm_PER_armenia_integration_event_cd
+#			duration = 18250
+#			hidden = yes
+#		}
+#	}
 
 	option = {
 		name = titanper.1.b
@@ -140,45 +140,45 @@ country_event = {
 	}
 }
 
-country_event = {
-	id = titanper.3
-	title = titanper.3.title
-	desc = titanper.3.desc
-	picture = COURT_eventPicture
-
-	fire_only_once = yes
-
-	mean_time_to_happen = {
-		months = 600
-
-		modifier = {
-			factor = 0.5
-			NOT = { stability = 3 }
-		}
-		modifier = {
-			factor = 0.3
-			ARM = { NOT = { liberty_desire = 50 } }
-		}
-	}
-
-	trigger = {
-		NOT = { has_country_modifier = tm_PER_armenia_integration_event_cd }
-		ARM = {
-			is_subject_of_type_with_overlord = { who = PER type = march }
-		}
-	}
-
-	option = {
-		name = titanper.3.a
-		ARM = {
-			every_owned_province = {
-				cede_province = PER
-				add_core = PER
-			}
-		}
-		add_dip_power = -150
-	}
-}
+#country_event = {
+#	id = titanper.3
+#	title = titanper.3.title
+#	desc = titanper.3.desc
+#	picture = COURT_eventPicture
+#
+#	fire_only_once = yes
+#
+#	mean_time_to_happen = {
+#		months = 600
+#
+#		modifier = {
+#			factor = 0.5
+#			NOT = { stability = 3 }
+#		}
+#		modifier = {
+#			factor = 0.3
+#			ARM = { NOT = { liberty_desire = 50 } }
+#		}
+#	}
+#
+#	trigger = {
+#		NOT = { has_country_modifier = tm_PER_armenia_integration_event_cd }
+#		ARM = {
+#			is_subject_of_type_with_overlord = { who = PER type = march }
+#		}
+#	}
+#
+#	option = {
+#		name = titanper.3.a
+#		ARM = {
+#			every_owned_province = {
+#				cede_province = PER
+#				add_core = PER
+#			}
+#		}
+#		add_dip_power = -150
+#	}
+#}
 
 country_event = {
 	id = titanper.4
@@ -193,7 +193,9 @@ country_event = {
 	option = {
 		name = titanper.4.a
 
-		set_country_flag = tm_PER_establish_immortals
-		custom_tooltip = tm_PER_establish_immortals_tt
+		add_country_modifier = {
+			name = tm_PER_ruler_education
+			duration = -1
+		}
 	}
 }
