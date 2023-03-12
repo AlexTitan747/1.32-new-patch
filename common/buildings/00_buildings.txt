@@ -4916,7 +4916,7 @@ jewellery_workshop = {
 	}
 }
 
-bronze_maker = {
+bronze_furnace = {
 	cost = 250
 	time = 12
 	
@@ -4942,7 +4942,7 @@ bronze_maker = {
 					value = 1.0
 				}			
 				change_variable = {
-					which = blacksmith_amount
+					which = bronze_furnace_amount
 					value = 1
 				}				
 			}
@@ -4957,12 +4957,12 @@ bronze_maker = {
 			if = {
 				limit = {
 					ROOT = {
-						NOT = { has_building = bronze_maker }
+						NOT = { has_building = bronze_furnace }
 					}
 				}
 				FROM = {
 					change_variable = {            
-						which = armour
+						which = bronze
 						value = 1.0
 					}
 					subtract_variable = {            
@@ -4972,12 +4972,12 @@ bronze_maker = {
 				}
 			}
 			ROOT = {
-				remove_building = bronze_maker
+				remove_building = bronze_furnace
 				change_trade_goods = copper
 			}
 			FROM = {
 				subtract_variable = {            
-					which = bonze_maker_amount
+					which = bronze_furnace_amount
 					value = 1
 				}
 			}
@@ -5000,7 +5000,7 @@ bronze_maker = {
 	}
 }
 
-steel_maker = {
+steel_furnace = {
 	cost = 500
 	time = 36
 	
@@ -5025,7 +5025,7 @@ steel_maker = {
 					value = 1.0
 				}			
 				change_variable = {
-					which = blacksmith_amount
+					which = steel_furnace_amount
 					value = 1
 				}				
 			}
@@ -5040,12 +5040,12 @@ steel_maker = {
 			if = {
 				limit = {
 					ROOT = {
-						NOT = { has_building = steel_maker }
+						NOT = { has_building = steel_furnace }
 					}
 				}
 				FROM = {
 					change_variable = {            
-						which = armour
+						which = steel
 						value = 1.0
 					}
 					subtract_variable = {            
@@ -5055,12 +5055,12 @@ steel_maker = {
 				}
 			}
 			ROOT = {
-				remove_building = steel_maker
+				remove_building = steel_furnace
 				change_trade_goods = iron
 			}
 			FROM = {
 				subtract_variable = {            
-					which = bonze_maker_amount
+					which = steel_furnace_amount
 					value = 1
 				}
 			}
@@ -5077,10 +5077,13 @@ steel_maker = {
 		modifier = {
 			factor = 0
 			FROM = {
-				bronze = 2
+				steel = 2
 			}
 		}
 	}
 }
 
 ##Unique Buildings
+
+
+
