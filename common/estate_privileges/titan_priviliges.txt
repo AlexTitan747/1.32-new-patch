@@ -54,47 +54,48 @@ estate_burghers_mountain_development = {
 	icon = privilege_make_generous_donation
 	loyalty = 0.1
 	influence = 0.1
+	is_valid = {
+		mission_completed = tm_emp_swi_production_centres
+	}
 	can_select = {
 		mission_completed = tm_emp_swi_production_centres
+		OR = {
+			tag = SWI
+			was_tag = SWI
+		}
 	}
 	on_granted = {
 		custom_tooltip = swiss_development_mechanic
-	}
-	is_valid = {
-		OR = {
-			tag = SWI
-			tag = ALP
-		}
-	}
-	on_granted_province = {
-		if = {
-			limit = { has_terrain = mountain }
-			add_province_modifier = {
-				name = estate_burghers_mountain_development_mod
-				duration = -1
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_terrain = mountain
+				}
+				add_province_modifier = {
+					name = estate_burghers_mountain_development_mod
+					duration = -1
+				}
 			}
 		}
-		else_if = {
-			limit = {
-				has_province_modifier = estate_burghers_mountain_development_mod
+	}
+	on_revoked = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_province_modifier = estate_burghers_mountain_development_mod
+				}
+				remove_province_modifier = estate_burghers_mountain_development_mod
 			}
-			remove_province_modifier = estate_burghers_mountain_development_mod
 		}
 	}
-	on_revoked_province = {
-		if = {
-			limit = {
-				has_province_modifier = estate_burghers_mountain_development_mod
+	on_invalid = {
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_province_modifier = estate_burghers_mountain_development_mod
+				}
+				remove_province_modifier = estate_burghers_mountain_development_mod
 			}
-			remove_province_modifier = estate_burghers_mountain_development_mod
-		}
-	}
-	on_invalid_province = {
-		if = {
-			limit = {
-				has_province_modifier = estate_burghers_mountain_development_mod
-			}
-			remove_province_modifier = estate_burghers_mountain_development_mod
 		}
 	}
 	penalties = {
