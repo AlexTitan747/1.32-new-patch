@@ -10,21 +10,15 @@ country_event = { #Trade
 
 	option = {
 		name = colonial_mission_events.1.a
-		custom_tooltip = colonial_mission_events.1_us_tt
-        hidden_effect = {
-
+        col_empire_trade_scripted_effect = {
+            SUBJECT = event_target:colonial_subject_event_target_for_rewards
         }
 	}
 	option = {
 		name = colonial_mission_events.1.b
-        every_subject_country = {
-            limit = {
-                capital_scope = {
-                    colonial_region = colonial_saf
-                }
-            }
+        event_target:colonial_subject_event_target_for_rewards = {
             add_country_modifier = {
-                name = colony_trade
+                name = "colonial_subject_shared_trade_reward"
                 duration = -1
             }
         }
@@ -41,21 +35,15 @@ country_event = { #Navy
 	
 	option = {
 		name = colonial_mission_events.1.a
-		custom_tooltip = colonial_mission_events.2_us_tt
-        hidden_effect = {
-
+        col_empire_navy_scripted_effect = {
+            SUBJECT = event_target:colonial_subject_event_target_for_rewards
         }
 	}
 	option = {
 		name = colonial_mission_events.1.b
-         every_subject_country = {
-            limit = {
-                capital_scope = {
-                    colonial_region = colonial_saf
-                }
-            }
+        event_target:colonial_subject_event_target_for_rewards = {
             add_country_modifier = {
-                name = colony_navy
+                name = "colonial_subject_shared_navy_reward"
                 duration = -1
             }
         }
@@ -72,21 +60,15 @@ country_event = { #Army
 	
 	option = {
 		name = colonial_mission_events.1.a
-		custom_tooltip = colonial_mission_events.3_us_tt
-        hidden_effect = {
-
+        col_empire_army_scripted_effect = {
+            SUBJECT = event_target:colonial_subject_event_target_for_rewards
         }
 	}
 	option = {
 		name = colonial_mission_events.1.b
-        every_subject_country = {
-            limit = {
-                capital_scope = {
-                    colonial_region = colonial_saf
-                }
-            }
+        event_target:colonial_subject_event_target_for_rewards = {
             add_country_modifier = {
-                name = colony_army
+                name = "colonial_subject_shared_army_reward"
                 duration = -1
             }
         }
@@ -103,21 +85,15 @@ country_event = { #Colonisation
 
 	option = {
 		name = colonial_mission_events.1.a
-		custom_tooltip = colonial_mission_events.4_us_tt
-        hidden_effect = {
-
+        col_empire_col_scripted_effect = {
+            SUBJECT = event_target:colonial_subject_event_target_for_rewards
         }
 	}
 	option = {
 		name = colonial_mission_events.1.b
-        every_subject_country = {
-            limit = {
-                capital_scope = {
-                    colonial_region = colonial_saf
-                }
-            }
+        event_target:colonial_subject_event_target_for_rewards = {
             add_country_modifier = {
-                name = colony_col
+                name = "colony_col"
                 duration = -1
             }
         }
@@ -134,22 +110,46 @@ country_event = { #SAF Gold
 
 	option = {
 		name = colonial_mission_events.1.a
-		custom_tooltip = colonial_mission_events.5_us_tt
-        hidden_effect = {
-
+        random_list = {
+            5 = {
+                random_owned_province = {
+                    change_trade_goods = gold
+                    add_base_production = 1
+                }
+                modifier = {
+                    factor = 2
+                    any_owned_province = {
+                        development = 30
+                    }
+                }
+            }
+            95 = {
+                add_prestige = -5
+            }
+        }
+        add_country_modifier = {
+            name = "colonial_subject_overlord_gold_reward"
+            duration = -1
+        }
+        event_target:colonial_subject_event_target_for_rewards = {
+            add_country_modifier = {
+                name = "colonial_subject_gold_shared_reward"
+                duration = -1
+            }
         }
 	}
 	option = {
 		name = colonial_mission_events.1.b
-        every_subject_country = {
-            limit = {
-                capital_scope = {
-                    colonial_region = colonial_saf
-                }
-            }
+        event_target:colonial_subject_event_target_for_rewards = {
             add_country_modifier = {
-                name = colony_gold
+                name = "colony_gold"
                 duration = -1
+            }
+            random_owned_province = {
+                limit = {
+                    trade_goods = gold
+                }
+                add_base_production = 2
             }
         }
 	}

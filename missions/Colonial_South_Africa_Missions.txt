@@ -209,6 +209,9 @@ colonial_SAF_slot_1 = { #Trade
 		}
 
 		effect = {
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
 			overlord = {
 				country_event = { 
 					id = colonial_mission_events.1
@@ -331,6 +334,9 @@ colonial_SAF_slot_2 = { #Navy
 		}
 
 		effect = {
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
 			overlord = {
 				country_event = {
 					id = colonial_mission_events.2
@@ -466,6 +472,9 @@ colonial_SAF_slot_3 = { #Army
 		}
 
 		effect = {
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
 			overlord = {
 				country_event = { 
 					id = colonial_mission_events.3
@@ -587,6 +596,7 @@ colonial_SAF_slot_4 = { #Colonisation
 				}
 				2864 = {
 					center_of_trade = 2
+					add_base_production = 1
 				}
 			}
 			else_if = {
@@ -597,6 +607,7 @@ colonial_SAF_slot_4 = { #Colonisation
 				}
 				2864 = {
 					add_center_of_trade_level = 1
+					add_base_production = 1
 				}
 			}
 			else = {
@@ -610,9 +621,12 @@ colonial_SAF_slot_4 = { #Colonisation
 	saf_colonisation_4 = {
 		icon = colonize_the_cape
 		required_missions = { saf_colonisation_3 }
-		provinces_to_highlight = { 
+		provinces_to_highlight = {
 			colonial_region = colonial_saf
-			NOT = { owned_by = ROOT }
+			OR = {
+				NOT = { owned_by = ROOT }
+				is_city = no
+			}
 		}
 
 		trigger = {
@@ -624,6 +638,9 @@ colonial_SAF_slot_4 = { #Colonisation
 		}
 
 		effect = {
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
 			overlord = {
 				add_country_modifier = {
 					name = "colonial_subject_overlord_colonisation_reward"
@@ -824,6 +841,9 @@ colonial_SAF_slot_5 = { #Gold
 		}
 
 		effect = {
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
 			overlord = {
 				country_event = {
 					id = colonial_mission_events.5
