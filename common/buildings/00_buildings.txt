@@ -4038,7 +4038,7 @@ colonial_office = {
 
 dairy_farm = {
 	cost = 250
-	time = 12
+	time = 36
 	
 	build_trigger = {
 		trade_goods = livestock
@@ -4086,7 +4086,7 @@ dairy_farm = {
 
 ale_house = {
 	cost = 250
-	time = 12
+	time = 36
 		
 	build_trigger = {
 		trade_goods = grain
@@ -4133,7 +4133,7 @@ ale_house = {
 
 olive_oil_mill = {
 	cost = 250
-	time = 12
+	time = 36
 	
 	build_trigger = {
 		trade_goods = olives
@@ -4180,7 +4180,7 @@ olive_oil_mill = {
 
 chocolate_factory = {
 	cost = 250
-	time = 12
+	time = 36
 	
 	build_trigger = {
 		trade_goods = cocoa
@@ -4227,7 +4227,7 @@ chocolate_factory = {
 
 publishing_house = {
 	cost = 250
-	time = 12
+	time = 36
 	
 	build_trigger = {
 		trade_goods = paper
@@ -4276,7 +4276,7 @@ publishing_house = {
 
 uniform_maker = {
 	cost = 250
-	time = 12
+	time = 36
 	
 	build_trigger = {
 		trade_goods = cloth
@@ -4323,7 +4323,7 @@ uniform_maker = {
 
 perfumery = {
 	cost = 250
-	time = 12
+	time = 36
 	
 	build_trigger = {
 		trade_goods = cloth
@@ -4370,7 +4370,7 @@ perfumery = {
 
 metalworks = {
 	cost = 250
-	time = 12
+	time = 36
 	
 	build_trigger = {
 		trade_goods = silver
@@ -4417,7 +4417,7 @@ metalworks = {
 
 blacksmith = {
 	cost = 250
-	time = 12
+	time = 36
 	
 	build_trigger = {
 		trade_goods = iron
@@ -4465,14 +4465,10 @@ blacksmith = {
 ##Tier 2 Goods
 jewellery_workshop = {
 	cost = 250
-	time = 12
+	time = 60
 
 	build_trigger = {
 		trade_goods = gems
-		OR = {
-			trade_goods = gold
-			trade_goods = silver
-		}
 		has_production_building = yes
 		development = 12
 		FROM = {
@@ -4480,10 +4476,60 @@ jewellery_workshop = {
 		}
 		custom_trigger_tooltip = {
 			tooltip = enough_gold_or_silver_for_jewellery_tt
-			FROM = {
-				check_variable = {
-					which = num_of_gold_or_silver
-					value = 1
+			if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 3
+							has_construction = jewellery_workshop
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_gold_or_silver
+						value = 4
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 2
+							has_construction = jewellery_workshop
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_gold_or_silver
+						value = 3
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 1
+							has_construction = jewellery_workshop
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_gold_or_silver
+						value = 2
+					}
+				}
+			}
+			else = {
+				FROM = {
+					check_variable = {
+						which = num_of_gold_or_silver
+						value = 1
+					}
 				}
 			}
 		}
@@ -4495,7 +4541,7 @@ jewellery_workshop = {
 				subtract_variable = {
 					which = num_of_gold_or_silver
 					value = 1.0
-				}				
+				}
 			}
 			ROOT = {
 				change_trade_goods = jewellery
@@ -4543,13 +4589,10 @@ jewellery_workshop = {
 
 tailors = {
 	cost = 250
-	time = 12
+	time = 60
 	
 	build_trigger = {
-		OR = {
-			trade_goods = silk
-			trade_goods = dyes
-		}
+		trade_goods = silk
 		has_production_building = yes
 		development = 12
 		FROM = {
@@ -4557,10 +4600,60 @@ tailors = {
 		}
 		custom_trigger_tooltip = {
 			tooltip = enough_dyes_for_clothes_tt
-			FROM = {
-				check_variable = {
-					which = num_of_dyes
-					value = 1
+			if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 3
+							has_construction = tailors
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_dyes
+						value = 4
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 2
+							has_construction = tailors
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_dyes
+						value = 3
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 1
+							has_construction = tailors
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_dyes
+						value = 2
+					}
+				}
+			}
+			else = {
+				FROM = {
+					check_variable = {
+						which = num_of_dyes
+						value = 1
+					}
 				}
 			}
 		}
@@ -4620,7 +4713,7 @@ tailors = {
 
 bronze_furnace = {
 	cost = 250
-	time = 12
+	time = 60
 	
 	build_trigger = {
 		trade_goods = copper
@@ -4631,10 +4724,60 @@ bronze_furnace = {
 		}
 		custom_trigger_tooltip = {
 			tooltip = enough_tin_for_bronze_tt
-			FROM = {
-				check_variable = {
-					which = num_of_tin
-					value = 1
+			if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 3
+							has_construction = bronze_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_tin
+						value = 4
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 2
+							has_construction = bronze_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_tin
+						value = 3
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 1
+							has_construction = bronze_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_tin
+						value = 2
+					}
+				}
+			}
+			else = {
+				FROM = {
+					check_variable = {
+						which = num_of_tin
+						value = 1
+					}
 				}
 			}
 		}
@@ -4694,7 +4837,7 @@ bronze_furnace = {
 
 steel_furnace = {
 	cost = 500
-	time = 36
+	time = 96
 	
 	build_trigger = {
 		trade_goods = iron
@@ -4705,10 +4848,60 @@ steel_furnace = {
 		}
 		custom_trigger_tooltip = {
 			tooltip = enough_coal_for_steel_tt
-			FROM = {
-				check_variable = {
-					which = num_of_coal
-					value = 1
+			if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 3
+							has_construction = steel_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_coal
+						value = 4
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 2
+							has_construction = steel_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_coal
+						value = 3
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 1
+							has_construction = steel_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_coal
+						value = 2
+					}
+				}
+			}
+			else = {
+				FROM = {
+					check_variable = {
+						which = num_of_coal
+						value = 1
+					}
 				}
 			}
 		}
