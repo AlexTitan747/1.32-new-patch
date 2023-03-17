@@ -2827,3 +2827,69 @@ country_event = {
 		}
 	}
 }
+
+country_event = {
+	id = prices.t2
+	title = prices.t2.t
+	desc = prices.t2.d
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		NOT = { has_global_flag = overabundance_tailored_clothes }
+		num_of_cities = {
+			trade_goods = tailored_clothes
+			has_building = textile
+			value = 14
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 24
+	}
+	
+	option = {
+		name = prices.t1.a
+		set_global_flag = overabundance_tailored_clothes
+		change_price = {
+			trade_goods = tailored_clothes
+			key = TAILORED_OVERABUNDANCE
+			value = -0.33
+			duration = -1
+		}
+	}
+}
+
+country_event = {
+	id = prices.t3
+	title = prices.t3.t
+	desc = prices.t3.d
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		has_global_flag = overabundance_tailored_clothes
+		is_year = 1650
+	}
+	
+	mean_time_to_happen = {
+		months = 720
+	}
+	
+	option = {
+		name = prices.t1.a
+		set_global_flag = tailored_clothes_fix
+		change_price = {
+			trade_goods = tailored_clothes
+			key = TAILORED_FIX
+			value = 0.33
+			duration = -1
+		}
+	}
+}
