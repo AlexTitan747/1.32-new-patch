@@ -99,7 +99,7 @@ country_event = {
 	}
 }
 
-#Johann Friedrich Böttger
+#Johann Friedrich Bï¿½ttger
 country_event = {
 	id = prices.3
 	title = prices.3.t
@@ -2770,13 +2770,12 @@ country_event = {
 	}
 }
 
-#titan prices
-
+#Titan prices
 #chinese opium
 country_event = {
-	id = prices.t1
-	title = prices.t1.t
-	desc = prices.t1.d
+	id = prices.47
+	title = prices.47.t
+	desc = prices.47.d
 	picture = TRADEGOODS_eventPicture
 
 	fire_only_once = yes
@@ -2787,21 +2786,21 @@ country_event = {
 		NOT = { has_global_flag = opium_demand_increase }
 		has_global_flag = europeans_in_china_happened
 		OR = {
-		ROOT = {
-			capital_scope = {
-				continent = europe
+			ROOT = {
+				capital_scope = {
+					continent = europe
+				}
+				trading_part = {
+					trade_goods = opium
+					value = 0.1
+				}
 			}
-			trading_part = {
-				trade_goods = opium
-				value = 0.1
+			ROOT = {
+				trading_part = {
+					trade_goods = opium
+					value = 0.33
+				}
 			}
-		}
-		ROOT = {
-			trading_part = {
-				trade_goods = opium
-				value = 0.33
-			}
-		}
 		}
 		has_institution = global_trade
 		any_owned_province = {
@@ -2815,7 +2814,7 @@ country_event = {
 	}
 	
 	option = {
-		name = prices.t1.a
+		name = prices.47.a
 		add_dip_power = 100
 		add_years_of_income = 1
 		set_global_flag = opium_demand_increase
@@ -2829,9 +2828,9 @@ country_event = {
 }
 
 country_event = {
-	id = prices.t2
-	title = prices.t2.t
-	desc = prices.t2.d
+	id = prices.48
+	title = prices.48.t
+	desc = prices.48.d
 	picture = TRADEGOODS_eventPicture
 
 	fire_only_once = yes
@@ -2840,10 +2839,12 @@ country_event = {
 
 	trigger = {
 		NOT = { has_global_flag = overabundance_tailored_clothes }
-		num_of_cities = {
-			trade_goods = tailored_clothes
-			has_building = textile
-			value = 14
+		calc_true_if = {
+			all_province = {
+				trade_goods = tailored_clothes
+				has_building = textile
+			}
+			amount = 14
 		}
 	}
 	
@@ -2852,7 +2853,7 @@ country_event = {
 	}
 	
 	option = {
-		name = prices.t1.a
+		name = prices.47.a
 		set_global_flag = overabundance_tailored_clothes
 		change_price = {
 			trade_goods = tailored_clothes
@@ -2864,9 +2865,9 @@ country_event = {
 }
 
 country_event = {
-	id = prices.t3
-	title = prices.t3.t
-	desc = prices.t3.d
+	id = prices.49
+	title = prices.49.t
+	desc = prices.49.d
 	picture = TRADEGOODS_eventPicture
 
 	fire_only_once = yes
@@ -2883,7 +2884,7 @@ country_event = {
 	}
 	
 	option = {
-		name = prices.t1.a
+		name = prices.47.a
 		set_global_flag = tailored_clothes_fix
 		change_price = {
 			trade_goods = tailored_clothes
