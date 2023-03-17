@@ -49,11 +49,13 @@ oman_slot_1 = {
 						}
 					}
 				}
-		}
-
+			}
 		effect = {
 			add_prestige = 15
-			add_power_projection = 15
+			add_power_projection = {
+				type = 25_permanent_power_projection
+				amount = 15
+			}
 		}
 	}
 }
@@ -151,10 +153,10 @@ oman_slot_5 = {
 		position = 1
 		
 		trigger = {
-			num_of_provinces_owned_with = {
+			num_of_owned_provinces_with = {
+				value = 5
 				has_tax_building_trigger = yes
 				base_tax = 7
-				value = 5
 			}
 		}
 		
@@ -163,9 +165,7 @@ oman_slot_5 = {
 				name = "tm_oma_tax_increase"
 				duration = 3650
 			}
-			prestige = 25
+			add_prestige = 25
 		}
 	}
-	
-	
 }
