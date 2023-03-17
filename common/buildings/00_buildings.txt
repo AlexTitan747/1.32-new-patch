@@ -4050,25 +4050,7 @@ dairy_farm = {
 	}
 	
 	on_built = {
-		hidden_effect = {
-			FROM = {
-				subtract_variable = {
-					which = cheese
-					value = 1.0
-				}
-			
-				change_variable = {
-					which = cheese
-					value = 1.0
-				}
-			
-				change_variable = {
-					which = dairy_farm_amount
-					value = 1
-				}
-				
-			}
-			
+		hidden_effect = {	
 			ROOT = {
 				change_trade_goods = cheese
 			}
@@ -4078,34 +4060,9 @@ dairy_farm = {
 	
 	on_destroyed = {
 		hidden_effect = {
-			if = {
-				limit = {
-					ROOT = {
-						NOT = { has_building = dairy_farm }
-					}
-				}
-				FROM = {
-					change_variable = {            
-						which = cheese
-						value = 1.0
-					}
-				
-					subtract_variable = {            
-						which = lead_used
-						value = 1.0
-					}
-				}
-			}
 			ROOT = {
 				remove_building = dairy_farm
 				change_trade_goods = livestock
-			}
-			
-			FROM = {
-				subtract_variable = {            
-					which = dairy_farm_amount
-					value = 1
-				}
 			}
 		}
 	}
@@ -4142,60 +4099,20 @@ ale_house = {
 		
 	on_built = {
 		hidden_effect = {
-			FROM = {
-				subtract_variable = {
-					which = ale
-					value = 1.0
-				}
-			
-				change_variable = {
-					which = ale	
-					value = 1.0
-				}			
-				change_variable = {
-					which = ale_house_amount
-					value = 1
-					}				
-				}
-				ROOT = {
-					change_trade_goods = ale
-				}
+			ROOT = {
+				change_trade_goods = ale
 			}
 		}
+	}
 		
-		on_destroyed = {
-			hidden_effect = {
-				if = {
-					limit = {
-						ROOT = {
-							NOT = { has_building = ale_house }
-						}
-					}
-					FROM = {
-						change_variable = {            
-							which = ale
-							value = 1.0
-						}
-					
-						subtract_variable = {            
-							which = lead_used
-							value = 1.0
-						}
-					}
-				}
-				ROOT = {
-					remove_building = ale_house
-					change_trade_goods = grain
-				}
-				
-				FROM = {
-					subtract_variable = {            
-						which = ale_house_amount
-						value = 1
-					}
-				}
-			}
+	on_destroyed = {
+		hidden_effect = {
+			ROOT = {
+				remove_building = ale_house
+				change_trade_goods = grain
+			}	
 		}
+	}
 
 	modifier = {
 		trade_goods_size = 0.2
@@ -4229,57 +4146,17 @@ olive_oil_mill = {
 	
 	on_built = {
 		hidden_effect = {
-			FROM = {
-				subtract_variable = {
-					which = olives
-					value = 1.0
-				}
-	
-				change_variable = {
-					which = olives
-					value = 1.0
-				}			
-				change_variable = {
-					which = olive_oil_mill_amount
-					value = 1
-					}				
-				}
-				ROOT = {
-					change_trade_goods = olive_oil
-				}
+			ROOT = {
+				change_trade_goods = olive_oil
 			}
 		}
+	}
 	
 	on_destroyed = {
 		hidden_effect = {
-			if = {
-				limit = {
-					ROOT = {
-						NOT = { has_building = olive_oil_mill }
-					}
-				}
-				FROM = {
-					change_variable = {            
-						which = olive_oil
-						value = 1.0
-					}
-				
-					subtract_variable = {            
-						which = lead_used
-						value = 1.0
-					}
-				}
-			}
 			ROOT = {
 				remove_building = olive_oil_mill
 				change_trade_goods = olives
-			}
-			
-			FROM = {
-				subtract_variable = {            
-					which = olive_oil_mill_amount
-					value = 1
-				}
 			}
 		}
 	}
@@ -4315,58 +4192,18 @@ chocolate_factory = {
 	}
 	
 	on_built = {
-		hidden_effect = {
-			FROM = {
-				subtract_variable = {
-					which = cocoa
-					value = 1.0
-				}
-	
-				change_variable = {
-					which = cocoa
-					value = 1.0
-				}			
-				change_variable = {
-					which = chocolate_factory_amount
-					value = 1
-					}				
-				}
-				ROOT = {
-					change_trade_goods = chocolate
-				}
+	hidden_effect = {
+			ROOT = {
+				change_trade_goods = chocolate
 			}
 		}
+	}
 	
 	on_destroyed = {
 		hidden_effect = {
-			if = {
-				limit = {
-					ROOT = {
-						NOT = { has_building = chocolate_factory }
-					}
-				}
-				FROM = {
-					change_variable = {            
-						which = chocolate
-						value = 1.0
-					}
-				
-					subtract_variable = {            
-						which = lead_used
-						value = 1.0
-					}
-				}
-			}
 			ROOT = {
 				remove_building = chocolate_factory
 				change_trade_goods = cocoa
-			}
-			
-			FROM = {
-				subtract_variable = {            
-					which = chocolate_factory_amount
-					value = 1
-				}
 			}
 		}
 	}
@@ -4405,57 +4242,17 @@ publishing_house = {
 	
 	on_built = {
 		hidden_effect = {
-			FROM = {
-				subtract_variable = {
-					which = paper
-					value = 1.0
-				}
-	
-				change_variable = {
-					which = paper
-					value = 1.0
-				}			
-				change_variable = {
-					which = publishing_house_amount
-					value = 1
-					}				
-				}
-				ROOT = {
-					change_trade_goods = books
-				}
+			ROOT = {
+				change_trade_goods = books
 			}
 		}
+	}
 	
 	on_destroyed = {
 		hidden_effect = {
-			if = {
-				limit = {
-					ROOT = {
-						NOT = { has_building = publishing_house }
-					}
-				}
-				FROM = {
-					change_variable = {            
-						which = books
-						value = 1.0
-					}
-				
-					subtract_variable = {            
-						which = lead_used
-						value = 1.0
-					}
-				}
-			}
 			ROOT = {
 				remove_building = publishing_house
 				change_trade_goods = paper
-			}
-			
-			FROM = {
-				subtract_variable = {            
-					which = publishing_house_amount
-					value = 1
-				}
 			}
 		}
 	}
@@ -4492,57 +4289,17 @@ uniform_maker = {
 	
 	on_built = {
 		hidden_effect = {
-			FROM = {
-				subtract_variable = {
-					which = cloth
-					value = 1.0
-				}
-	
-				change_variable = {
-					which = cloth
-					value = 1.0
-				}			
-				change_variable = {
-					which = uniform_maker_amount
-					value = 1
-					}				
-				}
-				ROOT = {
-					change_trade_goods = uniforms
-				}
+			ROOT = {
+				change_trade_goods = uniforms
 			}
 		}
+	}
 	
 	on_destroyed = {
 		hidden_effect = {
-			if = {
-				limit = {
-					ROOT = {
-						NOT = { has_building = uniform_maker }
-					}
-				}
-				FROM = {
-					change_variable = {            
-						which = uniforms
-						value = 1.0
-					}
-				
-					subtract_variable = {            
-						which = lead_used
-						value = 1.0
-					}
-				}
-			}
 			ROOT = {
 				remove_building = uniform_maker
 				change_trade_goods = cloth
-			}
-			
-			FROM = {
-				subtract_variable = {            
-					which = uniform_maker_amount
-					value = 1
-				}
 			}
 		}
 	}
@@ -4579,57 +4336,17 @@ perfumery = {
 	
 	on_built = {
 		hidden_effect = {
-			FROM = {
-				subtract_variable = {
-					which = cloth
-					value = 1.0
-				}
-	
-				change_variable = {
-					which = cloth
-					value = 1.0
-				}			
-				change_variable = {
-					which = tailors_amount
-					value = 1
-					}				
-				}
-				ROOT = {
-					change_trade_goods = uniforms
-				}
+			ROOT = {
+				change_trade_goods = uniforms
 			}
 		}
+	}
 	
 	on_destroyed = {
 		hidden_effect = {
-			if = {
-				limit = {
-					ROOT = {
-						NOT = { has_building = tailors }
-					}
-				}
-				FROM = {
-					change_variable = {            
-						which = uniforms
-						value = 1.0
-					}
-				
-					subtract_variable = {            
-						which = lead_used
-						value = 1.0
-					}
-				}
-			}
 			ROOT = {
 				remove_building = tailors
 				change_trade_goods = cloth
-			}
-			
-			FROM = {
-				subtract_variable = {            
-					which = tailors_amount
-					value = 1
-				}
 			}
 		}
 	}
@@ -4666,57 +4383,17 @@ metalworks = {
 	
 	on_built = {
 		hidden_effect = {
-			FROM = {
-				subtract_variable = {
-					which = silver
-					value = 1.0
-				}
-	
-				change_variable = {
-					which = silver
-					value = 1.0
-				}			
-				change_variable = {
-					which = metalworks_amount
-					value = 1
-					}				
-				}
-				ROOT = {
-					change_trade_goods = silverware
-				}
+			ROOT = {
+				change_trade_goods = silverware
 			}
 		}
+	}
 	
 	on_destroyed = {
 		hidden_effect = {
-			if = {
-				limit = {
-					ROOT = {
-						NOT = { has_building = metalworks }
-					}
-				}
-				FROM = {
-					change_variable = {            
-						which = silverware
-						value = 1.0
-					}
-				
-					subtract_variable = {            
-						which = lead_used
-						value = 1.0
-					}
-				}
-			}
 			ROOT = {
 				remove_building = metalworks
 				change_trade_goods = silver
-			}
-			
-			FROM = {
-				subtract_variable = {            
-					which = metalworks_amount
-					value = 1
-				}
 			}
 		}
 	}
@@ -4754,57 +4431,17 @@ blacksmith = {
 	
 	on_built = {
 		hidden_effect = {
-			FROM = {
-				subtract_variable = {
-					which = iron
-					value = 1.0
-				}
-	
-				change_variable = {
-					which = iron
-					value = 1.0
-				}			
-				change_variable = {
-					which = blacksmith_amount
-					value = 1
-					}				
-				}
-				ROOT = {
-					change_trade_goods = armour
-				}
+			ROOT = {
+				change_trade_goods = armour
 			}
 		}
+	}
 	
 	on_destroyed = {
 		hidden_effect = {
-			if = {
-				limit = {
-					ROOT = {
-						NOT = { has_building = blacksmith }
-					}
-				}
-				FROM = {
-					change_variable = {            
-						which = armour
-						value = 1.0
-					}
-				
-					subtract_variable = {            
-						which = lead_used
-						value = 1.0
-					}
-				}
-			}
 			ROOT = {
 				remove_building = blacksmith
 				change_trade_goods = iron
-			}
-			
-			FROM = {
-				subtract_variable = {            
-					which = blacksmith_amount
-					value = 1
-				}
 			}
 		}
 	}
@@ -4841,22 +4478,23 @@ jewellery_workshop = {
 		FROM = {
 			dip_tech = 14
 		}
+		custom_trigger_tooltip = {
+			tooltip = enough_gold_or_silver_for_jewellery_tt
+			FROM = {
+				check_variable = {
+					which = num_of_gold_or_silver
+					value = 1
+				}
+			}
+		}
 	}
 	
 	on_built = {
 		hidden_effect = {
 			FROM = {
 				subtract_variable = {
-					which = gems
+					which = num_of_gold_or_silver
 					value = 1.0
-				}
-				change_variable = {
-					which = gems
-					value = 1.0
-				}			
-				change_variable = {
-					which = jewellery_workshop_amount
-					value = 1
 				}				
 			}
 			ROOT = {
@@ -4875,12 +4513,7 @@ jewellery_workshop = {
 				}
 				FROM = {
 					change_variable = {            
-						which = jewellery
-						value = 1.0
-					}
-				
-					subtract_variable = {            
-						which = lead_used
+						which = num_of_gold_or_silver
 						value = 1.0
 					}
 				}
@@ -4888,13 +4521,6 @@ jewellery_workshop = {
 			ROOT = {
 				remove_building = jewellery_workshop
 				change_trade_goods = gems
-			}
-
-			FROM = {
-				subtract_variable = {            
-					which = jewellery_workshop_amount
-					value = 1
-				}
 			}
 		}
 	}
@@ -4906,7 +4532,6 @@ jewellery_workshop = {
 
 	ai_will_do = {
 		factor = 3000
-
 		modifier = {
 			factor = 0
 			FROM = {
@@ -4928,7 +4553,16 @@ tailors = {
 		has_production_building = yes
 		development = 12
 		FROM = {
-			dip_tech = 14
+			dip_tech = 16
+		}
+		custom_trigger_tooltip = {
+			tooltip = enough_dyes_for_clothes_tt
+			FROM = {
+				check_variable = {
+					which = num_of_dyes
+					value = 1
+				}
+			}
 		}
 	}
 
@@ -4936,21 +4570,12 @@ tailors = {
 		hidden_effect = {
 			FROM = {
 				subtract_variable = {
-					which = iron
-					value = 1.0
-				}
-	
-				change_variable = {
-					which = iron
+					which = num_of_dyes
 					value = 1.0
 				}			
-				change_variable = {
-					which = tailors_amount
-					value = 1
-				}				
 			}
 			ROOT = {
-				change_trade_goods = bronze
+				change_trade_goods = tailored_clothes
 			}
 		}
 	}
@@ -4965,11 +4590,7 @@ tailors = {
 				}
 				FROM = {
 					change_variable = {            
-						which = bronze
-						value = 1.0
-					}
-					subtract_variable = {            
-						which = lead_used
+						which = num_of_dyes
 						value = 1.0
 					}
 				}
@@ -4977,12 +4598,6 @@ tailors = {
 			ROOT = {
 				remove_building = tailors
 				change_trade_goods = silk
-			}
-			FROM = {
-				subtract_variable = {            
-					which = tailors_amount
-					value = 1
-				}
 			}
 		}
 	}
@@ -5012,7 +4627,16 @@ bronze_furnace = {
 		has_production_building = yes
 		development = 12
 		FROM = {
-			dip_tech = 14
+			dip_tech = 15
+		}
+		custom_trigger_tooltip = {
+			tooltip = enough_tin_for_bronze_tt
+			FROM = {
+				check_variable = {
+					which = num_of_tin
+					value = 1
+				}
+			}
 		}
 	}
 	
@@ -5020,17 +4644,8 @@ bronze_furnace = {
 		hidden_effect = {
 			FROM = {
 				subtract_variable = {
-					which = iron
+					which = num_of_tin
 					value = 1.0
-				}
-	
-				change_variable = {
-					which = iron
-					value = 1.0
-				}			
-				change_variable = {
-					which = bronze_furnace_amount
-					value = 1
 				}				
 			}
 			ROOT = {
@@ -5049,11 +4664,7 @@ bronze_furnace = {
 				}
 				FROM = {
 					change_variable = {            
-						which = bronze
-						value = 1.0
-					}
-					subtract_variable = {            
-						which = lead_used
+						which = num_of_tin
 						value = 1.0
 					}
 				}
@@ -5061,12 +4672,6 @@ bronze_furnace = {
 			ROOT = {
 				remove_building = bronze_furnace
 				change_trade_goods = copper
-			}
-			FROM = {
-				subtract_variable = {            
-					which = bronze_furnace_amount
-					value = 1
-				}
 			}
 		}
 	}
@@ -5096,7 +4701,16 @@ steel_furnace = {
 		has_production_building = yes
 		development = 20
 		FROM = {
-			dip_tech = 20
+			dip_tech = 18
+		}
+		custom_trigger_tooltip = {
+			tooltip = enough_coal_for_steel_tt
+			FROM = {
+				check_variable = {
+					which = num_of_coal
+					value = 1
+				}
+			}
 		}
 	}
 	
@@ -5104,17 +4718,9 @@ steel_furnace = {
 		hidden_effect = {
 			FROM = {
 				subtract_variable = {
-					which = iron
-					value = 1.0
-				}
-				change_variable = {
-					which = iron
+					which = num_of_coal
 					value = 1.0
 				}			
-				change_variable = {
-					which = steel_furnace_amount
-					value = 1
-				}				
 			}
 			ROOT = {
 				change_trade_goods = steel
@@ -5132,11 +4738,7 @@ steel_furnace = {
 				}
 				FROM = {
 					change_variable = {            
-						which = steel
-						value = 1.0
-					}
-					subtract_variable = {            
-						which = lead_used
+						which = num_of_coal
 						value = 1.0
 					}
 				}
@@ -5144,12 +4746,6 @@ steel_furnace = {
 			ROOT = {
 				remove_building = steel_furnace
 				change_trade_goods = iron
-			}
-			FROM = {
-				subtract_variable = {            
-					which = steel_furnace_amount
-					value = 1
-				}
 			}
 		}
 	}
@@ -5160,7 +4756,7 @@ steel_furnace = {
 	}
 	
 	ai_will_do = {
-		factor = 3000
+		factor = 5000
 		modifier = {
 			factor = 0
 			FROM = {
