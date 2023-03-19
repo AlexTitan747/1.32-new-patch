@@ -3595,10 +3595,10 @@ highway = {
 ###### TITAN NATIONAL WONDERS ######
 
 imperial_tax_office = {
-	cost = 1500
+	cost = 800
 	time = 30
 	modifier = {
-		local_tax_modifier = 0.33
+		local_tax_modifier = 1.0
 	}
 
 	build_trigger = {
@@ -3635,7 +3635,7 @@ imperial_tax_office = {
 			type = tax
 			value = 2
 		}
-		hidden_effect = { owner = { save_event_target_as = new_owner } }
+	hidden_effect = { owner = { save_event_target_as = new_owner } }
 		area = {
 			if = {
 				limit = {
@@ -3688,7 +3688,7 @@ centre_of_manufacturing = {
 	cost = 1500
 	time = 30
 	modifier = {
-		trade_goods_size_modifier = 0.2
+		trade_goods_size_modifier = 0.25
 	}
 
 	build_trigger = {
@@ -3778,7 +3778,7 @@ imperial_trade_office = {
 	cost = 1500
 	time = 30
 	modifier = {
-		province_trade_power_modifier = 0.20
+		province_trade_power_modifier = 0.25
 	}
 
 	build_trigger = {
@@ -4074,13 +4074,6 @@ dairy_farm = {
 	
 	ai_will_do = {
 		factor = 3000
-
-		modifier = {	
-			factor = 0
-			FROM = {
-				cheese = 2
-			}
-		}
 	}
 }
 
@@ -4168,13 +4161,6 @@ olive_oil_mill = {
 	
 	ai_will_do = {
 		factor = 3000
-
-		modifier = {
-			factor = 0
-			FROM = {
-				olive_oil = 2
-			}
-		}
 	}
 }
 
@@ -4215,13 +4201,6 @@ chocolate_factory = {
 	
 	ai_will_do = {
 		factor = 3000
-
-		modifier = {
-			factor = 0
-			FROM = {
-				chocolate = 2
-			}
-		}
 	}
 }
 
@@ -4264,13 +4243,6 @@ publishing_house = {
 	
 	ai_will_do = {
 		factor = 3000
-
-		modifier = {
-			factor = 0
-			FROM = {
-				books = 2
-			}
-		}
 	}
 }
 
@@ -4311,13 +4283,6 @@ uniform_maker = {
 	
 	ai_will_do = {
 		factor = 3000
-
-		modifier = {
-			factor = 0
-			FROM = {
-				uniforms = 2
-			}
-		}
 	}
 }
 
@@ -4326,7 +4291,7 @@ perfumery = {
 	time = 36
 	
 	build_trigger = {
-		trade_goods = cloth
+		trade_goods = incense
 		has_production_building = yes
 		development = 12
 		FROM = {
@@ -4337,7 +4302,7 @@ perfumery = {
 	on_built = {
 		hidden_effect = {
 			ROOT = {
-				change_trade_goods = uniforms
+				change_trade_goods = perfume
 			}
 		}
 	}
@@ -4345,8 +4310,8 @@ perfumery = {
 	on_destroyed = {
 		hidden_effect = {
 			ROOT = {
-				remove_building = tailors
-				change_trade_goods = cloth
+				remove_building = perfumery
+				change_trade_goods = incense
 			}
 		}
 	}
@@ -4358,13 +4323,6 @@ perfumery = {
 	
 	ai_will_do = {
 		factor = 3000
-
-		modifier = {
-			factor = 0
-			FROM = {
-				uniforms = 2
-			}
-		}
 	}
 }
 
@@ -4405,13 +4363,6 @@ metalworks = {
 	
 	ai_will_do = {
 		factor = 3000
-
-		modifier = {
-			factor = 0
-			FROM = {
-				silverware = 2
-			}
-		}
 	}
 }
 
@@ -4453,15 +4404,9 @@ blacksmith = {
 	
 	ai_will_do = {
 		factor = 3000
-
-		modifier = {
-			factor = 0
-			FROM = {
-				armour = 2
-			}
-		}
 	}
 }
+
 ##Tier 2 Goods
 jewellery_workshop = {
 	cost = 250
@@ -4578,12 +4523,6 @@ jewellery_workshop = {
 
 	ai_will_do = {
 		factor = 3000
-		modifier = {
-			factor = 0
-			FROM = {
-				jewellery = 2
-			}
-		}
 	}
 }
 
@@ -4702,12 +4641,6 @@ tailors = {
 	
 	ai_will_do = {
 		factor = 3000
-		modifier = {
-			factor = 0
-			FROM = {
-				tailored_clothes = 2
-			}
-		}
 	}
 }
 
@@ -4826,12 +4759,6 @@ bronze_furnace = {
 	
 	ai_will_do = {
 		factor = 3000
-		modifier = {
-			factor = 0
-			FROM = {
-				bronze = 2
-			}
-		}
 	}
 }
 
@@ -4950,12 +4877,6 @@ steel_furnace = {
 	
 	ai_will_do = {
 		factor = 5000
-		modifier = {
-			factor = 0
-			FROM = {
-				steel = 2
-			}
-		}
 	}
 }
 

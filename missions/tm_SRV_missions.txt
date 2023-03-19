@@ -8,6 +8,123 @@ tm_SRV_slot_1 = {
 	}
 	has_country_shield = yes
 
+	tm_SRV_claim_arabian_gulf = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_the_gulf_of_hormuz }
+		position = 6
+		
+		provinces_to_highlight = {
+			OR = {
+				area = bahrain_area
+				area = pirate_coast_area
+				area = mascat_area
+				area = oman_area
+				area = mogostan_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		trigger = {
+			bahrain_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			pirate_coast_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			mascat_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			oman_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			mogostan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "hormuz_trade"
+				duration = 5475
+			}
+		}
+	}
+}
+
+tm_SRV_slot_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = SRV
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
+	tm_SRV_claim_arabian_gulf = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_the_gulf_of_hormuz }
+		position = 6
+		
+		provinces_to_highlight = {
+			OR = {
+				area = bahrain_area
+				area = pirate_coast_area
+				area = mascat_area
+				area = oman_area
+				area = mogostan_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			bahrain_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			pirate_coast_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			mascat_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			oman_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			mogostan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "hormuz_trade"
+				duration = 5475
+			}
+		}
+	}
+}
+
+tm_SRV_slot_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = SRV
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+
 	tm_SRV_mobilization = {
 		icon = mission_assemble_an_army
 		required_missions = {  }
@@ -17,13 +134,6 @@ tm_SRV_slot_1 = {
 			
 		}
 		effect = {
-			armenia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
 			kartli_kakheti_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -44,6 +154,16 @@ tm_SRV_slot_1 = {
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
+			}
+
+			if = {
+				limit = {
+					exists = GEO
+				}
+				add_casus_belli = {
+					target = GEO
+					type = cb_vassalize_mission
+				}
 			}
 		}
 	}
@@ -426,63 +546,6 @@ tm_SRV_slot_1 = {
 		}
 	}
 }
-tm_SRV_slot_2 = {
-	slot = 2
-	generic = no
-	ai = yes
-	potential = {
-		tag = SRV
-		NOT = { map_setup = map_setup_random }
-	}
-	has_country_shield = yes
-
-	tm_SRV_claim_arabian_gulf = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_the_gulf_of_hormuz }
-		position = 6
-		
-		provinces_to_highlight = {
-			OR = {
-				area = bahrain_area
-				area = pirate_coast_area
-				area = mascat_area
-				area = oman_area
-				area = mogostan_area
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			bahrain_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			pirate_coast_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			mascat_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			oman_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			mogostan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		effect = {
-			add_country_modifier = {
-				name = "hormuz_trade"
-				duration = 5475
-			}
-		}
-	}
-}
 
 tm_SRV_slot_4 = {
 	slot = 4
@@ -493,6 +556,37 @@ tm_SRV_slot_4 = {
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
+
+	tm_SRV_a_question_of_faith = {
+		icon = mission_restore_faith_in_the_throne
+		required_missions = {  }
+		position = 1
+		
+		provinces_to_highlight = {
+			province_id = 421
+		}
+		
+		trigger = {
+			stability = 1
+			is_date = 1447.01.01
+		}
+		effect = {
+			dagestan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			circassia_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
 
 	tm_SRV_invade_samarkand = {
 		icon = a_strong_government
@@ -668,6 +762,7 @@ tm_SRV_slot_5 = {
 			}
 		}
 	}
+
 	tm_SRV_gold_rush = {
 		icon = mission_zambezi_gold
 		required_missions = { tm_SRV_caucasian_trade }
