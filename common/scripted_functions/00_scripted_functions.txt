@@ -82,6 +82,23 @@ can_make_core = {
 }
 
 can_make_state = {
+	condition = {
+		tooltip = "NEED_ALL_PROVINCE_TO_STATE_TT"
+		potential = {
+			always = yes
+		}
+		allow = {
+			area_for_scope_province = {
+				type = all
+				OR = {
+					owned_by = ROOT
+					owner = {
+						subject_of_root
+					}
+				}
+			}
+		}
+	}
 }
 
 can_abandon_state = {
