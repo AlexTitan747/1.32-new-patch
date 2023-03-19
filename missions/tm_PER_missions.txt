@@ -455,21 +455,14 @@ tm_PER_branch_3 = {
 
 		effect = {
 			add_mil_power = 150
-			if = {
-				custom_tooltip = tm_PER_devastation_in_arabia_TT
-				hidden_effect = {
-					limit = { 
-						any_owned_province = { 
-							region = arabia_region 
-							devastation = 0.01
-						}
-					}
-					every_owned_province = {
-						add_devastation = -100
-						add_prosperity = 100
-					}
+			custom_tooltip = tm_PER_devastation_in_arabia_TT
+			hidden_effect = {
+				arabia_region = {
+					add_devastation = -100
+					add_prosperity = 100
 				}
 			}
+			
 		}
 	}
 }
@@ -1254,9 +1247,9 @@ tm_PER_branch5_2 = {
 		required_missions = { tm_PER_branch5_mission_4 }
 
 		provinces_to_highlight = {
-			every_owned_province = {
-				limit = { trade_goods = saffron }
-			}
+			trade_goods = saffron
+			owned_by = ROOT
+			NOT = { development = 25 }
 		}
 
 		trigger = {
