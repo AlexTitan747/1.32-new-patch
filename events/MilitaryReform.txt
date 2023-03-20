@@ -12,6 +12,7 @@ country_event = {
 		is_year = 1500
 		NOT = { has_country_modifier = army_reform }
 		NOT = { has_country_modifier = naval_reform }
+		NOT = { has_country_modifier = military_reforms_cooldown }
 	}
 	
 	mean_time_to_happen = {
@@ -92,5 +93,16 @@ country_event = {
 			name = "military_reform"
 			duration = 3650
 		}
+	}
+
+	option = {
+		name = "titancriticalevent.advisor1.b"
+		custom_tooltip = titan_tooltip_five_year_cooldown
+		add_country_modifier = {
+			name = military_reforms_cooldown
+			duration = 9125
+			hidden = yes
+		}
+
 	}
 }
