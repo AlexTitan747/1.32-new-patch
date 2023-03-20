@@ -57,7 +57,6 @@ country_event = {
 		name = titanper.1.b
 
 		yerevan_area = {
-			type = all
 			add_local_autonomy = -50
 			change_culture = persian
 			change_religion = zoroastrian
@@ -67,7 +66,6 @@ country_event = {
 			}
 		} 
 		armenia_area = {
-			type = all
 			add_local_autonomy = -50
 			change_culture = persian
 			change_religion = zoroastrian
@@ -77,7 +75,6 @@ country_event = {
 			}
 		}
 		tabriz_area = {
-			type = all
 			add_local_autonomy = -50
 			change_culture = persian
 			change_religion = zoroastrian
@@ -87,7 +84,6 @@ country_event = {
 			}
 		}
 		shirvan_area = {
-			type = all
 			add_local_autonomy = -50
 			change_culture = persian
 			change_religion = zoroastrian
@@ -97,7 +93,6 @@ country_event = {
 			}
 		}
 		ardabil_area = {
-			type = all
 			add_local_autonomy = -50
 			change_culture = persian
 			change_religion = zoroastrian
@@ -195,6 +190,135 @@ country_event = {
 
 		add_country_modifier = {
 			name = tm_PER_ruler_education
+			duration = -1
+		}
+	}
+}
+
+country_event = {
+	id = titanper.5
+	title = titanper.5.title
+	desc = titanper.5.desc
+	picture = GENERALS_DISCUSSING_eventPicture
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = titanper.5.a
+
+		add_country_modifier = {
+			name = tm_PER_strong_defense
+			duration = -1
+		}
+		set_country_flag = persian_strong_defense 
+	}
+	option = {
+		name = titanper.5.b
+
+		add_country_modifier = {
+			name = tm_PER_strong_offense
+			duration = -1
+		}
+		set_country_flag = persian_strong_offense
+	}
+	option = {
+		name = titanper.5.c
+
+		add_country_modifier = {
+			name = tm_PER_disciplined
+			duration = -1
+		}
+		set_country_flag = persian_disc
+	}
+	option = {
+		name = titanper.5.d
+
+		add_country_modifier = {
+			name = tm_PER_never_fear
+			duration = -1
+		}
+		set_country_flag = persian_morale_r
+	}
+	option = {
+		name = titanper.5.e
+
+		add_country_modifier = {
+			name = tm_PER_easily_drilled
+			duration = -1
+		}
+		set_country_flag = persian_drill
+	}
+}
+
+country_event = {
+	id = titanper.6
+	title = titanper.6.title
+	desc = titanper.6.desc
+	picture = GENERALS_DISCUSSING_eventPicture
+
+	fire_only_once = yes
+
+	is_triggered_only = yes
+
+	option = {
+		name = titanper.6.a
+
+		trigger = {
+			NOT = { has_country_flag = persian_strong_defense  }
+		}
+
+		add_country_modifier = {
+			name = tm_PER_strong_defense
+			duration = -1
+		}
+	}
+	option = {
+		name = titanper.6.b
+
+		trigger = {
+			NOT = { has_country_flag = persian_strong_offense  }
+		}
+
+		add_country_modifier = {
+			name = tm_PER_strong_offense
+			duration = -1
+		}
+	}
+	option = {
+		name = titanper.6.c
+
+		trigger = {
+			NOT = { has_country_flag = persian_disc  }
+		}
+
+		add_country_modifier = {
+			name = tm_PER_disciplined
+			duration = -1
+		}
+	}
+	option = {
+		name = titanper.6.d
+		
+		trigger = {
+			NOT = { has_country_flag = persian_morale_r  }
+		}
+
+		add_country_modifier = {
+			name = tm_PER_never_fear
+			duration = -1
+		}
+	}
+	option = {
+		name = titanper.6.e
+
+		trigger = {
+			NOT = { has_country_flag = persian_drill }
+		}
+
+		add_country_modifier = {
+			name = tm_PER_easily_drilled
 			duration = -1
 		}
 	}

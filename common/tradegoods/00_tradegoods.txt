@@ -2098,11 +2098,11 @@ silver = {
 		}
 		modifier = {
 			factor = 2
-				continent = north_america
+			continent = north_america
 		}
 		modifier = {
 			factor = 1.5
-				continent = south_america
+			continent = south_america
 		}
 	}
 }
@@ -2131,42 +2131,38 @@ tin = {
 			}
 		}
 		modifier = {
-			factor = 0.8
+			factor = 2
 			OR = {
 				has_terrain = mountain
-				has_terrain = coastal_desert
-				has_terrain = forest
-				has_terrain = woods
 				has_terrain = hills
-				has_terrain = jungle
 				has_terrain = highlands
 			}
 		}
 		modifier = {
-			factor = 0.2
+			factor = 1
+			OR = {
+				has_terrain = forest
+				has_terrain = woods	
+				has_terrain = jungle							
+			}
+		}
+		modifier = {
+			factor = 0
 			OR = {
 				has_terrain = drylands
 				has_terrain = savannah
 				has_terrain = steppe
+				has_terrain = grasslands
+				has_terrain = farmlands
 			}
 		}
 		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
-			has_terrain = farmlands
+			factor = 2
+			continent = north_america
 		}
 		modifier = {
 			factor = 1.5
-			OR = {
-				region = south_africa_region
-				region = peru_region
-				region = upper_peru_region
-				region = rio_grande_region
-				region = mexico_region
-			}
+			continent = south_america
 		}
 	}
 }
@@ -2184,55 +2180,50 @@ opium = {
 		factor = 5
 		modifier = {
 			factor = 0
-			continent = europe
-		}
-		modifier = {
-			factor = 0
 			OR = {
-				has_terrain = desert
-				has_terrain = glacier
-				has_terrain = coastline
-				has_climate = arctic
-				has_terrain = farmlands
-				has_terrain = jungle
-				has_terrain = coastal_desert
-				has_terrain = forest
+				continent = africa
+				continent = europe
+				continent = asia
+				colonial_region = colonial_brazil
+				colonial_region = colonial_la_plata
+				colonial_region = colonial_peru
+				colonial_region = colonial_the_carribean
+				colonial_region = colonial_louisiana
+				colonial_region = colonial_eastern_america
+				colonial_region = colonial_canada
+				colonial_region = colonial_alaska
 			}
 		}
 		modifier = {
-			factor = 1
+			factor = 2.0
 			OR = {
-				has_terrain = drylands
-				has_terrain = grasslands
+				has_terrain = forest
+				has_terrain = woods
 				has_terrain = hills
-				has_terrain = highlands
+				has_terrain = jungle
 			}
 		}
 		modifier = {
 			factor = 0.8
 			OR = {
 				has_terrain = mountain
-				has_terrain = savannah
-				has_terrain = steppe
+				has_terrain = coastal_desert
+				has_terrain = highlands
 			}
 		}
 		modifier = {
-			factor = 0.4
+			factor = 0.2
 			OR = {
 				has_terrain = drylands
 				has_terrain = savannah
 				has_terrain = steppe
-				has_terrain = grasslands
-				has_terrain = woods
 			}
 		}
 		modifier = {
-			factor = 1.2
+			factor = 0
 			OR = {
-				region = peru_region
-				region = mexico_region
-				region = colombia_region
-				region = central_america_region
+				has_terrain = grasslands
+				has_terrain = farmlands
 			}
 		}
 	}
@@ -2263,25 +2254,26 @@ crab = {
 		factor = 5
 		modifier = {
 			factor = 0
-			continent = europe
+			NOT = { has_port = yes }
 		}
 		modifier = {
-			factor = 0
-			NOT = { has_port = yes }
+			factor = 2
+			OR = {
+				has_terrain = coastline
+				has_terrain = coastal_desert				
+			}
 		}
 		modifier = {
 			factor = 0
 			OR = {
 				has_terrain = desert
 				has_terrain = glacier
-				has_terrain = coastline
 			}
 		}
 		modifier = {
 			factor = 0.8
 			OR = {
 				has_terrain = mountain
-				has_terrain = coastal_desert
 				has_terrain = forest
 				has_terrain = woods
 				has_terrain = hills
@@ -2298,21 +2290,10 @@ crab = {
 			}
 		}
 		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
-			has_terrain = farmlands
-		}
-		modifier = {
-			factor = 1.5
+			factor = 1.0
 			OR = {
-				region = south_africa_region
-				region = peru_region
-				region = upper_peru_region
-				region = rio_grande_region
-				region = mexico_region
+				has_terrain = grasslands
+				has_terrain = farmlands
 			}
 		}
 	}
@@ -2330,7 +2311,10 @@ deer = {
 		factor = 5
 		modifier = {
 			factor = 0
-			continent = europe
+			OR = {
+				colonial_region = colonial_saf
+				continent = asia
+			}
 		}
 		modifier = {
 			factor = 0
@@ -2342,7 +2326,7 @@ deer = {
 			}
 		}
 		modifier = {
-			factor = 0.8
+			factor = 1.0
 			OR = {
 				has_terrain = mountain
 				has_terrain = coastal_desert
@@ -2351,6 +2335,8 @@ deer = {
 				has_terrain = hills
 				has_terrain = jungle
 				has_terrain = highlands
+				has_terrain = grasslands
+				has_terrain = farmlands
 			}
 		}
 		modifier = {
@@ -2359,35 +2345,6 @@ deer = {
 				has_terrain = drylands
 				has_terrain = savannah
 				has_terrain = steppe
-			}
-		}
-		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
-			has_terrain = farmlands
-		}
-		modifier = {
-			factor = 1.5
-			OR = {
-				region = south_africa_region
-				region = peru_region
-				region = upper_peru_region
-				region = rio_grande_region
-				region = mexico_region
-			}
-		}
-		modifier = {
-			factor = 0
-			OR = {
-				region = south_africa_region
-				region = east_africa_region 
-				region = central_africa_region 
-				region = kongo_region
-				region = horn_of_africa_region
-				region = sahel_region
 			}
 		}
 	}
@@ -2408,8 +2365,17 @@ banana = {
 			continent = europe
 		}
 		modifier = {
-			factor = 0
-			region = south_africa_region
+			factor = 3
+			has_terrain = jungle
+		}
+		modifier = {
+			factor = 1
+			OR = {
+				has_terrain = forest
+				has_terrain = woods
+				has_terrain = hills
+				has_terrain = highlands
+			}
 		}
 		modifier = {
 			factor = 0
@@ -2418,18 +2384,8 @@ banana = {
 				has_terrain = glacier
 				has_terrain = coastline
 				has_climate = arctic
-			}
-		}
-		modifier = {
-			factor = 0.8
-			OR = {
 				has_terrain = mountain
 				has_terrain = coastal_desert
-				has_terrain = forest
-				has_terrain = woods
-				has_terrain = hills
-				has_terrain = jungle
-				has_terrain = highlands
 			}
 		}
 		modifier = {
@@ -2441,20 +2397,10 @@ banana = {
 			}
 		}
 		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
-			has_terrain = farmlands
-		}
-		modifier = {
-			factor = 1.5
+			factor = 0.5
 			OR = {
-				region = peru_region
-				region = upper_peru_region
-				region = rio_grande_region
-				region = mexico_region
+				has_terrain = grasslands
+				has_terrain = farmlands
 			}
 		}
 	}
@@ -2475,24 +2421,27 @@ citrus = {
 			continent = europe
 		}
 		modifier = {
+			factor = 3
+			has_terrain = jungle
+		}
+		modifier = {
+			factor = 1
+			OR = {
+				has_terrain = forest
+				has_terrain = woods
+				has_terrain = hills
+				has_terrain = highlands
+			}
+		}
+		modifier = {
 			factor = 0
 			OR = {
 				has_terrain = desert
 				has_terrain = glacier
 				has_terrain = coastline
 				has_climate = arctic
-			}
-		}
-		modifier = {
-			factor = 0.8
-			OR = {
 				has_terrain = mountain
 				has_terrain = coastal_desert
-				has_terrain = forest
-				has_terrain = woods
-				has_terrain = hills
-				has_terrain = jungle
-				has_terrain = highlands
 			}
 		}
 		modifier = {
@@ -2504,21 +2453,10 @@ citrus = {
 			}
 		}
 		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
-			has_terrain = farmlands
-		}
-		modifier = {
-			factor = 1.5
+			factor = 0.5
 			OR = {
-				region = south_africa_region
-				region = peru_region
-				region = upper_peru_region
-				region = rio_grande_region
-				region = mexico_region
+				has_terrain = grasslands
+				has_terrain = farmlands
 			}
 		}
 	}
@@ -2536,12 +2474,15 @@ horses = {
 		factor = 5
 		modifier = {
 			factor = 0
-			continent = europe
+			OR = {
+				continent = europe
+				continent = north_america
+				continent = south_america
+			}
 		}
 		modifier = {
 			factor = 0
 			OR = {
-				has_terrain = desert
 				has_terrain = glacier
 				has_terrain = coastline
 				has_climate = arctic
@@ -2560,29 +2501,14 @@ horses = {
 			}
 		}
 		modifier = {
-			factor = 0.2
+			factor = 2.0
 			OR = {
 				has_terrain = drylands
 				has_terrain = savannah
 				has_terrain = steppe
-			}
-		}
-		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
-			has_terrain = farmlands
-		}
-		modifier = {
-			factor = 1.5
-			OR = {
-				region = south_africa_region
-				region = peru_region
-				region = upper_peru_region
-				region = rio_grande_region
-				region = mexico_region
+				has_terrain = grasslands
+				has_terrain = farmlands
+				has_terrain = desert
 			}
 		}
 	}
@@ -2632,12 +2558,9 @@ olives = {
 			}
 		}
 		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
+			factor = 3
 			has_terrain = farmlands
+			has_terrain = grasslands
 		}
 		modifier = {
 			factor = 1.5
