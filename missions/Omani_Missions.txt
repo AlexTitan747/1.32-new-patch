@@ -88,7 +88,42 @@ oman_slot_2 = {
 			}
 		}
 	}
-	
+
+	tm_oma_march_on_persia = {
+		icon = control_swabia
+		required_missions = { oma_buildforces }
+		position = 2
+		provinces_to_highlight = {
+			area = lower_swabia_area
+			NOT = {
+				owned_by = ROOT
+			}
+		}
+		trigger = {
+			OR = {
+				lower_swabia_area = {
+					type = all
+					owned_by = ROOT
+				}
+			}
+		}
+		effect = {
+			upper_rhineland_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			alsace_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
 	
 }
 
@@ -102,7 +137,41 @@ oman_slot_3 = {
 	}
 	has_country_shield = yes
 	
-	
+	tm_oma_destroy_yemen = {
+		icon = control_swabia
+		required_missions = { oma_buildforces }
+		position = 2
+		provinces_to_highlight = {
+			area = lower_swabia_area
+			NOT = {
+				owned_by = ROOT
+			}
+		}
+		trigger = {
+			OR = {
+				lower_swabia_area = {
+					type = all
+					owned_by = ROOT
+				}
+			}
+		}
+		effect = {
+			upper_rhineland_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			alsace_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
 }
 
 oman_slot_4 = {
@@ -121,20 +190,172 @@ oman_slot_4 = {
 		position = 1
 		
 		trigger = {
-			army_size_percentage = 1
-			manpower_percentage = 0.8
-			num_of_generals = 1
+			religious_unity = 0.85
+			religion = ibadi
 		}
 		
 		effect = {
 			add_country_modifier = {
-				name = "oma_buildforces_mod"
-				duration = 5475
+				name = "tm_oma_relgious_unity"
+				duration = 3650
 			}
 		}
 	}
+
+	tm_oma_battle_of_the_scholars = {
+		icon = mission_bedouins
+		required_missions = { tm_oma_secure_ibadi }
+		position = 2
+		
+		trigger = {
+			stability = 2
+			prestige = 50
+			legitimacy = 95
+		}
+		
+		effect = {
+			country_event = {
+				id = titanoma.1
+			}
+		}
+	}
+
+	tm_oma_dummy_mission_1 = {
+		icon = mission_unknown_mission
+		position = 3
+		required_missions = { tm_oma_battle_of_the_scholars }
+		provinces_to_highlight = {}
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = selectable_mission_trigger_tt
+				always = no
+			}
+		}
+		effect = {
+			custom_tooltip = oman_path_effects_tt
+			prestige = 15
+		}
+	}
+}
+
+oman_slot_4_a = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = OMA
+		NOT = { map_setup = map_setup_random }
+		has_country_flag = ibadi_scholar_selected
+	}
+	has_country_shield = yes
 	
+	tm_oma_conquer_the_ibadi_lands = {
+		icon = mission_bedouins
+		required_missions = { tm_oma_battle_of_the_scholars }
+		position = 3
+		
+		trigger = {
+			410 = {
+				owned_by = ROOT
+				base_tax = 6
+			}
+			384 = {
+				owned_by = ROOT
+				base_tax = 6
+			}
+			385 = {
+				owned_by = ROOT
+				base_tax = 6
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = tm_oma_chose_ibadi
+				value = -1
+			}
+		}
+	}
+}
+
+oman_slot_4_b = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = OMA
+		NOT = { map_setup = map_setup_random }
+		has_country_flag = sunni_scholar_selected
+	}
+	has_country_shield = yes
 	
+	tm_oma_restore_the_true_faith = {
+		icon = mission_bedouins
+		required_missions = { tm_oma_battle_of_the_scholars }
+		position = 3
+		
+		trigger = {
+			382 = {
+				owned_by = ROOT
+				base_tax = 6
+			}
+			384 = {
+				owned_by = ROOT
+				base_tax = 6
+			}
+			385 = {
+				owned_by = ROOT
+				base_tax = 6
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = tm_oma_chose_sunni
+				value = -1
+			}
+		}
+	}
+}
+
+oman_slot_4_c = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = OMA
+		NOT = { map_setup = map_setup_random }
+		has_country_flag = shia_scholar_selected
+	}
+	has_country_shield = yes
+	
+	tm_oma_conquer_for_our_faith = {
+		icon = mission_bedouins
+		required_missions = { tm_oma_battle_of_the_scholars }
+		position = 3
+		
+		trigger = {
+			2213 = {
+				owned_by = ROOT
+				base_tax = 6
+			}
+			384 = {
+				owned_by = ROOT
+				base_tax = 6
+			}
+			385 = {
+				owned_by = ROOT
+				base_tax = 6
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = tm_oma_chose_shia
+				value = -1
+			}
+		}
+	}
 }
 
 oman_slot_5 = {
