@@ -284,17 +284,87 @@ age_of_reformation = {
 	papacy = 1.25
 	
 	objectives = {
-		obj_christian_convert = {
+		obj_religious_nation_1 = {
+			allow = {	
+				religion = catholic
+			}
+			papal_influence = 100
+		}
+
+		obj_religious_nation_2 = {
+			allow = {
+				OR = {
+					religion = protestant
+					religion = anglican
+					religion = hussite
+					religion = jewish
+				}
+			}
+			church_power = 150
+		}
+
+		obj_religious_nation_3 = {
+			allow = {
+				religion = reformed
+			}
+			fervor = 90
+		}
+
+		obj_religious_nation_4 = {
+			allow = {
+				religion = orthodox
+			}
+			patriarch_authority = 0.8
+		}
+
+		obj_religious_nation_5 = {
+			allow = {
+				OR = {
+					religion = coptic
+					religion = zoroastrian
+				}
+			}
+			num_of_active_blessings = 3
+		}
+
+		obj_religious_nation_6 = {
+			allow = {
+				religion_group = muslim
+			}
 			OR = {
 				piety = -0.8
 				piety = 0.8
-				num_of_active_blessings = 3
-				patriarch_authority = 0.8
-				papal_influence = 100
-				church_power = 150
-				fervor = 90
 			}
 		}
+
+		obj_religious_nation_7 = {
+			allow = {
+				NOT = {
+					OR = {
+						religion_group = muslim
+						religion = catholic
+						religion = protestant
+						religion = anglican
+						religion = hussite
+						religion = jewish
+						religion = reformed
+						religion = orthodox
+						religion = coptic
+						religion = zoroastrian
+					}
+				}
+			}
+			is_defender_of_faith = yes
+			OR = {
+				religious_unity = 0.9
+				has_global_modifier_value = {
+					which = global_missionary_strength 
+					value = 6
+				}
+			}
+		}
+
+		
 		
 
 		obj_humanism_religious = {
@@ -346,6 +416,10 @@ age_of_reformation = {
 				}
 				trading_bonus = {
 					trade_goods = tea
+					value = yes
+				}
+				trading_bonus = {
+					trade_goods = banana
 					value = yes
 				}
 			}
