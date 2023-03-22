@@ -621,3 +621,31 @@ col_empire_col_scripted_effect = {
         }
     }
 }
+
+
+
+
+change_ruling_family_religions_effect = {
+    if = {
+        limit = {
+            NOT = {
+                ruler_religion = $religion$
+            }
+        }
+        set_ruler_religion = $religion$
+    }
+    if = {
+        limit = {
+            has_heir = yes
+            NOT = { heir_religion = $religion$ }
+        }
+        set_heir_religion = $religion$
+    }
+    if = {
+        limit = {
+            has_consort = yes
+            NOT = { consort_religion = $religion$ }
+        }
+        set_consort_religion = $religion$
+    }
+}

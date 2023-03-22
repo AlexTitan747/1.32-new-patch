@@ -21,6 +21,22 @@ tm_SRV_slot_2 = {
 	}
 	has_country_shield = yes
 
+	tm_SRV_not_sure_here = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { }
+		position = 1
+		
+		provinces_to_highlight = {
+
+		}
+		trigger = {
+
+		}
+		effect = {
+
+		}
+	}
+
 	tm_SRV_claim_arabian_gulf = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_the_gulf_of_hormuz }
@@ -442,6 +458,7 @@ tm_SRV_slot_3 = {
 			}
 		}
 	}
+	
 	tm_SRV_fight_for_the_gardens = {
 		icon = mission_saladin_takes_jerusalem
 		required_missions = { tm_SRV_the_gulf_of_hormuz }
@@ -459,6 +476,7 @@ tm_SRV_slot_3 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
+
 		trigger = {
 			khuzestan_area = {
 				type = all
@@ -485,6 +503,7 @@ tm_SRV_slot_3 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
+
 		effect = {
 			add_treasury = 1000
 			add_mil_power = 100
@@ -496,7 +515,6 @@ tm_SRV_slot_3 = {
 				stat = dip
 				amount = 1
 			}
-			set_country_flag = tm_srv_owns_babylon
 		}
 	}
 }
@@ -525,19 +543,9 @@ tm_SRV_slot_4 = {
 			is_date = 1447.01.01
 		}
 		effect = {
-			dagestan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			circassia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
+			country_event = {
+				id = titansrv_1
+				tooltip = titansrv_1_event_tt
 			}
 		}
 	}
@@ -545,7 +553,7 @@ tm_SRV_slot_4 = {
 	tm_SRV_invade_samarkand = {
 		icon = a_strong_government
 		required_missions = {  }
-		position = 6
+		position = 2
 		
 		provinces_to_highlight = {
 			OR = {
@@ -652,7 +660,7 @@ tm_SRV_slot_5 = {
 	tm_SRV_caucasian_trade = {
 		icon = mission_dominate_persian_gulf
 		required_missions = {  }
-		position = 3
+		position = 1
 		
 		provinces_to_highlight = {
 			OR = {
