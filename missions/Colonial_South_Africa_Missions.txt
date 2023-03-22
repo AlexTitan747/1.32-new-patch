@@ -83,6 +83,7 @@ colonial_SAF_slot_1 = { #Trade
 		required_missions = { saf_cape_2 }
 		provinces_to_highlight = {
 			province_id = 1177
+			province_id = 1460
 		}
 
 		trigger = {
@@ -147,7 +148,7 @@ colonial_SAF_slot_1 = { #Trade
 		icon = mission_arabian_trade
 		required_missions = { saf_cape_3 }
 		provinces_to_highlight = {
-			province_id = 1177
+			province_id = 1460
 		}
 
 		trigger = {
@@ -166,7 +167,6 @@ colonial_SAF_slot_1 = { #Trade
 					}
 				}
 			}
-			
 		}
 
 		effect = {
@@ -186,7 +186,7 @@ colonial_SAF_slot_1 = { #Trade
 		icon = mal_riches_of_trade
 		required_missions = { saf_cape_4 }
 		provinces_to_highlight = {
-			province_id = 1177
+			province_id = 1460
 		}
 
 		trigger = {
@@ -456,7 +456,7 @@ colonial_SAF_slot_3 = { #Army
 			}
 			add_country_modifier = {
 				name = col_standing_army
-				duration = 3650
+				duration = 5475
 			}
 		}
 	}
@@ -837,7 +837,14 @@ colonial_SAF_slot_5 = { #Gold
 
 		trigger = {
 			gold = 1
-
+			NOT = { inflation = 5 }
+			OR = {
+				gold_income = 25
+				any_owned_province = {
+					trade_goods = gold
+					base_production = 15
+				}
+			}
 		}
 
 		effect = {

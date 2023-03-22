@@ -10,6 +10,98 @@ colonial_IND_slot_1 = {
 	}
 	has_country_shield = yes
 
+	ind_trade_1 = {
+		icon = mission_coromandel_trade
+		required_missions = { }
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+
+		}
+
+		effect = {
+
+		}
+	}
+
+	ind_trade_2 = {
+		icon = fight_bosnian_heresies
+		required_missions = { ind_trade_1 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+
+		}
+
+		effect = {
+
+		}
+	}
+
+	ind_trade_3 = {
+		icon = mission_trade_in_gold_coast
+		required_missions = { ind_trade_2 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+
+		}
+
+		effect = {
+
+		}
+	}
+
+	ind_trade_4 = {
+		icon = mission_arabian_trade
+		required_missions = { ind_trade_3 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+
+		}
+
+		effect = {
+
+		}
+	}
+
+	ind_trade_5 = {
+		icon = mal_riches_of_trade
+		required_missions = { ind_trade_4 }
+		provinces_to_highlight = {
+			province_id = 1361
+		}
+
+		trigger = {
+			OR = {
+				1361 = {
+					is_strongest_trade_power = ROOT
+					trade_node_value = 40
+				}
+				overlord = {
+					1361 = {
+						is_strongest_trade_power = PREV
+						trade_node_value = 40
+					}
+				}
+			}
+		}
+
+		effect = {
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
+			overlord = {
+				country_event = { 
+					id = colonial_mission_events.1
+					tooltip = colonial_mission_events_trade_tt
+				}
+			}
+		}
+	}
 }
 
 colonial_IND_slot_2 = {
@@ -123,6 +215,9 @@ colonial_IND_slot_2 = {
 		}
 
 		effect = {
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
 			overlord = {
 				country_event = {
 					id = colonial_mission_events.2
@@ -147,7 +242,7 @@ colonial_IND_slot_3 = {
 	has_country_shield = yes
 
     ind_army_1 = {
-		icon = oceania_assemble_an_army
+		icon = mission_oceania_assemble_an_army
 		required_missions = { }
 		provinces_to_highlight = {	}
 
@@ -165,7 +260,7 @@ colonial_IND_slot_3 = {
 	}
 
 	ind_army_2 = {
-		icon = NeedIcon
+		icon = mission_bijapur_karnatak
 		required_missions = { ind_army_1 }
 		provinces_to_highlight = {	}
 
@@ -193,7 +288,7 @@ colonial_IND_slot_3 = {
 	}
 
 	ind_army_3 = {
-		icon = NeedIcon
+		icon = mission_abu_saids_dream
 		required_missions = { ind_army_2 }
 		provinces_to_highlight = {	}
 
@@ -249,7 +344,7 @@ colonial_IND_slot_3 = {
 			}
 			add_country_modifier = {
 				name = col_standing_army
-				duration = 3650
+				duration = 5475
 			}
 		}
 	}
@@ -265,6 +360,9 @@ colonial_IND_slot_3 = {
 		}
 
 		effect = {
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
 			overlord = {
 				country_event = { 
 					id = colonial_mission_events.3
@@ -395,6 +493,9 @@ colonial_IND_slot_4 = {
 		}
 
 		effect = {
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
 			overlord = {
 				add_country_modifier = {
 					name = "colonial_subject_overlord_colonisation_reward"

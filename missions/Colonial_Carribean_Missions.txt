@@ -11,72 +11,240 @@ colonial_CAR_slot_1 = {
 	has_country_shield = yes
 	
 	car_trade_1 = {
-		icon = needIcon
+		icon = mission_coromandel_trade
 		required_missions = { }
-		provinces_to_highlight = {	}
+		provinces_to_highlight = {
+			province_id = 484
+		}
 
 		trigger = {
-			
+			484 = {
+				owned_by = ROOT
+				base_production = 8
+			}
 		}
 
 		effect = {
-			
+			if = {
+				limit = {
+					484 = {
+						NOT = { province_has_center_of_trade_of_level = 3 }
+					}
+				}
+				484 = {
+					add_center_of_trade_level = 1
+				}
+			}
+			else = {
+				484 = {
+					add_base_production = 3
+				}
+			}
 		}
 	}
 
 	car_trade_2 = {
-		icon = needIcon
-		required_missions = { }
-		provinces_to_highlight = {	}
+		icon = fight_bosnian_heresies
+		required_missions = { car_trade_1 }
+		provinces_to_highlight = {
+			province_id = 484
+		}
 
 		trigger = {
-			
+			484 = {
+				owned_by = ROOT
+				fort_level = 2
+				base_manpower = 8
+			}
 		}
 
 		effect = {
-			
+			if = {
+				limit = {
+					484 = {
+						has_great_project = {
+							type = any
+							tier = 2
+						}
+					}
+				}
+				484 = {
+					add_unit_construction = {
+						type = light_ship
+						amount = 8
+						speed = 0.5
+						cost = 0
+					}
+				}
+			}
+			else = {
+				484 = {
+					add_great_project_tier = {
+						type = fuerte_del_morro
+						tier = 1
+					}
+				}
+			}
+			484 = {
+				hidden_effect = {
+					upgrade_building = {
+						fort = yes
+					}
+				}
+				if = {
+					limit = {
+						NOT = { has_building = guardhouse }
+					}
+					add_building = guardhouse
+				}
+				else = {
+					add_base_manpower = 2
+				}
+				if = {
+					limit = {
+						NOT = { has_building = naval_battery }
+					}
+					add_building = naval_battery
+				}
+				else = {
+					add_base_production = 2
+				}
+			}
+			custom_tooltip = col_caribbean_upgrade_fort_tt
 		}
 	}
 
 	car_trade_3 = {
-		icon = needIcon
-		required_missions = { }
-		provinces_to_highlight = {	}
+		icon = mission_trade_in_gold_coast
+		required_missions = { car_trade_2 }
+		provinces_to_highlight = {
+			province_id = 484
+			NOT = { owned_by = ROOT }
+		}
 
 		trigger = {
-			
+			owns = 484
+			OR = {
+				1516 = {
+					trade_share = {
+						country = ROOT
+						share = 30
+					}
+					is_strongest_trade_power = ROOT
+				}
+				overlord = {
+					1516 = {
+						trade_share = {
+							country = PREV
+							share = 30
+						}
+						is_strongest_trade_power = PREV
+					}
+				}
+			}
 		}
 
 		effect = {
-			
+			if = {
+				limit = {
+					NOT = {
+						484 = {
+							has_province_modifier = havana_trade
+						}
+					}
+				}
+				484 = {
+					add_province_modifier = {
+						name = havana_trade
+						duration = -1
+					}
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						484 = {
+							NOT = { has_building = shipyard }
+						}
+					}
+					484 = {
+						add_building = shipyard
+					}
+				}
+				484 = {
+					add_base_production = 2
+				}
+			}
 		}
 	}
 
 	car_trade_4 = {
-		icon = needIcon
-		required_missions = { }
-		provinces_to_highlight = {	}
+		icon = mission_arabian_trade
+		required_missions = { car_trade_3 }
+		provinces_to_highlight = {
+			province_id = 1516
+		}
 
 		trigger = {
-			
+			OR = {
+				1516 = {
+					is_strongest_trade_power = ROOT
+					trade_node_value = 20
+				}
+				overlord = {
+					1516 = {
+						is_strongest_trade_power = PREV
+						trade_node_value = 20
+					}
+				}
+			}
 		}
 
 		effect = {
-			
+			1516 = {
+				add_trade_modifier = {
+					who = ROOT
+					duration = 5475
+					power = 20
+					key = STRONG_MERCHANTS
+				}
+				add_trade_node_income = 100
+			}
 		}
 	}
 
 	car_trade_5 = {
-		icon = needIcon
-		required_missions = { }
-		provinces_to_highlight = {	}
+		icon = mal_riches_of_trade
+		required_missions = { car_trade_4 }
+		provinces_to_highlight = {
+			province_id = 1516
+		}
 
 		trigger = {
-			
+			OR = {
+				1516 = {
+					is_strongest_trade_power = ROOT
+					trade_node_value = 40
+				}
+				overlord = {
+					1516 = {
+						is_strongest_trade_power = PREV
+						trade_node_value = 40
+					}
+				}
+			}
 		}
 
 		effect = {
-			
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
+			overlord = {
+				country_event = { 
+					id = colonial_mission_events.1
+					tooltip = colonial_mission_events_trade_tt
+				}
+			}
 		}
 	}
 }
@@ -192,6 +360,9 @@ colonial_CAR_slot_2 = {
 		}
 
 		effect = {
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
 			overlord = {
 				country_event = {
 					id = colonial_mission_events.2
@@ -234,7 +405,7 @@ colonial_CAR_slot_3 = {
 	}
 
 	car_army_2 = {
-		icon = nah_the_enemy_way
+		icon = mission_nah_the_enemy_way
 		required_missions = { car_army_1 }
 		provinces_to_highlight = {	}
 
@@ -318,7 +489,7 @@ colonial_CAR_slot_3 = {
 			}
 			add_country_modifier = {
 				name = col_standing_army
-				duration = 3650
+				duration = 5475
 			}
 		}
 	}
@@ -334,6 +505,9 @@ colonial_CAR_slot_3 = {
 		}
 
 		effect = {
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
 			overlord = {
 				country_event = { 
 					id = colonial_mission_events.3
@@ -419,7 +593,7 @@ colonial_CAR_slot_4 = {
 
 		trigger = {
 			num_of_owned_provinces_with = {
-				value = 10
+				value = 8
 				colonial_region = colonial_the_carribean
 			}
 		}
@@ -500,6 +674,9 @@ colonial_CAR_slot_4 = {
 					duration = 5475
 				}
 			}
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
 			overlord = {
 				country_event = {
 					id = colonial_mission_events.4
@@ -522,4 +699,83 @@ colonial_CAR_slot_5 = {
 	}
 	has_country_shield = yes
 
+	car_buildings_1 = {
+		icon = needIcon
+		required_missions = {  }
+		provinces_to_highlight = { 
+			
+		}
+
+		trigger = {
+			
+		}
+
+		effect = {
+
+		}
+	}
+
+	car_buildings_2 = {
+		icon = needIcon
+		required_missions = { car_buildings_1 }
+		provinces_to_highlight = { 
+			
+		}
+
+		trigger = {
+
+		}
+
+		effect = {
+			
+		}
+	}
+
+	car_buildings_3 = {
+		icon = needIcon
+		required_missions = { car_buildings_2 }
+		provinces_to_highlight = { 
+			
+		}
+	
+		trigger = {
+
+		}
+
+		effect = {
+			
+		}
+	}
+
+	car_buildings_4 = {
+		icon = needIcon
+		required_missions = { car_buildings_3 }
+		provinces_to_highlight = { 
+			
+		}
+
+		trigger = {
+
+		}
+
+		effect = {
+			
+		}
+	}
+
+	car_buildings_5 = {
+		icon = needIcon
+		required_missions = { car_buildings_4 }
+		provinces_to_highlight = { 
+			
+		}
+
+		trigger = {
+
+		}
+
+		effect = {
+			
+		}
+	}
 }
