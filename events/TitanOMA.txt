@@ -1,0 +1,59 @@
+namespace = titanoma
+#these are the event that change you government type and form 
+
+#every time you reach a dev point you get a choice between a republic, theocracy or monarchy
+#it gives you a specialised reform based on what you choose
+
+#duchy rank
+country_event = {
+	id = titanoma.1
+	title = "titanoma.title1"
+	desc = "titanoma.desc1"
+	picture = GOOD_WITH_MONARCH_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = "titanoma.event1"
+		every_owned_province = {
+			limit = {
+				religion_group = muslim
+				NOT = {
+					religion = ibadi
+				}
+			}
+			change_religion = ibadi
+		}
+		set_country_flag = ibadi_scholar_selected
+	}
+
+	option = {
+		name = "titanoma.event2"
+		every_owned_province = {
+			limit = {
+				religion_group = muslim
+				NOT = {
+					religion = sunni
+				}
+			}
+			change_religion = sunni
+		}
+		set_country_flag = sunni_scholar_selected
+	}
+
+	option = {
+		name = "titanoma.event3"
+		every_owned_province = {
+			limit = {
+				religion_group = muslim
+				NOT = {
+					religion = shia
+				}
+			}
+			change_religion = shia
+		}
+		set_country_flag = shia_scholar_selected
+	}
+}
+
