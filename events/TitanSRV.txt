@@ -1,0 +1,80 @@
+namespace = titansrv
+
+country_event = {
+	id = titansrv_1
+	title = titansrv_1.title
+	desc = titansrv_1.desc
+	picture = MILITARY_CAMP_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = titansrv_1.a
+
+		capital_scope = {
+            area = {
+                change_religion = shiite
+            }
+        }
+        define_advisor = {
+			type = inquisitor
+			skill = 3
+			cost_multiplier = 0.25
+			culture = ROOT
+            religion = shiite
+		}
+        change_ruling_family_religions_effect = { religion = shiite }
+        custom_tooltip = srv_titansrv_1_a_tt
+	}
+
+	option = {
+		name = titansrv_1.b
+
+		change_religion = zoroastrian
+
+        capital_scope = {
+            area = {
+                change_religion = zoroastrian
+            }
+        }
+        define_advisor = {
+			type = inquisitor
+			skill = 3
+			cost_multiplier = 0.25
+			culture = ROOT
+            religion = zoroastrian
+		}
+        change_ruling_family_religions_effect = { religion = zoroastrian }
+        custom_tooltip = srv_titansrv_1_b_tt
+	}
+
+    option = {
+		name = titansrv_1.c
+		change_religion = coptic
+
+        capital_scope = {
+            area = {
+                change_religion = coptic
+            }
+        }
+        define_advisor = {
+			type = inquisitor
+			skill = 3
+			cost_multiplier = 0.25
+			culture = ROOT
+            religion = coptic
+		}
+        change_ruling_family_religions_effect = { religion = coptic }
+        
+        if = {
+            limit = {
+                owns = 419
+            }
+            add_great_project_tier = {
+                type = etchimiadzin_cathedral
+                tier = 3
+            }
+        }
+	}
+}
