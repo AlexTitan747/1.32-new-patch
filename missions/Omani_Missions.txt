@@ -64,8 +64,10 @@ oman_slot_1 = {
 		required_missions = { tm_oma_march_on_persia }
 		position = 3
 		provinces_to_highlight = {
-			area = persian_gulf_coast
-			area = farsistan_area
+			OR = {
+				area = persian_gulf_coast
+				area = farsistan_area
+			}
 			NOT = {
 				owned_by = ROOT
 			}
@@ -167,9 +169,11 @@ oman_slot_2 = {
 		required_missions = { oma_buildforces }
 		position = 2
 		provinces_to_highlight = {
-			area = espakh_area
-			area = kerman_area
-			area = saravan_area
+			OR = {
+				area = espakh_area
+				area = kerman_area
+				area = saravan_area
+			}
 			NOT = {
 				owned_by = ROOT
 			}
@@ -216,8 +220,10 @@ oman_slot_2 = {
 		required_missions = { tm_oma_march_on_persia }
 		position = 3
 		provinces_to_highlight = {
-			area = persian_gulf_coast
-			area = farsistan_area
+			OR = {
+				area = persian_gulf_coast
+				area = farsistan_area
+			}
 			NOT = {
 				owned_by = ROOT
 			}
@@ -262,9 +268,12 @@ oman_slot_2 = {
 		required_missions = { tm_oma_annex_fars tm_oma_secure_arabia }
 		position = 4
 		provinces_to_highlight = {
-			area = khuzestan_area
-			area = basra_area
-			area = radah_area
+			OR = {
+				area = khuzestan_area
+				area = basra_area
+				area = radah_area
+			}
+			
 			NOT = {
 				owned_by = ROOT
 			}
@@ -360,10 +369,12 @@ oman_slot_3 = {
 		required_missions = { tm_oma_march_on_haasa }
 		position = 3
 		provinces_to_highlight = {
-			area = nafud_area
-			area = yamamah_area
-			area = qasim_area
-			area = hail_area
+			OR = {
+				area = nafud_area
+				area = yamamah_area
+				area = qasim_area
+				area = hail_area
+			}
 			NOT = {
 				owned_by = ROOT
 			}
@@ -411,8 +422,10 @@ oman_slot_4 = {
 		required_missions = { oma_buildforces }
 		position = 2
 		provinces_to_highlight = {
-			area = mahra_area
-			area = hadramut_area
+			OR = {
+				area = mahra_area
+				area = hadramut_area
+			}
 			NOT = {
 				owned_by = ROOT
 			}
@@ -473,10 +486,12 @@ oman_slot_4 = {
 		required_missions = { tm_oma_destroy_mahra }
 		position = 3
 		provinces_to_highlight = {
-			area = upper_yemen_area
-			area = yemen_area
-			area = tihama_al_yemen_area
-			area = asir_area
+			OR = {
+				area = upper_yemen_area
+				area = yemen_area
+				area = tihama_al_yemen_area
+				area = asir_area
+			}
 			NOT = {
 				owned_by = ROOT
 			}
@@ -529,9 +544,11 @@ oman_slot_4 = {
 		required_missions = { tm_oma_secure_arabia tm_oma_claim_yemeni_throne }
 		position = 4
 		provinces_to_highlight = {
-			area = medina_area
-			area = mecca_area
-			area = tabuk_area
+			OR = {
+				area = medina_area
+				area = mecca_area
+				area = tabuk_area
+			}
 			NOT = {
 				owned_by = ROOT
 			}
@@ -634,7 +651,7 @@ oman_slot_5 = {
 		}
 		effect = {
 			custom_tooltip = oman_path_effects_tt
-			prestige = 15
+			add_prestige = 15
 		}
 	}
 
@@ -695,7 +712,7 @@ oman_slot_5_a = {
 		effect = {
 			add_country_modifier = {
 				name = tm_oma_chose_ibadi
-				value = -1
+				duration = -1
 			}
 		}
 	}
@@ -735,7 +752,7 @@ oman_slot_5_b = {
 		effect = {
 			add_country_modifier = {
 				name = tm_oma_chose_sunni
-				value = -1
+				duration = -1
 			}
 		}
 	}
@@ -775,7 +792,7 @@ oman_slot_5_c = {
 		effect = {
 			add_country_modifier = {
 				name = tm_oma_chose_shia
-				value = -1
+				duration = -1
 			}
 		}
 	}
