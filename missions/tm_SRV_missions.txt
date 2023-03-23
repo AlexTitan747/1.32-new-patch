@@ -21,7 +21,7 @@ tm_SRV_slot_2 = {
 	}
 	has_country_shield = yes
 
-	tm_SRV_not_sure_here = {
+	tm_SRV_dominate_rivals = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { }
 		position = 1
@@ -30,10 +30,107 @@ tm_SRV_slot_2 = {
 
 		}
 		trigger = {
+			hidden_trigger = {
+			OR = {
+				has_country_flag = humiliated_rival
+				has_country_flag = tm_show_strength
+				}
+			}
+		}
+	effect = {
+		add_prestige = 15
+		add_power_projection = {
+			type = 25_permanent_power_projection
+			amount = 15
+		}
+	}
+	}
 
+	tm_SRV_secure_caucasian_lands = {
+		icon = alpine_fortifications
+		required_missions = { tm_SRV_mobilization }
+		position = 2
+		provinces_to_highlight = {
+			OR = {
+				area = kartli_kakheti_area
+				area = imereti_area
+				area = samtskhe_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			kartli_kakheti_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			imereti_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			samtskhe_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		effect = {
+			bayazid_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			mush_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			erzurum_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
 
+	tm_SRV_annex_armenia = {
+		icon = alpine_fortifications
+		required_missions = { tm_SRV_secure_caucasian_lands }
+		position = 3
+		provinces_to_highlight = {
+			OR = {
+				area = bayazid_area
+				area = mush_area
+				area = erzurum_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			bayazid_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			mush_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			erzurum_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			2305 = {
+				add_building = fort_14th
+			}
 		}
 	}
 
@@ -125,7 +222,20 @@ tm_SRV_slot_3 = {
 				}
 				add_permanent_claim = ROOT
 			}
-
+			alania_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			tabriz_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 			if = {
 				limit = {
 					exists = GEO
@@ -137,30 +247,20 @@ tm_SRV_slot_3 = {
 			}
 		}
 	}
-	tm_SRV_caucasian_conquest = {
+	tm_SRV_seize_tabriz = {
 		icon = alpine_fortifications
 		required_missions = { tm_SRV_mobilization }
 		
 		provinces_to_highlight = {
 			OR = {
-				area = kartli_kakheti_area
-				area = imereti_area
-				area = samtskhe_area
+				area = tabriz_area
 			}
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		trigger = {
-			kartli_kakheti_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			imereti_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			samtskhe_area = {
+			tabriz_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
@@ -180,20 +280,6 @@ tm_SRV_slot_3 = {
 				}
 				add_permanent_claim = ROOT
 			}
-			erzurum_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			tabriz_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
 			luristan_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -205,7 +291,7 @@ tm_SRV_slot_3 = {
 	}
 	tm_SRV_declare_war_on_persia = {
 		icon = mission_conquer_persia
-		required_missions = { tm_SRV_caucasian_conquest }
+		required_missions = { tm_SRV_seize_tabriz }
 		
 		provinces_to_highlight = {
 			OR = {
@@ -544,8 +630,38 @@ tm_SRV_slot_4 = {
 		}
 		effect = {
 			country_event = {
-				id = titansrv_1
+				id = titansrv.1
 				tooltip = titansrv_1_event_tt
+			}
+		}
+	}
+
+	tm_SRV_seize_gold_mines = {
+		icon = alpine_fortifications
+		required_missions = { tm_SRV_mobilization }
+		position = 2
+		provinces_to_highlight = {
+			OR = {
+				area = alania_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			alania_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			2201 = {
+				base_production = 10
+			}
+		}
+		effect = {
+			add_treasury = 2000
+			add_country_modifier = {
+				name = "manage_inflation"
+				duration = 3650
 			}
 		}
 	}
@@ -553,7 +669,7 @@ tm_SRV_slot_4 = {
 	tm_SRV_invade_samarkand = {
 		icon = a_strong_government
 		required_missions = {  }
-		position = 2
+		position = 5
 		
 		provinces_to_highlight = {
 			OR = {
@@ -588,7 +704,7 @@ tm_SRV_slot_4 = {
 	tm_SRV_deal_with_the_hordes = {
 		icon = mission_hephthalites_white_huns
 		required_missions = { tm_SRV_invade_samarkand }
-		
+		position = 6
 		
 		provinces_to_highlight = {
 			OR = {
@@ -725,27 +841,5 @@ tm_SRV_slot_5 = {
 		}
 	}
 
-	tm_SRV_gold_rush = {
-		icon = mission_zambezi_gold
-		required_missions = { tm_SRV_caucasian_trade }
-		
-		provinces_to_highlight = {
-			province_id = 2201
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			2201 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		effect = {
-			add_treasury = 2000
-			add_country_modifier = {
-				name = "manage_inflation"
-				duration = 3650
-			}
-		}
-	}
+
 }
