@@ -21,7 +21,7 @@ tm_SRV_slot_2 = {
 	}
 	has_country_shield = yes
 
-	tm_SRV_not_sure_here = {
+	tm_SRV_dominate_rivals = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { }
 		position = 1
@@ -30,11 +30,20 @@ tm_SRV_slot_2 = {
 
 		}
 		trigger = {
-
+			hidden_trigger = {
+			OR = {
+				has_country_flag = humiliated_rival
+				has_country_flag = tm_show_strength
+				}
+			}
 		}
-		effect = {
-
+	effect = {
+		add_prestige = 15
+		add_power_projection = {
+			type = 25_permanent_power_projection
+			amount = 15
 		}
+	}
 	}
 
 	tm_SRV_claim_arabian_gulf = {
@@ -137,6 +146,7 @@ tm_SRV_slot_3 = {
 			}
 		}
 	}
+
 	tm_SRV_caucasian_conquest = {
 		icon = alpine_fortifications
 		required_missions = { tm_SRV_mobilization }
