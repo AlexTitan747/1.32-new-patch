@@ -613,7 +613,6 @@ was_never_german_regional_tag_trigger = {	#Country Scope
 	NOT = { tag = HAN }
 }
 
-
 has_manufactory_trigger = { #Province Scope
 	custom_trigger_tooltip = {
 		tooltip = has_manufactory_trigger_tooltip
@@ -626,10 +625,7 @@ has_manufactory_trigger = { #Province Scope
 			has_building = mills
 			has_building = furnace
 			has_building = plantations
-			has_building = ramparts
 			has_building = soldier_households
-			has_building = impressment_offices
-			has_building = state_house
 		}
 	}
 }
@@ -722,10 +718,7 @@ has_no_manufactory_trigger = { #Province Scope
 	NOT = { has_building = mills }
 	NOT = { has_building = plantations }
 	NOT = { has_building = furnace }
-	NOT = { has_building = ramparts }
 	NOT = { has_building = soldier_households }
-	NOT = { has_building = impressment_offices }
-	NOT = { has_building = state_house }
 }
 
 # Does not include new manufactories - they don't fit for the purposes of this trigger
@@ -1025,6 +1018,7 @@ has_trade_building_trigger = {
 has_production_building_trigger = {
 	OR = {
 		has_building = workshop
+		has_building = warehouse
 		has_building = counting_house
 	}
 }
@@ -1740,7 +1734,7 @@ has_any_colonist_idea = {
 	OR = {
 		has_idea = i65
 		has_idea = i151
-		has_idea = i169
+		has_idea = quest_for_the_new_world
 		has_idea = pioneer_spirit
 		has_idea = manifest_destiny
 		has_idea = settling_the_interior
@@ -1990,6 +1984,7 @@ gained_development_from_any_building = {
 		has_province_flag = built_dev_drydock
 		has_province_flag = built_dev_conscription_center
 		has_province_flag = built_dev_manufactory
+		has_province_flag = built_dev_warehouse
 	}
 }
 
@@ -3029,5 +3024,15 @@ halved_parliament_bribes = {
 	OR = {
 		has_country_flag = halved_parliament_bribe_costs
 		has_government_attribute = halved_parliament_bribes
+	}
+}
+
+## Titan Scripted Triggers ##
+
+has_production_building = {
+	OR = {
+		has_building = workshop
+		has_building = warehouse
+		has_building = counting_house
 	}
 }

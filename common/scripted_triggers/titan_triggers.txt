@@ -1,0 +1,43 @@
+
+has_production_building = {
+	OR = {
+		has_building = workshop
+		has_building = warehouse
+		has_building = counting_house
+	}
+}
+
+has_military_building = {
+	OR = {
+		has_building = barracks
+		has_building = training_fields
+		has_building = regimental_camp
+		has_building = conscription_center
+	}
+}
+
+has_navy_building = {
+	OR = {
+		has_building = shipyard
+		has_building = grand_shipyard
+		has_building = dock
+		has_building = drydock
+	}
+}
+
+has_manufactory = {
+	custom_trigger_tooltip = {
+		tooltip = has_manufactory_trigger_tt
+		OR = {
+			has_building = wharf
+			has_building = weapons
+			has_building = textile
+			has_building = tradecompany
+			has_building = farm_estate
+			has_building = mills
+			has_building = furnace
+			has_building = plantations
+			has_building = soldier_households
+		}
+	}
+}
