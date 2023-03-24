@@ -636,7 +636,20 @@ oman_slot_5 = {
 			}
 		}
 	}
+}
 
+oman_slot_5_place_holder = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = OMA
+		NOT = { has_country_flag = ibadi_scholar_selected }
+		NOT = { has_country_flag = sunni_scholar_selected }
+		NOT = { has_country_flag = shia_scholar_selected }
+	}
+	has_country_shield = yes
+	
 	tm_oma_dummy_mission_1 = {
 		icon = mission_unknown_mission
 		position = 3
@@ -650,32 +663,11 @@ oman_slot_5 = {
 		}
 		effect = {
 			custom_tooltip = oman_path_effects_tt
-			add_prestige = 15
-		}
-	}
-
-	tm_oma_increase_taxation = {
-		icon = mission_bedouins
-		required_missions = { }
-		position = 5
-		
-		trigger = {
-			num_of_owned_provinces_with = {
-				value = 5
-				has_tax_building_trigger = yes
-				base_tax = 7
-			}
-		}
-		
-		effect = {
-			add_country_modifier = {
-				name = "tm_oma_tax_increase"
-				duration = 3650
-			}
-			add_prestige = 25
 		}
 	}
 }
+
+
 
 oman_slot_5_a = {
 	slot = 5
@@ -793,6 +785,38 @@ oman_slot_5_c = {
 				name = tm_oma_chose_shia
 				duration = -1
 			}
+		}
+	}
+}
+
+oman_slot_5_continued = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = OMA
+	}
+	has_country_shield = yes
+	
+	tm_oma_increase_taxation = {
+		icon = mission_bedouins
+		required_missions = { }
+		position = 5
+		
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 5
+				has_tax_building_trigger = yes
+				base_tax = 7
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "tm_oma_tax_increase"
+				duration = 3650
+			}
+			add_prestige = 25
 		}
 	}
 }
