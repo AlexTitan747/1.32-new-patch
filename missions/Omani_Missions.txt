@@ -604,7 +604,7 @@ oman_slot_5 = {
 	tm_oma_secure_ibadi = {
 		icon = mission_bedouins
 		required_missions = { }
-		position = 1
+		position = 2
 		
 		trigger = {
 			religious_unity = 0.85
@@ -622,7 +622,7 @@ oman_slot_5 = {
 	tm_oma_battle_of_the_scholars = {
 		icon = mission_bedouins
 		required_missions = { tm_oma_secure_ibadi }
-		position = 2
+		position = 3
 		
 		trigger = {
 			stability = 2
@@ -652,7 +652,7 @@ oman_slot_5_place_holder = {
 	
 	tm_oma_dummy_mission_1 = {
 		icon = mission_unknown_mission
-		position = 3
+		position = 4
 		required_missions = { tm_oma_battle_of_the_scholars }
 		provinces_to_highlight = {}
 		trigger = {
@@ -683,7 +683,7 @@ oman_slot_5_a = {
 	tm_oma_conquer_the_ibadi_lands = {
 		icon = mission_bedouins
 		required_missions = { tm_oma_battle_of_the_scholars }
-		position = 3
+		position = 4
 		
 		trigger = {
 			410 = {
@@ -723,7 +723,7 @@ oman_slot_5_b = {
 	tm_oma_restore_the_true_faith = {
 		icon = mission_bedouins
 		required_missions = { tm_oma_battle_of_the_scholars }
-		position = 3
+		position = 4
 		
 		trigger = {
 			382 = {
@@ -763,7 +763,7 @@ oman_slot_5_c = {
 	tm_oma_conquer_for_our_faith = {
 		icon = mission_bedouins
 		required_missions = { tm_oma_battle_of_the_scholars }
-		position = 3
+		position = 4
 		
 		trigger = {
 			2213 = {
@@ -797,12 +797,12 @@ oman_slot_5_continued = {
 		tag = OMA
 	}
 	has_country_shield = yes
-	
+
 	tm_oma_increase_taxation = {
 		icon = mission_bedouins
 		required_missions = { }
 		position = 5
-		
+
 		trigger = {
 			num_of_owned_provinces_with = {
 				value = 5
@@ -810,7 +810,35 @@ oman_slot_5_continued = {
 				base_tax = 7
 			}
 		}
-		
+
+		effect = {
+			add_country_modifier = {
+				name = "tm_oma_tax_increase"
+				duration = 3650
+			}
+			add_prestige = 25
+		}
+	}
+
+	tm_oma_omani_investments = {
+		icon = mission_bedouins
+		required_missions = { tm_oma_increase_taxation }
+		position = 5
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				region = arabia_region
+				value = 10
+				has_tax_building_trigger = yes
+				base_tax = 7
+			}
+			400 = {
+				province_has_center_of_trade_of_level = 3
+				has_building = workshop
+				has_building = marketplace
+			}
+		}
+
 		effect = {
 			add_country_modifier = {
 				name = "tm_oma_tax_increase"
