@@ -100,7 +100,7 @@ country_event = { #Colonisation
 	}
 }
 
-country_event = { #SAF Gold
+country_event = { #Gold
 	id = colonial_mission_events.5
 	title = colonial_mission_events.5.t
 	desc = colonial_mission_events.5.d
@@ -151,6 +151,140 @@ country_event = { #SAF Gold
                 }
                 add_base_production = 2
             }
+        }
+	}
+}
+
+country_event = { #Buildings
+    id = colonial_mission_events.6
+	title = colonial_mission_events.6.t
+	desc = colonial_mission_events.6.d
+	picture = REFORM_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = colonial_mission_events.1.a
+        col_empire_buildings_scripted_effect = {
+            SUBJECT = event_target:colonial_subject_event_target_for_rewards
+        }
+	}
+	option = {
+		name = colonial_mission_events.1.b
+        event_target:colonial_subject_event_target_for_rewards = {
+            add_country_modifier = {
+                name = "colony_buildings"
+                duration = -1
+            }
+        }
+	}
+}
+
+country_event = { #SAF Metals
+    id = colonial_mission_events.7
+	title = colonial_mission_events.7.t
+	desc = colonial_mission_events.7.d
+	picture = TRADE_GOODS_METALS_AND_MINING_EQUIPENT_eventPicture
+	
+	trigger = {
+        is_colony = yes
+        colonial_saf = {
+            type = all 
+            owned_by = ROOT
+            is_city = yes
+        }
+        capital_scope = {
+            colonial_region = colonial_saf
+        }
+        mission_completed = saf_colonisation_2_5            
+    }
+
+    mean_time_to_happen = {
+        days = 10
+    }
+
+	option = {
+		name = colonial_mission_events.7.a
+        trigger = {
+            NOT = { copper = 1 }
+            NOT = { tin = 1 }
+        }
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = gold }
+                NOT = { trade_goods = gems }
+                NOT = { has_latent_trade_goods = coal }
+            }
+            change_trade_goods = tin
+        }
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = gold }
+                NOT = { trade_goods = gems }
+                NOT = { has_latent_trade_goods = coal }
+            }
+            change_trade_goods = copper
+        }
+	}
+	option = {
+		name = colonial_mission_events.7.b
+        trigger = {
+            NOT = { iron = 1 }
+        }
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = gold }
+                NOT = { trade_goods = gems }
+                NOT = { has_latent_trade_goods = coal }
+            }
+            change_trade_goods = iron
+            add_base_manpower = 1
+        }
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = gold }
+                NOT = { trade_goods = gems }
+                NOT = { has_latent_trade_goods = coal }
+            }
+            change_trade_goods = iron
+            add_base_production = 1
+        }
+	}
+
+    option = {
+		name = colonial_mission_events.7.c
+        trigger = {
+            NOT = { silver = 1 }
+        }
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = gold }
+                NOT = { trade_goods = gems }
+                NOT = { has_latent_trade_goods = coal }
+            }
+            change_trade_goods = silver
+        }
+	}
+
+    option = {
+		name = colonial_mission_events.7.d
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = gold }
+                NOT = { trade_goods = gems }
+                NOT = { has_latent_trade_goods = coal }
+            }
+            change_trade_goods = gems
+            add_base_manpower = 2
+        }
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = gold }
+                NOT = { trade_goods = gems }
+                NOT = { has_latent_trade_goods = coal }
+            }
+            change_trade_goods = gems
+            add_base_manpower = 2
         }
 	}
 }

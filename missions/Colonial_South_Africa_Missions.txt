@@ -152,19 +152,11 @@ colonial_SAF_slot_1 = { #Trade
 		}
 
 		trigger = {
-			1177 = {
-				owned_by = ROOT
-			}
-			OR = {
-				1460 = {
-					is_strongest_trade_power = ROOT
-					trade_node_value = 20
-				}
-				overlord = {
-					1460 = {
-						is_strongest_trade_power = PREV
-						trade_node_value = 20
-					}
+			num_of_owned_provinces_with = {
+				value = 5
+				OR = {
+					has_trade_building = yes
+					province_has_center_of_trade_of_level = 3
 				}
 			}
 		}
@@ -190,9 +182,6 @@ colonial_SAF_slot_1 = { #Trade
 		}
 
 		trigger = {
-			1177 = {
-				owned_by = ROOT
-			}
 			OR = {
 				1460 = {
 					is_strongest_trade_power = ROOT
@@ -573,9 +562,29 @@ colonial_SAF_slot_4 = { #Colonisation
 		}
 	}
 
+	saf_colonisation_2_5 = {
+		icon = mission_bankers_of_cambay
+		required_missions = { saf_colonisation_2 }
+		provinces_to_highlight = {
+			colonial_region = colonial_saf
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 15
+				colonial_region = colonial_saf
+			}
+		}
+
+		effect = {
+			custom_tooltip = saf_goods_bonus_colonising
+		}
+	}
+
 	saf_colonisation_3 = {
 		icon = mission_zanzibari_trade
-		required_missions = { saf_colonisation_2 }
+		required_missions = { saf_colonisation_2_5 }
 		provinces_to_highlight = {
 			province_id = 2864
 		}
@@ -703,13 +712,6 @@ colonial_SAF_slot_5 = { #Gold
 					}
 					add_base_production = 3
 				}
-				define_advisor = {
-					type = master_of_mint
-					skill = 2	
-					discount = yes
-					culture = ROOT
-					religion = ROOT
-				}
 			}
 			else_if = {
 				limit = {
@@ -778,7 +780,7 @@ colonial_SAF_slot_5 = { #Gold
 
 		effect = {
 			add_years_of_owned_provinces_production_income = {
-				years = 2
+				years = 4
 				trigger = {
 					trade_goods = gold
 				}

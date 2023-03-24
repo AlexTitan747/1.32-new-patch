@@ -622,7 +622,160 @@ col_empire_col_scripted_effect = {
     }
 }
 
+col_empire_buildings_scripted_effect = {
+	if = {
+        limit = {
+            has_country_modifier = colonial_subject_overlord_building_reward_7
+        }
+        custom_tooltip = colonial_buildings_modifier_upgrade_tt 
+        hidden_effect = {
+            remove_country_modifier = colonial_subject_overlord_building_reward_7
+            add_country_modifier = {
+                name = colonial_subject_overlord_building_reward_8
+                duration = -1
+            }
+        }
+        $SUBJECT$ = {
+            add_country_modifier = {
+                name = colonial_subject_shared_building_reward
+                duration = -1
+            }
+        }
+    }
 
+    else_if = {
+        limit = {
+            has_country_modifier = colonial_subject_overlord_building_reward_6
+        }
+        custom_tooltip = colonial_buildings_modifier_upgrade_tt 
+        hidden_effect = {
+            remove_country_modifier = colonial_subject_overlord_building_reward_6
+            add_country_modifier = {
+                name = colonial_subject_overlord_building_reward_7
+                duration = -1
+            }
+        }
+        $SUBJECT$ = {
+            add_country_modifier = {
+                name = colonial_subject_shared_building_reward
+                duration = -1
+            }
+        }
+    }
+
+    else_if = {
+        limit = {
+            has_country_modifier = colonial_subject_overlord_building_reward_5
+        }
+        custom_tooltip = colonial_buildings_modifier_upgrade_tt 
+        hidden_effect = {
+            remove_country_modifier = colonial_subject_overlord_building_reward_5
+            add_country_modifier = {
+                name = colonial_subject_overlord_building_reward_6
+                duration = -1
+            }
+        }
+        $SUBJECT$ = {
+            add_country_modifier = {
+                name = colonial_subject_shared_building_reward
+                duration = -1
+            }
+        }
+    }
+
+    else_if = {
+        limit = {
+            has_country_modifier = colonial_subject_overlord_building_reward_4
+        }
+        custom_tooltip = colonial_buildings_modifier_upgrade_tt 
+        hidden_effect = {
+            remove_country_modifier = colonial_subject_overlord_building_reward_4
+            add_country_modifier = {
+                name = colonial_subject_overlord_building_reward_5
+                duration = -1
+            }
+        }
+        $SUBJECT$ = {
+            add_country_modifier = {
+                name = colonial_subject_shared_building_reward
+                duration = -1
+            }
+        }
+    }
+
+    else_if = {
+        limit = {
+            has_country_modifier = colonial_subject_overlord_building_reward_3
+        }
+        custom_tooltip = colonial_buildings_modifier_upgrade_tt 
+        hidden_effect = {
+            remove_country_modifier = colonial_subject_overlord_building_reward_3
+            add_country_modifier = {
+                name = colonial_subject_overlord_building_reward_4
+                duration = -1
+            }
+        }
+        $SUBJECT$ = {
+            add_country_modifier = {
+                name = colonial_subject_shared_building_reward
+                duration = -1
+            }
+        }
+    }
+
+    else_if = {
+        limit = {
+            has_country_modifier = colonial_subject_overlord_building_reward_2
+        }
+        custom_tooltip = colonial_buildings_modifier_upgrade_tt 
+        hidden_effect = {
+            remove_country_modifier = colonial_subject_overlord_building_reward_2
+            add_country_modifier = {
+                name = colonial_subject_overlord_building_reward_3
+                duration = -1
+            }
+        }
+        $SUBJECT$ = {
+            add_country_modifier = {
+                name = colonial_subject_shared_building_reward
+                duration = -1
+            }
+        }
+    }
+
+    else_if = {
+        limit = {
+            has_country_modifier = colonial_subject_overlord_building_reward_1
+        }
+        custom_tooltip = colonial_buildings_modifier_upgrade_tt 
+        hidden_effect = {
+            remove_country_modifier = colonial_subject_overlord_building_reward_1
+            add_country_modifier = {
+                name = colonial_subject_overlord_building_reward_2
+                duration = -1
+            }
+        }
+        $SUBJECT$ = {
+            add_country_modifier = {
+                name = colonial_subject_shared_building_reward
+                duration = -1
+            }
+        }
+    }
+
+    else = {
+        $SUBJECT$ = {
+            add_country_modifier = {
+                name = colonial_subject_shared_building_reward
+                duration = -1
+            }
+        }
+        add_country_modifier = {
+            name = colonial_subject_overlord_building_reward_1
+            duration = -1
+        }
+    }
+}
 
 
 change_ruling_family_religions_effect = {

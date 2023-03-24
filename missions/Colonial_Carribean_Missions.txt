@@ -707,11 +707,25 @@ colonial_CAR_slot_5 = {
 		}
 
 		trigger = {
-			
+			capital_scope = {
+				has_tax_building = yes
+			}
 		}
 
 		effect = {
-
+			capital_scope = {
+				if = {
+					limit = {
+						NOT = { has_building = cathedral }
+					}
+				}
+				add_building_construction = {
+					building = cathedral
+					speed = 0.5
+					cost = 0.0
+				}
+				add_base_tax = 2
+			}
 		}
 	}
 
@@ -723,11 +737,14 @@ colonial_CAR_slot_5 = {
 		}
 
 		trigger = {
-
+				
 		}
 
 		effect = {
-			
+			add_country_modifier = {
+				name = col_building_buildings
+				duration = 3650
+			}
 		}
 	}
 
@@ -750,9 +767,7 @@ colonial_CAR_slot_5 = {
 	car_buildings_4 = {
 		icon = needIcon
 		required_missions = { car_buildings_3 }
-		provinces_to_highlight = { 
-			
-		}
+		provinces_to_highlight = { }
 
 		trigger = {
 
@@ -766,16 +781,26 @@ colonial_CAR_slot_5 = {
 	car_buildings_5 = {
 		icon = needIcon
 		required_missions = { car_buildings_4 }
-		provinces_to_highlight = { 
-			
-		}
+		provinces_to_highlight = { }
 
 		trigger = {
-
+			num_of_owned_provinces_with = {
+				value = 12
+				has_production_building = yes
+				has_manufactory = yes
+			}
 		}
 
 		effect = {
-			
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
+			overlord = {
+				country_event = {
+					id = colonial_mission_events.6
+					tooltip = colonial_mission_events_building_tt
+				}
+			}
 		}
 	}
 }

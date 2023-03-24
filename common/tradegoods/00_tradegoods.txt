@@ -555,6 +555,7 @@ copper = {
 			NOT = { region = west_siberia_region }
 			NOT = { region = east_siberia_region }
 			NOT = { region = central_africa_region }
+			NOT = { colonial_region = colonial_saf }
 		}
 		modifier = {
 			factor = 0
@@ -590,6 +591,10 @@ copper = {
 				region = west_siberia_region
 				region = east_siberia_region
 			}
+		}
+		modifier = {
+			factor = 2
+			mission_completed = saf_colonisation_2_5
 		}
 	}
 }
@@ -745,6 +750,7 @@ iron = {
 			NOT = { area = maryland_area }
 			NOT = { area = ofaie_area }
 			NOT = { province_id = 18 }
+			NOT = { colonial_region = colonial_saf }
 			is_random_new_world = no
 		}
 		modifier = {
@@ -766,6 +772,10 @@ iron = {
 			is_random_new_world = yes
 			has_terrain = mountain
 			continent = new_world #Always in RNW
+		}
+		modifier = {
+			factor = 2
+			mission_completed = saf_colonisation_2_5
 		}
 	}
 }
@@ -2055,7 +2065,7 @@ silver = {
 		local_tax_modifier = 0.15
 	}
 	chance = {
-		factor = 4
+		factor = 3
 		modifier = {
 			factor = 0
 			continent = europe
@@ -2067,6 +2077,11 @@ silver = {
 				has_terrain = glacier
 				has_terrain = coastline
 				has_climate = arctic
+				has_terrain = drylands
+				has_terrain = savannah
+				has_terrain = steppe
+				has_terrain = grasslands
+				has_terrain = farmlands
 			}
 		}
 		modifier = {
@@ -2081,28 +2096,16 @@ silver = {
 			}
 		}
 		modifier = {
-			factor = 0
-			OR = {
-				has_terrain = drylands
-				has_terrain = savannah
-				has_terrain = steppe
-			}
-		}
-		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
-			has_terrain = farmlands
-		}
-		modifier = {
 			factor = 2
 			continent = north_america
 		}
 		modifier = {
 			factor = 1.5
 			continent = south_america
+		}
+		modifier = {
+			factor = 2
+			mission_completed = saf_colonisation_2_5
 		}
 	}
 }
@@ -2128,6 +2131,11 @@ tin = {
 				has_terrain = glacier
 				has_terrain = coastline
 				has_climate = arctic
+				has_terrain = drylands
+				has_terrain = savannah
+				has_terrain = steppe
+				has_terrain = grasslands
+				has_terrain = farmlands
 			}
 		}
 		modifier = {
@@ -2147,22 +2155,16 @@ tin = {
 			}
 		}
 		modifier = {
-			factor = 0
-			OR = {
-				has_terrain = drylands
-				has_terrain = savannah
-				has_terrain = steppe
-				has_terrain = grasslands
-				has_terrain = farmlands
-			}
-		}
-		modifier = {
 			factor = 2
 			continent = north_america
 		}
 		modifier = {
 			factor = 1.5
 			continent = south_america
+		}
+		modifier = {
+			factor = 2
+			mission_completed = saf_colonisation_2_5
 		}
 	}
 }
