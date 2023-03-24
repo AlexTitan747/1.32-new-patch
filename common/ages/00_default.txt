@@ -331,9 +331,12 @@ age_of_reformation = {
 			allow = {
 				religion_group = muslim
 			}
-			OR = {
-				piety = -0.8
-				piety = 0.8
+			custom_trigger_tooltip = {
+				tooltip = muslim_80_piety_direction_tt
+				OR = {
+					NOT = { piety = -0.85 }
+					piety = 0.85
+				}
 			}
 		}
 
@@ -899,7 +902,7 @@ age_of_revolutions = {
 			}
 		}
 		obj_innovativeness = {
-			innovativeness = 50
+			innovativeness = 75
 		}
 		obj_disc_army = {
 			has_global_modifier_value = {
