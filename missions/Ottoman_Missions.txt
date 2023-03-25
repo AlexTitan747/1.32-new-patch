@@ -27,14 +27,26 @@ tur_conquerors_of_the_near_east = {
 				}
 				add_permanent_claim = ROOT
 			}
-			every_province = {
+			northern_greece_area = {
 				limit = {
-					area = northern_greece_area
-					NOT = { is_claim = ROOT	}
-					NOT = { is_core = ROOT	}
-					NOT = { province_id = 142 }
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
 				}
-				add_claim = ROOT
+				add_permanent_claim = ROOT
+			}
+			thessaloniki_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			western_greece_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
 		}
 	}
@@ -244,6 +256,20 @@ tur_conquerors_of_the_near_east = {
 				}
 				add_permanent_claim = ROOT
 			}
+			eastern_wallachia_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			herzegovina_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 	conquer_bosnia = {
@@ -353,6 +379,10 @@ tur_eastern_balkans = {
 		}
 		trigger = {
 			wallachia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			eastern_wallachia_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
