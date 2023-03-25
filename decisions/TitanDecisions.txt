@@ -562,4 +562,23 @@ country_decisions = {
 			factor = 0
 		}
 	}
+
+	tm_remove_burger_loan_priv = {
+		potential = {
+			has_estate_privilege = estate_burghers_indebted_to_burghers
+			has_estate_loan = no
+		}
+		allow = {
+			ai = no
+			NOT = {
+				num_of_loans = 1
+			}
+		}
+		effect = {
+			remove_estate_privilege= estate_burghers_indebted_to_burghers
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
 }		
