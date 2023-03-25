@@ -21,6 +21,8 @@ country_decisions = {
 				}
 			}
 			culture_group = arabian #Arabic
+			NOT = { has_country_flag = ibadi_scholar_selected }
+			NOT = { has_country_flag = shia_scholar_selected }
 		}
 		provinces_to_highlight = {
 			OR = {
@@ -39,6 +41,10 @@ country_decisions = {
 			}
 		}
 		allow = {
+			custom_trigger_tooltip = {
+				tooltip = titan_oman_chose_sunni_scholar_tt
+				has_country_flag = sunni_scholar_selected
+			}
 			is_free_or_tributary_trigger = yes
 			is_at_war = no
 			owns_core_province = 384			#Medina
@@ -51,7 +57,6 @@ country_decisions = {
 			owns_core_province = 403			#Nizwa
 		}
 		effect = {
-			remove_non_electors_emperors_from_empire_effect = yes
 			mashriq_region = {
 				limit = {
 					NOT = { owned_by = ROOT }
@@ -78,10 +83,8 @@ country_decisions = {
 			add_prestige = 25
 			set_country_flag = formed_arabia_flag
 			change_tag = ARB
-			if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
-				}
+			country_event = { id = ideagroups.1 } #Swap Ideas
+			new_mission_tree_scripted_effect = yes
 		}
 		ai_will_do = {
 			factor = 0

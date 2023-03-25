@@ -1,0 +1,101 @@
+country_decisions = {
+	
+	caliphate_nation = {
+		major = yes
+
+		potential = {
+			NOT = { has_country_flag = formed_caliphate_flag }
+			ai = no
+			is_colonial_nation = no
+            OR = {
+                culture_group = arabian #Arabic
+                culture_group = egyptian
+                culture_group = levantine
+            }
+            if = {
+                limit = {
+                    tag = OMA
+                }
+                NOT = { has_country_flag = ibadi_scholar_selected }
+			    NOT = { has_country_flag = shia_scholar_selected }
+            }
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 384			#Medina
+				province_id = 385			#Mecca
+                religion_group = muslim
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+
+		allow = {
+            if = {
+                limit = {
+                    tag = OMA
+                }
+                custom_trigger_tooltip = {
+                    tooltip = titan_oman_chose_shia_scholar_tt
+					has_country_flag = shia_scholar_selected
+                }
+            }
+            else = {
+                religion = shiite
+            }
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			owns_core_province = 384			#Medina
+			owns_core_province = 385			#Mecca
+            num_of_owned_provinces_with = {
+                value = 100
+                religion = shiite
+            }
+		}
+
+		effect = {
+            change_tag = CPH
+			mashriq_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			egypt_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			arabia_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+            arabia_region = {
+                limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+            }
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			add_prestige = 25
+			set_country_flag = formed_caliphate_flag
+			country_event = { id = ideagroups.1 } #Swap Ideas
+            set_capital = 385
+
+            new_mission_tree_scripted_effect = yes
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
