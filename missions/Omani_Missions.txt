@@ -403,6 +403,29 @@ oman_slot_3 = {
 			}
 		}
 	}
+
+	tm_oma_prepare_for_further_expansion = {
+		icon = control_swabia
+		required_missions = { tm_oma_secure_arabia tm_oma_seize_the_holy_lands }
+		position = 3
+		provinces_to_highlight = {
+			
+		}
+		trigger = {
+			total_development = 400
+			OR = {
+			tag = ARB
+			has_country_flag = ibadi_scholar_selected
+			has_country_flag = shia_scholar_selected
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = tm_oma_integrating_arabia
+				duration = 3650
+			}
+		}
+	}
 	
 }
 
@@ -613,7 +636,7 @@ oman_slot_5 = {
 		
 		effect = {
 			add_country_modifier = {
-				name = "tm_oma_relgious_unity"
+				name = tm_oma_relgious_unity
 				duration = 3650
 			}
 		}
@@ -814,7 +837,7 @@ oman_slot_5_continued = {
 
 		effect = {
 			add_country_modifier = {
-				name = "tm_oma_tax_increase"
+				name = tm_oma_tax_increase
 				duration = 3650
 			}
 			add_prestige = 25
