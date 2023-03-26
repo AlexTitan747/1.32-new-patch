@@ -6,6 +6,7 @@ country_decisions = {
 				normal_or_historical_nations = yes
 				was_never_end_game_tag_trigger = yes
 				NOT = { has_country_flag = formed_omani_flag }
+				NOT = { exists = OME }
 				ai = no
 				NOT = { tag = MOS }
 				NOT = { tag = RUS }
@@ -42,7 +43,10 @@ country_decisions = {
 			}
 			
 			allow = {
-				NOT = { exists = OME }
+				custom_trigger_tooltip = {
+					tooltip = titan_oman_chose_ibadi_scholar_tt
+					has_country_flag = ibadi_scholar_selected
+				}
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
 				owns_core_province = 2219			# Bandar Langeh
@@ -62,10 +66,6 @@ country_decisions = {
 							colonial_region = colonial_indonesia
 						}
 					}
-				}
-				custom_trigger_tooltip = {
-					tooltip = titan_oman_chose_ibadi_scholar_tt
-					has_country_flag = ibadi_scholar_selected
 				}
 			}
 

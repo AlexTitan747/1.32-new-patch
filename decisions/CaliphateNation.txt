@@ -17,7 +17,7 @@ country_decisions = {
                     tag = OMA
                 }
                 NOT = { has_country_flag = ibadi_scholar_selected }
-			    NOT = { has_country_flag = shia_scholar_selected }
+			    NOT = { has_country_flag = sunni_scholar_selected }
             }
 		}
 
@@ -76,7 +76,7 @@ country_decisions = {
 				}
 				add_permanent_claim = ROOT
 			}
-            arabia_region = {
+            persia_region = {
                 limit = {
 					NOT = { owned_by = ROOT }
 				}
@@ -86,6 +86,13 @@ country_decisions = {
 				name = "centralization_modifier"
 				duration = 7300
 			}
+           if = {
+				limit = { 
+                    NOT = { government_rank = 3 }	
+                }
+				set_government_rank = 3
+			}
+            add_government_reform = caliphate_reform
 			add_prestige = 25
 			set_country_flag = formed_caliphate_flag
 			country_event = { id = ideagroups.1 } #Swap Ideas
