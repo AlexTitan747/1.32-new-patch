@@ -3,42 +3,16 @@ country_decisions = {
 		kushan_nation = {
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
 				was_never_end_game_tag_trigger = yes
-				NOT = { has_country_flag = formed_kushan_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
+				ai = no
 				NOT = { exists = KUS }
-				NOT = { tag = MRY }
-				NOT = { tag = RUS }
-				#NOT = { tag = TIM }
-				NOT = { tag = PER }
-				NOT = { tag = SLU }
-				NOT = { tag = BAB }
-				is_colonial_nation = no
-				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
 				OR = {
 					primary_culture = khorasani
 					primary_culture = afghani
 					primary_culture = panjabi
 					primary_culture = kashmiri
 				}
-				
-				OR = {
-					ai = no
-					AND = {
-						ai = yes
-						num_of_cities = 10
-					}
-				}
+				NOT = { has_country_flag = tm_AFG_zoro }
 			}
 			
 			provinces_to_highlight = {
@@ -70,21 +44,26 @@ country_decisions = {
 				owns_core_province = 522			# Delhi
 				owns_core_province = 454			# Samarkand
 				owns_core_province = 506			# Multan
+				if = { 
+					limit = {
+						tag = AFG
+					}
+					custom_trigger_tooltip = {
+						tooltip = titan_afg_chose_sunni_or_hindu_tt
+						OR = {
+							has_country_flag = tm_AFG_hindu
+							has_country_flag = tm_AFG_suuni
+						}
+					}
+				}
 				
 			}
 			effect = {
-				#451 = {	#Kabul
-				#	move_capital_effect = yes
-				#	change_religion = mahayana
-				#}
 				change_tag = KUS
 				#change_religion = mahayana
 				#set_ruler_religion = mahayana
 				#set_heir_religion = mahayana
 				add_stability = 1
-			
-				swap_non_generic_missions = yes
-				remove_non_electors_emperors_from_empire_effect = yes
 				if = {
 					limit = {
 						NOT = { government_rank = 3 }
@@ -102,16 +81,16 @@ country_decisions = {
 				}
 				set_capital = 451 # Kabul
 				if = {
-                limit = { is_revolutionary = no }
-                change_government = monarchy
-            }
-			if = {
-				limit = {
-					NOT = { primary_culture = panjabi }
+                	limit = { is_revolutionary = no }
+                	change_government = monarchy
+            	}
+				if = {
+					limit = {
+						NOT = { primary_culture = panjabi }
+					}
+					change_primary_culture = panjabi
 				}
-				change_primary_culture = panjabi
-			}
-			hindusthan_region = {
+				hindusthan_region = {
 					limit = {
 						NOT = { owned_by = ROOT }
 					}
@@ -136,10 +115,8 @@ country_decisions = {
 					add_permanent_claim = ROOT
 				}
 				set_country_flag = formed_kushan_flag
-				if = {
-				limit = { has_custom_ideas = no }
 				country_event = { id = ideagroups.1 } #Swap Ideas
-				}
+				additional_missions_scripted_effect = yes
 			}
 			
 		}

@@ -66,7 +66,46 @@ tm_ARB_slot_4 = {
 	}
 	has_country_shield = yes
 
-	
+	dominate_arabian_trade = {
+		icon = NEEDICON
+		required_missions = { ARB_unite_arabia }
+		position = 2
+
+		provinces_to_highlight = {
+            
+		}
+
+		trigger = {
+            4346 = {
+				trade_share = {
+					country = ROOT
+					share = 60
+				}
+			}
+			1334 = {
+				trade_share = {
+					country = ROOT
+					share = 60
+				}
+			} 
+			358 = {
+				trade_share = {
+					country = ROOT
+					share = 20
+				}
+			}
+			1335 = {
+				trade_share = {
+					country = ROOT
+					share = 30
+				}
+			}
+		}
+
+	    effect = {
+            
+	    }
+	}
 }
 
 tm_ARB_slot_5 = {
@@ -78,5 +117,29 @@ tm_ARB_slot_5 = {
 	}
 	has_country_shield = yes
 
-	
+	ARB_develop_desert = {
+        icon = NEEDICON
+		required_missions = { }
+		
+		provinces_to_highlight = {
+            has_terrain = desert
+			owned_by = ROOT
+			NOT = { development = 15 }
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+                value = 15
+                has_terrain = desert
+                development = 15
+            }
+		}
+
+	    effect = {
+            custom_tooltip = arabia_dev_desert_cheap_mission_tt
+            hidden_effect =  { set_country_flag = can_dev_desert_cheap }
+	    }
+    }
+
+
 }
