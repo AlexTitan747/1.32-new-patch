@@ -66,15 +66,20 @@ estate_burghers_mountain_development = {
 	}
 	on_granted = {
 		custom_tooltip = swiss_development_mechanic
-		hidden_effect = {
-			every_owned_province = {
-				limit = {
-					has_terrain = mountain
-				}
-				add_province_modifier = {
-					name = estate_burghers_mountain_development_mod
-					duration = -1
-				}
+	}
+	is_valid = {
+		NOT = { has_estate = estate_vaisyas }
+		OR = {
+			tag = SWI
+			was_tag = SWI
+		}
+	}
+	on_granted_province = {
+		if = {
+			limit = { has_terrain = mountain }
+			add_province_modifier = {
+				name = estate_burghers_mountain_development_mod
+				duration = -1
 			}
 		}
 	}
