@@ -4787,6 +4787,36 @@ on_province_owner_change = {
 	
 	if = {
 		limit = {
+			owner = {
+				has_country_flag = tm_colonial_forced_pacification
+			}
+			colonial_region_for_scope_province = {
+				is_capital = yes
+			}
+		}
+		add_province_modifier = {
+			name = col_forced_pacification
+			duration = 3650
+		}
+	}
+
+	if = {
+		limit = {
+			owner = {
+				has_country_flag = tm_colonial_forced_assimilation
+			}
+			colonial_region_for_scope_province = {
+				is_capital = yes
+			}
+		}
+		add_province_modifier = {
+			name = col_forced_assimilation
+			duration = 3650
+		}
+	}
+
+	if = {
+		limit = {
 			owned_by = SRU
 			exists = ARA
 		}

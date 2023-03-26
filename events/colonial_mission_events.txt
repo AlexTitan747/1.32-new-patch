@@ -288,3 +288,85 @@ country_event = { #SAF Metals
         }
 	}
 }
+
+country_event = { #Carribean Goods
+    id = colonial_mission_events.8
+	title = colonial_mission_events.8.t
+	desc = colonial_mission_events.8.d
+	picture = TRADE_GOODS_METALS_AND_MINING_EQUIPENT_eventPicture
+	
+	trigger = {
+        is_colony = yes
+        colonial_the_carribean = {
+            type = all 
+            owned_by = ROOT
+            is_city = yes
+        }
+        capital_scope = {
+            colonial_region = colonial_the_carribean
+        }
+        mission_completed = car_colonisation_2_5            
+    }
+
+    mean_time_to_happen = {
+        days = 10
+    }
+
+	option = {
+		name = colonial_mission_events.8.a
+        change_price = {
+            trade_goods = sugar
+            key = sweet_from_the_new_world
+            value = 2.0
+            duration = 5475
+        }
+	}
+
+	option = {
+		name = colonial_mission_events.8.b
+        trigger = {
+            dyes = 1
+        }
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = silver }
+                NOT = { trade_goods = dyes }
+            }
+            change_trade_goods = silk
+            add_base_production = -1
+        }
+	}
+
+    option = {
+		name = colonial_mission_events.8.c
+        trigger = {
+            NOT = { silver = 1 }
+        }
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = gold }
+                NOT = { trade_goods = gems }
+                NOT = { has_latent_trade_goods = coal }
+                has_terrain = jungle
+            }
+            change_trade_goods = silver
+        }
+	}
+
+    option = {
+		name = colonial_mission_events.8.d
+        trigger = {
+            silver = 1
+        }
+        random_owned_province = {
+            limit = {
+                trade_goods = silver
+            }
+            add_base_production = 2
+            add_province_modifier = {
+                name = "carribean_silver_mine"
+                duration = -1
+            }
+        }
+	}
+}
