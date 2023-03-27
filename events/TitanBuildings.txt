@@ -24,7 +24,7 @@ country_event = {
 		}
 	}
 	mean_time_to_happen = {
-		months = 180
+		months = 72
 		modifier = {
 			factor = 0.6
 			master_of_assimilation = 5
@@ -82,7 +82,7 @@ country_event = {
 		}
 	}
 	mean_time_to_happen = {
-		months = 180
+		months = 120
 	}
 	
 	
@@ -154,7 +154,7 @@ country_event = {
 		master_of_assimilation = 3
 	}
 	mean_time_to_happen = {
-		months = 240
+		months = 120
 	}
 	
 	
@@ -267,7 +267,7 @@ country_event = {
 		}
 	}
 	mean_time_to_happen = {
-		months = 180
+		months = 72
 		modifier = {
 			factor = 0.6
 			master_of_integration = 5
@@ -312,14 +312,14 @@ country_event = {
 
 	trigger = {
 		has_country_flag = has_cultural_ministry
-		advisor = master_of_assimilation
+		num_of_different_cultures_in_court = 3
 		NOT = {
 			has_country_modifier = tm_b_advisors_accepted
 			has_country_modifier = new_men
 		}
 	}
 	mean_time_to_happen = {
-		months = 180
+		months = 60
 	}
 	
 	
@@ -348,18 +348,18 @@ country_event = {
 	trigger = {
 		has_country_flag = has_cultural_ministry
 		OR = {
-		has_estate_privilege = estate_nobles_supremacy_over_crown
-		has_estate_privilege = estate_brahmins_supremacy_over_crown
-		}
+			has_estate_privilege = estate_nobles_supremacy_over_crown
+			has_estate_privilege = estate_brahmins_supremacy_over_crown
+			}
 		OR = {
-		has_estate_privilege = estate_nobles_strong_duchies
-		has_estate_privilege = estate_maratha_subject_rights
-		has_estate_privilege = estate_rajput_subject_rights
-		has_estate_privilege = estate_nobles_french_strong_duchies
-		has_estate_privilege = estate_nobles_better_integration
-		has_estate_privilege = estate_maratha_better_integration
-		has_estate_privilege = estate_rajput_better_integration
-		}
+			has_estate_privilege = estate_nobles_strong_duchies
+			has_estate_privilege = estate_maratha_subject_rights
+			has_estate_privilege = estate_rajput_subject_rights
+			has_estate_privilege = estate_nobles_french_strong_duchies
+			has_estate_privilege = estate_nobles_better_integration
+			has_estate_privilege = estate_maratha_better_integration
+			has_estate_privilege = estate_rajput_better_integration
+			}
 		vassal = 1
 		estate_influence = {
 			estate = estate_nobles
@@ -370,7 +370,7 @@ country_event = {
 		}
 	}
 	mean_time_to_happen = {
-		months = 180
+		months = 90
 	}
 	
 	
@@ -417,4 +417,107 @@ country_event = {
 			}
 		}
 	}
+}
+
+#burgers take trading oppourtunities
+country_event = {
+	id = tbuildings.8
+	title = "tbuildings.8"
+	desc = "tbuildings.desc8"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		OR = {
+			has_estate_privilege = estate_jains_clerical_class
+			has_estate_privilege = estate_burghers_free_enterprise
+			has_estate_privilege = estate_vaisyas_loyalty_privilege
+		}
+		OR = {
+			has_estate_privilege = estate_jains_encourage_production
+			has_estate_privilege = estate_burghers_encourage_production
+			has_estate_privilege = estate_burghers_private_trade_fleets
+			has_estate_privilege = estate_vaisyas_private_trade_fleets
+			has_estate_privilege = estate_jains_private_trade_fleets
+		}
+		vassal = 1
+		estate_influence = {
+			estate = estate_burghers
+			influence = 70
+		}
+		NOT = {
+			has_country_modifier = tm_has_had_tbuildings7
+		}
+	}
+	mean_time_to_happen = {
+		months = 180
+	}
+	
+	option = {		
+		name = "tbuildings.h3"
+			add_prestige = 20	
+			add_adm_power = 50
+			add_estate_loyalty = {
+				estate = estate_burghers
+				loyalty = -20
+			}
+			add_estate_influence_modifier = {
+				estate = estate_burghers
+				influence = -10
+				duration = 3650
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = tm_has_had_tbuildings8
+					duration = 3650
+				}
+			}
+		}
+	
+	option = {		
+	name = "tbuildings.h1"
+		add_estate_loyalty = {
+			estate = estate_burghers
+			loyalty = 10
+		}
+		add_estate_influence_modifier = {
+			estate = estate_burghers
+			influence = 10
+			duration = 3650
+		}
+		add_country_modifier = {
+			name = tm_b_burghers_taking_production_advantage
+			duration = 3650
+		}
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_has_had_tbuildings8
+				duration = 3650
+			}
+		}
+	}
+
+	option = {		
+		name = "tbuildings.h2"
+			add_estate_loyalty = {
+				estate = estate_burghers
+				loyalty = 10
+			}
+			add_estate_influence_modifier = {
+				estate = estate_burghers
+				influence = 10
+				duration = 3650
+			}
+			add_country_modifier = {
+				name = tm_b_burghers_taking_trade_advantage
+				duration = 3650
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = tm_has_had_tbuildings8
+					duration = 3650
+				}
+			}
+		}
+
 }
