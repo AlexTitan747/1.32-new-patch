@@ -198,7 +198,10 @@ country_event = {
 		has_country_flag = has_cultural_ministry
 		average_unrest = 2
 		legitimacy_equivalent = 75
-		
+		NOT = {
+			prestige = 10
+			is_bankrupt = yes
+		}
 	}
 	mean_time_to_happen = {
 		months = 60
@@ -242,51 +245,61 @@ country_event = {
 	}
 }
 
-#cultural crisis
+#integration incouraged
 country_event = {
 	id = tbuildings.5
 	title = "tbuildings.5"
 	desc = "tbuildings.desc5"
 	picture = BUDDHA_eventPicture
-
 	trigger = {
 		has_country_flag = has_cultural_ministry
-
-		dominant_culture = new_variable:domculture
-		culture = new_variable:culture
-		ruler_culture = new_variable:rulerculture
-		heir_culture = new_variable:heirculture
-
+		advisor = master_of_integration
+		vassal = 1
+		OR = {
+			government_rank = 3
+			has_unified_culture_group = yes
+		}
 		NOT = {
-			OR ={
-				is_variable_equal = {
-					which = domculture
-					which = culture
-				}
-				is_variable_equal = {
-					which = rulerculture
-					which = culture
-				}
-				is_variable_equal = {
-					which = heirculture
-					which = culture
-				}
+			OR = {
+			has_country_modifier = tm_b_assimilation_encouraged
+			has_country_modifier =  tm_has_had_tbuildings1
 			}
 		}
 	}
 	mean_time_to_happen = {
-		months = 60
+		months = 180
+		modifier = {
+			factor = 0.6
+			master_of_integration = 5
+		}
+		modifier = {
+			factor = 0.75
+			master_of_integration = 4
+		}
+		modifier = {
+			factor = 0.9
+			master_of_integration = 3
+		}
 	}
 	
-	
+
 	option = {		
 	name = "tbuildings.e1"
-		
+		add_country_modifier = {
+			name = tm_b_integration_encouraged
+			duration = 3650
+		}
 	}
 
 	option = {		
 	name = "tbuildings.e2"
-			
+		add_dip_power = 75
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_has_had_tbuildings5
+				duration = 3650
+			}
+		}
 	}
 }
 
@@ -321,5 +334,86 @@ country_event = {
 	option = {		
 	name = "tbuildings.f2"
 		add_dip_power = 75
+	}
+}
+
+#nobility support integration
+country_event = {
+	id = tbuildings.7
+	title = "tbuildings.7"
+	desc = "tbuildings.desc7"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		OR = {
+		has_estate_privilege = estate_nobles_supremacy_over_crown
+		has_estate_privilege = estate_brahmins_supremacy_over_crown
+		}
+		OR = {
+		has_estate_privilege = estate_nobles_strong_duchies
+		has_estate_privilege = estate_maratha_subject_rights
+		has_estate_privilege = estate_rajput_subject_rights
+		has_estate_privilege = estate_nobles_french_strong_duchies
+		has_estate_privilege = estate_nobles_better_integration
+		has_estate_privilege = estate_maratha_better_integration
+		has_estate_privilege = estate_rajput_better_integration
+		}
+		vassal = 1
+		estate_influence = {
+			estate = estate_nobles
+			influence = 75
+		}
+		NOT = {
+			has_country_modifier = tm_has_had_tbuildings7
+		}
+	}
+	mean_time_to_happen = {
+		months = 180
+	}
+	
+	
+	option = {		
+	name = "tbuildings.g1"
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = 15
+		}
+		add_estate_influence_modifier = {
+			estate = estate_nobles
+			influence = 15
+			duration = 3650
+		}
+		add_country_modifier = {
+			name = tm_b_nobles_encouraged_integration
+			duration = 7300
+		}
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_has_had_tbuildings7
+				duration = 3650
+			}
+		}
+	}
+
+	option = {		
+	name = "tbuildings.g2"
+		add_prestige = 20	
+		add_dip_power = 100
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = -10
+		}
+		add_estate_influence_modifier = {
+			estate = estate_nobles
+			influence = -10
+			duration = 3650
+		}
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_has_had_tbuildings7
+				duration = 3650
+			}
+		}
 	}
 }
