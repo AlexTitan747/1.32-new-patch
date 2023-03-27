@@ -186,17 +186,13 @@ colonial_CAR_slot_1 = {
 		}
 
 		trigger = {
-			OR = {
-				1516 = {
-					is_strongest_trade_power = ROOT
-					trade_node_value = 20
+			num_of_owned_provinces_with = {
+				value = 5
+				OR = {
+					has_trade_building_trigger = yes
+					province_has_center_of_trade_of_level = 3
 				}
-				overlord = {
-					1516 = {
-						is_strongest_trade_power = PREV
-						trade_node_value = 20
-					}
-				}
+				colonial_region = colonial_the_carribean
 			}
 		}
 
@@ -355,7 +351,7 @@ colonial_CAR_slot_2 = {
 		provinces_to_highlight = {	}
 
 		trigger = {
-			naval_tradition = 50
+			navy_tradition = 50
 			OR = {
 				num_of_light_ship = 40
 				num_of_heavy_ship = 15

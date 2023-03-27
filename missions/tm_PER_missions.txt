@@ -799,8 +799,9 @@ tm_PER_branch_1 = {
 
 		provinces_to_highlight = {
 			OR = {
-				region = khorasan_region
-				region = persia_region 
+				NOT = { development = 25 }
+				NOT = { has_production_building = yes }
+				NOT = { has_military_building = yes }
 			}
 			owned_by = PER
 		}
@@ -1224,11 +1225,11 @@ tm_PER_branch5_2 = {
 			hidden_effect = {
 				every_owned_province = {
 					limit = {
-						AND = {
+						OR = {
 							trade_goods = silk
 							trade_goods = cloth
-							development = 15
 						}
+						development = 15
 					}
 					if = {
 						limit = {
@@ -1267,10 +1268,8 @@ tm_PER_branch5_2 = {
 			hidden_effect = {
 				every_owned_province = {
 					limit = {
-						AND = {
-							trade_goods = saffron
-							development = 15
-						}
+						trade_goods = saffron
+						development = 15
 					}
 					if = {
 						limit = {
