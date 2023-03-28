@@ -1019,6 +1019,7 @@ oman_slot_5_continued = {
 				skill = 3 
 				cost_multiplier = 0.6666
 			}
+			add_treasury = 525
 		}
 	}
 
@@ -1108,7 +1109,7 @@ oman_slot_2_ibadi = {
 		has_country_flag = oman_prepared_for_expansion
 	}
 	has_country_shield = yes
-	
+
 	tm_oma_the_gulf_of_aden = {
 		icon = mission_bedouins
 		required_missions = { tm_oma_prepare_for_further_expansion }
@@ -1121,7 +1122,7 @@ oman_slot_2_ibadi = {
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
-		
+	
 		trigger = {
 			aussa_area = {
 				type = all
@@ -1131,14 +1132,9 @@ oman_slot_2_ibadi = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			is_subject = no
 		}
 
 		effect = {
-			add_country_modifier = {
-				name = oma_overseas_expansion
-				duration = -1
-			}
 			red_sea_coast_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -1214,6 +1210,56 @@ oman_slot_2_ibadi = {
 		}
 	}
 
+	tm_oma_indian_merchant_guilds = {
+		icon = mission_bedouins
+		required_missions = { tm_oma_the_gulf_of_aden }
+		position = 8
+
+		provinces_to_highlight = {
+			trade_company_region = trade_company_coromandel
+		}
+		
+		trigger = {
+
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				colonial_region = colonial_indonesia
+				value = 15
+			}
+
+			custom_trigger_tooltip = {
+				tooltip = ome_trade_city_tt_1
+			
+				any_country = {
+					capital_scope = { trade_company_region = trade_company_gulf_of_aden }
+					is_in_trade_league_with = ROOT
+					has_reform = trading_city
+					is_subject_of_type = trading_subject
+				}
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = omani_trade_expertise
+				duration = 3650
+			}
+			add_country_modifier = {
+				name = shipbuilding_blueprints
+				duration = -1
+			}
+
+			hidden_effect = {
+				trade_company_coromandel = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+		}
+	}
+
 }
 
 oman_slot_3_ibadi = {
@@ -1260,39 +1306,29 @@ oman_slot_3_ibadi = {
 					capital_scope = { trade_company_region = trade_company_gulf_of_aden }
 					is_in_trade_league_with = ROOT
 					has_reform = trading_city
+					is_subject_of_type = trading_subject
 				}
 			}
-			is_subject = no
 		}
 
 		effect = {
-			red_sea_coast_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
+			add_country_modifier = {
+				name = omani_trade_expertise
+				duration = 3650
 			}
-			halaib_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
+			add_country_modifier = {
+				name = new_volunteers
+				duration = -1
 			}
-			somaliland_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
+			
+			hidden_effect = {
+				horn_of_africa_region = {
+					limit = {
+						NOT = { is_core = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
-				add_permanent_claim = ROOT
-			}
-			majarteen_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
 			}
 		}
 	}
@@ -1348,6 +1384,27 @@ oman_slot_4_ibadi = {
 				}
 				add_permanent_claim = ROOT
 			}
+			lanka_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			south_lanka_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			indian_ocean_islands_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 }
@@ -1385,17 +1442,10 @@ oman_slot_5_ibadi = {
 
 		effect = {
 			add_country_modifier = {
-				name = oma_overseas_expansion
-				duration = -1
+				name = oma_inspire_an_empire
+				duration = 3650
 			}
-			north_sumatra_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			banten_area = {
+			colonial_indonesia = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
