@@ -3,7 +3,10 @@ tm_SRV_slot_1 = {
 	generic = no
 	ai = yes
 	potential = {
-		tag = SRV
+		OR = {
+			tag = SRV
+			was_tag = SRV
+			}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -40,7 +43,7 @@ tm_SRV_slot_1 = {
 				}
 				add_permanent_claim = ROOT
 			}
-			mashhad_area = {
+			tabarestan_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -54,14 +57,14 @@ tm_SRV_slot_1 = {
 				}
 				add_permanent_claim = ROOT
 			}
-			herat_area = {
+			yazd_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			sistan_area = {
+			zavareh_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -79,75 +82,24 @@ tm_SRV_slot_1 = {
 		provinces_to_highlight = {
 			OR = {
 				area = isfahan_area
-				area = mashhad_area
+				area = tabarestan_area
 				area = birjand_area
-				area = herat_area
-				area = sistan_area
+				area = yazd_area
+				area = zavareh_area
 			}
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		trigger = {
-			isfahan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			mashhad_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			birjand_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			herat_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			sistan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value  = 40
+				region = persia_region
 			}
 		}
 		effect = {
 			add_prestige = 15
-			kerman_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			farsistan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			persian_gulf_coast = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			mogostan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			merv_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			transoxiana_area = {
+			persia_region = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -171,7 +123,10 @@ tm_SRV_slot_2 = {
 	generic = no
 	ai = yes
 	potential = {
-		tag = SRV
+		OR = {
+			tag = SRV
+			was_tag = SRV
+			}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -283,40 +238,57 @@ tm_SRV_slot_2 = {
 			}
 		}
 		effect = {
+			al_jazira_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			north_kurdistan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 
-	tm_SRV_secure_the_conquests = {
+	tm_SRV_secure_the_east = {
 		icon = alpine_fortifications
-		required_missions = { tm_SRV_secure_caucasian_lands }
-		position = 3
+		required_missions = { tm_SRV_annex_armenia }
+		position = 4
 		provinces_to_highlight = {
 			OR = {
-				area = bayazid_area
-				area = mush_area
-				area = erzurum_area
+				area = al_jazira_area
+				area = north_kurdistan_area
 			}
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		trigger = {
-			bayazid_area = {
+			al_jazira_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			mush_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			erzurum_area = {
+			north_kurdistan_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		effect = {
-			2305 = {
-				add_building = fort_14th
+			#forts
+			5196 = {
+				add_building = fort_15th
+			}
+			2309 = {
+				add_building = fort_15th
+			}
+			add_country_modifier = {
+				name = tm_srv_defending_east
+				duration = 7300
 			}
 		}
 	}
@@ -328,7 +300,10 @@ tm_SRV_slot_3 = {
 	generic = no
 	ai = yes
 	potential = {
-		tag = SRV
+		OR = {
+			tag = SRV
+			was_tag = SRV
+			}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -377,6 +352,20 @@ tm_SRV_slot_3 = {
 				}
 				add_permanent_claim = ROOT
 			}
+			iraq_e_ajam_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			luristan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 			if = {
 				limit = {
 					exists = GEO
@@ -407,21 +396,21 @@ tm_SRV_slot_3 = {
 			}
 		}
 		effect = {
-			iraq_e_ajam_area = {
+			arbil_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			tabarestan_area = {
+			shahrizor_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			luristan_area = {
+			tikrit_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -437,34 +426,51 @@ tm_SRV_slot_3 = {
 		
 		provinces_to_highlight = {
 			OR = {
-				area = tabriz_area
+				area = arbil_area
+				area = shahrizor_area
+				area = tikrit_area
 			}
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		trigger = {
-			tabriz_area = {
+			arbil_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			shahrizor_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			tikrit_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		effect = {
-			iraq_e_ajam_area = {
+			basra_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			tabarestan_area = {
+			khuzestan_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			luristan_area = {
+			radah_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			iraq_arabi_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -483,9 +489,7 @@ tm_SRV_slot_3 = {
 				area = khuzestan_area
 				area = basra_area
 				area = iraq_arabi_area
-				area = al_jazira_area
-				area = shahrizor_area
-				area = luristan_area
+				area = radah_area
 			}
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
@@ -505,15 +509,7 @@ tm_SRV_slot_3 = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			al_jazira_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			shahrizor_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			luristan_area = {
+			radah_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
@@ -541,7 +537,10 @@ tm_SRV_slot_4 = {
 	generic = no
 	ai = yes
 	potential = {
-		tag = SRV
+		OR = {
+			tag = SRV
+			was_tag = SRV
+			}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -603,15 +602,65 @@ tm_SRV_slot_5 = {
 	generic = no
 	ai = yes
 	potential = {
+		OR = {
 		tag = SRV
+		was_tag = SRV
+		}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
 
+	tm_SRV_option_cossacks = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = {  }
+		position = 1
+		
+		provinces_to_highlight = {
+			
+		}
+		trigger = {
+			always = no
+			accepted_culture = astrakhani
+			accepted_culture = dagestani
+			accepted_culture = circassian
+			owns_core_province = 464
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				total_development = 12
+				OR = {
+					culture = dagestani
+					culture = circassian
+				}
+			}
+		}
+		effect = {
+			hidden_effect = {
+				add_prestige = 15
+			}
+		}
+	}
+	
+	tm_SRV_option_babylon = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = {  }
+		position = 2
+		
+		provinces_to_highlight = {
+
+		}
+		trigger = {
+			always = no
+		}
+		effect = {
+			hidden_effect = {
+				add_prestige = 15
+			}
+		}
+	}
+
 	tm_SRV_caucasian_trade = {
 		icon = mission_dominate_persian_gulf
 		required_missions = {  }
-		position = 1
+		position = 3
 		
 		provinces_to_highlight = {
 			OR = {
@@ -675,60 +724,166 @@ tm_SRV_slot_5 = {
 			}
 		}
 	}
+}
 
-	tm_SRV_option_cossacks = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = {  }
-		position = 2
-		
-		provinces_to_highlight = {
+#TRS
 
-		}
-		trigger = {
-			always_false = yes
-		}
-		effect = {
-			hidden_effect = {
-				add_prestige = 15
-			}
-		}
+tm_SRV_slot_1_TRS = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = TRS
+		was_tag = SRV
+		NOT = { map_setup = map_setup_random }
 	}
-
-	tm_SRV_option_persia = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = {  }
-		position = 3
-		
-		provinces_to_highlight = {
-
-		}
-		trigger = {
-			always_false = yes
-		}
-		effect = {
-			hidden_effect = {
-				add_prestige = 15
-			}
-		}
-	}
+	has_country_shield = yes
 	
-	tm_SRV_option_babylon = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = {  }
-		position = 4
-		
-		provinces_to_highlight = {
+}
 
-		}
-		trigger = {
-			always_false = yes
-		}
-		effect = {
-			hidden_effect = {
-				add_prestige = 15
-			}
-		}
+tm_SRV_slot_2_TRS = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = TRS
+		was_tag = SRV
+		NOT = { map_setup = map_setup_random }
 	}
+	has_country_shield = yes
+	
+}
 
+tm_SRV_slot_3_TRS = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = TRS
+		was_tag = SRV
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+}
 
+tm_SRV_slot_4_TRS = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = TRS
+		was_tag = SRV
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+}
+
+#cossacks path
+
+tm_SRV_slot_1_cossacks = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = SRV_cossack_path_unlocked
+		was_tag = SRV
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+}
+
+tm_SRV_slot_2_cossacks = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = SRV_cossack_path_unlocked
+		was_tag = SRV
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+}
+
+tm_SRV_slot_3_cossacks = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = SRV_cossack_path_unlocked
+		was_tag = SRV
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+}
+
+tm_SRV_slot_4_cossacks = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = SRV_cossack_path_unlocked
+		was_tag = SRV
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+}
+
+#babylon path
+
+tm_SRV_slot_1_babylon = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = SRV_babylon_path_unlocked
+		was_tag = SRV
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+}
+
+tm_SRV_slot_2_babylon = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = SRV_babylon_path_unlocked
+		was_tag = SRV
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+}
+
+tm_SRV_slot_3_babylon = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = SRV_babylon_path_unlocked
+		was_tag = SRV
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+}
+
+tm_SRV_slot_4_babylon = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = SRV_babylon_path_unlocked
+		was_tag = SRV
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
 }
