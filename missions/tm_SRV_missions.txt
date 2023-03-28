@@ -8,7 +8,162 @@ tm_SRV_slot_1 = {
 	}
 	has_country_shield = yes
 
-	
+	tm_SRV_declare_war_on_persia = {
+		icon = mission_conquer_persia
+		required_missions = { tm_SRV_mobilization }
+		position = 2
+		
+		provinces_to_highlight = {
+			OR = {
+				area = iraq_e_ajam_area
+				province_id = 414
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			iraq_e_ajam_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			414 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_adm_power = 100
+			isfahan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			mashhad_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			birjand_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			herat_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			sistan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	tm_SRV_control_over_persia = {
+		icon = immaculate_government
+		required_missions = { tm_SRV_declare_war_on_persia }
+		position = 3
+
+		provinces_to_highlight = {
+			OR = {
+				area = isfahan_area
+				area = mashhad_area
+				area = birjand_area
+				area = herat_area
+				area = sistan_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			isfahan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			mashhad_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			birjand_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			herat_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			sistan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_prestige = 15
+			kerman_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			farsistan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			persian_gulf_coast = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			mogostan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			merv_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			transoxiana_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = increase_value_of_trade
+				duration = 3650
+			}
+			add_country_modifier = {
+				name = persian_immortals
+				duration = 3650
+			}
+		}
+	}
 }
 
 tm_SRV_slot_2 = {
@@ -128,58 +283,44 @@ tm_SRV_slot_2 = {
 			}
 		}
 		effect = {
-			2305 = {
-				add_building = fort_14th
-			}
 		}
 	}
 
-	tm_SRV_claim_arabian_gulf = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_the_gulf_of_hormuz }
-		position = 6
-		
+	tm_SRV_secure_the_conquests = {
+		icon = alpine_fortifications
+		required_missions = { tm_SRV_secure_caucasian_lands }
+		position = 3
 		provinces_to_highlight = {
 			OR = {
-				area = bahrain_area
-				area = pirate_coast_area
-				area = mascat_area
-				area = oman_area
-				area = mogostan_area
+				area = bayazid_area
+				area = mush_area
+				area = erzurum_area
 			}
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		trigger = {
-			bahrain_area = {
+			bayazid_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			pirate_coast_area = {
+			mush_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			mascat_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			oman_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			mogostan_area = {
+			erzurum_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		effect = {
-			add_country_modifier = {
-				name = "hormuz_trade"
-				duration = 5475
+			2305 = {
+				add_building = fort_14th
 			}
 		}
 	}
+
 }
 
 tm_SRV_slot_3 = {
@@ -289,253 +430,41 @@ tm_SRV_slot_3 = {
 			}
 		}
 	}
-	tm_SRV_declare_war_on_persia = {
-		icon = mission_conquer_persia
+
+	tm_SRV_move_south = {
+		icon = alpine_fortifications
 		required_missions = { tm_SRV_seize_tabriz }
 		
 		provinces_to_highlight = {
 			OR = {
-				area = iraq_e_ajam_area
-				province_id = 414
+				area = tabriz_area
 			}
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		trigger = {
+			tabriz_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
 			iraq_e_ajam_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			414 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		effect = {
-			add_adm_power = 100
-			isfahan_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			mashhad_area = {
+			tabarestan_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			birjand_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			herat_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			sistan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-	}
-	tm_SRV_control_over_persia = {
-		icon = immaculate_government
-		required_missions = { tm_SRV_declare_war_on_persia }
-		
-		provinces_to_highlight = {
-			OR = {
-				area = isfahan_area
-				area = mashhad_area
-				area = birjand_area
-				area = herat_area
-				area = sistan_area
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			isfahan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			mashhad_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			birjand_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			herat_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			sistan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		effect = {
-			add_prestige = 15
-			kerman_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			farsistan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			persian_gulf_coast = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			mogostan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			merv_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			transoxiana_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			add_country_modifier = {
-				name = increase_value_of_trade
-				duration = 3650
-			}
-			add_country_modifier = {
-				name = persian_immortals
-				duration = 3650
-			}
-		}
-	}
-	tm_SRV_the_gulf_of_hormuz = {
-		icon = mission_arabian_sea_trade
-		required_missions = { tm_SRV_control_over_persia }
-		
-		provinces_to_highlight = {
-			OR = {
-				area = kerman_area
-				area = farsistan_area
-				area = persian_gulf_coast
-				province_id = 431
-				province_id = 4327
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			kerman_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			farsistan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			persian_gulf_coast = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			431 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			4327 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		effect = {
-			khuzestan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			basra_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			iraq_arabi_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			shahrizor_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			al_jazira_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			bahrain_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			pirate_coast_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			mascat_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			oman_area = {
+			luristan_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -545,9 +474,9 @@ tm_SRV_slot_3 = {
 		}
 	}
 	
-	tm_SRV_fight_for_the_gardens = {
+	tm_SRV_towards_basra = {
 		icon = mission_saladin_takes_jerusalem
-		required_missions = { tm_SRV_the_gulf_of_hormuz }
+		required_missions = { tm_SRV_move_south }
 		
 		provinces_to_highlight = {
 			OR = {
@@ -667,102 +596,6 @@ tm_SRV_slot_4 = {
 			}
 		}
 	}
-
-	tm_SRV_invade_samarkand = {
-		icon = a_strong_government
-		required_missions = {  }
-		position = 5
-		
-		provinces_to_highlight = {
-			OR = {
-				area = merv_area
-				area = transoxiana_area
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			merv_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			transoxiana_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		effect = {
-			central_asia_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-	}
-
-	tm_SRV_deal_with_the_hordes = {
-		icon = mission_hephthalites_white_huns
-		required_missions = { tm_SRV_invade_samarkand }
-		position = 6
-		
-		provinces_to_highlight = {
-			OR = {
-				area = khiva_area
-				area = transcaspia_area
-				area = nogai_area
-				area = kyzylkum_area
-				area = syr_darya_area
-				area = kashgaria_area
-				area = tarim_basin_area
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			khiva_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			transcaspia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			nogai_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			kyzylkum_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			syr_darya_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			kashgaria_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			tarim_basin_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		effect = {
-			add_prestige = 10
-			add_dip_power = 100
-			add_adm_power = 100
-			add_treasury = 500
-			add_country_modifier = {
-				name = "horde_traditions"
-				duration = -1
-			}
-		}
-	}
 }
 
 tm_SRV_slot_5 = {
@@ -839,6 +672,60 @@ tm_SRV_slot_5 = {
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	tm_SRV_option_cossacks = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = {  }
+		position = 2
+		
+		provinces_to_highlight = {
+
+		}
+		trigger = {
+			always_false = yes
+		}
+		effect = {
+			hidden_effect = {
+				add_prestige = 15
+			}
+		}
+	}
+
+	tm_SRV_option_persia = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = {  }
+		position = 3
+		
+		provinces_to_highlight = {
+
+		}
+		trigger = {
+			always_false = yes
+		}
+		effect = {
+			hidden_effect = {
+				add_prestige = 15
+			}
+		}
+	}
+	
+	tm_SRV_option_babylon = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = {  }
+		position = 4
+		
+		provinces_to_highlight = {
+
+		}
+		trigger = {
+			always_false = yes
+		}
+		effect = {
+			hidden_effect = {
+				add_prestige = 15
 			}
 		}
 	}
