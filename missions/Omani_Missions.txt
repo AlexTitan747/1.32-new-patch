@@ -642,38 +642,83 @@ oman_slot_4 = {
 		}
 	}
 
-	tm_oma_omani_investments = {
+	tm_oma_men_of_the_desert = {
 		icon = mission_bedouins
 		required_missions = { tm_oma_increase_taxation }
 		position = 5
 
 		provinces_to_highlight = {
 			OR = {
-				area = kremenchuk_area 
-				province_id = 5134
-				province_id = 2411
-				province_id = 5133
+				area = oman_area
+				province_id = 404
 			}
 		}
 
 		trigger = {
 			num_of_owned_provinces_with = {
-				region = arabia_region
-				value = 10
+				area = oman_area
+				value = 5
 				has_tax_building_trigger = yes
-				base_tax = 7
+				base_production = 8
 			}
-			400 = {
-				province_has_center_of_trade_of_level = 3
-				has_building = workshop
-				has_building = marketplace
+			404 = {
+				base_production = 7
 			}
 		}
 
 		effect = {
 			custom_tooltip = arabia_dev_desert_cheap_mission_tt
+			custom_tooltip = arabia_incense_dev_tt
 			hidden_effect = {
 				set_country_flag = can_dev_desert_cheap
+				401 = {
+					add_province_modifier = {
+						name = desert_teachings
+						duration = 7300
+					}
+				}
+				402 = {
+					add_province_modifier = {
+						name = desert_teachings
+						duration = 7300
+					}
+				}
+				4283 = {
+					add_province_modifier = {
+						name = desert_teachings
+						duration = 7300
+					}
+				}
+				389 = {
+					add_province_modifier = {
+						name = desert_teachings
+						duration = 7300
+					}
+				}
+				388 = {
+					add_province_modifier = {
+						name = desert_teachings
+						duration = 7300
+					}
+				}
+				4278 = {
+					add_province_modifier = {
+						name = desert_teachings
+						duration = 7300
+					}
+				}
+				2331 = {
+					add_province_modifier = {
+						name = desert_teachings
+						duration = 7300
+					}
+				}
+				385 = {
+					add_province_modifier = {
+						name = desert_teachings
+						duration = 7300
+					}
+				}
 			}
 		}
 	}
@@ -698,14 +743,14 @@ oman_slot_5 = {
 		position = 1
 		
 		trigger = {
-			religious_unity = 0.85
+			stability = 1
 			religion = ibadi
 		}
 		
 		effect = {
 			add_country_modifier = {
 				name = tm_oma_relgious_unity
-				duration = 3650
+				duration = 5475
 			}
 		}
 	}
@@ -907,6 +952,10 @@ oman_slot_5_continued = {
 		required_missions = { }
 		position = 4
 
+		provinces_to_highlight = {
+			owned_by = ROOT
+		}
+
 		trigger = {
 			num_of_owned_provinces_with = {
 				value = 5
@@ -921,6 +970,18 @@ oman_slot_5_continued = {
 				duration = 3650
 			}
 			add_prestige = 25
+			oman_area = {
+				add_province_modifier = {
+					name = desert_teachings
+					duration = 3650
+				}
+			}
+			404 = {
+				add_province_modifier = {
+					name = desert_teachings
+					duration = 3650
+				}
+			}
 		}
 	}
 
@@ -928,6 +989,10 @@ oman_slot_5_continued = {
 		icon = mission_bedouins
 		required_missions = { tm_oma_increase_taxation }
 		position = 5
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+		}
 
 		trigger = {
 			num_of_owned_provinces_with = {
@@ -944,9 +1009,67 @@ oman_slot_5_continued = {
 		}
 
 		effect = {
-			custom_tooltip = arabia_dev_desert_cheap_mission_tt
-			hidden_effect = {
-				set_country_flag = can_dev_desert_cheap
+			define_advisor = {
+				type = treasurer
+				skill = 3 
+				cost_multiplier = 0.6666
+			}
+			define_advisor = {
+				type = trader
+				skill = 3 
+				cost_multiplier = 0.6666
+			}
+		}
+	}
+
+	tm_oma_boom_in_incense = {
+		icon = mission_bedouins
+		required_missions = { tm_oma_omani_investments tm_oma_men_of_the_desert }
+		position = 6
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 5024
+				province_id = 5023
+				province_id = 401
+				province_id = 402
+				province_id = 4283
+				province_id = 389
+				province_id = 388
+				province_id = 4278
+				province_id = 2331
+				province_id = 385
+			}
+			country_or_non_sovereign_subject_holds = ROOT
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				region = arabia_region
+				trade_goods = incense
+				value = 6
+				base_production = 10
+			}
+		}
+
+		effect = {
+			4283 = {
+				add_building_construction = {
+					building = perfumery
+					cost = 0
+				}
+			}
+			402 = {
+				add_building_construction = {
+					building = perfumery
+					cost = 0
+				}
+			}
+			401 = {
+				add_building_construction = {
+					building = perfumery
+					cost = 0
+				}
 			}
 		}
 	}
@@ -1196,6 +1319,10 @@ oman_slot_4_ibadi = {
 		required_missions = { tm_oma_prepare_for_further_expansion }
 		position = 6
 
+		provinces_to_highlight = {
+			province_id = 400
+		}
+
 		trigger = {
 			400 = {
 				has_building = colonial_office
@@ -1239,6 +1366,44 @@ oman_slot_5_ibadi = {
 		has_country_flag = oman_prepared_for_expansion
 	}
 	has_country_shield = yes
+
+	tm_oma_colonial_planning = {
+		icon = mission_bedouins
+		required_missions = { tm_oma_colonial_planning }
+		position = 7
+
+		provinces_to_highlight = {
+			colonial_region = colonial_indonesia
+		}
+
+		trigger = {
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				colonial_region = colonial_indonesia
+				value = 20
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = oma_overseas_expansion
+				duration = -1
+			}
+			north_sumatra_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			banten_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
 	
 }
 
