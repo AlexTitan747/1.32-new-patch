@@ -18,11 +18,20 @@ colonial_IND_slot_1 = {
 		}
 
 		trigger = {
-
+			any_owned_province = {
+				province_has_center_of_trade_of_level = 1
+				development = 15
+			}
 		}
 
 		effect = {
-
+			random_owned_province = {
+				limit = {
+					colonial_region = colonial_indonesia
+					province_has_center_of_trade_of_level = 1
+					development = 15
+				}
+			}
 		}
 	}
 
@@ -46,11 +55,11 @@ colonial_IND_slot_1 = {
 		provinces_to_highlight = {	}
 
 		trigger = {
-
+			num_of_centers_of_trade = 3
 		}
 
 		effect = {
-
+			
 		}
 	}
 
@@ -60,11 +69,26 @@ colonial_IND_slot_1 = {
 		provinces_to_highlight = {	}
 
 		trigger = {
-
+			num_of_owned_provinces_with = {
+				value = 5
+				OR = {
+					has_trade_building_trigger = yes
+					province_has_center_of_trade_of_level = 3
+				}
+				colonial_region = colonial_indonesia
+			}
 		}
 
 		effect = {
-
+			1361 = {
+				add_trade_modifier = {
+					who = ROOT
+					duration = 5475
+					power = 20
+					key = STRONG_MERCHANTS
+				}
+				add_trade_node_income = 100
+			}
 		}
 	}
 
@@ -210,7 +234,7 @@ colonial_IND_slot_2 = {
 		provinces_to_highlight = {	}
 
 		trigger = {
-			naval_tradition = 50
+			navy_tradition  = 50
 			OR = {
 				num_of_light_ship = 40
 				num_of_heavy_ship = 15
@@ -495,7 +519,7 @@ colonial_IND_slot_4 = {
 			num_of_owned_provinces_with = {
 				value = 15
 				colonial_region = colonial_indonesia
-				is_core = yes
+				is_core = ROOT
 			}
 		}
 
@@ -526,7 +550,7 @@ colonial_IND_slot_4 = {
 			num_of_owned_provinces_with = {
 				value = 20
 				colonial_region = colonial_indonesia
-				is_core = yes
+				is_core = ROOT
 			}
 		}
 
