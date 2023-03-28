@@ -3,7 +3,10 @@ tm_SRV_slot_1 = {
 	generic = no
 	ai = yes
 	potential = {
-		tag = SRV
+		OR = {
+			tag = SRV
+			was_tag = SRV
+			}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -120,7 +123,10 @@ tm_SRV_slot_2 = {
 	generic = no
 	ai = yes
 	potential = {
-		tag = SRV
+		OR = {
+			tag = SRV
+			was_tag = SRV
+			}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -294,7 +300,10 @@ tm_SRV_slot_3 = {
 	generic = no
 	ai = yes
 	potential = {
-		tag = SRV
+		OR = {
+			tag = SRV
+			was_tag = SRV
+			}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -528,7 +537,10 @@ tm_SRV_slot_4 = {
 	generic = no
 	ai = yes
 	potential = {
-		tag = SRV
+		OR = {
+			tag = SRV
+			was_tag = SRV
+			}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -590,15 +602,54 @@ tm_SRV_slot_5 = {
 	generic = no
 	ai = yes
 	potential = {
+		OR = {
 		tag = SRV
+		was_tag = SRV
+		}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
 
+	tm_SRV_option_cossacks = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = {  }
+		position = 1
+		
+		provinces_to_highlight = {
+
+		}
+		trigger = {
+			always = no
+		}
+		effect = {
+			hidden_effect = {
+				add_prestige = 15
+			}
+		}
+	}
+	
+	tm_SRV_option_babylon = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = {  }
+		position = 2
+		
+		provinces_to_highlight = {
+
+		}
+		trigger = {
+			always = no
+		}
+		effect = {
+			hidden_effect = {
+				add_prestige = 15
+			}
+		}
+	}
+
 	tm_SRV_caucasian_trade = {
 		icon = mission_dominate_persian_gulf
 		required_missions = {  }
-		position = 1
+		position = 3
 		
 		provinces_to_highlight = {
 			OR = {
@@ -662,60 +713,56 @@ tm_SRV_slot_5 = {
 			}
 		}
 	}
+}
 
-	tm_SRV_option_cossacks = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = {  }
-		position = 2
-		
-		provinces_to_highlight = {
-
-		}
-		trigger = {
-			always_false = yes
-		}
-		effect = {
-			hidden_effect = {
-				add_prestige = 15
-			}
-		}
+tm_SRV_slot_1_TRS = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = TRS
+		was_tag = SRV
+		NOT = { map_setup = map_setup_random }
 	}
-
-	tm_SRV_option_persia = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = {  }
-		position = 3
-		
-		provinces_to_highlight = {
-
-		}
-		trigger = {
-			always_false = yes
-		}
-		effect = {
-			hidden_effect = {
-				add_prestige = 15
-			}
-		}
-	}
+	has_country_shield = yes
 	
-	tm_SRV_option_babylon = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = {  }
-		position = 4
-		
-		provinces_to_highlight = {
+}
 
-		}
-		trigger = {
-			always_false = yes
-		}
-		effect = {
-			hidden_effect = {
-				add_prestige = 15
-			}
-		}
+tm_SRV_slot_2_TRS = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = TRS
+		was_tag = SRV
+		NOT = { map_setup = map_setup_random }
 	}
+	has_country_shield = yes
+	
+}
 
+tm_SRV_slot_3_TRS = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = TRS
+		was_tag = SRV
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+}
 
+tm_SRV_slot_4_TRS = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = TRS
+		was_tag = SRV
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
 }
