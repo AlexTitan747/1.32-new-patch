@@ -727,20 +727,21 @@ tm_SRV_slot_5 = {
 	}
 }
 
-#TRS
+#CAU
 
 tm_SRV_slot_1_CAU = {
 	slot = 1
 	generic = no
 	ai = yes
 	potential = {
-		tag = CAU
-		was_tag = SRV
+		OR = {
+			tag = CAU
+			was_tag = SRV
+		}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
 	
-
 	tm_SRV_stabilise_transcaucasia = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = {  }
@@ -752,14 +753,13 @@ tm_SRV_slot_1_CAU = {
 		trigger = {
 			stability = 2
 			total_development = 500
-			tag = TRS
 			legitimacy_equivalent = 95
 			prestige = 50
 		}
 		effect = {
 			add_country_modifier = {
-				name = tm_TRS_consolidate_the_empire
-				duration= 3650
+				name = tm_CAU_consolidate_the_empire
+				duration = 3650
 			}
 		}
 	}
@@ -824,8 +824,10 @@ tm_SRV_slot_2_CAU = {
 	generic = no
 	ai = yes
 	potential = {
-		tag = CAU
-		was_tag = SRV
+		OR = {
+			tag = CAU
+			was_tag = SRV
+		}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -857,15 +859,15 @@ tm_SRV_slot_2_CAU = {
 			}
 			NOT = {
 				OR = {
-					has_country_modifier = tm_TRS_marching_east
-					has_country_modifier = tm_TRS_marching_south
-					has_country_modifier = tm_TRS_marching_north
+					has_country_modifier = tm_CAU_marching_east
+					has_country_modifier = tm_CAU_marching_south
+					has_country_modifier = tm_CAU_marching_north
 				}
 			}
 		}
 		effect = {
 			add_country_modifier = {
-				name = tm_TRS_marching_west
+				name = tm_CAU_marching_west
 				duration = 1825
 			}
 			add_power_projection = {
@@ -889,8 +891,10 @@ tm_SRV_slot_3_CAU = {
 	generic = no
 	ai = yes
 	potential = {
-		tag = CAU
-		was_tag = SRV
+		OR = {
+			tag = CAU
+			was_tag = SRV
+		}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -917,15 +921,15 @@ tm_SRV_slot_3_CAU = {
 			}
 			NOT = {
 				OR = {
-					has_country_modifier = tm_TRS_marching_west
-					has_country_modifier = tm_TRS_marching_south
-					has_country_modifier = tm_TRS_marching_north
+					has_country_modifier = tm_CAU_marching_east
+					has_country_modifier = tm_CAU_marching_south
+					has_country_modifier = tm_CAU_marching_north
 				}
 			}
 		}
 		effect = {
 			add_country_modifier = {
-				name = tm_TRS_marching_east
+				name = tm_CAU_marching_east
 				duration = 1825
 			}
 			add_power_projection = {
@@ -949,8 +953,10 @@ tm_SRV_slot_4_CAU = {
 	generic = no
 	ai = yes
 	potential = {
-		tag = CAU
-		was_tag = SRV
+		OR = {
+			tag = CAU
+			was_tag = SRV
+		}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -982,15 +988,15 @@ tm_SRV_slot_4_CAU = {
 			}
 			NOT = {
 				OR = {
-					has_country_modifier = tm_TRS_marching_west
-					has_country_modifier = tm_TRS_marching_south
-					has_country_modifier = tm_TRS_marching_east
+					has_country_modifier = tm_CAU_marching_east
+					has_country_modifier = tm_CAU_marching_south
+					has_country_modifier = tm_CAU_marching_north
 				}
 			}
 		}
 		effect = {
 			add_country_modifier = {
-				name = tm_TRS_marching_north
+				name = tm_CAU_marching_north
 				duration = 1825
 			}
 			add_power_projection = {
@@ -1014,8 +1020,10 @@ tm_SRV_slot_5_CAU = {
 	generic = no
 	ai = yes
 	potential = {
-		tag = CAU
-		was_tag = SRV
+		OR = {
+			tag = CAU
+			was_tag = SRV
+		}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -1047,15 +1055,15 @@ tm_SRV_slot_5_CAU = {
 			}
 			NOT = {
 				OR = {
-					has_country_modifier = tm_TRS_marching_west
-					has_country_modifier = tm_TRS_marching_east
-					has_country_modifier = tm_TRS_marching_north
+					has_country_modifier = tm_CAU_marching_east
+					has_country_modifier = tm_CAU_marching_south
+					has_country_modifier = tm_CAU_marching_north
 				}
 			}
 		}
 		effect = {
 			add_country_modifier = {
-				name = tm_TRS_marching_south
+				name = tm_CAU_marching_south
 				duration = 1825
 			}
 			add_power_projection = {
