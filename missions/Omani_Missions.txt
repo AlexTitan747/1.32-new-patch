@@ -341,6 +341,7 @@ oman_slot_3 = {
 			}
 		}
 		effect = {
+			add_adm_power = 50
 			nafud_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -566,6 +567,7 @@ oman_slot_4 = {
 			}
 		}
 		effect = {
+			add_adm_power = 75
 			medina_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -1397,6 +1399,7 @@ oman_slot_3_ibadi = {
 			NOT = {
 				great_power_rank = 6 
 			}
+			monthly_income = 300
 			num_of_heavy_ship = 75
 			num_of_provinces_owned_or_owned_by_subjects_with = {
 				OR = {
@@ -1441,7 +1444,7 @@ oman_slot_4_ibadi = {
 	}
 	has_country_shield = yes
 
-	
+
 	tm_oma_colonial_planning = {
 		icon = mission_bedouins
 		required_missions = { tm_oma_prepare_for_further_expansion }
@@ -1461,6 +1464,10 @@ oman_slot_4_ibadi = {
 			add_country_modifier = {
 				name = oma_overseas_expansion
 				duration = -1
+			}
+			add_stat_or_monarch_power = {
+				stat = dip
+				amount = 2
 			}
 			north_sumatra_area = {
 				limit = {
@@ -1532,20 +1539,13 @@ oman_slot_4_ibadi = {
 				type = all
 				country_or_subject_holds = ROOT
 			}
-			4815 = {
-				OR = {
-				has_building = fort_15th
-				has_building = fort_16th
-				has_building = fort_17th
-				has_building = fort_18th
-				}
-			}
 		}
 
 		effect = {
 			add_mil_power = 75
 			4815 = {
 				add_building = naval_battery
+				center_of_trade = 3
 			}
 			if = {
 				limit = {
