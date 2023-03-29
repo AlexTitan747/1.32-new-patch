@@ -1263,7 +1263,10 @@ oman_slot_2_ibadi = {
 
 		trigger = {
 			num_of_provinces_owned_or_owned_by_subjects_with = {
-				colonial_region = colonial_indonesia
+				OR = {
+					region = coromandel_region
+					region = deccan_region
+					}
 				value = 15
 			}
 
@@ -1378,6 +1381,83 @@ oman_slot_3_ibadi = {
 		}
 	}
 
+	tm_oma_indian_ocean_empire = {
+		icon = mission_bedouins
+		required_missions = { tm_oma_trade_city_establishments tm_oma_indian_merchant_guilds tm_oma_singapore_stronghold }
+		position = 9
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+		}
+
+		trigger = {
+			stability = 3
+			current_income_balance = 300
+			government_rank = 3
+			great_power_rank = 6
+			num_of_heavy_ship = 75
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				OR = {
+					region = coromandel_region
+					region = deccan_region
+					}
+				value = 15
+			}
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				colonial_region = colonial_indonesia
+				value = 20
+			}
+			
+
+		}
+
+		effect = {
+			add_mil_power = 75
+			4815 = {
+				add_building = naval_battery
+			}
+			if = {
+				limit = {
+					4815 = { has_building = fort_15th }
+				}
+				4815 = {
+				add_building = fort_16th
+				}
+			}
+
+			else_if = {
+				limit = {
+					4815 = { has_building = fort_16th }
+				}
+				4815 = {
+				add_building = fort_17th
+				}
+			}
+
+			malaya_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			north_tenasserim_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			central_thai_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
 }
 
 oman_slot_4_ibadi = {
@@ -1395,6 +1475,7 @@ oman_slot_4_ibadi = {
 	}
 	has_country_shield = yes
 
+	
 	tm_oma_colonial_planning = {
 		icon = mission_bedouins
 		required_missions = { tm_oma_prepare_for_further_expansion }
@@ -1452,6 +1533,95 @@ oman_slot_4_ibadi = {
 			}
 		}
 	}
+
+	tm_oma_singapore_stronghold = {
+		icon = mission_bedouins
+		required_missions = { tm_oma_colonial_planning }
+		position = 8
+
+		provinces_to_highlight = {
+			OR = {
+				area = johor_area
+				area = malacca_area
+				area = malaya_area
+				area = north_malaya_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			johor_area = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+			malacca_area = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+			malaya_area = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+			north_malaya_area = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+			4815 = {
+				OR = {
+				has_building = fort_15th
+				has_building = fort_16th
+				has_building = fort_17th
+				has_building = fort_18th
+				}
+			}
+		}
+
+		effect = {
+			add_mil_power = 75
+			4815 = {
+				add_building = naval_battery
+			}
+			if = {
+				limit = {
+					4815 = { has_building = fort_15th }
+				}
+				4815 = {
+				add_building = fort_16th
+				}
+			}
+
+			else_if = {
+				limit = {
+					4815 = { has_building = fort_16th }
+				}
+				4815 = {
+				add_building = fort_17th
+				}
+			}
+
+			malaya_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			north_tenasserim_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			central_thai_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
 }
 
 oman_slot_5_ibadi = {
@@ -1494,7 +1664,7 @@ oman_slot_5_ibadi = {
 				name = oma_colonial_empire
 				duration = -1
 			}
-			colonial_indonesia = {
+			indonesia_region = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
