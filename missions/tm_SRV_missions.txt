@@ -954,6 +954,42 @@ tm_SRV_slot_3_CAU = {
 		}
 	}
 
+	tm_SRV_finish_afghanistan = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_prepare_persia }
+		position = 7
+		
+		provinces_to_highlight = {
+			OR = {
+				region = persia_region
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 40
+				region = persia_region
+			}
+			NOT = {
+				OR = {
+					mission_completed = tm_SRV_towards_the_old_ways
+					mission_completed = tm_SRV_embrace_cossack_traditions
+				}
+			}
+		}
+		effect = {
+			khorasan_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
 }
 
 tm_SRV_slot_4_CAU = {
