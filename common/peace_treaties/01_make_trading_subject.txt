@@ -3,10 +3,10 @@ make_trading_subject = {
 	category = 6
 	power_projection = vassalized_rival
 	power_cost_base = 1.0
-	prestige_base = 0.1
-	ae_base = 0.3
+	prestige_base = 0.2
+	ae_base = 0.4
 	warscore_cost = {
-		all_provinces = 0.60
+		all_provinces = 0.65
 		no_provinces = 0.0
 		owner_keeps = 0.0
 		conquered = 0.0
@@ -34,6 +34,12 @@ make_trading_subject = {
 		#FROM = {
 		#	add_government_reform = 
 		#}
+		FROM = {
+			add_opinion = {
+				who = ROOT
+				modifier = they_force_vassalized_us
+			}
+		}
 	}
 	ai_weight = {
 		export_to_variable = {

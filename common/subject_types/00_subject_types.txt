@@ -785,8 +785,8 @@ trading_subject = {
 
 	# Graphics:
 	sprite = GFX_icon_vassal
-	diplomacy_overlord_sprite = GFX_diplomacy_leadvassal # The one that the overlord sees
-	diplomacy_subject_sprite = GFX_diplomacy_amvassal	# The one that the subject sees
+	diplomacy_overlord_sprite = GFX_diplomacy_leadvassal
+	diplomacy_subject_sprite = GFX_diplomacy_amvassal
 
 	is_potential_overlord = {
 		tag = OME
@@ -795,9 +795,10 @@ trading_subject = {
 	has_overlords_ruler = no
 	can_fight_independence_war = yes
 	is_voluntary = no
-	transfer_trade_power = yes
-	transfer_trade_if_merchant_republic = yes
+	transfer_trade_power = no
+	transfer_trade_if_merchant_republic = no
 	joins_overlords_wars = yes
+	joins_colonial_wars = yes
 	can_be_integrated = yes
 	can_release_and_play = no
 	dynamically_created_during_history = no
@@ -829,18 +830,27 @@ trading_subject = {
 	is_colony_subtype = no
 	is_march = no
 	does_overlord_size_count_for_warscore_cost = yes
+	uses_tariffs = no
+	can_have_great_projects_moved_by_overlord = no
+	can_send_tribute = no
 
 	max_government_rank = 2
 	cities_required_for_bonuses = 0
 	trust_on_start = 50
 
-	base_liberty_desire = 0.0
+	#Liberty Desire
+	base_liberty_desire = 10.0
 	liberty_desire_negative_prestige = 0.05
 	liberty_desire_development_ratio = 0.10
-	liberty_desire_same_dynasty = 0.0
-	pays_overlord = 0.2
+	liberty_desire_same_dynasty = -15.0
+
+	#To Overlord
+	pays_overlord = 1.0
 	naval_forcelimit_to_overlord = 0.2							
-	forcelimit_to_overlord = 0.05	
+	forcelimit_to_overlord = 0.05
+	sailors_to_overlord = 0.10
+	manpower_to_overlord = 0.0
+
 	military_focus = 0.5
 
 	relative_power_class = 0
@@ -849,8 +859,9 @@ trading_subject = {
 	created_by_overlord = yes
 	extend_trading_range = yes
 	should_quit_wars_on_activation = yes
-	can_concentrate_development = yes
 
+	#Subject Interaction
+	send_officers = yes
 	embargo_rivals = yes
 	support_loyalists = no
 	subsidize_armies = no
@@ -890,8 +901,16 @@ trading_subject = {
 	sword_hunt = no
 	sankin_kotai = no
 	expel_ronin = no
+	can_concentrate_development = yes
 
 	modifier_subject = clear
+	modifier_overlord = clear
+	modifier_subject = {
+		modifier = vassal_nation
+	}
+	modifier_overlord = {
+		modifier = vassal_subject
+	}
 
 	overlord_opinion_modifier = is_vassal
 	subject_opinion_modifier = is_vassal
