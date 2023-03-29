@@ -1283,6 +1283,7 @@ oman_slot_2_ibadi = {
 		}
 
 		effect = {
+			add_treasury = 1475
 			add_country_modifier = {
 				name = omani_trade_expertise
 				duration = 3650
@@ -1368,6 +1369,7 @@ oman_slot_3_ibadi = {
 				name = new_volunteers
 				duration = -1
 			}
+			add_treasury = 1250
 			
 			hidden_effect = {
 				horn_of_africa_region = {
@@ -1392,72 +1394,21 @@ oman_slot_3_ibadi = {
 
 		trigger = {
 			stability = 3
-			current_income_balance = 300
-			government_rank = 3
-			great_power_rank = 6
-			num_of_heavy_ship = 75
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				OR = {
-					region = coromandel_region
-					region = deccan_region
-					}
-				value = 15
-			}
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				colonial_region = colonial_indonesia
-				value = 20
-			}
 			
-
 		}
 
 		effect = {
-			add_mil_power = 75
-			4815 = {
-				add_building = naval_battery
+			add_prestige = 25
+			add_country_modifier = {
+				name = indian_ocean_empire
+				duration = -1
 			}
-			if = {
-				limit = {
-					4815 = { has_building = fort_15th }
-				}
-				4815 = {
-				add_building = fort_16th
-				}
-			}
-
-			else_if = {
-				limit = {
-					4815 = { has_building = fort_16th }
-				}
-				4815 = {
-				add_building = fort_17th
-				}
-			}
-
-			malaya_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			north_tenasserim_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			central_thai_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
+			remove_country_modifier = indian_mercenaries
+			remove_country_modifier = new_volunteers
+			remove_country_modifier = shipbuilding_blueprints
+			remove_country_modifier = indian_discipline
 		}
 	}
-
 }
 
 oman_slot_4_ibadi = {
@@ -1583,19 +1534,29 @@ oman_slot_4_ibadi = {
 			}
 			if = {
 				limit = {
-					4815 = { has_building = fort_15th }
+					4815 = { 
+						has_fort_building_trigger = no
+					}
 				}
 				4815 = {
-				add_building = fort_16th
+					add_building = fort_16th
 				}
 			}
 
-			else_if = {
+			if = {
+				limit = {
+					4815 = { has_building = fort_15th }
+				}
+				4815 = {
+					add_building = fort_16th
+				}
+			}
+			if = {
 				limit = {
 					4815 = { has_building = fort_16th }
 				}
 				4815 = {
-				add_building = fort_17th
+					add_building = fort_17th
 				}
 			}
 
