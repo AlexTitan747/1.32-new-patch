@@ -835,14 +835,48 @@ tm_SRV_slot_2_TRS = {
 		position = 6
 		
 		provinces_to_highlight = {
-
+			OR = {
+				area = mush_area
+				area = erzurum_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		trigger = {
-			always = no
+			manpower_percentage = 0.75
+			land_forcelimit = 0.8
+			mush_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			erzurum_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			NOT = {
+				OR = {
+					has_country_modifier = tm_TRS_marching_east
+					has_country_modifier = tm_TRS_marching_south
+					has_country_modifier = tm_TRS_marching_north
+				}
+			}
 		}
 		effect = {
-			hidden_effect = {
-				add_prestige = 15
+			add_country_modifier = {
+				name = tm_TRS_marching_west
+				duration = 1825
+			}
+			add_power_projection = {
+				type = 25_permanent_power_projection
+				amount = 25
+			}
+			anatolia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
 		}
 	}
@@ -866,14 +900,43 @@ tm_SRV_slot_3_TRS = {
 		position = 6
 		
 		provinces_to_highlight = {
-
+			OR = {
+				area = iraq_e_ajam_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		trigger = {
-			always = no
+			manpower_percentage = 0.75
+			land_forcelimit = 0.8
+			iraq_e_ajam_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			NOT = {
+				OR = {
+					has_country_modifier = tm_TRS_marching_west
+					has_country_modifier = tm_TRS_marching_south
+					has_country_modifier = tm_TRS_marching_north
+				}
+			}
 		}
 		effect = {
-			hidden_effect = {
-				add_prestige = 15
+			add_country_modifier = {
+				name = tm_TRS_marching_east
+				duration = 1825
+			}
+			add_power_projection = {
+				type = 25_permanent_power_projection
+				amount = 25
+			}
+			persia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
 		}
 	}
@@ -897,14 +960,48 @@ tm_SRV_slot_4_TRS = {
 		position = 6
 		
 		provinces_to_highlight = {
-
+			OR = {
+				area = dagestan_area
+				area = alania_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		trigger = {
-			always = no
+			manpower_percentage = 0.75
+			land_forcelimit = 0.8
+			dagestan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			alania_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			NOT = {
+				OR = {
+					has_country_modifier = tm_TRS_marching_west
+					has_country_modifier = tm_TRS_marching_south
+					has_country_modifier = tm_TRS_marching_east
+				}
+			}
 		}
 		effect = {
-			hidden_effect = {
-				add_prestige = 15
+			add_country_modifier = {
+				name = tm_TRS_marching_north
+				duration = 1825
+			}
+			add_power_projection = {
+				type = 25_permanent_power_projection
+				amount = 25
+			}
+			crimea_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
 		}
 	}
@@ -928,14 +1025,48 @@ tm_SRV_slot_5_TRS = {
 		position = 6
 		
 		provinces_to_highlight = {
-
+			OR = {
+				area = radah_area
+				area = basra_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		trigger = {
-			always = no
+			manpower_percentage = 0.75
+			land_forcelimit = 0.8
+			radah_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			basra_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			NOT = {
+				OR = {
+					has_country_modifier = tm_TRS_marching_west
+					has_country_modifier = tm_TRS_marching_east
+					has_country_modifier = tm_TRS_marching_north
+				}
+			}
 		}
 		effect = {
-			hidden_effect = {
-				add_prestige = 15
+			add_country_modifier = {
+				name = tm_TRS_marching_south
+				duration = 1825
+			}
+			add_power_projection = {
+				type = 25_permanent_power_projection
+				amount = 25
+			}
+			arabia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
 		}
 	}
