@@ -1094,7 +1094,99 @@ oman_slot_1_ibadi = {
 		has_country_flag = oman_prepared_for_expansion
 	}
 	has_country_shield = yes
-	
+
+	tm_oma_singapore_stronghold = {
+		icon = mission_bedouins
+		required_missions = { tm_oma_prepare_for_further_expansion }
+		position = 6
+
+		provinces_to_highlight = {
+			OR = {
+				area = johor_area
+				area = malacca_area
+				area = malaya_area
+				area = north_malaya_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			johor_area = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+			malacca_area = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+			malaya_area = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+			north_malaya_area = {
+				type = all
+				country_or_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			add_mil_power = 75
+			if = {
+				limit = {
+					4815 = { 
+						has_fort_building_trigger = no
+					}
+				}
+				4815 = {
+					add_building = fort_16th
+				}
+			}
+
+			if = {
+				limit = {
+					4815 = { has_building = fort_15th }
+				}
+				4815 = {
+					add_building = fort_16th
+				}
+			}
+			if = {
+				limit = {
+					4815 = { has_building = fort_16th }
+				}
+				4815 = {
+					add_building = fort_17th
+				}
+			}
+			4815 = {
+				add_building = naval_battery
+				center_of_trade = 3
+			}
+
+			malaya_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			north_tenasserim_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			central_thai_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
 	tm_oma_war_india = {
 		icon = mission_bedouins
 		required_missions = { tm_oma_the_gulf_of_aden }
@@ -1509,7 +1601,7 @@ oman_slot_4_ibadi = {
 
 	tm_oma_singapore_stronghold = {
 		icon = mission_bedouins
-		required_missions = { tm_oma_colonial_planning }
+		required_missions = { tm_oma_colonial_planning tm_oma_presence_in_malaysia }
 		position = 8
 
 		provinces_to_highlight = {
@@ -1543,10 +1635,6 @@ oman_slot_4_ibadi = {
 
 		effect = {
 			add_mil_power = 75
-			4815 = {
-				add_building = naval_battery
-				center_of_trade = 3
-			}
 			if = {
 				limit = {
 					4815 = { 
@@ -1573,6 +1661,10 @@ oman_slot_4_ibadi = {
 				4815 = {
 					add_building = fort_17th
 				}
+			}
+			4815 = {
+				add_building = naval_battery
+				center_of_trade = 3
 			}
 
 			malaya_region = {
