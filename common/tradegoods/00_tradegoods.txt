@@ -703,7 +703,7 @@ gold = {
 			}
 		}
 		modifier = {
-			factor = 2
+			factor = 1.5
 			FROM = {
 				OR = {
 					has_country_flag = por_bandeirantes_flag
@@ -714,6 +714,21 @@ gold = {
 		modifier = {
 			factor = 100
 			province_id = 856
+		}
+		modifier = {
+			factor = 2
+			mission_completed = brz_colonisation_2_5
+			colonial_region = colonial_brazil
+		}
+		modifier = {
+			factor = 2
+			mission_completed = cas_colonisation_2_5
+			colonial_region = colonial_alaska
+		}
+		modifier = {
+			factor = 2
+			mission_completed = ala_colonisation_2_5
+			colonial_region = colonial_alaska
 		}
 	}
 }
@@ -751,6 +766,7 @@ iron = {
 			NOT = { area = ofaie_area }
 			NOT = { province_id = 18 }
 			NOT = { colonial_region = colonial_saf }
+			NOT = { mission_completed = lou_colonisation_2_5 }
 			is_random_new_world = no
 		}
 		modifier = {
@@ -776,6 +792,17 @@ iron = {
 		modifier = {
 			factor = 2
 			mission_completed = saf_colonisation_2_5
+		}
+		modifier = {
+			factor = 2
+			colonial_region = colonial_louisiana
+			mission_completed = lou_colonisation_2_5
+			has_terrain = grasslands
+		}
+		modifier = {
+			factor = 0
+			mission_completed = lou_colonisation_2_5
+			NOT = { has_terrain = grasslands }
 		}
 	}
 }
@@ -1421,6 +1448,11 @@ cocoa = {
 				has_winter = severe_winter
 			}
 		}
+		modifier = {
+			factor = 2
+			mission_completed = col_colonisation_2_5
+			colonial_region = colonial_colombia
+		}
 	}
 }
 
@@ -1930,6 +1962,16 @@ gems = {
 				has_country_flag = encourage_cash_crops_flag
 			}
 		}
+		modifier = {
+			factor = 2
+			mission_completed = brz_colonisation_2_5
+			colonial_region = colonial_brazil
+		}
+		modifier = {
+			factor = 2
+			mission_completed = col_colonisation_2_5
+			colonial_region = colonial_colombia
+		}
 	}
 }
 
@@ -2115,6 +2157,16 @@ silver = {
 			factor = 2 
 			mission_completed = car_colonisation_2_5
 		}
+		modifier = {
+			factor = 2
+			mission_completed = brz_colonisation_2_5
+			colonial_region = colonial_brazil
+		}
+		modifier = {
+			factor = 3
+			mission_completed = pla_colonisation_2_5
+			colonial_region = colonial_la_plata
+		}
 	}
 }
 
@@ -2173,6 +2225,11 @@ tin = {
 		modifier = {
 			factor = 2
 			mission_completed = saf_colonisation_2_5
+		}
+		modifier = {
+			factor = 3
+			mission_completed = pla_colonisation_2_5
+			colonial_region = colonial_la_plata
 		}
 	}
 }
@@ -2581,6 +2638,11 @@ olives = {
 				region = rio_grande_region
 				region = mexico_region
 			}
+		}
+		modifier = {
+			factor = 2
+			colonial_region = colonial_louisiana
+			mission_completed = lou_colonisation_2_5
 		}
 	}
 }

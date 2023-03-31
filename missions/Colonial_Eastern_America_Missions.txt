@@ -1,28 +1,27 @@
-colonial_PHIL_slot_1 = {
+colonial_AME_slot_1 = {
     slot = 1
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_phil
+            colonial_region = colonial_eastern_america
         }
 	}
 	has_country_shield = yes
 
-	phil_trade_1 = {
+	ame_trade_1 = {
 		icon = mission_coromandel_trade
 		required_missions = { }
 		provinces_to_highlight = {
-			colonial_region = colonial_phil
-			province_has_center_of_trade_of_level = 1
+			
 		}
 
 		trigger = {
 			any_owned_province = {
 				province_has_center_of_trade_of_level = 1
 				development = 15
-				colonial_region = colonial_phil
+				colonial_region = colonial_eastern_america
 			}
 		}
 
@@ -31,7 +30,7 @@ colonial_PHIL_slot_1 = {
 				limit = {
 					NOT = {
 						any_owned_province = {
-							colonial_region = colonial_indonesia
+							colonial_region = colonial_eastern_america
 							province_has_center_of_trade_of_level = 1
 							development = 15
 						}
@@ -41,7 +40,7 @@ colonial_PHIL_slot_1 = {
 			}
 			random_owned_province = {
 				limit = {
-					colonial_region = colonial_phil
+					colonial_region = colonial_eastern_america
 					province_has_center_of_trade_of_level = 1
 					development = 15
 				}
@@ -50,18 +49,16 @@ colonial_PHIL_slot_1 = {
 		}
 	}
 
-	phil_trade_2 = {
+	ame_trade_2 = {
 		icon = sources_of_trade
-		required_missions = { phil_trade_1 }
-		provinces_to_highlight = {
-
-		}
+		required_missions = { ame_trade_1 }
+		provinces_to_highlight = {	}
 
 		trigger = {
 			any_owned_province = {
 				has_trade_building_trigger = yes
 				base_production = 12
-				colonial_region = colonial_phil
+				colonial_region = colonial_eastern_america
 			}
 		}
 
@@ -72,7 +69,7 @@ colonial_PHIL_slot_1 = {
 						any_owned_province = {
 							has_trade_building_trigger = yes
 							base_production = 12
-							colonial_region = colonial_indonesia
+							colonial_region = colonial_eastern_america
 						}
 					}
 				}
@@ -82,7 +79,7 @@ colonial_PHIL_slot_1 = {
 				limit = {
 					has_trade_building_trigger = yes
 					base_production = 12
-					colonial_region = colonial_phil
+					colonial_region = colonial_eastern_america
 				}
 				if = {
 					limit = {
@@ -103,9 +100,9 @@ colonial_PHIL_slot_1 = {
 		}
 	}
 
-	phil_trade_3 = {
+	ame_trade_3 = {
 		icon = mission_trade_in_gold_coast
-		required_missions = { phil_trade_2 }
+		required_missions = { ame_trade_2 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -120,9 +117,9 @@ colonial_PHIL_slot_1 = {
 		}
 	}
 
-	phil_trade_4 = {
+	ame_trade_4 = {
 		icon = mission_arabian_trade
-		required_missions = { phil_trade_3 }
+		required_missions = { ame_trade_3 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -132,12 +129,12 @@ colonial_PHIL_slot_1 = {
 					has_trade_building_trigger = yes
 					province_has_center_of_trade_of_level = 3
 				}
-				colonial_region = colonial_indonesia
+				colonial_region = colonial_eastern_america
 			}
 		}
 
 		effect = {
-			1397 = {
+			1500 = {
 				add_trade_modifier = {
 					who = ROOT
 					duration = 5475
@@ -149,19 +146,21 @@ colonial_PHIL_slot_1 = {
 		}
 	}
 
-	phil_trade_5 = {
+	ame_trade_5 = {
 		icon = mal_riches_of_trade
-		required_missions = { phil_trade_4 }
-		provinces_to_highlight = {	}
+		required_missions = { ame_trade_4 }
+		provinces_to_highlight = {
+			province_id = 1500
+		}
 
 		trigger = {
 			OR = {
-				1397 = {
+				1500 = {
 					is_strongest_trade_power = ROOT
 					trade_node_value = 40
 				}
 				overlord = {
-					1397 = {
+					1500 = {
 						is_strongest_trade_power = PREV
 						trade_node_value = 40
 					}
@@ -183,19 +182,19 @@ colonial_PHIL_slot_1 = {
 	}
 }
 
-colonial_PHIL_slot_2 = {
+colonial_AME_slot_2 = {
     slot = 2
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_phil
+            colonial_region = colonial_eastern_america
         }
 	}
 	has_country_shield = yes
     
-    phil_navy_1 = {
+    ame_navy_1 = {
 		icon = mission_heart_of_the_hansa
 		required_missions = { }
 		provinces_to_highlight = {	}
@@ -243,9 +242,9 @@ colonial_PHIL_slot_2 = {
 		}
 	}
 
-	phil_navy_2 = {
+	ame_navy_2 = {
 		icon = mission_south_indian_trade
-		required_missions = { phil_navy_1 }
+		required_missions = { ame_navy_1 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -262,9 +261,9 @@ colonial_PHIL_slot_2 = {
 		}
 	}
 
-	phil_navy_3 = {
+	ame_navy_3 = {
 		icon = mission_grand_bengali_shipyards
-		required_missions = { phil_navy_2 }
+		required_missions = { ame_navy_2 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -283,13 +282,13 @@ colonial_PHIL_slot_2 = {
 		}
 	}
 
-	phil_navy_4 = {
+	ame_navy_4 = {
 		icon = imperial_navy
-		required_missions = { phil_navy_3 }
+		required_missions = { ame_navy_3 }
 		provinces_to_highlight = {	}
 
 		trigger = {
-			navy_tradition = 50
+			navy_tradition  = 50
 			OR = {
 				num_of_light_ship = 40
 				num_of_heavy_ship = 15
@@ -304,9 +303,9 @@ colonial_PHIL_slot_2 = {
 		}
 	}
 
-	phil_navy_5 = {
+	ame_navy_5 = {
 		icon = mission_rb_a_mighty_fleet
-		required_missions = { phil_navy_4 }
+		required_missions = { ame_navy_4 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -326,23 +325,22 @@ colonial_PHIL_slot_2 = {
 			}
 		}
 	}
-
 }
 
-colonial_PHIL_slot_3 = {
+colonial_AME_slot_3 = {
     slot = 3
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_phil
+            colonial_region = colonial_eastern_america
         }
 	}
 	has_country_shield = yes
 
-    phil_army_1 = {
-		icon = mission_oceania_assemble_an_army
+    ame_army_1 = {
+		icon = mission_iroquois_warriors
 		required_missions = { }
 		provinces_to_highlight = {	}
 
@@ -359,9 +357,9 @@ colonial_PHIL_slot_3 = {
 		}
 	}
 
-	phil_army_2 = {
-		icon = mission_bijapur_karnatak
-		required_missions = { phil_army_1 }
+	ame_army_2 = {
+		icon = mission_nah_the_enemy_way
+		required_missions = { ame_army_1 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -387,9 +385,9 @@ colonial_PHIL_slot_3 = {
 		}
 	}
 
-	phil_army_3 = {
-		icon = mission_abu_saids_dream
-		required_missions = { phil_army_2 }
+	ame_army_3 = {
+		icon = form_the_swiss_guard
+		required_missions = { ame_army_2 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -405,11 +403,11 @@ colonial_PHIL_slot_3 = {
 		}
 	}
 
-	phil_army_4 = {
+	ame_army_4 = {
 		icon = mission_landsknecht_soldier
-		required_missions = { phil_army_3 }
+		required_missions = { ame_army_3 }
 		provinces_to_highlight = {
-			colonial_region = colonial_phil
+			colonial_region = colonial_eastern_america
 			OR = {
 				NOT = { base_manpower = 10 }
 				NOT = { has_military_building = yes }
@@ -419,7 +417,7 @@ colonial_PHIL_slot_3 = {
 		trigger = {
 			num_of_owned_provinces_with = {
 				value = 20
-				colonial_region = colonial_phil
+				colonial_region = colonial_eastern_america
 				base_manpower = 10
 				has_military_building = yes
 			}
@@ -430,7 +428,7 @@ colonial_PHIL_slot_3 = {
 				years = 4
 				trigger = {
 					has_military_building = yes
-					colonial_region = colonial_phil
+					colonial_region = colonial_eastern_america
 					base_manpower = 10
 				}
 				custom_tooltip = col_years_of_manpower
@@ -449,9 +447,9 @@ colonial_PHIL_slot_3 = {
 		}
 	}
 
-	phil_army_5 = {
+	ame_army_5 = {
 		icon = swiss_mercenaries
-		required_missions = { phil_army_4 }
+		required_missions = { ame_army_4 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -473,33 +471,33 @@ colonial_PHIL_slot_3 = {
 	}
 }
 
-colonial_PHIL_slot_4 = {
+colonial_AME_slot_4 = {
     slot = 4
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-           colonial_region = colonial_phil
+           colonial_region = colonial_eastern_america
         }
 	}
 	has_country_shield = yes
 
-    phil_colonisation_1 = {
+    ame_colonisation_1 = {
 		icon = mission_colonise_brazil
 		provinces_to_highlight = {
-			colonial_region = colonial_phil
+			colonial_region = colonial_eastern_america
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
 			OR = {
-				colonial_phil = {
+				colonial_eastern_america = {
 					has_colonist = yes
 					owned_by = ROOT
 					is_city = no
 				}
-				colonial_phil = {
+				colonial_eastern_america = {
 					type = all
 					is_empty = no
 				}
@@ -511,7 +509,7 @@ colonial_PHIL_slot_4 = {
 			hidden_effect = {
 				if = {
 					limit = {
-						colonial_phil = {
+						colonial_eastern_america = {
 							has_colonist = yes
 							owned_by = ROOT
 						}
@@ -537,124 +535,88 @@ colonial_PHIL_slot_4 = {
 		}
 	}
 
-	phil_colonisation_2 = {
-		icon = mission_build_up_to_force_limit
-		required_missions = { phil_colonisation_1 }
+	ame_colonisation_2 = {
+		icon = mission_colonial
+		required_missions = { ame_colonisation_1 }
 		provinces_to_highlight = {
-			colonial_region = colonial_phil
+			colonial_region = colonial_eastern_america
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
 			num_of_owned_provinces_with = {
 				value = 10
-				colonial_region = colonial_phil
+				colonial_region = colonial_eastern_america
 			}
 		}
 
 		effect = {
-			custom_tooltip = gain_perma_claim_on_phil_colonial_region_tt
-			hidden_effect = {
-				colonial_phil = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
+			add_country_modifier = {
+				name = "col_colonising_quick"
+				duration = 3650
 			}
 		}
 	}
 
-	phil_colonisation_3 = {
-		icon = mission_levantine_restoration
-		required_missions = { phil_colonisation_2 }
+	ame_colonisation_2_5 = {
+		icon = mission_clear_the_delta
+		required_missions = { ame_colonisation_2 }
 		provinces_to_highlight = {
-			colonial_region = colonial_phil
-			NOT = { owned_by = ROOT }
-		}
-
-		trigger = {
-			num_of_owned_provinces_with = {
-				value = 15
-				colonial_region = colonial_phil
-				is_core = ROOT
-			}
-		}
-
-		effect = {
-			custom_tooltip = every_owned_province_gets_fa_tt
-			tooltip = {
-				add_province_modifier = {
-					name = col_forced_pacification
-					duration = 3650
-				}
-			}
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
-						colonial_region = colonial_phil
-					}
-					add_province_modifier = {
-						name = col_forced_pacification
-						duration = 3650
-					}
-				}
-			}
-			set_country_flag = tm_colonial_forced_pacification
-			custom_tooltip = tm_this_applies_to_conquered_in_region_tt
-		}
-	}
-
-	phil_colonisation_4 = {	
-		icon = the_russian_campaign
-		required_missions = { phil_colonisation_3 }
-		provinces_to_highlight = {
-			colonial_region = colonial_phil
+			colonial_region = colonial_eastern_america
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
 			num_of_owned_provinces_with = {
 				value = 20
-				colonial_region = colonial_phil
-				is_core = ROOT
+				colonial_region = colonial_eastern_america
 			}
 		}
 
 		effect = {
-			custom_tooltip = every_owned_province_gets_fa_tt
-			tooltip = {
-				add_province_modifier = {
-					name = col_forced_assimilation
-					duration = 3650
-				}
-			}
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
-						colonial_region = colonial_phil
-					}
-					add_province_modifier = {
-						name = col_forced_assimilation
-						duration = 3650
-					}
-				}
-			}
-			set_country_flag = tm_colonial_forced_assimilation
-			custom_tooltip = tm_this_applies_to_conquered_in_region_tt
+			custom_tooltip = ame_goods_bonus_colonising
 		}
 	}
 
-	phil_colonisation_5 = {
+	ame_colonisation_3 = {
+		icon = mission_zanzibari_trade
+		required_missions = { ame_colonisation_2_5 }
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 40
+				colonial_region = colonial_eastern_america
+			}
+		}
+
+		effect = {
+			if = {
+                limit = {
+                    stability = 3
+                }
+                add_adm_power = 100
+            }
+            else = {
+                add_stability = 1
+            }
+            add_dip_power = 100
+            add_mil_power = 100
+		}
+	}
+
+	ame_colonisation_4 = {
 		icon = colonize_the_cape
-		required_missions = { phil_colonisation_3 }
+		required_missions = { ame_colonisation_3 }
 		provinces_to_highlight = { 
-			colonial_region = colonial_phil
+			colonial_region = colonial_eastern_america
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
-			colonial_phil = {
+			colonial_eastern_america = {
 				type = all
 				owned_by = ROOT
 				is_city = yes
@@ -679,22 +641,21 @@ colonial_PHIL_slot_4 = {
 			}
 		}
 	}
-
 }
 
-colonial_PHIL_slot_5 = {
+colonial_AME_slot_5 = {
     slot = 5
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_phil
+            colonial_region = colonial_eastern_america
         }
 	}
 	has_country_shield = yes
 
-	phil_buildings_1 = {
+	ame_buildings_1 = {
 		icon = a_strong_government
 		required_missions = {  }
 		provinces_to_highlight = { 
@@ -725,9 +686,9 @@ colonial_PHIL_slot_5 = {
 		}
 	}
 
-	phil_buildings_2 = {
+	ame_buildings_2 = {
 		icon = claim_tirol
-		required_missions = { phil_buildings_1 }
+		required_missions = { ame_buildings_1 }
 		provinces_to_highlight = { 
 			owned_by = ROOT
 			NOT = {
@@ -756,9 +717,9 @@ colonial_PHIL_slot_5 = {
 		}
 	}
 
-	phil_buildings_3 = {
+	ame_buildings_3 = {
 		icon = despot_stefans_legacy
-		required_missions = { phil_buildings_2 }
+		required_missions = { ame_buildings_2 }
 		provinces_to_highlight = { 
 			owned_by = ROOT
 			num_free_building_slots = 1
@@ -790,9 +751,9 @@ colonial_PHIL_slot_5 = {
 		}
 	}
 
-	phil_buildings_4 = {
+	ame_buildings_4 = {
 		icon = industrialized_rhineland
-		required_missions = { phil_buildings_3 }
+		required_missions = { ame_buildings_3 }
 		provinces_to_highlight = { }
 
 		trigger = {
@@ -811,9 +772,9 @@ colonial_PHIL_slot_5 = {
 		}
 	}
 
-	phil_buildings_5 = {
+	ame_buildings_5 = {
 		icon = public_works
-		required_missions = { phil_buildings_4 }
+		required_missions = { ame_buildings_4 }
 		provinces_to_highlight = { }
 
 		trigger = {
@@ -836,5 +797,4 @@ colonial_PHIL_slot_5 = {
 			}
 		}
 	}
-
 }

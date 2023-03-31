@@ -21,31 +21,82 @@ colonial_IND_slot_1 = {
 			any_owned_province = {
 				province_has_center_of_trade_of_level = 1
 				development = 15
+				colonial_region = colonial_indonesia
 			}
 		}
 
 		effect = {
+			if = {
+				limit = {
+					NOT = {
+						any_owned_province = {
+							colonial_region = colonial_indonesia
+							province_has_center_of_trade_of_level = 1
+							development = 15
+						}
+					}
+				}
+				custom_tooltip = beginning_trade_tt
+			}
 			random_owned_province = {
 				limit = {
 					colonial_region = colonial_indonesia
 					province_has_center_of_trade_of_level = 1
 					development = 15
 				}
+				add_base_production = 3
 			}
 		}
 	}
 
 	ind_trade_2 = {
-		icon = fight_bosnian_heresies
+		icon = sources_of_trade
 		required_missions = { ind_trade_1 }
 		provinces_to_highlight = {	}
 
 		trigger = {
-
+			any_owned_province = {
+				has_trade_building_trigger = yes
+				base_production = 12
+				colonial_region = colonial_indonesia
+			}
 		}
 
 		effect = {
-
+			if = {
+				limit = {
+					NOT = {
+						any_owned_province = {
+							has_trade_building_trigger = yes
+							base_production = 12
+							colonial_region = colonial_indonesia
+						}
+					}
+				}
+				custom_tooltip = growing_trade_tt
+			}
+			random_owned_province = {
+				limit = {
+					has_trade_building_trigger = yes
+					base_production = 12
+					colonial_region = colonial_indonesia
+				}
+				if = {
+					limit = {
+						NOT = { has_building = stock_exchange }
+					}
+					add_building = stock_exchange
+				}
+				else = {
+					add_base_production = 3
+					if ={
+						limit = {
+							NOT = { has_building = counting_house }
+						}
+						add_building = counting_house
+					}
+				}
+			}
 		}
 	}
 
@@ -55,11 +106,14 @@ colonial_IND_slot_1 = {
 		provinces_to_highlight = {	}
 
 		trigger = {
-			num_of_centers_of_trade = 3
+			num_of_centers_of_trade = 4
 		}
 
 		effect = {
-			
+			add_country_modifier = {
+				name = colony_trading
+				duration = 7300
+			}
 		}
 	}
 
@@ -497,12 +551,14 @@ colonial_IND_slot_4 = {
 		}
 
 		effect = {
-			colonial_indonesia = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
+			custom_tooltip = gain_perma_claim_on_indo_colonial_region_tt
+			hidden_effect = {
+				colonial_indonesia = {
+					limit = {
+						NOT = { owned_by = ROOT }
+					}
+					add_permanent_claim = ROOT
 				}
-				add_permanent_claim = ROOT
 			}
 		}
 	}
@@ -524,17 +580,26 @@ colonial_IND_slot_4 = {
 		}
 
 		effect = {
-			every_owned_province = {
-				limit = {
-					colonial_region = colonial_indonesia
-				}
+			custom_tooltip = every_owned_province_gets_fa_tt
+			tooltip = {
 				add_province_modifier = {
 					name = col_forced_pacification
 					duration = 3650
 				}
 			}
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						colonial_region = colonial_indonesia
+					}
+					add_province_modifier = {
+						name = col_forced_pacification
+						duration = 3650
+					}
+				}
+			}
 			set_country_flag = tm_colonial_forced_pacification
-			custom_tooltip = tm_this_applies_to_conquered_in_region
+			custom_tooltip = tm_this_applies_to_conquered_in_region_tt
 		}
 	}
 
@@ -555,17 +620,26 @@ colonial_IND_slot_4 = {
 		}
 
 		effect = {
-			every_owned_province = {
-				limit = {
-					colonial_region = colonial_indonesia
-				}
+			custom_tooltip = every_owned_province_gets_fa_tt
+			tooltip = {
 				add_province_modifier = {
 					name = col_forced_assimilation
 					duration = 3650
 				}
 			}
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						colonial_region = colonial_indonesia
+					}
+					add_province_modifier = {
+						name = col_forced_assimilation
+						duration = 3650
+					}
+				}
+			}
 			set_country_flag = tm_colonial_forced_assimilation
-			custom_tooltip = tm_this_applies_to_conquered_in_region
+			custom_tooltip = tm_this_applies_to_conquered_in_region_tt
 		}
 	}
 
