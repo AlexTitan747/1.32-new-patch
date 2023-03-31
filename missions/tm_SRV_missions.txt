@@ -1177,7 +1177,7 @@ tm_SRV_slot_3_CAU = {
 						has_building = workshop
 					}
 					add_building = trade_station
-					}
+				}
 		}
 	}
 
@@ -1433,6 +1433,114 @@ tm_SRV_slot_5_CAU = {
 				}
 				add_permanent_claim = ROOT
 			}
+		}
+	}
+
+	tm_SRV_integrate_arabia = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_prepare_arabia }
+		position = 7
+		
+		provinces_to_highlight = {
+			OR = {
+				region = arabia_region
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 40
+				region = arabia_region
+			}
+			NOT = {
+				OR = {
+					mission_completed = tm_SRV_towards_the_old_ways
+					mission_completed = tm_SRV_embrace_cossack_traditions
+				}
+			}
+		}
+		effect = {
+			add_adm_power = 75
+			add_prestige = 25
+			add_country_modifier = {
+				name = tm_CAU_integrating_arabia
+				duration = 3650
+			}
+		}
+	}
+
+	tm_SRV_arabian_industry = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_integrate_arabia }
+		position = 8
+		
+		provinces_to_highlight = {
+			OR = {
+				region = arabia_region
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 3
+				region = arabia_region
+				trade_good = gems
+				has_building = workshop
+			}
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 3
+				region = arabia_region
+				trade_good = spices
+				has_building = workshop
+			}
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 3
+				region = arabia_region
+				trade_good = coffee
+				has_building = workshop
+			}
+			NOT = {
+				OR = {
+					mission_completed = tm_SRV_towards_the_old_ways
+					mission_completed = tm_SRV_embrace_cossack_traditions
+				}
+			}
+		}
+		effect = {
+			every_owned_province = {
+				limit = {
+					region = arabia_region
+					trade_goods = gems
+					base_production = 12
+					has_building = workshop
+				}
+				add_building = mill
+				}
+
+				every_owned_province = {
+					limit = {
+						region = arabia_region
+						trade_goods = spices
+						base_production = 10
+						has_building = workshop
+					}
+					add_building = trade_company
+					}
+					
+					every_owned_province = {
+						limit = {
+							region = arabia_region
+							trade_goods = coffee
+							base_production = 10
+							has_building = workshop
+						}
+						add_building = plantation
+						}
+			
 		}
 	}
 
