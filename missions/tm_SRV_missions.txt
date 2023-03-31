@@ -1252,6 +1252,119 @@ tm_SRV_slot_4_CAU = {
 		}
 	}
 
+	tm_SRV_destroy_the_hordes = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_into_the_steppes }
+		position = 8
+		
+		provinces_to_highlight = {
+			OR = {
+				region = crimea_region
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 40
+				region = crimea_region
+			}
+			NOT = {
+				OR = {
+					mission_completed = tm_SRV_towards_the_old_ways
+					mission_completed = tm_SRV_embrace_cossack_traditions
+				}
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = tm_CAU_coreing_the_steppes
+				duration = 3650
+			}
+			east_dniepr_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			sloboda_ukraine_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			tambov_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			saratov_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			lower_yik_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+	}
+
+	tm_SRV_tame_the_steppes = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_destroy_the_hordes }
+		position = 9
+		
+		provinces_to_highlight = {
+			OR = {
+				area = east_dniepr_area
+				area = sloboda_ukraine_area
+				area = tambov_area
+				area = saratov_area
+				area = lower_yik_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 75
+				OR = {
+				region = crimea_region
+				area = east_dniepr_area
+				area = sloboda_ukraine_area
+				area = tambov_area
+				area = saratov_area
+				area = lower_yik_area
+				}
+			}
+			NOT = {
+				OR = {
+					mission_completed = tm_SRV_towards_the_old_ways
+					mission_completed = tm_SRV_embrace_cossack_traditions
+				}
+			}
+		}
+		effect = {
+			add_accepted_culture = astrakhani
+			add_accepted_culture = crimean
+			add_accepted_culture = mishar
+			add_adm_power = 100
+			every_owned_province = {
+				limit = {
+					NOT = {
+						has_building = workshop
+					}
+					region = anatolia_region
+					base_production = 8
+					OR = {
+						trade_goods = cloth
+						trade_goods = salt
+						trade_goods = iron
+						trade_goods = gems
+					}
+				}
+				add_building = workshop
+			}
+		}
+	}
+
 }
 
 tm_SRV_slot_5_CAU = {
