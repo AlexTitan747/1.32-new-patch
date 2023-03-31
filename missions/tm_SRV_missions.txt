@@ -954,7 +954,7 @@ tm_SRV_slot_3_CAU = {
 		}
 	}
 
-	tm_SRV_finish_afghanistan = {
+	tm_SRV_conquer_afghanistan = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_prepare_persia }
 		position = 7
@@ -987,6 +987,86 @@ tm_SRV_slot_3_CAU = {
 				}
 				add_permanent_claim = ROOT
 			}
+		}
+	}
+
+	tm_SRV_consolidate_greater_persia = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_conquer_afghanistan }
+		position = 8
+		
+		provinces_to_highlight = {
+			OR = {
+				region = persia_region
+				region = khorasan_region
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 75
+				OR = {
+				region = persia_region
+				region = khorasan_region
+				}
+			}
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 3
+				OR = {
+					region = persia_region
+					region = khorasan_region
+					}
+					trade_good = saffron
+					has_building = workshop
+			}
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 3
+				OR = {
+					region = persia_region
+					region = khorasan_region
+					}
+					trade_good = paper
+					has_building = workshop
+			}
+			NOT = {
+				OR = {
+					mission_completed = tm_SRV_towards_the_old_ways
+					mission_completed = tm_SRV_embrace_cossack_traditions
+				}
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = tm_cau_consoliating_persian_gains
+				duration = 3650
+			}
+			every_owned_province = {
+				limit = {
+					OR = {
+						region = persia_region
+						region = khorasan_region
+						}
+					trade_goods = paper
+					base_production = 12
+					has_building = workshop
+				}
+				add_building = mill
+				}
+
+				every_owned_province = {
+					limit = {
+						OR = {
+							region = persia_region
+							region = khorasan_region
+							}
+						trade_goods = saffron
+						base_production = 12
+						has_building = workshop
+					}
+					add_building = trade_station
+					}
 		}
 	}
 
