@@ -764,59 +764,109 @@ tm_SRV_slot_1_CAU = {
 		}
 	}
 
-	tm_SRV_transcaucasian_industry = {
+	tm_SRV_build_workshops = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_stabilise_transcaucasia }
 		position = 6
 		
 		provinces_to_highlight = {
-
+			region = caucasia_region
 		}
 		trigger = {
-			always = no
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 10
+				region = caucasia_region
+				has_building = workshop
+			}
 		}
 		effect = {
-			hidden_effect = {
-				add_prestige = 15
+			add_country_modifier  = {
+				name = tm_CAU_increased_production
+				duration = 3650
 			}
 		}
 	}
 
-	tm_SRV_transcaucasian_industry_2 = {
+	tm_SRV_develop_luxury_goods = {
 		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_transcaucasian_industry }
+		required_missions = { tm_SRV_build_workshops }
 		position = 7
 		
 		provinces_to_highlight = {
 
 		}
 		trigger = {
-			always = no
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 8
+				region = caucasia_region
+				OR = {
+					trade_goods = silk
+					trade_goods = cloth
+					trade_goods = dyes
+				}
+				base_production = 12
+				has_building = workshop
+			}
 		}
 		effect = {
-			hidden_effect = {
-				add_prestige = 15
+			every_owned_province = {
+				limit = {
+					region = caucasia_region
+					OR = {
+						trade_goods = silk
+						trade_goods = cloth
+						trade_goods = dyes
+					}
+					base_production = 12
+					has_building = workshop
+				}
+				add_building = textile
 			}
 		}
 	}
 
-	tm_SRV_transcaucasian_industry_3 = {
+	tm_SRV_build_plantations = {
 		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_transcaucasian_industry_2 }
+		required_missions = { tm_SRV_develop_luxury_goods }
 		position = 8
 		
 		provinces_to_highlight = {
 
 		}
 		trigger = {
-			always = no
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 10
+				region = caucasia_region
+				OR = {
+					trade_goods = cotton
+					trade_goods = opium
+				}
+				base_production = 10
+				has_building = workshop
+			}
 		}
 		effect = {
-			hidden_effect = {
-				add_prestige = 15
+			every_owned_province = {
+				limit = {
+					region = caucasia_region
+					trade_goods = opium
+					base_production = 10
+					has_building = workshop
+				}
+				add_building = tradecompany
+			}
+			every_owned_province = {
+				limit = {
+					region = caucasia_region
+					trade_goods = cotton
+					base_production = 10
+					has_building = workshop
+				}
+				add_building = plantation
 			}
 		}
 	}
+
 }
 
 tm_SRV_slot_2_CAU = {
@@ -1176,7 +1226,7 @@ tm_SRV_slot_3_CAU = {
 						base_production = 12
 						has_building = workshop
 					}
-					add_building = trade_station
+					add_building = tradecompany
 				}
 		}
 	}
@@ -1528,7 +1578,7 @@ tm_SRV_slot_5_CAU = {
 						base_production = 10
 						has_building = workshop
 					}
-					add_building = trade_company
+					add_building = tradecompany
 					}
 					
 					every_owned_province = {
