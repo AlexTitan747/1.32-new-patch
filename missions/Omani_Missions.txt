@@ -12,7 +12,7 @@ oman_slot_1 = {
 	has_country_shield = yes
 	
 	tm_oma_humilate_fars = {
-		icon = the_hundred_years_war
+		icon = mission_mosque
 		required_missions = { oma_buildforces }
 		position = 2
 
@@ -63,7 +63,7 @@ oman_slot_1 = {
 	}
 
 	tm_oma_finish_baluchistan = {
-		icon = control_swabia
+		icon = mission_arabian_fort
 		required_missions = { tm_oma_march_on_persia }
 		position = 3
 		provinces_to_highlight = {
@@ -90,7 +90,12 @@ oman_slot_1 = {
 				name = tm_oma_securing_persia
 				duration = 3650
 			}
-			
+			576 = {
+				add_province_modifier = {
+					name = tm_oma_kelat_fortress
+					duration = -1
+				}
+			}
 		}
 	}
 
@@ -110,7 +115,7 @@ oman_slot_2 = {
 	has_country_shield = yes
 	
 	oma_buildforces = {
-		icon = mission_bedouins
+		icon = mission_new_army
 		required_missions = { }
 		position = 1
 		
@@ -170,7 +175,7 @@ oman_slot_2 = {
 	}
 
 	tm_oma_march_on_persia = {
-		icon = control_swabia
+		icon = mission_conquer_persia
 		required_missions = { oma_buildforces }
 		position = 2
 		provinces_to_highlight = {
@@ -194,6 +199,10 @@ oman_slot_2 = {
 			}
 		}
 		effect = {
+			add_stat_or_monarch_power = {
+				stat = mil
+				amount = 1
+			}
 			persian_gulf_coast = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -221,7 +230,7 @@ oman_slot_2 = {
 	}
 
 	tm_oma_annex_fars = {
-		icon = control_swabia
+		icon = mission_mal_fighting_musa
 		required_missions = { tm_oma_march_on_persia }
 		position = 3
 		provinces_to_highlight = {
@@ -269,7 +278,7 @@ oman_slot_2 = {
 	}
 
 	tm_oma_advance_on_mesopotamia = {
-		icon = control_swabia
+		icon = mission_iroquois_food_surplus
 		required_missions = { tm_oma_annex_fars tm_oma_secure_arabia }
 		position = 4
 		provinces_to_highlight = {
@@ -325,7 +334,7 @@ oman_slot_3 = {
 	has_country_shield = yes
 
 	tm_oma_march_on_haasa = {
-		icon = control_swabia
+		icon = mission_arabian_trade
 		required_missions = { oma_buildforces }
 		position = 2
 		provinces_to_highlight = {
@@ -374,7 +383,7 @@ oman_slot_3 = {
 	}
 
 	tm_oma_secure_arabia = {
-		icon = control_swabia
+		icon = mission_indian_empire
 		required_missions = { tm_oma_march_on_haasa }
 		position = 3
 		provinces_to_highlight = {
@@ -419,8 +428,8 @@ oman_slot_3 = {
 		required_missions = { tm_oma_secure_arabia tm_oma_seize_the_holy_lands }
 		position = 5
 		provinces_to_highlight = {
-			
 		}
+
 		trigger = {
 			total_development = 600
 			hidden_trigger = {
@@ -432,11 +441,12 @@ oman_slot_3 = {
 			}
 			stability = 1
 		}
+
 		effect = {
 			add_adm_power = 50
 			add_mil_power = 50
 			add_dip_power = 50
-			400 = { 
+			400 = {
 				add_base_tax = 2
 				add_base_production = 2
 				add_base_manpower = 2
@@ -468,9 +478,9 @@ oman_slot_4 = {
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
-	
+
 	tm_oma_destroy_mahra = {
-		icon = control_swabia
+		icon = mission_sw_against_the_desert
 		required_missions = { oma_buildforces }
 		position = 2
 		provinces_to_highlight = {
@@ -534,7 +544,7 @@ oman_slot_4 = {
 	}
 
 	tm_oma_claim_yemeni_throne = {
-		icon = control_swabia
+		icon = mission_conquer_aden
 		required_missions = { tm_oma_destroy_mahra }
 		position = 3
 		provinces_to_highlight = {
@@ -548,6 +558,7 @@ oman_slot_4 = {
 				owned_by = ROOT
 			}
 		}
+
 		trigger = {
 			upper_yemen_area = {
 				type = all
@@ -589,11 +600,14 @@ oman_slot_4 = {
 				}
 				add_permanent_claim = ROOT
 			}
+			5185 = {
+				add_center_of_trade_level = 1
+			}
 		}
 	}
 
 	tm_oma_seize_the_holy_lands = {
-		icon = control_swabia
+		icon = convert_the_holy_lands
 		required_missions = { tm_oma_secure_arabia tm_oma_claim_yemeni_throne }
 		position = 4
 		provinces_to_highlight = {
@@ -619,19 +633,19 @@ oman_slot_4 = {
 		effect = {
 			if = {
 				limit = {
-				383 = {
-					owned_by = ROOT
+					383 = {
+						owned_by = ROOT
+					}
 				}
-				}
-				383 = {
+					383 = {
 					add_building = fort_14th
 				}
 			}
 			if = {
 				limit = {
-				5167 = {
-					owned_by = ROOT
-				}
+					5167 = {
+						owned_by = ROOT
+					}
 				}
 				5167 = {
 					add_building = fort_14th
@@ -645,7 +659,7 @@ oman_slot_4 = {
 	}
 
 	tm_oma_men_of_the_desert = {
-		icon = mission_bedouins
+		icon = mission_oceania_build_army_mission
 		required_missions = { tm_oma_increase_taxation }
 		position = 5
 
@@ -740,7 +754,7 @@ oman_slot_5 = {
 	has_country_shield = yes
 	
 	tm_oma_secure_ibadi = {
-		icon = mission_bedouins
+		icon = defender_of_the_faith
 		required_missions = { }
 		position = 1
 		
@@ -758,7 +772,7 @@ oman_slot_5 = {
 	}
 
 	tm_oma_battle_of_the_scholars = {
-		icon = mission_bedouins
+		icon = mission_noble_council
 		required_missions = { tm_oma_secure_ibadi }
 		position = 2
 		
@@ -788,7 +802,7 @@ oman_slot_5_place_holder = {
 		NOT = { has_country_flag = shia_scholar_selected }
 	}
 	has_country_shield = yes
-	
+
 	tm_oma_dummy_mission_1 = {
 		icon = mission_unknown_mission
 		position = 3
@@ -806,8 +820,6 @@ oman_slot_5_place_holder = {
 	}
 }
 
-
-
 oman_slot_5_a = {
 	slot = 5
 	generic = no
@@ -821,12 +833,12 @@ oman_slot_5_a = {
 		has_country_flag = ibadi_scholar_selected
 	}
 	has_country_shield = yes
-	
+
 	tm_oma_conquer_the_ibadi_lands = {
 		icon = mission_bedouins
 		required_missions = { tm_oma_battle_of_the_scholars }
 		position = 3
-		
+
 		trigger = {
 			410 = {
 				owned_by = ROOT
@@ -841,7 +853,7 @@ oman_slot_5_a = {
 				base_tax = 6
 			}
 		}
-		
+
 		effect = {
 			add_country_modifier = {
 				name = tm_oma_chose_ibadi
@@ -864,9 +876,9 @@ oman_slot_5_b = {
 		has_country_flag = sunni_scholar_selected
 	}
 	has_country_shield = yes
-	
+
 	tm_oma_restore_the_true_faith = {
-		icon = mission_bedouins
+		icon = mission_religious
 		required_missions = { tm_oma_battle_of_the_scholars }
 		position = 3
 		
@@ -1094,7 +1106,34 @@ oman_slot_1_ibadi = {
 		has_country_flag = oman_prepared_for_expansion
 	}
 	has_country_shield = yes
-	
+
+	tm_oma_the_road_to_zanzibar = {
+		icon = mission_bedouins
+		required_missions = { tm_oma_prepare_for_further_expansion }
+		position = 6
+
+		provinces_to_highlight = {
+			OR = {
+				region = east_africa_region
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			has_trading_subject = {
+				region = east_africa_region
+			}
+		}
+
+		effect = {
+			add_mil_power = 75
+			4815 = {
+				add_building = naval_battery
+				center_of_trade = 3
+			}
+		}
+	}
+
 	tm_oma_war_india = {
 		icon = mission_bedouins
 		required_missions = { tm_oma_the_gulf_of_aden }
@@ -1386,7 +1425,7 @@ oman_slot_3_ibadi = {
 	}
 
 	tm_oma_indian_ocean_empire = {
-		icon = mission_bedouins
+		icon = mission_south_indian_trade
 		required_missions = { tm_oma_trade_city_establishments tm_oma_indian_merchant_guilds tm_oma_singapore_stronghold }
 		position = 9
 
@@ -1509,7 +1548,7 @@ oman_slot_4_ibadi = {
 
 	tm_oma_singapore_stronghold = {
 		icon = mission_bedouins
-		required_missions = { tm_oma_colonial_planning }
+		required_missions = { tm_oma_colonial_planning tm_oma_presence_in_malaysia }
 		position = 8
 
 		provinces_to_highlight = {
@@ -1543,10 +1582,6 @@ oman_slot_4_ibadi = {
 
 		effect = {
 			add_mil_power = 75
-			4815 = {
-				add_building = naval_battery
-				center_of_trade = 3
-			}
 			if = {
 				limit = {
 					4815 = { 
@@ -1573,6 +1608,10 @@ oman_slot_4_ibadi = {
 				4815 = {
 					add_building = fort_17th
 				}
+			}
+			4815 = {
+				add_building = naval_battery
+				center_of_trade = 3
 			}
 
 			malaya_region = {
