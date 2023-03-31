@@ -888,6 +888,117 @@ tm_SRV_slot_2_CAU = {
 		}
 	}
 
+	tm_SRV_conquer_anatolia = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_prepare_anatolia }
+		position = 7
+		
+		provinces_to_highlight = {
+			OR = {
+				region = anatolia_region
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 40
+				region = anatolia_region
+			}
+			NOT = {
+				OR = {
+					mission_completed = tm_SRV_towards_the_old_ways
+					mission_completed = tm_SRV_embrace_cossack_traditions
+				}
+			}
+		}
+		effect = {
+			thrace_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = tm_CAU_integrate_anatolia
+				duration = 1825
+			}
+			add_accepted_culture = turkish
+		}
+	}
+
+	tm_SRV_claim_constantinople = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_conquer_anatolia }
+		position = 7
+		
+		provinces_to_highlight = {
+			OR = {
+				area = thrace_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			thrace_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			NOT = {
+				OR = {
+					mission_completed = tm_SRV_towards_the_old_ways
+					mission_completed = tm_SRV_embrace_cossack_traditions
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					OR = {
+						religion_group = muslim
+						religion = coptic
+					}
+				}
+				151 = {
+					add_great_project_tier = {
+						type = hagia_sofia
+						tier = 2
+					}
+				}
+			}
+			if = {
+				limit = {
+					religion_group = muslim
+				}
+				151 = {
+					add_great_project_tier = {
+						type = sultan_ahmed_mosque
+						tier = 2
+					}
+				}
+			}
+			every_owned_province = {
+				limit = {
+					NOT = {
+						has_building = workshop
+					}
+					region = anatolia_region
+					base_production = 8
+					OR = {
+						trade_goods = cloth
+						trade_goods = silk
+						trade_goods = iron
+						trade_goods = copper
+					}
+				}
+				add_building = workshop
+			}
+		}
+	}
+
 }
 
 tm_SRV_slot_3_CAU = {
