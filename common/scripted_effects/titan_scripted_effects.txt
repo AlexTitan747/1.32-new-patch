@@ -622,6 +622,162 @@ col_empire_col_scripted_effect = {
     }
 }
 
+col_empire_gold_scripted_effect = {
+	if = {
+        limit = {
+            has_country_modifier = colonial_subject_overlord_gold_reward_7
+        }
+        custom_tooltip = colonial_gold_modifier_upgrade_tt
+        hidden_effect = {
+            remove_country_modifier = colonial_subject_overlord_gold_reward_7
+            add_country_modifier = {
+                name = colonial_subject_overlord_gold_reward_8
+                duration = -1
+            }
+        }
+        $SUBJECT$ = {
+            add_country_modifier = {
+                name = colonial_subject_gold_shared_reward
+                duration = -1
+            }
+        }
+    }
+
+    else_if = {
+        limit = {
+            has_country_modifier = colonial_subject_overlord_gold_reward_6
+        }
+        custom_tooltip = colonial_gold_modifier_upgrade_tt 
+        hidden_effect = {
+            remove_country_modifier = colonial_subject_overlord_gold_reward_6
+            add_country_modifier = {
+                name = colonial_subject_overlord_gold_reward_7
+                duration = -1
+            }
+        }
+        $SUBJECT$ = {
+            add_country_modifier = {
+                name = colonial_subject_gold_shared_reward
+                duration = -1
+            }
+        }
+    }
+
+    else_if = {
+        limit = {
+            has_country_modifier = colonial_subject_overlord_gold_reward_5
+        }
+        custom_tooltip = colonial_gold_modifier_upgrade_tt 
+        hidden_effect = {
+            remove_country_modifier = colonial_subject_overlord_gold_reward_5
+            add_country_modifier = {
+                name = colonial_subject_overlord_gold_reward_6
+                duration = -1
+            }
+        }
+        $SUBJECT$ = {
+            add_country_modifier = {
+                name = colonial_subject_gold_shared_reward
+                duration = -1
+            }
+        }
+    }
+
+    else_if = {
+        limit = {
+            has_country_modifier = colonial_subject_overlord_gold_reward_4
+        }
+        custom_tooltip = colonial_gold_modifier_upgrade_tt 
+        hidden_effect = {
+            remove_country_modifier = colonial_subject_overlord_gold_reward_4
+            add_country_modifier = {
+                name = colonial_subject_overlord_gold_reward_5
+                duration = -1
+            }
+        }
+        $SUBJECT$ = {
+            add_country_modifier = {
+                name = colonial_subject_gold_shared_reward
+                duration = -1
+            }
+        }
+    }
+
+    else_if = {
+        limit = {
+            has_country_modifier = colonial_subject_overlord_gold_reward_3
+        }
+        custom_tooltip = colonial_gold_modifier_upgrade_tt 
+        hidden_effect = {
+            remove_country_modifier = colonial_subject_overlord_gold_reward_3
+            add_country_modifier = {
+                name = colonial_subject_overlord_gold_reward_4
+                duration = -1
+            }
+        }
+        $SUBJECT$ = {
+            add_country_modifier = {
+                name = colonial_subject_gold_shared_reward
+                duration = -1
+            }
+        }
+    }
+
+    else_if = {
+        limit = {
+            has_country_modifier = colonial_subject_overlord_gold_reward_2
+        }
+        custom_tooltip = colonial_gold_modifier_upgrade_tt 
+        hidden_effect = {
+            remove_country_modifier = colonial_subject_overlord_gold_reward_2
+            add_country_modifier = {
+                name = colonial_subject_overlord_gold_reward_3
+                duration = -1
+            }
+        }
+        $SUBJECT$ = {
+            add_country_modifier = {
+                name = colonial_subject_gold_shared_reward
+                duration = -1
+            }
+        }
+    }
+
+    else_if = {
+        limit = {
+            has_country_modifier = colonial_subject_overlord_gold_reward_1
+        }
+        custom_tooltip = colonial_gold_modifier_upgrade_tt 
+        hidden_effect = {
+            remove_country_modifier = colonial_subject_overlord_gold_reward_1
+            add_country_modifier = {
+                name = colonial_subject_overlord_gold_reward_2
+                duration = -1
+            }
+        }
+        $SUBJECT$ = {
+            add_country_modifier = {
+                name = colonial_subject_gold_shared_reward
+                duration = -1
+            }
+        }
+    }
+
+    else = {
+        $SUBJECT$ = {
+            add_country_modifier = {
+                name = colonial_subject_gold_shared_reward
+                duration = -1
+            }
+        }
+        add_country_modifier = {
+            name = colonial_subject_overlord_gold_reward
+            duration = -1
+        }
+    }
+}
+
+
 col_empire_buildings_scripted_effect = {
 	if = {
         limit = {
@@ -815,4 +971,12 @@ additional_missions_scripted_effect = {
     hidden_effect = {
         swap_non_generic_missions = yes
     }
+}
+
+add_perma_claim = {
+    limit = {
+        NOT = { is_core = ROOT }
+	    NOT = { is_permanent_claim = ROOT }
+    }
+    add_permanent_claim = ROOT
 }
