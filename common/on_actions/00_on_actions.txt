@@ -513,6 +513,20 @@ on_startup = {
 			}
 		}
 	}
+	every_province = {
+		if = {
+			limit = {
+				has_great_project = {
+					type = any
+					tier = 0
+				}
+			}
+			add_province_modifier = {
+				name = great_project_war_score_cost
+				duration = -1
+			}
+		}
+	}
 }
 
 # country
@@ -998,6 +1012,15 @@ on_main_war_won = {
 			value = 1
 		}
 	}
+	if = {
+		limit = {
+			has_country_flag = CPH_upgrade_4
+		}
+		add_stability = 1
+		add_adm_power = 40
+		add_dip_power = 40
+		add_mil_power = 40
+	}
 	events = {
 		native_americans.7
 	}
@@ -1119,6 +1142,21 @@ on_battle_won_country = {
 		change_variable = {
 			which = battlesWon
 			value = 1
+		}
+	}
+
+	if = {
+		limit = {
+			has_country_flag = CPH_upgrade_4
+		}
+		if = {
+			limit = {
+				piety = 0.01
+			}
+			add_piety = 0.05
+		}
+		else = {
+			add_piety = -0.05
 		}
 	}
 }
