@@ -31,28 +31,27 @@ country_decisions = {
 		}
 
 		allow = {
-            #if = {
-            #    limit = {
-            #        tag = OMA
-            #    }
-            #    custom_trigger_tooltip = {
-            #        tooltip = titan_oman_chose_shia_scholar_tt
-			#		has_country_flag = shia_scholar_selected
-            #    }
-            #}
-            #else = {
-            #    religion = shiite
-            #}
-			#is_free_or_tributary_trigger = yes
-			#is_at_war = no
-			#owns_core_province = 384			#Medina
-			#owns_core_province = 385			#Mecca
-            #num_of_owned_provinces_with = {
-            #    value = 75
-			#	is_state_core = ROOT
-            #    religion = shiite
-            #}
-			always = yes
+            if = {
+                limit = {
+                    tag = OMA
+                }
+                custom_trigger_tooltip = {
+                    tooltip = titan_oman_chose_shia_scholar_tt
+					has_country_flag = shia_scholar_selected
+                }
+            }
+            else = {
+                religion = shiite
+            }
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			owns_core_province = 384			#Medina
+			owns_core_province = 385			#Mecca
+            num_of_owned_provinces_with = {
+                value = 75
+				is_state_core = ROOT
+                religion = shiite
+            }
 		}
 
 		effect = {
@@ -96,6 +95,9 @@ country_decisions = {
 			set_country_flag = formed_caliphate_flag
 			country_event = { id = ideagroups.1 } #Swap Ideas
             set_capital = 385
+			385 = {
+				change_religion = ROOT
+			}
 			#override_country_name = THE_CALIPHATE
 			#set_country_flag = unified_islam
 			#set_global_flag = unified_islam_global
