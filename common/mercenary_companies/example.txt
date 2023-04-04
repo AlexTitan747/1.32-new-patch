@@ -83,6 +83,21 @@ merc__local_independent_army = {
     # No home province means local mercenary company
 }
 
+merc__local_renaissance_army = {
+    regiments_per_development = 0.05
+    artillery_weight = 0
+    cavalry_cap = 0
+    cost_modifier = 1
+    trigger = {
+        is_year = 1450
+        is_allowed_to_recruit_mercenaries = yes
+        NOT = {
+            has_country_flag = cav_mercs_activated
+        }
+    }
+    # No home province means local mercenary company
+}
+
 merc__local_colonialism_army = {
     regiments_per_development = 0.05
     artillery_weight = 0
@@ -225,6 +240,19 @@ merc__cav_local_independent_army = {
     cost_modifier = 1
     trigger = {
         total_development = 400
+        is_allowed_to_recruit_mercenaries = yes
+        has_country_flag = cav_mercs_activated
+    }
+    # No home province means local mercenary company
+}
+
+merc__cav_local_renaissance_army = {
+    regiments_per_development = 0.05
+    artillery_weight = 0
+    cavalry_weight = 1
+    cost_modifier = 1
+    trigger = {
+        is_year = 1450
         is_allowed_to_recruit_mercenaries = yes
         has_country_flag = cav_mercs_activated
     }
