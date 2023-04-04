@@ -795,7 +795,7 @@ trading_subject = {
 	has_overlords_ruler = no
 	can_fight_independence_war = yes
 	is_voluntary = no
-	transfer_trade_power = no
+	transfer_trade_power = yes
 	transfer_trade_if_merchant_republic = no
 	joins_overlords_wars = yes
 	joins_colonial_wars = yes
@@ -905,11 +905,17 @@ trading_subject = {
 
 	modifier_subject = clear
 	modifier_overlord = clear
-	modifier_subject = {
-		modifier = vassal_nation
-	}
 	modifier_overlord = {
-		modifier = vassal_subject
+		modifier = trading_subject_overlord_modifier
+		trigger = {
+			num_of_cities = 15
+		}
+	}
+	modifier_subject = {
+		modifier = trading_subject_subject_modifier
+		trigger = {
+			num_of_cities = 10
+		}
 	}
 
 	overlord_opinion_modifier = is_vassal
