@@ -24,9 +24,261 @@ tm_CPH_slot_1 = {
 		}
 
 	    effect = {
-
+			add_prestige = 10
+			add_power_projection = {
+				type = mission_rewards_power_projection
+				amount = 10
+			}
 	    }
     }
+
+	CPH_unite_egypt_2 = {
+        icon = NEEDICON
+		required_missions = { CPH_unite_egypt_1 }
+		
+		provinces_to_highlight = {
+            region = egypt_region
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 20
+				region = egypt_region
+			}
+		}
+
+	    effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_5
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_5
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_6
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_4
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_4
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_5
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_3
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_3
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_4
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_2
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_2
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_3
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_1
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_1
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_2
+						duration = -1
+					}
+				}
+				else = {
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_1
+						duration = -1
+					}
+				}
+			}
+			tooltip = {
+				add_country_modifier = {
+					name = CPH_expanding_citizen_rights_1
+					duration = -1
+				}
+			}
+			add_accepted_culture_or_dip_power = {
+				culture = al_misr_arabic
+			}
+	    }
+    }
+
+	CPH_unite_egypt_3 = {
+        icon = NEEDICON
+		required_missions = { CPH_unite_egypt_2 }
+		
+		provinces_to_highlight = {
+            region = egypt_region
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 40
+				region = egypt_region
+			}
+		}
+
+	    effect = {
+			custom_tooltip = unlock_develop_egypt_tt
+			if = {
+				limit = {
+					NOT = {
+						any_owned_province = {
+							region = egypt_region
+							culture = al_misr_arabic
+						}
+					}
+				}
+				custom_tooltip = CPH_5_prod_buildings_tt
+			}
+			random_owned_province = {
+				limit = {
+					region = egypt_region
+					culture = al_misr_arabic
+				}
+				add_base_tax = 3
+				add_base_production = 3
+				add_base_manpower = 3
+				if = {
+					limit = {
+						NOT = { has_production_building = yes }
+					}
+					add_building = warehouse
+				}
+				else = {
+					upgrade_building = {
+						production = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					region = egypt_region
+					culture = al_misr_arabic
+				}
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+				if = {
+					limit = {
+						NOT = { has_production_building = yes }
+					}
+					add_building = warehouse
+				}
+				else = {
+					upgrade_building = {
+						production = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					region = egypt_region
+					culture = al_misr_arabic
+				}
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+				if = {
+					limit = {
+						NOT = { has_production_building = yes }
+					}
+					add_building = warehouse
+				}
+				else = {
+					upgrade_building = {
+						production = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					region = egypt_region
+					culture = al_misr_arabic
+				}
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+				if = {
+					limit = {
+						NOT = { has_production_building = yes }
+					}
+					add_building = warehouse
+				}
+				else = {
+					upgrade_building = {
+						production = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					region = egypt_region
+					culture = al_misr_arabic
+				}
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+				if = {
+					limit = {
+						NOT = { has_production_building = yes }
+					}
+					add_building = warehouse
+				}
+				else = {
+					upgrade_building = {
+						production = yes
+					}
+				}
+			}
+	    }
+    }
+
+	CPH_united_egypt = {
+		icon = NEEDICON
+		required_missions = { CPH_unite_egypt_3 }
+
+		
+		provinces_to_highlight = {
+            region = egypt_region
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+            egypt_region = {
+				type = all
+				owned_by = ROOT
+				is_core = ROOT
+			}
+		}
+
+	    effect = {
+			add_country_modifier = {
+				name = CPH_united_egypt_modifier
+				duration = -1
+			}
+			maghreb_region = {
+				add_perma_claim = yes
+			}
+	    }
+	}
 }
 
 tm_CPH_slot_2 = {
@@ -55,9 +307,261 @@ tm_CPH_slot_2 = {
 		}
 
 	    effect = {
-
+			add_prestige = 10
+			add_power_projection = {
+				type = mission_rewards_power_projection
+				amount = 10
+			}
 	    }
     }
+
+	CPH_unite_arabia_2 = {
+        icon = NEEDICON
+		required_missions = { CPH_unite_arabia_1 }
+		
+		provinces_to_highlight = {
+            region = arabia_region
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 20
+				region = arabia_region
+			}
+		}
+
+	    effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_5
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_5
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_6
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_4
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_4
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_5
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_3
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_3
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_4
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_2
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_2
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_3
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_1
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_1
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_2
+						duration = -1
+					}
+				}
+				else = {
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_1
+						duration = -1
+					}
+				}
+			}
+			tooltip = {
+				add_country_modifier = {
+					name = CPH_expanding_citizen_rights_1
+					duration = -1
+				}
+			}
+			add_accepted_culture_or_dip_power = {
+				culture = bedouin_arabic
+			}
+	    }
+    }
+
+	CPH_unite_arabia_3 = {
+        icon = NEEDICON
+		required_missions = { CPH_unite_arabia_2 }
+		
+		provinces_to_highlight = {
+            region = arabia_region
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 40
+				region = arabia_region
+			}
+		}
+
+	    effect = {
+			custom_tooltip = unlock_develop_arabia_tt
+			if = {
+				limit = {
+					NOT = {
+						any_owned_province = {
+							region = arabia_region
+							culture = bedouin_arabic
+						}
+					}
+				}
+				custom_tooltip = CPH_5_manpower_buildings_tt
+			}
+			random_owned_province = {
+				limit = {
+					region = arabia_region
+					culture = bedouin_arabic
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						NOT = { has_manpower_building_trigger= yes }
+					}
+					add_building = barracks
+				}
+				else = {
+					upgrade_building = {
+						manpower = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					region = arabia_region
+					culture = bedouin_arabic
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						NOT = { has_manpower_building_trigger= yes }
+					}
+					add_building = barracks
+				}
+				else = {
+					upgrade_building = {
+						manpower = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					region = arabia_region
+					culture = bedouin_arabic
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						NOT = { has_manpower_building_trigger= yes }
+					}
+					add_building = barracks
+				}
+				else = {
+					upgrade_building = {
+						manpower = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					region = arabia_region
+					culture = bedouin_arabic
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						NOT = { has_manpower_building_trigger= yes }
+					}
+					add_building = barracks
+				}
+				else = {
+					upgrade_building = {
+						manpower = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					region = arabia_region
+					culture = bedouin_arabic
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						NOT = { has_manpower_building_trigger= yes }
+					}
+					add_building = barracks
+				}
+				else = {
+					upgrade_building = {
+						manpower = yes
+					}
+				}
+			}
+	    }
+    }
+
+	CPH_united_arabia = {
+		icon = NEEDICON
+		required_missions = { CPH_unite_arabia_3 }
+		position = 4
+		
+		provinces_to_highlight = {
+            region = arabia_region
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+            arabia_region = {
+				type = all
+				owned_by = ROOT
+				is_core = ROOT
+			}
+		}
+
+	    effect = {
+			add_country_modifier = {
+				name = CPH_united_arabia_modifier
+				duration = -1
+			}
+			horn_of_africa_region = {
+				add_perma_claim = yes
+			}
+	    }
+	}
 }
 
 tm_CPH_slot_3 = {
@@ -86,7 +590,256 @@ tm_CPH_slot_3 = {
 		}
 
 	    effect = {
+			add_prestige = 10
+			add_power_projection = {
+				type = mission_rewards_power_projection
+				amount = 10
+			}
+	    }
+    }
 
+	CPH_unite_mashriq_2 = {
+        icon = NEEDICON
+		required_missions = { CPH_unite_mashriq_1 }
+		
+		provinces_to_highlight = {
+            region = mashriq_region
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 20
+				region = mashriq_region
+			}
+		}
+
+	    effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_5
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_5
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_6
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_4
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_4
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_5
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_3
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_3
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_4
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_2
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_2
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_3
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_1
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_1
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_2
+						duration = -1
+					}
+				}
+				else = {
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_1
+						duration = -1
+					}
+				}
+			}
+			tooltip = {
+				add_country_modifier = {
+					name = CPH_expanding_citizen_rights_1
+					duration = -1
+				}
+			}
+			add_accepted_culture_or_dip_power = {
+				culture = al_iraqiya_arabic
+			}
+	    }
+    }
+
+	CPH_unite_mashriq_3 = {
+        icon = NEEDICON
+		required_missions = { CPH_unite_mashriq_2 }
+		
+		provinces_to_highlight = {
+            region = mashriq_region
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 40
+				region = mashriq_region
+			}
+		}
+
+	    effect = {
+			custom_tooltip = unlock_develop_mashriq_tt
+			if = {
+				limit = {
+					NOT = {
+						any_owned_province = {
+							region = mashriq_region
+							culture = al_iraqiya_arabic
+						}
+					}
+				}
+				custom_tooltip = CPH_5_tax_buildings_tt
+			}
+			random_owned_province = {
+				limit = {
+					region = mashriq_region
+					culture = al_iraqiya_arabic
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						NOT = { has_tax_building_trigger= yes }
+					}
+					add_building = temple
+				}
+				else = {
+					upgrade_building = {
+						tax = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					region = mashriq_region
+					culture = al_iraqiya_arabic
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						NOT = { has_tax_building_trigger= yes }
+					}
+					add_building = temple
+				}
+				else = {
+					upgrade_building = {
+						tax = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					region = mashriq_region
+					culture = al_iraqiya_arabic
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						NOT = { has_tax_building_trigger= yes }
+					}
+					add_building = temple
+				}
+				else = {
+					upgrade_building = {
+						tax = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					region = mashriq_region
+					culture = al_iraqiya_arabic
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						NOT = { has_tax_building_trigger= yes }
+					}
+					add_building = temple
+				}
+				else = {
+					upgrade_building = {
+						tax = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					region = mashriq_region
+					culture = al_iraqiya_arabic
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						NOT = { has_tax_building_trigger= yes }
+					}
+					add_building = temple
+				}
+				else = {
+					upgrade_building = {
+						tax = yes
+					}
+				}
+			}
+	    }
+    }
+
+	CPH_united_mashriq = {
+        icon = NEEDICON
+		required_missions = { CPH_unite_mashriq_3 }
+		position = 4
+		
+		provinces_to_highlight = {
+            region = mashriq_region
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			mashriq_region = {
+				type = all
+				owned_by = ROOT
+				is_core = ROOT
+			}
+		}
+
+	    effect = {
+			add_country_modifier = {
+				name = CPH_united_mashriq_modifier
+				duration = -1
+			}
 	    }
     }
 }
@@ -117,7 +870,244 @@ tm_CPH_slot_4 = {
 		}
 
 	    effect = {
+			add_prestige = 10
+			add_power_projection = {
+				type = mission_rewards_power_projection
+				amount = 10
+			}
+	    }
+    }
 
+	CPH_unite_persia_2 = {
+        icon = NEEDICON
+		required_missions = { CPH_unite_persia_1 }
+		
+		provinces_to_highlight = {
+            region = persia_region
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 20
+				region = persia_region
+			}
+		}
+
+	    effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_5
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_5
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_6
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_4
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_4
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_5
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_3
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_3
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_4
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_2
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_2
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_3
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_1
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_1
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_2
+						duration = -1
+					}
+				}
+				else = {
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_1
+						duration = -1
+					}
+				}
+			}
+			tooltip = {
+				add_country_modifier = {
+					name = CPH_expanding_citizen_rights_1
+					duration = -1
+				}
+			}
+			add_accepted_culture_or_dip_power = {
+				culture = persian
+			}
+	    }
+    }
+
+	CPH_unite_persia_3 = {
+        icon = NEEDICON
+		required_missions = { CPH_unite_persia_2 }
+		
+		provinces_to_highlight = {
+            region = persia_region
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 40
+				region = persia_region
+			}
+		}
+
+	    effect = {
+			custom_tooltip = unlock_develop_persia_tt
+			if = {
+				limit = {
+					NOT = {
+						any_owned_province = {
+							region = persia_region
+							culture = persian
+						}
+					}
+				}
+				custom_tooltip = CPH_5_trade_buildings_tt
+			}
+			random_owned_province = {
+				limit = {
+					region = persia_region
+					culture = persian
+					province_has_center_of_trade_of_level = 1
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						NOT = { has_trade_building_trigger= yes }
+					}
+					add_building = trade_depot
+				}
+				else = {
+					upgrade_building = {
+						trade = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					region = persia_region
+					culture = persian
+					province_has_center_of_trade_of_level = 1
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						NOT = { has_trade_building_trigger= yes }
+					}
+					add_building = trade_depot
+				}
+				else = {
+					upgrade_building = {
+						trade = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					region = persia_region
+					culture = persian
+					province_has_center_of_trade_of_level = 1
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						NOT = { has_trade_building_trigger= yes }
+					}
+					add_building = trade_depot
+				}
+				else = {
+					upgrade_building = {
+						trade = yes
+					}
+				}
+			}
+			random_owned_province = {
+				limit = {
+					region = persia_region
+					culture = persian
+					NOT = { province_has_center_of_trade_of_level = 1 }
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				center_of_trade = 2
+			}
+			random_owned_province = {
+				limit = {
+					region = persia_region
+					culture = persian
+					NOT = { province_has_center_of_trade_of_level = 1 }
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				center_of_trade = 2
+			}
+	    }
+    }
+
+	CPH_united_persia = {
+        icon = NEEDICON
+		required_missions = { CPH_unite_persia_3 }
+		position = 4
+		
+		provinces_to_highlight = {
+            region = persia_region
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+            persia_region = {
+				type = all
+				owned_by = ROOT
+				is_core = ROOT
+			}
+		}
+
+	    effect = {
+			add_country_modifier = {
+				name = CPH_united_persia_modifier
+				duration = -1
+			}
+			khorasan_region = {
+				add_perma_claim = yes
+			}
 	    }
     }
 }
@@ -131,7 +1121,7 @@ tm_CPH_slot_5 = {
 	}
 	has_country_shield = yes
 
-	CPH_unite_cau_and_tur_1 = {
+	CPH_unite_cau_and_ana_1 = {
         icon = NEEDICON
 		required_missions = { }
 		
@@ -154,7 +1144,702 @@ tm_CPH_slot_5 = {
 		}
 
 	    effect = {
-
+			add_prestige = 10
+			add_power_projection = {
+				type = mission_rewards_power_projection
+				amount = 10
+			}
 	    }
     }
+
+	CPH_unite_cau_and_ana_2 = {
+        icon = NEEDICON
+		required_missions = { CPH_unite_cau_and_ana_1 }
+		
+		provinces_to_highlight = {
+            OR = {
+            	region = anatolia_region
+				region = caucasia_region
+			}
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 20
+				OR = {
+					region = anatolia_region
+					region = caucasia_region
+				}
+			}
+		}
+
+	    effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_4
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_4
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_6
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_3
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_3
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_5
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_2
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_2
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_4
+						duration = -1
+					}
+				}
+				else_if = {
+					limit = {
+						has_country_modifier = CPH_expanding_citizen_rights_1
+					}
+					remove_country_modifier = CPH_expanding_citizen_rights_1
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_3
+						duration = -1
+					}
+				}
+				else = {
+					add_country_modifier = {
+						name = CPH_expanding_citizen_rights_2
+						duration = -1
+					}
+				}
+			}
+			tooltip = {
+				add_country_modifier = {
+					name = CPH_expanding_citizen_rights_2
+					duration = -1
+				}
+			}
+			add_accepted_culture_or_dip_power = {
+				culture = turkish
+			}
+			add_accepted_culture_or_dip_power = {
+				culture = azerbaijani
+			}
+	    }
+    }
+
+	CPH_unite_cau_and_ana_3 = {
+        icon = NEEDICON
+		required_missions = { CPH_unite_cau_and_ana_2 }
+		
+		provinces_to_highlight = {
+            OR = {
+            	region = anatolia_region
+				region = caucasia_region
+			}
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 40
+				OR = {
+					region = anatolia_region
+					region = caucasia_region
+				}
+			}
+		}
+
+	    effect = {
+			custom_tooltip = unlock_develop_ana_cau_tt
+			if = {
+				limit = {
+					NOT = {
+						any_owned_province = {
+							OR = {
+								region = anatolia_region
+								region = caucasia_region
+							}
+							OR = {
+								culture = turkish
+								culture = azerbaijani
+							}
+						}
+					}
+				}
+				custom_tooltip = CPH_5_manufactories_tt
+			}
+			random_owned_province = {
+				limit = {
+					OR = {
+						region = anatolia_region
+						region = caucasia_region
+					}
+					OR = {
+						culture = turkish
+						culture = azerbaijani
+					}
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						has_manufactory = yes
+					}
+					if = {
+						limit = {
+							has_building = soldier_households
+						}
+						add_base_production = 1
+						add_base_manpower = 1
+					}
+					else = {
+						add_manufactory = soldier_households
+					}
+				}
+				else = {
+					add_manufactory = yes
+				}
+			}
+			random_owned_province = {
+				limit = {
+					OR = {
+						region = anatolia_region
+						region = caucasia_region
+					}
+					OR = {
+						culture = turkish
+						culture = azerbaijani
+					}
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						has_manufactory = yes
+					}
+					if = {
+						limit = {
+							has_building = soldier_households
+						}
+						add_base_production = 1
+						add_base_manpower = 1
+					}
+					else = {
+						add_manufactory = soldier_households
+					}
+				}
+				else = {
+					add_manufactory = yes
+				}
+			}
+			random_owned_province = {
+				limit = {
+					OR = {
+						region = anatolia_region
+						region = caucasia_region
+					}
+					OR = {
+						culture = turkish
+						culture = azerbaijani
+					}
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						has_manufactory = yes
+					}
+					if = {
+						limit = {
+							has_building = soldier_households
+						}
+						add_base_production = 1
+						add_base_manpower = 1
+					}
+					else = {
+						add_manufactory = soldier_households
+					}
+				}
+				else = {
+					add_manufactory = yes
+				}
+			}
+			random_owned_province = {
+				limit = {
+					OR = {
+						region = anatolia_region
+						region = caucasia_region
+					}
+					OR = {
+						culture = turkish
+						culture = azerbaijani
+					}
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						has_manufactory = yes
+					}
+					if = {
+						limit = {
+							has_building = soldier_households
+						}
+						add_base_production = 1
+						add_base_manpower = 1
+					}
+					else = {
+						add_manufactory = soldier_households
+					}
+				}
+				else = {
+					add_manufactory = yes
+				}
+			}
+			random_owned_province = {
+				limit = {
+					OR = {
+						region = anatolia_region
+						region = caucasia_region
+					}
+					OR = {
+						culture = turkish
+						culture = azerbaijani
+					}
+				}
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				if = {
+					limit = {
+						has_manufactory = yes
+					}
+					if = {
+						limit = {
+							has_building = soldier_households
+						}
+						add_base_production = 1
+						add_base_manpower = 1
+					}
+					else = {
+						add_manufactory = soldier_households
+					}
+				}
+				else = {
+					add_manufactory = yes
+				}
+			}
+	    }
+    }
+
+	CPH_united_cau_ana = {
+		icon = NEEDICON
+		required_missions = { CPH_unite_cau_and_ana_3 }
+		position = 4
+		
+		provinces_to_highlight = {
+			OR = {
+            	region = anatolia_region
+				region = caucasia_region
+			}
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+            anatolia_region = {
+				type = all
+				owned_by = ROOT
+				is_core = ROOT
+			}
+			caucasia_region = {
+				type = all
+				owned_by = ROOT
+				is_core = ROOT
+			}
+		}
+
+	    effect = {
+			add_country_modifier = {
+				name = CPH_united_cau_ana_modifier
+				duration = -1
+			}
+			crimea_region = {
+				add_perma_claim = yes
+			}
+	    }
+	}
+}
+
+tm_slot_2_upgrades = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = CPH
+	}
+	has_country_shield = yes
+
+	CPH_idea_upgrade_1 = {
+		icon = NEEDICON
+		required_missions = { CPH_idea_upgrade_0 }
+		position = 9
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					religion_group = muslim
+					NOT = { owned_by = ROOT }
+				}
+				AND = {
+					owned_by = ROOT
+					NOT = { religion = shiite }
+				}
+			}
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 125
+				religion = shiite
+			}
+		}
+
+	    effect = {
+			set_country_flag = CPH_upgrade_ideas_1
+			custom_tooltip = CPH_upgrade_ideas_2_tt
+			hidden_effect = {
+				swap_free_idea_group = yes
+			}
+	    }
+	}
+}
+
+tm_slot_3_upgrades = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = CPH
+	}
+	has_country_shield = yes
+
+	CPH_idea_upgrade_0 = {
+		icon = NEEDICON
+		required_missions = { }
+		position = 8
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					religion_group = muslim
+					NOT = { owned_by = ROOT }
+				}
+				AND = {
+					owned_by = ROOT
+					NOT = { religion = shiite }
+				}
+			}
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 100
+				religion = shiite
+			}
+		}
+
+	    effect = {
+			add_government_reform = caliphate_reform
+	    }
+	}
+
+	CPH_idea_upgrade_2 = {
+		icon = NEEDICON
+		required_missions = { CPH_idea_upgrade_0 }
+		position = 9
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					religion_group = muslim
+					NOT = { owned_by = ROOT }
+				}
+				AND = {
+					owned_by = ROOT
+					NOT = { religion = shiite }
+				}
+			}
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 150
+				religion = shiite
+			}
+		}
+
+	    effect = {
+			set_country_flag = CPH_upgrade_ideas_3
+			custom_tooltip = CPH_upgrade_ideas_3_tt
+			hidden_effect = {
+				swap_free_idea_group = yes
+			}
+	    }
+	}
+
+	CPH_unified_islam = {
+        icon = NEEDICON
+		required_missions = { CPH_idea_upgrade_1 }
+		required_missions = { CPH_idea_upgrade_2 }
+		required_missions = { CPH_idea_upgrade_3 }
+		position = 10
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					religion_group = muslim
+					NOT = { owned_by = ROOT }
+				}
+				AND = {
+					owned_by = ROOT
+					NOT = { religion = shiite }
+				}
+			}
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 200
+				religion = shiite
+			}
+		}
+
+	    effect = {
+			add_country_modifier = {
+				name = unified_islam
+				duration = -1
+			}
+			set_country_flag = unified_islam
+			set_global_flag = unified_islam_global
+	    }
+    }
+}
+
+tm_slot_4_upgrades = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = CPH
+	}
+	has_country_shield = yes
+
+	CPH_idea_upgrade_3 = {
+		icon = NEEDICON
+		required_missions = { CPH_idea_upgrade_0 }
+		position = 9
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					religion_group = muslim
+					NOT = { owned_by = ROOT }
+				}
+				AND = {
+					owned_by = ROOT
+					NOT = { religion = shiite }
+				}
+			}
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 175
+				religion = shiite
+			}
+		}
+
+	    effect = {
+			set_country_flag = CPH_upgrade_4
+			custom_tooltip = CPH_upgrade_4_tt
+	    }
+	}
+}
+
+tm_slot_5_upgrades = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = CPH
+	}
+	has_country_shield = yes
+
+	CPH_gather_deserts = {
+		icon = NEEDICON
+		required_missions = {  }
+		position = 8
+
+		provinces_to_highlight = {
+			has_terrain = desert 
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 40
+				has_terrain = desert
+			}
+		}
+
+	    effect = {
+			add_country_modifier = {
+				name = CPH_desert_moving
+				duration = -1
+			}
+	    }
+	}
+
+	CPH_dev_deserts = {
+		icon = NEEDICON
+		required_missions = { CPH_gather_deserts }
+		position = 9
+
+		provinces_to_highlight = {
+			has_terrain = desert 
+			owned_by = ROOT
+			NOT = { development = 15 }
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 15
+				has_terrain = desert
+				development = 15
+			}
+		}
+
+	    effect = {
+			if = {
+				limit = {
+					NOT = { has_country_flag = can_dev_desert_cheap }
+				}
+				custom_tooltip = arabia_dev_desert_cheap_mission_tt
+				set_country_flag = can_dev_desert_cheap
+			}
+			else = {
+				random_owned_province = {
+					if ={
+						limit = {
+							has_production_building = yes
+						}
+						upgrade_building = {
+							production = yes
+						}
+					}
+					else = {
+						add_building = workshop
+					}
+				}
+				random_owned_province = {
+					if ={
+						limit = {
+							has_production_building = yes
+						}
+						upgrade_building = {
+							production = yes
+						}
+					}
+					else = {
+						add_building = workshop
+					}
+				}
+				random_owned_province = {
+					if ={
+						limit = {
+							has_production_building = yes
+						}
+						upgrade_building = {
+							production = yes
+						}
+					}
+					else = {
+						add_building = workshop
+					}
+				}
+				random_owned_province = {
+					if ={
+						limit = {
+							has_production_building = yes
+						}
+						upgrade_building = {
+							production = yes
+						}
+					}
+					else = {
+						add_building = workshop
+					}
+				}
+				random_owned_province = {
+					if ={
+						limit = {
+							has_production_building = yes
+						}
+						upgrade_building = {
+							production = yes
+						}
+					}
+					else = {
+						add_building = workshop
+					}
+				}
+			}
+		}
+	}
+
+	CPH_desert_stomachs = {
+		icon = NEEDICON
+		required_missions = { CPH_dev_deserts }
+
+		provinces_to_highlight = {
+			has_terrain = desert 
+			owned_by = ROOT
+			NOT = { development = 20 }
+			OR = {
+				trade_goods = cheese
+				trade_goods = livestock
+			}
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 20
+				development = 20
+				has_terrain = desert
+				trade_goods = cheese
+			}
+		}
+
+	    effect = {
+			add_country_modifier = {
+				name = CPH_desert_stomachs
+				duration = -1
+			}
+	    }
+	}
 }
