@@ -8,6 +8,7 @@ tm_AFG_branch_1 = {
 	potential = {
 		OR = {
 			tag = AFG
+			tag = KUS
 		}
 	}
 
@@ -131,6 +132,7 @@ tm_AFG_branch_2 = {
 	potential = {
 		OR = {
 			tag = AFG
+			tag = KUS
 		}
 	}
 	tm_AFG_branch2_mission_1 = {
@@ -188,20 +190,16 @@ tm_AFG_branch_2 = {
 				}
 				add_permanent_claim = ROOT
 			}	
-			jaipur_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}	
 			himalayan_hills_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
-			}	
+			}
+			katehar_area = {
+				add_perma_claim = yes
+			}
 		}
 	}
 	tm_AFG_branch2_mission_2 = {
@@ -213,7 +211,6 @@ tm_AFG_branch_2 = {
 			OR = {
 				area = sirhind_area 
 				area = upper_doab_area
-				area = jaipur_area
 				area = himalayan_hills_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
@@ -225,10 +222,6 @@ tm_AFG_branch_2 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 			upper_doab_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			jaipur_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
@@ -256,6 +249,7 @@ tm_AFG_branch_3 = {
 	potential = {
 		OR = {
 			tag = AFG
+			tag = KUS
 		}
 	}
 
@@ -455,6 +449,36 @@ tm_AFG_branch_3 = {
 
 		effect = {
 			add_treasury = 250
+			kashgaria_area = {
+				add_perma_claim = yes
+			}
+		}
+	}
+
+	tm_AFG_branch3_mission_4 = {
+		icon = mission_asian_trader
+		required_missions = { tm_AFG_branch3_mission_3 }
+
+		provinces_to_highlight = {
+			area = kashgaria_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			kashgaria_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			add_treasury = 500
+			2124 = {
+				add_center_of_trade_level = 1
+			}
+			739 = {
+				add_center_of_trade_level = 1
+			}
 		}
 	}
 }
@@ -469,6 +493,7 @@ tm_AFG_branch_4 = {
 	potential = {
 		OR = {
 			tag = AFG
+			tag = KUS
 		}
 	}
 	tm_AFG_branch4_mission_1 = {
@@ -604,6 +629,66 @@ tm_AFG_branch_4 = {
 				skill = 3 
 				cost_multiplier = 0.6666
 			}
+			trade_company_persia = {
+				add_perma_claim = yes
+			}
+		}
+	}
+
+	tm_AFG_branch4_mission_3 = {
+		icon = mission_restore_trade_superiority
+		position = 3
+		required_missions = { tm_AFG_branch4_mission_2 }
+
+		provinces_to_highlight = {
+			trade_company_region = trade_company_persia
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {	
+			trade_company_persia = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+			4341 = {
+				has_merchant = ROOT
+			}
+		}
+
+		effect = {
+			4341 = {
+				add_trade_node_income = 75
+			}
+			custom_tooltip = tm_PER_persia_trade_tt
+			persia_region = {
+				add_perma_claim = yes
+			}
+		}
+	}
+
+	tm_AFG_branch4_mission_4 = {
+		icon = mission_persianate_empire
+		position = 3
+		required_missions = { tm_AFG_branch4_mission_3 }
+
+		provinces_to_highlight = {
+			region = persia_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {	
+			persia_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT 
+			}
+		}
+
+		effect = {
+			add_prestige = 10
+			add_legitimacy = 20
+			add_adm_power = 50
+			add_dip_power = 50
+			add_mil_power = 50
 		}
 	}
 }
@@ -618,6 +703,7 @@ tm_AFG_branch_5 = {
 	potential = {
 		OR = {
 			tag = AFG
+			tag = KUS
 		}
 	}
 
@@ -639,5 +725,119 @@ tm_AFG_branch_5 = {
 				tooltip = titanafg.1.tt
 			}
 		}
+	}
+}
+
+tm_AFG_placeholder = {
+	slot = 2
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		tag = AFG
+	}
+
+	tm_AFG_branch2_mission_placeholder = {
+		icon = mission_unkown_mission
+		position = 4
+		required_missions = { tm_AFG_branch2_mission_2 }
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = tm_AFG_unlocked_when_kushan_tt
+				tag = KUS
+			}
+		}
+
+		effect = {
+			
+		}
+	}
+}
+
+tm_KUS_slot_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		tag = KUS
+	}
+}
+
+tm_KUS_slot_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		tag = KUS
+	}
+
+	tm_KUS_branch2_mission_1 = {
+		icon = mission_unkown_mission
+		position = 4
+		required_missions = { tm_AFG_branch2_mission_2 }
+
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			region = hindustan_region
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 20
+				region = hindustan_region
+			}
+		}
+
+		effect = {
+			jangladesh_area = {	add_perma_claim = yes }
+			marwar_area = { add_perma_claim = yes }
+			jaipur_area = { add_perma_claim = yes }
+			mewar_area = { add_perma_claim = yes }
+		}
+	}
+}
+
+tm_KUS_slot_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		tag = KUS
+	}
+}
+
+tm_KUS_slot_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		tag = KUS
+	}
+}
+
+tm_KUS_slot_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		tag = KUS
 	}
 }
