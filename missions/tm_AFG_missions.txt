@@ -142,7 +142,6 @@ tm_AFG_branch_2 = {
 
 		provinces_to_highlight = {
 			OR = {
-				area = kalat_area
 				area = kashmir_area
 				area = lahore_area
 				area = multan_area
@@ -152,10 +151,6 @@ tm_AFG_branch_2 = {
 		}
 
 		trigger = {
-			kalat_area = {
-				type = all
-				owned_by = ROOT
-			}
 			kashmir_area = {
 				type = all
 				owned_by = ROOT
@@ -767,6 +762,41 @@ tm_KUS_slot_1 = {
 	potential = {
 		tag = KUS
 	}
+
+	tm_KUS_branch1_mission_1 = {
+		icon = NEEDICON
+		position = 5
+		required_missions = { tm_KUS_branch2_mission_1 }
+
+		provinces_to_highlight = {
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			OR = {
+				area = kalat_area
+				area = makran_area
+				area = saravan_area
+			}
+		}
+
+		trigger = {
+			kalat_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			makran_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			saravan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			northern_sindh_area = {	add_perma_claim = yes	}
+			sindh_area = { add_perma_claim = yes }
+		}
+	}
 }
 
 tm_KUS_slot_2 = {
@@ -781,7 +811,7 @@ tm_KUS_slot_2 = {
 	}
 
 	tm_KUS_branch2_mission_1 = {
-		icon = mission_unkown_mission
+		icon = NEEDICON
 		position = 4
 		required_missions = { tm_AFG_branch2_mission_2 }
 
@@ -792,7 +822,7 @@ tm_KUS_slot_2 = {
 
 		trigger = {
 			num_of_owned_provinces_with = {
-				value = 20
+				value = 25
 				region = hindusthan_region
 			}
 		}
@@ -802,6 +832,45 @@ tm_KUS_slot_2 = {
 			marwar_area = { add_perma_claim = yes }
 			jaipur_area = { add_perma_claim = yes }
 			mewar_area = { add_perma_claim = yes }
+		}
+	}
+
+	tm_KUS_branch2_mission_2 = {
+		icon = NEEDICON
+		required_missions = { tm_KUS_branch2_mission_1 }
+
+		provinces_to_highlight = {
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			OR = {
+				area = jangladesh_area
+				area = marwar_area
+				area = jaipur_area
+				area = mewar_area
+			}
+		}
+
+		trigger = {
+			jangladesh_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			marwar_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			jaipur_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			mewar_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			set_country_flag = enables_estate_rajput_flag
+			custom_tooltip = tm_enable_rajput_estate_tt
 		}
 	}
 }
@@ -816,6 +885,45 @@ tm_KUS_slot_3 = {
 	potential = {
 		tag = KUS
 	}
+
+	tm_KUS_branch3_mission_1 = {
+		icon = NEEDICON
+		position = 5
+		required_missions = { tm_KUS_branch2_mission_1 }
+
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			OR = {
+				area = katehar_area
+				area = lower_doab_area
+				area = oudh_area
+				area = baisi_rajya_area
+			}
+		}
+
+		trigger = {
+			katehar_area = {
+				type = all
+				owned_by = ROOT
+			}
+			lower_doab_area = {
+				type = all
+				owned_by = ROOT
+			}
+			oudh_area = {
+				type = all
+				owned_by = ROOT
+			}
+			baisi_rajya_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+
+		effect = {
+			
+		}
+	}
 }
 
 tm_KUS_slot_4 = {
@@ -828,9 +936,27 @@ tm_KUS_slot_4 = {
 	potential = {
 		tag = KUS
 	}
+
+	tm_KUS_branch4_mission_1 = {
+		icon = NEEDICON
+		position = 6
+		required_missions = { }
+
+		provinces_to_highlight = {
+
+		}
+
+		trigger = {
+
+		}
+
+		effect = {
+			
+		}
+	}
 }
 
-tm_KUS_slot_5 = {
+tm_KUS_slot_5_not_hindu = {
 	slot = 5
 	generic = no
 	ai = yes
@@ -839,5 +965,194 @@ tm_KUS_slot_5 = {
 
 	potential = {
 		tag = KUS
+		NOT = { has_country_flag = tm_AFG_hindu }
+	}
+
+	tm_KUS_branch5_not_hindu_mission_1 = {
+		icon = NEEDICON
+		position = 2
+		required_missions = { tm_AFG_branch5_mission_1 }
+
+		provinces_to_highlight = {
+		}
+
+		trigger = {
+		}
+
+		effect = {
+		}
+	}
+
+	tm_KUS_branch5_not_hindu_mission_2 = {
+		icon = NEEDICON
+		required_missions = { tm_KUS_branch5_not_hindu_mission_1 }
+
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+		
+		}
+
+		effect = {
+			
+		}
+	}
+
+	tm_KUS_branch5_not_hindu_mission_3 = {
+		icon = NEEDICON
+		position = 4
+		required_missions = { tm_KUS_branch5_not_hindu_mission_2 }
+
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+			religious_unity = 0.95
+		}
+
+		effect = {
+			
+		}
+	}
+}
+
+tm_KUS_slot_5_hindu = {
+	slot = 5
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		tag = KUS
+		has_country_flag = tm_AFG_hindu
+	}
+
+	tm_KUS_branch5_hindu_mission_1 = {
+		icon = NEEDICON
+		position = 2
+		required_missions = { tm_AFG_branch5_mission_1 }
+
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+		
+		}
+
+		effect = {
+		}
+	}
+
+	tm_KUS_branch5_hindu_mission_2 = {
+		icon = NEEDICON
+		required_missions = { tm_KUS_branch5_hindu_mission_1 }
+
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+		
+		}
+
+		effect = {
+			
+		}
+	}
+
+	tm_KUS_branch5_hindu_mission_3 = {
+		icon = NEEDICON
+		position = 4
+		required_missions = { tm_KUS_branch5_hindu_mission_2 }
+
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			OR = {
+				province_id = 541
+				province_id = 545
+				province_id = 2225
+				province_id = 557
+				province_id = 2399
+				province_id = 4399
+				province_id = 609
+				province_id = 2373
+				province_id = 2690
+				religion = buddhism
+				religion = vajrayana
+				religion = mahayana
+			}
+		}
+
+		trigger = {
+			OR = {
+				num_of_owned_provinces_with = {
+					value = 3
+					OR = {
+						religion = buddhism
+						religion = vajrayana
+						religion = mahayana
+					}
+				}
+				custom_tooltip = {
+					tooltip = has_2_buddha_hindu_gps_tt
+					calc_true_if = {
+						all_province = {
+							owned_by = ROOT
+							OR = {
+								province_id = 541
+								province_id = 545
+								province_id = 2225
+								province_id = 557
+								province_id = 2399
+								province_id = 4399
+								province_id = 609
+								province_id = 2373
+								province_id = 2690
+							}
+						}
+						amount = 2
+					}
+				}
+			}
+		}
+
+		effect = {
+			set_country_flag = tm_KUS_can_use_buddha
+			custom_tooltip = tm_unlock_budha_deity_tt
+		}
+	}
+
+	tm_KUS_branch5_hindu_mission_4 = {
+		icon = NEEDICON
+		required_missions = { tm_KUS_branch5_hindu_mission_3 }
+
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = KUS_25_year_buddha_ruler_tt
+				has_personal_deity = buddha
+				months_of_ruling = 300
+			}
+			custom_trigger_tooltip = {
+				tooltip = tm_KUS_buddhism_tolerance
+				OR = {
+					buddhism = 0
+					vajrayana = 0
+					mahayana = 0
+				}
+			}
+		}
+
+		effect = {
+			custom_tooltip = tm_KUS_can_use_buddha_monuments
+		}
 	}
 }

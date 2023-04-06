@@ -2513,7 +2513,12 @@ buddha_statues = {
 
 	#can we build it?
 	build_trigger = {
-		province_is_buddhist_or_accepts_buddhism = yes
+		OR = {
+			province_is_buddhist_or_accepts_buddhism = yes
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
+			}
+		}
 	}
 
 	#what to do when it's built
@@ -2530,12 +2535,22 @@ buddha_statues = {
 
 	#can our country use it?
 	can_use_modifiers_trigger = {
-		province_is_buddhist_or_accepts_buddhism = yes
+		OR = {
+			province_is_buddhist_or_accepts_buddhism = yes
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_4
+			}
+		}
 	}
 
 	#can our country upgrade it?
 	can_upgrade_trigger = {
-		province_is_buddhist_or_accepts_buddhism = yes
+		OR = {
+			province_is_buddhist_or_accepts_buddhism = yes
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
+			}
+		}
 	}
 
 	#can our country keep it or is it destroyed when we get hold of it?
@@ -3121,36 +3136,26 @@ angkor_wat = {
 
 	#can we build it?
 	build_trigger = {
-		OR = {		
+		has_owner_religion = yes
+		OR = {
+			religion = buddhism
+			religion = vajrayana
+			religion = mahayana
+			religion_group = dharmic
 			AND = {
-				religion = buddhism
-				has_owner_religion = yes
-			}
-			AND = {
-				religion = vajrayana
-				has_owner_religion = yes
-			}
-			AND= {
-				religion = mahayana
-				has_owner_religion = yes
-			}
-			AND= {
-				religion_group = dharmic
-				has_owner_religion = yes
-			}
-			AND = {
-				religion = hinduism
-				has_owner_religion = yes
+				religion = hinduism		
 				owner = {
 					has_personal_deity = buddha	
 				}						
 			}
 			AND = {
 				religion = shamanism
-				has_owner_religion = yes
 				owner = {
 					has_unlocked_cult = buddhism_cult	
 				}				
+			}
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
 			}
 		}
 	}
@@ -3167,72 +3172,52 @@ angkor_wat = {
 
 	#can our country use it?
 	can_use_modifiers_trigger = {
+		has_owner_religion = yes
 		OR = {		
-			AND = {
-				religion = buddhism
-				has_owner_religion = yes
-			}
-			AND = {
-				religion = vajrayana
-				has_owner_religion = yes
-			}
-			AND= {
-				religion = mahayana
-				has_owner_religion = yes
-			}
-			AND= {
-				religion_group = dharmic
-				has_owner_religion = yes
-			}
+			religion = buddhism
+			religion = vajrayana
+			religion = mahayana
+			religion_group = dharmic
 			AND = {
 				religion = hinduism
-				has_owner_religion = yes
 				owner = {
 					has_personal_deity = buddha	
 				}						
 			}
 			AND = {
 				religion = shamanism
-				has_owner_religion = yes
 				owner = {
 					has_unlocked_cult = buddhism_cult	
 				}				
+			}
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_4
 			}
 		}
 	}
 
 	#can our country upgrade it?
 	can_upgrade_trigger = {
+		has_owner_religion = yes
 		OR = {		
-			AND = {
-				religion = buddhism
-				has_owner_religion = yes
-			}
-			AND = {
-				religion = vajrayana
-				has_owner_religion = yes
-			}
-			AND= {
-				religion = mahayana
-				has_owner_religion = yes
-			}
-			AND= {
-				religion_group = dharmic
-				has_owner_religion = yes
-			}
+			religion = buddhism
+			religion = vajrayana
+			religion = mahayana
+			religion_group = dharmic
 			AND = {
 				religion = hinduism
-				has_owner_religion = yes
 				owner = {
 					has_personal_deity = buddha	
 				}						
 			}
 			AND = {
 				religion = shamanism
-				has_owner_religion = yes
 				owner = {
 					has_unlocked_cult = buddhism_cult	
 				}				
+			}
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
 			}
 		}
 	}
@@ -5534,7 +5519,12 @@ shwedagon_pagoda = {
 
 	#can we build it?
 	build_trigger = {
-		province_is_buddhist_or_accepts_buddhism = yes
+		OR = {
+			province_is_buddhist_or_accepts_buddhism = yes
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
+			}
+		}
 	}
 
 	#what to do when it's built
@@ -5549,12 +5539,22 @@ shwedagon_pagoda = {
 
 	#can our country use it?
 	can_use_modifiers_trigger = {
-		province_is_buddhist_or_accepts_buddhism = yes
+		OR = {
+			province_is_buddhist_or_accepts_buddhism = yes
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_4
+			}
+		}
 	}
 
 	#can our country upgrade it?
 	can_upgrade_trigger = {
-		province_is_buddhist_or_accepts_buddhism = yes
+		OR = {
+			province_is_buddhist_or_accepts_buddhism = yes
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
+			}
+		}
 	}
 
 	#can our country keep it or is it destroyed when we get hold of it?
@@ -6835,7 +6835,12 @@ bagan_temples = {
 
 	#can we build it?
 	build_trigger = {
-		province_is_buddhist_or_accepts_buddhism = yes
+		OR = {
+			province_is_buddhist_or_accepts_buddhism = yes
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
+			}
+		}
 	}
 
 	#what to do when it's built
@@ -6850,12 +6855,22 @@ bagan_temples = {
 
 	#can our country use it?
 	can_use_modifiers_trigger = {
-		province_is_buddhist_or_accepts_buddhism = yes
+		OR = {
+			province_is_buddhist_or_accepts_buddhism = yes
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_4
+			}
+		}
 	}
 
 	#can our country upgrade it?
 	can_upgrade_trigger = {
-		province_is_buddhist_or_accepts_buddhism = yes
+		OR = {
+			province_is_buddhist_or_accepts_buddhism = yes
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
+			}
+		}
 	}
 
 	#can our country keep it or is it destroyed when we get hold of it?
@@ -7559,7 +7574,12 @@ jokhang_temple = {
 
 	#can we build it?
 	build_trigger = {
-		province_is_buddhist_or_accepts_buddhism = yes
+		OR = {
+			province_is_buddhist_or_accepts_buddhism = yes
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
+			}
+		}
 	}
 
 	#what to do when it's built
@@ -7574,12 +7594,22 @@ jokhang_temple = {
 
 	#can our country use it?
 	can_use_modifiers_trigger = {
-		province_is_buddhist_or_accepts_buddhism = yes 
+		OR = {
+			province_is_buddhist_or_accepts_buddhism = yes
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_4
+			}
+		}
 	}
 
 	#can our country upgrade it?
 	can_upgrade_trigger = {
-		province_is_buddhist_or_accepts_buddhism = yes 
+		OR = {
+			province_is_buddhist_or_accepts_buddhism = yes
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
+			}
+		}
 	}
 
 	#can our country keep it or is it destroyed when we get hold of it?
@@ -7737,19 +7767,11 @@ borobudur_temple = {
 
 	#can we build it?
 	build_trigger = {
+		has_owner_religion = yes
 		OR = {
-			AND = {
-				religion = buddhism
-				has_owner_religion = yes
-			}
-			AND = {
-				religion = vajrayana
-				has_owner_religion = yes
-			}
-			AND= {
-				religion = mahayana
-				has_owner_religion = yes
-			}
+			religion = buddhism
+			religion = vajrayana
+			religion = mahayana
 			AND = {
 				culture_group = malay
 				OR = {
@@ -7759,19 +7781,20 @@ borobudur_temple = {
 			}
 			AND = {
 				religion = hinduism
-				has_owner_religion = yes
 				owner = {
 					has_personal_deity = buddha	
 				}						
 			}
 			AND = {
 				religion = shamanism
-				has_owner_religion = yes
 				owner = {
 					has_unlocked_cult = buddhism_cult	
 				}				
 			}
-		}		
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
+			}
+		}
 	}
 
 	#what to do when it's built
@@ -7786,19 +7809,11 @@ borobudur_temple = {
 
 	#can our country use it?
 	can_use_modifiers_trigger = {
+		has_owner_religion = yes
 		OR = {
-			AND = {
-				religion = buddhism
-				has_owner_religion = yes
-			}
-			AND = {
-				religion = vajrayana
-				has_owner_religion = yes
-			}
-			AND= {
-				religion = mahayana
-				has_owner_religion = yes
-			}
+			religion = buddhism
+			religion = vajrayana
+			religion = mahayana
 			AND = {
 				culture_group = malay
 				OR = {
@@ -7808,36 +7823,29 @@ borobudur_temple = {
 			}
 			AND = {
 				religion = hinduism
-				has_owner_religion = yes
 				owner = {
 					has_personal_deity = buddha	
 				}						
 			}
 			AND = {
 				religion = shamanism
-				has_owner_religion = yes
 				owner = {
 					has_unlocked_cult = buddhism_cult	
 				}				
+			}
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_4
 			}
 		}
 	}
 
 	#can our country upgrade it?
 	can_upgrade_trigger = {
+		has_owner_religion = yes
 		OR = {
-			AND = {
-				religion = buddhism
-				has_owner_religion = yes
-			}
-			AND = {
-				religion = vajrayana
-				has_owner_religion = yes
-			}
-			AND= {
-				religion = mahayana
-				has_owner_religion = yes
-			}
+			religion = buddhism
+			religion = vajrayana
+			religion = mahayana
 			AND = {
 				culture_group = malay
 				OR = {
@@ -7847,17 +7855,18 @@ borobudur_temple = {
 			}
 			AND = {
 				religion = hinduism
-				has_owner_religion = yes
 				owner = {
 					has_personal_deity = buddha	
 				}						
 			}
 			AND = {
 				religion = shamanism
-				has_owner_religion = yes
 				owner = {
 					has_unlocked_cult = buddhism_cult	
 				}				
+			}
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
 			}
 		}
 	}
@@ -11916,35 +11925,28 @@ imperial_city_hue = {
 
 	#can we build it?
 	build_trigger = {
+		has_owner_religion = yes 
 		OR = {
-			AND = { 
-				religion = buddhism
-				has_owner_religion = yes 
-			}
-			AND = { 
-				religion = vajrayana
-				has_owner_religion = yes 
-			}
-			AND = { 
-				religion = mahayana
-				has_owner_religion = yes 
-			}
+			religion = buddhism
+			religion = vajrayana
+			religion = mahayana
 			owner = {
 				religion = confucianism
 			}
 			AND = {
 				religion = hinduism
-				has_owner_religion = yes
 				owner = {
 					has_personal_deity = buddha	
 				}						
 			}
 			AND = {
 				religion = shamanism
-				has_owner_religion = yes
 				owner = {
 					has_unlocked_cult = buddhism_cult	
 				}				
+			}
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
 			}
 		}
 	}
@@ -11961,70 +11963,56 @@ imperial_city_hue = {
 
 	#can our country use it?
 	can_use_modifiers_trigger = {
+		has_owner_religion = yes 
 		OR = {
-			AND = { 
-				religion = buddhism
-				has_owner_religion = yes 
-			}
-			AND = { 
-				religion = vajrayana
-				has_owner_religion = yes 
-			}
-			AND = { 
-				religion = mahayana
-				has_owner_religion = yes 
-			}
+			religion = buddhism
+			religion = vajrayana
+			religion = mahayana
 			owner = {
 				religion = confucianism
 			}
 			AND = {
 				religion = hinduism
-				has_owner_religion = yes
 				owner = {
 					has_personal_deity = buddha	
 				}						
 			}
 			AND = {
 				religion = shamanism
-				has_owner_religion = yes
 				owner = {
 					has_unlocked_cult = buddhism_cult	
 				}				
+			}
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_4
 			}
 		}
 	}
 
 	#can our country upgrade it?
 	can_upgrade_trigger = {
+		has_owner_religion = yes 
 		OR = {
-			AND = { 
-				religion = buddhism
-				has_owner_religion = yes 
-			}
-			AND = { 
-				religion = vajrayana
-				has_owner_religion = yes 
-			}
-			AND = { 
-				religion = mahayana
-				has_owner_religion = yes 
-			}
+			religion = buddhism
+			religion = vajrayana
+			religion = mahayana
 			owner = {
 				religion = confucianism
 			}
 			AND = {
 				religion = hinduism
-				has_owner_religion = yes
 				owner = {
 					has_personal_deity = buddha	
 				}						
 			}
 			AND = {
 				religion = shamanism
-				has_owner_religion = yes
 				owner = {
 					has_unlocked_cult = buddhism_cult	
 				}				
+			}
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
 			}
 		}
 	}
@@ -13668,36 +13656,26 @@ erdene_zuu = {
 	type = monument
 
 	build_trigger = {
+		has_owner_religion = yes
 		OR = {		
-			AND = {
-				religion = buddhism
-				has_owner_religion = yes
-			}
-			AND = {
-				religion = vajrayana
-				has_owner_religion = yes
-			}
-			AND= {
-				religion = mahayana
-				has_owner_religion = yes
-			}
-			AND= {
-				religion_group = pagan
-				has_owner_religion = yes
-			}
+			religion = buddhism
+			religion = vajrayana
+			religion = mahayana
+			religion_group = pagan
 			AND = {
 				religion = hinduism
-				has_owner_religion = yes
 				owner = {
 					has_personal_deity = buddha	
 				}						
 			}
 			AND = {
 				religion = shamanism
-				has_owner_religion = yes
 				owner = {
 					has_unlocked_cult = buddhism_cult	
 				}				
+			}
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
 			}
 		}
 	}
@@ -13709,71 +13687,51 @@ erdene_zuu = {
 	}
 
 	can_use_modifiers_trigger = {
+		has_owner_religion = yes
 		OR = {		
-			AND = {
-				religion = buddhism
-				has_owner_religion = yes
-			}
-			AND = {
-				religion = vajrayana
-				has_owner_religion = yes
-			}
-			AND= {
-				religion = mahayana
-				has_owner_religion = yes
-			}
-			AND= {
-				religion_group = pagan
-				has_owner_religion = yes
-			}
+			religion = buddhism
+			religion = vajrayana
+			religion = mahayana
+			religion_group = pagan
 			AND = {
 				religion = hinduism
-				has_owner_religion = yes
 				owner = {
 					has_personal_deity = buddha	
 				}						
 			}
 			AND = {
 				religion = shamanism
-				has_owner_religion = yes
 				owner = {
 					has_unlocked_cult = buddhism_cult	
 				}				
+			}
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_4
 			}
 		}
 	}
 
 	can_upgrade_trigger = {
+		has_owner_religion = yes
 		OR = {		
-			AND = {
-				religion = buddhism
-				has_owner_religion = yes
-			}
-			AND = {
-				religion = vajrayana
-				has_owner_religion = yes
-			}
-			AND= {
-				religion = mahayana
-				has_owner_religion = yes
-			}
-			AND= {
-				religion_group = pagan
-				has_owner_religion = yes
-			}
+			religion = buddhism
+			religion = vajrayana
+			religion = mahayana
+			religion_group = pagan
 			AND = {
 				religion = hinduism
-				has_owner_religion = yes
 				owner = {
 					has_personal_deity = buddha	
 				}						
 			}
 			AND = {
 				religion = shamanism
-				has_owner_religion = yes
 				owner = {
 					has_unlocked_cult = buddhism_cult	
 				}				
+			}
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
 			}
 		}
 	}
@@ -17186,7 +17144,12 @@ swayambhunath = {
 	type = monument
 
 	build_trigger = {
-		province_is_buddhist_or_accepts_buddhism = yes
+		OR = {
+			province_is_buddhist_or_accepts_buddhism = yes
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
+			}
+		}
 	}
 
 	on_built = {
@@ -17196,11 +17159,21 @@ swayambhunath = {
 	}
 
 	can_use_modifiers_trigger = {
-		province_is_buddhist_or_accepts_buddhism = yes
+		OR = {
+			province_is_buddhist_or_accepts_buddhism = yes
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_4
+			}
+		}
 	}
 
 	can_upgrade_trigger = {
-		province_is_buddhist_or_accepts_buddhism = yes
+		OR = {
+			province_is_buddhist_or_accepts_buddhism = yes
+			hidden_trigger = {
+				mission_completed = tm_KUS_branch5_hindu_mission_3
+			}
+		}
 	}
 
 	keep_trigger = {
