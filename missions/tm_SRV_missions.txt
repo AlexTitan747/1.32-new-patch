@@ -619,6 +619,7 @@ tm_SRV_slot_5 = {
 			
 		}
 		trigger = {
+			custom_trigger_tooltip = tm_SRV_requirements_cossacks
 			always = no
 			accepted_culture = astrakhani
 			accepted_culture = dagestani
@@ -649,6 +650,7 @@ tm_SRV_slot_5 = {
 
 		}
 		trigger = {
+			custom_trigger_tooltip = tm_SRV_requirements_babylon
 			always = no
 		}
 		effect = {
@@ -1609,6 +1611,92 @@ tm_SRV_slot_1_cossacks = {
 	}
 	has_country_shield = yes
 	
+	tm_SRV_cultural_integration = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_conquer_the_steppes }
+		position = 11
+		
+		provinces_to_highlight = {
+			OR = {
+				region = anatolia_region
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			stability = 1
+			accepted_culture = dagestani
+			accepted_culture = circassian
+			accepted_culture = astrakhani
+			OR = {
+				accepted_culture = crimean
+				accepted_culture = mishary
+				accepted_culture = nogaybak
+				accepted_culture = kazani
+			}
+		}
+		effect = {
+			prestige = 15
+			add_country_modifier = {
+				name = tm_SRV_cossack_integration
+				duration = 3650
+			}
+			define_advisor = {
+				type = master_of_assimilation
+				skill = 3 
+				cost_multiplier = 0.5
+			}
+		}
+	}
+	tm_SRV_cossack_cultural_dominance = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_cultural_integration }
+		position = 11
+		
+		provinces_to_highlight = {
+			OR = {
+				region = anatolia_region
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			stability = 1
+			OR = {
+				primary_culture = dagestani
+				primary_culture = circassian
+				primary_culture = astrakhani
+				primary_culture = crimean
+				primary_culture = mishary
+				primary_culture = nogaybak
+				primary_culture = kazani
+			}
+			num_of_owned_provinces_with = {
+				value = 20
+				total_development = 10
+				OR = {
+					culture = dagestani
+					culture = circassian
+				}
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					421 = {
+						NOT = {
+							culture = dagestani
+						}
+					}
+				}
+				421 = {
+					change_culture = dagestani
+				}
+			}
+		}
+	}
 }
 
 tm_SRV_slot_2_cossacks = {
@@ -1639,9 +1727,92 @@ tm_SRV_slot_2_cossacks = {
 			NOT = {
 				mission_completed = tm_SRV_towards_the_old_ways
 			}
+			custom_trigger_tooltip = taking_cossack_path_warning
 		}
 		effect = {
 			add_prestige = 15
+		}
+	}
+
+	tm_SRV_conquer_the_steppes = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_embrace_cossack_traditions }
+		position = 10
+		
+		provinces_to_highlight = {
+			OR = {
+				region = anatolia_region
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 40
+				region = anatolia_region
+			}
+			NOT = {
+				OR = {
+					mission_completed = tm_SRV_towards_the_old_ways
+					mission_completed = tm_SRV_embrace_cossack_traditions
+				}
+			}
+		}
+		effect = {
+			thrace_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = tm_CAU_integrate_anatolia
+				duration = 1825
+			}
+			add_accepted_culture = turkish
+		}
+	}
+
+	tm_SRV_further_expansion = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_conquer_the_steppes }
+		position = 11
+		
+		provinces_to_highlight = {
+			OR = {
+				region = anatolia_region
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 40
+				region = anatolia_region
+			}
+			NOT = {
+				OR = {
+					mission_completed = tm_SRV_towards_the_old_ways
+					mission_completed = tm_SRV_embrace_cossack_traditions
+				}
+			}
+		}
+		effect = {
+			thrace_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = tm_CAU_integrate_anatolia
+				duration = 1825
+			}
+			add_accepted_culture = turkish
 		}
 	}
 }
@@ -1657,6 +1828,46 @@ tm_SRV_slot_3_cossacks = {
 	}
 	has_country_shield = yes
 	
+	tm_SRV_tame_the_estates = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_conquer_the_steppes }
+		position = 11
+		
+		provinces_to_highlight = {
+			OR = {
+				region = anatolia_region
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 40
+				region = anatolia_region
+			}
+			NOT = {
+				OR = {
+					mission_completed = tm_SRV_towards_the_old_ways
+					mission_completed = tm_SRV_embrace_cossack_traditions
+				}
+			}
+		}
+		effect = {
+			thrace_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = tm_CAU_integrate_anatolia
+				duration = 1825
+			}
+			add_accepted_culture = turkish
+		}
+	}
 }
 
 tm_SRV_slot_4_cossacks = {
@@ -1670,6 +1881,47 @@ tm_SRV_slot_4_cossacks = {
 	}
 	has_country_shield = yes
 	
+	tm_SRV_control_steppe_trade = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_embrace_cossack_traditions }
+		position = 10
+		
+		provinces_to_highlight = {
+			OR = {
+				region = anatolia_region
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 40
+				region = anatolia_region
+			}
+			NOT = {
+				OR = {
+					mission_completed = tm_SRV_towards_the_old_ways
+					mission_completed = tm_SRV_embrace_cossack_traditions
+				}
+			}
+		}
+		effect = {
+			thrace_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = tm_CAU_integrate_anatolia
+				duration = 1825
+			}
+			add_accepted_culture = turkish
+		}
+	}
+
 }
 
 #babylon path
