@@ -26,6 +26,10 @@ country_event = {
 		}
         change_ruling_family_religions_effect = { religion = shiite }
         custom_tooltip = srv_titansrv_1_a_tt
+		add_country_modifier = {
+			name = "tm_AFG_religious_conversions"
+			duration = 3650
+		}
 	}
 
 	option = {
@@ -47,6 +51,10 @@ country_event = {
 		}
         change_ruling_family_religions_effect = { religion = zoroastrian }
         custom_tooltip = srv_titansrv_1_b_tt
+		add_country_modifier = {
+			name = "tm_AFG_religious_conversions"
+			duration = 3650
+		}
 	}
 
     option = {
@@ -65,15 +73,57 @@ country_event = {
             religion = coptic
 		}
         change_ruling_family_religions_effect = { religion = coptic }
+		add_country_modifier = {
+			name = "tm_AFG_religious_conversions"
+			duration = 3650
+		}
         
         if = {
             limit = {
                 owns = 419
             }
-            add_great_project_tier = {
-                type = etchimiadzin_cathedral
-                tier = 3
-            }
+			419 = {
+				if = {
+					limit = {
+						has_great_project = {
+							type = etchimiadzin_cathedral
+							tier = 3
+						}
+					}
+					add_stability = 1
+				}
+				else_if = {
+					limit = {
+						has_great_project = {
+							type = etchimiadzin_cathedral
+							tier = 2
+						}
+					}
+					add_great_project_tier = {
+						type = etchimiadzin_cathedral
+						tier = 1
+					}
+				}
+				else_if = {
+					limit = {
+						has_great_project = {
+							type = etchimiadzin_cathedral
+							tier = 1
+						}
+					}
+					add_great_project_tier = {
+						type = etchimiadzin_cathedral
+						tier = 2
+					}
+				}
+				else = {
+					add_great_project_tier = {
+						type = etchimiadzin_cathedral
+						tier = 3
+					}
+				}
+			}
+
         }
 	}
 }
