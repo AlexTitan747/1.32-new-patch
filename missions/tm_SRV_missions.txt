@@ -1334,26 +1334,41 @@ tm_SRV_slot_4_CAU = {
 				name = tm_CAU_coreing_the_steppes
 				duration = 3650
 			}
-			#east_dniepr_area = {
-			#	type = all
-			#	country_or_non_sovereign_subject_holds = ROOT
-			#}
-			#sloboda_ukraine_area = {
-			#	type = all
-			#	country_or_non_sovereign_subject_holds = ROOT
-			#}
-			#tambov_area = {
-			#	type = all
-			#	country_or_non_sovereign_subject_holds = ROOT
-			#}
-			#saratov_area = {
-			#	type = all
-			#	country_or_non_sovereign_subject_holds = ROOT
-			#}
-			#lower_yik_area = {
-			#	type = all
-			#	country_or_non_sovereign_subject_holds = ROOT
-			#}
+			east_dniepr_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			sloboda_ukraine_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			tambov_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			saratov_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			lower_yik_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 
@@ -1396,7 +1411,7 @@ tm_SRV_slot_4_CAU = {
 		effect = {
 			add_accepted_culture = astrakhani
 			add_accepted_culture = crimean
-			add_accepted_culture = mishar
+			add_accepted_culture = mishary
 			add_adm_power = 100
 			every_owned_province = {
 				limit = {
@@ -1707,6 +1722,18 @@ tm_SRV_slot_1_cossacks = {
 				}
 				change_culture = tcircassian
 			}
+			if = {
+				limit = {
+					primary_culture = circassian
+				}
+				change_primary_culture = tcircassian
+			}
+			if = {
+				limit = {
+					primary_culture = dagestani
+				}
+				change_primary_culture = tdagestani
+			}
 		}
 	}
 }
@@ -1743,6 +1770,13 @@ tm_SRV_slot_2_cossacks = {
 		}
 		effect = {
 			add_prestige = 15
+			crimea_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 
@@ -1753,7 +1787,7 @@ tm_SRV_slot_2_cossacks = {
 		
 		provinces_to_highlight = {
 			OR = {
-				region = anatolia_region
+				region = crimea_region
 			}
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
@@ -1762,28 +1796,74 @@ tm_SRV_slot_2_cossacks = {
 		trigger = {
 			num_of_provinces_owned_or_owned_by_subjects_with = {
 				value = 40
-				region = anatolia_region
+				region = crimea_region
 			}
-			NOT = {
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
-			}
+			
 		}
 		effect = {
-			thrace_area = {
+			east_dniepr_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			add_country_modifier = {
-				name = tm_CAU_integrate_anatolia
-				duration = 1825
+			sloboda_ukraine_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
-			add_accepted_culture = turkish
+			chernigov_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			tambov_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			nogai_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			bashkiria_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			saratov_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			lower_yik_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			lower_yik_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 
@@ -1794,7 +1874,7 @@ tm_SRV_slot_2_cossacks = {
 		
 		provinces_to_highlight = {
 			OR = {
-				region = anatolia_region
+				region = crimea_region
 			}
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
@@ -1803,13 +1883,7 @@ tm_SRV_slot_2_cossacks = {
 		trigger = {
 			num_of_provinces_owned_or_owned_by_subjects_with = {
 				value = 40
-				region = anatolia_region
-			}
-			NOT = {
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
+				region = crimea_region
 			}
 		}
 		effect = {
@@ -1866,18 +1940,8 @@ tm_SRV_slot_3_cossacks = {
 			}
 		}
 		effect = {
-			thrace_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			add_country_modifier = {
-				name = tm_CAU_integrate_anatolia
-				duration = 1825
-			}
-			add_accepted_culture = turkish
+			custom_tooltip = tt_cossacks_for_SRV
+			set_country_flag = cossacks_for_SRV
 		}
 	}
 }
