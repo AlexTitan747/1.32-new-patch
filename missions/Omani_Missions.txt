@@ -27,29 +27,42 @@ oman_slot_1 = {
 
 		trigger = {
 				if = {
+				limit = {
+					FRS = {
+						exists = yes
+						is_subject = NO
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = tm_OMA_humiliation_TT
+					OR = {
+						has_country_flag = humiliated_rival
+						has_country_flag = tm_show_strength
+					}
+				}
+				is_rival = FRS
+				}
+				else_if = {
 					limit = {
-						OR = {
-							exists = FRS
-							NOT = {
-								FRS = {
-								is_subject_of = ROOT
-								}
-							}
-							}
+						FRS = {
+							is_subject = yes
 						}
-					hidden_trigger = {
+					}
+					FRS = {
+						is_subject_of = ROOT
+					}
+				}
+				else_if = {
+					limit = { 
+						NOT = {
+							exists = FRS
+						}
+					}
+					custom_trigger_tooltip = {
+						tooltip = tm_OMA_humiliation_TT
 						OR = {
 							has_country_flag = humiliated_rival
 							has_country_flag = tm_show_strength
-						}
-					}
-					is_rival = FRS
-					else = {
-						hidden_trigger = {
-							OR = {
-								has_country_flag = humiliated_rival
-								has_country_flag = tm_show_strength
-							}
 						}
 					}
 				}
