@@ -19,7 +19,6 @@ tm_SRV_slot_1 = {
 		provinces_to_highlight = {
 			OR = {
 				area = iraq_e_ajam_area
-				province_id = 414
 			}
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
@@ -28,9 +27,6 @@ tm_SRV_slot_1 = {
 		trigger = {
 			iraq_e_ajam_area = {
 				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			414 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
@@ -1920,28 +1916,32 @@ tm_SRV_slot_3_cossacks = {
 		position = 11
 		
 		provinces_to_highlight = {
-			OR = {
-				region = anatolia_region
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
 		}
 		trigger = {
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 40
-				region = anatolia_region
+			num_of_estate_privileges = {
+				estate = estate_nobles 
+				value = 6
 			}
-			NOT = {
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
+			estate_loyalty = { 
+				estate = estate_nobles 
+				loyalty = 65
+			}
+			estate_loyalty = { 
+				estate = estate_church
+				loyalty = 65
+			}
+			estate_loyalty = { 
+				estate = estate_burghers 
+				loyalty = 65
 			}
 		}
 		effect = {
 			custom_tooltip = tt_cossacks_for_SRV
 			set_country_flag = cossacks_for_SRV
+			add_estate_loyalty = { 
+				estate = estate_cossacks 
+				loyalty = 60 
+			}
 		}
 	}
 }
