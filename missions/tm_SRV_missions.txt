@@ -699,73 +699,6 @@ tm_SRV_slot_5 = {
 		}
 	}
 
-	tm_SRV_caucasian_trade = {
-		icon = mission_dominate_persian_gulf
-		required_missions = {  }
-		position = 3
-		
-		provinces_to_highlight = {
-			OR = {
-				area = shirvan_area
-				area = tabriz_area
-				area = armenia_area
-				area = samtskhe_area
-				area = kartli_kakheti_area
-				area = imereti_area
-				area = erzurum_area
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			shirvan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			tabriz_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			armenia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			samtskhe_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			kartli_kakheti_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			imereti_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			erzurum_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		effect = {
-			add_treasury = 500
-			dagestan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			circassia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-	}
 }
 
 #CAU
@@ -785,33 +718,11 @@ tm_SRV_slot_1_CAU = {
 		}
 	}
 	has_country_shield = yes
-	
-	tm_SRV_stabilise_transcaucasia = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = {  }
-		position = 5
-		
-		provinces_to_highlight = {
-
-		}
-		trigger = {
-			stability = 2
-			total_development = 500
-			legitimacy_equivalent = 95
-			prestige = 50
-		}
-		effect = {
-			add_country_modifier = {
-				name = tm_CAU_consolidate_the_empire
-				duration = 3650
-			}
-		}
-	}
 
 	tm_SRV_build_workshops = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_stabilise_transcaucasia }
-		position = 6
+		position = 5
 		
 		provinces_to_highlight = {
 			region = caucasia_region
@@ -834,7 +745,7 @@ tm_SRV_slot_1_CAU = {
 	tm_SRV_develop_luxury_goods = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_build_workshops }
-		position = 7
+		position = 6
 		
 		provinces_to_highlight = {
 
@@ -872,7 +783,7 @@ tm_SRV_slot_1_CAU = {
 	tm_SRV_build_plantations = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_develop_luxury_goods }
-		position = 8
+		position = 7
 		
 		provinces_to_highlight = {
 
@@ -932,7 +843,7 @@ tm_SRV_slot_2_CAU = {
 	tm_SRV_prepare_anatolia = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_stabilise_transcaucasia }
-		position = 6
+		position = 5
 		
 		provinces_to_highlight = {
 			OR = {
@@ -988,7 +899,7 @@ tm_SRV_slot_2_CAU = {
 	tm_SRV_conquer_anatolia = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_prepare_anatolia }
-		position = 7
+		position = 6
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1117,7 +1028,7 @@ tm_SRV_slot_3_CAU = {
 	tm_SRV_prepare_persia = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_stabilise_transcaucasia }
-		position = 6
+		position = 5
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1168,7 +1079,7 @@ tm_SRV_slot_3_CAU = {
 	tm_SRV_conquer_afghanistan = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_prepare_persia }
-		position = 7
+		position = 6
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1204,7 +1115,7 @@ tm_SRV_slot_3_CAU = {
 	tm_SRV_consolidate_greater_persia = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_conquer_afghanistan }
-		position = 8
+		position = 7
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1302,7 +1213,7 @@ tm_SRV_slot_4_CAU = {
 	tm_SRV_into_the_steppes = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_stabilise_transcaucasia }
-		position = 6
+		position = 5
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1358,7 +1269,7 @@ tm_SRV_slot_4_CAU = {
 	tm_SRV_destroy_the_hordes = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_into_the_steppes }
-		position = 7
+		position = 6
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1426,7 +1337,7 @@ tm_SRV_slot_4_CAU = {
 	tm_SRV_tame_the_steppes = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_destroy_the_hordes }
-		position = 8
+		position = 7
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1501,10 +1412,32 @@ tm_SRV_slot_5_CAU = {
 	}
 	has_country_shield = yes
 	
+	tm_SRV_stabilise_transcaucasia = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = {  }
+		position = 4
+		
+		provinces_to_highlight = {
+
+		}
+		trigger = {
+			stability = 2
+			total_development = 500
+			legitimacy_equivalent = 95
+			prestige = 50
+		}
+		effect = {
+			add_country_modifier = {
+				name = tm_CAU_consolidate_the_empire
+				duration = 3650
+			}
+		}
+	}
+
 	tm_SRV_prepare_arabia = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_stabilise_transcaucasia }
-		position = 6
+		position = 5
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1560,7 +1493,7 @@ tm_SRV_slot_5_CAU = {
 	tm_SRV_integrate_arabia = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_prepare_arabia }
-		position = 7
+		position = 6
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1595,7 +1528,7 @@ tm_SRV_slot_5_CAU = {
 	tm_SRV_arabian_industry = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_integrate_arabia }
-		position = 8
+		position = 7
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1683,8 +1616,8 @@ tm_SRV_slot_1_cossacks = {
 	
 	tm_SRV_cultural_integration = {
 		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_conquer_the_steppes }
-		position = 11
+		required_missions = { tm_SRV_embrace_cossack_traditions }
+		position = 9
 		
 		provinces_to_highlight = {
 
@@ -1718,7 +1651,7 @@ tm_SRV_slot_1_cossacks = {
 	tm_SRV_cossack_cultural_dominance = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_cultural_integration }
-		position = 11
+		position = 10
 		
 		provinces_to_highlight = {
 		}
@@ -1801,7 +1734,7 @@ tm_SRV_slot_2_cossacks = {
 	tm_SRV_embrace_cossack_traditions = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = {  }
-		position = 9
+		position = 8
 		
 		provinces_to_highlight = {
 
@@ -1834,7 +1767,7 @@ tm_SRV_slot_2_cossacks = {
 	tm_SRV_conquer_the_steppes = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_embrace_cossack_traditions }
-		position = 10
+		position = 9
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1914,7 +1847,7 @@ tm_SRV_slot_2_cossacks = {
 	tm_SRV_further_expansion = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_conquer_the_steppes }
-		position = 11
+		position = 10
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1974,7 +1907,7 @@ tm_SRV_slot_3_cossacks = {
 	tm_SRV_tame_the_estates = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_conquer_the_steppes }
-		position = 11
+		position = 10
 		
 		provinces_to_highlight = {
 		}
@@ -2021,110 +1954,10 @@ tm_SRV_slot_4_cossacks = {
 	}
 	has_country_shield = yes
 
-	tm_SRV_develop_the_steppe = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_embrace_cossack_traditions }
-		position = 10
-		
-		provinces_to_highlight = {
-			OR = {
-				region = anatolia_region
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 40
-				region = anatolia_region
-			}
-			NOT = {
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
-			}
-		}
-		effect = {
-			thrace_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			add_country_modifier = {
-				name = tm_CAU_integrate_anatolia
-				duration = 1825
-			}
-			add_accepted_culture = turkish
-		}
-	}
-	
-	tm_SRV_control_steppe_trade = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_embrace_cossack_traditions }
-		position = 10
-		
-		provinces_to_highlight = {
-			OR = {
-				region = anatolia_region
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 40
-				region = anatolia_region
-			}
-			NOT = {
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
-			}
-		}
-		effect = {
-			thrace_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			add_country_modifier = {
-				name = tm_CAU_integrate_anatolia
-				duration = 1825
-			}
-			add_accepted_culture = turkish
-		}
-	}
 
 }
 
 #babylon path
-
-tm_SRV_slot_1_babylon = {
-	slot = 1
-	generic = no
-	ai = yes
-	potential = {
-		has_country_flag = SRV_babylon_path_unlocked
-		OR = {
-			tag = SRV
-			was_tag = SRV
-		}
-		NOT = { map_setup = map_setup_random }
-		NOT = {
-			tag = PER
-		}
-	}
-	has_country_shield = yes
-	
-}
 
 tm_SRV_slot_2_babylon = {
 	slot = 2
@@ -2143,28 +1976,6 @@ tm_SRV_slot_2_babylon = {
 	}
 	has_country_shield = yes
 	
-	tm_SRV_towards_the_old_ways = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = {  }
-		position = 13
-		
-		provinces_to_highlight = {
-
-		}
-		trigger = {
-			stability = 2
-			total_development = 500
-			legitimacy_equivalent = 95
-			prestige = 50
-			has_country_flag = SRV_babylon_path_unlocked
-			NOT = {
-				mission_completed = tm_SRV_embrace_cossack_traditions
-			}
-		}
-		effect = {
-			add_prestige = 15
-		}
-	}
 }
 
 tm_SRV_slot_3_babylon = {
@@ -2188,6 +1999,47 @@ tm_SRV_slot_3_babylon = {
 
 tm_SRV_slot_4_babylon = {
 	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = SRV_babylon_path_unlocked
+		OR = {
+			tag = SRV
+			was_tag = SRV
+		}
+		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
+	}
+	has_country_shield = yes
+	
+	tm_SRV_towards_the_old_ways = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = {  }
+		position = 9
+		
+		provinces_to_highlight = {
+
+		}
+		trigger = {
+			stability = 2
+			total_development = 500
+			legitimacy_equivalent = 95
+			prestige = 50
+			has_country_flag = SRV_babylon_path_unlocked
+			NOT = {
+				mission_completed = tm_SRV_embrace_cossack_traditions
+			}
+		}
+		effect = {
+			add_prestige = 15
+		}
+	}
+}
+
+tm_SRV_slot_5_babylon = {
+	slot = 5
 	generic = no
 	ai = yes
 	potential = {
