@@ -137,11 +137,14 @@ tm_SRV_slot_2 = {
 		position = 1
 		
 		provinces_to_highlight = {
-			any_country = {
+			owner = {
 				is_rival = ROOT
 			}
 		}
 		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = tm_SRV_humilate_rivals
+			}
 			hidden_trigger = {
 			OR = {
 				has_country_flag = humiliated_rival
@@ -154,8 +157,8 @@ tm_SRV_slot_2 = {
 		add_power_projection = {
 			type = 25_permanent_power_projection
 			amount = 15
+			}
 		}
-	}
 	}
 
 	tm_SRV_secure_caucasian_lands = {
@@ -633,9 +636,7 @@ tm_SRV_slot_5 = {
 			custom_trigger_tooltip = {
 				tooltip = tm_SRV_requirements_cossacks
 			}
-			hidden_trigger = {
-				always = no
-				}
+			always = no
 			accepted_culture = dagestani
 			accepted_culture = circassian
 			owns_core_province = 464
@@ -652,10 +653,9 @@ tm_SRV_slot_5 = {
 			hidden_effect = {
 				add_prestige = 15
 			}
-			tooltip = tm_SRV_will_fire_event
+			custom_tooltip = tm_SRV_will_fire_event
 		}
-	}
-	
+	}+
 	tm_SRV_option_babylon = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = {  }
@@ -668,6 +668,7 @@ tm_SRV_slot_5 = {
 			custom_trigger_tooltip = {
 				tooltip = tm_SRV_requirements_babylon
 			}
+			always = no
 			accepted_culture = kurdish
 			accepted_culture = al_iraqiya_arabic
 			owns_core_province = 410
@@ -678,9 +679,6 @@ tm_SRV_slot_5 = {
 					culture = kurdish
 					culture = al_iraqiya_arabic
 				}
-			}
-			hidden_trigger = {
-			always = no
 			}
 		}
 		effect = {
