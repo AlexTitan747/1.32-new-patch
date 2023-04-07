@@ -1615,128 +1615,11 @@ tm_SRV_slot_1_cossacks = {
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
-	
-	tm_SRV_cultural_integration = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_embrace_cossack_traditions }
-		position = 9
-		
-		provinces_to_highlight = {
 
-		}
-		trigger = {
-			stability = 1
-			accepted_culture = dagestani
-			accepted_culture = circassian
-			accepted_culture = astrakhani
-			OR = {
-				accepted_culture = crimean
-				accepted_culture = mishary
-				accepted_culture = nogaybak
-				accepted_culture = kazani
-			}
-		}
-		effect = {
-			add_prestige = 15
-			add_country_modifier = {
-				name = tm_SRV_cossack_integration
-				duration = 3650
-			}
-			define_advisor = {
-				type = master_of_assimilation
-				skill = 3 
-				cost_multiplier = 0.5
-			}
-		}
-	}
-	
-	tm_SRV_cossack_cultural_dominance = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_cultural_integration }
-		position = 10
-		
-		provinces_to_highlight = {
-		}
-		trigger = {
-			stability = 1
-			OR = {
-				primary_culture = dagestani
-				primary_culture = circassian
-				primary_culture = astrakhani
-				primary_culture = crimean
-				primary_culture = mishary
-				primary_culture = nogaybak
-				primary_culture = kazani
-			}
-			num_of_owned_provinces_with = {
-				value = 20
-				total_development = 10
-				OR = {
-					culture = dagestani
-					culture = circassian
-				}
-			}
-		}
-		effect = {
-			add_dip_power = 150
-			if = {
-				limit = {
-					421 = {
-						NOT = {
-							culture = dagestani
-						}
-					}
-				}
-				421 = {
-					change_culture = dagestani
-				}
-			}
-			every_owned_province = {
-				limit = {
-					culture = dagestani
-				}
-				change_culture = tdagestani
-			}
-			every_owned_province = {
-				limit = {
-					culture = circassian
-				}
-				change_culture = tcircassian
-			}
-			if = {
-				limit = {
-					primary_culture = circassian
-				}
-				change_primary_culture = tcircassian
-			}
-			if = {
-				limit = {
-					primary_culture = dagestani
-				}
-				change_primary_culture = tdagestani
-			}
-		}
-	}
-}
-
-tm_SRV_slot_2_cossacks = {
-	slot = 2
-	generic = no
-	ai = yes
-	potential = {
-		has_country_flag = SRV_cossack_path_unlocked
-		OR = {
-			tag = SRV
-			was_tag = SRV
-		}
-		NOT = { map_setup = map_setup_random }
-	}
-	has_country_shield = yes
-	
 	tm_SRV_embrace_cossack_traditions = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = {  }
-		position = 8
+		position = 3
 		
 		provinces_to_highlight = {
 
@@ -1769,7 +1652,7 @@ tm_SRV_slot_2_cossacks = {
 	tm_SRV_conquer_the_steppes = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_embrace_cossack_traditions }
-		position = 9
+		position = 5
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1849,7 +1732,7 @@ tm_SRV_slot_2_cossacks = {
 	tm_SRV_further_expansion = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_conquer_the_steppes }
-		position = 10
+		position = 6
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1890,10 +1773,11 @@ tm_SRV_slot_2_cossacks = {
 			}
 		}
 	}
+	
 }
 
-tm_SRV_slot_3_cossacks = {
-	slot = 3
+tm_SRV_slot_2_cossacks = {
+	slot = 2
 	generic = no
 	ai = yes
 	potential = {
@@ -1906,10 +1790,112 @@ tm_SRV_slot_3_cossacks = {
 	}
 	has_country_shield = yes
 	
+	tm_SRV_cultural_integration = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_embrace_cossack_traditions }
+		position = 5
+		
+		provinces_to_highlight = {
+
+		}
+		trigger = {
+			stability = 1
+			accepted_culture = dagestani
+			accepted_culture = circassian
+			accepted_culture = astrakhani
+			OR = {
+				accepted_culture = crimean
+				accepted_culture = mishary
+				accepted_culture = nogaybak
+				accepted_culture = kazani
+			}
+		}
+		effect = {
+			add_prestige = 15
+			add_country_modifier = {
+				name = tm_SRV_cossack_integration
+				duration = 3650
+			}
+			define_advisor = {
+				type = master_of_assimilation
+				skill = 3 
+				cost_multiplier = 0.5
+			}
+		}
+	}
+	
+	tm_SRV_cossack_cultural_dominance = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_cultural_integration }
+		position = 6
+		
+		provinces_to_highlight = {
+		}
+		trigger = {
+			stability = 1
+			OR = {
+				primary_culture = dagestani
+				primary_culture = circassian
+				primary_culture = astrakhani
+				primary_culture = crimean
+				primary_culture = mishary
+				primary_culture = nogaybak
+				primary_culture = kazani
+			}
+			num_of_owned_provinces_with = {
+				value = 20
+				total_development = 10
+				OR = {
+					culture = dagestani
+					culture = circassian
+				}
+			}
+		}
+		effect = {
+			add_dip_power = 150
+			if = {
+				limit = {
+					421 = {
+						NOT = {
+							culture = dagestani
+						}
+					}
+				}
+				421 = {
+					change_culture = dagestani
+				}
+			}
+			every_owned_province = {
+				limit = {
+					culture = dagestani
+				}
+				change_culture = tdagestani
+			}
+			every_owned_province = {
+				limit = {
+					culture = circassian
+				}
+				change_culture = tcircassian
+			}
+			if = {
+				limit = {
+					primary_culture = circassian
+				}
+				change_primary_culture = tcircassian
+			}
+			if = {
+				limit = {
+					primary_culture = dagestani
+				}
+				change_primary_culture = tdagestani
+			}
+		}
+	}
+
 	tm_SRV_tame_the_estates = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_conquer_the_steppes }
-		position = 10
+		position = 7
 		
 		provinces_to_highlight = {
 		}
@@ -1940,6 +1926,23 @@ tm_SRV_slot_3_cossacks = {
 			}
 		}
 	}
+}
+
+tm_SRV_slot_3_cossacks = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = SRV_cossack_path_unlocked
+		OR = {
+			tag = SRV
+			was_tag = SRV
+		}
+		NOT = { map_setup = map_setup_random }
+	}
+	has_country_shield = yes
+	
+
 }
 
 tm_SRV_slot_4_cossacks = {
