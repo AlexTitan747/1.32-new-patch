@@ -115,27 +115,24 @@ emp_naples_1 = {
 		required_missions = { emp_nap_seize_roma }
 		position = 7
 		provinces_to_highlight = {
-			OR = {
-				area = albania_area
-				area = rascia_area
-			}
+			area = albania_area
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 5
-				OR = {
-					area = albania_area
-					area = rascia_area
-
-				}
-			}
-			137 = {
+			albania_area = {
+				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		effect = {
 			east_adriatic_coast_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			rascia_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -165,18 +162,11 @@ emp_naples_1 = {
 		required_missions = { emp_nap_dalmatian_conquest }
 
 		provinces_to_highlight = {
-			OR = {
-				area = east_adriatic_coast_area
-				area = central_italy_area
-			}
+			area = east_adriatic_coast_area
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
 			east_adriatic_coast_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			central_italy_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
@@ -227,8 +217,8 @@ emp_naples_2 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 			OR = {
-			is_rival = MLO
-			is_rival = SPI
+				is_rival = MLO
+				is_rival = SPI
 			}
 			NOT = { mission_completed = emp_nap_a_royal_coup }
 		}
@@ -333,12 +323,12 @@ emp_naples_2 = {
 			OR = {
 				NOT = { exists = PAP }
 				PAP = { is_subject_of = ROOT }
+				118 = {
+					country_or_non_sovereign_subject_holds = ROOT
+				}
 			}
 			lazio_area = {
 				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			118 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 			religion = sunni
