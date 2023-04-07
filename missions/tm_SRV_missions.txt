@@ -633,12 +633,14 @@ tm_SRV_slot_5 = {
 			custom_trigger_tooltip = {
 				tooltip = tm_SRV_requirements_cossacks
 			}
-			always = no
+			hidden_trigger = {
+				always = no
+				}
 			accepted_culture = dagestani
 			accepted_culture = circassian
 			owns_core_province = 464
 			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 9
+				value = 8
 				development = 12
 				OR = {
 					culture = dagestani
@@ -650,6 +652,7 @@ tm_SRV_slot_5 = {
 			hidden_effect = {
 				add_prestige = 15
 			}
+			tooltip = tm_SRV_will_fire_event
 		}
 	}
 	
@@ -665,12 +668,26 @@ tm_SRV_slot_5 = {
 			custom_trigger_tooltip = {
 				tooltip = tm_SRV_requirements_babylon
 			}
+			accepted_culture = kurdish
+			accepted_culture = al_iraqiya_arabic
+			owns_core_province = 410
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 15
+				development = 12
+				OR = {
+					culture = kurdish
+					culture = al_iraqiya_arabic
+				}
+			}
+			hidden_trigger = {
 			always = no
+			}
 		}
 		effect = {
 			hidden_effect = {
 				add_prestige = 15
 			}
+			tooltip = tm_SRV_will_fire_event
 		}
 	}
 
@@ -1659,12 +1676,7 @@ tm_SRV_slot_1_cossacks = {
 		position = 11
 		
 		provinces_to_highlight = {
-			OR = {
-				region = anatolia_region
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
+
 		}
 		trigger = {
 			stability = 1
@@ -1698,12 +1710,6 @@ tm_SRV_slot_1_cossacks = {
 		position = 11
 		
 		provinces_to_highlight = {
-			OR = {
-				region = anatolia_region
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
 		}
 		trigger = {
 			stability = 1
@@ -1796,7 +1802,7 @@ tm_SRV_slot_2_cossacks = {
 				mission_completed = tm_SRV_towards_the_old_ways
 			}
 			custom_trigger_tooltip = {
-				taking_cossack_path_warning
+				tooltip = taking_cossack_path_warning
 			}
 		}
 		effect = {
@@ -1826,7 +1832,7 @@ tm_SRV_slot_2_cossacks = {
 		}
 		trigger = {
 			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 40
+				value = 20
 				region = crimea_region
 			}
 			
@@ -1888,13 +1894,6 @@ tm_SRV_slot_2_cossacks = {
 				}
 				add_permanent_claim = ROOT
 			}
-			lower_yik_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
 		}
 	}
 
@@ -1906,6 +1905,14 @@ tm_SRV_slot_2_cossacks = {
 		provinces_to_highlight = {
 			OR = {
 				region = crimea_region
+				area = east_dniepr_area
+				area = sloboda_ukraine_area
+				area = chernigov_area
+				area = tambov_area
+				area = nogai_area
+				area = bashkiria_area
+				area = saratov_area
+				area = lower_yik_area
 			}
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
@@ -1913,23 +1920,25 @@ tm_SRV_slot_2_cossacks = {
 		}
 		trigger = {
 			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 75
+				value = 50
+				OR = {
 				region = crimea_region
+				area = east_dniepr_area
+				area = sloboda_ukraine_area
+				area = chernigov_area
+				area = tambov_area
+				area = nogai_area
+				area = bashkiria_area
+				area = saratov_area
+				area = lower_yik_area
+				}
 			}
 		}
 		effect = {
-			thrace_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
 			add_country_modifier = {
-				name = tm_CAU_integrate_anatolia
-				duration = 1825
+				name = tm_SRV_steppe_dominance
+				duration = 7200
 			}
-			add_accepted_culture = turkish
 		}
 	}
 }
@@ -1991,6 +2000,47 @@ tm_SRV_slot_4_cossacks = {
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
+
+	tm_SRV_develop_the_steppe = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_embrace_cossack_traditions }
+		position = 10
+		
+		provinces_to_highlight = {
+			OR = {
+				region = anatolia_region
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 40
+				region = anatolia_region
+			}
+			NOT = {
+				OR = {
+					mission_completed = tm_SRV_towards_the_old_ways
+					mission_completed = tm_SRV_embrace_cossack_traditions
+				}
+			}
+		}
+		effect = {
+			thrace_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = tm_CAU_integrate_anatolia
+				duration = 1825
+			}
+			add_accepted_culture = turkish
+		}
+	}
 	
 	tm_SRV_control_steppe_trade = {
 		icon = mission_dominate_trade_in_aden
