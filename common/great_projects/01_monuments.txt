@@ -15071,8 +15071,14 @@ khajuraho = {
 	type = monument
 
 	build_trigger = {
-		religion_group = dharmic
 		has_owner_religion = yes
+		OR = {
+			religion_group = dharmic
+			AND = {
+				tag = KUS
+				mission_completed = tm_KUS_branch3_mission_2
+			}
+		}
 	}
 
 	on_built = {
@@ -15082,13 +15088,25 @@ khajuraho = {
 	}
 
 	can_use_modifiers_trigger = {
-		religion_group = dharmic
 		has_owner_religion = yes
+		OR = {
+			religion_group = dharmic
+			AND = {
+				tag = KUS
+				mission_completed = tm_KUS_branch3_mission_2
+			}
+		}
 	}
 
 	can_upgrade_trigger = {
-		religion_group = dharmic
 		has_owner_religion = yes
+		OR = {
+			religion_group = dharmic
+			AND = {
+				tag = KUS
+				mission_completed = tm_KUS_branch3_mission_2
+			}
+		}
 	}
 
 	keep_trigger = {

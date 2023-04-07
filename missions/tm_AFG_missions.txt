@@ -778,23 +778,302 @@ tm_KUS_slot_1 = {
 		}
 
 		trigger = {
-			kalat_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			makran_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			saravan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+			OR = {
+				kalat_area = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+				makran_area = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+				saravan_area = {
+					type = all
+					country_or_non_sovereign_subject_holds = ROOT
+				}
 			}
 		}
 
 		effect = {
 			northern_sindh_area = {	add_perma_claim = yes	}
 			sindh_area = { add_perma_claim = yes }
+		}
+	}
+
+	tm_KUS_branch1_mission_2 = {
+		icon = NEEDICON
+		required_missions = { tm_KUS_branch1_mission_1 }
+
+		provinces_to_highlight = {
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			OR = {
+				area = northern_sindh_area
+				area = sindh_area
+			}
+		}
+
+		trigger = {
+			northern_sindh_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			sindh_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			patan_area = {	add_perma_claim = yes	}
+			saurashtra_area = { add_perma_claim = yes }
+			ahmedabad_area = { add_perma_claim = yes }
+		}
+	}
+
+	tm_KUS_branch1_mission_3 = {
+		icon = NEEDICON
+		required_missions = { tm_KUS_branch1_mission_2 }
+
+		provinces_to_highlight = {
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			OR = {
+				area = patan_area
+				area = saurashtra_area
+				area = ahmedabad_area
+			}
+		}
+
+		trigger = {
+			patan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			saurashtra_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			ahmedabad_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			504 = {
+				add_trade_modifier = {
+					who = ROOT
+					duration = 5475
+					power = 30
+					key = STRONG_MERCHANTS
+				}
+			}
+			define_advisor = {
+				type = trader
+				skill = 3
+				cost_multiplier = 0.25
+			}
+			if = {
+				limit = {
+					4457 = {
+						NOT = { province_has_center_of_trade_of_level = 3 }
+					}
+				}
+				4457 = {
+					add_center_of_trade_level = 1
+				}
+			}
+			else = {
+				4457 = {
+					add_base_production = 3
+				}
+			}
+			if = {
+				limit = {
+					4503 = {
+						NOT = { province_has_center_of_trade_of_level = 3 }
+					}
+				}
+				4503 = {
+					add_center_of_trade_level = 1
+				}
+			}
+			else = {
+				4503 = {
+					add_base_production = 3
+				}
+			}
+			malwa_area = { add_perma_claim = yes }
+			tapti_area = { add_perma_claim = yes }
+			khandesh_area = { add_perma_claim = yes }
+		}
+	}
+
+	tm_KUS_branch1_mission_4 = {
+		icon = NEEDICON
+		required_missions = { tm_KUS_branch1_mission_3 }
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 2052
+				province_id = 515
+				province_id = 2058
+				province_id = 2064
+				province_id = 519
+				province_id = 4462
+				province_id = 2056
+			}
+		}
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = kus_mines_of_west_india_tt
+				OR = {
+					owns = 2052
+					owns = 515
+					owns = 2058
+					owns = 2064
+					owns = 519
+					owns = 4462
+					owns = 2056
+				}
+			}
+			if = {
+				limit = {
+					owns = 2051
+				}
+				2052 = {
+					base_production = 10
+					has_production_building = yes
+				}
+			}
+			if = {
+				limit = {
+					owns = 515
+				}
+				515 = {
+					base_production = 10
+					has_production_building = yes
+				}
+			}
+			if = {
+				limit = {
+					owns = 2058
+				}
+				2058 = {
+					base_production = 10
+					has_production_building = yes
+				}
+			}
+			if = {
+				limit = {
+					owns = 2064
+				}
+				2064 = {
+					base_production = 10
+					has_production_building = yes
+				}
+			}
+			if = {
+				limit = {
+					owns = 519
+				}
+				519 = {
+					base_production = 10
+					has_production_building = yes
+				}
+			}
+			if = {
+				limit = {
+					owns = 4462
+				}
+				4462 = {
+					base_production = 10
+					has_production_building = yes
+				}
+			}
+			if = {
+				limit = {
+					owns = 2056
+				}
+				2056 = {
+					base_production = 10
+					has_production_building = yes
+				}
+			}
+		}
+
+		effect = {
+			custom_tooltip = kus_mines_of_west_india_effect_tt
+			if = {
+				limit = {
+					owns = 2051
+				}
+				2052 = {
+					add_base_production = 2
+					upgrade_building = { production = yes }
+					add_manufactory = yes
+				}
+			}
+			if = {
+				limit = {
+					owns = 515
+				}
+				515 = {
+					add_base_production = 2
+					upgrade_building = { production = yes }
+					add_manufactory = yes
+				}
+			}
+			if = {
+				limit = {
+					owns = 2058
+				}
+				2058 = {
+					add_base_production = 2
+					upgrade_building = { production = yes }
+					add_manufactory = yes
+				}
+			}
+			if = {
+				limit = {
+					owns = 2064
+				}
+				2064 = {
+					add_base_production = 2
+					upgrade_building = { production = yes }
+					add_manufactory = yes
+				}
+			}
+			if = {
+				limit = {
+					owns = 519
+				}
+				519 = {
+					add_base_production = 2
+					upgrade_building = { production = yes }
+					add_manufactory = yes
+				}
+			}
+			if = {
+				limit = {
+					owns = 4462
+				}
+				4462 = {
+					add_base_production = 2
+					upgrade_building = { production = yes }
+					add_manufactory = yes
+				}
+			}
+			if = {
+				limit = {
+					owns = 2056
+				}
+				2056 = {
+					add_base_production = 2
+					upgrade_building = { production = yes }
+					add_manufactory = yes
+				}
+			}
 		}
 	}
 }
@@ -871,6 +1150,37 @@ tm_KUS_slot_2 = {
 		effect = {
 			set_country_flag = enables_estate_rajput_flag
 			custom_tooltip = tm_enable_rajput_estate_tt
+			add_accepted_culture_or_dip_power = {
+				culture = rajput
+			}
+			add_mil_power = 100
+		}
+	}
+
+	tm_KUS_branch2_mission_3 = {
+		icon = NEEDICON
+		required_missions = { tm_KUS_branch2_mission_2 }
+
+		provinces_to_highlight = {
+			province_id = 514
+		}
+
+		trigger = {
+			514 = {
+				has_great_project = {
+					type = any
+					tier = 3
+				}
+				owned_by = ROOT
+			}
+			num_of_rajput = 75
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = KUS_rajputs_training
+				duration = -1
+			}
 		}
 	}
 }
@@ -921,7 +1231,104 @@ tm_KUS_slot_3 = {
 		}
 
 		effect = {
-			
+			add_adm_power = 100
+			add_prestige = 30
+		}
+	}
+
+	tm_KUS_branch3_mission_2 = {
+		icon = NEEDICON
+		required_missions = { tm_KUS_branch3_mission_1 }
+
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			OR = {
+				area = gird_area
+				area = bundelkhand_area
+			}
+		}
+
+		trigger = {
+			gird_area = {
+				type = all
+				owned_by = ROOT
+			}
+			bundelkhand_area = {
+				type = all
+				owned_by = ROOT
+			}
+		}
+
+		effect = {
+			malwa_area = { add_perma_claim = yes }
+			gondwana_area = { add_perma_claim = yes }
+			4466 = {
+				change_religion = ROOT
+				if = {
+					limit = {
+						has_great_project = {
+							type = khajuraho
+							tier = 3
+						}
+					}
+					add_base_manpower = 3
+					add_base_production = 3
+					add_base_tax = 3
+				}
+				else = {
+					add_great_project_tier = {
+						type = khajuraho
+						tier = 1
+					}
+				}
+			}
+			custom_tooltip = enable_use_of_khajuraho_tt
+		}
+	}
+
+	tm_KUS_branch3_mission_3 = {
+		icon = NEEDICON
+		required_missions = { tm_KUS_branch3_mission_2 }
+		required_missions = { tm_KUS_branch1_mission_3 }
+		position = 8
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					region = hindusthan_region
+					NOT = { owned_by = ROOT }
+				}
+				AND = {
+					OR = {
+						region = west_india_region
+						area = gondwana_area
+					}
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
+				}
+			}
+		}
+
+		trigger = {
+			mission_completed = tm_KUS_branch4_mission_1
+			hindusthan_region = {
+				type = all
+				owned_by = ROOT
+			}
+			west_india_region = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			gondwana_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = ruler_of_north_india
+				duration = -1
+			}
 		}
 	}
 }
@@ -940,18 +1347,112 @@ tm_KUS_slot_4 = {
 	tm_KUS_branch4_mission_1 = {
 		icon = NEEDICON
 		position = 6
-		required_missions = { }
+		required_missions = { tm_KUS_branch3_mission_1 }
 
 		provinces_to_highlight = {
-
+			OR = { 
+				area = baghelkhand_area
+				area = purvanchal_area
+				area = mithila_area
+				area = bihar_area
+				area = nepal_area
+			}
 		}
 
 		trigger = {
-
+			baghelkhand_area = {
+				type = all
+				owned_by = ROOT
+			}
+			purvanchal_area = {
+				type = all
+				owned_by = ROOT
+			}
+			mithila_area = {
+				type = all
+				owned_by = ROOT
+			}
+			bihar_area = {
+				type = all
+				owned_by = ROOT
+			}
+			nepal_area = {
+				type = all
+				owned_by = ROOT
+			}
 		}
 
 		effect = {
-			
+			add_power_projection = {
+				type = 50_temp_25_permanent_power_projection
+				amount = 50
+			}
+			custom_tooltip = 50_temp_25_permanent_power_projection_tt
+			bengal_region = { add_perma_claim = yes }
+			add_legitimacy = 20
+		}
+	}
+
+	tm_KUS_branch4_mission_2 = {
+		icon = NEEDICON
+		position = 8
+		required_missions = { tm_KUS_branch4_mission_1 }
+		required_missions = { tm_KUS_branch5_2_mission_1 }
+
+		provinces_to_highlight = {
+			OR = {
+				owner = {
+					OR = {
+						tag = BNG
+						was_tag = BNG
+					}
+				}
+				AND = {
+					NOT = { owned_by = ROOT }
+					OR = {
+						area = west_bengal_area
+						area = east_bengal_area
+						area = gaur_area
+					}
+				}
+			}
+		}
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = KUS_kill_bng_tt
+				NOT = {
+					any_country = {
+						OR = {
+							tag = BNG
+							was_tag = BNG
+						}
+					}
+				}
+			}
+			west_bengal_area = {
+				type = all 
+				owned_by = ROOT
+			}
+			east_bengal_area = {
+				type = all
+				owned_by = ROOT
+			}
+			gaur_area = {
+				type = all 
+				owned_by = ROOT
+			}
+			development_in_provinces = {
+				value = 800
+				culture = bengali
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = KUS_legacy_of_bng
+				duration = -1
+			}
 		}
 	}
 }
@@ -974,12 +1475,24 @@ tm_KUS_slot_5_not_hindu = {
 		required_missions = { tm_AFG_branch5_mission_1 }
 
 		provinces_to_highlight = {
+			superregion = india_superregion
+			owned_by = ROOT
+			NOT = { religion = ROOT }
 		}
 
 		trigger = {
+			num_of_owned_provinces_with = {
+				value = 20
+				superregion = india_superregion
+				religion = ROOT
+			}
 		}
 
 		effect = {
+			add_country_modifier = {
+				name = KUS_convert_india_start
+				duration = 7300
+			}
 		}
 	}
 
@@ -992,29 +1505,110 @@ tm_KUS_slot_5_not_hindu = {
 		}
 
 		trigger = {
-		
+			OR = {
+				employed_advisor = {
+					type = inquisitor
+				}
+				religious_ideas = 4
+				religious_unity = 0.7
+			}
 		}
 
 		effect = {
-			
+			add_country_modifier = {
+				name = KUS_missionary
+				duration = -1
+			}
+			add_stability_or_adm_power = yes
+			add_splendor = 100
 		}
 	}
 
 	tm_KUS_branch5_not_hindu_mission_3 = {
 		icon = NEEDICON
-		position = 4
 		required_missions = { tm_KUS_branch5_not_hindu_mission_2 }
 
 		provinces_to_highlight = {
-			
+			superregion = india_superregion
+			owned_by = ROOT
+			NOT = { religion = ROOT }
 		}
 
 		trigger = {
 			religious_unity = 0.95
+			num_of_owned_provinces_with = {
+				value = 80
+				superregion = india_superregion
+				religion = ROOT
+			}
+			if = {
+				limit = {
+					religion_group = muslim
+				}
+				owns_core_province = 524
+			}
 		}
 
 		effect = {
-			
+			if = {
+				limit = {
+					religion_group = muslim
+				}
+				524 = {
+					if = {
+						limit = {
+							has_great_project = {
+								type = taj_mahal
+								tier = 3
+							}
+						}
+						add_prestige_or_monarch_power = { amount = 20 }
+					}
+					else = {
+						add_great_project_tier = {
+							type = taj_mahal
+							tier = 1
+						}
+					}
+				}
+			}
+			add_prestige_or_monarch_power = { amount = 50 }
+			define_advisor = {
+				type = inquisitor
+				skill = 5
+				cost_multiplier = 0.2
+			}
+		}
+	}
+
+	tm_KUS_branch5_not_hindu_mission_4 = {
+		icon = NEEDICON
+		required_missions = { tm_KUS_branch5_not_hindu_mission_3 }
+
+		provinces_to_highlight = {
+			superregion = india_superregion
+			owned_by = ROOT
+			NOT = { religion = ROOT }
+		}
+
+		trigger = {
+			religious_unity = 0.99
+			num_of_owned_provinces_with = {
+				value = 100
+				superregion = india_superregion
+				religion = ROOT
+			}
+			development_in_provinces = {
+				value = 1000
+				religion = ROOT
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = kus_unified_religion
+				duration = -1
+			}
 		}
 	}
 }
@@ -1037,14 +1631,21 @@ tm_KUS_slot_5_hindu = {
 		required_missions = { tm_AFG_branch5_mission_1 }
 
 		provinces_to_highlight = {
-			
+			region = khorasan_region
+			owned_by = ROOT
+			NOT = { religion = hinduism }
 		}
 
 		trigger = {
-		
+			num_of_owned_provinces_with = {
+				value = 25
+				region = khorasan_region
+				religion = hinduism
+			}
 		}
 
 		effect = {
+			add_stability_or_adm_power = yes
 		}
 	}
 
@@ -1057,11 +1658,17 @@ tm_KUS_slot_5_hindu = {
 		}
 
 		trigger = {
-		
+			development_in_provinces = {
+				value = 800
+				religion = hinduism
+			}
 		}
 
 		effect = {
-			
+			add_country_modifier = {
+				name = KUS_hindu_empire
+				duration = -1
+			}
 		}
 	}
 
@@ -1153,6 +1760,100 @@ tm_KUS_slot_5_hindu = {
 
 		effect = {
 			custom_tooltip = tm_KUS_can_use_buddha_monuments
+		}
+	}
+}
+
+tm_KUS_slot_5_other = {
+	slot = 5
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		tag = KUS
+	}
+
+	tm_KUS_branch5_2_mission_1 = {
+		icon = NEEDICON
+		required_missions = {  }
+		position = 7
+
+		provinces_to_highlight = {
+			OR = {
+				trade_goods = bronze
+				trade_goods = tin
+				trade_goods = copper
+			}
+			OR = {
+				region = khorasan_region
+				superregion = india_superregion 
+			}
+		}
+
+		trigger = {
+			bronze = 3
+			OR = {
+				trading_bonus = {
+					trade_goods = bronze
+					value = yes
+				}
+				trading_part = {
+					trade_goods = bronze
+					value = 0.20
+				}
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = KUS_bronze
+				duration = -1
+			}
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						trade_goods = bronze
+					}
+					add_base_production = 1
+				}
+			}
+		}
+	}
+
+	tm_KUS_branch5_2_mission_2 = {
+		icon = NEEDICON
+		required_missions = { tm_KUS_branch5_2_mission_1 }
+
+		provinces_to_highlight = {
+			OR = {
+				trade_goods = iron
+				trade_goods = armour
+			}
+			OR = {
+				region = khorasan_region
+				superregion = india_superregion
+			}
+		}
+
+		trigger = {
+			armour = 3
+			trading_bonus = {
+				trade_goods = armour
+				value = yes
+			}
+			trading_part = {
+				trade_goods = armour
+				value = 0.30
+			}	
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = kus_armour
+				duration = 3650
+			}
 		}
 	}
 }

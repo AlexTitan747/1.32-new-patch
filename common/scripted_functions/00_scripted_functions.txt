@@ -88,14 +88,19 @@ can_make_state = {
 			always = yes
 		}
 		allow = {
-			area_for_scope_province = {
-				type = all
-				OR = {
-					owned_by = ROOT
-					owner = {
-						is_subject_of = ROOT
+			OR = {
+				area_for_scope_province = {
+					type = all
+					OR = {
+						owned_by = ROOT
+						owner = {
+							is_subject_of = ROOT
+						}
+						is_permanent_claim = ROOT
 					}
-					is_permanent_claim = ROOT
+				}
+				region_for_scope_province = {
+					is_capital = yes
 				}
 			}
 		}
