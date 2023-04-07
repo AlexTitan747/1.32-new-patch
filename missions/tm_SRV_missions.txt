@@ -14,123 +14,6 @@ tm_SRV_slot_1 = {
 	}
 	has_country_shield = yes
 
-	tm_SRV_declare_war_on_persia = {
-		icon = mission_conquer_persia
-		required_missions = { tm_SRV_mobilization }
-		position = 2
-		
-		provinces_to_highlight = {
-			area = iraq_e_ajam_area
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			iraq_e_ajam_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		effect = {
-			add_adm_power = 100
-			isfahan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			tabarestan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			birjand_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			yazd_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			zavareh_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-	}
-
-	tm_SRV_control_over_persia = {
-		icon = immaculate_government
-		required_missions = { tm_SRV_declare_war_on_persia }
-		position = 3
-
-		provinces_to_highlight = {
-			OR = {
-				area = isfahan_area
-				area = tabarestan_area
-				area = birjand_area
-				area = yazd_area
-				area = zavareh_area
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value  = 40
-				region = persia_region
-			}
-		}
-		effect = {
-			add_prestige = 15
-			persia_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			add_country_modifier = {
-				name = increase_value_of_trade
-				duration = 3650
-			}
-			add_country_modifier = {
-				name = persian_immortals
-				duration = 3650
-			}
-		}
-	}
-}
-
-tm_SRV_slot_2 = {
-	slot = 2
-	generic = no
-	ai = yes
-	potential = {
-		OR = {
-			tag = SRV
-			was_tag = SRV
-			}
-		NOT = { map_setup = map_setup_random }
-		NOT = {
-			tag = PER
-		}
-	}
-	has_country_shield = yes
-
 	tm_SRV_dominate_rivals = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { }
@@ -160,6 +43,54 @@ tm_SRV_slot_2 = {
 			}
 		}
 	}
+
+	tm_SRV_seize_gold_mines = {
+		icon = alpine_fortifications
+		required_missions = { tm_SRV_mobilization tm_SRV_dominate_rivals }
+		position = 2
+		provinces_to_highlight = {
+			OR = {
+				area = alania_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			alania_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			2201 = {
+				base_production = 10
+			}
+		}
+		effect = {
+			add_treasury = 2000
+			add_country_modifier = {
+				name = "manage_inflation"
+				duration = 3650
+			}
+		}
+	}
+
+}
+
+tm_SRV_slot_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		OR = {
+			tag = SRV
+			was_tag = SRV
+			}
+		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
+	}
+	has_country_shield = yes
 
 	tm_SRV_secure_caucasian_lands = {
 		icon = alpine_fortifications
@@ -260,44 +191,6 @@ tm_SRV_slot_2 = {
 		}
 	}
 
-	tm_SRV_secure_the_east = {
-		icon = alpine_fortifications
-		required_missions = { tm_SRV_annex_armenia }
-		position = 4
-		provinces_to_highlight = {
-			OR = {
-				area = al_jazira_area
-				area = north_kurdistan_area
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			al_jazira_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			north_kurdistan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		effect = {
-			#forts
-			5196 = {
-				add_building = fort_15th
-			}
-			2309 = {
-				add_building = fort_15th
-			}
-			add_country_modifier = {
-				name = tm_srv_defending_east
-				duration = 7300
-			}
-		}
-	}
-
 }
 
 tm_SRV_slot_3 = {
@@ -388,6 +281,7 @@ tm_SRV_slot_3 = {
 	tm_SRV_seize_tabriz = {
 		icon = alpine_fortifications
 		required_missions = { tm_SRV_mobilization }
+		position = 3
 		
 		provinces_to_highlight = {
 			OR = {
@@ -428,9 +322,145 @@ tm_SRV_slot_3 = {
 		}
 	}
 
+	tm_SRV_secure_the_east = {
+		icon = alpine_fortifications
+		required_missions = { tm_SRV_seize_tabriz }
+		position = 4
+		provinces_to_highlight = {
+			OR = {
+				area = al_jazira_area
+				area = north_kurdistan_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			al_jazira_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			north_kurdistan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			#forts
+			5196 = {
+				add_building = fort_15th
+			}
+			2309 = {
+				add_building = fort_15th
+			}
+			add_country_modifier = {
+				name = tm_srv_defending_east
+				duration = 7300
+			}
+		}
+	}
+
+	
+}
+
+tm_SRV_slot_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		OR = {
+			tag = SRV
+			was_tag = SRV
+			}
+		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
+	}
+	has_country_shield = yes
+
+	tm_SRV_a_question_of_faith = {
+		icon = mission_restore_faith_in_the_throne
+		required_missions = { tm_SRV_mobilization }
+		position = 2
+		
+		provinces_to_highlight = {
+			province_id = 421
+		}
+	
+		trigger = {
+			stability = 1
+			is_date = 1447.01.01
+		}
+		effect = {
+			country_event = {
+				id = titansrv.1
+				tooltip = titansrv_1_event_tt
+			}
+		}
+	}
+
+	tm_SRV_declare_war_on_persia = {
+		icon = mission_conquer_persia
+		required_missions = { tm_SRV_a_question_of_faith }
+		position = 3
+		
+		provinces_to_highlight = {
+			area = iraq_e_ajam_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			iraq_e_ajam_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			add_adm_power = 100
+			isfahan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			tabarestan_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			birjand_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			yazd_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			zavareh_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
 	tm_SRV_move_south = {
 		icon = alpine_fortifications
 		required_missions = { tm_SRV_seize_tabriz }
+		position = 4
 		
 		provinces_to_highlight = {
 			OR = {
@@ -487,125 +517,7 @@ tm_SRV_slot_3 = {
 			}
 		}
 	}
-	
-	tm_SRV_towards_basra = {
-		icon = mission_saladin_takes_jerusalem
-		required_missions = { tm_SRV_move_south }
-		
-		provinces_to_highlight = {
-			OR = {
-				area = khuzestan_area
-				area = basra_area
-				area = iraq_arabi_area
-				area = radah_area
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
 
-		trigger = {
-			khuzestan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			basra_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			iraq_arabi_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			radah_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-
-		effect = {
-			add_treasury = 1000
-			add_mil_power = 100
-			add_country_modifier = {
-				name = "riches_from_babylon"
-				duration = 5475
-			}
-			add_stat_or_monarch_power = {
-				stat = dip
-				amount = 1
-			}
-		}
-	}
-
-	
-}
-
-tm_SRV_slot_4 = {
-	slot = 4
-	generic = no
-	ai = yes
-	potential = {
-		OR = {
-			tag = SRV
-			was_tag = SRV
-			}
-		NOT = { map_setup = map_setup_random }
-		NOT = {
-			tag = PER
-		}
-	}
-	has_country_shield = yes
-
-	tm_SRV_a_question_of_faith = {
-		icon = mission_restore_faith_in_the_throne
-		required_missions = {  }
-		position = 1
-		
-		provinces_to_highlight = {
-			province_id = 421
-		}
-		
-		trigger = {
-			stability = 1
-			is_date = 1447.01.01
-		}
-		effect = {
-			country_event = {
-				id = titansrv.1
-				tooltip = titansrv_1_event_tt
-			}
-		}
-	}
-
-	tm_SRV_seize_gold_mines = {
-		icon = alpine_fortifications
-		required_missions = { tm_SRV_mobilization }
-		position = 2
-		provinces_to_highlight = {
-			OR = {
-				area = alania_area
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			alania_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			2201 = {
-				base_production = 10
-			}
-		}
-		effect = {
-			add_treasury = 2000
-			add_country_modifier = {
-				name = "manage_inflation"
-				duration = 3650
-			}
-		}
-	}
 }
 
 tm_SRV_slot_5 = {
@@ -696,6 +608,96 @@ tm_SRV_slot_5 = {
 				add_prestige = 15
 			}
 			custom_tooltip = tm_SRV_will_fire_event_bab
+		}
+	}
+
+	tm_SRV_control_over_persia = {
+		icon = immaculate_government
+		required_missions = { tm_SRV_a_question_of_faith }
+		position = 3
+
+		provinces_to_highlight = {
+			area = tabarestan_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		trigger = {
+			tabarestan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			4341 = {
+				province_has_center_of_trade_of_level = 3
+			}
+		}
+		effect = {
+			add_prestige = 15
+			persia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = increase_value_of_trade
+				duration = 3650
+			}
+			add_country_modifier = {
+				name = persian_immortals
+				duration = 3650
+			}
+		}
+	}
+
+	tm_SRV_towards_basra = {
+		icon = mission_saladin_takes_jerusalem
+		required_missions = { tm_SRV_move_south tm_SRV_control_over_persia }
+		position = 5
+
+		provinces_to_highlight = {
+			OR = {
+				area = khuzestan_area
+				area = basra_area
+				area = iraq_arabi_area
+				area = radah_area
+			}
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		trigger = {
+			khuzestan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			basra_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			iraq_arabi_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			radah_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+		effect = {
+			add_treasury = 755
+			add_mil_power = 75
+			add_country_modifier = {
+				name = "riches_from_babylon"
+				duration = 5475
+			}
+			add_stat_or_monarch_power = {
+				stat = dip
+				amount = 1
+			}
 		}
 	}
 
