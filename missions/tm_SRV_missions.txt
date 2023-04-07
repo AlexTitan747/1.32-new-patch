@@ -2041,6 +2041,33 @@ tm_SRV_slot_4_babylon = {
 			add_prestige = 15
 		}
 	}
+
+	tm_SRV_develop_fertile_lands = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_cultural_integration }
+		position = 5
+		
+		provinces_to_highlight = {
+		}
+		trigger = {
+			stability = 1
+			num_of_owned_provinces_with = {
+				value = 12
+				total_development = 20
+				OR = {
+					culture = kurdish
+					culture = al_iraqiya_arabic
+				}
+			}
+		}
+		effect = {
+			add_dip_power = 150
+			add_country_modifier = {
+				name = tm_SRV_developed_fertile_lands
+				duration = 3650
+			}
+		}
+	}
 }
 
 tm_SRV_slot_5_babylon = {
@@ -2060,4 +2087,64 @@ tm_SRV_slot_5_babylon = {
 	}
 	has_country_shield = yes
 	
+	tm_SRV_embrace_traditions = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_embrace_cossack_traditions }
+		position = 4
+		
+		provinces_to_highlight = {
+
+		}
+		trigger = {
+			stability = 1
+			accepted_culture = kurdish
+			accepted_culture = al_iraqiya_arabic
+		}
+		effect = {
+			add_prestige = 15
+			add_country_modifier = {
+				name = tm_SRV_cossack_integration
+				duration = 3650
+			}
+			define_advisor = {
+				type = master_of_assimilation
+				skill = 3 
+				cost_multiplier = 0.5
+			}
+		}
+	}
+	
+	tm_SRV_enforce_tradition = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_cultural_integration }
+		position = 5
+		
+		provinces_to_highlight = {
+		}
+		trigger = {
+			stability = 1
+			num_of_owned_provinces_with = {
+				value = 16
+				total_development = 12
+				culture = kurdish
+			}
+		}
+		effect = {
+			add_dip_power = 150
+			if = {
+				limit = {
+					410 = {
+						NOT = {
+							culture = kurdish
+						}
+					}
+				}
+				410 = {
+					change_culture = kurdish
+				}
+			}
+			change_primary_culture = kurdish
+		}
+	}
+
 }
