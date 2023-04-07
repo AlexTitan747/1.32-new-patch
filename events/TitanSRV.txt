@@ -137,7 +137,6 @@ country_event = {
     fire_only_once = yes
 
     trigger = {
-        accepted_culture = astrakhani
 		accepted_culture = dagestani
 		accepted_culture = circassian
 		owns_core_province = 464
@@ -157,7 +156,10 @@ country_event = {
 	
 	option = {
 		name = "titansrv.cossacks"
+		hidden_effect = {
 		set_country_flag = SRV_cossack_path_unlocked
+		}
+		additional_missions_scripted_effect = yes
 		custom_tooltip = "SRV_cossack_unlocked"
 	}
 
@@ -172,7 +174,17 @@ country_event = {
     fire_only_once = yes
 
     trigger = {
-
+		accepted_culture = kurdish
+		accepted_culture = al_iraqiya_arabic
+		owns_core_province = 410
+		num_of_provinces_owned_or_owned_by_subjects_with = {
+		value = 15
+		development = 12
+		OR = {
+			culture = kurdish
+			culture = al_iraqiya_arabic
+		}
+		}
     }
 
     mean_time_to_happen = {
@@ -181,7 +193,10 @@ country_event = {
 	
 	option = {
 		name = "titansrv.babylon"
+		hidden_effect = {
 		set_country_flag = SRV_babylon_path_unlocked
+		}
+		additional_missions_scripted_effect = yes
 		custom_tooltip = "SRV_babylon_unlocked"
 	}
 
