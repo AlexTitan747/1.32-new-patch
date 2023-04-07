@@ -8,6 +8,9 @@ tm_SRV_slot_1 = {
 			was_tag = SRV
 			}
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
 	}
 	has_country_shield = yes
 
@@ -122,6 +125,9 @@ tm_SRV_slot_2 = {
 			was_tag = SRV
 			}
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
 	}
 	has_country_shield = yes
 
@@ -299,6 +305,9 @@ tm_SRV_slot_3 = {
 			was_tag = SRV
 			}
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
 	}
 	has_country_shield = yes
 
@@ -536,6 +545,9 @@ tm_SRV_slot_4 = {
 			was_tag = SRV
 			}
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
 	}
 	has_country_shield = yes
 
@@ -601,6 +613,9 @@ tm_SRV_slot_5 = {
 			was_tag = SRV
 		}
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
 	}
 	has_country_shield = yes
 
@@ -739,6 +754,9 @@ tm_SRV_slot_1_CAU = {
 			was_tag = SRV
 		}
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
 	}
 	has_country_shield = yes
 	
@@ -862,7 +880,7 @@ tm_SRV_slot_1_CAU = {
 					base_production = 10
 					has_building = workshop
 				}
-				add_building = plantation
+				add_manufactory = yes
 			}
 		}
 	}
@@ -879,6 +897,9 @@ tm_SRV_slot_2_CAU = {
 			was_tag = SRV
 		}
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
 	}
 	has_country_shield = yes
 	
@@ -1061,6 +1082,9 @@ tm_SRV_slot_3_CAU = {
 			was_tag = SRV
 		}
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
 	}
 	has_country_shield = yes
 	
@@ -1213,7 +1237,7 @@ tm_SRV_slot_3_CAU = {
 					base_production = 12
 					has_building = workshop
 				}
-				add_building = mill
+				add_manufactory = yes
 				}
 
 				every_owned_province = {
@@ -1243,6 +1267,9 @@ tm_SRV_slot_4_CAU = {
 			was_tag = SRV
 		}
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
 	}
 	has_country_shield = yes
 	
@@ -1442,6 +1469,9 @@ tm_SRV_slot_5_CAU = {
 			was_tag = SRV
 		}
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
 	}
 	has_country_shield = yes
 	
@@ -1578,34 +1608,32 @@ tm_SRV_slot_5_CAU = {
 		effect = {
 			every_owned_province = {
 				limit = {
-					region = arabia_region
-					trade_goods = gems
-					base_production = 12
-					has_building = workshop
-				}
-				add_building = mill
+						region = arabia_region
+						trade_goods = gems
+						base_production = 12
+						has_building = workshop
+					}
+					add_manufactory = yes
 				}
 
-				every_owned_province = {
-					limit = {
+			every_owned_province = {
+				limit = {
 						region = arabia_region
 						trade_goods = spices
 						base_production = 10
 						has_building = workshop
 					}
 					add_building = tradecompany
-					}
-					
-					every_owned_province = {
-						limit = {
-							region = arabia_region
-							trade_goods = coffee
-							base_production = 10
-							has_building = workshop
-						}
-						add_building = plantation
-						}
-			
+				}		
+			every_owned_province = {
+				limit = {
+					region = arabia_region
+					trade_goods = coffee
+					base_production = 10
+					has_building = workshop
+				}
+				add_manufactory = yes
+			}
 		}
 	}
 
@@ -1650,7 +1678,7 @@ tm_SRV_slot_1_cossacks = {
 			}
 		}
 		effect = {
-			prestige = 15
+			add_prestige = 15
 			add_country_modifier = {
 				name = tm_SRV_cossack_integration
 				duration = 3650
@@ -1662,6 +1690,7 @@ tm_SRV_slot_1_cossacks = {
 			}
 		}
 	}
+	
 	tm_SRV_cossack_cultural_dominance = {
 		icon = mission_dominate_trade_in_aden
 		required_missions = { tm_SRV_cultural_integration }
@@ -2014,6 +2043,9 @@ tm_SRV_slot_1_babylon = {
 		has_country_flag = SRV_babylon_path_unlocked
 		was_tag = SRV
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
 	}
 	has_country_shield = yes
 	
@@ -2027,6 +2059,9 @@ tm_SRV_slot_2_babylon = {
 		has_country_flag = SRV_babylon_path_unlocked
 		was_tag = SRV
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
 	}
 	has_country_shield = yes
 	
@@ -2062,6 +2097,9 @@ tm_SRV_slot_3_babylon = {
 		has_country_flag = SRV_babylon_path_unlocked
 		was_tag = SRV
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
 	}
 	has_country_shield = yes
 	
@@ -2075,6 +2113,9 @@ tm_SRV_slot_4_babylon = {
 		has_country_flag = SRV_babylon_path_unlocked
 		was_tag = SRV
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			tag = PER
+		}
 	}
 	has_country_shield = yes
 	
