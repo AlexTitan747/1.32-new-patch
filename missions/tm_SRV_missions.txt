@@ -1529,9 +1529,7 @@ tm_SRV_slot_5_CAU = {
 		position = 6
 		
 		provinces_to_highlight = {
-			OR = {
-				region = arabia_region
-			}
+			region = arabia_region
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
@@ -1973,50 +1971,6 @@ tm_SRV_slot_2_cossacks = {
 
 #babylon path
 
-tm_SRV_slot_2_babylon = {
-	slot = 2
-	generic = no
-	ai = yes
-	potential = {
-		has_country_flag = SRV_babylon_path_unlocked
-		OR = {
-			tag = SRV
-			was_tag = SRV
-		}
-		NOT = { map_setup = map_setup_random }
-		NOT = {
-			OR = {
-				tag = PER
-				tag = COS
-			}
-		}
-	}
-	has_country_shield = yes
-	
-}
-
-tm_SRV_slot_3_babylon = {
-	slot = 3
-	generic = no
-	ai = yes
-	potential = {
-		has_country_flag = SRV_babylon_path_unlocked
-		OR = {
-			tag = SRV
-			was_tag = SRV
-		}
-		NOT = { map_setup = map_setup_random }
-		NOT = {
-			OR = {
-				tag = PER
-				tag = COS
-			}
-		}
-	}
-	has_country_shield = yes
-	
-}
-
 tm_SRV_slot_4_babylon = {
 	slot = 4
 	generic = no
@@ -2116,7 +2070,7 @@ tm_SRV_slot_5_babylon = {
 	has_country_shield = yes
 	
 	tm_SRV_embrace_traditions = {
-		icon = mission_dominate_trade_in_aden
+		icon = mission_court_education
 		required_missions = { tm_SRV_towards_the_old_ways tm_SRV_towards_basra }
 		position = 4
 		
@@ -2146,6 +2100,143 @@ tm_SRV_slot_5_babylon = {
 			}
 		}
 	}
+}
+	
+# Babylon Missions
+
+tm_SRV_slot_1_babylon = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = SRV_babylon_path_unlocked
+		OR = {
+			tag = BAB
+			was_tag = SRV
+		}
+		NOT = { map_setup = map_setup_random }
+		NOT = {
+			OR = {
+				tag = PER
+				tag = COS
+			}
+		}
+	}
+	has_country_shield = yes
+	
+}
+
+tm_SRV_slot_2_babylon = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = SRV_babylon_path_unlocked
+		OR = {
+			tag = BAB
+			was_tag = SRV
+		}
+		NOT = { map_setup = map_setup_random }
+		NOT = {
+			OR = {
+				tag = PER
+				tag = COS
+			}
+		}
+	}
+	has_country_shield = yes
+	
+}
+
+tm_SRV_slot_3_babylon = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = SRV_babylon_path_unlocked
+		OR = {
+			tag = BAB
+			was_tag = SRV
+		}
+		NOT = { map_setup = map_setup_random }
+		NOT = {
+			OR = {
+				tag = PER
+				tag = COS
+			}
+		}
+	}
+	has_country_shield = yes
+
+	tm_BAB_introduce_new_reforms = {
+		icon = mission_dominate_trade_in_aden
+		required_missions = { tm_SRV_towards_the_old_ways }
+		position = 6
+	
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+			stability = 3
+			monthly_income = 150
+		}
+
+		effect = {
+			hidden_effect = {
+			set_country_flag = babylonian_reform
+				}
+
+			}
+		}
+	}
+
+	tm_SRV_slot_4_babylon = {
+		slot = 4
+		generic = no
+		ai = yes
+		potential = {
+			has_country_flag = SRV_babylon_path_unlocked
+			OR = {
+				tag = BAB
+				was_tag = SRV
+			}
+			NOT = { map_setup = map_setup_random }
+			NOT = {
+				OR = {
+					tag = PER
+					tag = COS
+				}
+			}
+		}
+		has_country_shield = yes
+		
+
+
+	}
+
+	tm_SRV_slot_5_babylon = {
+		slot = 5
+		generic = no
+		ai = yes
+		potential = {
+			has_country_flag = SRV_babylon_path_unlocked
+			OR = {
+				tag = BAB
+				was_tag = SRV
+			}
+			NOT = { map_setup = map_setup_random }
+			NOT = {
+				OR = {
+					tag = PER
+					tag = COS
+				}
+			}
+		}
+		has_country_shield = yes
+		
+
+	}
 	
 
-}
+
