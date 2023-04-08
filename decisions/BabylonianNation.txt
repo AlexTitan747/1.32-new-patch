@@ -24,10 +24,8 @@ country_decisions = {
 						ai = no
 					}
 				}
-				OR = {
-					primary_culture = kurdish
-					primary_culture = al_iraqiya_arabic
-				}
+				tag = SRV
+				has_country_flag = SRV_babylon_path_unlocked
 				
 				OR = {
 					ai = no
@@ -42,11 +40,6 @@ country_decisions = {
 			provinces_to_highlight = {
 				OR = {
 				province_id = 410			# baghdad
-				province_id = 411		    # mosul
-				province_id = 4290			# hoveyzeh
-				province_id = 408			# basrah
-				province_id = 2314			# rahba
-				province_id = 418			# diyarbekir
 				}
 				OR = {
 					NOT = { owned_by = ROOT }
@@ -59,12 +52,12 @@ country_decisions = {
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
 				owns_core_province = 410		    # Baghdad
-				owns_core_province = 411			# mosul
-				owns_core_province = 4290			# hoveyzeh
-				owns_core_province = 408			# basrah
-				owns_core_province = 2314			# rahba
-				owns_core_province = 418			# diyarbekir
-				}
+
+				mission_completed = tm_SRV_embrace_traditions
+				mission_completed = tm_SRV_develop_fertile_lands
+
+			}
+
 			effect = {
 				410 = {	#Baghdad
 					move_capital_effect = yes
@@ -75,7 +68,6 @@ country_decisions = {
 				set_ruler_religion = zoroastrian
 				set_heir_religion = zoroastrian
 				change_primary_culture = babylonian
-				add_stability = 1
 				swap_non_generic_missions = yes
 				remove_non_electors_emperors_from_empire_effect = yes
 				if = {
