@@ -4,18 +4,21 @@ tm_SRV_slot_1 = {
 	ai = yes
 	potential = {
 		OR = {
-			tag = SRV
-			was_tag = SRV
+				tag = SRV
+				was_tag = SRV
 			}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
 
 	tm_SRV_dominate_rivals = {
-		icon = mission_dominate_trade_in_aden
+		icon = personal_diplomacy
 		required_missions = { }
 		position = 1
 		
@@ -45,7 +48,7 @@ tm_SRV_slot_1 = {
 	}
 
 	tm_SRV_seize_gold_mines = {
-		icon = alpine_fortifications
+		icon = mission_zambezi_gold
 		required_missions = { tm_SRV_mobilization tm_SRV_dominate_rivals }
 		position = 2
 		provinces_to_highlight = {
@@ -87,13 +90,16 @@ tm_SRV_slot_2 = {
 			}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
 
 	tm_SRV_secure_caucasian_lands = {
-		icon = alpine_fortifications
+		icon = mission_the_pass_to_the_caucasus
 		required_missions = { tm_SRV_mobilization }
 		position = 2
 		provinces_to_highlight = {
@@ -146,7 +152,7 @@ tm_SRV_slot_2 = {
 	}
 
 	tm_SRV_annex_armenia = {
-		icon = alpine_fortifications
+		icon = mission_into_persia_1
 		required_missions = { tm_SRV_secure_caucasian_lands }
 		position = 3
 		provinces_to_highlight = {
@@ -204,7 +210,10 @@ tm_SRV_slot_3 = {
 			}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -279,7 +288,7 @@ tm_SRV_slot_3 = {
 		}
 	}
 	tm_SRV_seize_tabriz = {
-		icon = alpine_fortifications
+		icon = fortify_malta
 		required_missions = { tm_SRV_mobilization }
 		position = 3
 		
@@ -323,7 +332,7 @@ tm_SRV_slot_3 = {
 	}
 
 	tm_SRV_secure_the_east = {
-		icon = alpine_fortifications
+		icon = mission_pue_chaco_roads
 		required_missions = { tm_SRV_seize_tabriz }
 		position = 4
 		provinces_to_highlight = {
@@ -374,7 +383,10 @@ tm_SRV_slot_4 = {
 			}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -457,8 +469,8 @@ tm_SRV_slot_4 = {
 		}
 	}
 
-	tm_SRV_move_south = {
-		icon = alpine_fortifications
+	tm_SRV_babylonian_farmlands = {
+		icon = mission_iroquois_food_surplus
 		required_missions = { tm_SRV_seize_tabriz }
 		position = 4
 		
@@ -531,13 +543,16 @@ tm_SRV_slot_5 = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
 
 	tm_SRV_option_cossacks = {
-		icon = mission_dominate_trade_in_aden
+		icon = cossack_federation_flag
 		required_missions = {  }
 		position = 1
 		
@@ -574,7 +589,7 @@ tm_SRV_slot_5 = {
 		}
 	}
 	tm_SRV_option_babylon = {
-		icon = mission_dominate_trade_in_aden
+		icon = babylon_flag
 		required_missions = {  }
 		position = 2
 		
@@ -653,7 +668,7 @@ tm_SRV_slot_5 = {
 
 	tm_SRV_towards_basra = {
 		icon = mission_saladin_takes_jerusalem
-		required_missions = { tm_SRV_move_south tm_SRV_control_over_persia }
+		required_missions = { tm_SRV_babylonian_farmlands tm_SRV_control_over_persia }
 		position = 5
 
 		provinces_to_highlight = {
@@ -716,7 +731,10 @@ tm_SRV_slot_1_CAU = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -837,7 +855,10 @@ tm_SRV_slot_2_CAU = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -1022,7 +1043,10 @@ tm_SRV_slot_3_CAU = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -1207,7 +1231,10 @@ tm_SRV_slot_4_CAU = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -1409,7 +1436,10 @@ tm_SRV_slot_5_CAU = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -1613,6 +1643,12 @@ tm_SRV_slot_1_cossacks = {
 			was_tag = SRV
 		}
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			OR = {
+				tag = PER
+				tag = COS
+			}
+		}
 	}
 	has_country_shield = yes
 
@@ -1787,6 +1823,12 @@ tm_SRV_slot_2_cossacks = {
 			was_tag = SRV
 		}
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			OR = {
+				tag = PER
+				tag = COS
+			}
+		}
 	}
 	has_country_shield = yes
 	
@@ -1928,40 +1970,6 @@ tm_SRV_slot_2_cossacks = {
 	}
 }
 
-tm_SRV_slot_3_cossacks = {
-	slot = 3
-	generic = no
-	ai = yes
-	potential = {
-		has_country_flag = SRV_cossack_path_unlocked
-		OR = {
-			tag = SRV
-			was_tag = SRV
-		}
-		NOT = { map_setup = map_setup_random }
-	}
-	has_country_shield = yes
-	
-
-}
-
-tm_SRV_slot_4_cossacks = {
-	slot = 4
-	generic = no
-	ai = yes
-	potential = {
-		has_country_flag = SRV_cossack_path_unlocked
-		OR = {
-			tag = SRV
-			was_tag = SRV
-		}
-		NOT = { map_setup = map_setup_random }
-	}
-	has_country_shield = yes
-
-
-}
-
 #babylon path
 
 tm_SRV_slot_2_babylon = {
@@ -1976,7 +1984,10 @@ tm_SRV_slot_2_babylon = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -1995,7 +2006,10 @@ tm_SRV_slot_3_babylon = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -2014,19 +2028,24 @@ tm_SRV_slot_4_babylon = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
 	
 	tm_SRV_towards_the_old_ways = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = {  }
+		icon = babylonian_old_ways
+		required_missions = { tm_SRV_babylonian_farmlands }
 		position = 5
 		
 		provinces_to_highlight = {
-
+			is_capital = yes
+			owned_by = ROOT
 		}
+
 		trigger = {
 			stability = 2
 			total_development = 500
@@ -2037,23 +2056,28 @@ tm_SRV_slot_4_babylon = {
 				mission_completed = tm_SRV_embrace_cossack_traditions
 			}
 		}
+
 		effect = {
 			add_prestige = 15
 		}
 	}
 
 	tm_SRV_develop_fertile_lands = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_cultural_integration }
+		icon = mission_azar_goshnasp_sas
+		required_missions = { tm_SRV_towards_the_old_ways }
 		position = 5
 		
 		provinces_to_highlight = {
+			OR = {
+				culture = kurdish
+				culture = al_iraqiya_arabic
+			}
 		}
+
 		trigger = {
-			stability = 1
 			num_of_owned_provinces_with = {
 				value = 12
-				total_development = 20
+				development = 20
 				OR = {
 					culture = kurdish
 					culture = al_iraqiya_arabic
@@ -2082,24 +2106,32 @@ tm_SRV_slot_5_babylon = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
 	
 	tm_SRV_embrace_traditions = {
 		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_embrace_cossack_traditions }
+		required_missions = { tm_SRV_towards_the_old_ways tm_SRV_towards_basra }
 		position = 4
 		
 		provinces_to_highlight = {
-
+			OR = {
+				culture = kurdish
+				culture = al_iraqiya_arabic					
+			}
 		}
+
 		trigger = {
 			stability = 1
 			accepted_culture = kurdish
 			accepted_culture = al_iraqiya_arabic
 		}
+
 		effect = {
 			add_prestige = 15
 			add_country_modifier = {
@@ -2114,37 +2146,5 @@ tm_SRV_slot_5_babylon = {
 		}
 	}
 	
-	tm_SRV_enforce_tradition = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_cultural_integration }
-		position = 5
-		
-		provinces_to_highlight = {
-		}
-		trigger = {
-			stability = 1
-			num_of_owned_provinces_with = {
-				value = 16
-				total_development = 12
-				culture = kurdish
-			}
-		}
-		effect = {
-			add_dip_power = 150
-			if = {
-				limit = {
-					410 = {
-						NOT = {
-							culture = kurdish
-						}
-					}
-				}
-				410 = {
-					change_culture = kurdish
-				}
-			}
-			change_primary_culture = kurdish
-		}
-	}
 
 }

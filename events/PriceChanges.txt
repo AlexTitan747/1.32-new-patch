@@ -1758,7 +1758,7 @@ country_event = {
 		change_price = {
 			trade_goods = books
 			key = INCREASED_PRINTING
-			value = 0.25
+			value = 0.2
 			duration = -1
 		}
 	}
@@ -1780,7 +1780,7 @@ country_event = {
 		change_price = {
 			trade_goods = books
 			key = INCREASED_PRINTING
-			value = 0.25
+			value = 0.2
 			duration = -1
 		}
 	}
@@ -2017,7 +2017,7 @@ country_event = {
 		change_price = {
 			trade_goods = books
 			key = PAPER_IN_BUREAUCRACY
-			value = 0.25
+			value = 0.2
 			duration = -1
 		}
 	}
@@ -2100,7 +2100,7 @@ country_event = {
 		change_price = {
 			trade_goods = books
 			key = LENDING_LIBRARIES
-			value = 0.35
+			value = 0.25
 			duration = -1
 		}
 		if = {
@@ -2890,6 +2890,59 @@ country_event = {
 			trade_goods = tailored_clothes
 			key = TAILORED_FIX
 			value = 0.33
+			duration = -1
+		}
+	}
+}
+
+#South African Diamonds
+country_event = {
+	id = prices.50
+	title = prices.50.t
+	desc = prices.50.d
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		has_global_flag = brazilian_gems_happened 
+		NOT = { current_age = age_of_discovery }
+		primitives = no
+		any_owned_province = {
+			trade_goods = gems
+			OR = {
+				continent = new_world
+				continent = north_america
+				continent = south_america
+			}
+		}
+		calc_true_if = {
+			all_province = {
+				trade_goods = gems
+				OR = {
+					continent = new_world
+					continent = north_america
+					continent = south_america
+				}
+			}
+			amount = 8
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = prices.39.a
+		add_years_of_income = 1.5
+		add_prestige = 20
+		change_price = {
+			trade_goods = gems
+			key = BRAZILIAN_DIAMONDS
+			value = -0.5
 			duration = -1
 		}
 	}
