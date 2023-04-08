@@ -367,22 +367,23 @@ tm_COS_slot_3 = {
 		position = 4
 		
 		provinces_to_highlight = {
-            region = egypt_region
+            region = crimea_region
             NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
-            num_of_owned_provinces_with = {
-				value = 10
-				region = egypt_region
+			num_of_owned_provinces_with = {
+				value = 6
+				region = crimea_region
+				has_fort_building_trigger = yes
 			}
 		}
 
 	    effect = {
-			add_prestige = 10
-			add_power_projection = {
-				type = mission_rewards_power_projection
-				amount = 10
+			event = titansrv.4
+			add_country_modifier = {
+				name = tm_COS_defensive_efforts
+				duration = -1
 			}
 	    }
 	}
@@ -493,7 +494,6 @@ tm_COS_slot_5 = {
 
 		trigger = {
             treasury = 1000
-			accepted_culture
 		}
 
 	    effect = {
