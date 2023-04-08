@@ -69,9 +69,9 @@ country_decisions = {
 				410 = {	#Baghdad
 					move_capital_effect = yes
 					change_religion = zoroastrian
+					change_province_name = Babylon
 				}
 				change_tag = BAB
-				change_religion = zoroastrian
 				set_ruler_religion = zoroastrian
 				set_heir_religion = zoroastrian
 				change_primary_culture = babylonian
@@ -98,10 +98,7 @@ country_decisions = {
 					limit = { is_revolutionary = no }
 						change_government_to_monarchy = yes 
 				}
-				if = {
-				limit = { is_revolutionary = no }
-				add_government_reform = persian_zoroastrian_state
-				}
+
 				hidden_effect = {
 					every_owned_province = {
 						limit = {
@@ -119,6 +116,9 @@ country_decisions = {
 				if = {
 				limit = { has_custom_ideas = no }
 				country_event = { id = ideagroups.1 } #Swap Ideas
+				}
+				410 = {
+					set_province_flag = babylon_existed
 				}
 			}
 			
