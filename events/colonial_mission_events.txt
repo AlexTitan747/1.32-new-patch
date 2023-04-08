@@ -180,6 +180,7 @@ country_event = { #SAF Metals
 	picture = TRADE_GOODS_METALS_AND_MINING_EQUIPENT_eventPicture
 	
 	trigger = {
+        NOT = { has_country_flag = saf_metals_flag }
         is_colonial_nation = yes
         colonial_saf = {
             type = all 
@@ -196,27 +197,41 @@ country_event = { #SAF Metals
         days = 10
     }
 
+    immediate = {
+        hidden_effect = {
+            set_country_flag = saf_metals_flag
+        }
+    } 
+
 	option = {
 		name = colonial_mission_events.7.a
         trigger = {
-            NOT = { copper = 1 }
-            NOT = { tin = 1 }
+            OR = {
+                NOT = { copper = 1 }
+                NOT = { tin = 1 }
+            }
         }
         random_owned_province = {
             limit = {
                 NOT = { trade_goods = gold }
                 NOT = { trade_goods = gems }
                 NOT = { has_latent_trade_goods = coal }
+                NOT = { trade_goods = silver }
+                NOT = { prov_has_developed_good = yes }
             }
             change_trade_goods = tin
+            add_base_production = 1
         }
         random_owned_province = {
             limit = {
                 NOT = { trade_goods = gold }
                 NOT = { trade_goods = gems }
                 NOT = { has_latent_trade_goods = coal }
+                NOT = { trade_goods = silver }
+                NOT = { prov_has_developed_good = yes }
             }
             change_trade_goods = copper
+            add_base_production = 1
         }
 	}
 	option = {
@@ -229,15 +244,19 @@ country_event = { #SAF Metals
                 NOT = { trade_goods = gold }
                 NOT = { trade_goods = gems }
                 NOT = { has_latent_trade_goods = coal }
+                NOT = { trade_goods = silver }
+                NOT = { prov_has_developed_good = yes }
             }
             change_trade_goods = iron
-            add_base_manpower = 1
+            add_base_production = 1
         }
         random_owned_province = {
             limit = {
                 NOT = { trade_goods = gold }
                 NOT = { trade_goods = gems }
                 NOT = { has_latent_trade_goods = coal }
+                NOT = { trade_goods = silver }
+                NOT = { prov_has_developed_good = yes }
             }
             change_trade_goods = iron
             add_base_production = 1
@@ -254,8 +273,10 @@ country_event = { #SAF Metals
                 NOT = { trade_goods = gold }
                 NOT = { trade_goods = gems }
                 NOT = { has_latent_trade_goods = coal }
+                NOT = { prov_has_developed_good = yes }
             }
             change_trade_goods = silver
+            add_base_production = 1
         }
 	}
 
@@ -266,18 +287,22 @@ country_event = { #SAF Metals
                 NOT = { trade_goods = gold }
                 NOT = { trade_goods = gems }
                 NOT = { has_latent_trade_goods = coal }
+                NOT = { trade_goods = silver }
+                NOT = { prov_has_developed_good = yes }
             }
             change_trade_goods = gems
-            add_base_manpower = 2
+            add_base_production = 3
         }
         random_owned_province = {
             limit = {
                 NOT = { trade_goods = gold }
                 NOT = { trade_goods = gems }
                 NOT = { has_latent_trade_goods = coal }
+                NOT = { trade_goods = silver }
+                NOT = { prov_has_developed_good = yes }
             }
             change_trade_goods = gems
-            add_base_manpower = 2
+            add_base_production = 3
         }
 	}
 }
@@ -289,6 +314,7 @@ country_event = { #Carribean Goods
 	picture = TRADE_GOODS_METALS_AND_MINING_EQUIPENT_eventPicture
 	
 	trigger = {
+        NOT = { has_country_flag = carribean_goods_flag }
         is_colonial_nation = yes
         colonial_the_carribean = {
             type = all 
@@ -305,13 +331,20 @@ country_event = { #Carribean Goods
         days = 10
     }
 
+    immediate = {
+        hidden_effect = {
+            set_country_flag = carribean_goods_flag
+        }
+    } 
+
+
 	option = {
 		name = colonial_mission_events.8.a
         change_price = {
             trade_goods = sugar
             key = sweet_from_the_new_world
             value = 2.0
-            duration = 5475
+            duration = 7300
         }
 	}
 
@@ -324,6 +357,7 @@ country_event = { #Carribean Goods
             limit = {
                 NOT = { trade_goods = silver }
                 NOT = { trade_goods = dyes }
+                NOT = { prov_has_developed_good = yes }
             }
             change_trade_goods = silk
             add_base_production = -1
@@ -340,6 +374,7 @@ country_event = { #Carribean Goods
                 NOT = { trade_goods = gold }
                 NOT = { trade_goods = gems }
                 NOT = { has_latent_trade_goods = coal }
+                NOT = { prov_has_developed_good = yes }
                 has_terrain = jungle
             }
             change_trade_goods = silver
@@ -355,7 +390,7 @@ country_event = { #Carribean Goods
             limit = {
                 trade_goods = silver
             }
-            add_base_production = 2
+            add_base_production = 3
             add_province_modifier = {
                 name = "carribean_silver_mine"
                 duration = -1
