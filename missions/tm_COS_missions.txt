@@ -19,16 +19,20 @@ tm_COS_slot_1 = {
 
 		trigger = {
             num_of_owned_provinces_with = {
-				value = 10
-				region = egypt_region
+				value = 50
+				OR = {
+					region = crimea_region
+					region = caucasia_region
+				}
+				religion = orthodox
 			}
 		}
 
 	    effect = {
-			add_prestige = 10
-			add_power_projection = {
-				type = mission_rewards_power_projection
-				amount = 10
+			add_adm_power = 50
+			add_country_modifier = {
+				name = tm_COS_continue_conversion
+				duration = 3650
 			}
 	    }
 	}
@@ -39,22 +43,26 @@ tm_COS_slot_1 = {
 		position = 4
 		
 		provinces_to_highlight = {
-            region = egypt_region
-            NOT = { owned_by = ROOT }
+            
 		}
 
 		trigger = {
-            num_of_owned_provinces_with = {
+            num_of_provinces_owned_or_owned_by_subjects_with = {
 				value = 10
-				region = egypt_region
+				OR = {
+					region = crimea_region
+					region = caucasia_region
+				}
+				has_tax_building_trigger = yes
+				base_tax = 8
 			}
 		}
 
 	    effect = {
-			add_prestige = 10
-			add_power_projection = {
-				type = mission_rewards_power_projection
-				amount = 10
+			add_adm_power = 75
+			add_country_modifier = {
+				name = tm_COS_increased_taxation
+				duration = 3650
 			}
 	    }
 	}
@@ -65,15 +73,11 @@ tm_COS_slot_1 = {
 		position = 5
 		
 		provinces_to_highlight = {
-            region = egypt_region
-            NOT = { owned_by = ROOT }
+            
 		}
 
 		trigger = {
-            num_of_owned_provinces_with = {
-				value = 10
-				region = egypt_region
-			}
+            religious_unity = 0.85
 		}
 
 	    effect = {
@@ -109,15 +113,18 @@ tm_COS_slot_2 = {
 		trigger = {
             num_of_owned_provinces_with = {
 				value = 10
-				region = egypt_region
+				OR = {
+					region = crimea_region
+				}
+				total_development = 20
+				base_production = 10
 			}
 		}
 
 	    effect = {
-			add_prestige = 10
-			add_power_projection = {
-				type = mission_rewards_power_projection
-				amount = 10
+			add_country_modifier = {
+				name = tm_COS_increased_production
+				duration = 3650
 			}
 	    }
 	}
@@ -171,10 +178,9 @@ tm_COS_slot_3 = {
 		}
 
 		trigger = {
-            num_of_owned_provinces_with = {
-				value = 10
-				region = egypt_region
-			}
+            stability = 1
+			at_peace = yes
+			unrest = 4
 		}
 
 	    effect = {
