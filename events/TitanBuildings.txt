@@ -637,6 +637,22 @@ province_event = {
 	mean_time_to_happen = {
 		months = 60
 	}
+
+	immediate = {
+		hidden_effect = {
+			random_province = {
+				limit = {
+					any_neighbor_province = {
+						owned_by = ROOT
+					}
+					is_city = no
+					has_colonist = no
+				}
+
+				save_event_target_as = empty_neighbor_target
+			}
+		}
+	}
 	
 	option = {
 		name = "tbuildings.i1"
