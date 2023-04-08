@@ -1316,6 +1316,55 @@ dutch_republic = {
 	duration = 4
 }
 
+fractured_cossacks_reform = {
+	icon = "horde_riding"
+	legacy_equivalent = cossacks_legacy_reform
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			AND = {
+				tag = ZAZ
+				NOT = { map_setup = map_setup_random }
+			}
+			tag = COS
+			has_reform = fractured_cossacks_reform
+			have_had_reform = fractured_cossacks_reform
+			NOT = {
+				mission_completed = tm_COS_reform_the_state
+			}
+		}
+	}
+	
+	government_abilities = {
+		cossacks_mechanic
+	}
+
+	conditional = {
+		allow = { has_dlc = "Origins" }
+		custom_attributes = {
+			has_itinerant_capital = yes
+		}
+	}
+	valid_for_new_country = yes
+
+	nation_designer_trigger = {
+		any_owned_province = {
+			has_terrain = steppe
+		}
+	}
+
+	valid_for_nation_designer = yes
+	nation_designer_cost = 60
+
+	modifiers = {
+		cavalry_power = 0.05
+		cavalry_cost = -0.05
+		movement_speed = 0.05
+		governing_capacity = -100
+	}
+	duration = 4
+}
+
 
 cossacks_reform = {
 	icon = "horde_riding"
