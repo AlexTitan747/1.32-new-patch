@@ -77,14 +77,19 @@ tm_COS_slot_1 = {
 		}
 
 		trigger = {
-            religious_unity = 0.85
+            religious_unity = 0.75
 		}
 
 	    effect = {
 			add_prestige = 10
-			add_power_projection = {
-				type = mission_rewards_power_projection
-				amount = 10
+			419 = {
+				if = {
+					NOT = {
+						religion = orthodox
+					}
+					change_religion = orthodox
+				}
+				add_reform_center = orthodox
 			}
 	    }
 	}
@@ -380,6 +385,7 @@ tm_COS_slot_3 = {
 		}
 
 	    effect = {
+			custom_tooltip = tm_COS_change_capital_warning
 			event = titansrv.4
 			add_country_modifier = {
 				name = tm_COS_defensive_efforts
@@ -399,10 +405,8 @@ tm_COS_slot_3 = {
 		}
 
 		trigger = {
-            num_of_owned_provinces_with = {
-				value = 10
-				region = egypt_region
-			}
+            stability = 2
+			religious_unity = 0.75
 		}
 
 	    effect = {
