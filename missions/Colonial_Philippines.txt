@@ -134,6 +134,7 @@ colonial_PHIL_slot_1 = {
 				}
 				colonial_region = colonial_indonesia
 			}
+			1397 = { has_merchant = ROOT }
 		}
 
 		effect = {
@@ -155,15 +156,16 @@ colonial_PHIL_slot_1 = {
 		provinces_to_highlight = {	}
 
 		trigger = {
+			1397 = {
+				trade_node_value = 40
+			}
 			OR = {
 				1397 = {
 					is_strongest_trade_power = ROOT
-					trade_node_value = 40
 				}
 				overlord = {
 					1397 = {
 						is_strongest_trade_power = PREV
-						trade_node_value = 40
 					}
 				}
 			}
@@ -278,7 +280,7 @@ colonial_PHIL_slot_2 = {
 		effect = {
 			add_country_modifier = {
 				name = col_building_navy
-				duration = 3650
+				duration = 5475
 			}
 		}
 	}
@@ -299,7 +301,7 @@ colonial_PHIL_slot_2 = {
 		effect = {
 			add_country_modifier = {
 				name = "col_standing_navy"
-				duration = 3650
+				duration = 5475
 			}
 		}
 	}
@@ -354,7 +356,7 @@ colonial_PHIL_slot_3 = {
 		effect = {
 			add_country_modifier = {
 				name = col_building_army
-				duration = 3650
+				duration = 5475
 			}
 		}
 	}
@@ -507,6 +509,10 @@ colonial_PHIL_slot_4 = {
 		}
 
 		effect = {
+			add_country_modifier = {
+				name = col_early_earning
+				duration = 5475
+			}
 			custom_tooltip = col_first_colonisng_mission_tt
 			hidden_effect = {
 				if = {
@@ -586,7 +592,7 @@ colonial_PHIL_slot_4 = {
 			tooltip = {
 				add_province_modifier = {
 					name = col_forced_pacification
-					duration = 3650
+					duration = 5475
 				}
 			}
 			hidden_effect = {
@@ -596,7 +602,7 @@ colonial_PHIL_slot_4 = {
 					}
 					add_province_modifier = {
 						name = col_forced_pacification
-						duration = 3650
+						duration = 5475
 					}
 				}
 			}
@@ -626,7 +632,7 @@ colonial_PHIL_slot_4 = {
 			tooltip = {
 				add_province_modifier = {
 					name = col_forced_assimilation
-					duration = 3650
+					duration = 5475
 				}
 			}
 			hidden_effect = {
@@ -636,7 +642,7 @@ colonial_PHIL_slot_4 = {
 					}
 					add_province_modifier = {
 						name = col_forced_assimilation
-						duration = 3650
+						duration = 5475
 					}
 				}
 			}
@@ -647,7 +653,7 @@ colonial_PHIL_slot_4 = {
 
 	phil_colonisation_5 = {
 		icon = colonize_the_cape
-		required_missions = { phil_colonisation_3 }
+		required_missions = { phil_colonisation_4 }
 		provinces_to_highlight = { 
 			colonial_region = colonial_phil
 			NOT = { owned_by = ROOT }
@@ -751,7 +757,7 @@ colonial_PHIL_slot_5 = {
 		effect = {
 			add_country_modifier = {
 				name = col_building_buildings
-				duration = 3650
+				duration = 5475
 			}
 		}
 	}
@@ -799,14 +805,14 @@ colonial_PHIL_slot_5 = {
 			num_of_owned_provinces_with = {
 				value = 5
 				has_manufactory = yes
-				base_production = 10
+				base_production = 12
 			}
 		}
 
 		effect = {
 			add_country_modifier = {
 				name = "col_industralising"
-				duration = 3650
+				duration = 5475
 			}
 		}
 	}
