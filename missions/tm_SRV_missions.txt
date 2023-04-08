@@ -2006,14 +2006,18 @@ tm_SRV_slot_4_babylon = {
 			total_development = 500
 			legitimacy_equivalent = 95
 			prestige = 50
-			has_country_flag = SRV_babylon_path_unlocked
-			NOT = {
-				mission_completed = tm_SRV_embrace_cossack_traditions
+			hidden_trigger = {
+				has_country_flag = SRV_babylon_path_unlocked
 			}
 		}
 
 		effect = {
 			add_prestige = 15
+			add_country_modifier = {
+				name = irrigation_techniques
+				duration = 4562
+			}
+
 		}
 	}
 
@@ -2090,7 +2094,7 @@ tm_SRV_slot_5_babylon = {
 		effect = {
 			add_prestige = 15
 			add_country_modifier = {
-				name = tm_SRV_cossack_integration
+				name = tm_SRV_integration
 				duration = 3650
 			}
 			define_advisor = {
@@ -2206,53 +2210,95 @@ tm_SRV_slot_3_babylon = {
 				custom_tooltip = babylonian_reform_mission_tt
 			}
 		}
-	}
 
-	tm_SRV_slot_4_babylon = {
-		slot = 4
-		generic = no
-		ai = yes
-		potential = {
-			has_country_flag = SRV_babylon_path_unlocked
-			OR = {
-				tag = BAB
-				was_tag = SRV
-			}
-			NOT = { map_setup = map_setup_random }
-			NOT = {
-				OR = {
-					tag = PER
-					tag = COS
+	tm_BAB_hanging_gardens = {
+		icon = babylon_hanging_gardens
+		position = 8
+		required_missions = { tm_BAB_introduce_new_reforms }
+
+		provinces_to_highlight = {
+			province_id = 410
+		}
+
+		trigger = {
+			410 = {
+				has_great_project = {
+					type = hanging_gardens
+					tier = 1
 				}
+				province_has_center_of_trade_of_level = 3
+				owned_by = ROOT
 			}
 		}
-		has_country_shield = yes
-		
-		tm_BAB_town_of_babylon = {
-			icon = imperial_capitals 
-			position = 7
-			required_missions = {}
-	
-			provinces_to_highlight = {
-				province_id = 410
-			}
-	
-			trigger = {
-				410 = {
-					owned_by = ROOT
-					development = 23
-				}
-			}
-	
-			effect = {
-				410 = {
-					add_permanent_province_modifier = {
-						name = tm_bab_town_expansion
-						duration = -1
+
+		effect = {
+			410 = {
+				if = {
+					limit = {
+						has_dlc = "Leviathan"
+						has_great_project = {
+							type = hanging_gardens
+							tier = 1
+						}
+					}
+					set_great_project_tier_2 = {
+						type = hanging_gardens
 					}
 				}
+				else = {
+					add_base_production = 5
+				}
 			}
 		}
+	}
+
+}
+
+tm_SRV_slot_4_babylon = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		has_country_flag = SRV_babylon_path_unlocked
+		OR = {
+			tag = BAB
+			was_tag = SRV
+		}
+		NOT = { map_setup = map_setup_random }
+		NOT = {
+			OR = {
+				tag = PER
+				tag = COS
+			}
+		}
+	}
+	has_country_shield = yes
+		
+	tm_BAB_town_of_babylon = {
+		icon = imperial_capitals 
+		position = 7
+		required_missions = {}
+
+		provinces_to_highlight = {
+			province_id = 410
+		}
+
+		trigger = {
+			410 = {
+				owned_by = ROOT
+				development = 23
+			}
+		}
+
+		effect = {
+			410 = {
+				add_permanent_province_modifier = {
+					name = tm_bab_town_expansion
+					duration = -1
+				}
+			}
+		}
+	}
 
 		tm_BAB_the_babylon_metropolis = {
 			icon = imperial_capitals 
