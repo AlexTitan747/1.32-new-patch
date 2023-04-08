@@ -4,12 +4,15 @@ tm_SRV_slot_1 = {
 	ai = yes
 	potential = {
 		OR = {
-			tag = SRV
-			was_tag = SRV
+				tag = SRV
+				was_tag = SRV
 			}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -87,7 +90,10 @@ tm_SRV_slot_2 = {
 			}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -204,7 +210,10 @@ tm_SRV_slot_3 = {
 			}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -374,7 +383,10 @@ tm_SRV_slot_4 = {
 			}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -531,7 +543,10 @@ tm_SRV_slot_5 = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -716,7 +731,10 @@ tm_SRV_slot_1_CAU = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -837,7 +855,10 @@ tm_SRV_slot_2_CAU = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -1022,7 +1043,10 @@ tm_SRV_slot_3_CAU = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -1207,7 +1231,10 @@ tm_SRV_slot_4_CAU = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -1409,7 +1436,10 @@ tm_SRV_slot_5_CAU = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -1613,6 +1643,12 @@ tm_SRV_slot_1_cossacks = {
 			was_tag = SRV
 		}
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			OR = {
+				tag = PER
+				tag = COS
+			}
+		}
 	}
 	has_country_shield = yes
 
@@ -1787,6 +1823,12 @@ tm_SRV_slot_2_cossacks = {
 			was_tag = SRV
 		}
 		NOT = { map_setup = map_setup_random }
+		NOT = {
+			OR = {
+				tag = PER
+				tag = COS
+			}
+		}
 	}
 	has_country_shield = yes
 	
@@ -1928,40 +1970,6 @@ tm_SRV_slot_2_cossacks = {
 	}
 }
 
-tm_SRV_slot_3_cossacks = {
-	slot = 3
-	generic = no
-	ai = yes
-	potential = {
-		has_country_flag = SRV_cossack_path_unlocked
-		OR = {
-			tag = SRV
-			was_tag = SRV
-		}
-		NOT = { map_setup = map_setup_random }
-	}
-	has_country_shield = yes
-	
-
-}
-
-tm_SRV_slot_4_cossacks = {
-	slot = 4
-	generic = no
-	ai = yes
-	potential = {
-		has_country_flag = SRV_cossack_path_unlocked
-		OR = {
-			tag = SRV
-			was_tag = SRV
-		}
-		NOT = { map_setup = map_setup_random }
-	}
-	has_country_shield = yes
-
-
-}
-
 #babylon path
 
 tm_SRV_slot_2_babylon = {
@@ -1976,7 +1984,10 @@ tm_SRV_slot_2_babylon = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -1995,7 +2006,10 @@ tm_SRV_slot_3_babylon = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -2014,7 +2028,10 @@ tm_SRV_slot_4_babylon = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
@@ -2089,7 +2106,10 @@ tm_SRV_slot_5_babylon = {
 		}
 		NOT = { map_setup = map_setup_random }
 		NOT = {
-			tag = PER
+			OR = {
+				tag = PER
+				tag = COS
+			}
 		}
 	}
 	has_country_shield = yes
