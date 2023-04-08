@@ -106,16 +106,13 @@ tm_COS_slot_2 = {
 		position = 2
 		
 		provinces_to_highlight = {
-            region = egypt_region
-            NOT = { owned_by = ROOT }
+            
 		}
 
 		trigger = {
             num_of_owned_provinces_with = {
 				value = 10
-				OR = {
-					region = crimea_region
-				}
+				region = crimea_region
 				total_development = 20
 				base_production = 10
 			}
@@ -135,22 +132,80 @@ tm_COS_slot_2 = {
 		position = 4
 		
 		provinces_to_highlight = {
-            region = egypt_region
-            NOT = { owned_by = ROOT }
+           
 		}
 
 		trigger = {
             num_of_owned_provinces_with = {
-				value = 10
-				region = egypt_region
+				value = 8
+				region = crimea_region
+				base_production = 10
+				OR = {
+					trade_goods = gems
+					trade_goods = iron
+					trade_goods = cloth
+				}
 			}
 		}
 
 	    effect = {
-			add_prestige = 10
-			add_power_projection = {
-				type = mission_rewards_power_projection
-				amount = 10
+			every_owned_province = {
+				limit = {
+					region = crimea_region
+					base_production = 10
+					OR = {
+						trade_goods = gems
+						trade_goods = iron
+						trade_goods = cloth
+					}
+				}
+				if = {
+					NOT = {
+						has_production_building_trigger = yes
+					}
+					add_building = workshop
+				}
+				if = {
+					NOT = {
+						has_building = workshop
+					}
+					add_building = warehouse
+				}
+				add_base_production = 2
+			}
+	    }
+	}
+
+	tm_COS_dominate_steppe_trade = {
+        icon = NEEDICON
+		required_missions = { tm_COS_stabilise_the_lands }
+		position = 5
+		
+		provinces_to_highlight = {
+            
+		}
+
+		trigger = {
+            1322 = {
+				has_trader = ROOT
+				trade_share = {
+					country = ROOT
+					share = 60
+				}
+			}
+			420 = {
+				has_trader = ROOT
+				trade_share = {
+					country = ROOT
+					share = 75
+				}
+			}
+		}
+
+	    effect = {
+			add_country_modifier = {
+				name = tm_COS_increased_production
+				duration = 3650
 			}
 	    }
 	}
