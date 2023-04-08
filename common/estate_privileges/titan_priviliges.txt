@@ -678,3 +678,61 @@ estate_burghers_monopoly_of_olives = {
 		} 
 	}
 }
+
+estate_cossacks_grant_lordships = {
+	icon = privilege_grant_autonomy
+	land_share = 5
+	#
+	loyalty = 0.10
+	influence = 0.15
+	is_valid = {
+		has_country_flag = tm_COS_extra_privlege
+	}
+	can_select = {
+		NOT = {
+			has_estate_privilege = estate_cossacks_grant_generalships
+		}
+	}
+	on_granted = {
+	}
+	penalties = {
+	}
+	benefits = {
+		global_tax_modifier = 0.1
+		interest = -0.5
+		governing_capacity = 250
+	}
+	ai_will_do = {
+		factor = 5
+		
+	}
+}
+
+estate_cossacks_grant_generalships = {
+	icon = privilege_grant_autonomy
+	land_share = 5
+	#
+	loyalty = 0.10
+	influence = 0.15
+	is_valid = {
+		has_country_flag = tm_COS_extra_privlege
+	}
+	can_select = {
+		NOT = {
+			has_estate_privilege = estate_cossacks_grant_lordships
+		}
+	}
+	on_granted = {
+	}
+	penalties = {
+	}
+	benefits = {
+		cavalry_cost = -0.1
+		cavalry_shock = 0.25
+		movement_speed = 0.05
+	}
+	ai_will_do = {
+		factor = 5
+		
+	}
+}
