@@ -1145,23 +1145,32 @@ oman_slot_1_ibadi = {
 		position = 6
 
 		provinces_to_highlight = {
-			OR = {
-				region = east_africa_region
-			}
+			trade_company_region = trade_company_east_africa
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
 		trigger = {
 			has_trading_subject = {
-				region = east_africa_region
+				trade_company_region = trade_company_east_africa
 			}
 		}
 
 		effect = {
-			add_mil_power = 75
-			4815 = {
-				add_building = naval_battery
-				center_of_trade = 3
+			add_dip_power = 100
+			1448 = {
+				add_trade_modifier = {
+					who = ROOT
+					duration = 7300
+					power = 20
+					key = STRONG_MERCHANTS
+				}
+			}
+			define_advisor = {
+				type = trader
+				skill = 3
+				cost_multiplier = 0.25
+				religion = ROOT
+				culture = ROOT
 			}
 		}
 	}
@@ -1333,26 +1342,12 @@ oman_slot_2_ibadi = {
 
 		provinces_to_highlight = {
 			trade_company_region = trade_company_coromandel
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
 		trigger = {
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				OR = {
-					region = coromandel_region
-					region = deccan_region
-					}
-				value = 15
-			}
-
-			custom_trigger_tooltip = {
-				tooltip = ome_trade_city_tt_1
-			
-				any_country = {
-					capital_scope = { trade_company_region = trade_company_gulf_of_aden }
-					is_in_trade_league_with = ROOT
-					has_reform = trading_city
-					is_subject_of_type = trading_subject
-				}
+			has_trading_subject = {
+				trade_company_region = trade_company_coromandel
 			}
 		}
 
@@ -1424,12 +1419,13 @@ oman_slot_3_ibadi = {
 				country_or_subject_holds = ROOT
 			}
 			custom_trigger_tooltip = {
-				tooltip = ome_trade_city_tt_1
-			
-				any_country = {
-					capital_scope = { trade_company_region = trade_company_gulf_of_aden }
-					is_in_trade_league_with = ROOT
-					has_reform = trading_city
+				tooltip = start_trading_city_requirements
+				any_subject_country = {
+					capital_scope = {
+						continent = africa
+						trade_company_region = trade_company_gulf_of_aden
+					}
+					is_subject_of = ROOT
 					is_subject_of_type = trading_subject
 				}
 			}
