@@ -400,20 +400,37 @@ tm_COS_slot_3 = {
 		position = 5
 		
 		provinces_to_highlight = {
-            region = egypt_region
-            NOT = { owned_by = ROOT }
+            
 		}
 
 		trigger = {
             stability = 2
 			religious_unity = 0.75
+			num_of_owned_provinces_with = {
+				value = 50
+				OR = {
+				region = crimea_region
+				area = east_dniepr_area
+				area = sloboda_ukraine_area
+				area = chernigov_area
+				area = tambov_area
+				area = nogai_area
+				area = bashkiria_area
+				area = saratov_area
+				area = lower_yik_area
+				}
+			}
 		}
 
 	    effect = {
-			add_prestige = 10
+			add_prestige = 25
 			add_power_projection = {
 				type = mission_rewards_power_projection
-				amount = 10
+				amount = 20
+			}
+			add_country_modifier = {
+				name = tm_COS_united_the_federation
+				duration = -1
 			}
 	    }
 	}
