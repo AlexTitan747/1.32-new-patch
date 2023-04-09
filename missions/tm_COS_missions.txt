@@ -386,7 +386,9 @@ tm_COS_slot_3 = {
 
 	    effect = {
 			custom_tooltip = tm_COS_change_capital_warning
-			event = titansrv.4
+			country_event = {
+				id = titansrv.4
+			}
 			add_country_modifier = {
 				name = tm_COS_defensive_efforts
 				duration = -1
@@ -481,7 +483,9 @@ tm_COS_slot_4 = {
 		}
 
 		trigger = {
-           at_peace = yes
+			ROOT = {
+         		is_at_war = no
+			}
 		   prestige = 50
 		   republican_tradition = 90
 		   has_reform = fractured_cossacks_reform
@@ -517,25 +521,18 @@ tm_COS_slot_5 = {
 		trigger = {
             treasury = 1000
 			stability = 2
-				every_owned_province = {
-						limit = {
-							OR = {
-							culture = tdagestani
-							culture = tcircassian
-							culture = dagestani
-							culture = circassian
-							culture = astrakhani
-							culture = crimean
-							culture = mishary
-							culture = nogaybak
-							culture = kazani
-							}
-						}
-						NOT = {
-						unrest = 5
-						local_autonomy = 50
-						}
+			num_of_owned_provinces_with = {
+				value = 10
+				OR = {
+					culture = dagestani
+					culture = circassian
+					culture_group = tartar
+				}	
+				NOT = {
+					unrest = 5
+					local_autonomy = 50
 				}
+			}	
 		}
 
 	    effect = {
@@ -551,6 +548,7 @@ tm_COS_slot_5 = {
 						}
 					}
 				}
+			}
 			2447 = {
 				if = {
 					limit = {
@@ -607,9 +605,7 @@ tm_COS_slot_5 = {
 					duration = 3650
 				}
 			}
-
-			}
-	    }
+		}
 	}
 
 	tm_COS_further_cultrual_integration = {
