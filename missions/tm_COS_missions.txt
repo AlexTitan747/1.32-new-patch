@@ -13,13 +13,12 @@ tm_COS_slot_1 = {
 		position = 2
 		
 		provinces_to_highlight = {
-            region = egypt_region
-            NOT = { owned_by = ROOT }
+            
 		}
 
 		trigger = {
             num_of_owned_provinces_with = {
-				value = 50
+				value = 40
 				OR = {
 					region = crimea_region
 					region = caucasia_region
@@ -78,6 +77,7 @@ tm_COS_slot_1 = {
 
 		trigger = {
             religious_unity = 0.75
+			patriarch_authority = 0.75
 		}
 
 	    effect = {
@@ -499,9 +499,28 @@ tm_COS_slot_5 = {
 
 		trigger = {
             treasury = 1000
+			stability = 2
+			every_owned_province = {
+				limit = {
+				culture = dagestani
+				culture = circassian
+				culture = astrakhani
+				culture = crimean
+				culture = mishary
+				culture = nogaybak
+				culture = kazani
+				}
+				NOT = {
+					unrest = 5
+					local_autonomy = 50
+				}
+			}
 		}
 
 	    effect = {
+			add_mil_power = 50
+			add_adm_power = 50
+			add_dip_power = 50
 			add_building_contruction = {
 				building = ministry_of_culture
 				speed = 0.5
@@ -524,8 +543,9 @@ tm_COS_slot_5 = {
 				value = 10
 				region = crimea_region
 				total_development = 20
-				base_production = 10
+				base_manpower = 10
 			}
+			stability = 2
 		}
 
 	    effect = {
