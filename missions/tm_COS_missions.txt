@@ -517,17 +517,22 @@ tm_COS_slot_5 = {
 		trigger = {
             treasury = 1000
 			stability = 2
-			every_owned_province = {
-				limit = {
-					culture = dagestani
-					culture = circassian
-					culture = astrakhani
-					culture = crimean
-					culture = mishary
-					culture = nogaybak
-					culture = kazani
+			any_owned_province = {
+				if = {
+					limit = {
+						culture = dagestani
+						culture = circassian
+						culture = astrakhani
+						culture = crimean
+						culture = mishary
+						culture = nogaybak
+						culture = kazani
 				}
-				total_development = 10
+					NOT = {
+						unrest = 5
+						local_autonomy = 50
+					}
+				}
 			}
 		}
 
