@@ -2356,6 +2356,33 @@ tm_SRV_slot_1_babylon = {
 		}
 	}
 	has_country_shield = yes
+
+	tm_BAB_babyloanian_persia = {
+		icon = babylonian_town 
+		position = 8
+		required_missions = { tm_BAB_key_trade_stations }
+
+		provinces_to_highlight = {
+			trade_company_region = trade_company_persia
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				trade_company_region = trade_company_persia
+				value = 20
+			}
+		}
+
+		effect = {
+			410 = {
+				add_permanent_province_modifier = {
+					name = tm_bab_town_expansion
+					duration = -1
+				}
+			}
+		}
+	}
 	
 }
 
@@ -2378,6 +2405,42 @@ tm_SRV_slot_2_babylon = {
 		}
 	}
 	has_country_shield = yes
+
+	tm_BAB_key_trade_stations = {
+		icon = babylonian_town 
+		position = 7
+		required_missions = { tm_BAB_introduce_new_reforms }
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 408
+				province_id = 410
+				province_id = 415
+				province_id = 377
+				province_id = 418
+				province_id = 330
+			}
+			country_or_non_sovereign_subject_holds = ROOT
+		}
+
+		trigger = {
+			owns_core_province = 408
+			owns_core_province = 410
+			owns_core_province = 415
+			owns_core_province = 377
+			owns_core_province = 418
+			owns_core_province = 330
+		}
+
+		effect = {
+			410 = {
+				add_permanent_province_modifier = {
+					name = tm_bab_town_expansion
+					duration = -1
+				}
+			}
+		}
+	}
 	
 }
 
@@ -2402,7 +2465,7 @@ tm_SRV_slot_3_babylon = {
 	has_country_shield = yes
 
 	tm_BAB_introduce_new_reforms = {
-		icon = mission_dominate_trade_in_aden
+		icon = reform_the_nomocanon
 		required_missions = { tm_SRV_towards_the_old_ways }
 		position = 6
 	
@@ -2417,7 +2480,7 @@ tm_SRV_slot_3_babylon = {
 			if = {
 				limit = { 
 					any_owned_province = {
-						NOT = { 
+						NOT = {
 							province_id = 410 
 						}
 						has_building = cultural_ministry
@@ -2475,7 +2538,9 @@ tm_SRV_slot_3_babylon = {
 					}
 				}
 				else = {
-					add_base_production = 5
+					add_base_tax = 2
+					add_base_production = 4
+					add_base_manpower = 2
 				}
 			}
 		}
@@ -2502,9 +2567,9 @@ tm_SRV_slot_4_babylon = {
 		}
 	}
 	has_country_shield = yes
-		
+
 	tm_BAB_town_of_babylon = {
-		icon = imperial_capitals 
+		icon = babylonian_town 
 		position = 7
 		required_missions = { tm_BAB_introduce_new_reforms }
 
@@ -2558,7 +2623,7 @@ tm_SRV_slot_4_babylon = {
 	}
 
 	tm_BAB_the_babylon_metropolis = {
-		icon = imperial_capitals 
+		icon = babylonian_metropolis
 		position = 9
 		required_missions = { tm_BAB_city_of_babylon tm_BAB_zoroastrian_faith }
 
@@ -2615,7 +2680,7 @@ tm_SRV_slot_5_babylon = {
 		has_country_shield = yes
 
 	tm_BAB_city_of_babylon = {
-		icon = imperial_capitals 
+		icon = babylonian_city
 		position = 8
 		required_missions = { tm_BAB_town_of_babylon }
 
