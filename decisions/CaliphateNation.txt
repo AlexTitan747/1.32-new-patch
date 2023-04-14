@@ -80,6 +80,18 @@ country_decisions = {
 				}
 				add_permanent_claim = ROOT
             }
+			anatolia_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			caucasia_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 			add_country_modifier = {
 				name = "centralization_modifier"
 				duration = 7300
@@ -116,6 +128,12 @@ country_decisions = {
 			#	duration = -1
 			#}
 			new_mission_tree_scripted_effect = yes
+			hidden_effect = {
+				set_variable = {
+					which = won30desertbattles
+					value = 0
+				}
+			}
 		}
 
 		ai_will_do = {

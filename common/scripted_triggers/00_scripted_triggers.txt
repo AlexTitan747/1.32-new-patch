@@ -1008,10 +1008,13 @@ has_tax_building_trigger = {
 }
 
 has_trade_building_trigger = {
-	OR = {
-		has_building = marketplace
-		has_building = trade_depot
-		has_building = stock_exchange
+	custom_trigger_tooltip = {
+		tooltip = tm_has_trade_building_tt
+		OR = {
+			has_building = marketplace
+			has_building = trade_depot
+			has_building = stock_exchange
+		}
 	}
 }
 
@@ -3024,15 +3027,5 @@ halved_parliament_bribes = {
 	OR = {
 		has_country_flag = halved_parliament_bribe_costs
 		has_government_attribute = halved_parliament_bribes
-	}
-}
-
-## Titan Scripted Triggers ##
-
-has_production_building = {
-	OR = {
-		has_building = workshop
-		has_building = warehouse
-		has_building = counting_house
 	}
 }

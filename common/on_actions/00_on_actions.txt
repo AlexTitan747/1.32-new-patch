@@ -1276,6 +1276,23 @@ on_battle_won_unit = {
 			add_absolutism = 0.1
 		}
 	}
+	if = {
+		limit = {
+			unit_owner = {
+				tag = CPH
+			}
+			location = {
+				region = arabia_region
+				has_terrain = desert
+			}
+		}
+		unit_owner = {
+			change_variable = {
+				which = won30desertbattles
+				value = 1
+			}
+		}
+	}
 }
 
 # #Unit Scope OnAction for Battle Lost
