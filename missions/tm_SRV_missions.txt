@@ -2246,6 +2246,27 @@ tm_SRV_slot_4_babylon = {
 				name = irrigation_techniques
 				duration = 4562
 			}
+			mashriq_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			dulkadir_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			mush_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 
 		}
 	}
@@ -2254,7 +2275,7 @@ tm_SRV_slot_4_babylon = {
 		icon = mission_azar_goshnasp_sas
 		required_missions = { tm_SRV_towards_the_old_ways }
 		position = 6
-		
+
 		provinces_to_highlight = {
 			OR = {
 				culture = kurdish
@@ -2556,14 +2577,22 @@ tm_SRV_slot_2_babylon = {
 		}
 
 		effect = {
-			add_treasury = 350
-			5219 = {
-				add_center_of_trade_level = 2
+			anatolia_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
-			2314 = {
-				add_center_of_trade_level = 1
+			egypt_region = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
 		}
+
 	}
 
 	tm_BAB_mashriq_united = {
@@ -2592,12 +2621,9 @@ tm_SRV_slot_2_babylon = {
 		}
 
 		effect = {
-			add_treasury = 350
-			5219 = {
-				add_center_of_trade_level = 2
-			}
-			2314 = {
-				add_center_of_trade_level = 1
+			add_country_modifier = {
+				name = united_region
+				duration = -1
 			}
 		}
 	}
@@ -2935,7 +2961,7 @@ tm_SRV_slot_4_babylon = {
 	
 	tm_BAB_ishtar_gate = {
 		icon = mission_ishtar_gate
-		position = 10
+		position = 11
 		required_missions = { tm_BAB_the_babylon_metropolis }
 
 
