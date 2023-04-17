@@ -2527,7 +2527,7 @@ tm_SRV_slot_2_babylon = {
 	}
 
 	tm_BAB_new_babylonian_borders = {
-		icon = babylonian_town
+		icon = babylonian_borders
 		position = 8
 		required_missions = { tm_BAB_key_trade_stations }
 
@@ -2932,6 +2932,31 @@ tm_SRV_slot_4_babylon = {
 			}
 		}
 	}
+	
+	tm_BAB_ishtar_gate = {
+		icon = mission_ishtar_gate
+		position = 10
+		required_missions = { tm_BAB_the_babylon_metropolis }
+
+
+		provinces_to_highlight = {
+			province_id = 410
+		}
+
+		trigger = {
+			prestige = 80
+			government_rank = 3
+			is_great_power = yes
+			legitimacy = 90
+		}
+		effect = {
+			add_treasury = 1000
+			country_event = {
+				id = titansrv.5
+			}
+			
+		}
+	}
 
 }
 
@@ -2985,11 +3010,16 @@ tm_SRV_slot_5_babylon = {
 			}
 		}
 	}
-
+	
 	tm_BAB_royal_guard = {
 		icon = babylonian_royal_guard_2
 		position = 1 
 		required_missions = { tm_BAB_city_of_babylon }
+
+		provinces_to_highlight = {
+			is_capital = yes
+			owned_by = ROOT
+		}
 
 		trigger = {
 			monthly_mil = 13
@@ -3009,6 +3039,11 @@ tm_SRV_slot_5_babylon = {
 		icon = babylonian_royal_guard_1
 		position = 1 
 		required_missions = { tm_BAB_royal_guard }
+
+		provinces_to_highlight = {
+			is_capital = yes
+			owned_by = ROOT
+		}
 
 		trigger = {
 			monthly_mil = 13
