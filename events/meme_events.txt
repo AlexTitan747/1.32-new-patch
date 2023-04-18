@@ -8,6 +8,17 @@ country_event = { #Celtic's Cheese
 	
 	fire_only_once = yes
 	
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					trade_goods = cheese
+				}
+				set_province_flag = celtic_cheese
+			}
+		}
+	}
+
 	trigger = {
 		cheese = 1
         ai = no
@@ -19,6 +30,37 @@ country_event = { #Celtic's Cheese
 	
 	option = {
 		name = meme_events.1.a
-		add_prestige = 2
+		add_years_of_owned_provinces_production_income = {
+			years = 0.5
+			trigger = {
+				has_province_flag = celtic_cheese
+			}
+			custom_tooltip = celtic_cheese_tt
+		}
+	}
+}
+
+country_event = { #Jigsaw's Copium
+	id = meme_events.2
+	title = meme_events.2.t
+	desc = meme_events.2.d
+	picture = COURT_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		trading_part = {
+			trade_goods = opium
+			value = 0.30
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 1
+	}
+	
+	option = {
+		name = meme_events.2.a
+		add_corruption = -2
 	}
 }
