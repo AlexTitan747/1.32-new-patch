@@ -30,19 +30,17 @@ tm_SRV_slot_1 = {
 		trigger = {
 			custom_trigger_tooltip = {
 				tooltip = tm_SRV_humiliate_rivals
-			}
-			hidden_trigger = {
-			OR = {
-				has_country_flag = humiliated_rival
-				has_country_flag = tm_show_strength
+				OR = {
+					has_country_flag = humiliated_rival
+					has_country_flag = tm_show_strength
 				}
 			}
 		}
-	effect = {
-		add_prestige = 15
-		add_power_projection = {
-			type = 25_permanent_power_projection
-			amount = 15
+		effect = {
+			add_prestige = 15
+			add_power_projection = {
+				type = mission_rewards_power_projection
+				amount = 15
 			}
 		}
 	}
@@ -944,919 +942,919 @@ tm_SRV_slot_5_dummy = {
 }
 
 #CAU
-
-tm_SRV_slot_1_CAU = {
-	slot = 1
-	generic = no
-	ai = yes
-	potential = {
-		OR = {
-			tag = CAU
-			was_tag = SRV
-		}
-		NOT = { map_setup = map_setup_random }
-		NOT = {
-			OR = {
-				tag = PER
-				tag = COS
-				tag = BAB
-			}
-		}
-	}
-	has_country_shield = yes
-
-	tm_SRV_build_workshops = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_stabilise_transcaucasia }
-		position = 5
-		
-		provinces_to_highlight = {
-			region = caucasia_region
-		}
-		trigger = {
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 10
-				region = caucasia_region
-				has_building = workshop
-			}
-		}
-		effect = {
-			add_country_modifier  = {
-				name = tm_CAU_increased_production
-				duration = 3650
-			}
-		}
-	}
-
-	tm_SRV_develop_luxury_goods = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_build_workshops }
-		position = 6
-		
-		provinces_to_highlight = {
-
-		}
-		trigger = {
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 8
-				region = caucasia_region
-				OR = {
-					trade_goods = silk
-					trade_goods = cloth
-					trade_goods = dyes
-				}
-				base_production = 12
-				has_building = workshop
-			}
-		}
-		effect = {
-			every_owned_province = {
-				limit = {
-					region = caucasia_region
-					OR = {
-						trade_goods = silk
-						trade_goods = cloth
-						trade_goods = dyes
-					}
-					base_production = 12
-					has_building = workshop
-				}
-				add_building = textile
-			}
-		}
-	}
-
-	tm_SRV_build_plantations = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_develop_luxury_goods }
-		position = 7
-		
-		provinces_to_highlight = {
-
-		}
-		trigger = {
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 10
-				region = caucasia_region
-				OR = {
-					trade_goods = cotton
-					trade_goods = opium
-				}
-				base_production = 10
-				has_building = workshop
-			}
-		}
-		effect = {
-			every_owned_province = {
-				limit = {
-					region = caucasia_region
-					trade_goods = opium
-					base_production = 10
-					has_building = workshop
-				}
-				add_building = tradecompany
-			}
-			every_owned_province = {
-				limit = {
-					region = caucasia_region
-					trade_goods = cotton
-					base_production = 10
-					has_building = workshop
-				}
-				add_manufactory = yes
-			}
-		}
-	}
-
-}
-
-tm_SRV_slot_2_CAU = {
-	slot = 2
-	generic = no
-	ai = yes
-	potential = {
-		OR = {
-			tag = CAU
-			was_tag = SRV
-		}
-		NOT = { map_setup = map_setup_random }
-		NOT = {
-			OR = {
-				tag = PER
-				tag = COS
-				tag = BAB
-			}
-		}
-	}
-	has_country_shield = yes
-	
-	tm_SRV_prepare_anatolia = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_stabilise_transcaucasia }
-		position = 5
-		
-		provinces_to_highlight = {
-			OR = {
-				area = mush_area
-				area = erzurum_area
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			manpower_percentage = 0.75
-			army_size_percentage = 0.8
-			mush_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			erzurum_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			NOT = {
-				OR = {
-					has_country_modifier = tm_CAU_marching_east
-					has_country_modifier = tm_CAU_marching_south
-					has_country_modifier = tm_CAU_marching_north
-				}
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
-			}
-		}
-		effect = {
-			add_country_modifier = {
-				name = tm_CAU_marching_west
-				duration = 1825
-			}
-			add_power_projection = {
-				type = 25_permanent_power_projection
-				amount = 25
-			}
-			anatolia_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-	}
-
-	tm_SRV_conquer_anatolia = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_prepare_anatolia }
-		position = 6
-		
-		provinces_to_highlight = {
-			OR = {
-				region = anatolia_region
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 40
-				region = anatolia_region
-			}
-			NOT = {
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
-			}
-		}
-		effect = {
-			thrace_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			add_country_modifier = {
-				name = tm_CAU_integrate_anatolia
-				duration = 1825
-			}
-			add_accepted_culture = turkish
-		}
-	}
-
-	tm_SRV_claim_constantinople = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_conquer_anatolia }
-		position = 7
-		
-		provinces_to_highlight = {
-			OR = {
-				area = thrace_area
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			thrace_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			NOT = {
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
-			}
-		}
-		effect = {
-			if = {
-				limit = {
-					OR = {
-						religion_group = muslim
-						religion = coptic
-					}
-				}
-				151 = {
-					add_great_project_tier = {
-						type = hagia_sophia
-						tier = 2
-					}
-				}
-			}
-			if = {
-				limit = {
-					religion_group = muslim
-				}
-				151 = {
-					add_great_project_tier = {
-						type = sultan_ahmed_mosque
-						tier = 2
-					}
-				}
-			}
-			every_owned_province = {
-				limit = {
-					NOT = {
-						has_building = workshop
-					}
-					region = anatolia_region
-					base_production = 8
-					OR = {
-						trade_goods = cloth
-						trade_goods = silk
-						trade_goods = iron
-						trade_goods = copper
-					}
-				}
-				add_building = workshop
-			}
-		}
-	}
-
-}
-
-tm_SRV_slot_3_CAU = {
-	slot = 3
-	generic = no
-	ai = yes
-	potential = {
-		OR = {
-			tag = CAU
-			was_tag = SRV
-		}
-		NOT = { map_setup = map_setup_random }
-		NOT = {
-			OR = {
-				tag = PER
-				tag = COS
-				tag = BAB
-			}
-		}
-	}
-	has_country_shield = yes
-	
-	tm_SRV_prepare_persia = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_stabilise_transcaucasia }
-		position = 5
-		
-		provinces_to_highlight = {
-			OR = {
-				area = iraq_e_ajam_area
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			manpower_percentage = 0.75
-			army_size_percentage = 0.8
-			iraq_e_ajam_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			NOT = {
-				OR = {
-					has_country_modifier = tm_CAU_marching_east
-					has_country_modifier = tm_CAU_marching_south
-					has_country_modifier = tm_CAU_marching_north
-				}
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
-			}
-		}
-		effect = {
-			add_country_modifier = {
-				name = tm_CAU_marching_east
-				duration = 1825
-			}
-			add_power_projection = {
-				type = 25_permanent_power_projection
-				amount = 25
-			}
-			persia_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-	}
-
-	tm_SRV_conquer_afghanistan = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_prepare_persia }
-		position = 6
-		
-		provinces_to_highlight = {
-			OR = {
-				region = persia_region
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 40
-				region = persia_region
-			}
-			NOT = {
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
-			}
-		}
-		effect = {
-			khorasan_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-	}
-
-	tm_SRV_consolidate_greater_persia = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_conquer_afghanistan }
-		position = 7
-		
-		provinces_to_highlight = {
-			OR = {
-				region = persia_region
-				region = khorasan_region
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 75
-				OR = {
-				region = persia_region
-				region = khorasan_region
-				}
-			}
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 3
-				OR = {
-					region = persia_region
-					region = khorasan_region
-					}
-					trade_goods = saffron
-					has_building = workshop
-			}
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 3
-				OR = {
-					region = persia_region
-					region = khorasan_region
-					}
-					trade_goods = paper
-					has_building = workshop
-			}
-			NOT = {
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
-			}
-		}
-		effect = {
-			add_country_modifier = {
-				name = tm_cau_consoliating_persian_gains
-				duration = 3650
-			}
-			every_owned_province = {
-				limit = {
-					OR = {
-						region = persia_region
-						region = khorasan_region
-						}
-					trade_goods = paper
-					base_production = 12
-					has_building = workshop
-				}
-				add_manufactory = yes
-				}
-
-				every_owned_province = {
-					limit = {
-						OR = {
-							region = persia_region
-							region = khorasan_region
-							}
-						trade_goods = saffron
-						base_production = 12
-						has_building = workshop
-					}
-					add_building = tradecompany
-				}
-		}
-	}
-
-}
-
-tm_SRV_slot_4_CAU = {
-	slot = 4
-	generic = no
-	ai = yes
-	potential = {
-		OR = {
-			tag = CAU
-			was_tag = SRV
-		}
-		NOT = { map_setup = map_setup_random }
-		NOT = {
-			OR = {
-				tag = PER
-				tag = COS
-				tag = BAB
-			}
-		}
-	}
-	has_country_shield = yes
-	
-	tm_SRV_into_the_steppes = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_stabilise_transcaucasia }
-		position = 5
-		
-		provinces_to_highlight = {
-			OR = {
-				area = dagestan_area
-				area = alania_area
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			manpower_percentage = 0.75
-			army_size_percentage = 0.8
-			dagestan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			alania_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			NOT = {
-				OR = {
-					has_country_modifier = tm_CAU_marching_east
-					has_country_modifier = tm_CAU_marching_south
-					has_country_modifier = tm_CAU_marching_north
-				}
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
-			}
-		}
-		effect = {
-			add_country_modifier = {
-				name = tm_CAU_marching_north
-				duration = 1825
-			}
-			add_power_projection = {
-				type = 25_permanent_power_projection
-				amount = 25
-			}
-			crimea_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-	}
-
-	tm_SRV_destroy_the_hordes = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_into_the_steppes }
-		position = 6
-		
-		provinces_to_highlight = {
-			OR = {
-				region = crimea_region
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 40
-				region = crimea_region
-			}
-			NOT = {
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
-			}
-		}
-		effect = {
-			add_country_modifier = {
-				name = tm_CAU_coreing_the_steppes
-				duration = 3650
-			}
-			east_dniepr_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			sloboda_ukraine_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			tambov_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			saratov_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			lower_yik_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-	}
-
-	tm_SRV_tame_the_steppes = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_destroy_the_hordes }
-		position = 7
-		
-		provinces_to_highlight = {
-			OR = {
-				area = east_dniepr_area
-				area = sloboda_ukraine_area
-				area = tambov_area
-				area = saratov_area
-				area = lower_yik_area
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 75
-				OR = {
-				region = crimea_region
-				area = east_dniepr_area
-				area = sloboda_ukraine_area
-				area = tambov_area
-				area = saratov_area
-				area = lower_yik_area
-				}
-			}
-			NOT = {
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
-			}
-		}
-		effect = {
-			add_accepted_culture = astrakhani
-			add_accepted_culture = crimean
-			add_accepted_culture = mishary
-			add_adm_power = 100
-			every_owned_province = {
-				limit = {
-					NOT = {
-						has_building = workshop
-					}
-					region = anatolia_region
-					base_production = 8
-					OR = {
-						trade_goods = cloth
-						trade_goods = salt
-						trade_goods = iron
-						trade_goods = gems
-					}
-				}
-				add_building = workshop
-			}
-		}
-	}
-
-}
-
-tm_SRV_slot_5_CAU = {
-	slot = 5
-	generic = no
-	ai = yes
-	potential = {
-		OR = {
-			tag = CAU
-			was_tag = SRV
-		}
-		NOT = { map_setup = map_setup_random }
-		NOT = {
-			OR = {
-				tag = PER
-				tag = COS
-				tag = BAB
-			}
-		}
-	}
-	has_country_shield = yes
-	
-	tm_SRV_stabilise_transcaucasia = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = {  }
-		position = 4
-		
-		provinces_to_highlight = {
-
-		}
-		trigger = {
-			stability = 2
-			total_development = 500
-			legitimacy_equivalent = 95
-			prestige = 50
-		}
-		effect = {
-			add_country_modifier = {
-				name = tm_CAU_consolidate_the_empire
-				duration = 3650
-			}
-		}
-	}
-
-	tm_SRV_prepare_arabia = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_stabilise_transcaucasia }
-		position = 5
-		
-		provinces_to_highlight = {
-			OR = {
-				area = radah_area
-				area = basra_area
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			manpower_percentage = 0.75
-			army_size_percentage = 0.8
-			radah_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			basra_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			NOT = {
-				OR = {
-					has_country_modifier = tm_CAU_marching_east
-					has_country_modifier = tm_CAU_marching_south
-					has_country_modifier = tm_CAU_marching_north
-				}
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
-			}
-		}
-		effect = {
-			add_country_modifier = {
-				name = tm_CAU_marching_south
-				duration = 1825
-			}
-			add_power_projection = {
-				type = 25_permanent_power_projection
-				amount = 25
-			}
-			arabia_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-	}
-
-	tm_SRV_integrate_arabia = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_prepare_arabia }
-		position = 6
-		
-		provinces_to_highlight = {
-			region = arabia_region
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 40
-				region = arabia_region
-			}
-			NOT = {
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
-			}
-		}
-		effect = {
-			add_adm_power = 75
-			add_prestige = 25
-			add_country_modifier = {
-				name = tm_CAU_integrating_arabia
-				duration = 3650
-			}
-		}
-	}
-
-	tm_SRV_arabian_industry = {
-		icon = mission_dominate_trade_in_aden
-		required_missions = { tm_SRV_integrate_arabia }
-		position = 7
-		
-		provinces_to_highlight = {
-			OR = {
-				region = arabia_region
-			}
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		trigger = {
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 3
-				region = arabia_region
-				trade_goods = gems
-				has_building = workshop
-			}
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 3
-				region = arabia_region
-				trade_goods = spices
-				has_building = workshop
-			}
-			num_of_provinces_owned_or_owned_by_subjects_with = {
-				value = 3
-				region = arabia_region
-				trade_goods = coffee
-				has_building = workshop
-			}
-			NOT = {
-				OR = {
-					mission_completed = tm_SRV_towards_the_old_ways
-					mission_completed = tm_SRV_embrace_cossack_traditions
-				}
-			}
-		}
-		effect = {
-			every_owned_province = {
-				limit = {
-						region = arabia_region
-						trade_goods = gems
-						base_production = 12
-						has_building = workshop
-					}
-					add_manufactory = yes
-				}
-
-			every_owned_province = {
-				limit = {
-						region = arabia_region
-						trade_goods = spices
-						base_production = 10
-						has_building = workshop
-					}
-					add_building = tradecompany
-				}		
-			every_owned_province = {
-				limit = {
-					region = arabia_region
-					trade_goods = coffee
-					base_production = 10
-					has_building = workshop
-				}
-				add_manufactory = yes
-			}
-		}
-	}
-
-}
+#
+#tm_SRV_slot_1_CAU = {
+#	slot = 1
+#	generic = no
+#	ai = yes
+#	potential = {
+#		OR = {
+#			tag = CAU
+#			was_tag = SRV
+#		}
+#		NOT = { map_setup = map_setup_random }
+#		NOT = {
+#			OR = {
+#				tag = PER
+#				tag = COS
+#				tag = BAB
+#			}
+#		}
+#	}
+#	has_country_shield = yes
+#
+#	tm_SRV_build_workshops = {
+#		icon = mission_dominate_trade_in_aden
+#		required_missions = { tm_SRV_stabilise_transcaucasia }
+#		position = 5
+#		
+#		provinces_to_highlight = {
+#			region = caucasia_region
+#		}
+#		trigger = {
+#			num_of_provinces_owned_or_owned_by_subjects_with = {
+#				value = 10
+#				region = caucasia_region
+#				has_building = workshop
+#			}
+#		}
+#		effect = {
+#			add_country_modifier  = {
+#				name = tm_CAU_increased_production
+#				duration = 3650
+#			}
+#		}
+#	}
+#
+#	tm_SRV_develop_luxury_goods = {
+#		icon = mission_dominate_trade_in_aden
+#		required_missions = { tm_SRV_build_workshops }
+#		position = 6
+#		
+#		provinces_to_highlight = {
+#
+#		}
+#		trigger = {
+#			num_of_provinces_owned_or_owned_by_subjects_with = {
+#				value = 8
+#				region = caucasia_region
+#				OR = {
+#					trade_goods = silk
+#					trade_goods = cloth
+#					trade_goods = dyes
+#				}
+#				base_production = 12
+#				has_building = workshop
+#			}
+#		}
+#		effect = {
+#			every_owned_province = {
+#				limit = {
+#					region = caucasia_region
+#					OR = {
+#						trade_goods = silk
+#						trade_goods = cloth
+#						trade_goods = dyes
+#					}
+#					base_production = 12
+#					has_building = workshop
+#				}
+#				add_building = textile
+#			}
+#		}
+#	}
+#
+#	tm_SRV_build_plantations = {
+#		icon = mission_dominate_trade_in_aden
+#		required_missions = { tm_SRV_develop_luxury_goods }
+#		position = 7
+#		
+#		provinces_to_highlight = {
+#
+#		}
+#		trigger = {
+#			num_of_provinces_owned_or_owned_by_subjects_with = {
+#				value = 10
+#				region = caucasia_region
+#				OR = {
+#					trade_goods = cotton
+#					trade_goods = opium
+#				}
+#				base_production = 10
+#				has_building = workshop
+#			}
+#		}
+#		effect = {
+#			every_owned_province = {
+#				limit = {
+#					region = caucasia_region
+#					trade_goods = opium
+#					base_production = 10
+#					has_building = workshop
+#				}
+#				add_building = tradecompany
+#			}
+#			every_owned_province = {
+#				limit = {
+#					region = caucasia_region
+#					trade_goods = cotton
+#					base_production = 10
+#					has_building = workshop
+#				}
+#				add_manufactory = yes
+#			}
+#		}
+#	}
+#
+#}
+#
+#tm_SRV_slot_2_CAU = {
+#	slot = 2
+#	generic = no
+#	ai = yes
+#	potential = {
+#		OR = {
+#			tag = CAU
+#			was_tag = SRV
+#		}
+#		NOT = { map_setup = map_setup_random }
+#		NOT = {
+#			OR = {
+#				tag = PER
+#				tag = COS
+#				tag = BAB
+#			}
+#		}
+#	}
+#	has_country_shield = yes
+#	
+#	tm_SRV_prepare_anatolia = {
+#		icon = mission_dominate_trade_in_aden
+#		required_missions = { tm_SRV_stabilise_transcaucasia }
+#		position = 5
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = mush_area
+#				area = erzurum_area
+#			}
+#			NOT = {
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#		trigger = {
+#			manpower_percentage = 0.75
+#			army_size_percentage = 0.8
+#			mush_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			erzurum_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			NOT = {
+#				OR = {
+#					has_country_modifier = tm_CAU_marching_east
+#					has_country_modifier = tm_CAU_marching_south
+#					has_country_modifier = tm_CAU_marching_north
+#				}
+#				OR = {
+#					mission_completed = tm_SRV_towards_the_old_ways
+#					mission_completed = tm_SRV_embrace_cossack_traditions
+#				}
+#			}
+#		}
+#		effect = {
+#			add_country_modifier = {
+#				name = tm_CAU_marching_west
+#				duration = 1825
+#			}
+#			add_power_projection = {
+#				type = 25_permanent_power_projection
+#				amount = 25
+#			}
+#			anatolia_region = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#		}
+#	}
+#
+#	tm_SRV_conquer_anatolia = {
+#		icon = mission_dominate_trade_in_aden
+#		required_missions = { tm_SRV_prepare_anatolia }
+#		position = 6
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				region = anatolia_region
+#			}
+#			NOT = {
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#		trigger = {
+#			num_of_provinces_owned_or_owned_by_subjects_with = {
+#				value = 40
+#				region = anatolia_region
+#			}
+#			NOT = {
+#				OR = {
+#					mission_completed = tm_SRV_towards_the_old_ways
+#					mission_completed = tm_SRV_embrace_cossack_traditions
+#				}
+#			}
+#		}
+#		effect = {
+#			thrace_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			add_country_modifier = {
+#				name = tm_CAU_integrate_anatolia
+#				duration = 1825
+#			}
+#			add_accepted_culture = turkish
+#		}
+#	}
+#
+#	tm_SRV_claim_constantinople = {
+#		icon = mission_dominate_trade_in_aden
+#		required_missions = { tm_SRV_conquer_anatolia }
+#		position = 7
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = thrace_area
+#			}
+#			NOT = {
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#		trigger = {
+#			thrace_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			NOT = {
+#				OR = {
+#					mission_completed = tm_SRV_towards_the_old_ways
+#					mission_completed = tm_SRV_embrace_cossack_traditions
+#				}
+#			}
+#		}
+#		effect = {
+#			if = {
+#				limit = {
+#					OR = {
+#						religion_group = muslim
+#						religion = coptic
+#					}
+#				}
+#				151 = {
+#					add_great_project_tier = {
+#						type = hagia_sophia
+#						tier = 2
+#					}
+#				}
+#			}
+#			if = {
+#				limit = {
+#					religion_group = muslim
+#				}
+#				151 = {
+#					add_great_project_tier = {
+#						type = sultan_ahmed_mosque
+#						tier = 2
+#					}
+#				}
+#			}
+#			every_owned_province = {
+#				limit = {
+#					NOT = {
+#						has_building = workshop
+#					}
+#					region = anatolia_region
+#					base_production = 8
+#					OR = {
+#						trade_goods = cloth
+#						trade_goods = silk
+#						trade_goods = iron
+#						trade_goods = copper
+#					}
+#				}
+#				add_building = workshop
+#			}
+#		}
+#	}
+#
+#}
+#
+#tm_SRV_slot_3_CAU = {
+#	slot = 3
+#	generic = no
+#	ai = yes
+#	potential = {
+#		OR = {
+#			tag = CAU
+#			was_tag = SRV
+#		}
+#		NOT = { map_setup = map_setup_random }
+#		NOT = {
+#			OR = {
+#				tag = PER
+#				tag = COS
+#				tag = BAB
+#			}
+#		}
+#	}
+#	has_country_shield = yes
+#	
+#	tm_SRV_prepare_persia = {
+#		icon = mission_dominate_trade_in_aden
+#		required_missions = { tm_SRV_stabilise_transcaucasia }
+#		position = 5
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = iraq_e_ajam_area
+#			}
+#			NOT = {
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#		trigger = {
+#			manpower_percentage = 0.75
+#			army_size_percentage = 0.8
+#			iraq_e_ajam_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			NOT = {
+#				OR = {
+#					has_country_modifier = tm_CAU_marching_east
+#					has_country_modifier = tm_CAU_marching_south
+#					has_country_modifier = tm_CAU_marching_north
+#				}
+#				OR = {
+#					mission_completed = tm_SRV_towards_the_old_ways
+#					mission_completed = tm_SRV_embrace_cossack_traditions
+#				}
+#			}
+#		}
+#		effect = {
+#			add_country_modifier = {
+#				name = tm_CAU_marching_east
+#				duration = 1825
+#			}
+#			add_power_projection = {
+#				type = 25_permanent_power_projection
+#				amount = 25
+#			}
+#			persia_region = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#		}
+#	}
+#
+#	tm_SRV_conquer_afghanistan = {
+#		icon = mission_dominate_trade_in_aden
+#		required_missions = { tm_SRV_prepare_persia }
+#		position = 6
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				region = persia_region
+#			}
+#			NOT = {
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#		trigger = {
+#			num_of_provinces_owned_or_owned_by_subjects_with = {
+#				value = 40
+#				region = persia_region
+#			}
+#			NOT = {
+#				OR = {
+#					mission_completed = tm_SRV_towards_the_old_ways
+#					mission_completed = tm_SRV_embrace_cossack_traditions
+#				}
+#			}
+#		}
+#		effect = {
+#			khorasan_region = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#		}
+#	}
+#
+#	tm_SRV_consolidate_greater_persia = {
+#		icon = mission_dominate_trade_in_aden
+#		required_missions = { tm_SRV_conquer_afghanistan }
+#		position = 7
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				region = persia_region
+#				region = khorasan_region
+#			}
+#			NOT = {
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#		trigger = {
+#			num_of_provinces_owned_or_owned_by_subjects_with = {
+#				value = 75
+#				OR = {
+#				region = persia_region
+#				region = khorasan_region
+#				}
+#			}
+#			num_of_provinces_owned_or_owned_by_subjects_with = {
+#				value = 3
+#				OR = {
+#					region = persia_region
+#					region = khorasan_region
+#					}
+#					trade_goods = saffron
+#					has_building = workshop
+#			}
+#			num_of_provinces_owned_or_owned_by_subjects_with = {
+#				value = 3
+#				OR = {
+#					region = persia_region
+#					region = khorasan_region
+#					}
+#					trade_goods = paper
+#					has_building = workshop
+#			}
+#			NOT = {
+#				OR = {
+#					mission_completed = tm_SRV_towards_the_old_ways
+#					mission_completed = tm_SRV_embrace_cossack_traditions
+#				}
+#			}
+#		}
+#		effect = {
+#			add_country_modifier = {
+#				name = tm_cau_consoliating_persian_gains
+#				duration = 3650
+#			}
+#			every_owned_province = {
+#				limit = {
+#					OR = {
+#						region = persia_region
+#						region = khorasan_region
+#						}
+#					trade_goods = paper
+#					base_production = 12
+#					has_building = workshop
+#				}
+#				add_manufactory = yes
+#				}
+#
+#				every_owned_province = {
+#					limit = {
+#						OR = {
+#							region = persia_region
+#							region = khorasan_region
+#							}
+#						trade_goods = saffron
+#						base_production = 12
+#						has_building = workshop
+#					}
+#					add_building = tradecompany
+#				}
+#		}
+#	}
+#
+#}
+#
+#tm_SRV_slot_4_CAU = {
+#	slot = 4
+#	generic = no
+#	ai = yes
+#	potential = {
+#		OR = {
+#			tag = CAU
+#			was_tag = SRV
+#		}
+#		NOT = { map_setup = map_setup_random }
+#		NOT = {
+#			OR = {
+#				tag = PER
+#				tag = COS
+#				tag = BAB
+#			}
+#		}
+#	}
+#	has_country_shield = yes
+#	
+#	tm_SRV_into_the_steppes = {
+#		icon = mission_dominate_trade_in_aden
+#		required_missions = { tm_SRV_stabilise_transcaucasia }
+#		position = 5
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = dagestan_area
+#				area = alania_area
+#			}
+#			NOT = {
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#		trigger = {
+#			manpower_percentage = 0.75
+#			army_size_percentage = 0.8
+#			dagestan_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			alania_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			NOT = {
+#				OR = {
+#					has_country_modifier = tm_CAU_marching_east
+#					has_country_modifier = tm_CAU_marching_south
+#					has_country_modifier = tm_CAU_marching_north
+#				}
+#				OR = {
+#					mission_completed = tm_SRV_towards_the_old_ways
+#					mission_completed = tm_SRV_embrace_cossack_traditions
+#				}
+#			}
+#		}
+#		effect = {
+#			add_country_modifier = {
+#				name = tm_CAU_marching_north
+#				duration = 1825
+#			}
+#			add_power_projection = {
+#				type = 25_permanent_power_projection
+#				amount = 25
+#			}
+#			crimea_region = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#		}
+#	}
+#
+#	tm_SRV_destroy_the_hordes = {
+#		icon = mission_dominate_trade_in_aden
+#		required_missions = { tm_SRV_into_the_steppes }
+#		position = 6
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				region = crimea_region
+#			}
+#			NOT = {
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#		trigger = {
+#			num_of_provinces_owned_or_owned_by_subjects_with = {
+#				value = 40
+#				region = crimea_region
+#			}
+#			NOT = {
+#				OR = {
+#					mission_completed = tm_SRV_towards_the_old_ways
+#					mission_completed = tm_SRV_embrace_cossack_traditions
+#				}
+#			}
+#		}
+#		effect = {
+#			add_country_modifier = {
+#				name = tm_CAU_coreing_the_steppes
+#				duration = 3650
+#			}
+#			east_dniepr_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			sloboda_ukraine_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			tambov_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			saratov_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			lower_yik_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#		}
+#	}
+#
+#	tm_SRV_tame_the_steppes = {
+#		icon = mission_dominate_trade_in_aden
+#		required_missions = { tm_SRV_destroy_the_hordes }
+#		position = 7
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = east_dniepr_area
+#				area = sloboda_ukraine_area
+#				area = tambov_area
+#				area = saratov_area
+#				area = lower_yik_area
+#			}
+#			NOT = {
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#		trigger = {
+#			num_of_provinces_owned_or_owned_by_subjects_with = {
+#				value = 75
+#				OR = {
+#				region = crimea_region
+#				area = east_dniepr_area
+#				area = sloboda_ukraine_area
+#				area = tambov_area
+#				area = saratov_area
+#				area = lower_yik_area
+#				}
+#			}
+#			NOT = {
+#				OR = {
+#					mission_completed = tm_SRV_towards_the_old_ways
+#					mission_completed = tm_SRV_embrace_cossack_traditions
+#				}
+#			}
+#		}
+#		effect = {
+#			add_accepted_culture = astrakhani
+#			add_accepted_culture = crimean
+#			add_accepted_culture = mishary
+#			add_adm_power = 100
+#			every_owned_province = {
+#				limit = {
+#					NOT = {
+#						has_building = workshop
+#					}
+#					region = anatolia_region
+#					base_production = 8
+#					OR = {
+#						trade_goods = cloth
+#						trade_goods = salt
+#						trade_goods = iron
+#						trade_goods = gems
+#					}
+#				}
+#				add_building = workshop
+#			}
+#		}
+#	}
+#
+#}
+#
+#tm_SRV_slot_5_CAU = {
+#	slot = 5
+#	generic = no
+#	ai = yes
+#	potential = {
+#		OR = {
+#			tag = CAU
+#			was_tag = SRV
+#		}
+#		NOT = { map_setup = map_setup_random }
+#		NOT = {
+#			OR = {
+#				tag = PER
+#				tag = COS
+#				tag = BAB
+#			}
+#		}
+#	}
+#	has_country_shield = yes
+#	
+#	tm_SRV_stabilise_transcaucasia = {
+#		icon = mission_dominate_trade_in_aden
+#		required_missions = {  }
+#		position = 4
+#		
+#		provinces_to_highlight = {
+#
+#		}
+#		trigger = {
+#			stability = 2
+#			total_development = 500
+#			legitimacy_equivalent = 95
+#			prestige = 50
+#		}
+#		effect = {
+#			add_country_modifier = {
+#				name = tm_CAU_consolidate_the_empire
+#				duration = 3650
+#			}
+#		}
+#	}
+#
+#	tm_SRV_prepare_arabia = {
+#		icon = mission_dominate_trade_in_aden
+#		required_missions = { tm_SRV_stabilise_transcaucasia }
+#		position = 5
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = radah_area
+#				area = basra_area
+#			}
+#			NOT = {
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#		trigger = {
+#			manpower_percentage = 0.75
+#			army_size_percentage = 0.8
+#			radah_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			basra_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			NOT = {
+#				OR = {
+#					has_country_modifier = tm_CAU_marching_east
+#					has_country_modifier = tm_CAU_marching_south
+#					has_country_modifier = tm_CAU_marching_north
+#				}
+#				OR = {
+#					mission_completed = tm_SRV_towards_the_old_ways
+#					mission_completed = tm_SRV_embrace_cossack_traditions
+#				}
+#			}
+#		}
+#		effect = {
+#			add_country_modifier = {
+#				name = tm_CAU_marching_south
+#				duration = 1825
+#			}
+#			add_power_projection = {
+#				type = 25_permanent_power_projection
+#				amount = 25
+#			}
+#			arabia_region = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#		}
+#	}
+#
+#	tm_SRV_integrate_arabia = {
+#		icon = mission_dominate_trade_in_aden
+#		required_missions = { tm_SRV_prepare_arabia }
+#		position = 6
+#		
+#		provinces_to_highlight = {
+#			region = arabia_region
+#			NOT = {
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#		trigger = {
+#			num_of_provinces_owned_or_owned_by_subjects_with = {
+#				value = 40
+#				region = arabia_region
+#			}
+#			NOT = {
+#				OR = {
+#					mission_completed = tm_SRV_towards_the_old_ways
+#					mission_completed = tm_SRV_embrace_cossack_traditions
+#				}
+#			}
+#		}
+#		effect = {
+#			add_adm_power = 75
+#			add_prestige = 25
+#			add_country_modifier = {
+#				name = tm_CAU_integrating_arabia
+#				duration = 3650
+#			}
+#		}
+#	}
+#
+#	tm_SRV_arabian_industry = {
+#		icon = mission_dominate_trade_in_aden
+#		required_missions = { tm_SRV_integrate_arabia }
+#		position = 7
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				region = arabia_region
+#			}
+#			NOT = {
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#		trigger = {
+#			num_of_provinces_owned_or_owned_by_subjects_with = {
+#				value = 3
+#				region = arabia_region
+#				trade_goods = gems
+#				has_building = workshop
+#			}
+#			num_of_provinces_owned_or_owned_by_subjects_with = {
+#				value = 3
+#				region = arabia_region
+#				trade_goods = spices
+#				has_building = workshop
+#			}
+#			num_of_provinces_owned_or_owned_by_subjects_with = {
+#				value = 3
+#				region = arabia_region
+#				trade_goods = coffee
+#				has_building = workshop
+#			}
+#			NOT = {
+#				OR = {
+#					mission_completed = tm_SRV_towards_the_old_ways
+#					mission_completed = tm_SRV_embrace_cossack_traditions
+#				}
+#			}
+#		}
+#		effect = {
+#			every_owned_province = {
+#				limit = {
+#						region = arabia_region
+#						trade_goods = gems
+#						base_production = 12
+#						has_building = workshop
+#					}
+#					add_manufactory = yes
+#				}
+#
+#			every_owned_province = {
+#				limit = {
+#						region = arabia_region
+#						trade_goods = spices
+#						base_production = 10
+#						has_building = workshop
+#					}
+#					add_building = tradecompany
+#				}		
+#			every_owned_province = {
+#				limit = {
+#					region = arabia_region
+#					trade_goods = coffee
+#					base_production = 10
+#					has_building = workshop
+#				}
+#				add_manufactory = yes
+#			}
+#		}
+#	}
+#
+#}
 
 #cossacks path
 
