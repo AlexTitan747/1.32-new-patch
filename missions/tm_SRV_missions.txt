@@ -2537,10 +2537,10 @@ tm_SRV_slot_2_babylon = {
 		effect = {
 			add_treasury = 350
 			5219 = {
-				add_center_of_trade_level = 2
+				center_of_trade_level = 2
 			}
 			2314 = {
-				add_center_of_trade_level = 1
+				center_of_trade_level = 1
 			}
 		}
 	}
@@ -2604,17 +2604,9 @@ tm_SRV_slot_2_babylon = {
 		}
 
 		trigger = {
-			latakia_area = {
-				type = all
-				country_or_subject_holds = ROOT
-			}
-			dulkadir_area = {
-				type = all
-				country_or_subject_holds = ROOT
-			}
-			mush_area = {
-				type = all
-				country_or_subject_holds = ROOT
+			num_of_owned_provinces_with = {
+				value = 45
+				region = mashriq_region
 			}
 		}
 
@@ -2819,12 +2811,17 @@ tm_SRV_slot_3_babylon = {
 					}
 				}
 			}
+			else = {
+				add_mil_power = 200
+				add_dip_power = 150
+				add_treasury = 1250
+			}
 		}
 	}
 
 	tm_BAB_new_babylonian_empire = {
 		icon = babylon_empire
-		position = 12
+		position = 11
 		required_missions = { tm_BAB_world_wonder }
 
 		provinces_to_highlight = {
@@ -2834,8 +2831,8 @@ tm_SRV_slot_3_babylon = {
 
 		trigger = {
 			government_rank = 3
-#			total_development = 1300
-#			monthly_income = 300
+			total_development = 1300
+			monthly_income = 300
 		}
 
 		effect = {
@@ -2926,7 +2923,6 @@ tm_SRV_slot_4_babylon_2 = {
 		icon = babylonian_metropolis
 		position = 9
 		required_missions = { tm_BAB_city_of_babylon tm_BAB_zoroastrian_faith }
-
 
 		provinces_to_highlight = {
 			province_id = 410
