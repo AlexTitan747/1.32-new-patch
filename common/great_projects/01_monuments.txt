@@ -1,7 +1,7 @@
 ##################TITAN MONUMENTS#####################################
 
 ishtar_gate = {
-	start = 118 #roma
+	start = 410 #Baghdad
 	date = 1431.01.01
 	time = { months = 0	}
 	build_cost = 0
@@ -11,7 +11,11 @@ ishtar_gate = {
 	type = monument
 
 	build_trigger = {
-	
+		culture_group = lost_cultures_group
+		owner = {
+			tag = BAB
+			mission_completed = tm_BAB_ishtar_gate
+		}
 	}
 
 	on_built = {
@@ -22,20 +26,18 @@ ishtar_gate = {
 
 	can_use_modifiers_trigger = {
 		owner = {
-			OR = {
-				culture_group = lost_cultures_group
-				tag = ROM
-			}
+			culture_group = lost_cultures_group
+			tag = BAB
+			mission_completed = tm_BAB_ishtar_gate
 		}
 	}
 	
 
 	can_upgrade_trigger = {
 		owner = {
-			OR = {
-				culture_group = lost_cultures_group
-				tag = ROM
-			}
+			culture_group = lost_cultures_group
+			tag = BAB
+			mission_completed = tm_BAB_ishtar_gate
 		}
 	}
 
@@ -614,7 +616,7 @@ hanging_gardens = {
 	type = monument
 
 	build_trigger = {
-	
+		
 	}
 
 	on_built = {

@@ -2394,11 +2394,10 @@ tm_SRV_slot_1_babylon = {
 		}
 
 		effect = {
-			410 = {
-				add_permanent_province_modifier = {
-					name = tm_bab_town_expansion
-					duration = -1
-				}
+			define_advisor = {
+				type = commandant
+				skill = 2
+				cost_multiplier = 0.50
 			}
 		}
 	}
@@ -2753,8 +2752,7 @@ tm_SRV_slot_3_babylon = {
 					}
 				}
 				else = {
-					add_base_tax = 2
-					add_base_production = 4
+					add_base_production = 2
 					add_base_manpower = 2
 				}
 			}
@@ -2762,7 +2760,7 @@ tm_SRV_slot_3_babylon = {
 	}
 
 	tm_BAB_world_wonder = {
-		icon = babylon_hanging_gardens
+		icon = babylon_world_wonder
 		position = 10
 		required_missions = { tm_BAB_hanging_gardens tm_BAB_mashriq_united tm_BAB_the_babylon_metropolis }
 
@@ -2795,26 +2793,26 @@ tm_SRV_slot_3_babylon = {
 						type = hanging_gardens
 					}
 				}
-				else_if = {
-					limit = {
-						has_dlc = "Leviathan"
-						has_great_project = {
-							type = hanging_gardens
-							tier = 3
-						}
+			}
+			410 = {
+			if = {
+				limit = {
+					has_dlc = "Leviathan"
+					has_great_project = {
+						type = hanging_gardens
+						tier = 3
 					}
-					ROOT = {
+				}
+				ROOT = {
 						add_mil_power = 200
 						add_dip_power = 150
 					}
 				}
-				else = {
-					ROOT = {
-						add_mil_power = 200
-						add_dip_power = 150
-						add_treasury = 1250
-					}
-				}
+			}
+			else = {
+				add_mil_power = 200
+				add_dip_power = 150
+				add_treasury = 1250
 			}
 		}
 	}
@@ -2839,6 +2837,9 @@ tm_SRV_slot_3_babylon = {
 			custom_tooltip = babylon_empire_tt
 			hidden_effect = {
 				set_country_flag = babylon_empire_unlock
+				country_event = {
+					id = titansrv.6
+				}
 			}
 		}
 	}
