@@ -3,27 +3,15 @@ country_decisions = {
 	arab_nation = {
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
 			NOT = { has_country_flag = formed_arabia_flag }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
 			NOT = { exists = ARB }
-			NOT = { tag = HLR }
-			NOT = { tag = PAP }
 			is_colonial_nation = no
-			OR = {
-				is_former_colonial_nation = no
-				AND = {
-					is_former_colonial_nation = yes
-					ai = no
-				}
-			}
+			ai = no
 			culture_group = arabian #Arabic
 			NOT = { has_country_flag = ibadi_scholar_selected }
 			NOT = { has_country_flag = shia_scholar_selected }
 		}
+
 		provinces_to_highlight = {
 			OR = {
 				province_id = 384			#Medina
@@ -40,6 +28,7 @@ country_decisions = {
 				NOT = { is_core = ROOT }
 			}
 		}
+
 		allow = {
 			if = {
 				limit = {
@@ -61,25 +50,10 @@ country_decisions = {
 			owns_core_province = 400			#Muscat
 			owns_core_province = 403			#Nizwa
 		}
+
 		effect = {
-			mashriq_region = {
-				limit = {
-					NOT = { owned_by = ROOT }
-				}
-				add_permanent_claim = ARB
-			}
-			egypt_region = {
-				limit = {
-					NOT = { owned_by = ROOT }
-					NOT = { area = lower_nubia_area }
-				}
-				add_permanent_claim = ARB
-			}
 			arabia_region = {
-				limit = {
-					NOT = { owned_by = ROOT }
-				}
-				add_permanent_claim = ARB
+				add_perma_claim = yes
 			}
 			add_country_modifier = {
 				name = "centralization_modifier"
@@ -89,7 +63,23 @@ country_decisions = {
 			set_country_flag = formed_arabia_flag
 			change_tag = ARB
 			country_event = { id = ideagroups.1 } #Swap Ideas
+			new_mission_tree_scripted_effect = yes
+			hidden_effect = {
+				set_variable = {
+					which = tmARBWonBattles1
+					value = 0
+				}
+				set_variable = {
+					which = tmARBWonBattles2
+					value = 0
+				}
+				set_variable = {
+					which = tmARBWonBattles3
+					value = 0
+				}
+			}
 		}
+		
 		ai_will_do = {
 			factor = 0
 		}

@@ -526,6 +526,11 @@ on_startup = {
 			hidden = yes
 		}
 	}
+	if = {
+		limit = { tag = MAM }
+		save_global_event_target_as = mamluks_event_target
+		country_event = { id = Test_events.1 days = 5} #ONLY FOR TEST GAME
+	}
 }
 
 # country
@@ -1293,6 +1298,63 @@ on_battle_won_unit = {
 			}
 		}
 	}
+	if = {
+		limit = {
+			unit_owner = {
+				tag = ARB
+				num_of_cavalry = 30
+			}
+			location = {
+				cavalry_in_province = 30
+			}
+		}
+		unit_owner = {
+			change_variable = {
+				which = tmARBWonBattles1
+				value = 1
+			}
+		}
+	}
+	if = {
+		limit = {
+			unit_owner = {
+				tag = ARB
+				num_of_cavalry = 40
+			}
+			location = {
+				cavalry_in_province = 40
+				has_terrain = desert
+			}
+		}
+		unit_owner = {
+			change_variable = {
+				which = tmARBWonBattles2
+				value = 1
+			}
+		}
+	}
+	if = {
+		limit = {
+			unit_owner = {
+				tag = ARB
+				num_of_cavalry = 40
+				num_of_artillery = 30
+			}
+			location = {
+				cavalry_in_province = 40
+				artillery_in_province = 30
+				has_terrain = desert
+				region = arabia_region
+			}
+		}
+		unit_owner = {
+			change_variable = {
+				which = tmARBWonBattles3
+				value = 1
+			}
+		}
+	}
+	
 }
 
 # #Unit Scope OnAction for Battle Lost

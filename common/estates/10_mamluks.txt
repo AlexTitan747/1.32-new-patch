@@ -3,20 +3,12 @@ estate_mamluks = {
 	icon = 14
 	
 	trigger = {
-		has_reform = mamluk_government
-		NOT = { has_reform = pirate_republic_reform }
-		NOT = { has_reform = cossacks_reform }
-		NOT = { government = native }
-		#NOT = { has_reform = jurchen_tribe }
-		NOT = { has_reform = siberian_tribe }
 		NOT = { is_revolutionary_republic_trigger = yes }
-		NOT = { has_reform = revolutionary_empire_reform }
-		NOT = { has_reform = peasants_republic }
 		is_nomad = no
 		is_colonial_nation = no
 		OR = {
-			NOT = { has_reform = celestial_empire }
-			has_dlc = "Mandate of Heaven"
+			has_reform = mamluk_government
+			has_country_flag = can_use_mamluks_estate
 		}
 	}
 	

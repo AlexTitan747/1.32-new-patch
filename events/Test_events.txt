@@ -1,0 +1,22 @@
+namespace = Test_events
+
+country_event { #Mams go Shia
+	id = Test_events.1
+	title = Test_events.1.title
+	desc = Test_events.1.desc
+	picture = GENERALS_DISCUSSING_eventPicture
+
+	is_triggered_only = yes
+
+	option {
+		name = Test_events.1.a
+
+		change_religion = shiite
+        every_owned_province = {
+            change_religion = shiite
+        }
+        change_ruling_family_religions_effect = {
+            religion = shiite
+        }
+	}
+}

@@ -3101,8 +3101,45 @@ estate_burghers_commercial_board_of_advice = {
 	#
 	influence = 0.1
 	loyalty = 0.05
+	is_valid = {
+		NOT = { has_country_flag = no_stab_cost_for_dip_advisor }
+	}
 	penalties = {
 		stability_cost_modifier = 0.1
+	}
+	benefits = {
+		dip_advisor_cost = -0.10
+	}
+	ai_will_do = {
+		factor = 15
+		modifier = {
+			factor = 1.25
+			NOT = { dip = 2 }
+		}
+		modifier = {
+			factor = 0.8
+			dip = 5
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_burghers_land_of_commerce }
+			num_of_estate_privileges = {
+				estate = estate_burghers
+				value = 5
+			}
+		}
+	}
+}
+
+estate_burghers_commercial_board_of_advice_2 = {
+	icon = privilege_recruit_minister
+	#
+	influence = 0.1
+	loyalty = 0.05
+	is_valid = {
+		has_country_flag = no_stab_cost_for_dip_advisor
+	}
+	penalties = {
 	}
 	benefits = {
 		dip_advisor_cost = -0.10
@@ -3176,10 +3213,18 @@ estate_burghers_indebted_to_burghers = {
 	#
 	loyalty = 0.05
 	influence = 0.05
+	is_valid = {
+		NOT = { has_country_flag = reduce_trade_penalty_from_burgher_loans }
+	}
 	on_granted = {
 		custom_tooltip = estate_burghers_indebted_to_burghers_effect_tooltip
 		if = {
-			limit = { NOT = { has_government_attribute = no_mercantilism_loss_from_privilege } }
+			limit = { 
+				OR = {
+						NOT = { has_government_attribute = no_mercantilism_loss_from_privilege }
+						NOT = { has_country_flag = no_mercantilism_loss_from_loans }
+					}
+				}
 			add_mercantilism = -1
 		}
 		tooltip = {
@@ -3215,6 +3260,77 @@ estate_burghers_indebted_to_burghers = {
 	}
 	penalties = {
 		trade_efficiency = -0.05
+	}
+	benefits = {
+	}
+	can_select = {
+		if = {
+			limit = {
+				has_estate_privilege = estate_burghers_indebted_to_burghers
+			}
+			has_estate_loan = yes
+		}
+	}
+	can_revoke = {
+		has_estate_loan = no
+	}
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+estate_burghers_indebted_to_burghers_2 = {
+	icon = privilege_give_money
+	#
+	loyalty = 0.05
+	influence = 0.05
+	is_valid = {
+		has_country_flag = reduce_trade_penalty_from_burgher_loans
+	}
+	on_granted = {
+		custom_tooltip = estate_burghers_indebted_to_burghers_effect_tooltip
+		if = {
+			limit = { 
+				OR = {
+						NOT = { has_government_attribute = no_mercantilism_loss_from_privilege }
+						NOT = { has_country_flag = no_mercantilism_loss_from_loans }
+					}
+				}
+			add_mercantilism = -1
+		}
+		tooltip = {
+			add_inflation = 0.5
+		}
+		hidden_effect = {
+			add_loan = {
+				fixed_interest = 1
+				duration = 60
+				estate_loan = yes
+			}
+			add_loan = {
+				fixed_interest = 1
+				duration = 60
+				estate_loan = yes
+			}
+			add_loan = {
+				fixed_interest = 1
+				duration = 60
+				estate_loan = yes
+			}
+			add_loan = {
+				fixed_interest = 1
+				duration = 60
+				estate_loan = yes
+			}
+			add_loan = {
+				fixed_interest = 1
+				duration = 60
+				estate_loan = yes
+			}
+		}
+	}
+	penalties = {
+		trade_efficiency = -0.025
 	}
 	benefits = {
 	}
@@ -9196,7 +9312,8 @@ estate_burghers_exclusive_trade_rights = {
 				}
 			}
 		}
-		add_mercantilism = 3
+		if = { limit = { has_country_flag = burghers_exclusive_trade_rights_5_merc } add_mercantilism = 5 }
+		else = { add_mercantilism = 3 }
 	}
 	on_revoked = {
 		custom_tooltip = estate_burghers_exclusive_trade_rights_revoke_tooltip
@@ -9387,9 +9504,54 @@ estate_burghers_control_over_monetary_policy = {
 	loyalty = 0.05
 	is_valid = {
 		has_dlc = "Emperor"
+		NOT = { has_country_flag = no_power_cost_for_monetary_policy }
 	}
 	penalties = {
 		all_power_cost = 0.05
+	}
+	benefits = {
+		inflation_reduction = 0.15
+		interest = -0.5
+		production_efficiency = 0.05
+	}
+	ai_will_do = {
+		factor = 5
+		modifier = {
+			factor = 0.25
+			NOT = { num_of_loans = 5 }
+		}
+		modifier = {
+			factor = 0
+			NOT = { num_of_loans = 1 }
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				inflation = 10
+				num_of_loans = 10
+			}
+		}
+		modifier = {
+			factor = 2
+			num_of_loans = 20
+		}
+		modifier = {
+			factor = 0.75
+			is_absolutism_active = yes
+		}
+	}
+}
+
+estate_burghers_control_over_monetary_policy_2 = {
+	icon = privilege_give_money
+	#
+	influence = 0.05
+	loyalty = 0.05
+	is_valid = {
+		has_dlc = "Emperor"
+		has_country_flag = no_power_cost_for_monetary_policy
+	}
+	penalties = {
 	}
 	benefits = {
 		inflation_reduction = 0.15
