@@ -1892,8 +1892,10 @@ tm_SRV_slot_1_cossacks = {
 			legitimacy_equivalent = 95
 			prestige = 50
 			has_country_flag = SRV_cossack_path_unlocked
-			NOT = {
-				mission_completed = tm_SRV_towards_the_old_ways
+			hidden_trigger = {
+				NOT = {
+					mission_completed = tm_SRV_towards_the_old_ways
+				}
 			}
 			custom_trigger_tooltip = {
 				tooltip = taking_cossack_path_warning
@@ -2690,7 +2692,7 @@ tm_SRV_slot_3_babylon = {
 
 		trigger = {
 			stability = 3
-			monthly_income = 150
+			monthly_income = 120
 			if = {
 				limit = { 
 					any_owned_province = {
