@@ -870,21 +870,14 @@ tm_SRV_slot_5 = {
 		}
 
 		trigger = {
-			khuzestan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			basra_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			iraq_arabi_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			radah_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+			num_of_owned_provinces_with = {
+				OR = {
+					area = khuzestan_area
+					area = basra_area
+					area = iraq_arabi_area
+					area = radah_area
+				}
+				value = 10
 			}
 		}
 
@@ -1891,8 +1884,8 @@ tm_SRV_slot_1_cossacks = {
 			total_development = 500
 			legitimacy_equivalent = 95
 			prestige = 50
-			has_country_flag = SRV_cossack_path_unlocked
 			hidden_trigger = {
+				has_country_flag = SRV_cossack_path_unlocked
 				NOT = {
 					mission_completed = tm_SRV_towards_the_old_ways
 				}
@@ -2069,7 +2062,6 @@ tm_SRV_slot_2_cossacks = {
 
 		}
 		trigger = {
-			stability = 1
 			accepted_culture = dagestani
 			accepted_culture = circassian
 			accepted_culture = astrakhani
@@ -2102,7 +2094,7 @@ tm_SRV_slot_2_cossacks = {
 		provinces_to_highlight = {
 		}
 		trigger = {
-			stability = 1
+			stability = 2
 			OR = {
 				primary_culture = dagestani
 				primary_culture = circassian
@@ -2113,8 +2105,8 @@ tm_SRV_slot_2_cossacks = {
 				primary_culture = kazani
 			}
 			num_of_owned_provinces_with = {
-				value = 20
-				total_development = 10
+				value = 10
+				development = 10
 				OR = {
 					culture = dagestani
 					culture = circassian
@@ -2135,17 +2127,21 @@ tm_SRV_slot_2_cossacks = {
 					change_culture = dagestani
 				}
 			}
-			every_owned_province = {
-				limit = {
-					culture = dagestani
+			custom_tooltip = dagastani_tartar_tt
+			custom_tooltip = circassian_tartar_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						culture = dagestani
+					}
+					change_culture = tdagestani
 				}
-				change_culture = tdagestani
-			}
-			every_owned_province = {
-				limit = {
-					culture = circassian
+				every_owned_province = {
+					limit = {
+						culture = circassian
+					}
+					change_culture = tcircassian
 				}
-				change_culture = tcircassian
 			}
 			if = {
 				limit = {

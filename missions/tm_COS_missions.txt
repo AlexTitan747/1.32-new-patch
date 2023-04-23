@@ -13,7 +13,11 @@ tm_COS_slot_1 = {
 		position = 2
 		
 		provinces_to_highlight = {
-            
+            OR = {
+				region = crimea_region
+				region = caucasia_region
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
 		trigger = {
@@ -42,7 +46,11 @@ tm_COS_slot_1 = {
 		position = 4
 		
 		provinces_to_highlight = {
-            
+			OR = {
+				region = crimea_region
+				region = caucasia_region
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
 		trigger = {
@@ -72,7 +80,7 @@ tm_COS_slot_1 = {
 		position = 5
 		
 		provinces_to_highlight = {
-            
+            province_id = 419
 		}
 
 		trigger = {
@@ -113,7 +121,8 @@ tm_COS_slot_2 = {
 		position = 2
 		
 		provinces_to_highlight = {
-            
+			region = crimea_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
 		trigger = {
@@ -139,7 +148,7 @@ tm_COS_slot_2 = {
 		position = 4
 		
 		provinces_to_highlight = {
-           
+			region = crimea_region
 		}
 
 		trigger = {
@@ -193,7 +202,15 @@ tm_COS_slot_2 = {
 		position = 5
 		
 		provinces_to_highlight = {
-            
+			OR = {
+				province_id = 1322
+				province_id = 420
+				province_id = 464
+				province_id = 463
+				province_id = 466
+				province_id = 303
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
 		trigger = {
@@ -281,7 +298,8 @@ tm_COS_slot_3 = {
 		position = 1
 		
 		provinces_to_highlight = {
-           
+			is_capital = yes
+			owned_by = ROOT
 		}
 
 		trigger = {
@@ -635,23 +653,28 @@ tm_COS_slot_5 = {
 		}
 
 	    effect = {
-			every_owned_province = {
-				limit = {
-					culture = azerbaijani
+			custom_tooltip = azerbaijani_tartar_tt
+			custom_tooltip = georgian_tartar_tt
+			custom_tooltip = armenian_tartar_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						culture = azerbaijani
+					}
+					change_culture = tazerbaijani
 				}
-				change_culture = tazerbaijani
-			}
-			every_owned_province = {
-				limit = {
-					culture = georgian
+				every_owned_province = {
+					limit = {
+						culture = georgian
+					}
+					change_culture = tgeorgian
 				}
-				change_culture = tgeorgian
-			}
-			every_owned_province = {
-				limit = {
-					culture = armenian
+				every_owned_province = {
+					limit = {
+						culture = armenian
+					}
+					change_culture = tarmenian
 				}
-				change_culture = tarmenian
 			}
 	    }
 	}
