@@ -16,6 +16,7 @@ NDefines.NDiplomacy.CHANGE_RIVAL_YEARS = 10
 NDefines.NDiplomacy.MAX_ASKED_TRADE_POWER = 100
 NDefines.NDiplomacy.ABANDON_UNION_PRESTIGE = 0
 NDefines.NDiplomacy.INTEGRATE_UNION_MIN_YEARS = 10
+NDefines.NDiplomacy.CHANGE_COLONIAL_TYPE_COST = 0
 
 NDefines.NDiplomacy.DESIRED_NUM_OF_ELECTORS = 6
 NDefines.NDiplomacy.MAX_FREE_CITIES = 8
