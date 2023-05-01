@@ -1326,12 +1326,15 @@ fractured_cossacks_reform = {
 				tag = ZAZ
 				NOT = { map_setup = map_setup_random }
 			}
+			AND = {
 			tag = COS
-			has_reform = fractured_cossacks_reform
-			have_had_reform = fractured_cossacks_reform
 			NOT = {
 				mission_completed = tm_COS_reform_the_state
 			}
+			}
+			has_reform = fractured_cossacks_reform
+			have_had_reform = fractured_cossacks_reform
+
 		}
 	}
 	
@@ -1372,7 +1375,10 @@ cossacks_reform = {
 				tag = ZAZ
 				NOT = { map_setup = map_setup_random }
 			}
+			AND = {
 			tag = COS
+			mission_completed = tm_COS_reform_the_state
+			}
 			has_reform = cossacks_reform
 			have_had_reform = cossacks_reform
 		}

@@ -84,15 +84,47 @@ tm_COS_slot_1 = {
 		}
 
 		trigger = {
-            religious_unity = 0.75
 			patriarch_authority = 0.75
+			capital_scope = {
+				OR = {
+				province_id = 2447
+				province_id = 286
+				province_id = 464
+				}
+			}
 		}
 
 	    effect = {
-			add_prestige = 10
-			419 = {
+			add_patriarch_authority = -0.25
+			add_prestige = 20
+			2447 = {
 				if = {
 					limit = {
+						is_capital = yes
+						NOT = {
+							religion = orthodox
+						}
+					}
+					change_religion = orthodox
+				}
+				add_reform_center = orthodox
+			}
+			286 = {
+				if = {
+					limit = {
+						is_capital = yes
+						NOT = {
+							religion = orthodox
+						}
+					}
+					change_religion = orthodox
+				}
+				add_reform_center = orthodox
+			}
+			464 = {
+				if = {
+					limit = {
+						is_capital = yes
 						NOT = {
 							religion = orthodox
 						}
@@ -129,7 +161,7 @@ tm_COS_slot_2 = {
             num_of_owned_provinces_with = {
 				value = 10
 				region = crimea_region
-				total_development = 20
+				development = 20
 				base_production = 10
 			}
 		}
@@ -137,7 +169,7 @@ tm_COS_slot_2 = {
 	    effect = {
 			add_country_modifier = {
 				name = tm_COS_increased_production
-				duration = 3650
+				duration = -1
 			}
 	    }
 	}
@@ -153,7 +185,7 @@ tm_COS_slot_2 = {
 
 		trigger = {
             num_of_owned_provinces_with = {
-				value = 8
+				value = 6
 				region = crimea_region
 				base_production = 10
 				OR = {
@@ -178,15 +210,10 @@ tm_COS_slot_2 = {
 				if = {
 					limit = {
 						NOT = {
-							has_production_building_trigger = yes
-						}
-					}
-					add_building = workshop
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_building = workshop
+							OR = {
+								has_building = warehouse
+								has_building = counting_house
+							}
 						}
 					}
 					add_building = warehouse
@@ -314,7 +341,7 @@ tm_COS_slot_3 = {
 	    effect = {
 			add_country_modifier = {
 				name = tm_COS_finish_the_conquests
-				duration = 3650
+				duration = 5475
 			}
 			add_adm_power = 100
 	    }
