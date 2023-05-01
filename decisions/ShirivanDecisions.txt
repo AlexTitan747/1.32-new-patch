@@ -5,9 +5,13 @@ country_decisions = {
 		potential = {
 			OR = {
 				tag = SRV
-				tag = TRS
+				tag = CAU
 				}
 			has_country_flag = srv_religion_backup
+
+			NOT = {
+				has_country_flag = srv_new_religion_decision_used
+			}
 		}
 		allow = {
 			OR = {
@@ -20,6 +24,9 @@ country_decisions = {
 			}
 		}
 		effect = {
+			hidden_effect = {
+				set_country_flag = srv_new_religion_decision_used
+			}
 			custom_tooltip = srv_new_religion_tt
 			hidden_effect = {
 				country_event = {
@@ -28,5 +35,5 @@ country_decisions = {
 			}
 		}
 	}
-	
+
 }
