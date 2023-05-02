@@ -454,6 +454,8 @@ oman_slot_3 = {
 		required_missions = { tm_oma_secure_arabia tm_oma_seize_the_holy_lands }
 		position = 5
 		provinces_to_highlight = {
+			is_capital = yes
+			owned_by = ROOT
 		}
 
 		trigger = {
@@ -482,12 +484,17 @@ oman_slot_3 = {
 					tier = 1
 				}
 			}
+			add_country_modifier = {
+				name = oma_inspire_an_empire
+				duration = 3650
+			}
 			change_government_reform_progress = 100 
 			set_government_rank = 3
 			hidden_effect = {
 				set_country_flag = oman_prepared_for_expansion
 			}
 			additional_missions_scripted_effect = yes
+			custom_tooltip = battle_of_scholars_required_tt
 		}
 	}
 	
@@ -666,8 +673,8 @@ oman_slot_4 = {
 						owned_by = ROOT
 					}
 				}
-					383 = {
-					add_building = fort_14th
+				383 = {
+					add_building = fort_15th
 				}
 			}
 			if = {
@@ -677,7 +684,7 @@ oman_slot_4 = {
 					}
 				}
 				5167 = {
-					add_building = fort_14th
+					add_building = fort_15th
 				}
 			}
 			add_country_modifier = {
@@ -1421,7 +1428,7 @@ oman_slot_3_ibadi = {
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
-		
+
 		trigger = {
 			somaliland_area = {
 				type = all
@@ -1502,6 +1509,7 @@ oman_slot_3_ibadi = {
 				name = indian_ocean_empire
 				duration = -1
 			}
+			custom_tooltip = removal_of_permanent_modifiers_tt
 			remove_country_modifier = indian_mercenaries
 			remove_country_modifier = new_volunteers
 			remove_country_modifier = shipbuilding_blueprints
