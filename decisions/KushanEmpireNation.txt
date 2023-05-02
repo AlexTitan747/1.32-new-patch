@@ -78,28 +78,24 @@ country_decisions = {
 				#	name = return_of_the_true_faith
 				#	duration = 7300
 				#}
-				set_capital = 451 # Kabul
+				#set_capital = 451 # Kabul
 				if = {
-                	limit = { is_revolutionary = no }
-                	change_government = monarchy
-            	}
+					limit = { religion = hinduism }
+					add_government_reform = kushan_empire_hindu_reform
+				}
+				else_if = {
+					limit = { NOT = { religion = hindu }}
+					add_government_reform = kushan_empire_not_hindu_reform
+				}
 				if = {
-					limit = {
-						NOT = { primary_culture = panjabi }
-					}
+					limit = { NOT = { primary_culture = panjabi } }
 					change_primary_culture = panjabi
 				}
 				hindusthan_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
+					add_perma_claim = yes
 				}
 				khorasan_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
+					add_perma_claim = yes
 				}
 				set_country_flag = formed_kushan_flag
 				country_event = { id = ideagroups.1 } #Swap Ideas
