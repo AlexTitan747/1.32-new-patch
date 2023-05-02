@@ -2,17 +2,8 @@ country_decisions = {
 	commonwealth_enforced = {
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
-			was_never_end_game_tag_trigger = yes
 			NOT = { has_country_flag = formed_plc_flag }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
-			OR = {
-				is_free_or_tributary_trigger = yes
-				ai = no
-			}
+			ai = no
 			NOT = { exists = PLC }
 			LIT = {
 				NOT = { senior_union_with = POL }
@@ -26,12 +17,8 @@ country_decisions = {
 				tag = LIT
 				tag = POL
 			}
-			OR = {
-				ai = no
-				NOT = { exists = POL }
-				NOT = { exists = LIT }
-			}
 		}
+
 		provinces_to_highlight = {
 			OR = {
 				province_id = 272	# Vilna
@@ -48,10 +35,10 @@ country_decisions = {
 				NOT = { is_core = ROOT }
 			}
 		}
+
 		allow = {
 			adm_tech = 10
 			is_free_or_tributary_trigger = yes
-			is_nomad = no
 			stability = 3
 			is_at_war = no
 			owns_core_province = 272				# Vilna
@@ -64,6 +51,7 @@ country_decisions = {
 			owns_core_province = 1841				# Marienburg
 			MAZ = { exists = no }
 		}
+
 		effect = {
 			change_tag = PLC
 			if = { 
@@ -162,9 +150,8 @@ country_decisions = {
 				complete_mission = pol_great_sejm
 				complete_mission = plc_articles_agreement
 			}
-			custom_tooltip = commonwealth_ideas_hussars_tt
-			if = {
-				country_event = { id = ideagroups.1 } #Swap Ideas
+			hidden_effect = {
+				swap_free_idea_group = yes
 			}
 			custom_tooltip = commonwealth_ideas_hussars_tt
 		}

@@ -2,59 +2,25 @@ country_decisions = {
 	portuguese_nation = { #Portugal - Brazil
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
-			was_never_end_game_tag_trigger = yes
 			NOT = { has_country_flag = formed_portuguese_flag }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
+			ai = no
 			NOT = { exists = PBR }
-			NOT = { tag = PAP }
-			NOT = { tag = HLR }
-			NOT = { tag = ARA }
-			NOT = { tag = SPA }
-			NOT = { tag = CAS }
 			is_colonial_nation = no
-			OR = {
-				is_former_colonial_nation = no
-				AND = {
-					is_former_colonial_nation = yes
-					ai = no
-				}
-			}
 			tag = POR
-			
-			OR = {
-				ai = no
-				AND = {
-					NOT = { exists = PBR }
-					num_of_cities = 5
-					
-				}
-			}
 		}
 		
 		provinces_to_highlight = {
 			region = brazil_region
 			OR = {
-			NOT = { owned_by = ROOT }
-			is_city = no
-			}
-				
-			OR = {
 				NOT = { owned_by = ROOT }
 				NOT = { is_core = ROOT }
+				is_city = no
 			}
 		}
 		
 		allow = {
-			NOT = { exists = PBR }
-			is_nomad = no
 			is_free_or_tributary_trigger = yes
 			is_at_war = no
-			is_tribal = no
-			
 			
 			763 = {
 				country_or_non_sovereign_subject_holds = ROOT
@@ -65,8 +31,8 @@ country_decisions = {
 				value = 20
 				colonial_region = colonial_brazil
 			}
-			
 		}
+
 		effect = {
 			change_tag = PBR
 			change_primary_culture = brazilian
@@ -176,10 +142,7 @@ country_decisions = {
 			}
 			
 			set_country_flag = formed_portuguese_flag
-			if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
-			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
 		}
 	}
 

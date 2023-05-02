@@ -3,32 +3,19 @@ country_decisions = {
 	english_nation = {
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
-			was_never_end_game_tag_trigger = yes
 			NOT = { has_country_flag = formed_england_flag }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
-			NOT = { tag = ENG }
+			ai = no
+			NOT = { exists = ENG }
 			NOT = { tag = HYK }
 			NOT = { tag = HLA }
 			NOT = { exists = GBR }
-			NOT = { tag = HLR }
-			NOT = { tag = PAP }
 			OR = {
 				primary_culture = english
 				tag = KOI
 			}
 			is_colonial_nation = no
-			OR = {
-				is_former_colonial_nation = no
-				AND = {
-					is_former_colonial_nation = yes
-					ai = no
-				}
-			}
 		}
+
 		provinces_to_highlight = {
 			OR = {
 				province_id = 236		# London
@@ -42,11 +29,10 @@ country_decisions = {
 				NOT = { is_core = ROOT }
 			}
 		}
+
 		allow = {
 			is_at_war = no
 			is_free_or_tributary_trigger = yes
-			is_nomad = no			
-			NOT = { exists = ENG }
 			owns_core_province = 237		# Oxfordshire
 			owns_core_province = 234		# Wessex
 			owns_core_province = 235		# Kent
@@ -61,7 +47,7 @@ country_decisions = {
 				move_capital_effect = yes
 			}
 			change_tag = ENG
-			swap_non_generic_missions = yes
+			new_mission_tree_scripted_effect = yes
 			remove_non_electors_emperors_from_empire_effect = yes
 			if = {
 				limit = {
@@ -135,10 +121,7 @@ country_decisions = {
 			}
 			add_prestige = 25
 			set_country_flag = formed_england_flag
-			if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
-			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
 		}
 		ai_will_do = {
 			factor = 1

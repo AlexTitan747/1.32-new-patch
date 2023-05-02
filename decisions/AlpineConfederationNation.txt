@@ -3,55 +3,31 @@ country_decisions = {
 		alpine_confederation_nation = {
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
-				was_never_end_game_tag_trigger = yes
 				NOT = { has_country_flag = formed_alpine_confederation_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
-				NOT = { tag = PAP }
-				NOT = { tag = HLR }
+				ai = no
 				NOT = { tag = HUN }
 				NOT = { tag = POL }
 				NOT = { tag = HAB }
-				NOT = { tag = BRA }
+				NOT = { exists = ALP }
 				is_colonial_nation = no
-				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
 				OR = {
 					primary_culture = swiss
 					primary_culture = austrian
 					primary_culture = bavarian
 					primary_culture = swabian
 				}
-				
-				OR = {
-					ai = no
-					AND = {
-						NOT = { exists = ALP }
-						num_of_cities = 10
-						
-					}
-				}
 			}
 			
 			provinces_to_highlight = {
 				OR = {
-				province_id = 165			# Bern
-				province_id = 1869			# Zurich
-				province_id = 4720			# Geneva
-				province_id = 4710			# Bregenz
-				province_id = 73			# Inntal
-				province_id = 76			# Salzberg
-				province_id = 1768			# Lienz
+					province_id = 165			# Bern
+					province_id = 1869			# Zurich
+					province_id = 4720			# Geneva
+					province_id = 4710			# Bregenz
+					province_id = 73			# Inntal
+					province_id = 76			# Salzberg
+					province_id = 1768			# Lienz
 				}
-					
 				OR = {
 					NOT = { owned_by = ROOT }
 					NOT = { is_core = ROOT }
@@ -59,11 +35,8 @@ country_decisions = {
 			}
 			
 			allow = {
-				NOT = { exists = ALP }
-				is_nomad = no
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
-				is_tribal = no
 				owns_core_province = 165			# Bern
 				owns_core_province = 1869			# Zurich
 				owns_core_province = 4720			# Geneva
@@ -76,13 +49,14 @@ country_decisions = {
 					value = 35
 					region = south_german_region
 					is_core = root
-					
-					}
-			}
-			effect = {
-				1869 = {	#zurich
-					move_capital_effect = yes
 				}
+			}
+
+			effect = {
+				#1869 = {	#zurich
+				#	move_capital_effect = yes
+				#}
+				#set_capital = 1869 # Zurich
 				
 				change_tag = ALP
 				set_ruler_culture = swiss
@@ -98,7 +72,7 @@ country_decisions = {
 						NOT = { government = republic }
 						is_revolutionary = no
 					}
-					change_government_to_republic = yes 
+					change_government_to_republic = yes
 				}
 				remove_government_reform = united_cantons_reform
 				add_government_reform = united_alpine_cantons_reform
@@ -107,7 +81,6 @@ country_decisions = {
 					name = centralization_modifier
 					duration = 3650
 				}
-				set_capital = 1869 # Zurich
 				bern_area = {
 					limit = {
 						NOT = {
@@ -181,10 +154,7 @@ country_decisions = {
 					add_permanent_claim = ROOT
 				}
 				set_country_flag = formed_alpine_confederation_flag
-				if = {
-				limit = { has_custom_ideas = no }
 				country_event = { id = ideagroups.1 } #Swap Ideas
-				}
 			}
 			
 		}

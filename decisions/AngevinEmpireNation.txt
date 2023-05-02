@@ -3,36 +3,12 @@ country_decisions = {
 	angevin_nation = {
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
 			NOT = { has_country_flag = formed_angevin_flag }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
-			NOT = { tag = PAP }
+			ai = no
 			NOT = { tag = FRA }
-			#NOT = { tag = TIM }
-			NOT = { tag = PLC }
 			NOT = { exists = ANG }
 			is_colonial_nation = no
-			OR = {
-				is_former_colonial_nation = no
-				AND = {
-					is_former_colonial_nation = yes
-					ai = no
-				}
-			}
-			OR = {
-				culture_group = british
-			}
-			
-			OR = {
-				ai = no
-				AND = {
-					ai = yes
-					num_of_cities = 10
-				}
-			}
+			culture_group = british
 		}
 
 		provinces_to_highlight = {
@@ -48,11 +24,10 @@ country_decisions = {
 				NOT = { is_core = ROOT }
 			}
 		}
+
 		allow = {
 			adm_tech = 15
-			NOT = { exists = ANG }
 			is_free_or_tributary_trigger = yes
-			is_nomad = no
 			is_at_war = no
 			normandy_area = {
 				type = all
@@ -75,6 +50,7 @@ country_decisions = {
 				owned_by = ROOT
 			}
 		}
+
 		effect = {
 			change_tag = ANG
 			remove_non_electors_emperors_from_empire_effect = yes
@@ -102,10 +78,7 @@ country_decisions = {
 				name = "centralization_modifier"
 				duration = 7300
 			}
-			if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
-			}
+			country_event = { id = ideagroups.1 }
 		}
 		ai_will_do = {
 			factor = 1

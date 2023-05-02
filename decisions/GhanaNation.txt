@@ -3,42 +3,22 @@ country_decisions = {
 		ghani_nation = {
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
 				NOT = { has_country_flag = formed_ghani_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
+				ai = no
 				NOT = { exists = GHN }
 				NOT = { tag = KNE }
 				NOT = { tag = CRG }
 				NOT = { tag = MOR }
 				is_colonial_nation = no
-				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
 				culture_group = mande
-				
-				OR = {
-					ai = no
-					AND = {
-						NOT = { exists = GHN }
-						num_of_cities = 10
-						
-					}
-				}
 			}
 			
 			provinces_to_highlight = {
 				OR = {
-				province_id = 1123			# Segu
-				province_id = 1120			# Bambuk
-				province_id = 2243			# Termes
-				province_id = 1122			# Bagoe
+					province_id = 1123			# Segu
+					province_id = 1120			# Bambuk
+					province_id = 2243			# Termes
+					province_id = 1122			# Bagoe
 				}
 					
 				OR = {
@@ -56,20 +36,12 @@ country_decisions = {
 				owns_core_province = 2243			# Termes
 				owns_core_province = 1122			# Bagoe
 				
-				AND = {
-						adm_tech = 7
-					}
-				OR = {
-					AND = {
-					total_development = 200
-					}
-				}
-				
+				adm_tech = 7
+				total_development = 200
 			}
+
 			effect = {
 				change_tag = GHN
-				
-				remove_non_electors_emperors_from_empire_effect = yes
 				if = {
 					limit = {
 						NOT = { government_rank = 2 }
@@ -81,14 +53,8 @@ country_decisions = {
 					name = centralization_modifier
 					duration = 3650
 				}
-				if = {
-                limit = { is_revolutionary = no }
-				}
 				set_country_flag = formed_ghani_flag
-				if = {
-				limit = { has_custom_ideas = no }
 				country_event = { id = ideagroups.1 } #Swap Ideas
-				}
 				niger_region = {
 					limit = {
 						NOT = { owned_by = ROOT }
@@ -144,6 +110,5 @@ country_decisions = {
 					add_permanent_claim = ROOT
 				}
 			}
-			
 		}
 	}

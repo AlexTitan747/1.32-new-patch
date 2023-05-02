@@ -17,20 +17,16 @@ country_decisions = {
 
 		provinces_to_highlight = {
 			OR = {
-				AND = {
-					OR = {
-						NOT = { owned_by = ROOT }
-						NOT = { is_core = ROOT }
-					}
-					OR = {
-						province_id = 425 #Dagestani
-						province_id = 464 #Astrakhan
-						province_id = 463 #Circassia
-						province_id = 287 #Kuban
-						province_id = 286 #Azov
-						province_id = 1971 #Beljamen
-					}
-				}
+				province_id = 425 #Dagestani
+				province_id = 464 #Astrakhan
+				province_id = 463 #Circassia
+				province_id = 287 #Kuban
+				province_id = 286 #Azov
+				province_id = 1971 #Beljamen
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
 			}
 		}
 
@@ -68,7 +64,7 @@ country_decisions = {
 				duration = 7300
 			}
 			add_prestige = 25
-			swap_non_generic_missions = yes
+			new_mission_tree_scripted_effect = yes
 		}
 
 		ai_will_do = {

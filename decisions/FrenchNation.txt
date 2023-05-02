@@ -3,21 +3,10 @@ country_decisions = {
 	french_nation = {
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
-			was_never_end_game_tag_trigger = yes
 			NOT = { has_country_flag = formed_france_flag }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
-			NOT = { tag = HLR }
+			ai = no
 			NOT = { tag = FRA }
-			NOT = { tag = PAP }
 			NOT = { tag = SPA }		# Basque is a valid culture for both FRA and SPA
-			OR = {
-				ai = no
-				NOT = { exists = FRA }
-			}
 			OR = {
 				culture_group = french
 				primary_culture = burgundian
@@ -25,14 +14,8 @@ country_decisions = {
 				primary_culture = breton
 			}
 			is_colonial_nation = no
-			OR = {
-				is_former_colonial_nation = no
-				AND = {
-					is_former_colonial_nation = yes
-					ai = no
-				}
-			}
 		}
+
 		provinces_to_highlight = {
 			OR = {
 				AND = {
@@ -45,9 +28,9 @@ country_decisions = {
 								is_core = root
 							}
 						}
-						owns_core_province = 184	# Orléannais
+						owns_core_province = 184	# Orlï¿½annais
 						owns_core_province = 186	# Champagne
-						owns_core_province = 183	# Île-de-France
+						owns_core_province = 183	# ï¿½le-de-France
 						owns_core_province = 192
 						owns_core_province = 172
 						owns_core_province = 174
@@ -55,8 +38,8 @@ country_decisions = {
 						owns_core_province = 203
 					}
 				}
-				province_id = 183	# Île-de-France
-				province_id = 184	# Orléannais
+				province_id = 183	# ï¿½le-de-France
+				province_id = 184	# Orlï¿½annais
 				province_id = 186	# Champagne
 				province_id = 192
 				province_id = 172
@@ -73,11 +56,10 @@ country_decisions = {
 			adm_tech = 12
 			is_at_war = no
 			is_free_or_tributary_trigger = yes
-			is_nomad = no			
 			NOT = { exists = FRA }
-			owns_core_province = 184	# Orléannais
+			owns_core_province = 184	# Orlï¿½annais
 			owns_core_province = 186	# Champagne
-			owns_core_province = 183	# Île-de-France
+			owns_core_province = 183	# ï¿½le-de-France
 			owns_core_province = 192
 			owns_core_province = 172
 			owns_core_province = 174
@@ -94,7 +76,7 @@ country_decisions = {
 				move_capital_effect = yes
 			}
 			change_tag = FRA
-			swap_non_generic_missions = yes
+			new_mission_tree_scripted_effect = yes
 			remove_non_electors_emperors_from_empire_effect = yes
 			FRA = {
 				if = {
@@ -126,12 +108,7 @@ country_decisions = {
 				duration = 7300
 			}
 			add_prestige = 25
-			if = {
-				limit = {
-					has_custom_ideas = no
-				}
-				country_event = { id = ideagroups.1 } #Swap Ideas
-			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
 			set_country_flag = formed_france_flag
 		}
 		ai_will_do = {

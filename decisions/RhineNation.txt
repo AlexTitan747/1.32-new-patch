@@ -3,30 +3,14 @@ country_decisions = {
 	rhine_nation = {
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
-			was_never_end_game_tag_trigger = yes
 			NOT = { has_country_flag = formed_rhine_flag }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
-			OR = {
-				NOT = { exists = CFR }
-				ai = no
-			}
-			NOT = { tag = PAP }
-			NOT = { tag = HAB }
-			NOT = { tag = HLR }
+			ai = no
+			NOT = { exists = CFR }
 			NOT = { tag = FRA }
 			culture_group = rhenish
-			OR = {
-				ai = no
-				AND = {
-					ai = yes
-					num_of_cities = 3
-				}
-			}
+			is_colonial_nation = no
 		}
+
 		provinces_to_highlight = {
 			OR = {
 				province_id = 4714 # Durlach
@@ -63,12 +47,11 @@ country_decisions = {
 				NOT = { is_core = ROOT }
 			}
 		}
+
 		allow = {
 			is_free_or_tributary_trigger = yes
-			is_nomad = no
 			is_at_war = no
 			adm_tech = 10
-			NOT = { exists = CFR }
 			owns_core_province = 4714 # Durlach
 			owns_core_province = 77 # heidenburg
 			owns_core_province = 70 # stutgart
@@ -86,11 +69,12 @@ country_decisions = {
 				}	
 			}	
 		}
+
 	 	effect = {
-	  			change_primary_culture = hessian
-				1876 = {
-					move_capital_effect = yes
-				}
+	  		change_primary_culture = hessian
+			1876 = {
+				move_capital_effect = yes
+			}
 			change_tag = CFR
 			remove_non_electors_emperors_from_empire_effect = yes
 
@@ -109,6 +93,40 @@ country_decisions = {
 			}
 			south_german_region = {
 				limit = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+					OR = {
+						culture = hessian
+						culture = hannoverian
+						culture = swabian
+						culture = flemish
+						culture = dutch
+						culture = frisian
+						culture = franconian
+						culture = lower_saxon
+					}
+				}
+				add_permanent_claim = CFR	
+			}
+			north_german_region = {
+				limit = {
+						NOT = { owned_by = ROOT }
+						NOT = { is_permanent_claim = ROOT }
+						OR = {
+							culture = hessian
+							culture = hannoverian
+							culture = swabian
+							culture = flemish
+							culture = dutch
+							culture = frisian								
+							culture = franconian
+							culture = lower_saxon
+						}
+					}
+					add_permanent_claim = CFR	
+				}
+				low_countries_region = {
+					limit = {
 						NOT = { owned_by = ROOT }
 						NOT = { is_permanent_claim = ROOT }
 						OR = {
@@ -124,40 +142,6 @@ country_decisions = {
 					}
 					add_permanent_claim = CFR	
 				}
-			north_german_region = {
-					limit = {
-							NOT = { owned_by = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-							OR = {
-								culture = hessian
-								culture = hannoverian
-								culture = swabian
-								culture = flemish
-								culture = dutch
-								culture = frisian								
-								culture = franconian
-								culture = lower_saxon
-							}
-						}
-						add_permanent_claim = CFR	
-				}
-				low_countries_region = {
-					limit = {
-							NOT = { owned_by = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-							OR = {
-								culture = hessian
-								culture = hannoverian
-								culture = swabian
-								culture = flemish
-								culture = dutch
-								culture = frisian
-								culture = franconian
-								culture = lower_saxon
-							}
-						}
-						add_permanent_claim = CFR	
-				}
 			if = {
 				limit = {
 					NOT = {
@@ -168,12 +152,7 @@ country_decisions = {
 			}
 			set_country_flag = formed_rhine_flag
 			add_prestige = 25
-			if = {
-				limit = {
-					has_custom_ideas = no
-				}
-				country_event = { id = ideagroups.1 } #Swap Ideas
-			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
 		}
 	}
 	

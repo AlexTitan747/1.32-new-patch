@@ -3,43 +3,22 @@ country_decisions = {
 	persian_nation = {
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
-			was_never_end_game_tag_trigger = yes
 			NOT = { has_country_flag = formed_persia_flag }
-			OR = {
-				ai = no
-				NOT = { exists = PER }
-			}
+			ai = no
 			OR = {
 				tag = AFG
 				tag = SRV
 			}
-			NOT = { tag = MUG }
-			#NOT = { tag = TIM }
-			NOT = { tag = PER }
-			NOT = { tag = HLR }
-			NOT = { tag = ROM }
-			NOT = { tag = PAP }
-			NOT = { tag = TUR }
-			NOT = { tag = BYZ }
-			NOT = { tag = ARB }
 			OR = {
 				culture_group = iranian
 				primary_culture = azerbaijani
 				tag = AKK
 			}
 			is_colonial_nation = no
-			OR = {
-				is_former_colonial_nation = no
-				AND = {
-					is_former_colonial_nation = yes
-					ai = no
-				}
-			}
 			NOT = { has_country_flag =  tm_AFG_hindu }
 			NOT = { has_country_flag = tm_AFG_suuni }
-			is_tribal = no
 		}
+
 		provinces_to_highlight = {
 			OR = {
 				province_id = 429		# Isfahan
@@ -48,13 +27,13 @@ country_decisions = {
 				province_id = 2213		# Qom
 				province_id = 2215      # Qazvin
 				province_id = 2221		# Mashhad
-
 			}
 			OR = {
 				NOT = { owned_by = ROOT }
 				NOT = { is_core = ROOT }
 			}
 		}
+		
 		allow = {
 			is_free_or_tributary_trigger = yes
 			is_at_war = no
@@ -69,12 +48,12 @@ country_decisions = {
 				owns_core_province = 2215       # Qazvin
 			}
 		}
+
 		effect = {
 			capital_scope = {
 				change_culture = persian
 			}
 			change_tag = PER
-			remove_non_electors_emperors_from_empire_effect = yes
 			define_ruler = {
 				male = yes
 				dynasty = "Achaemenes"
@@ -116,10 +95,7 @@ country_decisions = {
 				change_primary_culture = persian
 			}
 			set_country_flag = formed_persia_flag
-			if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
-			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
 			new_mission_tree_scripted_effect = yes
 		}
 		ai_will_do = {

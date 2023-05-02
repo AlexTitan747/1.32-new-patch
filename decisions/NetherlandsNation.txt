@@ -3,34 +3,17 @@ country_decisions = {
 	netherlands_nation = {
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
-			was_never_end_game_tag_trigger = yes
 			NOT = { has_country_flag = formed_netherlands_flag }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
-			OR = {
-				NOT = { exists = NED }
-				ai = no
-			}
-			NOT = { tag = PAP }
-			NOT = { tag = NED }
-			NOT = { tag = HLR }
+			ai = no
+			NOT = { exists = NED }
 			OR = {
 				primary_culture = dutch
 				primary_culture = flemish
 				primary_culture = frisian
 				tag = BUR
 			}
-			OR = {
-				ai = no
-				AND = {
-					ai = yes
-					num_of_cities = 3
-				}
-			}
 		}
+
 		provinces_to_highlight = {
 			OR = {
 				province_id = 95 # Breda
@@ -61,11 +44,10 @@ country_decisions = {
 				NOT = { is_core = ROOT }
 			}
 		}
+
 		allow = {
 			is_free_or_tributary_trigger = yes
-			is_nomad = no
 			is_at_war = no
-			NOT = { exists = NED }
 			owns_core_province = 95 # Breda
 			owns_core_province = 98 # Utrecht
 			owns_core_province = 99 # Gelre
@@ -80,6 +62,7 @@ country_decisions = {
 				is_core = root
 			}
 		}
+
 	 	effect = {
 	  		if = {
 	  			limit = {
@@ -89,7 +72,7 @@ country_decisions = {
 				set_capital = 97
 			}
 			change_tag = NED
-			swap_non_generic_missions = yes
+			new_mission_tree_scripted_effect = yes
 			low_countries_region = {
 				limit = {
 					NOT = { owned_by = ROOT }
