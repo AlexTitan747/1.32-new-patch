@@ -25,6 +25,16 @@ make_trading_subject = {
 	}
 	is_allowed = {
 		tag = OME
+		NOT = {
+			any_subject_country = {
+				is_subject_of_type = trading_subject
+				capital_scope = {
+					region_for_scope_province = {
+						is_capital_of = FROM
+					}
+				}
+			}
+		}
 	}
 	effect = {
 		create_subject = {
