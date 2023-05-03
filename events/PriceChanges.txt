@@ -3349,8 +3349,177 @@ country_event = {
 	}
 }
 
-#Olives
+#Ale For Soldiers
+country_event = {
+	id = prices.60
+	title = prices.60.t
+	desc = prices.60.d
+	picture = TRADEGOODS_eventPicture
 
-#Ale
+	fire_only_once = yes
+	
+	major = yes
 
-#Olive oil
+	trigger = {
+		army_size = 150
+		ale = 5
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = prices.60.a
+		change_price = {
+			trade_goods = ale
+			key = SOLDIERS_DEMAND_ALE
+			value = 0.25
+			duration = -1
+		}
+		random_owned_province = {
+			limit = {
+				trade_goods = ale
+			}
+			add_base_manpower = 3
+		}
+		add_country_modifier = {
+			name = tm_ale_manpower
+			duration = 3650
+		}
+	}
+}
+
+#Wine More Popular Than Ale
+country_event = {
+	id = prices.61
+	title = prices.61.t
+	desc = prices.61.d
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		calc_true_if = {
+			amount = 15
+			all_province = {
+				trade_goods = wine
+				has_production_building = yes
+				has_manufactory = yes
+				base_production = 10
+			}
+		}
+		wine = 3
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = prices.61.a
+		change_price = {
+			trade_goods = ale
+			key = WINE_MORE_POPULAR_THAN_ALE
+			value = -0.25
+			duration = -1
+		}
+		random_owned_province = {
+			limit = {
+				trade_goods = wine
+			}
+			upgrade_building = {
+				production = yes
+			}
+			add_base_production = 2
+		}
+	}
+}
+
+#Spices Reduced Saffron Demand
+country_event = {
+	id = prices.62
+	title = prices.62.t
+	desc = prices.62.d
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		capital_scope = {
+			continent = europe
+		}
+		trading_part = {
+			trade_goods = spices
+			value = 20
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = prices.62.a
+		change_price = {
+			trade_goods = saffron
+			key = SPICES_VS_SAFFRON
+			value = -0.25
+			duration = -1
+		}
+	}
+}
+
+#Olive Oil 
+country_event = {
+	id = prices.63
+	title = prices.63.t
+	desc = prices.63.d
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		trading_part = {
+			trade_goods = olive_oil
+			value = 15
+		}
+		calc_true_if = {
+			amount = 10
+			all_province = {
+				trade_goods = olive_oil
+				has_production_building = yes
+				development = 20
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = prices.62.a
+		change_price = {
+			trade_goods = olive_oil
+			key = OLIVE_OIL_RISE
+			value = 0.1
+			duration = -1
+		}
+		random_owned_province = {
+			limit = {
+				trade_goods = olive_oil
+			}
+			add_base_production = 3
+			upgrade_building = {
+				production = yes
+			}
+		}
+	}
+}
