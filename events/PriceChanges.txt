@@ -2827,6 +2827,7 @@ country_event = {
 	}
 }
 
+#Too many tailors
 country_event = {
 	id = prices.48
 	title = prices.48.t
@@ -2864,7 +2865,7 @@ country_event = {
 	}
 }
 
-#too many tailors
+#Increased Tailors Demand
 country_event = {
 	id = prices.49
 	title = prices.49.t
@@ -2928,7 +2929,7 @@ country_event = {
 				trade_goods = gems
 				superregion = southern_africa_superregion
 			}
-			amount = 5
+			amount = 3
 		}
 	}
 	
@@ -2948,3 +2949,393 @@ country_event = {
 		}
 	}
 }
+
+#Cavalry phased out
+country_event = {
+	id = prices.51
+	title = prices.51.t
+	desc = prices.51.d
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		is_year = 1490
+		NOT = { num_of_cavalry = 1 }
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = prices.51.a
+		change_price = {
+			trade_goods = horses
+			key = HORSES_NOT_NEEDED
+			value = -0.2
+			duration = -1
+		}
+	}
+}
+
+#Cavalry nation demands more horses
+country_event = {
+	id = prices.52
+	title = prices.52.t
+	desc = prices.52.d
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		OR = {
+			any_known_country = {
+				num_of_cavalry = 100
+				OR = {
+					maneuver_ideas = 7
+					shock_ideas = 7
+				}
+			}
+			AND = {
+				num_of_cavalry = 100
+				OR = {
+					maneuver_ideas = 7
+					shock_ideas = 7
+				}
+			}
+		}
+		horses = 5
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = prices.52.a
+		change_price = {
+			trade_goods = horses
+			key = HORSES_NEEDED
+			value = 0.5
+			duration = -1
+		}
+	}
+}
+
+#Medival armour not so good against guns and cannons
+country_event = {
+	id = prices.53
+	title = prices.53.t
+	desc = prices.53.d
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		mil_tech = 23
+		num_of_artillery = 100
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = prices.53.a
+		change_price = {
+			trade_goods = armour
+			key = ARMOUR_INEFFECTIVE
+			value = -0.4
+			duration = -1
+		}
+	}
+}
+
+#Exotic Fruit Comes To Europe - Citrus
+country_event = {
+	id = prices.54
+	title = prices.54.t
+	desc = prices.54.d
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		citrus = 1
+		capital_scope = {
+			continent = europe
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = prices.54.a
+		change_price = {
+			trade_goods = citrus
+			key = CITRUS_IN_EUROPE
+			value = 0.5
+			duration = -1
+		}
+		if = {
+			limit = {
+				any_owned_province = {
+					trade_goods = citrus
+					NOT = { has_manufactory = yes }
+				}
+			}
+			random_owned_province = {
+				limit = {
+					trade_goods = citrus
+					NOT = { has_manufactory = yes }
+				}
+				add_manufactory = yes
+			}
+		}
+	}
+}
+
+#Exotic Fruit Comes To Europe - Banana
+country_event = {
+	id = prices.55
+	title = prices.55.t
+	desc = prices.55.d
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		banana = 1
+		capital_scope = {
+			continent = europe
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = prices.55.a
+		change_price = {
+			trade_goods = banana
+			key = BANANA_IN_EUROPE
+			value = 0.25
+			duration = -1
+		}
+		if = {
+			limit = {
+				any_owned_province = {
+					trade_goods = banana
+					NOT = { has_manufactory = yes }
+				}
+			}
+			random_owned_province = {
+				limit = {
+					trade_goods = banana
+					NOT = { has_manufactory = yes }
+				}
+				add_manufactory = yes
+			}
+		}
+	}
+}
+
+#Fine Dining
+country_event = {
+	id = prices.56
+	title = prices.56.t
+	desc = prices.56.d
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		silverware = 1
+		estate_influence = {
+			estate = estate_nobility
+			influence = 70
+		}
+		estate_loyalty = {
+			estate = estate_nobility
+			loyalty = 70
+		}
+		total_development = 1000
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = prices.56.a
+		change_price = {
+			trade_goods = silverware
+			key = FINE_DINING
+			value = 0.25
+			duration = -1
+		}
+	}
+}
+
+#Jewellery popularity
+country_event = {
+	id = prices.57
+	title = prices.57.t
+	desc = prices.57.d
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		jewellery = 1
+		estate_influence = {
+			estate = estate_burghers
+			influence = 70
+		}
+		estate_loyalty = {
+			estate = estate_burghers
+			loyalty = 70
+		}
+		government = monarchy
+		legitimacy = 100
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = prices.57.a
+		change_price = {
+			trade_goods = jewellery
+			key = JEWELLERY_POPULAR
+			value = 0.25
+			duration = -1
+		}
+		change_price = { #Gems are uncut and less fashionable
+			trade_goods = gems
+			key = JEWELLERY_POPULAR_GEMS
+			value = -0.25
+			duration = -1
+		}
+	}
+}
+
+#More uses for steel
+country_event = {
+	id = prices.58
+	title = prices.58.t
+	desc = prices.58.d
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		steel = 3
+		total_development = 2000
+		furnace = 4
+		num_of_owned_provinces_with = {
+			value = 10
+			development = 30
+			NOT = { num_free_building_slots = 1 }
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	option = {
+		name = prices.58.a
+		change_price = {
+			trade_goods = steel
+			key = STEEL_MORE_USEFUL
+			value = 0.2
+			duration = -1
+		}
+		change_price = {
+			trade_goods = iron
+			key = IRON_LESS_DESIRABLE
+			value = -0.1
+			duration = -1
+		}
+	}
+}
+
+#Swiss / French Cheese
+country_event = {
+	id = prices.59
+	title = prices.59.t
+	desc = prices.59.d
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		OR = {
+			tag = FRA
+			tag = SWI
+			tag = ALP
+		}
+		cheese = 5
+		any_owned_province = {
+			trade_goods = cheese
+			base_production = 12
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	immediate = {
+		random_owned_province = {
+			limit = {
+				trade_goods = cheese
+			}
+			save_event_target_as = cheese_province
+		}
+	}
+	
+	option = {
+		name = prices.59.a
+		change_price = {
+			trade_goods = cheese
+			key = AMAZING_CHEESE
+			value = 0.15
+			duration = -1
+		}
+		event_target:cheese_province= {
+			add_manufactory = yes
+			add_base_production = 5
+		}
+	}
+}
+
+#Olives
+
+#Ale
+
+#Olive oil
