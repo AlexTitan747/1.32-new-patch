@@ -585,4 +585,52 @@ country_decisions = {
 			factor = 0
 		}
 	}
+
+	tm_import_silk = {
+		potential = {
+			NOT = { silk = 1 }
+			dyes = 1
+			OR = { 
+				capital_scope = { continent = europe }
+				capital_scope = { continent = africa }
+			}
+			cloth = 1
+			NOT = { has_country_flag = tm_imported_silk }
+			dip_tech = 14
+		}
+		allow = {
+			treasury = 300
+			custom_trigger_tooltip = {
+				tooltip = tm_silk_import_opinion_tt
+				any_known_country = {
+					capital_scope = { continent = asia }
+					silk = 1
+					has_opinion = {
+						who = ROOT
+						value = 125
+					}
+				}
+			}
+		}
+		effect = {
+			add_treasury = -300
+			random_owned_province = {
+				limit = {
+					trade_goods = cloth
+				}
+				change_trade_goods = silk
+				add_base_production = -2
+			}
+			set_country_flag = tm_imported_silk
+			hidden_effect = {
+				change_variable = {            
+					which = num_of_dyes
+					value = 1.0
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+		}
+	}
 }		
