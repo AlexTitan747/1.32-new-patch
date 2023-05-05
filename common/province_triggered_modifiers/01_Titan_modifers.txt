@@ -5,8 +5,8 @@ coastal_desert_farms = {
 	}
 
 	trigger = {
-			owner = {
-				OR = {
+		owner = {
+			OR = {
 				tag = TTS
 				was_tag = TTS
 			}
@@ -25,167 +25,6 @@ coastal_desert_farms = {
 	}
 }
 
-home_of_the_niger_company = {
-	potential = {
-		normal_or_historical_nations = yes
-	}
-
-	trigger = {
-		}
-
-	province_trade_power_modifier = 1
-	local_production_efficiency = 0.5
-	
-	#Province scope
-	on_activation = {
-	 
-	}
-	
-	on_deactivation = {
-	}
-}
-
-home_of_the_euphrates_company = {
-	potential = {
-		normal_or_historical_nations = yes
-	}
-
-	trigger = {
-		}
-
-	province_trade_power_modifier = 1
-	local_production_efficiency = 0.5
-	
-	#Province scope
-	on_activation = {
-	 
-	}
-	
-	on_deactivation = {
-	}
-}
-
-home_of_the_nile_company = {
-	potential = {
-		normal_or_historical_nations = yes
-	}
-
-	trigger = {
-		}
-
-	province_trade_power_modifier = 1
-	local_production_efficiency = 0.5
-	
-	#Province scope
-	on_activation = {
-	 
-	}
-	
-	on_deactivation = {
-	}
-}
-
-home_of_the_danube_company = {
-	potential = {
-		normal_or_historical_nations = yes
-	}
-
-	trigger = {
-		}
-
-	province_trade_power_modifier = 1
-	local_production_efficiency = 0.5
-	
-	#Province scope
-	on_activation = {
-	 
-	}
-	
-	on_deactivation = {
-	}
-}
-
-home_of_the_rhein_company = {
-	potential = {
-		normal_or_historical_nations = yes
-	}
-
-	trigger = {
-		}
-
-	province_trade_power_modifier = 1
-	local_production_efficiency = 0.5
-	
-	#Province scope
-	on_activation = {
-	 
-	}
-	
-	on_deactivation = {
-	}
-}
-
-home_of_the_malaya_company = {
-	potential = {
-		normal_or_historical_nations = yes
-	}
-
-	trigger = {
-		}
-
-	province_trade_power_modifier = 1
-	local_production_efficiency = 0.5
-	
-	#Province scope
-	on_activation = {
-	 
-	}
-	
-	on_deactivation = {
-	}
-}
-
-home_of_the_ceylon_company = {
-	potential = {
-		normal_or_historical_nations = yes
-	}
-
-	trigger = {
-		}
-
-	province_trade_power_modifier = 1
-	local_production_efficiency = 0.5
-	
-	#Province scope
-	on_activation = {
-	 
-	}
-	
-	on_deactivation = {
-	}
-}
-
-home_of_the_cape_company = {
-	potential = {
-		normal_or_historical_nations = yes
-	}
-
-	trigger = {
-		}
-
-	province_trade_power_modifier = 1
-	local_production_efficiency = 0.5
-	
-	#Province scope
-	on_activation = {
-	 
-	}
-	
-	on_deactivation = {
-	}
-}
-
-
  defense_of_iberia = {
 	potential = {
 		normal_or_historical_nations = yes
@@ -199,9 +38,9 @@ home_of_the_cape_company = {
 				tag = ARA
 				tag = POR
 				tag = PBR
-				}
 			}
 		}
+	}
 
 	local_defensiveness = 0.15
 	
@@ -222,25 +61,25 @@ italian_defensive_effort = {
 	}
 
 	trigger = {
-			AND = {
-				owner = {
-					OR = {
+		AND = {
+			owner = {
+				OR = {
 					tag = ITA
 					tag = ROM
 					tag = CRG
-					}
-				}	
-				OR = {
-					has_building = fort_15th
-					has_building = fort_16th
-					has_building = fort_17th
-					has_building = fort_18th
 				}
+			}	
+			OR = {
+				has_building = fort_15th
+				has_building = fort_16th
+				has_building = fort_17th
+				has_building = fort_18th
 			}
+		}
 	}
 
 	defensiveness = 0.01
-	global_garrison_growth = 0.05
+	garrison_growth = 0.05
 	
 	#Province scope
 	on_activation = {
@@ -262,9 +101,9 @@ defense_of_france = {
 			OR = {
 				tag = FRA
 				tag = AQI
-				}
 			}
 		}
+	}
 
 	local_defensiveness = 0.15
 	
@@ -285,15 +124,14 @@ occupation_of_copinghagen = {
 
 	trigger = {
 		owner = {
-				NOT = {
-					OR = {
-						was_tag = DAN
-						tag = DAN
-					}
-				}  
-			}
-		controlled_by = ROOT	
-		}
+			NOT = {
+				OR = {
+					was_tag = DAN
+					tag = DAN
+				}
+			}  
+		}	
+	}
 
 	infantry_power = 0.05
 	
@@ -314,19 +152,18 @@ new_ruler_of_the_waves = {
 
 	trigger = {
 		owner = {
-				NOT = {
-					OR = {
-						was_tag = ENG
-						tag = ENG
-					}
-				}  
-			}
-		controlled_by = ROOT	
-		}	
+			NOT = {
+				OR = {
+					was_tag = ENG
+					tag = ENG
+				}
+			}  
+		}
+	}	
 
 	naval_morale = 0.05
 	ship_durability = 0.01
-	infantry_power = 0.025
+	infantry_power = 0.05
 	
 	#Province scope
 	on_activation = {
@@ -345,18 +182,17 @@ french_traditions = {
 
 	trigger = {
 		owner = {
-				NOT = {
-					OR = {
-						was_tag = BUR
-						was_tag = FRA
-						tag = FRA
-						tag = BUR
-						culture_group = french
-					}
-				}  
-			}
-		controlled_by = ROOT	
-		}	
+			NOT = {
+				OR = {
+					was_tag = BUR
+					was_tag = FRA
+					tag = FRA
+					tag = BUR
+					culture_group = french
+				}
+			}  
+		}
+	}	
 
 	land_morale = 0.05
 	
@@ -377,29 +213,28 @@ fall_of_toledo_fortress = {
 
 	trigger = {
 		owner = {
-				NOT = {
-					OR = {
-						was_tag = CAS
-						tag = CAS
-					} 
+			NOT = {
+				OR = {
+					was_tag = CAS
+					tag = CAS
 				} 
-				NOT = {
-					OR = {
-						was_tag = ARA 
-						tag = ARA
-					} 
+			} 
+			NOT = {
+				OR = {
+					was_tag = ARA 
+					tag = ARA
 				} 
-				NOT = {
-					OR = {
-						was_tag = POR
-						tag = POR
-					} 
-				}
+			} 
+			NOT = {
+				OR = {
+					was_tag = POR
+					tag = POR
+				} 
 			}
-		controlled_by = ROOT	
-		}	
+		}
+	}	
 
-	infantry_power = 0.025
+	infantry_power = 0.05
 	prestige = 0.025
 	
 	#Province scope
@@ -419,21 +254,16 @@ fall_of_constantinople = {
 
 	trigger = {
 		owner = {
-				NOT = {
-					OR = {
-						was_tag = TUR
-						tag = TUR
-					} 
+			NOT = {
+				OR = {
+					was_tag = TUR
+					tag = TUR
+					was_tag = BYZ
+					tag = BYZ
 				} 
-				NOT = {
-					OR = {
-						was_tag = BYZ
-						tag = BYZ
-					} 
-				} 
-			}
-		controlled_by = ROOT	
-		}	
+			} 
+		}
+	}	
 
 	idea_cost = -0.05
 	stability_cost_modifier = -0.1
@@ -455,19 +285,18 @@ collapse_of_cairo = {
 
 	trigger = {
 		owner = {
-				NOT = {
-					OR = {
-						was_tag = MAM 
-						tag = MAM
-					} 
+			NOT = {
+				OR = {
+					was_tag = MAM 
+					tag = MAM
 				} 
-			}
-		controlled_by = ROOT	
+			} 
 		}	
+	}	
 
 	war_exhaustion = -0.05
 	caravan_power = 0.05
-	infantry_power = 0.025
+	infantry_power = 0.05
 	
 	#Province scope
 	on_activation = {
@@ -486,19 +315,18 @@ stolen_swedish_stockholm = {
 
 	trigger = {
 		owner = {
-				NOT = {
-					OR = {
-						was_tag = SWE 
-						tag = SWE
-					} 
-				}  
-			}
-		controlled_by = ROOT	
+			NOT = {
+				OR = {
+					was_tag = SWE 
+					tag = SWE
+				} 
+			}  
 		}	
+	}	
 
 	galley_power = 0.05
 	prestige = 0.025
-	infantry_power = 0.025
+	infantry_power = 0.05
 
 	
 	#Province scope
@@ -511,7 +339,6 @@ stolen_swedish_stockholm = {
 	}
 }
 
-
 owner_of_moscow = {
 	potential = {
 		normal_or_historical_nations = yes
@@ -520,10 +347,9 @@ owner_of_moscow = {
 
 	trigger = {
 		owner = {
-				NOT = { tag = RUS }
-			}
-		controlled_by = ROOT	
-		}	
+			NOT = { tag = RUS }
+		}
+	}	
 
 	discipline = 0.025
 	prestige = 0.025
@@ -545,95 +371,24 @@ destruction_of_delhi = {
 
 	trigger = {
 		owner = {
-				NOT = {
-					OR = {
-						was_tag = DLH 
-						tag = DLH
-					} 
+			NOT = {
+				OR = {
+					was_tag = DLH 
+					tag = DLH
 				} 
-				NOT = {
-					OR = {
-						was_tag = SRH 
-						tag = SRH
-					} 
+			} 
+			NOT = {
+				OR = {
+					was_tag = SRH 
+					tag = SRH
 				} 
-			}
-		controlled_by = ROOT	
+			} 
 		}
+	}
 
-	cavalry_power = 0.05
-	prestige = 0.025
+	discipline = 0.025
+	prestige = 0.03
 		
-	#Province scope
-	on_activation = {
-	
-	}
-	
-	on_deactivation = {
-	
-	}
-}
-
-silk_road_trade = {
-	potential = {
-		normal_or_historical_nations = yes
-	}
-
-	trigger = {
-		owner = {
-				
-			}
-		controlled_by = ROOT	
-		}	
-
-	trade_steering = 0.05
-	local_autonomy = -0.02
-	
-	#Province scope
-	on_activation = {
-	
-	}
-	
-	on_deactivation = {
-	
-	}
-}
-
-birthplace_of_civilisation = {
-	potential = {
-		normal_or_historical_nations = yes
-	}
-
-	trigger = {
-		
-		controlled_by = ROOT	
-		}	
-
-	local_development_cost = -0.05
-	local_build_cost = -0.05
-	
-	#Province scope
-	on_activation = {
-	
-	}
-	
-	on_deactivation = {
-	
-	}
-}
-
-rhine_prosperity = {
-	potential = {
-		normal_or_historical_nations = yes
-	}
-
-	trigger = {
-		
-		controlled_by = ROOT	
-		}	
-
-	local_development_cost = -0.05
-	
 	#Province scope
 	on_activation = {
 	
@@ -651,11 +406,10 @@ portuguese_macau = {
 
 	trigger = {
 		owner = {
-				tag = POR
-				tag = PBR
-			}
-		controlled_by = ROOT	
+			tag = POR
+			tag = PBR
 		}
+	}
 
 	trade_efficiency = 0.05
 	prestige = 0.015
@@ -680,12 +434,11 @@ great_british_singapore = {
 
 	trigger = {
 		owner = {
-				tag = ENG
-				tag = GBR
-				tag = ANG
-			}
-		controlled_by = ROOT	
-		}
+			tag = ENG
+			tag = GBR
+			tag = ANG
+		}	
+	}
 
 	trade_efficiency = 0.05
 	prestige = 0.015
@@ -710,21 +463,20 @@ owner_of_prague = {
 
 	trigger = {
 		owner = {
-				NOT = {
-					OR = {
-						was_tag = BOH 
-						tag = BOH
-					} 
+			NOT = {
+				OR = {
+					was_tag = BOH 
+					tag = BOH
 				} 
-				NOT = {
-					OR = {
-						was_tag = KSM 
-						tag = KSM
-					} 
-				}
+			} 
+			NOT = {
+				OR = {
+					was_tag = KSM 
+					tag = KSM
+				} 
 			}
-		controlled_by = ROOT	
 		}	
+	}	
 
 	discipline = 0.025
 	prestige = 0.025
@@ -746,15 +498,14 @@ trade_city_of_the_adriatic = {
 
 	trigger = {
 		owner = {
-				NOT = {
-					OR = {
-						was_tag = VEN
-						tag = VEN
-					} 
+			NOT = {
+				OR = {
+					was_tag = VEN
+					tag = VEN
 				} 
-			}
-		controlled_by = ROOT	
+			} 
 		}
+	}
 
 	trade_efficiency = 0.05
 	
@@ -775,21 +526,20 @@ training_fields_of_the_hussars = {
 
 	trigger = {
 		owner = {
-				NOT = {
-					OR = {
-						was_tag = POL
-						tag = POL
-					} 
+			NOT = {
+				OR = {
+					was_tag = POL
+					tag = POL
 				} 
-				NOT = {
-					OR = {
-						was_tag = MAZ
-						tag = MAZ
-					} 
+			} 
+			NOT = {
+				OR = {
+					was_tag = MAZ
+					tag = MAZ
 				} 
-			}
-		controlled_by = ROOT	
+			} 
 		}	
+	}	
 
 	cavalry_power = 0.05
 	prestige = 0.025
@@ -812,15 +562,14 @@ bastion_of_beijing = {
 
 	trigger = {
 		owner = {
-				NOT = {
-					OR = {
-						was_tag = WEI
-						tag = WEI
-					} 
+			NOT = {
+				OR = {
+					was_tag = WEI
+					tag = WEI
 				} 
-			}
-		controlled_by = ROOT	
+			} 
 		}	
+	}	
 
 	cavalry_power = 0.05
 	prestige = 0.025
@@ -843,15 +592,14 @@ capture_of_canton = {
 
 	trigger = {
 		owner = {
-				NOT = {
-					OR = {
-						was_tag = WUU 
-						tag = WUU
-					} 
+			NOT = {
+				OR = {
+					was_tag = WUU 
+					tag = WUU
 				} 
-			}
-		controlled_by = ROOT	
-		}	
+			} 
+		}
+	}	
 
 	land_morale = 0.05
 	prestige = 0.025
@@ -874,15 +622,14 @@ occupation_of_chengdu = {
 
 	trigger = {
 		owner = {
-				NOT = {
-					OR = {
-						was_tag = SHU
-						tag = SHU
-					} 
+			NOT = {
+				OR = {
+					was_tag = SHU
+					tag = SHU
 				} 
-			}
-		controlled_by = ROOT	
-		}	
+			} 
+		}
+	}	
 
 	artillery_power = 0.025
 	infantry_power = 0.025
@@ -904,15 +651,14 @@ occupation_of_ayutthaya = {
 
 	trigger = {
 		owner = {
-				NOT = {
-					OR = {
-						was_tag = AYU
-						tag = AYU
-					}
-				}  
-			}
-		controlled_by = ROOT	
-		}
+			NOT = {
+				OR = {
+					was_tag = AYU
+					tag = AYU
+				}
+			}  
+		}	
+	}
 
 	cavalry_power = 0.05
 	prestige = 0.025
@@ -934,17 +680,16 @@ fall_of_pest = {
 
 	trigger = {
 		owner = {
-				NOT = {
-					OR = {
-						was_tag = HUN
-						tag = HUN
-					} 
+			NOT = {
+				OR = {
+					was_tag = HUN
+					tag = HUN
 				} 
-			}
-		controlled_by = ROOT	
+			} 
 		}	
+	}	
 
-	infantry_power = 0.025
+	infantry_power = 0.05
 	prestige = 0.025
 	
 	#Province scope
@@ -956,5 +701,31 @@ fall_of_pest = {
 	
 	}
 }
+
+ancient_city_of_babylon = {
+	potential = {
+		normal_or_historical_nations = yes
+		has_province_flag = babylon_existed
+	}
+
+	trigger = {
+		owner = {
+			NOT = { tag = BAB }
+		}
+	}	
+
+	discipline = 0.025
+	prestige = 0.025
+	
+	#Province scope
+	on_activation = {
+	
+	}
+	
+	on_deactivation = {
+	
+	}
+}
+
 
 

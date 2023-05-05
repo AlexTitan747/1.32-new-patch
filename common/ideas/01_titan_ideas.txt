@@ -535,7 +535,7 @@ EPC_ideas = {
 	AQI_ideas = {
 		start = {
 			defensiveness = 0.1
-			global_manpower_modifier = 0.10
+			global_manpower_modifier = 0.15
 		}
 		
 		bonus = {
@@ -661,12 +661,12 @@ EPC_ideas = {
 
 	ANG_ideas = {
 		start = {
-			infantry_power = 0.10 
+			land_morale = 0.15
 			global_unrest = -2
 		}
 	
 		bonus = {
-			free_leader_pool = 1
+			leader_land_fire = 1
 		}
 		
 		trigger = {
@@ -676,23 +676,23 @@ EPC_ideas = {
 	
 		acts_of_union = {
 			manpower_recovery_speed = 0.15
-			governing_capacity_modifier = 0.1
 		}
 		french_military_thought = {
-			land_morale = 0.15
+			discipline = 0.05
 		}
 		dominance_of_the_channel = {
 			global_trade_power = 0.15
 		}
 		the_royal_societies = {
 			technology_cost = -0.05
+			idea_cost = -0.05
 		}
-		red_coats = {
-			discipline = 0.05
-			fire_damage_received = -0.10
+		tm_red_coats = {
+			fire_damage_received = -0.15
 		}
 		angevin_industrialization = {
-			global_trade_goods_size_modifier = 0.10
+			global_trade_goods_size_modifier = 0.125
+			trade_efficiency = 0.1
 		}
 		navy_of_the_empire = {
 			naval_forcelimit_modifier = 0.15
@@ -824,7 +824,7 @@ EPC_ideas = {
 		}
 	}
 	
-	PBR_ideas = {
+	PBR_ideas = { #Brazil
 		start = {
 			inflation_reduction = 0.05
 			trade_efficiency = 0.15
@@ -836,6 +836,52 @@ EPC_ideas = {
 		
 		trigger = {
 			tag = PBR
+			capital_scope = { colonial_region = colonial_brazil }
+		}
+		free = yes		#will be added at load.
+		
+		pbr_legacy_of_the_navigator = {
+			sunk_ship_morale_hit_recieved = -0.33
+			global_naval_engagement_modifier = 0.1
+		}
+		goods_of_the_rainforest = {
+			global_trade_goods_size_modifier = 0.1
+		}
+		devoted_men_of_the_new_world = {
+			manpower_in_true_faith_provinces = 0.2
+			defensiveness = 0.1
+		}
+		pbr_land_before_faith = {
+			global_colonial_growth = 15
+			colonists = 1
+		}
+		pbr_the_bandeirantes = {
+			merchants = 1
+			global_trade_power = 0.1
+		}
+		the_union_of_crowns = {
+			build_cost = -0.15
+			yearly_absolutism = 0.5
+		}
+		pbr_royal_military_academy = {
+			artillery_power = 0.1
+			leader_land_fire = 1
+		}
+	}
+
+	PBR_ideas = { #Africa
+		start = {
+			inflation_reduction = 0.05
+			trade_efficiency = 0.15
+		}
+		
+		bonus = {
+			discipline = 0.05
+		}
+		
+		trigger = {
+			tag = PBR
+			capital_scope = { continent = africa }
 		}
 		free = yes		#will be added at load.
 		
@@ -974,6 +1020,7 @@ EPC_ideas = {
 		}
 		bulwark_of_christianity = {
 			global_manpower_modifier = 0.2
+			no_religion_penalty = yes
 		}
 		found_the_black_army = {
 			discipline = 0.05
@@ -1163,8 +1210,8 @@ EPC_ideas = {
 	
 	ZBW_ideas = {
 		start = {
-			land_morale = 0.10
-			caravan_power = 0.1
+			infantry_power = 0.1
+			shock_damage_received = -0.1
 		}
 		bonus = {
 			manpower_recovery_speed = 0.15
@@ -1181,6 +1228,7 @@ EPC_ideas = {
 		}
 		luxuries_of_zimbabwe = {
 			global_trade_goods_size_modifier = 0.1
+			inflation_reduction = 0.1
 		}
 		zimbabwean_trade_connections = {
 			merchants = 1
@@ -1347,7 +1395,7 @@ EPC_ideas = {
 		free = yes
 		
 		elephant_cavalry = {
-			cavalry_power = 0.05
+			cavalry_power = 0.075
 			cav_to_inf_ratio = 0.5
 		}
 		sophisticated_civil_service = {
@@ -1523,23 +1571,21 @@ EPC_ideas = {
 			discipline = 0.05
 		}
 		silk_road_empire = {
-			trade_efficiency = 0.1
-			caravan_power = 0.15
+			trade_efficiency = 0.15
 		}
 		diplomacy_with_europe_and_china = {
-			diplomatic_reputation = 1
+			envoy_travel_time = -0.25
 			diplomats = 1
 		}
 		first_coinage_in_india = {
-			interest = -0.5
+			interest = -0.25
 		}
 		melting_pot_of_cultures = {
-			global_autonomy = -0.05
 			global_unrest = -2
 		}
 		men_of_the_persian_mountains = {
 			defensiveness = 0.15
-			artillery_cost = -0.15
+			artillery_cost = -0.05
 		}
 	}
 	
@@ -1582,51 +1628,6 @@ EPC_ideas = {
 		muslim_integration = {
 			global_institution_spread = 0.1
 			technology_cost = -0.05
-		}
-	}
-	
-	OME_ideas = {
-		start = {
-			naval_morale = 0.15
-			trade_efficiency = 0.20
-		}
-	
-		bonus = {
-			land_morale = 0.15
-		}
-		
-		trigger = {
-			tag = OME
-		}
-		free = yes		#will be added at load.
-	
-		stability_of_the_trading_empire = {
-			global_unrest = -2
-			war_exhaustion = -0.1
-		}
-		friends_with_empires = {
-			diplomatic_reputation = 2
-			diplomats = 1
-		}
-		a_grand_muslim_fleet = {
-			heavy_ship_power = 0.10
-			naval_maintenance_modifier = -0.10
-		}
-		monopoly_over_the_gulfs = {
-			global_ship_trade_power = 0.25
-			global_trade_power = 0.15
-		}
-		the_ivory_trade = {
-			production_efficiency = 0.10
-			trade_steering = 0.33
-		}
-		african_trading_empire = {
-			colonists = 1
-			merchants = 1
-		}
-		armed_forces_of_the_sultan = {
-			global_manpower_modifier = 0.10
-			mercenary_manpower = 0.15
 		}
 	}
 	
@@ -1674,12 +1675,12 @@ EPC_ideas = {
 	
 	CAU_ideas = {
 		start = {
-			manpower_recovery_speed = 0.25
-			war_exhaustion = -0.1
+			land_morale = 0.1
+			num_accepted_cultures = 1
 		}
 	
 		bonus = {
-			land_morale = 0.1
+			manpower_recovery_speed = 0.25
 		}
 		
 		trigger = {
@@ -1690,38 +1691,39 @@ EPC_ideas = {
 		strong_religious_isolationism = {
 			missionaries = 1
 			tolerance_own = 2
+			war_exhaustion = -0.1
+		}
+		masters_of_construction = {
+			development_cost = -0.1
 		}
 		forts_of_the_caucuses = {
-			defensiveness = 0.10
-			shock_damage_received = -0.1
+			infantry_power = 0.15
+			shock_damage_received = -0.125
 		}
 		caspian_trade = {
 			trade_efficiency = 0.10
 			caravan_power = 0.10
 		}
 		mountain_diplomacy = {
-			ae_impact = -0.1
+			defensiveness = 0.1
 		}
 		sygnakhs = {
 			global_regiment_cost = -0.1
 		}
 		tribesmen_of_the_caucasus = {
-			infantry_power = 0.15
 			shock_damage = 0.15
 		}
-		masters_of_construction = {
-			development_cost = -0.1
-		}
+
 	}
 	
 	BAB_ideas = {
 		start = {
 			manpower_recovery_speed = 0.20
-			free_adm_policy = 1
+			global_institution_spread = 0.15
 		}
 	
 		bonus = {
-			land_forcelimit_modifier = 0.15
+			land_forcelimit_modifier = 0.25
 		}
 		
 		trigger = {
@@ -1729,28 +1731,68 @@ EPC_ideas = {
 		}
 		free = yes		#will be added at load.
 	
+		the_art_of_forced_migration = {
+			global_missionary_strength = 0.02
+		}
 		the_hanging_gardens = {
 			stability_cost_modifier = -0.15
-			global_unrest = -4
+			global_unrest = -2
 		}
 		slavery_and_levies = {
-			global_regiment_cost = -0.1
-			land_morale = 0.15
+			land_morale = 0.075
 		}
 		trade_of_the_delta = {
 			trade_steering = 0.15
 		}
-		the_art_of_forced_migration = {
-			global_missionary_strength = 0.02
-		}
 		chariots_of_babylon = {
-			cavalry_power = 0.075
+			infantry_power = 0.1
 			shock_damage = 0.10
 		}
 		centre_of_invention = {
-			global_institution_spread = 0.15
+			build_cost = -0.05
 		}
 		goods_of_the_twin_rivers	= {
+			global_trade_goods_size_modifier = 0.05
+			development_cost = -0.05
+		}
+	}
+
+	BAB_ideas_2 = {
+		start = {
+			manpower_recovery_speed = 0.20
+			global_institution_spread = 0.15
+		}
+
+		bonus = {
+			land_forcelimit_modifier = 0.25
+		}
+		
+		trigger = {
+			tag = BAB
+		}
+		free = yes		#will be added at load.
+	
+		the_art_of_forced_migration_2 = {
+			global_missionary_strength = 0.02
+		}
+		the_hanging_gardens_2 = {
+			stability_cost_modifier = -0.15
+			global_unrest = -2
+		}
+		slavery_and_levies_2 = {
+			land_morale = 0.1
+		}
+		trade_of_the_delta_2 = {
+			trade_steering = 0.15
+		}
+		chariots_of_babylon_2 = {
+			infantry_power = 0.15
+			shock_damage = 0.10
+		}
+		centre_of_invention_2 = {
+			build_cost = -0.075
+		}
+		goods_of_the_twin_rivers_2 = {
 			global_trade_goods_size_modifier = 0.10
 			development_cost = -0.05
 		}
@@ -1966,8 +2008,8 @@ EPC_ideas = {
 
 ARB_ideas = {
 	start = {
-		development_cost = -0.05
-		global_manpower_modifier = 0.2
+		development_cost = -0.075
+		global_manpower_modifier = 0.15
 	}
 	bonus = {
 		manpower_recovery_speed = 0.15
@@ -1982,7 +2024,7 @@ ARB_ideas = {
 	}
 	highlands_of_arabia = {
 		global_trade_goods_size_modifier = 0.1
-		defensiveness = 0.2
+		defensiveness = 0.15
 	}
 	arabian_horses = {
 		cavalry_cost = -0.1
@@ -1996,11 +2038,10 @@ ARB_ideas = {
 		shock_damage_received = -0.1
 	}
 	army_reform = {
-		leader_land_shock = 1
 		discipline = 0.05
 	}
 	trade_monopolies = {
-		trade_efficiency = 0.15
+		trade_efficiency = 0.10
 		global_prov_trade_power_modifier = 0.25
 	}
 }
@@ -2497,6 +2538,7 @@ ALP_ideas = {
 	}
 }
 
+
 HUN_2_ideas = {
 	start = {
 		cavalry_power = 0.05
@@ -2537,4 +2579,334 @@ HUN_2_ideas = {
 	}
 }
 
+CPH_ideas_early = {
+	start = {
+		land_morale = 0.075
+		global_missionary_strength = 0.015
+	}
+	
+	bonus = {
+		discipline = 0.025
+	}
+	
+	trigger = {
+		tag = CPH
+		NOT = { has_country_flag = CPH_upgrade_ideas_1 }
+	}
+	free = yes  #will be triggered at load
+	
+	CPH_idea_1 = {
+		tolerance_own = 1.5
+	}
+	CPH_idea_2 = {
+		manpower_in_true_faith_provinces= 0.075
+	}
+	CPH_idea_3 = {
+		warscore_cost_vs_other_religion = -0.05
+	}
+	CPH_idea_4 = {
+		production_efficiency = 0.05
+	}
+	CPH_idea_5 = {
+		development_cost = -0.05
+	}
+	CPH_idea_6 = {
+		trade_efficiency = 0.05
+	}
+	CPH_idea_7 = {
+		infantry_power = 0.05
+	}
+}
 
+CPH_ideas = {
+	start = {
+		land_morale = 0.15
+		global_missionary_strength = 0.03
+	}
+	
+	bonus = {
+		discipline = 0.05
+	}
+	
+	trigger = {
+		tag = CPH
+		has_country_flag = CPH_upgrade_ideas_1
+		NOT = { has_country_flag = CPH_upgrade_ideas_2 }
+	}
+	free = yes  #will be triggered at load
+	
+	CPH_idea_1_2 = {
+		tolerance_own = 3
+	}
+	CPH_idea_2_2 = {
+		manpower_in_true_faith_provinces= 0.15
+	}
+	CPH_idea_3_2 = {
+		warscore_cost_vs_other_religion = -0.10
+	}
+	CPH_idea_4_2 = {
+		production_efficiency = 0.1
+	}
+	CPH_idea_5_2 = {
+		development_cost = -0.1
+	}
+	CPH_idea_6_2 = {
+		trade_efficiency = 0.1
+	}
+	CPH_idea_7_2 = {
+		infantry_power = 0.10
+	}
+}
+
+CPH_ideas_final = {
+	start = {
+		land_morale = 0.15
+		global_missionary_strength = 0.03
+	}
+	
+	bonus = {
+		discipline = 0.05
+	}
+	
+	trigger = {
+		tag = CPH
+		has_country_flag = CPH_upgrade_ideas_2
+	}
+	free = yes  #will be triggered at load
+	
+	CPH_idea_1_3 = {
+		tolerance_own = 3
+		monthly_piety_accelerator = 0.005
+	}
+	CPH_idea_2_3 = {
+		manpower_in_true_faith_provinces= 0.15
+	}
+	CPH_idea_3_3 = {
+		warscore_cost_vs_other_religion = -0.10
+		cb_on_religious_enemies = yes
+	}
+	CPH_idea_4_3 = {
+		production_efficiency = 0.1
+	}
+	CPH_idea_5_3 = {
+		development_cost = -0.1
+	}
+	CPH_idea_6_3 = {
+		trade_efficiency = 0.1
+	}
+	CPH_idea_7_3 = {
+		infantry_power = 0.10
+	}
+}
+
+
+SAF_ideas = {
+	start = {
+		hostile_attrition = 10
+		build_cost = -0.1
+	}
+	
+	bonus = {
+		discipline = 0.05
+	}
+	
+	trigger = {
+		tag = SAF
+	}
+	free = yes  #will be triggered at load
+	
+	saf_idea_1 = {
+		stability_cost_modifier = -0.1
+	}
+	saf_idea_2 = {
+		interest = -0.5
+	}
+	saf_idea_3 = {
+		production_efficiency = 0.10
+	}
+	saf_idea_4 = {
+		build_time = -0.1
+	}
+	saf_idea_5 = {
+		development_cost = -0.15
+	}
+	saf_idea_6 = {
+		trade_efficiency = 0.1
+	}
+	saf_idea_7 = {
+		infantry_power = 0.10
+		ship_durability = 0.10
+	}
+}
+
+INO_ideas = {
+	start = {
+		global_trade_power = 0.1
+		infantry_power = 0.10
+	}
+	
+	bonus = {
+		land_morale = 0.10
+	}
+	
+	trigger = {
+		tag = INO
+	}
+	free = yes  #will be triggered at load
+	
+	ino_idea_1 = {
+		build_time = -0.15
+	}
+	ino_idea_2 = {
+		land_forcelimit_modifier = 0.15
+		land_maintenance_modifier = -0.10
+	}
+	ino_idea_3 = {
+		technology_cost = -0.1
+	}
+	ino_idea_4 = {
+		heavy_ship_power = 0.1
+		heavy_ship_cost = -0.1
+	}
+	ino_idea_5 = {
+		blockade_efficiency = 0.2
+	}
+	ino_idea_6 = {
+		production_efficiency = 0.10
+	}
+	ino_idea_7 = {
+		global_ship_trade_power = 0.1	
+	}
+}
+
+PHI_ideas = {
+	start = {
+		naval_morale = 0.15
+		naval_attrition = -0.1
+	}
+	
+	bonus = {
+		land_morale = 0.10
+	}
+	
+	trigger = {
+		tag = PHI
+	}
+	free = yes  #will be triggered at load
+	
+	phi_idea_1 = {
+		prestige = 1.0
+	}
+	phi_idea_2 = {
+		global_sailors_modifier = 0.20
+		allowed_marine_fraction = 0.15
+	}
+	phi_idea_3 = {
+		advisor_cost = -0.15
+	}
+	phi_idea_4 = {
+		papal_influence = 0.5
+		monthly_church_power = 0.5
+		monthly_fervor_increase = 1
+		yearly_patriarch_authority = 0.5
+		monthly_piety_accelerator = 0.5
+		yearly_harmony = 1
+		monthly_karma_accelerator = 0.5
+		tolerance_own = 1
+	}
+	phi_idea_5 = {
+		manpower_recovery_speed = 0.15
+	}
+	phi_idea_6 = {
+		envoy_travel_time = -0.2
+		improve_relation_modifier = 0.2
+	}
+	phi_idea_7 = {
+		global_trade_goods_size_modifier = 0.2
+		trade_steering = 0.1
+	}
+}
+
+OME_ideas = {
+	start = {
+		naval_morale = 0.15
+		land_morale = 0.075
+	}
+
+	bonus = {
+		manpower_in_culture_group_provinces = 0.2
+	}
+	
+	trigger = {
+		tag = OME
+	}
+	free = yes		#will be added at load.
+
+	african_trading_empire = {
+		colonists = 1
+		leader_naval_manuever = 2
+	}
+	stability_of_the_trading_empire = {
+		global_unrest = -2
+		stability_cost_modifier = -0.2
+	}
+	friends_with_empires = {
+		diplomatic_reputation = 2
+		vassal_forcelimit_bonus = 0.2
+	}
+	a_grand_muslim_fleet = {
+		heavy_ship_power = 0.1
+		naval_maintenance_modifier = -0.15
+	}
+	monopoly_over_the_gulfs = {
+		global_ship_trade_power = 0.1
+		global_trade_power = 0.15
+	}
+	the_ivory_trade = {
+		trade_steering = 0.33
+	}
+	armed_forces_of_the_sultan = {
+		mercenary_manpower = 0.15
+	}
+}
+
+COS_ideas = {
+	start = {
+		cavalry_power = 0.075
+		global_prov_trade_power_modifier = 0.15
+	}
+	bonus = {
+		land_forcelimit_modifier = 0.2
+	}
+	trigger = {
+		tag = COS
+	}
+	free = yes
+	
+	fertile_lands = {
+		global_trade_goods_size_modifier = 0.1
+		development_cost = -0.1
+	}
+	people_of_the_steppes = {
+		global_manpower_modifier = 0.15
+		land_morale = 0.075
+	}
+	cossacks_of_the_caucasus = {
+		leader_land_shock = 1
+		shock_damage = 0.1
+	}
+	cossack_patriarchs = {
+		yearly_patriarch_authority = 0.005
+		global_missionary_strength = 0.02
+	}
+	steppe_trade = {
+		caravan_power = 0.2
+	}
+	caucasus_architecture = {
+		build_cost = -0.1
+		prestige = 1
+	}
+	cossack_noblemen = {
+		same_culture_advisor_cost = -0.2
+	}
+}

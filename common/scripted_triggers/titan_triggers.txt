@@ -1,0 +1,124 @@
+
+has_production_building = {
+	custom_trigger_tooltip = {
+		tooltip = tm_has_production_building_tt
+		OR = {
+			has_building = workshop
+			has_building = warehouse
+			has_building = counting_house
+		}
+	}
+	
+}
+
+has_military_building = {
+	OR = {
+		has_building = barracks
+		has_building = training_fields
+		has_building = regimental_camp
+		has_building = conscription_center
+	}
+}
+
+has_navy_building = {
+	OR = {
+		has_building = shipyard
+		has_building = grand_shipyard
+		has_building = dock
+		has_building = drydock
+	}
+}
+
+has_road_building = {
+	OR = {
+		has_building = dirt_path
+		has_building = road
+		has_building = highway
+	}
+}
+
+has_manufactory = {
+	custom_trigger_tooltip = {
+		tooltip = has_manufactory_trigger_tt
+		OR = {
+			has_building = wharf
+			has_building = weapons
+			has_building = textile
+			has_building = tradecompany
+			has_building = farm_estate
+			has_building = mills
+			has_building = plantations
+		}
+	}
+}
+
+country_has_developed_good = {
+	OR = {
+		cheese = 1
+		ale = 1
+		olive_oil = 1
+		books = 1
+		chocolate = 1
+		uniforms = 1
+		silverware = 1
+		perfume = 1
+		armour = 1
+		jewellery = 1
+		tailored_clothes = 1
+		steel = 1
+		bronze = 1
+	}
+}
+
+prov_has_developed_good = {
+	custom_trigger_tooltip = {
+		tooltip = prov_has_developed_good_tt
+		OR = {
+			trade_goods = cheese
+			trade_goods = ale
+			trade_goods = olive_oil
+			trade_goods = books
+			trade_goods = chocolate
+			trade_goods = uniforms
+			trade_goods = silverware
+			trade_goods = perfume
+			trade_goods = jewellery
+			trade_goods = steel
+			trade_goods = bronze
+			trade_goods = armour
+			trade_goods = tailored_clothes
+		}
+	}
+	
+}
+
+prov_can_have_tier_1_developed_good = {
+	OR = {
+		trade_goods = livestock
+		trade_goods = grain
+		trade_goods = olives
+		trade_goods = paper
+		trade_goods = cocoa
+		trade_goods = cloth
+		trade_goods = silver
+		trade_goods = incense
+	}
+}
+
+has_trading_subject = {
+	custom_trigger_tooltip = {
+		tooltip = trading_subject_in_$trade_company_region$_tt
+
+		any_subject_country = {
+			capital_scope = {
+				trade_company_region = $trade_company_region$
+			}
+			is_subject_of = ROOT
+			is_subject_of_type = trading_subject
+			num_of_owned_provinces_with = {
+				value = 15
+				trade_company_region = $trade_company_region$
+			}
+		}
+	}
+}

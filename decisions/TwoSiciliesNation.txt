@@ -2,28 +2,20 @@ country_decisions = {
 	sicilian_emirate_nation = {
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
-			was_never_end_game_tag_trigger = yes
 			NOT = { has_country_flag = formed_two_sicilies_flag }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
+			ai = no
 			NOT = { exists = TTS }
 			has_country_flag = naples_has_sunni_ruler
 			religion = sunni
 		}
+
 		provinces_to_highlight = {
-				area = tunisia_area
-				NOT = { country_or_non_sovereign_subject_holds = ROOT }
-			OR = {
-				NOT = { owned_by = ROOT }
-				NOT = { is_core = ROOT }
-			}
+			area = tunisia_area
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
+
 		allow = {
 			is_free_or_tributary_trigger = yes
-			is_nomad = no
 			is_at_war = no
 			tunisia_area = {
 				type = all
@@ -34,14 +26,20 @@ country_decisions = {
 			}
 			religion = sunni
 		}
+
 		effect = {
 			change_tag = TTS
-			swap_non_generic_missions = yes
+			additional_missions_scripted_effect = yes
 			remove_non_electors_emperors_from_empire_effect = yes
 			125 = {	#Palermo
-					move_capital_effect = yes
+				move_capital_effect = yes
+				add_building_construction = {
+					building = courthouse
+					speed = 1.0
+    				cost = 0.0
 				}
-				set_capital = 125
+			}
+			set_capital = 125
 			TTS = {
 				if = {
 					limit = {

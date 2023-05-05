@@ -1,0 +1,400 @@
+namespace = colonial_mission_events
+
+country_event = { #Trade
+	id = colonial_mission_events.1
+	title = colonial_mission_events.1.t
+	desc = colonial_mission_events.1.d
+	picture = REFORM_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = colonial_mission_events.1.a
+        col_empire_trade_scripted_effect = {
+            SUBJECT = event_target:colonial_subject_event_target_for_rewards
+        }
+	}
+	option = {
+		name = colonial_mission_events.1.b
+        event_target:colonial_subject_event_target_for_rewards = {
+            add_country_modifier = {
+                name = "colony_trade"
+                duration = -1
+            }
+        }
+	}
+}
+
+country_event = { #Navy
+	id = colonial_mission_events.2
+	title = colonial_mission_events.2.t
+	desc = colonial_mission_events.2.d
+	picture = REFORM_eventPicture
+	
+    is_triggered_only = yes
+	
+	option = {
+		name = colonial_mission_events.1.a
+        col_empire_navy_scripted_effect = {
+            SUBJECT = event_target:colonial_subject_event_target_for_rewards
+        }
+	}
+	option = {
+		name = colonial_mission_events.1.b
+        event_target:colonial_subject_event_target_for_rewards = {
+            add_country_modifier = {
+                name = "colony_navy"
+                duration = -1
+            }
+        }
+	}
+}
+
+country_event = { #Army
+	id = colonial_mission_events.3
+	title = colonial_mission_events.3.t
+	desc = colonial_mission_events.3.d
+	picture = REFORM_eventPicture
+	
+    is_triggered_only = yes
+	
+	option = {
+		name = colonial_mission_events.1.a
+        col_empire_army_scripted_effect = {
+            SUBJECT = event_target:colonial_subject_event_target_for_rewards
+        }
+	}
+	option = {
+		name = colonial_mission_events.1.b
+        event_target:colonial_subject_event_target_for_rewards = {
+            add_country_modifier = {
+                name = "colony_army"
+                duration = -1
+            }
+        }
+	}
+}
+
+country_event = { #Colonisation
+	id = colonial_mission_events.4
+	title = colonial_mission_events.4.t
+	desc = colonial_mission_events.4.d
+	picture = REFORM_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = colonial_mission_events.1.a
+        col_empire_col_scripted_effect = {
+            SUBJECT = event_target:colonial_subject_event_target_for_rewards
+        }
+	}
+	option = {
+		name = colonial_mission_events.1.b
+        event_target:colonial_subject_event_target_for_rewards = {
+            add_country_modifier = {
+                name = "colony_col"
+                duration = -1
+            }
+        }
+	}
+}
+
+country_event = { #Gold
+	id = colonial_mission_events.5
+	title = colonial_mission_events.5.t
+	desc = colonial_mission_events.5.d
+	picture = REFORM_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = colonial_mission_events.1.a
+        random_list = {
+            5 = {
+                random_owned_province = {
+                    change_trade_goods = gold
+                    add_base_production = 1
+                }
+                modifier = {
+                    factor = 2
+                    any_owned_province = {
+                        development = 30
+                    }
+                }
+            }
+            95 = {
+                add_prestige = -5
+            }
+        }
+        col_empire_gold_scripted_effect = {
+            SUBJECT = event_target:colonial_subject_event_target_for_rewards
+        }
+	}
+	option = {
+		name = colonial_mission_events.1.b
+        event_target:colonial_subject_event_target_for_rewards = {
+            add_country_modifier = {
+                name = "colony_gold"
+                duration = -1
+            }
+            random_owned_province = {
+                limit = {
+                    trade_goods = gold
+                }
+                add_base_production = 2
+            }
+        }
+	}
+}
+
+country_event = { #Buildings
+    id = colonial_mission_events.6
+	title = colonial_mission_events.6.t
+	desc = colonial_mission_events.6.d
+	picture = REFORM_eventPicture
+	
+	is_triggered_only = yes
+
+	option = {
+		name = colonial_mission_events.1.a
+        col_empire_buildings_scripted_effect = {
+            SUBJECT = event_target:colonial_subject_event_target_for_rewards
+        }
+	}
+	option = {
+		name = colonial_mission_events.1.b
+        event_target:colonial_subject_event_target_for_rewards = {
+            add_country_modifier = {
+                name = "colony_buildings"
+                duration = -1
+            }
+        }
+	}
+}
+
+country_event = { #SAF Metals
+    id = colonial_mission_events.7
+	title = colonial_mission_events.7.t
+	desc = colonial_mission_events.7.d
+	picture = TRADE_GOODS_METALS_AND_MINING_EQUIPENT_eventPicture
+	
+	trigger = {
+        NOT = { has_country_flag = saf_metals_flag }
+        is_colonial_nation = yes
+        colonial_saf = {
+            type = all 
+            owned_by = ROOT
+            is_city = yes
+        }
+        capital_scope = {
+            colonial_region = colonial_saf
+        }
+        mission_completed = saf_colonisation_2_5            
+    }
+
+    mean_time_to_happen = {
+        days = 10
+    }
+
+    immediate = {
+        hidden_effect = {
+            set_country_flag = saf_metals_flag
+        }
+    } 
+
+	option = {
+		name = colonial_mission_events.7.a
+        trigger = {
+            OR = {
+                NOT = { copper = 1 }
+                NOT = { tin = 1 }
+            }
+        }
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = gold }
+                NOT = { trade_goods = gems }
+                NOT = { has_latent_trade_goods = coal }
+                NOT = { trade_goods = silver }
+                NOT = { prov_has_developed_good = yes }
+            }
+            change_trade_goods = tin
+            add_base_production = 1
+        }
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = gold }
+                NOT = { trade_goods = gems }
+                NOT = { has_latent_trade_goods = coal }
+                NOT = { trade_goods = silver }
+                NOT = { prov_has_developed_good = yes }
+            }
+            change_trade_goods = copper
+            add_base_production = 1
+        }
+	}
+	option = {
+		name = colonial_mission_events.7.b
+        trigger = {
+            NOT = { iron = 1 }
+        }
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = gold }
+                NOT = { trade_goods = gems }
+                NOT = { has_latent_trade_goods = coal }
+                NOT = { trade_goods = silver }
+                NOT = { prov_has_developed_good = yes }
+            }
+            change_trade_goods = iron
+            add_base_production = 1
+        }
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = gold }
+                NOT = { trade_goods = gems }
+                NOT = { has_latent_trade_goods = coal }
+                NOT = { trade_goods = silver }
+                NOT = { prov_has_developed_good = yes }
+            }
+            change_trade_goods = iron
+            add_base_production = 1
+        }
+	}
+
+    option = {
+		name = colonial_mission_events.7.c
+        trigger = {
+            NOT = { silver = 1 }
+        }
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = gold }
+                NOT = { trade_goods = gems }
+                NOT = { has_latent_trade_goods = coal }
+                NOT = { prov_has_developed_good = yes }
+            }
+            change_trade_goods = silver
+            add_base_production = 1
+        }
+	}
+
+    option = {
+		name = colonial_mission_events.7.d
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = gold }
+                NOT = { trade_goods = gems }
+                NOT = { has_latent_trade_goods = coal }
+                NOT = { trade_goods = silver }
+                NOT = { prov_has_developed_good = yes }
+            }
+            change_trade_goods = gems
+            add_base_production = 3
+        }
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = gold }
+                NOT = { trade_goods = gems }
+                NOT = { has_latent_trade_goods = coal }
+                NOT = { trade_goods = silver }
+                NOT = { prov_has_developed_good = yes }
+            }
+            change_trade_goods = gems
+            add_base_production = 3
+        }
+	}
+}
+
+country_event = { #Carribean Goods
+    id = colonial_mission_events.8
+	title = colonial_mission_events.8.t
+	desc = colonial_mission_events.8.d
+	picture = TRADE_GOODS_METALS_AND_MINING_EQUIPENT_eventPicture
+	
+	trigger = {
+        NOT = { has_country_flag = carribean_goods_flag }
+        is_colonial_nation = yes
+        colonial_the_carribean = {
+            type = all 
+            owned_by = ROOT
+            is_city = yes
+        }
+        capital_scope = {
+            colonial_region = colonial_the_carribean
+        }
+        mission_completed = car_colonisation_2_5            
+    }
+
+    mean_time_to_happen = {
+        days = 10
+    }
+
+    immediate = {
+        hidden_effect = {
+            set_country_flag = carribean_goods_flag
+        }
+    } 
+
+
+	option = {
+		name = colonial_mission_events.8.a
+        change_price = {
+            trade_goods = sugar
+            key = sweet_from_the_new_world
+            value = 2.0
+            duration = 7300
+        }
+	}
+
+	option = {
+		name = colonial_mission_events.8.b
+        trigger = {
+            dyes = 1
+        }
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = silver }
+                NOT = { trade_goods = dyes }
+                NOT = { prov_has_developed_good = yes }
+            }
+            change_trade_goods = silk
+            add_base_production = -1
+        }
+	}
+
+    option = {
+		name = colonial_mission_events.8.c
+        trigger = {
+            NOT = { silver = 1 }
+        }
+        random_owned_province = {
+            limit = {
+                NOT = { trade_goods = gold }
+                NOT = { trade_goods = gems }
+                NOT = { has_latent_trade_goods = coal }
+                NOT = { prov_has_developed_good = yes }
+                has_terrain = jungle
+            }
+            change_trade_goods = silver
+        }
+	}
+
+    option = {
+		name = colonial_mission_events.8.d
+        trigger = {
+            silver = 1
+        }
+        random_owned_province = {
+            limit = {
+                trade_goods = silver
+            }
+            add_base_production = 3
+            add_province_modifier = {
+                name = "carribean_silver_mine"
+                duration = -1
+            }
+        }
+	}
+}

@@ -24,45 +24,66 @@ swiss_missions_1 = {
 		}
 
 		trigger = {
-				custom_trigger_tooltip = {
-					tooltip = tag_hum_or_stg
-				}
-				if = {
-					limit = {
-						OR = {
-							exists = NEV
-							NOT = {
-								NEV = {
-								is_subject_of = ROOT
-								}
-							}
-							exists = DAU
-							NOT = {
-								DAU = {
-								is_subject_of = ROOT
-								}
-							}
-							}
-						}
-					hidden_trigger = {
-						OR = {
-							has_country_flag = humiliated_rival
-							has_country_flag = tm_show_strength
-						}
-					}
+			if = {
+				limit = {
 					OR = {
-						is_rival = NEV
-						is_rival = DAU
-					}
-					else = {
-						hidden_trigger = {
-							OR = {
-								has_country_flag = humiliated_rival
-								has_country_flag = tm_show_strength
-							}
+						DAU = {
+							exists = yes
+							is_subject = NO
+						}
+						NEV = {
+							exists = yes
+							is_subject = NO
 						}
 					}
 				}
+				custom_trigger_tooltip = {
+					tooltip = tm_SWI_humiliation_TT
+					OR = {
+						has_country_flag = humiliated_rival
+						has_country_flag = tm_show_strength
+					}
+				}
+				OR = {
+					is_rival = NEV
+					is_rival = DAU
+				}
+			}
+			else_if = {
+				limit = {
+					OR = {
+						DAU = {
+							is_subject = yes
+						}
+						NEV = {
+							is_subject = yes
+						}
+					}
+				}
+				OR = {
+					DAU = {
+						is_subject_of = ROOT
+					}
+					NEV = {
+						is_subject_of = ROOT
+					}
+				}
+			}
+			else_if = {
+				limit = { 
+					NOT = {
+						exists = DAU
+						exists = DAU
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = tm_SWI_humiliation_TT
+					OR = {
+						has_country_flag = humiliated_rival
+						has_country_flag = tm_show_strength
+					}
+				}
+			}
 		}
 
 		effect = {
@@ -790,14 +811,14 @@ tm_swiss_missions_4 = {
 		required_missions = { tm_emp_swi_eastern_expansion }
 		position = 3
 		provinces_to_highlight = {
-			area = upper_austria_area
+			area = tirol_area
 			NOT = {
 				owned_by = ROOT
 			}
 		}
 
 		trigger = {
-			upper_austria_area = {
+			tirol_area = {
 				type = all
 				owned_by = ROOT
 			}
@@ -1370,35 +1391,35 @@ tm_swiss_missions_5 = {
 		trigger = {
 			4720 = {
 				owned_by = ROOT
-				has_building = textile
+				has_manufactory = yes
 			}
 			165 = {
 				owned_by = ROOT
-				has_building = weapons
+				has_manufactory = yes
 			}
 			5055 = {
 				owned_by = ROOT
-				has_building = weapons
+				has_manufactory = yes
 			}
 			166 = {
 				owned_by = ROOT
-				has_building = weapons
+				has_manufactory = yes
 			}
 			5057 = {
 				owned_by = ROOT
-				has_building = weapons
+				has_manufactory = yes
 			}
 			1880 = {
 				owned_by = ROOT
-				has_building = weapons
+				has_manufactory = yes
 			}
 			72 = {
 				owned_by = ROOT
-				has_building = mills
+				has_manufactory = yes
 			}
 			4712 = {
 				owned_by = ROOT
-				has_building = textile
+				has_manufactory = yes
 			}
 		}
 		effect = {

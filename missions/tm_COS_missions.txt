@@ -1,0 +1,714 @@
+tm_COS_slot_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		tag = COS
+	}
+	has_country_shield = yes
+	
+	tm_COS_convert_the_federation = {
+        icon = convert_the_holy_lands
+		required_missions = { tm_COS_stabilise_the_lands }
+		position = 2
+		
+		provinces_to_highlight = {
+            OR = {
+				region = crimea_region
+				region = caucasia_region
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 40
+				OR = {
+					region = crimea_region
+					region = caucasia_region
+				}
+				religion = orthodox
+			}
+		}
+
+	    effect = {
+			add_adm_power = 50
+			add_country_modifier = {
+				name = tm_COS_continue_conversion
+				duration = 3650
+			}
+	    }
+	}
+
+	tm_COS_construct_churches = {
+        icon = mission_land_of_churches
+		required_missions = { tm_COS_convert_the_federation }
+		position = 4
+		
+		provinces_to_highlight = {
+			OR = {
+				region = crimea_region
+				region = caucasia_region
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+            num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 10
+				OR = {
+					region = crimea_region
+					region = caucasia_region
+				}
+				has_tax_building_trigger = yes
+				base_tax = 8
+			}
+		}
+
+	    effect = {
+			add_adm_power = 75
+			add_country_modifier = {
+				name = tm_COS_increased_taxation
+				duration = 3650
+			}
+	    }
+	}
+
+	tm_COS_religious_harmony = {
+        icon = mission_religious
+		required_missions = { tm_COS_construct_churches }
+		position = 5
+		
+		provinces_to_highlight = {
+            OR = {
+				province_id = 2447
+				province_id = 286
+				province_id = 464
+				}
+		}
+
+		trigger = {
+			patriarch_authority = 0.75
+			capital_scope = {
+				OR = {
+				province_id = 2447
+				province_id = 286
+				province_id = 464
+				}
+			}
+		}
+
+	    effect = {
+			add_patriarch_authority = -0.25
+			add_prestige = 20
+			2447 = {
+				if = {
+					limit = {
+						is_capital = yes
+						NOT = {
+							religion = orthodox
+						}
+					}
+					change_religion = orthodox
+					add_reform_center = orthodox
+				}
+			}
+			286 = {
+				if = {
+					limit = {
+						is_capital = yes
+						NOT = {
+							religion = orthodox
+						}
+					}
+					change_religion = orthodox
+					add_reform_center = orthodox
+				}
+			}
+			464 = {
+				if = {
+					limit = {
+						is_capital = yes
+						NOT = {
+							religion = orthodox
+						}
+					}
+					change_religion = orthodox
+					add_reform_center = orthodox
+				}
+			}
+			custom_tooltip = tm_cos_orth_reform_center_tt
+	    }
+	}
+
+}
+
+tm_COS_slot_2 = {
+	slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		tag = COS
+	}
+	has_country_shield = yes
+	
+	tm_COS_develop_the_lands = {
+        icon = mission_pol_develop_countryside
+		required_missions = { tm_COS_stabilise_the_lands }
+		position = 2
+		
+		provinces_to_highlight = {
+			region = crimea_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 10
+				region = crimea_region
+				development = 20
+				base_production = 10
+			}
+		}
+
+	    effect = {
+			add_country_modifier = {
+				name = tm_COS_increased_production
+				duration = -1
+			}
+	    }
+	}
+
+	tm_COS_industrialise_the_steppes = {
+        icon = mission_eastern_european_city
+		required_missions = { tm_COS_develop_the_lands }
+		position = 4
+		
+		provinces_to_highlight = {
+			region = crimea_region
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 6
+				region = crimea_region
+				base_production = 10
+				OR = {
+					trade_goods = gems
+					trade_goods = iron
+					trade_goods = cloth
+				}
+			}
+		}
+
+	    effect = {
+			every_owned_province = {
+				limit = {
+					region = crimea_region
+					base_production = 10
+					OR = {
+						trade_goods = gems
+						trade_goods = iron
+						trade_goods = cloth
+					}
+				}
+				if = {
+					limit = {
+						NOT = {
+							OR = {
+								has_building = warehouse
+								has_building = counting_house
+							}
+						}
+					}
+					add_building = warehouse
+				}
+				add_base_production = 2
+			}
+	    }
+	}
+
+	tm_COS_dominate_steppe_trade = {
+        icon = mission_market_place_with_asian_traders
+		required_missions = { tm_COS_industrialise_the_steppes }
+		position = 5
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1322
+				province_id = 420
+				province_id = 464
+				province_id = 463
+				province_id = 466
+				province_id = 303
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+            1322 = {
+				has_trader = ROOT
+				trade_share = {
+					country = ROOT
+					share = 60
+				}
+			}
+			420 = {
+				has_trader = ROOT
+				trade_share = {
+					country = ROOT
+					share = 75
+				}
+			}
+			464 = {
+				has_trader = ROOT
+				trade_share = {
+					country = ROOT
+					share = 60
+				}
+			}
+			463 = {
+				province_has_center_of_trade_of_level = 2
+			}
+			466 = {
+				province_has_center_of_trade_of_level = 2
+			}
+			303 = {
+				province_has_center_of_trade_of_level = 2
+			}
+		}
+
+	    effect = {
+			288 = {
+				center_of_trade = 2
+				add_base_manpower = 1
+				add_base_production = 2
+			}
+			2201 = {
+				center_of_trade = 2
+				add_base_manpower = 1
+				add_base_production = 2
+			}
+			464 = {
+				center_of_trade = 2
+				add_base_manpower = 1
+				add_base_production = 2
+			}
+			303 = {
+				add_base_manpower = 1
+				add_base_production = 2
+				add_base_tax = 1
+			}
+			466 = {
+				add_base_manpower = 1
+				add_base_production = 2
+				add_base_tax = 1
+			}
+			463 = {
+				add_base_manpower = 1
+				add_base_production = 2
+				add_base_tax = 1
+			}
+	    }
+	}
+	
+
+}
+
+tm_COS_slot_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = COS
+	}
+	has_country_shield = yes
+	
+	tm_COS_stabilise_the_lands = {
+        icon = mission_high_income
+		required_missions = { }
+		position = 1
+		
+		provinces_to_highlight = {
+			is_capital = yes
+			owned_by = ROOT
+		}
+
+		trigger = {
+            stability = 1
+			is_at_war = no
+			republican_tradition = 75
+			NOT = {
+				unrest = 4
+			}
+		}
+
+	    effect = {
+			add_country_modifier = {
+				name = tm_COS_finish_the_conquests
+				duration = 5475
+			}
+			add_adm_power = 100
+	    }
+	}
+
+	tm_COS_unite_the_federation = {
+        icon = mission_steppe_warriors
+		required_missions = { tm_COS_stabilise_the_lands }
+		position = 3
+		
+		provinces_to_highlight = {
+           	OR = {
+				area = majar_area
+				area = azov_area
+				area = kerch_area
+				area = crimea_area
+				area = astrakhan_area
+				area = lower_don_area
+				area = lower_yik_area
+				area = saratov_area
+				area = yedisan_area
+		   	}
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+            majar_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			azov_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			kerch_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			crimea_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			astrakhan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			lower_don_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			lower_yik_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			saratov_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			yedisan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+
+	    effect = {
+			add_prestige = 25
+			add_power_projection = {
+				type = mission_rewards_power_projection
+				amount = 25
+			}
+			add_republican_tradition = 15
+			add_dip_power = 100
+	    }
+	}
+
+	tm_COS_defend_the_federation = {
+        icon = mission_ne_palisades
+		required_missions = { tm_COS_unite_the_federation }
+		position = 4
+		
+		provinces_to_highlight = {
+            region = crimea_region
+            NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 6
+				region = crimea_region
+				has_fort_building_trigger = yes
+			}
+		}
+
+	    effect = {
+			custom_tooltip = tm_COS_change_capital_warning
+			country_event = {
+				id = titansrv.4
+			}
+			add_country_modifier = {
+				name = tm_COS_defensive_efforts
+				duration = -1
+			}
+	    }
+	}
+
+	tm_COS_prepare_for_expansion = {
+        icon = mission_cossack_cavalry
+		required_missions = { tm_COS_reform_the_state tm_COS_defend_the_federation tm_COS_industrialise_the_steppes }
+		position = 5
+		
+		provinces_to_highlight = {
+            
+		}
+
+		trigger = {
+            stability = 2
+			religious_unity = 0.75
+			num_of_owned_provinces_with = {
+				value = 50
+				OR = {
+				region = crimea_region
+				area = east_dniepr_area
+				area = sloboda_ukraine_area
+				area = chernigov_area
+				area = tambov_area
+				area = nogai_area
+				area = bashkiria_area
+				area = saratov_area
+				area = lower_yik_area
+				}
+			}
+		}
+
+	    effect = {
+			add_prestige = 25
+			add_power_projection = {
+				type = mission_rewards_power_projection
+				amount = 20
+			}
+			add_country_modifier = {
+				name = tm_COS_united_the_federation
+				duration = -1
+			}
+			custom_tooltip = tm_cos_unlocked_cb
+			set_country_flag = tm_cos_cb
+	    }
+	}
+}
+
+tm_COS_slot_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		tag = COS
+	}
+	has_country_shield = yes
+	
+	tm_COS_appease_the_estates = {
+        icon = mission_noble_council
+		required_missions = { tm_COS_stabilise_the_lands }
+		position = 2
+		
+		provinces_to_highlight = {
+		}
+
+		trigger = {
+            num_of_estate_privileges = {
+				estate = estate_cossacks
+				value = 4
+			}
+			estate_loyalty = { 
+				estate = estate_cossacks 
+				loyalty = 65
+			}
+		}
+
+	    effect = {
+			custom_tooltip = tm_COS_have_privledge
+			set_country_flag = tm_COS_extra_privlege
+			add_republican_tradition = 15
+	    }
+	}
+
+	tm_COS_reform_the_state = {
+        icon = reform_bergordnung
+		required_missions = { tm_COS_appease_the_estates }
+		position = 4
+		
+		provinces_to_highlight = {
+            
+		}
+
+		trigger = {
+			ROOT = {
+         		is_at_war = no
+			}
+		   prestige = 50
+		   republican_tradition = 90
+		   has_reform = fractured_cossacks_reform
+		}
+
+	    effect = {
+			add_prestige = 15
+			remove_government_reform = fractured_cossacks_reform
+			add_government_reform = cossacks_reform
+	    }
+	}
+
+}
+
+tm_COS_slot_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		tag = COS
+	}
+	has_country_shield = yes
+	
+	tm_COS_continue_assimilation = {
+        icon = mission_plc_cultural_flowering
+		required_missions = { tm_COS_stabilise_the_lands }
+		position = 2
+		
+		provinces_to_highlight = {
+            
+		}
+
+		trigger = {
+            treasury = 1000
+			stability = 2
+			num_of_owned_provinces_with = {
+				value = 10
+				OR = {
+					culture = dagestani
+					culture = circassian
+					culture_group = tartar
+				}	
+				NOT = {
+					unrest = 5
+					local_autonomy = 50
+				}
+			}	
+		}
+
+	    effect = {
+			add_mil_power = 50
+			add_adm_power = 50
+			add_dip_power = 50
+			if = {
+				limit = {
+					NOT = {
+						num_of_owned_provinces_with = {
+							value = 1
+							has_building = cultural_ministry
+						}
+					}
+				}
+				2447 = {
+					if = {
+						limit = {
+							is_capital = yes
+						}
+						add_building_construction = {
+							building = cultural_ministry
+							speed = 0.5
+							cost = 0.5
+						}
+					}
+				}
+				286 = {
+					if = {
+						limit = {
+							is_capital = yes
+						}
+						add_building_construction = {
+							building = cultural_ministry
+							speed = 0.5
+							cost = 0.5
+						}
+					}
+				}
+				464 = {
+					if = {
+						limit = {
+							is_capital = yes
+						}
+						add_building_construction = {
+							building = cultural_ministry
+							speed = 0.5
+							cost = 0.5
+						}
+					}
+				}
+				421 = {
+					if = {
+						limit = {
+							is_capital = yes
+						}
+						add_building_construction = {
+							building = cultural_ministry
+							speed = 0.5
+							cost = 0.5
+						}
+					}
+				}
+				else = {
+					add_treasury = 1000
+					add_country_modifier = {
+						name = tm_COS_assimilation_success
+						duration = 3650
+					}
+				}
+			}
+		}
+	}
+
+	tm_COS_further_cultrual_integration = {
+        icon = tartary_visiting_mongols
+		required_missions = { tm_COS_continue_assimilation }
+		position = 4
+		
+		provinces_to_highlight = {
+            
+		}
+
+		trigger = {
+            num_of_owned_provinces_with = {
+				value = 10
+				region = crimea_region
+				development = 20
+				base_manpower = 10
+			}
+			stability = 2
+		}
+
+	    effect = {
+			custom_tooltip = azerbaijani_tartar_tt
+			custom_tooltip = georgian_tartar_tt
+			custom_tooltip = armenian_tartar_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						culture = azerbaijani
+					}
+					change_culture = tazerbaijani
+				}
+				every_owned_province = {
+					limit = {
+						culture = georgian
+					}
+					change_culture = tgeorgian
+				}
+				every_owned_province = {
+					limit = {
+						culture = armenian
+					}
+					change_culture = tarmenian
+				}
+			}
+	    }
+	}
+
+}

@@ -1,5 +1,55 @@
+########################################
+# Events for Mali
+#
+# written by Johan Andersson
+########################################
+
 namespace = flavor_mal
 normal_or_historical_nations = yes
+
+# Malian Authority Under Threat
+country_event = {
+	id = flavor_mal.1
+	title = flavor_mal.1.t
+	desc = flavor_mal.1.d
+	picture = LIBERUM_VETO_eventPicture
+	fire_only_once = yes
+
+	trigger = {
+		tag = MAL
+		NOT = { stability = 0 }
+		NOT = { is_year = 1550 }
+		owns = 1112
+		owns = 1113
+		owns = 1116
+		owns = 2239
+		NOT = { exists = JOL }
+		NOT = { has_dlc = "Origins" }	#Mali gets a whole disaster instead for its authority question
+	}
+
+	mean_time_to_happen = {
+		months = 36
+	}
+	
+	
+	option = { 
+		name = flavor_mal.1.a
+		ai_chance = { factor = 90 }
+		
+		1112 = { nationalist_rebels = 2	}
+		1113 = { nationalist_rebels = 2	}
+		1116 = { nationalist_rebels = 2	}
+		2239 = { nationalist_rebels = 2	}
+	}
+	option = {
+		name = flavor_mal.1.b	
+		ai_chance = { factor = 10 }
+		
+		release = JOL
+	}
+	
+	
+}
 
 ########################################
 # Events for Mali
@@ -134,6 +184,62 @@ province_event = {
 				add_manpower = 10
 				add_treasury = 300
 			}
+		}
+	}
+	
+	
+	option = {	#Switch tag to Fulo
+		name = flavor_mal.2.b
+		trigger = {
+			owner = {
+				ai = no
+			}
+		}
+		every_province = {
+			limit = {
+				OR = {
+					area = tekrur_area
+					province_id = 1112 #Trarza
+					province_id = 1120 #Bambuk
+					province_id = 2238 #Kantor
+					province_id = 2243 #Termes
+					province_id = 2245 #Wagadu
+					province_id = 2246 #Bagena
+				}
+				is_empty = yes
+			}
+			cede_province = FUL
+		}
+		hidden_effect = {
+			FUL = {
+				define_ruler = {
+					name = "Koli Tengella"
+					dynasty = "Denianke"
+					change_mil = 4
+					claim = 100
+				}
+				if = {
+					limit = {
+						has_dlc = "Rights of Man" 
+					}
+					add_ruler_personality_ancestor = { key = conqueror }
+				}
+				adopt_reform_progress = ROOT
+				capital_scope = {
+					build_to_forcelimit = {
+						infantry = 0.7
+						cavalry = 0.3
+					}
+					add_base_tax = 3
+					add_base_production = 3
+					add_base_manpower = 2
+				}
+				add_manpower = 10
+				add_treasury = 300
+			}
+		}
+		owner = {
+			switch_tag = FUL
 		}
 	}
 }
@@ -1564,6 +1670,170 @@ country_event = {
 		}
 
 		colonial_brazil = {
+			add_permanent_claim = ROOT
+		}
+
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = {
+		name = flavor_mal.25.b
+		if = {
+			limit = {
+				756 = {
+					OR = {
+						owner = {	#Mission reward should be not ruined by some native OPM
+							was_player = no
+							ai = yes
+							NOT = { num_of_cities = 2 }
+
+						}
+						is_empty = yes
+					}
+				}
+			}
+			add_sailors = -1000	#They are now settling the province
+		}
+		756 = {
+			if = {
+				limit = {
+					OR = {
+						owner = {	#Mission reward should be not ruined by some native OPM
+							was_player = no
+							ai = yes
+							NOT = { num_of_cities = 2 }
+
+						}
+						is_empty = yes
+					}
+				}
+				cede_province = ROOT
+				add_core = ROOT
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 1
+				change_religion = ROOT
+				change_culture = ROOT
+			}
+			else = {
+				add_core = ROOT
+			}
+		}
+
+		colonial_brazil = {
+			add_permanent_claim = ROOT
+		}
+
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = {
+		name = flavor_mal.25.c
+		if = {
+			limit = {
+				763 = {
+					OR = {
+						owner = {	#Mission reward should be not ruined by some native OPM
+							was_player = no
+							ai = yes
+							NOT = { num_of_cities = 2 }
+
+						}
+						is_empty = yes
+					}
+				}
+			}
+			add_sailors = -1000	#They are now settling the province
+		}
+		763 = {
+			if = {
+				limit = {
+					OR = {
+						owner = {	#Mission reward should be not ruined by some native OPM
+							was_player = no
+							ai = yes
+							NOT = { num_of_cities = 2 }
+
+						}
+						is_empty = yes
+					}
+				}
+				cede_province = ROOT
+				add_core = ROOT
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 1
+				change_religion = ROOT
+				change_culture = ROOT
+			}
+			else = {
+				add_core = ROOT
+			}
+		}
+
+		colonial_brazil = {
+			add_permanent_claim = ROOT
+		}
+
+		ai_chance = {
+			factor = 1
+		}
+	}
+
+	option = {
+		name = flavor_mal.25.d
+		if = {
+			limit = {
+				778 = {
+					OR = {
+						owner = {	#Mission reward should be not ruined by some native OPM
+							was_player = no
+							ai = yes
+							NOT = { num_of_cities = 2 }
+
+						}
+						is_empty = yes
+					}
+				}
+			}
+			add_sailors = -1000	#They are now settling the province
+		}
+		778 = {
+			if = {
+				limit = {
+					OR = {
+						owner = {	#Mission reward should be not ruined by some native OPM
+							was_player = no
+							ai = yes
+							NOT = { num_of_cities = 2 }
+
+						}
+						is_empty = yes
+					}
+				}
+				cede_province = ROOT
+				add_core = ROOT
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 1
+				change_religion = ROOT
+				change_culture = ROOT
+			}
+			else = {
+				add_core = ROOT
+			}
+		}
+		hidden_effect = {
+			colonial_la_plata = {
+				discover_country = root
+			}
+		}
+
+		colonial_la_plata = {
 			add_permanent_claim = ROOT
 		}
 

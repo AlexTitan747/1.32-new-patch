@@ -3,42 +3,16 @@ country_decisions = {
 		illyrian_nation = {
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
-				was_never_end_game_tag_trigger = yes
 				NOT = { has_country_flag = formed_illyrian_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
+				ai = no
 				NOT = { exists = ILY }
-				NOT = { tag = MOS }
-				NOT = { tag = RUS }
-				#NOT = { tag = TIM }
-				NOT = { tag = PER }
-				NOT = { tag = PLC }
 				NOT = { has_country_flag = nap_aims_for_italy }
 				has_country_flag = illyria_forming
 				is_colonial_nation = no
 				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
-				OR = {
 					culture_group = south_slavic
 					tag = NAP
 					tag = VEN
-				}
-				
-				OR = {
-					ai = no
-					AND = {
-						NOT = { exists = ILY }
-						num_of_cities = 10
-						
-					}
 				}
 			}
 			
@@ -71,7 +45,6 @@ country_decisions = {
 			}
 			
 			allow = {
-				NOT = { exists = ILY }
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
 
@@ -81,9 +54,7 @@ country_decisions = {
 						owns_core_province = 137			# Ragusa
 						owns_core_province = 4174			# Durres
 						}
-					AND = {
-						has_country_flag = illyria_forming
-						}
+					has_country_flag = illyria_forming
 				}
 					num_of_owned_provinces_with = {
 					value = 10
@@ -91,20 +62,18 @@ country_decisions = {
 					is_core = root
 				}
 			
-				OR = {
-					AND = {
-					total_development = 250
-					}
-				}
+				total_development = 250
 			}
 			
 			effect = {
-				140 = {	#Bosnia
-					move_capital_effect = yes
-				}
+				#140 = {	#Bosnia
+				#	move_capital_effect = yes
+				#}
+				#set_capital = 140 # Bosnia
+
 				change_tag = ILY
 				
-				swap_non_generic_missions = yes
+				new_mission_tree_scripted_effect = yes
 				remove_non_electors_emperors_from_empire_effect = yes
 				if = {
 					limit = {
@@ -117,17 +86,13 @@ country_decisions = {
 					name = centralization_modifier
 					duration = 3650
 				}
-				set_capital = 140 # Bosnia
-				if = {
-                limit = { is_revolutionary = no }
-                change_government = monarchy
 				
-            }
-				set_country_flag = formed_illyrian_flag
 				if = {
-				limit = { has_custom_ideas = no }
+					limit = { is_revolutionary = no }
+					change_government = monarchy
+            	}
+				set_country_flag = formed_illyrian_flag
 				country_event = { id = ideagroups.1 } #Swap Ideas
-				}
 				balkan_region = {
 					limit = {
 						NOT = { owned_by = ROOT }

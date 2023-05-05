@@ -1,0 +1,39 @@
+country_decisions = {
+
+	tm_srv_new_religion = {
+		major = yes
+		potential = {
+			OR = {
+				tag = SRV
+				tag = CAU
+				}
+			has_country_flag = srv_religion_backup
+
+			NOT = {
+				has_country_flag = srv_new_religion_decision_used
+			}
+		}
+		allow = {
+			OR = {
+			religion = orthodox
+			religion = zoroastrian
+			religion = shiite
+			}
+			NOT = {
+				has_country_modifier = warplan_pol_cooldown
+			}
+		}
+		effect = {
+			hidden_effect = {
+				set_country_flag = srv_new_religion_decision_used
+			}
+			custom_tooltip = srv_new_religion_tt
+			hidden_effect = {
+				country_event = {
+					id = titansrv.1
+				}
+			}
+		}
+	}
+
+}

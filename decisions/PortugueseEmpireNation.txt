@@ -1,136 +1,95 @@
 country_decisions = {
-
-		portuguese_nation = {
-			major = yes
-			potential = {
-				normal_or_historical_nations = yes
-				was_never_end_game_tag_trigger = yes
-				NOT = { has_country_flag = formed_portuguese_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
-				NOT = { exists = PBR }
-				NOT = { tag = PAP }
-				NOT = { tag = HLR }
-				NOT = { tag = ARA }
-				NOT = { tag = SPA }
-				NOT = { tag = CAS }
-				is_colonial_nation = no
-				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
-				tag = POR
-				
-				OR = {
-					ai = no
-					AND = {
-						NOT = { exists = PBR }
-						num_of_cities = 5
-						
-					}
-				}
-			}
-			
-			provinces_to_highlight = {
-				region = brazil_region
-				OR = {
+	portuguese_nation = { #Portugal - Brazil
+		major = yes
+		potential = {
+			NOT = { has_country_flag = formed_portuguese_flag }
+			ai = no
+			NOT = { exists = PBR }
+			is_colonial_nation = no
+			tag = POR
+		}
+		
+		provinces_to_highlight = {
+			region = brazil_region
+			OR = {
 				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
 				is_city = no
-				}
-					
-				OR = {
-					NOT = { owned_by = ROOT }
-					NOT = { is_core = ROOT }
-				}
+			}
+		}
+		
+		allow = {
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			
+			763 = {
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 			
-			allow = {
-				NOT = { exists = PBR }
-				is_nomad = no
-				is_free_or_tributary_trigger = yes
-				is_at_war = no
-				is_tribal = no
-				
-				colonial_brazil = {
-				763 = {
-				country_or_non_sovereign_subject_holds = ROOT
-					}
-				}
-				
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					value = 20
-					colonial_region = colonial_brazil
-				}
-				
+			
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 20
+				colonial_region = colonial_brazil
 			}
-			effect = {
-				change_tag = PBR
-				change_primary_culture = brazilian
-				remove_non_electors_emperors_from_empire_effect = yes
-				
-				every_subject_country = {
+		}
+
+		effect = {
+			change_tag = PBR
+			change_primary_culture = brazilian
+			remove_non_electors_emperors_from_empire_effect = yes
+			
+			every_subject_country = {
 				limit = {
 					is_colonial_nation = yes
 					capital_scope = {
 						colonial_region = colonial_brazil
-							}
-						}
-					FROM = { inherit = PREV }
+					}
 				}
-				every_subject_country = {
+				FROM = { inherit = PREV }
+			}
+			every_subject_country = {
 				limit = {
 					is_colonial_nation = yes
 					capital_scope = {
 						colonial_region = colonial_colombia
-							}
-						}
-					FROM = { inherit = PREV }
+					}
 				}
-				every_subject_country = {
+				FROM = { inherit = PREV }
+			}
+			every_subject_country = {
 				limit = {
 					is_colonial_nation = yes
 					capital_scope = {
 						colonial_region = colonial_peru
-							}
-						}
-					FROM = { inherit = PREV }
+					}
 				}
-				every_subject_country = {
+				FROM = { inherit = PREV }
+			}
+			every_subject_country = {
 				limit = {
 					is_colonial_nation = yes
 					capital_scope = {
 						colonial_region = colonial_la_plata
-							}
-						}
-					FROM = { inherit = PREV }
-				}
-				if = {
-					limit = {
-						NOT = { government_rank = 3 }
 					}
-					set_government_rank = 3
 				}
-				add_prestige = 25
-				add_country_modifier = {
-					name = centralization_modifier
-					duration = 3650
+				FROM = { inherit = PREV }
+			}
+			if = {
+				limit = {
+					NOT = { government_rank = 3 }
 				}
-				if = {
-					limit = {
-						NOT = { primary_culture = brazilian }
-					}
-					change_primary_culture = brazilian
-				}
-				if = {
+				set_government_rank = 3
+			}
+			add_prestige = 25
+			add_country_modifier = {
+				name = centralization_modifier
+				duration = 3650
+			}
+			if = {
 				limit = { is_revolutionary = no }
 				add_government_reform = union_of_crowns
-				}
-				hidden_effect = {
+			}
+			hidden_effect = {
 				if = {
 					limit = {
 						763 = {
@@ -149,45 +108,195 @@ country_decisions = {
 						}
 						move_capital_effect = yes
 						change_culture = brazilian
-						}
 					}
 				}
-				hidden_effect = {
-					every_owned_province = {
+			}
+			hidden_effect = {
+				every_owned_province = {
 					change_culture = brazilian
-					}
 				}
-				hidden_effect = {
-					every_owned_province = {
-					change_religion = catholic
-					}
+			}
+			hidden_effect = {
+				every_owned_province = {
+					change_religion = ROOT
 				}
-				
-				colonial_brazil = {
+			}
+			
+			brazil_region = {
 				limit = {
 					NOT = { owned_by = ROOT }
 				}
 				add_permanent_claim = ROOT
+			}
+			alentejo_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
 				}
-				alentejo_area = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
+				add_permanent_claim = ROOT
+			}
+			beieras_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
 				}
-				beieras_area = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				
-				set_country_flag = formed_portuguese_flag
-				if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
-				}
+				add_permanent_claim = ROOT
 			}
 			
+			set_country_flag = formed_portuguese_flag
+			country_event = { id = ideagroups.1 } #Swap Ideas
 		}
 	}
+
+	#portuguese_nation_africa = { #Portugal - Africa
+	#	major = yes
+#
+	#	potential = {
+	#		tag = POR
+	#		was_never_end_game_tag_trigger = yes
+	#		NOT = { has_country_flag = formed_portuguese_flag }
+	#		ai = no
+	#		NOT = { exists = PBR }
+	#		NOT = { tag = PAP }
+	#		NOT = { tag = HLR }
+	#		NOT = { tag = ARA }
+	#		NOT = { tag = SPA }
+	#		NOT = { tag = CAS }
+	#		is_colonial_nation = no
+	#	}
+	#	
+	#	provinces_to_highlight = {
+	#		OR = {
+	#			region = kongo_region
+	#			region = south_africa_region
+	#		}
+	#		OR = {
+	#			NOT = { owned_by = ROOT }
+	#			is_city = no
+	#		}
+	#	}
+	#	
+	#	allow = {
+	#		is_free_or_tributary_trigger = yes
+	#		is_at_war = no
+	#		OR = {
+	#			owns_core_province = 1177
+	#			owns_core_province = 1170
+	#		}
+	#		
+	#		num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+	#			value = 20
+	#			OR = {
+	#				region = kongo_region
+	#				region = south_africa_region
+	#			}
+	#		}
+	#	}
+#
+	#	effect = {
+	#		change_tag = PBR
+#
+	#		if = {
+	#			limit = {
+	#				owns_core_province = 1177
+	#			}
+	#			change_primary_culture = khoisan
+	#		}
+	#		else = {
+	#			change_primary_culture = kongolese
+	#		}
+	#		
+	#		every_subject_country = {
+	#			limit = {
+	#				is_colonial_nation = yes
+	#				capital_scope = {
+	#					colonial_region = colonial_saf
+	#				}
+	#			}
+	#			FROM = { inherit = PREV }
+	#		}
+	#		if = {
+	#			limit = {
+	#				NOT = { government_rank = 3 }
+	#			}
+	#			set_government_rank = 3
+	#		}
+	#		add_prestige = 25
+	#		add_country_modifier = {
+	#			name = centralization_modifier
+	#			duration = 3650
+	#		}
+	#		if = {
+	#			limit = { is_revolutionary = no }
+	#			add_government_reform = union_of_crowns
+	#		}
+	#		hidden_effect = {
+	#			if = {
+	#				limit = {
+	#					1177 = {
+	#						owned_by = ROOT
+	#					}
+	#				}
+	#				1177 = {
+	#					move_capital_effect = yes
+	#					change_culture = khoisan
+	#				}
+	#			}
+	#			else_if = {
+	#				limit = {
+	#					1170 = {
+	#						owned_by = ROOT
+	#					}
+	#				}
+	#				1170 = {
+	#					move_capital_effect = yes
+	#					change_culture = kongolese
+	#				}
+	#			}
+	#			else_if = {
+	#				limit = {
+	#					any_owned_province = {
+	#						colonial_region = colonial_saf
+	#					}
+	#				}
+	#				random_owned_province = {
+	#					limit = {
+	#						colonial_region = colonial_saf
+	#					}
+	#					move_capital_effect = yes
+	#					change_culture = khoisan
+	#				}
+	#			}
+	#			else = {
+	#				random_owned_province = {
+	#					limit = {
+	#						region = kongo_region
+	#					}
+	#					move_capital_effect = yes
+	#					change_culture = kongolese
+	#				}
+	#			}
+	#		}
+	#		hidden_effect = {
+	#			if = {
+	#				limit = {
+	#					owns_core_province = 1177
+	#				}
+	#				every_owned_province = {
+	#					change_culture = khoisan
+	#				}
+	#			}
+	#			else = {
+	#				every_owned_province = {
+	#					change_culture = kongolese
+	#				}
+	#			}
+	#		}
+	#		hidden_effect = {
+	#			every_owned_province = {
+	#				change_religion = ROOT
+	#			}
+	#		}
+	#		set_country_flag = formed_portuguese_flag
+	#		country_event = { id = ideagroups.1 } #Swap Ideas
+	#	}
+	#}
+}

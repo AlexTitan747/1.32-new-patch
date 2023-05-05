@@ -1,0 +1,147 @@
+country_decisions = {
+
+    start_colonisation = {
+        potential = {
+			OR = {
+                tag = ENG
+                was_tag = ENG
+                tag = BUR
+                was_tag = BUR
+                tag = AQI
+                was_tag = AQI
+                tag = CAS
+                was_tag = CAS
+                tag = MOR
+                was_tag = MOR
+                tag = HES
+                was_tag = HES
+                tag = DAN
+                was_tag = DAN
+            }
+            any_owned_province = { has_port = yes }
+            NOT = { has_country_modifier = tm_colonisation_start }
+		}
+
+		allow = {
+			adm_tech = 5
+            dip_tech = 5
+            treasury = 200
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_colonisation_start
+				duration = 10950
+			}
+            add_adm_power = -50
+            add_dip_power = -50
+            add_treasury = -200
+		}
+		ai_will_do = {
+			factor = 1
+		}
+    }
+
+    invest_in_colonies = {
+        potential = {
+			OR = {
+                tag = POR
+                has_country_modifier = tm_colonisation_start
+            }
+            NOT = { has_country_modifier = tm_invested_in_colonies }
+		}
+
+		allow = {
+			treasury = 500
+            adm_tech = 6
+            dip_tech = 6
+		}
+
+		effect = {
+            add_treasury = -500
+			add_country_modifier = {
+				name = tm_invested_in_colonies
+				duration = 5475
+			}
+            add_adm_power = -50
+            add_dip_power = -50
+		}
+		ai_will_do = {
+			factor = 1
+		}
+    }
+
+    more_colonists = {
+        potential = {
+            has_country_modifier = tm_colonisation_start
+            NOT = { has_country_modifier = tm_more_colonists }
+		}
+
+		allow = {
+			treasury = 750
+            adm_tech = 7
+            dip_tech = 7
+		}
+
+		effect = {
+            add_treasury = -750
+			add_country_modifier = {
+				name = tm_more_colonists
+				duration = 5475
+			}
+            add_adm_power = -50
+            add_dip_power = -50
+		}
+		ai_will_do = {
+			factor = 1
+		}
+    }
+
+    rush_for_tc = {
+        potential = {
+            NOT = { has_country_flag = tm_tc_rush }
+            OR = {
+                has_country_modifier = tm_colonisation_start
+                tag = POR
+            }
+        }
+
+        allow = {
+			treasury = 300
+            OR = {
+                any_owned_province = {
+                    has_port = yes
+                    province_has_center_of_trade_of_level = 1
+                    has_colonist = yes
+                    is_city = no
+                }
+            }
+		}
+
+		effect = {
+            custom_tooltip = tm_decision_once_per_game
+            add_treasury = -300
+			set_country_flag = tm_tc_rush
+            if = { limit = { NOT = {
+                any_owned_province = {
+                    has_port = yes
+                    province_has_center_of_trade_of_level = 1
+                    has_colonist = yes
+                    is_city = no
+                }
+            }} custom_tooltip = tm_500_settler_to_tc_tt }
+            random_owned_province = {
+                limit = {
+                    has_port = yes
+                    province_has_center_of_trade_of_level = 1
+                    has_colonist = yes
+                    is_city = no
+                }
+                add_colonysize = 500
+            }
+		}
+		ai_will_do = {
+			factor = 1
+		}
+    }
+}

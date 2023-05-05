@@ -668,7 +668,23 @@ christian = {
 		province = {
 			local_missionary_strength = -0.01
 		}
-		
+
+		allowed_center_conversion = {
+			sunni
+			shiite
+			ibadi
+			coptic
+			zoroastrian
+			catholic
+			protestant
+			reformed
+			hussite
+		}
+		will_get_center = { #Refered to even for initial CoR Spawn
+			any_owned_province = {
+				religion = orthodox
+			}
+		}	
 		
 		heretic = { OLD_BELIEVER MOLOKAN DUKHOBOR KHLYST SKOPTSY ICONOCLAST }
 		
@@ -880,13 +896,13 @@ muslim = {
 					}
 					adm_power_cost = 50
 				}
-				if = {
-					limit = {
-						NOT = { religion = sunni }
-						NOT = { religion = ibadi }
-					}
-					NOT = { piety = -0.5 }
-				}
+				#if = {
+				#	limit = {
+				#		NOT = { religion = sunni }
+				#		NOT = { religion = ibadi }
+				#	}
+				#	NOT = { piety = -0.5 }
+				#}
 				if = {
 					limit = {
 						NOT = { has_country_flag = can_always_invite_hanafi_school }
@@ -953,13 +969,13 @@ muslim = {
 					}
 					adm_power_cost = 50
 				}
-				if = {
-					limit = {
-						NOT = { religion = sunni }
-						NOT = { religion = ibadi }
-					}
-					NOT = { piety = -0.5 }
-				}
+				#if = {
+				#	limit = {
+				#		NOT = { religion = sunni }
+				#		NOT = { religion = ibadi }
+				#	}
+				#	NOT = { piety = -0.5 }
+				#}
 				if = {
 					limit = {
 						NOT = { has_country_flag = can_always_invite_hanbali_school }
@@ -1025,13 +1041,13 @@ muslim = {
 					}
 					adm_power_cost = 50
 				}
-				if = {
-					limit = {
-						NOT = { religion = sunni }
-						NOT = { religion = ibadi }
-					}
-					NOT = { piety = -0.5 }
-				}
+				#if = {
+				#	limit = {
+				#		NOT = { religion = sunni }
+				#		NOT = { religion = ibadi }
+				#	}
+				#	NOT = { piety = -0.5 }
+				#}
 				if = {
 					limit = {
 						NOT = { has_country_flag = can_always_invite_maliki_school }
@@ -1097,13 +1113,13 @@ muslim = {
 					}
 					adm_power_cost = 50
 				}
-				if = {
-					limit = {
-						NOT = { religion = sunni }
-						NOT = { religion = ibadi }
-					}
-					NOT = { piety = -0.5 }
-				}
+				#if = {
+				#	limit = {
+				#		NOT = { religion = sunni }
+				#		NOT = { religion = ibadi }
+				#	}
+				#	NOT = { piety = -0.5 }
+				#}
 				if = {
 					limit = {
 						NOT = { has_country_flag = can_always_invite_shafii_school }
@@ -1171,13 +1187,13 @@ muslim = {
 					}
 					adm_power_cost = 50
 				}
-				if = {
-					limit = {
-						NOT = { religion = shiite }
-						NOT = { religion = ibadi }
-					}
-					NOT = { piety = -0.5 }
-				}
+				#if = {
+				#	limit = {
+				#		NOT = { religion = shiite }
+				#		NOT = { religion = ibadi }
+				#	}
+				#	NOT = { piety = -0.5 }
+				#}
 				if = {
 					limit = {
 						NOT = { has_country_flag = can_always_invite_ismaili_school }
@@ -1244,13 +1260,13 @@ muslim = {
 					}
 					adm_power_cost = 50
 				}
-				if = {
-					limit = {
-						NOT = { religion = shiite }
-						NOT = { religion = ibadi }
-					}
-					NOT = { piety = -0.5 }
-				}
+				#if = {
+				#	limit = {
+				#		NOT = { religion = shiite }
+				#		NOT = { religion = ibadi }
+				#	}
+				#	NOT = { piety = -0.5 }
+				#}
 				if = {
 					limit = {
 						NOT = { has_country_flag = can_always_invite_jafari_school }
@@ -1316,13 +1332,13 @@ muslim = {
 					}
 					adm_power_cost = 50
 				}
-				if = {
-					limit = {
-						NOT = { religion = shiite }
-						NOT = { religion = ibadi }
-					}
-					NOT = { piety = -0.5 }
-				}
+				#if = {
+				#	limit = {
+				#		NOT = { religion = shiite }
+				#		NOT = { religion = ibadi }
+				#	}
+				#	NOT = { piety = -0.5 }
+				#}
 				if = {
 					limit = {
 						NOT = { has_country_flag = can_always_invite_zaidi_school }
@@ -1380,7 +1396,8 @@ muslim = {
 		color = { 0 153 0 }
 		icon = 5
 		country = {
-			cav_to_inf_ratio = 0.10
+			#cav_to_inf_ratio = 0.10
+			cavalry_cost = -0.1
 			heir_chance = 1.0
 		}
 		country_as_secondary = {
@@ -1403,7 +1420,7 @@ muslim = {
 		icon = 6
 		country = {
 			heir_chance = 1.0
-			land_morale = 0.025
+			land_morale = 0.05
 		}
 		country_as_secondary = {
 			land_morale = 0.05
@@ -2638,6 +2655,9 @@ jewish_group = {
 zoroastrian_group = {
 	defender_of_faith = yes
 	flag_emblem_index_range = { 110 110 }
+
+	center_of_religion = 421 # Shirvan
+
 	zoroastrian = {
 		allow_female_defenders_of_the_faith = yes
 		declare_war_in_regency = yes
@@ -2655,7 +2675,20 @@ zoroastrian_group = {
 			tolerance_own = 1
 		}
 
-		holy_sites = { 421 4430 2223 441 2235 }
+		allowed_center_conversion = {
+			sunni
+			shiite
+			ibadi
+			orthodox
+			coptic
+		}
+		will_get_center = { #Refered to even for initial CoR Spawn
+			any_owned_province = {
+				religion = zoroastrian
+			}
+		}
+
+		holy_sites = { 421 4411 4292 430 2235 }
 
 		blessings = {
 			blessing_yasna
@@ -2666,6 +2699,11 @@ zoroastrian_group = {
 		}
 		
 		heretic = { MAZDAKI MANICHEAN }	
+		will_get_center = { #Refered to even for initial CoR Spawn
+			any_owned_province = {
+				religion = zoroastrian
+			}
+		}
 	}
 	
 	harmonized_modifier = harmonized_zoroastrian_group

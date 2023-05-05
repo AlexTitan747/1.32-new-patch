@@ -1,50 +1,25 @@
 country_decisions = {
 
-	zirid_nation = {
-		major = yes
-		potential = {
-			normal_or_historical_nations = yes
-			was_never_end_game_tag_trigger = yes
-			NOT = { has_country_flag = formed_zirid_flag }
-			OR = {
+		zirid_nation = {
+			major = yes
+			potential = {
+				NOT = { has_country_flag = formed_zirid_flag }
 				ai = no
-				is_playing_custom_nation = no
-			}
-			NOT = { tag = PAP }
-			NOT = { tag = HLR }
-			NOT = { tag = ROM }
-			NOT = { tag = SPA }
-			NOT = { tag = POR }
-			is_colonial_nation = no
-			OR = {
-				is_former_colonial_nation = no
-				AND = {
-					is_former_colonial_nation = yes
-					ai = no
-				}
-			}
-			OR = {
+				NOT = { exists = ZRD }
+				NOT = { tag = SPA }
+				NOT = { tag = POR }
+				is_colonial_nation = no
 				culture_group = maghrebi
 			}
 			
-			OR = {
-				ai = no
-				AND = {
-					NOT = { exists = ZRD }
-					num_of_cities = 10
-					
+			provinces_to_highlight = {
+				OR = {
+					province_id = 341			# Tunis
+					province_id = 354			# Tripoli
+					province_id = 1751			# Ceuta
+					province_id = 2461			# Dahra
+					province_id = 346			# Tafilalt
 				}
-			}
-		}
-		
-		provinces_to_highlight = {
-			OR = {
-				province_id = 341			# Tunis
-				province_id = 354			# Tripoli
-				province_id = 1751			# Ceuta
-				province_id = 2461			# Dahra
-				province_id = 346			# Tafilalt
-			}
 				AND = {
 					region = maghreb_region
 					ROOT = {
@@ -57,53 +32,52 @@ country_decisions = {
 						}
 					}
 				}
+
 				OR = {
 					NOT = { owned_by = ROOT }
 					NOT = { is_core = ROOT }
 				}
-			
-		}
-		allow = {
-			adm_tech = 10
-			NOT = { exists = ZRD }
-			is_nomad = no
-			is_free_or_tributary_trigger = yes
-			is_at_war = no
-			is_tribal = no
-			owns_core_province = 341			# Tunis
-			owns_core_province = 354			# Tripoli
-			owns_core_province = 1751			# Ceuta
-			owns_core_province = 2461			# Dahra
-			owns_core_province = 346			# Tafilalt
-			num_of_owned_provinces_with = {
-				value = 50
-				region = maghreb_region
-				is_core = root
-				
-				}
-		}
-		effect = {
+			}
 
-			change_tag = ZRD
-			remove_non_electors_emperors_from_empire_effect = yes
-			add_prestige = 25
-			add_country_modifier = {
-				name = centralization_modifier
-				duration = 3650
-			}
-			add_government_reform = islamic_emirate
-			maghreb_region = {
-				limit = {
-					NOT = {
-						owned_by = ROOT
-					}
+			allow = {
+				adm_tech = 10
+				is_free_or_tributary_trigger = yes
+				is_at_war = no
+
+				owns_core_province = 341			# Tunis
+				owns_core_province = 354			# Tripoli
+				owns_core_province = 1751			# Ceuta
+				owns_core_province = 2461			# Dahra
+				owns_core_province = 346			# Tafilalt
+
+				num_of_owned_provinces_with = {
+					value = 50
+					region = maghreb_region
+					is_core = root
 				}
-				add_permanent_claim = ROOT
+			}
+
+			effect = {
+				change_tag = ZRD
+				remove_non_electors_emperors_from_empire_effect = yes
+				add_prestige = 25
+				add_country_modifier = {
+					name = centralization_modifier
+					duration = 3650
+				}
+				add_government_reform = islamic_emirate
+				maghreb_region = {
+					limit = {
+						NOT = {
+							owned_by = ROOT
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+				
+				set_country_flag = formed_zirid_flag
+				country_event = { id = ideagroups.1 } #Swap Ideas
 			}
 			
-			set_country_flag = formed_zirid_flag
-			country_event = { id = ideagroups.1 } #Swap Ideas
-			additional_missions_scripted_effect = yes
 		}
 	}
-}

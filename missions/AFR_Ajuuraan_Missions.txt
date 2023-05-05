@@ -208,17 +208,7 @@ ajuuran_asian_trade_slot = {
 			}
 		}
 		effect = {
-			if = {
-				limit = {
-					any_country = { is_emperor_of_china = yes }
-				}
-				event_target:EmperorOfChina = {
-					country_event = {
-						id = flavor_aju.6
-					}
-				}
-			}
-			else_if = {	#Fringe case of no emperor existing
+			if = {	#Fringe case of no emperor existing
 				limit = {
 					NOT = { owns_or_non_sovereign_subject_of = 1816 }
 				}

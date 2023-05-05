@@ -2,6 +2,168 @@
 # scriptable and usable for event-system below.
 ##################################################################################################
 
+# Titan BAB Missions
+
+tm_bab_town_expansion = {
+	local_build_cost = -0.10
+	local_build_time = -0.15
+	local_production_efficiency = 0.20
+}
+
+tm_bab_city_expansion = {
+	local_build_cost = -0.15
+	local_build_time = -0.15
+	local_production_efficiency = 0.25
+	trade_goods_size = 1.5
+}
+
+tm_bab_metropolis_expansion = {
+	local_build_cost = -0.15
+	local_build_time = -0.15
+	local_production_efficiency = 0.25
+	trade_goods_size = 1.5
+	local_manpower_modifier = 0.20
+	province_warscore_cost = 0.05
+}
+
+grand_metropolis_of_babylon = {
+	land_morale = 0.05
+}
+
+irrigation_techniques = {
+	development_cost = -0.1
+	build_cost = -0.05
+}
+
+babylonian_improved_infantry = {
+	infantry_shock = 0.05
+}
+
+infantry_experience = {
+	infantry_power = 0.1
+}
+
+babylonian_sea_king = {
+	global_ship_trade_power = 0.15
+	galley_power = 0.15
+	infantry_shock = 0.05
+}
+
+new_trading = {
+	trade_efficiency = 0.15
+}
+
+dominant_babylonian_empire = {
+	infantry_shock = 0.1
+}
+
+united_region = {
+	num_accepted_cultures = 1
+	tolerance_own = 2
+	
+}
+
+
+# Titan OMA Missions
+
+tm_oma_tax_increase = {
+	global_tax_modifier = 0.15
+	interest = -0.5
+}
+
+tm_oma_relgious_unity = {
+	religious_unity = 0.2
+	global_missionary_strength = 0.02
+}
+
+tm_oma_chose_ibadi = {
+	trade_efficiency = 0.1
+}
+
+tm_oma_chose_sunni = {
+	cavalry_power = 0.05
+}
+
+tm_oma_chose_shia = {
+	land_morale = 0.025
+}
+
+tm_oma_securing_persia = {
+	defensiveness = 0.1
+	land_maintenance_modifier = -0.15
+}
+
+tm_oma_basra_trade_control = {
+	trade_efficiency = 0.1
+	trade_steering = 0.1
+}
+
+tm_oma_integrating_arabia = {
+	global_autonomy = -0.005
+	core_creation = -0.15
+	global_unrest = -1
+}
+
+tm_oma_protector_of_holy_lands = {
+	religious_unity = 0.15
+	missionary_maintenance_cost = -0.25
+	missionaries = 1
+}
+
+oma_overseas_expansion = {
+	colonists = 1
+	global_colonial_growth = 25
+}
+
+desert_teachings = {
+	local_development_cost = -0.25
+}
+
+omani_trade_expertise = {
+	trade_efficiency = 0.1
+}
+
+new_volunteers = {
+	land_forcelimit_modifier = 0.075
+}
+
+shipbuilding_blueprints = {
+	heavy_ship_power = 0.1
+}
+
+oma_colonial_empire = {
+	land_morale = 0.05
+}
+
+oma_inspire_an_empire = {
+	land_morale = 0.075
+}
+
+indian_mercenaries = {
+	merc_maintenance_modifier = -0.15
+	mercenary_manpower = 0.075
+}
+
+indian_discipline = {
+	discipline = 0.025
+}
+
+indian_ocean_empire = {
+	discipline = 0.075
+	mercenary_manpower = 0.15
+	land_forcelimit_modifier = 0.15
+	naval_forcelimit_modifier = 0.1
+	advisor_cost = -0.1
+	global_trade_power = 0.1
+	naval_maintenance_modifier = -0.1
+}
+
+tm_oma_kelat_fortress = {
+	defensiveness = 0.1
+}
+
+
+
 # Titan POL Missions
 
 pol_caucas_gold_mines = {
@@ -291,9 +453,600 @@ tm_CRI_conquerer_of_persia = {
 tm_AFG_early_conquests = {
 	ae_impact = -0.1
 	core_creation = -0.05
+	province_warscore_cost = -0.1
 }
-tm_AFG_control_over_the_silk_road = {
+tm_AFG_urbanisation = {
+	local_development_cost = -0.1
+	local_build_cost = -0.1
+}
+tm_AFG_religious_conversions = {
+	global_missionary_strength = 0.025
+	missionary_maintenance_cost = -0.05
+	religious_unity = 0.25
+	missionaries = 1
+}
+tm_AFG_demand_for_dye = {
+	trade_goods_size = 1.5
+}
+tm_AFG_controller_of_persian_trade = {
+	merchants = 1
+}
+
+###
+#Persian Modifiers
+##
+tm_PER_imperial_city = {
+	local_build_cost = -0.25
+	local_build_time = -0.25
+	local_production_efficiency = 0.25
+	local_tax_modifier = 0.25
+	local_manpower_modifier = 0.5
+}
+tm_PER_honor_the_dabuyids = {
 	trade_efficiency = 0.2
+}
+tm_PER_legacy_trade = {
+	trade_efficiency = 0.1
+}
+#tm_PER_willful_subjugation = {
+#	land_forcelimit = 30
+#	global_tax_income = 12
+#}
+#tm_PER_armenian_march = {
+#	vassal_forcelimit_bonus = 0.5
+#}
+#tm_PER_armenia_integration_event_cd = {
+#	
+#}
+tm_PER_supressed_the_armenians = {
+	local_manpower_modifier = -0.33
+	local_unrest = 3
+	local_autonomy = -0.075
+}
+tm_PER_envy_of_the_world = {
+	trade_goods_size = 2
+	local_production_efficiency = 0.33
+	local_tax_modifier = 0.25
+	local_manpower_modifier = 0.5
+}
+tm_PER_city_of_lava = {
+	trade_goods_size = 1.25
+	local_production_efficiency = 0.25
+	local_tax_modifier = 0.125
+	local_build_cost = -0.5
+	local_build_time = -0.25
+}
+tm_PER_master_of_persia = {
+	siege_ability = 0.1
+}
+tm_PER_legacy_siege = {
+	siege_ability = 0.05
+}
+tm_PER_reconquer_arabia = {
+	land_forcelimit_modifier = 0.125
+}
+tm_PER_change_of_administration = {
+	core_creation = -0.25
+	province_warscore_cost = -0.2
+}
+tm_PER_arabian_levies = {
+	local_manpower_modifier = 0.33
+}
+tm_PER_zoro_house_of_wisdom = {
+	idea_cost = -0.075
+	technology_cost = -0.05
+	innovativeness_gain = 1
+}
+tm_PER_ruler_education = {
+	monarch_admin_power = 1
+	monarch_diplomatic_power = 1
+	monarch_military_power = 1
+}
+tm_PER_for_the_common_folk = {
+	war_exhaustion = -0.05
+	manpower_recovery_speed = 0.05
+}
+tm_PER_ruler_general = {
+	leader_land_shock = 1
+	leader_land_manuever = 1
+}
+tm_PER_strict_ruler = {
+	discipline = 0.025
+}
+tm_PER_inspiring_ruler = {
+	land_morale = 0.05
+}
+tm_PER_room_for_advisors = {
+	advisor_cost = -0.075
+	advisor_pool = 1
+}
+tm_PER_prosperous_land = {
+	production_efficiency = 0.05
+	trade_efficiency = 0.05
+}
+tm_PER_persian_diplomacy = {
+	liberty_desire = -0.25
+	diplomatic_upkeep = 1
+}
+tm_PER_ships_of_persia = {
+	ship_durability = 0.1
+	heavy_ship_power = 0.05
+	galley_power = 0.1
+}
+tm_PER_just_ruler = {
+	global_unrest = -3
+	prestige = 0.75
+}
+tm_PER_righteous_ruler = {
+	legitimacy = 2
+	prestige = 0.5
+}
+tm_PER_tolerant_ruler = {
+	no_religion_penalty = yes
+}
+tm_PER_free_thinker = {
+	idea_cost = -0.075
+	innovativeness_gain = 0.75
+}
+tm_PER_calm_ruler = {
+	stability_cost_modifier = -0.2
+}
+tm_PER_zealots = {
+	missionaries = 2
+	global_missionary_strength = 0.025
+}
+tm_PER_rule_of_law = {
+	global_autonomy = -0.1 
+	min_autonomy_in_territories = 0.1
+}
+tm_PER_taxman = {
+	global_tax_modifier = 0.15
+}
+tm_PER_architect = {
+	build_cost = -0.075
+	build_time = -0.075
+}
+tm_PER_scholar = {
+	technology_cost = -0.1
+}
+tm_PER_reformist = {
+	reform_progress_growth = 0.5
+}
+tm_PER_increased_royal_guards = {
+	amount_of_carolean = 0.25
+}
+tm_PER_3rd_Golden_Age = {
+	all_power_cost = -0.1
+	innovativeness_gain = 1
+	build_cost = -0.1
+	build_time = -0.1
+}
+###
+#Colonial Tree Modifiers
+###
+#General
+col_colonising_quick = {
+	global_colonial_growth = 40
+	can_colony_boost_development = yes
+}
+
+col_early_earning = {
+	global_tax_income = 120
+	global_tax_modifier = 0.05
+}
+
+col_building_army = {
+	global_regiment_cost = -0.15
+	global_regiment_recruit_speed = -0.15
+}
+
+col_building_navy = {
+	global_ship_cost = -0.15
+	global_ship_recruit_speed = -0.15
+}
+
+col_standing_navy = {
+	navy_tradition_decay = -0.01
+	naval_tradition_from_battle = 0.1
+	naval_tradition_from_trade = 0.1
+}
+
+col_standing_army = {
+	land_morale = 0.1
+	yearly_army_professionalism = 0.01
+}
+
+col_building_buildings = {
+	build_cost = -0.1
+	build_time = -0.1
+}
+
+col_buildings_prov_modifier = {
+	local_production_efficiency = 0.1
+	local_tax_modifier = 0.1
+	local_manpower_modifier = 0.1
+}
+
+col_industralising = {
+	global_trade_goods_size_modifier = 0.15
+	innovativeness_gain = 1.0
+}
+
+col_forced_pacification = {
+	local_unrest = -2
+	local_years_of_nationalism = -5
+	local_autonomy = -0.05
+}
+
+col_forced_assimilation = {
+	local_missionary_strength = 0.03
+	local_culture_conversion_cost = -0.25
+}
+
+colony_trading = {
+	trade_efficiency = 0.1
+}
+
+colonial_subject_overlord_colonisation_reward = {
+	range = 0.15
+	global_colonial_growth = 30
+	treasure_fleet_income = 0.15
+}	
+
+colonial_subject_overlord_army_reward_8 = {
+	global_manpower_modifier = 0.40
+	manpower_recovery_speed = 0.2
+	land_forcelimit_modifier = 0.40
+}
+
+colonial_subject_overlord_army_reward_7 = {
+	global_manpower_modifier = 0.35
+	manpower_recovery_speed = 0.175
+	land_forcelimit_modifier = 0.35
+}
+
+colonial_subject_overlord_army_reward_6 = {
+	global_manpower_modifier = 0.30
+	manpower_recovery_speed = 0.15
+	land_forcelimit_modifier = 0.30
+}
+
+colonial_subject_overlord_army_reward_5 = {
+	global_manpower_modifier = 0.25
+	manpower_recovery_speed = 0.125
+	land_forcelimit_modifier = 0.25
+}
+
+colonial_subject_overlord_army_reward_4 = {
+	global_manpower_modifier = 0.20
+	manpower_recovery_speed = 0.10
+	land_forcelimit_modifier = 0.20
+}
+
+colonial_subject_overlord_army_reward_3 = {
+	global_manpower_modifier = 0.15
+	manpower_recovery_speed = 0.075
+	land_forcelimit_modifier = 0.15
+}
+
+colonial_subject_overlord_army_reward_2 = {
+	global_manpower_modifier = 0.10
+	manpower_recovery_speed = 0.05
+	land_forcelimit_modifier = 0.10
+}
+
+colonial_subject_overlord_army_reward_1 = {
+	global_manpower_modifier = 0.05
+	manpower_recovery_speed = 0.025
+	land_forcelimit_modifier = 0.05
+}
+
+colonial_subject_shared_army_reward = {
+	global_manpower_modifier = 0.05
+	manpower_recovery_speed = 0.025
+	land_forcelimit_modifier = 0.05
+}
+
+colonial_subject_overlord_navy_reward_8 = {
+	global_ship_trade_power = 0.40
+	naval_forcelimit_modifier = 0.40
+	naval_maintenance_modifier = -0.40
+}
+
+colonial_subject_overlord_navy_reward_7 = {
+	global_ship_trade_power = 0.35
+	naval_forcelimit_modifier = 0.35
+	naval_maintenance_modifier = -0.35
+}
+
+colonial_subject_overlord_navy_reward_6 = {
+	global_ship_trade_power = 0.30
+	naval_forcelimit_modifier = 0.30
+	naval_maintenance_modifier = -0.30
+}
+
+colonial_subject_overlord_navy_reward_5 = {
+	global_ship_trade_power = 0.25
+	naval_forcelimit_modifier = 0.25
+	naval_maintenance_modifier = -0.25
+}
+
+colonial_subject_overlord_navy_reward_4 = {
+	global_ship_trade_power = 0.20
+	naval_forcelimit_modifier = 0.20
+	naval_maintenance_modifier = -0.20
+}
+
+colonial_subject_overlord_navy_reward_3 = {
+	global_ship_trade_power = 0.15
+	naval_forcelimit_modifier = 0.15
+	naval_maintenance_modifier = -0.15
+}
+
+colonial_subject_overlord_navy_reward_2 = {
+	global_ship_trade_power = 0.10
+	naval_forcelimit_modifier = 0.10
+	naval_maintenance_modifier = -0.10
+}
+
+colonial_subject_overlord_navy_reward_1 = {
+	global_ship_trade_power = 0.05
+	naval_forcelimit_modifier = 0.05
+	naval_maintenance_modifier = -0.05
+}
+
+colonial_subject_shared_navy_reward = {
+	global_ship_trade_power = 0.05
+	naval_forcelimit_modifier = 0.05
+	naval_maintenance_modifier = -0.05
+	ship_durability = 0.025
+}
+
+colonial_subject_overlord_trade_reward_8 = {
+	trade_efficiency = 0.40
+	global_trade_goods_size = 0.40
+}
+
+colonial_subject_overlord_trade_reward_7 = {
+	trade_efficiency = 0.35
+	global_trade_goods_size = 0.35
+}
+
+colonial_subject_overlord_trade_reward_6 = {
+	trade_efficiency = 0.30
+	global_trade_goods_size = 0.30
+}
+
+colonial_subject_overlord_trade_reward_5 = {
+	trade_efficiency = 0.25
+	global_trade_goods_size = 0.25
+}
+
+colonial_subject_overlord_trade_reward_4 = {
+	trade_efficiency = 0.20
+	global_trade_goods_size = 0.20
+}
+
+colonial_subject_overlord_trade_reward_3 = {
+	trade_efficiency = 0.15
+	global_trade_goods_size = 0.15
+}
+
+colonial_subject_overlord_trade_reward_2 = {
+	trade_efficiency = 0.10
+	global_trade_goods_size = 0.10
+}
+
+colonial_subject_overlord_trade_reward_1 = {
+	trade_efficiency = 0.05
+	global_trade_goods_size = 0.05
+}
+
+colonial_subject_shared_trade_reward = {
+	trade_efficiency = 0.05
+	global_trade_goods_size = 0.05
+}
+
+colonial_subject_overlord_col_reward_8 = {
+	global_colonial_growth = 80
+	colonist_placement_chance = 0.20
+	development_cost = -0.20
+}
+
+colonial_subject_overlord_col_reward_7 = {
+	global_colonial_growth = 70
+	colonist_placement_chance = 0.175
+	development_cost = -0.175
+}
+
+colonial_subject_overlord_col_reward_6 = {
+	global_colonial_growth = 60
+	colonist_placement_chance = 0.15
+	development_cost = -0.15
+}
+
+colonial_subject_overlord_col_reward_5 = {
+	global_colonial_growth = 50
+	colonist_placement_chance = 0.125
+	development_cost = -0.125
+}
+
+colonial_subject_overlord_col_reward_4 = {
+	global_colonial_growth = 40
+	colonist_placement_chance = 0.10
+	development_cost = -0.10
+}
+
+colonial_subject_overlord_col_reward_3 = {
+	global_colonial_growth = 30
+	colonist_placement_chance = 0.075
+	development_cost = -0.075
+}
+
+colonial_subject_overlord_col_reward_2 = {
+	global_colonial_growth = 20
+	colonist_placement_chance = 0.05
+	development_cost = -0.05
+}
+
+colonial_subject_overlord_col_reward_1 = {
+	global_colonial_growth = 10
+	colonist_placement_chance = 0.025
+	development_cost = -0.025
+}
+
+colonial_subject_shared_col_reward = {
+	development_cost = -0.05
+}
+
+colonial_subject_overlord_building_reward_8 = {
+	build_cost = -0.40
+	build_time = -0.40
+}
+
+colonial_subject_overlord_building_reward_7 = {
+	build_cost = -0.35
+	build_time = -0.35
+}
+
+colonial_subject_overlord_building_reward_6 = {
+	build_cost = -0.30
+	build_time = -0.30
+}
+
+colonial_subject_overlord_building_reward_5 = {
+	build_cost = -0.25
+	build_time = -0.25
+}
+
+colonial_subject_overlord_building_reward_4 = {
+	build_cost = -0.20
+	build_time = -0.20
+}
+
+colonial_subject_overlord_building_reward_3 = {
+	build_cost = -0.15
+	build_time = -0.15
+}
+
+colonial_subject_overlord_building_reward_2 = {
+	build_cost = -0.1
+	build_time = -0.1
+}
+
+colonial_subject_overlord_building_reward_1 = {
+	build_cost = -0.05
+	build_time = -0.05
+}
+
+colonial_subject_shared_building_reward = {
+	build_cost = -0.075
+	build_time = -0.05
+}
+
+colonial_subject_overlord_gold_reward_8 = {
+	inflation_reduction = 0.24
+	interest = -0.8
+}
+
+colonial_subject_overlord_gold_reward_7 = {
+	inflation_reduction = 0.21
+	interest = -0.7
+}
+
+colonial_subject_overlord_gold_reward_6 = {
+	inflation_reduction = 0.18
+	interest = -0.6
+}
+
+colonial_subject_overlord_gold_reward_5 = {
+	inflation_reduction = 0.15
+	interest = -0.5
+}
+
+colonial_subject_overlord_gold_reward_4 = {
+	inflation_reduction = 0.12
+	interest = -0.4
+}
+
+colonial_subject_overlord_gold_reward_3 = {
+	inflation_reduction = 0.09
+	interest = -0.3
+}
+
+colonial_subject_overlord_gold_reward_2 = {
+	inflation_reduction = 0.06
+	interest = -0.2
+}
+
+colonial_subject_overlord_gold_reward_1 = {
+	inflation_reduction = 0.03
+	interest = -0.1
+}
+
+colonial_subject_gold_shared_reward = {
+	inflation_reduction = 0.1
+	interest = -0.5
+}
+
+colony_trade = {
+	trade_efficiency = 0.2
+	global_trade_goods_size = 0.1
+	global_trade_goods_size = 0.05
+}
+
+colony_navy = {
+	global_ship_trade_power = 0.1
+	naval_forcelimit_modifier = 0.1
+	naval_maintenance_modifier = -0.1
+	ship_durability = 0.05
+}
+
+colony_army = {
+	global_manpower_modifier = 0.10
+	manpower_recovery_speed = 0.05
+	land_forcelimit_modifier = 0.10
+	land_morale = 0.05
+}
+
+colony_col = {
+	development_cost = -0.1
+	advisor_cost = -0.1
+}
+
+colony_gold = {
+	inflation_reduction = 0.1
+	interest = -1
+	gold_depletion_chance_modifier = -0.15
+}
+
+colony_buildings = {
+	build_cost = -0.15
+	build_time = -0.10
+	great_project_upgrade_cost = -0.25
+}
+
+#Individual
+cape_trade = {
+	trade_value = 5
+	trade_goods_size_modifier = 0.25
+	trade_range_modifier = 0.25
+}
+
+
+saf_exported_gold = {
+	interest = -0.5
+	build_time = -0.10
+}
+
+havana_trade = {
+	trade_value = 5
+	province_trade_power_modifier = 0.25
+	trade_goods_size = 0.5
+}
+
+carribean_silver_mine = {
+	trade_goods_size_modifier = 0.25
 }
 
 ###########
@@ -1240,7 +1993,8 @@ dan_colonial_ambitions_mod = {
 }
 
 dan_new_world_expansion = {
-	global_colonial_growth = 20
+	colonists = 2
+	global_colonial_growth = 100
 }
 
 dan_humiliated_the_hanse = {
@@ -1532,6 +2286,7 @@ sca_great_empire_of_scandinavia = {	#Permanent
 	devotion = 0.25
 	republican_tradition = 0.1
 	max_absolutism = 20
+	land_morale = 0.075
 }
 
 dan_great_empire_of_scandinavia = {	#Permanent
@@ -1539,6 +2294,7 @@ dan_great_empire_of_scandinavia = {	#Permanent
 	devotion = 0.25
 	republican_tradition = 0.1
 	max_absolutism = 20
+	land_morale = 0.075
 }
 
 sca_hegemony_over_germany = {	#Permanent unless culture swap
@@ -2392,6 +3148,10 @@ bur_arles_mod = {
 
 ara_gen_goods_mod = {
 	global_trade_goods_size_modifier = 0.15
+}
+
+estate_burghers_desert_dev_desert = {
+	local_development_cost = -0.3
 }
 
 # Mamluk missions
@@ -4222,8 +4982,8 @@ mlo_alpine_fortifications = {
 }
 
 mlo_lombard_renaissance = {
-	development_cost = -0.1
-	build_cost = -0.1
+	development_cost = -0.05
+	build_cost = -0.075
 }
 
 mlo_the_swiss_mercs = {
@@ -4918,7 +5678,7 @@ sav_savoyard_army = {
 #Italian missions
 
 ita_italian_prosperity = {
-	development_cost = -0.1
+	trade_efficiency = 0.075
 	stability_cost_modifier = -0.25
 }
 
@@ -7906,3 +8666,364 @@ capital_expansion_modifier = {
 	local_development_cost_modifier = -0.15 
 	local_build_time = -0.25 
 }
+
+CPH_conquest_of_jur = {
+	missionaries = 1
+	global_missionary_strength = 0.01
+	missionary_maintenance_cost = -0.2
+}
+
+CPH_desert_moving = {
+	movement_speed = 0.05
+}
+
+CPH_desert_stomachs= {
+	global_supply_limit_modifier = 0.1
+}
+
+CPH_expanding_citizen_rights_1 = {
+	num_accepted_cultures = 1
+}
+
+CPH_expanding_citizen_rights_2 = {
+	num_accepted_cultures = 2
+}
+
+CPH_expanding_citizen_rights_3 = {
+	num_accepted_cultures = 3
+}
+
+CPH_expanding_citizen_rights_4 = {
+	num_accepted_cultures = 4
+}
+
+CPH_expanding_citizen_rights_5 = {
+	num_accepted_cultures = 5
+}
+
+CPH_expanding_citizen_rights_6 = {
+	num_accepted_cultures = 6
+}
+
+
+CPH_united_egypt_modifier = {
+	production_efficiency = 0.10
+	global_trade_goods_size_modifier = 0.1
+}
+
+CPH_united_arabia_modifier = {
+	tolerance_own = 1
+	missionaries = 1
+	global_missionary_strength = 0.01
+	global_prosperity_growth = 0.2
+	prestige = 0.5
+	legitimacy = 1
+	republican_tradition = 0.5
+	devotion = 1
+	horde_unity = 1
+}
+
+CPH_united_mashriq_modifier = {
+	missionaries = 1
+	manpower_recovery_speed = 0.10
+	reinforce_speed = 0.15
+}
+
+CPH_united_persia_modifier = {
+	merchants = 2
+	global_trade_power = 0.15
+}
+
+CPH_united_cau_ana_modifier = {
+	infantry_power = 0.10
+	infantry_cost = -0.15
+}
+
+persian_learnings = {
+	technology_cost = -0.1
+}
+
+CPH_legacy_of_pirates = {
+	may_perform_slave_raid = yes
+	available_province_loot = 0.5
+}
+
+maliki_schooling = {
+	development_cost = -0.05
+}
+
+CPH_gold = {
+	trade_goods_size = 0.5
+}
+
+lessons_from_the_steps = {
+	movement_speed = 0.05
+}
+
+CPH_dyes = {
+	trade_goods_size = 0.5
+}
+
+CPH_increased_cheese_taxing = {
+	global_tax_modifier = 0.2
+}
+
+CPH_expert_architecs = {
+	local_build_cost = -0.25
+	local_great_project_upgrade_cost = -0.25
+	allowed_num_of_buildings = 1
+	allowed_num_of_manufactories = 1
+}
+
+CPH_expert_oarsman = {
+	galley_power = 0.15
+	ship_durability = 0.1
+}
+
+CPH_the_suez = {
+	province_trade_power_value = 5.0
+	local_warscore_cost_modifier = 0.1
+	local_tax_modifier = 0.1
+}
+
+CPH_the_nile_delta = {
+	production_efficiency = 0.1
+}
+
+CPH_prosperous = {
+	local_tax_modifier = 0.1
+	local_production_efficiency = 0.1
+	local_manpower = 0.1
+}
+
+CPH_generals_desert_training = {
+	leader_land_shock = 1
+	leader_land_manuever = 1
+}
+
+CPH_arabian_trade = {
+	placed_merchant_power = 15
+	global_prov_trade_power_modifier = 0.1
+}
+
+CPH_recruitment = {
+	global_regiment_cost = -0.10
+	global_regiment_recruit_speed = -0.15
+	manpower_recovery_speed = 0.15
+}
+
+CPH_drugs = {
+	yearly_corruption = 0.5
+}
+
+CPH_secured_entrances_to_asia = {
+	local_defensiveness = 0.20
+	local_hostile_attrition = 3
+	blockade_force_required = 0.25
+}
+
+CPH_desert_perfumearies = {
+	trade_goods_size_modifier = 0.25
+}
+
+CPH_navigating_the_med = {
+	global_ship_trade_power = 0.2
+	naval_tradition_from_trade = 0.1
+}
+
+CPH_into_india = {
+	land_morale = 0.1
+	recover_army_morale_speed = 0.10
+}
+
+CPH_ana_manpower = {
+	local_manpower_modifier = 0.25
+}
+
+CPH_persia_clothes = {
+	local_development_cost = -0.1
+	province_trade_power_value = 3
+}
+
+CPH_spice_empire = {
+	global_monthly_devastation = -0.5
+	global_prosperity_growth = 0.5
+}
+
+CPH_the_silk_road = {
+	global_trade_power = 0.1
+	trade_efficiency = 0.1
+}
+
+CPH_minaret_restored = {
+	local_build_cost = -0.25
+	local_great_project_upgrade_cost = -0.25
+	missionaries = 1
+}
+
+CPH_true_faith = {
+	manpower_in_true_faith_provinces= 0.10
+}
+
+CPH_lessons_of_babylon = {
+	idea_cost = -0.15
+}
+
+CPH_restored_shrines = {
+	prestige = 1
+	prestige_decay = -0.01
+}
+
+CPH_food_for_troops = {
+	land_forcelimit_modifier = 0.15
+}
+
+trading_subject_overlord_modifier = {
+	merchants = 1
+	trade_efficiency = 0.1
+	trade_range_modifier = 0.1
+}
+
+trading_subject_subject_modifier = {
+	trade_efficiency = 0.05
+	global_trade_goods_size_modifier = 0.05
+}
+
+KUS_hindu_empire = {
+	tolerance_own = 2
+	prestige_per_development_from_conversion = 0.25
+	missionary_maintenance_cost = -0.1
+}
+
+KUS_rajputs_training = {
+	drill_gain_modifier = 0.20
+	reinforce_speed = 0.20
+	land_maintenance_modifier = -0.2
+	morale_damage_received = -0.025
+	is_rajput_modifier = yes
+}
+
+ruler_of_north_india = {
+	legitimacy = 1
+	republican_tradition = 0.5
+	devotion = 1
+	horde_unity = 1
+	global_manpower_modifier = 0.15
+	global_regiment_recruit_speed = -0.20
+	monthly_splendor = 1
+}
+
+KUS_legacy_of_bng = {
+	backrow_artillery_damage = 0.10
+	artillery_power = 0.10
+}
+
+KUS_bronze = {
+	artillery_cost = -0.15
+}
+
+kus_armour = {
+	morale_damage_received = -0.10
+	reserves_organisation = 0.10
+}
+
+KUS_convert_india_start = {
+	global_missionary_strength = 0.01
+	missionary_maintenance_cost = -0.2
+	prestige_per_development_from_conversion = 0.1
+}
+
+KUS_missionary = {
+	missionaries = 1
+	global_missionary_strength = 0.02
+}
+
+kus_unified_religion = {
+	manpower_in_true_faith_provinces= 0.10
+	stability_cost_modifier = -0.1
+	religious_unity = 0.2
+}
+
+tm_ARB_generals_1 = {
+	leader_cost = -0.10
+}
+tm_ARB_generals_2 = {
+	leader_cost = -0.10
+	leader_land_manuever = 1
+}
+tm_ARB_generals_3 = {
+	leader_cost = -0.10
+	leader_land_manuever = 1
+	leader_land_shock = 1
+}
+
+tm_arb_elite_cav = {
+	cavalry_cost = -0.15
+}
+
+tm_arb_dealing_with_eth = {
+	shock_damage = 0.10
+}
+
+tm_arb_gold = {
+	trade_goods_size = 0.75
+	local_gold_depletion_chance_modifier = -0.05
+}
+
+expanding_mecca = {
+	local_build_cost = -0.25
+	local_build_time = -0.25
+	local_great_project_upgrade_cost = -0.25
+	local_development_cost = -0.35
+	allowed_num_of_buildings = 1
+}
+
+arb_holy_city = {
+	prestige = 1
+	legitimacy = 1
+	republican_tradition = 0.5
+	devotion = 1
+	horde_unity = 1
+	tolerance_own = 2
+	missionary_maintenance_cost = -0.1
+	monthly_piety_accelerator = 0.001
+}
+
+arb_lessons_from_the_cawa = {
+	shock_damage = 0.05
+	shock_damage_received = -0.05
+}
+
+tm_arb_persian_trade = {
+	merchants = 1
+	trade_efficiency = 0.1
+}
+
+tm_arb_uniforms = {
+	local_manpower_modifier = 0.5
+}
+
+tm_arb_industrialisation = {
+	global_trade_goods_size_modifier = 0.1
+	innovativeness_gain = 0.25
+	idea_cost = -0.05
+}
+
+tm_arb_into_the_mamluks = {
+	siege_ability = 0.10
+	recover_army_morale_speed = 0.10
+	province_warscore_cost = -0.05
+	core_creation = -0.05
+}
+
+tm_arb_triumph_over_mamluks = {
+	years_of_nationalism = -5
+	country_admin_power = 1
+	all_power_cost = -0.03
+	manpower_recovery_speed = 0.15
+}
+
+tm_arb_stockpiled_food = {
+	land_forcelimit_modifier = 0.1
+}
+

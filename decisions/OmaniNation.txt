@@ -3,59 +3,34 @@ country_decisions = {
 		omani_nation = {
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
-				was_never_end_game_tag_trigger = yes
 				NOT = { has_country_flag = formed_omani_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
-				NOT = { tag = MOS }
-				NOT = { tag = RUS }
-				#NOT = { tag = TIM }
+				NOT = { exists = OME }
+				ai = no
 				NOT = { tag = PER }
 				NOT = { tag = MAM }
 				NOT = { tag = TUR }
 				is_colonial_nation = no
-				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
 				OR = {
 					primary_culture = omani_culture
 					primary_culture = yemeni_culture
 					primary_culture = mahri_culture
 					primary_culture = swahili
 				}
-				
-				OR = {
-					ai = no
-					AND = {
-						NOT = { exists = OME }
-						num_of_cities = 10
-						adm_tech = 10
-					}
-				}
+				NOT = { has_country_flag = sunni_scholar_selected }
+				NOT = { has_country_flag = shia_scholar_selected }
 			}
 			
 			provinces_to_highlight = {
 				OR = {
-				province_id = 2219			# Bandar Langeh
-				province_id = 431			# Mogostan
-				province_id = 2999			# Hormuz
-				province_id = 400			# Masqat
-				province_id = 4283			# Shihr
-				province_id = 1099			# Suqutra
-				province_id = 1205			# Mogadishu
-				province_id = 1203			# Malindi
-				province_id = 1201			# Zanzibar
-				province_id = 1195			# Mozambique
-				province_id = 1196			#kilwa
+					province_id = 2219			# Bandar Langeh
+					province_id = 431			# Mogostan
+					province_id = 2999			# Hormuz
+					province_id = 400			# Masqat
+					province_id = 4283			# Shihr
+					province_id = 1099			# Suqutra
+					province_id = 388           # Aden
+
 				}
-					
 				OR = {
 					NOT = { owned_by = ROOT }
 					NOT = { is_core = ROOT }
@@ -63,7 +38,10 @@ country_decisions = {
 			}
 			
 			allow = {
-				NOT = { exists = OME }
+				custom_trigger_tooltip = {
+					tooltip = titan_oman_chose_ibadi_scholar_tt
+					has_country_flag = ibadi_scholar_selected
+				}
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
 				owns_core_province = 2219			# Bandar Langeh
@@ -72,44 +50,16 @@ country_decisions = {
 				owns_core_province = 400			# Masqat
 				owns_core_province = 4283			# Shihr
 				owns_core_province = 1099			# Suqutra
-				owns_core_province = 1205			# Mogadishu
-				owns_core_province = 1203			# Malindi
-				owns_core_province = 1201			# Zanzibar
-				owns_core_province = 1195			# Mozambique
-				owns_core_province = 1196			#kILWA
-				
+				owns_core_province = 388            # Aden
 				
 			}
+
 			effect = {
-				400 = {	#Muscat
-					move_capital_effect = yes
-				}
 				change_tag = OME
-				change_religion = ibadi
-				swap_non_generic_missions = yes
-				remove_non_electors_emperors_from_empire_effect = yes
-				if = {
-					limit = {
-						NOT = { government_rank = 3 }
-					}
-					set_government_rank = 3
-				}
 				add_prestige = 25
 				add_country_modifier = {
 					name = centralization_modifier
 					duration = 3650
-				}
-				set_capital = 400 # Muscat
-				if = {
-					limit = {
-						NOT = { government = monarchy }
-						is_revolutionary = no
-					}
-					change_government_to_monarchy = yes
-				}
-				if = {
-					limit = { is_revolutionary = no }
-					change_government_to_republic = yes
 				}
 				if = {
 					limit = {
@@ -118,12 +68,9 @@ country_decisions = {
 					change_technology_group = muslim
 					change_unit_type = muslim
 				}
-				
 				set_country_flag = formed_omani_flag
-				if = {
-				limit = { has_custom_ideas = no }
 				country_event = { id = ideagroups.1 } #Swap Ideas
-				}
+				add_government_reform = omani_empire_reform
 			}
 		}
 }

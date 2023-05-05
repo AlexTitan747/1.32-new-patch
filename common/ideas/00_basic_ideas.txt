@@ -261,178 +261,6 @@ expansion_ideas = {
 	}
 }
 
-colonialism_ideas = {
-	category = ADM
-
-	bonus = {
-		heavy_ship_power = 0.1
-	}
-
-	i169 = {
- 		colonists = 2
-  	}
-  	i170 = {
-  		global_colonial_growth = 20
-  	}
-	i171 = {
-		merchants = 2
-	}
-	i172 = {
-		native_uprising_chance = -0.5
-	}
-	i173 = {
-		trade_steering = 0.15
-	}
-	i174 = {
-		diplomatic_reputation = 2
-		diplomatic_upkeep = 2
-	}
-	i175 = {
-		inflation_action_cost = -0.33
-	}
-
-	ai_will_do = {
-		factor = 0.65
-		modifier = {
-			factor = 0
-			is_colonial_nation = yes
-		}
-		modifier = {
-			factor = 0
-			is_tribal = yes
-		}
-		modifier = {
-			factor = 0
-			is_subject = yes
-		}		
-		modifier = {
-			factor = 0
-			primitives = yes
-		}
-		modifier = {
-			factor = 0
-			current_age = age_of_revolutions #too late
-		}
-		modifier = {
-			factor = 0
-			NOT = {
-				any_owned_province = {
-					has_port = yes
-					sea_zone = {
-						NOT = { area = eastern_mediterrenean_area }
-					}
-				}
-			}
-			NOT = { 
-				any_owned_province = { 
-					is_in_capital_area = yes
-					has_empty_adjacent_province = yes
-				} 
-			}
-		}
-		modifier = {
-			factor = 0.5
-			NOT = {
-				any_owned_province = {
-					has_port = yes
-					sea_zone = {
-						OR = {
-							NOT = { region = mediterrenean_region }
-							province_id = 1293 #Gibraltar
-							province_id = 1294 #Almeria
-						}
-						NOT = { area = red_sea_area }
-						NOT = { area = baltic_area }
-					}
-				}
-			}
-			NOT = { 
-				any_owned_province = { 
-					is_in_capital_area = yes
-					has_empty_adjacent_province = yes
-				} 
-			}
-		}
-		modifier = {
-			factor = 0.1
-			NOT = { num_of_ports = 3 }
-			NOT = { 
-				any_owned_province = { 
-					is_in_capital_area = yes
-					has_empty_adjacent_province = yes
-				}
-			}
-		}
-		modifier = {
-			factor = 0.1
-			NOT = { has_institution = renaissance }
-			NOT = { tag = POR }
-			NOT = { tag = CAS }
-		}
-		modifier = {
-			factor = 0.1
-			capital_scope = {
-				NOT = {
-					region = france_region
-					region = iberia_region
-					region = british_isles_region
-					region = low_countries_region
-				}
-			}
-			NOT = { technology_group = high_american }
-		}
-		modifier = {
-			factor = 0.5
-			tag = ARA
-		}
-		modifier = {
-			factor = 0.1
-			NOT = { is_year = 1490 }
-			capital_scope = {
-				NOT = {
-					region = iberia_region
-				}
-			}
-		}
-		modifier = {
-			factor = 10
-			technology_group = high_american
-		}
-		modifier = {
-			factor = 2.0
-			num_of_ports = 5
-		}
-		modifier = {
-			factor = 2.0
-			num_of_ports = 10
-		}
-		modifier = {
-			factor = 2.0
-			num_of_ports = 15
-		}
-		modifier = {
-			factor = 2.0
-			num_of_ports = 20
-		}
-		modifier = {
-			factor = 1000
-			tag = POR
-		}
-		modifier = {
-			factor = 2
-			OR = {
-				tag = CAS
-				tag = SPA
-				tag = GBR
-				tag = NED
-				tag = ENG
-				tag = FRA
-				tag = KUR
-			}
-		}
-	}
-}
-
 innovative_ideas = {
 	category = ADM
 
@@ -949,40 +777,39 @@ influence_ideas = {
 	}
 }
 
-exploration_ideas = {
+colonialism_ideas = {
 	category = DIP
-	important = yes
 
 	bonus = {
-		global_tariffs = 0.2
+		heavy_ship_power = 0.1
 	}
 
 	quest_for_the_new_world	= {
 		may_explore = yes
+		colonists = 2
 	}
-
-	i65 = {
-		colonists = 1
+  	i170 = {
+  		global_colonial_growth = 20
+  	}
+	i171 = {
+		merchants = 2
 	}
-	
-	i66 = {
-		range = 0.4
+	i172 = {
+		native_uprising_chance = -0.5
 	}
-	i67 = {
-		treasure_fleet_income = 0.1
+	i173 = {
+		trade_steering = 0.15
 	}
-	i68  = {
- 		envoy_travel_time = -0.20
- 	}
-	i69 = {
-		native_assimilation = 0.2
+	i174 = {
+		diplomatic_reputation = 2
+		diplomatic_upkeep = 2
 	}
-	i70 = {
-		global_colonial_growth = 10
+	i175 = {
+		inflation_action_cost = -0.33
 	}
 
 	ai_will_do = {
-		factor = 0.55
+		factor = 0.65
 		modifier = {
 			factor = 0
 			is_colonial_nation = yes
@@ -1085,13 +912,40 @@ exploration_ideas = {
 			}
 		}
 		modifier = {
-			factor = 1000
-			tag = POR
-			NOT = { has_idea_group = expansion_ideas }
+			factor = 10
+			technology_group = high_american
 		}
 		modifier = {
-			factor = 0.5
-			has_idea_group = expansion_ideas
+			factor = 2.0
+			num_of_ports = 5
+		}
+		modifier = {
+			factor = 2.0
+			num_of_ports = 10
+		}
+		modifier = {
+			factor = 2.0
+			num_of_ports = 15
+		}
+		modifier = {
+			factor = 2.0
+			num_of_ports = 20
+		}
+		modifier = {
+			factor = 1000
+			tag = POR
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				tag = CAS
+				tag = SPA
+				tag = GBR
+				tag = NED
+				tag = ENG
+				tag = FRA
+				tag = KUR
+			}
 		}
 	}
 }
@@ -1491,7 +1345,7 @@ defensive_ideas = {
 		land_morale = 0.05
 	}
 	i54 = {
-		army_tradition_from_battle = 1
+		army_tradition_from_battle = 0.5
 	}
 	i55 = {
 		recover_army_morale_speed = 0.15
@@ -1825,4 +1679,40 @@ maritime_ideas = {
 	}
 	i77 = {
 	}		
+}
+
+exploration_ideas = {
+	category = DIP
+
+	trigger = {
+		always = no
+	}
+
+	bonus = {
+		global_tariffs = 0.2
+	}
+
+	quest_for_the_new_world	= {
+		may_explore = yes
+	}
+
+	i65 = {
+		colonists = 1
+	}
+	
+	i66 = {
+		range = 0.4
+	}
+	i67 = {
+		treasure_fleet_income = 0.1
+	}
+	i68  = {
+ 		envoy_travel_time = -0.20
+ 	}
+	i69 = {
+		native_assimilation = 0.2
+	}
+	i70 = {
+		global_colonial_growth = 10
+	}
 }

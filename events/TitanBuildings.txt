@@ -1,0 +1,1163 @@
+namespace = tbuildings
+
+#cultural ministry events
+
+#assimilation drive
+country_event = {
+	id = tbuildings.1
+	title = "tbuildings.1"
+	desc = "tbuildings.desc1"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		advisor = master_of_assimilation
+		OR = {
+			government_rank = 3
+			has_unified_culture_group = yes
+		}
+		NOT = {
+			OR = {
+			has_country_modifier = tm_b_assimilation_encouraged
+			has_country_modifier =  tm_has_had_tbuildings1
+			}
+		}
+	}
+	mean_time_to_happen = {
+		months = 60
+		modifier = {
+			factor = 0.6
+			master_of_assimilation = 5
+		}
+		modifier = {
+			factor = 0.75
+			master_of_assimilation = 4
+		}
+		modifier = {
+			factor = 0.9
+			master_of_assimilation = 3
+		}
+	}
+	
+	
+	option = {		
+	name = "tbuildings.a1"
+		add_country_modifier = {
+			name = tm_b_assimilation_encouraged
+			duration = 3650
+		}
+	}
+
+	option = {		
+	name = "tbuildings.a2"
+		add_dip_power = 75
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_has_had_tbuildings1
+				duration = 3650
+				hidden = yes
+			}
+		}
+	}
+}
+
+#nobility ask for cultrual supremacy
+country_event = {
+	id = tbuildings.2
+	title = "tbuildings.2"
+	desc = "tbuildings.desc2"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		OR = {
+		has_estate_privilege = estate_nobles_supremacy_over_crown
+		has_estate_privilege = estate_brahmins_supremacy_over_crown
+		estate_influence = {
+			estate = estate_nobles
+			influence = 75
+		}
+		}
+		NOT = {
+			has_country_modifier = tm_has_had_tbuildings2
+		}
+	}
+	mean_time_to_happen = {
+		months = 90
+	}
+	
+	
+	option = {		
+	name = "tbuildings.b1"
+		random_owned_province = {
+			spawn_rebels = {
+				type = particularist_rebels
+				size = 1
+			}
+		}
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = 15
+		}
+		add_estate_influence_modifier = {
+			estate = estate_nobles
+			influence = 15
+			duration = 3650
+		}
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_has_had_tbuildings2
+				duration = 3650
+				hidden = yes
+			}
+		}
+	}
+
+	option = {		
+	name = "tbuildings.b2"
+		add_prestige = 20	
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = -20
+		}
+		add_estate_influence_modifier = {
+			estate = estate_nobles
+			influence = -10
+			duration = 3650
+		}
+		add_country_modifier = {
+			name = tm_b_nobles_denied_culture
+			duration = 3650
+		}
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_has_had_tbuildings2
+				duration = 3650
+				hidden = yes
+			}
+		}
+	}
+}
+
+#multicultrual approach?
+country_event = {
+	id = tbuildings.3
+	title = "tbuildings.3"
+	desc = "tbuildings.desc3"
+	picture = BUDDHA_eventPicture
+
+	fire_only_once = yes
+
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		is_year = 1600
+		innovativeness = 20
+		legitimacy_equivalent = 95
+		num_of_different_cultures_in_court = 4
+		master_of_assimilation = 3
+	}
+	mean_time_to_happen = {
+		months = 120
+	}
+	
+	
+	option = {		
+	name = "tbuildings.c1"
+		add_country_modifier = {
+			name = tm_b_multicultrual_approach
+			duration = -1
+		}
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = -10
+		}
+		add_estate_loyalty = {
+			estate = estate_burghers
+			loyalty = -10
+		}
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = -10
+		}
+	}
+
+	option = {		
+	name = "tbuildings.c2"
+		add_country_modifier = {
+			name = tm_b_multicultrual_approach_denied
+			duration = -1
+		}
+	}
+}
+
+#increased cultural unrest
+country_event = {
+	id = tbuildings.4
+	title = "tbuildings.4"
+	desc = "tbuildings.desc4"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		average_unrest = 2
+		legitimacy_equivalent = 75
+		NOT = {
+			prestige = 10
+			is_bankrupt = yes
+		}
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	
+	
+	option = {		
+	name = "tbuildings.d1"
+	random_owned_province = {
+		limit = {
+			PREV = {
+				NOT = {
+					has_owner_accepted_culture = yes
+				}
+			}
+		}
+		spawn_rebels = {
+			type = particularist_rebels
+			size = 1
+		}
+	}
+	random_owned_province = {
+		limit = {
+			PREV = {
+				NOT = {
+					has_owner_accepted_culture = yes
+				}
+		}
+		}
+		spawn_rebels = {
+			type = particularist_rebels
+			size = 1
+		}
+	}
+	}
+
+	option = {		
+	name = "tbuildings.d2"
+		add_years_of_income = -1
+		add_dip_power = -50
+	}
+}
+
+#integration incouraged
+country_event = {
+	id = tbuildings.5
+	title = "tbuildings.5"
+	desc = "tbuildings.desc5"
+	picture = BUDDHA_eventPicture
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		advisor = master_of_integration
+		vassal = 1
+		OR = {
+			government_rank = 3
+			has_unified_culture_group = yes
+		}
+		NOT = {
+			OR = {
+			has_country_modifier = tm_b_assimilation_encouraged
+			has_country_modifier =  tm_has_had_tbuildings5
+			}
+		}
+	}
+	mean_time_to_happen = {
+		months = 60
+		modifier = {
+			factor = 0.6
+			master_of_integration = 5
+		}
+		modifier = {
+			factor = 0.75
+			master_of_integration = 4
+		}
+		modifier = {
+			factor = 0.9
+			master_of_integration = 3
+		}
+	}
+	
+
+	option = {		
+	name = "tbuildings.e1"
+		add_country_modifier = {
+			name = tm_b_integration_encouraged
+			duration = 3650
+		}
+	}
+
+	option = {		
+	name = "tbuildings.e2"
+		add_dip_power = 75
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_has_had_tbuildings5
+				duration = 3650
+				hidden = yes
+			}
+		}
+	}
+}
+
+#advisors
+country_event = {
+	id = tbuildings.6
+	title = "tbuildings.6"
+	desc = "tbuildings.desc6"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		num_of_different_cultures_in_court = 3
+		NOT = {
+			has_country_modifier = tm_b_advisors_accepted
+			has_country_modifier = new_men
+		}
+	}
+	mean_time_to_happen = {
+		months = 60
+	}
+	
+	
+	option = {		
+	name = "tbuildings.f1"
+		add_country_modifier = {
+			name = tm_b_advisors_accepted
+			duration = 3650
+		}
+	}
+
+	option = {		
+	name = "tbuildings.f2"
+		add_dip_power = 75
+		add_prestige = 20
+	}
+}
+
+#nobility support integration
+country_event = {
+	id = tbuildings.7
+	title = "tbuildings.7"
+	desc = "tbuildings.desc7"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		OR = {
+			has_estate_privilege = estate_nobles_supremacy_over_crown
+			has_estate_privilege = estate_brahmins_supremacy_over_crown
+			}
+		OR = {
+			has_estate_privilege = estate_nobles_strong_duchies
+			has_estate_privilege = estate_maratha_subject_rights
+			has_estate_privilege = estate_rajput_subject_rights
+			has_estate_privilege = estate_nobles_french_strong_duchies
+			has_estate_privilege = estate_nobles_better_integration
+			has_estate_privilege = estate_maratha_better_integration
+			has_estate_privilege = estate_rajput_better_integration
+			}
+		vassal = 1
+		estate_influence = {
+			estate = estate_nobles
+			influence = 75
+		}
+		NOT = {
+			has_country_modifier = tm_has_had_tbuildings7
+		}
+	}
+	mean_time_to_happen = {
+		months = 90
+	}
+	
+	
+	option = {		
+	name = "tbuildings.g1"
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = 15
+		}
+		add_estate_influence_modifier = {
+			estate = estate_nobles
+			influence = 15
+			duration = 3650
+		}
+		add_country_modifier = {
+			name = tm_b_nobles_encouraged_integration
+			duration = 7300
+		}
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_has_had_tbuildings7
+				duration = 3650
+				hidden = yes
+			}
+		}
+	}
+
+	option = {		
+	name = "tbuildings.g2"
+		add_prestige = 20	
+		add_mil_power = 100
+		add_estate_loyalty = {
+			estate = estate_nobles
+			loyalty = -10
+		}
+		add_estate_influence_modifier = {
+			estate = estate_nobles
+			influence = -10
+			duration = 3650
+		}
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_has_had_tbuildings7
+				duration = 3650
+				hidden = yes
+			}
+		}
+	}
+}
+
+#burgers take trading oppourtunities
+country_event = {
+	id = tbuildings.8
+	title = "tbuildings.8"
+	desc = "tbuildings.desc8"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		OR = {
+			has_estate_privilege = estate_jains_clerical_class
+			has_estate_privilege = estate_burghers_free_enterprise
+			has_estate_privilege = estate_vaisyas_loyalty_privilege
+		}
+		OR = {
+			has_estate_privilege = estate_jains_encourage_production
+			has_estate_privilege = estate_burghers_encourage_production
+			has_estate_privilege = estate_burghers_private_trade_fleets
+			has_estate_privilege = estate_vaisyas_private_trade_fleets
+			has_estate_privilege = estate_jains_private_trade_fleets
+		}
+		vassal = 1
+		estate_influence = {
+			estate = estate_burghers
+			influence = 70
+		}
+		NOT = {
+			has_country_modifier = tm_has_had_tbuildings7
+		}
+	}
+	mean_time_to_happen = {
+		months = 90
+	}
+	
+	option = {		
+		name = "tbuildings.h3"
+			add_prestige = 20	
+			add_adm_power = 50
+			add_estate_loyalty = {
+				estate = estate_burghers
+				loyalty = -20
+			}
+			add_estate_influence_modifier = {
+				estate = estate_burghers
+				influence = -10
+				duration = 3650
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = tm_has_had_tbuildings8
+					duration = 3650
+					hidden = yes
+				}
+			}
+		}
+	
+	option = {		
+	name = "tbuildings.h1"
+		add_estate_loyalty = {
+			estate = estate_burghers
+			loyalty = 10
+		}
+		add_estate_influence_modifier = {
+			estate = estate_burghers
+			influence = 10
+			duration = 3650
+		}
+		add_country_modifier = {
+			name = tm_b_burghers_taking_production_advantage
+			duration = 3650
+		}
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_has_had_tbuildings8
+				duration = 3650
+				hidden = yes
+			}
+		}
+	}
+
+	option = {		
+		name = "tbuildings.h2"
+			add_estate_loyalty = {
+				estate = estate_burghers
+				loyalty = 10
+			}
+			add_estate_influence_modifier = {
+				estate = estate_burghers
+				influence = 10
+				duration = 3650
+			}
+			add_country_modifier = {
+				name = tm_b_burghers_taking_trade_advantage
+				duration = 3650
+			}
+			hidden_effect = {
+				add_country_modifier = {
+					name = tm_has_had_tbuildings8
+					duration = 3650
+					hidden = yes
+				}
+			}
+		}
+
+}
+
+#convert the lands
+country_event = {
+	id = tbuildings.10
+	title = "tbuildings.10"
+	desc = "tbuildings.desc10"
+	picture = BUDDHA_eventPicture
+
+	trigger = {
+		has_country_flag = has_cultural_ministry
+		OR = {
+			has_estate_privilege = estate_church_one_faith_one_culture
+			has_estate_privilege = estate_brahmins_one_faith_one_culture
+		}
+		estate_influence = {
+			estate = estate_church
+			influence = 70
+		}
+		NOT = {
+			has_country_modifier = tm_has_had_tbuildings10
+		}
+	}
+	mean_time_to_happen = {
+		months = 90
+	}
+	
+	
+	option = {		
+	name = "tbuildings.j1"
+		add_country_modifier = {
+			name = tm_b_convert_religious_culture
+			duration = 3650
+		}
+		add_estate_loyalty = {
+			estate = estate_burghers
+			loyalty = 15
+		}
+		add_estate_influence_modifier = {
+			estate = estate_burghers
+			influence = 10
+			duration = 3650
+		}
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_has_had_tbuildings10
+				duration = 3650
+				hidden = yes
+			}
+		}
+	}
+
+	option = {		
+	name = "tbuildings.j2"
+		add_country_modifier = {
+			name = tm_b_accept_heathens
+			duration = 3650
+		}
+		add_estate_loyalty = {
+			estate = estate_church
+			loyalty = -10
+		}
+		if = {
+			limit = {
+				has_estate = dhimmi
+			}
+			add_estate_loyalty = {
+				estate = estate_dhimmi
+				loyalty = 15
+			}
+		}
+		add_estate_influence_modifier = {
+			estate = estate_church
+			influence = -10
+			duration = 3650
+		}
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_has_had_tbuildings10
+				duration = 3650
+				hidden = yes
+			}
+		}
+	}
+
+}
+
+#colonial events
+
+province_event = {
+	id =  tbuildings.50
+	title = "tbuildings.50"
+	desc = "tbuildings.desc50"
+	picture = COLONIZATION_eventPicture
+	
+	trigger = {
+		OR = {
+			owner = { has_idea_group = exploration_ideas }
+			owner = { has_idea_group = expansion_ideas }
+			owner = { has_idea_group = colonialism_ideas }
+			owner = { colonial_office = 1 }
+		}
+		has_empty_adjacent_province = yes
+		owner = { NOT = { num_of_colonies = 2 } }
+	}
+
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_province = {
+				limit = {
+					any_neighbor_province = {
+						owned_by = ROOT
+					}
+					is_city = no
+					has_colonist = no
+				}
+
+				save_event_target_as = empty_neighbor_target
+			}
+		}
+	}
+	
+	option = {
+		name = "tbuildings.i1"
+		goto = empty_neighbor_target
+		event_target:empty_neighbor_target = {
+			create_colony = 200
+			add_province_modifier = {
+				name = "colonial_boom"
+				duration = 7300
+			}
+		}
+	}
+	option = {
+		name = "tbuildings.i2"
+		trigger = {
+			owner = {
+			num_of_colonies = 1
+			}
+		}
+		goto = root
+		owner = {
+			random_owned_province = {
+				limit = {
+					is_colony = yes
+				}
+				add_province_modifier = {
+					name = "colonial_boom"
+					duration = 1825
+				}
+				add_colonysize = 100
+			}
+		}
+	}
+}
+
+country_event = {
+	id = tbuildings.51
+	title = tbuildings.51.t
+	desc = tbuildings.51.d
+	picture = COLONIZATION_eventPicture
+
+	trigger = {
+		NOT = { advisor = navigator }
+		colonial_office = 1
+		NOT = { has_country_modifier = tm_colonial_buildings_event_cooldown_1 }
+	}
+
+	mean_time_to_happen = {
+		months = 72
+	}
+
+	immediate = {
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_colonial_buildings_event_cooldown_1
+				duration = 7300
+				hidden = yes
+			}
+		}
+	}
+
+	option = {
+		name = tbuildings.51.a
+		define_advisor = {
+			type = navigator
+			cost_multiplier = 0.8
+			religion = ROOT
+			culture = ROOT
+		}
+	}
+
+	option = {
+		name = tbuildings.51.b
+		add_treasury = 100
+		add_prestige = 5
+	}
+}
+
+country_event = {
+	id = tbuildings.52
+	title = tbuildings.52.t
+	desc = tbuildings.52.d
+	picture = COLONIZATION_eventPicture
+
+	trigger = {
+		colonial_office = 1
+		NOT = { has_country_modifier = tm_colonial_buildings_event_cooldown_2 }
+		num_of_colonies = 1
+	}
+
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	immediate = {
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_colonial_buildings_event_cooldown_2
+				duration = 10950
+				hidden = yes
+			}
+
+			random_province = {
+				limit = {
+					any_neighbor_province = {
+						owned_by = ROOT
+					}
+					is_city = no
+					has_colonist = no
+				}
+
+				save_event_target_as = empty_neighbor_target
+			} 
+		}
+	}
+
+	option = {
+		name = tbuildings.52.a
+		goto = event_target:empty_neighbor_target
+		add_estate_loyalty = {
+			estate = estate_burghers
+			loyalty = 10
+		}
+		add_estate_influence_modifier = {
+			estate = estate_burghers
+			desc = ESTATE_BURGHERS_ACCEPTED_COLONY_OPPERTUNITY
+			influence = 10
+			duration = 3650
+		}
+		add_years_of_income = -0.25
+		event_target:empty_neighbor_target = {
+			create_colony = 500
+		}
+	}
+
+	option = {
+		name = tbuildings.52.b
+		add_estate_loyalty = {
+			estate = estate_burghers
+			loyalty = -10
+		}
+		add_estate_loyalty_modifier = {
+			estate = estate_burghers
+			desc = ESTATE_BURGHERS_REJECTED_COLONY_OPPERTUNITY
+			loyalty = -10
+			duration = 3650
+		}
+		random_owned_province = {
+			limit = {
+				same_continent = capital
+			}
+			add_base_manpower = 3
+			add_base_production = 3
+			add_base_tax = 3
+		}
+	}
+}
+
+country_event = {
+	id = tbuildings.53
+	title = tbuildings.53.t
+	desc = tbuildings.53.d
+	picture = COLONIZATION_eventPicture
+
+	trigger = {
+		colonial_office = 1
+		any_owned_province = {
+			is_city = no
+			has_colonist = yes
+			NOT = { colonysize = 800 }
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			random_owned_province = {
+				limit = {
+					is_city = no
+					has_colonist = yes
+					NOT = { colonysize = 800 }
+				}
+				save_event_target_as = random_colony
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	option = {
+		name = tbuildings.53.a
+		goto = event_target:random_colony
+		event_target:random_colony = {
+			add_colonysize = 150
+		}
+	}
+
+	option = {
+		name = tbuildings.53.b
+		add_dip_power = 50
+	}
+}
+
+country_event = {
+	id = tbuildings.54
+	title = tbuildings.54.t
+	desc = tbuildings.54.d
+	picture = COLONIZATION_eventPicture
+
+	trigger = {
+		advisor = navigator
+		colonial_office = 1
+		NOT = { has_country_modifier = tm_colonial_buildings_event_cooldown_3 }
+		num_of_continents = 2
+	}
+
+	immediate = {
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_colonial_buildings_event_cooldown_3
+				duration = 7300
+				hidden = yes
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 84
+	}
+
+	option = {
+		name = tbuildings.54.a
+		add_country_modifier = {
+			name = further_reaches
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = tbuildings.55
+	title = tbuildings.55.t
+	desc = tbuildings.55.d
+	picture = COLONIZATION_eventPicture
+
+	trigger = {
+		colonial_office = 1
+		NOT = { has_country_modifier = tm_colonial_buildings_event_cooldown_4 }
+		any_owned_province = {
+			is_colony = yes
+			has_colonist = yes
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_colonial_buildings_event_cooldown_4
+				duration = 7300
+				hidden = yes
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 84
+	}
+
+	option = {
+		name = tbuildings.55.a
+		add_country_modifier = {
+			name = expirienced_colonists
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = tbuildings.56
+	title = tbuildings.56.t
+	desc = tbuildings.56.d
+	picture = COLONIZATION_eventPicture
+
+	trigger = {
+		colonial_office = 1
+		NOT = { has_country_modifier = tm_colonial_buildings_event_cooldown_5 }
+		num_of_colonies = 1
+	}
+
+	immediate = {
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_colonial_buildings_event_cooldown_5
+				duration = 7300
+				hidden = yes
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 84
+	}
+
+	option = {
+		name = tbuildings.56.a
+		add_country_modifier = {
+			name = attractive_colonies
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = tbuildings.57
+	title = tbuildings.57.t
+	desc = tbuildings.57.d
+	picture = COLONIZATION_eventPicture
+
+	trigger = {
+		colonial_office = 1
+		NOT = { has_country_modifier = tm_colonial_buildings_event_cooldown_6 }
+		OR = {
+			cultural_ministry = 1
+			advisor = master_of_assimilation
+			has_idea_group = assimilation_ideas
+			dip_tech = 15
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_colonial_buildings_event_cooldown_6
+				duration = 7300
+				hidden = yes
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 48
+	}
+
+	option = {
+		name = tbuildings.57.a
+		add_country_modifier = {
+			name = native_integration
+			duration = 3650
+		}
+	}
+
+	option = {
+		name = tbuildings.57.b
+		add_country_modifier = {
+			name = minoirty_purging
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = tbuildings.58
+	title = tbuildings.58.t
+	desc = tbuildings.58.d
+	picture = COLONIZATION_eventPicture
+
+	trigger = {
+		colonial_office = 1
+		NOT = { has_country_modifier = tm_colonial_buildings_event_cooldown_7 }
+		colony = 1
+	}
+
+	immediate = {
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_colonial_buildings_event_cooldown_7
+				duration = 7300
+				hidden = yes
+			}
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 84
+	}
+
+	option = {
+		name = tbuildings.58.a
+		add_country_modifier = {
+			name = increased_tarrif_income
+			duration = 3650
+		}
+	}
+
+	option = {
+		name = tbuildings.58.b
+		trigger = {
+			any_subject_country = {
+				gold = 1
+				is_colonial_nation_of = ROOT
+			}
+		}
+		add_country_modifier = {
+			name = treasure_fleets_abound
+			duration = 3650
+		}
+	}
+}
+
+country_event = {
+	id = tbuildings.59
+	title = tbuildings.59.t
+	desc = tbuildings.59.d
+	picture = COLONIZATION_eventPicture
+
+	trigger = {
+		colonial_office = 1
+		NOT = { has_country_modifier = tm_colonial_buildings_event_cooldown_8 }
+		num_of_colonies = 2
+	}
+
+	immediate = {
+		hidden_effect = {
+			add_country_modifier = {
+				name = tm_colonial_buildings_event_cooldown_8
+				duration = 10950
+				hidden = yes
+			}
+			random_owned_province = {
+				limit = {
+					is_colony = yes
+				}
+
+				save_event_target_as = random_colony_1
+			}
+			random_owned_province = {
+				limit = {
+					is_colony = yes
+					NOT = {
+						province_id = event_target:random_colony_1
+					}
+				}
+
+				save_event_target_as = random_colony_2
+			}
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 120
+	}
+
+	option = {
+		name = tbuildings.59.a
+		add_country_modifier = {
+			name = focus_on_the_homeland
+			duration = 1825
+		}
+	}
+
+	option = {
+		name = tbuildings.59.b
+		event_target:random_colony_1 = {
+			add_province_modifier = {
+				name = colonial_boom
+				duration = 3650
+			}
+		}
+		event_target:random_colony_2 = {
+			add_colonysize = 400
+		}
+		add_dip_power = 100
+	}
+}
+
+country_event = {
+	id = tbuildings.60
+	title = tbuildings.60.t
+	desc = tbuildings.60.d
+	picture = COLONIZATION_eventPicture
+
+	trigger = {
+		colonial_office = 1
+		NOT = { has_country_flag = had_tm_buildings_event_60 }
+		num_of_colonies = 3
+		is_year = 1530
+	}
+
+	immediate = {
+		hidden_effect = {
+			set_country_flag = had_tm_buildings_event_60
+		}		
+	}
+
+	mean_time_to_happen = {
+		months = 120
+	}
+
+	option = {
+		name = tbuildings.60.a
+		add_country_modifier = {
+			name = tm_coloniser_nation
+			duration = 3650
+		}
+	}
+}

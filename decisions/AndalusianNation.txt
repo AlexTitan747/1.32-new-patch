@@ -3,46 +3,20 @@ country_decisions = {
 	andalusian_nation = {
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
-			was_never_end_game_tag_trigger = yes
 			NOT = { has_country_flag = formed_andalusia_flag }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
+			ai = no
 			NOT = { tag = CRG }
-			NOT = { tag = PAP }
-			NOT = { tag = HLR }
 			NOT = { tag = ROM }
 			NOT = { tag = SPA }
-			NOT = { tag = ADU }
+			NOT = { exists = ADU }
 			is_colonial_nation = no
-			OR = {
-				is_former_colonial_nation = no
-				AND = {
-					is_former_colonial_nation = yes
-					ai = no
-				}
-			}
 			OR = {
 				primary_culture = andalucian
 				culture_group = maghrebi
 			}
 			religion_group = muslim
-			OR = {
-				ai = no
-				AND = {
-					NOT = { exists = ADU }
-					num_of_cities = 6
-					any_owned_province = {
-						OR = {
-							area = upper_andalucia_area
-							area = lower_andalucia_area
-						}
-					}
-				}
-			}
 		}
+
 		provinces_to_highlight = {
 			OR = {
 				province_id = 221	# Murcia
@@ -79,11 +53,8 @@ country_decisions = {
 			}
 		}
 		allow = {
-			NOT = { exists = ADU }
-			is_nomad = no
 			is_free_or_tributary_trigger = yes
 			is_at_war = no
-			is_tribal = no
 			owns_core_province = 221			# Murcia
 			owns_core_province = 223			# Granada
 			owns_core_province = 224			# Andalucia
@@ -105,10 +76,13 @@ country_decisions = {
 				}
 			}
 		}
+
 		effect = {
-			225 = {	#Cordoba
-				move_capital_effect = yes
-			}
+			#225 = {	#Cordoba
+			#	move_capital_effect = yes
+			#}
+			#set_capital = 225 # Cordoba
+			
 			hidden_effect = {
 				if = {
 					limit = { 
@@ -116,17 +90,10 @@ country_decisions = {
 						has_dlc = "Golden Century"
 					}
 					complete_mission = gra_overcome_internal_strife
-				}
-			}
-			hidden_effect = {
-				if = {
-					limit = { 
-						tag = MOR 
-						has_dlc = "Golden Century"
-					}
 					complete_mission = gra_friends_in_high_places
 				}
 			}
+			
 			change_tag = ADU
 			if = {
 				limit = {
@@ -139,19 +106,12 @@ country_decisions = {
 				name = centralization_modifier
 				duration = 3650
 			}
-			set_capital = 225 # Cordoba
+			
 			if = {
 				limit = {
 					NOT = { primary_culture = andalucian }
 				}
 				change_primary_culture = andalucian
-			}
-			if = {
-				limit = {
-					government = tribal
-				}
-				change_government_to_monarchy = yes #Desert tribes settling down, theocracies become monarchies.
-				#set_legacy_government = despotic_monarchy
 			}
 			lower_andalucia_area = {
 				limit = {

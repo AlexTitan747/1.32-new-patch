@@ -1,0 +1,205 @@
+
+transfer_all_provinces = {
+	category = influence
+
+	alert_index = 6
+	alert_tooltip = ICON_VASSAL
+
+	require_acceptance = no
+
+	is_visible = {
+		FROM = {
+            OR = {
+                is_in_war = {
+                    attackers = ROOT
+                    attackers = FROM
+                }
+                is_in_war = {
+                    defenders = ROOT
+                    defenders = FROM
+                }
+            }
+        }
+	}
+
+	is_allowed = {
+		NOT = { war_with = ROOT }
+		any_province = {
+            NOT = { owned_by = ROOT }
+            owner = {
+                is_in_war = {
+                    participants = THIS
+                    participants = ROOT
+                    participants = FROM
+                }
+            }
+            controlled_by = ROOT
+        }
+	}
+
+	on_accept = {
+		every_province = {
+			limit = {
+				NOT = { owned_by = ROOT }
+				owner = {
+					is_in_war = {
+						participants = THIS
+						participants = ROOT
+						participants = FROM
+					}
+				}
+				controlled_by = ROOT
+			}
+			change_controller = FROM
+		}
+	}
+
+	on_decline = {
+	}
+
+	ai_acceptance = {
+		always = yes
+	}
+
+	ai_will_do = {
+
+	}
+}
+
+request_subject_transfer_all_provinces = {
+	category = influence
+
+	alert_index = 6
+	alert_tooltip = ICON_VASSAL
+
+	require_acceptance = no
+
+	is_visible = {
+		FROM = {
+            OR = {
+                is_in_war = {
+                    attackers = ROOT
+                    attackers = FROM
+                }
+                is_in_war = {
+                    defenders = ROOT
+                    defenders = FROM
+                }
+            }
+            is_subject_of = ROOT
+        }
+	}
+
+	is_allowed = {
+		NOT = { war_with = ROOT }
+		any_province = {
+            NOT = { owned_by = FROM }
+            owner = {
+                is_in_war = {
+                    participants = THIS
+                    participants = ROOT
+                    participants = FROM
+                }
+            }
+            controlled_by = FROM
+        }
+	}
+
+	on_accept = {
+		every_province = {
+			limit = {
+				NOT = { owned_by = FROM }
+				owner = {
+					is_in_war = {
+						participants = THIS
+						participants = ROOT
+						participants = FROM
+					}
+				}
+				controlled_by = FROM
+			}
+			change_controller = ROOT
+		}
+	}
+
+	on_decline = {
+	}
+
+	ai_acceptance = {
+		always = yes
+	}
+
+	ai_will_do = {
+
+	}
+}
+
+transfer_core_occupied_provinces = {
+	category = influence
+
+	alert_index = 6
+	alert_tooltip = ICON_VASSAL
+
+	require_acceptance = no
+
+	is_visible = {
+		FROM = {
+            OR = {
+                is_in_war = {
+                    attackers = ROOT
+                    attackers = FROM
+                }
+                is_in_war = {
+                    defenders = ROOT
+                    defenders = FROM
+                }
+            }
+            is_subject_of = ROOT
+        }
+	}
+
+	is_allowed = {
+		NOT = { war_with = ROOT }
+		any_province = {
+            NOT = { owned_by = ROOT }
+            owner = {
+                is_in_war = {
+                    participants = THIS
+                    participants = ROOT
+                    participants = FROM
+                }
+            }
+            controlled_by = ROOT
+            is_core = FROM
+        }
+	}
+
+	on_accept = {
+		every_province = {
+			limit = {
+				NOT = { owned_by = ROOT }
+				owner = {
+					is_in_war = {
+						participants = THIS
+						participants = ROOT
+						participants = FROM
+					}
+				}
+				controlled_by = ROOT
+				is_core = FROM
+			}
+			change_controller = FROM
+		}
+	}
+
+	on_decline = {
+	}
+
+	ai_acceptance = {
+		always = yes
+	}
+
+	ai_will_do = {
+
+	}
+}

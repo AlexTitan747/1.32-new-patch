@@ -926,23 +926,14 @@ country_decisions = {
 	westfalian_nation = {
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
-			was_never_end_game_tag_trigger = yes
 			was_never_german_regional_tag_trigger = yes
 			NOT = { has_country_flag = formed_westphalia_flag }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
 			NOT = { tag = HLR }
-			NOT = { tag = HAN }
-			NOT = { tag = PAP }
 			NOT = { tag = GER }
 			NOT = { tag = PRU }
 			NOT = { tag = SWI }
 			NOT = { tag = CFR }
 			NOT = { exists = WES }
-			NOT = { has_reform = celestial_empire }
 			OR = {
 				primary_culture = hannoverian #Westphalian
 				primary_culture = hessian
@@ -960,15 +951,9 @@ country_decisions = {
 						owns_core_province = 86	# Munster
 					}
 				}
-			}			
-			OR = {
-				is_former_colonial_nation = no
-				AND = {
-					is_former_colonial_nation = yes
-					ai = no
-				}
 			}
 		}
+
 		provinces_to_highlight = {
 			OR = {
 				province_id = 82	# Westfalen
@@ -1010,10 +995,10 @@ country_decisions = {
 				NOT = { is_core = ROOT }
 			}
 		}
+
 		allow = {
 			adm_tech = 7
 			is_free_or_tributary_trigger = yes
-			is_nomad = no
 			is_at_war = no
 			AND = {
 				owns_core_province = 82	# Westfalen
@@ -1105,7 +1090,7 @@ country_decisions = {
 				}
 				add_permanent_claim = WES
 			}
-			swap_non_generic_missions = yes
+			#swap_non_generic_missions = yes
 			add_government_reform = imperial_duchy
 			add_prestige = 25
 			if = {

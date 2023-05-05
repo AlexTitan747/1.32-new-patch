@@ -41,8 +41,9 @@ estate_cossacks = {
 		NOT = { has_government_attribute = disables_estate_cossacks }
 		NOT = { has_country_flag = disables_estate_cossacks_flag }
 		OR = {
+			tag = COS
 			has_government_attribute = enables_estate_cossacks
-			has_country_flag = enables_estate_cossacks_flag
+			has_country_flag = cossacks_for_SRV
 			AND = {
 				OR = {
 					has_unlocked_estate = { estate = estate_cossacks }
@@ -58,7 +59,6 @@ estate_cossacks = {
 					}
 				}
 				NOT = { has_government_attribute = is_pirate_republic_reform }
-				NOT = { has_reform = cossacks_reform }
 				NOT = { is_revolutionary_republic_trigger = yes }
 				NOT = { government = native }
 				NOT = { has_reform = siberian_tribe }
@@ -136,6 +136,8 @@ estate_cossacks = {
 
 	privileges = {
 		estate_cossacks_land_rights
+		estate_cossacks_grant_lordships
+		estate_cossacks_grant_generalships
 		estate_cossacks_exploration_expedition
 		estate_cossacks_cossack_self_governance
 		estate_cossacks_establish_the_cossack_regiments

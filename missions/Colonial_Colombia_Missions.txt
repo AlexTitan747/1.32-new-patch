@@ -1,0 +1,809 @@
+colonial_COL_slot_1 = {
+    slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		is_colonial_nation = yes
+        capital_scope = {
+            colonial_region = colonial_colombia
+        }
+	}
+	has_country_shield = yes
+
+	col_trade_1 = {
+		icon = mission_coromandel_trade
+		required_missions = { }
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+			any_owned_province = {
+				province_has_center_of_trade_of_level = 1
+				development = 15
+				colonial_region = colonial_colombia
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						any_owned_province = {
+							colonial_region = colonial_colombia
+							province_has_center_of_trade_of_level = 1
+							development = 15
+						}
+					}
+				}
+				custom_tooltip = beginning_trade_tt
+			}
+			random_owned_province = {
+				limit = {
+					colonial_region = colonial_colombia
+					province_has_center_of_trade_of_level = 1
+					development = 15
+				}
+				add_base_production = 3
+			}
+		}
+	}
+
+	col_trade_2 = {
+		icon = sources_of_trade
+		required_missions = { col_trade_1 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			any_owned_province = {
+				has_trade_building_trigger = yes
+				base_production = 12
+				colonial_region = colonial_colombia
+			}
+		}
+
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						any_owned_province = {
+							has_trade_building_trigger = yes
+							base_production = 12
+							colonial_region = colonial_colombia
+						}
+					}
+				}
+				custom_tooltip = growing_trade_tt
+			}
+			random_owned_province = {
+				limit = {
+					has_trade_building_trigger = yes
+					base_production = 12
+					colonial_region = colonial_colombia
+				}
+				if = {
+					limit = {
+						NOT = { has_building = stock_exchange }
+					}
+					add_building = stock_exchange
+				}
+				else = {
+					add_base_production = 3
+					if ={
+						limit = {
+							NOT = { has_building = counting_house }
+						}
+						add_building = counting_house
+					}
+				}
+			}
+		}
+	}
+
+	col_trade_3 = {
+		icon = mission_trade_in_gold_coast
+		required_missions = { col_trade_2 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			num_of_centers_of_trade = 4
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = colony_trading
+				duration = 7300
+			}
+		}
+	}
+
+	col_trade_4 = {
+		icon = mission_arabian_trade
+		required_missions = { col_trade_3 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 5
+				OR = {
+					has_trade_building_trigger = yes
+					province_has_center_of_trade_of_level = 3
+				}
+				colonial_region = colonial_colombia
+			}
+			835 = {
+				has_merchant = ROOT
+			}
+		}
+
+		effect = {
+			835 = {
+				add_trade_modifier = {
+					who = ROOT
+					duration = 5475
+					power = 20
+					key = STRONG_MERCHANTS
+				}
+				add_trade_node_income = 100
+			}
+		}
+	}
+
+	col_trade_5 = {
+		icon = mal_riches_of_trade
+		required_missions = { col_trade_4 }
+		provinces_to_highlight = {
+			province_id = 1515
+		}
+
+		trigger = {
+			835 = {
+				trade_node_value = 40
+			}
+			OR = {
+				835 = {
+					is_strongest_trade_power = ROOT
+				}
+				overlord = {
+					835 = {
+						is_strongest_trade_power = PREV
+					}
+				}
+			}
+			
+		}
+
+		effect = {
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
+			overlord = {
+				country_event = { 
+					id = colonial_mission_events.1
+					tooltip = colonial_mission_events_trade_tt
+				}
+			}
+		}
+	}
+}
+
+colonial_COL_slot_2 = {
+    slot = 2
+	generic = no
+	ai = yes
+	potential = {
+		is_colonial_nation = yes
+        capital_scope = {
+            colonial_region = colonial_colombia
+        }
+	}
+	has_country_shield = yes
+    
+    col_navy_1 = {
+		icon = mission_heart_of_the_hansa
+		required_missions = { }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			any_owned_province = {
+				base_production = 12
+				has_port = yes
+			}
+			sailors_percentage = 0.75
+		}
+
+		effect = {
+			custom_tooltip = col_navy_shipyards_tt
+			hidden_effect = {
+				random_owned_province = {
+					limit = {
+						has_port = yes
+						base_production = 12
+					}
+					if = {
+						limit = {
+							NOT = { has_building = dock }
+							NOT = { has_building = drydock }
+						}
+						add_building = dock
+						add_base_production = 1
+					}
+					else = {
+						add_base_production = 3
+					}
+					if = {
+						limit = {
+							NOT = { has_building = shipyard }
+							NOT = { has_building = grand_shipyard }
+						}
+						add_building = shipyard
+						add_base_production = 1
+					}
+					else = {
+						add_base_production = 3
+					}
+				}
+			}
+		}
+	}
+
+	col_navy_2 = {
+		icon = mission_south_indian_trade
+		required_missions = { col_navy_1 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			OR = {
+				num_of_light_ship = 10
+				num_of_heavy_ship = 4
+			}
+			navy_size_percentage = 0.50
+		}
+
+		effect = {
+			add_navy_tradition = 10
+			create_admiral = { tradition = 50 }
+		}
+	}
+
+	col_navy_3 = {
+		icon = mission_grand_bengali_shipyards
+		required_missions = { col_navy_2 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 8
+				has_navy_building = yes
+				base_production = 8
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = col_building_navy
+				duration = 5475
+			}
+		}
+	}
+
+	col_navy_4 = {
+		icon = imperial_navy
+		required_missions = { col_navy_3 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			navy_tradition  = 50
+			OR = {
+				num_of_light_ship = 40
+				num_of_heavy_ship = 15
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = "col_standing_navy"
+				duration = 5475
+			}
+		}
+	}
+
+	col_navy_5 = {
+		icon = mission_rb_a_mighty_fleet
+		required_missions = { col_navy_4 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			navy_size = 60
+			navy_size_percentage = 0.90
+		}
+
+		effect = {
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
+			overlord = {
+				country_event = {
+					id = colonial_mission_events.2
+					tooltip = colonial_mission_events_navy_tt
+				}
+			}
+		}
+	}
+}
+
+colonial_COL_slot_3 = {
+    slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		is_colonial_nation = yes
+        capital_scope = {
+            colonial_region = colonial_colombia
+        }
+	}
+	has_country_shield = yes
+
+    col_army_1 = {
+		icon = mission_iroquois_warriors
+		required_missions = { }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			manpower_percentage = 0.25
+			num_of_generals = 1
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = col_building_army
+				duration = 5475
+			}
+		}
+	}
+
+	col_army_2 = {
+		icon = mission_nah_the_enemy_way
+		required_missions = { col_army_1 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			army_size = 30
+			army_size_percentage = 0.25
+		}
+
+		effect = {
+			random_owned_province = {
+				limit = {
+					NOT = { has_building = training_fields }
+				}
+				add_building = training_fields
+				add_base_manpower = 2
+			}
+			random_owned_province = {
+				limit = {
+					NOT = { has_building = conscription_center }
+				}
+				add_building = conscription_center
+				add_base_manpower = 2
+			}
+		}
+	}
+
+	col_army_3 = {
+		icon = form_the_swiss_guard
+		required_missions = { col_army_2 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			OR = {
+				army_professionalism = 0.15
+				army_tradition = 50
+			}
+		}
+
+		effect = {
+			add_army_professionalism = 0.075
+			add_army_tradition = 10
+		}
+	}
+
+	col_army_4 = {
+		icon = mission_landsknecht_soldier
+		required_missions = { col_army_3 }
+		provinces_to_highlight = {
+			colonial_region = colonial_colombia
+			OR = {
+				NOT = { base_manpower = 10 }
+				NOT = { has_military_building = yes }
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 20
+				colonial_region = colonial_colombia
+				base_manpower = 10
+				has_military_building = yes
+			}
+		}
+
+		effect = {
+			add_years_of_owned_provinces_manpower = {
+				years = 4
+				trigger = {
+					has_military_building = yes
+					colonial_region = colonial_colombia
+					base_manpower = 10
+				}
+				custom_tooltip = col_years_of_manpower
+			}
+			define_advisor = {
+				type = quartermaster
+				skill = 3
+				discount = yes
+				culture = ROOT
+				religion = ROOT
+			}
+			add_country_modifier = {
+				name = col_standing_army
+				duration = 5475
+			}
+		}
+	}
+
+	col_army_5 = {
+		icon = swiss_mercenaries
+		required_missions = { col_army_4 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			army_size = 70
+			army_size_percentage = 0.9
+		}
+
+		effect = {
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
+			overlord = {
+				country_event = { 
+					id = colonial_mission_events.3
+					tooltip = colonial_mission_events_army_tt
+				}
+			}
+		}
+	}
+}
+
+colonial_COL_slot_4 = {
+    slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		is_colonial_nation = yes
+        capital_scope = {
+           colonial_region = colonial_colombia
+        }
+	}
+	has_country_shield = yes
+
+    col_colonisation_1 = {
+		icon = mission_colonise_brazil
+		provinces_to_highlight = {
+			colonial_region = colonial_colombia
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			OR = {
+				colonial_colombia = {
+					has_colonist = yes
+					owned_by = ROOT
+					is_city = no
+				}
+				colonial_colombia = {
+					type = all
+					is_empty = no
+				}
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = col_early_earning
+				duration = 5475
+			}
+			custom_tooltip = col_first_colonisng_mission_tt
+			hidden_effect = {
+				if = {
+					limit = {
+						colonial_colombia = {
+							has_colonist = yes
+							owned_by = ROOT
+						}
+					}
+					define_advisor = {
+						type = navigator
+						skill = 2
+						discount = yes
+						culture = ROOT
+						religion = ROOT
+					}
+				}
+				else = {
+					define_advisor = {
+						type = treasurer 
+						skill = 2
+						discount = yes
+						culture = ROOT
+						religion = ROOT
+					}
+				}
+			}
+		}
+	}
+
+	col_colonisation_2 = {
+		icon = mission_colonial
+		required_missions = { col_colonisation_1 }
+		provinces_to_highlight = {
+			colonial_region = colonial_colombia
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 10
+				colonial_region = colonial_colombia
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = "col_colonising_quick"
+				duration = 5475
+			}
+		}
+	}
+
+	col_colonisation_2_5 = {
+		icon = mission_clear_the_delta
+		required_missions = { col_colonisation_2 }
+		provinces_to_highlight = {
+			colonial_region = colonial_colombia
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 20
+				colonial_region = colonial_colombia
+			}
+		}
+
+		effect = {
+			custom_tooltip = col_goods_bonus_colonising
+		}
+	}
+
+	col_colonisation_3 = {
+		icon = mission_zanzibari_trade
+		required_missions = { col_colonisation_2_5 }
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 40
+				colonial_region = colonial_colombia
+			}
+		}
+
+		effect = {
+			if = {
+                limit = {
+                    stability = 3
+                }
+                add_adm_power = 100
+            }
+            else = {
+                add_stability = 1
+            }
+            add_dip_power = 100
+            add_mil_power = 100
+		}
+	}
+
+	col_colonisation_4 = {
+		icon = colonize_the_cape
+		required_missions = { col_colonisation_3 }
+		provinces_to_highlight = { 
+			colonial_region = colonial_colombia
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			colonial_colombia = {
+				type = all
+				owned_by = ROOT
+				is_city = yes
+			}
+		}
+
+		effect = {
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
+			overlord = {
+				add_country_modifier = {
+					name = "colonial_subject_overlord_colonisation_reward"
+					duration = 5475
+				}
+			}
+			overlord = {
+				country_event = {
+					id = colonial_mission_events.4
+					tooltip = colonial_mission_events_col_tt
+				}
+			}
+		}
+	}
+}
+
+colonial_COL_slot_5 = {
+    slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		is_colonial_nation = yes
+        capital_scope = {
+            colonial_region = colonial_colombia
+        }
+	}
+	has_country_shield = yes
+
+	col_buildings_1 = {
+		icon = a_strong_government
+		required_missions = {  }
+		provinces_to_highlight = { 
+			is_capital = yes
+			owned_by = ROOT
+		}
+
+		trigger = {
+			capital_scope = {
+				has_tax_building_trigger = yes
+			}
+		}
+
+		effect = {
+			capital_scope = {
+				if = {
+					limit = {
+						NOT = { has_building = cathedral }
+					}
+				}
+				add_building_construction = {
+					building = cathedral
+					speed = 0.5
+					cost = 0.0
+				}
+				add_base_tax = 2
+			}
+		}
+	}
+
+	col_buildings_2 = {
+		icon = claim_tirol
+		required_missions = { col_buildings_1 }
+		provinces_to_highlight = { 
+			owned_by = ROOT
+			NOT = {
+				OR = {
+					has_production_building = yes
+					has_tax_building_trigger = yes
+				}
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 10
+				OR = {
+					has_production_building = yes
+					has_tax_building_trigger = yes
+				}
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = col_building_buildings
+				duration = 5475
+			}
+		}
+	}
+
+	col_buildings_3 = {
+		icon = despot_stefans_legacy
+		required_missions = { col_buildings_2 }
+		provinces_to_highlight = { 
+			owned_by = ROOT
+			num_free_building_slots = 1
+			NOT = { development = 20 }
+		}
+	
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 10
+				NOT = { num_free_building_slots = 1 }
+				development = 20
+			}
+		}
+
+		effect = {
+			custom_tooltip = colony_full_buildings_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						NOT = { num_free_building_slots = 1 }
+						development = 20
+					}
+					add_province_modifier = {
+						name = "col_buildings_prov_modifier"
+						duration = -1
+					}
+				}
+			}
+		}
+	}
+
+	col_buildings_4 = {
+		icon = industrialized_rhineland
+		required_missions = { col_buildings_3 }
+		provinces_to_highlight = { }
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 5
+				has_manufactory = yes
+				base_production = 10
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = "col_industralising"
+				duration = 5475
+			}
+		}
+	}
+
+	col_buildings_5 = {
+		icon = public_works
+		required_missions = { col_buildings_4 }
+		provinces_to_highlight = { }
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 15
+				has_production_building = yes
+				has_manufactory = yes
+			}
+		}
+
+		effect = {
+			hidden_effect = {
+				save_global_event_target_as = colonial_subject_event_target_for_rewards
+			}
+			overlord = {
+				country_event = {
+					id = colonial_mission_events.6
+					tooltip = colonial_mission_events_building_tt
+				}
+			}
+		}
+	}
+}

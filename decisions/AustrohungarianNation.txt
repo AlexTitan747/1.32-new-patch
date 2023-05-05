@@ -3,38 +3,17 @@ country_decisions = {
 	austrohungarian_nation = {
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
 			NOT = { has_country_flag = formed_austria_hungary_flag }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
+			ai = no
 			NOT = { exists = AUH }
-			NOT = { tag = PAP }
-			NOT = { tag = HLR }
-			NOT = { tag = CRP }
 			OR = {
 				primary_culture = austrian
 				primary_culture = hungarian
 			}
-			OR = {
-				ai = no
-				AND = {
-					ai = yes
-					num_of_cities = 10
-					adm_tech = 10
-				}
-			}
 			has_country_flag = hun_forms_austro_hungarian_empire
 			is_colonial_nation = no
-			OR = {
-				is_former_colonial_nation = no
-				AND = {
-					is_former_colonial_nation = yes
-					ai = no
-				}
-			}
 		}
+
 		provinces_to_highlight = {
 			OR = {
 				province_id = 266		# Prague
@@ -48,33 +27,33 @@ country_decisions = {
 				NOT = { is_core = ROOT }
 			}
 		}
+
 		allow = {
 			adm_tech = 8
 			is_free_or_tributary_trigger = yes
-			is_nomad = no
 			is_at_war = no
-			OR = {
-			AND = {
-			owns_core_province = 266		# prague
-			owns_core_province = 134		# wien
-			owns_core_province = 153		# pest
-			owns_core_province = 131		# zagreb
-			}
-			AND = {
-					tag = HAB
-						AND = {
-							HUN = {	is_subject_of = HAB	}
-							#This overlaps with allow for AI, is meant to negate do_not_integrate
-							HUN = { NOT = { num_of_cities = 35 } } #Keep this number the same as in allow
-						}
-						AND = {
-							BOH = {	is_subject_of = HAB	}
-							#This overlaps with allow for AI, is meant to negate do_not_integrate
-							BOH = { NOT = { num_of_cities = 23 } } #Keep this number the same as in allow
-						}
-				}
-			AND = {
-					tag = HUN
+				OR = {
+					AND = {
+						owns_core_province = 266		# prague
+						owns_core_province = 134		# wien
+						owns_core_province = 153		# pest
+						owns_core_province = 131		# zagreb
+					}
+					#AND = {
+					#	tag = HAB
+					#	AND = {
+					#		HUN = {	is_subject_of = HAB	}
+					#		#This overlaps with allow for AI, is meant to negate do_not_integrate
+					#		HUN = { NOT = { num_of_cities = 35 } } #Keep this number the same as in allow
+					#	}
+					#	AND = {
+					#		BOH = {	is_subject_of = HAB	}
+					#		#This overlaps with allow for AI, is meant to negate do_not_integrate
+					#		BOH = { NOT = { num_of_cities = 23 } } #Keep this number the same as in allow
+					#	}
+					#}
+					AND = {
+						tag = HUN
 						AND = {
 							HAB = {	is_subject_of = HUN	}
 							#This overlaps with allow for AI, is meant to negate do_not_integrate
@@ -88,6 +67,7 @@ country_decisions = {
 					}
 				}
 			}
+
 		effect = {
 			if = {
 				limit = {
@@ -117,10 +97,10 @@ country_decisions = {
 				}
 				inherit = BOH
 			}
-			134 = {
-				move_capital_effect = yes
-			}
-			set_capital = 134
+			#134 = { Wien / Vienna
+			#	move_capital_effect = yes
+			#}
+			#set_capital = 134
 			
 			change_tag = AUH
 			if = {
@@ -137,10 +117,7 @@ country_decisions = {
 				duration = 7300
 			}
 			set_country_flag = formed_austria_hungary_flag
-			if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
-			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
 		}
 	
 	

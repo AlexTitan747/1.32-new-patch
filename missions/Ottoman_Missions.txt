@@ -27,6 +27,13 @@ tur_conquerors_of_the_near_east = {
 				}
 				add_permanent_claim = ROOT
 			}
+			northern_greece_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 			thessaloniki_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -34,14 +41,12 @@ tur_conquerors_of_the_near_east = {
 				}
 				add_permanent_claim = ROOT
 			}
-			every_province = {
+			western_greece_area = {
 				limit = {
-					area = northern_greece_area
-					NOT = { is_claim = ROOT	}
-					NOT = { is_core = ROOT	}
-					NOT = { province_id = 142 }
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
 				}
-				add_claim = ROOT
+				add_permanent_claim = ROOT
 			}
 		}
 	}
@@ -251,6 +256,20 @@ tur_conquerors_of_the_near_east = {
 				}
 				add_permanent_claim = ROOT
 			}
+			eastern_wallachia_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			herzegovina_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 	conquer_bosnia = {
@@ -363,6 +382,10 @@ tur_eastern_balkans = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
+			eastern_wallachia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		effect = {
 			transylvania_area = {
@@ -428,9 +451,6 @@ tur_conquest_of_middle_east = {
 	potential = {
 		OR = {
 			tag = TUR
-			AND = {
-				tag = BAB
-			}
 		}
 		NOT = { map_setup = map_setup_random }
 	}
@@ -829,9 +849,6 @@ tur_eastern_mediterrenean_missions = {
 	potential = {
 		OR = {
 			tag = TUR
-			AND = {
-				tag = BAB
-			}
 		}
 		NOT = { map_setup = map_setup_random }
 	}

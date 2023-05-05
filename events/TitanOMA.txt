@@ -1,0 +1,91 @@
+namespace = titanoma
+#these are the event that change you government type and form 
+
+#every time you reach a dev point you get a choice between a republic, theocracy or monarchy
+#it gives you a specialised reform based on what you choose
+
+#duchy rank
+country_event = {
+	id = titanoma.1
+	title = "titanoma.title1"
+	desc = "titanoma.desc1"
+	picture = GOOD_WITH_MONARCH_eventPicture
+
+	fire_only_once = yes
+	is_triggered_only = yes
+	
+	option = {
+		name = "titanoma.event1"
+		change_religion = ibadi
+		set_country_flag = ibadi_scholar_selected
+		custom_tooltip = oman_ibadi_choice_tt
+		hidden_effect = {
+			swap_non_generic_missions = yes
+			every_owned_province = {
+				limit = {
+					religion_group = muslim
+					NOT = {
+						religion = ibadi
+					}
+				}
+				change_religion = ibadi
+			}
+			change_ruling_family_religions_effect = { religion = ibadi }
+			aussa_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			ifat_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+
+	option = {
+		name = "titanoma.event2"
+		change_religion = sunni
+		set_country_flag = sunni_scholar_selected
+		custom_tooltip = oman_sunni_choice_tt
+		hidden_effect = {
+			swap_non_generic_missions = yes
+			every_owned_province = {
+				limit = {
+					religion_group = muslim
+					NOT = {
+						religion = sunni
+					}
+				}
+				change_religion = sunni
+			}
+			change_ruling_family_religions_effect = { religion = sunni }
+		}
+	}
+
+	option = {
+		name = "titanoma.event3"
+		change_religion = shiite
+		set_country_flag = shia_scholar_selected
+		custom_tooltip = oman_shia_choice_tt
+		hidden_effect = {
+			swap_non_generic_missions = yes
+			every_owned_province = {
+				limit = {
+					religion_group = muslim
+					NOT = {
+						religion = shiite
+					}
+				}
+				change_religion = shiite
+			}
+			change_ruling_family_religions_effect = { religion = shiite }
+		}
+	}
+}
+

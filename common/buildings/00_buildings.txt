@@ -359,6 +359,7 @@ fort_15th = {
 	time = 30
 	modifier = {
 		fort_level = 2
+		allowed_num_of_buildings = 1
 	}
 
 	# THIS = Province, FROM = Builder(not nessecairly owner, can be overlord)
@@ -996,6 +997,7 @@ fort_16th = {
 	make_obsolete = fort_15th
 	modifier = {
 		fort_level = 4
+		allowed_num_of_buildings = 1
 	}
 
 	# THIS = Province, FROM = Builder(not nessecairly owner, can be overlord)
@@ -1834,6 +1836,7 @@ fort_17th = {
 	make_obsolete = fort_16th
 	modifier = {
 		fort_level = 6
+		allowed_num_of_buildings = 1
 	}
 
 	# THIS = Province, FROM = Builder(not nessecairly owner, can be overlord)
@@ -2517,6 +2520,7 @@ fort_18th = {
 	make_obsolete = fort_17th	
 	modifier = {
 		fort_level = 8
+		allowed_num_of_buildings = 1
 	}
 
 	# THIS = Province, FROM = Builder(not nessecairly owner, can be overlord)
@@ -2802,12 +2806,14 @@ wharf = {
 		naval_supplies
 		fish
 		salt
+		crab
 	}
 	keep_trigger = {
 		OR = { 
 			trade_goods = naval_supplies
 			trade_goods = fish
 			trade_goods = salt
+			trade_goods = crab
 		}
 	}
 	onmap = yes
@@ -2854,6 +2860,10 @@ weapons = {
 		iron
 		tin
 		silver
+		bronze
+		steel
+		armour
+		silverware
 	}
 	keep_trigger = {
 		OR = { 
@@ -2861,6 +2871,10 @@ weapons = {
 			trade_goods = iron
 			trade_goods = tin
 			trade_goods = silver
+			trade_goods = bronze
+			trade_goods = steel
+			trade_goods = armour
+			trade_goods = silverware
 		}
 	}
 	on_built = {
@@ -2909,6 +2923,8 @@ textile = {
 		cloth
 		silk
 		dyes
+		uniforms
+		tailored_clothes
 	}
 	keep_trigger = {
 		OR = { 
@@ -2916,6 +2932,8 @@ textile = {
 			trade_goods = cloth
 			trade_goods = silk
 			trade_goods = dyes
+			trade_goods = uniforms
+			trade_goods = tailored_clothes
 		}
 	}
 	on_built = {
@@ -2970,6 +2988,9 @@ plantations = {
 		tobacco
 		tea
 		cocoa
+		banana
+		citrus
+		chocolate
 	}
 	keep_trigger = {
 		OR = { 
@@ -2979,6 +3000,9 @@ plantations = {
 			trade_goods = tobacco
 			trade_goods = tea
 			trade_goods = cocoa
+			trade_goods = banana
+			trade_goods = citrus
+			trade_goods = chocolate 
 		}
 	}
 	on_built = {
@@ -3029,6 +3053,10 @@ tradecompany = {
 		fur
 		incense
 		cloves
+		opium
+		saffron
+		deer
+		perfume
 	}
 	keep_trigger = {
 		OR = { 
@@ -3038,6 +3066,10 @@ tradecompany = {
 			trade_goods = fur
 			trade_goods = incense
 			trade_goods = cloves
+			trade_goods = opium
+			trade_goods = saffron 
+			trade_goods = deer
+			trade_goods = perfume
 		}
 	}
 	on_built = {
@@ -3089,12 +3121,23 @@ farm_estate = {
 		rice
 		livestock
 		wine
+		olives
+		horses
+		cheese
+		ale
+		olive_oil
 	}
 	keep_trigger = {
 		OR = { 
 			trade_goods = grain
 			trade_goods = livestock
 			trade_goods = wine
+			trade_goods = rice
+			trade_goods = olives
+			trade_goods = horses
+			trade_goods = cheese
+			trade_goods = ale
+			trade_goods = olive_oil
 		}
 	}
 	on_built = {
@@ -3166,6 +3209,8 @@ mills = {
 		tropical_wood
 		glass
 		chinaware
+		books
+		jewellery
 	}
 	keep_trigger = {
 		OR = { 
@@ -3174,6 +3219,8 @@ mills = {
 			trade_goods = tropical_wood
 			trade_goods = glass
 			trade_goods = chinaware
+			trade_goods = books
+			trade_goods = jewellery
 		}
 	}
 	on_built = {
@@ -3271,9 +3318,9 @@ furnace = {
 	}
 }
 
-ramparts = {
+ramparts_tm = {
 	cost = 400
-	time = 60
+	time = 36
 	#manufactory = {
 	#	all
 	#}
@@ -3286,7 +3333,7 @@ ramparts = {
 	}
 
 	modifier = {
-		fort_level = 2
+		fort_level = 1
 	}
 	onmap = no
 	show_separate = yes # Means as a manufactory it will be shown according to the old way
@@ -3332,6 +3379,8 @@ soldier_households = {
 		livestock
 		wine
 		rice
+		ale
+		cheese
 	}
 
 	modifier = {
@@ -3424,7 +3473,7 @@ soldier_households = {
 ###### TITAN Defences ######
 armoury = {
 	cost = 300
-	time = 60
+	time = 36
 	#manufactory = {
 	#	all
 	#}
@@ -3474,8 +3523,8 @@ armoury = {
 }
 
 guardhouse = {
-	cost = 300
-	time = 60
+	cost = 200
+	time = 36
 	#manufactory = {
 	#	all
 	#}
@@ -3577,22 +3626,131 @@ highway = {
 
 ###### TITAN NATIONAL WONDERS ######
 
-centre_of_manufacturing = {
-	cost = 1500
+imperial_tax_office = {
+	cost = 800
 	time = 30
 	modifier = {
-		trade_goods_size_modifier = 0.2
+		local_tax_modifier = 1.0
 	}
 
 	build_trigger = {
+		owner = {
+			NOT = {
+				any_owned_province = {
+					OR = {
+						has_building = imperial_tax_office
+						has_construction = imperial_tax_office
+					}
+				}
+				OR = {
+					is_subject_of_type = vassal
+					is_subject_of_type = march
+					is_subject_of_type = personal_union
+					is_subject_of_type = trading_subject
+				}
+			}
+		}
+	}
+	
+	keep_trigger = {
 		NOT = {
 			area_for_scope_province = {
+				NOT = { province_id = root }
 				owner = {
 					tag = ROOT
 				}
 				OR = {
-					has_building = centre_of_manufacturing
-					has_construction = centre_of_manufacturing
+					has_building = imperial_tax_office
+					has_construction = imperial_tax_office
+				}
+			}
+			owner = {
+				OR = {
+					is_subject_of_type = vassal
+					is_subject_of_type = march
+					is_subject_of_type = personal_union
+					is_subject_of_type = trading_subject
+				}
+			}
+		}
+	}
+
+	on_built = {
+		add_development_from_building = {
+			building = imperial_tax_office
+			type = tax
+			value = 2
+		}
+	hidden_effect = { owner = { save_event_target_as = new_owner } }
+		area = {
+			if = {
+				limit = {
+					owned_by = event_target:new_owner
+					NOT = { has_province_modifier = imperial_tax_office_local_mod }
+				}
+				add_province_modifier = {
+					name = imperial_tax_office_local_mod
+					duration = -1
+				}
+			}
+		}
+	}
+	on_destroyed = {
+		remove_development_from_building = {
+			building = imperial_tax_office
+			type = tax
+			value = 2
+		}
+		hidden_effect = { owner = { save_event_target_as = new_owner } }
+		if = {
+			limit = {
+				NOT = {
+					area_for_scope_province = {
+						owned_by = FROM
+						has_building = imperial_tax_office
+					}
+				}
+			}
+			area = {
+				if = {
+					limit = {
+						owned_by = event_target:new_owner
+						has_province_modifier = imperial_tax_office_local_mod
+					}
+					remove_province_modifier = imperial_tax_office_local_mod
+				}
+			}
+		}
+	}
+
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+	}
+}
+
+centre_of_manufacturing = {
+	cost = 1500
+	time = 30
+	modifier = {
+		trade_goods_size_modifier = 0.25
+	}
+
+	build_trigger = {
+		owner = {
+			NOT = {
+				any_owned_province = {
+					OR = {
+						has_building = centre_of_manufacturing
+						has_construction = centre_of_manufacturing
+					}
+				}
+				OR = {
+					is_subject_of_type = vassal
+					is_subject_of_type = march
+					is_subject_of_type = personal_union
+					is_subject_of_type = trading_subject
 				}
 			}
 		}
@@ -3610,6 +3768,14 @@ centre_of_manufacturing = {
 					has_construction = centre_of_manufacturing
 				}
 			}
+			owner = {
+				OR = {
+					is_subject_of_type = vassal
+					is_subject_of_type = march
+					is_subject_of_type = personal_union
+					is_subject_of_type = trading_subject
+				}
+			}
 		}
 	}
 
@@ -3619,7 +3785,6 @@ centre_of_manufacturing = {
 			type = production
 			value = 2
 		}
-		custom_tooltip = dif_university_dev_cost_tt
 		hidden_effect = { owner = { save_event_target_as = new_owner } }
 		area = {
 			if = {
@@ -3666,106 +3831,30 @@ centre_of_manufacturing = {
 	}
 
 	ai_will_do = {
-		factor = 420 	# Hard coded AI sees no value in this above the 0.01 ducats base. Let's multiply that
-		modifier = {
-			factor = 1.2
-			development = 20
-			is_state = yes
-		}
-		modifier = {
-			factor = 0.1
-			NOT = { is_state = yes }
-		}
-		modifier = {
-			factor = 0.9
-			OR = {
-				has_climate = tropical
-				has_climate = arid
-			}
-		}
-		modifier = {
-			factor = 0.4
-			has_climate = arctic
-		}
-		modifier = {
-			factor = 1.2
-			OR = {
-				has_terrain = grasslands
-				has_terrain = drylands
-			}
-		}
-		modifier = {
-			factor = 1.2
-			has_terrain = farmlands
-		}
-		modifier = {
-			factor = 5
-			has_latent_trade_goods = coal
-		}
-		modifier = {
-			factor = 1.5
-			province_has_center_of_trade_of_level = 1
-		}
-		modifier = {
-			factor = 1.5
-			province_has_center_of_trade_of_level = 2
-		}
-		modifier = {
-			factor = 1.5
-			province_has_center_of_trade_of_level = 3
-		}
-		modifier = {
-			factor = 2
-			is_capital = yes
-		}
-		modifier = {
-			factor = 1.5
-			OR = {
-				trade_goods = paper
-				trade_goods = gems
-				trade_goods = glass
-				trade_goods = chinaware
-				trade_goods = copper
-				trade_goods = iron
-				trade_goods = coal
-				trade_goods = ivory
-				trade_goods = slaves
-				trade_goods = spices
-				trade_goods = fur
-				trade_goods = incense
-				trade_goods = coffee
-				trade_goods = cotton
-				trade_goods = sugar
-				trade_goods = tobacco
-				trade_goods = tea
-				trade_goods = cocoa
-				trade_goods = wool
-				trade_goods = cloth
-				trade_goods = silk
-				trade_goods = dyes
-				trade_goods = salt
-				trade_goods = gold
-			}
-		}
 	}
 }
 
-imperial_tax_office = {
+imperial_trade_office = {
 	cost = 1500
 	time = 30
 	modifier = {
-		local_tax_modifier = 0.33
+		province_trade_power_modifier = 0.25
 	}
 
 	build_trigger = {
-		NOT = {
-			area_for_scope_province = {
-				owner = {
-					tag = ROOT
+		owner = {
+			NOT = {
+				any_owned_province = {
+					OR = {
+						has_building = imperial_trade_office
+						has_construction = imperial_trade_office
+					}
 				}
 				OR = {
-					has_building = imperial_tax_office
-					has_construction = imperial_tax_office
+					is_subject_of_type = vassal
+					is_subject_of_type = march
+					is_subject_of_type = personal_union
+					is_subject_of_type = trading_subject
 				}
 			}
 		}
@@ -3779,8 +3868,16 @@ imperial_tax_office = {
 					tag = ROOT
 				}
 				OR = {
-					has_building = imperial_tax_office
-					has_construction = imperial_tax_office
+					has_building = imperial_trade_office
+					has_construction = imperial_trade_office
+				}
+			}
+			owner = {
+				OR = {
+					is_subject_of_type = vassal
+					is_subject_of_type = march
+					is_subject_of_type = personal_union
+					is_subject_of_type = trading_subject
 				}
 			}
 		}
@@ -3788,20 +3885,19 @@ imperial_tax_office = {
 
 	on_built = {
 		add_development_from_building = {
-			building = imperial_tax_office
-			type = tax
+			building = imperial_trade_office
+			type = production
 			value = 2
 		}
-		custom_tooltip = dif_university_dev_cost_tt
 		hidden_effect = { owner = { save_event_target_as = new_owner } }
 		area = {
 			if = {
 				limit = {
 					owned_by = event_target:new_owner
-					NOT = { has_province_modifier = imperial_tax_office_local_mod }
+					NOT = { has_province_modifier = imperial_trade_office_local_mod }
 				}
 				add_province_modifier = {
-					name = imperial_tax_office_local_mod
+					name = imperial_trade_office_local_mod
 					duration = -1
 				}
 			}
@@ -3809,8 +3905,8 @@ imperial_tax_office = {
 	}
 	on_destroyed = {
 		remove_development_from_building = {
-			building = imperial_tax_office
-			type = tax
+			building = imperial_trade_office
+			type = production
 			value = 2
 		}
 		hidden_effect = { owner = { save_event_target_as = new_owner } }
@@ -3819,7 +3915,7 @@ imperial_tax_office = {
 				NOT = {
 					area_for_scope_province = {
 						owned_by = FROM
-						has_building = imperial_tax_office
+						has_building = imperial_trade_office
 					}
 				}
 			}
@@ -3827,9 +3923,9 @@ imperial_tax_office = {
 				if = {
 					limit = {
 						owned_by = event_target:new_owner
-						has_province_modifier = imperial_tax_office_local_mod
+						has_province_modifier = imperial_trade_office_local_mod
 					}
-					remove_province_modifier = imperial_tax_office_local_mod
+					remove_province_modifier = imperial_trade_office_local_mod
 				}
 			}
 		}
@@ -3839,87 +3935,1066 @@ imperial_tax_office = {
 	}
 
 	ai_will_do = {
-		factor = 420 	# Hard coded AI sees no value in this above the 0.01 ducats base. Let's multiply that
-		modifier = {
-			factor = 1.2
-			development = 20
-			is_state = yes
-		}
-		modifier = {
-			factor = 0.1
-			NOT = { is_state = yes }
-		}
-		modifier = {
-			factor = 0.9
-			OR = {
-				has_climate = tropical
-				has_climate = arid
+	}
+}
+
+grand_fortress = {
+	cost = 1000
+	time = 30
+	modifier = {
+		local_defender_dice_roll_bonus = 1
+	}
+
+	build_trigger = {
+		owner = {
+			NOT = {
+				any_owned_province = {
+					OR = {
+						has_building = grand_fortress
+						has_construction = grand_fortress
+					}
+				}
+				OR = {
+					is_subject_of_type = vassal
+					is_subject_of_type = march
+					is_subject_of_type = personal_union
+					is_subject_of_type = trading_subject
+				}
 			}
 		}
-		modifier = {
-			factor = 0.4
-			has_climate = arctic
-		}
-		modifier = {
-			factor = 1.2
-			OR = {
-				has_terrain = grasslands
-				has_terrain = drylands
+	}
+	
+	keep_trigger = {
+		NOT = {
+			area_for_scope_province = {
+				NOT = { province_id = root }
+				owner = {
+					tag = ROOT
+				}
+				OR = {
+					has_building = grand_fortress
+					has_construction = grand_fortress
+				}
+			}
+			owner = {
+				OR = {
+					is_subject_of_type = vassal
+					is_subject_of_type = march
+					is_subject_of_type = personal_union
+					is_subject_of_type = trading_subject
+				}
 			}
 		}
-		modifier = {
-			factor = 1.2
-			has_terrain = farmlands
+	}
+
+	on_built = {
+
+	}
+	on_destroyed = {
+		
+	}
+
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+	}
+}
+
+cultural_ministry = {
+	cost = 2000
+	time = 30
+	modifier = {
+		num_accepted_cultures = 2
+		diplomatic_reputation = 1
+	}
+
+	build_trigger = {
+		owner = {
+			NOT = {
+				any_owned_province = {
+					OR = {
+						has_building = cultural_ministry
+						has_construction = cultural_ministry
+					}
+				}
+				OR = {
+					is_subject_of_type = vassal
+					is_subject_of_type = march
+					is_subject_of_type = personal_union
+					is_subject_of_type = trading_subject
+				}
+			}
 		}
-		modifier = {
-			factor = 5
-			has_latent_trade_goods = coal
+	}
+	
+	keep_trigger = {
+		NOT = {
+			area_for_scope_province = {
+				NOT = { province_id = root }
+				owner = {
+					tag = ROOT
+				}
+				OR = {
+					has_building = cultural_ministry
+					has_construction = cultural_ministry
+				}
+			}
+			owner = {
+				OR = {
+					is_subject_of_type = vassal
+					is_subject_of_type = march
+					is_subject_of_type = personal_union
+					is_subject_of_type = trading_subject
+				}
+			}
 		}
-		modifier = {
-			factor = 1.5
-			province_has_center_of_trade_of_level = 1
+	}
+
+	on_built = {
+		custom_tooltip = cultural_ministry_events
+		hidden_effect = {
+			owner = {
+				set_country_flag = has_cultural_ministry
+			}
 		}
-		modifier = {
-			factor = 1.5
-			province_has_center_of_trade_of_level = 2
+	}
+
+	on_destroyed = {
+		hidden_effect = {
+			owner = {
+				clr_country_flag = has_cultural_ministry
+			}
 		}
-		modifier = {
-			factor = 1.5
-			province_has_center_of_trade_of_level = 3
+	}
+
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+	}
+}
+
+colonial_office = {
+	cost = 2000
+	time = 30
+	modifier = {
+		colonists = 1
+		native_assimilation = 0.30
+	}
+
+	build_trigger = {
+		owner = {
+			NOT = {
+				any_owned_province = {
+					OR = {
+						has_building = colonial_office
+						has_construction = colonial_office
+					}
+				}
+				OR = {
+					is_subject_of_type = vassal
+					is_subject_of_type = march
+					is_subject_of_type = personal_union
+					is_subject_of_type = trading_subject
+				}
+			}
 		}
-		modifier = {
-			factor = 2
-			is_capital = yes
+	}
+	
+	keep_trigger = {
+		NOT = {
+			area_for_scope_province = {
+				NOT = { province_id = root }
+				owner = {
+					tag = ROOT
+				}
+				OR = {
+					has_building = colonial_office
+					has_construction = colonial_office
+				}
+			}
+			owner = {
+				OR = {
+					is_subject_of_type = vassal
+					is_subject_of_type = march
+					is_subject_of_type = personal_union
+					is_subject_of_type = trading_subject
+				}
+			}
 		}
-		modifier = {
-			factor = 1.5
-			OR = {
-				trade_goods = paper
-				trade_goods = gems
-				trade_goods = glass
-				trade_goods = chinaware
-				trade_goods = copper
-				trade_goods = iron
-				trade_goods = coal
-				trade_goods = ivory
-				trade_goods = slaves
-				trade_goods = spices
-				trade_goods = fur
-				trade_goods = incense
-				trade_goods = coffee
-				trade_goods = cotton
-				trade_goods = sugar
-				trade_goods = tobacco
-				trade_goods = tea
-				trade_goods = cocoa
-				trade_goods = wool
-				trade_goods = cloth
-				trade_goods = silk
-				trade_goods = dyes
-				trade_goods = salt
-				trade_goods = gold
+	}
+
+	on_built = {
+		custom_tooltip = colonial_office_events
+		hidden_effect = {
+			owner = {
+				set_country_flag = has_colonial_office
+			}
+		}
+	}
+
+	on_destroyed = {
+		hidden_effect = {
+			owner = {
+				clr_country_flag = has_colonial_office
+			}
+		}
+	}
+
+	on_obsolete = {
+	}
+
+	ai_will_do = {
+	}
+}
+
+## Developed Goods ##
+
+dairy_farm = {
+	cost = 250
+	time = 36
+	
+	build_trigger = {
+		trade_goods = livestock
+		has_production_building = yes
+		development = 12
+		FROM = {
+			dip_tech = 7
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {	
+			ROOT = {
+				change_trade_goods = cheese
+			}
+		}
+
+	}
+	
+	on_destroyed = {
+		hidden_effect = {
+			ROOT = {
+				remove_building = dairy_farm
+				change_trade_goods = livestock
+			}
+		}
+	}
+	
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}	
+	
+	ai_will_do = {
+		factor = 3000
+	}
+}
+
+ale_house = {
+	cost = 250
+	time = 36
+		
+	build_trigger = {
+		trade_goods = grain
+		has_production_building = yes
+		development = 12
+		FROM = {
+			dip_tech = 7
+		}
+	}
+		
+	on_built = {
+		hidden_effect = {
+			ROOT = {
+				change_trade_goods = ale
+			}
+		}
+	}
+		
+	on_destroyed = {
+		hidden_effect = {
+			ROOT = {
+				remove_building = ale_house
+				change_trade_goods = grain
+			}	
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}	
+		
+	ai_will_do = {
+		factor = 3000
+
+		modifier = {	
+			factor = 0
+			FROM = {
+				ale = 2
 			}
 		}
 	}
 }
+
+olive_oil_mill = {
+	cost = 250
+	time = 36
+	
+	build_trigger = {
+		trade_goods = olives
+		has_production_building = yes
+		development = 12
+		FROM = {
+			dip_tech = 7
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {
+			ROOT = {
+				change_trade_goods = olive_oil
+			}
+		}
+	}
+	
+	on_destroyed = {
+		hidden_effect = {
+			ROOT = {
+				remove_building = olive_oil_mill
+				change_trade_goods = olives
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}	
+	
+	ai_will_do = {
+		factor = 3000
+	}
+}
+
+chocolate_factory = {
+	cost = 250
+	time = 36
+	
+	build_trigger = {
+		trade_goods = cocoa
+		has_production_building = yes
+		development = 12
+		FROM = {
+			dip_tech = 14
+		}
+	}
+	
+	on_built = {
+	hidden_effect = {
+			ROOT = {
+				change_trade_goods = chocolate
+			}
+		}
+	}
+	
+	on_destroyed = {
+		hidden_effect = {
+			ROOT = {
+				remove_building = chocolate_factory
+				change_trade_goods = cocoa
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}	
+	
+	ai_will_do = {
+		factor = 3000
+	}
+}
+
+publishing_house = {
+	cost = 250
+	time = 36
+	
+	build_trigger = {
+		trade_goods = paper
+		has_production_building = yes
+		development = 12
+		FROM = {
+			dip_tech = 13
+			has_institution = printing_press
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {
+			ROOT = {
+				change_trade_goods = books
+			}
+		}
+	}
+	
+	on_destroyed = {
+		hidden_effect = {
+			ROOT = {
+				remove_building = publishing_house
+				change_trade_goods = paper
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 3000
+	}
+}
+
+uniform_maker = {
+	cost = 250
+	time = 36
+	
+	build_trigger = {
+		trade_goods = cloth
+		has_production_building = yes
+		development = 12
+		FROM = {
+			dip_tech = 15
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {
+			ROOT = {
+				change_trade_goods = uniforms
+			}
+		}
+	}
+	
+	on_destroyed = {
+		hidden_effect = {
+			ROOT = {
+				remove_building = uniform_maker
+				change_trade_goods = cloth
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 3000
+	}
+}
+
+perfumery = {
+	cost = 250
+	time = 36
+	
+	build_trigger = {
+		trade_goods = incense
+		has_production_building = yes
+		development = 12
+		FROM = {
+			dip_tech = 15
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {
+			ROOT = {
+				change_trade_goods = perfume
+			}
+		}
+	}
+	
+	on_destroyed = {
+		hidden_effect = {
+			ROOT = {
+				remove_building = perfumery
+				change_trade_goods = incense
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 3000
+	}
+}
+
+metalworks = {
+	cost = 250
+	time = 36
+	
+	build_trigger = {
+		trade_goods = silver
+		has_production_building = yes
+		development = 12
+		FROM = {
+			dip_tech = 13
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {
+			ROOT = {
+				change_trade_goods = silverware
+			}
+		}
+	}
+	
+	on_destroyed = {
+		hidden_effect = {
+			ROOT = {
+				remove_building = metalworks
+				change_trade_goods = silver
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 3000
+	}
+}
+
+blacksmith = {
+	cost = 250
+	time = 36
+	
+	build_trigger = {
+		trade_goods = iron
+		has_production_building = yes
+		has_manpower_building_trigger = yes
+		development = 12
+		FROM = {
+			dip_tech = 13
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {
+			ROOT = {
+				change_trade_goods = armour
+			}
+		}
+	}
+	
+	on_destroyed = {
+		hidden_effect = {
+			ROOT = {
+				remove_building = blacksmith
+				change_trade_goods = iron
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 3000
+	}
+}
+
+##Tier 2 Goods
+jewellery_workshop = {
+	cost = 250
+	time = 60
+
+	build_trigger = {
+		trade_goods = gems
+		has_production_building = yes
+		development = 12
+		FROM = {
+			dip_tech = 14
+		}
+		custom_trigger_tooltip = {
+			tooltip = enough_gold_or_silver_for_jewellery_tt
+			if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 3
+							has_construction = jewellery_workshop
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_gold_or_silver
+						value = 4
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 2
+							has_construction = jewellery_workshop
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_gold_or_silver
+						value = 3
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 1
+							has_construction = jewellery_workshop
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_gold_or_silver
+						value = 2
+					}
+				}
+			}
+			else = {
+				FROM = {
+					check_variable = {
+						which = num_of_gold_or_silver
+						value = 1
+					}
+				}
+			}
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = num_of_gold_or_silver
+					value = 1.0
+				}
+			}
+			ROOT = {
+				change_trade_goods = jewellery
+			}
+		}
+	}
+	
+	on_destroyed = {
+		hidden_effect = {
+			if = {
+				limit = {
+					ROOT = {
+						NOT = { has_building = jewellery_workshop }
+					}
+				}
+				FROM = {
+					change_variable = {            
+						which = num_of_gold_or_silver
+						value = 1.0
+					}
+				}
+			}
+			ROOT = {
+				remove_building = jewellery_workshop
+				change_trade_goods = gems
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.2
+		local_governing_cost = 0.15
+	}
+
+	ai_will_do = {
+		factor = 3000
+	}
+}
+
+tailors = {
+	cost = 250
+	time = 60
+	
+	build_trigger = {
+		trade_goods = silk
+		has_production_building = yes
+		development = 12
+		FROM = {
+			dip_tech = 16
+		}
+		custom_trigger_tooltip = {
+			tooltip = enough_dyes_for_clothes_tt
+			if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 3
+							has_construction = tailors
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_dyes
+						value = 4
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 2
+							has_construction = tailors
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_dyes
+						value = 3
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 1
+							has_construction = tailors
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_dyes
+						value = 2
+					}
+				}
+			}
+			else = {
+				FROM = {
+					check_variable = {
+						which = num_of_dyes
+						value = 1
+					}
+				}
+			}
+		}
+	}
+
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = num_of_dyes
+					value = 1.0
+				}			
+			}
+			ROOT = {
+				change_trade_goods = tailored_clothes
+			}
+		}
+	}
+
+	on_destroyed = {
+		hidden_effect = {
+			if = {
+				limit = {
+					ROOT = {
+						NOT = { has_building = tailors }
+					}
+				}
+				FROM = {
+					change_variable = {            
+						which = num_of_dyes
+						value = 1.0
+					}
+				}
+			}
+			ROOT = {
+				remove_building = tailors
+				change_trade_goods = silk
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.25
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 3000
+	}
+}
+
+bronze_furnace = {
+	cost = 250
+	time = 60
+	
+	build_trigger = {
+		trade_goods = copper
+		has_production_building = yes
+		development = 12
+		FROM = {
+			dip_tech = 15
+		}
+		custom_trigger_tooltip = {
+			tooltip = enough_tin_for_bronze_tt
+			if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 3
+							has_construction = bronze_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_tin
+						value = 4
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 2
+							has_construction = bronze_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_tin
+						value = 3
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 1
+							has_construction = bronze_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_tin
+						value = 2
+					}
+				}
+			}
+			else = {
+				FROM = {
+					check_variable = {
+						which = num_of_tin
+						value = 1
+					}
+				}
+			}
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = num_of_tin
+					value = 1.0
+				}				
+			}
+			ROOT = {
+				change_trade_goods = bronze
+			}
+		}
+	}
+	
+	on_destroyed = {
+		hidden_effect = {
+			if = {
+				limit = {
+					ROOT = {
+						NOT = { has_building = bronze_furnace }
+					}
+				}
+				FROM = {
+					change_variable = {            
+						which = num_of_tin
+						value = 1.0
+					}
+				}
+			}
+			ROOT = {
+				remove_building = bronze_furnace
+				change_trade_goods = copper
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.25
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 3000
+	}
+}
+
+steel_furnace = {
+	cost = 500
+	time = 96
+	
+	build_trigger = {
+		trade_goods = iron
+		has_production_building = yes
+		development = 20
+		FROM = {
+			dip_tech = 18
+		}
+		custom_trigger_tooltip = {
+			tooltip = enough_coal_for_steel_tt
+			if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 3
+							has_construction = steel_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_coal
+						value = 4
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 2
+							has_construction = steel_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_coal
+						value = 3
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 1
+							has_construction = steel_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_coal
+						value = 2
+					}
+				}
+			}
+			else = {
+				FROM = {
+					check_variable = {
+						which = num_of_coal
+						value = 1
+					}
+				}
+			}
+		}
+	}
+	
+	on_built = {
+		hidden_effect = {
+			FROM = {
+				subtract_variable = {
+					which = num_of_coal
+					value = 1.0
+				}			
+			}
+			ROOT = {
+				change_trade_goods = steel
+			}
+		}
+	}
+	
+	on_destroyed = {
+		hidden_effect = {
+			if = {
+				limit = {
+					ROOT = {
+						NOT = { has_building = steel_furnace }
+					}
+				}
+				FROM = {
+					change_variable = {            
+						which = num_of_coal
+						value = 1.0
+					}
+				}
+			}
+			ROOT = {
+				remove_building = steel_furnace
+				change_trade_goods = iron
+			}
+		}
+	}
+
+	modifier = {
+		trade_goods_size = 0.25
+		local_governing_cost = 0.15
+	}
+	
+	ai_will_do = {
+		factor = 5000
+	}
+}
+
+##Unique Buildings
+
+
 

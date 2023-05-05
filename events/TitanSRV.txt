@@ -1,0 +1,303 @@
+namespace = titansrv
+
+country_event = {
+	id = titansrv.1
+	title = titansrv.1.title
+	desc = titansrv.1.desc
+	picture = shirivan_event_1
+
+	is_triggered_only = yes
+	
+	option = {
+		name = titansrv.1.a
+
+		capital_scope = {
+            area = {
+                change_religion = shiite
+            }
+        }
+        define_advisor = {
+			type = inquisitor
+			skill = 3
+			cost_multiplier = 0.1
+			culture = ROOT
+            religion = shiite
+		}
+        change_ruling_family_religions_effect = { religion = shiite }
+        custom_tooltip = srv_titansrv_1_c_tt
+		hidden_effect = {
+			set_country_flag = srv_religion_backup
+		}
+		add_country_modifier = {
+			name = "tm_AFG_religious_conversions"
+			duration = 3650
+		}
+		set_country_flag = tm_srv_chose_shia
+	}
+
+	option = {
+		name = titansrv.1.b
+
+		change_religion = zoroastrian
+
+        capital_scope = {
+            area = {
+                change_religion = zoroastrian
+            }
+        }
+        define_advisor = {
+			type = inquisitor
+			skill = 3
+			cost_multiplier = 0.1
+			culture = ROOT
+            religion = zoroastrian
+		}
+        change_ruling_family_religions_effect = { religion = zoroastrian }
+        custom_tooltip = srv_titansrv_1_b_tt
+		hidden_effect = {
+			set_country_flag = srv_religion_backup
+		}
+		add_country_modifier = {
+			name = "tm_AFG_religious_conversions"
+			duration = 3650
+		}
+	}
+
+    option = {
+		name = titansrv.1.c
+		change_religion = orthodox
+        capital_scope = {
+            area = {
+                change_religion = orthodox
+            }
+        }
+        define_advisor = {
+			type = inquisitor
+			skill = 3
+			cost_multiplier = 0.1
+			culture = ROOT
+            religion = orthodox
+		}
+        change_ruling_family_religions_effect = { religion = orthodox }
+		custom_tooltip = srv_titansrv_1_a_tt
+		hidden_effect = {
+			set_country_flag = srv_religion_backup
+			dagestan_area = {
+				change_religion = orthodox
+			}
+		}
+		add_country_modifier = {
+			name = "tm_AFG_religious_conversions"
+			duration = 3650
+		}
+        
+        if = {
+            limit = {
+                owns = 419
+            }
+			419 = {
+				if = {
+					limit = {
+						has_great_project = {
+							type = etchimiadzin_cathedral
+							tier = 3
+						}
+					}
+					ROOT = {
+						add_stability = 1
+					}
+					
+				}
+				else_if = {
+					limit = {
+						has_great_project = {
+							type = etchimiadzin_cathedral
+							tier = 2
+						}
+					}
+					add_great_project_tier = {
+						type = etchimiadzin_cathedral
+						tier = 1
+					}
+				}
+				else_if = {
+					limit = {
+						has_great_project = {
+							type = etchimiadzin_cathedral
+							tier = 1
+						}
+					}
+					add_great_project_tier = {
+						type = etchimiadzin_cathedral
+						tier = 2
+					}
+				}
+				else = {
+					add_great_project_tier = {
+						type = etchimiadzin_cathedral
+						tier = 3
+					}
+				}
+			}
+
+        }
+	}
+}
+
+country_event = {
+	id = titansrv.2
+	title = "titansrv.title2"
+	desc = "titansrv.desc2"
+	picture = cossack_event_1
+	
+    fire_only_once = yes
+
+    trigger = {
+		accepted_culture = dagestani
+		accepted_culture = circassian
+		owns_core_province = 464
+		religion = orthodox
+		num_of_provinces_owned_or_owned_by_subjects_with = {
+			value = 8
+			development = 12
+			OR = {
+				culture = dagestani
+				culture = circassian
+			}
+		}
+    }
+
+    mean_time_to_happen = {
+        days = 1
+    }
+	
+	option = {
+		name = "titansrv.cossacks"
+		hidden_effect = {
+			set_country_flag = SRV_cossack_path_unlocked
+		}
+		additional_missions_scripted_effect = yes
+		custom_tooltip = "SRV_cossack_unlocked"
+	}
+
+}
+
+country_event = {
+	id = titansrv.3
+	title = "titansrv.title3"
+	desc = "titansrv.desc3"
+	picture = babylon_event_1
+	
+    fire_only_once = yes
+
+    trigger = {
+		accepted_culture = kurdish
+		accepted_culture = al_iraqiya_arabic
+		owns_core_province = 410
+		num_of_provinces_owned_or_owned_by_subjects_with = {
+		value = 15
+		development = 10
+		OR = {
+			culture = kurdish
+			culture = al_iraqiya_arabic
+		}
+		}
+    }
+
+    mean_time_to_happen = {
+        days = 1
+    }
+	
+	option = {
+		name = "titansrv.babylon"
+		hidden_effect = {
+		set_country_flag = SRV_babylon_path_unlocked
+		}
+		additional_missions_scripted_effect = yes
+		custom_tooltip = "SRV_babylon_unlocked"
+	}
+
+}
+
+country_event = {
+	id = titansrv.4
+	title = "titansrv.title4"
+	desc = "titansrv.desc4"
+	picture = cossack_event_2
+	
+    fire_only_once = yes
+    is_triggered_only = yes
+	
+	option = {
+		
+		name = "titansrv.4a"
+		set_capital = 464
+		464 = {
+			move_capital_effect = yes
+		}
+	}
+
+	option = {
+		name = "titansrv.4b"
+		set_capital = 2447
+		2447 = {
+			move_capital_effect = yes
+		}
+	}
+
+	option = {
+		name = "titansrv.4c"
+		set_capital = 286
+		286 = {
+			move_capital_effect = yes
+		}
+	}
+}
+
+country_event = {
+	id = titansrv.5
+	title = "titansrv.title5"
+	desc = "titansrv.desc5"
+	picture = babylon_ishtar_gate
+	
+    fire_only_once = yes
+    is_triggered_only = yes
+	
+	option = {
+		name = "titansrv.5a"
+		410 = {
+			set_great_project_tier_1 = {
+				type = ishtar_gate
+			}
+		}
+	}
+
+
+}
+
+country_event = {
+	id = titansrv.6
+	title = "titansrv.title6"
+	desc = "titansrv.desc6"
+	picture = babylon_nebuchadnezzar
+	
+    fire_only_once = yes
+    is_triggered_only = yes
+	
+	option = {
+		name = "titansrv.6a"
+		define_ruler = {
+			claim = 100
+			name = "Nebuchadnezzar II"
+			dynasty = "Chaldean"
+			culture = babylonian
+			religion = zoroastrian
+			adm = 5
+			dip = 6
+			mil = 4
+			age = 20
+		}
+	}
+
+
+}

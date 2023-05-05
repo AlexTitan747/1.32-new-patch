@@ -1,32 +1,91 @@
 country_decisions = {
-	national_recovery_act = {
+	national_recovery_act_discovery = {
 		potential = {
 			is_bankrupt = no
 			ai = no
 			adm_tech = 7
 			NOT = {
-				has_country_flag = used_national_recovery_act
+				has_country_flag = used_national_recovery_act_discovery
 			}
+			current_age = age_of_discovery
 		}
 
 		allow = {
+			is_bankrupt = no
 			custom_trigger_tooltip = {
 				tooltip = nra_one_time_use
 			}
-			custom_trigger_tooltip = {
-				tooltip = lost_war_tooltip
-				has_country_modifier = recovery_war_act_trigger
+			had_recent_war = 3
+			num_of_loans = 15
+		}
+
+		effect = {
+			add_years_of_income = 2.0
+			add_country_modifier = {
+				name = national_recovery_act_established_discovery
+				duration = 1825
 			}
+			set_country_flag = used_national_recovery_act_discovery
+		}	
+	}
+
+	national_recovery_act_reformation = {
+		potential = {
+			is_bankrupt = no
+			ai = no
+			adm_tech = 10
+			NOT = {
+				has_country_flag = used_national_recovery_act_reformation
+			}
+			current_age = age_of_reformation
+		}
+
+		allow = {
+			is_bankrupt = no
+			custom_trigger_tooltip = {
+				tooltip = nra_one_time_use
+			}
+			had_recent_war = 5
 			num_of_loans = 25
 		}
 
 		effect = {
-			add_years_of_income = 1.5
+			add_years_of_income = 2.5
 			add_country_modifier = {
-				name = national_recovery_act_established
+				name = national_recovery_act_established_reformation
 				duration = 1825
 			}
-			set_country_flag = used_national_recovery_act
+			set_country_flag = used_national_recovery_act_reformation
+		}	
+	}
+
+	national_recovery_act_absolutism = {
+		potential = {
+			is_bankrupt = no
+			ai = no
+			adm_tech = 15
+			NOT = {
+				has_country_flag = used_national_recovery_act_absolutism
+			}
+			current_age = age_of_absolutism
+		}
+
+		allow = {
+			is_bankrupt = no
+			custom_trigger_tooltip = {
+				tooltip = nra_one_time_use
+			}
+			had_recent_war = 7
+			num_of_loans = 40
+		}
+
+		effect = {
+			add_years_of_income = 5.0
+			add_country_modifier = {
+				name = national_recovery_act_established_absolutism
+				duration = 1825
+			}
+			set_country_flag = used_national_recovery_act_absolutism
 		}	
 	}
 

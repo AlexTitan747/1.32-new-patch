@@ -1149,6 +1149,44 @@ artillery_bearer = {
 	}
 }
 
+######################################################
+
+stable_hand = {
+	monarch_power = MIL
+	
+	# Bonus
+	cavalry_cost = -0.05
+	cavalry_power = 0.10
+
+	skill_scaled_modifier = {
+		trigger = {
+			owner = { 
+				has_government_attribute = republican_tradition_from_advisors 
+			}
+		}
+		modifier = {
+			republican_tradition = 0.02 
+		}
+	}
+
+
+	chance = {
+		factor = 1
+		modifier = {
+			factor = 0
+			NOT = { owner = { has_country_flag =  tm_unlock_horse_advisor }}
+		}
+	}
+	
+	ai_will_do = {
+		factor = 1
+		modifier = {
+			factor = 1.5
+			is_at_war = yes
+		}
+	}
+}
+
 #######################################################
 
 master_of_construction = {

@@ -3,29 +3,11 @@ country_decisions = {
 	german_nation = {
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
-			was_never_end_game_tag_trigger = yes
 			NOT = { has_country_flag = formed_germany_flag }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
-			OR = {
-				is_free_or_tributary_trigger = yes
-				ai = no
-			}
+			ai = no
 			NOT = { exists = GER }
-			NOT = { tag = PAP }
 			NOT = { tag = HLR }
 			NOT = { tag = ROM }
-			OR = {
-				ai = no
-				AND = {
-					ai = yes
-					num_of_cities = 15
-					adm_tech = 20
-				}
-			}
 			OR = {
 				culture_group = rhenish
 				culture_group = germanic
@@ -35,17 +17,11 @@ country_decisions = {
 			NOT = { primary_culture = dutch }
 			is_colonial_nation = no
 			OR = {
-				is_former_colonial_nation = no
-				AND = {
-					is_former_colonial_nation = yes
-					ai = no
-				}
-			}
-			OR = {
 				has_country_flag = teu_can_form_germany
 				NOT = { has_mission = teu_pru_an_empire_of_blood_and_iron }	#Mission already makes you to Germany
 			}
 		}
+
 		provinces_to_highlight = {
 			OR = {
 				AND = {
@@ -87,21 +63,20 @@ country_decisions = {
 		allow = {
 			adm_tech = 15
 			is_free_or_tributary_trigger = yes
-			is_nomad = no
 			is_at_war = no
 			OR= {
-			AND = {
-				owns_core_province = 1876 # frankfurt
-				owns_core_province = 266 # prague
-			}
-			AND = {
-				owns_core_province = 266 # prague
-				owns_core_province = 1869 # zurich
-			}
-			AND = {
-				owns_core_province = 1869 # zurich
-				owns_core_province = 1876 # frankfurt
-			}
+				AND = {
+					owns_core_province = 1876 # frankfurt
+					owns_core_province = 266 # prague
+				}
+				AND = {
+					owns_core_province = 266 # prague
+					owns_core_province = 1869 # zurich
+				}
+				AND = {
+					owns_core_province = 1869 # zurich
+					owns_core_province = 1876 # frankfurt
+				}
 			}
 			num_of_owned_provinces_with = {
 				is_core = ROOT
@@ -115,24 +90,24 @@ country_decisions = {
 		effect = {
 			change_tag = GER
 			restore_country_name_effect = yes
-			if = {
-				limit = {
-					is_emperor = yes
-				}
-				dismantle_hre = yes
-			}
-			else = {
-				emperor = {
-					add_opinion = {
-						who = root
-						modifier = opinion_left_empire
-					}
-				}
-				set_in_empire = no
-				emperor = {
-					country_event = { id = hre_event.5 }
-				}
-			}
+			#if = {
+			#	limit = {
+			#		is_emperor = yes
+			#	}
+			#	dismantle_hre = yes
+			#}
+			#else = {
+			#	emperor = {
+			#		add_opinion = {
+			#			who = root
+			#			modifier = opinion_left_empire
+			#		}
+			#	}
+			#	set_in_empire = no
+			#	emperor = {
+			#		country_event = { id = hre_event.5 }
+			#	}
+			#}
 			GER = { set_government_rank = 3 }
 			north_german_region = {
 				limit = {
@@ -152,13 +127,7 @@ country_decisions = {
 			}
 			add_prestige = 25
 			set_country_flag = formed_germany_flag
-			if = {
-				limit = {
-					has_custom_ideas = no
-				}
-				country_event = { id = ideagroups.1 } #Swap Ideas
-			}
-			swap_non_generic_missions = yes
+			country_event = { id = ideagroups.1 } #Swap Ideas
 		}
 		ai_will_do = {
 			factor = 100

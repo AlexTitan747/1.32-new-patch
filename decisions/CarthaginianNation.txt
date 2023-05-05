@@ -3,25 +3,12 @@ country_decisions = {
 		carthaginian_nation = {
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
-				was_never_end_game_tag_trigger = yes
 				NOT = { has_country_flag = formed_carthage_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
-				NOT = { tag = PAP }
-				NOT = { tag = HLR }
+				ai = no
 				NOT = { tag = ROM }
 				NOT = { tag = SPA }
+				NOT = { exists = CRG }
 				is_colonial_nation = no
-				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
 				OR = {
 					primary_culture = tunisian
 					primary_culture = sicilian
@@ -29,14 +16,6 @@ country_decisions = {
 					primary_culture = sardinian
 				}
 				has_country_flag = carthage_reborn
-				OR = {
-					ai = no
-					AND = {
-						NOT = { exists = CRG }
-						num_of_cities = 10
-						
-					}
-				}
 			}
 			
 			provinces_to_highlight = {
@@ -85,11 +64,8 @@ country_decisions = {
 			
 			allow = {
 				adm_tech = 12
-				NOT = { exists = CRG }
-				is_nomad = no
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
-				is_tribal = no
 				owns_core_province = 341			# Tunis
 				owns_core_province = 2473			# Susa
 				owns_core_province = 4566			# Kairwan
@@ -102,8 +78,6 @@ country_decisions = {
 				owns_core_province = 4560			# Ibiza
 				owns_core_province = 333			# Balares
 				owns_core_province = 4559			# Minorca
-				
-				
 				OR = {
 					AND = {
 						owns_core_province = 125			# Palermo
@@ -121,12 +95,36 @@ country_decisions = {
 			effect = {
 				341 = {	#Tunis
 					move_capital_effect = yes
+					change_province_name = Carthage
 				}
+				set_capital = 341 # Carthage
 				
+				hidden_effect = {
+					every_owned_province = {
+						limit = {
+							OR = {
+							has_owner_culture = yes
+							area = tunisia_area
+							area = kef_area
+							area = kabylia_area
+							area = corsica_sardinia_area
+							area = western_sicily_area
+							area = sicily_area
+							area = calabria_area
+							area = sicily_area
+							area = djerba_area
+							area = tripolitania_area
+							area = naples_area
+							}
+						}
+						change_culture = phoenician
+					}
+				}
+
 				change_tag = CRG
 				set_ruler_culture = phoenician
 				set_heir_culture = phoenician
-				swap_non_generic_missions = yes
+				additional_missions_scripted_effect = yes
 				remove_non_electors_emperors_from_empire_effect = yes
 				if = {
 					limit = {
@@ -140,7 +138,6 @@ country_decisions = {
 					duration = 3650
 				}
 				add_dip_power = 200
-				set_capital = 341 # Carthage
 				if = {
 					limit = {
 						NOT = { primary_culture = phoenician }
@@ -155,76 +152,12 @@ country_decisions = {
 					change_government_to_republic = yes 
 				}
 				if = {
-				limit = { is_revolutionary = no }
-				add_government_reform = shophet_republic
+					limit = { is_revolutionary = no }
+					add_government_reform = shophet_republic
 				}
-				hidden_effect = {
-					341 = {
-					change_culture = phoenician
-					}
-					2473 = {
-					change_culture = phoenician
-					}
-					4566 = {
-					change_culture = phoenician
-					}
-					2454 = {
-					change_culture = phoenician
-					}
-					2455 = {
-					change_culture = phoenician
-					}
-					126 = {
-					change_culture = phoenician
-					}
-					2986 = {
-					change_culture = phoenician
-					}
-					4735 = {
-					change_culture = phoenician
-					}
-					127 = {
-					change_culture = phoenician
-					}
-					4560 = {
-					change_culture = phoenician
-					}
-					333 = {
-					change_culture = phoenician
-					}
-					4559 = {
-					change_culture = phoenician
-					}
-					125 = {
-					change_culture = phoenician
-					}
-					4736 = {
-					change_culture = phoenician
-					}
-					4737 = {
-					change_culture = phoenician
-					}
-					5036 = {
-					change_culture = phoenician
-					}
-					5035 = {
-					change_culture = phoenician
-					}
-					5034 = {
-					change_culture = phoenician
-					}
-					5051 = {
-					change_culture = phoenician
-					}
-					2982 = {
-					change_culture = phoenician
-					}
-				}
+
 				set_country_flag = formed_carthage_flag
-				if = {
-				limit = { has_custom_ideas = no }
 				country_event = { id = ideagroups.1 } #Swap Ideas
-				}
 			}
 			
 		}

@@ -1,0 +1,63 @@
+make_trading_subject = {
+
+	category = 6
+	power_projection = vassalized_rival
+	power_cost_base = 1.0
+	prestige_base = 0.2
+	ae_base = 0.4
+	warscore_cost = {
+		all_provinces = 0.65
+		no_provinces = 0.0
+		owner_keeps = 0.0
+		conquered = 0.0
+		returned_core = 0.0
+		released_nation = 0.0
+		cancelled_subject = 0.0
+		concede_colonial_region = 0.0
+	}
+	warscore_cap = -1
+	requires_demand_independence = yes
+	is_make_subject = yes
+	requires_is_allowed = no
+	
+	is_visible = {
+		tag = OME
+	}
+	is_allowed = {
+		tag = OME
+		NOT = {
+			any_subject_country = {
+				is_subject_of_type = trading_subject
+				capital_scope = {
+					region_for_scope_province = {
+						is_capital_of = FROM
+					}
+				}
+			}
+		}
+	}
+	effect = {
+		create_subject = {
+			subject = FROM
+			subject_type = trading_subject
+		}
+		#FROM = {
+		#	add_government_reform = 
+		#}
+		FROM = {
+			add_opinion = {
+				who = ROOT
+				modifier = they_force_vassalized_us
+			}
+		}
+	}
+	ai_weight = {
+		export_to_variable = {
+			variable_name = ai_value
+			value = 100
+		}
+		limit = {
+			tag = OME
+		}
+	}
+}

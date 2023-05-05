@@ -555,6 +555,7 @@ copper = {
 			NOT = { region = west_siberia_region }
 			NOT = { region = east_siberia_region }
 			NOT = { region = central_africa_region }
+			NOT = { colonial_region = colonial_saf }
 		}
 		modifier = {
 			factor = 0
@@ -590,6 +591,26 @@ copper = {
 				region = west_siberia_region
 				region = east_siberia_region
 			}
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = saf_colonisation_2_5
+			}
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = ame_colonisation_2_5
+			}
+			colonial_region = colonial_eastern_america
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = can_colonisation_2_5
+			}
+			colonial_region = colonial_canada
 		}
 	}
 }
@@ -717,6 +738,27 @@ gold = {
 			factor = 100
 			province_id = 856
 		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = brz_colonisation_2_5
+			}
+			colonial_region = colonial_brazil
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = cas_colonisation_2_5
+			}
+			colonial_region = colonial_alaska
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = ala_colonisation_2_5
+			}
+			colonial_region = colonial_alaska
+		}
 	}
 }
 
@@ -752,6 +794,12 @@ iron = {
 			NOT = { area = maryland_area }
 			NOT = { area = ofaie_area }
 			NOT = { province_id = 18 }
+			NOT = { colonial_region = colonial_saf }
+			NOT = { 
+				FROM = {
+					mission_completed = lou_colonisation_2_5 
+				}
+			}
 			is_random_new_world = no
 		}
 		modifier = {
@@ -773,6 +821,41 @@ iron = {
 			is_random_new_world = yes
 			has_terrain = mountain
 			continent = new_world #Always in RNW
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = saf_colonisation_2_5
+			}
+		}
+		modifier = {
+			factor = 2
+			colonial_region = colonial_louisiana
+			FROM = {
+				mission_completed = lou_colonisation_2_5
+			}
+			has_terrain = grasslands
+		}
+		modifier = {
+			factor = 0
+			FROM = {
+				mission_completed = lou_colonisation_2_5
+			}
+			NOT = { has_terrain = grasslands }
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = ame_colonisation_2_5
+			}
+			colonial_region = colonial_eastern_america
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = can_colonisation_2_5
+			}
+			colonial_region = colonial_canada
 		}
 	}
 }
@@ -1418,6 +1501,13 @@ cocoa = {
 				has_winter = severe_winter
 			}
 		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = col_colonisation_2_5
+			}
+			colonial_region = colonial_colombia
+		}
 	}
 }
 
@@ -1533,6 +1623,12 @@ dyes = {
 				has_country_flag = encourage_cash_crops_flag
 			}
 		}
+		modifier = {
+			factor = 2 
+			FROM = {
+				mission_completed = car_colonisation_2_5
+			}
+		}
 	}
 }
 
@@ -1578,10 +1674,10 @@ tropical_wood = {
 livestock = {
 	color = { 0.72 0.49 0.44 }
 	modifier = {
-		cavalry_cost = -0.1
+		global_supply_limit_modifier = 0.15
 	}
 	province = {
-		local_tax_modifier = 0.15
+		local_tax_modifier = 0.1
 	}
 	chance = {
 		factor = 30
@@ -1923,6 +2019,13 @@ gems = {
 				has_country_flag = encourage_cash_crops_flag
 			}
 		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = brz_colonisation_2_5
+			}
+			colonial_region = colonial_brazil
+		}
 	}
 }
 
@@ -2044,12 +2147,6 @@ rice = {
 			factor = 1.5
 			has_terrain = farmlands
 		}
-		modifier = {
-			factor = 1.5
-			OR = {
-				
-			}
-		}
 	}
 }
 
@@ -2059,10 +2156,10 @@ silver = {
 		inflation_reduction = 0.05
 	}
 	province = {
-		local_tax_modifier = 0.1
+		local_tax_modifier = 0.15
 	}
 	chance = {
-		factor = 4
+		factor = 3
 		modifier = {
 			factor = 0
 			continent = europe
@@ -2074,6 +2171,11 @@ silver = {
 				has_terrain = glacier
 				has_terrain = coastline
 				has_climate = arctic
+				has_terrain = drylands
+				has_terrain = savannah
+				has_terrain = steppe
+				has_terrain = grasslands
+				has_terrain = farmlands
 			}
 		}
 		modifier = {
@@ -2088,36 +2190,67 @@ silver = {
 			}
 		}
 		modifier = {
-			factor = 0
-			OR = {
-				has_terrain = drylands
-				has_terrain = savannah
-				has_terrain = steppe
-			}
-		}
-		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
-			has_terrain = farmlands
-		}
-		modifier = {
 			factor = 2
-				continent = north_america
+			continent = north_america
 		}
 		modifier = {
 			factor = 1.5
-				continent = south_america
+			continent = south_america
+		}
+		modifier = {
+			factor = 2
+			FROM  = {
+				mission_completed = saf_colonisation_2_5
+			}
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = car_colonisation_2_5
+			} 
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = brz_colonisation_2_5
+			}
+			colonial_region = colonial_brazil
+		}
+		modifier = {
+			factor = 3
+			FROM = {
+				mission_completed = pla_colonisation_2_5
+			}
+			colonial_region = colonial_la_plata
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = col_colonisation_2_5
+			}
+			colonial_region = colonial_colombia
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = ame_colonisation_2_5
+			}
+			colonial_region = colonial_eastern_america
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = can_colonisation_2_5
+			}
+			colonial_region = colonial_canada
 		}
 	}
 }
 
 tin = {
-	color = { 0.3 0.2 0.3 }
+	color = { 0.48 0.44 0.44 }
 	modifier = {
-		artillery_cost = -0.1
+		trade_efficiency = 0.05
 	}
 	province = {
 		local_regiment_cost = -0.15
@@ -2135,45 +2268,63 @@ tin = {
 				has_terrain = glacier
 				has_terrain = coastline
 				has_climate = arctic
+				has_terrain = drylands
+				has_terrain = savannah
+				has_terrain = steppe
+				has_terrain = grasslands
+				has_terrain = farmlands
 			}
 		}
 		modifier = {
-			factor = 0.8
+			factor = 2
 			OR = {
 				has_terrain = mountain
-				has_terrain = coastal_desert
-				has_terrain = forest
-				has_terrain = woods
 				has_terrain = hills
-				has_terrain = jungle
 				has_terrain = highlands
 			}
 		}
 		modifier = {
-			factor = 0.2
+			factor = 1
 			OR = {
-				has_terrain = drylands
-				has_terrain = savannah
-				has_terrain = steppe
+				has_terrain = forest
+				has_terrain = woods	
+				has_terrain = jungle							
 			}
 		}
 		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
-			has_terrain = farmlands
+			factor = 2
+			continent = north_america
 		}
 		modifier = {
 			factor = 1.5
-			OR = {
-				region = south_africa_region
-				region = peru_region
-				region = upper_peru_region
-				region = rio_grande_region
-				region = mexico_region
+			continent = south_america
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = saf_colonisation_2_5
 			}
+		}
+		modifier = {
+			factor = 3
+			FROM = {
+				mission_completed = pla_colonisation_2_5
+			}
+			colonial_region = colonial_la_plata
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = ame_colonisation_2_5
+			}
+			colonial_region = colonial_eastern_america
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = can_colonisation_2_5
+			}
+			colonial_region = colonial_canada
 		}
 	}
 }
@@ -2191,55 +2342,50 @@ opium = {
 		factor = 5
 		modifier = {
 			factor = 0
-			continent = europe
-		}
-		modifier = {
-			factor = 0
 			OR = {
-				has_terrain = desert
-				has_terrain = glacier
-				has_terrain = coastline
-				has_climate = arctic
-				has_terrain = farmlands
-				has_terrain = jungle
-				has_terrain = coastal_desert
-				has_terrain = forest
+				continent = africa
+				continent = europe
+				continent = asia
+				colonial_region = colonial_brazil
+				colonial_region = colonial_la_plata
+				colonial_region = colonial_peru
+				colonial_region = colonial_the_carribean
+				colonial_region = colonial_louisiana
+				colonial_region = colonial_eastern_america
+				colonial_region = colonial_canada
+				colonial_region = colonial_alaska
 			}
 		}
 		modifier = {
-			factor = 1
+			factor = 2.0
 			OR = {
-				has_terrain = drylands
-				has_terrain = grasslands
+				has_terrain = forest
+				has_terrain = woods
 				has_terrain = hills
-				has_terrain = highlands
+				has_terrain = jungle
 			}
 		}
 		modifier = {
 			factor = 0.8
 			OR = {
 				has_terrain = mountain
-				has_terrain = savannah
-				has_terrain = steppe
+				has_terrain = coastal_desert
+				has_terrain = highlands
 			}
 		}
 		modifier = {
-			factor = 0.4
+			factor = 0.2
 			OR = {
 				has_terrain = drylands
 				has_terrain = savannah
 				has_terrain = steppe
-				has_terrain = grasslands
-				has_terrain = woods
 			}
 		}
 		modifier = {
-			factor = 1.2
+			factor = 0
 			OR = {
-				region = peru_region
-				region = mexico_region
-				region = colombia_region
-				region = central_america_region
+				has_terrain = grasslands
+				has_terrain = farmlands
 			}
 		}
 	}
@@ -2248,26 +2394,18 @@ opium = {
 saffron = {
 	color = { 0.8 0.1 0.3 }
 	modifier = {
-		monarch_lifespan = 0.25
+		global_trade_power = 0.1
 	}
 	province = {
 		province_trade_power_modifier = 0.1
 	}
 	chance = {
-		factor = 5
-		modifier = {
-			factor = 0
-			continent = europe
-			continent = asia
-			continent = north_america
-			continent = south_america
-			continent = africa
-		}
+		factor = 0
 	}
 }
 
 crab = {
-	color = { 0.3 0.2 0.3 }
+	color = { 0.26 0.53 0.96 }
 	modifier = {
 		sailors_recovery_speed = 0.2
 	}
@@ -2278,25 +2416,26 @@ crab = {
 		factor = 5
 		modifier = {
 			factor = 0
-			continent = europe
+			NOT = { has_port = yes }
 		}
 		modifier = {
-			factor = 0
-			NOT = { has_port = yes }
+			factor = 2
+			OR = {
+				has_terrain = coastline
+				has_terrain = coastal_desert				
+			}
 		}
 		modifier = {
 			factor = 0
 			OR = {
 				has_terrain = desert
 				has_terrain = glacier
-				has_terrain = coastline
 			}
 		}
 		modifier = {
 			factor = 0.8
 			OR = {
 				has_terrain = mountain
-				has_terrain = coastal_desert
 				has_terrain = forest
 				has_terrain = woods
 				has_terrain = hills
@@ -2313,21 +2452,10 @@ crab = {
 			}
 		}
 		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
-			has_terrain = farmlands
-		}
-		modifier = {
-			factor = 1.5
+			factor = 1.0
 			OR = {
-				region = south_africa_region
-				region = peru_region
-				region = upper_peru_region
-				region = rio_grande_region
-				region = mexico_region
+				has_terrain = grasslands
+				has_terrain = farmlands
 			}
 		}
 	}
@@ -2336,7 +2464,7 @@ crab = {
 deer = {
 	color = { 0.8 0.4 0.3 }
 	modifier = {
-		military_tactics = 0.1
+		monarch_lifespan = 0.1
 	}
 	province = {
 		local_hostile_attrition = 1
@@ -2345,7 +2473,10 @@ deer = {
 		factor = 5
 		modifier = {
 			factor = 0
-			continent = europe
+			OR = {
+				colonial_region = colonial_saf
+				continent = asia
+			}
 		}
 		modifier = {
 			factor = 0
@@ -2357,7 +2488,7 @@ deer = {
 			}
 		}
 		modifier = {
-			factor = 0.8
+			factor = 1.0
 			OR = {
 				has_terrain = mountain
 				has_terrain = coastal_desert
@@ -2366,6 +2497,8 @@ deer = {
 				has_terrain = hills
 				has_terrain = jungle
 				has_terrain = highlands
+				has_terrain = grasslands
+				has_terrain = farmlands
 			}
 		}
 		modifier = {
@@ -2376,29 +2509,11 @@ deer = {
 				has_terrain = steppe
 			}
 		}
-		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
-			has_terrain = farmlands
-		}
-		modifier = {
-			factor = 1.5
-			OR = {
-				region = south_africa_region
-				region = peru_region
-				region = upper_peru_region
-				region = rio_grande_region
-				region = mexico_region
-			}
-		}
 	}
 }
 
 banana = {
-	color = { 1.0 0.9 0.4 }
+	color = { 0.96 1.0 0.01 }
 	modifier = {
 		production_efficiency = 0.1
 	}
@@ -2412,24 +2527,27 @@ banana = {
 			continent = europe
 		}
 		modifier = {
+			factor = 3
+			has_terrain = jungle
+		}
+		modifier = {
+			factor = 1
+			OR = {
+				has_terrain = forest
+				has_terrain = woods
+				has_terrain = hills
+				has_terrain = highlands
+			}
+		}
+		modifier = {
 			factor = 0
 			OR = {
 				has_terrain = desert
 				has_terrain = glacier
 				has_terrain = coastline
 				has_climate = arctic
-			}
-		}
-		modifier = {
-			factor = 0.8
-			OR = {
 				has_terrain = mountain
 				has_terrain = coastal_desert
-				has_terrain = forest
-				has_terrain = woods
-				has_terrain = hills
-				has_terrain = jungle
-				has_terrain = highlands
 			}
 		}
 		modifier = {
@@ -2441,21 +2559,10 @@ banana = {
 			}
 		}
 		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
-			has_terrain = farmlands
-		}
-		modifier = {
-			factor = 1.5
+			factor = 0.5
 			OR = {
-				region = south_africa_region
-				region = peru_region
-				region = upper_peru_region
-				region = rio_grande_region
-				region = mexico_region
+				has_terrain = grasslands
+				has_terrain = farmlands
 			}
 		}
 	}
@@ -2476,24 +2583,27 @@ citrus = {
 			continent = europe
 		}
 		modifier = {
+			factor = 3
+			has_terrain = jungle
+		}
+		modifier = {
+			factor = 1
+			OR = {
+				has_terrain = forest
+				has_terrain = woods
+				has_terrain = hills
+				has_terrain = highlands
+			}
+		}
+		modifier = {
 			factor = 0
 			OR = {
 				has_terrain = desert
 				has_terrain = glacier
 				has_terrain = coastline
 				has_climate = arctic
-			}
-		}
-		modifier = {
-			factor = 0.8
-			OR = {
 				has_terrain = mountain
 				has_terrain = coastal_desert
-				has_terrain = forest
-				has_terrain = woods
-				has_terrain = hills
-				has_terrain = jungle
-				has_terrain = highlands
 			}
 		}
 		modifier = {
@@ -2505,21 +2615,10 @@ citrus = {
 			}
 		}
 		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
-			has_terrain = farmlands
-		}
-		modifier = {
-			factor = 1.5
+			factor = 0.5
 			OR = {
-				region = south_africa_region
-				region = peru_region
-				region = upper_peru_region
-				region = rio_grande_region
-				region = mexico_region
+				has_terrain = grasslands
+				has_terrain = farmlands
 			}
 		}
 	}
@@ -2537,12 +2636,15 @@ horses = {
 		factor = 5
 		modifier = {
 			factor = 0
-			continent = europe
+			OR = {
+				continent = europe
+				continent = north_america
+				continent = south_america
+			}
 		}
 		modifier = {
 			factor = 0
 			OR = {
-				has_terrain = desert
 				has_terrain = glacier
 				has_terrain = coastline
 				has_climate = arctic
@@ -2561,29 +2663,14 @@ horses = {
 			}
 		}
 		modifier = {
-			factor = 0.2
+			factor = 2.0
 			OR = {
 				has_terrain = drylands
 				has_terrain = savannah
 				has_terrain = steppe
-			}
-		}
-		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
-			has_terrain = farmlands
-		}
-		modifier = {
-			factor = 1.5
-			OR = {
-				region = south_africa_region
-				region = peru_region
-				region = upper_peru_region
-				region = rio_grande_region
-				region = mexico_region
+				has_terrain = grasslands
+				has_terrain = farmlands
+				has_terrain = desert
 			}
 		}
 	}
@@ -2633,12 +2720,9 @@ olives = {
 			}
 		}
 		modifier = {
-			factor = 0
-			has_terrain = grasslands
-		}
-		modifier = {
-			factor = 0
+			factor = 3
 			has_terrain = farmlands
+			has_terrain = grasslands
 		}
 		modifier = {
 			factor = 1.5
@@ -2650,5 +2734,186 @@ olives = {
 				region = mexico_region
 			}
 		}
+		modifier = {
+			factor = 2
+			colonial_region = colonial_louisiana
+			FROM = {
+				mission_completed = lou_colonisation_2_5
+			}
+		}
+	}
+}
+
+### Developed Goods - tier 1 ###
+
+cheese = {
+	color = { 0.89 0.86 0.13 }
+	modifier = {
+		global_tax_modifier = 0.1
+	}
+	province = {
+		local_tax_modifier = 0.15
+	}
+	chance = {
+		factor = 0
+	}
+}
+
+ale = {
+	color = { 0.84 0.68 0.17 }
+	modifier = {
+		land_forcelimit_modifier = 0.2
+	}
+	province = {
+		land_forcelimit = 0.5
+	}
+	chance = {
+		factor = 0
+	}
+}
+
+olive_oil = {
+	color = { 0.55 0.87 0.14 }
+	modifier = {
+		global_trade_goods_size_modifier = 0.05
+	}
+	province = {
+		local_production_efficiency = 0.05
+	}
+	chance = {
+		factor = 0
+	}
+}
+
+books = {
+	color = { 0.96 0.88 0.65 }
+	modifier = {
+		technology_cost = -0.1
+	}
+	province = {
+		local_state_maintenance_modifier = -0.2
+	}
+	chance = {
+		factor = 0
+	}
+}
+
+chocolate = {
+	color = { 0.56 0.36 0.07 }
+	modifier = {
+		prestige = 0.5
+	}
+	province = {
+		local_manpower_modifier = 0.1
+	}
+	chance = {
+		factor = 0
+	}
+}
+
+uniforms = {
+	color = { 0.94 0.11 0.11 }
+	modifier = {
+		global_regiment_cost = -0.10
+	}
+	province = {
+		regiment_recruit_speed  = -0.20
+	}
+	chance = {
+		factor = 0
+	}
+}
+
+silverware = {
+	color = { 0.97 0.96 0.90 }
+	modifier = {
+		inflation_reduction = 0.1
+	}
+	province = {
+		local_tax_modifier = 0.25
+	}
+	chance = {
+		factor = 0
+	}
+}
+
+perfume = {
+	color = { 0.96 0.21 0.95 }
+	modifier = {
+		global_missionary_strength = 0.01
+	}
+	province = {
+		trade_value_modifier = 0.2
+	}
+	chance = {
+		factor = 0
+	}
+}
+
+jewellery = {
+	color = { 0.67 0.23 0.89 }
+	modifier = {
+		legitimacy = 1
+		republican_tradition = 0.5
+		devotion = 1
+		horde_unity = 1
+	}
+	province = {
+		local_development_cost = -0.1
+	}
+	chance = {
+		factor = 0
+	}
+}
+
+steel = {
+	color = { 0.76 0.75 0.69 }
+	modifier = {
+		discipline = 0.025
+	}
+	province = {
+		land_forcelimit = 0.10
+	}
+	chance = {
+		factor = 0
+	}
+}
+
+bronze = {
+	color = { 0.89 0.61 0.23 }
+	modifier = {
+		artillery_cost = -0.1
+	}
+	province = {
+		local_regiment_cost = -0.2
+	}
+	chance = {
+		factor = 0
+	}
+}
+
+armour = {
+	color = { 0.67 0.23 0.89 }
+	modifier = {
+		land_morale = 0.05
+	}
+	province = {
+		local_build_time = -0.2
+	}
+	chance = {
+		factor = 0
+	}
+}
+
+tailored_clothes = {
+	color = { 0.67 0.23 0.89 }
+	modifier = {
+		num_accepted_cultures = 1
+	}
+	province = {
+		province_trade_power_value = 4
+	}
+	chance = {
+		factor = 0
 	}
 }
