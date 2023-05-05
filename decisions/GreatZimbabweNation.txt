@@ -3,47 +3,16 @@ country_decisions = {
 		zimbabwe_nation = {
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
-				was_never_end_game_tag_trigger = yes
 				NOT = { has_country_flag = formed_zimbabwe_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
-				NOT = { tag = PAP }
-				NOT = { tag = HLR }
-				NOT = { tag = ROM }
-				NOT = { tag = SPA }
-				NOT = { tag = POR }
-				NOT = { tag = NED }
+				ai = no
+				NOT = { exists = ZBW }
 				is_colonial_nation = no
-				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
-				OR = {
-					culture_group = southern_african
-				}
-				
-				OR = {
-					ai = no
-					AND = {
-						NOT = { exists = ZBW }
-						num_of_cities = 10
-						
-					}
-				}
+				culture_group = southern_african
 			}
 			
 			provinces_to_highlight = {
 				OR = {
-				province_id = 2951			# Manikya
-
-				
-								
+					province_id = 2951			# Manikya		
 				}
 				OR = {
 					NOT = { owned_by = ROOT }
@@ -52,74 +21,28 @@ country_decisions = {
 			}
 			
 			allow = {
-				NOT = { exists = ZBW }
-				is_nomad = no
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
-				owns_core_province = 2951			# Manikya
 				
-				AND = {
-						adm_tech = 8
-					}
-			
-				OR = {
-					AND = {
-					total_development = 130
-					}
-				}
+				adm_tech = 8
+				total_development = 500
 			}
-			effect = {
-				2951 = {	#Manikya
-					move_capital_effect = yes
-				}
-				
+
+			effect = {				
 				change_tag = ZBW
-				if = {
-					limit = {
-						NOT = { government_rank = 2 }
-					}
-					set_government_rank = 2
-				}
+				if = { limit = { NOT = { government_rank = 2 }}	set_government_rank = 2	}
+				set_country_flag = great_zimbabwe_gov_reform_flag
+				hidden_effect = { change_government = monarchy }
+				add_government_reform = great_zimbabwe_reform
 				add_prestige = 25
 				add_country_modifier = {
 					name = centralization_modifier
 					duration = 3650
 				}
-				set_capital = 2951 # Manikya
-				if = {
-					limit = {
-						NOT = { primary_culture = shona }
-					}
-					change_primary_culture = shona
-				}
-				if = {
-					limit = { is_revolutionary = no }
-					change_government = monarchy
-				} 
-					
-				south_africa_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				east_africa_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				central_africa_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				
+				if = { limit = { NOT = { primary_culture = shona } } change_primary_culture = shona	}
 				set_country_flag = formed_zimbabwe_flag
 				country_event = { id = ideagroups.1 } #Swap Ideas
 				additional_missions_scripted_effect = yes
 			}
-			
 		}
 	}

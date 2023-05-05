@@ -10,10 +10,6 @@ country_event = { #Choose Religion Event
 	
 	is_triggered_only = yes
 
-	trigger = {
-		tag = RZW
-	}
-	
 	option = { #Stay Fetishist
 		name = butua_flavour.1.a
 
@@ -22,6 +18,9 @@ country_event = { #Choose Religion Event
             duration = -1
         }
         add_stability = 1
+		set_country_flag = butua_fetishist
+
+		hidden_effect = { swap_non_generic_missions = yes }
 		
 		ai_chance = { #Keep AI as default religion
 			factor = 100
@@ -35,6 +34,9 @@ country_event = { #Choose Religion Event
         set_ruler_religion = sunni
         set_heir_religion = sunni
         set_consort_religion = sunni
+		set_country_flag = butua_sunni
+
+		hidden_effect = { swap_non_generic_missions = yes }
 
         add_country_modifier = {
             name = "butua_converts_sunni"
@@ -56,10 +58,6 @@ country_event = { #Asian Focus
 	fire_only_once = yes
 	
 	is_triggered_only = yes
-
-	trigger = {
-		tag = RZW
-	}
 	
 	option = { #India
 		name = butua_flavour.2.a
@@ -99,10 +97,6 @@ country_event = { #Colonising Cape Focus
 	fire_only_once = yes
 	
 	is_triggered_only = yes
-
-	trigger = {
-		tag = RZW
-	}
 	
 	option = { #Faster Colonisation
 		name = butua_flavour.3.a
