@@ -1,77 +1,75 @@
 country_decisions = {
 
-		somali_nation = {
-			major = yes
-			potential = {
-				NOT = { has_country_flag = formed_somali_flag }
-				NOT = { exists = SOM }
-				ai = no
-				NOT = { tag = OME }
-				NOT = { tag = SLU }
-				NOT = { tag = MAM }
-				is_colonial_nation = no
-				OR = {
-					primary_culture = swahili
-					culture_group = cushitic
-				}
+	somali_nation = {
+		major = yes
+		potential = {
+			NOT = { has_country_flag = formed_somali_flag }
+			NOT = { exists = SOM }
+			ai = no
+			NOT = { tag = OME }
+			NOT = { tag = SLU }
+			NOT = { tag = MAM }
+			is_colonial_nation = no
+			OR = {
+				primary_culture = swahili
+				culture_group = cushitic
 			}
-			
-			provinces_to_highlight = {
-				OR = {
-					province_id = 1205			#  
-					province_id = 2775			# 
-					province_id = 2783			# 
-					province_id = 2784			# 
-					province_id = 2788			# 
-					province_id = 1212			# 
-					province_id = 1209			# 
-					province_id = 2789			# 
-				}
-					
-				OR = {
-					NOT = { owned_by = ROOT }
-					NOT = { is_core = ROOT }
-				}
+		}
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1205			#  
+				province_id = 2775			# 
+				province_id = 2783			# 
+				province_id = 2784			# 
+				province_id = 2788			# 
+				province_id = 1212			# 
+				province_id = 1209			# 
+				province_id = 2789			# 
 			}
-			
-			allow = {
-				is_free_or_tributary_trigger = yes
-				is_at_war = no
-				owns_core_province = 1205			#  
-				owns_core_province = 2775			# 
-				owns_core_province = 2783			# 
-				owns_core_province = 2784			# 
-				owns_core_province = 2788			# 
-				owns_core_province = 1212			# 
-				owns_core_province = 1209
-				owns_core_province = 2789
+				
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
 			}
-
-			effect = {
-				change_tag = SOM
-				new_mission_tree_scripted_effect = yes
-				if = {
-					limit = {
-						NOT = { government_rank = 2 }
-					}
-					set_government_rank = 2
+		}
+		
+		allow = {
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			owns_core_province = 1205			#  
+			owns_core_province = 2775			# 
+			owns_core_province = 2783			# 
+			owns_core_province = 2784			# 
+			owns_core_province = 2788			# 
+			owns_core_province = 1212			# 
+			owns_core_province = 1209
+			owns_core_province = 2789
+		}
+		
+		effect = {
+			change_tag = SOM
+			new_mission_tree_scripted_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
 				}
-				add_prestige = 25
-				add_country_modifier = {
-					name = centralization_modifier
-					duration = 3650
-				}
-
-				if = {
-					limit = {
-						NOT = { technology_group = muslim }
-					}
-					change_technology_group = muslim
-					change_unit_type = muslim
-				}
-				set_country_flag = formed_somali_flag
-				country_event = { id = ideagroups.1 } #Swap Ideas
+				set_government_rank = 2
 			}
-			
+			add_prestige = 25
+			add_country_modifier = {
+				name = centralization_modifier
+				duration = 3650
+			}
+			if = {
+				limit = {
+					NOT = { technology_group = muslim }
+				}
+				change_technology_group = muslim
+				change_unit_type = muslim
+			}
+			set_country_flag = formed_somali_flag
+			country_event = { id = ideagroups.1 } #Swap Ideas
 		}
 	}
+}
