@@ -71,11 +71,17 @@ country_decisions = {
 				PLC = { set_government_rank = 2 }
 			}
 			if = {
-				limit = {
-					NOT = { primary_culture = polish }
-					NOT = { accepted_culture = polish }
+				limit = { has_updated_culture = { culture = slavic } }
+				if = {
+					limit = { NOT = { primary_culture = polish_new } NOT = { accepted_culture = polish_new } }
+					change_primary_culture = polish_new
 				}
-				add_accepted_culture = polish
+			}
+			else = {
+				if = {
+					limit = { NOT = { primary_culture = polish } NOT = { accepted_culture = polish } }
+					change_primary_culture = polish
+				}
 			}
 			if = {
 				limit = {

@@ -48,6 +48,7 @@ country_decisions = {
 			}
 			change_tag = ENG
 			new_mission_tree_scripted_effect = yes
+			restore_country_name = yes
 			remove_non_electors_emperors_from_empire_effect = yes
 			if = {
 				limit = {
@@ -120,6 +121,23 @@ country_decisions = {
 				duration = 7300
 			}
 			add_prestige = 25
+			if = {
+				limit = {
+					NOT = { government = monarchy }
+					NOT = { has_government_attribute = locked_government_type }
+				}
+				change_government = monarchy
+			}
+			if = {
+				limit = {
+					OR = {
+						government = monarchy
+						NOT = { has_government_attribute = locked_government_type }
+					}
+					has_not_locked_first_tier_reform = yes
+				}
+				add_government_reform = english_monarchy 
+			}
 			set_country_flag = formed_england_flag
 			country_event = { id = ideagroups.1 } #Swap Ideas
 		}
