@@ -198,9 +198,27 @@ butua_south_afroia_continued = {
 					key = STRONG_MERCHANTS
 				}
 			}
-			4782 = {
+			5265 = {
 				add_center_of_trade_level = 1
 				add_base_production = 2
+			}	
+        }
+	}
+
+	butua_cape_trade_mission = {
+		icon = test
+		required_missions = { butua_cape_secured }
+		provinces_to_highlight = {
+			province_id = 1460
+		}
+
+		trigger = {
+			1460 = { has_merchant = ROOT }
+		}
+
+		effect = {
+			1460 = {
+				add_trade_node_income = 20
 			}	
         }
 	}
@@ -228,7 +246,7 @@ butua_religion = {
 		trigger = {
 			crown_land_share = 20
 			estate_loyalty = {
-				estate = estate_chruch
+				estate = estate_church
 				loyalty = 80
 			}
 			NOT = {
@@ -264,6 +282,7 @@ butua_religion_placeholder = {
 	butua_religion_placeholder_mission = {
 		icon = mission_unknown_mission
 		required_missions = { butua_control_the_church }
+		required_missions = { butua_choose_religion }
 		provinces_to_highlight = { }
 		position = 9
 
@@ -293,8 +312,23 @@ butua_religion_fetishist = { #Fetishist Missions
 	butua_religion_fetishist_1 = {
 		icon = test
 		required_missions = { butua_control_the_church }
+		required_missions = { butua_choose_religion }
 		provinces_to_highlight = { }
 		position = 9
+
+		trigger = {
+			
+		}
+
+		effect = {
+			
+        }
+	}
+
+	butua_religion_fetishist_2 = {
+		icon = test
+		required_missions = { butua_religion_fetishist_1 }
+		provinces_to_highlight = { }
 
 		trigger = {
 			
@@ -322,8 +356,23 @@ butua_religion_sunni = { #Sunni Missions
 	butua_religion_sunni_1 = {
 		icon = test
 		required_missions = { butua_control_the_church }
+		required_missions = { butua_choose_religion }
 		provinces_to_highlight = { }
 		position = 9
+
+		trigger = {
+			
+		}
+
+		effect = {
+			
+        }
+	}
+
+	butua_religion_sunni_2 = {
+		icon = test
+		required_missions = { butua_religion_sunni_1 }
+		provinces_to_highlight = { }
 
 		trigger = {
 			
@@ -373,9 +422,9 @@ buta_monument = {
 							type = khami_ruins
 							tier = 2
 						}
+						development = 20
 					}
 					treasury = 1000
-					development = 20
 				}
 				AND = {
 					1184 = {
@@ -398,7 +447,7 @@ buta_monument = {
 						}
 					}
 				}
-				add_prestige = 50
+				add_prestige_or_monarch_power = { amount = 50 }
 				add_stability_or_adm_power = yes
 				add_stability_or_adm_power = yes
 				add_adm_power = 100
