@@ -1977,9 +1977,21 @@ liv_lva_handle_the_threats_mission_slot = {
 				}
 			}
 			else_if = {
+				limit = { 33 = { culture = novgorodian_new } }
+				add_accepted_culture_or_dip_power = {
+					culture = novgorodian_new
+				}
+			}
+			else_if = {
 				limit = { 33 = { culture = russian } }
 				add_accepted_culture_or_dip_power = {
 					culture = russian
+				}
+			}
+			else_if = {
+				limit = { 33 = { culture = russian_new } }
+				add_accepted_culture_or_dip_power = {
+					culture = russian_new
 				}
 			}
 			else = {
@@ -2759,7 +2771,7 @@ liv_end_the_orthodoxy_mission_slot = {
 					OR = {
 						NOT = { religion = ROOT }
 						AND = {
-							NOT = { owns_or_non_sovereign_subject_of = ROOT }
+							NOT = { owns_or_non_sovereign_subject_of = PREV }
 							NOT = { alliance_with = ROOT }
 						}
 					}

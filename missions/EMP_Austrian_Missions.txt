@@ -880,7 +880,13 @@ emp_hab_minorities_branch = {
 					NOT = { accepted_culture = slovak }
 					NOT = { primary_culture = slovak }
 				}
-				add_accepted_culture = slovak
+				if = {
+					limit = { has_updated_culture = { culture = slavic } }
+					add_accepted_culture_or_dip_power = { culture = slovak_new }
+				}
+				else = {
+					add_accepted_culture_or_dip_power = { culture = slovak }
+				}
 				if = {
 					limit = {
 						1772 = { culture = austrian }

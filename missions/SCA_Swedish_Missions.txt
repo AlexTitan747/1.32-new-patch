@@ -2150,26 +2150,26 @@ swe_internal_slot = {
 			310 = {
 				change_province_name = "Hólmgarðr"
 				rename_capital = "Hólmgarðr"
-				if = {
-					limit = {
-						NOT = { province_has_center_of_trade_of_level = 2 }
+				custom_tooltip = will_upgrade_center_of_trade_to_level_2_tt
+				hidden_effect = {
+					if = {
+						limit = {
+							NOT = { province_has_center_of_trade_of_level = 2 }
+						}
+						add_center_of_trade_level = 1
 					}
-					add_center_of_trade_level = 1
-				}
-				else = {
-					custom_tooltip = will_upgrade_center_of_trade_to_level_2_tt
 				}
 				change_religion = ROOT
 			}
 			33 = {
-				if = {
-					limit = {
-						NOT = { province_has_center_of_trade_of_level = 2 }
+				custom_tooltip = will_upgrade_center_of_trade_to_level_2_tt
+				hidden_effect = {
+					if = {
+						limit = {
+							NOT = { province_has_center_of_trade_of_level = 2 }
+						}
+						add_center_of_trade_level = 1
 					}
-					add_center_of_trade_level = 1
-				}
-				else = {
-					custom_tooltip = will_upgrade_center_of_trade_to_level_2_tt
 				}
 				change_religion = ROOT
 				if = {
@@ -2761,7 +2761,13 @@ swe_swedish_military_mission_slot = {
 					}
 				}
 				add_adm_power = 150
-				add_accepted_culture_or_dip_power = { culture = polish }
+				if = {
+				limit = { has_updated_culture = { culture = slavic } }
+					add_accepted_culture_or_dip_power = { culture = polish_new }
+				}
+				else = {
+					add_accepted_culture_or_dip_power = { culture = polish }
+				}
 				poland_region = {
 					limit = {
 						country_or_non_sovereign_subject_holds = ROOT
@@ -5379,6 +5385,7 @@ swe_sca_competent_fleet_slot = {
 			}
 			OR = {
 				full_idea_group = maritime_ideas
+				full_idea_group = quality_ideas
 				full_idea_group = naval_ideas
 				naval_reformer = 3
 			}
@@ -5433,6 +5440,7 @@ swe_sca_competent_fleet_slot = {
 				limit = {
 					ROOT = {
 						NOT = { full_idea_group = maritime_ideas }
+						NOT = { full_idea_group = quality_ideas }
 						NOT = { full_idea_group = naval_ideas }
 					}
 				}
@@ -5452,6 +5460,7 @@ swe_sca_competent_fleet_slot = {
 		trigger = {
 			OR = {
 				full_idea_group = naval_ideas
+				full_idea_group = quality_ideas
 				full_idea_group = maritime_ideas
 				AND = {
 					max_sailors = 50000
@@ -5482,6 +5491,7 @@ swe_sca_competent_fleet_slot = {
 					limit = {
 						OR = {
 							full_idea_group = naval_ideas
+							full_idea_group = quality_ideas
 							full_idea_group = maritime_ideas
 						}
 					}
@@ -5509,7 +5519,7 @@ swe_sca_competent_fleet_slot = {
 				limit = {
 					has_dlc = "Golden Century"
 				}
-				has_or_building_flagship = no
+				has_spare_flagship_capacity = yes
 			}
 		}
 		effect = {

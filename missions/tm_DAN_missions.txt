@@ -83,6 +83,13 @@ dan_secure_baltic_mission_slot = {
 				}
 				add_permanent_claim = ROOT
 			}
+			if = {
+				limit = { ai = yes SWE = { is_subject_of = ROOT } }
+				reverse_add_opinion = {
+					who = SWE
+					modifier = dan_early_victories
+				}
+			}
 		}
 	}
 
@@ -1689,7 +1696,7 @@ dan_sweden_and_great_power_mission_slot = {
 				stability = 3
 				total_own_and_non_tributary_subject_development = 600
 				custom_trigger_tooltip = {
-					tooltip = kon_absolute_rule_ct
+					tooltip = absolutism_dynamic_reward_tt
 					is_absolutism_active = no
 				}
 			}
