@@ -917,7 +917,7 @@ country_event = {
 	}
 }
 
-# Kösem Sultana
+# Kï¿½sem Sultana
 country_event = {
 	id = flavor_tur.3377
 	title = "flavor_tur.EVTNAME3377"
@@ -941,7 +941,7 @@ country_event = {
 		months = 100
 	}
 	
-	option = {		# Wed Kösem
+	option = {		# Wed Kï¿½sem
 		name = "flavor_tur.EVTOPTA3377"
 		ai_chance = { factor = 90 }
 		add_ruler_modifier = {
@@ -954,7 +954,7 @@ country_event = {
 				has_government_attribute = queen
 			}
 			define_consort = {
-				name = "Kösem Sultan"
+				name = "Kï¿½sem Sultan"
 				culture = greek
 				adm = 5
 				dip = 4
@@ -983,7 +983,7 @@ country_event = {
 	}
 }
 
-# The Murder of Kösem Sultana
+# The Murder of Kï¿½sem Sultana
 country_event = {
 	id = flavor_tur.3384
 	title = "flavor_tur.EVTNAME3384"
@@ -1004,13 +1004,13 @@ country_event = {
 		months = 300
 	}
 	
-	option = {		# Kösem is murdered
+	option = {		# Kï¿½sem is murdered
 		name = "flavor_tur.EVTOPTA3384"
 		remove_country_modifier = kosem_sultana
 	}
 }
 
-# The Age of the Köprülüs
+# The Age of the Kï¿½prï¿½lï¿½s
 country_event = {
 	id = flavor_tur.3385
 	title = "flavor_tur.EVTNAME3385"
@@ -1029,7 +1029,7 @@ country_event = {
 		months = 100
 	}
 	
-	option = {		# Support the Köprülü Family
+	option = {		# Support the Kï¿½prï¿½lï¿½ Family
 		name = "flavor_tur.EVTOPTA3385"
 		ai_chance = { factor = 90 }
 		if = {
@@ -1913,309 +1913,309 @@ country_event = {
 	}
 }
 
-# Janissary Reward
-country_event = {
-	id = flavor_tur.102
-	title = "flavor_tur.EVTNAME102"
-	desc = "flavor_tur.EVTDESC102"
-	picture = MILITARY_CAMP_eventPicture
-	
-	trigger ={
-		has_reform = ottoman_government
-		NOT = { has_disaster = janissary_decadence }
-		num_of_janissaries = 10
-		has_estate_privilege = estate_janissaries_increase_wages
-		if = {
-			limit = {
-				NOT = { has_dlc = "Cradle of Civilization" }
-				NOT = { has_dlc = "Domination" }
-			}
-			has_country_modifier = tur_janissary
-		}
-		else = {
-			num_of_janissaries = 3
-			has_estate = estate_janissaries
-		}
-		has_regency = no
-	}
-	
-	is_triggered_only = yes
-	
-	option = {		# Give a reward and higher wages
-		name = "flavor_tur.EVTOPTA102"
-		if = {
-			limit = { 
-				NOT = { has_dlc = "Domination" }
-			}
-			add_years_of_income = -0.5
-		}
-		else = {
-			if = {
-				limit = { NOT = { has_country_flag = tur_low_salary } }
-				if = { 
-					limit = { has_country_flag = tur_toprak_janissary_wages_flag }
-					custom_tooltip = tur_according_to_ruler_ability_tt
-					if = { 
-						limit = { dip = 6 }
-						add_years_of_income = -0.10
-						change_estate_land_share = {
-							estate = estate_janissaries
-							share = 5
-						}
-					}
-					else_if = { 
-						limit = { dip = 5 }
-						add_years_of_income = -0.15
-						change_estate_land_share = {
-							estate = estate_janissaries
-							share = 5
-						}
-					}
-					else_if = { 
-						limit = { dip = 4 }
-						add_years_of_income = -0.2
-						change_estate_land_share = {
-							estate = estate_janissaries
-							share = 5
-						}
-					}
-					else_if = { 
-						limit = { dip = 3 }
-						add_years_of_income = -0.25
-						change_estate_land_share = {
-							estate = estate_janissaries
-							share = 5
-						}
-					}
-					else_if = { 
-						limit = { dip = 2 }
-						add_years_of_income = -0.3
-						change_estate_land_share = {
-							estate = estate_janissaries
-							share = 7.5
-						}
-					}
-					else_if = { 
-						limit = { dip = 1 }
-						add_years_of_income = -0.35
-						change_estate_land_share = {
-							estate = estate_janissaries
-							share = 7.5
-						}
-					}
-					else_if = { 
-						limit = { dip = 0 }
-						add_years_of_income = -0.4
-						change_estate_land_share = {
-							estate = estate_janissaries
-							share = 10
-						}
-					}
-				}	
-				else = { add_years_of_income = -0.6 }
-			}
-			else = { add_years_of_income = -0.1 }
-		}
-	}
-	option = {		# Refuse such blackmail
-		name = "flavor_tur.EVTOPTB102"
-		if = { 
-			limit = { 
-				estate_influence = { 
-					estate = estate_janissaries
-					influence = 70 
-				}
-			}
-			custom_tooltip = tur_janissaries_kill_ruler
-			hidden_effect = { 
-				random_list = { 
-					20 = { 	
-						kill_ruler = yes  
-					}
-					80 = { }
-				}
-			}
-		}
-		add_ruler_modifier = {
-			name = janissaries_denied_reward
-		}
-		if = { 
-			limit = { has_estate = estate_janissaries } 
-			add_estate_loyalty = { 
-				estate = estate_janissaries 
-				loyalty = -50
-			}
-		}
-	}
-}
-
-
-# Janissaries Demand Pay
-country_event = {
-	id = flavor_tur.111
-	title = "flavor_tur.EVTNAME111"
-	desc = "flavor_tur.EVTDESC111"
-	picture = LAND_MILITARY_eventPicture
-
-	trigger = {
-		has_estate_privilege = estate_janissaries_increase_wages
-		OR = {
-			has_country_modifier = tur_janissary
-			num_of_janissaries = 10
-		}
-		NOT = { has_disaster = janissary_decadence }
-		NOT = {
-			has_country_modifier = tur_janissaries_timer
-		}
-		num_of_owned_provinces_with = {
-			value = 30
-			is_core = ROOT
-		}
-		is_at_war = no
-		NOT = {
-			war_exhaustion = 1
-		}
-		NOT = {
-			adm = 6
-		}
-		NOT = {
-			mil = 6
-		}
-	}
-	
-	mean_time_to_happen = {
-		months = 700
-	}
-	
-	immediate = {
-		hidden_effect = {
-			add_country_modifier = {
-				name = tur_janissaries_timer
-				duration = 18250
-				hidden = yes
-			}
-		}
-	}
-	
-	option = {
-		name = "flavor_tur.EVTOPTA111"
-		if = {
-			limit = { 
-				NOT = { has_dlc = "Domination" }
-			}
-			add_years_of_income = -0.5
-		}
-		else = {
-			if = {
-				limit = { NOT = { has_country_flag = tur_low_salary } }
-				if = { 
-					limit = { has_country_flag = tur_toprak_janissary_wages_flag }
-					custom_tooltip = tur_according_to_ruler_ability_tt
-					if = { 
-						limit = { dip = 6 }
-						add_years_of_income = -0.10
-						change_estate_land_share = {
-							estate = estate_janissaries
-							share = 5
-						}
-					}
-					else_if = { 
-						limit = { dip = 5 }
-						add_years_of_income = -0.15
-						change_estate_land_share = {
-							estate = estate_janissaries
-							share = 5
-						}
-					}
-					else_if = { 
-						limit = { dip = 4 }
-						add_years_of_income = -0.2
-						change_estate_land_share = {
-							estate = estate_janissaries
-							share = 5
-						}
-					}
-					else_if = { 
-						limit = { dip = 3 }
-						add_years_of_income = -0.25
-						change_estate_land_share = {
-							estate = estate_janissaries
-							share = 5
-						}
-					}
-					else_if = { 
-						limit = { dip = 2 }
-						add_years_of_income = -0.3
-						change_estate_land_share = {
-							estate = estate_janissaries
-							share = 7.5
-						}
-					}
-					else_if = { 
-						limit = { dip = 1 }
-						add_years_of_income = -0.35
-						change_estate_land_share = {
-							estate = estate_janissaries
-							share = 7.5
-						}
-					}
-					else_if = { 
-						limit = { dip = 0 }
-						add_years_of_income = -0.4
-						change_estate_land_share = {
-							estate = estate_janissaries
-							share = 10
-						}
-					}
-				}	
-				else = { add_years_of_income = -0.6 }
-			}
-			else = { add_years_of_income = -0.1 }
-		}
-	}
-	option = {
-		name = "flavor_tur.EVTOPTB111"
-		add_ruler_modifier = {
-			name = tur_janissaries_salary
-		}
-		if = { 
-			limit = { has_estate = estate_janissaries } 
-			add_estate_loyalty = { 
-				estate = estate_janissaries 
-				loyalty = -50
-			}
-		}
-	}
-	option = {
-		name = "flavor_tur.EVTOPTC111"
-		add_stability = -1
-		if = { 
-			limit = { has_estate = estate_janissaries } 
-			add_estate_loyalty = { 
-				estate = estate_janissaries 
-				loyalty = -50
-			}
-		}
-		
-		if = { 
-			limit = { 
-				estate_influence = { 
-					estate = estate_janissaries
-					influence = 70 
-				}
-			}
-			custom_tooltip = tur_janissaries_kill_ruler
-			hidden_effect = { 
-				random_list = { 
-					20 = { 	
-						kill_ruler = yes  
-					}
-					80 = { }
-				}
-			}
-		}
-	}
-}
+## Janissary Reward
+#country_event = {
+#	id = flavor_tur.102
+#	title = "flavor_tur.EVTNAME102"
+#	desc = "flavor_tur.EVTDESC102"
+#	picture = MILITARY_CAMP_eventPicture
+#	
+#	trigger ={
+#		has_reform = ottoman_government
+#		NOT = { has_disaster = janissary_decadence }
+#		num_of_janissaries = 10
+#		has_estate_privilege = estate_janissaries_increase_wages
+#		if = {
+#			limit = {
+#				NOT = { has_dlc = "Cradle of Civilization" }
+#				NOT = { has_dlc = "Domination" }
+#			}
+#			has_country_modifier = tur_janissary
+#		}
+#		else = {
+#			num_of_janissaries = 3
+#			has_estate = estate_janissaries
+#		}
+#		has_regency = no
+#	}
+#	
+#	is_triggered_only = yes
+#	
+#	option = {		# Give a reward and higher wages
+#		name = "flavor_tur.EVTOPTA102"
+#		if = {
+#			limit = { 
+#				NOT = { has_dlc = "Domination" }
+#			}
+#			add_years_of_income = -0.5
+#		}
+#		else = {
+#			if = {
+#				limit = { NOT = { has_country_flag = tur_low_salary } }
+#				if = { 
+#					limit = { has_country_flag = tur_toprak_janissary_wages_flag }
+#					custom_tooltip = tur_according_to_ruler_ability_tt
+#					if = { 
+#						limit = { dip = 6 }
+#						add_years_of_income = -0.10
+#						change_estate_land_share = {
+#							estate = estate_janissaries
+#							share = 5
+#						}
+#					}
+#					else_if = { 
+#						limit = { dip = 5 }
+#						add_years_of_income = -0.15
+#						change_estate_land_share = {
+#							estate = estate_janissaries
+#							share = 5
+#						}
+#					}
+#					else_if = { 
+#						limit = { dip = 4 }
+#						add_years_of_income = -0.2
+#						change_estate_land_share = {
+#							estate = estate_janissaries
+#							share = 5
+#						}
+#					}
+#					else_if = { 
+#						limit = { dip = 3 }
+#						add_years_of_income = -0.25
+#						change_estate_land_share = {
+#							estate = estate_janissaries
+#							share = 5
+#						}
+#					}
+#					else_if = { 
+#						limit = { dip = 2 }
+#						add_years_of_income = -0.3
+#						change_estate_land_share = {
+#							estate = estate_janissaries
+#							share = 7.5
+#						}
+#					}
+#					else_if = { 
+#						limit = { dip = 1 }
+#						add_years_of_income = -0.35
+#						change_estate_land_share = {
+#							estate = estate_janissaries
+#							share = 7.5
+#						}
+#					}
+#					else_if = { 
+#						limit = { dip = 0 }
+#						add_years_of_income = -0.4
+#						change_estate_land_share = {
+#							estate = estate_janissaries
+#							share = 10
+#						}
+#					}
+#				}	
+#				else = { add_years_of_income = -0.6 }
+#			}
+#			else = { add_years_of_income = -0.1 }
+#		}
+#	}
+#	option = {		# Refuse such blackmail
+#		name = "flavor_tur.EVTOPTB102"
+#		if = { 
+#			limit = { 
+#				estate_influence = { 
+#					estate = estate_janissaries
+#					influence = 70 
+#				}
+#			}
+#			custom_tooltip = tur_janissaries_kill_ruler
+#			hidden_effect = { 
+#				random_list = { 
+#					20 = { 	
+#						kill_ruler = yes  
+#					}
+#					80 = { }
+#				}
+#			}
+#		}
+#		add_ruler_modifier = {
+#			name = janissaries_denied_reward
+#		}
+#		if = { 
+#			limit = { has_estate = estate_janissaries } 
+#			add_estate_loyalty = { 
+#				estate = estate_janissaries 
+#				loyalty = -50
+#			}
+#		}
+#	}
+#}
+#
+#
+## Janissaries Demand Pay
+#country_event = {
+#	id = flavor_tur.111
+#	title = "flavor_tur.EVTNAME111"
+#	desc = "flavor_tur.EVTDESC111"
+#	picture = LAND_MILITARY_eventPicture
+#
+#	trigger = {
+#		has_estate_privilege = estate_janissaries_increase_wages
+#		OR = {
+#			has_country_modifier = tur_janissary
+#			num_of_janissaries = 10
+#		}
+#		NOT = { has_disaster = janissary_decadence }
+#		NOT = {
+#			has_country_modifier = tur_janissaries_timer
+#		}
+#		num_of_owned_provinces_with = {
+#			value = 30
+#			is_core = ROOT
+#		}
+#		is_at_war = no
+#		NOT = {
+#			war_exhaustion = 1
+#		}
+#		NOT = {
+#			adm = 6
+#		}
+#		NOT = {
+#			mil = 6
+#		}
+#	}
+#	
+#	mean_time_to_happen = {
+#		months = 700
+#	}
+#	
+#	immediate = {
+#		hidden_effect = {
+#			add_country_modifier = {
+#				name = tur_janissaries_timer
+#				duration = 18250
+#				hidden = yes
+#			}
+#		}
+#	}
+#	
+#	option = {
+#		name = "flavor_tur.EVTOPTA111"
+#		if = {
+#			limit = { 
+#				NOT = { has_dlc = "Domination" }
+#			}
+#			add_years_of_income = -0.5
+#		}
+#		else = {
+#			if = {
+#				limit = { NOT = { has_country_flag = tur_low_salary } }
+#				if = { 
+#					limit = { has_country_flag = tur_toprak_janissary_wages_flag }
+#					custom_tooltip = tur_according_to_ruler_ability_tt
+#					if = { 
+#						limit = { dip = 6 }
+#						add_years_of_income = -0.10
+#						change_estate_land_share = {
+#							estate = estate_janissaries
+#							share = 5
+#						}
+#					}
+#					else_if = { 
+#						limit = { dip = 5 }
+#						add_years_of_income = -0.15
+#						change_estate_land_share = {
+#							estate = estate_janissaries
+#							share = 5
+#						}
+#					}
+#					else_if = { 
+#						limit = { dip = 4 }
+#						add_years_of_income = -0.2
+#						change_estate_land_share = {
+#							estate = estate_janissaries
+#							share = 5
+#						}
+#					}
+#					else_if = { 
+#						limit = { dip = 3 }
+#						add_years_of_income = -0.25
+#						change_estate_land_share = {
+#							estate = estate_janissaries
+#							share = 5
+#						}
+#					}
+#					else_if = { 
+#						limit = { dip = 2 }
+#						add_years_of_income = -0.3
+#						change_estate_land_share = {
+#							estate = estate_janissaries
+#							share = 7.5
+#						}
+#					}
+#					else_if = { 
+#						limit = { dip = 1 }
+#						add_years_of_income = -0.35
+#						change_estate_land_share = {
+#							estate = estate_janissaries
+#							share = 7.5
+#						}
+#					}
+#					else_if = { 
+#						limit = { dip = 0 }
+#						add_years_of_income = -0.4
+#						change_estate_land_share = {
+#							estate = estate_janissaries
+#							share = 10
+#						}
+#					}
+#				}	
+#				else = { add_years_of_income = -0.6 }
+#			}
+#			else = { add_years_of_income = -0.1 }
+#		}
+#	}
+#	option = {
+#		name = "flavor_tur.EVTOPTB111"
+#		add_ruler_modifier = {
+#			name = tur_janissaries_salary
+#		}
+#		if = { 
+#			limit = { has_estate = estate_janissaries } 
+#			add_estate_loyalty = { 
+#				estate = estate_janissaries 
+#				loyalty = -50
+#			}
+#		}
+#	}
+#	option = {
+#		name = "flavor_tur.EVTOPTC111"
+#		add_stability = -1
+#		if = { 
+#			limit = { has_estate = estate_janissaries } 
+#			add_estate_loyalty = { 
+#				estate = estate_janissaries 
+#				loyalty = -50
+#			}
+#		}
+#		
+#		if = { 
+#			limit = { 
+#				estate_influence = { 
+#					estate = estate_janissaries
+#					influence = 70 
+#				}
+#			}
+#			custom_tooltip = tur_janissaries_kill_ruler
+#			hidden_effect = { 
+#				random_list = { 
+#					20 = { 	
+#						kill_ruler = yes  
+#					}
+#					80 = { }
+#				}
+#			}
+#		}
+#	}
+#}
 
 # Civilianization
 country_event = {
@@ -4063,7 +4063,7 @@ country_event = {
 	picture = DEVLET_I_RUM_eventPicture
 	is_triggered_only = yes 
 	
-	#We shall be officially recognized as the Devlet-i Rûm!
+	#We shall be officially recognized as the Devlet-i Rï¿½m!
 	option = { 
 		name = flavor_tur.216.a 
 		
@@ -5950,7 +5950,7 @@ country_event = {
 		name = flavor_tur.239.a
 		
 		define_heir = {
-			name = "Süleyman Kanuni" 
+			name = "Sï¿½leyman Kanuni" 
 			adm = 6 
 			dip = 5
 			mil = 6
