@@ -1,8 +1,8 @@
 estate_maratha_land_rights = {
 	icon = privilege_grant_autonomy
 	land_share = 5
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	loyalty = 0.05
 	influence = 0.05
 	can_select = {
@@ -31,10 +31,10 @@ estate_maratha_land_rights = {
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { crown_land_share = 25 }
+				NOT = { crown_land_share = 20 }
 				estate_influence = {
 					estate = estate_maratha
-					influence = 75
+					influence = 80
 				}
 			}
 			NOT = { has_estate_privilege = estate_maratha_land_rights }
@@ -183,18 +183,36 @@ estate_maratha_land_rights = {
 			factor = 0.75
 			has_estate_privilege = estate_rajput_land_rights
 		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_maratha_military }
+			num_of_estate_privileges = {
+				estate = estate_maratha
+				value = 5
+			}
+		}
 	}
 }
 
 estate_maratha_military = {
 	icon = privilege_military_power
 	land_share = 10
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	loyalty = -0.05
 	is_valid = {
+		OR = {
+			ai = no
+			num_of_cities = 2
+			NOT = {
+				capital_scope = {
+					continent = europe
+				}
+			}
+		}
 	}
 	can_select = {
+		NOT = { has_reform = free_city }
 		custom_trigger_tooltip = {
 			tooltip = no_other_mil_privilege
 			NOT = { has_estate_privilege = estate_nobles_nobility_primacy }
@@ -213,10 +231,10 @@ estate_maratha_military = {
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { crown_land_share = 30 }
+				NOT = { crown_land_share = 15 }
 				estate_influence = {
 					estate = estate_maratha
-					influence = 95
+					influence = 80
 				}
 			}
 			NOT = { has_estate_privilege = estate_maratha_military }
@@ -224,17 +242,13 @@ estate_maratha_military = {
 		modifier = {
 			factor = 0.8
 			OR = {
-				NOT = { crown_land_share = 35 }
+				NOT = { crown_land_share = 30 }
 				AND = {
 					is_absolutism_active = yes
 					NOT = { crown_land_share = 55 }
 				}
 			}
 			NOT = { has_estate_privilege = estate_maratha_military }
-		}
-		modifier = {
-			factor = 0.8
-			is_absolutism_active = yes
 		}
 		modifier = {
 			factor = 1.25
@@ -245,8 +259,8 @@ estate_maratha_military = {
 
 estate_maratha_advisor = {
 	icon = privilege_limited_war_support
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	influence = 0.05
 	is_valid = {
 		NOT = { religion_group = muslim }
@@ -260,25 +274,33 @@ estate_maratha_advisor = {
 		NOT = { has_estate_privilege = estate_rajput_advisor }
 	}
 	benefits = {
-		mil_advisor_cost = -0.15
+		mil_advisor_cost = -0.1
 	}
 	ai_will_do = {
-		factor = 9
+		factor = 15
 		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
+			factor = 1.25
+			NOT = { mil = 2 }
 		}
 		modifier = {
-			factor = 3
-			uses_meritocracy = yes
+			factor = 0.8
+			mil = 5
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_maratha_military }
+			num_of_estate_privileges = {
+				estate = estate_maratha
+				value = 5
+			}
 		}
 	}
 }
 
 estate_maratha_loyalty_privilege = {
 	icon = privilege_royal_authority
-	max_absolutism = -10
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	loyalty = 0.1
 	influence = 0.1
 	penalties = {
@@ -296,8 +318,8 @@ estate_maratha_loyalty_privilege = {
 
 estate_maratha_levies = {
 	icon = privilege_recruit_from_marathi
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes NOT = { has_government_attribute = free_noble_levies } } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes NOT = { has_government_attribute = free_noble_levies } } modifier = { max_absolutism = 1 } }
 	influence = 0.1
 	loyalty = 0.1
 	is_valid = {
@@ -319,7 +341,7 @@ estate_maratha_levies = {
 	penalties = {
 	}
 	mechanics = {
-		exempt_from_seize_land
+		#exempt_from_seize_land
 	}
 	conditional_modifier = {
 		trigger = {
@@ -402,16 +424,20 @@ estate_maratha_levies = {
 			}
 		}
 		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_maratha_military }
+			num_of_estate_privileges = {
+				estate = estate_maratha
+				value = 5
+			}
 		}
 	}
 }
 
 estate_maratha_levies_for_muslims = {
 	icon = privilege_recruit_from_marathi
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	influence = 0.1
 	is_valid = {
 		religion_group = muslim
@@ -470,8 +496,8 @@ estate_maratha_levies_for_muslims = {
 
 estate_maratha_special_privilege = {
 	icon = privilege_promote_maratha_nobility
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	loyalty = 0.05
 	influence = 0.05
 	is_valid = {
@@ -489,10 +515,14 @@ estate_maratha_special_privilege = {
 		exempt_from_seize_land
 	}
 	ai_will_do = {
-		factor = 10
+		factor = 12
 		modifier = {
-			factor = 0
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_maratha_military }
+			num_of_estate_privileges = {
+				estate = estate_maratha
+				value = 5
+			}
 		}
 	}
 }
@@ -501,8 +531,8 @@ estate_maratha_special_privilege = {
 
 estate_maratha_monopoly_of_metals = {
 	icon = privilege_monopoly_of_goods_iron
-	max_absolutism = -10
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	loyalty = 0.05
 	is_valid = {
 		OR = {
@@ -518,6 +548,7 @@ estate_maratha_monopoly_of_metals = {
 		NOT = { has_estate = estate_nobles }
 	}
 	can_select = {
+		num_of_cities = 2
 		custom_trigger_tooltip = {
 			tooltip = unavailable_during_revolution_disaster
 			NOT = { has_disaster = revolution }
@@ -618,14 +649,38 @@ estate_maratha_monopoly_of_metals = {
 		country_event = { id = monopoly_privileges.5 }
 	}
 	ai_will_do = {
-		factor = 0
+		factor = 5
+		modifier = {
+			factor = 0
+			OR = {
+				#has_estate_privilege = estate_maratha_monopoly_of_metals
+				has_estate_privilege = estate_maratha_monopoly_of_livestock
+				has_estate_privilege = estate_maratha_monopoly_of_gems
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_absolutism_active = yes
+		}
+		modifier = {
+			factor = 1.5
+			num_of_loans = 1
+		}
+		modifier = {
+			factor = 0.75
+			adm_tech = 11
+		}
+		modifier = {
+			factor = 0.5
+			production_income_percentage = 0.25
+		}
 	}
 }
 
 estate_maratha_monopoly_of_livestock = {
 	icon = privilege_monopoly_of_goods_livestock
-	max_absolutism = -10
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	loyalty = 0.05
 	is_valid = {
 		OR = {
@@ -638,6 +693,7 @@ estate_maratha_monopoly_of_livestock = {
 		NOT = { has_estate = estate_nobles }
 	}
 	can_select = {
+		num_of_cities = 2
 		custom_trigger_tooltip = {
 			tooltip = unavailable_during_revolution_disaster
 			NOT = { has_disaster = revolution }
@@ -729,14 +785,34 @@ estate_maratha_monopoly_of_livestock = {
 		country_event = { id = monopoly_privileges.6 }
 	}
 	ai_will_do = {
-		factor = 0
+		factor = 5
+		modifier = {
+			factor = 0
+			OR = {
+				has_estate_privilege = estate_maratha_monopoly_of_metals
+				#has_estate_privilege = estate_maratha_monopoly_of_livestock
+				has_estate_privilege = estate_maratha_monopoly_of_gems
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_absolutism_active = yes
+		}
+		modifier = {
+			factor = 1.5
+			num_of_loans = 1
+		}
+		modifier = {
+			factor = 0.75
+			production_income_percentage = 0.25
+		} 
 	}
 }
 
 estate_maratha_monopoly_of_gems = {
 	icon = privilege_monopoly_of_goods_gems
-	max_absolutism = -10
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	loyalty = 0.05
 	is_valid = {
 		OR = {
@@ -749,6 +825,7 @@ estate_maratha_monopoly_of_gems = {
 		NOT = { has_estate = estate_nobles }
 	}
 	can_select = {
+		num_of_cities = 2
 		custom_trigger_tooltip = {
 			tooltip = unavailable_during_revolution_disaster
 			NOT = { has_disaster = revolution }
@@ -840,7 +917,31 @@ estate_maratha_monopoly_of_gems = {
 		country_event = { id = monopoly_privileges.7 }
 	}
 	ai_will_do = {
-		factor = 0
+		factor = 5
+		modifier = {
+			factor = 0
+			OR = {
+				has_estate_privilege = estate_maratha_monopoly_of_metals
+				has_estate_privilege = estate_maratha_monopoly_of_livestock
+				#has_estate_privilege = estate_maratha_monopoly_of_gems
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_absolutism_active = yes
+		}
+		modifier = {
+			factor = 1.5
+			num_of_loans = 1
+		}
+		modifier = {
+			factor = 0.75
+			adm_tech = 16
+		}
+		modifier = {
+			factor = 0.5
+			production_income_percentage = 0.25
+		}
 	}
 }
 

@@ -1,8 +1,8 @@
 estate_jains_land_rights = {
 	icon = privilege_grant_autonomy
 	land_share = 5
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	loyalty = 0.05
 	influence = 0.05
 	can_select = {
@@ -31,10 +31,10 @@ estate_jains_land_rights = {
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { crown_land_share = 25 }
+				NOT = { crown_land_share = 20 }
 				estate_influence = {
 					estate = estate_jains
-					influence = 75
+					influence = 80
 				}
 			}
 			NOT = { has_estate_privilege = estate_jains_land_rights }
@@ -183,16 +183,33 @@ estate_jains_land_rights = {
 			factor = 0.75
 			has_estate_privilege = estate_rajput_land_rights
 		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_jains_diplomacy }
+			num_of_estate_privileges = {
+				estate = estate_jains
+				value = 5
+			}
+		}
 	}
 }
 
 estate_jains_diplomacy = {
 	icon = privilege_diplo_power
 	land_share = 10
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	loyalty = -0.05
 	is_valid = {
+		OR = {
+			ai = no
+			num_of_cities = 2
+			NOT = {
+				capital_scope = {
+					continent = europe
+				}
+			}
+		}
 		NOT = { has_estate = estate_burghers }
 	}
 	can_select = {
@@ -209,10 +226,10 @@ estate_jains_diplomacy = {
 		modifier = {
 			factor = 0
 			OR = {
-				NOT = { crown_land_share = 30 }
+				NOT = { crown_land_share = 15 }
 				estate_influence = {
 					estate = estate_jains
-					influence = 95
+					influence = 80
 				}
 			}
 			NOT = { has_estate_privilege = estate_jains_diplomacy }
@@ -220,17 +237,13 @@ estate_jains_diplomacy = {
 		modifier = {
 			factor = 0.8
 			OR = {
-				NOT = { crown_land_share = 35 }
+				NOT = { crown_land_share = 30 }
 				AND = {
 					is_absolutism_active = yes
 					NOT = { crown_land_share = 55 }
 				}
 			}
 			NOT = { has_estate_privilege = estate_jains_diplomacy }
-		}
-		modifier = {
-			factor = 0.8
-			is_absolutism_active = yes
 		}
 		modifier = {
 			factor = 1.25
@@ -242,8 +255,8 @@ estate_jains_diplomacy = {
 estate_jains_clerical_class = {
 	icon = privilege_patronize_jain_families
 	loyalty = 0.1
-	max_absolutism = -10
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	influence = 0.1
 	can_select = {
 	}
@@ -256,14 +269,22 @@ estate_jains_clerical_class = {
 		development_cost = -0.05
 	}
 	ai_will_do = {
-		factor = 0
+		factor = 10
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_jains_diplomacy }
+			num_of_estate_privileges = {
+				estate = estate_jains
+				value = 5
+			}
+		}
 	}
 }
 
 estate_jains_indebted_to_jains = {
 	icon = privilege_loan_interaction
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	influence = 0.05
 	on_granted = {
 		custom_tooltip = estate_burghers_indebted_to_burghers_effect_tooltip
@@ -325,8 +346,8 @@ estate_jains_indebted_to_jains = {
 
 estate_jains_conscientious_objection = {
 	icon = privilege_commission_jain_scripture
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	loyalty = 0.1
 	penalties = {
 		global_manpower_modifier = -0.1
@@ -341,8 +362,8 @@ estate_jains_conscientious_objection = {
 
 estate_jains_grant_liberties = {
 	icon = privilege_tolerance_heathen
-	max_absolutism = -10
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	influence = 0.1
 	loyalty = 0.1
 	is_valid = {
@@ -359,8 +380,8 @@ estate_jains_grant_liberties = {
 estate_jains_land_trade_rights = {
 	icon = privilege_land_rights
 	land_share = 5
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	loyalty = 0.1
 	influence = 0.1
 	is_valid = {
@@ -380,7 +401,7 @@ estate_jains_land_trade_rights = {
 		trade_range_modifier = 0.1
 	}
 	mechanics = {
-		exempt_from_seize_land
+		#exempt_from_seize_land
 	}
 	cooldown_years = 25
 	ai_will_do = {
@@ -392,8 +413,8 @@ estate_jains_land_trade_rights = {
 
 estate_jains_monopoly_of_textiles = {
 	icon = privilege_monopoly_of_goods_cloth
-	max_absolutism = -10
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	loyalty = 0.05
 	is_valid = {
 		OR = {
@@ -410,6 +431,7 @@ estate_jains_monopoly_of_textiles = {
 		NOT = { has_estate = estate_burghers }
 	}
 	can_select = {
+		num_of_cities = 2
 		custom_trigger_tooltip = {
 			tooltip = unavailable_during_revolution_disaster
 			NOT = { has_disaster = revolution }
@@ -511,14 +533,39 @@ estate_jains_monopoly_of_textiles = {
 		country_event = { id = monopoly_privileges.1 }
 	}
 	ai_will_do = {
-		factor = 0
+		factor = 5
+		modifier = {
+			factor = 0
+			OR = {
+				#has_estate_privilege = estate_jains_monopoly_of_textiles
+				has_estate_privilege = estate_jains_monopoly_of_dyes
+				has_estate_privilege = estate_jains_monopoly_of_glass
+				has_estate_privilege = estate_jains_monopoly_of_paper
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_absolutism_active = yes
+		}
+		modifier = {
+			factor = 1.5
+			num_of_loans = 1
+		}
+		modifier = {
+			factor = 0.75
+			adm_tech = 11
+		}
+		modifier = {
+			factor = 0.5
+			production_income_percentage = 0.25
+		} 
 	}
 }
 
 estate_jains_monopoly_of_dyes = {
 	icon = privilege_monopoly_of_goods_dyes
-	max_absolutism = -10
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	loyalty = 0.05
 	is_valid = {
 		OR = {
@@ -532,6 +579,7 @@ estate_jains_monopoly_of_dyes = {
 		NOT = { has_estate = estate_burghers }
 	}
 	can_select = {
+		num_of_cities = 2
 		custom_trigger_tooltip = {
 			tooltip = unavailable_during_revolution_disaster
 			NOT = { has_disaster = revolution }
@@ -624,14 +672,39 @@ estate_jains_monopoly_of_dyes = {
 		country_event = { id = monopoly_privileges.2 }
 	}
 	ai_will_do = {
-		factor = 0
+		factor = 5
+		modifier = {
+			factor = 0
+			OR = {
+				has_estate_privilege = estate_jains_monopoly_of_textiles
+				#has_estate_privilege = estate_jains_monopoly_of_dyes
+				has_estate_privilege = estate_jains_monopoly_of_glass
+				has_estate_privilege = estate_jains_monopoly_of_paper
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_absolutism_active = yes
+		}
+		modifier = {
+			factor = 1.5
+			num_of_loans = 1
+		}
+		modifier = {
+			factor = 0.75
+			adm_tech = 11
+		}
+		modifier = {
+			factor = 0.5
+			production_income_percentage = 0.25
+		} 
 	}
 }
 
 estate_jains_monopoly_of_glass = {
 	icon = privilege_monopoly_of_goods_glass
-	max_absolutism = -10
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	loyalty = 0.05
 	is_valid = {
 		OR = {
@@ -645,6 +718,7 @@ estate_jains_monopoly_of_glass = {
 		NOT = { has_estate = estate_burghers }
 	}
 	can_select = {
+		num_of_cities = 2
 		custom_trigger_tooltip = {
 			tooltip = unavailable_during_revolution_disaster
 			NOT = { has_disaster = revolution }
@@ -737,14 +811,39 @@ estate_jains_monopoly_of_glass = {
 		country_event = { id = monopoly_privileges.3 }
 	}
 	ai_will_do = {
-		factor = 0
+		factor = 5
+		modifier = {
+			factor = 0
+			OR = {
+				has_estate_privilege = estate_jains_monopoly_of_textiles
+				has_estate_privilege = estate_jains_monopoly_of_dyes
+				#has_estate_privilege = estate_jains_monopoly_of_glass
+				has_estate_privilege = estate_jains_monopoly_of_paper
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_absolutism_active = yes
+		}
+		modifier = {
+			factor = 1.5
+			num_of_loans = 1
+		}
+		modifier = {
+			factor = 0.75
+			adm_tech = 16
+		}
+		modifier = {
+			factor = 0.5
+			production_income_percentage = 0.25
+		} 
 	}
 }
 
 estate_jains_monopoly_of_paper = {
 	icon = privilege_monopoly_of_goods_paper
-	max_absolutism = -10
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	loyalty = 0.05
 	is_valid = {
 		OR = {
@@ -758,6 +857,7 @@ estate_jains_monopoly_of_paper = {
 		NOT = { has_estate = estate_burghers }
 	}
 	can_select = {
+		num_of_cities = 2
 		custom_trigger_tooltip = {
 			tooltip = unavailable_during_revolution_disaster
 			NOT = { has_disaster = revolution }
@@ -850,7 +950,32 @@ estate_jains_monopoly_of_paper = {
 		country_event = { id = monopoly_privileges.4 }
 	}
 	ai_will_do = {
-		factor = 0
+		factor = 5
+		modifier = {
+			factor = 0
+			OR = {
+				has_estate_privilege = estate_jains_monopoly_of_textiles
+				has_estate_privilege = estate_jains_monopoly_of_dyes
+				has_estate_privilege = estate_jains_monopoly_of_glass
+				#has_estate_privilege = estate_jains_monopoly_of_paper
+			}
+		}
+		modifier = {
+			factor = 0.5
+			is_absolutism_active = yes
+		}
+		modifier = {
+			factor = 1.5
+			num_of_loans = 1
+		}
+		modifier = {
+			factor = 0.75
+			adm_tech = 16
+		}
+		modifier = {
+			factor = 0.5
+			production_income_percentage = 0.25
+		}
 	}
 }
 
@@ -933,8 +1058,8 @@ estate_jains_exclusive_trade_rights = {
 
 estate_jains_control_over_monetary_policy = {
 	icon = privilege_give_money
-	max_absolutism = -10
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	influence = 0.05
 	loyalty = 0.05
 	is_valid = {
@@ -959,16 +1084,20 @@ estate_jains_control_over_monetary_policy = {
 			}
 		}
 		modifier = {
-			factor = 0
-			is_absolutism_active = yes
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_jains_diplomacy }
+			num_of_estate_privileges = {
+				estate = estate_jains
+				value = 5
+			}
 		}
 	}
 }
 
 estate_jains_private_trade_fleets = {
 	icon = privilege_comission_merchant_ships_for_war
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	influence = 0.1
 	loyalty = 0.05
 	is_valid = {
@@ -986,15 +1115,26 @@ estate_jains_private_trade_fleets = {
 		global_ship_trade_power = 0.1
 	}
 	ai_will_do = {
-		factor = 1
+		factor = 5
 		modifier = {
-			factor = 10
+			factor = 2
 			num_of_light_ship = 15
-			trade_income_percentage = 0.35
 		}
 		modifier = {
-			factor = 0
-			is_absolutism_active = yes
+			factor = 2
+			num_of_light_ship = 50
+		}
+		modifier = {
+			factor = 2
+			num_of_light_ship = 100
+		}
+		modifier = {
+			factor = 0.25
+			NOT = { has_estate_privilege = estate_jains_diplomacy }
+			num_of_estate_privileges = {
+				estate = estate_jains
+				value = 5
+			}
 		}
 	}
 }
