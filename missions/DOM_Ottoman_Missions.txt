@@ -460,6 +460,10 @@ tur_conquest_of_europe = {
 				area = southern_transylvania_area
 				area = alfold_area
 				area = transdanubia_area
+				area = eastern_slovakia_area
+				area = northern_hungary_area
+				area = western_transylvania_area
+				area = central_hungary_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -471,6 +475,10 @@ tur_conquest_of_europe = {
 					area = southern_transylvania_area
 					area = alfold_area
 					area = transdanubia_area
+					area = eastern_slovakia_area
+					area = northern_hungary_area
+					area = western_transylvania_area
+					area = central_hungary_area
 				}
 				value = 15
 			}
@@ -550,6 +558,7 @@ tur_conquest_of_europe = {
 				area = inner_austria_area
 				area = carinthia_area
 				area = tirol_area
+				area = upper_austria_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -567,6 +576,7 @@ tur_conquest_of_europe = {
 					area = inner_austria_area
 					area = carinthia_area
 					area = tirol_area
+					area = upper_austria_area
 				}
 				value = 10
 			}
@@ -642,6 +652,8 @@ tur_conquest_of_europe = {
 				}
 				add_permanent_claim = ROOT
 			}
+			verona_area = { add_perma_claim = yes }
+			alps_area = { add_perma_claim = yes }
 		}
 
 		ai_weight = {
@@ -661,6 +673,8 @@ tur_conquest_of_europe = {
 				area = lombardy_area
 				area = piedmont_area
 				area = liguria_area
+				area = verona_area
+				area = alps_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -673,6 +687,8 @@ tur_conquest_of_europe = {
 					area = lombardy_area
 					area = piedmont_area
 					area = liguria_area
+					area = verona_area
+					area = alps_area
 				}
 				value = 10
 			}
@@ -1220,12 +1236,14 @@ tur_african_conquest = {
 		position = 4
 		provinces_to_highlight = {
 			OR = {
-				province_id = 145
 				province_id = 146
 				province_id = 1773
 				province_id = 4701
-				province_id = 4699
-				province_id = 4698
+				province_id = 145
+				area = thessaloniki_area
+				area = macedonia_area
+				area = northern_greece_area
+				area = western_greece_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -1234,8 +1252,10 @@ tur_african_conquest = {
 			owns_or_non_sovereign_subject_of = 146
 			owns_or_non_sovereign_subject_of = 1773
 			owns_or_non_sovereign_subject_of = 4701
-			owns_or_non_sovereign_subject_of = 4699
-			owns_or_non_sovereign_subject_of = 4698
+			thessaloniki_area = { country_or_non_sovereign_subject_holds = ROOT }
+			macedonia_area = { country_or_non_sovereign_subject_holds = ROOT }
+			northern_greece_area = { country_or_non_sovereign_subject_holds = ROOT }
+			western_greece_area = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		effect = {
 			add_prestige = 5
@@ -1373,6 +1393,8 @@ tur_african_conquest = {
 			OR = {
 				area = moldavia_area
 				area = wallachia_area
+				area = eastern_wallachia_area
+				area = north_moldavia
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -1381,6 +1403,8 @@ tur_african_conquest = {
 				OR = {
 					area = moldavia_area
 					area = wallachia_area
+					area = eastern_wallachia_area
+					area = north_moldavia
 				}
 				value = 5
 			}
@@ -2047,13 +2071,14 @@ tur_egyptian_conquest = {
 			}
 		}
 		effect = {
-			add_permanent_claim_province = { province = 151 }
 			add_permanent_claim_province = { province = 146 }
 			add_permanent_claim_province = { province = 4701 }
 			add_permanent_claim_province = { province = 145 }
 			add_permanent_claim_province = { province = 1773 }
-			add_permanent_claim_province = { province = 4699 }
-			add_permanent_claim_province = { province = 4698 }
+			thessaloniki_area = { add_perma_claim = yes }
+			macedonia_area = { add_perma_claim = yes }
+			northern_greece_area = { add_perma_claim = yes }
+			western_greece_area = { add_perma_claim = yes }
 			add_prestige = 5
 		}
 
@@ -2289,6 +2314,8 @@ tur_egyptian_conquest = {
 				area = syrian_desert_area
 				area = palestine_area
 				area = trans_jordan_area
+				area = latakia_area
+				area = tadmor_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -2300,6 +2327,8 @@ tur_egyptian_conquest = {
 					area = syrian_desert_area
 					area = palestine_area
 					area = trans_jordan_area
+					area = latakia_area
+					area = tadmor_area
 				}
 				value = 6
 			}
@@ -2369,6 +2398,7 @@ tur_egyptian_conquest = {
 				}
 				add_permanent_claim = ROOT
 			}
+			hail_area = { add_perma_claim = yes }
 		}
 
 		ai_weight = {
@@ -3400,6 +3430,8 @@ tur_arabian_conquest = {
 				area = imereti_area
 				area = samtskhe_area
 				area = erzurum_area
+				area = kerch_area
+				area = alania_area
 			}
 			has_port = yes
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
@@ -3420,6 +3452,8 @@ tur_arabian_conquest = {
 				imereti_area = { OR = { has_port = no country_or_non_sovereign_subject_holds = ROOT } type = all }
 				samtskhe_area = { OR = { has_port = no country_or_non_sovereign_subject_holds = ROOT } type = all }
 				erzurum_area = { OR = { has_port = no country_or_non_sovereign_subject_holds = ROOT } type = all }
+				kerch_area = { OR = { has_port = no country_or_non_sovereign_subject_holds = ROOT } type = all }
+				alania_area = { OR = { has_port = no country_or_non_sovereign_subject_holds = ROOT } type = all }
 			}
 		}
 		effect = {
@@ -3460,6 +3494,7 @@ tur_arabian_conquest = {
 				area = qasim_area
 				area = medina_area
 				area = mecca_area
+				area = hail_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -3472,6 +3507,7 @@ tur_arabian_conquest = {
 					area = qasim_area
 					area = medina_area
 					area = mecca_area
+					area = hail_area
 				}
 				value = 20
 			}
