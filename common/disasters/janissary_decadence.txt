@@ -4,6 +4,9 @@ janissary_decadence = {
 		normal_or_historical_nations = yes
 		has_reform = ottoman_government
 		NOT = { has_country_flag = had_janissary_decadence }
+		NOT = { has_dlc = "Domination" }
+		NOT = { has_country_flag = tur_had_janissary_coup }
+		NOT = { has_disaster = tur_disaster_ottoman_power_struggle }
 	}
 
 	can_start = {
@@ -90,6 +93,10 @@ janissary_decadence = {
 			has_ruler_modifier = janissaries_denied_reward
 		}
 		modifier = {
+			factor = 2
+			is_bankrupt = yes
+		}
+		modifier = {
 			factor = 1
 			NOT = { army_tradition = 70 }
 		}
@@ -138,6 +145,7 @@ janissary_decadence = {
 		legitimacy = -1
 		technology_cost = 0.25
 		idea_cost = 0.25
+		janissaries_influence_modifier = 0.3
 	}
 
 	on_start = janissary_decadence.1
@@ -158,4 +166,3 @@ janissary_decadence = {
 		}
 	}
 }
-

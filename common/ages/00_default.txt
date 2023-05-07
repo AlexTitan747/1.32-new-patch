@@ -170,7 +170,7 @@ age_of_discovery = {
 
 		ab_colony_boost_development = {
 			modifier = {
-				can_colony_boost_development = yes
+				colony_development_boost = 1
 			}
 			ai_will_do = {
 				factor = 10
@@ -229,7 +229,7 @@ age_of_discovery = {
 				tag = TUR
 			}
 			modifier = {
-				infantry_fire = 0.05
+				infantry_fire = 0.10
 				shock_damage_received = -0.05
 				is_janissary_modifier = yes
 			}
@@ -259,6 +259,7 @@ age_of_discovery = {
 					tag = SIC
 					tag = TTS
 					tag = SPI
+					tag = NAP
 				}
 			}
 			modifier = {
@@ -724,7 +725,7 @@ age_of_absolutism = {
 
 		ab_rival_change = {
 			modifier = {
-				attack_bonus_in_capital_terrain = yes
+				attack_bonus_in_capital_terrain = 1
 			}
 			ai_will_do = {
 				factor = 10
@@ -793,12 +794,13 @@ age_of_absolutism = {
 			}
 		}
 	
-		ab_france_fire_damage = {
+	
+		ab_french_absolutism = {
 			allow = {
 				tag = FRA
 			}
 			modifier = {
-				fire_damage = 0.125
+				max_absolutism_effect = 0.3
 			}
 			ai_will_do = {
 				factor = 100
@@ -823,6 +825,7 @@ age_of_absolutism = {
 					tag = SCA
 					tag = BLC
 					tag = DAN
+					tag = DNL
 				}
 			}
 			modifier = {
@@ -1030,10 +1033,13 @@ age_of_revolutions = {
 		}
 		ab_gbr_fleet = {
 			allow = {
-				tag = GBR
+				OR = {
+					tag = AVE
+					tag = GBR
+				}
 			}
 			modifier = {
-				naval_maintenance_modifier = -0.25
+				max_admiral_fire = 1
 			}
 			ai_will_do = {
 				factor = 100
@@ -1044,13 +1050,13 @@ age_of_revolutions = {
 				tag = RUS
 			}
 			modifier = {
-				governing_capacity_modifier = 0.33
-			}
+				min_autonomy_in_territories = -0.1
+			}	
 			ai_will_do = {
 				factor = 100
 			}
 		}
-		ab_austria_rep = {
+		ab_austrian_morale = {
 			allow = {
 				OR = {
 					tag = HAB
@@ -1059,7 +1065,7 @@ age_of_revolutions = {
 				}
 			}
 			modifier = {
-				diplomatic_reputation = 5
+				morale_damage_received = -0.2
 			}
 			ai_will_do = {
 				factor = 100
