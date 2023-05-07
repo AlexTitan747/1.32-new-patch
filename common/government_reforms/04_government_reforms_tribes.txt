@@ -429,7 +429,9 @@ shaka_regime = {
 		allow = {
 			has_dlc = "Rights of Man"
 		}
-		militarised_society = yes
+		government_abilities = {
+			militarization_mechanic
+		}
 	}
 
 	ai = {
@@ -707,6 +709,16 @@ tribe_becomes_monarchy_reform = {
 			change_unit_type = chinese
 		}
 		change_government = monarchy
+		if = {
+			limit = {
+				tag = AVE
+			}
+			hidden_effect = {
+				country_event = {
+					id = flavor_gbr.20
+				}
+			}
+		}
 	}
 	ai = {
 		factor = 1
@@ -797,6 +809,16 @@ tribe_becomes_republic_reform = {
 			change_unit_type = chinese
 		}
 		change_government = republic
+		if = {
+			limit = {
+				tag = AVE
+			}
+			hidden_effect = {
+				country_event = {
+					id = flavor_gbr.20
+				}
+			}
+		}
 		if = {
 			limit = {
 				have_had_reform = stateless_society
@@ -913,6 +935,16 @@ tribe_becomes_theocracy_reform = {
 			change_unit_type = chinese
 		}
 		change_government = theocracy
+		if = {
+			limit = {
+				tag = AVE
+			}
+			hidden_effect = {
+				country_event = {
+					id = flavor_gbr.20
+				}
+			}
+		}
 	}
 	ai = {
 		factor = 1
@@ -984,7 +1016,7 @@ tribe_tribal_unity = {
 	}
 	modifiers = {
 		state_maintenance_modifier = -0.25
-		yearly_tribal_allegiance = 1
+		yearly_government_power = 1
 		church_loyalty_modifier = 0.05
 		nobles_loyalty_modifier = 0.05
 		dhimmi_loyalty_modifier = 0.05
