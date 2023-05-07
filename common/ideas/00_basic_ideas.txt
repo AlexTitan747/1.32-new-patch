@@ -1716,3 +1716,155 @@ exploration_ideas = {
 		global_colonial_growth = 10
 	}
 }
+
+court_ideas = {
+	category = DIP
+
+	bonus = {
+		legitimacy = 0.5 
+		republican_tradition = 0.2
+		devotion = 0.5 
+		horde_unity = 0.5
+		meritocracy = 0.25 
+		imperial_mandate = 0.1
+		imperial_authority = 0.05
+	}
+	
+	long_echo = {
+		power_projection_from_insults = 1
+	}
+	recognize_hierarchy = {
+		all_estate_loyalty_equilibrium = 0.1
+		loyalty_change_on_revoked = 0.05
+	}
+	welcoming_ceremonies = {
+		prestige = 1 
+	}
+	tranquil_coordination = {
+		reform_progress_growth = 0.2
+	}
+	respected_authority = {
+		all_estate_possible_privileges = 1
+	}
+	palace_of_splendor = {
+		monthly_splendor = 2 
+		estate_interaction_cooldown_modifier = -0.20
+	}
+	court_embassies = {
+		possible_dip_policy = 1 
+		monarch_diplomatic_power = 1 
+	}
+
+	ai_will_do = {
+		factor = 0.5
+		modifier = {
+			factor = 1.25
+			num_of_powerful_estates = 3 
+		}
+		modifier = {
+			factor = 1.2
+			personality = ai_diplomat
+		}
+		modifier = {
+			factor = 1.1 
+			national_focus = DIP 
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { monthly_dip = 8 } 
+		}
+	}
+}
+
+mercenary_ideas = {
+	category = MIL 
+
+	bonus = {
+		mercenary_discipline = 0.05
+	}
+
+	organised_mercenary_payment = {
+		mercenary_cost = -0.25
+	}
+	war_council = {
+		mil_advisor_cost = -0.25
+		merc_independent_from_trade_range = yes
+	}
+	expanded_contracts = {
+		merc_maintenance_modifier = -0.25
+	}
+	nation_of_war = {
+		mil_tech_cost_modifier = -0.1
+	}
+	benefits_for_mercenaries = {
+		war_taxes_cost_modifier = -0.5
+		merc_leader_army_tradition = 0.5
+	}
+	tm_seasoned_veterans = {
+		infantry_power = 0.1
+	}
+	organised_mercenary_recruitment = { 
+		mercenary_manpower = 0.3
+		allow_mercenary_drill = yes
+	}
+
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+infrastructure_ideas = {
+	category = ADM
+	
+	bonus = {
+		development_cost = -0.1
+	}
+
+	state_efficiency = {
+		global_prosperity_growth = 0.25
+		state_maintenance_modifier = -0.33
+	}
+	organised_construction = {
+		build_cost = -0.1
+	}
+	efficient_construction_plans = {
+		expand_infrastructure_cost_modifier = -0.25
+	}
+	expanded_infrastructure_network = {
+		movement_speed = 0.1
+		center_of_trade_upgrade_cost = -0.2
+	}
+	administrative_efficiency_idea = {
+		state_governing_cost = -0.1
+	}
+	fort_logistics = {
+		fort_maintenance_modifier = -0.25
+ 	}
+	regulation_bureau = {
+		expand_administration_cost = -1
+		build_time = -0.25
+	}
+
+	ai_will_do = {
+		factor = 0.7
+		modifier = {
+			factor = 1.1 
+			personality = ai_capitalist
+		}
+		modifier = {
+			factor = 1.1
+			national_focus = ADM 
+		}
+		modifier = { 
+			factor = 0.75 
+			NOT = { monthly_adm = 8 }
+		}
+		modifier = {
+			factor = 1.15
+			OR = {
+				has_idea_group = trade_ideas
+				has_idea_group = naval_ideas
+			}
+		}
+	}
+}
