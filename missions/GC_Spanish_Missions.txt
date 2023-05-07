@@ -373,41 +373,6 @@ gc_spain_2 = {
 		}
 	}
 
-	gc_cas_spa_reconquista_two = {
-		icon = mission_cannons_firing
-		required_missions = {
-			gc_cas_spa_navarra
-			gc_cas_spa_reconquista_one
-		}
-		position = 3
-
-		# free mission
-
-		provinces_to_highlight = {
-			OR = {
-				area = beieras_area
-				area = alentejo_area
-			}
-			NOT = { owned_by = ROOT }
-		}
-
-		trigger = {
-			beieras_area = {
-				type = all
-				owned_by = ROOT
-			}
-			alentejo_area = {
-				type = all
-				owned_by = ROOT
-			}
-		}
-
-		effect = {
-			add_prestige = 25
-			add_adm_power = 100
-		}
-	}
-
 	gc_cas_spa_expel_moriscos = {
 		icon = mission_expel_the_moriscos
 		required_missions = { gc_cas_spa_iberia_christian }
@@ -1993,8 +1958,8 @@ gc_spain_5_a = {
 
 	tm_CAS_iberian_control = {
 		icon = mission_iberian_map
-		required_missions = { gc_cas_spa_reconquista_three }
-		position = 2
+		required_missions = { tm_CAS_victory_over_valencia }
+		position = 3
 
 		provinces_to_highlight = {
 			OR = {

@@ -2724,8 +2724,8 @@ gbr_row_4 = {
 		position = 8
 		provinces_to_highlight = {
 			OR = {
-				trade_company_region = trade_company_moluccas
-				trade_company_region = trade_company_indonesia
+				colonial_region = colonial_phil
+				colonial_region = colonial_indonesia
 			}
 			is_sea = no
 			NOT = { owned_by = ROOT }
@@ -2734,8 +2734,8 @@ gbr_row_4 = {
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				OR = {
-					trade_company_region = trade_company_moluccas
-					trade_company_region = trade_company_indonesia
+					colonial_region = colonial_phil
+					colonial_region = colonial_indonesia
 				}
 				is_city = yes
 				value = 4
@@ -3673,8 +3673,8 @@ gbr_row_5 = {
 		provinces_to_highlight = {
 			OR = {
 				colonial_region = colonial_australia
-				trade_company_region = trade_company_indonesia
-				trade_company_region = trade_company_moluccas
+				colonial_region = colonial_phil
+				colonial_region = colonial_indonesia
 			}
 			NOT = { has_discovered = ROOT }
 		}		
@@ -3684,10 +3684,10 @@ gbr_row_5 = {
 				colonial_australia = {
 					has_discovered = ROOT
 				}
-				trade_company_indonesia = {
+				colonial_phil = {
 					has_discovered = ROOT
 				}
-				trade_company_moluccas = {
+				colonial_indonesia = {
 					has_discovered = ROOT
 				}
 			}
@@ -4616,14 +4616,14 @@ gbr_ave_row_4 = {
 			has_port = yes
 			NOT = { has_shipyard_building_trigger = yes }
 			NOT = { has_dock_building_trigger = yes }
-			NOT = { has_building = impressment_offices }
+			#NOT = { has_building = impressment_offices }
 		}		
 		trigger = {
 			num_of_owned_provinces_with = {
 				OR = {
 					has_shipyard_building_trigger = yes
 					has_dock_building_trigger = yes
-					has_building = impressment_offices
+					#has_building = impressment_offices
 				}
 				value = 10
 			}
