@@ -136,8 +136,6 @@ protectorate_parliament_reform = {
 	has_term_election = no
 	custom_attributes = {
 		locked_government_type = yes
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
 		cannot_become_dictatorship = yes
 	}
 }
@@ -181,8 +179,6 @@ parliamentary_republic_reform = {
 	}
 	duration = 5
 	custom_attributes = {
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
 		cannot_become_dictatorship = yes
 	}
 }
@@ -813,8 +809,6 @@ peasants_republic = {
 		}
 	}
 	custom_attributes = {
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
 		disables_estate_nobles = yes
 		is_peasants_republic = yes
 	}
@@ -860,8 +854,6 @@ ikko_ikki_republic_reform = {
 		}
 	}
 	custom_attributes = {
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
 		disables_estate_nobles = yes
 		is_peasants_republic = yes
 	}
@@ -1035,8 +1027,6 @@ veche_republic = {
 	fixed_rank = 1
 
 	custom_attributes = {
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
 		elections_increase_factions_influence = yes
 	}
 	conditional = {
@@ -1099,11 +1089,6 @@ russian_republic = {
 		max_absolutism = -50
 		has_streltsy = yes
 		allowed_streltsy_fraction = 0.2
-	}
-
-	custom_attributes = {
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
 	}
 	conditional = {
 		allow = {
@@ -1226,8 +1211,6 @@ american_republic = {
 	}
 
 	custom_attributes = {
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
 		disables_estate_nobles = yes
 	}
 	conditional = {
@@ -1277,8 +1260,6 @@ federal_republic = {
 	}
 
 	custom_attributes = {
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
 		disables_estate_nobles = yes
 	}
 	conditional = {
@@ -1322,8 +1303,6 @@ colonial_government = {
 
 	custom_attributes = {
 		locked_government_type = yes
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
 	}
 	effect = {
 		hidden_effect = {
@@ -1502,8 +1481,6 @@ self_governing_colony_government = {
 
 	custom_attributes = {
 		locked_government_type = yes
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
 		enables_estate_nobles = yes
 		enables_estate_burghers = yes
 	}
@@ -1564,8 +1541,6 @@ trade_company_government = {
 
 	custom_attributes = {
 		locked_government_type = yes
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
 		enables_estate_burghers = yes
 		is_merchant_republic = yes
 		elections_increase_factions_influence = yes
@@ -1628,10 +1603,6 @@ english_parliamentary_republic_government = {
 		max_absolutism = 5
 	}
 	duration = 5
-	custom_attributes = {
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
-	}
 	
 	conditional = {
 		allow = {
@@ -1683,10 +1654,6 @@ roman_republic_government = {
 		}
 	}
 
-	custom_attributes = {
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
-	}
 	duration = 5
 }
 
@@ -1715,18 +1682,8 @@ civic_republicanism_government = {
 	conditional = {
 		allow = { has_dlc = "Domination" }
 		custom_attributes = {
-			enables_plutocratic_idea_group = yes
-			enables_aristocratic_idea_group = no
 			has_limited_terms = yes
 			has_candidate_bonus = yes
-		}
-	}
-
-	conditional = {
-		allow = { NOT = { has_dlc = "Domination" } }
-		custom_attributes = {
-			enables_plutocratic_idea_group = yes
-			enables_aristocratic_idea_group = no
 		}
 	}
 	effect = {
@@ -1773,11 +1730,6 @@ calvinist_republic_government = {
 		monthly_fervor_increase = 0.1
 		tolerance_own = 1 
 		own_territory_dice_roll_bonus = 1
-	}
-
-	custom_attributes = {
-		enables_plutocratic_idea_group = no
-		enables_divine_idea_group = yes
 	}
 	duration = 4
 }
@@ -1827,8 +1779,6 @@ dutch_republic = {
 	}
 
 	custom_attributes = {
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
 		has_dutch_election = yes
 	}
 	conditional = {
@@ -3475,7 +3425,7 @@ enlightened_principle_reform = {
 	allow_normal_conversion = yes
 	trigger = {
 		OR = {
-			full_idea_group = innovativeness_ideas
+			full_idea_group = innovative_ideas
 			has_institution = enlightenment
 		}
 	}

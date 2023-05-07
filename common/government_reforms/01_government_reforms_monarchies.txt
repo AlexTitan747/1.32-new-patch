@@ -1449,10 +1449,6 @@ caliphate_reform = {
 		missionaries = 1
 		global_missionary_strength = 0.02
 	}
-	custom_attributes = {
-		enables_divine_idea_group = yes
-		enables_aristocratic_idea_group = no
-	}
 	conditional = {
 		allow = { has_dlc = "Cradle of Civilization" }
 		government_abilities = {
@@ -1580,10 +1576,6 @@ persian_government_reform = {
 		development_cost = -0.05
 		innovativeness_gain = 0.25
 		manpower_in_accepted_culture_provinces = 0.15
-	}
-	custom_attributes = {
-		enables_divine_idea_group = yes
-		enables_aristocratic_idea_group = no
 	}
 	conditional = {
 		allow = { has_dlc = "Cradle of Civilization" }
@@ -1744,8 +1736,6 @@ stadthalter_monarchy_reform = {
 	}
 
 	custom_attributes = {
-		enables_plutocratic_idea_group = yes
-		enables_aristocratic_idea_group = no
 		has_dutch_election = yes
 	}
 	conditional = {
@@ -1826,8 +1816,8 @@ admiralty_regime_reform = {
 				has_reform = admiralty_regime_reform
 				is_playing_custom_nation = yes
 			}
-			has_idea_group = maritime_ideas
-			has_idea_group = naval_ideas
+			has_idea_group = firepower_ideas
+			has_idea_group = expansion_ideas
 		}
 	}
 	trigger = {
@@ -1836,8 +1826,8 @@ admiralty_regime_reform = {
 				has_reform = admiralty_regime_reform
 				is_playing_custom_nation = yes
 			}
-			full_idea_group = maritime_ideas
-			full_idea_group = naval_ideas
+			full_idea_group = firepower_ideas
+			full_idea_group = expansion_ideas
 		}
 	}
 	valid_for_nation_designer = yes
@@ -4502,7 +4492,10 @@ grant_nobles_electorate_reform = {
 		is_revolutionary = no
 	}
 	trigger = {
-		has_idea_group = aristocracy_ideas
+		OR = {
+			has_idea_group = court_ideas
+			has_idea_group = empire_ideas
+		}
 		NOT = { has_reform = celestial_empire }
 	}
 	modifiers = {
@@ -4574,7 +4567,10 @@ blackmail_nobility_reform = {
 		NOT = { has_estate_privilege = estate_nobles_golden_liberty }
 	}
 	trigger = {
-		full_idea_group = spy_ideas
+		OR = {
+			full_idea_group = court_ideas
+			full_idea_group = influence_ideas
+		}
 	}
 	modifiers = {
 		nobles_influence_modifier = -0.1
