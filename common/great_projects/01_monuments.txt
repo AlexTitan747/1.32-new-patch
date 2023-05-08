@@ -1,4 +1,118 @@
 ##################TITAN MONUMENTS#####################################
+cape_port = {
+	start = 0 #Out of game
+	date = 1431.01.01
+	time = { months = 0	}
+	build_cost = 0
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 2
+	type = monument
+
+	build_trigger = {
+		culture = khoisan
+		province_is_or_accepts_culture = yes
+	}
+
+	on_built = {
+	}
+
+	on_destroyed = {
+	}
+
+	can_use_modifiers_trigger = {
+		culture = khoisan
+		province_is_or_accepts_culture = yes
+	}
+	
+
+	can_upgrade_trigger = {
+		culture = khoisan
+		province_is_or_accepts_culture = yes
+	}
+
+	keep_trigger = {}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1500
+		}
+		province_modifiers = {
+			trade_value = 5
+			local_defensiveness = 0.10
+			trade_goods_size = 0.15
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 3000
+		}
+		province_modifiers = {
+			trade_value = 10
+			local_defensiveness = 0.25
+			trade_goods_size = 0.3
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+			trade_efficiency = 0.05
+		}
+		on_upgraded = {
+		}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 7500
+		}
+		province_modifiers = {
+			trade_value = 15
+			local_defender_dice_roll_bonus = 1
+		}
+		area_modifier = {
+			local_defensiveness = 0.25
+			trade_goods_size = 0.3
+		}
+		country_modifiers = {
+			trade_efficiency = 0.1
+			global_trade_goods_size_modifier = 0.05
+		}
+		on_upgraded = {
+		}
+	}
+	
+}
+
+
 
 ishtar_gate = {
 	start = 410 #Baghdad
