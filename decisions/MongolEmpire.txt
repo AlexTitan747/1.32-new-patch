@@ -179,81 +179,81 @@ country_decisions = {
 		}
 	}
 	
-	restore_ilkhanate_decision = {
-		major = yes
-		potential = {
-			normal_or_historical_nations = yes
-			NOT = { has_country_flag = formed_ilkhanate_flag }
-			was_never_end_game_tag_trigger = yes
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
-			OR = {
-				culture_group = tartar
-				culture_group = altaic
-			}
-			OR = {
-			has_reform = steppe_horde
-			tag = BUK
-			}
-			NOT = { tag = TIM }
-			NOT = { tag = PER }
-			NOT = { tag = PAP }
-			NOT = { tag = HLR }
-			NOT = { tag = ROM }
-			NOT = { tag = MUG }
-			NOT = { tag = ARB }
-			NOT = { dynasty = "Timurid" }
-		}
-		provinces_to_highlight = {
-			OR = {
-				province_id	= 2213
-				province_id = 2213
-				province_id = 433
-				province_id = 2218
-				province_id = 2220
-				province_id = 446
-				province_id = 2214
-				province_id = 416
-			}
-			OR = {
-				NOT = { owned_by = ROOT }
-				NOT = { is_core = ROOT }
-			}
-		}
-		allow = {
-			NOT = { exists = ILK }
-			is_free_or_tributary_trigger = yes
-			is_at_war = no
-			owns_core_province = 2215
-			owns_core_province = 2213
-			owns_core_province = 433
-			owns_core_province = 2218
-			owns_core_province = 2220
-			owns_core_province = 446
-			owns_core_province = 2214
-			owns_core_province = 416
-		}
-		effect = {
-			change_tag = ILK
-			add_country_modifier = {
-				name = "centralization_modifier"
-				duration = 7300
-			}
-			add_prestige = 25
-			if = {
-				limit = { government = tribal }
-				add_government_reform = great_horde_state_reform
-			}
-			if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
-			}
-			set_country_flag = formed_ilkhanate_flag
-		}
-		ai_will_do = {
-			factor = 1
-		}
-	}
-}
+#	restore_ilkhanate_decision = {
+#		major = yes
+#		potential = {
+#			normal_or_historical_nations = yes
+#			NOT = { has_country_flag = formed_ilkhanate_flag }
+#			was_never_end_game_tag_trigger = yes
+#			OR = {
+#				ai = no
+#				is_playing_custom_nation = no
+#			}
+#			OR = {
+#				culture_group = tartar
+#				culture_group = altaic
+#			}
+#			OR = {
+#			has_reform = steppe_horde
+#			tag = BUK
+#			}
+#			NOT = { tag = TIM }
+#			NOT = { tag = PER }
+#			NOT = { tag = PAP }
+#			NOT = { tag = HLR }
+#			NOT = { tag = ROM }
+#			NOT = { tag = MUG }
+#			NOT = { tag = ARB }
+#			NOT = { dynasty = "Timurid" }
+#		}
+#		provinces_to_highlight = {
+#			OR = {
+#				province_id	= 2213
+#				province_id = 2213
+#				province_id = 433
+#				province_id = 2218
+#				province_id = 2220
+#				province_id = 446
+#				province_id = 2214
+#				province_id = 416
+#			}
+#			OR = {
+#				NOT = { owned_by = ROOT }
+#				NOT = { is_core = ROOT }
+#			}
+#		}
+#		allow = {
+#			NOT = { exists = ILK }
+#			is_free_or_tributary_trigger = yes
+#			is_at_war = no
+#			owns_core_province = 2215
+#			owns_core_province = 2213
+#			owns_core_province = 433
+#			owns_core_province = 2218
+#			owns_core_province = 2220
+#			owns_core_province = 446
+#			owns_core_province = 2214
+#			owns_core_province = 416
+#		}
+#		effect = {
+#			change_tag = ILK
+#			add_country_modifier = {
+#				name = "centralization_modifier"
+#				duration = 7300
+#			}
+#			add_prestige = 25
+#			if = {
+#				limit = { government = tribal }
+#				add_government_reform = great_horde_state_reform
+#			}
+#			if = {
+#				limit = { has_custom_ideas = no }
+#				country_event = { id = ideagroups.1 } #Swap Ideas
+#			}
+#			set_country_flag = formed_ilkhanate_flag
+#		}
+#		ai_will_do = {
+#			factor = 1
+#		}
+#	}
+#}
