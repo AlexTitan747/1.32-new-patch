@@ -2942,6 +2942,7 @@ mos_rus_siberian_conquest = {
 				area = kazakhstan_area
 				area = khiva_area
 				area = transcaspia_area
+				area = ustyurt_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -2953,6 +2954,7 @@ mos_rus_siberian_conquest = {
 					area = kazakhstan_area
 					area = khiva_area
 					area = transcaspia_area
+					area = ustyurt_area
 				}
 				value = 10
 			}
@@ -3665,7 +3667,10 @@ rus_russian_disaster = {
 		required_missions = { mos_rus_found_the_russian_tsardom }
 		position = 10
 		provinces_to_highlight = {
-			trade_goods = grain
+			OR = {
+				trade_goods = grain
+				trade_goods = ale
+			}
 			owned_by = ROOT
 			NOT = { base_production = 6 }
 		}
@@ -3673,7 +3678,10 @@ rus_russian_disaster = {
 			OR = {
 				num_of_owned_provinces_with = {
 					base_production = 6
-					trade_goods = grain
+					OR = {
+						trade_goods = grain
+						trade_goods = ale
+					}
 					value = 10
 				}
 				has_reform = vodka_of_the_crown_reform
@@ -3685,7 +3693,10 @@ rus_russian_disaster = {
 			add_years_of_owned_provinces_production_income = {
 				custom_tooltip = MONOPOLY_INCOME_GRAIN_DESC
 				trigger = {
-					trade_goods = grain
+					OR = {
+						trade_goods = grain
+						trade_goods = ale
+					}
 				}
 				years = 4
 			}
