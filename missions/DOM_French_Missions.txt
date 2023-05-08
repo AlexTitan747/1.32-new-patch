@@ -3224,8 +3224,11 @@ french_missions_3_normal_continued = {
 				every_owned_province = {
 					limit = {
 						region = low_countries_region 
-						has_port = yes 
-						trade_goods = cloth
+						has_port = yes
+						OR = {
+							trade_goods = cloth
+							trade_goods = uniforms
+						}
 					}
 					add_base_production = 1 
 					add_province_modifier = {
@@ -3505,14 +3508,30 @@ french_missions_3_normal_continued = {
 			
 			hidden_effect = { 
 				if = { 
-					limit = { 
-						trading_bonus = {
-							trade_goods = copper
-							value = yes
+					limit = {
+						OR = {
+							trading_bonus = {
+								trade_goods = copper
+								value = yes
+							}
+							trading_bonus = {
+								trade_goods = bronze
+								value = yes
+							}
 						}
-						trading_bonus = {
-							trade_goods = iron
-							value = yes
+						OR = {
+							trading_bonus = {
+								trade_goods = iron
+								value = yes
+							}
+							trading_bonus = {
+								trade_goods = armour
+								value = yes
+							}
+							trading_bonus = {
+								trade_goods = steel
+								value = yes
+							}
 						}
 					}
 					every_owned_province = {
@@ -3520,7 +3539,12 @@ french_missions_3_normal_continued = {
 							OR = { 
 								trade_goods = copper 
 								trade_goods = iron 
-								trade_goods = gold 
+								trade_goods = gold
+								trade_goods = bronze
+								trade_goods = armour
+								trade_goods = steel
+								trade_goods = silver
+								trade_goods = tin
 							}
 						}
 						add_province_modifier = {
