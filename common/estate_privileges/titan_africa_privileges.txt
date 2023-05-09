@@ -22,10 +22,13 @@ estate_privilege = {
 #Privilege to enable cults for heirs
 estate_church_heir_shrine = {
 	icon = privilege_heir_cult
-	influence = 0.10
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	influence = 0.1
 	loyalty = 0.05
 	is_valid = {
 		religion = shamanism
+		has_dlc = "Rights of Man"
 		NOT = { has_country_flag = heir_cult_through_missions }
 		has_government_attribute = heir
 	}
@@ -54,6 +57,10 @@ estate_church_heir_shrine = {
 	ai_will_do = {
 		factor = 100
 		modifier = {
+			factor = 0.1
+			is_absolutism_active = yes
+		}
+		modifier = {
 			factor = 0
 			has_mission = kon_collect_cults
 		}
@@ -67,10 +74,13 @@ estate_church_heir_shrine = {
 #Privilege to enable primary cults
 estate_church_embrace_singluar_cult = {
 	icon = privilege_singular_cult
-	influence = 0.10
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	influence = 0.1
 	loyalty = 0.05
 	is_valid = {
 		religion = shamanism
+		has_dlc = "Rights of Man"
 	}
 	can_select = {
 		NOT = { has_estate_privilege = estate_church_flexible_cults }
@@ -94,7 +104,7 @@ estate_church_embrace_singluar_cult = {
 	conditional_modifier = {
 		trigger = { has_government_attribute = no_influence_from_fetishist_privileges }
 		modifier = {
-			church_influence_modifier = -0.2
+			church_influence_modifier = -0.25
 		}
 	}
 	ai_will_do = {
@@ -109,10 +119,12 @@ estate_church_embrace_singluar_cult = {
 #Privilge to enable cult switching
 estate_church_flexible_cults = {
 	icon = privilege_switch_hindu_deity
-	#
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	influence = 0.05
 	is_valid = {
 		religion = shamanism
+		has_dlc = "Rights of Man"
 		NOT = { has_country_flag = enabled_cult_switching_mission }
 	}
 	can_select = {
