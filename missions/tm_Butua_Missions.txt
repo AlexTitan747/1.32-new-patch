@@ -321,7 +321,10 @@ butua_religion_fetishist = { #Fetishist Missions
 		}
 
 		effect = {
-			
+			country_event_with_insight = {
+				id = fetishist_flavor.601
+				insight_tooltip = unlock_cult_through_selection_tt
+			}
         }
 	}
 
@@ -716,13 +719,29 @@ butua_religion_2 = {
         }
 	}
 
-	butua_religion_unified = {
+	butua_converting_provinces = {
 		icon = test
 		required_missions = { butua_choose_religion }
 
 		trigger = {
-			is_year = 1500
-			religious_unity = 1.0
+			
+		}
+
+		effect = {
+			add_prestige = 15
+			add_country_modifier = {
+				name = "butua_unified_nation"
+				duration = -1
+			}
+        }
+	}
+
+	butua_religion_unified = {
+		icon = test
+		required_missions = { butua_converting_provinces }
+
+		trigger = {
+			
 		}
 
 		effect = {
