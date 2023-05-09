@@ -3,6 +3,7 @@ tur_conquerors_of_the_near_east = {
 	generic = no #if a mission without generic = yes wants this slot then it overrides this.
 	ai = yes
 	potential = {
+		NOT = { has_dlc = "Domination" }
 		tag = TUR
 		NOT = { map_setup = map_setup_random }
 	}
@@ -358,6 +359,7 @@ tur_eastern_balkans = {
 	ai = yes
 	
 	potential = {
+		NOT = { has_dlc = "Domination" }
 		tag = TUR
 		NOT = { map_setup = map_setup_random }
 	}
@@ -449,9 +451,8 @@ tur_conquest_of_middle_east = {
 	ai = yes
 	
 	potential = {
-		OR = {
-			tag = TUR
-		}
+		NOT = { has_dlc = "Domination" }
+		tag = TUR
 		NOT = { map_setup = map_setup_random }
 	}
 	
@@ -787,6 +788,7 @@ tur_conquest_of_middle_east = {
 tur_black_sea = {
 	slot = 4
 	potential = {
+		NOT = { has_dlc = "Domination" }
 		tag = TUR
 		NOT = { map_setup = map_setup_random }
 	}
@@ -847,9 +849,8 @@ tur_eastern_mediterrenean_missions = {
 	ai = yes
 	
 	potential = {
-		OR = {
-			tag = TUR
-		}
+		NOT = { has_dlc = "Domination" }
+		tag = TUR
 		NOT = { map_setup = map_setup_random }
 	}
 	
@@ -890,7 +891,7 @@ tur_eastern_mediterrenean_missions = {
 				name = "conquest_of_the_levant"
 				duration = 5475
 			}
-			add_stat_or_monarch_power = {
+			change_ruler_stat = {
 				stat = mil
 				amount = 2
 			}
@@ -1100,6 +1101,7 @@ tur_eastern_mediterrenean_missions = {
 tur_conquer_western_mediterrenean = {
 	slot = 2
 	potential = {
+		NOT = { has_dlc = "Domination" }
 		tag = TUR
 		NOT = { map_setup = map_setup_random }
 	}
@@ -1195,7 +1197,7 @@ tur_conquer_western_mediterrenean = {
 		effect = {
 			add_country_modifier = {
 				name = "tur_barbary_pirates"
-				duration = 9125
+				duration = -1
 			}
 		}
 	}
@@ -1204,6 +1206,7 @@ tur_conquer_western_mediterrenean = {
 tur_indian_ocean = {
 	slot = 4
 	potential = {
+		NOT = { has_dlc = "Domination" }
 		tag = TUR
 		NOT = { map_setup = map_setup_random }
 	}

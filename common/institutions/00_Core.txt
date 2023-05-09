@@ -646,7 +646,50 @@ new_world_i = {
 	}
 	
 	can_start = {
-		is_year = 1500
+		OR = {
+			AND = {
+				is_year = 1500
+				owner = { 
+					OR = {
+						has_idea_group = expansion_ideas
+						has_idea_group = exploration_ideas
+						has_idea_group = colonialism_ideas
+					}
+					OR = {
+						north_america = { has_discovered = PREV }
+						south_america = { has_discovered = PREV }
+						new_world = { has_discovered = PREV }
+					}
+				}
+			}
+			AND = {
+				is_year = 1502
+				owner = { 
+					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+						value = 1
+						OR = {
+							continent = north_america
+							continent = south_america
+						}
+					}
+				}
+			}
+			AND = {
+				is_year = 1504
+				owner = { 
+					OR = {
+						north_america = { has_discovered = PREV }
+						south_america = { has_discovered = PREV }
+						new_world = { has_discovered = PREV }
+					}
+				}
+			}
+			AND = {
+				is_year = 1510
+				NOT = { current_age = age_of_discovery }
+			}
+		}
+		
 		OR = {
 			continent = europe
 			continent = asia
@@ -661,18 +704,6 @@ new_world_i = {
 			is_capital = yes
 		}
 		is_in_capital_area = yes
-		owner = { 
-			OR = {
-				has_idea_group = expansion_ideas
-				has_idea_group = exploration_ideas
-				has_idea_group = colonialism_ideas
-			}
-			OR = {
-				north_america = { has_discovered = PREV }
-				south_america = { has_discovered = PREV }
-				new_world = { has_discovered = PREV }
-			}
-		}
 	}
 	start_chance = 5		#in 100 for when a province can_start
 	

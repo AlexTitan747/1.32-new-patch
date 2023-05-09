@@ -83,6 +83,13 @@ dan_secure_baltic_mission_slot = {
 				}
 				add_permanent_claim = ROOT
 			}
+			if = {
+				limit = { ai = yes SWE = { is_subject_of = ROOT } }
+				reverse_add_opinion = {
+					who = SWE
+					modifier = dan_early_victories
+				}
+			}
 		}
 	}
 
@@ -732,15 +739,15 @@ dan_trade_and_colonial_mission_slot = {
 					key = dan_take_over_neva_tt
 				}
 			}
-			add_stat_or_monarch_power = {
+			change_ruler_stat = {
 				stat = adm
 				amount = 1
 			}
-			add_stat_or_monarch_power = {
+			change_ruler_stat = {
 				stat = dip
 				amount = 1
 			}
-			add_stat_or_monarch_power = {
+			change_ruler_stat = {
 				stat = mil
 				amount = 1
 			}
@@ -1580,7 +1587,7 @@ dan_sweden_and_great_power_mission_slot = {
 		}
 		effect = {
 			set_country_flag = dan_no_more_swedish_rebels
-			add_stat_or_monarch_power = {
+			change_ruler_stat = {
 				stat = mil
 				amount = 2
 			}
@@ -1689,7 +1696,7 @@ dan_sweden_and_great_power_mission_slot = {
 				stability = 3
 				total_own_and_non_tributary_subject_development = 600
 				custom_trigger_tooltip = {
-					tooltip = kon_absolute_rule_ct
+					tooltip = absolutism_dynamic_reward_tt
 					is_absolutism_active = no
 				}
 			}
@@ -2696,7 +2703,7 @@ dan_religion_mission_slot = {
 			custom_tooltip = swe_catholic_effects_tt
 			add_papal_influence = 200
 			add_war_exhaustion = -2
-			add_stat_or_monarch_power = {
+			change_ruler_stat = {
 				stat = mil
 				amount = 2
 			}
@@ -2739,7 +2746,7 @@ dan_religion_mission_slot = {
 				custom_tooltip = swe_catholic_30_years_war_at
 			}
 			else = {
-				add_stat_or_monarch_power = {
+				change_ruler_stat = {
 					stat = dip
 					amount = 1
 				}
@@ -2748,7 +2755,7 @@ dan_religion_mission_slot = {
 			add_church_power = 200
 			add_fervor = 100
 			add_war_exhaustion = -2
-			add_stat_or_monarch_power = {
+			change_ruler_stat = {
 				stat = mil
 				amount = 2
 			}
@@ -2773,7 +2780,7 @@ dan_religion_mission_slot = {
 				custom_tooltip = dan_spread_the_reformation_tt
 			}
 			custom_tooltip = swe_humanist_effects_tt
-			add_stat_or_monarch_power = {
+			change_ruler_stat = {
 				stat = dip
 				amount = 4
 			}
@@ -2923,7 +2930,7 @@ dan_catholic_mission_slot = {
 		effect = {
 			add_papal_influence = 200
 			add_war_exhaustion = -2
-			add_stat_or_monarch_power = {
+			change_ruler_stat = {
 				stat = mil
 				amount = 2
 			}
@@ -2978,7 +2985,7 @@ dan_catholic_mission_slot = {
 				custom_tooltip = swe_catholic_30_years_war_at
 			}
 			else = {
-				add_stat_or_monarch_power = {
+				change_ruler_stat = {
 					stat = dip
 					amount = 1
 				}
@@ -3143,7 +3150,7 @@ dan_protestant_mission_slot = {
 			add_church_power = 200
 			add_fervor = 100
 			add_war_exhaustion = -2
-			add_stat_or_monarch_power = {
+			change_ruler_stat = {
 				stat = mil
 				amount = 2
 			}
@@ -3182,7 +3189,7 @@ dan_protestant_mission_slot = {
 				}
 				custom_tooltip = dan_spread_the_reformation_tt
 			}
-			add_stat_or_monarch_power = {
+			change_ruler_stat = {
 				stat = dip
 				amount = 1
 			}
@@ -3285,7 +3292,7 @@ dan_humanist_mission_slot = {
 			NOT = { num_of_rebel_controlled_provinces = 1 }
 		}
 		effect = {
-			add_stat_or_monarch_power = {
+			change_ruler_stat = {
 				stat = dip
 				amount = 3
 			}

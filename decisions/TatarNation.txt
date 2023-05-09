@@ -1,129 +1,129 @@
-country_decisions = {
-
-	tatar_nation = {
-		major = yes
-		potential = {
-			normal_or_historical_nations = yes
-			was_never_end_game_tag_trigger = yes
-			NOT = { has_country_flag = formed_golden_horde_flag }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
-			NOT = { tag = MUG }
-			NOT = { tag = HLR }
-			NOT = { tag = ROM }
-			NOT = { tag = PAP }
-			NOT = { tag = TUR }
-			NOT = { tag = BYZ }
-			NOT = { exists = GLH }
-			culture_group = tartar
-			has_reform = steppe_horde
-			is_colonial_nation = no
-			OR = {
-				is_former_colonial_nation = no
-				AND = {
-					is_former_colonial_nation = yes
-					ai = no
-				}
-			}
-			OR = {
-				ai = no
-				num_of_cities = 20
-			}
-		}
-		provinces_to_highlight = {
-			OR = {
-				AND = {
-					OR = {
-						NOT = { owned_by = ROOT }
-						NOT = { is_core = ROOT }
-					}
-					OR = {
-						province_id = 302 #Tambov
-						province_id = 464 #Astrakhan
-						province_id = 465 #Nogai
-						province_id = 466 #Sarai
-						province_id = 1082 #Kazan
-						province_id = 1778 #Qasim
-					}
-				}
-			}
-		}
-		allow = {
-			NOT = { exists = GLH }
-			has_reform = steppe_horde
-			owns_core_province = 302 #Tambov
-			owns_core_province = 464 #Astrakhan
-			owns_core_province = 465 #Nogai
-			owns_core_province = 466 #Sarai
-			owns_core_province = 1082 #Kazan
-			owns_core_province = 1778 #Qasim
-			num_of_cities = 30
-			is_free_or_tributary_trigger = yes
-			is_at_war = no
-		}
-		effect = {
-			change_tag = GLH
-			swap_non_generic_missions = yes
-			remove_non_electors_emperors_from_empire_effect = yes
-			if = {
-				limit = { NOT = { government_rank = 3 } }
-				set_government_rank = 3
-			}
-			if = {
-				limit = { has_reform = steppe_horde }
-				add_government_reform = great_horde_state_reform
-			}
-			if = {
-				limit = {
-					has_custom_ideas = no
-				}
-				set_country_flag = formed_golden_horde_flag
-				country_event = { id = ideagroups.1 } #Swap Ideas
-			}
-			crimea_region = {
-				add_permanent_claim = GLH
-			}
-			nogai_area = {
-				add_permanent_claim = GLH
-			}
-			lower_yik_area = {
-				add_permanent_claim = GLH
-			}
-			bashkiria_area = {
-				add_permanent_claim = GLH
-			}
-			kazan_area = {
-				add_permanent_claim = GLH
-			}
-			samara_area = {
-				add_permanent_claim = GLH
-			}
-			ural_area = {
-				add_permanent_claim = GLH
-			}
-			ishim_area = {
-				add_permanent_claim = GLH
-			}
-			yrtesh_area = {
-				add_permanent_claim = GLH
-			}
-			ob_area = {
-				add_permanent_claim = GLH
-			}
-			kazakhstan_area = {
-				add_permanent_claim = GLH
-			}
-			add_country_modifier = {
-				name = "centralization_modifier"
-				duration = 7300
-			}
-			add_prestige = 25
-		}
-		ai_will_do = {
-			factor = 1
-		}
-		ai_importance = 400
-	}
-}
+#country_decisions = {
+#
+#	tatar_nation = {
+#		major = yes
+#		potential = {
+#			normal_or_historical_nations = yes
+#			was_never_end_game_tag_trigger = yes
+#			NOT = { has_country_flag = formed_golden_horde_flag }
+#			OR = {
+#				ai = no
+#				is_playing_custom_nation = no
+#			}
+#			NOT = { tag = MUG }
+#			NOT = { tag = HLR }
+#			NOT = { tag = ROM }
+#			NOT = { tag = PAP }
+#			NOT = { tag = TUR }
+#			NOT = { tag = BYZ }
+#			NOT = { exists = GLH }
+#			culture_group = tartar
+#			has_reform = steppe_horde
+#			is_colonial_nation = no
+#			OR = {
+#				is_former_colonial_nation = no
+#				AND = {
+#					is_former_colonial_nation = yes
+#					ai = no
+#				}
+#			}
+#			OR = {
+#				ai = no
+#				num_of_cities = 20
+#			}
+#		}
+#		provinces_to_highlight = {
+#			OR = {
+#				AND = {
+#					OR = {
+#						NOT = { owned_by = ROOT }
+#						NOT = { is_core = ROOT }
+#					}
+#					OR = {
+#						province_id = 302 #Tambov
+#						province_id = 464 #Astrakhan
+#						province_id = 465 #Nogai
+#						province_id = 466 #Sarai
+#						province_id = 1082 #Kazan
+#						province_id = 1778 #Qasim
+#					}
+#				}
+#			}
+#		}
+#		allow = {
+#			NOT = { exists = GLH }
+#			has_reform = steppe_horde
+#			owns_core_province = 302 #Tambov
+#			owns_core_province = 464 #Astrakhan
+#			owns_core_province = 465 #Nogai
+#			owns_core_province = 466 #Sarai
+#			owns_core_province = 1082 #Kazan
+#			owns_core_province = 1778 #Qasim
+#			num_of_cities = 30
+#			is_free_or_tributary_trigger = yes
+#			is_at_war = no
+#		}
+#		effect = {
+#			change_tag = GLH
+#			swap_non_generic_missions = yes
+#			remove_non_electors_emperors_from_empire_effect = yes
+#			if = {
+#				limit = { NOT = { government_rank = 3 } }
+#				set_government_rank = 3
+#			}
+#			if = {
+#				limit = { has_reform = steppe_horde }
+#				add_government_reform = great_horde_state_reform
+#			}
+#			if = {
+#				limit = {
+#					has_custom_ideas = no
+#				}
+#				set_country_flag = formed_golden_horde_flag
+#				country_event = { id = ideagroups.1 } #Swap Ideas
+#			}
+#			crimea_region = {
+#				add_permanent_claim = GLH
+#			}
+#			nogai_area = {
+#				add_permanent_claim = GLH
+#			}
+#			lower_yik_area = {
+#				add_permanent_claim = GLH
+#			}
+#			bashkiria_area = {
+#				add_permanent_claim = GLH
+#			}
+#			kazan_area = {
+#				add_permanent_claim = GLH
+#			}
+#			samara_area = {
+#				add_permanent_claim = GLH
+#			}
+#			ural_area = {
+#				add_permanent_claim = GLH
+#			}
+#			ishim_area = {
+#				add_permanent_claim = GLH
+#			}
+#			yrtesh_area = {
+#				add_permanent_claim = GLH
+#			}
+#			ob_area = {
+#				add_permanent_claim = GLH
+#			}
+#			kazakhstan_area = {
+#				add_permanent_claim = GLH
+#			}
+#			add_country_modifier = {
+#				name = "centralization_modifier"
+#				duration = 7300
+#			}
+#			add_prestige = 25
+#		}
+#		ai_will_do = {
+#			factor = 1
+#		}
+#		ai_importance = 400
+#	}
+#}

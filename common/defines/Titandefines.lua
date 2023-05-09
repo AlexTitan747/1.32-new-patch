@@ -12,7 +12,7 @@ NDefines.NDiplomacy.NUM_OF_GREAT_POWERS = 8
 NDefines.NDiplomacy.MIN_RELATIONS_TO_ALLY = -200
 NDefines.NDiplomacy.SHAREMAP_PRESTIGE_TRANSFER_LOSE = 0
 NDefines.NDiplomacy.SHAREMAP_PRESTIGE_TRANSFER_GAIN = 0
-NDefines.NDiplomacy.CHANGE_RIVAL_YEARS = 10
+NDefines.NDiplomacy.CHANGE_RIVAL_YEARS = 5
 NDefines.NDiplomacy.MAX_ASKED_TRADE_POWER = 100
 NDefines.NDiplomacy.ABANDON_UNION_PRESTIGE = 0
 NDefines.NDiplomacy.INTEGRATE_UNION_MIN_YEARS = 10
@@ -129,7 +129,10 @@ NDefines.NEconomy.COT_DOWNGRADE_PRESTIGE_COST = 0
 
 -- NMilitary
 
-NDefines.NMilitary.SLACKEN_AP_DROP = 0.125
+NDefines.NMilitary.SLACKEN_AP_DROP = 0.01							--Defines how much AP is lost when activating slacken toggle.
+NDefines.NMilitary.SLACKEN_MIN_AP = 0 							--Defines how much AP is at least needed to keep the Slacken Modifier active. Put a -1 here if you want the toggle to not turn off automatically
+NDefines.NMilitary.SLACKEN_MAX_MP_PERCENTAGE = 0.95   			--Defines how much manpower percentage of your whole manpower pool you can have before the toggle turns off automatically. "1" would mean "100% of your manpower pool". Put a -1 here if you don't want this toggle to turn off from having manpower
+
 NDefines.NMilitary.BANNER_AGE_MULTIPLIER = 0
 NDefines.NMilitary.BANNER_STARTING_STRENGTH = 0.1
 NDefines.NMilitary.CAVALRY_SPEED = 0.8
@@ -184,11 +187,6 @@ NDefines.NGovernment.GOVERNMENT_REFORM_YEARLY_BASE_PROGRESS = 12.0
 NDefines.NGovernment.GOVERNMENT_REFORM_HISTORIC_AUTONOMY = 0.25
 NDefines.NGovernment.GOVERNMENT_REFORM_CHANGE_PROGRESS_COST = 10.0
 NDefines.NGovernment.GOVERNMENT_REFORM_COST_CENTRALIZE_STATE = 100.0
-NDefines.NGovernment.RUSSIAN_ABILITY_COST = 120
-NDefines.NGovernment.RUSSIAN_ABILITY_POOL_SIZE = 150
-NDefines.NGovernment.RUSSIAN_ABILITY_BASE_GAIN = 2
-NDefines.NGovernment.RUSSIAN_ABILITY_STRELTSY_WE_CHANGE = -2
-NDefines.NGovernment.RUSSIAN_ABILITY_STRELTSY_SPAWN_SIZE = 0.075
 NDefines.NGovernment.EXPAND_INFRASTRUCTURE_ADM_COST = 25
 
 -- NGraphics

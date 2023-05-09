@@ -1,6 +1,7 @@
 country_decisions = {
 
 	alaska_nation = {
+		color = { 214 18 229 }
 		major = yes
 		potential = {
 			exists = HIN
@@ -43,7 +44,10 @@ country_decisions = {
 			}
 			if = {
 				limit = {
-					culture_group = british
+					OR = {
+						culture_group = british
+						primary_culture = anglois
+					}
 					NOT = { primary_culture = american }
 				}
 				change_primary_culture = american

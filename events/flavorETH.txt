@@ -1253,44 +1253,44 @@ country_event = {
 ########################################
 
 #The many troubles of the Negusa Nagast
-country_event = {
-	id = flavor_eth.29
-	title = flavor_eth.29.t
-	desc = flavor_eth.29.desc
-	picture = NEGUSA_NAGAST_eventPicture
-	
-	trigger = {
-		has_dlc = "Origins"
-		has_mission = eth_reform_the_negusa_government
-		NOT = { has_country_modifier = eth_negusa_nagast_issues }
-		has_reform = negusa_nagast
-		NOT = { has_country_flag = has_negusa_event }
-		NOT = { mission_completed = eth_reform_the_negusa_government }
-	}
-
-	mean_time_to_happen = {
-		months = 1
-	}
-
-	immediate = {
-		hidden_effect = { set_country_flag = has_negusa_event }
-	}
-
-	option = {
-		name = flavor_eth.29.a
-		add_country_modifier = {
-			name = eth_negusa_nagast_issues
-			duration = -1
-		}
-		hidden_effect = {
-			clr_country_flag = has_negusa_event
-		}
-
-		ai_chance = {
-			factor = 1
-		}
-	}
-}
+#country_event = {
+#	id = flavor_eth.29
+#	title = flavor_eth.29.t
+#	desc = flavor_eth.29.desc
+#	picture = NEGUSA_NAGAST_eventPicture
+#	
+#	trigger = {
+#		has_dlc = "Origins"
+#		has_mission = eth_reform_the_negusa_government
+#		NOT = { has_country_modifier = eth_negusa_nagast_issues }
+#		has_reform = negusa_nagast
+#		NOT = { has_country_flag = has_negusa_event }
+#		NOT = { mission_completed = eth_reform_the_negusa_government }
+#	}
+#
+#	mean_time_to_happen = {
+#		months = 1
+#	}
+#
+#	immediate = {
+#		hidden_effect = { set_country_flag = has_negusa_event }
+#	}
+#
+#	option = {
+#		name = flavor_eth.29.a
+#		add_country_modifier = {
+#			name = eth_negusa_nagast_issues
+#			duration = -1
+#		}
+#		hidden_effect = {
+#			clr_country_flag = has_negusa_event
+#		}
+#
+#		ai_chance = {
+#			factor = 1
+#		}
+#	}
+#}
 
 #Permanent Cities for Ethiopia
 country_event = {
@@ -1966,7 +1966,7 @@ country_event = {
 			clr_country_flag = eth_portuguese_help
 		}
 		define_general = {
-			name = "Cristóvão da Gama"
+			name = "Cristï¿½vï¿½o da Gama"
 			shock = 4
 			fire = 4
 			manuever = 3
@@ -2192,7 +2192,7 @@ country_event = {
 			limit = {
 				has_province_flag = is_itinerent_capital
 			}
-			add_local_autonomy = 10
+			#add_local_autonomy = 10
 			clr_province_flag = is_itinerent_capital
 		}
 		capital_scope = {
@@ -2202,10 +2202,10 @@ country_event = {
 				limit = {
 					owned_by = ROOT
 				}
-				add_province_modifier = {
-					name = itinerant_capital_area
-					duration = -1
-				}
+				#add_province_modifier = {
+				#	name = itinerant_capital_area
+				#	duration = -1
+				#}
 				add_local_autonomy = -10
 			}
 		}
@@ -2324,6 +2324,7 @@ country_event = {
 			controlled_by = ROOT
 			NOT = { has_province_modifier = itinerant_capital_area }
 			NOT = { has_province_flag = is_itinerent_capital }
+			is_city = yes
 		}
 		ai = yes
 		is_at_war = no	#You cannot move your capital during war
@@ -2341,6 +2342,7 @@ country_event = {
 				is_state = yes 
 				NOT = { has_province_modifier = itinerant_capital_area }
 				NOT = { has_province_flag = is_itinerent_capital }
+				is_city = yes
 			}
 			save_event_target_as = eth_new_capital
 		}

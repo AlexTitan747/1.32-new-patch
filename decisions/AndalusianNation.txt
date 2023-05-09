@@ -1,6 +1,7 @@
 country_decisions = {
 
 	andalusian_nation = {
+		color = { 214 18 229 }
 		major = yes
 		potential = {
 			NOT = { has_country_flag = formed_andalusia_flag }
@@ -112,6 +113,17 @@ country_decisions = {
 					NOT = { primary_culture = andalucian }
 				}
 				change_primary_culture = andalucian
+			}
+			if = {
+				limit = { 
+					NOT = { government = monarchy }
+					is_revolutionary = no
+				}
+				change_government = monarchy
+			}
+			if = {
+				limit = { is_revolutionary = no }
+				add_government_reform = al_andalusia_government
 			}
 			lower_andalucia_area = {
 				limit = {
