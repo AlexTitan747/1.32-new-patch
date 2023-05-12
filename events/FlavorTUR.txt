@@ -127,17 +127,23 @@ country_event = {
 	desc = "flavor_tur.EVTDESC3354"
 	picture = REFORM_eventPicture
 	
-	fire_only_once = yes
+	#fire_only_once = yes
 
 	trigger ={
 		tag = TUR
 		is_year = 1450
 		NOT = { is_year = 1550 }
 		MIL = 3
+		NOT = { has_country_flag = turkey_army_reforms_event }
+		NOT = { has_country_modifier = turkey_military_reforms_cooldown }
 	}
 	
 	mean_time_to_happen = {
 		months = 300
+	}
+
+	immediate = {
+		set_country_flag = turkey_army_reforms_event
 	}
 	
 	
@@ -166,6 +172,17 @@ country_event = {
 		add_country_modifier = {
 			name = tur_navy_reform
 			duration = 7300
+		}
+	}
+	option = { #Delay
+		name = "titancriticalevent.advisor5.a" #Advisor Event Cooldown
+		custom_tooltip = titan_tooltip_five_year_cooldown
+		ai_chance = { factor = 0 }
+		clr_country_flag = turkey_army_reforms_event
+		hidden_effect = {
+			add_country_modifier = turkey_military_reforms_cooldown
+			duration = 1825
+			hidden = yes
 		}
 	}
 }
