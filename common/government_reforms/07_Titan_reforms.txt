@@ -4,7 +4,7 @@ united_alpine_cantons_reform = {
 	modifiers = {
 		governing_capacity = -50
 		free_policy = 1
-		mercenary_manpower = 0.5
+		mercenary_manpower = 0.3
 	}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 40
@@ -330,6 +330,12 @@ portuguese_monarchy_reform = {
 		colonists = 2
 		global_tax_modifier = 0.1
 	}
+	conditional = {
+		allow = { always = yes }
+		government_abilities = {
+			proguese_government_mechanic
+		}
+	}
 	ai = {
 		factor = 0.5 #generic
 	}
@@ -592,11 +598,16 @@ union_of_crowns = {
 		land_attrition = -0.15
 		infantry_power = 0.1
 	}
+	conditional = {
+		allow = { has_dlc = "Domination" }
+		government_abilities = {
+			proguese_government_mechanic
+		}
+	}
 
-conditional = {
+	conditional = {
 		allow = { has_dlc = "Common Sense" }
 		has_parliament = yes
-	
 	}
 }
 
