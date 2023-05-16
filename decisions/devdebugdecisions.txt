@@ -25,7 +25,7 @@ country_decisions = {
                         1 = { change_country_color = { color = { 93 154 90 } } }
                         1 = { change_country_color = { color = { 245 139 18 } } }
                         1 = { change_country_color = { color = { 13 101 22 } } }
-                        1 = { change_country_color = { color = { 255 195 0 } } }
+                        1 = { change_country_color = { color = { 255 195 1 } } }
                         1 = { change_country_color = { color = { 29 42 231 } } }
                         1 = { change_country_color = { color = { 96 183 6 } } }
                         1 = { change_country_color = { color = { 52 198 242 } } }
@@ -72,15 +72,54 @@ country_decisions = {
                         1 = { change_country_color = { color = { 45 9 92 } } }
                         1 = { change_country_color = { color = { 92 9 92 } } }
                         1 = { change_country_color = { color = { 103 12 15 } } }
-                        40 = { change_country_color = { color = { 240 187 231 } } }
+                        1 = { change_country_color = { color = { 240 187 231 } } }
+                        1 = { change_country_color = { color = { 135 141 208 } } }
+                        1 = { change_country_color = { color = { 9 28 239 } } }
+                        1 = { change_country_color = { color = { 57 239 9 } } }
+                        1 = { change_country_color = { color = { 31 86 16 } } }
+                        1 = { change_country_color = { color = { 166 226 150 } } }
+                        1 = { change_country_color = { color = { 224 150 226 } } }
+                        1 = { change_country_color = { color = { 108 25 110 } } }
+                        1 = { change_country_color = { color = { 250 81 255 } } }
+                        1 = { change_country_color = { color = { 225 81 101 } } }
+                        1 = { change_country_color = { color = { 82 26 32 } } }
+                        1 = { change_country_color = { color = { 218 195 198 } } }
+                        1 = { change_country_color = { color = { 62 48 49 } } }
+                        1 = { change_country_color = { color = { 175 25 43 } } }
+                        1 = { change_country_color = { color = { 25 116 175 } } }
+                        1 = { change_country_color = { color = { 175 143 25 } } }
+                        1 = { change_country_color = { color = { 246 233 183 } } }
+                        1 = { change_country_color = { color = { 99 81 13 } } }
+                        1 = { change_country_color = { color = { 13 99 14 } } }
+                        1 = { change_country_color = { color = { 13 71 99 } } }
+                        1 = { change_country_color = { color = { 238 149 24 } } }
+                        1 = { change_country_color = { color = { 130 84 18 } } }
+                        1 = { change_country_color = { color = { 18 75 12 } } }
+                        1 = { change_country_color = { color = { 12 75 73 } } }
+                        1 = { change_country_color = { color = { 183 246 244 } } }
+                        1 = { change_country_color = { color = { 52 73 72 } } }
+                        1 = { change_country_color = { color = { 63 52 73 } } }
+                        1 = { change_country_color = { color = { 123 12 233 } } }
+                        1 = { change_country_color = { color = { 47 11 84 } } }
+                        1 = { change_country_color = { color = { 195 165 223 } } }
+                        1 = { change_country_color = { color = { 18 12 87 } } }
+                        1 = { change_country_color = { color = { 135 125 246 } } }
+                        1 = { change_country_color = { color = { 243 125 246 } } }
+                        1 = { change_country_color = { color = { 125 192 246 } } }
+                        1 = { change_country_color = { color = { 14 60 98 } } }
+                        1 = { change_country_color = { color = { 34 14 98 } } }
+                        1 = { change_country_color = { color = { 98 14 45 } } }
+                        1 = { change_country_color = { color = { 87 48 62 } } }
+                        1 = { change_country_color = { color = { 196 201 230 } } }
+                        1 = { change_country_color = { color = { 196 230 206 } } }
+                        1 = { change_country_color = { color = { 40 194 216 } } }
+                        1 = { change_country_color = { color = { 113 40 216 } } }
                     }
                 }
             }
 		}
 
-		ai_will_do = {
-			factor = 0
-		}
+		ai_will_do = { factor = 0 }
 	}
 
     restore_colours = {
@@ -94,13 +133,161 @@ country_decisions = {
         effect = {
             hidden_effect = {
                 every_country = {
-                restore_country_color = yes
+                    restore_country_color = yes
                 }
             }
 		}
 
-		ai_will_do = {
-			factor = 0
+		ai_will_do = { factor = 0 }
+    }
+
+    enable_global_wonders = {
+        potential = {
+			has_country_flag = enable_dev_debug_decisions
 		}
+		allow = {
+			ai = no
+		}
+
+        effect = {
+            set_global_flag = tm_enable_global_wonders
+		}
+
+		ai_will_do = { factor = 0 }
+    }
+
+    disable_global_wonders = {
+        potential = {
+			has_country_flag = enable_dev_debug_decisions
+		}
+		allow = {
+			ai = no
+		}
+
+        effect = {
+            clr_global_flag = tm_enable_global_wonders
+		}
+
+		ai_will_do = { factor = 0 }
+    }
+
+    target_country = {
+        potential = {
+			has_country_flag = enable_dev_debug_decisions
+		}
+		allow = { ai = no }
+
+        effect = {
+            random_country = {
+                limit = {
+                    ai = no
+                    OR = {
+                        NOT = { has_country_flag = dev_cheat_event_target_flag }
+                        had_country_flag = {
+                            flag = dev_cheat_event_target_flag
+                            days = 30
+                        }
+                    }
+                }
+                set_country_flag = dev_cheat_event_target_flag
+                save_global_event_target_as = dev_cheat_event_target
+            }
+		}
+
+		ai_will_do = { factor = 0 }
+    }
+
+    dev_money_to_target_country = {
+        potential = {
+			has_country_flag = enable_dev_debug_decisions
+		}
+		allow = { ai = no }
+
+        effect = {
+            event_target:dev_cheat_event_target = {
+                add_treasury = 1000
+            }
+		}
+
+		ai_will_do = { factor = 0 }
+    }
+
+    dev_manpower_to_target_country = {
+        potential = {
+			has_country_flag = enable_dev_debug_decisions
+		}
+		allow = { ai = no }
+
+        effect = {
+            event_target:dev_cheat_event_target = {
+                add_manpower = 10
+            }
+		}
+
+		ai_will_do = { factor = 0 }
+    }
+
+    dev_admin_to_target_country = {
+        potential = {
+			has_country_flag = enable_dev_debug_decisions
+		}
+		allow = { ai = no }
+
+        effect = {
+            event_target:dev_cheat_event_target = {
+               	add_adm_power = 100
+            }
+		}
+
+		ai_will_do = { factor = 0 }
+    }
+
+    dev_diplo_to_target_country = {
+        potential = {
+			has_country_flag = enable_dev_debug_decisions
+		}
+		allow = { ai = no }
+
+        effect = {
+            event_target:dev_cheat_event_target = {
+               	add_dip_power = 100
+            }
+		}
+
+		ai_will_do = { factor = 0 }
+    }
+
+    dev_milpo_to_target_country = {
+        potential = {
+			has_country_flag = enable_dev_debug_decisions
+		}
+		allow = { ai = no }
+
+        effect = {
+            event_target:dev_cheat_event_target = {
+               	add_mil_power = 100
+            }
+		}
+
+		ai_will_do = { factor = 0 }
+    }
+
+    dev_removeae_to_target_country = {
+        potential = {
+			has_country_flag = enable_dev_debug_decisions
+		}
+		allow = { ai = no }
+
+        effect = {
+            every_country = {
+                add_aggressive_expansion = {
+                    who = event_target:dev_cheat_event_target
+                    value = -50
+                    apply_calc = no
+                }
+            }
+		}
+
+		ai_will_do = { factor = 0 }
     }
 }

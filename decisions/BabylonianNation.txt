@@ -4,38 +4,13 @@ country_decisions = {
 			color = { 214 18 229 }
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
-				was_never_end_game_tag_trigger = yes
 				NOT = { has_country_flag = formed_babylonia_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
-				NOT = { tag = MOS }
-				NOT = { tag = RUS }
-				#NOT = { tag = TIM }
-				NOT = { tag = PER }
-				NOT = { tag = PLC }
 				NOT = { exists = BAB }
-				is_colonial_nation = no
 				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
+					tag = SRV
+					was_tag = SRV
 				}
-				tag = SRV
 				has_country_flag = SRV_babylon_path_unlocked
-				
-				OR = {
-					ai = no
-					AND = {
-						ai = yes
-						num_of_cities = 10
-						adm_tech = 10
-					}
-				}
 			}
 			
 			provinces_to_highlight = {
@@ -49,14 +24,12 @@ country_decisions = {
 			}
 			
 			allow = {
-				NOT = { exists = BAB }
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
 				owns_core_province = 410		    # Baghdad
 
 				mission_completed = tm_SRV_embrace_traditions
 				mission_completed = tm_SRV_develop_fertile_lands
-
 			}
 
 			effect = {
@@ -115,33 +88,20 @@ country_decisions = {
 		babylon_empire = {
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
 				tag = BAB
 				NOT = { has_country_flag = is_babylonian_empire }
 				hidden_trigger = {
 					has_country_flag = babylon_empire_unlock
 				}
-				OR = {
-					ai = no
-					AND = {
-						ai = yes
-						num_of_cities = 15
-					}
-				}
 			}
 			provinces_to_highlight = {
-					owned_by = ROOT
-				}
+				owned_by = ROOT
+			}
 			allow = {
 				mission_completed = tm_BAB_new_babylonian_empire
 				is_at_war = no
 			}
 			effect = {
-	
 				override_country_name = BABYLONIAN_EMPIRE
 				set_country_flag = is_babylonian_empire
 				if = {
