@@ -24,6 +24,7 @@ great_mill_wonder = {
 		set_global_flag = great_mill_wonder_built
 		owner = {
 			clr_country_flag = great_mill_wonder_building
+			set_country_flag = great_mill_wonder_built_country
 		}
 	}
 
@@ -90,7 +91,7 @@ great_mill_wonder = {
 			factor = 5000
 		}
 		province_modifiers = {
-			local_development_cost = -0.025
+			local_development_cost = -0.05
 		}
 		area_modifier = {
 			local_production_efficiency = 0.15
@@ -124,6 +125,7 @@ diplomatic_palace_wonder = {
 		set_global_flag = diplomatic_palace_wonder_built
 		owner = {
 			clr_country_flag = diplomatic_palace_wonder_building
+			set_country_flag = diplomatic_palace_wonder_built_country
 		}
 	}
 
@@ -209,7 +211,7 @@ great_defenses_wonder = {
 	start = 0 #Out of game
 	date = 1434.01.01
 	time = { months = 60 }
-	build_cost = 1000
+	build_cost = 600
 	can_be_moved = no
 	move_days_per_unit_distance = 10
 	starting_tier = 1
@@ -226,6 +228,7 @@ great_defenses_wonder = {
 		set_global_flag = great_defenses_wonder_built
 		owner = {
 			clr_country_flag = great_defenses_wonder_building
+			set_country_flag = great_defenses_wonder_built_country
 		}
 	}
 
@@ -258,7 +261,7 @@ great_defenses_wonder = {
 			factor = 1500
 		}
 		province_modifiers = {
-			fort_level = 1
+			fort_level = 2
 			local_garrison_size = 0.10
 		}
 		area_modifier = {}
@@ -274,13 +277,15 @@ great_defenses_wonder = {
 			factor = 2500
 		}
 		province_modifiers = {
-			fort_level = 1
+			fort_level = 2
 			local_garrison_size = 0.20
 		}
 		area_modifier = {
 			local_fort_maintenance_modifier = -0.1
 		}
-		country_modifiers = {}
+		country_modifiers = {
+			fort_maintenance_modifier = -0.025
+		}
 		on_upgraded = {}
 	}
 
@@ -292,14 +297,16 @@ great_defenses_wonder = {
 			factor = 5000
 		}
 		province_modifiers = {
-			fort_level = 1
+			fort_level = 2
 			local_garrison_size = 0.25
+			local_defensiveness = 0.1
 		}
 		area_modifier = {
 			local_fort_maintenance_modifier = -0.25
 		}
 		country_modifiers = {
 			defensiveness = 0.10
+			fort_maintenance_modifier = -0.05
 		}
 		on_upgraded = {}
 	}
@@ -327,6 +334,7 @@ great_libarary_wonder = {
 		set_global_flag = great_libarary_wonder_built
 		owner = {
 			clr_country_flag = great_libarary_wonder_building
+			set_country_flag = great_libarary_wonder_built_country
 		}
 	}
 
@@ -416,6 +424,7 @@ great_mine_wonder = {
 			has_terrain = hills
 			has_terrain = highlands
 		}
+		development = 20
 		NOT = { has_global_flag = great_mine_wonder_built }
 		FROM = {
 			has_country_flag = great_mine_wonder_building
@@ -426,6 +435,7 @@ great_mine_wonder = {
 		set_global_flag = great_mine_wonder_built
 		owner = {
 			clr_country_flag = great_mine_wonder_building
+			set_country_flag = great_mine_wonder_built_country
 		}
 		change_trade_goods = gold
 		set_base_tax = 3
@@ -450,6 +460,7 @@ great_mine_wonder = {
 		}
 		province_modifiers = {
 			local_development_cost = 0.5
+			local_gold_depletion_chance_modifier = -1.0
 		}
 		area_modifier = {}
 		country_modifiers = {}
@@ -521,7 +532,7 @@ great_mine_wonder = {
 			local_development_cost = 0.5
 			local_gold_depletion_chance_modifier = -1.0
 			local_governing_cost = 0.1
-			trade_goods_size = 2
+			trade_goods_size = 3
 		}
 		area_modifier = {
 			trade_goods_size_modifier = 0.1
@@ -571,6 +582,7 @@ efficient_barracks_wonder = {
 		set_global_flag = efficient_barracks_wonder_built
 		owner = {
 			clr_country_flag = efficient_barracks_wonder_building
+			set_country_flag = efficient_barracks_wonder_built_country
 		}
 	}
 
@@ -603,7 +615,7 @@ efficient_barracks_wonder = {
 			factor = 1500
 		}
 		province_modifiers = {
-			local_manpower_modifier = 0.50
+			local_manpower_modifier = 1.0
 		}
 		area_modifier = {}
 		country_modifiers = {}
@@ -619,10 +631,10 @@ efficient_barracks_wonder = {
 		}
 		province_modifiers = {}
 		area_modifier = {
-			local_manpower_modifier = 0.50
+			local_manpower_modifier = 1.0
 		}
 		country_modifiers = {
-			manpower_recovery_speed = 0.05
+			global_manpower_modifier = 0.05
 		}
 		on_upgraded = {}
 	}
@@ -636,10 +648,10 @@ efficient_barracks_wonder = {
 		}
 		province_modifiers = {}
 		area_modifier = {
-			local_manpower_modifier = 0.50
+			local_manpower_modifier = 1.5
 		}
 		country_modifiers = {
-			global_manpower_modifier = 0.05
+			global_manpower_modifier = 0.10
 			manpower_recovery_speed = 0.05
 		}
 		on_upgraded = {}
@@ -668,6 +680,7 @@ national_university_wonder = {
 		set_global_flag = national_university_wonder_built
 		owner = {
 			clr_country_flag = national_university_wonder_building
+			set_country_flag = national_university_wonder_built_country
 		}
 	}
 
@@ -774,6 +787,7 @@ center_of_development_office_wonder = {
 		set_global_flag = center_of_development_office_wonder_built
 		owner = {
 			clr_country_flag = center_of_development_office_wonder_building
+			set_country_flag = center_of_development_office_wonder_built_country
 		}
 	}
 
@@ -881,6 +895,7 @@ national_training_grounds_wonder = {
 		set_global_flag = national_training_grounds_wonder_built
 		owner = {
 			clr_country_flag = national_training_grounds_wonder_building
+			set_country_flag = national_training_grounds_wonder_built_country
 		}
 	}
 
@@ -985,6 +1000,7 @@ manufacturing_plant_wonder = {
 		set_global_flag = manufacturing_plant_wonder_built
 		owner = {
 			clr_country_flag = manufacturing_plant_wonder_building
+			set_country_flag = manufacturing_plant_wonder_built_country
 		}
 	}
 
@@ -1086,6 +1102,7 @@ world_port_wonder = {
 		set_global_flag = world_port_wonder_built
 		owner = {
 			clr_country_flag = world_port_wonder_building
+			set_country_flag = world_port_wonder_built_country
 		}
 	}
 
@@ -1190,6 +1207,7 @@ military_academy_wonder = {
 		set_global_flag = military_academy_wonder_built
 		owner = {
 			clr_country_flag = military_academy_wonder_building
+			set_country_flag = military_academy_wonder_built_country
 		}
 	}
 
