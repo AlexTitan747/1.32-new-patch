@@ -3317,10 +3317,15 @@ french_missions_3_normal_continued = {
 		icon = control_the_church 
 		required_missions = { fra_embrace_renaissance } 
 		position = 15
-		trigger = { 
-			custom_trigger_tooltip = {
-				tooltip = fra_enacted_retrial_tt
-				has_global_flag = retrial_of_joan_of_arc
+		trigger = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = fra_enacted_retrial_tt
+					has_global_flag = retrial_of_joan_of_arc
+				}
+				NOT = { 
+					current_age = age_of_discovery
+				}
 			}
 			OR = { 
 				full_idea_group = religious_ideas 

@@ -374,9 +374,12 @@ vodka_of_the_crown_reform = {
 			every_owned_province = {
 				if = {
 					limit = {
-						trade_goods = grain
+						OR = {
+							trade_goods = grain
+							trade_goods = ale
+						}
 					}
-					add_province_modifier = { 
+					add_province_modifier = {
 						name = grain_vodka_bonus_prod
 						duration = -1
 						hidden = yes

@@ -1146,7 +1146,8 @@ great_russian_republic_reform = {
 		yearly_absolutism = 0.5
 		global_autonomy = -0.05
 		embracement_cost = -0.5
-		max_absolutism = 50
+		has_streltsy = yes
+		allowed_streltsy_fraction = 0.1
 	}
 
 	conditional = {
@@ -2360,25 +2361,6 @@ consolidation_of_power_reform = {
 	}
 	custom_attributes = {
 		reelection_depowers_estates = yes
-	}
-}
-
-federal_senate_reform = {
-	icon = "judge"
-	allow_normal_conversion = yes
-	potential = {
-		NOT = { has_government_attribute = is_pirate_republic_reform }
-	}
-	modifiers = {
-		candidate_random_bonus = 1
-	}
-
-	conditional = {
-		allow = { has_dlc = "Common Sense" }
-		has_parliament = yes
-		custom_attributes = {
-			halved_parliament_bribes = yes
-		}
 	}
 }
 
