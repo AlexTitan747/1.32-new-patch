@@ -11,26 +11,14 @@ english_french_act_of_union = {
 			issue = english_french_act_of_union
 		}
 		is_free_or_tributary_trigger = yes
-		is_nomad = no
 		is_at_war = no
 		OR = {
 			AND = {
 				owns_core_province = 237		# Oxfordshire
 				owns_core_province = 234		# Wessex
 				owns_core_province = 236		# London
-				owns_core_province = 177		# Maine
-				owns_core_province = 183		# Paris
-				owns_core_province = 178		# Anjou
-				178 = {							# Anjou
-					is_state = yes
-				}
-			}
-			AND = {
-				OR = {
-					FRA = {	junior_union_with = ENG	}
-					FRA = {	is_subject_of = ENG	}
-				}
-				FRA = { NOT = { num_of_cities = 40 } }
+				177 = { country_or_non_sovereign_subject_holds = ROOT }		# Maine
+				178 = { country_or_non_sovereign_subject_holds = ROOT }		# Anjou
 			}
 		}
 		adm_tech = 10
@@ -40,55 +28,18 @@ english_french_act_of_union = {
 		set_parliament_action_flag = {
 			parliament_action = english_french_act_of_union
 		}
-		if = {
-			limit = {
-				FRA = {
-					exists = yes
-					ai = yes
-					is_subject_of = ROOT
-					NOT = { num_of_cities = 40 }
-				}
-			}
-			tooltip = {
-				inherit = FRA
-			}
-			custom_tooltip = english_french_act_of_union_ct
-			hidden_effect = {
-				FRA = {
-					every_subject_country = {
-						limit = {
-							capital_scope = {
-								region = france_region
-							}
-							NOT = { num_of_cities = 5 }
-						}
-						FRA = {
-							inherit = PREV
-						}
-					}
-				}
-				inherit = FRA
-			}
-		}
 		#custom_tooltip = english_french_act_of_union_at
 		change_tag = AVE
 		hidden_effect = {
-			on_change_tag_effect = yes
 			restore_country_name = yes
 			remove_non_electors_emperors_from_empire_effect = yes
 			if = {
 				limit = {
-					NOT = { government_rank = 2 }
+					NOT = { government_rank = 3 }
 				}
-				set_government_rank = 2
+				set_government_rank = 3
 			}
-			if = {
-				limit = { 
-					has_custom_ideas = no
-					NOT = { has_idea_group = AVE_ideas }
-				}
-				country_event = { id = ideagroups.1 } #Swap Ideas
-			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
 		}
 		add_prestige = 25
 	}
@@ -463,43 +414,43 @@ crown_of_italy_act = {
 	}
 }
 
-crown_of_the_empire_act = {
-	category = 4
-
-	allow = {
-		has_government_attribute = english_parliament
-		has_not_enacted_parliament_action = {
-			parliament_action = crown_of_the_empire_act
-		}
-		has_issue_unlocked = {
-			issue = crown_of_the_empire_act
-		}
-		is_emperor = yes
-	}
-	
-	effect = {
-		set_parliament_action_flag = {
-			parliament_action = crown_of_the_empire_act
-		}
-		unlock_issue = {
-			issue = establish_the_imperial_diet_act
-		}
-		add_imperial_influence = 10
-	}
-	
-	modifier = {
-		imperial_authority = 0.1
-		diplomatic_reputation = 1
-	}
-	
-	chance = {
-		factor = 0
-	}
-
-	ai_will_do = {
-		factor = 1
-	}
-}
+#crown_of_the_empire_act = {
+#	category = 4
+#
+#	allow = {
+#		has_government_attribute = english_parliament
+#		has_not_enacted_parliament_action = {
+#			parliament_action = crown_of_the_empire_act
+#		}
+#		has_issue_unlocked = {
+#			issue = crown_of_the_empire_act
+#		}
+#		is_emperor = yes
+#	}
+#	
+#	effect = {
+#		set_parliament_action_flag = {
+#			parliament_action = crown_of_the_empire_act
+#		}
+#		unlock_issue = {
+#			issue = establish_the_imperial_diet_act
+#		}
+#		add_imperial_influence = 10
+#	}
+#	
+#	modifier = {
+#		imperial_authority = 0.1
+#		diplomatic_reputation = 1
+#	}
+#	
+#	chance = {
+#		factor = 0
+#	}
+#
+#	ai_will_do = {
+#		factor = 1
+#	}
+#}
 
 bill_of_rights_act = {
 	category = 4

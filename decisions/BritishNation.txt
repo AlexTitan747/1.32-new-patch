@@ -333,8 +333,6 @@ country_decisions = {
 		major = yes
 		potential = {
 			has_government_attribute = english_parliament
-			normal_or_historical_nations = yes
-			was_never_end_game_tag_trigger = yes
 			NOT = { exists = GBR }
 			NOT = { tag = AVE }
 			has_country_flag = eng_took_ave_branch
@@ -346,12 +344,10 @@ country_decisions = {
 				province_id = 234		# Wessex
 				province_id = 236		# London
 				province_id = 177		# Maine
-				province_id = 183		# Paris
 				province_id = 178		# Anjou
 			}
 			OR = {
-				NOT = { owned_by = ROOT }
-				NOT = { is_core = ROOT }
+				NOT = { country_or_non_sovereign_subject_holds = ROOT }
 			}
 		}
 		allow = {
@@ -363,25 +359,12 @@ country_decisions = {
 			is_free_or_tributary_trigger = yes
 			is_nomad = no
 			is_at_war = no
-			OR = {
-				AND = {
-					owns_core_province = 237		# Oxfordshire
-					owns_core_province = 234		# Wessex
-					owns_core_province = 236		# London
-					owns_core_province = 177		# Maine
-					owns_core_province = 183		# Paris
-					owns_core_province = 178		# Anjou
-					178 = {							# Anjou
-						is_state = yes
-					}
-				}
-				AND = {
-					OR = {
-						FRA = {	junior_union_with = ROOT }
-						FRA = {	is_subject_of = ROOT }
-					}
-					FRA = { NOT = { num_of_cities = 40 } }
-				}
+			AND = {
+				owns_core_province = 237		# Oxfordshire
+				owns_core_province = 234		# Wessex
+				owns_core_province = 236		# London
+				177 = { country_or_non_sovereign_subject_holds = ROOT }		# Maine
+				178 = { country_or_non_sovereign_subject_holds = ROOT }		# Anjou
 			}
 		}
 		effect = {
