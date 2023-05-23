@@ -2274,12 +2274,24 @@ tm_SRV_slot_4_babylon = {
 		}
 
 		trigger = {
-			num_of_owned_provinces_with = {
-				value = 10
-				development = 20
-				OR = {
-					culture = kurdish
-					culture = al_iraqiya_arabic
+			if = {
+				limit = {
+					primary_culture = babylonian
+				}
+				num_of_owned_provinces_with = {
+					value = 10
+					development = 20
+					culture = babylonian
+				}
+			}
+			else = {
+				num_of_owned_provinces_with = {
+					value = 10
+					development = 20
+					OR = {
+						culture = kurdish
+						culture = al_iraqiya_arabic
+					}
 				}
 			}
 		}
