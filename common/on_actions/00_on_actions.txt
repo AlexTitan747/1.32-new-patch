@@ -6644,6 +6644,11 @@ on_war_ended = { #ROOT - Winer FROM - Loser
 
 on_alliance_broken = { #ROOT - Original alliance creator, FROM - Alliance accepter
 	on_alliance_broken_effect = yes
+	if = {
+		limit = { has_country_modifier = spanish_imperial_ambition FROM = { has_country_modifier = spanish_imperial_ambition } }
+		remove_country_modifier = spanish_imperial_ambition
+		FROM = { remove_country_modifier = spanish_imperial_ambition }
+	}
 }
 
 on_royal_marriage_broken = { #ROOT - Original marriage creator, FROM - Marriage accepter
