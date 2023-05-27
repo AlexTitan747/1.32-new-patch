@@ -76,6 +76,16 @@ emperor_perpetual_diet = {
 	emperor = {
 		governing_capacity = 150
 	}
+
+	on_effect = {
+		if = {
+			limit = {
+				hre_religion_locked = no
+				hre_religion_treaty = no
+			}
+			set_hre_religion_treaty = yes
+		}
+	}
 }
 
 emperor_landsknechtswesen = {
@@ -236,13 +246,6 @@ emperor_erbkaisertum = {
 		land_morale = 0.05
 	}
 	on_effect = {
-		if = {
-			limit = {
-				hre_religion_locked = no
-				hre_religion_treaty = no
-			}
-			set_hre_religion_treaty = yes
-		}
 		hre_inheritable = yes
 	}
 	off_effect = {
