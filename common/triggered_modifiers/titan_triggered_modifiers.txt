@@ -427,3 +427,69 @@ ai_player_nation_buff = {
 	land_forcelimit_modifier = 0.25
 	land_maintenance_modifier = -0.15
 }
+
+colony_nerf_0 = {
+	potential = {
+		ai = no
+		is_colonial_nation = yes
+	}
+
+	trigger = {
+		NOT = {
+			capital_scope = {
+				OR = {
+					colonial_region = colonial_the_carribean
+					colonial_region = colonial_saf
+					colonial_region = colonial_phil
+				}
+			}
+		}
+	}
+
+	development_cost = 0.1
+	land_forcelimit_modifier = -0.1
+}
+
+colony_nerf_1 = {
+	potential = {
+		ai = no
+		is_colonial_nation = yes
+	}
+
+	trigger = {
+		total_development = 400
+	}
+
+	development_cost = 0.1
+	land_forcelimit_modifier = -0.1
+}
+
+colony_nerf_2 = {
+	potential = {
+		ai = no
+		is_colonial_nation = yes
+	}
+
+	trigger = {
+		total_development = 800
+	}
+
+	development_cost = 0.1
+	land_forcelimit_modifier = -0.1
+	global_manpower_modifier = -0.1
+}
+
+colony_nerf_3 = {
+	potential = {
+		ai = no
+		is_colonial_nation = yes
+	}
+
+	trigger = {
+		total_development = 1200
+	}
+
+	development_cost = 0.1
+	land_forcelimit_modifier = -0.1
+	global_manpower_modifier = -0.1
+}
