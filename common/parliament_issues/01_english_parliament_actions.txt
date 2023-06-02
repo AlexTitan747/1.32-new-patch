@@ -782,12 +782,9 @@ crush_french_nobles = {
 	allow = {
 		has_government_attribute = english_parliament
 		has_mission = ave_shatter_frances_nobility
-		OR = {
-			FRA = { is_subject_of = ROOT }
-			num_of_owned_provinces_with = {
-				region = france_region
-				value = 20
-			}
+		num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+			region = france_region
+			value = 20
 		}
 		has_not_enacted_parliament_action = {
 			parliament_action = crush_french_nobles
@@ -798,51 +795,22 @@ crush_french_nobles = {
 		set_parliament_action_flag = {
 			parliament_action = crush_french_nobles
 		}
-		if = {
+		random_owned_province = {
 			limit = {
-				FRA = { is_subject_of = ROOT }
+				region = france_region
 			}
-			FRA = {
-				random_owned_province = {
-					limit = {
-						is_overseas = no
-						is_in_capital_area = yes
-					}
-					spawn_rebels = {
-						type = pretender_rebels
-						size = 2
-					}
-				}
-				random_owned_province = {
-					limit = {
-						is_overseas = no
-						is_in_capital_area = yes
-					}
-					spawn_rebels = {
-						type = pretender_rebels
-						size = 1
-					}
-				}
+			spawn_rebels = {
+				type = noble_rebels
+				size = 2
 			}
 		}
-		else = {
-			random_owned_province = {
-				limit = {
-					region = france_region
-				}
-				spawn_rebels = {
-					type = noble_rebels
-					size = 2
-				}
+		random_owned_province = {
+			limit = {
+				region = france_region
 			}
-			random_owned_province = {
-				limit = {
-					region = france_region
-				}
-				spawn_rebels = {
-					type = noble_rebels
-					size = 1
-				}
+			spawn_rebels = {
+				type = noble_rebels
+				size = 2
 			}
 		}
 		add_stability = -1
@@ -850,7 +818,7 @@ crush_french_nobles = {
 	
 	modifier = {
 		nobles_influence_modifier = -0.2
-		global_tax_income = 60
+		global_tax_income = 120
 		manpower_recovery_speed = 0.15
 	}
 	

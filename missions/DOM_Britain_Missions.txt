@@ -1800,6 +1800,14 @@ ave_row_3 = {
 		required_missions = { ave_take_the_french_throne }
 		position = 3
 		provinces_to_highlight = {
+			region = france_region
+			OR = {
+				AND = {
+					controlled_by = REB
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+				NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			}
 		}		
 		trigger = { 
 			if = {
@@ -1832,6 +1840,10 @@ ave_row_3 = {
 			}
 			change_ruler_stat = {
 				stat = dip
+				amount = 1
+			}
+			change_ruler_stat = {
+				stat = mil
 				amount = 1
 			}
 		}
@@ -2766,6 +2778,7 @@ ave_row_4 = {
 				area = champagne_area
 				area = wallonia_area
 				area = reims_area
+				area = flanders_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -2778,6 +2791,7 @@ ave_row_4 = {
 					area = champagne_area
 					area = wallonia_area
 					area = reims_area
+					area = flanders_area
 				}
 			}
 		}
@@ -2814,6 +2828,16 @@ ave_row_4 = {
 				}
 			}
 			reims_area = {
+				limit = {
+					owned_by = ROOT
+				}
+				add_nationalism = -10
+				add_province_modifier = {
+					name = "eng_rb_local_conv"
+					duration = 5475
+				}
+			}
+			flanders_area = {
 				limit = {
 					owned_by = ROOT
 				}
@@ -2929,7 +2953,7 @@ ave_row_4 = {
 							}
 							add_aggressive_expansion = {
 								who = ROOT
-								value = -5
+								value = -25
 							}
 						}
 					}
@@ -3257,13 +3281,7 @@ gbr_row_5 = {
 					custom_trigger_tooltip = {
 						tooltip = ave_conquer_lowlands_at
 						capital_scope = {
-							region = low_countries_region
-						}
-						OR = {
-							primary_culture = dutch
-							primary_culture = flemish
-							primary_culture = frisian
-							primary_culture = wallonian
+							continent = europe
 						}
 						num_of_owned_provinces_with = {
 							region = low_countries_region
@@ -3408,7 +3426,7 @@ gbr_row_5 = {
 			OR = {
 				province_id = 833
 				province_id = 1177
-				province_id = 1179
+				province_id = 5252
 			}
 			NOT = { owned_by = ROOT }
 			has_discovered = ROOT
@@ -3425,7 +3443,7 @@ gbr_row_5 = {
 						owned_by = ROOT
 						is_city = yes
 					}
-					1179 = {
+					5252 = {
 						owned_by = ROOT
 						is_city = yes
 					}
@@ -3445,10 +3463,10 @@ gbr_row_5 = {
 				}
 				1 = {
 					trigger = {
-						owns = 1179
+						owns = 5252
 						NOT = { owns = 1177 }
 					}
-					1179 = {
+					5252 = {
 						add_building = stock_exchange
 					}
 				}
@@ -3464,13 +3482,13 @@ gbr_row_5 = {
 					trigger = {
 						NOT = { owns = 833 }
 						NOT = { owns = 1177 }
-						NOT = { owns = 1179 }
+						NOT = { owns = 5252 }
 					}
 					tooltip = {
 						random_list = {
 							1 = { 833  = { add_building = stock_exchange } }
 							1 = { 1177 = { add_building = stock_exchange } }
-							1 = { 1179 = { add_building = stock_exchange } }
+							1 = { 5252 = { add_building = stock_exchange } }
 						}
 					}
 				}
@@ -3647,7 +3665,7 @@ ave_row_5 = {
 		effect = {
 			add_country_modifier = {
 				name = ave_national_bank
-				duration = 5475
+				duration = 3650
 			}
 		}
 		ai_weight = {
@@ -3779,68 +3797,22 @@ ave_row_5 = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}		
 		trigger = { 
-			OR = {
-				any_ally = {
-					custom_trigger_tooltip = {
-						tooltip = ave_conquer_lowlands_at
-						capital_scope = {
-							region = low_countries_region
-						}
-						OR = {
-							primary_culture = dutch
-							primary_culture = flemish
-							primary_culture = frisian
-							primary_culture = wallonian
-						}
-						num_of_owned_provinces_with = {
-							region = low_countries_region
-							value = 15
-						}
-					}
-				}
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					region = low_countries_region
-					value = 15
-				}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				region = low_countries_region
+				value = 15
 			}
 		}	
 		effect = {
-			simple_dynamic_effect = {
-				first_custom_tooltip = gbr_take_over_the_lowlands_at
-				first_limit = "
-				any_ally = {
-					capital_scope = {
-						region = low_countries_region
-					}
-					OR = {
-						primary_culture = dutch
-						primary_culture = flemish
-						primary_culture = frisian
-						primary_culture = wallonian
-					}
-					num_of_owned_provinces_with = {
-						region = low_countries_region
-						value = 15
-					}
-				}"
-				first_effect = "
-				custom_tooltip = gbr_take_over_the_lowlands_ct
-				gbr_take_over_the_lowlands_effect_a = yes"
-				second_limit = "
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					region = low_countries_region
-					value = 15
-				}"
-				second_effect = "
-				add_accepted_culture = dutch
-				add_accepted_culture = flemish
-				add_country_modifier = {
-					name = gbr_accepted_lowlands
-					duration = -1
-					desc = gbr_accepted_lowlands_tt
-					hidden = yes
-				}
-				"
+			add_country_modifier = {
+				name = gbr_english_dutch_trade_partners
+				duration = -1
+			}
+			add_accepted_culture = dutch
+			add_accepted_culture = flemish
+			add_country_modifier = {
+				name = gbr_accepted_lowlands
+				duration = -1
+				desc = gbr_accepted_lowlands_tt
 			}
 		}
 		ai_weight = {
