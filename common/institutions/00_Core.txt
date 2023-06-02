@@ -649,37 +649,46 @@ new_world_i = {
 		OR = {
 			AND = {
 				is_year = 1500
-				owner = { 
-					OR = {
-						has_idea_group = expansion_ideas
-						has_idea_group = colonialism_ideas
-					}
-					OR = {
-						north_america = { has_discovered = PREV }
-						south_america = { has_discovered = PREV }
-						new_world = { has_discovered = PREV }
+				custom_trigger_tooltip = {
+					tooltip = tm_colonialism_can_spawn_1
+					owner = {
+						OR = {
+							has_idea_group = expansion_ideas
+							has_idea_group = colonialism_ideas
+						}
+						OR = {
+							north_america = { has_discovered = PREV }
+							south_america = { has_discovered = PREV }
+							new_world = { has_discovered = PREV }
+						}
 					}
 				}
 			}
 			AND = {
 				is_year = 1502
-				owner = { 
-					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-						value = 1
-						OR = {
-							continent = north_america
-							continent = south_america
+				custom_trigger_tooltip = {
+					tooltip = tm_colonialism_can_spawn_2
+					owner = { 
+						num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+							value = 1
+							OR = {
+								continent = north_america
+								continent = south_america
+							}
 						}
 					}
 				}
 			}
 			AND = {
 				is_year = 1504
-				owner = { 
-					OR = {
-						north_america = { has_discovered = PREV }
-						south_america = { has_discovered = PREV }
-						new_world = { has_discovered = PREV }
+				custom_trigger_tooltip = {
+					tooltip = tm_colonialism_can_spawn_3
+					owner = {
+						OR = {
+							north_america = { has_discovered = PREV }
+							south_america = { has_discovered = PREV }
+							new_world = { has_discovered = PREV }
+						}
 					}
 				}
 			}
@@ -832,6 +841,17 @@ new_world_i = {
 			}
 		}
 		modifier = {
+			factor = 1.5
+			scale = no
+			potential = {
+			}
+			custom_trigger_tooltip = {
+				tooltip = PR_colonialism_non_coastal_cot_lvl_3
+				NOT = { has_port = yes }
+				province_has_center_of_trade_of_level = 3
+			}
+		}
+		modifier = {
 			factor = 0.2
 			scale = yes
 			potential = {
@@ -932,6 +952,7 @@ printing_press = {
 				OR = {
 					religion = protestant
 					religion = reformed
+					religion = hussite
 					region = italy_region
 					region = france_region
 				}
@@ -1007,6 +1028,7 @@ printing_press = {
 			development = 15
 			is_capital = yes
 			trade_goods = paper
+			trade_goods = books
 		}
 		OR = {
 			religion = protestant
@@ -1109,11 +1131,14 @@ printing_press = {
 			factor = 6
 			scale = no
 			potential = {
+				NOT = { continent = europe }
 			}
 			custom_trigger_tooltip = {
 				tooltip = PR_printing_press_paper
-				trade_goods = paper
-				NOT = { continent = europe }
+				OR = {
+					trade_goods = paper
+					trade_goods = books
+				}
 			}
 		}
 		modifier = {
@@ -1754,6 +1779,10 @@ manufactories = {
 				OR = {
 					trade_goods = copper
 					trade_goods = iron
+					trade_goods = silver
+					trade_goods = tin
+					trade_goods = bronze
+					trade_goods = steel
 				}
 				manufactories_origin = {
 					same_continent = PREV
@@ -1773,6 +1802,8 @@ manufactories = {
 					trade_goods = cloth
 					trade_goods = silk
 					trade_goods = dyes
+					trade_goods = tailored_clothes
+					trade_goods = uniforms
 				}
 				manufactories_origin = {
 					same_continent = PREV
@@ -1794,6 +1825,7 @@ manufactories = {
 					trade_goods = tobacco
 					trade_goods = tea
 					trade_goods = cocoa
+					trade_goods = chocolate
 				}
 				manufactories_origin = {
 					same_continent = PREV
@@ -1814,6 +1846,7 @@ manufactories = {
 					trade_goods = spices
 					trade_goods = fur
 					trade_goods = incense
+					trade_goods = perfume
 				}
 				manufactories_origin = {
 					same_continent = PREV
@@ -1830,8 +1863,11 @@ manufactories = {
 			potential = {
 				OR = {
 					trade_goods = grain
+					trade_goods = ale
 					trade_goods = livestock
+					trade_goods = cheese
 					trade_goods = wine
+					trade_goods = olive_oil
 				}
 				manufactories_origin = {
 					same_continent = PREV
@@ -1848,7 +1884,9 @@ manufactories = {
 			potential = {
 				OR = {
 					trade_goods = paper
+					trade_goods = books
 					trade_goods = gems
+					trade_goods = jewellery
 					trade_goods = tropical_wood
 					trade_goods = glass
 					trade_goods = chinaware
@@ -1887,6 +1925,10 @@ manufactories = {
 				OR = {
 					trade_goods = copper
 					trade_goods = iron
+					trade_goods = silver
+					trade_goods = tin
+					trade_goods = bronze
+					trade_goods = steel
 				}
 				manufactories_origin = {
 					NOT = { same_continent = PREV }
@@ -1906,6 +1948,8 @@ manufactories = {
 					trade_goods = cloth
 					trade_goods = silk
 					trade_goods = dyes
+					trade_goods = tailored_clothes
+					trade_goods = uniforms
 				}
 				manufactories_origin = {
 					NOT = { same_continent = PREV }
@@ -1927,6 +1971,7 @@ manufactories = {
 					trade_goods = tobacco
 					trade_goods = tea
 					trade_goods = cocoa
+					trade_goods = chocolate
 				}
 				manufactories_origin = {
 					NOT = { same_continent = PREV }
@@ -1947,6 +1992,7 @@ manufactories = {
 					trade_goods = spices
 					trade_goods = fur
 					trade_goods = incense
+					trade_goods = perfume
 				}
 				manufactories_origin = {
 					NOT = { same_continent = PREV }
@@ -1963,8 +2009,11 @@ manufactories = {
 			potential = {
 				OR = {
 					trade_goods = grain
+					trade_goods = ale
 					trade_goods = livestock
+					trade_goods = cheese
 					trade_goods = wine
+					trade_goods = olive_oil
 				}
 				manufactories_origin = {
 					NOT = { same_continent = PREV }
@@ -1981,7 +2030,9 @@ manufactories = {
 			potential = {
 				OR = {
 					trade_goods = paper
+					trade_goods = books
 					trade_goods = gems
+					trade_goods = jewellery
 					trade_goods = tropical_wood
 					trade_goods = glass
 					trade_goods = chinaware
@@ -2523,7 +2574,16 @@ industrialization = {
 						trade_goods = cloth
 					}
 					production_leader = {
+						trade_goods = uniforms
+					}
+					production_leader = {
 						trade_goods = coal
+					}
+					production_leader = {
+						trade_goods = steel
+					}
+					production_leader = {
+						trade_goods = bronze
 					}
 					num_of_trading_bonuses = 3
 					is_year = 1770 #fallback
@@ -2546,6 +2606,15 @@ industrialization = {
 					}
 					production_leader = {
 						trade_goods = cloth
+					}
+					production_leader = {
+						trade_goods = uniforms
+					}
+					production_leader = {
+						trade_goods = steel
+					}
+					production_leader = {
+						trade_goods = bronze
 					}
 					num_of_trading_bonuses = 3
 					is_year = 1770 #fallback
@@ -2750,6 +2819,10 @@ industrialization = {
 				OR = {
 					trade_goods = copper
 					trade_goods = iron
+					trade_goods = steel
+					trade_goods = tin
+					trade_goods = bronze
+					trade_goods = steel
 				}
 				industrialization_origin = {
 					same_continent = PREV
@@ -2768,6 +2841,7 @@ industrialization = {
 					trade_goods = wool
 					trade_goods = cloth
 					trade_goods = silk
+					trade_goods = tailored_clothes
 					trade_goods = dyes
 				}
 				industrialization_origin = {
@@ -2790,6 +2864,7 @@ industrialization = {
 					trade_goods = tobacco
 					trade_goods = tea
 					trade_goods = cocoa
+					trade_goods = chocolate
 				}
 				industrialization_origin = {
 					same_continent = PREV
@@ -2810,6 +2885,7 @@ industrialization = {
 					trade_goods = spices
 					trade_goods = fur
 					trade_goods = incense
+					trade_goods = perfume
 				}
 				industrialization_origin = {
 					same_continent = PREV
@@ -2826,8 +2902,11 @@ industrialization = {
 			potential = {
 				OR = {
 					trade_goods = grain
+					trade_goods = ale
 					trade_goods = livestock
+					trade_goods = cheese
 					trade_goods = wine
+					trade_goods = olive_oil
 				}
 			}
 			custom_trigger_tooltip = {
@@ -2844,7 +2923,9 @@ industrialization = {
 			potential = {
 				OR = {
 					trade_goods = paper
+					trade_goods = books
 					trade_goods = gems
+					trade_goods = jewellery
 					trade_goods = tropical_wood
 					trade_goods = glass
 					trade_goods = chinaware
@@ -2883,6 +2964,10 @@ industrialization = {
 				OR = {
 					trade_goods = copper
 					trade_goods = iron
+					trade_goods = tin
+					trade_goods = silver
+					trade_goods = bronze
+					trade_goods = steel
 				}
 			}
 			custom_trigger_tooltip = {
@@ -2902,6 +2987,7 @@ industrialization = {
 					trade_goods = cloth
 					trade_goods = silk
 					trade_goods = dyes
+					trade_goods = tailored_clothes
 				}
 			}
 			custom_trigger_tooltip = {
@@ -2923,6 +3009,7 @@ industrialization = {
 					trade_goods = tobacco
 					trade_goods = tea
 					trade_goods = cocoa
+					trade_goods = chocolate
 				}
 			}
 			custom_trigger_tooltip = {
@@ -2943,6 +3030,7 @@ industrialization = {
 					trade_goods = spices
 					trade_goods = fur
 					trade_goods = incense
+					trade_goods = perfume
 				}
 				industrialization_origin = {
 					NOT = { same_continent = PREV }
@@ -2961,6 +3049,9 @@ industrialization = {
 					trade_goods = grain
 					trade_goods = livestock
 					trade_goods = wine
+					trade_goods = ale
+					trade_goods = cheese
+					trade_goods = olive_oil
 				}
 				industrialization_origin = {
 					NOT = { same_continent = PREV }
@@ -2977,7 +3068,9 @@ industrialization = {
 			potential = {
 				OR = {
 					trade_goods = paper
+					trade_goods = books
 					trade_goods = gems
+					trade_goods = jewellery
 					trade_goods = tropical_wood
 					trade_goods = glass
 					trade_goods = chinaware
