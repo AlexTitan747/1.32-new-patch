@@ -10473,6 +10473,7 @@ fra_reintegration_of_burgundian_lands_modifier = {
 }
 fra_charlemagne_legacy_modifier = {
 	diplomatic_reputation = 2
+	improve_relation_modifier = 0.25
 }
 fra_war_east_modifier = { 
 	core_creation = -0.1
@@ -10541,7 +10542,7 @@ fra_replenished_slave_crews_modifier = {
 fra_sociopolitical_reforms_modifier = { 
 	reform_progress_growth = 0.25
 	yearly_corruption = -0.1
-	advisor_cost = -0.2
+	advisor_cost = -0.1
 	advisor_pool = 1 
 }
 fra_exploitation_of_neapolitan_estates_modifier = {
@@ -10584,10 +10585,10 @@ fra_golden_march_modifier = {
 }
 fra_french_papal_administrative_cooperation_modifier = { 
 	administrative_efficiency = 0.05
+	build_cost = -0.1
 }
 fra_french_papal_diplomatic_cooperation_modifier = { 
-	monthly_favor_modifier = 0.5
-	improve_relation_modifier = 0.25
+	development_cost_modifier = -0.10
 }
 fra_french_papal_military_cooperation_modifier = { 
 	drill_gain_modifier = 0.2
@@ -10603,8 +10604,8 @@ fra_first_opera_house_modifier = {
 	promote_culture_cost = -0.2
 }
 fra_port_of_french_signoria_modifier = { 
-	province_trade_power_modifier = 0.2
-	local_tax_modifier = 0.25
+	province_trade_power_modifier = 0.33
+	local_tax_modifier = 0.5
 }
 fra_golden_march2_modifier = { 
 	monarch_military_power = 1
@@ -10633,6 +10634,7 @@ fra_imperial_messengers_modifier = {
 fra_victory_germany_modifier = {
 	country_military_power = 1 
 	mercenary_discipline = 0.05
+	manpower_recovery_speed = 0.15
 }
 fra_french_buffer_modifier = { 
 	local_monthly_devastation = -0.1 
@@ -10645,7 +10647,7 @@ fra_french_supremacy2_modifier = {
 }
 fra_cultural_hegemony_modifier = {
 	all_power_cost = -0.05
-	great_project_upgrade_cost = -0.05
+	great_project_upgrade_cost = -0.15
 }
 fra_iron_crowned_modifier = {
 	core_creation = -0.15
@@ -10691,6 +10693,8 @@ fra_compagnie_francaise_modifier = {
 	trade_goods_size = 3
 }
 fra_growth_appanages = {
+	loyalty_change_on_revoked = 0.05
+	allow_free_estate_privilege_revocation = yes
 	diplomatic_upkeep = 1 
 	nobles_loyalty_modifier = 0.1
 }
@@ -10700,7 +10704,9 @@ fra_increased_crown_authority_modifier = {
 }
 fra_colonial_rush_modifier = {
 	colonist_placement_chance = 0.1
-	global_colonial_growth = 25
+	global_colonial_growth = 40
+	colonists = 1
+	range = 0.33
 }
 fra_french_bombards_modifier = { 
 	assault_fort_ability = 0.25
@@ -10848,7 +10854,9 @@ fra_heart_of_protestantism_modifier = {
 
 fra_moderate_path_modifier = {
 	tolerance_of_heathens_capacity = 1 
-	tolerance_of_heretics_capacity = 1 
+	tolerance_of_heretics_capacity = 1
+	tolerance_heathen = 1
+	tolerance_heretic = 1
 }
 
 fra_jerusalem_modifier = {
@@ -10858,7 +10866,10 @@ fra_jerusalem_modifier = {
 
 fra_catholic_head_of_state_modifier = {
 	curia_powers_cost = -0.33
-	country_admin_power = 1 
+	country_admin_power = 1
+	church_power_modifier = 0.5
+	monthly_fervor_increase = 1
+	yearly_patriarch_authority = 0.05
 }
 
 fra_sword_of_christianity_modifier5 = {
@@ -11013,10 +11024,56 @@ fra_victory_against_the_english_modifier = {
 }
 
 fra_close_ties_modifier = {
-	diplomatic_reputation = 1 
-	diplomats = 1 
+	improve_relation_modifier = 0.25
+	diplomats = 1
+	spy_offence = 0.25
 }
-	
+
+tm_fra_naval_buildup = {
+	global_ship_cost = -0.1
+	global_ship_recruit_speed = -0.1
+	ship_durability = 0.1
+	heavy_ship_power = 0.1
+	galley_power = 0.1
+}
+
+tm_fra_bid_for_normandy = {
+	land_morale = 0.10
+	recover_army_morale_speed = 0.10
+	manpower_recovery_speed = 0.10
+}
+
+tm_fra_normandy_seizure = {
+	local_defensiveness = -0.25
+	province_warscore_cost = -0.5
+}
+
+tm_stronger_than_hre = {
+	infantry_power = 0.1
+	infantry_cost = -0.1
+}
+
+tm_fra_developed_in_the_empire = {
+	local_production_efficiency = 0.2
+	local_manpower_modifier = 0.2
+	trade_goods_size = 0.15
+}
+
+tm_fra_a_holy_empire = {
+	manpower_against_imperial_enemies = 50000
+	papal_influence = 3
+	monthly_church_power = 0.05
+	monthly_fervor_increase = 2
+	yearly_patriarch_authority = 0.025
+	manpower_in_true_faith_provinces = 0.25
+	army_tradition_decay = -0.01
+}
+
+tm_fra_ally_owns_ita = {
+	trade_efficiency = 0.1
+	global_trade_power = 0.1
+	global_trade_goods_size_modifier = 0.05
+}
 
 jap_exchange_ideas_modifier = { 
 	technology_cost = -0.1
@@ -11332,7 +11389,7 @@ spa_spanish_affluence_modifier = {
 }
 
 spa_bid_for_the_hab_crown_modifier = {
-	siege_ability = 0.1
+	siege_ability = 0.15
 }
 
 spa_royal_authority_restored_modifier = {
@@ -11527,6 +11584,14 @@ spa_universal_empire_modifier = {
 	manpower_recovery_speed = 0.15
 	trade_efficiency = 0.15
 }
+
+spa_italian_cooperation = {
+	local_development_cost = -0.025
+	local_production_efficiency = 0.25
+	trade_value_modifier = 0.25
+	allowed_num_of_buildings = 1
+}
+
 fra_unification_movement_modifier = {	
 	local_warscore_cost_modifier = -0.33
 }

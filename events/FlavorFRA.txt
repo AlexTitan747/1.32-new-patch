@@ -675,8 +675,8 @@ country_event = {
 		OR = { 
 			AND = { 
 				tag = FRA
-				is_year = 1649
-				NOT = { is_year = 1683 }
+				is_year = 1620
+				#NOT = { is_year = 1683 }
 			}
 			mission_completed = fra_develop_trade
 		}
@@ -684,6 +684,11 @@ country_event = {
 	
 	mean_time_to_happen = {
 		months = 100
+
+		modifier = {
+			factor = 0.75
+			has_idea_group = trade_ideas
+		}
 	}
 	
 	immediate = { 
@@ -2101,14 +2106,14 @@ country_event = { #The Garden of France
 			}
 		}
 		else = { add_prestige = 10 } 
-		loire_area = { add_base_manpower = 1 }
+		loire_area = { add_base_production = 3 }
 	}
 	
 	option = { 
 		name = flavor_fra.103.b 
 		
-		add_years_of_income = 0.2 
-		add_adm_power = 50 
+		add_years_of_income = 0.5
+		add_adm_power = 50
 	}
 }
 
@@ -2248,26 +2253,39 @@ country_event = { #Securing the Milanese Lands
 			duration = 7300
 		}
 		
-		if = { 
-			limit = { 
-				MLO = { 
-					is_lesser_in_union = yes 
-					is_subject_of = ROOT 
-					NOT = { is_year = 1500 }
-				}
-			}
-			define_advisor = {
-				type = natural_scientist
-				name = "Leonardo da Vinci"
-				culture = tuscan
-				cost_multiplier = 0.25
-				skill = 3
-			}
-			capital_scope = { 
-				add_province_modifier = { 
-					name = fra_attracted_leonardo_da_vinci_modifier
-					duration = 7300
-				}
+		#if = { 
+		#	limit = { 
+		#		MLO = { 
+		#			is_lesser_in_union = yes 
+		#			is_subject_of = ROOT 
+		#			NOT = { is_year = 1500 }
+		#		}
+		#	}
+		#	define_advisor = {
+		#		type = natural_scientist
+		#		name = "Leonardo da Vinci"
+		#		culture = tuscan
+		#		cost_multiplier = 0.25
+		#		skill = 3
+		#	}
+		#	capital_scope = { 
+		#		add_province_modifier = { 
+		#			name = fra_attracted_leonardo_da_vinci_modifier
+		#			duration = 7300
+		#		}
+		#	}
+		#}
+		define_advisor = {
+			type = natural_scientist
+			name = "Leonardo da Vinci"
+			culture = tuscan
+			cost_multiplier = 0.25
+			skill = 3
+		}
+		capital_scope = { 
+			add_province_modifier = { 
+				name = fra_attracted_leonardo_da_vinci_modifier
+				duration = 7300
 			}
 		}
 		
@@ -2394,7 +2412,7 @@ country_event = {
 				}
 			}
 		}
-		add_prestige = 10
+		add_prestige = 25
 	}
 }
 
@@ -2408,102 +2426,72 @@ country_event = { #The Fate of Naples
 	option = { 
 		name = flavor_fra.113.a 
 		
-		if = {
-			limit = { 
-				NAP = { is_subject_of = ROOT } 
-			}
-			NAP = { 
-				add_country_modifier = {
-					name = fra_sociopolitical_reforms_modifier
-					duration = 7300
-				}
-			}
-		}
-		add_power_projection = {
-			type = mission_rewards_power_projection
-			amount = 25
-		}
-		if = { 
-			limit = { 
-				121 = { country_or_non_sovereign_subject_holds = ROOT }
-			}
-			121 = { 
-				add_base_tax = 2 
-				add_base_production = 2 
-				add_base_manpower = 2 
-			}
+		add_country_modifier = {
+			name = fra_sociopolitical_reforms_modifier
+			duration = 7300
 		}
 	}
 	
 	option = { 
-		name = flavor_fra.113.b 
+		name = flavor_fra.113.b
 		
 		add_country_modifier = { 
 			name = fra_exploitation_of_neapolitan_estates_modifier
 			duration = 7300
 		}
-		custom_tooltip = fra_exploitation_of_neapolitan_lands_tt
-		hidden_effect = { 
-			if = { 
-				limit = { 
-					naples_area = { 
-						type = all 
-						country_or_non_sovereign_subject_holds = ROOT 
-					}
+		random_owned_province = {
+			limit = {
+				OR = {
+					area = calabria_area 
+					area = apulia_area 
+					area = naples_area
+					area = western_sicily_area
+					area = sicily_area
 				}
-				naples_area = { add_base_tax = -1 }
 			}
-			if = { 
-				limit = { 
-					apulia_area = { 
-						type = all 
-						country_or_non_sovereign_subject_holds = ROOT 
-					}
-				}
-				apulia_area = { add_base_tax = -1 }
-			}
-			if = { 
-				limit = { 
-					calabria_area = { 
-						type = all 
-						country_or_non_sovereign_subject_holds = ROOT 
-					}
-				}
-				calabria_area = { add_base_tax = -1 }
-			}
+			add_base_tax = -2
+			add_base_production = -2
+			add_base_production = -2
 		}
 	}
 	
 	option = {
 		name = flavor_fra.113.c 
 		
-		catalonia_area = {
-			limit = { 
-				NOT = { owned_by = ROOT }
-				NOT = { is_core = ROOT } 
-			}
-			add_permanent_claim = ROOT 
+		add_power_projection = {
+			type = mission_rewards_power_projection
+			amount = 25
 		}
-		aragon_area = {
-			limit = { 
-				NOT = { owned_by = ROOT }
-				NOT = { is_core = ROOT } 
+		random_known_country = {
+			limit = {
+				OR = {
+					area = calabria_area 
+					area = apulia_area 
+					area = naples_area
+					area = western_sicily_area
+					area = sicily_area
+				}
 			}
-			add_permanent_claim = ROOT 
+			add_base_tax = 2
+			add_base_production = 2
+			add_base_production = 2
 		}
-		valencia_area = {
-			limit = { 
-				NOT = { owned_by = ROOT }
-				NOT = { is_core = ROOT } 
+		random_known_country = {
+			limit = {
+				OR = {
+					area = calabria_area 
+					area = apulia_area 
+					area = naples_area
+					area = western_sicily_area
+					area = sicily_area
+				}
 			}
-			add_permanent_claim = ROOT 
+			add_base_tax = 2
+			add_base_production = 2
+			add_base_production = 2
 		}
-		basque_country = {
-			limit = { 
-				NOT = { owned_by = ROOT }
-				NOT = { is_core = ROOT } 
-			}
-			add_permanent_claim = ROOT 
+		add_accepted_culture_or_dip_power = {
+			culture = sicilian
 		}
 	}
 }
@@ -2587,7 +2575,7 @@ country_event = { #The Paypal Domain
 		add_historical_friend = PAP 
 		PAP = { 
 			add_historical_friend = ROOT 
-			country_event = { id = flavor_fra.116 }
+			#country_event = { id = flavor_fra.116 }
 		} 
 		add_papal_influence = 15
 		italy_region = { 
@@ -2609,14 +2597,6 @@ country_event = { #The Paypal Domain
 		remove_country_modifier = fra_resurgence_of_crusader_fervor_modifier
 		remove_country_modifier = fra_fervent_call_to_arms_modifier
 		remove_country_modifier = fra_supplementary_pi_and_dip_rep_modifier
-		PAP = { 
-			add_opinion = { 
-				who = ROOT 
-				modifier = fra_renounced_treaty_of_cooperation_modifier
-			}
-			add_historical_rival = ROOT 
-		}
-		add_historical_rival = ROOT 
 		italy_region = { 
 			limit = { 
 				NOT = { is_core = ROOT } 
@@ -2702,16 +2682,6 @@ country_event = { #Cooperating with the Holy Father
 			name = fra_french_papal_administrative_cooperation_modifier
 			duration = 9125
 		}
-		PAP = { 
-			add_country_modifier = { 
-				name = fra_french_papal_administrative_cooperation_modifier
-				duration = 9125
-			}
-			change_estate_land_share = { 
-				estate = all 
-				share = -2.5
-			}
-		}
 	}
 	
 	option = { 
@@ -2725,16 +2695,16 @@ country_event = { #Cooperating with the Holy Father
 				national_focus = DIP 
 			}
 		}
+
+		capital_scope = {
+			area = {
+				add_base_production = 2
+			}
+		}
 		
 		add_country_modifier = { 
 			name = fra_french_papal_diplomatic_cooperation_modifier
 			duration = 9125
-		}
-		PAP = { 
-			add_country_modifier = { 
-				name = fra_french_papal_diplomatic_cooperation_modifier
-				duration = 9125
-			}
 		}
 	}
 	
@@ -2755,13 +2725,6 @@ country_event = { #Cooperating with the Holy Father
 			duration = 9125
 		}
 		custom_tooltip = tur_generals_grant_50_more_percent_professionalism_tt
-		PAP = { 
-			add_country_modifier = { 
-				name = fra_french_papal_military_cooperation_modifier
-				duration = 9125
-			}
-			custom_tooltip = tur_generals_grant_50_more_percent_professionalism_tt
-		}
 	}
 }
 	
@@ -2777,14 +2740,14 @@ country_event = { #Early Opera Flourishes
 		
 		define_advisor = {
 			type = artist
-			cost_multiplier = 0.5
+			cost_multiplier = 0.25
 			skill = 3 
 		}
 		if = {
 			limit = { has_dlc = "Rule Britannia" }
-			change_innovativeness = 2 
+			change_innovativeness = 10
 		}
-		else = { add_dip_power = 25 }
+		else = { add_dip_power = 50 }
 	}
 }
 
@@ -2807,8 +2770,10 @@ country_event = { #The Angevin Government in Genoa
 		custom_tooltip = fra_genoese_fleet_tt
 		hidden_effect = { 
 			101 = { 
-				transport = ROOT transport = ROOT transport = ROOT transport = ROOT transport = ROOT 
-				transport = ROOT transport = ROOT transport = ROOT transport = ROOT transport = ROOT 	
+				light_ship = ROOT light_ship = ROOT light_ship = ROOT light_ship = ROOT light_ship = ROOT
+				light_ship = ROOT light_ship = ROOT light_ship = ROOT light_ship = ROOT light_ship = ROOT
+				light_ship = ROOT light_ship = ROOT light_ship = ROOT light_ship = ROOT light_ship = ROOT
+				light_ship = ROOT light_ship = ROOT light_ship = ROOT light_ship = ROOT light_ship = ROOT
 			}
 		}
 		101 = { 
@@ -2839,18 +2804,14 @@ country_event = { #Golden Bull Treaty
 	option = { 
 		name = flavor_fra.120.a 
 		
-		if = { 
-			limit = { is_subject = no }
-			FRA = { create_march = ROOT }
+		
+		FRA = { 
+			add_adm_power = 150 
+			add_dip_power = 150 
+			add_mil_power = 150 
+			add_prestige = 15 
 		}
-		else = { 
-			FRA = { 
-				add_adm_power = 150 
-				add_dip_power = 150 
-				add_mil_power = 150 
-				add_prestige = 15 
-			}
-		}
+		
 		FRA = { set_country_flag = general_flag_for_FU_Rome_flag }
 		custom_tooltip = fra_no_malus_for_vassalage_of_pope_tt
 		add_country_modifier = {
