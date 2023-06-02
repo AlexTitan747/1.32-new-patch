@@ -3264,7 +3264,8 @@ estate_nobles_english_copyhold_tenure = {
 estate_nobles_development_of_castles = {
 	icon = privilege_fort
 	loyalty = 0.1
-	influence = 0.05
+	influence = 0.10
+	land_share = 5
 	#max_absolutism = -5
 	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	is_valid = {
@@ -3345,44 +3346,44 @@ estate_nobles_development_of_castles = {
 		factor = 0
 	}
 }
-estate_nobles_statesman_servitude = {
-	icon = privilege_diplomat
-	loyalty = 0.0
-	influence = 0.05
-	#max_absolutism = -5
-	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
-	is_valid = {
-		has_dlc = "Domination"
-	}
-	can_select = {
-	}
-	on_granted = {
-		enable_estate_action = {
-			estate_action = RECRUIT_MINISTER_NOBLES
-		}
-	}
-	on_revoked = {
-		disable_estate_action = {
-			estate_action = RECRUIT_MINISTER_NOBLES
-		}
-	}
-	on_invalid = {
-		disable_estate_action = {
-			estate_action = RECRUIT_MINISTER_NOBLES
-		}
-	}
-	#conditional_modifier = {
-	#	trigger = { has_government_mechanic = russian_modernization_mechanic }
-	#	modifier = { monthly_russian_modernization = -0.05 }
-	#}
-	#conditional_modifier = {
-	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
-	#	modifier = { monthly_ottoman_decadence = 0.02 }
-	#}
-	ai_will_do = {
-		factor = 0
-	}
-}
+#estate_nobles_statesman_servitude = {
+#	icon = privilege_diplomat
+#	loyalty = 0.0
+#	influence = 0.05
+#	#max_absolutism = -5
+#	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+#	is_valid = {
+#		has_dlc = "Domination"
+#	}
+#	can_select = {
+#	}
+#	on_granted = {
+#		enable_estate_action = {
+#			estate_action = RECRUIT_MINISTER_NOBLES
+#		}
+#	}
+#	on_revoked = {
+#		disable_estate_action = {
+#			estate_action = RECRUIT_MINISTER_NOBLES
+#		}
+#	}
+#	on_invalid = {
+#		disable_estate_action = {
+#			estate_action = RECRUIT_MINISTER_NOBLES
+#		}
+#	}
+#	#conditional_modifier = {
+#	#	trigger = { has_government_mechanic = russian_modernization_mechanic }
+#	#	modifier = { monthly_russian_modernization = -0.05 }
+#	#}
+#	#conditional_modifier = {
+#	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
+#	#	modifier = { monthly_ottoman_decadence = 0.02 }
+#	#}
+#	ai_will_do = {
+#		factor = 0
+#	}
+#}
 estate_nobles_royal_court_tasks = {
 	icon = privilege_build_jain_temple
 	loyalty = 0.0
@@ -3465,48 +3466,48 @@ estate_nobles_royal_court_tasks = {
 		factor = 0
 	}
 }
-estate_nobles_diet_right = {
-	icon = privilege_government
-	loyalty = 0.0
-	influence = 0.05
-	#max_absolutism = -5
-	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
-	is_valid = {
-		has_dlc = "Domination"
-	}
-	on_granted = {
-		enable_estate_action = {
-			estate_action = CALL_DIET_NOBLES
-		}
-	}
-	on_invalid = {
-		disable_estate_action = {
-			estate_action = CALL_DIET_NOBLES
-		}
-	}
-	on_revoked = {
-		disable_estate_action = {
-			estate_action = CALL_DIET_NOBLES
-		}
-	}
-	mechanics = {
-	}
-	#conditional_modifier = {
-	#	trigger = { has_government_mechanic = russian_modernization_mechanic }
-	#	modifier = { monthly_russian_modernization = -0.05 }
-	#}
-	#conditional_modifier = {
-	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
-	#	modifier = { monthly_ottoman_decadence = 0.02 }
-	#}
-	ai_will_do = {
-		factor = 10
-		modifier = {
-			factor = 0.1
-			is_absolutism_active = yes
-		}
-	}
-}
+#estate_nobles_diet_right = {
+#	icon = privilege_government
+#	loyalty = 0.0
+#	influence = 0.05
+#	#max_absolutism = -5
+#	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+#	is_valid = {
+#		has_dlc = "Domination"
+#	}
+#	on_granted = {
+#		enable_estate_action = {
+#			estate_action = CALL_DIET_NOBLES
+#		}
+#	}
+#	on_invalid = {
+#		disable_estate_action = {
+#			estate_action = CALL_DIET_NOBLES
+#		}
+#	}
+#	on_revoked = {
+#		disable_estate_action = {
+#			estate_action = CALL_DIET_NOBLES
+#		}
+#	}
+#	mechanics = {
+#	}
+#	#conditional_modifier = {
+#	#	trigger = { has_government_mechanic = russian_modernization_mechanic }
+#	#	modifier = { monthly_russian_modernization = -0.05 }
+#	#}
+#	#conditional_modifier = {
+#	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
+#	#	modifier = { monthly_ottoman_decadence = 0.02 }
+#	#}
+#	ai_will_do = {
+#		factor = 10
+#		modifier = {
+#			factor = 0.1
+#			is_absolutism_active = yes
+#		}
+#	}
+#}
 estate_nobles_force_conscription = {
 	icon = privilege_land_force_limit
 	loyalty = 0
@@ -3589,58 +3590,58 @@ estate_nobles_noble_officer_right = {
 		factor = 0
 	}
 }
-estate_nobles_expedition_rights = {
-	icon = privilege_conquistador
-	loyalty = 0.0
-	influence = 0.05
-	#max_absolutism = -5
-	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
-	is_valid = {
-		has_dlc = "Domination"
-		has_any_exploration_idea = yes
-	}
-	loyalty_scaled_conditional_modifier = {
-		trigger = {
-			always = yes
-		}
-		modifier = {
-			colony_cost_modifier = -0.5
-		}
-	}
-	
-	on_granted = {
-		scaling_with_loyalty_privilege_tooltip = {
-			estate_privilege = estate_nobles_expedition_rights
-		}
-		enable_estate_action = {
-			estate_action = RECRUIT_CONQUISTADOR_ESTATES_NOBLES
-		}
-	}
-	on_invalid = {
-		scaling_with_loyalty_privilege_tooltip = {
-			estate_privilege = estate_nobles_expedition_rights
-		}
-		disable_estate_action = {
-			estate_action = RECRUIT_CONQUISTADOR_ESTATES_NOBLES
-		}
-	}
-	on_revoked = {
-		scaling_with_loyalty_privilege_tooltip = {
-			estate_privilege = estate_nobles_expedition_rights
-		}
-		disable_estate_action = {
-			estate_action = RECRUIT_CONQUISTADOR_ESTATES_NOBLES
-		}
-	}
-	#conditional_modifier = {
-	#	trigger = { has_government_mechanic = russian_modernization_mechanic }
-	#	modifier = { monthly_russian_modernization = -0.05 }
-	#}
-	#conditional_modifier = {
-	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
-	#	modifier = { monthly_ottoman_decadence = 0.02 }
-	#}
-	ai_will_do = {
-		factor = 0
-	}
-}
+#estate_nobles_expedition_rights = {
+#	icon = privilege_conquistador
+#	loyalty = 0.0
+#	influence = 0.05
+#	#max_absolutism = -5
+#	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+#	is_valid = {
+#		has_dlc = "Domination"
+#		has_any_exploration_idea = yes
+#	}
+#	loyalty_scaled_conditional_modifier = {
+#		trigger = {
+#			always = yes
+#		}
+#		modifier = {
+#			colony_cost_modifier = -0.5
+#		}
+#	}
+#	
+#	on_granted = {
+#		scaling_with_loyalty_privilege_tooltip = {
+#			estate_privilege = estate_nobles_expedition_rights
+#		}
+#		enable_estate_action = {
+#			estate_action = RECRUIT_CONQUISTADOR_ESTATES_NOBLES
+#		}
+#	}
+#	on_invalid = {
+#		scaling_with_loyalty_privilege_tooltip = {
+#			estate_privilege = estate_nobles_expedition_rights
+#		}
+#		disable_estate_action = {
+#			estate_action = RECRUIT_CONQUISTADOR_ESTATES_NOBLES
+#		}
+#	}
+#	on_revoked = {
+#		scaling_with_loyalty_privilege_tooltip = {
+#			estate_privilege = estate_nobles_expedition_rights
+#		}
+#		disable_estate_action = {
+#			estate_action = RECRUIT_CONQUISTADOR_ESTATES_NOBLES
+#		}
+#	}
+#	#conditional_modifier = {
+#	#	trigger = { has_government_mechanic = russian_modernization_mechanic }
+#	#	modifier = { monthly_russian_modernization = -0.05 }
+#	#}
+#	#conditional_modifier = {
+#	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
+#	#	modifier = { monthly_ottoman_decadence = 0.02 }
+#	#}
+#	ai_will_do = {
+#		factor = 0
+#	}
+#}
