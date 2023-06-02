@@ -40,7 +40,6 @@ dom_cas_missions_1 = {
 				}
 				add_permanent_claim = ROOT
 			}
-			basque_country = { add_perma_claim = yes }
 			lower_andalucia_area = { add_perma_claim = yes }
 		}
 	}
@@ -1989,7 +1988,7 @@ dom_cas_missions_3 = {
 					}
 				}"
 				second_effect = "
-				add_dip_power = 50
+				add_dip_power = 125
 				hidden_effect = {
 					every_country = {
 						add_aggressive_expansion = {
@@ -2000,7 +1999,7 @@ dom_cas_missions_3 = {
 					}	
 				}
 				custom_tooltip = tm_spa_lose_50_ae_tt
-				add_treasury = 400
+				add_treasury = 500
 				custom_tooltip = tm_ally_has_effects_too
 				"
 			}
@@ -2035,17 +2034,15 @@ dom_cas_missions_3 = {
 								value = 125
 							}
 						}
-						add_dip_power = 50
-						hidden_effect = {
-							every_country = {
-								add_aggressive_expansion = {
-									who = ROOT
-									value = -40
-									apply_calc = no
-								}
+						add_dip_power = 125
+						every_country = {
+							add_aggressive_expansion = {
+								who = ROOT
+								value = -40
+								apply_calc = no
 							}
 						}
-						add_treasury = 400
+						add_treasury = 500
 					}
 				}
 			}
@@ -2113,8 +2110,46 @@ dom_cas_missions_3 = {
 				}
 				"
 				second_effect = "
+				capital_scope = {
+					area = {
+						add_province_modifier = {
+							name = spa_italian_cooperation
+							duration = -1
+						}
+					}
+				}
 				custom_tooltip = tm_ally_has_effects_too
 				"
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						any_ally = {
+							capital_scope = { region = italy_region }
+							development_in_provinces = {
+								value = 500
+								region = italy_region
+							}
+						}
+					}
+					random_ally = {
+						limit = {
+							capital_scope = { region = italy_region }
+							development_in_provinces = {
+								value = 500
+								region = italy_region
+							}
+						}
+						capital_scope = {
+							area = {
+								add_province_modifier = {
+									name = spa_italian_cooperation
+									duration = -1
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
