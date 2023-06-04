@@ -18,28 +18,61 @@ tm_CRI_branch_1 = {
 		required_missions = { tm_CRI_branch3_mission_1 }
 
 		provinces_to_highlight = {
-			area = moldavia_area
-			owned_by = MOL
+			OR = {
+				area = north_moldavia
+				area = moldavia_area
+			}
+			NOT = { country_or_subject_holds = ROOT }
 		}
 
 		trigger = {
-			MOL = {
-				is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
+			OR = {
+				AND = {
+					MOL = {
+						is_subject_of = ROOT
+						is_subject_of_type = tributary_state
+					}
+					north_moldavia = {
+						type = all
+						OR = {
+							owned_by = MOL
+							owned_by = ROOT
+						}
+					}
+					moldavia_area = {
+						type = all
+						OR = {
+							owned_by = MOL
+							owned_by = ROOT
+						}
+					}
+				}
+				AND = {
+					north_moldavia = {
+						type = all
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+					moldavia_area = {
+						type = all
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
 			}
 		}
 
 		effect = {
-			custom_tooltip = tm_CRI_development_of_MOL_tt
-			hidden_effect = {
-				north_moldavia = {
-					add_base_production = 1
-					add_base_manpower = 2
-				}
-				moldavia_area = {
-					add_base_tax = 1
-					add_base_production = 1
-					add_base_manpower = 2
-				}
+			#custom_tooltip = tm_CRI_development_of_MOL_tt
+			#hidden_effect = {
+			#}
+			north_moldavia = {
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 2
+			}
+			moldavia_area = {
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 2
 			}
 		}
 	}
@@ -53,18 +86,23 @@ tm_CRI_branch_1 = {
 				province_id = 2410
 				province_id = 286
 			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { base_production = 8 }
+				NOT = { base_manpower = 10 }
+			}
 		}
 
 		trigger = {
 			2410 = {
 				owned_by = ROOT
 				base_production = 8
-				base_manpower = 11
+				base_manpower = 10
 			}
 			286 = {
 				owned_by = ROOT
 				base_production = 8
-				base_manpower = 11
+				base_manpower = 10
 			}
 		}
 		effect = {
@@ -94,24 +132,29 @@ tm_CRI_branch_1 = {
 				province_id = 2414
 				province_id = 5132
 			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { base_production = 10 }
+				NOT = { base_manpower = 8 }
+			}
 		}
 		trigger = {
 			2413 = {
 				base_production = 10
 				base_manpower = 8
-				has_building = workshop
+				has_production_building_trigger = yes
 				owned_by = ROOT
 			}
 			2414 = {
 				base_production = 10
 				base_manpower = 8
-				has_building = workshop
+				has_production_building_trigger = yes
 				owned_by = ROOT
 			}
 			5132 = {
 				base_production = 10
 				base_manpower = 8
-				has_building = workshop
+				has_production_building_trigger = yes
 				owned_by = ROOT
 			}
 		}
@@ -137,6 +180,12 @@ tm_CRI_branch_1 = {
 					name = tm_CRI_slave_trade
 					duration = -1
 				}
+			}
+			change_price = {
+				trade_goods = slaves
+				key = crimea_slave_trade_key
+				value = 0.75
+				duration = -1
 			}
 		}
 	}
@@ -163,34 +212,57 @@ tm_CRI_branch_2 = {
 
 		provinces_to_highlight = {
 			OR = {
-				area = kremenchuk_area 
-				area = yedisan_area 	
-			} 
-			owned_by = ZAZ
+				area = kremenchuk_area
+				area = zaporizhia_area
+			}
+			NOT = { country_or_subject_holds = ROOT }
 		}
 
 		trigger = {
-			ZAZ = {
-				is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
+			OR = {
+				AND = {
+					ZAZ = {
+						is_subject_of = ROOT
+						is_subject_of_type = tributary_state
+					}
+					kremenchuk_area = {
+						type = all
+						OR = {
+							owned_by = ROOT
+							owned_by = ZAZ
+						}
+					}
+					zaporizhia_area = {
+						type = all
+						OR = {
+							owned_by = ROOT
+							owned_by = ZAZ
+						}
+					}
+				}
+				AND = {
+					kremenchuk_area = {
+						type = all
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+					zaporizhia_area = {
+						type = all
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+				}
 			}
 		}
 		
 		effect = {
-			custom_tooltip = tm_CRI_development_of_ZAZ_tt
-			hidden_effect ={
-				kremenchuk_area = {
-					add_base_tax = 2
-					add_base_manpower = 2
-					add_base_production = 2
-				}
-				2406 = {
-					add_base_production = 2
-					add_base_manpower = 2
-				}
-				283 = {
-					add_base_tax = 2
-					add_base_manpower = 2
-				}
+			#custom_tooltip = tm_CRI_development_of_ZAZ_tt
+			kremenchuk_area = {
+				add_base_tax = 2
+				add_base_manpower = 2
+				add_base_production = 2
+			}
+			zaporizhia_area = {
+				add_base_production = 2
+				add_base_manpower = 2
 			}
 		}
 	}
@@ -207,46 +279,93 @@ tm_CRI_branch_2 = {
 			OR = {
 				area = north_moldavia
 				area = moldavia_area
-				area = kremenchuk_area 
-				area = yedisan_area 
+				area = kremenchuk_area
+				area = zaporizhia_area
 				area = chernigov_area
 				area = east_dniepr_area
 				area = sloboda_ukraine_area
 			}
-			owned_by = ZAZ
-			owned_by = MOL
-			owned_by = CHR
+			OR = {
+				NOT = { country_or_subject_holds = ROOT }
+				owner = {
+					is_subject_of = ROOT
+				}
+			}
 		}
 
 		trigger = {
 			if = {
 				limit = {
 					MOL = {
-						is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
+						is_subject_of = ROOT
+						is_subject_of_type = tributary_state
 					}
 				}
 				MOL = {
 					total_development = 75
-					is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
 				}
 			}
-			ZAZ = {
-				total_development = 75
-				is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
+			if = {
+				limit = {
+					ZAZ = {
+						is_subject_of = ROOT
+						is_subject_of_type = tributary_state
+					}
+				}
+				ZAZ = {
+					total_development = 75
+				}
 			}
-			CHR = {
-				total_development = 75
-				is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
+			else = {
+				kremenchuk_area = {
+					type = all
+					country_or_subject_holds = ROOT
+				}
+				zaporizhia_area = {
+					type = all
+					country_or_subject_holds = ROOT
+				}
+			}
+			if = {
+				limit = {
+					CHR = {
+						is_subject_of = ROOT
+						is_subject_of_type = tributary_state
+					}
+				}
+				CHR = {
+					total_development = 75
+				}
+			}
+			else = {
+				chernigov_area = {
+					type = all
+					country_or_subject_holds = ROOT
+				}
+				east_dniepr_area = {
+					type = all
+					country_or_subject_holds = ROOT
+				}
+				sloboda_ukraine_area = {
+					type = all
+					country_or_subject_holds = ROOT
+				}
 			}
 		}
 
 		effect = {
-			add_adm_power = 50
-			add_dip_power = 75
-			add_mil_power = 50
-
-			country_event = {
-				id = titanCRI.1	
+			add_adm_power = 100
+			add_dip_power = 100
+			add_mil_power = 100
+			if = {
+				limit = {
+					any_subject_country = {
+						is_subject_of_type = tributary_state
+					}
+				}
+				country_event = {
+					id = titanCRI.1
+				}
 			}
 		}
 	}
@@ -412,28 +531,96 @@ tm_CRI_branch_3 = {
 				area = east_dniepr_area
 				area = sloboda_ukraine_area
 			}
+			NOT = { country_or_subject_holds = ROOT }
 		}
 
 		trigger = {
-			CHR = {
-				is_subject_of_type_with_overlord = { who = CRI type = tributary_state }
-			}
-			sloboda_ukraine_area = {
-				type = all
-				owned_by = CHR
+			OR = {
+				AND = {
+					CHR = {
+						is_subject_of = ROOT
+						is_subject_of_type = tributary_state
+					}
+					sloboda_ukraine_area = {
+						type = all
+						OR = {
+							owned_by = CHR
+							owned_by = ROOT 
+						}
+					}
+					east_dniepr_area = {
+						type = all
+						OR = {
+							owned_by = CHR
+							owned_by = ROOT 
+						}
+					}
+					chernigov_area = {
+						type = all
+						OR = {
+							owned_by = CHR
+							owned_by = ROOT 
+						}
+					}
+				}
+				AND = {
+					sloboda_ukraine_area = {
+						type = all
+						owned_by = ROOT 
+					}
+					east_dniepr_area = {
+						type = all
+						owned_by = ROOT
+					}
+					chernigov_area = {
+						type = all
+						owned_by = ROOT
+					}
+				}
 			}
 		}
 
 		effect = {
-			custom_tooltip = tm_CRI_development_of_CHR_tt
-			hidden_effect = {
-				chernigov_area = {
-					add_base_production = 1
-					add_base_manpower = 2
-				}
-				east_dniepr_area = {
-					add_base_manpower = 2
-				}
+			#custom_tooltip = tm_CRI_development_of_CHR_tt
+			#hidden_effect = {
+			#}
+			chernigov_area = {
+				add_base_production = 1
+				add_base_manpower = 2
+			}
+			east_dniepr_area = {
+				add_base_manpower = 2
+			}
+			sloboda_ukraine_area = {
+				add_base_production = 3
+			}
+		}
+	}
+
+	tm_CRI_branch3_mission_2_5 = {
+		icon = mission_conquer_maharashtra
+		position = 3
+		required_missions = { 
+			tm_CRI_branch3_mission_2
+		}
+
+		provinces_to_highlight = {
+		}
+
+		trigger = {
+			army_size_percentage = 0.75
+			manpower_percentage = 0.50
+		}
+
+		effect = {
+			smolensk_area = { add_perma_claim = yes }
+			oka_area = { add_perma_claim = yes }
+			moscow_area = { add_perma_claim = yes }
+			ryazan_area = { add_perma_claim = yes }
+			vladimir_area = { add_perma_claim = yes }
+			add_country_modifier = {
+				name = tm_cri_crush_the_russians
+				duration = 5475
 			}
 		}
 	}
@@ -442,7 +629,7 @@ tm_CRI_branch_3 = {
 		icon = mission_defeat_muscovy
 		position = 4 
 		required_missions = { 
-			tm_CRI_branch3_mission_2
+			tm_CRI_branch3_mission_2_5
 			tm_CRI_branch4_mission_2 
 		}
 
@@ -486,8 +673,11 @@ tm_CRI_branch_3 = {
 				name = tm_CRI_crush_the_cossack_raiders
 				duration = -1
 			}
-			33 = {
-				add_permanent_claim = ROOT
+			karelia_area = {
+				add_perma_claim = yes
+			}
+			add_accepted_culture_or_dip_power = {
+				culture = russian
 			}
 		}
 	}
@@ -594,7 +784,7 @@ tm_CRI_branch_4 = {
 
 		effect = {
 			add_dip_power = 100
-			add_manpower = 17.5
+			add_manpower = 20
 
 			tambov_area = {
 				limit = {
@@ -674,71 +864,42 @@ tm_CRI_branch_4 = {
 
 		effect = {
 			custom_tooltip = tm_CRI_hold_on_astrakhan_tt
-			custom_tooltip = tm_CRI_repel_the_cossack_raiders_tt
+			#custom_tooltip = tm_CRI_repel_the_cossack_raiders_tt
+			tooltip = {
+				add_province_modifier = {
+					name = tm_CRI_hold_over_astrakhan
+					duration = -1
+				}
+			}
 			hidden_effect = {
-				303 = {
+				trade_company_astrakhan = {
+					limit = {
+						OR = {
+							province_has_center_of_trade_of_level = 1
+							has_river_estuary_trigger = yes
+						}
+					}
 					add_province_modifier = {
 						name = tm_CRI_hold_over_astrakhan
 						duration = -1
 					}
-					add_building = church
 				}
-				464 = {
-					add_province_modifier = {
-						name = tm_CRI_hold_over_astrakhan
-						duration = -1
-					}
-					add_building = barracks
-				}
-				465 = {
-					add_province_modifier = {
-						name = tm_CRI_hold_over_astrakhan
-						duration = -1						
-					}
-					add_building = barracks
-				}
-				466 = {
-					add_province_modifier = {
-						name = tm_CRI_hold_over_astrakhan
-						duration = -1
-					}
-					add_building = barracks
-				}
-				smolensk_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				oka_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				ryazan_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				moscow_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				vladimir_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
+			}
+			303 = {
+				add_building = cathedral
+				add_building = marketplace
+			}
+			464 = {
+				add_building = barracks
+				add_building = marketplace
+			}
+			465 = {
+				add_building = barracks
+				add_building = marketplace
+			}
+			466 = {
+				add_building = barracks
+				add_building = marketplace
 			}
 		}
 	}
@@ -747,7 +908,9 @@ tm_CRI_branch_4 = {
 		position = 4 
 		required_missions = { tm_CRI_branch4_mission_2 }
 
-		trigger = {}
+		trigger = {
+			army_size_percentage = 0.8
+		}
 
 		effect = {
 			add_country_modifier = {
@@ -807,6 +970,94 @@ tm_CRI_branch_4 = {
 			add_dip_power = 25
 		}
 	}
+
+#	tm_CRI_branch4_mission_5 = {
+#		icon = the_latin_empire
+#		position = 6
+#		required_missions = {}
+#
+#		provinces_to_highlight = {}
+#
+#		trigger = {
+#			OR = {
+#				is_in_war = {
+#					attacker_leader = NOV
+#					defender_leader = ROOT
+#					war_score = 25
+#				}
+#				is_in_war = {
+#					attacker_leader = RUS
+#					defender_leader = ROOT
+#					war_score = 25
+#				}
+#				is_in_war = {
+#					attacker_leader = POL
+#					defender_leader = ROOT
+#					war_score = 25
+#				}
+#				is_in_war = {
+#					attacker_leader = PLC
+#					defender_leader = ROOT
+#					war_score = 25
+#				}
+#				is_in_war = {
+#					attacker_leader = TUR
+#					defender_leader = ROOT
+#					war_score = 25
+#				}
+#				is_in_war = {
+#					attacker_leader = SLC
+#					defender_leader = ROOT
+#					war_score = 25
+#				}
+#				is_year = 1500
+#			}
+#		}
+#
+#		effect = {
+#			if = {
+#				limit = {
+#					NOT = { is_year = 1500 }
+#				}
+#				add_country_modifier = {
+#					name = tm_CRI_desperate_defense
+#					duration = 1825
+#				}
+#			}
+#			else = {
+#				add_treasury = 1000
+#				add_adm_power = 100
+#				add_dip_power = 100
+#				add_mil_power = 100
+#				add_country_modifier = {
+#					name = tm_CRI_thriving_empire
+#					duration = 3650
+#				}
+#			}
+#		}
+#	}
+	tm_CRI_branch4_mission_5 = {
+		icon = mission_unite_home_region
+		position = 7
+		required_missions = {}
+
+		provinces_to_highlight = {}
+
+		trigger = {
+			has_institution = new_world_i
+			total_development = 750
+			any_owned_province = {
+				development = 30
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_CRI_thriving_empire
+				duration = 3650
+			}
+		}
+	}
 }
 
 tm_CRI_branch_5 = {
@@ -854,7 +1105,7 @@ tm_CRI_branch_5 = {
 		effect = {
 			add_country_modifier = {
 				name = tm_CRI_development_of_crimea
-				duration = 3650
+				duration = 5475
 			}
 		}
 	}
@@ -881,7 +1132,7 @@ tm_CRI_branch_5 = {
 
 		effect = {
 			2201 = {
-				add_base_production = 2
+				add_base_production = 4
 				add_province_modifier = {
 					name = tm_CRI_stability_of_gold
 					duration = -1
@@ -908,10 +1159,12 @@ tm_CRI_branch_5 = {
 			circassia_area = {
 				type = all
 				religion = sunni
+				owned_by = ROOT
 			}
 			alania_area = {
 				type = all
 				religion = sunni
+				owned_by = ROOT
 			}
 		}
 
@@ -919,7 +1172,13 @@ tm_CRI_branch_5 = {
 			define_advisor = {
 				type = master_of_mint
 				skill = 3 
-				cost_multiplier = 0.75
+				cost_multiplier = 0.25
+			}
+			circassia_area = {
+				change_culture = ROOT
+			}
+			alania_area = {
+				change_culture = ROOT
 			}
 		}
 	}
@@ -941,6 +1200,7 @@ tm_CRI_branch_5 = {
 			}
 
 			4306 = {
+				owned_by = ROOT
 				OR = {
 					has_building = fort_15th
 					has_building = fort_16th
@@ -949,6 +1209,7 @@ tm_CRI_branch_5 = {
 				}
 			}
 			5099 = {
+				owned_by = ROOT
 				OR = {
 					has_building = fort_15th
 					has_building = fort_16th
@@ -985,13 +1246,10 @@ tm_CRI_branch_5 = {
 				}
 				add_permanent_claim = ROOT
 			}
-			2444 = {
-				add_permanent_claim = ROOT
-			}
 		}
 	}
 	tm_CRI_branch5_mission_5 = {
-		icon = mission_push_into_persia 
+		icon = mission_push_into_persia
 		position = 5
 		required_missions = {
 			tm_CRI_branch5_mission_4
@@ -1006,13 +1264,12 @@ tm_CRI_branch_5 = {
 		}
 
 		trigger = {
-			caucasia_region = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT 
-			}
-			persia_region = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT 
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 50
+				OR = {
+					region = caucasia_region
+					region = persia_region
+				}
 			}
 		}
 
@@ -1021,6 +1278,67 @@ tm_CRI_branch_5 = {
 				name = tm_CRI_conquerer_of_persia
 				duration = -1
 			}
+		}
+	}
+
+	tm_CRI_branch5_mission_6 = {
+		icon = mission_restore_faith_in_the_throne
+		position = 6
+		required_missions = {}
+
+		provinces_to_highlight = {
+			is_capital_of = ROOT
+			NOT = { development = 25 }
+		}
+
+		trigger = {
+			capital_scope = {
+				development = 25
+			}
+			total_development = 500
+			estate_loyalty = {
+				estate = estate_nomadic_tribes
+				loyalty = 50
+			}
+		}
+
+		effect = {
+			capital_scope = {
+				add_province_modifier = {
+					name = tm_CRI_horde_capital
+					duration = -1
+				}
+			}
+		}
+	}
+
+	tm_CRI_branch5_mission_7 = {
+		icon = mission_cossack_cavalry
+		position = 7
+		required_missions = {
+			tm_CRI_branch5_mission_6
+		}
+
+		provinces_to_highlight = {
+			has_terrain = steppe
+			OR = {
+				NOT = { development = 10 }
+				NOT = { owned_by = ROOT }
+			}
+		}
+
+		trigger = {
+			crown_land_share = 25
+			num_of_owned_provinces_with = {
+				value = 15
+				has_terrain = steppe
+				development = 10
+			}
+		}
+
+		effect = {
+			set_country_flag = enables_estate_cossacks_flag
+			custom_tooltip = tm_can_use_cossacks_estate_tt
 		}
 	}
 }
