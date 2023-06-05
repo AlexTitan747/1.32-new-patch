@@ -136,6 +136,7 @@ tm_CRI_branch_1 = {
 				NOT = { owned_by = ROOT }
 				NOT = { base_production = 10 }
 				NOT = { base_manpower = 8 }
+				NOT = { has_production_building_trigger = yes }
 			}
 		}
 		trigger = {
@@ -277,8 +278,8 @@ tm_CRI_branch_2 = {
 
 		provinces_to_highlight = {
 			OR = {
-				area = north_moldavia
-				area = moldavia_area
+				#area = north_moldavia
+				#area = moldavia_area
 				area = kremenchuk_area
 				area = zaporizhia_area
 				area = chernigov_area
@@ -380,34 +381,27 @@ tm_CRI_branch_2 = {
 
 		provinces_to_highlight = {
 			OR = {
-				area = kremenchuk_area 
-				province_id = 5134
-				province_id = 2411
-				province_id = 5133
+				trade_goods = cheese
+				trade_goods = livestock
 			}
+			OR = {
+				NOT = { base_tax = 8 }
+				NOT = { base_manpower = 10 }
+				NOT = { has_tax_building_trigger = yes }
+			}
+			owned_by = ROOT
 		}
 
 		trigger = {
-			kremenchuk_area = {
-				type = all
+			num_of_owned_provinces_with = {
+				value = 8
 				base_tax = 8
 				base_manpower = 10
-				has_building = temple
-			}
-			5134 = {
-				base_tax = 8
-				base_manpower = 10
-				has_building = temple
-			}
-			2411 = {
-				base_tax = 8
-				base_manpower = 10
-				has_building = temple
-			}
-			5133 = {
-				base_tax = 8
-				base_manpower = 10
-				has_building = temple
+				has_tax_building_trigger = yes
+				OR = {
+					trade_goods = livestock
+					trade_goods = cheese
+				}
 			}
 		}
 
@@ -887,19 +881,47 @@ tm_CRI_branch_4 = {
 			}
 			303 = {
 				add_building = cathedral
-				add_building = marketplace
+				if = {
+					limit = { NOT = { has_building = marketplace }}
+					add_building = marketplace
+				}
+				else = { add_base_production = 1 }
 			}
 			464 = {
-				add_building = barracks
-				add_building = marketplace
+				if = {
+					limit = { NOT = { has_building = barracks }}
+					add_building = barracks
+				}
+				else = { add_base_manpower = 1 }
+				if = {
+					limit = { NOT = { has_building = marketplace }}
+					add_building = marketplace
+				}
+				else = { add_base_production = 1 }
 			}
 			465 = {
-				add_building = barracks
-				add_building = marketplace
+				if = {
+					limit = { NOT = { has_building = barracks }}
+					add_building = barracks
+				}
+				else = { add_base_manpower = 1 }
+				if = {
+					limit = { NOT = { has_building = marketplace }}
+					add_building = marketplace
+				}
+				else = { add_base_production = 1 }
 			}
 			466 = {
-				add_building = barracks
-				add_building = marketplace
+				if = {
+					limit = { NOT = { has_building = barracks }}
+					add_building = barracks
+				}
+				else = { add_base_manpower = 1 }
+				if = {
+					limit = { NOT = { has_building = marketplace }}
+					add_building = marketplace
+				}
+				else = { add_base_production = 1 }
 			}
 		}
 	}
@@ -909,13 +931,27 @@ tm_CRI_branch_4 = {
 		required_missions = { tm_CRI_branch4_mission_2 }
 
 		trigger = {
-			army_size_percentage = 0.8
+			army_size = 40
+			manpower = 20
 		}
 
 		effect = {
 			add_country_modifier = {
 				name = tm_CRI_call_for_war
-				duration = 3650
+				duration = 5475
+			}
+			custom_tooltip = tm_CRI_claim_hordes_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						OR = {
+							owned_by = NOG
+							owned_by = KAZ
+							owned_by = SHY
+						}
+					}
+					add_perma_claim = yes
+				}
 			}
 		}
 	}
@@ -924,7 +960,7 @@ tm_CRI_branch_4 = {
 		icon = mission_confed_of_cumania
 		position = 5
 		required_missions = {
-			tm_CRI_branch5_mission_4
+			tm_CRI_branch4_mission_3
 		}
 
 		provinces_to_highlight = {
@@ -934,6 +970,9 @@ tm_CRI_branch_4 = {
 				area = kazakhstan_area
 				area = kyzylkum_area 
 				area = syr_darya_area
+				owner = { tag = NOG }
+				owner = { tag = KAZ }
+				owner = { tag = SHY }
 			}
 			NOT = { owned_by = ROOT }
 		}
@@ -967,7 +1006,7 @@ tm_CRI_branch_4 = {
 		effect = {
 			add_adm_power = 150
 			add_mil_power = 50
-			add_dip_power = 25
+			add_dip_power = 50
 		}
 	}
 
@@ -1036,44 +1075,6 @@ tm_CRI_branch_4 = {
 #			}
 #		}
 #	}
-	tm_CRI_branch4_mission_5 = {
-		icon = mission_unite_home_region
-		position = 7
-		required_missions = {}
-
-		provinces_to_highlight = {}
-
-		trigger = {
-			has_institution = new_world_i
-			total_development = 750
-			any_owned_province = {
-				development = 30
-			}
-		}
-
-		effect = {
-			add_country_modifier = {
-				name = tm_CRI_thriving_empire
-				duration = 3650
-			}
-		}
-	}
-}
-
-tm_CRI_branch_5 = {
-	slot = 5
-	generic = no
-	ai = yes
-
-	has_country_shield = yes
-
-	potential = {
-		OR = {
-			tag = CRI
-			was_tag = CRI
-		}
-	}
-
 	tm_CRI_branch5_mission_1 = {
 		icon = mission_central_asian_city
 		position = 1 
@@ -1107,6 +1108,90 @@ tm_CRI_branch_5 = {
 				name = tm_CRI_development_of_crimea
 				duration = 5475
 			}
+		}
+	}
+
+	tm_CRI_branch4_mission_5 = {
+		icon = mission_unite_home_region
+		position = 7
+		required_missions = { tm_CRI_branch5_mission_6 tm_CRI_branch5_mission_1 }
+
+		provinces_to_highlight = {}
+
+		trigger = {
+			has_institution = new_world_i
+			total_development = 750
+			any_owned_province = {
+				development = 30
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_CRI_thriving_empire
+				duration = 3650
+			}
+		}
+	}
+
+	tm_CRI_branch4_mission_6 = {
+		icon = mission_marwari_horses
+		required_missions = { tm_CRI_branch4_mission_5 tm_CRI_branch5_mission_7 }
+
+		provinces_to_highlight = {}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 10
+				trade_goods = horses
+				has_production_building_trigger = yes
+				base_production = 8
+			}
+			trading_part = {
+				trade_goods = horses
+				value = 0.15
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_CRI_horse_experts
+				duration = 3650
+			}
+			custom_tooltip = tm_CRI_horses_upgrade_buildings
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						trade_goods = horses
+						has_production_building_trigger = yes
+					}
+					upgrade_building = {
+						production = yes
+					}
+					add_manufactory = yes
+				}
+			}
+			change_price = {
+				trade_goods = horses
+				key = expert_crimean_horses
+				value = 1.0
+				duration = 3650
+			}
+		}
+	}
+}
+
+tm_CRI_branch_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+
+	has_country_shield = yes
+
+	potential = {
+		OR = {
+			tag = CRI
+			was_tag = CRI
 		}
 	}
 
@@ -1313,7 +1398,7 @@ tm_CRI_branch_5 = {
 	}
 
 	tm_CRI_branch5_mission_7 = {
-		icon = mission_cossack_cavalry
+		icon = mission_recruit_the_cossacks
 		position = 7
 		required_missions = {
 			tm_CRI_branch5_mission_6
