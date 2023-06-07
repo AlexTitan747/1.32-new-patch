@@ -291,7 +291,6 @@ emp_naples_2 = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			is_subject = no
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				value = 35
 				region = italy_region
@@ -436,17 +435,11 @@ emp_naples_3 = {
 		icon = king_of_naples
 		required_missions = {  }
 		trigger = {
-			is_subject = no
 			is_at_war = no
 			army_size_percentage = 0.9
 		}
 		effect = {
-			if = {
-				limit = {
-					government = monarchy
-				}
-				add_legitimacy = 25
-			}
+			add_prestige = 20
 			add_mil_power = 50
 			add_dip_power = 50
 			apulia_area = {
@@ -580,8 +573,7 @@ emp_naples_3 = {
 		provinces_to_highlight = {
 		}
 		position = 6
-		trigger = {	
-			is_subject = no
+		trigger = {
 			navy_size_percentage = 0.9
 			num_of_galley = 15
 		}
@@ -1028,27 +1020,18 @@ emp_naples_5 = {
 		icon = neapolitan_govenance
 		required_missions = { emp_nap_rein_in_nobility }
 		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = naples_government_tt
-				OR = {
-					government = republic
-					has_final_tier_reforms_trigger = yes
-				}
-			}
+			#custom_trigger_tooltip = {
+			#	tooltip = naples_government_tt
+			#	OR = {
+			#		government = republic
+			#		has_final_tier_reforms_trigger = yes
+			#	}
+			#}
+			reform_level = 11
 		}
 		effect = {
-			if = {
-				limit = {
-					OR = {
-						has_dlc = "Common Sense"
-						NOT = { government = theocracy }
-					}
-				}
-				increase_legitimacy_huge_effect = yes
-			}
-			else = {
-				add_adm_power = 100
-			}
+			add_adm_power = 100
+			add_prestige_or_monarch_power = { amount = 50 }
 		}
 	}
 
