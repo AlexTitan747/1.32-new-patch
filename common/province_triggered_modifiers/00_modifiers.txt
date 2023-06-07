@@ -956,7 +956,10 @@ sound_toll_protection_modifier = {
 		owner = { has_country_flag = dan_completed_mission_dan_the_sound_toll }
 	}
 	trigger = {
-		has_coast_defense_building_trigger = yes
+		OR = {
+			has_coast_defense_building_trigger = yes
+			has_province_modifier = block_slave_raid_area_m
+		}
 		has_trade_building_trigger = yes
 		custom_trigger_tooltip = {
 			tooltip = dan_completed_mission_dan_the_sound_toll_tt
