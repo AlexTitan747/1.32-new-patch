@@ -2466,6 +2466,10 @@ tur_egyptian_conquest = {
 				}
 				add_permanent_claim = ROOT
 			}
+			add_country_modifier = {
+				name = tm_tur_victory_over_mam
+				duration = -1
+			}
 		}
 
 		ai_weight = {
@@ -2592,56 +2596,86 @@ tur_egyptian_conquest = {
 			}
 		}
 		effect = {
-			if = {
-				limit = {
-					NOT = { mission_completed = tur_conquer_egypt }
-					NOT = { has_country_flag = tur_decided_to_go_eyalet }
-				}
-				custom_tooltip = tur_handle_the_egyptian_eyalet_bt
-			}
-			else_if = {
-				limit = {
-					has_country_flag = tur_decided_to_go_eyalet
-					exists = EGY
-				}
-				EGY = {
-					remove_country_modifier = tur_mamlukian_administration
-				}
-				change_ruler_stat = {
-					stat = dip
-					amount = 2
-				}
-			}
-			else = {
-				custom_tooltip = tur_handle_the_egyptian_eyalet_ct
-				hidden_effect = {
-					egypt_region = {
-						limit = {
-							country_or_non_sovereign_subject_holds = ROOT
-						}
-						add_base_production = 1
-					  
-						type = random
-						amount = 10
+			#if = {
+			#	limit = {
+			#		NOT = { mission_completed = tur_conquer_egypt }
+			#		NOT = { has_country_flag = tur_decided_to_go_eyalet }
+			#	}
+			#	custom_tooltip = tur_handle_the_egyptian_eyalet_bt
+			#}
+			#else_if = {
+			#	limit = {
+			#		has_country_flag = tur_decided_to_go_eyalet
+			#		exists = EGY
+			#	}
+			#	EGY = {
+			#		remove_country_modifier = tur_mamlukian_administration
+			#	}
+			#	change_ruler_stat = {
+			#		stat = dip
+			#		amount = 2
+			#	}
+			#}
+			#else = {
+			#	custom_tooltip = tur_handle_the_egyptian_eyalet_ct
+			#	hidden_effect = {
+			#		egypt_region = {
+			#			limit = {
+			#				country_or_non_sovereign_subject_holds = ROOT
+			#			}
+			#			add_base_production = 1
+			#		  
+			#			type = random
+			#			amount = 10
+			#		}
+			#		bahari_area = {
+			#			limit = {
+			#				country_or_non_sovereign_subject_holds = ROOT
+			#			}
+			#			add_base_production = 1
+			#		}
+			#		delta_area = {
+			#			limit = {
+			#				country_or_non_sovereign_subject_holds = ROOT
+			#			}
+			#			add_base_production = 1
+			#		}
+			#		vostani_area = {
+			#			limit = {
+			#				country_or_non_sovereign_subject_holds = ROOT
+			#			}
+			#			add_base_production = 1
+			#		}
+			#	}
+			#}
+			custom_tooltip = tur_handle_the_egyptian_eyalet_ct
+			hidden_effect = {
+				egypt_region = {
+					limit = {
+						country_or_non_sovereign_subject_holds = ROOT
 					}
-					bahari_area = {
-						limit = {
-							country_or_non_sovereign_subject_holds = ROOT
-						}
-						add_base_production = 1
+					add_base_production = 1
+				  
+					type = random
+					amount = 10
+				}
+				bahari_area = {
+					limit = {
+						country_or_non_sovereign_subject_holds = ROOT
 					}
-					delta_area = {
-						limit = {
-							country_or_non_sovereign_subject_holds = ROOT
-						}
-						add_base_production = 1
+					add_base_production = 1
+				}
+				delta_area = {
+					limit = {
+						country_or_non_sovereign_subject_holds = ROOT
 					}
-					vostani_area = {
-						limit = {
-							country_or_non_sovereign_subject_holds = ROOT
-						}
-						add_base_production = 1
+					add_base_production = 1
+				}
+				vostani_area = {
+					limit = {
+						country_or_non_sovereign_subject_holds = ROOT
 					}
+					add_base_production = 1
 				}
 			}
 			country_event_with_insight = {
