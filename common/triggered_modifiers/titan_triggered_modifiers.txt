@@ -37,85 +37,61 @@
 
 planned_invasion_of_hungary = {
 	potential = {
-		ROOT = {
-			ai = no	
-		}
-		OR = {
-			tag = BOH
-			was_tag = BOH
-		}
-	}
-	trigger  = {
 		OR = {
 			tag = BOH
 			was_tag = BOH
 		}
 		has_country_flag = boh_hungary_plan
+		NOT = { is_year = 1480 }
+	}
+	trigger  = {
 		offensive_war_with = HUN
-			any_country = {
-				total_development = ROOT
-				}
-			NOT = { is_year = 1480 }
-		}
+		NOT = { is_year = 1480 }
+	}
 
-	land_morale = 0.05
+	land_morale = 0.10
 	infantry_power = 0.05
-	
 }
 
 planned_invasion_of_poland = {
 	potential = {
-		ROOT = {
-			ai = no	
-		}
-		OR = {
-			tag = BOH
-			was_tag = BOH
-		}
-	}
-	trigger  = {
 		OR = {
 			tag = BOH
 			was_tag = BOH
 		}
 		has_country_flag = boh_poland_plan
+		NOT = { is_year = 1480 }
+	}
+	trigger  = {
 		offensive_war_with = POL
-				any_country = {
-					total_development = ROOT
-					}
-				NOT = { is_year = 1480 }
-			}
+		NOT = { is_year = 1480 }
+	}
 
-	land_morale = 0.05
+	land_morale = 0.10
 	infantry_power = 0.05
-	
 }
 
 moroccan_last_stand = {
 	potential = {
-		ROOT = {
-			ai = no	
-		}
+		ai = no
 		tag = MOR
+		NOT = { is_year = 1490 }
 	}
 	trigger  = {
 		tag = MOR
 		defensive_war_with = CAS
 		
 		OR = {
-			AND = { defensive_war_with = NAP
-				}
-			AND = { defensive_war_with = TTS
-				}
-			AND = { defensive_war_with = POR
-				}
-			}	
-				any_country = {
-					total_development = ROOT
-					}
-				NOT = { is_year = 1490 }
-				NOT = { num_of_allies = 1 }
-			}
+			AND = { defensive_war_with = NAP }
+			AND = { defensive_war_with = TTS }
+			AND = { defensive_war_with = POR }
+		}	
+		any_country = {
+			total_development = ROOT
+		}
+		NOT = { is_year = 1490 }
+		NOT = { num_of_allies = 1 }
+	}
 			
 		
 	land_morale = 0.1
@@ -124,8 +100,8 @@ moroccan_last_stand = {
 	manpower_recovery_speed = 0.1
 	reinforce_cost_modifier = -0.05
 	merc_maintenance_modifier = -0.10
+	mercenary_cost = -0.05
 	land_forcelimit = 10
-	
 }
 
 founders_of_the_niger_company = {
@@ -386,7 +362,6 @@ return_of_lost_cultures = {
 		culture_group = lost_cultures_group	
 	}
 	culture_conversion_cost = -0.25
-	
 }
 
 ai_player_nation_buff = {
@@ -412,6 +387,8 @@ ai_player_nation_buff = {
 			was_tag = MER
 			tag = AFG
 			was_tag = AFG
+			tag = OMA
+			was_tag = OMA
 		}
 		ai = yes
 	}

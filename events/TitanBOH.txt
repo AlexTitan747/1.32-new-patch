@@ -9,20 +9,8 @@ country_event = {
 	fire_only_once = yes
 	is_triggered_only = yes
 
-	trigger = {
-		OR = {
-			tag = BOH
-			was_tag = BOH
-		}
-	}
-
-	#mean_time_to_happen = {
-	#	months = 1
-	#}
-
 	option = {
 		name = "titanboh.focus1"
-		change_religion = protestant
 		set_country_flag = bohemian_prussia
 		custom_tooltip = "boh_unlock_pru"
 	}
@@ -48,17 +36,6 @@ country_event = {
 	fire_only_once = yes
 	is_triggered_only = yes
 
-	trigger = {
-		OR = {
-			tag = BOH
-			was_tag = BOH
-		}
-	}
-
-	#mean_time_to_happen = {
-	#	months = 1
-	#}
-
 	option = {
 		name = "titanboh.court1"
 		country_event = {
@@ -76,27 +53,16 @@ country_event = {
 	fire_only_once = yes
 	is_triggered_only = yes
 
-	trigger = {
-		OR = {
-			tag = BOH
-			was_tag = BOH
-		}
-	}
-
-	#mean_time_to_happen = {
-	#	months = 1
-	#}
-
 	option = {
 		name = "titanboh.reform1"
 		if = {
 			limit = { 
 				is_revolutionary = no
 				tag = BOH
-		}
-		hidden_effect = {
-		 	set_country_flag = boh_unlock_bradenburg_reform
-		}
+			}
+			hidden_effect = {
+			 	set_country_flag = boh_unlock_bradenburg_reform
+			}
 			add_government_reform = margraviate_of_Brandenburg
 		}
 		else_if = {
@@ -124,21 +90,11 @@ country_event = {
 	fire_only_once = yes
 	is_triggered_only = yes
 
-	trigger = {
-		OR = {
-			tag = BOH
-			was_tag = BOH
-		}
-	}
-
-	#mean_time_to_happen = {
-	#	months = 1
-	#}
-
 	option = {
 		name = "titanboh.plan1"
 		hidden_effect = {
-		set_country_flag = boh_poland_plan
+			set_country_flag = boh_poland_plan
+			swap_non_generic_missions = yes
 		}
 		custom_tooltip = "boh_poland_plan"
 	}
@@ -147,6 +103,7 @@ country_event = {
 		name = "titanboh.plan2"
 		hidden_effect = {
 			set_country_flag = boh_hungary_plan
+			swap_non_generic_missions = yes
 		}
 		custom_tooltip = "boh_hungary_plan"
 	}
@@ -159,28 +116,69 @@ country_event = {
 	picture = ADVISOR_eventPicture
 
 	fire_only_once = yes
-
-	trigger = {
-		OR = {
-			tag = KSM
-		}
-	}
-
-	mean_time_to_happen = {
-		months = 1
-	}
+	is_triggered_only = yes
 
 	option = {
 		name = "titanboh.hussite1"
-		add_treasury = 100
-		add_dip_power = 50
+		add_treasury = 500
+		add_dip_power = 100
 		custom_tooltip = "boh_missionaries_sent"
+		hidden_effect = {
+			every_country = {
+				limit = {
+					is_part_of_hre = yes
+				}
+				country_event = {
+					id = titanboh.6
+				}
+			}
+		}
 	}
 
 	option = {
 		name = "titanboh.hussite2"
-		add_prestige = 15
-		add_mil_power = 50
+		add_country_modifier = {
+			name = tm_boh_hussite_crusade
+			duration = -1
+		}
+	}
+}
+
+country_event = {
+	id = titanboh.6
+	title = "titanboh.title6"
+	desc = "titanboh.desc6"
+	picture = ADVISOR_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "titanboh.6.a"
+		change_religion = hussite
+		change_ruling_family_religions_effect = {
+			religion = hussite
+		}
+		custom_tooltip = tm_centre_of_religion_in_capital_tt
+		capital_scope = {
+			add_reform_center = hussite
+		}
+		add_country_modifier = {
+			name = tm_b_convert_religious_culture
+			duration = 3650
+		}
+		hidden_effect = {
+			KSM = {
+				add_dip_power = 5
+				add_treasury = 100
+			}
+		}
 	}
 
+	option = {
+		name = "titanboh.6.b"
+		KSM = {
+			add_mil_power = 5
+			add_prestige_or_monarch_power = { amount = 5 }
+		}
+	}
 }
