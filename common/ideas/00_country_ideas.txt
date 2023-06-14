@@ -96,16 +96,12 @@ HLR_ideas = {
 
 GER_ideas = {
 	start = {
-		legitimacy = 1
-		devotion = 1
-		republican_tradition = 0.3
-		meritocracy = 1
-		horde_unity = 1
-		infantry_power = 0.15
+		prestige = 1
+		infantry_power = 0.20
 	}
 	
 	bonus = {
-		manpower_recovery_speed = 0.15
+		manpower_recovery_speed = 0.20
 	}	
 
 	trigger = {
@@ -118,24 +114,23 @@ GER_ideas = {
 		diplomatic_upkeep = 1
 	}
 	ger_german_universities = {
-		technology_cost = -0.1
+		production_efficiency = 0.1
 	}
 	ger_reichsheer = {
 		discipline = 0.05
-		shock_damage_received = -0.075
 	}
 	ger_new_hanseatics = {
-		trade_efficiency = 0.10
+		drill_gain_modifier = 0.25
+		fire_damage = 0.10
 	}
 	ger_junkers = {
 		army_tradition = 0.5
 	}
 	ger_reichstag = {
-		administrative_efficiency = 0.05
-		development_cost = -0.1
+		land_forcelimit_modifier = 0.20
 	}
 	ger_eisen_und_kohle = {
-		global_trade_goods_size_modifier = 0.2
+		global_trade_goods_size_modifier = 0.10
 	}
 }
 
@@ -197,7 +192,7 @@ GBR_ideas = {
 	free = yes		#will be added at load.
 
 	gbr_acts_of_union = {
-		diplomatic_annexation_cost = -0.15
+		global_unrest = -1
 		governing_capacity_modifier = 0.1
 	}
 	city_upon_a_hill = {
@@ -205,7 +200,7 @@ GBR_ideas = {
 		global_tariffs = 0.15
 	}
 	the_british_parliament = {
-		global_unrest = -1
+		production_efficiency = 0.10
 		num_of_parliament_issues = 1
 	}
 	#british_merchant_navy = {
@@ -219,7 +214,7 @@ GBR_ideas = {
 		fire_damage_received = -0.15
 	}
 	british_industrialization = {
-		global_trade_goods_size_modifier = 0.2
+		global_trade_goods_size_modifier = 0.10
 	}
 	britanna_rules_the_waves = {
 		leader_naval_manuever = 1
@@ -387,7 +382,7 @@ DAN_ideas = {
 		disengagement_chance = 0.05
 	}
 	rentekammer = {
-		build_cost = -0.15
+		build_cost = -0.10
 	}
 	klaedekammer = {
 		naval_maintenance_modifier = -0.15
@@ -623,13 +618,13 @@ SCA_ideas = {
 	}
 	sca_danish_baltic_fleet = {
 		trade_efficiency = 0.1
-		ship_durability = 0.05
+		ship_durability = 0.10
 	}
 	sca_norwegian_marines = {
 		naval_morale = 0.2
 	}
 	sca_finnish_hakkapeliita = {
-		cavalry_cost = -0.1
+		manpower_recovery_speed = 0.1
 	}
 	sca_swedish_carolean = {
 		infantry_power = 0.15
@@ -690,7 +685,7 @@ RUS_ideas = {
 	bonus = {
 		legitimacy = 1
 		devotion = 1
-		republican_tradition = 0.3
+		republican_tradition = 0.5
 		meritocracy = 1	#For completion's sake
 		horde_unity = 1
 	}
@@ -725,7 +720,7 @@ RUS_ideas = {
 	}	
 	curriculum_of_the_cadet_corps = {
 		land_morale = 0.05
-		fire_damage_received = -0.1
+		fire_damage_received = -0.05
 	}
 }
 
@@ -753,6 +748,7 @@ SPA_ideas = {
 	inter_caetera = {
 		idea_claim_colonies = yes
 		colonists = 1
+		global_colonial_growth = 20
 	}
 	salamanca_scholars = {
 		global_institution_spread = 0.1
@@ -763,7 +759,7 @@ SPA_ideas = {
 		naval_forcelimit_modifier = 0.25
 	}
 	spa_casa_de_contracion = {
-		envoy_travel_time = -0.33
+		treasure_fleet_income = 0.1
 		global_tariffs = 0.15
 	}
 	siglo_de_oro = {
@@ -841,7 +837,7 @@ NED_ideas = {
 		trade_efficiency = 0.15
 	}
 	polders = {
-		development_cost = -0.1
+		development_cost = -0.05
 	}
 	instructie_voor_de_admiraliteiten = {
 		mercenary_manpower = 0.5
@@ -903,7 +899,7 @@ FRA_ideas = {
 	}
 	vauban_fortifications = {
 		defensiveness = 0.15
-		garrison_damage = 0.5
+		garrison_damage = 0.25
 	}
 }
 
@@ -2560,7 +2556,7 @@ MLO_ideas = {
 		prestige = 1
 	}
 	lowered_power_of_barons = {
-		development_cost = -0.1
+		development_cost = -0.05
 	}
 	age_of_condottieri = {
 		land_maintenance_modifier = -0.1
@@ -2859,7 +2855,7 @@ ITA_ideas = {
 	
 	no_a_geographical_construct = {
 		stability_cost_modifier = -0.10
-		development_cost = -0.1
+		development_cost = -0.05
 	}
 	tradition_of_the_legion = {
 		infantry_power = 0.125
@@ -3323,7 +3319,7 @@ SPI_ideas = {
 #		prestige = 0.5
 	}
 	spi_centralized_state = {
-		development_cost = -0.1
+		development_cost = -0.05
 	}
 	spi_piedmontese_manufacturing = {
 		global_trade_goods_size_modifier = 0.1
@@ -3936,7 +3932,7 @@ SWI_ideas = {
 		defensiveness = 0.25
 	}
 	oasis_of_peace_and_prosperity = {
-		development_cost = -0.1
+		development_cost = -0.05
 	}
 	haven_for_refugees = {
 		prestige = 1
@@ -9282,7 +9278,7 @@ ROM_ideas = {
 	free = yes
 	
 	pax_romana = {
-		global_unrest = -1
+		global_unrest = -2
 	}
 	legacy_of_rome = {
 		diplomatic_reputation = 2
@@ -9298,10 +9294,10 @@ ROM_ideas = {
 	}
 	roman_architecture = {
 		global_trade_goods_size_modifier = 0.15
-		development_cost = -0.1
+		development_cost = -0.05
 	}
 	imperial_bureaucracy = {
-		global_tax_modifier = 0.1
+		production_efficiency = 0.1
 	}
 	imperium_sine_fine = {
 		core_creation = -0.25
@@ -11758,7 +11754,7 @@ HAN_ideas = {
 		state_maintenance_modifier = -0.15
 	}
 	han_weser_renaissance = {
-		development_cost = -0.1
+		development_cost = -0.05
 	}
 	han_shutzenfest = {
 		global_regiment_cost = -0.1
@@ -13859,7 +13855,7 @@ ORD_ideas = {
 irish_ideas = {
 	start = {
 		land_morale = 0.1
-		trade_efficiency = 0.1
+		trade_efficiency = 0.05
 	}
 	
 	bonus = {
@@ -13882,17 +13878,20 @@ irish_ideas = {
 		same_culture_advisor_cost = -0.2
 	}
 	more_than_irish = {
-		global_unrest = -2
+		global_unrest = -3
 	}
 	loyal_catholics = {
 		papal_influence = 1
+		church_power_modifier = 0.25
+		monthly_fervor_increase = 1
+		yearly_patriarch_authority = 0.01
 		global_heretic_missionary_strength = 0.02
 	}
 	ire_abundant_harvests = {
 		global_trade_goods_size_modifier = 0.10
 	}
 	unconquerable_ireland = {
-		war_exhaustion = -0.02
+		war_exhaustion = -0.05
  	}
 	ire_gallowglasses = {
 		discipline = 0.05
@@ -14766,7 +14765,7 @@ BNG_ideas = {
 		army_tradition = 0.5
 	}
 	bng_clearing_the_delta = {
-		development_cost = -0.1
+		development_cost = -0.05
 	}
 	bng_attract_sufis = {
 		idea_cost = -0.1
@@ -15432,7 +15431,7 @@ CSC_ideas = {
 WSI_ideas = {
 	start = {
 		merchants = 1
-		development_cost = -0.1
+		development_cost = -0.05
 	}
 	bonus = {
 		global_unrest = -2
