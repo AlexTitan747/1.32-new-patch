@@ -556,6 +556,7 @@ mos_rus_eastern_europe = {
 				add_accepted_culture = sorbian
 				add_accepted_culture = schlesian
 				add_accepted_culture = polish
+				add_accepted_culture = slovak
 			}
 			add_country_modifier = {
 				name = rus_west_slavic_union
@@ -567,6 +568,7 @@ mos_rus_eastern_europe = {
 				add_accepted_culture = sorbian
 				add_accepted_culture = schlesian
 				add_accepted_culture = polish
+				add_accepted_culture = slovak
 			}
 			add_country_modifier = {
 				name = "rus_partition_poland_modifier"
@@ -604,7 +606,6 @@ mos_rus_eastern_europe = {
 			tooltip = {
 				add_accepted_culture = hungarian
 				add_accepted_culture = romanian
-				add_accepted_culture = slovak
 				add_accepted_culture = transylvanian
 			}
 			add_country_modifier = {
@@ -615,7 +616,6 @@ mos_rus_eastern_europe = {
 			hidden_effect = {
 				add_accepted_culture = hungarian
 				add_accepted_culture = romanian
-				add_accepted_culture = slovak
 				add_accepted_culture = transylvanian
 			}
 			custom_tooltip = mos_rus_carpathian_conquest_ct
@@ -1186,6 +1186,7 @@ nov_rus_eastern_europe = {
 				add_accepted_culture = sorbian
 				add_accepted_culture = schlesian
 				add_accepted_culture = polish
+				add_accepted_culture = slovak
 			}
 			add_country_modifier = {
 				name = rus_west_slavic_union
@@ -1197,6 +1198,7 @@ nov_rus_eastern_europe = {
 				add_accepted_culture = sorbian
 				add_accepted_culture = schlesian
 				add_accepted_culture = polish
+				add_accepted_culture = slovak
 			}
 			add_country_modifier = {
 				name = "rus_partition_poland_modifier"
@@ -3823,6 +3825,15 @@ rus_russian_streltsy = {
 					second_limit = "has_estate_privilege = estate_nobles_increased_peasant_freedom has_country_flag = rus_crushed_boyars_revolt NOT = { has_spawned_rebels = noble_rebels }"
 					second_effect = "custom_tooltip = rus_solidify_serfdom_ft set_country_flag = rus_buffed_free_peasantry_privileges"
 				}
+				if = {
+					limit = {
+						NOT = { has_estate_privilege = estate_nobles_early_serfdom }
+						NOT = { has_estate_privilege = estate_nobles_increased_peasant_freedom }
+					}
+					add_adm_power = 100
+					add_dip_power = 100
+					add_mil_power = 100
+				}
 			}
 			else = {
 				add_adm_power = 100
@@ -4309,6 +4320,32 @@ rus_russian_religion_serfdom = {
 		trigger = {
 			reform_level = 4
 			OR = {
+				AND = {
+					custom_trigger_tooltip = {  
+						tooltip = rus_6_tot_tt
+						has_global_modifier_value = { 
+							which = tolerance_own 
+							value = 6
+						}
+					}
+					if = {
+						limit = { has_estate = estate_church }
+						estate_loyalty = {
+							estate = estate_church
+							loyalty = 80
+						}
+					}
+					if = {
+						limit = { uses_patriarch_authority = yes }
+						OR = {
+							patriarch_authority = 1
+							num_of_owned_provinces_with = {
+								has_state_patriach = yes
+								value = 70
+							}
+						}
+					}
+				}
 				custom_trigger_tooltip = {
 					tooltip = rus_most_holy_synod_xx
 					any_known_country = {
@@ -4328,32 +4365,6 @@ rus_russian_religion_serfdom = {
 						}
 					}
 					diplomatic_reputation = 2
-				}
-				AND = {
-					if = {
-						limit = { has_estate = estate_church }
-						estate_loyalty = {
-							estate = estate_church
-							loyalty = 80
-						}
-					}
-					if = {
-						limit = { uses_patriarch_authority = yes }
-						OR = {
-							patriarch_authority = 1
-							num_of_owned_provinces_with = {
-								has_state_patriach = yes
-								value = 70
-							}
-						}
-					}
-					custom_trigger_tooltip = {  
-						tooltip = rus_6_tot_tt
-						has_global_modifier_value = { 
-							which = tolerance_own 
-							value = 6
-						}
-					}
 				}
 			}
 		}
@@ -4546,14 +4557,15 @@ rus_russian_religion_serfdom = {
 		effect = {
 			for = {
 				custom_tooltip = rus_early_industrialization_at
-				effect = "random_owned_province = { 
-					limit = { 
-						NOT = { has_province_flag = rus_manu } 
-						has_manufactory_trigger = yes 
-						development = 20 
-					}
-					set_province_flag = rus_manu
-				}"
+				effect = "
+					random_owned_province = { 
+						limit = { 
+							NOT = { has_province_flag = rus_manu } 
+							has_manufactory_trigger = yes 
+							development = 20 
+						}
+						set_province_flag = rus_manu
+					}"
 				amount = 10
 			}
 			tooltip = {
@@ -4654,7 +4666,7 @@ rus_russian_military = {
 					has_reform = streltsy_reform
 					num_of_streltsy = 50
 					has_leader_with = {
-						total_pips = 20
+						total_pips = 15
 					}
 				}
 				AND = {
@@ -4675,7 +4687,7 @@ rus_russian_military = {
 				has_reform = streltsy_reform
 				num_of_streltsy = 50
 				has_leader_with = {
-					total_pips = 20
+					total_pips = 15
 				}"
 				first_effect = "
 				add_country_modifier = {

@@ -1253,7 +1253,7 @@ country_event = {
 	}
 }
 
-# José Monino
+# Josï¿½ Monino
 country_event = {
 	id = flavor_spa.3094
 	title = "flavor_spa.EVTNAME3094"
@@ -1284,7 +1284,7 @@ country_event = {
 		}
 		define_advisor = {
 			type = statesman
-			name = "José Monino"
+			name = "Josï¿½ Monino"
 			culture = andalucian
 			discount = yes
 			skill = 3
@@ -1998,7 +1998,7 @@ country_event = {
 			}
 			spawn_rebels = {
 				type = nationalist_rebels
-				leader = "Abén Umayyad"
+				leader = "Abï¿½n Umayyad"
 				friend = GRA
 				size = 2
 				win = yes
@@ -2809,8 +2809,19 @@ country_event = { #The Infantes of Aragon
 			spawn_rebels = {
 				type = noble_rebels
 				size = 2
+				leader = "Alvaro de Luna"
 				win = yes 
 				should_take_capital = yes
+			}
+		}
+		hidden_effect = {
+			if = {
+				limit = {
+					has_leader = "Alvaro de Luna"
+				}
+				kill_leader = {
+					type = "Alvaro de Luna"
+				}
 			}
 		}
 		
@@ -2842,7 +2853,6 @@ country_event = { # End of the Infantes
 				estate = estate_nobles 
 				loyalty = 20 
 			}
-			kill_leader = { type = "Alvaro de Luna" }
 			custom_tooltip = spa_no_isabella_event_tt
 			set_country_flag = no_isabella_event_flag
 		}

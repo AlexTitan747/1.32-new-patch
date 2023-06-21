@@ -671,7 +671,52 @@ dom_cas_missions_1_b = {
 				}				
 				add_ruler_personality = entrepreneur_personality 
 			}
-			add_mercantilism = 5 
+			add_mercantilism = 5
+			if = {
+				limit = { 
+					NOT = { mission_completed = gc_ara_naples2 }
+				}
+				provence_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			if = {
+				limit = { 
+					NOT = { mission_completed = gc_ara_occitania2 }
+				}
+				savoy_dauphine_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT	}
+					}
+					add_permanent_claim = ROOT
+				}
+				languedoc_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT	}
+					}
+					add_permanent_claim = ROOT
+				}
+				guyenne_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT	}
+					}
+					add_permanent_claim = ROOT
+				}
+				pyrenees_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT	}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
 		}
 	}
 	
@@ -1389,7 +1434,6 @@ dom_cas_missions_2_b = {
 				area = languedoc_area
 				area = guyenne_area
 				area = pyrenees_area
-				area = provence_area 
 			}
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
@@ -1397,10 +1441,6 @@ dom_cas_missions_2_b = {
 		}
 		
 		trigger = {
-			provence_area = {
-				type = all 
-				country_or_non_sovereign_subject_holds = ROOT 
-			}
 			savoy_dauphine_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -4069,7 +4109,7 @@ dom_cas_missions_5_b = {
 		effect = {
 			if = {
 				limit = { 
-					NOT = { mission_completed = gc_ara_occitania2 }
+					NOT = { mission_completed = gc_ara_genoa2 }
 				}
 				savoy_dauphine_area = {
 					limit = {
