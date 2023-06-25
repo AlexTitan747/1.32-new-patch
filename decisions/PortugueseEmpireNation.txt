@@ -147,10 +147,14 @@ country_decisions = {
 			is_at_war = no
 			OR = {
 				AND = {
-					owns_core_province = 1177
-					1177 = { is_city = yes }
+					1177 = { 
+						is_city = yes
+						country_or_non_sovereign_subject_holds = ROOT
+					}
 				}
-				owns_core_province = 1170
+				1170 = {
+					country_or_non_sovereign_subject_holds = ROOT
+				}
 			}
 			
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
@@ -170,6 +174,9 @@ country_decisions = {
 					}
 				}
 				FROM = { inherit = PREV }
+			}
+			if = { limit = { 1170 = { owner = { is_subject_of = ROOT }}}
+				1170 = { owner = { inherit = PREV }}
 			}
 			if = {	limit = { NOT = { government_rank = 3 }	} set_government_rank = 3 }
 			add_government_reform = union_of_crowns
