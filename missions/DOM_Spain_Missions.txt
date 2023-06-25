@@ -23,8 +23,8 @@ dom_cas_missions_1 = {
 		# free mission
 
 		trigger = {
-			army_size_percentage = 1
-			navy_size_percentage = 1
+			army_size_percentage = 0.9
+			navy_size_percentage = 0.9
 			num_of_generals = 1
 		}
 
@@ -40,17 +40,7 @@ dom_cas_missions_1 = {
 				}
 				add_permanent_claim = ROOT
 			}
-			210 = {
-				if = {
-					limit = {
-						NOT = {
-							is_permanent_claim = ROOT
-							is_core = ROOT
-						}
-					}
-					add_permanent_claim = ROOT
-				}
-			}
+			lower_andalucia_area = { add_perma_claim = yes }
 		}
 	}
 	
@@ -60,11 +50,18 @@ dom_cas_missions_1 = {
 		position = 2
 
 		provinces_to_highlight = {
-			area = upper_andalucia_area
+			OR = {
+				area = upper_andalucia_area
+				area = lower_andalucia_area
+			}
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
+			lower_andalucia_area = {
+				type = all
+				owned_by = ROOT
+			}
 			upper_andalucia_area = {
 				type = all
 				owned_by = ROOT
@@ -113,14 +110,14 @@ dom_cas_missions_1 = {
 					NOT = { is_core = ROOT }
 					NOT = { is_claim = ROOT }
 				}
-				add_claim = ROOT
+				add_permanent_claim = ROOT
 			}
 			algiers_area = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_claim = ROOT }
 				}
-				add_claim = ROOT
+				add_permanent_claim = ROOT
 			}
 		}
 	}
@@ -189,79 +186,47 @@ dom_cas_missions_1 = {
 				name = "spa_prepared_armada"
 				duration = 7300
 			}
-			if = {
+			wessex_area = {
 				limit = {
-					exists = GBR
-					valid_for_personal_unions_trigger = yes
-					GBR = {
-						valid_for_personal_unions_trigger = yes
-						NOT = { religion = ROOT }
-					}
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT	}
 				}
-				add_casus_belli = {
-					type = cb_restore_personal_union
-					months = 300
-					target = GBR
-				}
+				add_permanent_claim = ROOT
 			}
-			else_if = {
+			home_counties_area = {
 				limit = {
-					exists = ENG
-					valid_for_personal_unions_trigger = yes
-					ENG = {
-						valid_for_personal_unions_trigger = yes
-						NOT = { religion = ROOT }
-					}
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT	}
 				}
-				add_casus_belli = {
-					type = cb_restore_personal_union
-					months = 300
-					target = ENG
-				}
+				add_permanent_claim = ROOT
 			}
-			else = {
-				wessex_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT	}
-					}
-					add_permanent_claim = ROOT
+			east_anglia_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT	}
 				}
-				home_counties_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT	}
-					}
-					add_permanent_claim = ROOT
+				add_permanent_claim = ROOT
+			}
+			east_midlands_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT	}
 				}
-				east_anglia_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT	}
-					}
-					add_permanent_claim = ROOT
+				add_permanent_claim = ROOT
+			}
+			west_midlands_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT	}
 				}
-				east_midlands_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT	}
-					}
-					add_permanent_claim = ROOT
+				add_permanent_claim = ROOT
+			}
+			yorkshire_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT }
+					NOT = { is_core = ROOT	}
 				}
-				west_midlands_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT	}
-					}
-					add_permanent_claim = ROOT
-				}
-				yorkshire_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { is_core = ROOT	}
-					}
-					add_permanent_claim = ROOT
-				}
+				add_permanent_claim = ROOT
 			}
 		}
 	}
@@ -271,80 +236,215 @@ dom_cas_missions_1 = {
 		required_missions = { spa_reform_armada2 }
 		position = 6
 		provinces_to_highlight = {
-			OR = {
-				area = wessex_area
-				area = home_counties_area
-				area = east_anglia_area
-				area = east_midlands_area
-				area = west_midlands_area
-				area = yorkshire_area
-			}
+			region = british_isles_region
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
 		trigger = {
-			wessex_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			home_counties_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			east_anglia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			east_midlands_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			west_midlands_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			yorkshire_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+			OR = {
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 20
+					region = british_isles_region
+				}
+				custom_trigger_tooltip = {
+					tooltip = gc_spa_invade_england2_ally_trigger_tt_eng
+					any_country = {
+						alliance_with = ROOT
+						OR = {
+							tag = ENG
+							was_tag = ENG
+						}
+						development_in_provinces = {
+							region = british_isles_region
+							value = 500
+						}
+						num_of_owned_provinces_with = {
+							value = 5
+							region = british_isles_region
+							OR = {
+								has_dock_building_trigger = yes
+								has_shipyard_building_trigger = yes
+							}
+						}
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = gc_spa_invade_england2_ally_trigger_tt
+					any_ally = {
+						NOT = { tag = ENG }
+						NOT = { was_tag = ENG }
+						num_of_owned_provinces_with = {
+							value = 20
+							region = british_isles_region
+						}
+					}
+				}
 			}
 		}
+
 		effect = {
-			add_power_projection = {
-				type = mission_rewards_power_projection
-				amount = 50
-			}
+			custom_tooltip = gc_spa_invade_england2_tt_a
 			if = {
 				limit = {
-					GBR = {
-						is_subject_of_type = personal_union
-						is_subject_of = ROOT
-						NOT = { religion = ROOT }
+					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+						value = 20
+						region = british_isles_region
 					}
 				}
-				GBR = {
-					change_religion = ROOT
-				}
+				custom_tooltip = BONUS_REWARD_YES
 			}
-			else_if = {
-				limit = {
-					ENG = {
-						is_subject_of_type = personal_union
-						is_subject_of = ROOT
-						NOT = { religion = ROOT }
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				add_power_projection = {
+					type = mission_rewards_power_projection
+					amount = 50
+				}
+				add_prestige_or_monarch_power = {
+					amount = 50
+				}
+				if = {
+					limit = {
+						religion = catholic
 					}
+					add_papal_influence = 25
 				}
-				ENG = {
-					change_religion = ROOT
+				add_adm_power = 30
+				add_dip_power = 30
+				add_mil_power = 30
+				add_country_modifier = {
+					name = spa_tm_conquest_of_england
+					duration = -1
 				}
 			}
-			else = {
-				add_prestige = 25
-			}
+			custom_tooltip = mission_alternatively_tt
+			custom_tooltip = gc_spa_invade_england2_tt_b
 			if = {
 				limit = {
-					religion = catholic
+					OR = {
+						any_ally = {
+							NOT = { tag = ENG }
+							NOT = { was_tag = ENG }
+							num_of_owned_provinces_with = {
+								value = 20
+								region = british_isles_region
+							}
+						}
+						any_ally = {
+							OR = {
+								tag = ENG
+								was_tag = ENG
+							}
+							development_in_provinces = {
+								region = british_isles_region
+								value = 500
+							}
+							num_of_owned_provinces_with = {
+								value = 5
+								region = british_isles_region
+								OR = {
+									has_dock_building_trigger = yes
+									has_shipyard_building_trigger = yes
+								}
+							}
+						}
+					}
 				}
-				add_papal_influence = 25
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				add_country_modifier = {
+					name = spa_tm_naval_cooperation
+					duration = 3650
+				}
+				capital_scope = {
+					add_base_tax = 2
+					add_base_production = 2
+					add_base_manpower = 2
+				}
+				custom_tooltip = tm_spa_eng_invade_ally_gets_too
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+							value = 20
+							region = british_isles_region
+						}
+					}
+					add_power_projection = {
+						type = mission_rewards_power_projection
+						amount = 50
+					}
+					add_prestige_or_monarch_power = {
+						amount = 50
+					}
+					if = {
+						limit = {
+							religion = catholic
+						}
+						add_papal_influence = 25
+					}
+					add_adm_power = 30
+					add_dip_power = 30
+					add_mil_power = 30
+					add_country_modifier = {
+						name = spa_tm_conquest_of_england
+						duration = -1
+					}
+				}
+				else = {
+					add_country_modifier = {
+						name = spa_tm_naval_cooperation
+						duration = 3650
+					}
+					capital_scope = {
+						add_base_tax = 2
+						add_base_production = 2
+						add_base_manpower = 2
+					}
+					random_ally = {
+						limit = {
+							OR = {
+								AND = {
+									OR = {
+										tag = ENG
+										was_tag = ENG
+									}
+									development_in_provinces = {
+										region = british_isles_region
+										value = 500
+									}
+									num_of_owned_provinces_with = {
+										value = 5
+										region = british_isles_region
+										OR = {
+											has_dock_building_trigger = yes
+											has_shipyard_building_trigger = yes
+										}
+									}
+								}
+								AND = {
+									NOT = { tag = ENG }
+									NOT = { was_tag = ENG }
+									num_of_owned_provinces_with = {
+										value = 30
+										region = british_isles_region
+									}
+								}
+							}
+						}
+						capital_scope = {
+							add_base_tax = 2
+							add_base_production = 2
+							add_base_manpower = 2
+						}
+						add_country_modifier = {
+							name = spa_tm_naval_cooperation
+							duration = 3650
+						}
+					}
+				}
 			}
 		}
 	}
@@ -571,7 +671,52 @@ dom_cas_missions_1_b = {
 				}				
 				add_ruler_personality = entrepreneur_personality 
 			}
-			add_mercantilism = 5 
+			add_mercantilism = 5
+			if = {
+				limit = { 
+					NOT = { mission_completed = gc_ara_naples2 }
+				}
+				provence_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT }
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			if = {
+				limit = { 
+					NOT = { mission_completed = gc_ara_occitania2 }
+				}
+				savoy_dauphine_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT	}
+					}
+					add_permanent_claim = ROOT
+				}
+				languedoc_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT	}
+					}
+					add_permanent_claim = ROOT
+				}
+				guyenne_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT	}
+					}
+					add_permanent_claim = ROOT
+				}
+				pyrenees_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT	}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
 		}
 	}
 	
@@ -1248,14 +1393,14 @@ dom_cas_missions_2_b = {
 			}
 			OR = { 
 				AND = {
-					full_idea_group = maritime_ideas 
+					full_idea_group = expansion_ideas 
 					num_of_owned_provinces_with = {
 						has_dock_building_trigger = yes 
 						value = 25 
 					}
 				}
 				AND = {
-					full_idea_group = naval_ideas 
+					full_idea_group = empire_ideas 
 					num_of_owned_provinces_with = {
 						has_shipyard_building_trigger = yes 
 						value = 25 
@@ -1289,7 +1434,6 @@ dom_cas_missions_2_b = {
 				area = languedoc_area
 				area = guyenne_area
 				area = pyrenees_area
-				area = provence_area 
 			}
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
@@ -1297,10 +1441,6 @@ dom_cas_missions_2_b = {
 		}
 		
 		trigger = {
-			provence_area = {
-				type = all 
-				country_or_non_sovereign_subject_holds = ROOT 
-			}
 			savoy_dauphine_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -1359,10 +1499,10 @@ dom_cas_missions_2_c = {
 		required_missions = { spa_sevilla_port gc_cas_spa_plus_ultra2 }
 		position = 8
 		provinces_to_highlight = {
-			province_id = 1293
+			province_id = 1551
 		}
 		trigger = {
-			1293 = { 
+			1551 = { 
 				trade_share = {
 					country = ROOT 
 					share = 70
@@ -1800,156 +1940,31 @@ dom_cas_missions_3 = {
 				area = valencia_area
 				area = catalonia_area
 				area = aragon_area
+				area = toledo_area
+				area = castille_area
+				area = basque_country
 			}
-			NOT = { owned_by = ROOT }
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			valencia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			catalonia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			aragon_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 20
+				OR = {
+					area = valencia_area
+					area = catalonia_area
+					area = aragon_area
+					area = toledo_area
+					area = castille_area
+					area = basque_country
+				}
 			}
 		}
 
 		effect = {
-			if = {
-				limit = {
-					exists = POR
-					valid_for_personal_unions_trigger = yes
-					POR = {
-						valid_for_personal_unions_trigger = yes
-						NOT = { alliance_with = ROOT marriage_with = ROOT }
-					}
-				}
-				add_casus_belli = {
-					type = cb_restore_personal_union
-					months = 300
-					target = POR
-				}
-			}
-			else_if = {
-				limit = {
-					exists = POR
-					valid_for_personal_unions_trigger = yes
-					POR = {
-						valid_for_personal_unions_trigger = yes
-						alliance_with = ROOT 
-						marriage_with = ROOT 
-					}
-				}
-				custom_tooltip = spa_pu_por_tt
-			}		
-			if = {
-				limit = {
-					exists = NAP
-					valid_for_personal_unions_trigger = yes
-					NAP = {
-						valid_for_personal_unions_trigger = yes
-					}
-				}
-				add_casus_belli = {
-					type = cb_restore_personal_union
-					months = 300
-					target = NAP
-				}
-				sicily_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				western_sicily_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				calabria_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				apulia_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				naples_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				120 = {
-					if = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-					add_permanent_claim = ROOT
-					}
-				}
-			}
-			else = {
-				sicily_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				western_sicily_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				calabria_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				apulia_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				naples_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				120 = {
-					if = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_permanent_claim = ROOT
-					}
-				}
-			}
+			beieras_area = { add_perma_claim = yes }
+			alentejo_area = { add_perma_claim = yes }
+			baleares_area = { add_perma_claim = yes }
+			italy_region = { add_perma_claim = yes }
 		}
 	}
 	
@@ -1958,101 +1973,117 @@ dom_cas_missions_3 = {
 		required_missions = { gc_cas_spa_reconquista_three2 }
 		position = 3
 		provinces_to_highlight = {
-			OR = {
-				area = sicily_area
-				area = western_sicily_area
-				area = calabria_area
-				area = apulia_area
-				area = naples_area
-				province_id = 120
-			}
+			region = italy_region
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
 		trigger = {
 			OR = {
-				NAP = {
-					junior_union_with = ROOT
+				num_of_owned_provinces_with = {
+					value = 15
+					region = italy_region
 				}
-				AND = {
-					sicily_area = {
-						type = all
-						country_or_non_sovereign_subject_holds = ROOT
+				any_ally = {
+					capital_scope = {
+						region = italy_region
 					}
-					western_sicily_area = {
-						type = all
-						country_or_non_sovereign_subject_holds = ROOT
+					num_of_owned_provinces_with = {
+						value = 15
+						region = italy_region
 					}
-					calabria_area = {
-						type = all
-						country_or_non_sovereign_subject_holds = ROOT
-					}
-					apulia_area = {
-						type = all
-						country_or_non_sovereign_subject_holds = ROOT
-					}
-					naples_area = {
-						type = all
-						country_or_non_sovereign_subject_holds = ROOT
-					}
-					120 = {
-						country_or_non_sovereign_subject_holds = ROOT
+					has_opinion = {
+						who = ROOT
+						value = 125
 					}
 				}
 			}
 		}
 
 		effect = {
-			add_country_modifier = {
-				name = "spa_rb_italian_ambition_mod"
-				duration = 5475
-			}
-			tuscany_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
+			simple_dynamic_effect = {
+				first_custom_tooltip = gc_cas_spa_italian_ambition2_first_ct_tt
+				first_limit = "
+				num_of_owned_provinces_with = {
+					value = 15
+					region = italy_region
+				}"
+				first_effect = "
+				add_country_modifier = {
+					name = spa_rb_italian_ambition_mod
+					duration = 7300
+				}"
+				second_custom_tooltip = gc_cas_spa_italian_ambition2_second_ct_tt
+				second_limit = "
+				any_ally = {
+					capital_scope = {
+						region = italy_region
+					}
+					num_of_owned_provinces_with = {
+						value = 15
+						region = italy_region
+					}
+					has_opinion = {
+						who = ROOT
+						value = 125
+					}
+				}"
+				second_effect = "
+				add_dip_power = 125
+				hidden_effect = {
+					every_country = {
+						add_aggressive_expansion = {
+							who = ROOT
+							value = -40
+							apply_calc = no
+						}
+					}	
 				}
-				add_permanent_claim = ROOT
-			}
-			lombardy_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			po_valley_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			wallonia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			flanders_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			brabant_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
+				custom_tooltip = tm_spa_lose_50_ae_tt
+				add_treasury = 500
+				custom_tooltip = tm_ally_has_effects_too
+				"
 			}
 			hidden_effect = {
-				remove_casus_belli = {
-					type = cb_restore_personal_union
-					target = NAP
+				if = {
+					limit = {
+						any_ally = {
+							capital_scope = {
+								region = italy_region
+							}
+							num_of_owned_provinces_with = {
+								value = 15
+								region = italy_region
+							}
+							has_opinion = {
+								who = ROOT
+								value = 125
+							}
+						}
+					}
+					random_ally = {
+						limit = {
+							capital_scope = {
+								region = italy_region
+							}
+							num_of_owned_provinces_with = {
+								value = 10
+								region = italy_region
+							}
+							has_opinion = {
+								who = ROOT
+								value = 125
+							}
+						}
+						add_dip_power = 125
+						every_country = {
+							add_aggressive_expansion = {
+								who = ROOT
+								value = -40
+								apply_calc = no
+							}
+						}
+						add_treasury = 500
+					}
 				}
 			}
 		}
@@ -2063,45 +2094,102 @@ dom_cas_missions_3 = {
 		required_missions = { gc_cas_spa_italian_ambition2 }
 		position = 4
 		provinces_to_highlight = {
-			OR = {
-				area = tuscany_area
-				area = lombardy_area
-				area = po_valley_area
-			}
+			region = italy_region
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
 		trigger = {
-			tuscany_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			lombardy_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			po_valley_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+			OR = {
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 30
+					region = italy_region
+				}
+				any_ally = {
+					capital_scope = { region = italy_region }
+					development_in_provinces = {
+						value = 500
+						region = italy_region
+					}
+				}
 			}
 		}
 		effect = {
-			add_country_modifier = {
-				name = "spa_milan"
-				duration = 7300
+			simple_dynamic_effect = {
+				first_custom_tooltip = gc_cas_spa_italian_ambition2_first_ct_tt
+				first_limit = "
+				num_of_owned_provinces_with = {
+					value = 30
+					region = italy_region
+				}"
+				first_effect = "
+				add_country_modifier = {
+					name = spa_milan
+					duration = 7300
+				}
+				change_ruler_stat = {
+					stat = adm
+					amount = 1
+				}
+				change_ruler_stat = {
+					stat = dip
+					amount = 1
+				}
+				change_ruler_stat = {
+					stat = mil
+					amount = 1
+				}
+				"
+				second_custom_tooltip = gc_cas_spa_italian_ambition2_second_ct_tt
+				second_limit = "
+				any_ally = {
+					capital_scope = { region = italy_region }
+					development_in_provinces = {
+						value = 500
+						region = italy_region
+					}
+				}
+				"
+				second_effect = "
+				capital_scope = {
+					area = {
+						add_province_modifier = {
+							name = spa_italian_cooperation
+							duration = -1
+						}
+					}
+				}
+				custom_tooltip = tm_ally_has_effects_too
+				"
 			}
-			
-			change_ruler_stat = {
-				stat = adm
-				amount = 1
-			}
-			change_ruler_stat = {
-				stat = dip
-				amount = 1
-			}
-			change_ruler_stat = {
-				stat = mil
-				amount = 1
+			hidden_effect = {
+				if = {
+					limit = {
+						any_ally = {
+							capital_scope = { region = italy_region }
+							development_in_provinces = {
+								value = 500
+								region = italy_region
+							}
+						}
+					}
+					random_ally = {
+						limit = {
+							capital_scope = { region = italy_region }
+							development_in_provinces = {
+								value = 500
+								region = italy_region
+							}
+						}
+						capital_scope = {
+							area = {
+								add_province_modifier = {
+									name = spa_italian_cooperation
+									duration = -1
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -2111,54 +2199,47 @@ dom_cas_missions_3 = {
 		required_missions = { gc_cas_spa_italian_ambition_22 gc_spa_austrian_union2 }
 		position = 5
 		provinces_to_highlight = { 
-			OR = {
-				province_id = 101
-				province_id = 205
-				province_id = 193
-				province_id = 94
-			}
-			OR = { 	
-				NOT = { country_or_non_sovereign_subject_holds = ROOT }
-				NOT = { controlled_by = ROOT }
-				owner = { NOT = { gives_military_access_to = ROOT } }
+			owned_by = ROOT
+			NOT = {
+				OR = {
+					has_building = dirt_path
+					has_building = road
+					has_building = highway
+				}
 			}
 		}
 		trigger = {
-			OR = { 
-				num_of_transport = 50 
-				AND = {
-					101 = { 
-						OR = { 	
-							country_or_non_sovereign_subject_holds = ROOT 
-							controlled_by = ROOT 
-							owner = { gives_military_access_to = ROOT }
-						}
-					}
-					205 = { 
-						OR = { 	
-							controlled_by = ROOT 
-							country_or_non_sovereign_subject_holds = ROOT 
-							owner = { gives_military_access_to = ROOT }
-						}
-					}
-					193 = { 
-						OR = { 	
-							controlled_by = ROOT 
-							country_or_non_sovereign_subject_holds = ROOT 
-							owner = { gives_military_access_to = ROOT }
-						}
-					}
-					94 = { 
-						OR = { 	
-							controlled_by = ROOT 
-							country_or_non_sovereign_subject_holds = ROOT 
-							owner = { gives_military_access_to = ROOT }
-						}
-					}
+			num_of_owned_provinces_with = {
+				value = 15
+				OR = {
+					has_building = dirt_path
+					has_building = road
+					has_building = highway
 				}
 			}
 		}
 		effect = {
+			hidden_effect = {
+				every_ally = {
+					limit = {
+						capital_scope = {
+							OR = {
+								region = british_isles_region
+								region = france_region
+								region = south_german_region
+								region = north_german_region
+							}
+						}
+					}
+					low_countries_region = {
+						limit = { 
+							NOT = { is_core = ROOT } 
+							NOT = { owned_by = ROOT } 
+						}
+						add_permanent_claim = ROOT 
+					}
+				}
+			}
 			low_countries_region = {
 				limit = { 
 					NOT = { is_core = ROOT } 
@@ -2166,9 +2247,10 @@ dom_cas_missions_3 = {
 				}
 				add_permanent_claim = ROOT 
 			}
+			custom_tooltip = tm_spa_all_allies_claims_in_lowlands_tt
 			add_country_modifier = {
 				name = spa_long_range_logistics_modifier
-				duration = 7300
+				duration = 10950
 			}
 		}
 	}
@@ -2184,10 +2266,17 @@ dom_cas_missions_3 = {
 		}
 
 		trigger = {
-			low_countries_region = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-				religion = ROOT
+			OR = {
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 10
+					region = low_countries_region
+				}
+				any_ally = {
+					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+						value = 10
+						region = low_countries_region
+					}
+				}
 			}
 		}
 		effect = {
@@ -2203,24 +2292,9 @@ dom_cas_missions_3 = {
 		required_missions = { gc_spa_invade_england2 gc_spa_spanish_netherlands2 spa_fecho_imperio spa_system_councils spa_reform_tercios }
 
 		trigger = {
-			OR = {
-				ROOT = {
-					is_emperor = yes
-					if = {
-						limit = {
-							has_dlc = "Emperor"
-						}
-						hre_reform_passed = emperor_erbkaisertum
-					}
-					else = {
-						hre_reform_passed = erbkaisertum
-					}
-				}
-				AND = {
-					NOT = { hre_size = 1 }
-					NOT = { exists = HLR }
-				}
-			}
+			total_development = 2500
+			monthly_income = 500
+			army_size = 250
 		}
 		effect = {
 			add_country_modifier = {
@@ -2309,7 +2383,7 @@ dom_cas_missions_3_b = {
 			OR = {
 				stability = 3 
 				full_idea_group = court_ideas 
-				full_idea_group = economic_ideas 
+				full_idea_group = bureaucratic_ideas 
 				monthly_adm = 10 
 			}
 		}
@@ -2600,15 +2674,19 @@ dom_cas_missions_3_c = {
 			has_discovered = ROOT
 		}
 		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = spa_mayan_conquest_tooltip
-				central_america_region = {
-					type = all
-					OR = {
-						is_empty = yes
-						country_or_non_sovereign_subject_holds = ROOT
-					}
-				}
+			#custom_trigger_tooltip = {
+			#	tooltip = spa_mayan_conquest_tooltip
+			#	central_america_region = {
+			#		type = all
+			#		OR = {
+			#			is_empty = yes
+			#			country_or_non_sovereign_subject_holds = ROOT
+			#		}
+			#	}
+			#}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 15
+				region = central_america_region
 			}
 		}
 		effect = {
@@ -2719,6 +2797,25 @@ dom_cas_missions_4 = {
 		}
 		effect = { 
 			if = {
+				limit = { 
+					NAV = { is_subject = no }
+				}
+				add_casus_belli = {
+					type = cb_vassalize_mission
+					months = 300
+					target = NAV
+				}
+			}
+			else = {
+				basque_country = { add_perma_claim = yes }
+			}
+			toledo_area = { add_perma_claim = yes }
+			castille_area = { add_perma_claim = yes }
+			aragon_area = { add_perma_claim = yes }
+			valencia_area = { add_perma_claim = yes }
+			catalonia_area = { add_perma_claim = yes }
+
+			if = {
 				limit = { has_disaster = infantes_of_aragon }
 				end_disaster = infantes_of_aragon
 			}
@@ -2756,20 +2853,8 @@ dom_cas_missions_4 = {
 					duration = 9125
 					add = yes
 				}
-				if = { 
-					limit = {
-						exists = ARA
-						valid_for_personal_unions_trigger = yes
-						ARA = {
-							valid_for_personal_unions_trigger = yes
-						}
-					}
-					add_casus_belli = {
-						type = cb_restore_personal_union
-						months = 300
-						target = ARA
-					}
-				}
+			}
+			hidden_effect = {
 				if = {
 					limit = { 
 						NAV = { is_subject = no }
@@ -2780,8 +2865,6 @@ dom_cas_missions_4 = {
 						target = NAV
 					}
 				}
-			}
-			hidden_effect = {
 				if = {
 					limit = { has_country_flag = cas_royalist_flag }
 					add_country_modifier = {
@@ -2813,30 +2896,6 @@ dom_cas_missions_4 = {
 						duration = 9125
 						add = yes
 					}
-					if = { 
-						limit = {
-							exists = ARA
-							valid_for_personal_unions_trigger = yes
-							ARA = {
-								valid_for_personal_unions_trigger = yes
-							}
-						}
-						add_casus_belli = {
-							type = cb_restore_personal_union
-							months = 300
-							target = ARA
-						}
-					}
-					if = {
-						limit = { 
-							NAV = { is_subject = no }
-						}
-						add_casus_belli = {
-							type = cb_vassalize_mission
-							months = 300
-							target = NAV
-						}
-					}
 				}
 			}
 		}
@@ -2855,13 +2914,65 @@ dom_cas_missions_4 = {
 		}
 
 		trigger = {
-			beieras_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT 
+			if = {
+				limit = { exists = PBR }
+				OR = {
+					AND = {
+						beieras_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT 
+						}
+						alentejo_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT 
+						}
+					}
+					AND = {
+						alliance_with = PBR
+						PBR = {
+							has_opinion = {
+								who = ROOT
+								value = 150
+							}
+						}
+					}
+				}
 			}
-			alentejo_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT 
+			else_if = {
+				limit = { exists = POR }
+				OR = {
+					AND = {
+						beieras_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT 
+						}
+						alentejo_area = {
+							type = all
+							country_or_non_sovereign_subject_holds = ROOT 
+						}
+					}
+					AND = {
+						alliance_with = POR
+						POR = {
+							has_opinion = {
+								who = ROOT
+								value = 150
+							}
+						}
+					}
+				}
+			}
+			else = {
+				AND = {
+					beieras_area = {
+						type = all
+						country_or_non_sovereign_subject_holds = ROOT 
+					}
+					alentejo_area = {
+						type = all
+						country_or_non_sovereign_subject_holds = ROOT 
+					}
+				}
 			}
 		}
 
@@ -2870,6 +2981,8 @@ dom_cas_missions_4 = {
 			add_stability_or_adm_power = yes 
 			227 = { add_base_production = 2 } 
 			231 = { add_base_production = 2 }
+			4554 = { add_base_production = 2 }
+			1747 = { add_base_production = 2 }
 		}
 	}
 	
@@ -2877,15 +2990,41 @@ dom_cas_missions_4 = {
 		icon = join_the_empire
 		required_missions = { gc_cas_spa_reconquista_three2 gc_cas_spa_reconquista_two2  }
 		position = 3
-		provinces_to_highlight = { }
-		trigger = {
-			HAB = { 
-				NOT = { army_size = ROOT } 
-				NOT = { total_development = ROOT } 
+		provinces_to_highlight = {
+			owner = {
+				OR = {
+					capital_scope = {
+						OR = {
+							region = north_german_region
+							region = south_german_region
+						}
+					}
+					tag = DAN
+				}
 			}
-			OR = { 
-				power_projection = 50 
-				is_great_power = yes 
+		}
+		trigger = {
+			any_ally = {
+				OR = {
+					tag = DAN
+					capital_scope = {
+						OR = {
+							region = north_german_region
+							region = south_german_region
+						}
+					}
+				}
+				num_of_owned_provinces_with = {
+					value = 15
+					OR = {
+						region = north_german_region
+						region = south_german_region
+					}
+				}
+				has_opinion = {
+					who = ROOT
+					value = 150
+				}
 			}
 		}	
 		effect = { 
@@ -2893,43 +3032,37 @@ dom_cas_missions_4 = {
 				name = spa_bid_for_the_hab_crown_modifier
 				duration = 5475
 			}
-			if = { 
-				limit = {
-					exists = HAB
-					valid_for_personal_unions_trigger = yes
-					HAB = {
-						valid_for_personal_unions_trigger = yes
+			hidden_effect = {
+				random_ally = {
+					limit = {
+						OR = {
+							tag = DAN
+							capital_scope = {
+								OR = {
+									region = north_german_region
+									region = south_german_region
+								}
+							}
+						}
+						num_of_owned_provinces_with = {
+							value = 15
+							OR = {
+								region = north_german_region
+								region = south_german_region
+							}
+						}
+						has_opinion = {
+							who = ROOT
+							value = 150
+						}
 					}
-				}
-				add_casus_belli = {
-					type = cb_restore_personal_union
-					months = 300
-					target = HAB
+					add_country_modifier = {
+						name = spa_bid_for_the_hab_crown_modifier
+						duration = 5475
+					}
 				}
 			}
-			else = {
-				tirol_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				austria_proper_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				inner_austria_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-			}
+			custom_tooltip = tm_ally_has_effects_too
 		}
 	}
 	
@@ -2938,32 +3071,72 @@ dom_cas_missions_4 = {
 		required_missions = { spa_handle_austria }
 		position = 4
 		provinces_to_highlight = {
-			OR = {
-				area = inner_austria_area
-				area = austria_proper_area
-				area = tirol_area
+			owner = {
+				OR = {
+					capital_scope = {
+						OR = {
+							region = north_german_region
+							region = south_german_region
+						}
+					}
+					tag = DAN
+				}
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
 		trigger = {
-			inner_austria_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			austria_proper_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			tirol_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+			any_ally = {
+				OR = {
+					tag = DAN
+					capital_scope = {
+						OR = {
+							region = north_german_region
+							region = south_german_region
+						}
+					}
+				}
+				development_in_provinces = {
+					value = 500
+					OR = {
+						region = north_german_region
+						region = south_german_region
+					}
+				}
 			}
 		}
 		effect = {
 			add_country_modifier = {
 				name = "spanish_imperial_ambition"
-				duration = 7300
+				duration = -1
+				desc = UNTIL_ALLIANCE_BREAK
+			}
+			custom_tooltip = tm_ally_has_effects_too
+			hidden_effect = {
+				random_ally = {
+					limit = {
+						OR = {
+							tag = DAN
+							capital_scope = {
+								OR = {
+									region = north_german_region
+									region = south_german_region
+								}
+							}
+						}
+						development_in_provinces = {
+							value = 500
+							OR = {
+								region = north_german_region
+								region = south_german_region
+							}
+						}
+					}
+					add_country_modifier = {
+						name = spanish_imperial_ambition
+						duration = -1
+						desc = UNTIL_ALLIANCE_BREAK
+					}
+				}
 			}
 		}
 	}
@@ -2973,6 +3146,7 @@ dom_cas_missions_4 = {
 		required_missions = { gc_spa_austrian_union2 spa_new_capital }
 		position = 6
 		trigger = {
+			num_of_subjects = 2
 			total_development = 2000 
 			if = { 
 				limit = { 
@@ -2981,14 +3155,7 @@ dom_cas_missions_4 = {
 						has_dlc = "Emperor" 
 					}
 				}
-				NOT = { great_power_rank = 2 }
-			}
-			if = { 
-				limit = { has_dlc = "Mandate of Heaven" }
-				OR = { 
-					in_golden_age = yes 
-					has_had_golden_age = yes 
-				}
+				NOT = { great_power_rank = 5 }
 			}
 		}
 		effect = {
@@ -3236,7 +3403,10 @@ dom_cas_missions_4_c = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			num_of_explorers = 1
+			OR = {
+				num_of_explorers = 1
+				num_of_colonists = 1
+			}
 			custom_trigger_tooltip = {
 				tooltip = spa_plus_ultra_tooltip
 				OR = {
@@ -3274,8 +3444,12 @@ dom_cas_missions_4_c = {
 		
 		trigger = { 
 			OR = { 
-				full_idea_group = exploration_ideas
+				full_idea_group = colonialism_ideas
 				full_idea_group = expansion_ideas
+				AND = {
+					colonial_office = 1
+					colony = 1
+				}
 			}
 		}
 	
@@ -3370,10 +3544,7 @@ dom_cas_missions_4_c = {
 				}
 				490 = {
 					country_or_non_sovereign_subject_holds = ROOT
-					OR = {
-						has_building = temple
-						has_building = cathedral
-					}
+					has_tax_building_trigger = yes
 				
 				}
 			}
@@ -3383,7 +3554,7 @@ dom_cas_missions_4_c = {
 				}
 			}
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 5
+				value = 4
 				OR = {
 					area = hispaniola_area
 					area = dominica_area
@@ -3456,9 +3627,9 @@ dom_cas_missions_4_c = {
 					}
 				}
 			}
-			mexico_region = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 25
+				region = mexico_region
 			}
 		}
 		effect = {
@@ -3705,7 +3876,7 @@ dom_cas_missions_5 = {
 				limit = { ai = no } 
 				OR = { 
 					treasurer = 3 
-					full_idea_group = economic_ideas 
+					full_idea_group = guild_ideas 
 				}
 				OR = { 
 					trade_income_percentage = 0.5
@@ -3810,11 +3981,11 @@ dom_cas_missions_5 = {
 		trigger = { 
 			reform_level = 3
 			OR = { 
-				full_idea_group = administrative_ideas 
+				full_idea_group = empire_ideas 
 				adm = 6 
-				monthly_adm = 15 
+				monthly_adm = 12 
 			}
-			crown_land_share = 50
+			crown_land_share = 40
 		}
 		effect = {
 			add_government_reform = system_of_councils_reform 
@@ -3938,7 +4109,7 @@ dom_cas_missions_5_b = {
 		effect = {
 			if = {
 				limit = { 
-					NOT = { mission_completed = gc_ara_occitania2 }
+					NOT = { mission_completed = gc_ara_genoa2 }
 				}
 				savoy_dauphine_area = {
 					limit = {
@@ -4224,7 +4395,7 @@ dom_cas_missions_5_c = {
 		trigger = {
 			custom_trigger_tooltip = {
 				tooltip = cas_spice_islands_tooltip
-				moluccas_region = {
+				colonial_phil = {
 					type = all
 					has_discovered = ROOT
 				}
@@ -4368,10 +4539,7 @@ dom_cas_missions_5_c = {
 				}
 				484 = {
 					country_or_non_sovereign_subject_holds = ROOT
-					OR = {
-						has_building = workshop
-						has_building = counting_house
-					}
+					has_production_building_trigger = yes
 				}
 			}
 			else = {
@@ -4380,7 +4548,7 @@ dom_cas_missions_5_c = {
 				}
 			}
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value =  5
+				value =  4
 				OR = {
 					area = cuba_area
 					area = east_cuba_area

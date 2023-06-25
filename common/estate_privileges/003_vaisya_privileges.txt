@@ -342,7 +342,7 @@ estate_vaisyas_monopoly_of_textiles = {
 	icon = privilege_monopoly_of_goods_cloth
 	#max_absolutism = -10
 	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
-	loyalty = 0.05
+	loyalty = 0.10
 	is_valid = {
 		OR = {
 			has_dlc = "Emperor"
@@ -491,7 +491,7 @@ estate_vaisyas_monopoly_of_dyes = {
 	icon = privilege_monopoly_of_goods_dyes
 	#max_absolutism = -10
 	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
-	loyalty = 0.05
+	loyalty = 0.10
 	is_valid = {
 		OR = {
 			has_dlc = "Emperor"
@@ -628,7 +628,7 @@ estate_vaisyas_monopoly_of_glass = {
 	icon = privilege_monopoly_of_goods_glass
 	#max_absolutism = -10
 	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
-	loyalty = 0.05
+	loyalty = 0.10
 	is_valid = {
 		OR = {
 			has_dlc = "Emperor"
@@ -765,7 +765,7 @@ estate_vaisyas_monopoly_of_paper = {
 	icon = privilege_monopoly_of_goods_paper
 	#max_absolutism = -10
 	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
-	loyalty = 0.05
+	loyalty = 0.10
 	is_valid = {
 		OR = {
 			has_dlc = "Emperor"
@@ -1132,91 +1132,91 @@ estate_vaisyas_khmer_irrigation = {
 }
 
 #Domination generic Estate Privileges
-estate_vaisyas_development_of_cities = {
-	icon = privilege_development_efficiency
-	loyalty = 0.05
-	influence = 0.05
-	#max_absolutism = -5
-	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
-	is_valid = {
-		has_dlc = "Domination"
-	}
-	on_granted = {
-		custom_tooltip = estate_vaisyas_development_of_cities_gt
-		tooltip = {
-			add_province_modifier = {
-				name = estate_vaisyas_development_of_cities_mod
-				duration = -1
-			}
-		}
-	}
-	on_revoked = {
-		custom_tooltip = estate_vaisyas_development_of_cities_rt
-	}
-	on_granted_province = {
-		if = {
-			limit = {
-				OR = {
-					province_has_center_of_trade_of_level = 1
-					has_river_estuary_trigger = yes
-				}
-			}
-			add_province_modifier = {
-				name = estate_vaisyas_development_of_cities_mod
-				duration = -1
-			}
-		}
-	}
-	on_invalid_province = {
-		if = {
-			limit = { has_province_modifier = estate_vaisyas_development_of_cities_mod }
-			remove_province_modifier = estate_vaisyas_development_of_cities_mod
-		}
-	}
-	on_revoked_province = {
-		if = {
-			limit = { has_province_modifier = estate_vaisyas_development_of_cities_mod }
-			remove_province_modifier = estate_vaisyas_development_of_cities_mod
-		}
-	}
-
-	mechanics = {
-		no_estate_crownland_loss_from_developing
-	}
-	ai_will_do = {
-		factor = 0
-	}
-}
-estate_vaisyas_control_over_the_coinage = {
-	icon = privilege_gold_mint
-	loyalty = 0.0
-	influence = 0.05
-	#max_absolutism = -5
-	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
-	is_valid = {
-		has_dlc = "Domination"
-	}
-	can_select = {
-	}
-	on_granted = {
-		enable_estate_action = {
-			estate_action = RECRUIT_MINISTER_VAISYAS
-		}
-	}
-	on_revoked = {
-		disable_estate_action = {
-			estate_action = RECRUIT_MINISTER_VAISYAS
-		}
-	}
-	on_invalid = {
-		disable_estate_action = {
-			estate_action = RECRUIT_MINISTER_VAISYAS
-		}
-	}
-	ai_will_do = {
-		factor = 0
-	}
-}
+#estate_vaisyas_development_of_cities = {
+#	icon = privilege_development_efficiency
+#	loyalty = 0.05
+#	influence = 0.05
+#	#max_absolutism = -5
+#	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+#	is_valid = {
+#		has_dlc = "Domination"
+#	}
+#	on_granted = {
+#		custom_tooltip = estate_vaisyas_development_of_cities_gt
+#		tooltip = {
+#			add_province_modifier = {
+#				name = estate_vaisyas_development_of_cities_mod
+#				duration = -1
+#			}
+#		}
+#	}
+#	on_revoked = {
+#		custom_tooltip = estate_vaisyas_development_of_cities_rt
+#	}
+#	on_granted_province = {
+#		if = {
+#			limit = {
+#				OR = {
+#					province_has_center_of_trade_of_level = 1
+#					has_river_estuary_trigger = yes
+#				}
+#			}
+#			add_province_modifier = {
+#				name = estate_vaisyas_development_of_cities_mod
+#				duration = -1
+#			}
+#		}
+#	}
+#	on_invalid_province = {
+#		if = {
+#			limit = { has_province_modifier = estate_vaisyas_development_of_cities_mod }
+#			remove_province_modifier = estate_vaisyas_development_of_cities_mod
+#		}
+#	}
+#	on_revoked_province = {
+#		if = {
+#			limit = { has_province_modifier = estate_vaisyas_development_of_cities_mod }
+#			remove_province_modifier = estate_vaisyas_development_of_cities_mod
+#		}
+#	}
+#
+#	mechanics = {
+#		no_estate_crownland_loss_from_developing
+#	}
+#	ai_will_do = {
+#		factor = 0
+#	}
+#}
+#estate_vaisyas_control_over_the_coinage = {
+#	icon = privilege_gold_mint
+#	loyalty = 0.0
+#	influence = 0.05
+#	#max_absolutism = -5
+#	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+#	is_valid = {
+#		has_dlc = "Domination"
+#	}
+#	can_select = {
+#	}
+#	on_granted = {
+#		enable_estate_action = {
+#			estate_action = RECRUIT_MINISTER_VAISYAS
+#		}
+#	}
+#	on_revoked = {
+#		disable_estate_action = {
+#			estate_action = RECRUIT_MINISTER_VAISYAS
+#		}
+#	}
+#	on_invalid = {
+#		disable_estate_action = {
+#			estate_action = RECRUIT_MINISTER_VAISYAS
+#		}
+#	}
+#	ai_will_do = {
+#		factor = 0
+#	}
+#}
 estate_vaisyas_economical_boost = {
 	icon = privilege_monopoly
 	loyalty = 0.0
@@ -1273,8 +1273,8 @@ estate_vaisyas_economical_boost = {
 			}
 		}
 		modifier = {
-			placed_merchant_power = 5
-			global_prov_trade_power_modifier = 0.25
+			placed_merchant_power = 3
+			global_prov_trade_power_modifier = 0.10
 		}
 	}
 	influence_scaled_conditional_modifier = {	#Modifier that are applied if the specified conditions are true. At 100% Influence you gain 100% of the modifier.
@@ -1285,48 +1285,48 @@ estate_vaisyas_economical_boost = {
 			}
 		}
 		modifier = {
-			placed_merchant_power = 10
-			global_prov_trade_power_modifier = 0.5
+			placed_merchant_power = 5
+			global_prov_trade_power_modifier = 0.20
 		}
 	}
 	ai_will_do = {
 		factor = 0
 	}
 }
-estate_vaisyas_expanded_guild_rights = {
-	icon = privilege_empty_throne
-	loyalty = 0.0
-	influence = 0.05
-	#max_absolutism = -5
-	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
-	is_valid = {
-		has_dlc = "Domination"
-	}
-	on_granted = {
-		enable_estate_action = {
-			estate_action = SEEK_GUILD_SUPPORT_VAISYAS
-		}
-	}
-	on_invalid = {
-		disable_estate_action = {
-			estate_action = SEEK_GUILD_SUPPORT_VAISYAS
-		}
-	}
-	on_revoked = {
-		disable_estate_action = {
-			estate_action = SEEK_GUILD_SUPPORT_VAISYAS
-		}
-	}
-	mechanics = {
-	}
-	ai_will_do = {
-		factor = 10
-		modifier = {
-			factor = 0.1
-			is_absolutism_active = yes
-		}
-	}
-}
+#estate_vaisyas_expanded_guild_rights = {
+#	icon = privilege_empty_throne
+#	loyalty = 0.0
+#	influence = 0.05
+#	#max_absolutism = -5
+#	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+#	is_valid = {
+#		has_dlc = "Domination"
+#	}
+#	on_granted = {
+#		enable_estate_action = {
+#			estate_action = SEEK_GUILD_SUPPORT_VAISYAS
+#		}
+#	}
+#	on_invalid = {
+#		disable_estate_action = {
+#			estate_action = SEEK_GUILD_SUPPORT_VAISYAS
+#		}
+#	}
+#	on_revoked = {
+#		disable_estate_action = {
+#			estate_action = SEEK_GUILD_SUPPORT_VAISYAS
+#		}
+#	}
+#	mechanics = {
+#	}
+#	ai_will_do = {
+#		factor = 10
+#		modifier = {
+#			factor = 0.1
+#			is_absolutism_active = yes
+#		}
+#	}
+#}
 estate_vaisyas_force_impressment = {
 	icon = privilege_heavy_ship
 	loyalty = 0.0

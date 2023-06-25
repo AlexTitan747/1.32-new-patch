@@ -13,9 +13,10 @@ country_event = {
 
 		add_country_modifier = {
 			name = tm_CRI_integration_of_the_tributaries
-			duration = 9125
+			duration = 10950
 		}
-		add_dip_power = -75
+		add_treasury = 500
+		add_manpower = 30
 	}
 
 	option = {
@@ -25,14 +26,12 @@ country_event = {
 		custom_tooltip = inherit_the_tributaries_TT
 
 		hidden_effect = {
-			if = {
+			every_subject_country = {
 				limit = {
-					MOL = { is_subject_of_type_with_overlord = { who = CRI type = tributary_state } }
+					is_subject_of_type = tributary_state
 				}
-				inherit = MOL
+				inherit = PREV
 			}
-			inherit = ZAZ
-			inherit = CHR
 		}
 
 		add_adm_power = -150

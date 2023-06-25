@@ -4,7 +4,7 @@ united_cantons_reform = {
 	modifiers = {
 		governing_capacity = -100
 		possible_policy = 1
-		mercenary_manpower = 0.5
+		mercenary_manpower = 0.3
 	}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 40
@@ -287,6 +287,11 @@ tysyatsky_reform = {
 		nobles_influence_modifier = 0.05
 		nobles_loyalty_modifier = 0.1
 	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
 	custom_attributes = {
 		recruiting_generals_increases_nobles_loyalty = yes
 	}
@@ -309,6 +314,11 @@ namestnik_reform = {
 		autonomy_change_time = -0.25
 		min_autonomy_in_territories = -0.05
 		trade_company_investment_cost = -0.1
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	ai = {
 		factor = 1
@@ -333,6 +343,11 @@ oprichnina_reform = {
 	}
 	custom_attributes = {
 		seizing_land_no_rebels = yes
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	ai = {
 		factor = 1
@@ -359,9 +374,12 @@ vodka_of_the_crown_reform = {
 			every_owned_province = {
 				if = {
 					limit = {
-						trade_goods = grain
+						OR = {
+							trade_goods = grain
+							trade_goods = ale
+						}
 					}
-					add_province_modifier = { 
+					add_province_modifier = {
 						name = grain_vodka_bonus_prod
 						duration = -1
 						hidden = yes
@@ -1872,8 +1890,8 @@ mercenary_leadership_reform = {
 		}
 	}
 	modifiers = {
-		mercenary_cost = -0.25
-		possible_condottieri = 0.5
+		mercenary_cost = -0.15
+		mercenary_manpower = 0.05
 	}
 	
 	ai = {
@@ -1908,8 +1926,8 @@ doppelsoldner_reform = {
 		}
 	}
 	modifiers = {
-		mercenary_cost = -0.25
-		possible_condottieri = 0.5
+		mercenary_cost = -0.20
+		mercenary_manpower = 0.10
 		merc_leader_army_tradition = 0.25
 	}
 	conditional = {
@@ -1949,6 +1967,13 @@ maritime_military_reform = {
 		naval_morale = 0.1
 		global_ship_cost = -0.05
 	}
+	conditional = {
+		allow = { has_dlc = "Domination" }
+		government_abilities = {
+			naval_professionalism_mechanic
+		}
+	}
+
 	
 	ai = {
 		factor = 1
@@ -2495,7 +2520,7 @@ rajput_military_leadership_reform = {
 		rajput_loyalty_modifier = 0.1
 		rajput_influence_modifier = 0.1
 		rajput_privilege_slots = 1
-		special_unit_forcelimit = 0.1
+		allowed_rajput_fraction = 0.1
 	}
 	
 	ai = {
@@ -2542,6 +2567,7 @@ subutais_strategies_reform = {
 		OR = {
 			culture_group = altaic
 			culture_group = tartar
+			primary_culture = altaic_new
 		}
 	}
 	trigger = {
@@ -2801,7 +2827,7 @@ ordennancas_reform = {
 	}
 	modifiers = {
 		leader_land_shock = 1 
-		army_tradition_decay = -0.0005
+		army_tradition_decay = -0.005
 	}
 	custom_attributes = {
 		can_raise_manpower_from_home_region = yes
@@ -2896,8 +2922,7 @@ condottieri_contracts_reform = {
 		}
 	}
 	modifiers = {
-		mercenary_cost = -0.33
-		possible_condottieri = 1
+		mercenary_cost = -0.25
 		mercenary_discipline = 0.05
 	}
 	
@@ -3055,10 +3080,10 @@ swiss_mercenary_reform = {
 		}
 	}
 	modifiers = {
-		mercenary_cost = -0.25
-		possible_condottieri = 0.5
-		merc_leader_army_tradition = 0.33
-		mercenary_discipline = 0.05
+		mercenary_cost = -0.15
+		merc_leader_army_tradition = 0.25
+		mercenary_manpower = 0.1
+		mercenary_discipline = 0.025
 	}
 	conditional = {
 		allow = { has_dlc = "Domination" }
@@ -3478,6 +3503,7 @@ streltsy_reform = {
 			#has_reform = great_veche_republic
 			has_reform = russian_empire_reform
 			has_reform = great_russian_republic_reform
+			has_reform = russian_republic
 		}
 	}
 	trigger = {
@@ -4035,6 +4061,11 @@ consulate_of_the_sea = {
 			has_dlc = "Mare Nostrum"
 		}
 		can_use_trade_post = yes
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	
 	ai = {

@@ -1,5 +1,5 @@
 ##################TITAN MONUMENTS#####################################
-cape_port = {
+cape_port_monument = {
 	start = 0 #Out of game
 	date = 1431.01.01
 	time = { months = 0	}
@@ -12,6 +12,9 @@ cape_port = {
 	build_trigger = {
 		culture = khoisan
 		province_is_or_accepts_culture = yes
+		FROM = {
+			has_country_flag = tm_can_build_cape_port
+		}
 	}
 
 	on_built = {
@@ -446,7 +449,7 @@ danevirke = {
 			local_defensiveness = 0.2
 		}
 		country_modifiers = {
-			manpower_recovery_speed = 0.1
+			manpower_recovery_speed = 0.075
 			war_exhaustion = -0.05
 		}
 		on_upgraded = {
@@ -466,7 +469,7 @@ danevirke = {
 			local_defensiveness = 0.3
 		}
 		country_modifiers = {
-			manpower_recovery_speed = 0.15
+			manpower_recovery_speed = 0.10
 			war_exhaustion = -0.1
 		}
 		on_upgraded = {
@@ -11316,13 +11319,13 @@ versailles = {
 		conditional_modifier = {
 			trigger = {
 				owner = { 
-					mission_completed = fra_means_expansion 
-					is_emperor = yes 
+					mission_completed = fra_means_expansion
 				}
 			}
 			modifier = {
 				leader_land_fire = 1 
-				reinforce_speed = 0.2
+				reinforce_speed = 0.20
+				fire_damage = 0.05
 			}
 		}
 
@@ -11639,6 +11642,7 @@ potosi = {
 						alliance_with = MNG 
 						overlord = { alliance_with = MNG }
 						any_ally = { is_emperor_of_china = yes }
+						is_subject_of = MNG
 					}
 				}
 				MNG = { 
@@ -11676,7 +11680,7 @@ potosi = {
 
 		#what modifiers are added to the country when we have this project here on this tier
 		country_modifiers = {
-			interest = -0.25
+			interest = -0.15
 		}
 
 		#what effects happen when this tier is achieved
@@ -11690,6 +11694,7 @@ potosi = {
 						alliance_with = MNG 
 						overlord = { alliance_with = MNG }
 						any_ally = { is_emperor_of_china = yes }
+						is_subject_of = MNG
 					}
 				}
 				MNG = { 
@@ -11727,7 +11732,7 @@ potosi = {
 
 		#what modifiers are added to the country when we have this project here on this tier
 		country_modifiers = {
-			interest = -0.5
+			interest = -0.25
 		}
 
 		#what effects happen when this tier is achieved
@@ -11741,6 +11746,7 @@ potosi = {
 						alliance_with = MNG 
 						overlord = { alliance_with = MNG }
 						any_ally = { is_emperor_of_china = yes }
+						is_subject_of = MNG
 					}
 				}
 				MNG = { 
@@ -15839,6 +15845,17 @@ krakow_cloth_hall = {
 		}
 		on_upgraded = {
 		}
+
+		conditional_modifier = {
+			trigger = {
+				owner = {
+					mission_completed = tm_boh_poland_4_2
+				}
+			}
+			modifier = {
+				global_prov_trade_power_modifier = 0.15
+			}
+		}	
 	}
 }
 

@@ -1,18 +1,17 @@
 country_decisions = {
 
 		cumanian_nation = {
-			color = { 214 18 229 }
+			color = { 23 223 234 }
 			major = yes
 			potential = {
 				NOT = { has_country_flag = formed_cumania_flag }
-				ai = no
 				NOT = { exists = CMN }
 				NOT = { tag = MOS }
 				NOT = { tag = RUS }
 				NOT = { tag = PER }
 				NOT = { tag = PLC }
 				is_colonial_nation = no
-				has_reform = steppe_horde
+				government = tribal
 				OR = {
 					culture_group = altaic
 					culture_group = tartar
@@ -58,8 +57,7 @@ country_decisions = {
 				#set_capital = 464 # Astrakhan
 
 				change_tag = CMN
-				change_religion = tengri_pagan_reformed
-				remove_non_electors_emperors_from_empire_effect = yes
+				#change_religion = tengri_pagan_reformed
 				if = {
 					limit = {
 						NOT = { government_rank = 3 }
@@ -71,10 +69,10 @@ country_decisions = {
 					name = centralization_modifier
 					duration = 3650
 				}
-				add_country_modifier = {
-					name = return_of_the_true_faith
-					duration = 7300
-				}
+				#add_country_modifier = {
+				#	name = return_of_the_true_faith
+				#	duration = 7300
+				#}
 				if = {
                		limit = { is_revolutionary = no }
 					change_government = tribal

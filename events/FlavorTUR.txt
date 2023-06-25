@@ -127,17 +127,23 @@ country_event = {
 	desc = "flavor_tur.EVTDESC3354"
 	picture = REFORM_eventPicture
 	
-	fire_only_once = yes
+	#fire_only_once = yes
 
 	trigger ={
 		tag = TUR
 		is_year = 1450
 		NOT = { is_year = 1550 }
 		MIL = 3
+		NOT = { has_country_flag = turkey_army_reforms_event }
+		NOT = { has_country_modifier = turkey_military_reforms_cooldown }
 	}
 	
 	mean_time_to_happen = {
 		months = 300
+	}
+
+	immediate = {
+		set_country_flag = turkey_army_reforms_event
 	}
 	
 	
@@ -166,6 +172,19 @@ country_event = {
 		add_country_modifier = {
 			name = tur_navy_reform
 			duration = 7300
+		}
+	}
+	option = { #Delay
+		name = "titancriticalevent.advisor5.a" #Advisor Event Cooldown
+		custom_tooltip = titan_tooltip_five_year_cooldown
+		ai_chance = { factor = 0 }
+		clr_country_flag = turkey_army_reforms_event
+		hidden_effect = {
+			add_country_modifier = {
+				name = turkey_military_reforms_cooldown
+				duration = 1825
+				hidden = yes
+			}
 		}
 	}
 }
@@ -1584,7 +1603,7 @@ country_event = {
 		tag = TUR
 		capital = 151
 		religion_group = muslim
-		NOT = { exists = BYZ }
+		#NOT = { exists = BYZ }
 	}
 	
 	mean_time_to_happen = {
@@ -3441,13 +3460,27 @@ country_event = {
 					is_lesser_in_union = no
 					dynasty = "von Habsburg"
 				}
-				if = {
-					limit = {
-						has_heir = yes
+				tooltip = {
+					if = {
+						limit = {
+							has_heir = yes
+						}
+						kill_heir = { allow_new_heir = no }
 					}
-					kill_heir = { allow_new_heir = no }
+					kill_ruler = yes
 				}
-				kill_ruler = yes
+				hidden_effect = {
+					define_ruler = {
+						age = 20
+						claim = 75
+					}
+					if = {
+						limit = {
+							has_heir = yes
+						}
+						kill_heir = { allow_new_heir = no }
+					}
+				}
 			}
 			add_government_reform = eyalet_government
 			eyalet_effect = {
@@ -4148,6 +4181,9 @@ country_event = {
 					}
 				}
 				every_owned_province = {
+					limit = {
+						region = italy_region
+					}
 					remove_core = PREV
 					if = {
 						limit = { NOT = { is_core = ROOT } }
@@ -4169,7 +4205,7 @@ country_event = {
 		151 = {
 			add_base_tax = 4
 			add_base_production = 4
-			add_base_manpower = 3
+			add_base_manpower = 4
 			add_province_modifier = {
 				name = tur_expanded_governmential_offices
 				duration = -1
@@ -4382,11 +4418,12 @@ country_event = {
 				duration = 7300
 			}
 		}
-		define_advisor = { 
-			type = artist 
+		define_advisor = {
+			type = artist
+			skill = 3
 			cost_multiplier = 0.5
-			culture = andalucian 
-			religion = sunni 
+			culture = andalucian
+			religion = sunni
 		}
 		set_country_flag = tur_accepted_moriscos_flag
 	}
@@ -6537,7 +6574,7 @@ country_event = {
 		}
 		add_country_modifier = {
 			name = tur_baghdad_city_of_learning
-			duration = 10850
+			duration = 5475
 		}
 	}
 }
@@ -6591,6 +6628,8 @@ country_event = {
 						trade_goods = cotton 
 						trade_goods = silk
 						trade_goods = dyes
+						trade_goods = uniforms
+						trade_goods = tailored_clothes
 					}
 				}
 				add_province_modifier = {

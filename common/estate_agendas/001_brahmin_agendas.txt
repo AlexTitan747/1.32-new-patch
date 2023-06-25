@@ -426,9 +426,6 @@ estate_brahmins_reduce_war_exhaustion = {
 			war_exhaustion = 10
 		}
 	}
-	fail_if = {
-		is_at_war = yes
-	}
 	task_requirements = {
 		if = {
 			limit = {
@@ -889,6 +886,7 @@ estate_brahmins_befriend_rival_of_rival = {
 				NOT = { is_rival = root }
 				NOT = { ROOT = { is_rival = prev } }
 				NOT = { alliance_with = root }
+				NOT = { war_with = root }
 				has_opinion = {
 					who = root
 					value = -50

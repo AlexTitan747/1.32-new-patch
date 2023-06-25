@@ -94,6 +94,7 @@ swiss_missions_1 = {
 			}
 		}
 	}
+
 	tm_emp_swi_integrate_geneva = {
 		icon = sway_geneva
 		required_missions = { tm_emp_swi_humiliate_french }
@@ -101,21 +102,22 @@ swiss_missions_1 = {
 
 		provinces_to_highlight = {
 			OR = {
+				owned_by = GNV 
 				area = romandie_area
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { owned_by = ROOT }
+			
 		}
 
 		trigger = {
 			GNV = {
-				NOT = { 
+				NOT = {
 					is_subject_of = ROOT 
 				}
 			}
-			ROOT = {
-				owns_core_province = 4720
-				owns_core_province = 1867
-				owns_core_province = 5056
+			romandie_area = {
+				type = All
+				owned_by = ROOT
 			}
 		}
 
@@ -129,6 +131,7 @@ swiss_missions_1 = {
 			}
 		}
 	}
+
 	tm_emp_swi_savoyard_frontier = {
 		icon = alpine_fortifications
 		required_missions = { tm_emp_swi_integrate_geneva }
@@ -136,22 +139,22 @@ swiss_missions_1 = {
 
 		provinces_to_highlight = {
 			area = savoy_dauphine_area
-			NOT = {
-				owned_by = ROOT
-			}
+			NOT = {	owned_by = ROOT	}
 		}
 
 		trigger = {
-			ROOT = {
-				owns_core_province = 4719
-				owns_core_province = 204
-				owns_core_province = 205
+			savoy_dauphine_area = {
+				type = all
+				owned_by = ROOT
 			}
 		}
 
 		effect = {
 			205 = {
-				add_building = fort_15th
+				add_latest_building = {
+					builder = ROOT
+					fort = yes
+				}
 			}
 			add_country_modifier = {
 				name = "swiss_mountains_modifier"
@@ -165,82 +168,158 @@ swiss_missions_1 = {
 		position = 6
 
 		provinces_to_highlight = {
-			OR = {
-				province_id = 1869
-				province_id = 5067
-				province_id = 110
-				province_id = 1873
-				province_id = 4710
-				province_id = 72
-			}
+			
 		}
 
 		trigger = {
 			manpower = 150
 			land_forcelimit = 100
-			1869 = {
-				owned_by = ROOT
-				OR = {
-					has_building = fort_15th
-					has_building = fort_16th
-					has_building = fort_17th
+			if = {
+				limit = {
+					mil_tech = 24
+				}
+				num_of_owned_provinces_with = {
+					value = 6
 					has_building = fort_18th
 				}
 			}
-			5067 = {
-				owned_by = ROOT
-				OR = {
-					has_building = fort_15th
-					has_building = fort_16th
+			else_if = {
+				limit = {
+					mil_tech = 18
+				}
+				num_of_owned_provinces_with = {
+					value = 6
 					has_building = fort_17th
-					has_building = fort_18th
 				}
 			}
-			110 = {
-				owned_by = ROOT
-				OR = {
-					has_building = fort_15th
+			else_if = {
+				limit = {
+					mil_tech = 12
+				}
+				num_of_owned_provinces_with = {
+					value = 6
 					has_building = fort_16th
-					has_building = fort_17th
-					has_building = fort_18th
 				}
 			}
-			1873 = {
-				owned_by = ROOT
-				OR = {
+			else = {
+				num_of_owned_provinces_with = {
+					value = 6
 					has_building = fort_15th
-					has_building = fort_16th
-					has_building = fort_17th
-					has_building = fort_18th
-				}
-			}
-			4710 = {
-				owned_by = ROOT
-				OR = {
-					has_building = fort_15th
-					has_building = fort_16th
-					has_building = fort_17th
-					has_building = fort_18th
-				}
-			}
-			72 = {
-				owned_by = ROOT
-				OR = {
-					has_building = fort_15th
-					has_building = fort_16th
-					has_building = fort_17th
-					has_building = fort_18th
 				}
 			}
 		}
 
 		effect = {
+			custom_tooltip = tm_swi_can_use_more_mercs_tt
 			hidden_effect = {
-			set_country_flag = swiss_mercs_enabled
+				set_country_flag = swiss_mercs_enabled
 			}
 			add_country_modifier = {
 				name = swi_expanded_papal_guard
 				duration = -1
+			}
+		}
+	}
+
+	tm_swi_unifying_the_south = {
+		icon = mission_unite_home_region
+		required_missions = { tm_emp_swi_german_unification }
+
+		provinces_to_highlight = {
+			NOT = { owned_by = ROOT }
+			region = south_german_region
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 60
+				region = south_german_region
+			}
+		}
+
+		effect = {
+			add_power_projection = {
+				type = mission_rewards_power_projection
+				amount = 50
+			}
+			add_country_modifier = {
+				name = tm_swi_forceful_unification
+				duration = 7300
+			}
+		}
+	}
+
+	tm_swi_german_empire_start = {
+		icon = encroach_on_the_germans
+		required_missions = { tm_swi_unifying_the_south }
+		position = 8
+
+		provinces_to_highlight = {
+			is_capital = yes
+			owner = {
+				OR = {
+					tag = HES
+					was_tag = HES
+					tag = BOH
+					was_tag = BOH
+				}
+			}
+		}
+
+		trigger = {
+			tag = GER
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_swi_is_germany
+				duration = -1
+			}
+		}
+	}
+
+	tm_swi_german_empire = {
+		icon = the_balance_of_power
+		required_missions = { tm_swi_german_empire_start }
+
+		provinces_to_highlight = {
+			OR = {
+				region = north_german_region
+				region = south_german_region
+			}
+		}
+
+		trigger = {
+			all_country = {
+				NOT = { capital_scope = { region = north_german_region }}
+				NOT = { capital_scope = { region = south_german_region }}
+			}
+			num_of_owned_provinces_with = {
+				value = 125
+				OR = {
+					region = north_german_region
+					region = south_german_region
+				}
+			}
+			development_in_provinces = {
+				value = 3000
+				OR = {
+					culture_group = rhenish
+					culture_group = germanic
+				}
+			}
+			NOT = { great_power_rank = 5 }
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_swi_empire_of_germany
+				duration = -1
+			}
+			override_country_name = GERMAN_EMPIRE
+			hidden_effect = {
+				change_country_color = { color = { 3 3 3 }}
+				set_country_flag = has_overriden_color_flag
 			}
 		}
 	}
@@ -330,24 +409,27 @@ swiss_missions_2 = {
 				area = upper_rhineland_area
 				area = alsace_area
 			}
-			NOT = {
-				owned_by = ROOT
-			}
+			NOT = {	owned_by = ROOT	}
 		}
 		trigger = {
 			OR = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-			value = 4
-			OR ={
-			area = upper_rhineland_area
-			area = alsace_area
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 4
+					OR ={
+						area = upper_rhineland_area
+						area = alsace_area
+					}
+				}
+				AND = {
+					HES = {
+						alliance_with = ROOT
+						has_opinion = {
+							who = ROOT
+							value = 120
+						}
+					}
+				}
 			}
-			}
-			AND = {
-				alliance_with = HES
-				is_year = 1490
-			}
-		}
 		}
 		effect = {
 			upper_swabia_area = {
@@ -363,15 +445,36 @@ swiss_missions_2 = {
 		icon = interfere_in_germany
 		required_missions = { tm_emp_swi_diplomatic_connections }
 		position = 6
+		provinces_to_highlight = {
+			is_capital = yes
+			owner = {
+				OR = {
+					tag = HES
+					was_tag = HES
+					tag = BOH
+					was_tag = BOH
+				}
+			}
+		}
 
 		trigger = {
 			OR = {
-				is_rival = HES
-				is_rival = WES
-				is_rival = CFR
-				is_rival = BOH
-				is_rival = PRU
-				is_rival = KSM				
+				any_country = {
+					OR = {
+						tag = HES
+						was_tag = HES
+						tag = BOH
+						was_tag = BOH
+					}
+					is_enemy = ROOT
+				}
+				num_of_owned_provinces_with = {
+					value = 60
+					OR = {
+						region = south_german_region
+						region = north_german_region
+					}
+				}
 			}
 			army_size_percentage = 0.9
 			manpower_percentage = 0.6
@@ -385,48 +488,168 @@ swiss_missions_2 = {
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
-			}	
-			lower_rhineland_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
 			}
-			thuringia_area = {
+			custom_tooltip = tm_swi_claim_all_german_rival_territory
+			if = {
 				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
+					any_country = {
+						OR = {
+							tag = HES
+							was_tag = HES
+							tag = BOH
+							was_tag = BOH
+						}
+						is_enemy = ROOT
+					}
 				}
-				add_permanent_claim = ROOT
+				hidden_effect = {
+					every_province ={
+						limit = {
+							owner = {
+								is_enemy = ROOT
+								capital_scope = {
+									OR = {
+										region = south_german_region
+										region = north_german_region
+									}
+								}
+							}
+						}
+						add_perma_claim = yes
+					}
+				}
 			}
-			bohemia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
+		}
+	}
+
+	tm_swi_german_engineering = {
+		icon = pontifical_universities
+		required_missions = { tm_emp_swi_german_unification }
+		provinces_to_highlight = {
+			owned_by = ROOT
+			OR = {
+				region = south_german_region
+				region = north_german_region
 			}
-			nymburk_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
+			NOT = {
+				area_for_scope_province = {
+					has_building = university
 				}
-				add_permanent_claim = ROOT
 			}
-			erzgebirge_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 20
+				OR = {
+					region = south_german_region
+					region = north_german_region
 				}
-				add_permanent_claim = ROOT
+				has_building = university
 			}
-			moravia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
+			innovativeness = 60
+			NOT = {
+				any_country = {
+					tech_difference = 1
 				}
-				add_permanent_claim = ROOT
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_swi_german_engineering_mod
+				duration = 3650
+			}
+		}
+	}
+
+
+	tm_swi_north_italy_wonders = {
+		icon = public_works
+		required_missions = { tm_swi_strike_into_italy }
+		position = 8
+		provinces_to_highlight = {
+			OR = {
+				province_id = 104
+				province_id = 112
+				province_id = 116
+			}
+			NOT = {
+				has_great_project = {
+					type = any
+					tier = 3
+				}
+			}
+		}
+
+		trigger = {
+			104 = {
+				owned_by = ROOT
+				has_great_project = {
+					type = duomo_milano
+					tier = 2
+				}
+			}
+			112 = {
+				owned_by = ROOT
+				has_great_project = {
+					type = doges_palace
+					tier = 2
+				}
+			}
+			116 = {
+				owned_by = ROOT
+				has_great_project = {
+					type = santa_maria_del_fiore
+					tier = 2
+				}
+			}
+			any_owned_province = {
+				is_institution_origin = renaissance
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_swi_italian_arhcitecs
+				duration = -1
+			}
+		}
+	}
+
+	tm_swi_unified_germany = {
+		icon = establish_a_standing_army
+		required_missions = { tm_swi_german_empire_start }
+		provinces_to_highlight = {
+			owned_by = ROOT
+			OR = {
+				region = north_german_region
+				region = south_german_region
+			}
+			OR = {
+				NOT = {	has_manpower_building_trigger = yes }
+				NOT = { has_building = soldier_households }
+				NOT = { base_manpower = 10 }
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 80
+				OR = {
+					region = north_german_region
+					region = south_german_region
+				}
+				has_manpower_building_trigger = yes
+				has_building = soldier_households
+				base_manpower = 10
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_swi_unified_germany_mod
+				duration = -1
 			}
 		}
 	}
@@ -522,7 +745,7 @@ swiss_missions_3 = {
 
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 45
+				value = 30
 				region = south_german_region
 			}
 		}
@@ -539,52 +762,82 @@ swiss_missions_3 = {
 		required_missions = { tm_emp_swi_south_german_holdings }
 		position = 5
 		provinces_to_highlight = {
+			is_capital = yes
 			OR = {
 				owned_by = MLO
+				owned_by = ITA
+				owned_by = SPI
 				owned_by = HES
 				owned_by = WES
+				owned_by = CFR
 				owned_by = BOH
 				owned_by = KSM
+				owned_by = PRU
+				owned_by = GER
 			}
 		}
 		trigger = {
 			tag = ALP
 			OR = {
 				AND = {
-				is_rival = MLO
-				has_been_insulted_by_root = yes
+					is_rival = MLO
+					MLO = {
+						has_been_insulted_by_root = yes
+					}
 				}
 				AND = {
-				is_rival = SPI
-				has_been_insulted_by_root = yes
+					is_rival = SPI
+					SPI = {
+						has_been_insulted_by_root = yes
+					}
 				}
 				AND = {
-				is_rival = ITA
-				has_been_insulted_by_root = yes
+					is_rival = ITA
+					ITA = {
+						has_been_insulted_by_root = yes
+					}
 				}
 				AND = {
-				is_rival = HES
-				has_been_insulted_by_root = yes
+					is_rival = HES
+					HES = {
+						has_been_insulted_by_root = yes
+					}
 				}
 				AND = {
-				is_rival = WES
-				has_been_insulted_by_root = yes
+					is_rival = WES
+					WES = {
+						has_been_insulted_by_root = yes
+					}
 				}
 				AND = {
-				is_rival = CFR
-				has_been_insulted_by_root = yes
+					is_rival = CFR
+					CFR = {
+						has_been_insulted_by_root = yes
+					}
 				}
 				AND = {
-				is_rival = BOH
-				has_been_insulted_by_root = yes
+					is_rival = BOH
+					BOH = {
+						has_been_insulted_by_root = yes
+					}
 				}
 				AND = {
-				is_rival = PRU
-				has_been_insulted_by_root = yes
+					is_rival = PRU
+					PRU = {
+						has_been_insulted_by_root = yes
+					}
 				}
 				AND = {
-				is_rival = KSM
-				has_been_insulted_by_root = yes
+					is_rival = KSM
+					KSM = {
+						has_been_insulted_by_root = yes
+					}
+				}
+				AND = {
+					is_rival = GER
+					GER = {
+						has_been_insulted_by_root = yes
+					}
 				}
 			}
 			OR = {
@@ -597,6 +850,7 @@ swiss_missions_3 = {
 				alliance_with = BOH
 				alliance_with = PRU
 				alliance_with = KSM
+				alliance_with = GER
 			}
 		}
 		effect = {
@@ -606,7 +860,7 @@ swiss_missions_3 = {
 			}
 			add_country_modifier = {
 				name = swi_diplomatic_ties
-				duration = 1825
+				duration = 3650
 			}
 		}
 	}
@@ -617,9 +871,13 @@ swiss_missions_3 = {
 
 		trigger = {
 			OR = {
-			is_rival = MLO
-			is_rival = SPI
-			is_rival = ITA
+				is_rival = MLO
+				is_rival = SPI
+				is_rival = ITA
+				lombardy_area = {
+					type = all
+					owned_by = ROOT
+				}
 			}
 			army_size_percentage = 0.9
 			manpower_percentage = 0.6
@@ -696,6 +954,128 @@ swiss_missions_3 = {
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
+			}
+			central_italy_area = { add_perma_claim = yes }
+		}
+	}
+
+	tm_swi_strike_into_italy = {
+		icon = mission_conquer_north_italy
+		required_missions = { tm_emp_swi_press_italian_claims }
+		provinces_to_highlight = {
+			region = italy_region
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 25
+				region = italy_region
+			}
+		}
+
+		effect = {
+			change_ruler_stat = {
+				stat = adm
+				amount = 1
+			}
+			change_ruler_stat = {
+				stat = dip
+				amount = 1
+			}
+			change_ruler_stat = {
+				stat = mil
+				amount = 1
+			}
+			italy_region = { add_perma_claim = yes }
+			add_prestige_or_monarch_power = { amount = 50 }
+		}
+	}
+
+	tm_swi_dominate_italy = {
+		icon = army_reforms
+		required_missions = { tm_swi_strike_into_italy }
+		provinces_to_highlight = {
+			region = italy_region
+			NOT = { owned_by = ROOT }
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 50
+				region = italy_region
+			}
+			owns_core_province = 118
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_swi_defenders_of_rome
+				duration = -1
+			}
+
+			add_power_projection = {
+				type = 25_permanent_power_projection
+				amount = 15
+			}
+			custom_tooltip = zim_amongst_the_great_powers_tt
+		}
+	}
+
+	tm_swi_italian_great_projects = {
+		icon = italian_riches
+		required_missions = {
+			tm_swi_north_italy_wonders
+			tm_swi_dominate_italy
+		}
+
+		provinces_to_highlight = {
+			region = italy_region
+			NOT = { 
+				has_great_project = {
+					type = any
+					tier = 3
+				}
+			}
+			has_great_project = {
+				type = any
+				tier = 0
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 4
+				region = italy_region
+				has_great_project = {
+					type = any
+					tier = 3
+				}
+			}
+		}
+
+		effect = {
+			custom_tooltip = tm_every_province_meets_req_gains_mission
+			tooltip = {
+				add_province_modifier = {
+					name = tm_swi_envious_works
+					duration = -1
+				}
+			}
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						region = italy_region
+						has_great_project = {
+							type = any
+							tier = 3
+						}
+					}
+					add_province_modifier = {
+						name = tm_swi_envious_works
+						duration = -1
+					}
+				}
 			}
 		}
 	}
@@ -789,7 +1169,11 @@ tm_swiss_missions_4 = {
 			}
 			else_if = {
 				limit = {
-					religion = protestant
+					OR = {
+						religion = protestant
+						religion = hussite
+						religion = anglican
+					}
 					has_dlc = "Common Sense"
 				}
 				add_church_power = 100
@@ -803,6 +1187,7 @@ tm_swiss_missions_4 = {
 			else = {
 				add_dip_power = 50
 			}
+			add_stability_or_adm_power = yes
 		}
 	}
 
@@ -826,7 +1211,10 @@ tm_swiss_missions_4 = {
 
 		effect = {
 			5067 = {
-				add_building = fort_15th
+				add_latest_building = {
+					builder = ROOT
+					fort = yes
+				}
 			}
 			upper_austria_area = {
 				limit = {
@@ -907,82 +1295,82 @@ tm_swiss_missions_4 = {
 			5055 = {
 				if = {
 					limit = {
-						NOT = {
-							has_building = workshop
-						}
+						NOT = { has_building = workshop	}
 					}
 					add_building = workshop
+				}
+				else = {
+					add_base_production = 1
 				}
 			}
 			166 = {
 				if = {
 					limit = {
-						NOT = {
-							has_building = workshop
-						}
+						NOT = {	has_building = workshop	}
 					}
 					add_building = workshop
+				}
+				else = {
+					add_base_production = 1
 				}
 			}
 			5057 = {
 				if = {
 					limit = {
-						NOT = {
-							has_building = workshop
-						}
+						NOT = {	has_building = workshop	}
 					}
 					add_building = workshop
 				}
-			}
-			if = {
-				limit = {
-				1880 = {
-					owned_by = ROOT
+				else = {
+					add_base_production = 1
 				}
 			}
 			1880 = {
 				if = {
 					limit = {
-						NOT = {
-							has_building = workshop
-						}
+						owned_by = ROOT
 					}
-					add_building = workshop
-				}
-				}
-			}
-			if = {
-				limit = {
-				5067 = {
-					owned_by = ROOT
+					if = {
+						limit = {
+							NOT = {	has_building = workshop	}
+						}
+						add_building = workshop
+					}
+					else = {
+						add_base_production = 1
+					}
 				}
 			}
 			5067 = {
 				if = {
 					limit = {
-						NOT = {
-							has_building = workshop
-						}
+						owned_by = ROOT
 					}
-					add_building = workshop
-				}
-				}
-			}
-			if = {
-				limit = {
-				1768 = {
-					owned_by = ROOT
+					if = {
+						limit = {
+							NOT = {	has_building = workshop	}
+						}
+						add_building = workshop
+					}
+					else = {
+						add_base_production = 1
+					}
 				}
 			}
 			1768 = {
 				if = {
 					limit = {
-						NOT = {
-							has_building = workshop
-						}
+						owned_by = ROOT
 					}
-					add_building = workshop
-				}
+					if = {
+						limit = {
+							NOT = {	has_building = workshop	}
+						}
+						add_building = workshop
+					}
+					else = {
+						add_base_production = 1
+					}
 				}
 			}
 			add_country_modifier = {
@@ -997,6 +1385,26 @@ tm_swiss_missions_4 = {
 		required_missions = { tm_emp_swi_expand_artisans tm_emp_swi_mining_operations }
 		position = 6
 		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						province_id = 165
+						province_id = 1869
+						province_id = 4720
+						province_id = 5058
+						province_id = 4712
+						province_id = 73
+						province_id = 4759
+						province_id = 76
+					}
+					country_or_non_sovereign_subject_holds = ROOT
+					NOT = { province_has_center_of_trade_of_level = 2 }
+				}
+				AND = {
+					trade_company_region = trade_company_alpine
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
+				}
+			}
 		}
 		trigger = {
 			num_of_owned_provinces_with = {
@@ -1032,6 +1440,45 @@ tm_swiss_missions_4 = {
 			add_country_modifier = {
 				name = swi_controlling_trade
 				duration = 3650
+			}
+		}
+	}
+
+	tm_swi_italian_trade = {
+		icon = sources_of_trade
+		required_missions = {
+			tm_emp_swi_control_trade
+			tm_swi_strike_into_italy
+		}
+		position = 8
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1869
+				province_id = 109
+				province_id = 121
+			}
+		}
+			
+		trigger = {
+			1869 = {
+				trade_node_value = 80
+				is_strongest_trade_power = ROOT
+			}
+			109 = {
+				is_strongest_trade_power = ROOT
+			}
+			121 = {
+				is_strongest_trade_power = ROOT
+			}
+		}
+
+		effect = {
+			1869 = {
+				add_trade_node_income = 10
+			}
+			add_country_modifier = {
+				name = tm_swi_italian_trade_mod
+				duration = -1
 			}
 		}
 	}
@@ -1074,7 +1521,7 @@ tm_swiss_missions_5 = {
 		effect = {
 			add_country_modifier = {
 				name = swi_levy_church_taxes
-				duration = 1825
+				duration = 3650
 			}
 		}
 	}
@@ -1280,98 +1727,89 @@ tm_swiss_missions_5 = {
 				}
 				add_base_manpower = 2
 			}
-			if = {
-				limit = {
-				72 = {
-					owned_by = ROOT
-				}
-			}
 			72 = {
 				if = {
 					limit = {
-						NOT = {
-							has_building = workshop
-						}
+						owned_by = ROOT
 					}
-					add_building = workshop
-				}
-				add_base_manpower = 2
-				}
-			}
-			if = {
-				limit = {
-				4712 = {
-					owned_by = ROOT
+					if = {
+						limit = {
+							NOT = {	has_building = workshop	}
+						}
+						add_building = workshop
+					}
+					else = {
+						add_base_manpower = 2
+					}
 				}
 			}
 			4712 = {
 				if = {
 					limit = {
-						NOT = {
-							has_building = workshop
-						}
+						owned_by = ROOT
 					}
-					add_building = workshop
-				}
-				add_base_manpower = 2
-				}
-			}
-			if = {
-				limit = {
-				4765 = {
-					owned_by = ROOT
+					if = {
+						limit = {
+							NOT = {	has_building = workshop	}
+						}
+						add_building = workshop
+					}
+					else = {
+						add_base_manpower = 2
+					}
 				}
 			}
 			4765 = {
 				if = {
 					limit = {
-						NOT = {
-							has_building = workshop
-						}
+						owned_by = ROOT
 					}
-					add_building = workshop
-				}
-				add_base_manpower = 2
-				}
-			}
-			if = {
-				limit = {
-				68 = {
-					owned_by = ROOT
+					if = {
+						limit = {
+							NOT = {	has_building = workshop	}
+						}
+						add_building = workshop
+					}
+					else = {
+						add_base_manpower = 2
+					}
 				}
 			}
 			68 = {
 				if = {
 					limit = {
-						NOT = {
-							has_building = workshop
-						}
+						owned_by = ROOT
 					}
-					add_building = workshop
-				}
-				add_base_manpower = 2
-				}
-			}
-			if = {
-				limit = {
-				5060 = {
-					owned_by = ROOT
+					if = {
+						limit = {
+							NOT = {	has_building = workshop	}
+						}
+						add_building = workshop
+					}
+					else = {
+						add_base_manpower = 2
+					}
 				}
 			}
 			5060 = {
 				if = {
 					limit = {
-						NOT = {
-							has_building = workshop
-						}
+						owned_by = ROOT
 					}
-					add_building = workshop
-				}
-				add_base_manpower = 2
+					if = {
+						limit = {
+							NOT = {	has_building = workshop	}
+						}
+						add_building = workshop
+					}
+					else = {
+						add_base_manpower = 2
+					}
 				}
 			}
 		}
 	}
+
 	tm_emp_swi_construct_manufactories = {
 		icon = industrialized_rhineland
 		required_missions = { tm_emp_swi_expand_artisans tm_emp_swi_mining_operations }
@@ -1387,6 +1825,7 @@ tm_swiss_missions_5 = {
 				province_id = 72
 				province_id = 4712
 			}
+			NOT = { has_manufactory = yes }
 		}
 		trigger = {
 			4720 = {
@@ -1426,6 +1865,43 @@ tm_swiss_missions_5 = {
 			add_country_modifier = {
 				name = swi_centre_of_industry
 				duration = -1
+			}
+		}
+	}
+
+	tm_swi_italies_new_goods = {
+		icon = mission_industria_sedera
+		required_missions = { tm_emp_swi_construct_manufactories tm_swi_italian_trade }
+		position = 9
+		provinces_to_highlight = {
+			OR = {
+				prov_can_have_developed_good = yes
+				AND = {
+					prov_has_developed_good = yes
+					NOt = { has_manufactory = yes }
+				}
+			}
+			region = italy_region
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 30
+				prov_has_developed_good = yes
+				has_manufactory = yes
+				base_production = 12
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_swi_goods_from_italy
+				duration = 3650
+			}
+			italy_region = {
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
 			}
 		}
 	}

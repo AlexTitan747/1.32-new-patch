@@ -1946,7 +1946,6 @@ on_province_owner_change_estate_privileges_effect = {
 		}
 		if = {
 			limit = {
-				religion_group = dharmic
 				has_tax_building_trigger = yes
 			}
 			add_province_modifier = {
@@ -1961,31 +1960,31 @@ on_province_owner_change_estate_privileges_effect = {
 			}
 		}
 	}
-	if = {
-		limit = {
-			owner = {
-				has_estate_privilege = estate_burghers_development_of_cities
-			}
-		}
-		if = {
-			limit = {
-				OR = {
-					province_has_center_of_trade_of_level = 1
-					has_river_estuary_trigger = yes
-				}
-			}
-			add_province_modifier = {
-				name = estate_burghers_development_of_cities_mod
-				duration = -1
-			}
-		}
-		else = {
-			if = {
-				limit = { has_province_modifier = estate_burghers_development_of_cities_mod }
-				remove_province_modifier = estate_burghers_development_of_cities_mod
-			}
-		}
-	}
+	#if = {
+	#	limit = {
+	#		owner = {
+	#			has_estate_privilege = estate_burghers_development_of_cities
+	#		}
+	#	}
+	#	if = {
+	#		limit = {
+	#			OR = {
+	#				province_has_center_of_trade_of_level = 1
+	#				has_river_estuary_trigger = yes
+	#			}
+	#		}
+	#		add_province_modifier = {
+	#			name = estate_burghers_development_of_cities_mod
+	#			duration = -1
+	#		}
+	#	}
+	#	else = {
+	#		if = {
+	#			limit = { has_province_modifier = estate_burghers_development_of_cities_mod }
+	#			remove_province_modifier = estate_burghers_development_of_cities_mod
+	#		}
+	#	}
+	#}
 	if = {
 		limit = {
 			owner = {
@@ -2053,56 +2052,56 @@ on_province_owner_change_estate_privileges_effect = {
 			}
 		}
 	}
-	if = {
-		limit = {
-			owner = {
-				has_estate_privilege = estate_vaisyas_development_of_cities
-			}
-		}
-		if = {
-			limit = {
-				OR = {
-					province_has_center_of_trade_of_level = 1
-					has_river_estuary_trigger = yes
-				}
-			}
-			add_province_modifier = {
-				name = estate_vaisyas_development_of_cities_mod
-				duration = -1
-			}
-		}
-		else = {
-			if = {
-				limit = { has_province_modifier = estate_vaisyas_development_of_cities_mod }
-				remove_province_modifier = estate_vaisyas_development_of_cities_mod
-			}
-		}
-	}
-	if = {
-		limit = {
-			owner = {
-				has_estate_privilege = estate_jains_development_of_cities
-			}
-		}
-		if = {
-			limit = {
-				OR = {
-					province_has_center_of_trade_of_level = 1
-					has_river_estuary_trigger = yes
-				}
-			}
-			add_province_modifier = {
-				name = estate_jains_development_of_cities_mod
-				duration = -1
-			}
-		}
-		else = {
-			if = {
-				limit = { has_province_modifier = estate_jains_development_of_cities_mod }
-				remove_province_modifier = estate_jains_development_of_cities_mod
-			}
-		}
-	}
+	#if = {
+	#	limit = {
+	#		owner = {
+	#			has_estate_privilege = estate_vaisyas_development_of_cities
+	#		}
+	#	}
+	#	if = {
+	#		limit = {
+	#			OR = {
+	#				province_has_center_of_trade_of_level = 1
+	#				has_river_estuary_trigger = yes
+	#			}
+	#		}
+	#		add_province_modifier = {
+	#			name = estate_vaisyas_development_of_cities_mod
+	#			duration = -1
+	#		}
+	#	}
+	#	else = {
+	#		if = {
+	#			limit = { has_province_modifier = estate_vaisyas_development_of_cities_mod }
+	#			remove_province_modifier = estate_vaisyas_development_of_cities_mod
+	#		}
+	#	}
+	#}
+	#if = {
+	#	limit = {
+	#		owner = {
+	#			has_estate_privilege = estate_jains_development_of_cities
+	#		}
+	#	}
+	#	if = {
+	#		limit = {
+	#			OR = {
+	#				province_has_center_of_trade_of_level = 1
+	#				has_river_estuary_trigger = yes
+	#			}
+	#		}
+	#		add_province_modifier = {
+	#			name = estate_jains_development_of_cities_mod
+	#			duration = -1
+	#		}
+	#	}
+	#	else = {
+	#		if = {
+	#			limit = { has_province_modifier = estate_jains_development_of_cities_mod }
+	#			remove_province_modifier = estate_jains_development_of_cities_mod
+	#		}
+	#	}
+	#}
 }
 
 on_province_tax_building_built_estate_privileges_effect = {
@@ -4397,30 +4396,10 @@ on_completed_agenda_effect_estate_eunuchs = {}
 
 on_completed_agenda_effect = {
 	on_completed_agenda_effect_$estate$ = yes
-	if = {
-		limit = {
-			has_government_mechanic = ottoman_decadence_mechanic
-		}
-		add_government_power = { 
-			mechanic_type = ottoman_decadence_mechanic 
-			power_type = ottoman_decadence
-			value = -0.5
-		}
-	}
 	clr_auto_complete_flag = yes
 }
 
 on_failed_agenda_effect = {
-	if = {
-		limit = {
-			has_government_mechanic = ottoman_decadence_mechanic
-		}
-		add_government_power = { 
-			mechanic_type = ottoman_decadence_mechanic 
-			power_type = ottoman_decadence
-			value = 1
-		}
-	}
 }
 
 #Estates are here ordered in "mana classes" - ADM for Clergy, DIP for Burghers, etc

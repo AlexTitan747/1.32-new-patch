@@ -3,13 +3,7 @@ country_decisions = {
 	manchu_nation_1 = {
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
-			was_never_end_game_tag_trigger = yes
 			NOT = { has_country_flag = formed_manchu_flag }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
 			NOT = { exists = MCH }
 			OR = {
 				primary_culture = manchu
@@ -18,10 +12,8 @@ country_decisions = {
 		}
 		provinces_to_highlight = {
 			OR = {
-				OR = {
-					province_id = 730		#Girin
-					province_id = 2108		#Huncun
-				}
+				province_id = 730		#Girin
+				province_id = 2108		#Huncun
 				OR = {
 					AND = {
 						OR = {
@@ -147,27 +139,12 @@ country_decisions = {
 		major = yes
 		potential = {
 			tag = MCH
-			was_never_end_game_tag_trigger = yes
-			normal_or_historical_nations = yes
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
 			NOT = { exists = QNG }
 			NOT = { has_country_flag = manchu_dynasty_formed }
-
-			OR = {
-				ai = no
-				AND = {
-					ai = yes
-					num_of_cities = 5
-				}
-			}
 		}
 		provinces_to_highlight = {
 			OR = {
 				province_id = 704		# Liaoxi
-				province_id = 723		# Xilin Gol
 				province_id = 726		# Liaodong
 				province_id = 1816		# Beijing
 			}
@@ -175,7 +152,6 @@ country_decisions = {
 		}
 		allow = {
 			owns = 704		# Liaoxi
-			owns = 723		# Xilin Gol
 			owns = 726		# Liaodong
 			owns = 1816		# Beijing
 			1816 = {		# Beijing
@@ -186,24 +162,7 @@ country_decisions = {
 			NOT = {
 				has_ruler_modifier = tribal_succession_crisis
 			}
-			if = {
-				limit = {
-					has_dlc = "Mandate of Heaven"
-					any_country = {
-						is_emperor_of_china = yes
-					}
-				}
-				is_emperor_of_china = yes
-			}
-			else_if = {
-				limit = {
-					has_dlc = "Common Sense"
-				}
-				government_rank = 3
-			}
-			else = {
-				total_development = 1000
-			}
+			total_development = 800
 		}
 		effect = {
 			1816 = {

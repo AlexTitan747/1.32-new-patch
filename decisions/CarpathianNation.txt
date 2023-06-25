@@ -1,27 +1,13 @@
 country_decisions = {
 
 		carpathian_nation = {
-			color = { 214 18 229 }
+			color = { 23 223 234 }
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
-				was_never_end_game_tag_trigger = yes
 				NOT = { has_country_flag = formed_carpathia_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
 				NOT = { exists = CRP }
 				tag = HUN
-				
 				is_colonial_nation = no
-				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
 				OR = {
 					primary_culture = ruthenian
 					primary_culture = transylvanian
@@ -30,15 +16,6 @@ country_decisions = {
 				}
 
 				has_country_flag = hun_inf_focus
-				
-				OR = {
-					ai = no
-					AND = {
-						NOT = { exists = CRP }
-						num_of_cities = 10
-						
-					}
-				}
 			}
 			
 			provinces_to_highlight = {
@@ -65,22 +42,21 @@ country_decisions = {
 				owns_core_province = 156
 				
 				162 = {
-				development = 15
+					development = 15
 				}
 				4128 = {
-				development = 15
+					development = 15
 				}
 				4236 = {
-				development = 10
+					development = 10
 				}
 				156 = {
-				development = 10
+					development = 10
 				}
 				num_of_owned_provinces_with = {
-				value = 15
-				region = carpathia_region
-				is_core = root
-				
+					value = 15
+					region = carpathia_region
+					is_core = root
 				}
 			}
 			effect = {
@@ -96,14 +72,14 @@ country_decisions = {
 					duration = 7300
 				}
 				if = {
-				limit = { 
-					is_revolutionary = no 
-					religion = orthodox
-				}
-				if = {
-					limit = { is_revolutionary = no }
-					add_government_reform = panslavic_state
-				}
+					limit = { 
+						is_revolutionary = no 
+						religion = orthodox
+					}
+					if = {
+						limit = { is_revolutionary = no }
+						add_government_reform = panslavic_state
+					}
 				}
 				#set_capital = 1953 # Szabolcs
 				carpathia_region = {
@@ -114,8 +90,8 @@ country_decisions = {
 				}
 				set_country_flag = formed_carpathia_flag
 				if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
+					limit = { has_custom_ideas = no }
+					country_event = { id = ideagroups.1 } #Swap Ideas
 				}
 			}
 			

@@ -53,10 +53,10 @@ emperor_gemeinerpfennig = {
 		has_dlc = "Emperor"
 	}
 	elector_per_prince = {
-		global_tax_income = 0.2
+		global_tax_income = 1.0
 	}
 	emperor_per_prince = {
-		global_tax_income = 0.4
+		global_tax_income = 2.0
 	}
 	required_reform = emperor_reichsstabilitaet
 	gui_container = mainline
@@ -75,6 +75,16 @@ emperor_perpetual_diet = {
 	}
 	emperor = {
 		governing_capacity = 150
+	}
+
+	on_effect = {
+		if = {
+			limit = {
+				hre_religion_locked = no
+				hre_religion_treaty = no
+			}
+			set_hre_religion_treaty = yes
+		}
 	}
 }
 
@@ -236,13 +246,6 @@ emperor_erbkaisertum = {
 		land_morale = 0.05
 	}
 	on_effect = {
-		if = {
-			limit = {
-				hre_religion_locked = no
-				hre_religion_treaty = no
-			}
-			set_hre_religion_treaty = yes
-		}
 		hre_inheritable = yes
 	}
 	off_effect = {

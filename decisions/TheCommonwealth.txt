@@ -1,10 +1,9 @@
 country_decisions = {
 	commonwealth_enforced = {
-		color = { 214 18 229 }
+		color = { 23 223 234 }
 		major = yes
 		potential = {
 			NOT = { has_country_flag = formed_plc_flag }
-			ai = no
 			NOT = { exists = PLC }
 			LIT = {
 				NOT = { senior_union_with = POL }
@@ -149,15 +148,15 @@ country_decisions = {
 			}
 			set_country_flag = formed_plc_flag
 			add_prestige = 25
-			if = { 
-				limit = { 
-					NOT = { was_tag = POL }	
-				}
-				complete_mission = pol_leverage_magnates
-				complete_mission = pol_great_sejm
-				complete_mission = plc_articles_agreement
-			}
 			hidden_effect = {
+				if = {
+					limit = { 
+						NOT = { was_tag = POL }	
+					}
+					complete_mission = pol_leverage_magnates
+					complete_mission = pol_great_sejm
+					complete_mission = plc_articles_agreement
+				}
 				swap_free_idea_group = yes
 			}
 			custom_tooltip = commonwealth_ideas_hussars_tt

@@ -1,13 +1,11 @@
 country_decisions = {
 
 	cossack_federation_nation = {
-		color = { 214 18 229 }
+		color = { 23 223 234 }
 		major = yes
 		potential = {
-			was_never_end_game_tag_trigger = yes
 			NOT = { has_country_flag = formed_cossacks_flag }
 			NOT = { exists = COS }
-			ai = no
 			OR = {
 				tag = SRV
 				was_tag = SRV
@@ -32,7 +30,7 @@ country_decisions = {
 		}
 
 		allow = {
-			NOT = { exists = COS }
+			is_at_war = no
 			owns_core_province = 425 #Dagestani
 			owns_core_province = 464 #Astrakhan
 			owns_core_province = 463 #Circassia
@@ -43,7 +41,6 @@ country_decisions = {
 				region = crimea_region
 				value = 16
 			}
-			is_at_war = no
 			mission_completed = tm_SRV_conquer_the_steppes
 			mission_completed = tm_SRV_cossack_cultural_dominance
 			mission_completed = tm_SRV_tame_the_estates

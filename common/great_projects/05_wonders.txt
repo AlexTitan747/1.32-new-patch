@@ -1,0 +1,1288 @@
+#Adm Tech 5
+great_mill_wonder = {
+	start = 0 #Out of game
+	date = 1434.01.01
+	time = { months = 60 }
+	build_cost = 1000
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 1
+	type = monument
+
+	build_trigger = {
+		OR = {
+			has_terrain = grasslands
+			has_terrain = farmlands
+		}
+		NOT = { has_global_flag = great_mill_wonder_built }
+		FROM = {
+			has_country_flag = great_mill_wonder_building
+		}
+	}
+
+	on_built = {
+		set_global_flag = great_mill_wonder_built
+		owner = {
+			clr_country_flag = great_mill_wonder_building
+			set_country_flag = great_mill_wonder_built_country
+		}
+	}
+
+	on_destroyed = {}
+
+	can_use_modifiers_trigger = {}
+	
+	can_upgrade_trigger = {}
+
+	keep_trigger = {}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1500
+		}
+		province_modifiers = {}
+		area_modifier = {
+			local_production_efficiency = 0.025
+		}
+		country_modifiers = {
+			production_efficiency = 0.025
+		}
+		on_upgraded = {}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {}
+		area_modifier = {
+			local_production_efficiency = 0.05
+		}
+		country_modifiers = {
+			production_efficiency = 0.05
+		}
+		on_upgraded = {}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {
+			local_development_cost = -0.05
+		}
+		area_modifier = {
+			local_production_efficiency = 0.15
+		}
+		country_modifiers = {
+			production_efficiency = 0.10
+		}
+		on_upgraded = {}
+	}
+}
+
+#Dip Tech 5
+diplomatic_palace_wonder = {
+	start = 0 #Out of game
+	date = 1434.01.01
+	time = { months = 60	}
+	build_cost = 1000
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 1
+	type = monument
+
+	build_trigger = {
+		NOT = { has_global_flag = diplomatic_palace_wonder_built }
+		FROM = {
+			has_country_flag = diplomatic_palace_wonder_building
+		}
+	}
+
+	on_built = {
+		set_global_flag = diplomatic_palace_wonder_built
+		owner = {
+			clr_country_flag = diplomatic_palace_wonder_building
+			set_country_flag = diplomatic_palace_wonder_built_country
+		}
+	}
+
+	on_destroyed = {}
+
+	can_use_modifiers_trigger = {}
+	
+	can_upgrade_trigger = {}
+
+	keep_trigger = {}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1500
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {
+			ae_impact = -0.1
+			core_creation = -0.025
+		}
+		on_upgraded = {}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {}
+		area_modifier = {
+			local_governing_cost = -0.05
+		}
+		country_modifiers = {
+			core_creation = -0.05
+			ae_impact = -0.2
+			spy_offence = 0.05
+		}
+		on_upgraded = {}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {}
+		area_modifier = {
+			local_governing_cost = -0.10
+		}
+		country_modifiers = {
+			diplomats = 1
+			core_creation = -0.1
+			ae_impact = -0.25
+			spy_offence = 0.1
+		}
+		on_upgraded = {}
+	}
+}
+
+#Mil tech 5
+great_defenses_wonder = {
+	start = 0 #Out of game
+	date = 1434.01.01
+	time = { months = 60 }
+	build_cost = 600
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 1
+	type = monument
+
+	build_trigger = {
+		NOT = { has_global_flag = great_defenses_wonder_built }
+		FROM = {
+			has_country_flag = great_defenses_wonder_building
+		}
+	}
+
+	on_built = {
+		set_global_flag = great_defenses_wonder_built
+		owner = {
+			clr_country_flag = great_defenses_wonder_building
+			set_country_flag = great_defenses_wonder_built_country
+		}
+	}
+
+	on_destroyed = {}
+
+	can_use_modifiers_trigger = {}
+	
+	can_upgrade_trigger = {}
+
+	keep_trigger = {}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1500
+		}
+		province_modifiers = {
+			fort_level = 2
+			local_garrison_size = 0.10
+		}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {
+			fort_level = 2
+			local_garrison_size = 0.20
+		}
+		area_modifier = {
+			local_fort_maintenance_modifier = -0.1
+		}
+		country_modifiers = {
+			fort_maintenance_modifier = -0.025
+		}
+		on_upgraded = {}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {
+			fort_level = 2
+			local_garrison_size = 0.25
+			local_defensiveness = 0.1
+		}
+		area_modifier = {
+			local_fort_maintenance_modifier = -0.25
+		}
+		country_modifiers = {
+			defensiveness = 0.10
+			fort_maintenance_modifier = -0.05
+		}
+		on_upgraded = {}
+	}
+}
+
+#Adm Tech 10
+great_libarary_wonder = {
+	start = 0 #Out of game
+	date = 1434.01.01
+	time = { months = 84 }
+	build_cost = 2000
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 1
+	type = monument
+
+	build_trigger = {
+		NOT = { has_global_flag = great_libarary_wonder_built }
+		FROM = {
+			has_country_flag = great_libarary_wonder_building
+		}
+	}
+
+	on_built = {
+		set_global_flag = great_libarary_wonder_built
+		owner = {
+			clr_country_flag = great_libarary_wonder_building
+			set_country_flag = great_libarary_wonder_built_country
+		}
+	}
+
+	on_destroyed = {}
+
+	can_use_modifiers_trigger = {}
+	
+	can_upgrade_trigger = {}
+
+	keep_trigger = {}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1500
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {
+			idea_cost = -0.025
+		}
+		on_upgraded = {}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {
+			idea_cost = -0.05
+			innovativeness_gain = 0.10
+		}
+		on_upgraded = {}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {
+			idea_cost = -0.1
+			innovativeness_gain = 0.2
+		}
+		on_upgraded = {}
+	}
+}
+
+#Dip tech 10
+great_mine_wonder = {
+	start = 0 #Out of game
+	date = 1434.01.01
+	time = { months = 84 }
+	build_cost = 2000
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 1
+	type = monument
+
+	build_trigger = {
+		OR = {
+			has_terrain = mountain
+			has_terrain = hills
+			has_terrain = highlands
+		}
+		development = 20
+		NOT = { has_global_flag = great_mine_wonder_built }
+		FROM = {
+			has_country_flag = great_mine_wonder_building
+		}
+	}
+
+	on_built = {
+		set_global_flag = great_mine_wonder_built
+		owner = {
+			clr_country_flag = great_mine_wonder_building
+			set_country_flag = great_mine_wonder_built_country
+		}
+		change_trade_goods = gold
+		set_base_tax = 3
+		set_base_production = 12
+		set_base_manpower = 10
+	}
+
+	on_destroyed = {}
+
+	can_use_modifiers_trigger = {}
+	
+	can_upgrade_trigger = {}
+
+	keep_trigger = {}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {
+			local_development_cost = 0.5
+			local_gold_depletion_chance_modifier = -1.0
+		}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1500
+		}
+		province_modifiers = {
+			local_development_cost = 0.5
+			local_gold_depletion_chance_modifier = -1.0
+			local_governing_cost = 0.1
+			trade_goods_size = 2
+		}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {
+			local_development_cost = 0.5
+			local_gold_depletion_chance_modifier = -1.0
+			local_governing_cost = 0.1
+			trade_goods_size = 2
+			trade_goods_size_modifier = 0.1
+		}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {
+			owner = {
+				add_years_of_owned_provinces_production_income = {
+					years = 0.5
+					trigger = {
+						OR = {
+							trade_goods = gold
+							trade_goods = silver
+							trade_goods = iron
+							trade_goods = steel
+							trade_goods = copper
+							trade_goods = bronze
+						}
+					}
+					custom_tooltip = tm_metals_production_great_mine_tt
+				}
+			}
+		}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {
+			local_development_cost = 0.5
+			local_gold_depletion_chance_modifier = -1.0
+			local_governing_cost = 0.1
+			trade_goods_size = 3
+		}
+		area_modifier = {
+			trade_goods_size_modifier = 0.1
+		}
+		country_modifiers = {}
+		on_upgraded = {
+			owner = {
+				add_years_of_owned_provinces_production_income = {
+					years = 2
+					trigger = {
+						OR = {
+							trade_goods = gold
+							trade_goods = silver
+							trade_goods = iron
+							trade_goods = steel
+							trade_goods = copper
+							trade_goods = bronze
+						}
+					}
+					custom_tooltip = tm_metals_production_great_mine_tt
+				}
+			}
+		}
+	}
+}
+
+#Mil Tech 10
+efficient_barracks_wonder = {
+	start = 0 #Out of game
+	date = 1434.01.01
+	time = { months = 84 }
+	build_cost = 2000
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 1
+	type = monument
+
+	build_trigger = {
+		has_manpower_building_trigger = yes
+		NOT = { has_global_flag = efficient_barracks_wonder_built }
+		FROM = {
+			has_country_flag = efficient_barracks_wonder_building
+		}
+	}
+
+	on_built = {
+		set_global_flag = efficient_barracks_wonder_built
+		owner = {
+			clr_country_flag = efficient_barracks_wonder_building
+			set_country_flag = efficient_barracks_wonder_built_country
+		}
+	}
+
+	on_destroyed = {}
+
+	can_use_modifiers_trigger = {}
+	
+	can_upgrade_trigger = {}
+
+	keep_trigger = {}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1500
+		}
+		province_modifiers = {
+			local_manpower_modifier = 1.0
+		}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {}
+		area_modifier = {
+			local_manpower_modifier = 1.0
+		}
+		country_modifiers = {
+			global_manpower_modifier = 0.05
+		}
+		on_upgraded = {}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {}
+		area_modifier = {
+			local_manpower_modifier = 1.5
+		}
+		country_modifiers = {
+			global_manpower_modifier = 0.10
+			manpower_recovery_speed = 0.05
+		}
+		on_upgraded = {}
+	}
+}
+
+#Adm tech 15
+national_university_wonder = {
+	start = 0 #Out of game
+	date = 1434.01.01
+	time = { months = 120 }
+	build_cost = 4000
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 1
+	type = monument
+
+	build_trigger = {
+		NOT = { has_global_flag = national_university_wonder_built }
+		FROM = {
+			has_country_flag = national_university_wonder_building
+		}
+	}
+
+	on_built = {
+		set_global_flag = national_university_wonder_built
+		owner = {
+			clr_country_flag = national_university_wonder_building
+			set_country_flag = national_university_wonder_built_country
+		}
+	}
+
+	on_destroyed = {}
+
+	can_use_modifiers_trigger = {}
+	
+	can_upgrade_trigger = {}
+
+	keep_trigger = {}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1500
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+			embracement_cost = -0.1
+			global_institution_spread = 0.05
+		}
+		on_upgraded = {}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {
+		}
+		area_modifier = {
+		}
+		country_modifiers = {
+			technology_cost = -0.025
+			embracement_cost = -0.15
+			global_institution_spread = 0.10
+		}
+		on_upgraded = {}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {
+			
+		}
+		area_modifier = {
+			
+		}
+		country_modifiers = {
+			technology_cost = -0.05
+			embracement_cost = -0.20
+			global_institution_spread = 0.15
+			yearly_innovativeness = 0.20
+		}
+		on_upgraded = {}
+	}
+}
+
+#Dip Tech 15
+center_of_development_office_wonder = {
+	start = 0 #Out of game
+	date = 1434.01.01
+	time = { months = 120 }
+	build_cost = 4000
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 1
+	type = monument
+
+	build_trigger = {
+		NOT = { has_global_flag = center_of_development_office_wonder_built }
+		FROM = {
+			has_country_flag = center_of_development_office_wonder_building
+		}
+	}
+
+	on_built = {
+		set_global_flag = center_of_development_office_wonder_built
+		owner = {
+			clr_country_flag = center_of_development_office_wonder_building
+			set_country_flag = center_of_development_office_wonder_built_country
+		}
+	}
+
+	on_destroyed = {}
+
+	can_use_modifiers_trigger = {}
+	
+	can_upgrade_trigger = {}
+
+	keep_trigger = {}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1500
+		}
+		province_modifiers = {
+			local_development_cost = -0.05
+			local_build_cost = -0.05
+		}
+		area_modifier = {
+			local_build_time = -0.05
+		}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {
+			local_development_cost = -0.1
+			local_build_cost = -0.10
+			allowed_num_of_buildings = 1
+		}
+		area_modifier = {
+			local_build_time = -0.10
+		}
+		country_modifiers = {
+			development_cost = -0.025
+		}
+		on_upgraded = {}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {}
+		area_modifier = {
+			local_development_cost = -0.1
+			local_build_cost = -0.10
+			local_build_time = -0.20
+			allowed_num_of_buildings = 1
+		}
+		country_modifiers = {
+			development_cost = -0.05
+		}
+		on_upgraded = {}
+	}
+}
+
+#Mil Tech 15
+national_training_grounds_wonder = {
+	start = 0 #Out of game
+	date = 1434.01.01
+	time = { months = 120 }
+	build_cost = 4000
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 1
+	type = monument
+
+	build_trigger = {
+		has_forcelimit_building_trigger = yes
+		NOT = { has_global_flag = national_training_grounds_wonder_built }
+		FROM = {
+			has_country_flag = national_training_grounds_wonder_building
+		}
+	}
+
+	on_built = {
+		set_global_flag = national_training_grounds_wonder_built
+		owner = {
+			clr_country_flag = national_training_grounds_wonder_building
+			set_country_flag = national_training_grounds_wonder_built_country
+		}
+	}
+
+	on_destroyed = {}
+
+	can_use_modifiers_trigger = {}
+	
+	can_upgrade_trigger = {}
+
+	keep_trigger = {}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1500
+		}
+		province_modifiers = {
+			regiment_recruit_speed = -0.05
+		}
+		area_modifier = {}
+		country_modifiers = {
+			land_forcelimit_modifier = 0.05
+			land_maintenance_modifier = -0.025
+		}
+		on_upgraded = {}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {
+			regiment_recruit_speed = -0.10
+		}
+		area_modifier = {}
+		country_modifiers = {
+			land_forcelimit_modifier = 0.10
+			land_maintenance_modifier = -0.05
+		}
+		on_upgraded = {}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {}
+		area_modifier = {
+			regiment_recruit_speed = -0.10
+		}
+		country_modifiers = {
+			land_forcelimit_modifier = 0.10
+			land_maintenance_modifier = -0.10
+			global_regiment_recruit_speed = -0.05
+			special_unit_forcelimit = 0.05
+		}
+		on_upgraded = {}
+	}
+}
+
+#Adm Tech 20
+manufacturing_plant_wonder = {
+	start = 0 #Out of game
+	date = 1434.01.01
+	time = { months = 180 }
+	build_cost = 7500
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 1
+	type = monument
+
+	build_trigger = {
+		has_manufactory = yes
+		NOT = { has_global_flag = manufacturing_plant_wonder_built }
+		FROM = {
+			has_country_flag = manufacturing_plant_wonder_building
+		}
+	}
+
+	on_built = {
+		set_global_flag = manufacturing_plant_wonder_built
+		owner = {
+			clr_country_flag = manufacturing_plant_wonder_building
+			set_country_flag = manufacturing_plant_wonder_built_country
+		}
+	}
+
+	on_destroyed = {}
+
+	can_use_modifiers_trigger = {}
+	
+	can_upgrade_trigger = {}
+
+	keep_trigger = {}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1500
+		}
+		province_modifiers = {
+			trade_goods_size_modifier = 0.05
+			local_production_efficiency = 0.05
+		}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {
+			trade_goods_size_modifier = 0.10
+			local_production_efficiency = 0.1
+		}
+		area_modifier = {}
+		country_modifiers = {
+			global_trade_goods_size_modifier = 0.05
+		}
+		on_upgraded = {}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {}
+		area_modifier = {
+			trade_goods_size_modifier = 0.10
+			allowed_num_of_buildings = 1
+			local_production_efficiency = 0.1
+		}
+		country_modifiers = {
+			global_trade_goods_size_modifier = 0.10
+		}
+		on_upgraded = {}
+	}
+}
+
+#Dip Tech 20
+world_port_wonder = {
+	start = 0 #Out of game
+	date = 1434.01.01
+	time = { months = 180 }
+	build_cost = 7500
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 1
+	type = monument
+
+	build_trigger = {
+		has_port = yes
+		NOT = { has_global_flag = world_port_wonder_built }
+		FROM = {
+			has_country_flag = world_port_wonder_building
+		}
+	}
+
+	on_built = {
+		set_global_flag = world_port_wonder_built
+		owner = {
+			clr_country_flag = world_port_wonder_building
+			set_country_flag = world_port_wonder_built_country
+		}
+	}
+
+	on_destroyed = {}
+
+	can_use_modifiers_trigger = {}
+	
+	can_upgrade_trigger = {}
+
+	keep_trigger = {}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1500
+		}
+		province_modifiers = {
+			province_trade_power_modifier = 0.15
+			trade_value = 20
+		}
+		area_modifier = {}
+		country_modifiers = {
+			placed_merchant_power = 3
+		}
+		on_upgraded = {}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {
+			province_trade_power_modifier = 0.25
+			trade_value = 30
+		}
+		area_modifier = {}
+		country_modifiers = {
+			trade_efficiency = 0.05
+			placed_merchant_power = 5
+		}
+		on_upgraded = {}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {}
+		area_modifier = {
+			province_trade_power_modifier = 0.25
+			trade_value = 40
+		}
+		country_modifiers = {
+			trade_efficiency = 0.1
+			placed_merchant_power = 5
+			merchants = 1
+		}
+		on_upgraded = {}
+	}
+}
+
+#Mil Tech 20
+military_academy_wonder = {
+	start = 0 #Out of game
+	date = 1434.01.01
+	time = { months = 180 }
+	build_cost = 7500
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 1
+	type = monument
+
+	build_trigger = {
+		NOT = { has_global_flag = military_academy_wonder_built }
+		FROM = {
+			has_country_flag = military_academy_wonder_building
+		}
+	}
+
+	on_built = {
+		set_global_flag = military_academy_wonder_built
+		owner = {
+			clr_country_flag = military_academy_wonder_building
+			set_country_flag = military_academy_wonder_built_country
+		}
+	}
+
+	on_destroyed = {}
+
+	can_use_modifiers_trigger = {}
+	
+	can_upgrade_trigger = {}
+
+	keep_trigger = {}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {}
+		on_upgraded = {}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1500
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {
+			free_land_leader_pool = 1
+			general_cost = -0.10
+			army_tradition_decay = -0.00025
+		}
+		on_upgraded = {}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {
+			mil_tech_cost_modifier = -0.025
+			free_land_leader_pool = 2
+			general_cost = -0.10
+			army_tradition_decay = -0.005
+		}
+		on_upgraded = {}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {}
+		area_modifier = {}
+		country_modifiers = {
+			discipline = 0.025
+			mil_tech_cost_modifier = -0.05
+			free_land_leader_pool = 3
+			general_cost = -0.15
+			army_tradition_decay = -0.01
+		}
+		on_upgraded = {}
+	}
+}

@@ -2579,6 +2579,7 @@ country_event = {
 		hidden_effect = {
 			finland_area = {
 				add_core = FIN
+				remove_core = ROOT
 				if = {
 					limit = { NOT = { owned_by = ROOT } }
 					cede_province = ROOT
@@ -2586,6 +2587,7 @@ country_event = {
 			}
 			bothnia_area = {
 				add_core = FIN
+				remove_core = ROOT
 				if = {
 					limit = { NOT = { owned_by = ROOT } }
 					cede_province = ROOT
@@ -2593,6 +2595,7 @@ country_event = {
 			}
 			laponia_area = {
 				add_core = FIN
+				remove_core = ROOT
 				if = {
 					limit = { NOT = { owned_by = ROOT } }
 					cede_province = ROOT
@@ -4553,6 +4556,7 @@ country_event = {
 		has_dlc = "Domination"
 		tag = RUS
 		NOT = { has_country_flag = rus_peasant_fate }
+		has_estate = estate_nobles
 	}
 	
 	mean_time_to_happen = {
@@ -4563,13 +4567,25 @@ country_event = {
 		name = "flavor_rus.EVTOPTA3416"
 		ai_chance = { factor = 75 }
 		add_stability = -1
-		set_estate_privilege = estate_nobles_early_serfdom
+		if = {
+			limit = {
+				NOT = { has_estate_privilege = estate_nobles_early_serfdom }
+				NOT = { has_estate_privilege = estate_nobles_increased_peasant_freedom }
+			}
+			set_estate_privilege = estate_nobles_early_serfdom
+		}
 	}
 	option = {		# Do not enserf them
 		name = "flavor_rus.EVTOPTB3416"
 		ai_chance = { factor = 25 }
 		add_stability = -1
-		set_estate_privilege = estate_nobles_increased_peasant_freedom
+		if = {
+			limit = {
+				NOT = { has_estate_privilege = estate_nobles_early_serfdom }
+				NOT = { has_estate_privilege = estate_nobles_increased_peasant_freedom }
+			}
+			set_estate_privilege = estate_nobles_increased_peasant_freedom
+		}
 	}
 }
 

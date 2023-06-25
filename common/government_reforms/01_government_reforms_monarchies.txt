@@ -453,7 +453,7 @@ absolutist_france_reform = {
 				is_playing_custom_nation = yes
 				have_had_reform = absolutist_france_reform
 			}
-			mission_completed = fra_movement_centralization
+			#mission_completed = fra_movement_centralization
 		}
 	}
 	trigger = {
@@ -874,6 +874,7 @@ english_monarchy = {
 			have_had_reform = english_monarchy
 			tag = ENG
 			was_tag = ENG
+			tag = GBR
 		}
 	}
 	lock_level_when_selected = yes
@@ -1102,9 +1103,9 @@ ottoman_government = {
 			enables_estate_janissaries = yes
 			has_eyalets = yes
 		}
-		government_abilities = {
-			ottoman_decadence_mechanic
-		}
+		#government_abilities = {
+		#	ottoman_decadence_mechanic
+		#}
 	}
 	conditional = {
 		allow = { 
@@ -1194,7 +1195,7 @@ margraviate_reform = {
 	}
 	modifiers = {
 		fort_maintenance_modifier = -0.2
-		defensiveness = 0.1
+		defensiveness = 0.2
 	}
 	ai = {
 		factor = 1
@@ -1285,7 +1286,7 @@ tanistry_reform = {
 	valid_for_nation_designer = yes
 	nation_designer_cost = 5
 	modifiers = {
-		morale_damage = 0.05
+		morale_damage = 0.10
 		same_culture_advisor_cost = -0.1
 		nobles_loyalty_modifier = 0.05
 	}
@@ -1324,7 +1325,7 @@ irish_highkingdom_reform = {
 	nation_designer_cost = 15
 	modifiers = {
 		all_estate_loyalty_equilibrium = 0.05
-		morale_damage = 0.05
+		morale_damage = 0.10
 		same_culture_advisor_cost = -0.15
 		global_manpower_modifier = 0.15
 	}
@@ -1369,7 +1370,7 @@ scottish_monarchy_reform = {
 	modifiers = {
 		nobles_influence_modifier = -0.1
 		diplomatic_reputation = 1 
-		defensiveness = 0.1
+		defensiveness = 0.15
 	}
 	
 	conditional = {
@@ -1405,9 +1406,9 @@ sharifate_reform = {
 	modifiers = {
 		tolerance_own = 2
 		missionaries = 1
-		global_missionary_strength = 0.01
+		global_missionary_strength = 0.02
 		monthly_piety_accelerator = 0.001
-		same_religion_advisor_cost = -0.1
+		same_religion_advisor_cost = -0.15
 	}
 	conditional = {
 		allow = { has_dlc = "Cradle of Civilization" }
@@ -1513,38 +1514,38 @@ barbary_sultanate_reform = {
 	}
 }
 
-roman_empire_reform = {
-	icon = "roman_empire"
-	allow_normal_conversion = yes
-	potential = {
-		has_dlc = "Domination"
-		primary_culture = roman
-	}
-	nation_designer_trigger = {
-		primary_culture = roman
-	}
-	valid_for_nation_designer = yes
-	nation_designer_cost = 100
-	modifiers = {
-		administrative_efficiency = 0.05
-		max_absolutism = 10
-		culture_conversion_cost = -0.25
-		culture_conversion_time = -0.1
-	}
-	fixed_rank = 3
-	conditional = {
-		allow = {
-			OR = {
-				has_dlc = "Common Sense"
-				has_dlc = "Domination"
-			}
-		}
-		has_parliament = yes
-	}
-	ai = {
-		factor = 1
-	}
-}
+#roman_empire_reform = {
+#	icon = "roman_empire"
+#	allow_normal_conversion = yes
+#	potential = {
+#		has_dlc = "Domination"
+#		primary_culture = roman
+#	}
+#	nation_designer_trigger = {
+#		primary_culture = roman
+#	}
+#	valid_for_nation_designer = yes
+#	nation_designer_cost = 100
+#	modifiers = {
+#		administrative_efficiency = 0.05
+#		max_absolutism = 10
+#		culture_conversion_cost = -0.25
+#		culture_conversion_time = -0.1
+#	}
+#	fixed_rank = 3
+#	conditional = {
+#		allow = {
+#			OR = {
+#				has_dlc = "Common Sense"
+#				has_dlc = "Domination"
+#			}
+#		}
+#		has_parliament = yes
+#	}
+#	ai = {
+#		factor = 1
+#	}
+#}
 
 persian_government_reform = {
 	icon = "persian_sultanate"
@@ -2054,14 +2055,14 @@ sultanate_of_rum_reform = {
 			has_harem_events = yes
 		}
 	}
-	#conditional = {
-	#	allow = {
-	#		has_dlc = "Domination"
-	#	}
-	#	government_abilities = {
-	#		devshirme_mechanic
-	#	}
-	#}
+	conditional = {
+		allow = {
+			has_dlc = "Domination"
+		}
+		government_abilities = {
+			devshirme_mechanic
+		}
+	}
 }
 
 eyalet_government = {
@@ -3124,7 +3125,7 @@ korean_monarchy = {
 		}
 	}
 	modifiers = {
-		development_cost_in_primary_culture = -0.1
+		development_cost_in_primary_culture = -0.05
 		same_culture_advisor_cost = -0.1
 		global_institution_spread = 0.15
 	}
@@ -3515,9 +3516,10 @@ polish_autocratic_monarchy = {
 	}
 	modifiers = {
 		administrative_efficiency = 0.05
-		max_absolutism = 10 
 		global_manpower_modifier = 0.2 
 		reform_progress_growth = 0.1
+		cavalry_cost = -0.05
+		shock_damage = 0.1 
 	}
 }
 
@@ -4375,6 +4377,7 @@ quash_noble_power_reform = {
 		nobles_influence_modifier = -0.1
 		maratha_exclusive_influence_modifier = -0.1
 		rajput_exclusive_influence_modifier = -0.1
+		#parliament_effect_duration = -2
 	}
 	conditional = {
 		allow = {
@@ -4868,6 +4871,11 @@ devshirme_system_reform = {
 			devshirme_mechanic
 		}
 	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
 	ai = {
 		factor = 300
 	}
@@ -4895,6 +4903,11 @@ ottoman_conscription_reform = {
 		manpower_in_own_culture_provinces = 0.1
 		manpower_in_true_faith_provinces = 0.1
 	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
 	ai = {
 		factor = 300
 	}
@@ -4916,8 +4929,14 @@ separation_of_boyars_from_court_reform = {
 	modifiers = {
 		yearly_government_power = 1.25
 		nobles_influence_modifier = -0.1
+		global_tax_modifier = 0.05
 		maratha_exclusive_influence_modifier = -0.1
 		rajput_exclusive_influence_modifier = -0.1
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	ai = {
 		factor = 10
@@ -4940,6 +4959,11 @@ house_of_lords_reform = {
 		parliament_effect_duration = 5
 		nobles_loyalty_modifier = 0.05
 	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
+	}
 	ai = {
 		factor = 10
 	}
@@ -4959,6 +4983,11 @@ ministerialis_promotion_reform = {
 		nobles_privilege_slots = 1
 		advisor_cost = -0.1
 		monthly_favor_modifier = 0.1
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	ai = {
 		factor = 1
@@ -6123,7 +6152,7 @@ strengthened_parliament_reform = {
 	}
 	modifiers = {
 		max_absolutism = -20
-		development_cost_in_primary_culture = -0.1
+		development_cost_in_primary_culture = -0.05
 		parliament_backing_chance = 0.05
 	}
 	ai = {
@@ -6621,6 +6650,7 @@ qng_grand_council_reform = {
 absolute_shogunate_reform = {
 	icon = "absolute_shogunate_reform"
 	allow_normal_conversion = no
+	lock_level_when_selected = yes
 	potential = {
 		OR = {
 			AND = {
@@ -6649,6 +6679,7 @@ absolute_shogunate_reform = {
 japanese_divine_empire = {
 	icon = "japanese_divine_empire"
 	allow_normal_conversion = no
+	lock_level_when_selected = yes
 	potential = {
 		OR = { 
 			AND = {
@@ -6661,29 +6692,29 @@ japanese_divine_empire = {
 		}
 		NOT = { has_reform = absolute_shogunate_reform }
 	}
-	trigger = {
-		if = { 
-			limit = { has_estate = estate_nobles }
-			num_of_estate_privileges = {
-				estate = estate_nobles 
-				value = 6 
-			}
-		}
-		if = { 
-			limit = { has_estate = estate_burghers }
-			num_of_estate_privileges = {
-				estate = estate_burghers 
-				value = 6 
-			}
-		}
-		if = { 
-			limit = { has_estate = estate_church }
-			num_of_estate_privileges = {
-				estate = estate_church 
-				value = 6 
-			}
-		}
-	}
+	#trigger = {
+	#	if = { 
+	#		limit = { has_estate = estate_nobles }
+	#		num_of_estate_privileges = {
+	#			estate = estate_nobles 
+	#			value = 6 
+	#		}
+	#	}
+	#	if = { 
+	#		limit = { has_estate = estate_burghers }
+	#		num_of_estate_privileges = {
+	#			estate = estate_burghers 
+	#			value = 6 
+	#		}
+	#	}
+	#	if = { 
+	#		limit = { has_estate = estate_church }
+	#		num_of_estate_privileges = {
+	#			estate = estate_church 
+	#			value = 6 
+	#		}
+	#	}
+	#}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 100
 	nation_designer_trigger = {
@@ -6789,6 +6820,11 @@ system_of_councils_reform = {
 	}
 	government_abilities = {
 		system_of_councils_mechanic
+	}
+	conditional = {
+		allow = {
+		}
+		claim_states = yes
 	}
 	modifiers = {
 		allow_free_estate_privilege_revocation = yes 

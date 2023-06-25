@@ -560,7 +560,7 @@ estate_brahmins_monopoly_of_incense = {
 	icon = privilege_monopoly_of_goods_incence
 	#max_absolutism = -10
 	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
-	loyalty = 0.05
+	loyalty = 0.10
 	is_valid = {
 		OR = {
 			has_dlc = "Emperor"
@@ -695,7 +695,7 @@ estate_brahmins_monopoly_of_wool = {
 	icon = privilege_monopoly_of_goods_wool
 	#max_absolutism = -10
 	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
-	loyalty = 0.05
+	loyalty = 0.10
 	is_valid = {
 		num_of_cities = 2
 		OR = {
@@ -1149,7 +1149,6 @@ estate_brahmins_development_of_temples = {
 	on_granted_province = {
 		if = {
 			limit = {
-				religion_group = dharmic
 				has_tax_building_trigger = yes
 			}
 			add_province_modifier = {
@@ -1178,49 +1177,49 @@ estate_brahmins_development_of_temples = {
 		factor = 0
 	}
 }
-estate_brahmins_expand_the_theology = {
-	icon = privilege_missionary
-	loyalty = 0.0
-	influence = 0.05
-	#max_absolutism = -5
-	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
-	is_valid = {
-		has_dlc = "Domination"
-	}
-	can_select = {
-		if = {
-			limit = { has_estate = estate_church }
-			NOT = { has_estate_privilege = estate_church_expand_the_theology }
-		}
-	}
-	on_granted = {
-		enable_estate_action = {
-			estate_action = RECRUIT_MINISTER_BRAHMINS
-		}
-		enable_estate_action = {
-			estate_action = RECRUIT_INQUISITOR_BRAHMINS
-		}
-	}
-	on_revoked = {
-		disable_estate_action = {
-			estate_action = RECRUIT_MINISTER_BRAHMINS
-		}
-		disable_estate_action = {
-			estate_action = RECRUIT_INQUISITOR_BRAHMINS
-		}
-	}
-	on_invalid = {
-		disable_estate_action = {
-			estate_action = RECRUIT_MINISTER_BRAHMINS
-		}
-		disable_estate_action = {
-			estate_action = RECRUIT_INQUISITOR_BRAHMINS
-		}
-	}
-	ai_will_do = {
-		factor = 0
-	}
-}
+#estate_brahmins_expand_the_theology = {
+#	icon = privilege_missionary
+#	loyalty = 0.0
+#	influence = 0.05
+#	#max_absolutism = -5
+#	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+#	is_valid = {
+#		has_dlc = "Domination"
+#	}
+#	can_select = {
+#		if = {
+#			limit = { has_estate = estate_church }
+#			NOT = { has_estate_privilege = estate_church_expand_the_theology }
+#		}
+#	}
+#	on_granted = {
+#		enable_estate_action = {
+#			estate_action = RECRUIT_MINISTER_BRAHMINS
+#		}
+#		enable_estate_action = {
+#			estate_action = RECRUIT_INQUISITOR_BRAHMINS
+#		}
+#	}
+#	on_revoked = {
+#		disable_estate_action = {
+#			estate_action = RECRUIT_MINISTER_BRAHMINS
+#		}
+#		disable_estate_action = {
+#			estate_action = RECRUIT_INQUISITOR_BRAHMINS
+#		}
+#	}
+#	on_invalid = {
+#		disable_estate_action = {
+#			estate_action = RECRUIT_MINISTER_BRAHMINS
+#		}
+#		disable_estate_action = {
+#			estate_action = RECRUIT_INQUISITOR_BRAHMINS
+#		}
+#	}
+#	ai_will_do = {
+#		factor = 0
+#	}
+#}
 estate_brahmins_clerical_education = {
 	icon = privilege_ideas
 	loyalty = 0.05
@@ -1346,38 +1345,38 @@ estate_brahmins_legitimacy_of_rule = {
 		factor = 0
 	}
 }
-estate_brahmins_institutionalized_brahimns = {
-	icon = privilege_government
-	loyalty = 0.0
-	influence = 0.05
-	#max_absolutism = -5
-	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
-	is_valid = {
-		has_dlc = "Domination"
-	}
-	on_granted = {
-		enable_estate_action = {
-			estate_action = SEEK_SUPPORT_OF_BRAHMINS
-		}
-	}
-	on_invalid = {
-		disable_estate_action = {
-			estate_action = SEEK_SUPPORT_OF_BRAHMINS
-		}
-	}
-	on_revoked = {
-		disable_estate_action = {
-			estate_action = SEEK_SUPPORT_OF_BRAHMINS
-		}
-	}
-	ai_will_do = {
-		factor = 5
-		modifier = {
-			factor = 0.1
-			is_absolutism_active = yes
-		}
-	}
-}
+#estate_brahmins_institutionalized_brahimns = {
+#	icon = privilege_government
+#	loyalty = 0.0
+#	influence = 0.05
+#	#max_absolutism = -5
+#	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+#	is_valid = {
+#		has_dlc = "Domination"
+#	}
+#	on_granted = {
+#		enable_estate_action = {
+#			estate_action = SEEK_SUPPORT_OF_BRAHMINS
+#		}
+#	}
+#	on_invalid = {
+#		disable_estate_action = {
+#			estate_action = SEEK_SUPPORT_OF_BRAHMINS
+#		}
+#	}
+#	on_revoked = {
+#		disable_estate_action = {
+#			estate_action = SEEK_SUPPORT_OF_BRAHMINS
+#		}
+#	}
+#	ai_will_do = {
+#		factor = 5
+#		modifier = {
+#			factor = 0.1
+#			is_absolutism_active = yes
+#		}
+#	}
+#}
 estate_brahmins_donation_right = {
 	icon = privilege_make_generous_donation
 	loyalty = 0.0
@@ -1392,7 +1391,8 @@ estate_brahmins_donation_right = {
 			NOT = { has_estate = estate_church }
 		}
 		modifier = {
-			missionary_maintenance_cost = -1
+			#missionary_maintenance_cost = -1
+			global_missionary_strength = 0.02
 			prestige_per_development_from_conversion = 0.5
 		}
 	}

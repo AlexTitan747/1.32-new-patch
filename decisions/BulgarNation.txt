@@ -1,24 +1,12 @@
 country_decisions = {
 
 	bulgar_nation = {
-		color = { 214 18 229 }
+		color = { 23 223 234 }
 		major = yes
 		potential = {
-			normal_or_historical_nations = yes
-			was_never_end_game_tag_trigger = yes
 			NOT = { has_country_flag = formed_bulgars_flag }
-			OR = {
-				ai = no
-				is_playing_custom_nation = no
-			}
-			NOT = { tag = MUG }
-			NOT = { tag = HLR }
-			NOT = { tag = ROM }
-			NOT = { tag = PAP }
 			NOT = { tag = TUR }
-			NOT = { tag = BYZ }
-			NOT = { tag = GLH }
-			NOT = { tag = CMN }
+			#NOT = { tag = CMN }
 			NOT = { exists = BGR }
 			OR = {
 				primary_culture = crimean
@@ -28,17 +16,7 @@ country_decisions = {
 				primary_culture = astrakhani
 			}
 			is_colonial_nation = no
-			OR = {
-				is_former_colonial_nation = no
-				AND = {
-					is_former_colonial_nation = yes
-					ai = no
-				}
-			}
-			OR = {
-				ai = no
-				num_of_cities = 20
-			}
+			government = tribal
 		}
 		provinces_to_highlight = {
 			OR = {
@@ -60,9 +38,8 @@ country_decisions = {
 			}
 		}
 		allow = {
-			NOT = { exists = BGR }
-			has_reform = steppe_horde
-			owns_core_province = 425 #Dagestani
+			government = tribal
+			#owns_core_province = 425 #Dagestani
 			owns_core_province = 464 #Astrakhan
 			owns_core_province = 463 #Circassia
 			owns_core_province = 1971 #Beljamen

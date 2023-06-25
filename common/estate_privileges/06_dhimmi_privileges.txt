@@ -823,6 +823,9 @@ estate_dhimmi_development_of_communities = {
 	is_valid = {
 		has_dlc = "Domination"
 	}
+	can_select = {
+		NOT = { has_estate_privilege = estate_church_development_of_temples }
+	}
 	on_granted = {
 		custom_tooltip = estate_dhimmi_development_of_communities_gt
 		tooltip = {
@@ -838,7 +841,6 @@ estate_dhimmi_development_of_communities = {
 	on_granted_province = {
 		if = {
 			limit = {
-				NOT = { religion_group = ROOT }
 				has_tax_building_trigger = yes
 			}
 			add_province_modifier = {
@@ -875,48 +877,48 @@ estate_dhimmi_development_of_communities = {
 		factor = 0
 	}
 }
-estate_dhimmi_grant_trading_privileges = {
-	icon = privilege_monopoly
-	loyalty = 0.0
-	influence = 0.05
-	#max_absolutism = -5
-	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
-	is_valid = {
-		has_dlc = "Domination"
-	}
-	can_select = {
-		if = {
-			limit = { has_estate = estate_brahmins }
-			NOT = { has_estate_privilege = estate_brahmins_expand_the_theology }
-		}
-	}
-	on_granted = {
-		enable_estate_action = {
-			estate_action = RECRUIT_MINISTER_DHIMMI
-		}
-	}
-	on_revoked = {
-		disable_estate_action = {
-			estate_action = RECRUIT_MINISTER_DHIMMI
-		}
-	}
-	on_invalid = {
-		disable_estate_action = {
-			estate_action = RECRUIT_MINISTER_DHIMMI
-		}
-	}
-	conditional_modifier = {
-		trigger = { has_government_mechanic = russian_modernization_mechanic }
-		modifier = { monthly_russian_modernization = -0.03 }
-	}
-	#conditional_modifier = {
-	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
-	#	modifier = { monthly_ottoman_decadence = 0.02 }
-	#}
-	ai_will_do = {
-		factor = 0
-	}
-}
+#estate_dhimmi_grant_trading_privileges = {
+#	icon = privilege_monopoly
+#	loyalty = 0.0
+#	influence = 0.05
+#	#max_absolutism = -5
+#	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+#	is_valid = {
+#		has_dlc = "Domination"
+#	}
+#	can_select = {
+#		if = {
+#			limit = { has_estate = estate_brahmins }
+#			NOT = { has_estate_privilege = estate_brahmins_expand_the_theology }
+#		}
+#	}
+#	on_granted = {
+#		enable_estate_action = {
+#			estate_action = RECRUIT_MINISTER_DHIMMI
+#		}
+#	}
+#	on_revoked = {
+#		disable_estate_action = {
+#			estate_action = RECRUIT_MINISTER_DHIMMI
+#		}
+#	}
+#	on_invalid = {
+#		disable_estate_action = {
+#			estate_action = RECRUIT_MINISTER_DHIMMI
+#		}
+#	}
+#	conditional_modifier = {
+#		trigger = { has_government_mechanic = russian_modernization_mechanic }
+#		modifier = { monthly_russian_modernization = -0.03 }
+#	}
+#	#conditional_modifier = {
+#	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
+#	#	modifier = { monthly_ottoman_decadence = 0.02 }
+#	#}
+#	ai_will_do = {
+#		factor = 0
+#	}
+#}
 estate_dhimmi_dhimmi_education = {
 	icon = privilege_technology
 	loyalty = 0.0
@@ -999,47 +1001,47 @@ estate_dhimmi_dhimmi_education = {
 		factor = 0
 	}
 }
-estate_dhimmi_promote_dhimmi_nobility = {
-	icon = privilege_empty_throne
-	loyalty = 0.0
-	influence = 0.1
-	#max_absolutism = -5
-	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
-	is_valid = {
-		has_dlc = "Domination"
-	}
-	benefits = {
-		free_leader_pool = 1
-	}
-	on_granted = {
-		enable_estate_action = {
-			estate_action = PROMOTE_DHIMMI_NOBLES_DHIMMI
-		}
-	}
-	on_invalid = {
-		disable_estate_action = {
-			estate_action = PROMOTE_DHIMMI_NOBLES_DHIMMI
-		}
-	}
-	on_revoked = {
-		disable_estate_action = {
-			estate_action = PROMOTE_DHIMMI_NOBLES_DHIMMI
-		}
-	}
-	mechanics = {
-	}
-	conditional_modifier = {
-		trigger = { has_government_mechanic = russian_modernization_mechanic }
-		modifier = { monthly_russian_modernization = -0.03 }
-	}
-	#conditional_modifier = {
-	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
-	#	modifier = { monthly_ottoman_decadence = 0.02 }
-	#}
-	ai_will_do = {
-		factor = 0
-	}
-}
+#estate_dhimmi_promote_dhimmi_nobility = {
+#	icon = privilege_empty_throne
+#	loyalty = 0.0
+#	influence = 0.1
+#	#max_absolutism = -5
+#	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+#	is_valid = {
+#		has_dlc = "Domination"
+#	}
+#	benefits = {
+#		free_leader_pool = 1
+#	}
+#	on_granted = {
+#		enable_estate_action = {
+#			estate_action = PROMOTE_DHIMMI_NOBLES_DHIMMI
+#		}
+#	}
+#	on_invalid = {
+#		disable_estate_action = {
+#			estate_action = PROMOTE_DHIMMI_NOBLES_DHIMMI
+#		}
+#	}
+#	on_revoked = {
+#		disable_estate_action = {
+#			estate_action = PROMOTE_DHIMMI_NOBLES_DHIMMI
+#		}
+#	}
+#	mechanics = {
+#	}
+#	conditional_modifier = {
+#		trigger = { has_government_mechanic = russian_modernization_mechanic }
+#		modifier = { monthly_russian_modernization = -0.03 }
+#	}
+#	#conditional_modifier = {
+#	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
+#	#	modifier = { monthly_ottoman_decadence = 0.02 }
+#	#}
+#	ai_will_do = {
+#		factor = 0
+#	}
+#}
 #estate_dhimmi_military_service = {
 #	icon = privilege_military
 #	loyalty = -0.05

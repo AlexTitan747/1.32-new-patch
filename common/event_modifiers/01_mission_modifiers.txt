@@ -324,6 +324,64 @@ swi_integration = {
 	diplomatic_annexation_cost = -0.25
 }
 
+tm_swi_italian_trade_mod = {
+	trade_efficiency = 0.10
+	placed_merchant_power = 10
+}
+
+tm_swi_defenders_of_rome = {
+	defensiveness = 0.10
+	manpower_in_true_faith_provinces= 0.10
+	siege_ability = 0.15
+}
+
+tm_swi_italian_arhcitecs = {
+	great_project_upgrade_cost = -0.2
+	great_project_upgrade_time = -0.25
+	build_time = -0.10
+	build_cost = -0.05
+}
+
+tm_swi_unified_germany_mod = {
+	global_manpower_modifier = 0.10
+	land_forcelimit_modifier = 0.10
+}
+
+tm_swi_empire_of_germany = {
+	fire_damage = 0.1
+	fire_damage_received = -0.1
+}
+
+tm_swi_is_germany = {
+	administrative_efficiency = 0.1
+}
+
+tm_swi_german_engineering_mod = {
+	innovativeness_gain = 1
+	development_cost_modifier = -0.1
+}
+
+tm_swi_goods_from_italy = {
+	global_trade_goods_size_modifier = 0.1
+	production_efficiency = 0.15
+}
+
+tm_swi_forceful_unification = {
+	siege_ability = 0.15
+	artillery_levels_available_vs_fort = 1
+	province_warscore_cost = -0.15
+	warscore_from_battles_modifier = 0.1
+}
+
+tm_swi_envious_works = {
+	local_warscore_cost_modifier = 0.2
+	local_development_cost = -0.15
+	local_tax_modifier = 0.25
+	local_production_efficiency = 0.25
+	trade_goods_size = 1
+	allowed_num_of_buildings = 1
+}
+
 #######
 #Hesse Modifiers
 #######
@@ -333,7 +391,7 @@ tm_HES_bamberg_castle = {
 tm_construction_of_hesse = {
 	build_cost = -0.075
 	build_time = -0.15
-	global_tax_modifier = 0.075
+	global_tax_modifier = 0.10
 }
 tm_hessian_copper_and_iron = {
 	trade_goods_size = 0.25
@@ -388,12 +446,14 @@ tm_CRI_early_expansion = {
 	core_creation = -0.125
 }
 tm_CRI_development_of_crimea = {
-	development_cost = -0.05
-	build_cost = -0.075
+	development_cost = -0.1
+	build_cost = -0.1
 	build_time = -0.1
 }
 tm_CRI_integration_of_the_tributaries = {
 	diplomatic_annexation_cost = -0.25
+	reduced_liberty_desire = 50
+	monarch_power_tribute = 2
 }
 tm_CRI_hold_over_astrakhan = {
 	province_trade_power_modifier = 0.25
@@ -401,10 +461,11 @@ tm_CRI_hold_over_astrakhan = {
 }
 tm_CRI_stability_of_gold = {
 	trade_goods_size = 0.5
+	local_gold_depletion_chance_modifier = -0.5
 }
 tm_CRI_crush_the_cossack_raiders = {
-	prestige = 0.75
-	manpower_recovery_speed = 0.125
+	prestige = 1
+	manpower_recovery_speed = 0.10
 	trade_steering = 0.1
 }
 tm_CRI_conquest_of_neva = {
@@ -412,17 +473,17 @@ tm_CRI_conquest_of_neva = {
 	trade_efficiency = 0.1
 }
 tm_CRI_slave_trade = {
-	local_production_efficiency = 0.15
-	local_manpower_modifier = 0.1
+	local_production_efficiency = 0.25
+	local_manpower_modifier = 0.25
+	trade_goods_size = 0.5
 }
 tm_CRI_feeding_the_people = {
 	global_tax_modifier = 0.15
-	global_manpower_modifier = 0.1
+	global_manpower_modifier = 0.15
 }
 tm_CRI_destroy_the_veche = {
 	discipline = 0.025
-	land_morale = 0.05
-	cavalry_power = 0.075
+	land_morale = 0.10
 }
 tm_CRI_call_for_war = {
 	land_morale = 0.1
@@ -430,8 +491,8 @@ tm_CRI_call_for_war = {
 	shock_damage_received = -0.1
 }
 tm_CRI_ruthenia_ruined = {
-	trade_efficiency = 0.125
-	cavalry_power = 0.075
+	trade_efficiency = 0.10
+	cavalry_power = 0.10
 }
 tm_CRI_defend_the_caucasus = {
 	local_defender_dice_roll_bonus = 1
@@ -441,9 +502,42 @@ tm_CRI_defend_the_caucasus = {
 }
 
 tm_CRI_conquerer_of_persia = {
-	discipline = 0.025
-	cavalry_power = 0.075
-	shock_damage = 0.075
+	cavalry_power = 0.10
+	shock_damage = 0.10
+}
+
+tm_cri_crush_the_russians = {
+	land_morale_constant = 0.25
+	shock_damage = 0.10
+	ae_impact = -0.5
+	cavalry_power = 0.1
+}
+
+tm_CRI_horde_capital = {
+	horde_unity = 1
+	global_autonomy = -0.05
+	local_development_cost = -0.10
+}
+
+tm_CRI_thriving_empire = {
+	technology_cost = -0.05
+	idea_cost = -0.1
+	global_institution_spread = 0.25
+}
+
+tm_CRI_desperate_defense = {
+	manpower_recovery_speed = 0.25
+	land_morale = 0.15
+	movement_speed = 0.05
+	land_maintenance_modifier = -0.20
+	shock_damage_received = -0.10
+}
+
+tm_CRI_horse_experts = {
+	movement_speed = 0.05
+	cavalry_power = 0.05
+	shock_damage = 0.05
+	cavalry_cost = -0.10
 }
 
 ###
@@ -1216,6 +1310,7 @@ tur_barbary_pirates = {
 	global_ship_recruit_speed = -0.15
 	naval_maintenance_modifier = -0.15
 	naval_forcelimit_modifier = 0.1
+	may_perform_slave_raid = yes
 }
 
 conquest_of_the_levant = {
@@ -1261,6 +1356,10 @@ russian_pacific_port = {
 }
 
 siberian_fur_production = {
+	trade_goods_size_modifier = 0.2
+}
+
+central_asian_livestock_production = {
 	trade_goods_size_modifier = 0.2
 }
 
@@ -2956,7 +3055,8 @@ gbr_emperor_of_india = {	#Permanent
 
 ave_imperial_favoritism = {
 	diplomatic_reputation = 2
-	reasons_to_elect = 30
+	improve_relation_modifier = 0.33
+	ae_impact = -0.25 
 }
 
 ave_expnansionist_path = {
@@ -2966,7 +3066,8 @@ ave_expnansionist_path = {
 
 ave_imperial_parliament = {	#Permanent
 	num_of_parliament_issues = 1
-	reasons_to_elect = 10
+	diplomatic_reputation = 2
+	improve_relation_modifier = 0.15
 }
 
 ave_end_of_the_empire = {	#Permanent
@@ -2995,7 +3096,7 @@ gbr_colonial_australia = {
 }
 
 ave_national_bank = {
-	interest = -2
+	interest = -0.5
 	inflation_reduction = 0.1
 }
 
@@ -3412,18 +3513,6 @@ beyliks_subjugated = {
 	land_morale = 0.1
 }
 
-# Bohemian missions
-
-boh_hussite_revolt = {
-	global_unrest = -1
-	stability_cost_modifier	= -0.25
-}
-
-boh_premysl_mod = {
-	legitimacy = 1
-	prestige = 1
-}
-
 # AKK missions
 
 white_sheep_ascendant = {
@@ -3632,7 +3721,7 @@ rus_steppe_conversion = {
 
 rus_west_slavic_union = {	#Permanent, gets lost when either West Slavic culture gets demoted
 	manpower_in_accepted_culture_provinces = 0.1
-	num_accepted_cultures = 4
+	num_accepted_cultures = 5
 }
 
 rus_carpathian_union = {	#Permanent, gets lost when either Carpathian culture gets demoted
@@ -3708,7 +3797,7 @@ rus_expansion_into_siberia = {
 
 rus_new_world_colonization = {
 	may_explore = yes
-	range = 0.25
+	range = -0.5
 	colonists = 2
 	global_colonial_growth = 20
 }
@@ -3761,7 +3850,7 @@ rus_natural_scientist_focus = {
 	technology_cost = -0.1
 }
 rus_artist_focus = {
-	build_cost = -0.1
+	great_project_upgrade_time = -0.25
 	great_project_upgrade_cost = -0.1
 }
 rus_treasurer_focus = {
@@ -3770,12 +3859,22 @@ rus_treasurer_focus = {
 }
 rus_theologian_focus = {
 	tolerance_own = 2
+	manpower_in_true_faith_provinces= 0.20
 }
 rus_master_of_mint_focus = {
 	global_trade_goods_size_modifier = 0.1
 }
 rus_inquisitor_focus = {
 	missionaries = 1
+	global_missionary_strength = 0.02
+}
+rus_free_thinker_focus = {
+	embracement_cost = -0.25
+	global_institution_spread = 0.25
+}
+rus_master_of_cosntruction_focus = {
+	build_cost = -0.1
+	build_time = -0.05
 }
 
 rus_the_strong_motherland = {	#Permanent
@@ -4868,6 +4967,8 @@ spa_native_reductions = {
 spa_milan = {
 	diplomatic_reputation = 2
 	war_exhaustion = -0.05
+	global_autonomy = -0.10
+	manpower_recovery_speed = 0.1
 }
 
 spa_new_granada = {
@@ -4882,6 +4983,7 @@ displaced_moriscos = {
 spanish_imperial_ambition = {
 	improve_relation_modifier = 0.25
 	diplomatic_reputation = 1
+	ae_impact = -0.20
 }
 
 fortified_florida_modifier = {
@@ -5574,7 +5676,7 @@ mlo_mona_lisa = {
 }
 
 mlo_unified_italy = {
-	local_autonomy = -0.025
+	local_autonomy = -0.05
 	local_unrest = -2
 }
 
@@ -5711,6 +5813,7 @@ nap_barbary_pirates = {
 
 swi_diplomatic_ties = {
 	diplomatic_reputation = 2
+	improve_relation_modifier = 0.2
 }
 
 reorganzied_swiss_confederacy = {
@@ -6780,7 +6883,7 @@ republic_reformed_government = {
 # Bohemian missions
 
 defenestrations_of_prague = {
-	diplomatic_reputation = 1
+	tolerance_own = 2
 	global_heretic_missionary_strength = 0.01
 }
 
@@ -6789,7 +6892,7 @@ bergordnung_reforms = {
 }
 
 boh_integrated_silesia = {
-	improve_relation_modifier = 0.15
+	improve_relation_modifier = 0.20
 }
 
 boh_fortification_effort = {
@@ -6809,6 +6912,111 @@ boh_peace_in_europe = {
 bohemian_commonwealth = {
 	diplomatic_annexation_cost = -0.15
 }
+
+boh_hussite_revolt = {
+	global_unrest = -1
+	stability_cost_modifier	= -0.25
+}
+
+boh_premysl_mod = {
+	legitimacy = 1
+	prestige = 1
+}
+
+defeated_hungarians = {
+	land_morale = 0.05
+}
+
+adopted_prussian_military_tactics = {
+	infantry_fire = 0.2
+}
+
+appoint_bohemian_bishops = {
+	papal_influence = 0.5
+	monthly_church_power = 0.5
+	missionaries = 1
+	development_cost = -0.05
+}
+
+surge_of_trade = {
+	trade_efficiency = 0.1
+}
+
+respect_our_traditions = {
+	reform_progress_growth = 0.1
+	stability_cost_modifier = -0.35
+	global_unrest = -1
+	development_cost = -0.025
+}
+
+converted_hussite = {
+	global_heretic_missionary_strength = 0.01
+	missionaries = 1
+}
+
+stayed_true_to_our_faith = {
+	tolerance_own = 2
+}
+
+tm_boh_jewellery_mod = {
+	local_production_efficiency = 0.1
+	trade_goods_size_modifier = 0.25
+}
+
+tm_boh_shield_of_christianity_mod = {
+	land_morale = 0.1
+	papal_influence = 2
+	monthly_church_power = 0.5
+	monthly_fervor_increase = 1
+	yearly_patriarch_authority = 0.025
+	warscore_cost_vs_other_religion = -0.10
+}
+
+tm_boh_hussite_crusade = {
+	enforce_religion_cost = -0.5
+	warscore_cost_vs_other_religion = -0.05
+	cb_on_religious_enemies = yes
+}
+
+tm_boh_uniforms = {
+	discipline = 0.075
+	global_regiment_recruit_speed = -0.25
+	drill_gain_modifier = 0.5
+}
+
+tm_boh_developed_poland = {
+	global_prosperity_growth = 0.25
+	monthly_splendor = 1
+}
+
+commonwealth_of_bohemia_mod = {
+	fire_damage = 0.10
+	manpower_in_accepted_culture_provinces = 0.15
+	manpower_in_own_culture_provinces = 0.15
+	reserves_organisation = 0.10
+	all_power_cost = -0.03
+}
+
+tm_boh_carpathia = {
+	infantry_power = 0.1
+}
+
+tm_boh_hun_gold_mine = {
+	trade_goods_size = 1
+	local_gold_depletion_chance_modifier = -0.1
+}
+
+tm_integration_to_bohemia = {
+	local_autonomy = -0.1
+	local_unrest = -5
+	local_missionary_strength = 0.01
+	local_culture_conversion_cost = -0.25
+}
+
+tm_boh_food_produciton = {
+	global_manpower_modifier = 0.1
+}
+
 pap_papal_swiss_guard = {
 	mercenary_discipline = 0.1
 }
@@ -8939,6 +9147,10 @@ pol_heir_of_rome_modifer = {
 	country_diplomatic_power = 1 
 	diplomatic_reputation = 2 
 }
+fallen_bohemia = {
+	discipline = 0.025
+}
+
 
 ###Lithuanian Missions###
 
@@ -9719,7 +9931,8 @@ tur_march_for_rome = {
 }
 
 tur_crown_of_rome_modifier = { 
-	max_absolutism = 10 
+	max_absolutism = 10
+	yearly_absolutism = 1
 }
 
 tur_legitimate_roman_empire_modifier = { 
@@ -9762,11 +9975,11 @@ tur_romanian_tribute = {
 	vassal_income = 0.25
 }
 
-tur_barbary_pirates = {
-	global_ship_recruit_speed = -0.1
-	naval_maintenance_modifier = -0.1
-	naval_forcelimit_modifier = 0.1
-}
+#tur_barbary_pirates = {
+#	global_ship_recruit_speed = -0.1
+#	naval_maintenance_modifier = -0.1
+#	naval_forcelimit_modifier = 0.1
+#}
 
 tur_control_over_the_red_sea = {
 	trade_range_modifier = 0.5
@@ -9829,12 +10042,24 @@ tur_the_imperial_capital = {	#Permanent
 	local_build_cost = -0.25
 	local_build_time = -0.25
 	local_development_cost = -0.2
+	local_great_project_upgrade_cost = -0.25
+	local_great_project_upgrade_time = -0.25
+	local_production_efficiency = 0.15
+	local_tax_modifier = 0.15
+	local_manpower_modifier = 0.15
+	fort_level = 2
+	local_defensiveness = 0.25
 }
 
 tur_the_gem_of_worlds_desire = {	#Permanent
 	province_trade_power_value = 20
 	trade_value_modifier = 0.1
-	local_development_cost = -0.2
+	local_development_cost = -0.25
+	trade_goods_size_modifier = 0.5
+	local_tax_modifier = 1
+	local_production_efficiency = 1
+	local_manpower_modifier = 1
+	local_institution_spread = 0.5
 }
 
 tur_imperial_school_of_military_engineering = {	#Permanent
@@ -9994,6 +10219,12 @@ tur_legendary_lawgiver_modifier = {
 tur_silk_road_main_trade_post = {
 	trade_value_modifier = 0.2
 	province_trade_power_value = 20
+}
+
+tm_tur_victory_over_mam = {
+	land_morale_constant = 0.25
+	land_forcelimit_modifier = 0.15
+	manpower_recovery_speed = 0.10
 }
 
 #China-related Modifiers
@@ -10454,6 +10685,7 @@ fra_reintegration_of_burgundian_lands_modifier = {
 }
 fra_charlemagne_legacy_modifier = {
 	diplomatic_reputation = 2
+	improve_relation_modifier = 0.25
 }
 fra_war_east_modifier = { 
 	core_creation = -0.1
@@ -10522,7 +10754,7 @@ fra_replenished_slave_crews_modifier = {
 fra_sociopolitical_reforms_modifier = { 
 	reform_progress_growth = 0.25
 	yearly_corruption = -0.1
-	advisor_cost = -0.2
+	advisor_cost = -0.1
 	advisor_pool = 1 
 }
 fra_exploitation_of_neapolitan_estates_modifier = {
@@ -10565,10 +10797,10 @@ fra_golden_march_modifier = {
 }
 fra_french_papal_administrative_cooperation_modifier = { 
 	administrative_efficiency = 0.05
+	build_cost = -0.1
 }
 fra_french_papal_diplomatic_cooperation_modifier = { 
-	monthly_favor_modifier = 0.5
-	improve_relation_modifier = 0.25
+	development_cost_modifier = -0.10
 }
 fra_french_papal_military_cooperation_modifier = { 
 	drill_gain_modifier = 0.2
@@ -10584,8 +10816,8 @@ fra_first_opera_house_modifier = {
 	promote_culture_cost = -0.2
 }
 fra_port_of_french_signoria_modifier = { 
-	province_trade_power_modifier = 0.2
-	local_tax_modifier = 0.25
+	province_trade_power_modifier = 0.33
+	local_tax_modifier = 0.5
 }
 fra_golden_march2_modifier = { 
 	monarch_military_power = 1
@@ -10614,6 +10846,7 @@ fra_imperial_messengers_modifier = {
 fra_victory_germany_modifier = {
 	country_military_power = 1 
 	mercenary_discipline = 0.05
+	manpower_recovery_speed = 0.15
 }
 fra_french_buffer_modifier = { 
 	local_monthly_devastation = -0.1 
@@ -10626,7 +10859,7 @@ fra_french_supremacy2_modifier = {
 }
 fra_cultural_hegemony_modifier = {
 	all_power_cost = -0.05
-	great_project_upgrade_cost = -0.05
+	great_project_upgrade_cost = -0.15
 }
 fra_iron_crowned_modifier = {
 	core_creation = -0.15
@@ -10672,6 +10905,8 @@ fra_compagnie_francaise_modifier = {
 	trade_goods_size = 3
 }
 fra_growth_appanages = {
+	loyalty_change_on_revoked = 0.05
+	allow_free_estate_privilege_revocation = yes
 	diplomatic_upkeep = 1 
 	nobles_loyalty_modifier = 0.1
 }
@@ -10681,7 +10916,9 @@ fra_increased_crown_authority_modifier = {
 }
 fra_colonial_rush_modifier = {
 	colonist_placement_chance = 0.1
-	global_colonial_growth = 25
+	global_colonial_growth = 40
+	colonists = 1
+	range = 0.33
 }
 fra_french_bombards_modifier = { 
 	assault_fort_ability = 0.25
@@ -10829,7 +11066,9 @@ fra_heart_of_protestantism_modifier = {
 
 fra_moderate_path_modifier = {
 	tolerance_of_heathens_capacity = 1 
-	tolerance_of_heretics_capacity = 1 
+	tolerance_of_heretics_capacity = 1
+	tolerance_heathen = 1
+	tolerance_heretic = 1
 }
 
 fra_jerusalem_modifier = {
@@ -10839,7 +11078,10 @@ fra_jerusalem_modifier = {
 
 fra_catholic_head_of_state_modifier = {
 	curia_powers_cost = -0.33
-	country_admin_power = 1 
+	country_admin_power = 1
+	church_power_modifier = 0.5
+	monthly_fervor_increase = 1
+	yearly_patriarch_authority = 0.05
 }
 
 fra_sword_of_christianity_modifier5 = {
@@ -10994,10 +11236,56 @@ fra_victory_against_the_english_modifier = {
 }
 
 fra_close_ties_modifier = {
-	diplomatic_reputation = 1 
-	diplomats = 1 
+	improve_relation_modifier = 0.25
+	diplomats = 1
+	spy_offence = 0.25
 }
-	
+
+tm_fra_naval_buildup = {
+	global_ship_cost = -0.1
+	global_ship_recruit_speed = -0.1
+	ship_durability = 0.1
+	heavy_ship_power = 0.1
+	galley_power = 0.1
+}
+
+tm_fra_bid_for_normandy = {
+	land_morale = 0.10
+	recover_army_morale_speed = 0.10
+	manpower_recovery_speed = 0.10
+}
+
+tm_fra_normandy_seizure = {
+	local_defensiveness = -0.25
+	province_warscore_cost = -0.5
+}
+
+tm_stronger_than_hre = {
+	infantry_power = 0.1
+	infantry_cost = -0.1
+}
+
+tm_fra_developed_in_the_empire = {
+	local_production_efficiency = 0.2
+	local_manpower_modifier = 0.2
+	trade_goods_size = 0.15
+}
+
+tm_fra_a_holy_empire = {
+	manpower_against_imperial_enemies = 50000
+	papal_influence = 3
+	monthly_church_power = 0.05
+	monthly_fervor_increase = 2
+	yearly_patriarch_authority = 0.025
+	manpower_in_true_faith_provinces = 0.25
+	army_tradition_decay = -0.01
+}
+
+tm_fra_ally_owns_ita = {
+	trade_efficiency = 0.1
+	global_trade_power = 0.1
+	global_trade_goods_size_modifier = 0.05
+}
 
 jap_exchange_ideas_modifier = { 
 	technology_cost = -0.1
@@ -11297,6 +11585,8 @@ spa_powerful_trade_ships_modifier = {
 spa_long_range_logistics_modifier = {
 	land_attrition = -0.1
 	movement_speed = 0.05 
+	naval_attrition = -0.1
+	movement_speed_in_fleet_modifier = 1
 }
 
 spa_backed_by_the_army_modifier = {
@@ -11311,7 +11601,7 @@ spa_spanish_affluence_modifier = {
 }
 
 spa_bid_for_the_hab_crown_modifier = {
-	siege_ability = 0.1
+	siege_ability = 0.15
 }
 
 spa_royal_authority_restored_modifier = {
@@ -11389,6 +11679,23 @@ spa_enforced_catholicism_modifier = {
 	papal_influence_from_cardinals = 0.3
 	curia_powers_cost = -0.1
 	papal_influence = 1
+	monthly_church_power = 0.05
+	church_power_modifier = 0.1
+	monthly_fervor_increase = 1
+	yearly_patriarch_authority = 0.01
+}
+
+spa_tm_conquest_of_england = {
+	ship_durability = 0.1
+	sunk_ship_morale_hit_recieved = -0.5
+	naval_maintenance_modifier = -0.1
+}
+
+spa_tm_naval_cooperation = {
+	global_ship_cost = -0.1
+	naval_morale_damage = 0.10
+	global_sailors_modifier = 0.1
+	leader_naval_manuever = 1
 }
 
 ara_iberian_struggle_modifier = {
@@ -11484,11 +11791,19 @@ por_reform_navy_1_modifier = {
 }
 
 spa_universal_empire_modifier = {
-	imperial_authority_value = 0.1
 	all_power_cost = -0.05
-	years_to_integrate_personal_union = -10
-	diplomatic_reputation = 1
+	land_morale_constant = 0.5
+	manpower_recovery_speed = 0.15
+	trade_efficiency = 0.15
 }
+
+spa_italian_cooperation = {
+	local_development_cost = -0.025
+	local_production_efficiency = 0.25
+	trade_value_modifier = 0.25
+	allowed_num_of_buildings = 1
+}
+
 fra_unification_movement_modifier = {	
 	local_warscore_cost_modifier = -0.33
 }

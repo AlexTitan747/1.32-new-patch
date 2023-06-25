@@ -1,90 +1,89 @@
 country_decisions = {
 	
-	angevin_nation = {
-		color = { 214 18 229 }
-		major = yes
-		potential = {
-			NOT = { has_country_flag = formed_angevin_flag }
-			ai = no
-			NOT = { tag = FRA }
-			NOT = { exists = ANG }
-			is_colonial_nation = no
-			culture_group = british
-		}
+	#angevin_nation = {
+	#	color = { 23 223 234 }
+	#	major = yes
+	#	potential = {
+	#		NOT = { has_country_flag = formed_angevin_flag }
+	#		NOT = { tag = FRA }
+	#		NOT = { exists = ANG }
+	#		is_colonial_nation = no
+	#		culture_group = british
+	#	}
 
-		provinces_to_highlight = {
-			OR = {
-				area = normandy_area
-				area = brittany_area
-				area = loire_area
-				area = poitou_area
-				area = bordeaux_area
-			}
-			OR = {
-				NOT = { owned_by = ROOT }
-				NOT = { is_core = ROOT }
-			}
-		}
+	#	provinces_to_highlight = {
+	#		OR = {
+	#			area = normandy_area
+	#			area = brittany_area
+	#			area = loire_area
+	#			area = poitou_area
+	#			area = bordeaux_area
+	#		}
+	#		OR = {
+	#			NOT = { owned_by = ROOT }
+	#			NOT = { is_core = ROOT }
+	#		}
+	#	}
 
-		allow = {
-			adm_tech = 15
-			is_free_or_tributary_trigger = yes
-			is_at_war = no
-			normandy_area = {
-				type = all
-				owned_by = ROOT
-			}
-			bordeaux_area = {
-				type = all
-				owned_by = ROOT
-			}
-			brittany_area = {
-				type = all
-				owned_by = ROOT
-			}
-			loire_area = {
-				type = all
-				owned_by = ROOT
-			}
-			poitou_area = {
-				type = all
-				owned_by = ROOT
-			}
-		}
+	#	allow = {
+	#		adm_tech = 15
+	#		is_free_or_tributary_trigger = yes
+	#		is_at_war = no
+	#		normandy_area = {
+	#			type = all
+	#			owned_by = ROOT
+	#		}
+	#		bordeaux_area = {
+	#			type = all
+	#			owned_by = ROOT
+	#		}
+	#		brittany_area = {
+	#			type = all
+	#			owned_by = ROOT
+	#		}
+	#		loire_area = {
+	#			type = all
+	#			owned_by = ROOT
+	#		}
+	#		poitou_area = {
+	#			type = all
+	#			owned_by = ROOT
+	#		}
+	#	}
 
-		effect = {
-			change_tag = ANG
-			remove_non_electors_emperors_from_empire_effect = yes
-			if = {
-				limit = {
-					NOT = { government_rank = 3 }
-				}
-				set_government_rank = 3
-			}
-			british_isles_region = {
-				limit = {
-					NOT = { owned_by = ROOT }
-				}
-				add_permanent_claim = ANG
-			}
-			france_region = {
-				limit = {
-					NOT = { owned_by = ROOT }
-				}
-				add_permanent_claim = ANG
-			}
-			add_prestige = 25
-			
-			add_country_modifier = {
-				name = "centralization_modifier"
-				duration = 7300
-			}
-			country_event = { id = ideagroups.1 }
-		}
-		ai_will_do = {
-			factor = 1
-		}
-		ai_importance = 200
-	}
+	#	effect = {
+	#		change_tag = ANG
+	#		remove_non_electors_emperors_from_empire_effect = yes
+	#		if = {
+	#			limit = {
+	#				NOT = { government_rank = 3 }
+	#			}
+	#			set_government_rank = 3
+	#		}
+	#		british_isles_region = {
+	#			limit = {
+	#				NOT = { owned_by = ROOT }
+	#			}
+	#			add_permanent_claim = ANG
+	#		}
+	#		france_region = {
+	#			limit = {
+	#				NOT = { owned_by = ROOT }
+	#			}
+	#			add_permanent_claim = ANG
+	#		}
+	#		add_prestige = 25
+	#		
+	#		add_country_modifier = {
+	#			name = "centralization_modifier"
+	#			duration = 7300
+	#		}
+	#		country_event = { id = ideagroups.1 }
+	#	}
+	#	ai_will_do = {
+	#		factor = 1
+	#	}
+	#	ai_importance = 200
+	#}
 
 }

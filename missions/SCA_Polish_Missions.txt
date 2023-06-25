@@ -218,6 +218,7 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 			custom_tooltip = pol_alternatively_tt 
 			tooltip = { 
 				moldavia_area = { add_base_tax = 1 }
+				north_moldavia = { add_base_tax = 1 }
 				if = { 
 					limit = { has_estate = estate_cossacks } 
 					add_estate_loyalty = { 
@@ -243,6 +244,7 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 				}
 				else = { 
 					moldavia_area = { add_base_tax = 1 }
+					north_moldavia = { add_base_tax = 1 }
 				}
 				if = { 
 					limit = { has_estate = estate_cossacks } 
@@ -553,38 +555,47 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 				province_id = 295
 				province_id = 310
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			OR = {
+				NOT = { country_or_non_sovereign_subject_holds = ROOT }
+				NOT = { province_has_center_of_trade_of_level = 2 }
+			}
 		}
 
 		trigger = {
 			33 = {
+				country_or_non_sovereign_subject_holds = ROOT
 				OR = {
-				province_has_center_of_trade_of_level = 2
-				province_has_center_of_trade_of_level = 3
+					province_has_center_of_trade_of_level = 2
+					province_has_center_of_trade_of_level = 3
 				}
 			}
 			274 = {
+				country_or_non_sovereign_subject_holds = ROOT
 				OR = {
-				province_has_center_of_trade_of_level = 2
-				province_has_center_of_trade_of_level = 3
+					province_has_center_of_trade_of_level = 2
+					province_has_center_of_trade_of_level = 3
 				}
 			}
 			308 = {
+				country_or_non_sovereign_subject_holds = ROOT
 				OR = {
-				province_has_center_of_trade_of_level = 2
-				province_has_center_of_trade_of_level = 3
+					province_has_center_of_trade_of_level = 2
+					province_has_center_of_trade_of_level = 3
 				}
 			}
 			4253 = {
+				country_or_non_sovereign_subject_holds = ROOT
 				OR = {
-				province_has_center_of_trade_of_level = 2
-				province_has_center_of_trade_of_level = 3
+					province_has_center_of_trade_of_level = 2
+					province_has_center_of_trade_of_level = 3
 				}
 			}
 			295 = {
+				country_or_non_sovereign_subject_holds = ROOT
 				province_has_center_of_trade_of_level = 3
 			}
 			310 = {
+				country_or_non_sovereign_subject_holds = ROOT
 				province_has_center_of_trade_of_level = 3
 			}
 		}
@@ -599,7 +610,10 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 							has_trade_building_trigger = yes
 						}
 					}
-					add_building = marketplace
+					add_latest_building = {
+						builder = ROOT
+						trade = yes
+					}
 				}
 			}
 			274 = {
@@ -612,7 +626,10 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 							has_trade_building_trigger = yes
 						}
 					}
-					add_building = marketplace
+					add_latest_building = {
+						builder = ROOT
+						trade = yes
+					}
 				}
 			}
 			308 = {
@@ -625,7 +642,10 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 							has_trade_building_trigger = yes
 						}
 					}
-					add_building = marketplace
+					add_latest_building = {
+						builder = ROOT
+						trade = yes
+					}
 				}
 			}
 			4253 = {
@@ -638,7 +658,10 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 							has_trade_building_trigger = yes
 						}
 					}
-					add_building = marketplace
+					add_latest_building = {
+						builder = ROOT
+						trade = yes
+					}
 				}
 			}
 			295 = {
@@ -651,7 +674,10 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 							has_trade_building_trigger = yes
 						}
 					}
-					add_building = marketplace
+					add_latest_building = {
+						builder = ROOT
+						trade = yes
+					}
 				}
 			}
 			310 = {
@@ -664,7 +690,10 @@ poland_sca_slot_1 = { #Made by William 'Big Boss' S.
 							has_trade_building_trigger = yes
 						}
 					}
-					add_building = marketplace
+					add_latest_building = {
+						builder = ROOT
+						trade = yes
+					}
 				}
 			}
 		}
@@ -1639,21 +1668,16 @@ poland_sca_slot_2_a = {
 
 		provinces_to_highlight = { 
 			OR = {
-			area = suzdal_area
-			area = ural_area
-			area = galich_area
-			area = kama_area
-			area = kazan_area
+				area = suzdal_area
+				area = galich_area
+				area = kama_area
+				area = kazan_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
 
 		trigger = {
 			suzdal_area = {	
-				type = all 
-				country_or_non_sovereign_subject_holds = ROOT 
-			}
-			ural_area = {	
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT 
 			}
@@ -2392,8 +2416,7 @@ poland_sca_slot_3_a = {
 			owner = {
 				OR = {
 					monthly_income = ROOT 
-					navy_size = ROOT 
-					army_size = ROOT 
+					land_forcelimit = ROOT
 				}
 				is_subject = no 
 				NOT = { tag = ROOT }
@@ -2406,8 +2429,8 @@ poland_sca_slot_3_a = {
 				NOT = {
 					any_country = { 
 						capital_scope = { OR = {
-							region = north_german_region
-							region = south_german_region
+								region = north_german_region
+								region = south_german_region
 							} 
 						} 
 						monthly_income = ROOT
@@ -2419,8 +2442,8 @@ poland_sca_slot_3_a = {
 				NOT = {
 					any_country = { 
 						capital_scope = { OR = {
-							region = north_german_region
-							region = south_german_region
+								region = north_german_region
+								region = south_german_region
 							} 
 						} 
 						land_forcelimit = ROOT
@@ -2565,6 +2588,7 @@ poland_sca_slot_3_a = {
 				exists = SWE
 			}
 			ostra_svealand_area = {
+				type = all
 				owned_by = ROOT
 			}
 		}
@@ -3485,9 +3509,9 @@ poland_sca_slot_4_a = {
 					total_development = 2000
 				}
 			}
-			if = {
-				limit = { has_dlc = "Mandate of Heaven" }
-					in_golden_age = yes 
+			OR = {
+				has_had_golden_age = yes
+				in_golden_age = yes
 			}
 		}
 		effect = {
@@ -3864,34 +3888,61 @@ poland_sca_slot_4_a = {
 		icon = mission_state_manufactories 
 		required_missions = { tm_pol_warplan_russia } 
 		position = 21
+		provinces_to_highlight = {
+			region = russia_region
+			OR = { 
+				trade_goods = iron
+				trade_goods = armour
+				trade_goods = steel
+				trade_goods = copper
+				trade_goods = tin
+				trade_goods = bronze
+				trade_goods = silver
+			}
+			OR = {
+				NOT = { base_production = 8 }
+				NOT = { has_manufactory = yes }
+				NOT = { owned_by = ROOT }
+			}
+		}
 		trigger = {
 			num_of_owned_provinces_with = {
 				value = 5
 				region = russia_region
 				OR = { 
 					trade_goods = iron
+					trade_goods = armour
+					trade_goods = steel
 					trade_goods = copper
+					trade_goods = tin
+					trade_goods = bronze
+					trade_goods = silver
 				}
 				base_production = 8
-				has_building = weapons
-				}
+				has_manufactory = yes
 			}
+		}
 
 		effect = { 
 			custom_tooltip = pol_mission_production_centers_tt
 			hidden_effect = {	
-			every_owned_province = {
-				limit = {
-					region = russia_region
-					OR = { 
-						trade_goods = iron
-						trade_goods = copper
+				every_owned_province = {
+					limit = {
+						region = russia_region
+						OR = { 
+							trade_goods = iron
+							trade_goods = armour
+							trade_goods = steel
+							trade_goods = copper
+							trade_goods = tin
+							trade_goods = bronze
+							trade_goods = silver
 						}
-					base_production = 8
-					has_building = weapons
-				}
-				add_base_production = 2
-				add_building = barracks
+						base_production = 8
+						has_manufactory = yes
+					}
+					add_base_production = 2
+					add_building = barracks
 				}
 			}
 		}
@@ -4006,29 +4057,37 @@ poland_sca_slot_5_branching_lit_hre = {
 		icon = the_shape_of_trades_to_come
 		required_missions = { } 
 		position = 1
-		provinces_to_highlight = { 
-			province_id = 1859
-			province_id = 2961
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1859
+				province_id = 2961
+			}
+			NOT = { province_has_center_of_trade_of_level = 2 }
 		}
 
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				has_trade_building_trigger = yes 
-				value = 5 
+				value = 5
 			}
 
 			estate_loyalty = {
 				estate = estate_burghers 
 				loyalty = 60 
 			}
+			OR = {
+				AND = {
+					1859 = {
+						province_has_center_of_trade_of_level = 2
+					}
 
-			1859 = {
-				province_has_center_of_trade_of_level = 2
+					2961 = {
+						province_has_center_of_trade_of_level = 2
+					}
+				}
+				mercantilism = 25
 			}
-
-			2961 = {
-				province_has_center_of_trade_of_level = 2
-			}
+			
 
 			OR = {
 				num_of_centers_of_trade = 6
@@ -4077,14 +4136,19 @@ poland_sca_slot_5_branching_lit_hre = {
 
 		provinces_to_highlight = {
 			OR = {
-			province_id = 4526
-			province_id = 255
-			province_id = 4533
-			province_id = 4527
-			province_id = 259
-			province_id = 5120
-			province_id = 260
-			province_id = 257
+				province_id = 4526
+				province_id = 255
+				province_id = 4533
+				province_id = 4527
+				province_id = 259
+				province_id = 5120
+				province_id = 260
+				province_id = 257
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { base_production = 13 }
+				NOT = { has_production_building_trigger = yes }
 			}
 		}
 
@@ -4092,42 +4156,42 @@ poland_sca_slot_5_branching_lit_hre = {
 			4526 = {
 				owned_by = ROOT
 				base_production = 13
-				has_building = workshop
+				has_production_building_trigger = yes
 			}
 			255 = {
 				owned_by = ROOT
-				base_production = 12
-				has_building = workshop
+				base_production = 13
+				has_production_building_trigger = yes
 			}
 			4533 = {
 				owned_by = ROOT
 				base_production = 13
-				has_building = workshop
+				has_production_building_trigger = yes
 			}
 			4527 = {
 				owned_by = ROOT
 				base_production = 13
-				has_building = workshop
+				has_production_building_trigger = yes
 			}
 			259 = {
 				owned_by = ROOT
-				base_production = 12
-				has_building = workshop
+				base_production = 13
+				has_production_building_trigger = yes
 			}
 			5120 = {
 				owned_by = ROOT
 				base_production = 13
-				has_building = workshop
+				has_production_building_trigger = yes
 			}
 			260 = {
 				owned_by = ROOT
-				base_production = 12
-				has_building = workshop
+				base_production = 13
+				has_production_building_trigger = yes
 			}
 			257 = {
 				owned_by = ROOT
 				base_production = 13
-				has_building = workshop
+				has_production_building_trigger = yes
 			}
 		}
 
@@ -4156,12 +4220,19 @@ poland_sca_slot_5_branching_lit_hre = {
 		required_missions = { tm_pol_textile_developments }
 		position = 3
 		provinces_to_highlight = { 
-			country_or_non_sovereign_subject_holds = ROOT  
-			trade_goods = grain 
+			country_or_non_sovereign_subject_holds = ROOT
+			OR = {
+				trade_goods = grain
+				trade_goods = ale
+			}
+			
 		}
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				trade_goods = grain 
+				OR = {
+					trade_goods = grain
+					trade_goods = ale
+				}
 				has_production_building_trigger = yes 
 				value = 14
 			}
@@ -4210,10 +4281,19 @@ poland_sca_slot_5_branching_lit_hre = {
 				value = 0.2
 				duration = 5475
 			}
+			change_price = {
+				trade_goods = ale
+				key = polish_grain
+				value = 0.2
+				duration = 5475
+			}
 			hidden_effect = { 
 				every_owned_province = {
 					limit = {
-						trade_goods = grain 
+						OR = {
+							trade_goods = grain
+							trade_goods = ale
+						}
 						has_production_building_trigger = yes 
 					}
 					add_province_modifier = {
@@ -4518,22 +4598,22 @@ poland_sca_slot_5_branching_lit_hre = {
 		trigger = { 
 			4236 = {
 				base_production = 8
-				has_building = workshop
+				has_production_building_trigger = yes
 				owned_by = ROOT
 			}
 			1318 = {
 				base_production = 8
-				has_building = workshop
+				has_production_building_trigger = yes
 				owned_by = ROOT
 			}
 			162 = {
 				base_production = 8
-				has_building = workshop
+				has_production_building_trigger = yes
 				owned_by = ROOT
 			}
 			5107 = {
 				base_production = 8
-				has_building = workshop
+				has_production_building_trigger = yes
 				owned_by = ROOT
 			}
 			154 = {
@@ -4691,17 +4771,17 @@ poland_sca_slot_5_branching_lit_hre = {
 		trigger = {
 			if = { 
 				limit = { has_estate = estate_nobles } 
-					AND = { 
-						estate_loyalty = { 
-							estate = estate_nobles 
-							loyalty = 65 
-						}
-						num_of_estate_privileges = {
-							estate = estate_nobles 
-							value = 5
-						}	
+				AND = { 
+					estate_loyalty = { 
+						estate = estate_nobles 
+						loyalty = 65 
 					}
+					num_of_estate_privileges = {
+						estate = estate_nobles 
+						value = 5
+					}	
 				}
+			}
 			else = {
 				custom_trigger_tooltip = {
 					tooltip = declined_nieszawa_privileges
@@ -4906,7 +4986,13 @@ poland_sca_slot_5_branching_lit_hre = {
 				republican_tradition = 85 
 				devotion = 95 
 			}
-			stability = 3 
+			stability = 3
+			OR = {
+				full_idea_group = empire_ideas
+				full_idea_group = court_ideas
+				full_idea_group = justice_ideas
+				monthly_adm = 15
+			}
 		}
 		effect = {
 			custom_tooltip = pol_if_bent_nobles_and_monarchy_tt
@@ -4962,20 +5048,20 @@ poland_sca_slot_5_branching_lit_hre = {
 				region = crimea_region
 				trade_goods = salt
 				base_production = 10
-				has_building = workshop
+				has_production_building_trigger = yes
 			}
 		}
 		effect = { 
 			custom_tooltip = pol_mission_salt_mines_tt
 			hidden_effect = {
-			every_owned_province = {
-				limit = {
-					region = crimea_region
-					trade_goods = salt
-					base_production = 10
-					has_building = workshop
-				}
-				add_building = wharf
+				every_owned_province = {
+					limit = {
+						region = crimea_region
+						trade_goods = salt
+						base_production = 10
+						has_production_building_trigger = yes
+					}
+					add_manufactory = yes
 				}
 			}
 		}
@@ -4987,8 +5073,8 @@ poland_sca_slot_5_branching_lit_hre = {
 
 		provinces_to_highlight = { 
 			OR = {
-			province_id = 2201
-			province_id = 2447
+				province_id = 2201
+				province_id = 2447
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
@@ -5001,7 +5087,7 @@ poland_sca_slot_5_branching_lit_hre = {
 			2447 = {
 				owned_by = ROOT
 				base_production = 12
-				has_building = workshop
+				has_production_building_trigger = yes
 			}
 		}
 		effect = { 

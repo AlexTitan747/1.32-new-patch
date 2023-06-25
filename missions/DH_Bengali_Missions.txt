@@ -903,7 +903,10 @@ bng_slot_5 = {
 		}
 		trigger = {
 			treasury = 1000
-			workshop = 10
+			num_of_owned_provinces_with = {
+				value = 10
+				has_production_building_trigger = yes
+			}
 		}
 		effect = {
 			add_adm_power = 50
@@ -919,8 +922,10 @@ bng_slot_5 = {
 		provinces_to_highlight = {
 		}
 		trigger = {
-			textile = 5
-			plantations = 5
+			num_of_owned_provinces_with = {
+				value = 10
+				has_manufactory = yes
+			}
 		}
 		effect = {
 			add_dip_power = 50
@@ -937,13 +942,24 @@ bng_slot_5 = {
 		provinces_to_highlight = {
 		}
 		trigger = {
-			NOT = {
-				piety = -0.33
+			if = {
+				limit = {
+					religion_group = muslim
+				}
+				NOT = {
+					piety = -0.33
+				}
 			}
 			temple = 5
-			estate_loyalty = {
-				estate = estate_church
-				loyalty = 60
+			OR = {
+				estate_loyalty = {
+					estate = estate_church
+					loyalty = 60
+				}
+				estate_loyalty = {
+					estate = estate_brahmins
+					loyalty = 60
+				}
 			}
 		}
 		effect = {

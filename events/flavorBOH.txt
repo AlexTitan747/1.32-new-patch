@@ -68,7 +68,7 @@ country_event = {
 		}
 		change_religion = hussite
 		define_ruler = {
-			name = "Jirí"
+			name = "Jirï¿½"
 			dynasty = "z Podebrad"
 			adm = 5
 			dip = 4
@@ -90,6 +90,10 @@ country_event = {
 			hidden_effect = { add_ruler_personality_ancestor = { key = zealot } }
 		}
 		add_reform_desire = 0.02
+		hidden_effect = {
+			set_country_flag = tm_boh_went_hussite
+			swap_non_generic_missions = yes
+		}
 	}
 	
 	option = { # Hussite King, Catholic nation - tolerance option
@@ -112,7 +116,7 @@ country_event = {
 			remove_heir = {}
 		}
 		define_ruler = {
-			name = "Jirí"
+			name = "Jirï¿½"
 			dynasty = "z Podebrad"
 			adm = 5
 			dip = 4
@@ -133,6 +137,10 @@ country_event = {
 		PAP = {
 			country_event = { id = flavor_boh.9 }
 		}
+		hidden_effect = {
+			set_country_flag = tm_boh_not_went_hussite
+			swap_non_generic_missions = yes
+		}
 	}
 	
 	option = { # Fight them
@@ -142,7 +150,7 @@ country_event = {
 			spawn_rebels = {
 				type = pretender_rebels
 				size = 1
-				leader = "Jirí"
+				leader = "Jirï¿½"
 				leader_dynasty = "z Podebrad"
 			}		
 		}
@@ -164,6 +172,10 @@ country_event = {
 					modifier = boh_papal_reconciled
 				}
 			}
+		}
+		hidden_effect = {
+			set_country_flag = tm_boh_not_went_hussite
+			swap_non_generic_missions = yes
 		}
 	}
 }
@@ -287,6 +299,11 @@ country_event = {
 				heir_religion = hussite
 			}
 			set_heir_religion = catholic
+		}
+		hidden_effect = {
+			clr_country_flag = tm_boh_went_hussite
+			set_country_flag = tm_boh_not_went_hussite
+			swap_non_generic_missions = yes
 		}
 	}
 	option = {

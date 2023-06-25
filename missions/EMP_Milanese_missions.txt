@@ -16,21 +16,18 @@ emp_mlo_conquest_branch = {
 	
 	emp_mlo_subdue_genoa = {
 		icon = mission_dominate_genoa
-		required_missions = { }
+		required_missions = {}
 		provinces_to_highlight = {
 			province_id = 101
 			NOT = { country_or_non_sovereign_subject_holds = root }
 		}
-		ai_weight = {
-			factor = 5
-		}
 
 		trigger = {
-			owns_or_non_sovereign_subject_of = 101
-			is_subject = no
+			army_size_percentage = 1.0
+			num_of_generals = 1
 		}
 		effect = {
-			101 = {
+			109 = {
 				add_trade_modifier = {
 					who = root
 					duration = 7300
@@ -105,7 +102,6 @@ emp_mlo_conquest_branch = {
 				type = all
 				country_or_non_sovereign_subject_holds = root
 			}
-			is_subject = no
 		}
 		effect = {
 			if = {
@@ -137,12 +133,12 @@ emp_mlo_conquest_branch = {
 				type = all
 				country_or_non_sovereign_subject_holds = root
 			}
-			is_subject = no
 		}
 		effect = {
 			add_adm_power = 75
 		}
 	}
+
 	emp_mlo_union_with_naples = {
 		icon = union_with_naples
 		required_missions = { emp_mlo_kingdom_of_lombardy }
@@ -183,7 +179,6 @@ emp_mlo_conquest_branch = {
 					area = calabria_area
 				}
 			}
-			is_subject = no
 		}
 		effect = {
 			if = {
@@ -200,31 +195,25 @@ emp_mlo_conquest_branch = {
 				}
 				TTS = { add_liberty_desire = -25 }
 			}
-			if = {
-				limit = {
-					NOT = { TTS = { is_subject_of = root } }
-					NOT = { NAP = { is_subject_of = root } }
+			naples_area = {
+				limit = { owned_by = root }
+				add_province_modifier = {
+					name = mlo_unified_italy
+					duration = 7300
 				}
-				naples_area = {
-					limit = { owned_by = root }
-					add_province_modifier = {
-						name = mlo_unified_italy
-						duration = 7300
-					}
+			}
+			apulia_area = {
+				limit = { owned_by = root }
+				add_province_modifier = {
+					name = mlo_unified_italy
+					duration = 7300
 				}
-				apulia_area = {
-					limit = { owned_by = root }
-					add_province_modifier = {
-						name = mlo_unified_italy
-						duration = 7300
-					}
-				}
-				calabria_area = {
-					limit = { owned_by = root }
-					add_province_modifier = {
-						name = mlo_unified_italy
-						duration = 7300
-					}
+			}
+			calabria_area = {
+				limit = { owned_by = root }
+				add_province_modifier = {
+					name = mlo_unified_italy
+					duration = 7300
 				}
 			}
 
@@ -255,7 +244,10 @@ emp_mlo_venice_branch = {
 	
 	emp_mlo_reclaim_ducal_lands = {
 		icon = reclaim_the_ducal_lands
-		required_missions = { }
+		required_missions = {
+			emp_mlo_subdue_genoa
+		}
+		position = 2
 		provinces_to_highlight = {
 			OR = {
 				province_id = 4739
@@ -266,40 +258,17 @@ emp_mlo_venice_branch = {
 				NOT = { is_core = root }
 			}
 		}
-		ai_weight = {
-			factor = 10
-		}
 
 		trigger = {
 			owns_core_province = 107
 			owns_core_province = 4739
-			is_subject = no
 		}
 		effect = {
 			add_prestige = 20
 			add_legitimacy = 20
 			add_devotion = 20
 			add_republican_tradition = 10
-			109 = {
-				if = {
-					limit = {
-						NOT = { is_core = root }
-						NOT = { is_permanent_claim = root }
-					}
-					add_permanent_claim = root
-				}
-			}
-			VEN = {
-				every_owned_province = {
-					limit = {
-						region = italy_region
-						NOT = { province_id = 112 }
-						NOT = { is_core = root }
-						NOT = { is_permanent_claim = root }
-					}
-					add_permanent_claim = root
-				}
-			}
+			venetia_area = { add_perma_claim = yes }
 		}
 	}
 	emp_mlo_terra_firma = {
@@ -335,7 +304,6 @@ emp_mlo_venice_branch = {
 						province_id = 4729
 						province_id = 1774
 						province_id = 111
-						province_id = 114
 					}
 					NOT = {
 						ROOT = {
@@ -346,7 +314,6 @@ emp_mlo_venice_branch = {
 									province_id = 4729
 									province_id = 1774
 									province_id = 111
-									province_id = 114
 								}
 							}
 						}
@@ -362,7 +329,6 @@ emp_mlo_venice_branch = {
 					province_id = 4729
 					province_id = 1774
 					province_id = 111
-					province_id = 114
 				}
 			}
 			custom_trigger_tooltip = {
@@ -394,7 +360,6 @@ emp_mlo_venice_branch = {
 					}
 				}
 			}
-			is_subject = no
 		}
 		effect = {
 			add_dip_power = 50
@@ -456,69 +421,13 @@ emp_mlo_venice_branch = {
 				type = all
 				country_or_non_sovereign_subject_holds = root
 			}
-			is_subject = no
 		}
 		effect = {
-			if = {
-				limit = {
-					exists = TTS
-					valid_for_personal_unions_trigger = yes
-					TTS = {
-						valid_for_personal_unions_trigger = yes
-					}
-				}
-				add_casus_belli = {
-					type = cb_restore_personal_union
-					months = 300
-					target = TTS
-				}
-			}
-			else_if = {
-				limit = {
-					exists = NAP
-					valid_for_personal_unions_trigger = yes
-					NAP = {
-						valid_for_personal_unions_trigger = yes
-					}
-				}
-				add_casus_belli = {
-					type = cb_restore_personal_union
-					months = 300
-					target = NAP
-				}
-			}
-			else = {
-				naples_area = {
-					limit = {
-						NOT = { is_core = root }
-						NOT = { is_permanent_claim = root }
-					}
-					add_permanent_claim = root
-				}
-				apulia_area = {
-					limit = {
-						NOT = { is_core = root }
-						NOT = { is_permanent_claim = root }
-					}
-					add_permanent_claim = root
-				}
-				calabria_area = {
-					limit = {
-						NOT = { is_core = root }
-						NOT = { is_permanent_claim = root }
-					}
-					add_permanent_claim = root
-				}
-			}
-			110 = {
-				if = {
-					limit = {
-						NOT = { is_core = root }
-						NOT = { is_permanent_claim = root }
-					}
-					add_permanent_claim = root
-				}
-			}
+			central_italy_area = { add_perma_claim = yes }
+			lazio_area = { add_perma_claim = yes }
+			apulia_area = { add_perma_claim = yes }
+			naples_area = { add_perma_claim = yes }
+			calabria_area = { add_perma_claim = yes }
 		}
 	}
 	
@@ -527,34 +436,28 @@ emp_mlo_venice_branch = {
 		required_missions = { emp_mlo_kingdom_of_lombardy }
 		position = 5
 		provinces_to_highlight = {
-			OR = {
-				AND = {
-					OR = {
-						area = tirol_area
-						region = italy_region
-					}
-					country_or_non_sovereign_subject_holds = HAB
-				}
-				AND = {
-					province_id = 110
-					NOT = { country_or_non_sovereign_subject_holds = ROOT }
-				}
-			}
+			region = italy_region
+			is_part_of_hre = yes
 		}
 		trigger = {
-			HAB = {
-				is_emperor = no
+			if = {
+				limit = {
+					is_part_of_hre = yes
+				}
+				development_in_provinces = {
+					value = 500
+					region = italy_region
+					is_part_of_hre = yes
+				}
 			}
-			italy_region = {
-				type = all
-				NOT = { country_or_non_sovereign_subject_holds = HAB }
+			else = {
+				NOT = {
+					any_province = {
+						is_part_of_hre = yes
+						region = italy_region
+					}
+				}
 			}
-			tirol_area = {
-				type = all
-				NOT = { country_or_non_sovereign_subject_holds = HAB }
-			}
-			owns_or_non_sovereign_subject_of = 110
-			army_size = HAB
 		}
 		effect = {
 			add_country_modifier = {
@@ -607,13 +510,16 @@ emp_mlo_security_branch = {
 		required_missions = { emp_mlo_friends_in_high_places }
 		trigger = {
 			OR = {
-				custom_trigger_tooltip = {
-					tooltip = emp_mlo_ambrosian_republic_mission_trigger_tooltip
-					has_country_flag = ambrosian_republic_completely_resolved
-				}
-				is_year = 1550
+				#custom_trigger_tooltip = {
+				#	tooltip = emp_mlo_ambrosian_republic_mission_trigger_tooltip
+				#	has_country_flag = ambrosian_republic_completely_resolved
+				#}
+				stability = 3
+				is_year = 1490
 			}
 			legitimacy_equivalent = 75
+			NOT = { num_of_rebel_armies = 1 }
+			NOT = { num_of_rebel_controlled_provinces = 1 }
 		}
 		effect = {
 			add_country_modifier = {
@@ -985,6 +891,7 @@ emp_mlo_security_branch_2 = {
 				province_id = 102
 				province_id = 110
 				province_id = 111
+				province_id = 107
 			}
 			OR = {
 				NOT = { owned_by = root }
@@ -1012,6 +919,7 @@ emp_mlo_security_branch_2 = {
 					province_id = 102
 					province_id = 110
 					province_id = 111
+					province_id = 107
 				}
 			}
 		}
@@ -1027,6 +935,7 @@ emp_mlo_security_branch_2 = {
 							province_id = 102
 							province_id = 110
 							province_id = 111
+							province_id = 107
 						}
 						has_building = fort_18th
 					}
@@ -1044,6 +953,7 @@ emp_mlo_security_branch_2 = {
 							province_id = 102
 							province_id = 110
 							province_id = 111
+							province_id = 107
 						}
 					}
 					if = {
@@ -1065,6 +975,7 @@ emp_mlo_security_branch_2 = {
 			}
 		}
 	}
+
 	emp_mlo_alpine_wall = {
 		icon = the_alpine_wall
 		required_missions = { emp_mlo_fortify_alps }
@@ -1079,10 +990,6 @@ emp_mlo_security_branch_2 = {
 				area = tuscany_area
 				AND = {
 					area = carinthia_area
-					culture_group = latin
-				}
-				AND = {
-					area = tirol_area
 					culture_group = latin
 				}
 			}
@@ -1127,15 +1034,15 @@ emp_mlo_security_branch_2 = {
 										area = carinthia_area
 										culture_group = latin
 									}
-									AND = {
-										area = tirol_area
-										culture_group = latin
-									}
 								}
 							}
 						}
 					}
 				}
+			}
+			num_of_owned_provinces_with = {
+				value = 5
+				has_fort_building_trigger = yes
 			}
 		}
 		effect = {
@@ -1184,6 +1091,7 @@ emp_mlo_security_branch_2 = {
 					}
 				}
 			}
+			army_size = 30
 		}
 		effect = {
 			add_country_modifier = {
@@ -1242,7 +1150,7 @@ emp_mlo_economy_branch = {
 					ROOT = {
 						NOT = {
 							development_in_provinces = {
-								value = 150 #starts at 90 (of which 20 owned by Venice)
+								value = 200 #starts at 123
 								culture = lombard
 							}
 						}
@@ -1256,7 +1164,7 @@ emp_mlo_economy_branch = {
 		}
 		trigger = {
 			development_in_provinces = {
-				value = 150 #starts at 90 (of which 20 owned by Venice)
+				value = 200 #starts at 123
 				culture = lombard
 			}
 			owns = 4740

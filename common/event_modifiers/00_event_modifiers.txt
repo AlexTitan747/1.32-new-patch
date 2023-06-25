@@ -335,7 +335,7 @@ national_recovery_act_established_reformation = {
 	stability_cost_modifier = -0.1
 	global_manpower_modifier = -0.33
 	land_forcelimit_modifier = -0.25
-	land_morale = -0.01
+	land_morale = -0.10
 	global_monthly_devastation = -0.5
 	global_unrest = -1
 }
@@ -7483,7 +7483,7 @@ no_tribal_leaders = {
 }
 
 armed_cossacks = {
-	land_maintenance_modifier = -0.1
+	land_maintenance_modifier = -0.25
 	is_cossack_modifier = yes
 }
 
@@ -11265,7 +11265,9 @@ maratha_stopped_militarizing = {
 
 muslim_brahmin_legitimacy = {
 	religious_unity = 0.2
+	tolerance_own = 1
 	tolerance_heathen = 1
+	tolerance_heretic = 1
 }
 
 popular_palkhis = {
@@ -13683,6 +13685,10 @@ military_reforms_cooldown = {
 	
 }
 
+turkey_military_reforms_cooldown = {
+	
+}
+
 tm_colonisation_start = {
 	colonists = 1
 	global_tax_modifier = -0.025
@@ -13923,16 +13929,17 @@ council_of_the_chamber_mod = {
 
 council_of_finance_mod = {
 	inflation_reduction = 0.05
-	interest = -0.5
+	interest = -0.25
 }
 
 council_of_the_inquisition_mod = {
 	missionaries = 1
-	global_heretic_missionary_strength = 0.02
+	global_heretic_missionary_strength = 0.03
 }
 
 council_of_europe_mod = {
 	diplomatic_reputation = 2
+	improve_relation_modifier = 0.25
 }
 
 council_of_mediterranean_mod = {
@@ -14084,7 +14091,7 @@ military_reassignment_act_modifier = {
 }
 acts_of_development_modifier = {
 	diplomatic_annexation_cost = 0.15
-	development_cost = -0.1
+	development_cost = -0.05
 }
 global_empire_act_modifier = {
 	global_colonial_growth = -20
@@ -14100,7 +14107,7 @@ diplomatic_act_modifier = {
 }
 internal_focus_act_modifier = {
 	core_creation = 0.2
-	development_cost = -0.1
+	development_cost = -0.05
 }
 
 colonial_venture_act_modifier = {
@@ -14165,16 +14172,16 @@ estate_burghers_economical_boost_loyal = {
 }
 
 DEMAND_MORE_TROOPS_NOBLES_level_1 = {
-	land_maintenance_modifier = -0.025
-}
-DEMAND_MORE_TROOPS_NOBLES_level_2 = {
 	land_maintenance_modifier = -0.05
 }
+DEMAND_MORE_TROOPS_NOBLES_level_2 = {
+	land_maintenance_modifier = -0.10
+}
 DEMAND_MORE_TROOPS_NOBLES_level_3 = {
-	land_maintenance_modifier = -0.075
+	land_maintenance_modifier = -0.15
 }
 DEMAND_MORE_TROOPS_NOBLES_level_4 = {
-	land_maintenance_modifier = -0.1
+	land_maintenance_modifier = -0.2
 }
 ASK_FOR_CONTRIBUTION_BURGHERS_level_1 = {
 	naval_maintenance_modifier = -0.025
@@ -14225,20 +14232,20 @@ DEMAND_CONTRIBUTION_DHIMMI_level_4 = {
 }
 
 CONTRIBUTE_WARRIORS_NOMADIC_TRIBES_level_1 = {
-	land_maintenance_modifier = -0.025
+	land_maintenance_modifier = -0.05
 	reinforce_speed = 0.025
 }
 CONTRIBUTE_WARRIORS_NOMADIC_TRIBES_level_2 = {
-	land_maintenance_modifier = -0.05
+	land_maintenance_modifier = -0.10
 	reinforce_speed = 0.05
 }
 CONTRIBUTE_WARRIORS_NOMADIC_TRIBES_level_3 = {
-	land_maintenance_modifier = -0.075
+	land_maintenance_modifier = -0.15
 	reinforce_speed = 0.075
 }
 CONTRIBUTE_WARRIORS_NOMADIC_TRIBES_level_4 = {
-	land_maintenance_modifier = -0.01
-	reinforce_speed = 0.01
+	land_maintenance_modifier = -0.20
+	reinforce_speed = 0.10
 }
 
 #Parliament Issues
@@ -14349,7 +14356,7 @@ expand_the_army_mod_5 = {
 }
 
 gov_buffed_parliament_seat = {
-	local_monthly_devastation = -0.005
+	local_monthly_devastation = -0.05
 	local_autonomy = -0.02
 }
 
@@ -14396,4 +14403,27 @@ dissolve_protectorate_timer = {} #Timer
 
 revoked_war_rights = {
 	liberty_desire = 20
+}
+
+tm_portugual_ship_building_focus_modiifer = {
+	global_ship_cost = -0.1
+	global_ship_recruit_speed = -0.1
+}
+
+tm_portugual_train_marines_modifier = {
+	infantry_power = 0.05
+	shock_damage_received = -0.15
+	is_marine_modifier = yes
+}
+
+influence_idea_subject_buff = {
+	global_tax_income = 60
+	land_forcelimit = 10
+	global_manpower = 15
+}
+
+influence_idea_subject_buff_2 = {
+	global_tax_income = 120
+	land_forcelimit = 20
+	global_manpower = 30
 }

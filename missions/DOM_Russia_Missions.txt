@@ -556,6 +556,7 @@ mos_rus_eastern_europe = {
 				add_accepted_culture = sorbian
 				add_accepted_culture = schlesian
 				add_accepted_culture = polish
+				add_accepted_culture = slovak
 			}
 			add_country_modifier = {
 				name = rus_west_slavic_union
@@ -567,6 +568,7 @@ mos_rus_eastern_europe = {
 				add_accepted_culture = sorbian
 				add_accepted_culture = schlesian
 				add_accepted_culture = polish
+				add_accepted_culture = slovak
 			}
 			add_country_modifier = {
 				name = "rus_partition_poland_modifier"
@@ -604,7 +606,6 @@ mos_rus_eastern_europe = {
 			tooltip = {
 				add_accepted_culture = hungarian
 				add_accepted_culture = romanian
-				add_accepted_culture = slovak
 				add_accepted_culture = transylvanian
 			}
 			add_country_modifier = {
@@ -615,7 +616,6 @@ mos_rus_eastern_europe = {
 			hidden_effect = {
 				add_accepted_culture = hungarian
 				add_accepted_culture = romanian
-				add_accepted_culture = slovak
 				add_accepted_culture = transylvanian
 			}
 			custom_tooltip = mos_rus_carpathian_conquest_ct
@@ -899,18 +899,18 @@ nov_rus_conquer_west = {
 			add_accepted_culture = swedish
 			add_accepted_culture = norwegian
 			add_accepted_culture = danish
-			capital_scope = {
-				carolean_infantry = ROOT
-				carolean_infantry = ROOT
-				carolean_infantry = ROOT
-				carolean_infantry = ROOT
-				carolean_infantry = ROOT
-				carolean_infantry = ROOT
-				carolean_infantry = ROOT
-				carolean_infantry = ROOT
-				carolean_infantry = ROOT
-				carolean_infantry = ROOT
-			}
+			#capital_scope = {
+			#	carolean_infantry = ROOT
+			#	carolean_infantry = ROOT
+			#	carolean_infantry = ROOT
+			#	carolean_infantry = ROOT
+			#	carolean_infantry = ROOT
+			#	carolean_infantry = ROOT
+			#	carolean_infantry = ROOT
+			#	carolean_infantry = ROOT
+			#	carolean_infantry = ROOT
+			#	carolean_infantry = ROOT
+			#}
 		}
 
 		ai_weight = {
@@ -939,10 +939,21 @@ nov_rus_conquer_west = {
 		}
 		trigger = {
 			45 = {
-				owned_by = ROOT
-				trade_share = {
-					country = ROOT
-					share = 30
+				OR = {
+					AND = {
+						country_or_non_sovereign_subject_holds = ROOT
+						trade_share = {
+							country = ROOT
+							share = 20
+						}
+					}
+					AND = {
+						NOT = { country_or_non_sovereign_subject_holds = ROOT }
+						trade_share = {
+							country = ROOT
+							share = 30
+						}
+					}
 				}
 			}
 		}
@@ -1175,6 +1186,7 @@ nov_rus_eastern_europe = {
 				add_accepted_culture = sorbian
 				add_accepted_culture = schlesian
 				add_accepted_culture = polish
+				add_accepted_culture = slovak
 			}
 			add_country_modifier = {
 				name = rus_west_slavic_union
@@ -1186,6 +1198,7 @@ nov_rus_eastern_europe = {
 				add_accepted_culture = sorbian
 				add_accepted_culture = schlesian
 				add_accepted_culture = polish
+				add_accepted_culture = slovak
 			}
 			add_country_modifier = {
 				name = "rus_partition_poland_modifier"
@@ -1262,8 +1275,8 @@ nov_rus_eastern_europe = {
 		position = 6
 		provinces_to_highlight = {
 			OR = {
-				province_id = 507
-				province_id = 707
+				province_id = 451
+				province_id = 700
 			}
 			OR = {
 				NOT = {
@@ -1277,14 +1290,14 @@ nov_rus_eastern_europe = {
 		}
 		trigger = {
 			OR = {
-				507 = {
+				451 = {
 					trade_share = {
 						country = ROOT
 						share = 20
 					}
 					has_merchant = ROOT
 				}
-				707 = {
+				700 = {
 					trade_share = {
 						country = ROOT
 						share = 20
@@ -1301,7 +1314,7 @@ nov_rus_eastern_europe = {
 			simple_dynamic_effect_without_alternative = {
 				first_custom_tooltip = nov_rus_involve_in_asian_trade_at
 				first_limit = "
-				707 = {
+				700 = {
 					trade_share = {
 						country = ROOT
 						share = 20
@@ -1309,21 +1322,14 @@ nov_rus_eastern_europe = {
 					has_merchant = ROOT
 				}"
 				first_effect = "
-				shanshan_area = {
+				north_china_region = {
 					limit = {
 						NOT = { is_core = ROOT }
 						NOT = { is_permanent_claim = ROOT }
 					}
 					add_russian_claim = yes
 				}
-				tarim_basin_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_russian_claim = yes
-				}
-				mongolia_region = {
+				manchuria_region = {
 					limit = {
 						NOT = { is_core = ROOT }
 						NOT = { is_permanent_claim = ROOT }
@@ -1332,7 +1338,7 @@ nov_rus_eastern_europe = {
 				}"
 				second_custom_tooltip = nov_rus_involve_in_asian_trade_bt
 				second_limit = "
-				507 = {
+				451 = {
 					trade_share = {
 						country = ROOT
 						share = 20
@@ -1340,6 +1346,13 @@ nov_rus_eastern_europe = {
 					has_merchant = ROOT
 				}"
 				second_effect = "
+				khorasan_region = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT }
+						NOT = { is_core = ROOT }
+					}
+					add_russian_claim = yes
+				}
 				hindusthan_region = {
 					limit = {
 						NOT = { is_permanent_claim = ROOT }
@@ -1363,7 +1376,7 @@ nov_rus_eastern_europe = {
 			OR = {
 				province_id = 524
 				province_id = 1343
-				province_id = 677
+				province_id = 451
 				province_id = 700
 				province_id = 4233
 				province_id = 730
@@ -1390,7 +1403,7 @@ nov_rus_eastern_europe = {
 							share = 25
 						}
 					}
-					677 = {
+					451 = {
 						trade_share = {
 							country = ROOT
 							share = 25
@@ -1436,12 +1449,11 @@ nov_rus_eastern_europe = {
 		provinces_to_highlight = {
 			OR = {
 				province_id = 454
-				province_id = 469
+				province_id = 464
 				province_id = 1082
 				province_id = 33
-				province_id = 1064
-				province_id = 707
-				province_id = 507
+				province_id = 700
+				province_id = 451
 				province_id = 4341
 			}
 			OR = {
@@ -1464,7 +1476,7 @@ nov_rus_eastern_europe = {
 				}
 				is_strongest_trade_power = ROOT
 			}
-			469 = {
+			464 = {
 				trade_share = {
 					country = ROOT
 					share = 20
@@ -1485,21 +1497,14 @@ nov_rus_eastern_europe = {
 				}
 				is_strongest_trade_power = ROOT
 			}
-			1064 = {
+			700 = {
 				trade_share = {
 					country = ROOT
 					share = 20
 				}
 				is_strongest_trade_power = ROOT
 			}
-			707 = {
-				trade_share = {
-					country = ROOT
-					share = 20
-				}
-				is_strongest_trade_power = ROOT
-			}
-			507 = {
+			451 = {
 				trade_share = {
 					country = ROOT
 					share = 20
@@ -1525,11 +1530,23 @@ nov_rus_eastern_europe = {
 						value = yes
 					}
 					trading_bonus = {
+						trade_goods = uniforms
+						value = yes
+					}
+					trading_bonus = {
 						trade_goods = paper
 						value = yes
 					}
 					trading_bonus = {
+						trade_goods = books
+						value = yes
+					}
+					trading_bonus = {
 						trade_goods = silk
+						value = yes
+					}
+					trading_bonus = {
+						trade_goods = tailored_clothes
 						value = yes
 					}
 					trading_bonus = {
@@ -1590,7 +1607,7 @@ mos_rus_russian_consolidation = {
 				limit = { ai = no }
 				monthly_adm = 10
 			}
-			army_size_percentage = 0.8
+			army_size_percentage = 0.5
 		}
 		effect = {
 			country_event_with_insight = {
@@ -1770,63 +1787,7 @@ mos_rus_russian_consolidation = {
 			}
 			else = { custom_tooltip = BONUS_REWARD_NO }
 			tooltip = {
-				tabriz_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_russian_claim = yes
-				}
-				tabarestan_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_russian_claim = yes
-				}
-				azerbaijan_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_russian_claim = yes
-				}
-				iraq_e_ajam_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_russian_claim = yes
-				}
-				isfahan_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_russian_claim = yes
-				}
-				birjand_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_russian_claim = yes
-				}
-				sistan_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_russian_claim = yes
-				}
-				herat_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_russian_claim = yes
-				}
-				mashhad_area = {
+				persia_region = {
 					limit = {
 						NOT = { is_core = ROOT }
 						NOT = { is_permanent_claim = ROOT }
@@ -1875,63 +1836,7 @@ mos_rus_russian_consolidation = {
 							value = 15
 						}
 					}
-					tabriz_area = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_russian_claim = yes
-					}
-					tabarestan_area = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_russian_claim = yes
-					}
-					azerbaijan_area = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_russian_claim = yes
-					}
-					iraq_e_ajam_area = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_russian_claim = yes
-					}
-					isfahan_area = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_russian_claim = yes
-					}
-					birjand_area = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_russian_claim = yes
-					}
-					sistan_area = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_russian_claim = yes
-					}
-					herat_area = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_russian_claim = yes
-					}
-					mashhad_area = {
+					persia_region = {
 						limit = {
 							NOT = { is_core = ROOT }
 							NOT = { is_permanent_claim = ROOT }
@@ -1962,26 +1867,26 @@ mos_rus_russian_consolidation = {
 							duration = -1
 						}
 					}
-					caucasia_region = {
-						limit = {
-							owner = {
-								OR = {
-									tag = ROOT
-									is_subject_of = ROOT
-									alliance_with = ROOT
-									AND = {
-										is_subject = yes
-										overlord = {
-											alliance_with = ROOT
-										}
+				}
+				caucasia_region = {
+					limit = {
+						owner = {
+							OR = {
+								tag = ROOT
+								is_subject_of = ROOT
+								alliance_with = ROOT
+								AND = {
+									is_subject = yes
+									overlord = {
+										alliance_with = ROOT
 									}
 								}
 							}
 						}
-						add_province_modifier = {
-							name = rus_reinforced_defenses
-							duration = 9125
-						}
+					}
+					add_province_modifier = {
+						name = rus_reinforced_defenses
+						duration = 9125
 					}
 				}
 			}
@@ -2000,19 +1905,7 @@ mos_rus_russian_consolidation = {
 		}
 		position = 5
 		provinces_to_highlight = {
-			OR = {
-				area = shirvan_area
-				area = armenia_area
-				area = tabriz_area
-				area = tabarestan_area
-				area = azerbaijan_area
-				area = iraq_e_ajam_area
-				area = isfahan_area
-				area = birjand_area
-				area = sistan_area
-				area = herat_area
-				area = mashhad_area
-			}
+			region = persia_region
 			OR = {
 				has_river_estuary_trigger = yes
 				province_has_center_of_trade_of_level = 1
@@ -2024,25 +1917,13 @@ mos_rus_russian_consolidation = {
 				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 					custom_trigger_tooltip = {
 						tooltip = mos_rus_conquer_persia_at
-						OR = {
-							area = shirvan_area
-							area = armenia_area
-							area = tabriz_area
-							area = tabarestan_area
-							area = azerbaijan_area
-							area = iraq_e_ajam_area
-							area = isfahan_area
-							area = birjand_area
-							area = sistan_area
-							area = herat_area
-							area = mashhad_area
-						}
+						region = persia_region
 					}
 					OR = {
 						has_river_estuary_trigger = yes
 						province_has_center_of_trade_of_level = 1
 					}
-					value = 6
+					value = 3
 				}
 				custom_trigger_tooltip = {
 					tooltip = mos_rus_conquer_persia_bt
@@ -2064,7 +1945,7 @@ mos_rus_russian_consolidation = {
 					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 						is_in_persian_trade_node = yes
 						OR = { has_river_estuary_trigger = yes province_has_center_of_trade_of_level = 1 } 
-						value = 6
+						value = 3
 					}
 				}
 				custom_tooltip = BONUS_REWARD_YES
@@ -2113,7 +1994,7 @@ mos_rus_russian_consolidation = {
 						num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 							is_in_persian_trade_node = yes
 							OR = { has_river_estuary_trigger = yes province_has_center_of_trade_of_level = 1 } 
-							value = 6
+							value = 3
 						}
 					}
 					define_advisor = {
@@ -2340,7 +2221,7 @@ mos_rus_russian_consolidation = {
 			}
 		}
 		trigger = {
-			tag = RUS
+			total_development = 450
 		}
 		effect = {
 			remove_country_modifier = centralization_modifier
@@ -2384,9 +2265,8 @@ mos_rus_russian_steppes = {
 		}
 		trigger = {
 			OR = {
-				AND = {
-					NOT = { has_country_modifier = the_tatar_yoke }
-					owns_or_non_sovereign_subject_of = 466
+				466 = {
+					country_or_non_sovereign_subject_holds = ROOT
 				}
 				AND = {
 					controls = 466
@@ -2402,6 +2282,7 @@ mos_rus_russian_steppes = {
 					}
 				}
 			}
+			is_free_or_tributary_trigger = yes
 		}
 		effect = {
 			if = {
@@ -2960,81 +2841,11 @@ mos_rus_siberian_conquest = {
 			}
 		}
 		effect = {
-			create_conquistador = {
-				tradition = 80
-			}
+			#create_conquistador = {
+			#	tradition = 80
+			#}
 			add_adm_power = 100
-			west_siberia_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_russian_claim = yes
-			}
-			kyzylkum_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_russian_claim = yes
-			}
-			merv_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_russian_claim = yes
-			}
-			transoxiana_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_russian_claim = yes
-			}
-			termez_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_russian_claim = yes
-			}
-			ferghana_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_russian_claim = yes
-			}
-			kashgaria_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_russian_claim = yes
-			}
-			arys_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_russian_claim = yes
-			}
-			jetysuu_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_russian_claim = yes
-			}
-			syr_darya_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_russian_claim = yes
-			}
-			balchasj_area = {
+			central_asia_region = {
 				limit = {
 					NOT = { is_core = ROOT }
 					NOT = { is_permanent_claim = ROOT }
@@ -3053,50 +2864,57 @@ mos_rus_siberian_conquest = {
 		required_missions = { mos_rus_expand_eastwards }
 		position = 4
 		provinces_to_highlight = {
-			OR = {
-				province_id = 1074
-				province_id = 1075
-			}
+			region = central_asia_region
 			NOT = { owned_by = ROOT }
 		}
 		trigger = {
-			owns = 1074
-			owns = 1075
+			num_of_owned_provinces_with = {
+				value = 30
+				region = central_asia_region
+			}
 		}
 		effect = {
-			1074 = {
-				change_religion = ROOT
-				change_culture = ROOT
+			#1074 = {
+			#	change_religion = ROOT
+			#	change_culture = ROOT
+			#	add_base_production = 2
+			#}
+			#1075 = {
+			#	change_religion = ROOT
+			#	change_culture = ROOT
+			#	add_base_production = 1
+			#}
+			#west_siberia_region = {
+			#	limit = {
+			#		trade_goods = fur
+			#		owned_by = ROOT
+			#	}
+			#	add_province_modifier = {
+			#		name = "siberian_fur_production"
+			#		duration = 7300
+			#	}
+			#}
+			#define_conquistador = {
+			#	name = "Yermak Timofeyevich"
+			#	shock = 6
+			#	fire = 6
+			#	manuever = 5
+			#	siege = 0
+			#}
+			add_accepted_culture_or_dip_power = {
+				culture = khazak
+			}
+			random_owned_province = {
+				limit = {
+					region = central_asia_region
+				}
 				add_base_production = 2
 			}
-			1075 = {
-				change_religion = ROOT
-				change_culture = ROOT
-				add_base_production = 1
-			}
-			west_siberia_region = {
+			random_owned_province = {
 				limit = {
-					trade_goods = fur
-					owned_by = ROOT
+					region = central_asia_region
 				}
-				add_province_modifier = {
-					name = "siberian_fur_production"
-					duration = 7300
-				}
-			}
-			tannu_uriankhai_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_russian_claim = yes
-			}
-			define_conquistador = {
-				name = "Yermak Timofeyevich"
-				shock = 6
-				fire = 6
-				manuever = 5
-				siege = 0
+				add_base_production = 2
 			}
 		}
 
@@ -3110,39 +2928,49 @@ mos_rus_siberian_conquest = {
 		required_missions = { mos_rus_colonize_west_siberia }
 		position = 5
 		provinces_to_highlight = {
+			region = central_asia_region
 			OR = {
-				area = irkutsk_area
-				area = tunguska_area
-				area = central_siberia_area
-				area = tannu_uriankhai_area
+				trade_goods = livestock
+				trade_goods = cheese
+				trade_goods = horses
 			}
-			NOT = { owned_by = ROOT }
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { development = 12 }
+			}
 		}
 		trigger = {
 			num_of_owned_provinces_with = {
+				value = 10
+				region = central_asia_region
 				OR = {
-					area = irkutsk_area
-					area = tunguska_area
-					area = central_siberia_area
-					area = tannu_uriankhai_area
+					trade_goods = livestock
+					trade_goods = cheese
+					trade_goods = horses
 				}
-				value = 15
+				development = 12
 			}
-			owns = 1064
 		}
 		effect = {
-			1064 = {
-				center_of_trade = 2
-				change_religion = ROOT
-				change_culture = ROOT
-				add_base_production = 2
-			}
-			east_siberia_region = {
+			#1064 = {
+			#	center_of_trade = 2
+			#	change_religion = ROOT
+			#	change_culture = ROOT
+			#	add_base_production = 2
+			#}
+			central_asia_region = {
 				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
+					country_or_non_sovereign_subject_holds = ROOT
+					OR = {
+						trade_goods = livestock
+						trade_goods = cheese
+						trade_goods = horses
+					}
 				}
-				add_russian_claim = yes
+				add_province_modifier = {
+					name = "central_asian_livestock_production"
+					duration = 7300
+				}
 			}
 		}
 
@@ -3156,49 +2984,168 @@ mos_rus_siberian_conquest = {
 		required_missions = { mos_rus_colonize_central_siberia }
 		position = 6
 		provinces_to_highlight = {
-			region = east_siberia_region
-			NOT = { owned_by = ROOT }
+			
 		}
 		trigger = {
-			num_of_owned_provinces_with = {
-				region = east_siberia_region
-				value = 20
-			}
-			owns = 1043
+			
 		}
 		effect = {
-			east_siberia_region = {
-				limit = {
-					trade_goods = fur
-					owned_by = ROOT
-				}
-				add_province_modifier = {
-					name = "siberian_fur_production"
-					duration = 7300
-				}
+			define_conquistador = {
+				name = "Yermak Timofeyevich"
+				shock = 6
+				fire = 6
+				manuever = 5
+				siege = 0
 			}
+			#east_siberia_region = {
+			#	limit = {
+			#		trade_goods = fur
+			#		owned_by = ROOT
+			#	}
+			#	add_province_modifier = {
+			#		name = "siberian_fur_production"
+			#		duration = 7300
+			#	}
+			#}
 			define_explorer = {
 				name = "Vitus Bering"
 				fire = 4
 				shock = 2
 				manuever = 5
 			}
-			1043 = {
-				if = {
-					limit = {
-						NOT = { has_building = shipyard }
-						NOT = { has_building = grand_shipyard }
+			#1043 = {
+			#	if = {
+			#		limit = {
+			#			NOT = { has_building = shipyard }
+			#			NOT = { has_building = grand_shipyard }
+			#		}
+			#		add_building = shipyard
+			#	}
+			#	center_of_trade = 2
+			#	change_religion = ROOT
+			#	change_culture = ROOT
+			#	add_base_production = 2
+			#	add_province_modifier = {
+			#		name = "russian_pacific_port"
+			#		duration = -1
+			#	}
+			#}
+			if = {
+				limit = {
+					977 = {
+						is_empty = yes
 					}
-					add_building = shipyard
 				}
-				center_of_trade = 2
-				change_religion = ROOT
-				change_culture = ROOT
-				add_base_production = 2
-				add_province_modifier = {
-					name = "russian_pacific_port"
-					duration = -1
+				977 = {
+					add_siberian_construction = 980
+					change_religion = ROOT
+					change_culture = ROOT
+					add_base_production = 2
+					add_province_modifier = {
+						name = "russian_pacific_port"
+						duration = -1
+					}
 				}
+			}
+			else_if = {
+				limit = {
+					974 = {
+						is_empty = yes
+					}
+				}
+				974 = {
+					add_siberian_construction = 980
+					change_religion = ROOT
+					change_culture = ROOT
+					add_base_production = 2
+					add_province_modifier = {
+						name = "russian_pacific_port"
+						duration = -1
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					873 = {
+						is_empty = yes
+					}
+				}
+				873 = {
+					add_siberian_construction = 980
+					change_religion = ROOT
+					change_culture = ROOT
+					add_base_production = 2
+					add_province_modifier = {
+						name = "russian_pacific_port"
+						duration = -1
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					972 = {
+						is_empty = yes
+					}
+				}
+				972 = {
+					add_siberian_construction = 980
+					change_religion = ROOT
+					change_culture = ROOT
+					add_base_production = 2
+					add_province_modifier = {
+						name = "russian_pacific_port"
+						duration = -1
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					2611 = {
+						is_empty = yes
+					}
+				}
+				2611 = {
+					add_siberian_construction = 980
+					change_religion = ROOT
+					change_culture = ROOT
+					add_base_production = 2
+					add_province_modifier = {
+						name = "russian_pacific_port"
+						duration = -1
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					any_province = {
+						has_port = yes
+						colonial_region = colonial_alaska
+						is_empty = yes
+					}
+				}
+				random_province = {
+					limit = {
+						has_port = yes
+						colonial_region = colonial_alaska
+						is_empty = yes
+					}
+					add_siberian_construction = 980
+					change_religion = ROOT
+					change_culture = ROOT
+					add_base_production = 2
+					add_province_modifier = {
+						name = "russian_pacific_port"
+						duration = -1
+					}
+				}
+			}
+			else = {
+				colonial_alaska = {
+					add_perma_claim = yes
+				}
+			}
+			colonial_alaska = {
+				discover_country = ROOT
 			}
 			add_country_modifier = {
 				name = rus_new_world_colonization
@@ -3314,13 +3261,13 @@ mos_rus_new_world = {
 		required_missions = { mos_rus_colonize_alaska }
 		position = 8
 		provinces_to_highlight = {
-			colonial_region = colonial_canada
+			colonial_region = colonial_mexico
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 			has_discovered = ROOT
 		}
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				colonial_region = colonial_canada
+				colonial_region = colonial_mexico
 				value = 40
 			}
 		}
@@ -3803,7 +3750,7 @@ rus_russian_streltsy = {
 		provinces_to_highlight = {
 		}
 		trigger = {
-			army_size_percentage = 0.8
+			army_size_percentage = 0.75
 			army_tradition = 30
 			OR = {
 				num_of_streltsy = 30
@@ -3814,6 +3761,7 @@ rus_russian_streltsy = {
 					NOT = { has_reform = veche_republic }
 					#NOT = { has_reform = great_veche_republic }
 					NOT = { has_reform = streltsy_reform }
+					NOT = { has_reform = great_russian_republic_reform }
 				}
 				#custom_trigger_tooltip = {
 				#	tooltip = has_not_russian_mechanic_tt
@@ -3877,6 +3825,15 @@ rus_russian_streltsy = {
 					second_limit = "has_estate_privilege = estate_nobles_increased_peasant_freedom has_country_flag = rus_crushed_boyars_revolt NOT = { has_spawned_rebels = noble_rebels }"
 					second_effect = "custom_tooltip = rus_solidify_serfdom_ft set_country_flag = rus_buffed_free_peasantry_privileges"
 				}
+				if = {
+					limit = {
+						NOT = { has_estate_privilege = estate_nobles_early_serfdom }
+						NOT = { has_estate_privilege = estate_nobles_increased_peasant_freedom }
+					}
+					add_adm_power = 100
+					add_dip_power = 100
+					add_mil_power = 100
+				}
 			}
 			else = {
 				add_adm_power = 100
@@ -3906,7 +3863,7 @@ rus_russian_streltsy = {
 				}
 				legitimacy_equivalent = 90
 				stability = 3
-				num_of_subjects = 7
+				num_of_subjects = 3
 				NOT = {
 					any_subject_country = {
 						liberty_desire = 20
@@ -3939,19 +3896,19 @@ rus_russian_streltsy = {
 			NOT = {
 				estate_influence = {
 					estate = estate_church
-					influence = 50
+					influence = 60
 				}
 			}
 			NOT = {
 				estate_influence = {
 					estate = estate_burghers
-					influence = 50
+					influence = 60
 				}
 			}
 			NOT = {
 				estate_influence = {
 					estate = estate_nobles
-					influence = 50
+					influence = 60
 				}
 			}
 			if = {
@@ -4097,6 +4054,12 @@ rus_court_and_church = {
 				seventh_custom_tooltip = rus_the_courts_direction_gt
 				seventh_limit = "inquisitor = 2"
 				seventh_effect = "add_country_modifier = { name = rus_inquisitor_focus duration = 9125 }"
+				eighth_custom_tooltip = rus_the_courts_direction_ht
+				eighth_limit = "free_thinker = 2"
+				eighth_effect = "add_country_modifier = { name = rus_free_thinker_focus duration = 9125 }"
+				nineth_custom_tooltip = rus_the_courts_direction_it
+				nineth_limit = "master_of_construction = 2"
+				nineth_effect = "add_country_modifier = { name = rus_master_of_cosntruction_focus duration = 9125 }"
 			}
 		}
 
@@ -4357,6 +4320,32 @@ rus_russian_religion_serfdom = {
 		trigger = {
 			reform_level = 4
 			OR = {
+				AND = {
+					custom_trigger_tooltip = {  
+						tooltip = rus_6_tot_tt
+						has_global_modifier_value = { 
+							which = tolerance_own 
+							value = 6
+						}
+					}
+					if = {
+						limit = { has_estate = estate_church }
+						estate_loyalty = {
+							estate = estate_church
+							loyalty = 80
+						}
+					}
+					if = {
+						limit = { uses_patriarch_authority = yes }
+						OR = {
+							patriarch_authority = 1
+							num_of_owned_provinces_with = {
+								has_state_patriach = yes
+								value = 70
+							}
+						}
+					}
+				}
 				custom_trigger_tooltip = {
 					tooltip = rus_most_holy_synod_xx
 					any_known_country = {
@@ -4376,32 +4365,6 @@ rus_russian_religion_serfdom = {
 						}
 					}
 					diplomatic_reputation = 2
-				}
-				AND = {
-					if = {
-						limit = { has_estate = estate_church }
-						estate_loyalty = {
-							estate = estate_church
-							loyalty = 80
-						}
-					}
-					if = {
-						limit = { uses_patriarch_authority = yes }
-						OR = {
-							patriarch_authority = 1
-							num_of_owned_provinces_with = {
-								has_state_patriach = yes
-								value = 70
-							}
-						}
-					}
-					custom_trigger_tooltip = {  
-						tooltip = rus_6_tot_tt
-						has_global_modifier_value = { 
-							which = tolerance_own 
-							value = 6
-						}
-					}
 				}
 			}
 		}
@@ -4594,14 +4557,15 @@ rus_russian_religion_serfdom = {
 		effect = {
 			for = {
 				custom_tooltip = rus_early_industrialization_at
-				effect = "random_owned_province = { 
-					limit = { 
-						NOT = { has_province_flag = rus_manu } 
-						has_manufactory_trigger = yes 
-						development = 20 
-					}
-					set_province_flag = rus_manu
-				}"
+				effect = "
+					random_owned_province = { 
+						limit = { 
+							NOT = { has_province_flag = rus_manu } 
+							has_manufactory_trigger = yes 
+							development = 20 
+						}
+						set_province_flag = rus_manu
+					}"
 				amount = 10
 			}
 			tooltip = {
@@ -4702,7 +4666,7 @@ rus_russian_military = {
 					has_reform = streltsy_reform
 					num_of_streltsy = 50
 					has_leader_with = {
-						total_pips = 20
+						total_pips = 15
 					}
 				}
 				AND = {
@@ -4723,7 +4687,7 @@ rus_russian_military = {
 				has_reform = streltsy_reform
 				num_of_streltsy = 50
 				has_leader_with = {
-					total_pips = 20
+					total_pips = 15
 				}"
 				first_effect = "
 				add_country_modifier = {
@@ -4914,7 +4878,7 @@ rus_education = {
 					limit = { has_dlc = "Rule Britannia" }
 					innovativeness = 90 
 				}
-				full_idea_group = innovativeness_ideas 
+				full_idea_group = innovative_ideas 
 				AND = { 
 					ruler_has_personality = scholar_personality 
 					monthly_adm = 14 

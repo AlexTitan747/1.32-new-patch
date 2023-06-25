@@ -155,7 +155,7 @@ parliamentary_republic_reform = {
 	valid_for_nation_designer = yes
 	modifiers = {
 		global_autonomy = -0.05
-		land_morale = 0.1
+		land_morale = 0.15
 		can_revoke_parliament_seats = yes 
 		parliament_backing_chance = 0.25
 		num_of_parliament_issues = 1
@@ -1146,7 +1146,8 @@ great_russian_republic_reform = {
 		yearly_absolutism = 0.5
 		global_autonomy = -0.05
 		embracement_cost = -0.5
-		max_absolutism = 50
+		has_streltsy = yes
+		allowed_streltsy_fraction = 0.1
 	}
 
 	conditional = {
@@ -1524,8 +1525,8 @@ trade_company_government = {
 	modifiers = {
 		tolerance_heathen = 1
 		tolerance_of_heathens_capacity = 1
-		production_efficiency = 0.1
-		governing_capacity = 50
+		production_efficiency = 0.15
+		governing_capacity = 100
 		global_manpower_modifier = 0.1
 		naval_forcelimit_modifier = 0.1
 	}
@@ -1729,7 +1730,8 @@ calvinist_republic_government = {
 	modifiers = {
 		monthly_fervor_increase = 0.1
 		tolerance_own = 1 
-		own_territory_dice_roll_bonus = 1
+		#own_territory_dice_roll_bonus = 1
+		defensiveness = 0.20
 	}
 	duration = 4
 }
@@ -1904,6 +1906,7 @@ cossacks_reform = {
 		cavalry_cost = -0.15
 		movement_speed = 0.05
 		governing_capacity = 100
+		allowed_cossack_fraction = 0.25
 	}
 	duration = 4
 }
@@ -2360,25 +2363,6 @@ consolidation_of_power_reform = {
 	}
 	custom_attributes = {
 		reelection_depowers_estates = yes
-	}
-}
-
-federal_senate_reform = {
-	icon = "judge"
-	allow_normal_conversion = yes
-	potential = {
-		NOT = { has_government_attribute = is_pirate_republic_reform }
-	}
-	modifiers = {
-		candidate_random_bonus = 1
-	}
-
-	conditional = {
-		allow = { has_dlc = "Common Sense" }
-		has_parliament = yes
-		custom_attributes = {
-			halved_parliament_bribes = yes
-		}
 	}
 }
 
@@ -3698,7 +3682,7 @@ bureaucratic_aparatus_reform = {
 	icon = "map_2"
 	allow_normal_conversion = yes
 	modifiers = {
-		min_autonomy_in_territories = -0.10
+		min_autonomy_in_territories = -0.15
 	}
 }
 
@@ -3862,7 +3846,7 @@ federal_senate_reform = {
 		NOT = { has_government_attribute = is_pirate_republic_reform }
 	}
 	modifiers = {
-		expand_administration_cost = -1
+		expand_administration_cost = -0.25
 		candidate_random_bonus = 1
 	}
 

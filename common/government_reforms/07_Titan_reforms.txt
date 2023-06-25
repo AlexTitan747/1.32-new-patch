@@ -2,9 +2,8 @@ united_alpine_cantons_reform = {
 	icon = "castle"
 	allow_normal_conversion = no
 	modifiers = {
-		governing_capacity = -50
 		free_policy = 1
-		mercenary_manpower = 0.5
+		mercenary_manpower = 0.3
 	}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 40
@@ -253,11 +252,12 @@ margraviate_of_Brandenburg = {
 
 	modifiers = {
 		war_exhaustion = -0.01
-		global_unrest = -1
+		global_unrest = -2
 		global_autonomy = -0.025
 		monarch_military_power = 1
 		nobles_loyalty_modifier = 0.05
-		governing_capacity_modifier = -0.25
+		governing_capacity_modifier = -0.10
+		infantry_power = 0.05
 	}
 
 	ai = {
@@ -283,7 +283,6 @@ roman_empire_reform = {
 		monarch_diplomatic_power = 1
 		prestige = 1
 		discipline = 0.025
-
 	}
 	ai = {
 		factor = 0.5 #generic
@@ -307,7 +306,6 @@ crown_of_poland_reform = {
 		institution_spread_from_true_faith = 0.15
 		cavalry_cost = -0.05
 		shock_damage = 0.1 
-
 	}
 	ai = {
 		factor = 0.5 #generic
@@ -329,6 +327,12 @@ portuguese_monarchy_reform = {
 		great_project_upgrade_cost = -0.15
 		colonists = 2
 		global_tax_modifier = 0.1
+	}
+	conditional = {
+		allow = { has_dlc = "Domination" }
+		government_abilities = {
+			proguese_government_mechanic
+		}
 	}
 	ai = {
 		factor = 0.5 #generic
@@ -370,7 +374,7 @@ french_monarchy_reform = {
 		monarch_lifespan = 0.25
 		global_tax_modifier = 0.1
 		army_tradition_decay = -0.005
-		yearly_army_professionalism = 0.01
+		yearly_army_professionalism = 0.0025
 	}
 
 	custom_attributes = {
@@ -413,7 +417,6 @@ seleucid_monarchy = {
 	custom_attributes = {
 		locked_government_type = yes
 	}
-
 }
 
 imperial_duchy = {
@@ -421,32 +424,22 @@ imperial_duchy = {
     allow_normal_conversion = no
     potential = {
 		OR = {
-	  tag = FKN
-      tag = WES
-	  tag = BAV
-	  tag = SWA
-	  tag = HAN
+	 		tag = FKN
+     		tag = WES
+	 		tag = BAV
+	 		tag = SWA
+	 		tag = HAN
 		}
     }
     valid_for_nation_designer = yes
     nation_designer_cost = 30
 	legacy_equivalent = despotic_monarchy
-    nation_designer_trigger = {
-		OR = {
-			tag = FKN
-			tag = WES
-			tag = BAV
-			tag = SWA
-			tag = HAN
-			  }
-    }
     modifiers = {
         imperial_authority = 0.25
         defensiveness = 0.1
 		land_forcelimit_modifier = 0.1
     }
-
-} 
+}
 
 islamic_emirate = {
     icon = "peacock_throne"
@@ -490,7 +483,6 @@ vikking_kingdom = {
 		governing_capacity_modifier = 0.1
 		naval_maintenance_modifier = -0.1
     }
-
 }
 
 slavic_union = {
@@ -510,7 +502,6 @@ slavic_union = {
         governing_capacity = 200
 		fire_damage_received = -0.05
     }
-
 } 
 
 baltic_federation_of_states = {
@@ -531,7 +522,7 @@ baltic_federation_of_states = {
 		OR = {
 			culture_group = scandinavian
 			tag = BLC
-			}
+		}
 	}
 	modifiers = {
 		global_autonomy = -0.05
@@ -592,11 +583,16 @@ union_of_crowns = {
 		land_attrition = -0.15
 		infantry_power = 0.1
 	}
+	conditional = {
+		allow = { has_dlc = "Domination" }
+		government_abilities = {
+			proguese_government_mechanic
+		}
+	}
 
-conditional = {
+	conditional = {
 		allow = { has_dlc = "Common Sense" }
 		has_parliament = yes
-	
 	}
 }
 
@@ -673,8 +669,8 @@ buddhist_arthashastra_system = {
 	potential = {
 		religion_group = eastern
 		OR = {
-		technology_group = indian
-		technology_group = muslim
+			technology_group = indian
+			technology_group = muslim
 		}
 		NOT = {
 			OR = { 
@@ -692,8 +688,8 @@ buddhist_arthashastra_system = {
 	nation_designer_trigger = {
 		religion_group = eastern
 		OR = {
-		technology_group = indian
-		technology_group = muslim
+			technology_group = indian
+			technology_group = muslim
 		}
 		NOT = {
 			OR = { 
@@ -717,13 +713,13 @@ panslavic_state = {
 	allow_normal_conversion = no
 	potential = {
 		OR = {
-		religion = orthodox
-		tag = CRP
+			religion = orthodox
+			tag = CRP
 		}
 		OR = {
-		culture_group = south_slavic
-		culture_group = west_slavic
-		culture_group = carpathian
+			culture_group = south_slavic
+			culture_group = west_slavic
+			culture_group = carpathian
 		}
 		
 	}
@@ -734,9 +730,9 @@ panslavic_state = {
 	nation_designer_trigger = {
 		religion = orthodox
 		OR = {
-		culture_group = south_slavic
-		culture_group = west_slavic
-		culture_group = carpathian
+			culture_group = south_slavic
+			culture_group = west_slavic
+			culture_group = carpathian
 		}
 	}
 	modifiers = {
@@ -746,7 +742,6 @@ panslavic_state = {
 	}
 
 }
-
 
 
 warring_state_reform = {
@@ -885,9 +880,7 @@ shophet_republic = {
     nation_designer_cost = 0
     royal_marriage = yes
     potential = {
-		OR = {
-			tag = CRG
-		}
+		tag = CRG
     }
     duration = 4
     has_parliament = yes
@@ -1084,6 +1077,8 @@ great_horde_state_reform = {
 		global_manpower_modifier = 0.2
 		cavalry_cost = -0.1
 		movement_speed = 0.1
+		land_forcelimit_modifier = 0.15
+		reinforce_cost_modifier = -0.25
 	}
 }
 
@@ -1580,45 +1575,45 @@ gladiatorial_slaves_reform = {
 	}
 }
 
-spanish_tercios_reform = {
-	icon = "spanish_tercio"
-	allow_normal_conversion = yes
-	potential = {
-		is_revolutionary = no
-		tag = SPA
-	}
-	ai = {
-		factor = 1
-		modifier = {
-			factor = 1.2
-			production_income_percentage = 0.25
-		}
-	}
-}
-
-french_musketeers_reform = {
-	icon = "french_musketeers"
-	allow_normal_conversion = yes
-	potential = {
-		is_revolutionary = no
-		tag = FRA
-	}
-	ai = {
-		factor = 1
-		modifier = {
-			factor = 1.2
-			production_income_percentage = 0.25
-		}
-	}
-}
+#spanish_tercios_reform = {
+#	icon = "spanish_tercio"
+#	allow_normal_conversion = yes
+#	potential = {
+#		is_revolutionary = no
+#		tag = SPA
+#	}
+#	ai = {
+#		factor = 1
+#		modifier = {
+#			factor = 1.2
+#			production_income_percentage = 0.25
+#		}
+#	}
+#}
+#
+#french_musketeers_reform = {
+#	icon = "french_musketeers"
+#	allow_normal_conversion = yes
+#	potential = {
+#		is_revolutionary = no
+#		tag = FRA
+#	}
+#	ai = {
+#		factor = 1
+#		modifier = {
+#			factor = 1.2
+#			production_income_percentage = 0.25
+#		}
+#	}
+#}
 
 maltese_forts = {
 	icon = "malta_forts"
 	allow_normal_conversion = yes
 	potential = {
 		OR = {
-		tag = TTS
-		was_tag = TTS
+			tag = TTS
+			was_tag = TTS
 		}
 		has_country_flag = malta_forts_built
 	}

@@ -75,7 +75,10 @@ westphalia_missions_1 = {
 				add_years_of_owned_provinces_production_income = {
 					years = 6
 					trigger = {
-						trade_goods = paper
+						OR = {
+							trade_goods = paper
+							trade_goods = books
+						}
 					}
 				}
 			}
@@ -86,7 +89,10 @@ westphalia_missions_1 = {
 				add_years_of_owned_provinces_production_income = {
 					years = 3
 					trigger = {
-						trade_goods = paper
+						OR = {
+							trade_goods = paper
+							trade_goods = books
+						}
 					}
 				}
 			}
@@ -245,7 +251,10 @@ westphalia_missions_1 = {
 				add_years_of_owned_provinces_production_income = {
 					years = 6
 					trigger = {
-						trade_goods = cloth
+						OR = {
+							trade_goods = cloth
+							trade_goods = uniforms
+						}
 					}
 				}
 			}
@@ -256,7 +265,10 @@ westphalia_missions_1 = {
 				add_years_of_owned_provinces_production_income = {
 					years = 3
 					trigger = {
-						trade_goods = cloth
+						OR = {
+							trade_goods = cloth
+							trade_goods = uniforms
+						}
 					}
 				}
 			}
@@ -429,7 +441,7 @@ westphalia_missions_3 = {
 
 			add_country_modifier = {
 				name = "thriving_arms_industry"
-				duration = 1825
+				duration = 3650
 			}
 		}
 	}
@@ -640,7 +652,6 @@ westphalia_missions_4 = {
 
 		trigger = {
 			treasury = 200
-			num_of_loans = 0
 			thuringia_area = {
 				type = all
 				is_core = ROOT
@@ -707,6 +718,15 @@ westphalia_missions_4 = {
 			take_on_the_bishoprics
 		}
 
+		provinces_to_highlight = {
+			OR = {
+				area = westphalia_area
+				area = north_westphalia_area
+				area = braunschweig_area
+			}
+			NOT = { owned_by = ROOT }
+		}
+
 		trigger = {
 			westphalia_area = {
 				type = all
@@ -722,8 +742,8 @@ westphalia_missions_4 = {
 				type = all
 				owned_by = ROOT
 				NOT = { local_autonomy = 1 }
-				}
 			}
+		}
 
 		effect = {
 			86 = {
@@ -768,21 +788,16 @@ westphalia_missions_5 = {
 
 		trigger = { 
 			OR = {
-				ROOT = {
+				AND = {
 					treasury = 300
-					num_of_loans = 0
 					NOT = { 67 = { owned_by = ROOT } }
-
 					AND = { # Rest of the state
 						66 =  { owned_by = ROOT }
 						4716 =  { owned_by = ROOT }  
 						4717 =  { owned_by = ROOT }
 					}
 				}
-
-				ROOT = {
-					67 = { owned_by = ROOT }
-				}
+				67 = { owned_by = ROOT }
 			}
 
 		}

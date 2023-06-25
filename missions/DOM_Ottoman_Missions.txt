@@ -9,7 +9,10 @@ tur_conquest_of_europe = {
 	}
 	potential = {
 		has_dlc = "Domination"
-		tag = TUR
+		OR = {
+			tag = TUR
+			tag = SLU
+		}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -1076,7 +1079,10 @@ tur_african_conquest = {
 	}
 	potential = {
 		has_dlc = "Domination"
-		tag = TUR
+		OR = {
+			tag = TUR
+			tag = SLU
+		}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -1339,45 +1345,45 @@ tur_african_conquest = {
 				}
 				add_permanent_claim = ROOT
 			}
-			if = {
-				limit = {
-					WAL = {
-						exists = yes
-						is_subject = no
-					}
-				}
-				add_casus_belli = {
-					type = cb_ottoman_subjugation_war
-					target = WAL
-					months = 240
-				}
-			}
-			if = {
-				limit = {
-					HUN = {
-						exists = yes
-						is_subject = no
-					}
-				}
-				add_casus_belli = {
-					type = cb_ottoman_subjugation_war
-					target = HUN
-					months = 240
-				}
-			}
-			if = {
-				limit = {
-					MOL = {
-						exists = yes
-						is_subject = no
-					}
-				}
-				add_casus_belli = {
-					type = cb_ottoman_subjugation_war
-					target = MOL
-					months = 240
-				}
-			}
+			#if = {
+			#	limit = {
+			#		WAL = {
+			#			exists = yes
+			#			is_subject = no
+			#		}
+			#	}
+			#	add_casus_belli = {
+			#		type = cb_ottoman_subjugation_war
+			#		target = WAL
+			#		months = 240
+			#	}
+			#}
+			#if = {
+			#	limit = {
+			#		HUN = {
+			#			exists = yes
+			#			is_subject = no
+			#		}
+			#	}
+			#	add_casus_belli = {
+			#		type = cb_ottoman_subjugation_war
+			#		target = HUN
+			#		months = 240
+			#	}
+			#}
+			#if = {
+			#	limit = {
+			#		MOL = {
+			#			exists = yes
+			#			is_subject = no
+			#		}
+			#	}
+			#	add_casus_belli = {
+			#		type = cb_ottoman_subjugation_war
+			#		target = MOL
+			#		months = 240
+			#	}
+			#}
 		}
 
 		ai_weight = {
@@ -1498,7 +1504,7 @@ tur_african_conquest = {
 						monthly_mil = 11
 					}
 				}
-				reform_level = 6
+				reform_level = 5
 			}
 			else = {
 				NOT = { has_reform = ottoman_government }
@@ -1562,7 +1568,6 @@ tur_african_conquest = {
 			if = {
 				limit = { is_emperor = no }
 				NOT = { hre_size = 1 }
-				NOT = { exists = HLR }
 			}
 			else = {
 				if = {
@@ -1706,14 +1711,14 @@ tur_african_conquest = {
 		}
 		effect = {
 			add_navy_tradition = 25
-			if = {
-				limit = { exists = MOR }
-				add_casus_belli = {
-					type = cb_ottoman_subjugation_war
-					target = MOR
-					months = 240
-				}
-			}
+			#if = {
+			#	limit = { exists = MOR }
+			#	add_casus_belli = {
+			#		type = cb_ottoman_subjugation_war
+			#		target = MOR
+			#		months = 240
+			#	}
+			#}
 			western_morocco_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -1978,7 +1983,7 @@ tur_african_conquest = {
 		}
 		trigger = {
 			stability = 2
-			reform_level = 5
+			reform_level = 6
 			if = {
 				limit = { has_estate = estate_nobles }
 				num_of_estate_agendas_completed = {
@@ -2048,7 +2053,10 @@ tur_egyptian_conquest = {
 	}
 	potential = {
 		has_dlc = "Domination"
-		tag = TUR
+		OR = {
+			tag = TUR
+			tag = SLU
+		}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -2181,7 +2189,7 @@ tur_egyptian_conquest = {
 				inquisitor = 3
 				theologian = 3
 				has_idea_group = religious_ideas
-				has_idea_group = theocracy_gov_ideas
+				has_idea_group = empire_ideas
 			}
 		}
 		effect = {
@@ -2343,11 +2351,12 @@ tur_egyptian_conquest = {
 					exists = MAM
 				}
 				add_casus_belli = {
-					type = cb_ottoman_invasion
+					#type = cb_ottoman_invasion
+					type = cb_imperial
 					target = MAM
-					months = 600
+					months = 300
 				}
-				custom_tooltip = tur_defeat_the_mamluks_at
+				#custom_tooltip = tur_defeat_the_mamluks_at
 			}
 			egypt_region = {
 				limit = {
@@ -2421,14 +2430,14 @@ tur_egyptian_conquest = {
 			}
 		}
 		effect = {
-			if = {
-				limit = { exists = TUN }
-				add_casus_belli = {
-					type = cb_ottoman_subjugation_war
-					target = TUN
-					months = 240
-				}
-			}
+			#if = {
+			#	limit = { exists = TUN }
+			#	add_casus_belli = {
+			#		type = cb_ottoman_subjugation_war
+			#		target = TUN
+			#		months = 240
+			#	}
+			#}
 			tunisia_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -2457,6 +2466,10 @@ tur_egyptian_conquest = {
 				}
 				add_permanent_claim = ROOT
 			}
+			add_country_modifier = {
+				name = tm_tur_victory_over_mam
+				duration = -1
+			}
 		}
 
 		ai_weight = {
@@ -2469,139 +2482,200 @@ tur_egyptian_conquest = {
 		required_missions = { tur_conquer_egypt }
 		position = 9
 		provinces_to_highlight = {
-			if = {
-				limit = { exists = EGY ROOT = { has_country_flag = tur_decided_to_go_eyalet } }
-				is_capital_of = EGY
-			}
-			else_if = {
-				limit = { ROOT = { has_country_flag = tur_decided_to_go_eyalet } }
-				region = egypt_region
-				NOT = { country_or_non_sovereign_subject_holds = ROOT }
-			}
-			else = {
-				OR = {
-					AND = {
-						region = egypt_region
-						OR = {
-							NOT = { country_or_non_sovereign_subject_holds = ROOT }
-							NOT = { local_autonomy_above_min = 10 }
-						}
+			#if = {
+			#	limit = { exists = EGY ROOT = { has_country_flag = tur_decided_to_go_eyalet } }
+			#	is_capital_of = EGY
+			#}
+			#else_if = {
+			#	limit = { ROOT = { has_country_flag = tur_decided_to_go_eyalet } }
+			#	region = egypt_region
+			#	NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			#}
+			#else = {
+			#	OR = {
+			#		AND = {
+			#			region = egypt_region
+			#			OR = {
+			#				NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			#				NOT = { local_autonomy_above_min = 10 }
+			#			}
+			#		}
+			#		AND = {
+			#			OR = {
+			#				area = bahari_area
+			#				area = delta_area
+			#			}
+			#			NOT = { num_of_times_improved = 4 }
+			#		}
+			#	}
+			#}
+			OR = {
+				AND = {
+					region = egypt_region
+					OR = {
+						NOT = { country_or_non_sovereign_subject_holds = ROOT }
+						NOT = { local_autonomy_above_min = 10 }
 					}
-					AND = {
-						OR = {
-							area = bahari_area
-							area = delta_area
-						}
-						NOT = { num_of_times_improved = 4 }
+				}
+				AND = {
+					OR = {
+						area = bahari_area
+						area = delta_area
 					}
+					NOT = { num_of_times_improved = 4 }
 				}
 			}
 		}
 		trigger = {
-			if = {
-				limit = {
-					NOT = { mission_completed = tur_conquer_egypt }
-					NOT = { has_country_flag = tur_decided_to_go_eyalet }
-				}
-				custom_trigger_tooltip = {
-					tooltip = tur_handle_the_egyptian_eyalet_at
-					always = no
-				}
+			#if = {
+			#	limit = {
+			#		NOT = { mission_completed = tur_conquer_egypt }
+			#		NOT = { has_country_flag = tur_decided_to_go_eyalet }
+			#	}
+			#	custom_trigger_tooltip = {
+			#		tooltip = tur_handle_the_egyptian_eyalet_at
+			#		always = no
+			#	}
+			#}
+			#else_if = {
+			#	limit = {
+			#		has_country_flag = tur_decided_to_go_eyalet
+			#	}
+			#	OR = {
+			#		AND = {
+			#			has_dip_advisor_3 = yes
+			#			EGY = {
+			#				is_subject_of = ROOT
+			#				NOT = { liberty_desire = 10 }
+			#				has_opinion = {
+			#					who = ROOT
+			#					value = 100
+			#				}
+			#			}
+			#		}
+			#		AND = {
+			#			NOT = { exists = EGY }
+			#			egypt_region = {
+			#				country_or_non_sovereign_subject_holds = ROOT
+			#				type = all
+			#			}
+			#		}
+			#	}
+			#}
+			#else = {
+			#	egypt_region = {
+			#		country_or_non_sovereign_subject_holds = ROOT
+			#		NOT = { local_autonomy_above_min = 10 }
+			#		type = all
+			#	}
+			#	bahari_area = {
+			#		type = all 
+			#		country_or_non_sovereign_subject_holds = ROOT 
+			#		num_of_times_improved = 4 
+			#	}
+			#	delta_area = { 
+			#		type = all 
+			#		country_or_non_sovereign_subject_holds = ROOT 
+			#		num_of_times_improved = 4 
+			#	}
+			#}
+			egypt_region = {
+				country_or_non_sovereign_subject_holds = ROOT
+				NOT = { local_autonomy_above_min = 10 }
+				type = all
 			}
-			else_if = {
-				limit = {
-					has_country_flag = tur_decided_to_go_eyalet
-				}
-				OR = {
-					AND = {
-						has_dip_advisor_3 = yes
-						EGY = {
-							is_subject_of = ROOT
-							NOT = { liberty_desire = 10 }
-							has_opinion = {
-								who = ROOT
-								value = 100
-							}
-						}
-					}
-					AND = {
-						NOT = { exists = EGY }
-						egypt_region = {
-							country_or_non_sovereign_subject_holds = ROOT
-							type = all
-						}
-					}
-				}
+			bahari_area = {
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+				num_of_times_improved = 4 
 			}
-			else = {
-				egypt_region = {
-					country_or_non_sovereign_subject_holds = ROOT
-					NOT = { local_autonomy_above_min = 10 }
-					type = all
-				}
-				bahari_area = {
-					type = all 
-					country_or_non_sovereign_subject_holds = ROOT 
-					num_of_times_improved = 4 
-				}
-				delta_area = { 
-					type = all 
-					country_or_non_sovereign_subject_holds = ROOT 
-					num_of_times_improved = 4 
-				}
+			delta_area = { 
+				type = all 
+				country_or_non_sovereign_subject_holds = ROOT 
+				num_of_times_improved = 4 
 			}
 		}
 		effect = {
-			if = {
-				limit = {
-					NOT = { mission_completed = tur_conquer_egypt }
-					NOT = { has_country_flag = tur_decided_to_go_eyalet }
-				}
-				custom_tooltip = tur_handle_the_egyptian_eyalet_bt
-			}
-			else_if = {
-				limit = {
-					has_country_flag = tur_decided_to_go_eyalet
-					exists = EGY
-				}
-				EGY = {
-					remove_country_modifier = tur_mamlukian_administration
-				}
-				change_ruler_stat = {
-					stat = dip
-					amount = 2
-				}
-			}
-			else = {
-				custom_tooltip = tur_handle_the_egyptian_eyalet_ct
-				hidden_effect = {
-					#egypt_region = {
-					#	limit = {
-					#		country_or_non_sovereign_subject_holds = ROOT
-					#	}
-					#	add_base_production = 1
-					#  
-					#	type = random
-					#	amount = 10
-					#}
-					bahari_area = {
-						limit = {
-							country_or_non_sovereign_subject_holds = ROOT
-						}
-						add_base_production = 1
+			#if = {
+			#	limit = {
+			#		NOT = { mission_completed = tur_conquer_egypt }
+			#		NOT = { has_country_flag = tur_decided_to_go_eyalet }
+			#	}
+			#	custom_tooltip = tur_handle_the_egyptian_eyalet_bt
+			#}
+			#else_if = {
+			#	limit = {
+			#		has_country_flag = tur_decided_to_go_eyalet
+			#		exists = EGY
+			#	}
+			#	EGY = {
+			#		remove_country_modifier = tur_mamlukian_administration
+			#	}
+			#	change_ruler_stat = {
+			#		stat = dip
+			#		amount = 2
+			#	}
+			#}
+			#else = {
+			#	custom_tooltip = tur_handle_the_egyptian_eyalet_ct
+			#	hidden_effect = {
+			#		egypt_region = {
+			#			limit = {
+			#				country_or_non_sovereign_subject_holds = ROOT
+			#			}
+			#			add_base_production = 1
+			#		  
+			#			type = random
+			#			amount = 10
+			#		}
+			#		bahari_area = {
+			#			limit = {
+			#				country_or_non_sovereign_subject_holds = ROOT
+			#			}
+			#			add_base_production = 1
+			#		}
+			#		delta_area = {
+			#			limit = {
+			#				country_or_non_sovereign_subject_holds = ROOT
+			#			}
+			#			add_base_production = 1
+			#		}
+			#		vostani_area = {
+			#			limit = {
+			#				country_or_non_sovereign_subject_holds = ROOT
+			#			}
+			#			add_base_production = 1
+			#		}
+			#	}
+			#}
+			custom_tooltip = tur_handle_the_egyptian_eyalet_ct
+			hidden_effect = {
+				egypt_region = {
+					limit = {
+						country_or_non_sovereign_subject_holds = ROOT
 					}
-					delta_area = {
-						limit = {
-							country_or_non_sovereign_subject_holds = ROOT
-						}
-						add_base_production = 1
+					add_base_production = 1
+				  
+					type = random
+					amount = 10
+				}
+				bahari_area = {
+					limit = {
+						country_or_non_sovereign_subject_holds = ROOT
 					}
-					vostani_area = {
-						limit = {
-							country_or_non_sovereign_subject_holds = ROOT
-						}
-						add_base_production = 1
+					add_base_production = 1
+				}
+				delta_area = {
+					limit = {
+						country_or_non_sovereign_subject_holds = ROOT
 					}
+					add_base_production = 1
+				}
+				vostani_area = {
+					limit = {
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+					add_base_production = 1
 				}
 			}
 			country_event_with_insight = {
@@ -2687,16 +2761,16 @@ tur_egyptian_conquest = {
 			else = {
 				add_mercantilism = 3
 			}
-			if = {
-				limit = {
-					exists = ADA
-				}
-				add_casus_belli = {
-					type = cb_ottoman_subjugation_war
-					target = ADA
-					months = 240
-				}
-			}
+			#if = {
+			#	limit = {
+			#		exists = ADA
+			#	}
+			#	add_casus_belli = {
+			#		type = cb_ottoman_subjugation_war
+			#		target = ADA
+			#		months = 240
+			#	}
+			#}
 			red_sea_coast_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -2933,18 +3007,9 @@ tur_egyptian_conquest = {
 			is_bankrupt = no
 			stability = 3
 			prestige = 75
-			total_own_and_non_tributary_subject_development = 4000
-			if = {
-				limit = {
-					OR = {
-						has_dlc = "Rights of Man"
-						has_dlc = "Emperor"
-					}
-				}
-				NOT = { great_power_rank = 2 }
-			}
-			if = {
-				limit = { has_dlc = "Emperor" }
+			total_own_and_non_tributary_subject_development = 2000
+			OR = {
+				NOT = { great_power_rank = 5 }
 				is_hegemon = yes
 			}
 		}
@@ -2970,7 +3035,10 @@ tur_arabian_conquest = {
 	}
 	potential = {
 		has_dlc = "Domination"
-		tag = TUR
+		OR = {
+			tag = TUR
+			tag = SLU
+		}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -3208,6 +3276,7 @@ tur_arabian_conquest = {
 				area = basra_area
 				area = iraq_arabi_area
 				area = al_jazira_area
+				area = tikrit_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -3217,8 +3286,9 @@ tur_arabian_conquest = {
 					area = basra_area
 					area = iraq_arabi_area
 					area = al_jazira_area
+					area = tikrit_area
 				}
-				value = 8
+				value = 12
 			}
 			owns_or_non_sovereign_subject_of = 408
 			owns_or_non_sovereign_subject_of = 410
@@ -3248,7 +3318,7 @@ tur_arabian_conquest = {
 				}
 				add_country_modifier = {
 					name = tur_baghdad_city_of_learning
-					duration = 10950
+					duration = 5475
 				}"
 			}
 		}
@@ -3274,10 +3344,7 @@ tur_arabian_conquest = {
 		trigger = {
 			OR = { 
 				CRI = {
-					OR = {
-						is_subject_of = ROOT
-						alliance_with = ROOT 
-					}
+					alliance_with = ROOT 
 					has_opinion = { 
 						who = ROOT 
 						value = 150 
@@ -3303,18 +3370,18 @@ tur_arabian_conquest = {
 			}
 		}
 		effect = {
-			custom_tooltip = tur_subject_crimea_reward_tt
-			if = {
-				limit = {
-					CRI = { is_subject_of = ROOT }
-				}
-				custom_tooltip = BONUS_REWARD_YES
-			}
-			else = { custom_tooltip = BONUS_REWARD_NO }
-			tooltip = {
-				tur_crimean_khaganate_effect_a = yes
-			}
-			custom_tooltip = mission_alternatively_tt
+			#custom_tooltip = tur_subject_crimea_reward_tt
+			#if = {
+			#	limit = {
+			#		CRI = { is_subject_of = ROOT }
+			#	}
+			#	custom_tooltip = BONUS_REWARD_YES
+			#}
+			#else = { custom_tooltip = BONUS_REWARD_NO }
+			#tooltip = {
+			#	tur_crimean_khaganate_effect_a = yes
+			#}
+			#custom_tooltip = mission_alternatively_tt
 			custom_tooltip = tur_alliance_cri_tt
 			if = {
 				limit = {
@@ -3324,9 +3391,9 @@ tur_arabian_conquest = {
 			}
 			else = { custom_tooltip = BONUS_REWARD_NO }
 			tooltip = {
-				custom_tooltip = tur_alliance_cri_at
-				set_country_flag = tur_guarantee_cri_flag 
-				add_dip_power = 50
+				#custom_tooltip = tur_alliance_cri_at
+				#set_country_flag = tur_guarantee_cri_flag 
+				add_dip_power = 100
 			}
 			custom_tooltip = mission_alternatively_tt
 			custom_tooltip = tur_alternatively_gain_access_to_tatar_vanguard_merc_comp_and_following_reward_tt
@@ -3363,15 +3430,15 @@ tur_arabian_conquest = {
 			}
 
 			hidden_effect = {
+				#if = {
+				#	limit = { CRI = { is_subject_of = ROOT } }
+				#	tur_crimean_khaganate_effect_a = yes
+				#}
 				if = {
-					limit = { CRI = { is_subject_of = ROOT } }
-					tur_crimean_khaganate_effect_a = yes
-				}
-				else_if = {
 					limit = { alliance_with = CRI }
-					custom_tooltip = tur_alliance_cri_at
-					set_country_flag = tur_guarantee_cri_flag 
-					add_dip_power = 50
+					#custom_tooltip = tur_alliance_cri_at
+					#set_country_flag = tur_guarantee_cri_flag 
+					add_dip_power = 100
 				}
 				else_if = {
 					limit = {
@@ -3463,7 +3530,7 @@ tur_arabian_conquest = {
 				add_trade_modifier = {
 					who = ROOT
 					duration = -1
-					power = 20
+					power = 35
 					key = TUR_PONTIC_TRADE
 				}
 			}
@@ -3471,7 +3538,7 @@ tur_arabian_conquest = {
 				add_trade_modifier = {
 					who = ROOT
 					duration = -1
-					power = 20
+					power = 35
 					key = TUR_PONTIC_TRADE
 				}
 			}
@@ -3513,14 +3580,14 @@ tur_arabian_conquest = {
 			}
 		}
 		effect = {
-			if = {
-				limit = { exists = YEM }
-				add_casus_belli = {
-					type = cb_ottoman_subjugation_war
-					target = YEM
-					months = 240
-				}
-			}
+			#if = {
+			#	limit = { exists = YEM }
+			#	add_casus_belli = {
+			#		type = cb_ottoman_subjugation_war
+			#		target = YEM
+			#		months = 240
+			#	}
+			#}
 			arabia_region = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -3622,7 +3689,10 @@ tur_dummy_missions_path = {
 	}
 	potential = {
 		has_dlc = "Domination"
-		tag = TUR
+		OR = {
+			tag = TUR
+			tag = SLU
+		}
 		NOT = { map_setup = map_setup_random }
 		NOT = { has_country_flag = tur_chose_legalism }
 		NOT = { has_country_flag = tur_chose_mysticism }
@@ -3922,7 +3992,10 @@ tur_legalism_path = {
 	}
 	potential = {
 		has_dlc = "Domination"
-		tag = TUR
+		OR = {
+			tag = TUR
+			tag = SLU
+		}
 		NOT = { map_setup = map_setup_random }
 		has_country_flag = tur_chose_legalism
 	}
@@ -4079,7 +4152,10 @@ tur_mysticism_path = {
 	}
 	potential = {
 		has_dlc = "Domination"
-		tag = TUR
+		OR = {
+			tag = TUR
+			tag = SLU
+		}
 		NOT = { map_setup = map_setup_random }
 		has_country_flag = tur_chose_mysticism
 	}
@@ -4235,7 +4311,10 @@ tur_non_muslim_path = {
 	}
 	potential = {
 		has_dlc = "Domination"
-		tag = TUR
+		OR = {
+			tag = TUR
+			tag = SLU
+		}
 		NOT = { map_setup = map_setup_random }
 		has_country_flag = tur_non_muslim_path_flag
 	}
@@ -4334,7 +4413,10 @@ tur_issue_the_kannuname_slot = {
 	}
 	potential = {
 		has_dlc = "Domination"
-		tag = TUR
+		OR = {
+			tag = TUR
+			tag = SLU
+		}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -4406,7 +4488,10 @@ tur_persian_conquest = {
 	}
 	potential = {
 		has_dlc = "Domination"
-		tag = TUR
+		OR = {
+			tag = TUR
+			tag = SLU
+		}
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
@@ -4581,7 +4666,7 @@ tur_persian_conquest = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			num_of_owned_provinces_with = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				region = persia_region
 				value = 20
 			}
@@ -5017,7 +5102,10 @@ tur_stagnation_slot_1 = {
 	}
 	potential = {
 		has_dlc = "Domination"
-		tag = TUR
+		OR = {
+			tag = TUR
+			tag = SLU
+		}
 		NOT = { map_setup = map_setup_random }
 		has_country_flag = tur_unlocked_disaster_missions
 	}
@@ -5359,7 +5447,10 @@ tur_stagnation_slot_2 = {
 	}
 	potential = {
 		has_dlc = "Domination"
-		tag = TUR
+		OR = {
+			tag = TUR
+			tag = SLU
+		}
 		NOT = { map_setup = map_setup_random }
 		has_country_flag = tur_unlocked_disaster_missions
 	}
@@ -5444,7 +5535,10 @@ tur_stagnation_slot_3 = {
 	}
 	potential = {
 		has_dlc = "Domination"
-		tag = TUR
+		OR = {
+			tag = TUR
+			tag = SLU
+		}
 		NOT = { map_setup = map_setup_random }
 		has_country_flag = tur_unlocked_disaster_missions
 	}
@@ -5522,23 +5616,21 @@ tur_stagnation_slot_3 = {
 		}
 		trigger = {
 			if = {
-				limit = { has_disaster = tur_disaster_ottoman_power_struggle }
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					region = egypt_region
-					value = 25
+				limit = {
+					is_absolutism_active = yes
 				}
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					region = persia_region
-					value = 40
-				}
-				if = {
-					limit = {
-						is_absolutism_active = yes
-					}
-					absolutism = 70
-				}
+				absolutism = 70
+			}
+			NOT = { num_of_rebel_armies = 1 }
+			NOT = { num_of_rebel_controlled_provinces = 1 }
+			if = {
+				limit = { has_disaster = tur_disaster_eyalet_rebellion }
 				NOT = {
 					any_subject_country = {
+						OR = {
+							is_subject_of_type = eyalet
+							is_subject_of_type = core_eyalet
+						}
 						OR = {
 							liberty_desire = 10
 							num_of_rebel_armies = 1
@@ -5547,28 +5639,12 @@ tur_stagnation_slot_3 = {
 					}
 				}
 				monthly_dip = 12
-				NOT = { num_of_rebel_armies = 1 }
-				NOT = { num_of_rebel_controlled_provinces = 1 }
 			}
 			else = {
 				NOT = {
 					any_subject_country = {
 						liberty_desire = 10
 					}
-				}
-				NOT = { num_of_rebel_armies = 1 }
-				NOT = { num_of_rebel_controlled_provinces = 1 }
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					region = egypt_region
-					value = 25
-				}
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					region = persia_region
-					value = 40
-				}
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					continent = europe
-					value = 60
 				}
 			}
 		}
@@ -5636,7 +5712,10 @@ tur_stagnation_slot_4 = {
 	}
 	potential = {
 		has_dlc = "Domination"
-		tag = TUR
+		OR = {
+			tag = TUR
+			tag = SLU
+		}
 		NOT = { map_setup = map_setup_random }
 		has_country_flag = tur_unlocked_disaster_missions
 	}
@@ -5779,7 +5858,10 @@ tur_stagnation_slot_5 = {
 	}
 	potential = {
 		has_dlc = "Domination"
-		tag = TUR
+		OR = {
+			tag = TUR
+			tag = SLU
+		}
 		NOT = { map_setup = map_setup_random }
 		has_country_flag = tur_unlocked_disaster_missions
 	}
@@ -5818,9 +5900,6 @@ tur_stagnation_slot_5 = {
 					has_adm_advisor_3 = yes
 					has_dip_advisor_3 = yes
 					has_mil_advisor_3 = yes
-					ruler_total_stats = {
-						stats = 10
-					}
 					legitimacy = 60
 				}
 			}
@@ -5855,9 +5934,6 @@ tur_stagnation_slot_5 = {
 		trigger = {
 			if = {
 				limit = { NOT = { has_country_modifier = tur_weakened_the_harem } }
-				ruler_total_stats = {
-					stats = 15
-				}
 				legitimacy = 90
 				NOT = { has_spawned_rebels = pretender_rebels }
 				stability = 3

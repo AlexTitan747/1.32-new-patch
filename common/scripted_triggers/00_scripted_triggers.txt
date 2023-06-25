@@ -30,6 +30,9 @@ has_mil_advisor = {
 			advisor = recruitmaster
 			advisor = fortification_expert
 			advisor = quartermaster
+			advisor = shield_bearer
+			advisor = artillery_bearer
+			advisor = stable_hand
 		}
 	}
 }
@@ -45,6 +48,9 @@ has_mil_advisor_2 = {
 			recruitmaster = 2
 			fortification_expert = 2
 			quartermaster = 2
+			shield_bearer = 2
+			artillery_bearer = 2
+			stable_hand = 2
 		}
 	}
 }
@@ -60,6 +66,9 @@ has_mil_advisor_3 = {
 			recruitmaster = 3
 			fortification_expert = 3
 			quartermaster = 3
+			shield_bearer = 3
+			artillery_bearer = 3
+			stable_hand = 3
 		}
 	}
 }
@@ -75,6 +84,8 @@ has_adm_advisor = {
 			advisor = master_of_mint
 			advisor = inquisitor
 			advisor = natural_scientist
+			advisor = master_of_construction
+			advisor = free_thinker
 		}
 	}
 }
@@ -90,6 +101,8 @@ has_adm_advisor_2 = {
 			master_of_mint = 2
 			inquisitor = 2
 			natural_scientist = 2
+			master_of_construction = 2
+			free_thinker = 2
 		}
 	}
 }
@@ -101,10 +114,12 @@ has_adm_advisor_3 = {
 			treasurer = 3
 			philosopher = 3
 			artist = 3
-			 theologian = 3
+			theologian = 3
 			master_of_mint = 3
 			inquisitor = 3
 			natural_scientist = 3
+			master_of_construction = 3
+			free_thinker = 3
 		}
 	}
 }
@@ -121,6 +136,8 @@ has_dip_advisor = {
 			advisor = colonial_governor
 			advisor = navigator
 			advisor = spymaster
+			advisor = master_of_assimilation
+			advisor = master_of_integration
 		}
 	}
 }
@@ -136,6 +153,8 @@ has_dip_advisor_2 = {
 			colonial_governor = 2
 			navigator = 2
 			spymaster = 2
+			master_of_assimilation = 2
+			master_of_integration = 2
 		}
 	}
 }
@@ -151,6 +170,8 @@ has_dip_advisor_3 = {
 			colonial_governor = 3
 			navigator = 3
 			spymaster = 3
+			master_of_assimilation = 3
+			master_of_integration = 3
 		}
 	}
 }
@@ -1697,17 +1718,17 @@ is_not_inland_trade_node_province = {
 #Province scope
 is_european_trade_node_province = {
 	OR = {
-		province_id = 1293
+		province_id = 4584
 		province_id = 1295
-		province_id = 1298
-		province_id = 1308
+		province_id = 109
+		province_id = 121
 		province_id = 137
 		province_id = 1320
 		province_id = 1322
 		province_id = 280
 		province_id = 153
-		province_id = 134
-		province_id = 61
+		province_id = 266
+		province_id = 1869
 		province_id = 45
 		province_id = 1876
 		province_id = 186
@@ -1719,21 +1740,22 @@ is_european_trade_node_province = {
 		province_id = 1652
 		province_id = 1082
 		province_id = 464
+		province_id = 262
 	}
 }
 
 european_trade_node_scope = {
-	1293 = { $trigger$ }
+	4584 = { $trigger$ }
 	1295 = { $trigger$ }
-	1298 = { $trigger$ }
-	1308 = { $trigger$ }
+	109 = { $trigger$ }
+	121 = { $trigger$ }
 	137 = { $trigger$ }
 	1320 = { $trigger$ }
 	1322 = { $trigger$ }
 	280 = { $trigger$ }
 	153 = { $trigger$ }
-	134 = { $trigger$ }
-	61 = { $trigger$ }
+	266 = { $trigger$ }
+	1869 = { $trigger$ }
 	45 = { $trigger$ }
 	1876 = { $trigger$ }
 	186 = { $trigger$ }
@@ -1745,6 +1767,7 @@ european_trade_node_scope = {
 	1652 = { $trigger$ }
 	1082 = { $trigger$ }
 	464 = { $trigger$ }
+	262 = { $trigger$ }
 }
 
 #Province scope
@@ -1802,19 +1825,7 @@ is_american_trade_node_province = {
 
 #Needed for the Russian dynamic mission...
 is_in_persian_trade_node = {
-	OR = {
-		area = shirvan_area
-		area = armenia_area
-		area = tabriz_area
-		area = tabarestan_area
-		area = azerbaijan_area
-		area = iraq_e_ajam_area
-		area = isfahan_area
-		area = birjand_area
-		area = sistan_area
-		area = herat_area
-		area = mashhad_area
-	}
+	trade_company_region = trade_company_persia
 }
 
 has_any_colonist_idea = {
@@ -1844,12 +1855,12 @@ has_completed_idea_group_of_category = {
 		custom_trigger_tooltip = {
 			tooltip = has_completed_one_adm_idea_group
 			OR = {
-				full_idea_group = innovativeness_ideas
-				full_idea_group = religious_ideas
-				full_idea_group = economic_ideas
+				full_idea_group = justice_ideas
+				full_idea_group = guild_ideas
 				full_idea_group = expansion_ideas
-				full_idea_group = administrative_ideas
-				full_idea_group = humanist_ideas
+				full_idea_group = innovative_ideas
+				full_idea_group = religious_ideas
+				full_idea_group = bureaucratic_ideas
 				full_idea_group = infrastructure_ideas
 			}
 		}
@@ -1858,12 +1869,12 @@ has_completed_idea_group_of_category = {
 		custom_trigger_tooltip = {
 			tooltip = has_completed_one_dip_idea_group
 			OR = {
-				full_idea_group = spy_ideas
+				full_idea_group = assimilation_ideas
+				full_idea_group = empire_ideas
 				full_idea_group = diplomatic_ideas
-				full_idea_group = trade_ideas
-				full_idea_group = exploration_ideas
-				full_idea_group = maritime_ideas
 				full_idea_group = influence_ideas
+				full_idea_group = colonialism_ideas
+				full_idea_group = trade_ideas
 				full_idea_group = court_ideas
 			}
 		}
@@ -1872,16 +1883,13 @@ has_completed_idea_group_of_category = {
 		custom_trigger_tooltip = {
 			tooltip = has_completed_one_mil_idea_group
 			OR = {
-				full_idea_group = aristocracy_ideas
-				full_idea_group = offensive_ideas
-				full_idea_group = defensive_ideas
-				full_idea_group = quality_ideas
+				full_idea_group = assault_ideas
+				full_idea_group = drill_ideas
 				full_idea_group = quantity_ideas
-				full_idea_group = naval_ideas
-				full_idea_group = theocracy_gov_ideas
-				full_idea_group = indigenous_ideas
-				full_idea_group = horde_gov_ideas
-				full_idea_group = plutocracy_ideas
+				full_idea_group = firepower_ideas
+				full_idea_group = shock_ideas
+				full_idea_group = maneuver_ideas
+				full_idea_group = defensive_ideas
 				full_idea_group = mercenary_ideas
 			}
 		}
@@ -1891,12 +1899,12 @@ has_completed_idea_group_of_category = {
 num_of_completed_idea_groups_adm = {
 	calc_true_if = {
 		desc = num_of_completed_idea_groups_adm_tt
-		full_idea_group = innovativeness_ideas
-		full_idea_group = religious_ideas
-		full_idea_group = economic_ideas
+		full_idea_group = justice_ideas
+		full_idea_group = guild_ideas
 		full_idea_group = expansion_ideas
-		full_idea_group = administrative_ideas
-		full_idea_group = humanist_ideas
+		full_idea_group = innovative_ideas
+		full_idea_group = religious_ideas
+		full_idea_group = bureaucratic_ideas
 		full_idea_group = infrastructure_ideas
 		amount = $amount$
 	}
@@ -1905,12 +1913,12 @@ num_of_completed_idea_groups_adm = {
 num_of_completed_idea_groups_dip = {
 	calc_true_if = {
 		desc = num_of_completed_idea_groups_dip_tt
-		full_idea_group = spy_ideas
+		full_idea_group = assimilation_ideas
+		full_idea_group = empire_ideas
 		full_idea_group = diplomatic_ideas
-		full_idea_group = trade_ideas
-		full_idea_group = exploration_ideas
-		full_idea_group = maritime_ideas
 		full_idea_group = influence_ideas
+		full_idea_group = colonialism_ideas
+		full_idea_group = trade_ideas
 		full_idea_group = court_ideas
 		amount = $amount$
 	}
@@ -1919,16 +1927,13 @@ num_of_completed_idea_groups_dip = {
 num_of_completed_idea_groups_mil = {
 	calc_true_if = {
 		desc = num_of_completed_idea_groups_mil_tt
-		full_idea_group = aristocracy_ideas
-		full_idea_group = offensive_ideas
-		full_idea_group = defensive_ideas
-		full_idea_group = quality_ideas
+		full_idea_group = assault_ideas
+		full_idea_group = drill_ideas
 		full_idea_group = quantity_ideas
-		full_idea_group = naval_ideas
-		full_idea_group = theocracy_gov_ideas
-		full_idea_group = indigenous_ideas
-		full_idea_group = horde_gov_ideas
-		full_idea_group = plutocracy_ideas
+		full_idea_group = firepower_ideas
+		full_idea_group = shock_ideas
+		full_idea_group = maneuver_ideas
+		full_idea_group = defensive_ideas
 		full_idea_group = mercenary_ideas
 		amount = $amount$
 	}

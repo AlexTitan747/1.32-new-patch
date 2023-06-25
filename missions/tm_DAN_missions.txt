@@ -8,10 +8,7 @@ dan_secure_baltic_mission_slot = {
 	potential = {
 		OR = {
 			tag = DAN
-			AND = {
-				was_tag = DAN
-				tag = SCA
-			}
+			was_tag = DAN
 		}
 		has_dlc = "Lions of the North"
 		NOT = { map_setup = map_setup_random }
@@ -247,25 +244,37 @@ dan_secure_baltic_mission_slot = {
 					owned_by = ROOT
 					is_core = ROOT
 					has_trade_building_trigger = yes
-					has_coast_defense_building_trigger = yes
+					OR = {
+						has_coast_defense_building_trigger = yes
+						has_province_modifier = block_slave_raid_area_m
+					}
 				}
 				4142 = {
 					owned_by = ROOT
 					is_core = ROOT
 					has_trade_building_trigger = yes
-					has_coast_defense_building_trigger = yes
+					OR = {
+						has_coast_defense_building_trigger = yes
+						has_province_modifier = block_slave_raid_area_m
+					}
 				}
 				1775 = {
 					owned_by = ROOT
 					is_core = ROOT
 					has_trade_building_trigger = yes
-					has_coast_defense_building_trigger = yes
+					OR = {
+						has_coast_defense_building_trigger = yes
+						has_province_modifier = block_slave_raid_area_m
+					}
 				}
 				6 = {
 					owned_by = ROOT
 					is_core = ROOT
 					has_trade_building_trigger = yes
-					has_coast_defense_building_trigger = yes
+					OR = {
+						has_coast_defense_building_trigger = yes
+						has_province_modifier = block_slave_raid_area_m
+					}
 				}
 			}
 			mercantilism = 15
@@ -415,10 +424,7 @@ dan_north_america_mission_slot = {
 	potential = {
 		OR = {
 			tag = DAN
-			AND = {
-				was_tag = DAN
-				tag = SCA
-			}
+			was_tag = DAN
 		}
 		has_dlc = "Lions of the North"
 		NOT = { map_setup = map_setup_random }
@@ -498,10 +504,7 @@ dan_rnw_mission_slot = {
 	potential = {
 		OR = {
 			tag = DAN
-			AND = {
-				was_tag = DAN
-				tag = SCA
-			}
+			was_tag = DAN
 		}
 		has_dlc = "Lions of the North"
 		NOT = { map_setup = map_setup_random }
@@ -545,10 +548,7 @@ dan_trade_and_colonial_mission_slot = {
 	potential = {
 		OR = {
 			tag = DAN
-			AND = {
-				was_tag = DAN
-				tag = SCA
-			}
+			was_tag = DAN
 		}
 		has_dlc = "Lions of the North"
 		NOT = { map_setup = map_setup_random }
@@ -702,15 +702,12 @@ dan_trade_and_colonial_mission_slot = {
 			OR = {
 				NOT = { is_core = ROOT }
 				NOT = { owned_by = ROOT }
-				is_owned_by_trade_company = no
-				NOT = { has_state_edict = edict_protect_trade }
 			}
 		}
 		trigger = {
 			owns_core_province = 33
 			owns_core_province = 274
 			owns_core_province = 310
-			33 = { province_has_current_tech_fort_trigger = yes }
 			274 = { province_has_current_tech_fort_trigger = yes }
 			310 = { province_has_current_tech_fort_trigger = yes }
 		}
@@ -932,10 +929,7 @@ dan_caribbeans_mission_slot = {
 	potential = {
 		OR = {
 			tag = DAN
-			AND = {
-				was_tag = DAN
-				tag = SCA
-			}
+			was_tag = DAN
 		}
 		has_dlc = "Lions of the North"
 		NOT = { map_setup = map_setup_random }
@@ -1020,10 +1014,7 @@ dan_norway_holstein_mission_slot = {
 	potential = {
 		OR = {
 			tag = DAN
-			AND = {
-				was_tag = DAN
-				tag = SCA
-			}
+			was_tag = DAN
 		}
 		has_dlc = "Lions of the North"
 		NOT = { map_setup = map_setup_random }
@@ -1517,10 +1508,7 @@ dan_sweden_and_great_power_mission_slot = {
 	potential = {
 		OR = {
 			tag = DAN
-			AND = {
-				was_tag = DAN
-				tag = SCA
-			}
+			was_tag = DAN
 		}
 		has_dlc = "Lions of the North"
 		NOT = { map_setup = map_setup_random }
@@ -2005,10 +1993,7 @@ dan_england_mission_slot = {
 	potential = {
 		OR = {
 			tag = DAN
-			AND = {
-				was_tag = DAN
-				tag = SCA
-			}
+			was_tag = DAN
 		}
 		has_dlc = "Lions of the North"
 		NOT = { map_setup = map_setup_random }
@@ -2271,10 +2256,7 @@ dan_religion_start_mission_slot = {
 	potential = {
 		OR = {
 			tag = DAN
-			AND = {
-				was_tag = DAN
-				tag = SCA
-			}
+			was_tag = DAN
 		}
 		has_dlc = "Lions of the North"
 		NOT = { map_setup = map_setup_random }
@@ -2374,10 +2356,7 @@ dan_religion_mission_slot = {
 	potential = {
 		OR = {
 			tag = DAN
-			AND = {
-				was_tag = DAN
-				tag = SCA
-			}
+			was_tag = DAN
 		}
 		NOT = { has_country_flag = sca_unlock_catholic_missions }
 		NOT = { has_country_flag = sca_unlock_protestant_missions }
@@ -2798,10 +2777,7 @@ dan_catholic_mission_slot = {
 	potential = {
 		OR = {
 			tag = DAN
-			AND = {
-				was_tag = DAN
-				tag = SCA
-			}
+			was_tag = DAN
 		}
 		has_country_flag = sca_unlock_catholic_missions
 		has_dlc = "Lions of the North"
@@ -3004,10 +2980,7 @@ dan_protestant_mission_slot = {
 	potential = {
 		OR = {
 			tag = DAN
-			AND = {
-				was_tag = DAN
-				tag = SCA
-			}
+			was_tag = DAN
 		}
 		has_country_flag = sca_unlock_protestant_missions
 		has_dlc = "Lions of the North"
@@ -3207,10 +3180,7 @@ dan_humanist_mission_slot = {
 	potential = {
 		OR = {
 			tag = DAN
-			AND = {
-				was_tag = DAN
-				tag = SCA
-			}
+			was_tag = DAN
 		}
 		has_country_flag = sca_unlock_humanist_missions
 		has_dlc = "Lions of the North"
@@ -3310,10 +3280,7 @@ dan_norse_mission_slot = {
 	potential = {
 		OR = {
 			tag = DAN
-			AND = {
-				was_tag = DAN
-				tag = SCA
-			}
+			was_tag = DAN
 		}
 		has_country_flag = sca_unlock_norse_missions
 		has_dlc = "Lions of the North"
@@ -3496,10 +3463,7 @@ dan_merc_mission_slot = {
 	potential = {
 		OR = {
 			tag = DAN
-			AND = {
-				was_tag = DAN
-				tag = SCA
-			}
+			was_tag = DAN
 		}
 		has_dlc = "Lions of the North"
 		NOT = { map_setup = map_setup_random }
@@ -3514,10 +3478,10 @@ dan_merc_mission_slot = {
 			OR = {
 				province_id = 61
 				province_id = 1762
-				province_id = 70
+				#province_id = 70
 				province_id = 4382
-				province_id = 90
-				province_id = 41
+				#province_id = 90
+				#province_id = 41
 				province_id = 165
 				province_id = 4758
 			}
@@ -3536,10 +3500,10 @@ dan_merc_mission_slot = {
 				desc = dan_establish_merc_contracts_tt
 				61 = { OR = { country_or_non_sovereign_subject_holds = ROOT owner = { has_opinion = { who = ROOT value = 100 } } } }
 				1762 = { OR = { country_or_non_sovereign_subject_holds = ROOT owner = { has_opinion = { who = ROOT value = 100 } } } }
-				70 = { OR = { country_or_non_sovereign_subject_holds = ROOT owner = { has_opinion = { who = ROOT value = 100 } } } }
+				#70 = { OR = { country_or_non_sovereign_subject_holds = ROOT owner = { has_opinion = { who = ROOT value = 100 } } } }
 				4382 = { OR = { country_or_non_sovereign_subject_holds = ROOT owner = { has_opinion = { who = ROOT value = 100 } } } }
-				90 = { OR = { country_or_non_sovereign_subject_holds = ROOT owner = { has_opinion = { who = ROOT value = 100 } } } }
-				41 = { OR = { country_or_non_sovereign_subject_holds = ROOT owner = { has_opinion = { who = ROOT value = 100 } } } }
+				#90 = { OR = { country_or_non_sovereign_subject_holds = ROOT owner = { has_opinion = { who = ROOT value = 100 } } } }
+				#41 = { OR = { country_or_non_sovereign_subject_holds = ROOT owner = { has_opinion = { who = ROOT value = 100 } } } }
 				165 = { OR = { country_or_non_sovereign_subject_holds = ROOT owner = { has_opinion = { who = ROOT value = 100 } } } }
 				4758 = { OR = { country_or_non_sovereign_subject_holds = ROOT owner = { has_opinion = { who = ROOT value = 100 } } } }
 				amount = 4
@@ -3563,7 +3527,7 @@ dan_merc_mission_slot = {
 			num_of_mercenaries = 60
 			is_in_deficit = no
 			is_bankrupt = no
-			NOT = { num_of_loans = 1 }
+			NOT = { num_of_loans = 6 }
 		}
 		effect = {
 			add_country_modifier = {

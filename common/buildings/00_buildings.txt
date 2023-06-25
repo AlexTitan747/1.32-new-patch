@@ -1006,7 +1006,7 @@ regimental_camp = {
 	cost = 200
 	time = 12
 	modifier = {
-		land_forcelimit = 1
+		land_forcelimit = 0.75
 		local_regiment_cost = -0.35
 	}
 
@@ -2632,7 +2632,7 @@ conscription_center = {
 	make_obsolete = regimental_camp
 
 	modifier = {
-		land_forcelimit = 2
+		land_forcelimit = 1.5
 		local_regiment_cost = -0.35
 	}
 	on_built = {
@@ -3439,11 +3439,11 @@ farm_estate = {
 		remove_development_from_building = {
 			building = manufactory 
 			type = production 
-			value = 1 
+			value = 2
 		}
 		remove_dev_from_building = {
-			building = manufactory 
-			type = production 
+			building = manufactory
+			type = production
 			value = 1
 		}
 	}
@@ -4398,6 +4398,7 @@ colonial_office = {
 	modifier = {
 		colonists = 1
 		native_assimilation = 0.30
+		may_explore = yes
 	}
 
 	build_trigger = {

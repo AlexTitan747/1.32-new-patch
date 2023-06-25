@@ -147,43 +147,43 @@ merc__french_musketeer_1 = {
     }
 }
 
-merc__tercio_infantry_2 = {
-    regiments_per_development = 0.05
-    cavalry_weight = 0
-    artillery_weight = 0
-	cost_modifier = 0.75
-	sprites = { dlc080_alh_sprite_pack muslimgfx_sprite_pack }
-	trigger = {
-		AND = {
-			tag = SPA
-			has_reform = spanish_tercios_reform
-		}
-		is_allowed_to_recruit_mercenaries = yes
-	}
-    modifier = {
-		fire_damage = 0.1
-		land_morale	= 0.05
-    }
-}
-
-merc__tercio_infantry_1 = {
-    regiments_per_development = 0.05
-    cavalry_weight = 0
-    artillery_weight = 0
-	cost_modifier = 0.75
-	sprites = { dlc080_alh_sprite_pack muslimgfx_sprite_pack }
-	trigger = {
-		AND = {
-			tag = SPA
-			has_reform = spanish_tercios_reform
-		}
-		is_allowed_to_recruit_mercenaries = yes
-	}
-    modifier = {
-		fire_damage = 0.1
-		land_morale	= 0.05
-    }
-}
+#merc__tercio_infantry_2 = {
+#    regiments_per_development = 0.05
+#    cavalry_weight = 0
+#    artillery_weight = 0
+#	cost_modifier = 0.75
+#	sprites = { dlc080_alh_sprite_pack muslimgfx_sprite_pack }
+#	trigger = {
+#		AND = {
+#			tag = SPA
+#			has_reform = spanish_tercios_reform
+#		}
+#		is_allowed_to_recruit_mercenaries = yes
+#	}
+#    modifier = {
+#		fire_damage = 0.1
+#		land_morale	= 0.05
+#    }
+#}
+#
+#merc__tercio_infantry_1 = {
+#    regiments_per_development = 0.05
+#    cavalry_weight = 0
+#    artillery_weight = 0
+#	cost_modifier = 0.75
+#	sprites = { dlc080_alh_sprite_pack muslimgfx_sprite_pack }
+#	trigger = {
+#		AND = {
+#			tag = SPA
+#			has_reform = spanish_tercios_reform
+#		}
+#		is_allowed_to_recruit_mercenaries = yes
+#	}
+#    modifier = {
+#		fire_damage = 0.1
+#		land_morale	= 0.05
+#    }
+#}
 
 merc__xii_legion_of_auxiliaries = {
     regiments_per_development = 0.05
@@ -578,7 +578,10 @@ merc__swiss_canton_mercenaries = {
 	home_province = 165
 	sprites = {  dlc103_swi_sprite_pack westerngfx_sprite_pack }
 	trigger = {
-		tag = SWI
+		OR = {
+			tag = SWI
+			tag = ALP
+		}
 		is_allowed_to_recruit_mercenaries = yes
 	}
 	modifier = {

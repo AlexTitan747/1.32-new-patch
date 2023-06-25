@@ -564,7 +564,7 @@ EPC_ideas = {
 			manpower_recovery_speed = 0.15
 		}
 		the_philosophes = {
-			technology_cost = 0.1
+			technology_cost = -0.1
 		}
 		french_men_of_trade = {
 			global_trade_power = 0.10
@@ -574,7 +574,7 @@ EPC_ideas = {
 	DNL_ideas = {
 		start = {
 			prestige = 1
-			may_perform_slave_raid = yes
+			land_morale = 0.1
 		}
 		
 		bonus = {
@@ -731,7 +731,7 @@ EPC_ideas = {
 			tolerance_own = 3
 		}
 		the_rhine_basin = {
-			development_cost = -0.1
+			development_cost = -0.05
 			manpower_recovery_speed = 0.25
 		}
 		the_use_of_mercenaries = {
@@ -750,7 +750,7 @@ EPC_ideas = {
 			discipline = 0.05
 		}
 		bonus = {
-			cavalry_cost = -0.10
+			global_prov_trade_power_modifier = 0.15
 		}
 		trigger = {
 			tag = BGR
@@ -758,13 +758,13 @@ EPC_ideas = {
 		free = yes
 		legacy_of_our_ancestors = {
 			cavalry_power = 0.075
+			cavalry_cost = -0.10
 		}
 		cri_slavers = {
-			global_own_trade_power = 0.15
 		}
 		bulgar_raiding = {
 			loot_amount = 0.25
-			core_creation = -0.25
+			available_province_loot = 0.5
 		}
 		cri_despoilers = {
 			leader_land_shock = 1
@@ -827,7 +827,7 @@ EPC_ideas = {
 	PBR_ideas = { #Brazil
 		start = {
 			inflation_reduction = 0.05
-			trade_efficiency = 0.15
+			trade_efficiency = 0.10
 		}
 		
 		bonus = {
@@ -836,7 +836,7 @@ EPC_ideas = {
 		
 		trigger = {
 			tag = PBR
-			capital_scope = { colonial_region = colonial_brazil }
+			capital_scope = { continent = south_america }
 		}
 		free = yes		#will be added at load.
 		
@@ -849,7 +849,6 @@ EPC_ideas = {
 		}
 		devoted_men_of_the_new_world = {
 			manpower_in_true_faith_provinces = 0.2
-			defensiveness = 0.1
 		}
 		pbr_land_before_faith = {
 			global_colonial_growth = 15
@@ -860,23 +859,22 @@ EPC_ideas = {
 			global_trade_power = 0.1
 		}
 		the_union_of_crowns = {
-			build_cost = -0.15
-			yearly_absolutism = 0.5
+			build_cost = -0.05
+			build_time = -0.05
 		}
 		pbr_royal_military_academy = {
 			artillery_power = 0.1
-			leader_land_fire = 1
 		}
 	}
 
-	PBR_ideas = { #Africa
+	PBR_ideas_2 = { #Africa
 		start = {
-			inflation_reduction = 0.05
-			trade_efficiency = 0.15
+			no_religion_penalty = yes
+			land_morale = 0.15
 		}
 		
 		bonus = {
-			discipline = 0.05
+			trade_efficiency = 0.15
 		}
 		
 		trigger = {
@@ -885,32 +883,29 @@ EPC_ideas = {
 		}
 		free = yes		#will be added at load.
 		
-		pbr_legacy_of_the_navigator = {
-			sunk_ship_morale_hit_recieved = -0.33
-			global_naval_engagement_modifier = 0.1
+		pbr_acceptance = {
+			culture_conversion_time = -0.25
+			culture_conversion_cost = -0.3
 		}
-		goods_of_the_rainforest = {
-			global_trade_goods_size_modifier = 0.1
+		pbr_african_expansion = {
+			years_of_nationalism = -15
+			core_creation = -0.15
 		}
-		devoted_men_of_the_new_world = {
-			manpower_in_true_faith_provinces = 0.2
-			defensiveness = 0.1
+		pbr_global_navy = {
+			heavy_ship_power = 0.1
 		}
-		pbr_land_before_faith = {
-			global_colonial_growth = 15
-			colonists = 1
+		pbr_arfican_army = {
+			global_manpower_modifier = 0.20
 		}
-		pbr_the_bandeirantes = {
-			merchants = 1
+		pbr_disciplined_army = {
+			discipline = 0.05
+		}
+		pbr_trade_empire_idea = {
 			global_trade_power = 0.1
+			merchants = 1
 		}
-		the_union_of_crowns = {
-			build_cost = -0.15
-			yearly_absolutism = 0.5
-		}
-		pbr_royal_military_academy = {
-			artillery_power = 0.1
-			leader_land_fire = 1
+		pbr_african_manufactories = {
+			global_trade_goods_size_modifier = 0.15
 		}
 	}
 	
@@ -936,7 +931,7 @@ EPC_ideas = {
 		riches_of_the_nile = {
 			build_cost = -0.1
 		}
-		purchase_new_mamelukes = {
+		purchase_new_mamelukes_2 = {
 			manpower_recovery_speed = 0.20
 			cav_to_inf_ratio = 0.25
 		}
@@ -1694,7 +1689,7 @@ EPC_ideas = {
 			war_exhaustion = -0.1
 		}
 		masters_of_construction = {
-			development_cost = -0.1
+			development_cost = -0.05
 		}
 		forts_of_the_caucuses = {
 			infantry_power = 0.15
@@ -1800,7 +1795,7 @@ EPC_ideas = {
 	
 	BLC_ideas = {
 		start = {
-			infantry_power = 0.20
+			infantry_power = 0.15
 			galley_power = 0.15
 		}
 	
@@ -1814,7 +1809,7 @@ EPC_ideas = {
 		free = yes		#will be added at load.
 	
 		stability_of_the_baltics = {
-			republican_tradition = 0.2
+			republican_tradition = 0.25
 			development_cost = -0.05
 		}
 		baltic_steel = {
@@ -1826,7 +1821,7 @@ EPC_ideas = {
 			ship_durability = 0.1
 		}
 		men_protect_the_baltic = {
-			manpower_recovery_speed = 0.15
+			manpower_recovery_speed = 0.10
 			global_manpower_modifier = 0.15
 		}
 		the_baltic_trade = {
@@ -1837,7 +1832,7 @@ EPC_ideas = {
 		}
 		union_and_security = {
 			garrison_size = 0.15
-			land_maintenance_modifier = -0.15
+			land_maintenance_modifier = -0.10
 		}
 	}
 	
@@ -1914,11 +1909,11 @@ EPC_ideas = {
 			army_tradition = 1
 		}
 		cmn_the_united_clans = {
-			ae_impact = -0.10
+			ae_impact = -0.25
 			global_manpower_modifier = 0.15
 		}
 		cmn_tengri_conquest = {
-			land_morale = 0.10
+			land_morale = 0.15
 			global_missionary_strength = 0.02
 		}
 		cmn_gold_of_the_east = {
@@ -1932,7 +1927,7 @@ EPC_ideas = {
 			global_ship_trade_power = 0.2		
 		}
 		bonus = {
-			development_cost = -0.1
+			development_cost = -0.05
 		}
 		trigger = {
 			tag = CRG
@@ -2008,7 +2003,7 @@ EPC_ideas = {
 
 ARB_ideas = {
 	start = {
-		development_cost = -0.075
+		development_cost = -0.05
 		global_manpower_modifier = 0.15
 	}
 	bonus = {
@@ -2513,7 +2508,7 @@ ALP_ideas = {
 	
 	swiss_mercenaries = {
 		mercenary_discipline = 0.05
-		mercenary_manpower = 0.5
+		mercenary_manpower = 0.3
 	}
 	alpine_tolerance = {
 		global_prov_trade_power_modifier = 0.1
@@ -2527,7 +2522,7 @@ ALP_ideas = {
 		defensiveness = 0.25
 	}
 	oasis_of_peace_and_prosperity = {
-		development_cost = -0.1
+		development_cost = -0.05
 	}
 	haven_for_refugees = {
 		prestige = 1
@@ -2607,7 +2602,7 @@ CPH_ideas_early = {
 		production_efficiency = 0.05
 	}
 	CPH_idea_5 = {
-		development_cost = -0.05
+		development_cost = -0.025
 	}
 	CPH_idea_6 = {
 		trade_efficiency = 0.05
@@ -2630,7 +2625,7 @@ CPH_ideas = {
 	trigger = {
 		tag = CPH
 		has_country_flag = CPH_upgrade_ideas_1
-		NOT = { has_country_flag = CPH_upgrade_ideas_2 }
+		NOT = { has_country_flag = CPH_upgrade_ideas_3 }
 	}
 	free = yes  #will be triggered at load
 	
@@ -2647,7 +2642,7 @@ CPH_ideas = {
 		production_efficiency = 0.1
 	}
 	CPH_idea_5_2 = {
-		development_cost = -0.1
+		development_cost = -0.05
 	}
 	CPH_idea_6_2 = {
 		trade_efficiency = 0.1
@@ -2669,7 +2664,7 @@ CPH_ideas_final = {
 	
 	trigger = {
 		tag = CPH
-		has_country_flag = CPH_upgrade_ideas_2
+		has_country_flag = CPH_upgrade_ideas_3
 	}
 	free = yes  #will be triggered at load
 	
@@ -2688,7 +2683,7 @@ CPH_ideas_final = {
 		production_efficiency = 0.1
 	}
 	CPH_idea_5_3 = {
-		development_cost = -0.1
+		development_cost = -0.05
 	}
 	CPH_idea_6_3 = {
 		trade_efficiency = 0.1
@@ -2727,7 +2722,7 @@ SAF_ideas = {
 		build_time = -0.1
 	}
 	saf_idea_5 = {
-		development_cost = -0.15
+		development_cost = -0.10
 	}
 	saf_idea_6 = {
 		trade_efficiency = 0.1
@@ -2884,7 +2879,7 @@ COS_ideas = {
 	
 	fertile_lands = {
 		global_trade_goods_size_modifier = 0.1
-		development_cost = -0.1
+		development_cost = -0.05
 	}
 	people_of_the_steppes = {
 		global_manpower_modifier = 0.15

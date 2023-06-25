@@ -1,0 +1,114 @@
+proguese_government_mechanic = {
+	alert_icon_gfx = GFX_alerticons_government_mechanics
+	alert_icon_index = 10
+	available = {
+		has_dlc = "Domination"
+        OR = {
+            tag = POR
+            tag = PBR
+        }
+	}
+
+	powers = {
+		portugual_sailor_society = {
+			show_before_interactions = yes
+			max = 100
+			base_monthly_growth = 0.01
+			development_scaled_monthly_growth = 0.03
+			scaled_modifier = {
+				modifier = {
+					allowed_marine_fraction = 0.25
+                    sailors_recovery_speed = 0.25
+                    global_sailors_modifier = 0.20
+                    naval_maintenance_modifier = -0.20
+				}
+			}
+		}
+	}
+	
+	interactions = {
+		tm_portugual_ship_building_focus = {
+			icon = GFX_naval_professionalism_button_2
+			trigger = {
+				has_government_power = {
+					mechanic_type = proguese_government_mechanic
+					power_type = portugual_sailor_society
+					value = 30
+				}
+			}
+			effect = { 
+				add_government_power = {
+					mechanic_type = proguese_government_mechanic
+					power_type = portugual_sailor_society
+					value = -30
+				}
+				add_country_modifier = {
+					name = tm_portugual_ship_building_focus_modiifer
+					duration = 1825
+				}
+			}
+			cooldown_years = 5
+		}
+		
+		tm_portugual_train_marines = {
+			icon = GFX_naval_professionalism_button_1
+			trigger = {
+				has_government_power = {
+					mechanic_type = proguese_government_mechanic
+					power_type = portugual_sailor_society
+					value = 30
+				}
+			}
+			effect = { 
+				add_government_power = {
+					mechanic_type = proguese_government_mechanic
+					power_type = portugual_sailor_society
+					value = -30
+				}
+				add_country_modifier = {
+					name = tm_portugual_train_marines_modifier
+					duration = 1825
+				}
+			}
+			cooldown_years = 5
+		}
+		
+		tm_portugual_sailor_drive = {
+			icon = GFX_naval_professionalism_button_3
+			trigger = {
+				has_government_power = {
+					mechanic_type = proguese_government_mechanic
+					power_type = portugual_sailor_society
+					value = 40
+				}
+			}
+			effect = { 
+				add_government_power = {
+					mechanic_type = proguese_government_mechanic
+					power_type = portugual_sailor_society
+					value = -40
+				}
+				add_yearly_sailors = 1.0
+				random_owned_province = {
+					limit = {
+						region_for_scope_province = {
+							is_capital_of = ROOT
+						}
+						has_port = yes
+					}
+					add_base_production = 2
+				}
+				random_owned_province = {
+					limit = {
+						region_for_scope_province = {
+							is_capital_of = ROOT
+						}
+						has_port = yes
+					}
+					add_base_production = 2
+				}
+			}
+			cooldown_years = 0
+		}
+	}
+}

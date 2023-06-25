@@ -1,10 +1,9 @@
 country_decisions = {
 	portuguese_nation = { #Portugal - Brazil
-		color = { 214 18 229 }
+		color = { 23 223 234 }
 		major = yes
 		potential = {
 			NOT = { has_country_flag = formed_portuguese_flag }
-			ai = no
 			NOT = { exists = PBR }
 			is_colonial_nation = no
 			tag = POR
@@ -43,34 +42,7 @@ country_decisions = {
 				limit = {
 					is_colonial_nation = yes
 					capital_scope = {
-						colonial_region = colonial_brazil
-					}
-				}
-				FROM = { inherit = PREV }
-			}
-			every_subject_country = {
-				limit = {
-					is_colonial_nation = yes
-					capital_scope = {
-						colonial_region = colonial_colombia
-					}
-				}
-				FROM = { inherit = PREV }
-			}
-			every_subject_country = {
-				limit = {
-					is_colonial_nation = yes
-					capital_scope = {
-						colonial_region = colonial_peru
-					}
-				}
-				FROM = { inherit = PREV }
-			}
-			every_subject_country = {
-				limit = {
-					is_colonial_nation = yes
-					capital_scope = {
-						colonial_region = colonial_la_plata
+						continent = south_america
 					}
 				}
 				FROM = { inherit = PREV }
@@ -148,7 +120,7 @@ country_decisions = {
 	}
 
 	portuguese_nation_africa = { #Portugal - Africa
-		color = { 214 18 229 }
+		color = { 23 223 234 }
 		major = yes
 
 		potential = {
@@ -175,18 +147,19 @@ country_decisions = {
 			is_at_war = no
 			OR = {
 				AND = {
-					owns_core_province = 1177
-					1177 = { is_city = yes }
+					1177 = { 
+						is_city = yes
+						country_or_non_sovereign_subject_holds = ROOT
+					}
 				}
-				owns_core_province = 1170
+				1170 = {
+					country_or_non_sovereign_subject_holds = ROOT
+				}
 			}
 			
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				value = 20
-				OR = {
-					region = kongo_region
-					region = south_africa_region
-				}
+				continent = africa
 			}
 		}
 
@@ -202,6 +175,9 @@ country_decisions = {
 				}
 				FROM = { inherit = PREV }
 			}
+			if = { limit = { 1170 = { owner = { is_subject_of = ROOT }}}
+				1170 = { owner = { inherit = PREV }}
+			}
 			if = {	limit = { NOT = { government_rank = 3 }	} set_government_rank = 3 }
 			add_government_reform = union_of_crowns
 			add_prestige = 25
@@ -214,10 +190,11 @@ country_decisions = {
 				if = { limit = { owns_core_province = 1177	}
 					change_primary_culture = khoisan
 					set_capital = 1177
+					set_country_flag = tm_can_build_cape_port
 					1177 = {
 						change_culture = khoisan
 						add_great_project = {
-							type = cape_port
+							type = cape_port_monument
 							instant = yes
 						}
 						change_trade_goods = gold
@@ -279,7 +256,7 @@ country_decisions = {
 					change_trade_goods = gold
 					add_center_of_trade_level = 1
 					add_great_project = {
-						type = cape_port
+						type = cape_port_monument
 						instant = yes
 					}
 				}
