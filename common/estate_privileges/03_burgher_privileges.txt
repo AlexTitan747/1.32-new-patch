@@ -554,6 +554,9 @@ estate_burghers_indebted_to_burghers = {
 	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	loyalty = 0.05
 	influence = 0.05
+	is_valid = {
+		NOT = { is_colonial_nation = yes }
+	}
 	on_granted = {
 		custom_tooltip = estate_burghers_indebted_to_burghers_effect_tooltip
 		if = {
