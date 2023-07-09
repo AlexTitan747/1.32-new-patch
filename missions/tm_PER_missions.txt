@@ -491,9 +491,15 @@ tm_PER_branch_4 = {
 
 		trigger = {
 			army_size_percentage = 1
-			has_global_modifier_value = {
-				which = land_morale 
-				value = 0.30
+			OR = {
+				has_global_modifier_value = {
+					which = land_morale 
+					value = 0.30
+				}
+				has_global_modifier_value = {
+					which = infantry_power 
+					value = 0.30
+				}
 			}
 		}
 
@@ -868,7 +874,7 @@ tm_PER_branch_1 = {
 
 	tm_PER_branch1_mission_4 = {
 		icon = mission_kings_crown
-		position = 7 
+		position = 6
 		required_missions = {}	
 
 		trigger = {
@@ -896,7 +902,7 @@ tm_PER_branch_1 = {
 	}
 	tm_PER_branch1_mission_5 = {
 		icon = mission_conquer_the_doab 
-		position = 8
+		position = 7
 		required_missions = {
 			tm_PER_branch1_mission_4
 		}
@@ -975,7 +981,7 @@ tm_PER_branch2_2 = {
 	}
 	tm_PER_branch2_mission_4 = {
 		icon = sponsor_the_arts
-		position = 8
+		position = 7
 		required_missions = {
 			tm_PER_branch1_mission_4
 		}
@@ -1099,7 +1105,7 @@ tm_PER_branch3_2 = {
 
 	tm_PER_branch3_mission_5 = {
 		icon = sources_of_trade
-		position = 8
+		position = 7
 		required_missions = {
 			tm_PER_branch1_mission_4
 		}
@@ -1169,7 +1175,7 @@ tm_PER_branch3_2 = {
 
 	tm_PER_branch3_mission_6 = {
 		icon = mission_monarch_in_throne_room
-		position = 9
+		position = 8
 		required_missions = {
 			tm_PER_branch1_mission_5
 			tm_PER_branch2_mission_4
