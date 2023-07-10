@@ -543,7 +543,7 @@ country_decisions = {
 		}
 	}
 	
-	# Remove Edict
+	# Deactivate Cav Mercs
 	tm_cav_mercs_deactive = {
 		potential = {
 			has_country_flag = cav_mercs_activated
@@ -581,10 +581,11 @@ country_decisions = {
 			has_estate_loan = no
 		}
 		allow = {
-			ai = no
+			#ai = no
 			#NOT = {
 			#	num_of_loans = 1
 			#}
+			always = yes
 		}
 		effect = {
 			remove_estate_privilege= estate_burghers_indebted_to_burghers
@@ -641,4 +642,22 @@ country_decisions = {
 			factor = 0
 		}
 	}
-}		
+
+	tm_add_provinces_to_parliment = {
+		potential = {
+			has_parliament = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			every_owned_province = {
+				limit = {
+					is_state = yes
+					has_seat_in_parliament = no
+				}
+			}
+			set_seat_in_parliament = yes
+		}
+	}
+}
