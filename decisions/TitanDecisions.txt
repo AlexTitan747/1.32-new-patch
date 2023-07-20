@@ -84,7 +84,9 @@ country_decisions = {
 				tooltip = PR_cannoneer_expert_decision
 				NOT = { has_country_flag = cannoneer_expert }
 			}
-			always = no
+			hidden_trigger = {
+				always = no
+			}
 		}
 		effect = {
 		}
@@ -608,6 +610,13 @@ country_decisions = {
 			dip_tech = 14
 		}
 		allow = {
+			any_owned_province = {
+				trade_goods = cloth
+				OR = {
+					continent = europe
+					continent = africa
+				}
+			}
 			treasury = 300
 			custom_trigger_tooltip = {
 				tooltip = tm_silk_import_opinion_tt
