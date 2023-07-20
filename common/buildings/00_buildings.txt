@@ -4055,6 +4055,7 @@ centre_of_manufacturing = {
 	}
 
 	build_trigger = {
+		NOT = { trade_goods = gold }
 		owner = {
 			NOT = {
 				any_owned_province = {
@@ -4108,6 +4109,7 @@ centre_of_manufacturing = {
 				limit = {
 					owned_by = event_target:new_owner
 					NOT = { has_province_modifier = centre_of_manufacturing_local_mod }
+					NOT = { trade_goods = gold }
 				}
 				add_province_modifier = {
 					name = centre_of_manufacturing_local_mod
@@ -4857,6 +4859,70 @@ jewellery_workshop = {
 				limit = {
 					FROM = {
 						num_of_owned_provinces_with = {
+							value = 7
+							has_construction = jewellery_workshop
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_gold_or_silver
+						value = 8
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 6
+							has_construction = jewellery_workshop
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_gold_or_silver
+						value = 7
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 5
+							has_construction = jewellery_workshop
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_gold_or_silver
+						value = 6
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 4
+							has_construction = jewellery_workshop
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_gold_or_silver
+						value = 5
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
 							value = 3
 							has_construction = jewellery_workshop
 						}
@@ -4917,7 +4983,7 @@ jewellery_workshop = {
 			FROM = {
 				subtract_variable = {
 					which = num_of_gold_or_silver
-					value = 1.0
+					value = 1
 				}
 			}
 			ROOT = {
@@ -4937,7 +5003,7 @@ jewellery_workshop = {
 				FROM = {
 					change_variable = {            
 						which = num_of_gold_or_silver
-						value = 1.0
+						value = 1
 					}
 				}
 			}
@@ -4972,6 +5038,113 @@ tailors = {
 		custom_trigger_tooltip = {
 			tooltip = enough_dyes_for_clothes_tt
 			if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 10
+							has_construction = tailors
+						}
+					}
+				}
+				always = no
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 9
+							has_construction = tailors
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_dyes
+						value = 10
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 8
+							has_construction = tailors
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_dyes
+						value = 9
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 7
+							has_construction = tailors
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_dyes
+						value = 8
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 6
+							has_construction = tailors
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_dyes
+						value = 7
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 5
+							has_construction = tailors
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_dyes
+						value = 6
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 4
+							has_construction = tailors
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_dyes
+						value = 5
+					}
+				}
+			}
+			else_if = {
 				limit = {
 					FROM = {
 						num_of_owned_provinces_with = {
@@ -5035,7 +5208,7 @@ tailors = {
 			FROM = {
 				subtract_variable = {
 					which = num_of_dyes
-					value = 1.0
+					value = 1
 				}			
 			}
 			ROOT = {
@@ -5055,7 +5228,7 @@ tailors = {
 				FROM = {
 					change_variable = {            
 						which = num_of_dyes
-						value = 1.0
+						value = 1
 					}
 				}
 			}
@@ -5090,6 +5263,49 @@ bronze_furnace = {
 		custom_trigger_tooltip = {
 			tooltip = enough_tin_for_bronze_tt
 			if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 6
+							has_construction = bronze_furnace
+						}
+					}
+				}
+				always = no
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 5
+							has_construction = bronze_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_tin
+						value = 6
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 4
+							has_construction = bronze_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_tin
+						value = 5
+					}
+				}
+			}
+			else_if = {
 				limit = {
 					FROM = {
 						num_of_owned_provinces_with = {
@@ -5153,7 +5369,7 @@ bronze_furnace = {
 			FROM = {
 				subtract_variable = {
 					which = num_of_tin
-					value = 1.0
+					value = 1
 				}				
 			}
 			ROOT = {
@@ -5173,7 +5389,7 @@ bronze_furnace = {
 				FROM = {
 					change_variable = {            
 						which = num_of_tin
-						value = 1.0
+						value = 1
 					}
 				}
 			}
@@ -5208,6 +5424,81 @@ steel_furnace = {
 		custom_trigger_tooltip = {
 			tooltip = enough_coal_for_steel_tt
 			if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 8
+							has_construction = steel_furnace
+						}
+					}
+				}
+				always = no
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 7
+							has_construction = steel_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_coal
+						value = 8
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 6
+							has_construction = steel_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_coal
+						value = 7
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 5
+							has_construction = steel_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_coal
+						value = 6
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = {
+						num_of_owned_provinces_with = {
+							value = 4
+							has_construction = steel_furnace
+						}
+					}
+				}
+				FROM = {
+					check_variable = {
+						which = num_of_coal
+						value = 5
+					}
+				}
+			}
+			else_if = {
 				limit = {
 					FROM = {
 						num_of_owned_provinces_with = {
@@ -5271,7 +5562,7 @@ steel_furnace = {
 			FROM = {
 				subtract_variable = {
 					which = num_of_coal
-					value = 1.0
+					value = 1
 				}			
 			}
 			ROOT = {
@@ -5291,7 +5582,7 @@ steel_furnace = {
 				FROM = {
 					change_variable = {            
 						which = num_of_coal
-						value = 1.0
+						value = 1
 					}
 				}
 			}
