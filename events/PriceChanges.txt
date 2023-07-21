@@ -324,7 +324,7 @@ country_event = {
 		change_price = {
 			trade_goods = uniforms
 			key = COTTON_IMPORTS
-			value = 0.20
+			value = 0.10
 			duration = -1
 		}
 		add_mercantilism = -2
@@ -665,7 +665,7 @@ country_event = {
 			trade_goods = deer #Increased demand due to colder climate.
 			key = LITTLE_ICE_AGE
 			value = 0.25
-			duration = 3650+
+			duration = 3650
 		}
 	}
 }
@@ -784,7 +784,7 @@ country_event = {
 		change_price = {
 			trade_goods = uniforms
 			key = REGULATED_UNIFORMS
-			value = 0.15
+			value = 0.10
 			duration = -1
 		}
 		change_price = {
@@ -1073,7 +1073,7 @@ country_event = {
 		change_price = {
 			trade_goods = bronze
 			key = BRONZE_CANNONS
-			value = 0.5
+			value = 0.4
 			duration = -1
 		}
 	}
@@ -1294,7 +1294,7 @@ country_event = {
 		change_price = {
 			trade_goods = tailored_clothes
 			key = POPULAR_SILK_FABRICS
-			value = 0.25
+			value = 0.20
 			duration = -1
 		}
 	}
@@ -1502,7 +1502,7 @@ country_event = {
 		change_price = {
 			trade_goods = bronze
 			key = IRON_WORKING
-			value = -0.35
+			value = -0.25
 			duration = -1
 		}
 	}
@@ -1550,7 +1550,7 @@ country_event = {
 		change_price = {
 			trade_goods = chocolate
 			key = HOT_CHOCOLATE
-			value = 0.35
+			value = 0.25
 			duration = -1
 		}
 	}
@@ -1970,6 +1970,12 @@ country_event = {
 			value = -0.5
 			duration = -1
 		}
+		change_price = {
+			trade_goods = books
+			key = HOLLENDER_BEATER
+			value = -0.1
+			duration = -1
+		}
 	}
 }
 
@@ -2108,7 +2114,7 @@ country_event = {
 		change_price = {
 			trade_goods = books
 			key = LENDING_LIBRARIES
-			value = 0.25
+			value = 0.20
 			duration = -1
 		}
 		if = {
@@ -2901,7 +2907,7 @@ country_event = {
 		change_price = {
 			trade_goods = tailored_clothes
 			key = TAILORED_FIX
-			value = 0.33
+			value = 0.5
 			duration = -1
 		}
 	}
@@ -3086,7 +3092,7 @@ country_event = {
 		change_price = {
 			trade_goods = citrus
 			key = CITRUS_IN_EUROPE
-			value = 0.5
+			value = 0.33
 			duration = -1
 		}
 		if = {
@@ -3134,7 +3140,7 @@ country_event = {
 		change_price = {
 			trade_goods = banana
 			key = BANANA_IN_EUROPE
-			value = 0.25
+			value = 0.20
 			duration = -1
 		}
 		if = {
@@ -3188,7 +3194,7 @@ country_event = {
 		change_price = {
 			trade_goods = silverware
 			key = FINE_DINING
-			value = 0.25
+			value = 0.20
 			duration = -1
 		}
 	}
@@ -3228,7 +3234,7 @@ country_event = {
 		change_price = {
 			trade_goods = jewellery
 			key = JEWELLERY_POPULAR
-			value = 0.25
+			value = 0.20
 			duration = -1
 		}
 		change_price = { #Gems are uncut and less fashionable
@@ -3277,7 +3283,7 @@ country_event = {
 		change_price = {
 			trade_goods = iron
 			key = IRON_DEMAND_FOR_STEEL
-			value = 0.2
+			value = 0.1
 			duration = -1
 		}
 		random_owned_province = {
@@ -3449,13 +3455,14 @@ country_event = {
 	major = yes
 
 	trigger = {
-		capital_scope = {
-			continent = europe
-		}
+		#capital_scope = {
+		#	continent = europe
+		#}
 		trading_part = {
 			trade_goods = spices
 			value = 20
 		}
+		has_global_flag = spice_trade_happened 
 	}
 	
 	mean_time_to_happen = {
