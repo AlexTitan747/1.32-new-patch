@@ -103,7 +103,11 @@ colonial_PLA_slot_1 = {
 	pla_trade_3 = {
 		icon = mission_trade_in_gold_coast
 		required_missions = { pla_trade_2 }
-		provinces_to_highlight = {	}
+		provinces_to_highlight = {
+			colonial_region = colonial_la_plata
+			province_has_center_of_trade_of_level = 1
+			NOT = { owned_by = ROOT }
+		}
 
 		trigger = {
 			num_of_centers_of_trade = 4
@@ -120,7 +124,9 @@ colonial_PLA_slot_1 = {
 	pla_trade_4 = {
 		icon = mission_arabian_trade
 		required_missions = { pla_trade_3 }
-		provinces_to_highlight = {	}
+		provinces_to_highlight = {
+			province_id = 1536
+		}
 
 		trigger = {
 			num_of_owned_provinces_with = {
@@ -131,7 +137,7 @@ colonial_PLA_slot_1 = {
 				}
 				colonial_region = colonial_la_plata
 			}
-			1546 = {
+			1536 = {
 				has_merchant = ROOT
 			}
 		}
@@ -144,7 +150,7 @@ colonial_PLA_slot_1 = {
 					power = 20
 					key = STRONG_MERCHANTS
 				}
-				add_trade_node_income = 100
+				add_trade_node_income = 50
 			}
 		}
 	}
@@ -158,7 +164,7 @@ colonial_PLA_slot_1 = {
 
 		trigger = {
 			1536 = {
-				trade_node_value = 40
+				trade_node_value = 35
 			}
 			OR = {
 				1536 = {
@@ -429,7 +435,7 @@ colonial_PLA_slot_3 = {
 
 		effect = {
 			add_years_of_owned_provinces_manpower = {
-				years = 2
+				years = 1
 				trigger = {
 					has_military_building = yes
 					colonial_region = colonial_la_plata
@@ -553,7 +559,7 @@ colonial_PLA_slot_4 = {
 
 		trigger = {
 			num_of_owned_provinces_with = {
-				value = 10
+				value = 7
 				colonial_region = colonial_la_plata
 			}
 		}
@@ -576,7 +582,7 @@ colonial_PLA_slot_4 = {
 
 		trigger = {
 			num_of_owned_provinces_with = {
-				value = 20
+				value = 15
 				colonial_region = colonial_la_plata
 			}
 		}
@@ -595,7 +601,7 @@ colonial_PLA_slot_4 = {
 
 		trigger = {
 			num_of_owned_provinces_with = {
-				value = 40
+				value = 30
 				colonial_region = colonial_la_plata
 			}
 		}
@@ -624,10 +630,9 @@ colonial_PLA_slot_4 = {
 		}
 
 		trigger = {
-			colonial_la_plata = {
-				type = all
-				owned_by = ROOT
-				is_city = yes
+			num_of_owned_provinces_with = {
+				value = 40
+				colonial_region = colonial_la_plata
 			}
 		}
 
