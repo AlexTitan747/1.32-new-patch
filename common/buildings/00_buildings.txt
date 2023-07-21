@@ -353,6 +353,15 @@ shipyard = {
 			type = production
 			value = 1
 		}
+		if = {
+			limit = {
+				FROM = {
+					has_country_flag = tm_admiralty_dockyard_encouragement
+				}
+			}
+			add_base_production = 1
+			set_province_flag = tm_admiralty_dockyard_encouragement_added_dev_shipyard
+		}
 	}
 	on_destroyed = {
 		remove_development_from_building = {
@@ -363,6 +372,13 @@ shipyard = {
 		if = {
 			limit = { has_province_modifier = sca_swe_danish_shipyard }
 			remove_province_modifier = sca_swe_danish_shipyard
+		}
+		if = {
+			limit = {
+				has_province_flag = tm_admiralty_dockyard_encouragement_added_dev_shipyard
+			}
+			add_base_production = -1
+			clr_province_flag = tm_admiralty_dockyard_encouragement_added_dev_shipyard
 		}
 	}
 	on_obsolete = {
@@ -920,6 +936,15 @@ dock = {
 			type = production
 			value = 1
 		}
+		if = {
+			limit = {
+				FROM = {
+					has_country_flag = tm_admiralty_dockyard_encouragement
+				}
+			}
+			add_base_production = 1
+			set_province_flag = tm_admiralty_dockyard_encouragement_added_dev_dock
+		}
 	}
 	
 	on_destroyed = {
@@ -941,6 +966,13 @@ dock = {
 			building = dock
 			type = production
 			value = 1
+		}
+		if = {
+			limit = {
+				has_province_flag = tm_admiralty_dockyard_encouragement_added_dev_dock
+			}
+			add_base_production = -1
+			clr_province_flag = tm_admiralty_dockyard_encouragement_added_dev_dock
 		}
 	}
 
@@ -1817,6 +1849,15 @@ grand_shipyard = {
 			value = 2
 			upgrade_value = 1
 		}
+		if = {
+			limit = {
+				FROM = {
+					has_country_flag = tm_admiralty_dockyard_encouragement
+				}
+			}
+			add_base_production = 2
+			set_province_flag = tm_admiralty_dockyard_encouragement_added_dev_grand_shipyard
+		}
 	}
 	on_destroyed = {
 		remove_development_from_building = {
@@ -1827,6 +1868,13 @@ grand_shipyard = {
 		if = {
 			limit = { has_province_modifier = sca_swe_danish_shipyard }
 			remove_province_modifier = sca_swe_danish_shipyard
+		}
+		if = {
+			limit = {
+				has_province_flag = tm_admiralty_dockyard_encouragement_added_dev_grand_shipyard
+			}
+			add_base_production = -2
+			clr_province_flag = tm_admiralty_dockyard_encouragement_added_dev_grand_shipyard
 		}
 	}
 	on_obsolete = {
@@ -2568,6 +2616,15 @@ drydock = {
 			value = 2
 			upgrade_value = 1
 		}
+		if = {
+			limit = {
+				FROM = {
+					has_country_flag = tm_admiralty_dockyard_encouragement
+				}
+			}
+			add_base_production = 2
+			set_province_flag = tm_admiralty_dockyard_encouragement_added_dev_drydock
+		}
 	}
 	
 	on_destroyed = {
@@ -2589,6 +2646,13 @@ drydock = {
 			building = drydock
 			type = production
 			value = 2
+		}
+		if = {
+			limit = {
+				has_province_flag = tm_admiralty_dockyard_encouragement_added_dev_drydock
+			}
+			add_base_production = -2
+			clr_province_flag = tm_admiralty_dockyard_encouragement_added_dev_drydock
 		}
 	}
 	on_obsolete = {
