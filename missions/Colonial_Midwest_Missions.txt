@@ -1,27 +1,29 @@
-colonial_COL_slot_1 = {
+colonial_MW_slot_1 = {
     slot = 1
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_colombia
+            colonial_region = colonial_midwest
         }
 	}
 	has_country_shield = yes
 
-	col_trade_1 = {
+	mw_trade_1 = {
 		icon = mission_coromandel_trade
 		required_missions = { }
 		provinces_to_highlight = {
-			
+			province_has_center_of_trade_of_level = 1
+			colonial_region = colonial_midwest
+			NOT = { development = 15 }
 		}
 
 		trigger = {
 			any_owned_province = {
 				province_has_center_of_trade_of_level = 1
 				development = 15
-				colonial_region = colonial_colombia
+				colonial_region = colonial_midwest
 			}
 		}
 
@@ -30,7 +32,7 @@ colonial_COL_slot_1 = {
 				limit = {
 					NOT = {
 						any_owned_province = {
-							colonial_region = colonial_colombia
+							colonial_region = colonial_midwest
 							province_has_center_of_trade_of_level = 1
 							development = 15
 						}
@@ -40,7 +42,7 @@ colonial_COL_slot_1 = {
 			}
 			random_owned_province = {
 				limit = {
-					colonial_region = colonial_colombia
+					colonial_region = colonial_midwest
 					province_has_center_of_trade_of_level = 1
 					development = 15
 				}
@@ -49,16 +51,16 @@ colonial_COL_slot_1 = {
 		}
 	}
 
-	col_trade_2 = {
+	mw_trade_2 = {
 		icon = sources_of_trade
-		required_missions = { col_trade_1 }
+		required_missions = { mw_trade_1 }
 		provinces_to_highlight = {	}
 
 		trigger = {
 			any_owned_province = {
 				has_trade_building_trigger = yes
 				base_production = 12
-				colonial_region = colonial_colombia
+				colonial_region = colonial_midwest
 			}
 		}
 
@@ -69,7 +71,7 @@ colonial_COL_slot_1 = {
 						any_owned_province = {
 							has_trade_building_trigger = yes
 							base_production = 12
-							colonial_region = colonial_colombia
+							colonial_region = colonial_midwest
 						}
 					}
 				}
@@ -79,7 +81,7 @@ colonial_COL_slot_1 = {
 				limit = {
 					has_trade_building_trigger = yes
 					base_production = 12
-					colonial_region = colonial_colombia
+					colonial_region = colonial_midwest
 				}
 				if = {
 					limit = {
@@ -100,9 +102,9 @@ colonial_COL_slot_1 = {
 		}
 	}
 
-	col_trade_3 = {
+	mw_trade_3 = {
 		icon = mission_trade_in_gold_coast
-		required_missions = { col_trade_2 }
+		required_missions = { mw_trade_2 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -117,10 +119,12 @@ colonial_COL_slot_1 = {
 		}
 	}
 
-	col_trade_4 = {
+	mw_trade_4 = {
 		icon = mission_arabian_trade
-		required_missions = { col_trade_3 }
-		provinces_to_highlight = {	}
+		required_missions = { mw_trade_3 }
+		provinces_to_highlight = {
+			province_id = 2526
+		}
 
 		trigger = {
 			num_of_owned_provinces_with = {
@@ -129,15 +133,15 @@ colonial_COL_slot_1 = {
 					has_trade_building_trigger = yes
 					province_has_center_of_trade_of_level = 3
 				}
-				colonial_region = colonial_colombia
+				colonial_region = colonial_midwest
 			}
-			835 = {
+			2526 = {
 				has_merchant = ROOT
 			}
 		}
 
 		effect = {
-			835 = {
+			2526 = {
 				add_trade_modifier = {
 					who = ROOT
 					duration = 5475
@@ -149,23 +153,23 @@ colonial_COL_slot_1 = {
 		}
 	}
 
-	col_trade_5 = {
+	mw_trade_5 = {
 		icon = mal_riches_of_trade
-		required_missions = { col_trade_4 }
+		required_missions = { mw_trade_4 }
 		provinces_to_highlight = {
 			province_id = 1515
 		}
 
 		trigger = {
-			835 = {
+			2526 = {
 				trade_node_value = 40
 			}
 			OR = {
-				835 = {
+				2526 = {
 					is_strongest_trade_power = ROOT
 				}
 				overlord = {
-					835 = {
+					2526 = {
 						is_strongest_trade_power = PREV
 					}
 				}
@@ -187,19 +191,19 @@ colonial_COL_slot_1 = {
 	}
 }
 
-colonial_COL_slot_2 = {
+colonial_MW_slot_2 = {
     slot = 2
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_colombia
+            colonial_region = colonial_midwest
         }
 	}
 	has_country_shield = yes
     
-    col_navy_1 = {
+    mw_navy_1 = {
 		icon = mission_heart_of_the_hansa
 		required_missions = { }
 		provinces_to_highlight = {	}
@@ -247,9 +251,9 @@ colonial_COL_slot_2 = {
 		}
 	}
 
-	col_navy_2 = {
+	mw_navy_2 = {
 		icon = mission_south_indian_trade
-		required_missions = { col_navy_1 }
+		required_missions = { mw_navy_1 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -266,9 +270,9 @@ colonial_COL_slot_2 = {
 		}
 	}
 
-	col_navy_3 = {
+	mw_navy_3 = {
 		icon = mission_grand_bengali_shipyards
-		required_missions = { col_navy_2 }
+		required_missions = { mw_navy_2 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -287,9 +291,9 @@ colonial_COL_slot_2 = {
 		}
 	}
 
-	col_navy_4 = {
+	mw_navy_4 = {
 		icon = imperial_navy
-		required_missions = { col_navy_3 }
+		required_missions = { mw_navy_3 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -308,9 +312,9 @@ colonial_COL_slot_2 = {
 		}
 	}
 
-	col_navy_5 = {
+	mw_navy_5 = {
 		icon = mission_rb_a_mighty_fleet
-		required_missions = { col_navy_4 }
+		required_missions = { mw_navy_4 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -332,19 +336,19 @@ colonial_COL_slot_2 = {
 	}
 }
 
-colonial_COL_slot_3 = {
+colonial_MW_slot_3 = {
     slot = 3
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_colombia
+            colonial_region = colonial_midwest
         }
 	}
 	has_country_shield = yes
 
-    col_army_1 = {
+    mw_army_1 = {
 		icon = mission_iroquois_warriors
 		required_missions = { }
 		provinces_to_highlight = {	}
@@ -362,9 +366,9 @@ colonial_COL_slot_3 = {
 		}
 	}
 
-	col_army_2 = {
+	mw_army_2 = {
 		icon = mission_nah_the_enemy_way
-		required_missions = { col_army_1 }
+		required_missions = { mw_army_1 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -390,9 +394,9 @@ colonial_COL_slot_3 = {
 		}
 	}
 
-	col_army_3 = {
+	mw_army_3 = {
 		icon = form_the_swiss_guard
-		required_missions = { col_army_2 }
+		required_missions = { mw_army_2 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -408,11 +412,11 @@ colonial_COL_slot_3 = {
 		}
 	}
 
-	col_army_4 = {
+	mw_army_4 = {
 		icon = mission_landsknecht_soldier
-		required_missions = { col_army_3 }
+		required_missions = { mw_army_3 }
 		provinces_to_highlight = {
-			colonial_region = colonial_colombia
+			colonial_region = colonial_midwest
 			OR = {
 				NOT = { base_manpower = 10 }
 				NOT = { has_military_building = yes }
@@ -422,7 +426,7 @@ colonial_COL_slot_3 = {
 		trigger = {
 			num_of_owned_provinces_with = {
 				value = 20
-				colonial_region = colonial_colombia
+				colonial_region = colonial_midwest
 				base_manpower = 10
 				has_military_building = yes
 			}
@@ -433,7 +437,7 @@ colonial_COL_slot_3 = {
 				years = 1
 				trigger = {
 					has_military_building = yes
-					colonial_region = colonial_colombia
+					colonial_region = colonial_midwest
 					base_manpower = 10
 				}
 				custom_tooltip = col_years_of_manpower
@@ -452,9 +456,9 @@ colonial_COL_slot_3 = {
 		}
 	}
 
-	col_army_5 = {
+	mw_army_5 = {
 		icon = swiss_mercenaries
-		required_missions = { col_army_4 }
+		required_missions = { mw_army_4 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -476,33 +480,33 @@ colonial_COL_slot_3 = {
 	}
 }
 
-colonial_COL_slot_4 = {
+colonial_MW_slot_4 = {
     slot = 4
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-           colonial_region = colonial_colombia
+           colonial_region = colonial_midwest
         }
 	}
 	has_country_shield = yes
 
-    col_colonisation_1 = {
+    mw_colonisation_1 = {
 		icon = mission_colonise_brazil
 		provinces_to_highlight = {
-			colonial_region = colonial_colombia
+			colonial_region = colonial_midwest
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
 			OR = {
-				colonial_colombia = {
+				colonial_midwest = {
 					has_colonist = yes
 					owned_by = ROOT
 					is_city = no
 				}
-				colonial_colombia = {
+				colonial_midwest = {
 					type = all
 					is_empty = no
 				}
@@ -518,7 +522,7 @@ colonial_COL_slot_4 = {
 			hidden_effect = {
 				if = {
 					limit = {
-						colonial_colombia = {
+						colonial_midwest = {
 							has_colonist = yes
 							owned_by = ROOT
 						}
@@ -544,18 +548,18 @@ colonial_COL_slot_4 = {
 		}
 	}
 
-	col_colonisation_2 = {
+	mw_colonisation_2 = {
 		icon = mission_colonial
-		required_missions = { col_colonisation_1 }
+		required_missions = { mw_colonisation_1 }
 		provinces_to_highlight = {
-			colonial_region = colonial_colombia
+			colonial_region = colonial_midwest
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
 			num_of_owned_provinces_with = {
 				value = 10
-				colonial_region = colonial_colombia
+				colonial_region = colonial_midwest
 			}
 		}
 
@@ -567,29 +571,29 @@ colonial_COL_slot_4 = {
 		}
 	}
 
-	col_colonisation_2_5 = {
+	mw_colonisation_2_5 = {
 		icon = mission_clear_the_delta
-		required_missions = { col_colonisation_2 }
+		required_missions = { mw_colonisation_2 }
 		provinces_to_highlight = {
-			colonial_region = colonial_colombia
+			colonial_region = colonial_midwest
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
 			num_of_owned_provinces_with = {
 				value = 20
-				colonial_region = colonial_colombia
+				colonial_region = colonial_midwest
 			}
 		}
 
 		effect = {
-			custom_tooltip = col_goods_bonus_colonising
+			custom_tooltip = mw_goods_bonus_colonising
 		}
 	}
 
-	col_colonisation_3 = {
+	mw_colonisation_3 = {
 		icon = mission_zanzibari_trade
-		required_missions = { col_colonisation_2_5 }
+		required_missions = { mw_colonisation_2_5 }
 		provinces_to_highlight = {
 			
 		}
@@ -597,7 +601,7 @@ colonial_COL_slot_4 = {
 		trigger = {
 			num_of_owned_provinces_with = {
 				value = 30
-				colonial_region = colonial_colombia
+				colonial_region = colonial_midwest
 			}
 		}
 
@@ -616,18 +620,18 @@ colonial_COL_slot_4 = {
 		}
 	}
 
-	col_colonisation_4 = {
+	mw_colonisation_4 = {
 		icon = colonize_the_cape
-		required_missions = { col_colonisation_3 }
+		required_missions = { mw_colonisation_3 }
 		provinces_to_highlight = { 
-			colonial_region = colonial_colombia
+			colonial_region = colonial_midwest
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
 			num_of_owned_provinces_with = {
-				value = 35
-				colonial_region = colonial_colombia
+				value = 40
+				colonial_region = colonial_midwest
 			}
 		}
 
@@ -651,19 +655,19 @@ colonial_COL_slot_4 = {
 	}
 }
 
-colonial_COL_slot_5 = {
+colonial_MW_slot_5 = {
     slot = 5
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_colombia
+            colonial_region = colonial_midwest
         }
 	}
 	has_country_shield = yes
 
-	col_buildings_1 = {
+	mw_buildings_1 = {
 		icon = a_strong_government
 		required_missions = {  }
 		provinces_to_highlight = { 
@@ -694,9 +698,9 @@ colonial_COL_slot_5 = {
 		}
 	}
 
-	col_buildings_2 = {
+	mw_buildings_2 = {
 		icon = claim_tirol
-		required_missions = { col_buildings_1 }
+		required_missions = { mw_buildings_1 }
 		provinces_to_highlight = { 
 			owned_by = ROOT
 			NOT = {
@@ -725,9 +729,9 @@ colonial_COL_slot_5 = {
 		}
 	}
 
-	col_buildings_3 = {
+	mw_buildings_3 = {
 		icon = despot_stefans_legacy
-		required_missions = { col_buildings_2 }
+		required_missions = { mw_buildings_2 }
 		provinces_to_highlight = { 
 			owned_by = ROOT
 			num_free_building_slots = 1
@@ -759,9 +763,9 @@ colonial_COL_slot_5 = {
 		}
 	}
 
-	col_buildings_4 = {
+	mw_buildings_4 = {
 		icon = industrialized_rhineland
-		required_missions = { col_buildings_3 }
+		required_missions = { mw_buildings_3 }
 		provinces_to_highlight = { }
 
 		trigger = {
@@ -780,9 +784,9 @@ colonial_COL_slot_5 = {
 		}
 	}
 
-	col_buildings_5 = {
+	mw_buildings_5 = {
 		icon = public_works
-		required_missions = { col_buildings_4 }
+		required_missions = { mw_buildings_4 }
 		provinces_to_highlight = { }
 
 		trigger = {

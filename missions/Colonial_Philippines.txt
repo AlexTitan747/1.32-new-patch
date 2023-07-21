@@ -106,7 +106,11 @@ colonial_PHIL_slot_1 = {
 	phil_trade_3 = {
 		icon = mission_trade_in_gold_coast
 		required_missions = { phil_trade_2 }
-		provinces_to_highlight = {	}
+		provinces_to_highlight = {
+			colonial_region = colonial_phil
+			province_has_center_of_trade_of_level = 1
+			NOT = { owned_by = ROOT }
+		}
 
 		trigger = {
 			num_of_centers_of_trade = 4
@@ -123,7 +127,9 @@ colonial_PHIL_slot_1 = {
 	phil_trade_4 = {
 		icon = mission_arabian_trade
 		required_missions = { phil_trade_3 }
-		provinces_to_highlight = {	}
+		provinces_to_highlight = {
+			province_id = 4358
+		}
 
 		trigger = {
 			num_of_owned_provinces_with = {
@@ -134,18 +140,18 @@ colonial_PHIL_slot_1 = {
 				}
 				colonial_region = colonial_phil
 			}
-			1397 = { has_merchant = ROOT }
+			4358 = { has_merchant = ROOT }
 		}
 
 		effect = {
-			1397 = {
+			4358 = {
 				add_trade_modifier = {
 					who = ROOT
 					duration = 5475
 					power = 20
 					key = STRONG_MERCHANTS
 				}
-				add_trade_node_income = 100
+				add_trade_node_income = 50
 			}
 		}
 	}
@@ -153,18 +159,20 @@ colonial_PHIL_slot_1 = {
 	phil_trade_5 = {
 		icon = mal_riches_of_trade
 		required_missions = { phil_trade_4 }
-		provinces_to_highlight = {	}
+		provinces_to_highlight = {
+			province_id = 4358
+		}
 
 		trigger = {
-			1397 = {
-				trade_node_value = 40
+			4358 = {
+				trade_node_value = 35
 			}
 			OR = {
-				1397 = {
+				4358 = {
 					is_strongest_trade_power = ROOT
 				}
 				overlord = {
-					1397 = {
+					4358 = {
 						is_strongest_trade_power = PREV
 					}
 				}
@@ -429,7 +437,7 @@ colonial_PHIL_slot_3 = {
 
 		effect = {
 			add_years_of_owned_provinces_manpower = {
-				years = 2
+				years = 1
 				trigger = {
 					has_military_building = yes
 					colonial_region = colonial_phil
@@ -704,8 +712,7 @@ colonial_PHIL_slot_5 = {
 		icon = a_strong_government
 		required_missions = {  }
 		provinces_to_highlight = { 
-			is_capital = yes
-			owned_by = ROOT
+			is_capital_of = ROOT
 		}
 
 		trigger = {
@@ -775,7 +782,7 @@ colonial_PHIL_slot_5 = {
 			num_of_owned_provinces_with = {
 				value = 10
 				NOT = { num_free_building_slots = 1 }
-				development = 20
+				development = 12
 			}
 		}
 
@@ -805,7 +812,7 @@ colonial_PHIL_slot_5 = {
 			num_of_owned_provinces_with = {
 				value = 5
 				has_manufactory = yes
-				base_production = 12
+				base_production = 15
 			}
 		}
 

@@ -1,176 +1,173 @@
-colonial_COL_slot_1 = {
+colonial_CAS_slot_1 = {
     slot = 1
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_colombia
+            colonial_region = colonial_california
         }
 	}
 	has_country_shield = yes
 
-	col_trade_1 = {
-		icon = mission_coromandel_trade
+	cas_gold_1 = {
+		icon = dominant_economy
 		required_missions = { }
 		provinces_to_highlight = {
-			
+			trade_goods = gold
+			owned_by = ROOT
 		}
 
 		trigger = {
-			any_owned_province = {
-				province_has_center_of_trade_of_level = 1
-				development = 15
-				colonial_region = colonial_colombia
-			}
-		}
-
-		effect = {
-			if = {
-				limit = {
-					NOT = {
-						any_owned_province = {
-							colonial_region = colonial_colombia
-							province_has_center_of_trade_of_level = 1
-							development = 15
-						}
-					}
-				}
-				custom_tooltip = beginning_trade_tt
-			}
-			random_owned_province = {
-				limit = {
-					colonial_region = colonial_colombia
-					province_has_center_of_trade_of_level = 1
-					development = 15
-				}
-				add_base_production = 3
-			}
-		}
-	}
-
-	col_trade_2 = {
-		icon = sources_of_trade
-		required_missions = { col_trade_1 }
-		provinces_to_highlight = {	}
-
-		trigger = {
-			any_owned_province = {
-				has_trade_building_trigger = yes
-				base_production = 12
-				colonial_region = colonial_colombia
-			}
-		}
-
-		effect = {
-			if = {
-				limit = {
-					NOT = {
-						any_owned_province = {
-							has_trade_building_trigger = yes
-							base_production = 12
-							colonial_region = colonial_colombia
-						}
-					}
-				}
-				custom_tooltip = growing_trade_tt
-			}
-			random_owned_province = {
-				limit = {
-					has_trade_building_trigger = yes
-					base_production = 12
-					colonial_region = colonial_colombia
-				}
-				if = {
-					limit = {
-						NOT = { has_building = stock_exchange }
-					}
-					add_building = stock_exchange
-				}
-				else = {
-					add_base_production = 3
-					if ={
-						limit = {
-							NOT = { has_building = counting_house }
-						}
-						add_building = counting_house
-					}
-				}
-			}
-		}
-	}
-
-	col_trade_3 = {
-		icon = mission_trade_in_gold_coast
-		required_missions = { col_trade_2 }
-		provinces_to_highlight = {	}
-
-		trigger = {
-			num_of_centers_of_trade = 4
-		}
-
-		effect = {
-			add_country_modifier = {
-				name = colony_trading
-				duration = 7300
-			}
-		}
-	}
-
-	col_trade_4 = {
-		icon = mission_arabian_trade
-		required_missions = { col_trade_3 }
-		provinces_to_highlight = {	}
-
-		trigger = {
-			num_of_owned_provinces_with = {
-				value = 5
-				OR = {
-					has_trade_building_trigger = yes
-					province_has_center_of_trade_of_level = 3
-				}
-				colonial_region = colonial_colombia
-			}
-			835 = {
-				has_merchant = ROOT
-			}
-		}
-
-		effect = {
-			835 = {
-				add_trade_modifier = {
-					who = ROOT
-					duration = 5475
-					power = 20
-					key = STRONG_MERCHANTS
-				}
-				add_trade_node_income = 50
-			}
-		}
-	}
-
-	col_trade_5 = {
-		icon = mal_riches_of_trade
-		required_missions = { col_trade_4 }
-		provinces_to_highlight = {
-			province_id = 1515
-		}
-
-		trigger = {
-			835 = {
-				trade_node_value = 40
-			}
 			OR = {
-				835 = {
-					is_strongest_trade_power = ROOT
+				any_owned_province = {
+					trade_goods = gold
 				}
-				overlord = {
-					835 = {
-						is_strongest_trade_power = PREV
+				AND = {
+					NOT = { gold = 1 }
+					any_owned_province = {
+						NOT = { province_id = 1177 }
+						base_production = 6
 					}
 				}
 			}
-			
+		}
+
+		effect = {
+			if = {
+				limit = {
+					gold = 1
+				}
+				random_owned_province = {
+					limit = {
+						trade_goods = gold
+					}
+					add_base_production = 3
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { gold = 1 }
+					any_owned_province = {
+						NOT = { province_id = 1177 }
+						base_production = 6
+					}
+				}
+				random_owned_province = {
+					limit = {
+						is_city = yes
+						NOT = { province_id = 1177 }
+						base_production = 6
+					}
+					change_trade_goods = gold
+					add_base_production = 1
+				}
+			}
+			else = {
+				custom_tooltip = saf_mission_gold_miss_tt
+			}
+		}
+	}
+
+	cas_gold_2 = {
+		icon = chater_the_voc
+		required_missions = { cas_gold_1 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			any_owned_province = {
+				trade_goods = gold
+				base_production = 10
+			}
+		}
+
+		effect = {
+			define_advisor = {
+				type = natural_scientist
+				skill = 2
+				discount = yes
+				culture = ROOT
+				religion = ROOT
+			}
+		}
+	}
+
+	cas_gold_3 = {
+		icon = mission_establish_mint_towns
+		required_missions = { cas_gold_2 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			any_owned_province = {
+				trade_goods = gold
+				base_production = 12
+			}
+		}
+
+		effect = {
+			add_years_of_owned_provinces_production_income = {
+				years = 2
+				trigger = {
+					trade_goods = gold
+				}
+				custom_tooltip = SAF_GOLD_GAIN
+			}
+		}
+	}
+
+	cas_gold_4 = {
+		icon = reform_the_state
+		required_missions = { cas_gold_3 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			gold = 1
+			NOT = { inflation = 5 }
+			NOT = { num_of_loans = 1 }
+		}
+
+		effect = {
+			custom_tooltip = saf_mission_gold_to_overlord_tt
+			hidden_effect = {
+				export_to_variable = {
+					variable_name = saf_yearly_income
+					value = years_of_income
+				}
+				while = {
+					limit = {
+						check_variable = {
+							which = saf_yearly_income
+							value = 1
+						}
+					}
+					overlord = {
+						add_treasury = 1
+					}
+					subtract_variable = {
+						which = saf_yearly_income
+						value = 1
+					}
+				}
+			}
+			add_country_modifier = {
+				name = saf_exported_gold
+				duration = 3650
+			}
+		}
+	}
+
+	cas_gold_5 = {
+		icon = mission_entrepot_of_india
+		required_missions = { cas_gold_4 }
+		provinces_to_highlight = {	}
+
+		trigger = {
+			gold = 1
+			NOT = { inflation = 5 }
+			any_owned_province = {
+				trade_goods = gold
+				base_production = 15
+			}
 		}
 
 		effect = {
@@ -178,28 +175,28 @@ colonial_COL_slot_1 = {
 				save_global_event_target_as = colonial_subject_event_target_for_rewards
 			}
 			overlord = {
-				country_event = { 
-					id = colonial_mission_events.1
-					tooltip = colonial_mission_events_trade_tt
+				country_event = {
+					id = colonial_mission_events.5
+					tooltip = colonial_mission_events_gold_tt
 				}
 			}
 		}
 	}
 }
 
-colonial_COL_slot_2 = {
+colonial_CAS_slot_2 = {
     slot = 2
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_colombia
+            colonial_region = colonial_california
         }
 	}
 	has_country_shield = yes
     
-    col_navy_1 = {
+    cas_navy_1 = {
 		icon = mission_heart_of_the_hansa
 		required_missions = { }
 		provinces_to_highlight = {	}
@@ -247,9 +244,9 @@ colonial_COL_slot_2 = {
 		}
 	}
 
-	col_navy_2 = {
+	cas_navy_2 = {
 		icon = mission_south_indian_trade
-		required_missions = { col_navy_1 }
+		required_missions = { cas_navy_1 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -266,9 +263,9 @@ colonial_COL_slot_2 = {
 		}
 	}
 
-	col_navy_3 = {
+	cas_navy_3 = {
 		icon = mission_grand_bengali_shipyards
-		required_missions = { col_navy_2 }
+		required_missions = { cas_navy_2 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -287,9 +284,9 @@ colonial_COL_slot_2 = {
 		}
 	}
 
-	col_navy_4 = {
+	cas_navy_4 = {
 		icon = imperial_navy
-		required_missions = { col_navy_3 }
+		required_missions = { cas_navy_3 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -308,9 +305,9 @@ colonial_COL_slot_2 = {
 		}
 	}
 
-	col_navy_5 = {
+	cas_navy_5 = {
 		icon = mission_rb_a_mighty_fleet
-		required_missions = { col_navy_4 }
+		required_missions = { cas_navy_4 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -332,19 +329,19 @@ colonial_COL_slot_2 = {
 	}
 }
 
-colonial_COL_slot_3 = {
+colonial_CAS_slot_3 = {
     slot = 3
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_colombia
+            colonial_region = colonial_california
         }
 	}
 	has_country_shield = yes
 
-    col_army_1 = {
+    cas_army_1 = {
 		icon = mission_iroquois_warriors
 		required_missions = { }
 		provinces_to_highlight = {	}
@@ -362,9 +359,9 @@ colonial_COL_slot_3 = {
 		}
 	}
 
-	col_army_2 = {
+	cas_army_2 = {
 		icon = mission_nah_the_enemy_way
-		required_missions = { col_army_1 }
+		required_missions = { cas_army_1 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -390,9 +387,9 @@ colonial_COL_slot_3 = {
 		}
 	}
 
-	col_army_3 = {
+	cas_army_3 = {
 		icon = form_the_swiss_guard
-		required_missions = { col_army_2 }
+		required_missions = { cas_army_2 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -408,11 +405,11 @@ colonial_COL_slot_3 = {
 		}
 	}
 
-	col_army_4 = {
+	cas_army_4 = {
 		icon = mission_landsknecht_soldier
-		required_missions = { col_army_3 }
+		required_missions = { cas_army_3 }
 		provinces_to_highlight = {
-			colonial_region = colonial_colombia
+			colonial_region = colonial_california
 			OR = {
 				NOT = { base_manpower = 10 }
 				NOT = { has_military_building = yes }
@@ -422,7 +419,7 @@ colonial_COL_slot_3 = {
 		trigger = {
 			num_of_owned_provinces_with = {
 				value = 20
-				colonial_region = colonial_colombia
+				colonial_region = colonial_california
 				base_manpower = 10
 				has_military_building = yes
 			}
@@ -433,7 +430,7 @@ colonial_COL_slot_3 = {
 				years = 1
 				trigger = {
 					has_military_building = yes
-					colonial_region = colonial_colombia
+					colonial_region = colonial_california
 					base_manpower = 10
 				}
 				custom_tooltip = col_years_of_manpower
@@ -452,9 +449,9 @@ colonial_COL_slot_3 = {
 		}
 	}
 
-	col_army_5 = {
+	cas_army_5 = {
 		icon = swiss_mercenaries
-		required_missions = { col_army_4 }
+		required_missions = { cas_army_4 }
 		provinces_to_highlight = {	}
 
 		trigger = {
@@ -476,33 +473,33 @@ colonial_COL_slot_3 = {
 	}
 }
 
-colonial_COL_slot_4 = {
+colonial_CAS_slot_4 = {
     slot = 4
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-           colonial_region = colonial_colombia
+           colonial_region = colonial_california
         }
 	}
 	has_country_shield = yes
 
-    col_colonisation_1 = {
+    cas_colonisation_1 = {
 		icon = mission_colonise_brazil
 		provinces_to_highlight = {
-			colonial_region = colonial_colombia
+			colonial_region = colonial_california
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
 			OR = {
-				colonial_colombia = {
+				colonial_california = {
 					has_colonist = yes
 					owned_by = ROOT
 					is_city = no
 				}
-				colonial_colombia = {
+				colonial_california = {
 					type = all
 					is_empty = no
 				}
@@ -518,7 +515,7 @@ colonial_COL_slot_4 = {
 			hidden_effect = {
 				if = {
 					limit = {
-						colonial_colombia = {
+						colonial_california = {
 							has_colonist = yes
 							owned_by = ROOT
 						}
@@ -544,18 +541,18 @@ colonial_COL_slot_4 = {
 		}
 	}
 
-	col_colonisation_2 = {
+	cas_colonisation_2 = {
 		icon = mission_colonial
-		required_missions = { col_colonisation_1 }
+		required_missions = { cas_colonisation_1 }
 		provinces_to_highlight = {
-			colonial_region = colonial_colombia
+			colonial_region = colonial_california
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
 			num_of_owned_provinces_with = {
-				value = 10
-				colonial_region = colonial_colombia
+				value = 7
+				colonial_region = colonial_california
 			}
 		}
 
@@ -567,37 +564,37 @@ colonial_COL_slot_4 = {
 		}
 	}
 
-	col_colonisation_2_5 = {
+	cas_colonisation_2_5 = {
 		icon = mission_clear_the_delta
-		required_missions = { col_colonisation_2 }
+		required_missions = { cas_colonisation_2 }
 		provinces_to_highlight = {
-			colonial_region = colonial_colombia
+			colonial_region = colonial_california
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
 			num_of_owned_provinces_with = {
-				value = 20
-				colonial_region = colonial_colombia
+				value = 12
+				colonial_region = colonial_california
 			}
 		}
 
 		effect = {
-			custom_tooltip = col_goods_bonus_colonising
+			custom_tooltip = cas_goods_bonus_colonising
 		}
 	}
 
-	col_colonisation_3 = {
+	cas_colonisation_3 = {
 		icon = mission_zanzibari_trade
-		required_missions = { col_colonisation_2_5 }
+		required_missions = { cas_colonisation_2_5 }
 		provinces_to_highlight = {
 			
 		}
 
 		trigger = {
 			num_of_owned_provinces_with = {
-				value = 30
-				colonial_region = colonial_colombia
+				value = 15
+				colonial_region = colonial_california
 			}
 		}
 
@@ -616,18 +613,18 @@ colonial_COL_slot_4 = {
 		}
 	}
 
-	col_colonisation_4 = {
+	cas_colonisation_4 = {
 		icon = colonize_the_cape
-		required_missions = { col_colonisation_3 }
+		required_missions = { cas_colonisation_3 }
 		provinces_to_highlight = { 
-			colonial_region = colonial_colombia
+			colonial_region = colonial_california
 			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
 			num_of_owned_provinces_with = {
-				value = 35
-				colonial_region = colonial_colombia
+				value = 20
+				colonial_region = colonial_california
 			}
 		}
 
@@ -651,19 +648,19 @@ colonial_COL_slot_4 = {
 	}
 }
 
-colonial_COL_slot_5 = {
+colonial_CAS_slot_5 = {
     slot = 5
 	generic = no
 	ai = yes
 	potential = {
 		is_colonial_nation = yes
         capital_scope = {
-            colonial_region = colonial_colombia
+            colonial_region = colonial_california
         }
 	}
 	has_country_shield = yes
 
-	col_buildings_1 = {
+	cas_buildings_1 = {
 		icon = a_strong_government
 		required_missions = {  }
 		provinces_to_highlight = { 
@@ -694,9 +691,9 @@ colonial_COL_slot_5 = {
 		}
 	}
 
-	col_buildings_2 = {
+	cas_buildings_2 = {
 		icon = claim_tirol
-		required_missions = { col_buildings_1 }
+		required_missions = { cas_buildings_1 }
 		provinces_to_highlight = { 
 			owned_by = ROOT
 			NOT = {
@@ -725,9 +722,9 @@ colonial_COL_slot_5 = {
 		}
 	}
 
-	col_buildings_3 = {
+	cas_buildings_3 = {
 		icon = despot_stefans_legacy
-		required_missions = { col_buildings_2 }
+		required_missions = { cas_buildings_2 }
 		provinces_to_highlight = { 
 			owned_by = ROOT
 			num_free_building_slots = 1
@@ -738,7 +735,7 @@ colonial_COL_slot_5 = {
 			num_of_owned_provinces_with = {
 				value = 10
 				NOT = { num_free_building_slots = 1 }
-				development = 12
+				development = 20
 			}
 		}
 
@@ -759,16 +756,16 @@ colonial_COL_slot_5 = {
 		}
 	}
 
-	col_buildings_4 = {
+	cas_buildings_4 = {
 		icon = industrialized_rhineland
-		required_missions = { col_buildings_3 }
+		required_missions = { cas_buildings_3 }
 		provinces_to_highlight = { }
 
 		trigger = {
 			num_of_owned_provinces_with = {
 				value = 5
 				has_manufactory = yes
-				base_production = 10
+				base_production = 12
 			}
 		}
 
@@ -780,9 +777,9 @@ colonial_COL_slot_5 = {
 		}
 	}
 
-	col_buildings_5 = {
+	cas_buildings_5 = {
 		icon = public_works
-		required_missions = { col_buildings_4 }
+		required_missions = { cas_buildings_4 }
 		provinces_to_highlight = { }
 
 		trigger = {
