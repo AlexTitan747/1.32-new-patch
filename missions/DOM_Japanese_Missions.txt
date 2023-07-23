@@ -114,7 +114,7 @@ DOM_japanse_missions_1 = {
 		effect = {
 			custom_tooltip = jap_kaikoku_tt
 			tooltip = {
-				swap_non_generic_missions = yes
+				#swap_non_generic_missions = yes
 				add_country_modifier = { 
 					name = jap_exchange_ideas_modifier 
 					duration = 5475
@@ -154,7 +154,7 @@ DOM_japanse_missions_1 = {
 						name = jap_exchange_ideas_modifier 
 						duration = 5475
 					}
-					swap_non_generic_missions = yes
+					#swap_non_generic_missions = yes
 					if = { 
 						limit = { has_dlc = "Rights of Man" NOT = { num_of_ruler_traits = { amount = 3 } } } 
 						add_ruler_personality = scholar_personality 
@@ -164,7 +164,7 @@ DOM_japanse_missions_1 = {
 				}
 				else_if = {
 					limit = { has_country_flag = jap_chose_trade_with_west_flag }
-					swap_non_generic_missions = yes
+					#swap_non_generic_missions = yes
 					every_owned_province = { 
 						limit = { has_trade_building_trigger = yes } 
 						upgrade_building = { trade = yes }  
@@ -640,10 +640,10 @@ DOM_japanse_missions_2_dejima = {
 		tag = JAP 
 		has_dlc = "Domination" 
 		NOT = { map_setup = map_setup_random }
-		OR = { 
-			has_country_flag = jap_chose_trade_with_west_flag 
-			has_country_flag = jap_chose_kaikoku_flag
-		}
+		#OR = { 
+		#	has_country_flag = jap_chose_trade_with_west_flag 
+		#	has_country_flag = jap_chose_kaikoku_flag
+		#}
 	}
 	has_country_shield = yes
 	
@@ -1670,7 +1670,7 @@ DOM_japanse_missions_3_a = {
 				}
 				adm = 5 
 			}
-			total_base_tax = 350
+			monthly_income = 400
 		}
 		effect = {
 			custom_tooltip = jap_20_years_devving_tax_yields_twice_bonus_1_burgher_loyalt_tt
@@ -1944,7 +1944,7 @@ DOM_japanse_missions_3_b = {
 			NOT = { average_autonomy_above_min = 5 } 
 			is_at_war = no 
 			OR = {
-				absolutism = 100 
+				absolutism = 85
 				AND = { 
 					if = {
 						limit = { has_estate = estate_nobles }
