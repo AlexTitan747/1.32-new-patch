@@ -52,27 +52,23 @@ country_event = {
 			}
 			add_government_reform = warring_state_reform
 		}
-		hidden_effect = {
-			set_country_flag = chinagov_duchy
-			add_country_modifier = { 
-					name = china_fractured
-					duration = -1
-					#hidden = no
-			}
+		set_country_flag = chinagov_duchy
+		add_country_modifier = { 
+				name = china_fractured
+				duration = -1
+				#hidden = no
 		}
 	}
 	option = {		
 		name = "chinagov.repu1"
 		remove_government_reform = warring_state_reform
 		change_government_to_republic = yes
-		add_government_reform = chinese_merchant_state_reform 
-		hidden_effect = {
+		add_government_reform = chinese_merchant_state_reform
 		set_country_flag = chinagov_duchy
 		add_country_modifier = { 
 			name = china_fractured
 			duration = -1
 			#hidden = no
-			}
 		}
 	}
 	option = {		
@@ -80,12 +76,10 @@ country_event = {
 		remove_government_reform = warring_state_reform
 		change_government_to_theocracy = yes
 		add_government_reform = chinese_monastic_state_reform
-		hidden_effect = {
 		set_country_flag = chinagov_duchy
-			add_country_modifier = { 
-				name = china_fractured
-				duration = -1
-			}
+		add_country_modifier = { 
+			name = china_fractured
+			duration = -1
 		}
 	}
 }
@@ -245,40 +239,7 @@ country_event = {
 	desc = "chinagov.desc3"
 	picture = BUDDHA_eventPicture
 
-	trigger = {
-		OR = {
-			tag = JNG 
-			tag = ZHJ
-			tag = FUA
-			tag = GDO
-			tag = GXI
-			tag = HNA
-			tag = JIX
-			tag = AUI
-			tag = SAN
-			tag = LNI
-			tag = HEN
-			tag = HEI
-			tag = SCH
-			tag = SXI
-			tag = YNA
-			tag = ALI
-			tag = GSU
-			tag = ORO
-			tag = SHU
-			tag = WEI
-			tag = WUU
-		}
-		total_development = 1000
-		NOT = {
-			has_country_flag = chinagov_empire
-		}
-	}
-
-	mean_time_to_happen = {
-		months = 1
-	}
-	
+	is_triggered_only = yes
 	
 	option = {		
 		name = "chinagov.king3"
@@ -305,14 +266,12 @@ country_event = {
 			change_government = monarchy
 			add_government_reform = chinese_empire_reform
 		}
-		hidden_effect = {
-			set_country_flag = chinagov_empire
-			remove_country_modifier = china_semiconsolidated
-			add_country_modifier = { 
-				name = china_consolidated
-				duration = -1
-				#hidden = no
-			}
+		set_country_flag = chinagov_empire
+		remove_country_modifier = china_semiconsolidated
+		add_country_modifier = { 
+			name = china_consolidated
+			duration = -1
+			#hidden = no
 		}
 	}
 	option = {		
@@ -340,14 +299,12 @@ country_event = {
 			change_government_to_republic = yes
 			add_government_reform = grand_plutocratic_empire_reform
 		}
-		hidden_effect = {
-			set_country_flag = chinagov_empire
-			remove_country_modifier = china_semiconsolidated
-			add_country_modifier = { 
-				name = china_consolidated
-				duration = -1
-				#hidden = no
-			}
+		set_country_flag = chinagov_empire
+		remove_country_modifier = china_semiconsolidated
+		add_country_modifier = { 
+			name = china_consolidated
+			duration = -1
+			#hidden = no
 		}
 	}
 	option = {		
@@ -376,15 +333,14 @@ country_event = {
 			remove_government_reform = chinese_harmonious_kingdom_reform
 			add_government_reform = confucian_empire_of_harmony_reform
 		}
-		hidden_effect = {
-			set_country_flag = chinagov_empire
-			remove_country_modifier = china_semiconsolidated
-			add_country_modifier = { 
-				name = china_consolidated
-				duration = -1
-				#hidden = no
-			}
+		set_country_flag = chinagov_empire
+		remove_country_modifier = china_semiconsolidated
+		add_country_modifier = { 
+			name = china_consolidated
+			duration = -1
+			#hidden = no
 		}
+		
 	}
 }
 
