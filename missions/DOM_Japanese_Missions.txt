@@ -106,8 +106,8 @@ DOM_japanse_missions_1 = {
 			}
 			OR = {
 				dip = 5 
-				ruler_has_personality = entrepreneur_personality 
-				full_idea_group = trade_ideas 
+				ruler_has_personality = entrepreneur_personality
+				full_idea_group = trade_ideas
 				monthly_dip = 12 
 			}
 		}
@@ -117,7 +117,7 @@ DOM_japanse_missions_1 = {
 				swap_non_generic_missions = yes
 				add_country_modifier = { 
 					name = jap_exchange_ideas_modifier 
-					duration = 9125 
+					duration = 5475
 				}
 				if = { 
 					limit = { has_dlc = "Rights of Man" NOT = { num_of_ruler_traits = { amount = 3 } } } 
@@ -152,7 +152,7 @@ DOM_japanse_missions_1 = {
 					limit = { has_country_flag = jap_chose_kaikoku_flag }
 					add_country_modifier = { 
 						name = jap_exchange_ideas_modifier 
-						duration = 9125 
+						duration = 5475
 					}
 					swap_non_generic_missions = yes
 					if = { 
@@ -168,7 +168,7 @@ DOM_japanse_missions_1 = {
 					every_owned_province = { 
 						limit = { has_trade_building_trigger = yes } 
 						upgrade_building = { trade = yes }  
-						add_base_production = 1 
+						add_base_production = 2
 					}
 				}
 				else_if = {
@@ -256,7 +256,7 @@ DOM_japanse_missions_1 = {
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				region = south_china_region 
-				value = 25 
+				value = 20
 			}
 			2174 = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -545,6 +545,12 @@ DOM_japanse_missions_2_a = {
 			country_event = { id = flavor_jap.63 }
 			
 			custom_tooltip = jap_event_insight_63_tt
+			tooltip = {
+				add_country_modifier = {
+					name = jap_period_tranquility_modifier
+					duration = 3650
+				}
+			}
 		}
 	}
 	
@@ -701,14 +707,16 @@ DOM_japanse_missions_2_b = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				region = korea_region 
 				has_fort_building_trigger = yes 
-				value = 5 
+				value = 3
 			}
 		}
 		effect = {
 			add_army_tradition = 15
 			
 			custom_tooltip = jap_conquest_of_china_cb_tt
-			set_country_flag = access_conquest_of_china_cb_flag 
+			set_country_flag = access_conquest_of_china_cb_flag
+
+			manchuria_region = { add_perma_claim = yes }
 			
 			custom_tooltip = jap_dip_advisor_culture_conversion_cost_tt
 			
@@ -759,48 +767,44 @@ DOM_japanse_missions_2_b = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
 		trigger = {
-			OR = { 
-				war_score_against = {
-					who = event_target:EmperorOfChina
-					value = 85 
-				}
-				AND = { 
-					1816 = { country_or_non_sovereign_subject_holds = ROOT } 
-					1821 = { country_or_non_sovereign_subject_holds = ROOT } 
-					667 = { country_or_non_sovereign_subject_holds = ROOT } 
-				}
-			}
+			1816 = { country_or_non_sovereign_subject_holds = ROOT } 
+			1821 = { country_or_non_sovereign_subject_holds = ROOT } 
+			667 = { country_or_non_sovereign_subject_holds = ROOT } 
 			grown_by_development = 650
 		}
 		effect = {
-			custom_tooltip = jap_war_against_mandate_holder_tt
-			tooltip = {
-				country_event = { id = flavor_jap.64 }
-			}
-			
-			custom_tooltip = pol_alternatively_tt
-			tooltip = {
-				add_country_modifier = {
-					name = jap_scramble_for_china_modifier
-					duration = 7300 
-				}
-			}
-			hidden_effect = {
-				if = {	
-					limit = { 
-						war_score_against = {
-							who = event_target:EmperorOfChina
-							value = 85 
-						}
-					}
-					country_event = { id = flavor_jap.64 }
-				}
-				else = {
-					add_country_modifier = {
-						name = jap_scramble_for_china_modifier
-						duration = 7300 
-					}
-				}
+			#custom_tooltip = jap_war_against_mandate_holder_tt
+			#tooltip = {
+			#	country_event = { id = flavor_jap.64 }
+			#}
+			#
+			#custom_tooltip = pol_alternatively_tt
+			#tooltip = {
+			#	add_country_modifier = {
+			#		name = jap_scramble_for_china_modifier
+			#		duration = 7300 
+			#	}
+			#}
+			#hidden_effect = {
+			#	if = {	
+			#		limit = { 
+			#			war_score_against = {
+			#				who = event_target:EmperorOfChina
+			#				value = 85 
+			#			}
+			#		}
+			#		country_event = { id = flavor_jap.64 }
+			#	}
+			#	else = {
+			#		add_country_modifier = {
+			#			name = jap_scramble_for_china_modifier
+			#			duration = 7300 
+			#		}
+			#	}
+			#}
+			add_country_modifier = {
+				name = jap_scramble_for_china_modifier
+				duration = 7300 
 			}
 		}
 	}
@@ -817,15 +821,22 @@ DOM_japanse_missions_2_b = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			north_china_region = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT 
+			#north_china_region = {
+			#	type = all
+			#	country_or_non_sovereign_subject_holds = ROOT 
+			#}
+			#south_china_region = {
+			#	type = all
+			#	country_or_non_sovereign_subject_holds = ROOT 
+			#}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				OR = {
+					region = north_china_region
+					region = south_china_region
+				}
+				value = 50
 			}
-			south_china_region = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT 
-			}
-			OR = { 
+			OR = {
 				total_development = 2000
 				NOT = { great_power_rank = 4 }
 			}
@@ -836,33 +847,33 @@ DOM_japanse_missions_2_b = {
 				duration = -1 
 			}
 			
-			if = {
-				limit = { 
-					is_emperor_of_china = yes 
-					has_dlc = "Mandate of Heaven" 
-				}
-				custom_tooltip = jap_enable_fabricating_trib_CB_tt
-				set_country_flag = jap_enable_fabricating_trib_CB_flag 
-				
-				add_country_modifier = {
-					name = jap_divine_aspirations_modifier
-					duration = -1 
-				}
-			}
-			else_if = {
-				limit = { 
-					is_emperor_of_china = no 
-					has_dlc = "Mandate of Heaven" 
-				}
-				custom_tooltip = jap_reward_if_EoC_tt
-				custom_tooltip = jap_enable_fabricating_trib_CB_tt
-				tooltip = {
-					add_country_modifier = {
-						name = jap_divine_aspirations_modifier
-						duration = -1 
-					}
-				}
-			}
+			#if = {
+			#	limit = { 
+			#		is_emperor_of_china = yes 
+			#		has_dlc = "Mandate of Heaven" 
+			#	}
+			#	custom_tooltip = jap_enable_fabricating_trib_CB_tt
+			#	set_country_flag = jap_enable_fabricating_trib_CB_flag 
+			#	
+			#	add_country_modifier = {
+			#		name = jap_divine_aspirations_modifier
+			#		duration = -1 
+			#	}
+			#}
+			#else_if = {
+			#	limit = { 
+			#		is_emperor_of_china = no 
+			#		has_dlc = "Mandate of Heaven" 
+			#	}
+			#	custom_tooltip = jap_reward_if_EoC_tt
+			#	custom_tooltip = jap_enable_fabricating_trib_CB_tt
+			#	tooltip = {
+			#		add_country_modifier = {
+			#			name = jap_divine_aspirations_modifier
+			#			duration = -1 
+			#		}
+			#	}
+			#}
 		}
 	}
 }
@@ -1523,7 +1534,7 @@ DOM_japanse_missions_3_a = {
 			if = {
 				limit = { ai = no }
 				OR = {
-					economic_ideas = 1
+					guild_ideas = 3
 					monthly_adm = 10 
 					national_focus = ADM 
 				}
@@ -1565,7 +1576,7 @@ DOM_japanse_missions_3_a = {
 			NOT = { inflation = 0.1 } 
 			years_of_income = 2 
 			OR = { 
-				full_idea_group = economic_ideas 
+				full_idea_group = guild_ideas 
 				monthly_adm = 12 
 				AND = {
 					estate_influence = {
@@ -1584,7 +1595,7 @@ DOM_japanse_missions_3_a = {
 		effect = {
 			add_country_modifier = {
 				name = growing_economy
-				duration = 9125
+				duration = 5475
 			}
 			
 			custom_tooltip = jap_ginza_districts_tt
@@ -1622,8 +1633,11 @@ DOM_japanse_missions_3_a = {
 		trigger = {
 			NOT = { corruption = 0.1 } 
 			num_of_owned_provinces_with = {
-				region = japan_region 
-				trade_goods = grain 
+				region = japan_region
+				OR = {
+					trade_goods = grain
+					trade_goods = ale
+				}
 				has_manufactory_trigger = yes 
 				value = 5 
 			}
@@ -1675,15 +1689,18 @@ DOM_japanse_missions_3_a = {
 		required_missions = {  }
 		position = 5
 		trigger = {
-			num_of_colonists = 1 
+			OR = {
+				num_of_colonists = 1
+				has_institution = new_world_i
+			}
 			num_of_light_ship = 20
 		}
 		effect = {
 			add_country_modifier = {
 				name = jap_new_world_exploration_modifier
-				duration = 7300
+				duration = 10950
 			}
-			create_explorer = { tradition = 60 }
+			create_explorer = { tradition = 75 }
 		}
 	}
 	
@@ -1698,7 +1715,7 @@ DOM_japanse_missions_3_a = {
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				region = north_china_region 
-				value = 25 
+				value = 20
 			}
 			if = {
 				limit = { is_emperor_of_china = yes } 
@@ -2575,7 +2592,7 @@ DOM_japanse_missions_4_d = {
 		}
 		trigger = {
 			absolutism = 50 
-			crown_land_share = 90 
+			crown_land_share = 75
 			if = {
 				limit = { has_dlc = "Leviathan" } 
 				1028 = {
@@ -2611,20 +2628,20 @@ DOM_japanse_missions_4_d = {
 				duration = 7300
 			}
 			add_navy_tradition = 10 
-			if = {
-				limit = { full_idea_group = naval_ideas has_dlc = "Golden Century" }
-				random_owned_province = {
-					limit = { has_port = yes } 
-					create_flagship = {
-						name = "O-Atakebune" 
-						type = heavy_ship 
-					}
-				}
-			}
-			else_if = { 
-				limit = { has_dlc = "Golden Century" } 
-				custom_tooltip = jap_flagship_if_naval_ideas_tt
-			}
+			#if = {
+			#	limit = { full_idea_group = naval_ideas has_dlc = "Golden Century" }
+			#	random_owned_province = {
+			#		limit = { has_port = yes } 
+			#		create_flagship = {
+			#			name = "O-Atakebune" 
+			#			type = heavy_ship 
+			#		}
+			#	}
+			#}
+			#else_if = { 
+			#	limit = { has_dlc = "Golden Century" } 
+			#	custom_tooltip = jap_flagship_if_naval_ideas_tt
+			#}
 		}
 	}
 	
@@ -2649,10 +2666,7 @@ DOM_japanse_missions_4_d = {
 					}
 				}
 			}
-			OR = { 
-				full_idea_group = naval_ideas 
-				full_idea_group = maritime_ideas 
-			}
+			navy_size = 150
 		}
 		effect = {
 			if = {
@@ -3424,7 +3438,7 @@ DOM_japanse_missions_5 = {
 				has_institution = manufactories
 				japan_region = {
 					type = all 
-					base_production = 6
+					base_production = 7
 				}
 			}
 		}
@@ -3500,7 +3514,7 @@ DOM_japanse_missions_5 = {
 		position = 8
 		trigger = {
 			OR = {
-				has_institution = industrialization
+				has_institution = manufactories
 				is_hegemon_of_type = economic_hegemon
 				monthly_income = 1000
 			}
