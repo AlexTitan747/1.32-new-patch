@@ -117,6 +117,15 @@ on_startup = {
 		remove_country_modifier = twilight_of_the_ottomans
 		remove_country_modifier = decline_of_the_ottomans
 	}
+	if = {
+		limit = {
+			exists = LNA
+			NOT = { is_year = 1445 }
+		}
+		LNA = {
+			add_rival = AVA
+		}
+	}
 	every_country = {
 		if = {
 			limit = {
