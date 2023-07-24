@@ -2856,16 +2856,6 @@ dom_cas_missions_4 = {
 			}
 			hidden_effect = {
 				if = {
-					limit = { 
-						NAV = { is_subject = no }
-					}
-					add_casus_belli = {
-						type = cb_vassalize_mission
-						months = 300
-						target = NAV
-					}
-				}
-				if = {
 					limit = { has_country_flag = cas_royalist_flag }
 					add_country_modifier = {
 						name = spa_royalists_victorious_modifier 
@@ -2889,10 +2879,16 @@ dom_cas_missions_4 = {
 						name = spa_victorious_infantes_modifier
 						duration = 5475
 					}
+					add_estate_loyalty_modifier = {
+						estate = estate_nobles
+						desc = est_val_infantes_victorious
+						loyalty = 15
+						duration = 9125
+					}
 					add_estate_influence_modifier = {
 						estate = estate_nobles
 						desc = est_val_infantes_victorious
-						influence = 20
+						influence = 15
 						duration = 9125
 						add = yes
 					}
