@@ -91,40 +91,7 @@ country_event = {
 	desc = "chinagov.desc2"
 	picture = BUDDHA_eventPicture
 
-	trigger = {
-		OR = {
-			tag = JNG 
-			tag = ZHJ
-			tag = FUA
-			tag = GDO
-			tag = GXI
-			tag = HNA
-			tag = JIX
-			tag = AUI
-			tag = SAN
-			tag = LNI
-			tag = HEN
-			tag = HEI
-			tag = SCH
-			tag = SXI
-			tag = YNA
-			tag = ALI
-			tag = GSU
-			tag = ORO
-			tag = SHU
-			tag = WEI
-			tag = WUU
-		}
-		total_development = 400
-		NOT = {
-			has_country_flag = chinagov_kingdom
-		}
-	}
-
-	mean_time_to_happen = {
-		months = 1
-	}
-	
+	is_triggered_only = yes
 	
 	option = {		
 		name = "chinagov.king2"
@@ -151,14 +118,12 @@ country_event = {
 			change_government = monarchy
 			add_government_reform = warring_kingdom_reform
 		}
-		hidden_effect = {
-			set_country_flag = chinagov_kingdom
-			remove_country_modifier = china_fractured
-			add_country_modifier = { 
-				name = china_semiconsolidated
-				duration = -1
-				#hidden = no
-			}
+		set_country_flag = chinagov_kingdom
+		remove_country_modifier = china_fractured
+		add_country_modifier = { 
+			name = china_semiconsolidated
+			duration = -1
+			#hidden = no
 		}
 	}
 option = {		
@@ -186,14 +151,12 @@ option = {
 			change_government_to_republic = yes
 			add_government_reform = chinese_trading_kingdom_reform
 		}
-		hidden_effect = {
-			set_country_flag = chinagov_kingdom
-			remove_country_modifier = china_fractured
-			add_country_modifier = { 
-				name = china_semiconsolidated
-				duration = -1
-				#hidden = no
-			}
+		set_country_flag = chinagov_kingdom
+		remove_country_modifier = china_fractured
+		add_country_modifier = { 
+			name = china_semiconsolidated
+			duration = -1
+			#hidden = no
 		}
 	}
 option = {		
@@ -221,14 +184,12 @@ option = {
 			remove_government_reform = chinese_monastic_state_reform
 			add_government_reform = chinese_harmonious_kingdom_reform
 		}
-		hidden_effect = {
-			set_country_flag = chinagov_kingdom
-			remove_country_modifier = china_fractured
-			add_country_modifier = { 
-				name = china_semiconsolidated
-				duration = -1
-				#hidden = no
-			}
+		set_country_flag = chinagov_kingdom
+		remove_country_modifier = china_fractured
+		add_country_modifier = { 
+			name = china_semiconsolidated
+			duration = -1
+			#hidden = no
 		}		
 	}
 }
