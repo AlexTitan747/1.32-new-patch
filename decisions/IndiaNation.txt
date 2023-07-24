@@ -4,13 +4,7 @@ country_decisions = {
 			color = { 23 223 234 }
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
-				was_never_end_game_tag_trigger = yes
 				NOT = { has_country_flag = formed_india_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
 				NOT = { exists = IDA }
 				NOT = { tag = RUS }
 				#NOT = { tag = TIM }
@@ -18,58 +12,38 @@ country_decisions = {
 				NOT = { tag = SLU }
 				is_colonial_nation = no
 				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
-				OR = {
 					culture_group = hindusthani 
 					culture_group = western_aryan
 					culture_group = eastern_aryan
 					culture_group = central_indic
 					culture_group = dravidian
 				}
-				
-				OR = {
-					ai = no
-					AND = {
-						ai = yes
-						num_of_cities = 10
-						adm_tech = 15
-					}
-				}
 			}
 			
 			provinces_to_highlight = {
 				OR = {
-				province_id = 541			# Vijanigar
-				province_id = 552			# Cuttack
-				province_id = 522			# Delhi
-				province_id = 563			# Gauda
-				province_id = 564			# dakha
-				province_id = 555			# Jaunpur
-				province_id = 1948			# Bidar
-				province_id = 2054 			# Ahmedabad
-				province_id = 507 			# Lahore
-				
-				}
-				
-				
-				AND = {
-					superregion = india_superregion
-					ROOT = {
-						NOT = {
-							num_of_owned_provinces_with = {
-								value = 150
-								superregion = india_superregion
-								is_core = root
+					province_id = 541			# Vijanigar
+					province_id = 552			# Cuttack
+					province_id = 522			# Delhi
+					province_id = 563			# Gauda
+					province_id = 564			# dakha
+					province_id = 555			# Jaunpur
+					province_id = 1948			# Bidar
+					province_id = 2054 			# Ahmedabad
+					province_id = 507 			# Lahore
+					AND = {
+						superregion = india_superregion
+						ROOT = {
+							NOT = {
+								num_of_owned_provinces_with = {
+									value = 150
+									superregion = india_superregion
+									is_core = root
+								}
 							}
 						}
 					}
 				}
-					
 				OR = {
 					NOT = { owned_by = ROOT }
 					NOT = { is_core = ROOT }
@@ -77,7 +51,6 @@ country_decisions = {
 			}
 			
 			allow = {
-				NOT = { exists = MRY }
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
 				owns_core_province = 541			# Vijanigar
@@ -93,13 +66,10 @@ country_decisions = {
 				num_of_owned_provinces_with = {
 					value = 150
 					superregion = india_superregion
-					is_core = root
-					
 				}
 			}
 			effect = {
 				change_tag = IDA
-				remove_non_electors_emperors_from_empire_effect = yes
 				if = {
 					limit = {
 						NOT = { government_rank = 3 }
@@ -121,8 +91,8 @@ country_decisions = {
 				
 				set_country_flag = formed_mauryan_flag
 				if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
+					limit = { has_custom_ideas = no }
+					country_event = { id = ideagroups.1 } #Swap Ideas
 				}
 			}
 			

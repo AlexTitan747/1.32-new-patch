@@ -4,61 +4,38 @@ country_decisions = {
 			color = { 23 223 234 }
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
-				was_never_end_game_tag_trigger = yes
 				NOT = { has_country_flag = formed_gujaran_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
 				NOT = { exists = GJP }
 				NOT = { tag = MRY }
-				#NOT = { tag = TIM }
 				NOT = { tag = CAK }
 				NOT = { tag = SND }
 				NOT = { tag = IDA }
 				is_colonial_nation = no
 				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
-				OR = {
 					culture_group = western_aryan
-				}
-				
-				OR = {
-					ai = no
-					AND = {
-						NOT = { exists = GJP }
-						num_of_cities = 10
-						
-					}
+					tag = MER
 				}
 			}
 			
 			provinces_to_highlight = {
 				OR = {
-				province_id = 4461			# Ujjain
-				province_id = 4454			# Porbandar
-				province_id = 2058			# Udaipur
-				province_id = 4465
-				AND = {
-					culture = malvi
-					region = west_india_region
-					ROOT = {
-						NOT = {
-							num_of_owned_provinces_with = {
-								value = 6
-								region = west_india_region
-								is_core = root
+					province_id = 4461			# Ujjain
+					province_id = 4454			# Porbandar
+					province_id = 2058			# Udaipur
+					province_id = 4465
+					AND = {
+						culture = malvi
+						region = west_india_region
+						ROOT = {
+							NOT = {
+								num_of_owned_provinces_with = {
+									value = 6
+									region = west_india_region
+									is_core = root
+								}
 							}
 						}
 					}
-				}
-				
 				}
 					
 				OR = {
@@ -68,31 +45,27 @@ country_decisions = {
 			}
 			
 			allow = {
-				
-				NOT = { exists = GJP }
+				adm_tech = 10
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
 				owns_core_province = 4461			# Ujjain
 				owns_core_province = 4454			# Porbandar
 				owns_core_province = 2058			# Udaipur
 				owns_core_province = 4465
-				
-				num_of_owned_provinces_with = {
-				value = 6
-				region = west_india_region
-				culture = malvi
-				is_core = root
+
+				development_in_provinces = {
+					value = 100
+					culture = malvi 
 				}
-				
 			}
 			effect = {
-				4461 = {	#Ujjain
-					move_capital_effect = yes
-				}
+				#4461 = {	#Ujjain
+				#	move_capital_effect = yes
+				#}
+				#set_capital = 4461 # Ujjain
 				change_tag = GJP
-				change_religion = hinduism
-				swap_non_generic_missions = yes
-				remove_non_electors_emperors_from_empire_effect = yes
+				#change_religion = hinduism
+				#swap_non_generic_missions = yes
 				if = {
 					limit = {
 						NOT = { government_rank = 2 }
@@ -104,11 +77,10 @@ country_decisions = {
 					name = centralization_modifier
 					duration = 3650
 				}
-				set_capital = 4461 # Ujjain
 				if = {
-                limit = { is_revolutionary = no }
-                change_government = monarchy
-            }
+            	    limit = { is_revolutionary = no }
+            	    change_government = monarchy
+            	}
 				hindusthan_region = {
 					limit = {
 						NOT = { owned_by = ROOT }
@@ -117,8 +89,8 @@ country_decisions = {
 				}
 				set_country_flag = formed_gujaran_flag
 				if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
+					limit = { has_custom_ideas = no }
+					country_event = { id = ideagroups.1 } #Swap Ideas
 				}
 			}
 			
