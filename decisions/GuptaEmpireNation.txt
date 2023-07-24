@@ -5,66 +5,28 @@ country_decisions = {
 			color = { 23 223 234 }
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
-				was_never_end_game_tag_trigger = yes
+				NOT = { exists = GUP }
 				NOT = { has_country_flag = formed_guptan_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
 				NOT = { exists = GUP }
 				NOT = { tag = MRY }
 				NOT = { tag = RUS }
-				#NOT = { tag = TIM }
 				NOT = { tag = PER }
 				NOT = { tag = IDA }
 				NOT = { tag = BAB }
 				is_colonial_nation = no
 				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
-				OR = {
 					culture_group = eastern_aryan
 					culture_group = central_indic
-				}
-				
-				OR = {
-					ai = no
-					AND = {
-						ai = yes
-						num_of_cities = 10
-						adm_tech = 12
-					}
 				}
 			}
 			
 			provinces_to_highlight = {
 				OR = {
-				province_id = 558			# Pataliputra
-				province_id = 561			# Bengal Delta
-				province_id = 563			# Gauda
-				province_id = 552			# Cuttack
-				province_id = 524			# Central Doab
-				
-				}
-				
-				AND = {
-					culture = bihari
-					region = hindusthan_region
-					ROOT = {
-						NOT = {
-							num_of_owned_provinces_with = {
-								value = 15
-								culture = bihari
-								region = hindusthan_region
-								is_core = root
-							}
-						}
-					}
+					province_id = 558			# Pataliputra
+					province_id = 561			# Bengal Delta
+					province_id = 563			# Gauda
+					province_id = 552			# Cuttack
+					province_id = 524			# Central Doab
 				}
 					
 				OR = {
@@ -74,8 +36,7 @@ country_decisions = {
 			}
 			
 			allow = {
-				adm_tech = 12
-				NOT = { exists = GUP }
+				adm_tech = 10
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
 				owns_core_province = 558			# Pataliputra
@@ -83,24 +44,21 @@ country_decisions = {
 				owns_core_province = 563			# Gauda
 				owns_core_province = 552			# Cuttack
 				owns_core_province = 524			# Central Doab
-				
-				num_of_owned_provinces_with = {
-				value = 15
-				region = hindusthan_region
-				culture = bihari
-				is_core = root
-				
-			}
-				
-			}
-			effect = {
-				558 = {	#Pataliputra
-					move_capital_effect = yes
+				development_in_provinces = {
+					value = 200
+					culture = bihari
 				}
+			}
+
+			effect = {
+				#558 = {	#Pataliputra
+				#	move_capital_effect = yes
+				#}
+				#set_capital = 558 # Pataliputra
 				change_tag = GUP
-				change_religion = hinduism
-				swap_non_generic_missions = yes
-				remove_non_electors_emperors_from_empire_effect = yes
+				#change_religion = hinduism
+				#swap_non_generic_missions = yes
+				#remove_non_electors_emperors_from_empire_effect = yes
 				
 				if = {
 					limit = {
@@ -113,17 +71,17 @@ country_decisions = {
 					name = centralization_modifier
 					duration = 3650
 				}
-				set_capital = 558 # Pataliputra
+				
 				if = {
-                limit = { is_revolutionary = no }
-                change_government = monarchy
-            }
-			if = {
-				limit = {
-					NOT = { primary_culture = bihari }
+            	    limit = { is_revolutionary = no }
+            	    change_government = monarchy
+            	}
+				if = {
+					limit = {
+						NOT = { primary_culture = bihari }
+					}
+					change_primary_culture = bihari
 				}
-				change_primary_culture = bihari
-			}
 				bengal_region = {
 					limit = {
 						NOT = { owned_by = ROOT }
@@ -136,17 +94,11 @@ country_decisions = {
 					}
 					add_permanent_claim = ROOT
 				}
-				west_india_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
 				
 				set_country_flag = formed_guptan_flag
 				if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
+					limit = { has_custom_ideas = no }
+					country_event = { id = ideagroups.1 } #Swap Ideas
 				}
 			}
 			

@@ -27,9 +27,12 @@ bng_slot_1 = {
 			}
 		}
 		trigger = {
-			orissa_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT	
+			num_of_owned_provinces_with = {
+				value = 5
+				OR = {
+					area = orissa_area
+					area = jharkhand_area
+				}
 			}
 		}
 		effect = {
@@ -37,6 +40,7 @@ bng_slot_1 = {
 				name = "bng_orissa_conquest"
 				duration = 7300
 			}
+			orissa_area = { add_perma_claim = yes }
 			jharkhand_area = {
 				limit = {
 					NOT = { is_permanent_claim = ROOT	}
