@@ -18,8 +18,8 @@ country_event = {
 		}
 		NOT = {
 			OR = {
-			has_country_modifier = tm_b_assimilation_encouraged
-			has_country_modifier =  tm_has_had_tbuildings1
+				has_country_modifier = tm_b_assimilation_encouraged
+				has_country_modifier =  tm_has_had_tbuildings1
 			}
 		}
 	}
@@ -71,17 +71,18 @@ country_event = {
 	trigger = {
 		has_country_flag = has_cultural_ministry
 		OR = {
-		has_estate_privilege = estate_nobles_supremacy_over_crown
-		has_estate_privilege = estate_brahmins_supremacy_over_crown
-		estate_influence = {
-			estate = estate_nobles
-			influence = 75
-		}
+			has_estate_privilege = estate_nobles_supremacy_over_crown
+			has_estate_privilege = estate_brahmins_supremacy_over_crown
+			estate_influence = {
+				estate = estate_nobles
+				influence = 75
+			}
 		}
 		NOT = {
 			has_country_modifier = tm_has_had_tbuildings2
 		}
 	}
+
 	mean_time_to_happen = {
 		months = 90
 	}
@@ -162,7 +163,7 @@ country_event = {
 	
 	
 	option = {		
-	name = "tbuildings.c1"
+		name = "tbuildings.c1"
 		add_country_modifier = {
 			name = tm_b_multicultrual_approach
 			duration = -1
@@ -182,7 +183,7 @@ country_event = {
 	}
 
 	option = {		
-	name = "tbuildings.c2"
+		name = "tbuildings.c2"
 		add_country_modifier = {
 			name = tm_b_multicultrual_approach_denied
 			duration = -1
@@ -264,8 +265,8 @@ country_event = {
 		}
 		NOT = {
 			OR = {
-			has_country_modifier = tm_b_assimilation_encouraged
-			has_country_modifier =  tm_has_had_tbuildings5
+				has_country_modifier = tm_b_integration_encouraged
+				has_country_modifier =  tm_has_had_tbuildings5
 			}
 		}
 	}
@@ -287,7 +288,7 @@ country_event = {
 	
 
 	option = {		
-	name = "tbuildings.e1"
+		name = "tbuildings.e1"
 		add_country_modifier = {
 			name = tm_b_integration_encouraged
 			duration = 3650
@@ -295,7 +296,7 @@ country_event = {
 	}
 
 	option = {		
-	name = "tbuildings.e2"
+		name = "tbuildings.e2"
 		add_dip_power = 75
 		hidden_effect = {
 			add_country_modifier = {
@@ -319,6 +320,7 @@ country_event = {
 		num_of_different_cultures_in_court = 3
 		NOT = {
 			has_country_modifier = tm_b_advisors_accepted
+			has_country_modifier = tm_has_had_tbuildings6
 			has_country_modifier = new_men
 		}
 	}
@@ -328,7 +330,7 @@ country_event = {
 	
 	
 	option = {		
-	name = "tbuildings.f1"
+		name = "tbuildings.f1"
 		add_country_modifier = {
 			name = tm_b_advisors_accepted
 			duration = 3650
@@ -336,9 +338,14 @@ country_event = {
 	}
 
 	option = {		
-	name = "tbuildings.f2"
+		name = "tbuildings.f2"
 		add_dip_power = 75
 		add_prestige = 20
+		add_country_modifier = {
+			name = tm_has_had_tbuildings6
+			duration = 3650
+			hidden = yes
+		}
 	}
 }
 
@@ -354,7 +361,7 @@ country_event = {
 		OR = {
 			has_estate_privilege = estate_nobles_supremacy_over_crown
 			has_estate_privilege = estate_brahmins_supremacy_over_crown
-			}
+		}
 		OR = {
 			has_estate_privilege = estate_nobles_strong_duchies
 			has_estate_privilege = estate_maratha_subject_rights
@@ -452,7 +459,7 @@ country_event = {
 			influence = 70
 		}
 		NOT = {
-			has_country_modifier = tm_has_had_tbuildings7
+			has_country_modifier = tm_has_had_tbuildings8
 		}
 	}
 	mean_time_to_happen = {

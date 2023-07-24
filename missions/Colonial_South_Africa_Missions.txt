@@ -171,7 +171,7 @@ colonial_SAF_slot_1 = { #Trade
 					power = 20
 					key = STRONG_MERCHANTS
 				}
-				add_trade_node_income = 100
+				add_trade_node_income = 50
 			}
 		}
 	}
@@ -452,7 +452,7 @@ colonial_SAF_slot_3 = { #Army
 
 		effect = {
 			add_years_of_owned_provinces_manpower = {
-				years = 3
+				years = 1
 				trigger = {
 					has_military_building = yes
 					colonial_region = colonial_saf
@@ -768,7 +768,11 @@ colonial_SAF_slot_5 = { #Gold
 	saf_gold_2 = {
 		icon = chater_the_voc
 		required_missions = { saf_gold_1 }
-		provinces_to_highlight = {	}
+		provinces_to_highlight = {
+			trade_goods = gold
+			owned_by = ROOT
+			NOT = { base_production = 10 }
+		}
 
 		trigger = {
 			any_owned_province = {
@@ -779,8 +783,8 @@ colonial_SAF_slot_5 = { #Gold
 
 		effect = {
 			define_advisor = {
-				type = master_of_mint
-				skill = 1
+				type = natural_scientist
+				skill = 2
 				discount = yes
 				culture = ROOT
 				religion = ROOT
@@ -791,7 +795,11 @@ colonial_SAF_slot_5 = { #Gold
 	saf_gold_3 = {
 		icon = mission_establish_mint_towns
 		required_missions = { saf_gold_2 }
-		provinces_to_highlight = {	}
+		provinces_to_highlight = {
+			trade_goods = gold
+			owned_by = ROOT
+			NOT = { base_production = 12 }
+		}
 
 		trigger = {
 			any_owned_province = {
@@ -802,7 +810,7 @@ colonial_SAF_slot_5 = { #Gold
 
 		effect = {
 			add_years_of_owned_provinces_production_income = {
-				years = 4
+				years = 2
 				trigger = {
 					trade_goods = gold
 				}

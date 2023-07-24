@@ -69,18 +69,18 @@ country_decisions = {
 		}
 		effect = {
 			if = {
-			limit = { NOT = { has_country_flag = chinagov_kingdom } }
-			country_event = { id = chinagov.2 }
+				limit = { NOT = { has_country_flag = chinagov_kingdom } }
+				country_event = { id = chinagov.2 }
 			}
 			
 			change_tag = WUU
-			swap_non_generic_missions = yes
-			if = {
-				limit = {
-					government = monarchy
-				}
-				add_government_reform = warring_kingdom_reform
-			}
+			additional_missions_scripted_effect = yes
+			#if = {
+			#	limit = {
+			#		government = monarchy
+			#	}
+			#	add_government_reform = warring_kingdom_reform
+			#}
 			if = {
 				limit = {
 					NOT = { government_rank = 2 }

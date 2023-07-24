@@ -34,12 +34,17 @@ land_of_the_christian_sun_mechanic = {
 			effect = {
 				if = {
 					limit = { religion = catholic }
-					random_owned_province = {
-						limit = { 
-							has_cardinal = no 
-							religion = catholic 
+					random_list = {
+						20 = {
+							random_owned_province = {
+								limit = { 
+									has_cardinal = no 
+									religion = catholic 
+								}
+								add_cardinal = yes 
+							}
 						}
-						add_cardinal = yes 
+						80 = { add_legitimacy = 10 }						
 					}
 					add_papal_influence = 10 
 				}
@@ -47,7 +52,7 @@ land_of_the_christian_sun_mechanic = {
 					add_church_power = 25 
 					add_fervor = 20 
 					add_patriarch_authority = 0.1
-					add_stability_or_adm_power = yes 
+					add_adm_power = 50
 				}
 			}
 			cooldown_years = 10
@@ -74,7 +79,7 @@ land_of_the_christian_sun_mechanic = {
 						limit = {
 							num_of_units_in_province = {
 								who = ROOT 
-								amount = 50 
+								amount = 50
 							}
 						}
 						add_base_tax = 1 

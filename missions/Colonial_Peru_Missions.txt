@@ -26,7 +26,6 @@ colonial_PRU_slot_1 = {
 				AND = {
 					NOT = { gold = 1 }
 					any_owned_province = {
-						NOT = { province_id = 1177 }
 						base_production = 6
 					}
 				}
@@ -56,7 +55,6 @@ colonial_PRU_slot_1 = {
 				random_owned_province = {
 					limit = {
 						is_city = yes
-						NOT = { province_id = 1177 }
 						base_production = 6
 					}
 					change_trade_goods = gold
@@ -72,7 +70,11 @@ colonial_PRU_slot_1 = {
 	pru_gold_2 = {
 		icon = chater_the_voc
 		required_missions = { pru_gold_1 }
-		provinces_to_highlight = {	}
+		provinces_to_highlight = {
+			trade_goods = gold
+			owned_by = ROOT
+			NOT = { base_production = 10 }
+		}
 
 		trigger = {
 			any_owned_province = {
@@ -83,8 +85,8 @@ colonial_PRU_slot_1 = {
 
 		effect = {
 			define_advisor = {
-				type = master_of_mint
-				skill = 1
+				type = natural_scientist
+				skill = 2
 				discount = yes
 				culture = ROOT
 				religion = ROOT
@@ -95,7 +97,11 @@ colonial_PRU_slot_1 = {
 	pru_gold_3 = {
 		icon = mission_establish_mint_towns
 		required_missions = { pru_gold_2 }
-		provinces_to_highlight = {	}
+		provinces_to_highlight = {
+			trade_goods = gold
+			owned_by = ROOT
+			NOT = { base_production = 12 }
+		}
 
 		trigger = {
 			any_owned_province = {
@@ -106,7 +112,7 @@ colonial_PRU_slot_1 = {
 
 		effect = {
 			add_years_of_owned_provinces_production_income = {
-				years = 4
+				years = 2
 				trigger = {
 					trade_goods = gold
 				}
@@ -617,7 +623,7 @@ colonial_PRU_slot_4 = {
 
 		trigger = {
 			num_of_owned_provinces_with = {
-				value = 40
+				value = 30
 				colonial_region = colonial_peru
 			}
 		}
@@ -655,10 +661,9 @@ colonial_PRU_slot_4 = {
 		}
 
 		trigger = {
-			colonial_peru = {
-				type = all
-				owned_by = ROOT
-				is_city = yes
+			num_of_owned_provinces_with = {
+				value = 40
+				colonial_region = colonial_peru
 			}
 		}
 
@@ -769,7 +774,7 @@ colonial_PRU_slot_5 = {
 			num_of_owned_provinces_with = {
 				value = 10
 				NOT = { num_free_building_slots = 1 }
-				development = 20
+				development = 12
 			}
 		}
 

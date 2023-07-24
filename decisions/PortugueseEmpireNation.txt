@@ -49,9 +49,9 @@ country_decisions = {
 			}
 			if = {
 				limit = {
-					NOT = { government_rank = 3 }
+					NOT = { government_rank = 2 }
 				}
-				set_government_rank = 3
+				set_government_rank = 2
 			}
 			add_prestige = 25
 			add_country_modifier = {
@@ -126,16 +126,12 @@ country_decisions = {
 		potential = {
 			tag = POR
 			NOT = { has_country_flag = formed_portuguese_flag }
-			ai = no
 			NOT = { exists = PBR }
 			is_colonial_nation = no
 		}
 		
 		provinces_to_highlight = {
-			OR = {
-				region = kongo_region
-				region = south_africa_region
-			}
+			continent = africa
 			OR = {
 				NOT = { owned_by = ROOT }
 				is_city = no
@@ -145,16 +141,12 @@ country_decisions = {
 		allow = {
 			is_free_or_tributary_trigger = yes
 			is_at_war = no
-			OR = {
-				AND = {
-					1177 = { 
-						is_city = yes
-						country_or_non_sovereign_subject_holds = ROOT
-					}
-				}
-				1170 = {
-					country_or_non_sovereign_subject_holds = ROOT
-				}
+			1177 = { 
+				is_city = yes
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			1170 = {
+				owned_by = ROOT
 			}
 			
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
@@ -186,104 +178,26 @@ country_decisions = {
 				duration = 3650
 			}
 
-			hidden_effect = {
-				if = { limit = { owns_core_province = 1177	}
-					change_primary_culture = khoisan
-					set_capital = 1177
-					set_country_flag = tm_can_build_cape_port
-					1177 = {
-						change_culture = khoisan
-						add_great_project = {
-							type = cape_port_monument
-							instant = yes
-						}
-						change_trade_goods = gold
-						add_center_of_trade_level = 1
-					}
+			set_capital = 1170
+
+			colonial_saf = {
+				limit = { owned_by = ROOT }
+				change_culture = ROOT
+			}
+			
+			set_country_flag = tm_can_build_cape_port
+			1177 = {
+				add_great_project = {
+					type = cape_port_monument
+					instant = yes
 				}
-				else_if = {	limit = { owns_core_province = 1170	}
-					change_primary_culture = kongolese
-					set_capital = 1170
-					1170 = {
-						change_culture = kongolese
-						add_great_project_tier = {
-							type = mbanza_kongo
-							tier = 1
-						}
-						add_base_production = 5
-						add_center_of_trade_level = 1
-					}
-				}
-				else_if = {
-					limit = {
-						any_owned_province = {
-							colonial_region = colonial_saf
-						}
-					}
-					random_owned_province = {
-						limit = {
-							colonial_region = colonial_saf
-						}
-						move_capital_effect = yes
-						change_culture = khoisan
-					}
-				}
-				else = {
-					random_owned_province = {
-						limit = {
-							region = kongo_region
-						}
-						move_capital_effect = yes
-						change_culture = kongolese
-					}
-				}
+				change_trade_goods = gold
+				add_center_of_trade_level = 1
 			}
 
 			set_country_flag = formed_portuguese_flag
 			country_event = { id = ideagroups.1 } #Swap Ideas
 			new_mission_tree_scripted_effect = yes
-
-			custom_tooltip = tm_por_owns_cape_for_pbr_tt
-			if = { limit = { owns_core_province = 1177 }
-				custom_tooltip = BONUS_REWARD_YES
-			}
-			else = { custom_tooltip = BONUS_REWARD_NO }
-			tooltip = {
-				change_primary_culture = khoisan
-				set_capital = 1177
-				1177 = {
-					change_culture = khoisan
-					change_trade_goods = gold
-					add_center_of_trade_level = 1
-					add_great_project = {
-						type = cape_port_monument
-						instant = yes
-					}
-				}
-			}
-
-			custom_tooltip = mission_alternatively_tt
-			custom_tooltip = tm_por_owns_kongo_for_pbr_tt
-			if = { limit = { 
-					owns_core_province = 1170
-					NOT = { owns_core_province = 1177 }
-				}
-				custom_tooltip = BONUS_REWARD_YES
-			}
-			else = { custom_tooltip = BONUS_REWARD_NO }
-			tooltip = {
-				change_primary_culture = kongolese
-				set_capital = 1170
-				1170 = {
-					change_culture = kongolese
-					add_base_production = 5
-					add_center_of_trade_level = 1
-					add_great_project_tier = {
-						type = mbanza_kongo
-						tier = 2
-					}
-				}
-			}
 		}
 	}
 }

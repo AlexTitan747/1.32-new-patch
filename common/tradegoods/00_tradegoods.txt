@@ -628,6 +628,11 @@ copper = {
 			NOT = { region = east_siberia_region }
 			NOT = { region = central_africa_region }
 			NOT = { colonial_region = colonial_saf }
+			NOT = { 
+				FROM = {
+					mission_completed = mw_colonisation_2_5 
+				}
+			}
 		}
 		modifier = {
 			factor = 0
@@ -692,6 +697,22 @@ copper = {
 				mission_completed = can_colonisation_2_5
 			}
 			colonial_region = colonial_canada
+		}
+		modifier = {
+			factor = 2
+			colonial_region = colonial_midwest
+			FROM = {
+				mission_completed = mw_colonisation_2_5
+			}
+			has_terrain = grasslands
+		}
+		modifier = {
+			factor = 0
+			colonial_region = colonial_midwest
+			FROM = {
+				mission_completed = mw_colonisation_2_5
+			}
+			NOT = { has_terrain = grasslands }
 		}
 	}
 }
@@ -761,16 +782,6 @@ gold = {
 			}
 		}
 		modifier = {
-			factor = 1.5
-			is_random_new_world = yes
-			has_terrain = mountain
-			continent = new_world #Always in RNW
-		}
-		modifier = {
-			factor = 1.5
-			normal_or_historical_nations = no
-		}
-		modifier = {
 			factor = 3.5
 			region = peru_region
 		}
@@ -814,6 +825,7 @@ gold = {
 					colonial_parent = { has_country_flag = por_bandeirantes_flag }
 				}
 			}
+			colonial_region = colonial_brazil
 		}
 		modifier = {
 			factor = 2
@@ -890,6 +902,11 @@ iron = {
 					mission_completed = lou_colonisation_2_5 
 				}
 			}
+			NOT = { 
+				FROM = {
+					mission_completed = mw_colonisation_2_5 
+				}
+			}
 			is_random_new_world = no
 		}
 		modifier = {
@@ -937,6 +954,7 @@ iron = {
 		}
 		modifier = {
 			factor = 0
+			colonial_region = colonial_louisiana
 			FROM = {
 				mission_completed = lou_colonisation_2_5
 			}
@@ -955,6 +973,22 @@ iron = {
 				mission_completed = can_colonisation_2_5
 			}
 			colonial_region = colonial_canada
+		}
+		modifier = {
+			factor = 2
+			colonial_region = colonial_midwest
+			FROM = {
+				mission_completed = mw_colonisation_2_5
+			}
+			has_terrain = grasslands
+		}
+		modifier = {
+			factor = 0
+			colonial_region = colonial_midwest
+			FROM = {
+				mission_completed = mw_colonisation_2_5
+			}
+			NOT = { has_terrain = grasslands }
 		}
 	}
 }
@@ -1698,6 +1732,13 @@ cocoa = {
 				mission_completed = col_colonisation_2_5
 			}
 			colonial_region = colonial_colombia
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				mission_completed = cam_colonisation_2_5
+			}
+			colonial_region = colonial_cam
 		}
 	}
 }
@@ -2579,11 +2620,11 @@ tin = {
 			}
 		}
 		modifier = {
-			factor = 2
+			factor = 1.25
 			continent = north_america
 		}
 		modifier = {
-			factor = 1.5
+			factor = 0.75
 			continent = south_america
 		}
 		modifier = {
@@ -3026,10 +3067,10 @@ olives = {
 			colonial_region = colonial_louisiana
 			FROM = {
 				mission_completed = lou_colonisation_2_5
-				OR = {
-					has_increased_trade_goods_discovery = { trade_goods = cloves }
-					colonial_parent = { has_increased_trade_goods_discovery = { trade_goods = cloves } }
-				}
+				#OR = {
+				#	has_increased_trade_goods_discovery = { trade_goods = cloves }
+				#	colonial_parent = { has_increased_trade_goods_discovery = { trade_goods = cloves } }
+				#}
 			}
 		}
 	}

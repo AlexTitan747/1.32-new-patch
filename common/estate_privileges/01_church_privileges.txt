@@ -336,7 +336,7 @@ estate_church_new_world_mission = {
 	penalties = {
 	}
 	benefits = {
-		native_assimilation = 0.5
+		native_assimilation = 0.25
 	}
 	on_granted = {
 		if = {
@@ -861,7 +861,7 @@ estate_church_enforced_one_faith = {
 
 estate_church_administrative_privileges = {
 	icon = privilege_land_rights
-	land_share = 5
+	#land_share = 5
 	#max_absolutism = -5
 	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	loyalty = 0.1
@@ -875,12 +875,12 @@ estate_church_administrative_privileges = {
 	on_granted = {
 	}
 	modifier_by_land_ownership = {
-		tolerance_own = 4
+		tolerance_own = 8
 	}
 	penalties = {
 	}
 	benefits = {
-		war_exhaustion = -0.02
+		war_exhaustion = -0.2
 	}
 	mechanics = {
 		#exempt_from_seize_land
@@ -1868,8 +1868,8 @@ estate_church_religious_diplomats = {
 	}
 	benefits = {
 		diplomatic_reputation = 1
-		relation_with_same_religion = 10
-		reverse_relation_with_same_religion = 10
+		relation_with_same_religion = 20
+		reverse_relation_with_same_religion = 20
 	}
 	conditional_modifier = {
 		trigger = {
@@ -2411,9 +2411,13 @@ estate_church_japanese_christian_communities_privilege = {
 	penalties = {
 	}
 	benefits = {
-		tolerance_heathen = 1 
-		tolerance_heretic = 1 
-		tolerance_own = 1 
+		tolerance_heathen = 2
+		tolerance_of_heathens_capacity = 1
+		tolerance_heretic = 2
+		tolerance_of_heretics_capacity = 1
+		tolerance_own = 2
+		stability_cost_modifier = -0.3
+		missionary_maintenance_cost = -0.1
 	}
 	ai_will_do = {
 		factor = 1

@@ -83,8 +83,8 @@ colonial_BRZ_slot_1 = {
 
 		effect = {
 			define_advisor = {
-				type = master_of_mint
-				skill = 1
+				type = natural_scientist
+				skill = 2
 				discount = yes
 				culture = ROOT
 				religion = ROOT
@@ -427,7 +427,7 @@ colonial_BRZ_slot_3 = {
 
 		effect = {
 			add_years_of_owned_provinces_manpower = {
-				years = 4
+				years = 1
 				trigger = {
 					has_military_building = yes
 					colonial_region = colonial_brazil
@@ -618,13 +618,16 @@ colonial_BRZ_slot_4 = {
 		required_missions = { brz_colonisation_3 }
 		provinces_to_highlight = { 
 			colonial_region = colonial_brazil
-			NOT = { owned_by = ROOT }
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_city = yes }
+			}
 		}
 
 		trigger = {
-			colonial_brazil = {
-				type = all
-				owned_by = ROOT
+			num_of_owned_provinces_with = {
+				value = 50
+				colonial_region = colonial_brazil
 				is_city = yes
 			}
 		}

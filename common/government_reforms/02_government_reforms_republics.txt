@@ -1362,8 +1362,8 @@ crown_colony_government = {
 		global_autonomy = -0.05
 		recover_army_morale_speed = 0.05
 		manpower_recovery_speed = 0.05
+		stability_cost_modifier = -0.1
 		embracement_cost = -0.1
-		governing_capacity = 100
 		max_absolutism = 40
 	}
 	effect = {
@@ -1393,6 +1393,9 @@ crown_colony_government = {
 
 	custom_attributes = {
 		locked_government_type = yes
+		enables_estate_church = yes
+		enables_estate_nobles = yes
+		enables_estate_burghers = yes
 	}
 	duration = 4
 }
@@ -1417,14 +1420,18 @@ private_enterprise_colony_government = {
 	legacy_equivalent = colonial_government_legacy
 	modifiers = {
 		global_ship_trade_power = 0.2
-		embracement_cost = -0.1
 		merchants = 1
-		production_efficiency = 0.05
+		production_efficiency = 0.10
+		build_time = -0.1
+		embracement_cost = -0.1
 		max_absolutism = 40
 	}
 
 	custom_attributes = {
 		locked_government_type = yes
+		enables_estate_church = yes
+		enables_estate_nobles = yes
+		enables_estate_burghers = yes
 	}
 	effect = {
 		hidden_effect = {
@@ -1472,16 +1479,17 @@ self_governing_colony_government = {
 	}
 	legacy_equivalent = colonial_government_legacy
 	modifiers = {
-		build_cost = -0.1
-		build_time = -0.1
-		great_project_upgrade_cost = -0.1
-		embracement_cost = -0.1
+		global_ship_recruit_speed = -0.1
+		global_ship_repair = 0.1
+		blockade_efficiency = 0.1
 		state_maintenance_modifier = -0.25
+		embracement_cost = -0.1
 		max_absolutism = 40
 	}
 
 	custom_attributes = {
 		locked_government_type = yes
+		enables_estate_church = yes
 		enables_estate_nobles = yes
 		enables_estate_burghers = yes
 	}

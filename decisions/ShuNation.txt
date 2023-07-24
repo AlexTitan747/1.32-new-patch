@@ -39,7 +39,7 @@ country_decisions = {
 					
 				province_id = 679
 				province_id = 661
-				province_id = 700
+				province_id = 2171
 				province_id = 2133
 			}
 			OR = {
@@ -71,18 +71,18 @@ country_decisions = {
 		}
 		effect = {
 			if = {
-			limit = { NOT = { has_country_flag = chinagov_kingdom } }
-			country_event = { id = chinagov.2 }
+				limit = { NOT = { has_country_flag = chinagov_kingdom } }
+				country_event = { id = chinagov.2 }
 			}
 			
 			change_tag = SHU
-			swap_non_generic_missions = yes
-			if = {
-				limit = {
-					government = monarchy
-				}
-				add_government_reform = warring_kingdom_reform
-			}
+			additional_missions_scripted_effect = yes
+			#if = {
+			#	limit = {
+			#		government = monarchy
+			#	}
+			#	add_government_reform = warring_kingdom_reform
+			#}
 			if = {
 				limit = {
 					NOT = { government_rank = 2 }

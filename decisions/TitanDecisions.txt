@@ -84,7 +84,9 @@ country_decisions = {
 				tooltip = PR_cannoneer_expert_decision
 				NOT = { has_country_flag = cannoneer_expert }
 			}
-			always = no
+			hidden_trigger = {
+				always = no
+			}
 		}
 		effect = {
 		}
@@ -543,7 +545,7 @@ country_decisions = {
 		}
 	}
 	
-	# Remove Edict
+	# Deactivate Cav Mercs
 	tm_cav_mercs_deactive = {
 		potential = {
 			has_country_flag = cav_mercs_activated
@@ -581,10 +583,11 @@ country_decisions = {
 			has_estate_loan = no
 		}
 		allow = {
-			ai = no
+			#ai = no
 			#NOT = {
 			#	num_of_loans = 1
 			#}
+			always = yes
 		}
 		effect = {
 			remove_estate_privilege= estate_burghers_indebted_to_burghers
@@ -607,6 +610,13 @@ country_decisions = {
 			dip_tech = 14
 		}
 		allow = {
+			any_owned_province = {
+				trade_goods = cloth
+				OR = {
+					continent = europe
+					continent = africa
+				}
+			}
 			treasury = 300
 			custom_trigger_tooltip = {
 				tooltip = tm_silk_import_opinion_tt
@@ -641,4 +651,22 @@ country_decisions = {
 			factor = 0
 		}
 	}
-}		
+
+	tm_add_provinces_to_parliment = {
+		potential = {
+			has_parliament = yes
+		}
+		allow = {
+			always = yes
+		}
+		effect = {
+			every_owned_province = {
+				limit = {
+					is_state = yes
+					has_seat_in_parliament = no
+				}
+			}
+			set_seat_in_parliament = yes
+		}
+	}
+}

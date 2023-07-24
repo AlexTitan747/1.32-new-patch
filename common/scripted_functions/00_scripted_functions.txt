@@ -97,6 +97,9 @@ can_make_state = {
 							is_subject_of = ROOT
 						}
 						is_permanent_claim = ROOT
+						owner = {
+							overlord_of = ROOT
+						}
 					}
 				}
 				region_for_scope_province = {
@@ -167,6 +170,16 @@ can_burn_colony = {
 }
 
 can_colonize_province = {
+	condition = {
+		tooltip = "colonial_expansion_limit_tooltip"
+        potential = {
+            FROM = { is_colonial_nation = yes }
+			FROM = { ai = yes }
+        }
+        allow = {
+            FROM = { capital_scope = { colonial_region = ROOT } }
+        }
+	}
 }
 
 can_colonize_province_siberian_frontier = {
