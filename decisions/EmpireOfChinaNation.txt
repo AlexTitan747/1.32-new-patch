@@ -43,6 +43,9 @@ country_decisions = {
 				province_id = 700
 				province_id = 691
 				province_id = 671
+				province_id = 699
+				province_id = 679
+				province_id = 662
 			}
 			OR = {
 				NOT = { owned_by = ROOT }
@@ -65,25 +68,24 @@ country_decisions = {
 			owns_core_province = 671
 			
 			OR= {
-			owns_core_province = 699
-			owns_core_province = 679
-			owns_core_province = 662
+				owns_core_province = 699
+				owns_core_province = 679
+				owns_core_province = 662
 			}
 		}
 		effect = {
 			change_tag = EPC
-			swap_non_generic_missions = yes
 			
 			if = {
-			limit = { NOT = { has_country_flag = chinagov_empire } }
-			country_event = { id = chinagov.3 }
+				limit = { NOT = { has_country_flag = chinagov_empire } }
+				country_event = { id = chinagov.3 }
 			}
-			if = {
-				limit = {
-					government = monarchy
-				}
-				add_government_reform = chinese_empire_reform
-			}
+			#if = {
+			#	limit = {
+			#		government = monarchy
+			#	}
+			#	add_government_reform = chinese_empire_reform
+			#}
 			if = {
 				limit = {
 					NOT = { government_rank = 3 }

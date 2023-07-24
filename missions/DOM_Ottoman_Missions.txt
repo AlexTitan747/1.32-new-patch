@@ -4955,20 +4955,10 @@ tur_persian_conquest = {
 		position = 13
 		provinces_to_highlight = {
 			OR = {
-				province_id = 504
-				province_id = 225
-				province_id = 151
-				province_id = 410
 				province_id = 385
+				province_id = 410
+				province_id = 379
 				province_id = 384
-				province_id = 124
-				province_id = 125
-				province_id = 425
-				province_id = 382
-				province_id = 454
-				province_id = 347
-				province_id = 388
-				province_id = 400
 			}
 			OR = {
 				NOT = { country_or_non_sovereign_subject_holds = ROOT }
@@ -4987,47 +4977,13 @@ tur_persian_conquest = {
 			}
 		}
 		trigger = {
-			OR = {
-				mission_completed = tur_rework_the_devshirme_system
-				mission_completed = tur_develop_the_devshime_system_further
-				if = {
-					limit = { has_country_flag = tur_non_muslim_path_flag }
-					mission_completed = tur_spread_the_true_faith
-				}
-			}
-			if = {
-				limit = {
-					religion_group = muslim
-				}
-				religion_group = muslim
-				if = {
-					limit = { has_dlc = "Star and Crescent" }
-					has_country_modifier = unified_islam
-				}
-				else = {
-					owns_or_vassal_of = 504
-					owns_or_vassal_of = 225
-					owns_or_vassal_of = 151
-					owns_or_vassal_of = 410
-					owns_or_vassal_of = 385
-					owns_or_vassal_of = 384
-					owns_or_vassal_of = 124
-					owns_or_vassal_of = 125
-					owns_or_vassal_of = 425
-					owns_or_vassal_of = 382
-					owns_or_vassal_of = 454
-					owns_or_vassal_of = 347
-					owns_or_vassal_of = 388
-					owns_or_vassal_of = 400
-				}
-				custom_trigger_tooltip = {
-					tooltip = tur_any_islamic_nation_higher_dev_or_army_tt
-					NOT = {
-						any_country = {
-							religion_group = muslim
-							army_size = ROOT 
-							total_development = ROOT 
-						}
+			custom_trigger_tooltip = {
+				tooltip = tur_any_islamic_nation_higher_dev_or_army_tt
+				NOT = {
+					any_country = {
+						religion_group = ROOT
+						army_size = ROOT 
+						total_development = ROOT 
 					}
 				}
 			}
@@ -5054,36 +5010,40 @@ tur_persian_conquest = {
 			}
 		}
 		effect = {
-			if = {
-				limit = {
-					religion_group = muslim
-				}
-				country_event_with_insight = {
-					id = flavor_tur.255
-					insight_tooltip = INSIGHT_JUST_TOOLTIP
-					effect_tooltip = "
-					if = {
-						limit = { has_dlc = \"Mandate of Heaven\" }
-						custom_tooltip = tur_enable_second_golden_era_decision_tt
-						hidden_effect = {
-							set_country_flag = tur_enable_second_golden_era_decision
-						}
-					}
-					else = {
-						add_country_modifier = {
-							name = tur_second_islamic_golden_era_modifier
-							duration = 18250
-						}
-					}
-					custom_tooltip = flavor_tur.255.a.tt"
-				}
-			}
-			else = {
-				add_adm_power = 200
-				add_dip_power = 200
-				add_mil_power = 200
-				add_splendor = 800
-			}
+			#if = {
+			#	limit = {
+			#		religion_group = muslim
+			#	}
+			#	country_event_with_insight = {
+			#		id = flavor_tur.255
+			#		insight_tooltip = INSIGHT_JUST_TOOLTIP
+			#		effect_tooltip = "
+			#		if = {
+			#			limit = { has_dlc = \"Mandate of Heaven\" }
+			#			custom_tooltip = tur_enable_second_golden_era_decision_tt
+			#			hidden_effect = {
+			#				set_country_flag = tur_enable_second_golden_era_decision
+			#			}
+			#		}
+			#		else = {
+			#			add_country_modifier = {
+			#				name = tur_second_islamic_golden_era_modifier
+			#				duration = 18250
+			#			}
+			#		}
+			#		custom_tooltip = flavor_tur.255.a.tt"
+			#	}
+			#}
+			#else = {
+			#	add_adm_power = 200
+			#	add_dip_power = 200
+			#	add_mil_power = 200
+			#	add_splendor = 800
+			#}
+			add_adm_power = 200
+			add_dip_power = 200
+			add_mil_power = 200
+			add_splendor = 800
 		}
 
 		ai_weight = {

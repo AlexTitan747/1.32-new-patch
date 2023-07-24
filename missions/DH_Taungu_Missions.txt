@@ -340,6 +340,10 @@ tau_slot_2 = {
 				}
 				add_permanent_claim = ROOT
 			}
+			add_country_modifier = {
+				name = ava_pagan_conversions
+				duration = 3650
+			}
 		}
 	}
 	
@@ -364,6 +368,7 @@ tau_slot_2 = {
 				type = all
 				owned_by = ROOT
 			}
+			religious_unity = 1
 		}
 		effect = {
 			add_legitimacy = 20
@@ -537,6 +542,10 @@ tau_slot_2 = {
 			}
 			add_country_modifier = {
 				name = "chakravarti"
+				duration = -1
+			}
+			add_country_modifier = {
+				name = "ava_cavalry_specialists"
 				duration = -1
 			}
 		}
@@ -718,42 +727,56 @@ tau_slot_4 = {
 	}
 	has_country_shield = yes
 	
-	tau_conquer_arakan = {
-		icon = mission_invade_arakan
+	tau_conquer_manipur = {
+		icon = mission_end_manipuri_raids
 		required_missions = { tau_conquer_pegu }
 		position = 2
 		provinces_to_highlight = {
-			area = arakan_area
+			province_id = 2041
+			province_id = 2398
+			province_id = 580
+			province_id = 4393
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		trigger = {
-			arakan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT	
+			2041 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			2398 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			580 = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			4393 = {
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		effect = {
-			add_country_modifier = {
-				name = "tau_arakan_trade"
-				duration = 7300
-			}
-			tripura_area = {
+			naga_hills_area = {
 				limit = {
 					NOT = { is_permanent_claim = ROOT	}
 					NOT = { is_core = ROOT	}
 				}
 				add_permanent_claim = ROOT
 			}
-			west_bengal_area = {
+			assam_area = {
 				limit = {
 					NOT = { is_permanent_claim = ROOT	}
 					NOT = { is_core = ROOT	}
 				}
 				add_permanent_claim = ROOT
 			}
-			east_bengal_area = {
+			north_bengal_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			gaur_area = {
 				limit = {
 					NOT = { is_permanent_claim = ROOT	}
 					NOT = { is_core = ROOT	}
@@ -762,9 +785,10 @@ tau_slot_4 = {
 			}
 		}
 	}
+
 	tau_conquer_bengal = {
 		icon = mission_conquer_bengal_tau
-		required_missions = { tau_conquer_manipur tau_conquer_arakan }
+		required_missions = { tau_conquer_manipur }
 		position = 3
 		provinces_to_highlight = {
 			OR = {
@@ -914,44 +938,42 @@ tau_slot_5 = {
 	}
 	has_country_shield = yes
 	
-	tau_conquer_manipur = {
-		icon = mission_end_manipuri_raids
-		required_missions = {  }
+	tau_conquer_arakan = {
+		icon = mission_invade_arakan
+		required_missions = { tau_conquer_pegu }
 		position = 2
 		provinces_to_highlight = {
-			province_id = 2041
+			area = arakan_area
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		trigger = {
-			2041 = {
-				country_or_non_sovereign_subject_holds = ROOT
+			arakan_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT	
 			}
 		}
 		effect = {
-			naga_hills_area = {
+			add_country_modifier = {
+				name = "tau_arakan_trade"
+				duration = 7300
+			}
+			tripura_area = {
 				limit = {
 					NOT = { is_permanent_claim = ROOT	}
 					NOT = { is_core = ROOT	}
 				}
 				add_permanent_claim = ROOT
 			}
-			assam_area = {
+			west_bengal_area = {
 				limit = {
 					NOT = { is_permanent_claim = ROOT	}
 					NOT = { is_core = ROOT	}
 				}
 				add_permanent_claim = ROOT
 			}
-			north_bengal_area = {
-				limit = {
-					NOT = { is_permanent_claim = ROOT	}
-					NOT = { is_core = ROOT	}
-				}
-				add_permanent_claim = ROOT
-			}
-			gaur_area = {
+			east_bengal_area = {
 				limit = {
 					NOT = { is_permanent_claim = ROOT	}
 					NOT = { is_core = ROOT	}
@@ -960,6 +982,7 @@ tau_slot_5 = {
 			}
 		}
 	}
+	
 	tau_great_mandala = {
 		icon = mission_a_great_mandala
 		required_missions = { tau_universal_ruler }
