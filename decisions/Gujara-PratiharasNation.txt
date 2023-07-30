@@ -23,6 +23,7 @@ country_decisions = {
 					province_id = 4454			# Porbandar
 					province_id = 2058			# Udaipur
 					province_id = 4465
+					province_id = 517
 					AND = {
 						culture = malvi
 						region = west_india_region
@@ -45,17 +46,20 @@ country_decisions = {
 			}
 			
 			allow = {
-				adm_tech = 10
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
 				owns_core_province = 4461			# Ujjain
 				owns_core_province = 4454			# Porbandar
 				owns_core_province = 2058			# Udaipur
 				owns_core_province = 4465
+				owns_core_province = 517
 
-				development_in_provinces = {
-					value = 100
-					culture = malvi 
+				owns_all_provinces = {
+					OR = {
+						culture = saurashtri
+						culture = gujarati
+						culture = malvi
+					}
 				}
 			}
 			effect = {
