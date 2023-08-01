@@ -4,7 +4,7 @@ united_cantons_reform = {
 	modifiers = {
 		governing_capacity = -100
 		possible_policy = 1
-		mercenary_manpower = 0.3
+		mercenary_manpower = 0.2
 	}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 40
@@ -1870,44 +1870,6 @@ amphibious_specialization_reform = {
 	}
 }
 
-mercenary_leadership_reform = {
-	icon = "war_economy"
-	allow_normal_conversion = yes
-	potential = {
-		OR = {
-			NOT = { has_dlc = "Domination" }
-			NOT = { full_idea_group = mercenary_ideas }
-			NOT = { primary_culture = swiss }
-		}
-	}
-	trigger = {
-		if = {
-			limit = { has_modifier_locking_military_tier = yes }
-			OR = {
-				has_reform = mercenary_leadership_reform
-				has_not_modifier_locking_military_tier = yes
-			}
-		}
-	}
-	modifiers = {
-		mercenary_cost = -0.15
-		mercenary_manpower = 0.05
-	}
-	
-	ai = {
-		factor = 1
-		modifier = {
-			factor = 0
-			NOT = {
-				has_global_modifier_value = {
-					which = mercenary_discipline
-					value = 0.05
-				}
-			}
-		}
-	}
-}
-
 doppelsoldner_reform = {
 	icon = "mercenaries"
 	allow_normal_conversion = yes
@@ -1926,7 +1888,7 @@ doppelsoldner_reform = {
 		}
 	}
 	modifiers = {
-		mercenary_cost = -0.20
+		mercenary_cost = -0.10
 		mercenary_manpower = 0.10
 		merc_leader_army_tradition = 0.25
 	}
