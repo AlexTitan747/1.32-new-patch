@@ -54,7 +54,6 @@ filipino_missions_1 = {
 				province_id = 657
 				province_id = 658
 				province_id = 4348
-				province_id = 2699
 			}
 		}
 		
@@ -80,20 +79,13 @@ filipino_missions_1 = {
 				}
 				NOT = { native_size = 1 }
 			}
-			2699 = {
-				num_of_units_in_province = {
-					who = ROOT
-					amount = 2
-				}
-				NOT = { native_size = 1 }
-			}
+			
 		}
 			
 		effect = { 
 			seize_empty_province_effect = { province = 657 }
 			seize_empty_province_effect = { province = 658 }
 			seize_empty_province_effect = { province = 4348 }
-			seize_empty_province_effect = { province = 2699 }
 		}
 	}
 	
@@ -118,6 +110,7 @@ filipino_missions_1 = {
 			4352 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
+			stability = 1
 		}
 		
 		effect = {
@@ -136,6 +129,7 @@ filipino_missions_1 = {
 			OR = {
 				province_id = 654
 				province_id = 4353
+				province_id = 2699
 			}
 		}
 		
@@ -154,7 +148,7 @@ filipino_missions_1 = {
 				}
 				NOT = { native_size = 1 }
 			}
-			4356 = {
+			2699 = {
 				num_of_units_in_province = {
 					who = ROOT
 					amount = 2
@@ -165,6 +159,7 @@ filipino_missions_1 = {
 		
 		effect = { 
 			seize_empty_province_effect = { province = 654 }
+			seize_empty_province_effect = { province = 2699 }
 			seize_empty_province_effect = { province = 4353 }
 			seize_empty_province_effect = { province = 4356 }
 		}
@@ -201,7 +196,7 @@ filipino_missions_1 = {
 		}
 	}
 	
-	filipino_conquer_the_south = {
+	filipino_workshops = {
 		icon = mission_reclaim_lost_territory
 		position = 6
 		required_missions = { filipino_conquer_mindanao }
@@ -214,26 +209,18 @@ filipino_missions_1 = {
 		}
 		
 		trigger = {
-			4354 = {
-				num_of_units_in_province = {
-					who = ROOT
-					amount = 2
-				}
-				NOT = { native_size = 1 }
-			}
+
 			4355 = {
-				num_of_units_in_province = {
-					who = ROOT
-					amount = 2
-				}
-				NOT = { native_size = 1 }
+				country_or_non_sovereign_subject_holds = ROOT
+				has_production_building_trigger = yes
 			}
 			2701 = {
-				num_of_units_in_province = {
-					who = ROOT
-					amount = 2
-				}
-				NOT = { native_size = 1 }
+				country_or_non_sovereign_subject_holds = ROOT
+				has_production_building_trigger = yes
+			}
+			4354 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				has_production_building_trigger = yes
 			}
 		}
 		
@@ -241,6 +228,7 @@ filipino_missions_1 = {
 			seize_empty_province_effect = { province = 4354 }
 			seize_empty_province_effect = { province = 4355 }
 			seize_empty_province_effect = { province = 2701 }
+			add_treasury = 350
 		}
 	}
 }
