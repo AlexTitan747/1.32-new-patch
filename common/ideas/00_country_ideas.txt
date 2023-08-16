@@ -839,7 +839,7 @@ NED_ideas = {
 		development_cost = -0.05
 	}
 	instructie_voor_de_admiraliteiten = {
-		mercenary_manpower = 0.5
+		mercenary_manpower = 0.4
 		allowed_marine_fraction = 0.15
 	}
 	embrace_humanism = {
@@ -866,7 +866,10 @@ FRA_ideas = {
 	}	
 
 	trigger = {
-		tag = FRA
+		OR = {
+			tag = FRA
+			has_country_flag = tm_aqi_getting_french_ideas_flag
+		}
 		if = {
 			limit = { has_dlc = "Emperor" }
 			is_revolution_target = no 
@@ -1982,7 +1985,7 @@ BUR_Ideas = {
 		land_maintenance_modifier = -0.1
 	}
 	bur_estates_general = {
-		mercenary_manpower = 0.5
+		mercenary_manpower = 0.4
 	}
 	reform_of_feudal_army = {
 		discipline = 0.05
@@ -2630,7 +2633,7 @@ VIJ_ideas = {
 		global_trade_power = 0.10
 	}
 	arab_horses = {
-		cavalry_power = 0.05
+		movement_speed = 0.05
 	}
 	harsh_penal_code = {
 		stability_cost_modifier = -0.1
@@ -3917,7 +3920,7 @@ SWI_ideas = {
 	
 	swiss_mercenaries = {
 		mercenary_discipline = 0.05
-		mercenary_manpower = 0.3
+		mercenary_manpower = 0.2
 	}
 	swiss_tolerance = {
 		tolerance_heretic = 2
@@ -4187,7 +4190,7 @@ KNI_ideas = {
 
 KON_ideas = {
 	start = {
-		trade_efficiency = 0.1
+		discipline = 0.05
 		land_attrition = -0.20
 	}
 
@@ -4210,22 +4213,23 @@ KON_ideas = {
 	election_of_manikongos = {
 		heir_chance = 0.5
 	}
-	imported_european_weaponry = {
-		mil_tech_cost_modifier  = -0.1
+	triangle_trade = {
+		global_prov_trade_power_modifier = 0.1
+		infantry_power = 0.1
 	}
 	diplomacy_with_european_monarchs = {
 		diplomatic_reputation = 1
 		envoy_travel_time = -0.25
 	}
-	triangle_trade = {
-		global_prov_trade_power_modifier = 0.1
-		infantry_power = 0.05
+	imported_european_weaponry = {
+		mil_tech_cost_modifier  = -0.1
+		fire_damage = 0.1
 	}
 	foreign_demand_for_slaves = {
 		production_efficiency = 0.10
 	}
 	defend_against_the_colonists = {
-		discipline = 0.05
+		trade_efficiency = 0.1
 	}
 }
 
@@ -13259,8 +13263,8 @@ TKG_ideas = {
 
 MAS_ideas = {
 	start = {
-		leader_naval_manuever = 1
-		sailor_maintenance_modifer = -0.1
+		leader_naval_shock = 1
+		infantry_power = 0.05
 	}
 	bonus = {
 		leader_naval_fire = 1
@@ -13276,19 +13280,19 @@ MAS_ideas = {
 		idea_cost = -0.1
 	}
 	mas_legacy_of_panai = {
-		naval_morale = 0.15
+		naval_morale = 0.075
 	}
 	mas_riches_of_the_visayas = {
-		development_cost = -0.1
+		development_cost = -0.05
 	}
 	mas_masters_of_maritime_warfare = {
-		leader_naval_shock = 1
+		leader_naval_manuever = 1
 	}
 	mas_articles_of_the_confederation = {
 		prestige = 1
 	}
 	mas_kinaduatan = {
-		stability_cost_modifier = -0.1
+		land_morale = 0.05
 	}
 	mas_expand_the_shipbuilding_sector = {
 		ship_durability = 0.05
@@ -14708,37 +14712,38 @@ NAG_ideas = {
 }
 
 MER_ideas = {
-	start = {	
-		infantry_power = 0.1
+	start = {
+		infantry_fire = 0.2
 		infantry_cost = -0.2
 	}
 	bonus = {
-		war_exhaustion = -0.03		
+		infantry_power = 0.1
 	}
 	trigger = {
 		tag = MER
 	}
 	free = yes
 	
+	mer_reorganized_rajput_regiments = {
+		stability_cost_modifier = -0.15
+	}
 	mer_rajput_heartland = {
-		army_tradition_decay = -0.01
+		can_recruit_rajputs = yes
+		allowed_rajput_fraction = 0.1
 	}
 	mer_victory_tower = {
-		prestige = 1
+		province_trade_power_modifier = 0.1
 	}
 	mer_kumbhalgarh = {
 		defensiveness = 0.15
 	}
 	mer_city_of_lakes = {
-		development_cost = -0.1
+		production_efficiency = 0.1
 	}
 	mer_recall_purbias = {
 		global_manpower_modifier = 0.15
 	}
 	mer_firearm_drilling = {
-		fire_damage = 0.1
-	}
-	mer_reorganized_rajput_regiments = {
 		discipline = 0.05
 	}
 }
@@ -14750,7 +14755,7 @@ BNG_ideas = {
 	}
 	
 	bonus = {
-		backrow_artillery_damage = 0.15
+		backrow_artillery_damage = 0.1
 	}
 	
 	trigger = {
@@ -14765,7 +14770,7 @@ BNG_ideas = {
 		army_tradition = 0.5
 	}
 	bng_clearing_the_delta = {
-		development_cost = -0.05
+		development_cost = -0.025
 	}
 	bng_attract_sufis = {
 		idea_cost = -0.1
@@ -14777,7 +14782,7 @@ BNG_ideas = {
 		global_tax_modifier = 0.1
 	}
 	bng_bengali_industrialization = {
-		global_trade_goods_size_modifier = 0.1
+		global_trade_goods_size_modifier = 0.075
 	}
 }
 

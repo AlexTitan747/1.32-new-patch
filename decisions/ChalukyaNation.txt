@@ -4,13 +4,7 @@ country_decisions = {
 			color = { 23 223 234 }
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
-				was_never_end_game_tag_trigger = yes
 				NOT = { has_country_flag = formed_chalukya_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
 				NOT = { exists = CAK }
 				NOT = { tag = MRY }
 				#NOT = { tag = TIM }
@@ -18,50 +12,32 @@ country_decisions = {
 				NOT = { tag = IDA }
 				is_colonial_nation = no
 				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
-				OR = {
 					primary_culture = gujarati
 					primary_culture = kannada
 					primary_culture = marathi
-				}
-				
-				OR = {
-					ai = no
-					AND = {
-						NOT = { exists = CAK }
-						num_of_cities = 10
-						adm_tech = 8
-					}
 				}
 			}
 			
 			provinces_to_highlight = {
 				OR = {
-				province_id = 541			# Vijayanagar
-				province_id = 4512			# Bharuch
-				province_id = 531			# North Kanara
-				AND = {
-					culture = marathi
-					region = deccan_region
-					ROOT = {
-						NOT = {
-							num_of_owned_provinces_with = {
-								value = 10 
-								culture = marathi
-								region = deccan_region
-								is_core = root
+					province_id = 541			# Vijayanagar
+					#province_id = 4512			# Bharuch
+					province_id = 531			# North Kanara
+					AND = {
+						culture = marathi
+						region = deccan_region
+						ROOT = {
+							NOT = {
+								num_of_owned_provinces_with = {
+									value = 10 
+									culture = marathi
+									region = deccan_region
+									is_core = root
+								}
 							}
 						}
 					}
 				}
-				
-				}
-				
 				OR = {
 					NOT = { owned_by = ROOT }
 					NOT = { is_core = ROOT }
@@ -70,32 +46,29 @@ country_decisions = {
 			
 			allow = {
 				adm_tech = 7
-				NOT = { exists = CAK }
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
 				owns_core_province = 541			# Vijayanagar
-				owns_core_province = 4512			# Bharuch
+				#owns_core_province = 4512			# Bharuch
 				owns_core_province = 531			# North Kanara
 				
 				num_of_owned_provinces_with = {
-				value = 10
-				region = deccan_region
-				culture = marathi
-				is_core = root
-				
-			}
-				
-			}
-			effect = {
-				541 = {	#Vijayanagar
-					move_capital_effect = yes
+					value = 10
+					region = deccan_region
+					culture = marathi
+					is_core = root
 				}
+			}
+
+			effect = {
+				#541 = {	#Vijayanagar
+				#	move_capital_effect = yes
+				#}
+				#set_capital = 541 # Vijayanagar
 				change_tag = CAK
-				change_religion = hinduism
-				set_ruler_religion = hinduism
-				set_heir_religion = hinduism
-				swap_non_generic_missions = yes
-				remove_non_electors_emperors_from_empire_effect = yes
+				#change_religion = hinduism
+				#set_ruler_religion = hinduism
+				#set_heir_religion = hinduism
 				if = {
 					limit = {
 						NOT = { government_rank = 2 }
@@ -107,17 +80,16 @@ country_decisions = {
 					name = centralization_modifier
 					duration = 3650
 				}
-				set_capital = 541 # Vijayanagar
 				if = {
-                limit = { is_revolutionary = no }
-                change_government = monarchy
-            }
-			if = {
-				limit = {
-					NOT = { primary_culture = kannada }
+            	    limit = { is_revolutionary = no }
+            	    change_government = monarchy
+            	}
+				if = {
+					limit = {
+						NOT = { primary_culture = kannada }
+					}
+					change_primary_culture = kannada
 				}
-				change_primary_culture = kannada
-			}
 				deccan_region = {
 					limit = {
 						NOT = { owned_by = ROOT }
@@ -150,10 +122,9 @@ country_decisions = {
 				}
 				set_country_flag = formed_chalukya_flag
 				if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
+					limit = { has_custom_ideas = no }
+					country_event = { id = ideagroups.1 } #Swap Ideas
 				}
 			}
-			
 		}
 	}

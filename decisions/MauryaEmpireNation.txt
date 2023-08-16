@@ -4,80 +4,52 @@ country_decisions = {
 			color = { 23 223 234 }
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
-				was_never_end_game_tag_trigger = yes
 				NOT = { has_country_flag = formed_mauryan_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
 				NOT = { exists = MRY }
 				NOT = { tag = KUS }
 				NOT = { tag = RUS }
-				#NOT = { tag = TIM }
 				NOT = { tag = PER }
 				NOT = { tag = IDA }
 				NOT = { tag = GUP }
 				is_colonial_nation = no
-				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
 				OR = {
 					culture_group = hindusthani # not nepal culture?
 					culture_group = western_aryan
 					culture_group = central_indic
 					culture_group = dravidian
 				}
-				
-				OR = {
-					ai = no
-					AND = {
-						ai = yes
-						num_of_cities = 10
-						adm_tech = 15
-					}
-				}
 			}
 			
 			provinces_to_highlight = {
 				OR = {
-				province_id = 558			# Pataliputra
-				province_id = 515			# Girnir
-				province_id = 522			# Delhi
-				province_id = 506			# Multan
-				province_id = 510			# Sirhind
-				
-				}
-				
-				AND = {
-					region = hindusthan_region
-					ROOT = {
-						NOT = {
-							num_of_owned_provinces_with = {
-								value = 30
-								region = hindusthan_region
-								is_core = root
+					province_id = 558			# Pataliputra
+					province_id = 515			# Girnir
+					province_id = 522			# Delhi
+					province_id = 506			# Multan
+					province_id = 510			# Sirhind
+					AND = {
+						region = hindusthan_region
+						ROOT = {
+							NOT = {
+								num_of_owned_provinces_with = {
+									value = 30
+									region = hindusthan_region
+								}
+							}
+						}
+					}
+					AND = {
+						region = west_india_region
+						ROOT = {
+							NOT = {
+								num_of_owned_provinces_with = {
+									value = 20
+									region = west_india_region
+								}
 							}
 						}
 					}
 				}
-				AND = {
-					region = west_india_region
-					ROOT = {
-						NOT = {
-							num_of_owned_provinces_with = {
-								value = 20
-								region = west_india_region
-								is_core = root
-							}
-						}
-					}
-				}
-					
 				OR = {
 					NOT = { owned_by = ROOT }
 					NOT = { is_core = ROOT }
@@ -95,16 +67,12 @@ country_decisions = {
 				owns_core_province = 510			# Sirhind
 				
 				num_of_owned_provinces_with = {
-				value = 30
-				region = hindusthan_region
-				is_core = root
-				
+					value = 30
+					region = hindusthan_region
 				}
 				num_of_owned_provinces_with = {
-				value = 20
-				region = west_india_region
-				is_core = root
-				
+					value = 20
+					region = west_india_region
 				}
 				
 			}
@@ -113,12 +81,12 @@ country_decisions = {
 					move_capital_effect = yes
 					change_religion = buddhism
 				}
+				set_capital = 558 # Pataliputra
 				change_tag = MRY
 				change_religion = buddhism
 				set_ruler_religion = buddhism
 				set_heir_religion = buddhism
 				add_stability = 1
-				remove_non_electors_emperors_from_empire_effect = yes
 				if = {
 					limit = {
 						NOT = { government_rank = 3 }
@@ -134,23 +102,16 @@ country_decisions = {
 					name = return_of_the_true_faith
 					duration = 7300
 				}
-				set_capital = 558 # Pataliputra
 				if = {
-                limit = { is_revolutionary = no }
-                change_government = monarchy
-            }
-			if = {
-				limit = {
-					NOT = { primary_culture = rajput }
-				}
-				change_primary_culture = rajput
-				add_dip_power = 200
-			}
-				bengal_region = {
+            	    limit = { is_revolutionary = no }
+            	    change_government = monarchy
+            	}
+				if = {
 					limit = {
-						NOT = { owned_by = ROOT }
+						NOT = { primary_culture = rajput }
 					}
-					add_permanent_claim = ROOT
+					change_primary_culture = rajput
+					add_dip_power = 200
 				}
 				hindusthan_region = {
 					limit = {
@@ -173,8 +134,8 @@ country_decisions = {
 				
 				set_country_flag = formed_mauryan_flag
 				if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
+					limit = { has_custom_ideas = no }
+					country_event = { id = ideagroups.1 } #Swap Ideas
 				}
 			}
 			
