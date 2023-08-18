@@ -308,6 +308,33 @@ allianceaction = {
 			always = no
 		}
 	}
+	condition = {
+		tooltip = titan_tooltip_many_player_alliances_allies
+		potential = {
+			OR = {
+				calc_true_if = {
+					all_ally = {
+						ai = no
+					}
+					amount = 2
+				}
+				FROM = {
+					calc_true_if = {
+						all_ally = {
+							ai = no
+						}
+						amount = 2
+					}
+				}
+			}
+			FROM = {
+				ai = no
+			}
+		}
+		allow = {
+			always = no
+		}
+	}
 }
 
 enforce_peace = {
