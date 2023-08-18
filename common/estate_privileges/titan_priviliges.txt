@@ -56,6 +56,11 @@ estate_burghers_mountain_development = {
 	influence = 0.1
 	is_valid = {
 		mission_completed = tm_emp_swi_production_centres
+		OR = {
+			tag = SWI
+			was_tag = SWI
+			tag = CAU
+		}
 	}
 	can_select = {
 		mission_completed = tm_emp_swi_production_centres
@@ -67,21 +72,15 @@ estate_burghers_mountain_development = {
 	}
 	on_granted = {
 		custom_tooltip = swiss_development_mechanic
-	}
-	is_valid = {
-		NOT = { has_estate = estate_vaisyas }
-		OR = {
-			tag = SWI
-			was_tag = SWI
-			tag = CAU
-		}
-	}
-	on_granted_province = {
-		if = {
-			limit = { has_terrain = mountain }
-			add_province_modifier = {
-				name = estate_burghers_mountain_development_mod
-				duration = -1
+		hidden_effect = {
+			every_owned_province = {
+				limit = {
+					has_terrain = mountain
+				}
+				add_province_modifier = {
+					name = estate_burghers_mountain_development_mod
+					duration = -1
+				}
 			}
 		}
 	}
