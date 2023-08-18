@@ -4,52 +4,28 @@ country_decisions = {
 			color = { 23 223 234 }
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
-				was_never_end_game_tag_trigger = yes
 				NOT = { has_country_flag = formed_transcaucasia_flag }
-				OR = {
-					ai = no
-					is_playing_custom_nation = no
-				}
-				NOT = { tag = MOS }
-				NOT = { tag = RUS }
 				#NOT = { tag = TIM }
 				NOT = { tag = PER }
-				NOT = { tag = TUR }
 				NOT = { tag = COS }
 				NOT = { tag = BAB }
 				NOT = { exists = CAU }
 				is_colonial_nation = no
 				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
-				OR = {
 					culture_group = caucasian
 					primary_culture = azerbaijani
-				}
-				
-				OR = {
-					ai = no
-					AND = {
-						NOT = { exists = CAU }
-						num_of_cities = 10
-					}
 				}
 			}
 			
 			provinces_to_highlight = {
 				OR = {
-				province_id = 423			# Tbilisi
-				province_id = 462			# Odishi
-				province_id = 421			# Shirvan
-				province_id = 4303			# Oltu
-				province_id = 2199			# tarki
-				province_id = 416			# bitlis
-				province_id = 4296			# tabriz
+					province_id = 423			# Tbilisi
+					province_id = 462			# Odishi
+					province_id = 421			# Shirvan
+					province_id = 4303			# Oltu
+					province_id = 2199			# tarki
+					province_id = 416			# bitlis
+					province_id = 4296			# tabriz
 				}
 					
 				OR = {
@@ -73,7 +49,6 @@ country_decisions = {
 			}
 			effect = {
 				change_tag = CAU
-				remove_non_electors_emperors_from_empire_effect = yes
 				if = {
 					limit = {
 						NOT = { government_rank = 2 }
@@ -84,13 +59,6 @@ country_decisions = {
 				add_country_modifier = {
 					name = centralization_modifier
 					duration = 3650
-				}
-				if = {
-					limit = {
-						NOT = { government = monarchy }
-						is_revolutionary = no
-					}
-					
 				}
 				caucasia_region = {
 					limit = {
@@ -104,7 +72,6 @@ country_decisions = {
 				country_event = { id = ideagroups.1 } #Swap Ideas
 				}
 				#swap_non_generic_missions = yes
-				custom_tooltip = prevents_forming_arabia_tt
 			}
 			
 		}
