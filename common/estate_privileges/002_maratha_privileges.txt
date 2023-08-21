@@ -1100,13 +1100,15 @@ estate_maratha_development_of_marathi_lands = {
 	on_granted_province = {
 		if = {
 			limit = {
-				OR = {
-					culture_group = western_aryan
-					culture_group = dravidian
-					culture = sinhala
+				NOT = {
+					OR = {
+						culture_group = western_aryan
+						culture_group = dravidian
+						culture = sinhala
+					}
+					NOT = { culture = rajput }
+					NOT = { culture = malvi }
 				}
-				NOT = { culture = rajput }
-				NOT = { culture = malvi }
 			}
 			add_province_modifier = {
 				name = estate_maratha_development_of_marathi_lands_mod
