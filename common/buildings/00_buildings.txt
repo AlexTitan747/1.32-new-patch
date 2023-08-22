@@ -3967,6 +3967,26 @@ dirt_path = {
 		allowed_num_of_buildings = 1
 	}
 
+	on_built = {
+		if = {
+			limit = {
+				FROM = {
+					has_estate_privilege = estate_nomadic_aristocracy_development_of_roads
+				}
+			}
+			add_province_modifier = {
+				name = estate_nomadic_aristocracy_development_of_roads_mod
+				duration = -1
+			}
+		}
+	}
+	on_destroyed = {
+		if = {
+			limit = { has_province_modifier = estate_nomadic_aristocracy_development_of_roads_mod }
+			remove_province_modifier = estate_nomadic_aristocracy_development_of_roads_mod
+		}
+	}
+
 	ai_will_do = {
 		factor = 25
 	}
@@ -3981,6 +4001,26 @@ road = {
 		local_friendly_movement_speed = 0.10
 		local_institution_spread = 0.15
 		allowed_num_of_buildings = 1
+	}
+
+	on_built = {
+		if = {
+			limit = {
+				FROM = {
+					has_estate_privilege = estate_nomadic_aristocracy_development_of_roads
+				}
+			}
+			add_province_modifier = {
+				name = estate_nomadic_aristocracy_development_of_roads_mod
+				duration = -1
+			}
+		}
+	}
+	on_destroyed = {
+		if = {
+			limit = { has_province_modifier = estate_nomadic_aristocracy_development_of_roads_mod }
+			remove_province_modifier = estate_nomadic_aristocracy_development_of_roads_mod
+		}
 	}
 
 	ai_will_do = {
@@ -4000,12 +4040,32 @@ highway = {
 		allowed_num_of_buildings = 1
 	}
 
+	on_built = {
+		if = {
+			limit = {
+				FROM = {
+					has_estate_privilege = estate_nomadic_aristocracy_development_of_roads
+				}
+			}
+			add_province_modifier = {
+				name = estate_nomadic_aristocracy_development_of_roads_mod
+				duration = -1
+			}
+		}
+	}
+	on_destroyed = {
+		if = {
+			limit = { has_province_modifier = estate_nomadic_aristocracy_development_of_roads_mod }
+			remove_province_modifier = estate_nomadic_aristocracy_development_of_roads_mod
+		}
+	}
+
 	ai_will_do = {
 		factor = 25
 	} 
 }
 
-###### TITAN NATIONAL WONDERS ######
+###### TITAN NATIONAL Buildings ######
 
 imperial_tax_office = {
 	cost = 800

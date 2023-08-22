@@ -2106,6 +2106,98 @@ on_province_owner_change_estate_privileges_effect = {
 			}
 		}
 	}
+	if = {
+		limit = {
+			owner = {
+				has_estate_privilege = sedentary_subjects_development_of_cities
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					province_has_center_of_trade_of_level = 1
+					has_river_estuary_trigger = yes
+				}
+			}
+			add_province_modifier = {
+				name = sedentary_subjects_development_of_cities_mod
+				duration = -1
+			}
+		}
+		else = {
+			if = {
+				limit = { has_province_modifier = sedentary_subjects_development_of_cities_mod }
+				remove_province_modifier = sedentary_subjects_development_of_cities_mod
+			}
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				has_estate_privilege = estate_nomadic_aristocracy_development_of_roads
+			}
+		}
+		if = {
+			limit = {
+				has_road_building = yes
+			}
+			add_province_modifier = {
+				name = estate_nomadic_aristocracy_development_of_roads_mod
+				duration = -1
+			}
+		}
+		else = {
+			if = {
+				limit = { has_province_modifier = estate_nomadic_aristocracy_development_of_roads_mod }
+				remove_province_modifier = estate_nomadic_aristocracy_development_of_roads_mod
+			}
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				has_estate_privilege = estate_mamluks_develop_the_nile
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					OR = {
+						province_id = 362
+						province_id = 363
+						province_id = 2316
+						province_id = 361
+						province_id = 359
+						province_id = 2317
+						province_id = 2319
+						province_id = 4320
+						province_id = 360
+						province_id = 4319
+						province_id = 1231
+						province_id = 1234
+						province_id = 2322
+						province_id = 1228
+						province_id = 5178
+						province_id = 5177
+						province_id = 5179
+						province_id = 2798
+						province_id = 1222
+						province_id = 2799
+						province_id = 1217
+					}
+				}
+			}
+			add_province_modifier = {
+				name = estate_mamluks_develop_the_nile_mod
+				duration = -1
+			}
+		}
+		else = {
+			if = {
+				limit = { has_province_modifier = estate_mamluks_develop_the_nile_mod }
+				remove_province_modifier = estate_mamluks_develop_the_nile_mod
+			}
+		}
 }
 
 on_province_tax_building_built_estate_privileges_effect = {
