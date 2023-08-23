@@ -466,7 +466,7 @@ country_event = {
 	
 	option = {		
 		name = "twarofroses.104a"
-		add_years_of_income = -1	
+		add_years_of_income = -1.5	
 	}
 
 	option = {		
@@ -514,17 +514,27 @@ country_event = {
 	desc = "twarofroses.desc201"
 	picture = WAR_OF_THE_ROSES_eventPicture
 
-	is_triggered_only = yes	
+	trigger = {
+		at_war = yes
+		has_disaster = war_of_the_roses
+	}
+
+	mean_time_to_happen = {
+		days = 720
+	}
 	
 	option = {		
 		name = "twarofroses.201a"
-
-		
+		add_army_tradition = -25
+		add_army_professionalism = -10
 	}
 
 	option = {		
 		name = "twarofroses.201b"
-
+		add_country_modifier = {
+			name = lacking_quality
+			duration = 1825
+		}
 		
 	}
 }
@@ -536,17 +546,27 @@ country_event = {
 	desc = "twarofroses.desc202"
 	picture = WAR_OF_THE_ROSES_eventPicture
 
-	is_triggered_only = yes	
+	trigger = {
+		at_war = yes
+		has_disaster = war_of_the_roses
+	}
+
+	mean_time_to_happen = {
+		days = 720
+	}	
 	
 	option = {		
 		name = "twarofroses.202a"
-
+		add_manpower = -5000
 		
 	}
 
 	option = {		
 		name = "twarofroses.202b"
-
+		add_country_modifier = {
+			name = men_refuse_to_serve
+			duration = 1825
+		}
 		
 	}
 }
