@@ -340,3 +340,213 @@ option = {
 	}
 }
 }
+
+#start aftermath
+country_event = {
+	id = 	twarofroses.100
+	title = "twarofroses.100"
+	desc = "twarofroses.desc100"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	
+	option = {		
+		name = "twarofroses.100"
+
+		hidden_effect = {
+		add_country_modifier = {
+			name = aftermath_of_war_of_roses
+			duration = 3650
+		}
+		}
+	}
+}
+
+#agitators unearthed
+country_event = {
+	id = 	twarofroses.101
+	title = "twarofroses.101"
+	desc = "twarofroses.desc101"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	
+	option = {		
+		name = "twarofroses.101a"
+
+		spawn_rebels = {
+			type = particularist_rebels
+			size = 2
+			leader = rebel_preacher
+		}
+	}
+	option = {		
+		name = "twarofroses.101b"
+		add_years_of_income = 1
+		random = {
+			chance = 10
+			spawn_rebels = {
+				type = particularist_rebels
+				size = 2
+				leader = rebel_preacher
+			}
+		}
+	}
+}
+
+#general rebels
+country_event = {
+	id = 	twarofroses.102
+	title = "twarofroses.102"
+	desc = "twarofroses.desc102"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	
+	option = {		
+		name = "twarofroses.102a"
+		spawn_rebels = {
+			type = noble_rebels
+			size = 2
+			leader = rebel_preacher
+		}
+	}
+
+	option = {		
+		name = "twarofroses.102b"
+		add_dip_power = -50
+		random = {
+			chance = 10
+			spawn_rebels = {
+				type = noble_rebels
+				size = 2
+				leader = rebel_preacher
+			}
+		}
+	}
+}
+
+#peasants revolt
+country_event = {
+	id = 	twarofroses.103
+	title = "twarofroses.103"
+	desc = "twarofroses.desc103"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	
+	option = {		
+		name = "twarofroses.103a"
+		spawn_rebels = {
+			type = anti_tax_rebels
+			size = 2
+		}
+	}
+	option = {		
+		name = "twarofroses.103b"
+		add_years_of_income = 1
+		random = {
+			chance = 10
+			spawn_rebels = {
+				type = anti_tax_rebels
+				size = 2
+			}
+		}
+	}
+}
+
+#economic stagnation
+country_event = {
+	id = 	twarofroses.104
+	title = "twarofroses.104"
+	desc = "twarofroses.desc104"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	
+	option = {		
+		name = "twarofroses.104a"
+		add_years_of_income = -1	
+	}
+
+	option = {		
+		name = "twarofroses.104b"
+			add_country_modifier = {
+				name = economic_stagnation
+				duration = 3650
+			}
+		
+	}
+}
+
+#infrastructure and buildings damaged
+country_event = {
+	id = 	twarofroses.105
+	title = "twarofroses.105"
+	desc = "twarofroses.desc105"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	
+	option = {		
+		name = "twarofroses.105a"
+		add_years_of_income = -1
+	}
+
+	option = {		
+		name = "twarofroses.105b"
+			random_province = {
+				add_devastation = 50
+				add_local_autonomy = 25
+				random = {
+					chance = 10
+					anti_tax_rebels = 1
+				}
+			}
+		
+	}
+}
+
+#at war quality
+country_event = {
+	id = 	twarofroses.201
+	title = "twarofroses.201"
+	desc = "twarofroses.desc201"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	
+	option = {		
+		name = "twarofroses.201a"
+
+		
+	}
+
+	option = {		
+		name = "twarofroses.201b"
+
+		
+	}
+}
+
+#at war quantity
+country_event = {
+	id = 	twarofroses.202
+	title = "twarofroses.202"
+	desc = "twarofroses.desc202"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	
+	option = {		
+		name = "twarofroses.202a"
+
+		
+	}
+
+	option = {		
+		name = "twarofroses.202b"
+
+		
+	}
+}
