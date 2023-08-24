@@ -27,10 +27,19 @@ war_of_the_roses = {
 	}
 	
 	can_end = {
-		has_heir = yes
+		OR = {
 		NOT = {
 			has_country_modifier = aftermath_of_war_of_roses
 		}
+		AND = {
+			has_heir = yes
+			war_exhaustion = 0
+			stability = 3
+			num_of_loans = 0
+			in_deficit = no
+			current_income_balance = 5
+		}
+	}
 	}
 
 	modifier = {
