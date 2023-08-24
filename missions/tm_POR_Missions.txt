@@ -763,6 +763,38 @@ por_slot_3 = {
 		}
 	}
 
+	#industry
+
+	gc_por_universities = {
+		icon = mission_arts_and_letters
+		required_missions = { gc_por_wine_monopolies }
+		position = 6
+		provinces_to_highlight = {
+			province_id = 227
+			NOT = { 
+				has_building = university 
+				owned_by = ROOT
+			}			
+		}
+		
+		trigger = {
+			num_of_owned_provinces_with = {
+				has_building = university 
+				value = 8 
+			}
+			227 = {
+				has_building = university
+				owned_by = ROOt
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "por_arts_and_letters"
+				duration = 7300
+			}
+		}
+	}
+
 	#european expansion
 
 	tm_por_destroy_brittania = {
@@ -1059,13 +1091,117 @@ por_slot_4 = {
 		}
 	}
 
+
+	#industry
+
+	gc_por_develop_the_mainland = {
+		icon = mission_wine_monopolies
+		required_missions = {  }
+		position = 4
+		
+		provinces_to_highlight = {
+			
+		}
+		
+		trigger = {
+			
+		}
+		effect = {
+			
+		}
+	}
+
+	gc_por_wine_monopolies = {
+		icon = mission_wine_monopolies
+		required_missions = { gc_por_develop_the_mainland }
+		position = 5
+		
+		provinces_to_highlight = {
+			trade_goods = wine
+			NOT = { owned_by = ROOT }
+			NOT = {
+				OR = {
+					has_building = workshop
+					has_building = counting_house
+				}
+			}
+			has_discovered = ROOT
+		}
+		
+		trigger = {
+			OR = {
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 10
+					trade_goods = wine
+					OR = {
+						has_building = workshop
+						has_building = counting_house
+					}
+				}
+				trading_bonus = {
+					trade_goods = wine
+					value = yes
+				}
+				production_leader = {
+					trade_goods = wine
+				}
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "por_wine_monopolies"
+				duration = 7300
+			}
+			
+			if = { 
+				limit = { has_dlc = "Domination" }
+				custom_tooltip = por_every_wine_prov_tt
+				tooltip = { add_base_production = 1 } 
+				hidden_effect = {
+					every_owned_province = {
+						limit = { trade_goods = wine } 
+						add_base_production = 1 
+					}
+				}
+			}
+		}
+	}
+
+	gc_por_trading_houses = {
+		icon = mission_great_trading_houses
+		required_missions = { gc_por_wine_monopolies }
+		position = 6
+		provinces_to_highlight = {
+			province_id = 1293
+		}
+		
+		trigger = {
+			OR = {
+				num_of_merchants = 6
+				1293 = {
+					is_strongest_trade_power = ROOT
+				}
+			}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 10
+				has_trade_building_trigger = yes 
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = "por_houses_of_trade"
+				duration = 7300
+			}
+		}
+	}
+
 	#past cape section
 
 
 	tm_por_beyond_the_cape = {
 		icon = mission_colonize_the_caribbean
 		required_missions = {  }
-		position = 6
+		position = 7
 		
 		provinces_to_highlight = {
 			
@@ -1505,7 +1641,7 @@ por_slot_5 = {
 	tm_por_towards_the_middle_east = {
 		icon = mission_colonize_the_caribbean
 		required_missions = { tm_por_beyond_the_cape }
-		position = 7	
+		position = 8	
 		
 		provinces_to_highlight = {
 			
@@ -1523,7 +1659,7 @@ por_slot_5 = {
 	gc_por_discovers_horn_africa = {
 		icon = mission_establish_high_seas_navy
 		required_missions = { tm_por_towards_the_middle_east }
-		position = 8
+		position = 9
 		trigger = { 
 			custom_trigger_tooltip = {
 				tooltip = miss_discover_horn_africa
@@ -1565,7 +1701,7 @@ por_slot_5 = {
 	gc_por_oman = {
 		icon = mission_portuguese_oman
 		required_missions = { gc_por_discovers_horn_africa }
-		position = 9
+		position = 10
 		provinces_to_highlight = {
 			OR = {
 				AND = {
@@ -1612,7 +1748,7 @@ por_slot_5 = {
 	gc_por_conquers_hormuz = {
 		icon = mission_persian_soldiers
 		required_missions = { gc_por_oman }
-		position = 10
+		position = 11
 		completed_by = 1508.1.1
 		provinces_to_highlight = {
 			province_id = 2999
