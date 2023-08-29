@@ -488,8 +488,13 @@ french_missions_1_hre_branch = {
 			monthly_dip = 10
 		}
 		effect = {
-			elector = yes
-			set_in_empire = yes
+			if = {
+				limit = {
+					hre_size = 1
+				}
+				elector = yes
+				set_in_empire = yes
+			}
 			custom_tooltip = tm_every_province_in_primarmy_culture_changes_to_primary_culture_tt
 			hidden_effect = {
 				every_owned_province = {
@@ -732,7 +737,10 @@ french_missions_1_Continuation_a = {
 		required_missions = {  }
 		position = 9
 		trigger = {
-			num_of_explorers = 1 
+			OR = {
+				num_of_explorers = 1
+				has_country_modifier = tm_colonisation_start
+			}
 			if = { 
 				limit = { is_random_new_world = no }
 				custom_trigger_tooltip = {
@@ -1564,19 +1572,45 @@ french_missions_2_charlemagne_path = {
 				}
 			}
 			hidden_effect = {
-				every_province = {
+				if = {
 					limit = {
-						owned_by = ROOT
+						hre_size = 1
 						is_part_of_hre = yes
 					}
-					add_province_modifier = {
-						name = tm_fra_developed_in_the_empire
-						duration = 7300
+					every_province = {
+						limit = {
+							owned_by = ROOT
+							is_part_of_hre = yes
+						}
+						add_province_modifier = {
+							name = tm_fra_developed_in_the_empire
+							duration = 7300
+						}
+					}
+				}
+				else = {
+					every_province = {
+						limit = {
+							owned_by = ROOT
+							OR = {
+								region = south_german_region
+								region = north_german_region
+							}
+						}
+						add_province_modifier = {
+							name = tm_fra_developed_in_the_empire
+							duration = 7300
+						}
 					}
 				}
 			}
-			emperor = {
-				add_imperial_influence = 15
+			if = {
+				limit = {
+					hre_size = 1
+				}
+				emperor = {
+					add_imperial_influence = 15
+				}
 			}
 		}
 	}
@@ -1586,17 +1620,31 @@ french_missions_2_charlemagne_path = {
 		required_missions = { fra_sway_electorate fra_right_blood fra_means_expansion }
 		position = 6
 		trigger = {
-			calc_true_if = {
-				amount = 75
-				all_province = {
+			if = {
+				limit = {
+					hre_size = 1
+				}
+				calc_true_if = {
+					amount = 75
+					all_province = {
+						is_part_of_hre = yes
+						development = 25
+						num_of_buildings_in_province = 3
+						is_prosperous = yes
+					}
+				}
+				any_country = {
 					is_part_of_hre = yes
+					is_defender_of_faith = yes
+				}
+			}
+			else = {
+				num_of_owned_provinces_with = {
+					value = 60
 					development = 25
 					num_of_buildings_in_province = 3
 					is_prosperous = yes
 				}
-			}
-			any_country = {
-				is_part_of_hre = yes
 				is_defender_of_faith = yes
 			}
 			if = {
@@ -1609,7 +1657,7 @@ french_missions_2_charlemagne_path = {
 			}
 			else_if = {
 				limit = { religion = anglican }
-					church_power = 150
+				church_power = 150
 			}
 			else_if = {
 				limit = { religion = reformed }
@@ -2632,12 +2680,31 @@ french_missions_3_charlemagne_path = {
 				} 
 			}
 			army_size = 200
-			num_of_owned_provinces_with = {
-				value = 30
-				is_part_of_hre = yes
-				OR = {
-					has_manpower_building_trigger = yes
-					has_forcelimit_building_trigger = yes
+			if = {
+				limit = {
+					hre_size = 1
+					is_part_of_hre = yes
+				}
+				num_of_owned_provinces_with = {
+					value = 30
+					is_part_of_hre = yes
+					OR = {
+						has_manpower_building_trigger = yes
+						has_forcelimit_building_trigger = yes
+					}
+				}
+			}
+			else = {
+				num_of_owned_provinces_with = {
+					value = 30
+					OR = {
+						region = north_german_region
+						region = south_german_region
+					}
+					OR = {
+						has_manpower_building_trigger = yes
+						has_forcelimit_building_trigger = yes
+					}
 				}
 			}
 		}
@@ -4946,8 +5013,8 @@ french_missions_5_normal = {
 							region = italy_region
 						}
 						has_opinion = {
-							who = ROOT 
-							value = 160
+							who = ROOT
+							value = 150
 						}
 					}
 				}
