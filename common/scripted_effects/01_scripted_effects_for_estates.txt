@@ -147,6 +147,50 @@ each_estate_effect = {
 			$eunuchs_effect$
 		]
 	}
+	if = {
+		limit = {
+			has_estate = estate_mamluks
+		}
+		[[effect]
+			$effect$
+		]
+		[[eunuchs_effect]
+			$eunuchs_effect$
+		]
+	}
+	if = {
+		limit = {
+			has_estate = estate_ghilman
+		}
+		[[effect]
+			$effect$
+		]
+		[[eunuchs_effect]
+			$eunuchs_effect$
+		]
+	}
+	if = {
+		limit = {
+			has_estate = nomadic_aristocracy
+		}
+		[[effect]
+			$effect$
+		]
+		[[eunuchs_effect]
+			$eunuchs_effect$
+		]
+	}
+	if = {
+		limit = {
+			has_estate = sedentary_subdjects
+		}
+		[[effect]
+			$effect$
+		]
+		[[eunuchs_effect]
+			$eunuchs_effect$
+		]
+	}
 }
 
 #Clergy
@@ -2120,14 +2164,14 @@ on_province_owner_change_estate_privileges_effect = {
 				}
 			}
 			add_province_modifier = {
-				name = sedentary_subjects_development_of_cities_mod
+				name = estate_sedentary_subjects_development_of_cities_mod
 				duration = -1
 			}
 		}
 		else = {
 			if = {
-				limit = { has_province_modifier = sedentary_subjects_development_of_cities_mod }
-				remove_province_modifier = sedentary_subjects_development_of_cities_mod
+				limit = { has_province_modifier = estate_sedentary_subjects_development_of_cities_mod }
+				remove_province_modifier = estate_sedentary_subjects_development_of_cities_mod
 			}
 		}
 	}
@@ -2162,29 +2206,27 @@ on_province_owner_change_estate_privileges_effect = {
 		if = {
 			limit = {
 				OR = {
-					OR = {
-						province_id = 362
-						province_id = 363
-						province_id = 2316
-						province_id = 361
-						province_id = 359
-						province_id = 2317
-						province_id = 2319
-						province_id = 4320
-						province_id = 360
-						province_id = 4319
-						province_id = 1231
-						province_id = 1234
-						province_id = 2322
-						province_id = 1228
-						province_id = 5178
-						province_id = 5177
-						province_id = 5179
-						province_id = 2798
-						province_id = 1222
-						province_id = 2799
-						province_id = 1217
-					}
+					province_id = 362
+					province_id = 363
+					province_id = 2316
+					province_id = 361
+					province_id = 359
+					province_id = 2317
+					province_id = 2319
+					province_id = 4320
+					province_id = 360
+					province_id = 4319
+					province_id = 1231
+					province_id = 1234
+					province_id = 2322
+					province_id = 1228
+					province_id = 5178
+					province_id = 5177
+					province_id = 5179
+					province_id = 2798
+					province_id = 1222
+					province_id = 2799
+					province_id = 1217
 				}
 			}
 			add_province_modifier = {
@@ -2198,6 +2240,7 @@ on_province_owner_change_estate_privileges_effect = {
 				remove_province_modifier = estate_mamluks_develop_the_nile_mod
 			}
 		}
+	}
 }
 
 on_province_tax_building_built_estate_privileges_effect = {
@@ -3703,6 +3746,56 @@ pick_random_estate_if_present = {
 			$estate_action$ = estate_eunuchs
 			]
 		}
+		1 = { 
+			trigger = {
+				has_estate = estate_nomadic_tribes
+				NOT = { has_country_flag = estate_nomadic_tribes_$flag$ }
+			}
+			set_country_flag = estate_nomadic_tribes_$flag$
+			[[estate_action]
+			$estate_action$ = estate_nomadic_tribes
+			]
+		}
+		1 = { 
+			trigger = {
+				has_estate = estate_mamluks
+				NOT = { has_country_flag = estate_mamluks_$flag$ }
+			}
+			set_country_flag = estate_mamluks_$flag$
+			[[estate_action]
+			$estate_action$ = estate_mamluks
+			]
+		}
+		1 = { 
+			trigger = {
+				has_estate = estate_ghilman
+				NOT = { has_country_flag = estate_ghilman_$flag$ }
+			}
+			set_country_flag = estate_ghilman_$flag$
+			[[estate_action]
+			$estate_action$ = estate_ghilman
+			]
+		}
+		1 = { 
+			trigger = {
+				has_estate = nomadic_aristocracy
+				NOT = { has_country_flag = nomadic_aristocracy_$flag$ }
+			}
+			set_country_flag = nomadic_aristocracy_$flag$
+			[[estate_action]
+			$estate_action$ = nomadic_aristocracy
+			]
+		}
+		1 = { 
+			trigger = {
+				has_estate = sedentary_subdjects
+				NOT = { has_country_flag = sedentary_subdjects_$flag$ }
+			}
+			set_country_flag = sedentary_subdjects_$flag$
+			[[estate_action]
+			$estate_action$ = sedentary_subdjects
+			]
+		}
 	}
 }
 
@@ -4599,6 +4692,27 @@ add_estate_loyalty_by_class_mil = {
 		limit = { has_estate = estate_janissaries }
 		add_estate_loyalty = {
 			estate = estate_janissaries
+			loyalty = $loyalty$
+		}
+	}
+	if = {
+		limit = { has_estate = nomadic_aristocracy }
+		add_estate_loyalty = {
+			estate = aristocracy
+			loyalty = $loyalty$
+		}
+	}
+	if = {
+		limit = { has_estate = estate_ghilman }
+		add_estate_loyalty = {
+			estate = estate_ghilman
+			loyalty = $loyalty$
+		}
+	}
+	if = {
+		limit = { has_estate = estate_mamluks }
+		add_estate_loyalty = {
+			estate = estate_mamluks
 			loyalty = $loyalty$
 		}
 	}
