@@ -349,15 +349,15 @@ country_event = {
 	picture = WAR_OF_THE_ROSES_eventPicture
 
 	is_triggered_only = yes	
+	immediate = {
+		add_country_modifier = {
+			name = aftermath_of_war_of_roses
+			duration = 3650
+		}
+	}
 	
 	option = {		
 		name = "twarofroses.100a"
-		hidden_effect = {
-			add_country_modifier = {
-				name = aftermath_of_war_of_roses
-				duration = 3650
-			}
-		}
 		custom_tooltip = 10_years_of_aftermath
 	}
 }
@@ -376,20 +376,20 @@ country_event = {
 		random_owned_province = {
 			spawn_rebels = {
 				type = particularist_rebels
-				size = 2
+				size = 1.5
 				leader = rebel_preacher
 			}
 		}
 	}
 	option = {		
 		name = "twarofroses.101b"
-		add_years_of_income = -1
+		add_years_of_income = -0.5
 		random = {
 			chance = 10
 			random_owned_province = {
 				spawn_rebels = {
 					type = particularist_rebels
-					size = 2
+					size = 1.5
 					leader = rebel_preacher
 				}
 			}
@@ -411,7 +411,7 @@ country_event = {
 		random_owned_province = {
 			spawn_rebels = {
 				type = noble_rebels
-				size = 2
+				size = 1.5
 				leader = rebel_preacher
 			}
 		}
@@ -425,7 +425,7 @@ country_event = {
 			random_owned_province = {
 				spawn_rebels = {
 					type = noble_rebels
-					size = 2
+					size = 1.5
 					leader = rebel_preacher
 				}
 			}
@@ -447,19 +447,19 @@ country_event = {
 		random_owned_province = {
 			spawn_rebels = {
 				type = anti_tax_rebels
-				size = 2
+				size = 1.5
 			}
 		}
 	}
 	option = {		
 		name = "twarofroses.103b"
-		add_years_of_income = -1
+		add_years_of_income = -0.5
 		random = {
 			chance = 10
 			random_owned_province = {
 				spawn_rebels = {
 					type = anti_tax_rebels
-					size = 2
+					size = 1.5
 				}
 			}
 		}
@@ -477,7 +477,7 @@ country_event = {
 	
 	option = {		
 		name = "twarofroses.104a"
-		add_years_of_income = -1.5	
+		add_years_of_income = -1	
 	}
 
 	option = {		
@@ -500,7 +500,7 @@ country_event = {
 	
 	option = {		
 		name = "twarofroses.105a"
-		add_years_of_income = -1
+		add_years_of_income = -0.5
 	}
 
 	option = {		
@@ -524,6 +524,35 @@ country_event = {
 	}
 }
 
+#manpower
+country_event = {
+	id = 	twarofroses.106
+	title = "twarofroses.106"
+	desc = "twarofroses.desc106"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	
+	option = {		
+		name = "twarofroses.106a"
+		add_manpower = -2000
+	}
+
+	option = {		
+		name = "twarofroses.106b"
+		add_country_modifier = {
+			name = men_refuse_to_serve_peace
+			duration = 1825
+		}
+		
+	}
+
+	option = {		
+		name = "twarofroses.106c"
+		add_years_of_income = -0.5
+	}
+}
+
 #at war quality
 country_event = {
 	id = 	twarofroses.201
@@ -537,13 +566,15 @@ country_event = {
 	}
 
 	mean_time_to_happen = {
-		days = 720
+		days = 800
 	}
+
+	fire_only_once = yes
 	
 	option = {		
 		name = "twarofroses.201a"
 		add_army_tradition = -25
-		add_army_professionalism = -10
+		add_army_professionalism = -0.1 
 	}
 
 	option = {		
@@ -569,8 +600,10 @@ country_event = {
 	}
 
 	mean_time_to_happen = {
-		days = 720
+		days = 600
 	}	
+
+	fire_only_once = yes
 	
 	option = {		
 		name = "twarofroses.202a"
@@ -584,6 +617,80 @@ country_event = {
 			duration = 1825
 		}
 		
+	}
+}
+
+#at war econ
+country_event = {
+	id = 	twarofroses.203
+	title = "twarofroses.203"
+	desc = "twarofroses.desc203"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	trigger = {
+		is_at_war = yes
+		has_disaster = war_of_the_roses
+	}
+
+	mean_time_to_happen = {
+		days = 1440
+	}	
+
+	fire_only_once = yes
+	
+	option = {		
+		name = "twarofroses.203a"
+		add_years_of_income = -1
+	}
+
+	option = {		
+		name = "twarofroses.203b"
+		add_country_modifier = {
+			name = economic_concequences_of_war
+			duration = 1825
+		}
+		
+	}
+}
+
+#at war ae
+country_event = {
+	id = 	twarofroses.204
+	title = "twarofroses.204"
+	desc = "twarofroses.desc204"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	trigger = {
+		is_at_war = yes
+		has_disaster = war_of_the_roses
+	}
+
+	mean_time_to_happen = {
+		days = 1000
+	}	
+
+	fire_only_once = yes
+	
+	option = {		
+		name = "twarofroses.204a"
+		add_dip_power = -75
+	}
+
+	option = {		
+		name = "twarofroses.204b"
+		add_country_modifier = {
+			name = disapproval_of_expansion 
+			duration = 1825
+		}
+		
+	}
+
+	option = {		
+		name = "twarofroses.204a"
+		add_country_modifier = {
+			name = struggle_to_reform
+			duration = 1825
+		}
 	}
 }
 
