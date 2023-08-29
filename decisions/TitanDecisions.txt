@@ -689,15 +689,23 @@ country_decisions = {
 			has_parliament = yes
 		}
 		allow = {
-			always = yes
+			any_owned_province = {
+				is_core = ROOT
+				is_state = yes
+				has_seat_in_parliament = no
+			}
 		}
 		effect = {
-			every_owned_province = {
-				limit = {
-					is_state = yes
-					has_seat_in_parliament = no
+			custom_tooltip = tm_add_provinces_to_parliment_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						is_core = ROOT
+						is_state = yes
+						has_seat_in_parliament = no
+					}
+					set_seat_in_parliament = yes
 				}
-				set_seat_in_parliament = yes
 			}
 		}
 	}
