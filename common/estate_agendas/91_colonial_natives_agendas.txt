@@ -1,0 +1,828 @@
+
+#This one or the next one will always be valid
+estate_colonial_natives_hire_advisor = {
+	can_select = {
+		NOT = {
+			employed_advisor = {
+				category = MIL
+			}
+		}
+	}
+	selection_weight = {
+		factor = 1
+	}
+	task_requirements = {
+		if = {
+			limit = {
+				has_estate_agenda_auto_completion = {
+					estate = estate_colonial_natives
+				}
+			}
+			has_estate_agenda_auto_completion = {
+				estate = estate_colonial_natives
+			}
+		}
+		else = {
+			employed_advisor = {
+				category = MIL
+			}
+			is_in_deficit = no
+		}
+	}
+    task_completed_effect = {
+		on_completed_agenda_effect = {
+			estate = estate_colonial_natives
+		}
+		add_estate_loyalty = {
+			estate = estate_colonial_natives
+			loyalty = 10
+		}
+    }
+    failing_effect = {
+		on_failed_agenda_effect = yes
+		clr_auto_complete_flag = yes
+        add_estate_loyalty_modifier = {
+            estate = estate_colonial_natives
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+estate_colonial_natives_fire_advisor = {
+	can_select = {
+		employed_advisor = {
+			category = MIL
+		}
+	}
+	selection_weight = {
+		factor = 1
+		modifier = {
+			factor = 0.5
+			always = yes
+		}
+	}
+	immediate_effect = {
+		hidden_effect = {
+			set_country_flag = need_to_fire_mil_advisor
+		}
+	}
+	on_invalid = {
+		clr_country_flag = need_to_fire_mil_advisor
+	}
+	task_requirements = {
+		if = {
+			limit = {
+				has_estate_agenda_auto_completion = {
+					estate = estate_colonial_natives
+				}
+			}
+			has_estate_agenda_auto_completion = {
+				estate = estate_colonial_natives
+			}
+		}
+		else = {
+			custom_trigger_tooltip = {
+				tooltip = fire_mil_advisor_tooltip
+				has_country_flag = just_fired_mil_advisor
+			}
+		}
+	}
+    task_completed_effect = {
+		on_completed_agenda_effect = {
+			estate = estate_colonial_natives
+		}
+		add_estate_loyalty = {
+			estate = estate_colonial_natives
+			loyalty = 10
+		}
+		clr_country_flag = just_fired_mil_advisor
+		clr_country_flag = need_to_fire_mil_advisor
+	}
+	invalid_trigger = {
+		NOT = {
+			employed_advisor = {
+				category = MIL
+			}
+		}
+		NOT = { has_country_flag = just_fired_mil_advisor }
+	}
+    failing_effect = {
+		on_failed_agenda_effect = yes
+		clr_auto_complete_flag = yes
+        add_estate_loyalty_modifier = {
+            estate = estate_colonial_natives
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+		clr_country_flag = need_to_fire_mil_advisor
+    }
+}
+
+#Get AE down (if there is a coalition) 
+estate_colonial_natives_break_coalition = {
+	can_select = {
+		any_country = {
+			coalition_target = root
+			has_opinion_modifier = {
+				who = root
+				modifier = aggressive_expansion
+			}
+			NOT = {
+				has_opinion_modifier = {
+					who = root
+					modifier = aggressive_expansion
+					value = -15
+				}
+			}
+		}
+		is_at_war = no
+	}
+	selection_weight = {
+		factor = 5
+		modifier = {
+			factor = 2
+			calc_true_if = {
+				amount = 5
+				all_country = {
+					coalition_target = root
+				}
+			}
+		}
+		modifier = {
+			factor = 0.5
+			NOT = {
+				any_country = {
+					coalition_target = root
+					army_size = root
+				}
+			}
+		}
+	}
+	provinces_to_highlight = {
+		is_capital = yes
+		owner = {
+			OR = {
+				coalition_target = root
+				AND = {
+					has_opinion_modifier = {
+						who = root
+						modifier = aggressive_expansion
+					}
+					NOT = {
+						has_opinion_modifier = {
+							who = root
+							modifier = aggressive_expansion
+							value = -15
+						}
+					}
+				}
+			}
+		}
+	}
+	fail_if = {
+		has_country_modifier = just_lost_war_timer
+	}
+	task_requirements = {
+		if = {
+			limit = {
+				has_estate_agenda_auto_completion = {
+					estate = estate_colonial_natives
+				}
+			}
+			has_estate_agenda_auto_completion = {
+				estate = estate_colonial_natives
+			}
+		}
+		else = {
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = no_coalition_against_us_tooltip
+					NOT = {
+						any_country = {
+							coalition_target = root
+						}
+					}
+				}
+				custom_trigger_tooltip = {
+					tooltip = no_one_has_15_ae_on_us_tooltip
+					NOT = {
+						any_country = {
+							has_opinion_modifier = {
+								who = root
+								modifier = aggressive_expansion
+							}
+							NOT = {
+								has_opinion_modifier = {
+									who = root
+									modifier = aggressive_expansion
+									value = -15
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+    task_completed_effect = {
+		on_completed_agenda_effect = {
+			estate = estate_colonial_natives
+		}
+		add_estate_loyalty = {
+			estate = estate_colonial_natives
+			loyalty = 10
+		}
+		add_dip_power = 50
+	}
+    failing_effect = {
+		on_failed_agenda_effect = yes
+		clr_auto_complete_flag = yes
+        add_estate_loyalty_modifier = {
+            estate = estate_colonial_natives
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+#Regain liberty
+estate_colonial_natives_regain_liberty = {
+	can_select = {
+		is_subject = yes
+		is_at_war = no
+		OR = {
+			liberty_desire = 50
+			AND = {
+				ai = no
+				liberty_desire = 35
+			}
+		}
+	}
+	selection_weight = {
+		factor = 5
+		modifier = {
+			factor = 0.35
+			is_subject_of_type = tributary_state
+		}
+	}
+	pre_effect = {
+		overlord = {
+			save_event_target_as = agenda_country
+		}
+	}
+	provinces_to_highlight = {
+		is_capital = yes
+		owner = {
+			overlord_of = root
+		}
+	}
+	task_requirements = {
+		if = {
+			limit = {
+				has_estate_agenda_auto_completion = {
+					estate = estate_colonial_natives
+				}
+			}
+			has_estate_agenda_auto_completion = {
+				estate = estate_colonial_natives
+			}
+		}
+		else = {
+			is_subject = no
+			NOT = {
+				is_in_war = {
+					casus_belli = cb_independence_war
+					attacker_leader = root
+				}
+			}
+		}
+	}
+    task_completed_effect = {
+		on_completed_agenda_effect = {
+			estate = estate_colonial_natives
+		}
+		add_estate_loyalty = {
+			estate = estate_colonial_natives
+			loyalty = 10
+		}
+		create_general = {
+			tradition = 60
+			add_siege = 1
+		}
+	}
+    failing_effect = {
+		on_failed_agenda_effect = yes
+		clr_auto_complete_flag = yes
+        add_estate_loyalty_modifier = {
+            estate = estate_colonial_natives
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+#Bigger Army
+estate_colonial_natives_build_an_army = {
+	can_select = {
+		NOT = { has_country_modifier = thriving_arms_industry }
+		NOT = { army_size_percentage = 0.5 }
+		if = {
+			limit = {
+				is_emperor = yes
+			}
+			NOT = { army_size_percentage = 0.35 }
+		}
+	}
+	selection_weight = {
+		factor = 5
+		modifier = {
+			factor = 2
+			any_rival_country = {
+				NOT = { truce_with = root }
+				army_size = root
+			}
+		}
+		modifier = {
+			factor = 2.0
+			NOT = { army_size_percentage = 0.3 }
+			NOT = { army_size = 150 }
+		}
+		modifier = { #this could be really annoying in the late game
+			factor = 0.5
+			army_size = 100
+		}
+		modifier = {
+			factor = 0.25
+			army_size = 200
+		}
+		modifier = {
+			factor = 0
+			army_size = 500
+		}
+		modifier = {
+			factor = 0.5
+			is_emperor = yes
+		}
+	}
+	task_requirements = {
+		if = {
+			limit = {
+				has_estate_agenda_auto_completion = {
+					estate = estate_colonial_natives
+				}
+			}
+			has_estate_agenda_auto_completion = {
+				estate = estate_colonial_natives
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					is_emperor = yes
+				}
+				army_size_percentage = 0.5
+			}
+			else = {
+				army_size_percentage = 0.75
+			}
+		}
+	}
+    task_completed_effect = {
+		on_completed_agenda_effect = {
+			estate = estate_colonial_natives
+		}
+		add_estate_loyalty = {
+			estate = estate_colonial_natives
+			loyalty = 10
+		}
+		create_general = {
+			tradition = 40
+		}
+	}
+    failing_effect = {
+		on_failed_agenda_effect = yes
+		clr_auto_complete_flag = yes
+        add_estate_loyalty_modifier = {
+            estate = estate_colonial_natives
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+
+#Bigger Army than Rival
+estate_colonial_natives_bigger_army_than_rival = {
+	can_select = {
+		NOT = { has_country_modifier = thriving_arms_industry }
+		NOT = { army_size_percentage = 1 }
+		any_rival_country = {
+			NOT = { war_with = root }
+			NOT = { root = { army_size = prev } }
+			army_balance = {
+				who = root
+				value = 1.05
+			}
+			NOT = {
+				army_balance = {
+					who = root
+					value = 1.25
+				}
+			}
+		}
+	}
+	selection_weight = {
+		factor = 5
+	}
+	pre_effect = {
+		random_rival_country = {
+			limit = {
+				NOT = { war_with = root }
+				NOT = { root = { army_size = prev } }
+				army_balance = {
+					who = root
+					value = 1.05
+				}
+				NOT = {
+					army_balance = {
+						who = root
+						value = 1.25
+					}
+				}
+			}
+			save_event_target_as = agenda_country
+		}
+	}
+	provinces_to_highlight = {
+		is_capital_of = event_target:agenda_country
+	}
+	task_requirements = {
+		if = {
+			limit = {
+				has_estate_agenda_auto_completion = {
+					estate = estate_colonial_natives
+				}
+			}
+			has_estate_agenda_auto_completion = {
+				estate = estate_colonial_natives
+			}
+		}
+		else = {
+			if = {
+				limit = { event_target:agenda_country = { num_of_cities = 1 } }
+				army_size = event_target:agenda_country
+			}
+			else = {
+				always = yes
+			}
+		}
+	}
+    task_completed_effect = {
+		on_completed_agenda_effect = {
+			estate = estate_colonial_natives
+		}
+		add_estate_loyalty = {
+			estate = estate_colonial_natives
+			loyalty = 10
+		}
+		add_country_modifier = {
+			name = thriving_arms_industry
+			duration = 3650
+		}
+	}
+    failing_effect = {
+		on_failed_agenda_effect = yes
+		clr_auto_complete_flag = yes
+        add_estate_loyalty_modifier = {
+            estate = estate_colonial_natives
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+#Manpower reserves
+estate_colonial_natives_build_up_manpower_reserves = {
+	can_select = {
+		is_at_war = no
+		NOT = { manpower_percentage = 0.40 }
+	}
+	selection_weight = {
+		factor = 5
+		modifier = {
+			factor = 1.5
+			NOT = { manpower_percentage = 0.35 }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { manpower_percentage = 0.3 }
+		}
+		modifier = {
+			factor = 1.5
+			NOT = { manpower_percentage = 0.25 }
+		}
+		modifier = {
+			factor = 2
+			NOT = { manpower_percentage = 0.2 }
+		}
+		modifier = {
+			factor = 3
+			NOT = { manpower_percentage = 0.15 }
+		}
+	}
+	pre_effect = {
+		set_variable = {
+			which = estate_nobles_build_up_manpower_reserves_variable
+			value = 0
+		}
+		if = {
+			limit = {
+				NOT = {
+					manpower_percentage = 0.1
+				}
+			}
+			set_variable = {
+				which = estate_nobles_build_up_manpower_reserves_variable
+				value = 1
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					manpower_percentage = 0.3
+				}
+			}
+			set_variable = {
+				which = estate_nobles_build_up_manpower_reserves_variable
+				value = 2
+			}
+		}
+		else = {
+			set_variable = {
+				which = estate_nobles_build_up_manpower_reserves_variable
+				value = 3
+			}
+		}
+		pick_type_of_military_advisor = yes
+	}
+	fail_if = {
+		#is_at_war = yes
+	}
+	task_requirements = {
+		if = {
+			limit = {
+				has_estate_agenda_auto_completion = {
+					estate = estate_colonial_natives
+				}
+			}
+			has_estate_agenda_auto_completion = {
+				estate = estate_colonial_natives
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					check_variable = {
+						which = estate_nobles_build_up_manpower_reserves_variable
+						value = 3
+					}
+				}
+				manpower_percentage = 0.9
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = estate_nobles_build_up_manpower_reserves_variable
+						value = 2
+					}
+				}
+				manpower_percentage = 0.75
+			}
+			else = {
+				manpower_percentage = 0.5
+			}
+		}
+	}
+    task_completed_effect = {
+		on_completed_agenda_effect = {
+			estate = estate_colonial_natives
+		}
+		add_estate_loyalty = {
+			estate = estate_colonial_natives
+			loyalty = 10
+		}
+		generate_scaled_military_advisor_of_religion_effect = {
+			religion = root
+			discount = yes
+		}
+		clear_random_military_advisor_generation_flags = yes
+	}
+    failing_effect = {
+		on_failed_agenda_effect = yes
+		clr_auto_complete_flag = yes
+        add_estate_loyalty_modifier = {
+            estate = estate_colonial_natives
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+		clear_random_military_advisor_generation_flags = yes
+    }
+}
+
+
+#Recover bad prestige
+estate_colonial_natives_recover_abysmal_prestige = {
+	can_select = {
+		NOT = { prestige = -30 }
+	}
+	selection_weight = {
+		factor = 8
+	}
+	pre_effect = {
+		set_variable = {
+			which = estate_nobles_improve_prestige_var
+			value = 0
+		}
+		if = {
+			limit = {
+				NOT = {
+					prestige = -75
+				}
+			}
+			set_variable = {
+				which = estate_nobles_improve_prestige_var
+				value = 1
+			}
+		}
+		else = {
+			set_variable = {
+				which = estate_nobles_improve_prestige_var
+				value = 2
+			}
+		}
+	}
+	task_requirements = {
+		if = {
+			limit = {
+				has_estate_agenda_auto_completion = {
+					estate = estate_colonial_natives
+				}
+			}
+			has_estate_agenda_auto_completion = {
+				estate = estate_colonial_natives
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					check_variable = {
+						which = estate_nobles_improve_prestige_var
+						value = 2
+					}
+				}
+				prestige = 0
+			}
+			else = {
+				prestige = -30
+			}
+		}
+	}
+    task_completed_effect = {
+		on_completed_agenda_effect = {
+			estate = estate_colonial_natives
+		}
+		add_estate_loyalty = {
+			estate = estate_colonial_natives
+			loyalty = 10
+		}
+		add_stability_or_adm_power = yes
+	}
+    failing_effect = {
+		on_failed_agenda_effect = yes
+		clr_auto_complete_flag = yes
+        add_estate_loyalty_modifier = {
+            estate = estate_colonial_natives
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+
+#Get good prestige
+
+estate_colonial_natives_improve_prestige = {
+	can_select = {
+		prestige = -30
+		NOT = { prestige = 20 }
+	}
+	selection_weight = {
+		factor = 2.5
+		modifier = {
+			factor = 2
+			NOT = {
+				prestige = 0
+			}
+		}
+	}
+	pre_effect = {
+		set_variable = {
+			which = estate_nobles_improve_prestige_var
+			value = 0
+		}
+		if = {
+			limit = {
+				NOT = {
+					prestige = -10
+				}
+			}
+			set_variable = {
+				which = estate_nobles_improve_prestige_var
+				value = 1
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					prestige = 15
+				}
+			}
+			set_variable = {
+				which = estate_nobles_improve_prestige_var
+				value = 2
+			}
+		}
+		else = {
+			set_variable = {
+				which = estate_nobles_improve_prestige_var
+				value = 3
+			}
+		}
+	}
+	task_requirements = {
+		if = {
+			limit = {
+				has_estate_agenda_auto_completion = {
+					estate = estate_colonial_natives
+				}
+			}
+			has_estate_agenda_auto_completion = {
+				estate = estate_colonial_natives
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					check_variable = {
+						which = estate_nobles_improve_prestige_var
+						value = 3
+					}
+				}
+				prestige = 50
+			}
+			else_if = {
+				limit = {
+					check_variable = {
+						which = estate_nobles_improve_prestige_var
+						value = 2
+					}
+				}
+				prestige = 30
+			}
+			else = {
+				prestige = 10
+			}
+		}
+	}
+    task_completed_effect = {
+		on_completed_agenda_effect = {
+			estate = estate_colonial_natives
+		}
+		add_estate_loyalty = {
+			estate = estate_colonial_natives
+			loyalty = 10
+		}
+		add_adm_power = 50
+	}
+    failing_effect = {
+		on_failed_agenda_effect = yes
+		clr_auto_complete_flag = yes
+        add_estate_loyalty_modifier = {
+            estate = estate_colonial_natives
+			desc = EST_VAL_AGENDA_DENIED
+			loyalty = -5
+			duration = 7300
+        }
+    }
+}
+
+

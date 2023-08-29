@@ -1,0 +1,87 @@
+colonial_natives = {
+	icon = <index>
+	color = {  }   # Sets the estate's color in the land share pie chart
+	
+	# If true, country will get estate
+	trigger = {
+		OR = {
+			tag = POR
+			tag = PBR
+			tag = PEA
+		}
+		num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+			value = 5
+			OR = {
+				continent = north_america
+				continent = south_america
+			}
+		}
+	}
+
+	# These scale with loyalty & power
+	country_modifier_happy = {
+		
+	}
+	country_modifier_neutral = {
+		
+	}	
+	country_modifier_angry = {
+		
+	}
+
+	land_ownership_modifier = {
+		
+	}
+
+	province_independence_weight = {
+		factor = <float>
+		modifier = {
+			factor = <float>
+			#Insert conditions here
+		}
+	}
+
+	# Influence modifiers
+	base_influence = <float>
+	influence_modifier = {
+		desc = <key> # The new name to apply
+		trigger = {
+			<triggers>
+		}	
+		influence = <float>
+	}
+
+	# Loyalty modifiers
+	loyalty_modifier = {
+		desc = <key> # The new name to apply
+		trigger = {
+			<triggers>
+		}
+		loyalty = <float>
+	}
+	
+	custom_name = {
+		desc = <key> # The new name to apply
+		trigger = {
+			OR = {
+			
+			}
+		}
+	}
+
+	privileges = {
+                
+	}
+
+	agendas = {
+        estate_colonial_natives_hire_advisor  
+		estate_colonial_natives_break_coalition
+		estate_colonial_natives_regain_liberty
+		estate_colonial_natives_build_an_army
+		estate_colonial_natives_bigger_army_than_rival
+		estate_colonial_natives_build_up_manpower_reserves
+		estate_colonial_natives_recover_abysmal_prestige
+		estate_colonial_natives_improve_prestige  
+	}
+
+}
