@@ -1,45 +1,40 @@
 war_of_the_roses = {
 	potential = {
 		tag = ENG
-		NOT = {
-			has_country_flag = has_war_of_roses_aftermath
-		}
+		NOT = {	has_country_flag = has_war_of_roses_aftermath }
 	}
-
 
 
 	can_start = {
 		tag = ENG
 	}
 	
-	can_stop = { 
+	can_stop = {
+		NOT = { tag = ENG }
 	}
 	
 	ended_by_country_breaking_to_rebels = no
-	
 	
 	progress = {
 		modifier = {
 			factor = 100
 			tag = ENG
-		} 		
-		
+		}
 	}
 	
 	can_end = {
 		OR = {
-		NOT = {
-			has_country_modifier = aftermath_of_war_of_roses
+			NOT = {
+				has_country_modifier = aftermath_of_war_of_roses
+			}
+			AND = {
+				has_heir = yes
+				war_exhaustion = 0
+				stability = 3
+				num_of_loans = 0
+				current_income_balance = 5
+			}
 		}
-		AND = {
-			has_heir = yes
-			war_exhaustion = 0
-			stability = 3
-			num_of_loans = 0
-			is_in_deficit = no
-			current_income_balance = 5
-		}
-	}
 	}
 
 	modifier = {
@@ -53,8 +48,7 @@ war_of_the_roses = {
 	on_end = twarofroses.900
 	
 	on_monthly = {
-		events = {
-		}
+		events = {}
 		random_events = { 
 			1000 = 0
 			100 = twarofroses.101
