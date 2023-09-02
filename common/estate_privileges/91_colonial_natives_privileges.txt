@@ -198,3 +198,228 @@ estate_colonial_natives_land_rights = {
 	}
 }
 
+estate_colonial_natives_manpower = {
+	icon = privilege_demand_more_troops
+	land_share = 5
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	loyalty = -0.05
+	influence = 0.05
+	is_valid = {
+		any_owned_province = {
+			OR = {
+				continent = south_america
+				continent = north_america
+			}
+			OR = {
+				culture_group = penutian
+				culture_group = na_dene
+				culture_group = apachean
+				culture_group = sonoran
+				culture_group = muskogean
+				culture_group = caddoan
+				culture_group = siouan
+				culture_group = iroquoian
+				culture_group = eastern_algonquian
+				culture_group = plains_algonquian
+				culture_group = central_algonquian
+				culture_group = eskaleut
+				culture_group = carribean
+				culture_group = araucanian
+				culture_group = chibchan
+				culture_group = maranon
+				culture_group = je
+				culture_group = je_tupi
+				culture_group = andean_group
+				culture_group = otomanguean
+				culture_group = maya
+				culture_group = aridoamerican
+				culture_group = central_american
+			}
+		}
+	}
+	can_select = {		
+		
+	}
+	on_granted = {
+		custom_tooltip = estate_colonial_natives_manpower_effect_tooltip
+	}
+	on_granted_province = {
+		if = {
+			limit = {
+				OR = {
+					continent = south_america
+					continent = north_america
+				}
+				OR = {
+					culture_group = penutian
+					culture_group = na_dene
+					culture_group = apachean
+					culture_group = sonoran
+					culture_group = muskogean
+					culture_group = caddoan
+					culture_group = siouan
+					culture_group = iroquoian
+					culture_group = eastern_algonquian
+					culture_group = plains_algonquian
+					culture_group = central_algonquian
+					culture_group = eskaleut
+					culture_group = carribean
+					culture_group = araucanian
+					culture_group = chibchan
+					culture_group = maranon
+					culture_group = je
+					culture_group = je_tupi
+					culture_group = andean_group
+					culture_group = otomanguean
+					culture_group = maya
+					culture_group = aridoamerican
+					culture_group = central_american
+				}
+			}
+			add_province_modifier = {
+				name = estate_colonial_natives_manpower_mod
+				duration = -1
+			}
+		}
+		else_if = {
+			limit = {
+				has_province_modifier = estate_colonial_natives_manpower_mod
+			}
+			remove_province_modifier = estate_colonial_natives_manpower_mod
+		}
+	}
+	on_revoked = {
+		custom_tooltip = estate_colonial_natives_manpower_revoke_effect_tooltip
+	}
+	on_revoked_province = {
+		if = {
+			limit = {
+				has_province_modifier = estate_colonial_natives_manpower_mod
+			}
+			remove_province_modifier = estate_colonial_natives_manpower_mod
+		}
+	}
+	on_invalid = {
+		custom_tooltip = estate_colonial_natives_manpower_revoke_effect_tooltip
+	}
+	on_invalid_province = {
+		if = {
+			limit = {
+				has_province_modifier = estate_colonial_natives_manpower_mod
+			}
+			remove_province_modifier = estate_colonial_natives_manpower_mod
+		}
+	}
+	conditional_modifier = {
+		trigger = { has_government_mechanic = russian_modernization_mechanic }
+		modifier = { monthly_russian_modernization = -0.03 }
+	}
+	#conditional_modifier = {
+	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
+	#	modifier = { monthly_ottoman_decadence = 0.02 }
+	#}
+	penalties = {
+	}
+	benefits = {
+	}
+	ai_will_do = {
+		factor = 0
+	}
+}
+
+estate_colonial_natives_tolerance = {
+	icon = privilege_promoto_dhimmi_nobles
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	influence = 0.1
+	is_valid = {
+		any_owned_province = {
+			NOT = { religion = root }
+			OR = {
+				continent = south_america
+				continent = north_america
+			}
+		}
+		NOT = { has_estate_privilege = estate_burghers_enforced_interfaith_dialogue }
+	}
+	can_select = {
+		NOT = { has_estate_privilege = estate_church_enforced_one_faith }
+	}
+	penalties = {
+		church_loyalty_modifier = -0.05
+		nobles_loyalty_modifier = -0.05
+	}
+	benefits = {
+		tolerance_heathen = 2
+	}
+	conditional_modifier = {
+		trigger = { has_government_mechanic = russian_modernization_mechanic }
+		modifier = { monthly_russian_modernization = -0.03 }
+	}
+	#conditional_modifier = {
+	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
+	#	modifier = { monthly_ottoman_decadence = 0.02 }
+	#}
+	ai_will_do = {
+		factor = 5
+		modifier = {
+			factor = 2.5
+			num_of_owned_provinces_with = {
+				NOT = { religion_group = root }
+				is_state_core = root
+				value = 5
+			}
+		}
+		modifier = {
+			factor = 0.5
+			estate_influence = {
+				estate = estate_church
+				influence = 75
+			}
+		}
+	}
+}
+
+estate_colonial_natives_administrative_privileges = {
+	icon = privilege_land_rights
+	land_share = 5
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	loyalty = 0.1
+	influence = 0.1
+	is_valid = {
+	}
+	can_select = {
+	}
+	can_revoke = {
+	}
+	on_granted = {
+	}
+	modifier_by_land_ownership = {
+		global_unrest = -4
+		global_colonial_growth = 100
+	}
+	penalties = {
+		nobles_influence_modifier = -0.1
+		nobles_loyalty_modifier = -0.05
+	}
+	benefits = {
+	}
+	mechanics = {
+		exempt_from_seize_land
+	}
+	conditional_modifier = {
+		trigger = { has_government_mechanic = russian_modernization_mechanic }
+		modifier = { monthly_russian_modernization = -0.03 }
+	}
+	#conditional_modifier = {
+	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
+	#	modifier = { monthly_ottoman_decadence = 0.02 }
+	#}
+	cooldown_years = 25
+	ai_will_do = {
+		factor = 0
+	}
+}
+
