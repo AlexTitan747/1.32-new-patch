@@ -214,8 +214,7 @@ eng_row_slot_1 = {
 		icon = mission_rb_war_of_the_roses
 		required_missions = {  }
 		position = 5
-		provinces_to_highlight = {
-		}
+		provinces_to_highlight = {}
 		trigger = {
 			NOT = { exists = HYK }
 			NOT = {
@@ -224,14 +223,26 @@ eng_row_slot_1 = {
 					region = british_isles_region
 				}
 			}
+			OR = {
+				custom_trigger_tooltip = {
+					tooltip = tm_had_war_of_the_roses_tt
+					has_country_flag = has_war_of_roses_aftermath
+				}
+				is_year = 1465
+			}
 		}
 		
 		effect = {
 			add_stability_or_adm_power = yes
-			add_country_modifier = {
-				name = eng_a_house_united
-				duration = -1
-				desc = until_end_of_age_of_discovery_desc
+			if = {
+				limit = {
+					current_age = age_of_discovery
+				}
+				add_country_modifier = {
+					name = eng_a_house_united
+					duration = -1
+					desc = until_end_of_age_of_discovery_desc
+				}
 			}
 		}
 		ai_weight = {
@@ -1372,6 +1383,7 @@ gbr_row_3 = {
 				87 = { country_or_non_sovereign_subject_holds = ROOT }
 				BUR = { alliance_with = ROOT }
 				AQI = { alliance_with = ROOT }
+				FRA = { alliance_with = ROOT }
 			}
 		}	
 		effect = {
@@ -3150,7 +3162,7 @@ gbr_ave_the_royal_court_slot = {
 				legitimacy = 95
 			}
 			ruler_total_stats = {
-				stats = 5
+				stats = 10
 			}
 			has_adm_advisor = yes
 			has_dip_advisor = yes
@@ -3206,30 +3218,46 @@ gbr_row_5 = {
 				NOT = { alliance_with = ROOT }
 				NOT = { is_rival = ROOT }
 				NOT = { is_enemy = ROOT }
-				OR = {
-					tag = POR
-					total_development = 200
-				}
 			}
 		}		
 		trigger = {
-			num_of_allies = 2
-			calc_true_if = {
-				all_ally = {
-					custom_trigger_tooltip = {
-						tooltip = gbr_allies_on_the_mainland_tt
-						capital_scope = {
-							same_continent = ROOT
-						}
-						has_opinion = {
-							who = ROOT
-							value = 150
-						}
-						total_development = 250
-					}
-				}
-				amount = 2
+			OR = {
+				num_of_allies = 2
+				colony = 2
 			}
+			OR = {
+				calc_true_if = {
+					all_ally = {
+						custom_trigger_tooltip = {
+							tooltip = gbr_allies_on_the_mainland_tt
+							capital_scope = {
+								same_continent = ROOT
+							}
+							has_opinion = {
+								who = ROOT
+								value = 150
+							}
+							total_development = 250
+						}
+					}
+					amount = 2
+				}
+				calc_true_if = {
+					all_subject_country = {
+						custom_trigger_tooltip = {
+							tooltip = tm_gbr_colonies_dev_tt
+							is_colonial_nation = yes
+							has_opinion = {
+								who = ROOT
+								value = 125
+							}
+							total_development = 250
+						}
+					}
+					amount = 2
+				}
+			}
+			
 		}	
 		effect = {
 			add_prestige = 25
@@ -3616,7 +3644,7 @@ gbr_row_5 = {
 			}
 			add_country_modifier = {
 				name = "east_india_trade_rush"
-				duration = 9125
+				duration = 5475
 			}
 		}
 		ai_weight = {

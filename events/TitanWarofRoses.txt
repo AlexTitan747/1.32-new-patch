@@ -340,3 +340,371 @@ option = {
 	}
 }
 }
+
+#start aftermath
+country_event = {
+	id = 	twarofroses.100
+	title = "twarofroses.100"
+	desc = "twarofroses.desc100"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	immediate = {
+		add_country_modifier = {
+			name = aftermath_of_war_of_roses
+			duration = 3650
+		}
+	}
+	
+	option = {		
+		name = "twarofroses.100a"
+		custom_tooltip = 10_years_of_aftermath
+	}
+}
+
+#agitators unearthed
+country_event = {
+	id = 	twarofroses.101
+	title = "twarofroses.101"
+	desc = "twarofroses.desc101"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	
+	option = {		
+		name = "twarofroses.101a"
+		random_owned_province = {
+			spawn_rebels = {
+				type = particularist_rebels
+				size = 1.5
+				leader = rebel_preacher
+			}
+		}
+	}
+	option = {		
+		name = "twarofroses.101b"
+		add_adm_power = -50
+		random = {
+			chance = 10
+			random_owned_province = {
+				spawn_rebels = {
+					type = particularist_rebels
+					size = 1.5
+					leader = rebel_preacher
+				}
+			}
+		}
+	}
+}
+
+#general rebels
+country_event = {
+	id = 	twarofroses.102
+	title = "twarofroses.102"
+	desc = "twarofroses.desc102"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	
+	option = {		
+		name = "twarofroses.102a"
+		random_owned_province = {
+			spawn_rebels = {
+				type = noble_rebels
+				size = 1.5
+				leader = rebel_preacher
+			}
+		}
+	}
+
+	option = {		
+		name = "twarofroses.102b"
+		add_dip_power = -50
+		random = {
+			chance = 10
+			random_owned_province = {
+				spawn_rebels = {
+					type = noble_rebels
+					size = 1.5
+					leader = rebel_preacher
+				}
+			}
+		}
+	}
+}
+
+#peasants revolt
+country_event = {
+	id = 	twarofroses.103
+	title = "twarofroses.103"
+	desc = "twarofroses.desc103"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	
+	option = {		
+		name = "twarofroses.103a"
+		random_owned_province = {
+			spawn_rebels = {
+				type = anti_tax_rebels
+				size = 1.5
+			}
+		}
+	}
+	option = {		
+		name = "twarofroses.103b"
+		add_years_of_income = -0.5
+		random = {
+			chance = 10
+			random_owned_province = {
+				spawn_rebels = {
+					type = anti_tax_rebels
+					size = 1.5
+				}
+			}
+		}
+	}
+}
+
+#economic stagnation
+country_event = {
+	id = 	twarofroses.104
+	title = "twarofroses.104"
+	desc = "twarofroses.desc104"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	
+	option = {		
+		name = "twarofroses.104a"
+		add_years_of_income = -1	
+	}
+
+	option = {		
+		name = "twarofroses.104b"
+		add_country_modifier = {
+			name = economic_stagnation
+			duration = 3650
+		}
+	}
+}
+
+#infrastructure and buildings damaged
+country_event = {
+	id = 	twarofroses.105
+	title = "twarofroses.105"
+	desc = "twarofroses.desc105"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	
+	option = {		
+		name = "twarofroses.105a"
+		add_years_of_income = -0.5
+	}
+
+	option = {		
+		name = "twarofroses.105b"
+			random_owned_province = {
+				add_devastation = 50
+				add_local_autonomy = 25
+				random = {
+					chance = 10
+					anti_tax_rebels = 1
+				}
+			}
+			random_owned_province = {
+				add_devastation = 50
+				add_local_autonomy = 25
+				random = {
+					chance = 10
+					anti_tax_rebels = 1
+				}
+			}
+	}
+}
+
+#manpower
+country_event = {
+	id = 	twarofroses.106
+	title = "twarofroses.106"
+	desc = "twarofroses.desc106"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	
+	option = {		
+		name = "twarofroses.106a"
+		add_manpower = -2
+	}
+
+	option = {		
+		name = "twarofroses.106b"
+		add_country_modifier = {
+			name = men_refuse_to_serve_peace
+			duration = 1825
+		}
+		
+	}
+
+	option = {		
+		name = "twarofroses.106c"
+		add_years_of_income = -0.5
+	}
+}
+
+#at war quality
+country_event = {
+	id = 	twarofroses.201
+	title = "twarofroses.201"
+	desc = "twarofroses.desc201"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	trigger = {
+		is_at_war = yes
+		has_disaster = war_of_the_roses
+	}
+
+	mean_time_to_happen = {
+		days = 800
+	}
+
+	fire_only_once = yes
+	
+	option = {		
+		name = "twarofroses.201a"
+		add_army_tradition = -25
+		add_army_professionalism = -0.1 
+	}
+
+	option = {		
+		name = "twarofroses.201b"
+		add_country_modifier = {
+			name = lacking_quality
+			duration = 1825
+		}
+		
+	}
+}
+
+#at war quantity
+country_event = {
+	id = 	twarofroses.202
+	title = "twarofroses.202"
+	desc = "twarofroses.desc202"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	trigger = {
+		is_at_war = yes
+		has_disaster = war_of_the_roses
+	}
+
+	mean_time_to_happen = {
+		days = 600
+	}	
+
+	fire_only_once = yes
+	
+	option = {		
+		name = "twarofroses.202a"
+		add_manpower = -5
+	}
+
+	option = {		
+		name = "twarofroses.202b"
+		add_country_modifier = {
+			name = men_refuse_to_serve
+			duration = 1825
+		}
+		
+	}
+}
+
+#at war econ
+country_event = {
+	id = 	twarofroses.203
+	title = "twarofroses.203"
+	desc = "twarofroses.desc203"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	trigger = {
+		is_at_war = yes
+		has_disaster = war_of_the_roses
+	}
+
+	mean_time_to_happen = {
+		days = 1440
+	}	
+
+	fire_only_once = yes
+	
+	option = {		
+		name = "twarofroses.203a"
+		add_years_of_income = -1
+	}
+
+	option = {		
+		name = "twarofroses.203b"
+		add_country_modifier = {
+			name = economic_concequences_of_war
+			duration = 1825
+		}
+		
+	}
+}
+
+#at war ae
+country_event = {
+	id = 	twarofroses.204
+	title = "twarofroses.204"
+	desc = "twarofroses.desc204"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	trigger = {
+		is_at_war = yes
+		has_disaster = war_of_the_roses
+	}
+
+	mean_time_to_happen = {
+		days = 1000
+	}	
+
+	fire_only_once = yes
+	
+	option = {		
+		name = "twarofroses.204a"
+		add_dip_power = -75
+	}
+
+	option = {		
+		name = "twarofroses.204b"
+		add_country_modifier = {
+			name = disapproval_of_expansion 
+			duration = 1825
+		}
+		
+	}
+
+	option = {		
+		name = "twarofroses.204a"
+		add_country_modifier = {
+			name = struggle_to_reform
+			duration = 1825
+		}
+	}
+}
+
+country_event = {
+	id = 	twarofroses.900
+	title = "twarofroses.900"
+	desc = "twarofroses.desc900"
+	picture = WAR_OF_THE_ROSES_eventPicture
+
+	is_triggered_only = yes	
+	
+	option = {		
+		name = "twarofroses.900a"
+		add_stability = 1
+		set_country_flag = has_war_of_roses_aftermath
+	}
+}

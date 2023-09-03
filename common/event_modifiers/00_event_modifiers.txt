@@ -4,6 +4,40 @@
 
 #Titan modifiers
 
+men_refuse_to_serve = {
+	global_regiment_cost = 0.1
+	manpower_recovery_speed = -0.15
+}
+
+men_refuse_to_serve_peace = {
+	land_maintenance_modifier = 0.1
+	manpower_recovery_speed = -0.15
+}
+
+economic_concequences_of_war = {
+	global_tax_modifier = -0.2
+	trade_efficiency = -0.1
+}
+
+disapproval_of_expansion = {
+	ae_impact = 0.15
+	core_creation = 0.15
+}
+
+struggle_to_reform = {
+	reform_progress_growth = -0.5
+}
+
+lacking_quality = {
+	land_morale = -0.075
+	discipline = -0.025
+}
+
+economic_stagnation = {
+	global_tax_modifier = -0.15
+	production_efficiency = -0.1
+}
+
 tm_COS_finish_the_conquests = {
 	global_unrest = -2
 	republican_tradition = 0.5
@@ -12194,31 +12228,48 @@ estate_nobles_development_of_castles_ramparts_mod = {
 	local_fort_maintenance_modifier = -0.1
 }
 estate_burghers_development_of_cities_mod = {
-	local_governing_cost = -0.15
+	local_governing_cost = -0.20
 }
 estate_cossacks_freedom_of_the_steppes_mod = {
 	local_governing_cost = -0.33
-	min_local_autonomy = 33
+	min_local_autonomy = 15
 	local_development_cost = -0.05
 }
 estate_nomadic_tribes_freedom_of_the_steppes_mod = {
 	local_development_cost = -0.05
+	local_autonomy = 0.05
+	local_missionary_strength = -0.01
 }
 estate_dhimmi_development_of_communities_mod = {
 	local_development_cost = -0.05
 	religion = yes
 }
 estate_maratha_development_of_marathi_lands_mod = {
-	local_development_cost = -0.1
+	local_culture_conversion_time = -0.1
+	local_culture_conversion_cost = -0.1
 }
 estate_rajput_development_of_rajput_lands_mod = {
-	local_development_cost = -0.1
+	local_culture_conversion_time = -0.1
+	local_culture_conversion_cost = -0.1
 }
 estate_vaisyas_development_of_cities_mod = {
-	local_development_cost = -0.05
+	local_governing_cost = -0.20
 }
 estate_jains_development_of_cities_mod = {
-	local_development_cost = -0.05
+	local_governing_cost = -0.20
+}
+
+estate_sedentary_subjects_development_of_cities_mod = {
+	local_governing_cost = -0.20
+}
+
+estate_nomadic_aristocracy_development_of_roads_mod = {
+	local_friendly_movement_speed = 0.1
+}
+
+estate_mamluks_develop_the_nile_mod = {
+	local_development_cost = -0.075
+	local_tax_modifier = -0.1
 }
 
 recently_repealed_elective_monarchy_timer = { }
@@ -14076,18 +14127,19 @@ royal_impressment_act_modifier = {
 }
 isolationism_act_modifier = {
 	diplomatic_upkeep = -1
-	production_efficiency = 0.1
+	production_efficiency = 0.075
 }
 colonial_act_modifier = {
 	years_of_nationalism = 5
 	global_colonial_growth = 15
 }
 military_reassignment_act_modifier = {
-	heavy_ship_power = -0.15
+	heavy_ship_power = -0.20
 	fire_damage = 0.1
 }
 acts_of_development_modifier = {
 	diplomatic_annexation_cost = 0.15
+	diplomatic_upkeep = -2
 	development_cost = -0.05
 }
 global_empire_act_modifier = {
@@ -14103,7 +14155,7 @@ diplomatic_act_modifier = {
 	global_manpower_modifier = -0.2
 }
 internal_focus_act_modifier = {
-	core_creation = 0.2
+	core_creation = 0.25
 	development_cost = -0.05
 }
 
@@ -14123,7 +14175,7 @@ bill_of_rights_parliament = {	#Permanent
 	#No longer pretender rebel event
 }
 acts_of_taxation_parliament = {
-	global_tariffs = 0.15
+	global_tariffs = 0.10
 }
 act_of_representation_parliament = {
 	reduced_liberty_desire = 10 
@@ -14423,4 +14475,8 @@ influence_idea_subject_buff_2 = {
 	global_tax_income = 120
 	land_forcelimit = 30
 	global_manpower = 30
+}
+
+aftermath_of_war_of_roses = {
+	
 }

@@ -108,23 +108,33 @@ country_event = { #Gold
 	
 	is_triggered_only = yes
 
+    immediate = {
+        random_owned_province = {
+            limit = { 
+                NOT = {
+                    prov_can_have_developed_good = yes
+                    trade_goods = tin
+                    trade_goods = silver
+                    trade_goods = gold
+                    trade_goods = silk
+                    has_latent_trade_goods = coal
+                }
+            }
+            save_event_target_as = tm_colonial_missions_province_for_gold
+        }
+    }
+
 	option = {
 		name = colonial_mission_events.1.a
         random_list = {
             5 = {
-                random_owned_province = {
+                event_target:tm_colonial_missions_province_for_gold = {
                     change_trade_goods = gold
                     add_base_production = 1
                 }
-                modifier = {
-                    factor = 2
-                    any_owned_province = {
-                        development = 30
-                    }
-                }
             }
             95 = {
-                add_prestige = -5
+                add_treasury = 50
             }
         }
         col_empire_gold_scripted_effect = {

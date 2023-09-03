@@ -105,6 +105,9 @@ can_make_state = {
 				region_for_scope_province = {
 					is_capital_of = ROOT
 				}
+				colonial_region_for_scope_province = {
+					is_capital_of = ROOT
+				}
 			}
 		}
 	}
@@ -146,6 +149,17 @@ can_move_capital = {
 			always = no
 		}
 	}
+	#condition = {
+	#	tooltip = "tm_PEA_not_move_to_cape"
+	#	potential = {
+	#		FROM = {
+	#			tag = PEA
+	#		}
+	#	}
+	#	allow = {
+	#		NOT = { colonial_region = colonial_saf }
+	#	}
+	#}
 }
 
 can_move_trade_port = {
@@ -174,7 +188,6 @@ can_colonize_province = {
 		tooltip = "colonial_expansion_limit_tooltip"
         potential = {
             FROM = { is_colonial_nation = yes }
-			FROM = { ai = yes }
         }
         allow = {
             FROM = { capital_scope = { colonial_region = ROOT } }

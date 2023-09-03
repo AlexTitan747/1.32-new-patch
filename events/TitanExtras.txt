@@ -317,3 +317,404 @@ country_event = {
 		}
 	}
 }
+
+country_event = {
+	id = extras.11
+	title = "extras.title11"
+	desc = "extras.desc11"
+	picture = ADVISOR_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "extras.11a"
+		trigger = {
+			NOT = { has_country_modifier = hired_explorer }
+		}
+
+		add_years_of_income = -0.1
+		create_explorer = { tradition = 10 }
+		add_country_modifier = {
+			name = "hired_explorer"
+			duration = 1825
+			hidden = yes
+		}
+	}
+
+	option = {
+		name = "extras.11b"
+		trigger = {
+			NOT = { has_country_modifier = hired_conquistador }
+		}
+
+		add_years_of_income = -0.3
+		create_conquistador = { tradition = 10 }
+		add_country_modifier = {
+			name = "hired_conquistador"
+			duration = 1825
+			hidden = yes
+		}
+	}
+
+	option = {
+		name = "extras.a"
+	}
+}
+
+country_event = {
+	id = extras.12
+	title = "extras.title12"
+	desc = "extras.desc12"
+	picture = ELECTION_REPUBLICAN_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "extras.12a"
+		trigger = {
+			NOT = { government = monarchy }
+			NOT = { has_country_flag = used_government_switch_monarchy }
+			OR = {
+				is_year = 1600
+				has_reform_on_level = 10
+				has_reform = military_dictatorship_reform
+				has_reform = presidential_despot_reform
+				AND = {
+					government = tribal
+					is_year = 1500
+				}
+				AND = {
+					religion_group = muslim
+					government = theocracy
+				}
+				AND = {
+					has_reform = broaden_executive_powers_reform
+					adm_power = 200
+					is_year = 1500
+				}
+				AND = {
+					has_reform = russian_republic
+					adm_power = 200
+					is_year = 1500
+				}
+			}
+		}
+
+		change_government = monarchy
+		set_country_flag = used_government_switch_monarchy
+
+		#nomad
+		if = {
+			limit = {
+				technology_group = nomad_group
+				OR = {
+					religion_group = muslim
+					secondary_religion = sunni
+					secondary_religion = shiite
+					secondary_religion = ibadi
+				}
+			}
+			change_technology_group = muslim
+			change_unit_type = muslim
+		}
+		else_if = {
+			limit = {
+				technology_group = nomad_group
+				religion_group = christian
+			}
+			change_technology_group = eastern
+			change_unit_type = eastern
+		}
+		if = {
+			limit = {
+				technology_group = nomad_group
+				NOT = { religion_group = muslim }
+				NOT = { religion_group = christian }
+				NOT = { secondary_religion = sunni }
+				NOT = { secondary_religion = shiite }
+				NOT = { secondary_religion = ibadi }
+				NOT = { religion = totemism }
+				NOT = { religion = inti }
+				NOT = { religion = nahuatl }
+				NOT = { religion = mesoamerican_religion }
+				NOT = { religion = dreamtime }
+			}
+			change_technology_group = chinese
+			change_unit_type = chinese
+		}
+		if = {
+			limit = { 
+				religion_group = muslim
+				government = theocracy
+			}
+			add_government_reform = feudal_theocracy
+		}
+		if = {
+			limit = { 
+				has_reform = russian_republic
+			}
+			add_government_reform = tsardom
+			adm_power_cost = -200
+		}
+		if = {
+			limit = { 
+				OR = {
+					#has_reform = maintain_religious_head_reform
+					#has_reform = hereditary_religious_leadership_reform
+					has_reform = broaden_executive_powers_reform
+				}
+			}
+			adm_power_cost = -200
+		}
+	}
+
+	option = {
+		name = "extras.12b"
+		trigger = {
+			NOT = { government = republic }
+			NOT = { has_country_flag = used_government_switch_republic }
+			OR = {
+				is_year = 1600
+				has_reform_on_level = 10
+				has_reform = english_monarchy
+				has_reform = prussian_monarchy
+				has_reform = elective_monarchy
+				AND = {
+					government = tribal
+					is_year = 1500
+				}
+				AND = {
+					has_reform = parliamentary_reform
+					adm_power = 200
+					is_year = 1500
+				}
+				AND = {
+					has_reform = states_general_reform
+					adm_power = 200
+					is_year = 1500
+				}
+				AND = {
+					has_reform = theocratic_democracy_reform
+					adm_power = 200
+					is_year = 1500
+				}
+				AND = {
+					has_reform = tsardom
+					adm_power = 200
+					is_year = 1500
+				}
+			}
+		}
+
+		change_government_to_republic = yes
+		set_country_flag = used_government_switch_republic
+			
+		#nomad
+		if = {
+			limit = {
+				technology_group = nomad_group
+				OR = {
+					religion_group = muslim
+					secondary_religion = sunni
+					secondary_religion = shiite
+					secondary_religion = ibadi
+				}
+			}
+			change_technology_group = muslim
+			change_unit_type = muslim
+		}
+		else_if = {
+			limit = {
+				technology_group = nomad_group
+				religion_group = christian
+			}
+			change_technology_group = eastern
+			change_unit_type = eastern
+		}
+		if = {
+			limit = {
+				technology_group = nomad_group
+				NOT = { religion_group = muslim }
+				NOT = { religion_group = christian }
+				NOT = { secondary_religion = sunni }
+				NOT = { secondary_religion = shiite }
+				NOT = { secondary_religion = ibadi }
+				NOT = { religion = totemism }
+				NOT = { religion = inti }
+				NOT = { religion = nahuatl }
+				NOT = { religion = mesoamerican_religion }
+				NOT = { religion = dreamtime }
+			}
+			change_technology_group = chinese
+			change_unit_type = chinese
+		}
+		if = {
+			limit = { has_reform = prussian_monarchy }
+			add_government_reform = prussian_republic
+		}
+		if = {
+			limit = { 
+				has_reform = tsardom
+			}
+			add_government_reform = russian_republic
+			adm_power_cost = -200
+		}
+		if = {
+			limit = { 
+				OR = {
+					has_reform = parliamentary_reform
+					has_reform = states_general_reform
+					has_reform = theocratic_democracy_reform
+				}
+			}
+			adm_power_cost = -200
+		}
+	}
+
+	option = {
+		name = "extras.12c"
+		trigger = {
+			NOT = { government = theocracy }
+			NOT = { has_country_flag = used_government_switch_theocracy }
+			OR = {
+				is_year = 1600
+				has_reform_on_level = 10
+				has_reform = feudal_theocracy
+				AND = {
+					government = tribal
+					is_year = 1500
+				}
+				AND = {
+					has_reform = mon_state_religion
+					adm_power = 200
+					is_year = 1500
+				}
+				AND = {
+					has_reform = clerical_influencers
+					adm_power = 200
+					is_year = 1500
+				}
+			}
+		}
+
+		change_government_to_theocracy = yes
+		set_country_flag = used_government_switch_theocracy
+
+		#nomad
+		if = {
+			limit = {
+				technology_group = nomad_group
+				OR = {
+					religion_group = muslim
+					secondary_religion = sunni
+					secondary_religion = shiite
+					secondary_religion = ibadi
+				}
+			}
+			change_technology_group = muslim
+			change_unit_type = muslim
+		}
+		else_if = {
+			limit = {
+				technology_group = nomad_group
+				religion_group = christian
+			}
+			change_technology_group = eastern
+			change_unit_type = eastern
+		}
+		if = {
+			limit = {
+				technology_group = nomad_group
+				NOT = { religion_group = muslim }
+				NOT = { religion_group = christian }
+				NOT = { secondary_religion = sunni }
+				NOT = { secondary_religion = shiite }
+				NOT = { secondary_religion = ibadi }
+				NOT = { religion = totemism }
+				NOT = { religion = inti }
+				NOT = { religion = nahuatl }
+				NOT = { religion = mesoamerican_religion }
+				NOT = { religion = dreamtime }
+			}
+			change_technology_group = chinese
+			change_unit_type = chinese
+		}
+		if = {
+			limit = { 
+				OR = {
+					has_reform = mon_state_religion
+					has_reform = clerical_influencers
+				}
+			}
+			adm_power_cost = -200
+		}
+	}
+
+	option = {
+		name = "extras.a"
+	}
+}
+
+country_event = {
+	id = extras.13
+	title = "extras.title13"
+	desc = "extras.desc13"
+	picture = ADVISOR_eventPicture
+
+	is_triggered_only = yes
+
+	option = {
+		name = "extras.13a"
+		trigger = {
+			is_year = 1455
+			NOT = { has_country_modifier = so_recruit_adm_advisor }
+		}
+
+		country_event = {
+			id = selout.1
+		}
+		add_country_modifier = {
+			name = "so_recruit_adm_advisor"
+			duration = 3650
+			hidden = yes
+		}
+	}
+
+	option = {
+		name = "extras.13b"
+		trigger = {
+			is_year = 1450
+			NOT = { has_country_modifier = so_recruit_dip_advisor }
+		}
+		
+		country_event = {
+			id = selout.2
+		}
+		add_country_modifier = {
+			name = "so_recruit_dip_advisor"
+			duration = 3650
+			hidden = yes
+		}
+	}
+
+	option = {
+		name = "extras.13c"
+		trigger = {
+			is_year = 1445
+			NOT = { has_country_modifier = so_recruit_mil_advisor }
+		}
+		
+		country_event = {
+			id = selout.3
+		}
+		add_country_modifier = {
+			name = "so_recruit_mil_advisor"
+			duration = 3650
+			hidden = yes
+		}
+	}
+
+	option = {
+		name = "extras.a"
+	}
+}

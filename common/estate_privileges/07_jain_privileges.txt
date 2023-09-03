@@ -1140,61 +1140,61 @@ estate_jains_private_trade_fleets = {
 }
 
 #Domination generic Estate Privileges
-#estate_jains_development_of_cities = {
-#	icon = privilege_development_efficiency
-#	loyalty = 0.05
-#	influence = 0.05
-#	#max_absolutism = -5
-#	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
-#	is_valid = {
-#		has_dlc = "Domination"
-#	}
-#	on_granted = {
-#		custom_tooltip = estate_jains_development_of_cities_gt
-#		tooltip = {
-#			add_province_modifier = {
-#				name = estate_jains_development_of_cities_mod
-#				duration = -1
-#			}
-#		}
-#	}
-#	on_revoked = {
-#		custom_tooltip = estate_jains_development_of_cities_rt
-#	}
-#	on_granted_province = {
-#		if = {
-#			limit = {
-#				OR = {
-#					province_has_center_of_trade_of_level = 1
-#					has_river_estuary_trigger = yes
-#				}
-#			}
-#			add_province_modifier = {
-#				name = estate_jains_development_of_cities_mod
-#				duration = -1
-#			}
-#		}
-#	}
-#	on_invalid_province = {
-#		if = {
-#			limit = { has_province_modifier = estate_jains_development_of_cities_mod }
-#			remove_province_modifier = estate_jains_development_of_cities_mod
-#		}
-#	}
-#	on_revoked_province = {
-#		if = {
-#			limit = { has_province_modifier = estate_jains_development_of_cities_mod }
-#			remove_province_modifier = estate_jains_development_of_cities_mod
-#		}
-#	}
-#
-#	mechanics = {
-#		no_estate_crownland_loss_from_developing
-#	}
-#	ai_will_do = {
-#		factor = 0
-#	}
-#}
+estate_jains_development_of_cities = {
+	icon = privilege_development_efficiency
+	loyalty = 0.05
+	influence = 0.05
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	is_valid = {
+		has_dlc = "Domination"
+	}
+	on_granted = {
+		custom_tooltip = estate_jains_development_of_cities_gt
+		tooltip = {
+			add_province_modifier = {
+				name = estate_jains_development_of_cities_mod
+				duration = -1
+			}
+		}
+	}
+	on_revoked = {
+		custom_tooltip = estate_jains_development_of_cities_rt
+	}
+	on_granted_province = {
+		if = {
+			limit = {
+				OR = {
+					province_has_center_of_trade_of_level = 1
+					has_river_estuary_trigger = yes
+				}
+			}
+			add_province_modifier = {
+				name = estate_jains_development_of_cities_mod
+				duration = -1
+			}
+		}
+	}
+	on_invalid_province = {
+		if = {
+			limit = { has_province_modifier = estate_jains_development_of_cities_mod }
+			remove_province_modifier = estate_jains_development_of_cities_mod
+		}
+	}
+	on_revoked_province = {
+		if = {
+			limit = { has_province_modifier = estate_jains_development_of_cities_mod }
+			remove_province_modifier = estate_jains_development_of_cities_mod
+		}
+	}
+
+	mechanics = {
+		no_estate_crownland_loss_from_developing
+	}
+	ai_will_do = {
+		factor = 0
+	}
+}
 #estate_jains_right_to_offer_loans = {
 #	icon = privilege_ducats
 #	loyalty = 0.0
