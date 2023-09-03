@@ -17,15 +17,32 @@ tm_ARB_slot_1 = {
 		}
 
 		trigger = {
-			ETH = {
-				OR = {
+			if = {
+				limit = {
+					exists = ETH
+				}
+				ETH = {
 					has_been_insulted_by_root = yes
-					NOT = { exists = yes }
+				}
+			}
+			else_if = {
+				limit = {
+					exists = SOM
+				}
+				SOM = {
+					has_been_insulted_by_root = yes
+				}
+			}
+			else = {
+				any_owned_province = {
+					region = horn_of_africa_region
 				}
 			}
 			4280 = {
-				has_influencing_fort = yes
-				fort_level = 2
+				OR = {
+					has_influencing_fort = yes
+					fort_level = 2
+				}
 			}
 		}
 
@@ -192,6 +209,7 @@ tm_ARB_slot_1 = {
 		}
 
 	    effect = {
+			set_country_flag = sunni_can_use_shia_school
             set_religious_school = {
 				group = muslim
 				school = jafari_school
@@ -277,21 +295,63 @@ tm_ARB_slot_2 = {
 		position = 2
 
 		provinces_to_highlight = {
-            owned_by = event_target:mamluks_event_target
+            OR = {
+				owned_by = MAM
+				owned_by = EGY
+			}
 		}
 
 		trigger = {
-			event_target:mamluks_event_target = {
-				OR = {
+			if = {
+				limit = {
+					MAM = { exists = yes }
+				}
+				MAM = {
 					has_been_insulted_by_root = yes
-					NOT = { exists = yes }
+				}
+				any_owned_province = {
+					any_neighbor_province = { 
+						country_or_non_sovereign_subject_holds = MAM
+					}
+					fort_level = 2
 				}
 			}
-			any_owned_province = {
-				any_neighbor_province = { 
-					country_or_non_sovereign_subject_holds = event_target:mamluks_event_target
+			else_if = {
+				limit = {
+					EGY = { exists = yes }
 				}
-				fort_level = 2
+				EGY = {
+					has_been_insulted_by_root = yes
+				}
+				any_owned_province = {
+					any_neighbor_province = { 
+						country_or_non_sovereign_subject_holds = EGY
+					}
+					fort_level = 2
+				}
+			}
+			else_if = {
+				limit = {
+					CPH = {
+						was_tag = MAM
+						exists = yes
+					}
+				}
+				CPH = {
+					has_been_insulted_by_root = yes
+				}
+				any_owned_province = {
+					any_neighbor_province = { 
+						country_or_non_sovereign_subject_holds = CPH
+					}
+					fort_level = 2
+				}
+			}
+			else = {
+				any_owned_province = {
+					region = egypt_region
+					has_fort_building_trigger = yes
+				}
 			}
 		}
 
@@ -299,27 +359,109 @@ tm_ARB_slot_2 = {
             egypt_region = {
 				add_perma_claim = yes
 			}
-			random_owned_province = {
+			if = {
 				limit = {
-					fort_level = 2
-					any_neighbor_province = { 
-						country_or_non_sovereign_subject_holds = event_target:mamluks_event_target
-					}
+					exists = MAM
 				}
-				if = {
+				random_owned_province = {
 					limit = {
-						NOT = { has_building = guardhouse }
+						fort_level = 2
+						any_neighbor_province = { 
+							country_or_non_sovereign_subject_holds = MAM
+						}
 					}
-					add_building = guardhouse
+					if = {
+						limit = {
+							NOT = { has_building = guardhouse }
+						}
+						add_building = guardhouse
+					}
+					else = { add_base_manpower = 2 }
+					if = {
+						limit = {
+							NOT = { has_building = armoury }
+						}
+						add_building = armoury
+					}
+					else = { add_base_manpower = 2 }
 				}
-				else = { add_base_manpower = 2 }
-				if = {
+			}
+			else_if = {
+				limit = {
+					exists = EGY
+				}
+				random_owned_province = {
 					limit = {
-						NOT = { has_building = armoury }
+						fort_level = 2
+						any_neighbor_province = { 
+							country_or_non_sovereign_subject_holds = EGY
+						}
 					}
-					add_building = armoury
+					if = {
+						limit = {
+							NOT = { has_building = guardhouse }
+						}
+						add_building = guardhouse
+					}
+					else = { add_base_manpower = 2 }
+					if = {
+						limit = {
+							NOT = { has_building = armoury }
+						}
+						add_building = armoury
+					}
+					else = { add_base_manpower = 2 }
 				}
-				else = { add_base_manpower = 2 }
+			}
+			else_if = {
+				limit = {
+					exists = CPH
+					CPH = { was_tag = MAM }
+				}
+				random_owned_province = {
+					limit = {
+						fort_level = 2
+						any_neighbor_province = { 
+							country_or_non_sovereign_subject_holds = CPH
+						}
+					}
+					if = {
+						limit = {
+							NOT = { has_building = guardhouse }
+						}
+						add_building = guardhouse
+					}
+					else = { add_base_manpower = 2 }
+					if = {
+						limit = {
+							NOT = { has_building = armoury }
+						}
+						add_building = armoury
+					}
+					else = { add_base_manpower = 2 }
+				}
+			}
+			else = {
+				random_owned_province = {
+					limit = {
+						fort_level = 2
+						region = egypt_region
+					}
+					if = {
+						limit = {
+							NOT = { has_building = guardhouse }
+						}
+						add_building = guardhouse
+					}
+					else = { add_base_manpower = 2 }
+					if = {
+						limit = {
+							NOT = { has_building = armoury }
+						}
+						add_building = armoury
+					}
+					else = { add_base_manpower = 2 }
+				}
 			}
 	    }
 	}
@@ -363,11 +505,40 @@ tm_ARB_slot_2 = {
 		required_missions = { tm_arb_slot_2_mission_2 }
 
 		provinces_to_highlight = {
-            owned_by = event_target:mamluks_event_target
+            OR = {
+				owned_by = MAM
+				owned_by = EGY
+			}
 		}
 
 		trigger = {
-			total_development = event_target:mamluks_event_target
+			if = {
+				limit = {
+					exists = MAM
+				}
+				total_development = MAM
+			}
+			else_if = {
+				limit = {
+					exists = EGY
+				}
+				total_development = EGY
+			}
+			else_if = {
+				limit = {
+					CPH = {
+						exists = yes
+						was_tag = MAM
+					}
+				}
+				total_development = CPH
+			}
+			else = {
+				development_in_provinces = {
+					value 300
+					region = egypt_region
+				}
+			}
 			num_of_owned_provinces_with = {
 				value = 15
 				region = egypt_region

@@ -455,48 +455,66 @@ country_decisions = {
 			set_country_flag = educate_ruler_flag
 		}
 	}
-	tm_hire_explorer = {
+	tm_hire_conq_or_exp = {
 		potential = {
-				is_bankrupt = no
-				ai = no
-				adm_tech = 7
-				#has_institution = new_world_i
+			is_bankrupt = no
+			ai = no
+			adm_tech = 7
+			#has_institution = new_world_i
+			OR = {
 				NOT = { has_country_modifier = hired_explorer }
-			}
-			allow = {
-				#has_institution = new_world_i
-			}
-			effect = {
-				add_years_of_income = -0.1
-				create_explorer = { tradition = 10 }
-				add_country_modifier = {
-				name = "hired_explorer"
-				duration = 1825
-				hidden = yes
-			}
-		}
-	}
-	tm_hire_conquistador = {
-		potential = {
-				is_bankrupt = no
-				ai = no
-				adm_tech = 7
-				#has_institution = new_world_i
 				NOT = { has_country_modifier = hired_conquistador }
 			}
-			allow = {
-				#has_institution = new_world_i
-			}
-			effect = {
-				add_years_of_income = -0.3
-				create_conquistador = { tradition = 10 }
-				add_country_modifier = {
-				name = "hired_conquistador"
-				duration = 1825
-				hidden = yes
-				}
-			}	
 		}
+		allow = {
+
+		}
+		effect = {
+			country_event = { id = extras.11 }
+		}
+	}
+	#tm_hire_explorer = {
+	#	potential = {
+	#		is_bankrupt = no
+	#		ai = no
+	#		adm_tech = 7
+	#		#has_institution = new_world_i
+	#		NOT = { has_country_modifier = hired_explorer }
+	#	}
+	#	allow = {
+	#		#has_institution = new_world_i
+	#	}
+	#	effect = {
+	#		add_years_of_income = -0.1
+	#		create_explorer = { tradition = 10 }
+	#		add_country_modifier = {
+	#			name = "hired_explorer"
+	#			duration = 1825
+	#			hidden = yes
+	#		}
+	#	}
+	#}
+	#tm_hire_conquistador = {
+	#	potential = {
+	#		is_bankrupt = no
+	#		ai = no
+	#		adm_tech = 7
+	#		#has_institution = new_world_i
+	#		NOT = { has_country_modifier = hired_conquistador }
+	#	}
+	#	allow = {
+	#		#has_institution = new_world_i
+	#	}
+	#	effect = {
+	#		add_years_of_income = -0.3
+	#		create_conquistador = { tradition = 10 }
+	#		add_country_modifier = {
+	#			name = "hired_conquistador"
+	#			duration = 1825
+	#			hidden = yes
+	#		}
+	#	}	
+	#}
 	
 	tm_cav_mercs = {
 		potential = {
@@ -579,7 +597,10 @@ country_decisions = {
 
 	tm_remove_burger_loan_priv = {
 		potential = {
-			has_estate_privilege = estate_burghers_indebted_to_burghers
+			OR = {
+				has_estate_privilege = estate_burghers_indebted_to_burghers
+				has_estate_privilege = estate_sedentary_subjects_indebted_to_sedentary_subjects
+			}
 			has_estate_loan = no
 		}
 		allow = {
@@ -590,7 +611,18 @@ country_decisions = {
 			always = yes
 		}
 		effect = {
-			remove_estate_privilege= estate_burghers_indebted_to_burghers
+			if = {
+				limit = {
+					has_estate_privilege = estate_burghers_indebted_to_burghers
+				}
+				remove_estate_privilege= estate_burghers_indebted_to_burghers
+			}
+			if = {
+				limit = {
+					has_estate_privilege = estate_sedentary_subjects_indebted_to_sedentary_subjects
+				}
+				remove_estate_privilege= estate_sedentary_subjects_indebted_to_sedentary_subjects
+			}
 		}
 		ai_will_do = {
 			factor = 0
@@ -657,15 +689,115 @@ country_decisions = {
 			has_parliament = yes
 		}
 		allow = {
-			always = yes
+			any_owned_province = {
+				is_core = ROOT
+				is_state = yes
+				has_seat_in_parliament = no
+			}
 		}
 		effect = {
-			every_owned_province = {
-				limit = {
-					is_state = yes
-					has_seat_in_parliament = no
+			custom_tooltip = tm_add_provinces_to_parliment_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						is_core = ROOT
+						is_state = yes
+						has_seat_in_parliament = no
+					}
+					set_seat_in_parliament = yes
 				}
-				set_seat_in_parliament = yes
+			}
+		}
+	}
+
+#	so_recruit_admin_advisor = {
+#		major = no
+#		potential = {
+#			is_year = 1455
+#			ai = no
+#			NOT = { has_country_modifier = so_recruit_adm_advisor }
+#		}
+#		allow = {
+#			adm_power = 50
+#			ai = no
+#			
+#		}
+#		effect = {
+#			country_event = {
+#				id = selout.1
+#			}
+#			add_country_modifier = {
+#				name = "so_recruit_adm_advisor"
+#				duration = 360
+#				hidden = yes
+#			}
+#		}
+#	}
+#
+#	so_recruit_diplo_advisor = {
+#		major = no
+#		potential = {
+#			is_year = 1450
+#			ai = no	
+#			NOT = { has_country_modifier = so_recruit_dip_advisor }
+#		}
+#		allow = {
+#			dip_power = 50
+#			ai = no
+#			
+#		}
+#		effect = {
+#			country_event = {
+#				id = selout.2
+#			}
+#			add_country_modifier = {
+#				name = "so_recruit_dip_advisor"
+#				duration = 360
+#				hidden = yes
+#			}
+#		}
+#	}
+#
+#	so_recruit_military_advisor = {
+#		major = no
+#		potential = {
+#			is_year = 1445
+#			ai = no
+#			NOT = { has_country_modifier = so_recruit_mil_advisor }
+#		}
+#		allow = {
+#			mil_power = 50
+#			ai = no
+#			
+#		}
+#		effect = {
+#			country_event = {
+#				id = selout.3
+#			}
+#			add_country_modifier = {
+#				name = "so_recruit_mil_advisor"
+#				duration = 360
+#				hidden = yes
+#			}
+#		}
+#	}
+
+	tm_recruit_advisor_dec = {
+		major = no
+		potential = {
+			is_year = 1445
+			ai = no
+			OR = {
+				NOT = { has_country_modifier = so_recruit_adm_advisor }
+				NOT = { has_country_modifier = so_recruit_dip_advisor }
+				NOT = { has_country_modifier = so_recruit_mil_advisor }
+			}
+			
+		}
+		allow = {}
+		effect = {
+			country_event = {
+				id = extras.13
 			}
 		}
 	}

@@ -1038,15 +1038,17 @@ estate_rajput_development_of_rajput_lands = {
 	on_granted_province = {
 		if = {
 			limit = {
-				OR = {
-					culture = rajput
-					culture = malvi
-					AND = {
-						culture_group = eastern_aryan
-						NOT = { culture = sinhala }
+				NOT = {
+					OR = {
+						culture = rajput
+						culture = malvi
+						AND = {
+							culture_group = eastern_aryan
+							NOT = { culture = sinhala }
+						}
+						culture_group = hindusthani
+						culture_group = central_indic
 					}
-					culture_group = hindusthani
-					culture_group = central_indic
 				}
 			}
 			add_province_modifier = {
