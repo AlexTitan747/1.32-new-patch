@@ -1,15 +1,16 @@
-#544 - Ahmednagar
+#433 - Nasik
 
 owner = AHM
 controller = AHM
 culture = marathi
 religion = hinduism
-capital = "Junir"
-trade_goods = deer
+capital = "Nasik"
+trade_goods = paper
 hre = no
-base_tax = 3
-base_production = 3
+base_tax = 2
+base_production = 2
 base_manpower = 1
+add_brahmins_or_church_effect = yes
 is_city = yes
 add_core = AHM
 discovered_by = indian
@@ -18,24 +19,39 @@ discovered_by = muslim
 discovered_by = ottoman
 discovered_by = chinese
 
-
 1490.1.1 = {
-	owner = AHM
-	controller = AHM
 	remove_core = BAH
+	controller = AHM
+	owner = AHM
 } # The Breakup of the Bahmani sultanate
 1498.1.1 = { discovered_by = POR }
-1633.7.27 = {
+1595.1.1 = { controller = MUG } # captured by Mughal Empire
+1596.1.1 = {
 	owner = MUG
-	controller = MUG
 	add_core = MUG
-} # Conquered by Shah Jahan
-1650.1.1 = { add_core = MAR }
-1658.1.15 = {
+} # captured by Mughal Empire
+1615.1.1 = { controller = AHM } # Ahmednagar Anti-Mughal Campaign
+1622.1.1 = { controller = MUG }
+1622.3.1 = {
 	controller = REB
 	revolt = {
 		type = pretender_rebels
 		size = 0
+		name = "Khurrams Faction"
+		leader = "Shah Jahan Timurid"
+	}
+} #Should be named Khurram at this point
+1622.8.15 = {
+	controller = MUG
+	revolt = { }
+} #Khurram flees on into Ahmednagar, Golconda and then Orissa. Eventually attacks Mughal Bengal.
+1650.1.1 = { add_core = MAR }
+1653.1.1 = { capital = "Aurangabad" } # Aurangzeb renames the city
+1658.1.15 = {
+	controller = REB
+	revolt = {
+		type = pretender_rebels
+		size = 5
 		name = "Aurangzeb's Faction"
 		leader = "Aurangzeb Alamgir Timurid"
 	}
@@ -53,5 +69,5 @@ discovered_by = chinese
 	owner = GBR
 	controller = GBR
 	add_core = GBR
-	remove_core = MAR
-}	  
+}
+
