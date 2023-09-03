@@ -12,7 +12,50 @@ tm_MAD_branch_1 = {
 		}
 	}
 
-	
+	mad_seize_ceylon = {
+		icon = mission_humiliate_lubeck
+		position = 2
+		required_missions = {
+			mad_last_of_the_tamils
+		}
+		provinces_to_highlight = {
+			OR = {
+				area = lanka_area
+				area = south_lanka_area
+			}
+            NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			lanka_area = {
+				type = all
+				is_core = ROOT
+			}
+			south_lanka_area = {
+				type = all
+				is_core = ROOT
+			}
+		}
+		effect = {
+			lanka_area = {
+				limit = {
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+				add_province_modifier = {
+					name = controling_ceylon
+					duration = 3650
+				}
+			}
+			south_lanka_area = {
+				limit = {
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+				add_province_modifier = {
+					name = controling_ceylon
+					duration = 3650
+				}
+			}
+		}
+	}
 }
 
 tm_MAD_branch_2 = {
@@ -28,7 +71,134 @@ tm_MAD_branch_2 = {
 			was_tag = MAD
 		}
 	}
+
+	mad_last_of_the_tamils = {
+		icon = mission_humiliate_lubeck
+		position = 1
+		required_missions = {
+			
+		}
+		provinces_to_highlight = {
+			
+		}
+		trigger = {
+			army_size_percentage = 1
+			manpower_percentage = 0.5
+		}
+		effect = {
+			malabar_area = { 
+				add_perma_claim = yes 
+			}
+			lanka_area = { 
+				add_perma_claim = yes 
+			}
+			south_lanka_area = { 
+				add_perma_claim = yes 
+			}
+			mysore_area = { 
+				add_perma_claim = yes 
+			}
+		}
+	}
 	
+	mad_destroy_mysore = {
+		icon = mission_humiliate_lubeck
+		position = 2
+		required_missions = {
+			mad_last_of_the_tamils
+		}
+		provinces_to_highlight = {
+			area = mysore_area
+            NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			mysore_area = {
+				type = all
+				is_core = ROOT
+			}
+		}
+		effect = {
+			south_carnatic_area = { 
+				add_perma_claim = yes 
+			}
+			north_carnatic_area = { 
+				add_perma_claim = yes 
+			}
+			rayalaseema_area = { 
+				add_perma_claim = yes 
+			}
+			raichur_doab_area = { 
+				add_perma_claim = yes 
+			}
+		}
+	}
+
+	mad_march_on_vijanagar = {
+		icon = mission_humiliate_lubeck
+		position = 3
+		required_missions = {
+			mad_destroy_mysore
+		}
+		provinces_to_highlight = {
+			OR = {
+				area = south_carnatic_area
+				area = north_carnatic_area
+				area = rayalaseema_area
+			}
+            NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			south_carnatic_area = {
+				type = all
+				is_core = ROOT
+			}
+			north_carnatic_area = {
+				type = all
+				is_core = ROOT
+			}
+			rayalaseema_area = {
+				type = all
+				is_core = ROOT
+			}
+		}
+		effect = {
+			add_stability = 1
+			add_country_modifier = {
+				name = defeated_vij
+				duration = 3650
+			}
+		}
+	}
+
+	mad_south_indian_unity = {
+		icon = mission_humiliate_lubeck
+		position = 4
+		required_missions = {
+			mad_march_on_vijanagar
+			mad_towards_goa
+		}
+		provinces_to_highlight = {
+			OR = {
+				region = coromandel_region
+				region = deccan_region
+			}
+            NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			tag = TMK
+			coromandel_region = {
+				value = 25
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			deccan_region = {
+				value = 25
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		effect = {
+			
+		}
+	}
 }
 
 tm_MAD_branch_3 = {
@@ -45,7 +215,60 @@ tm_MAD_branch_3 = {
 		}
 	}
 
-	
+	mad_clear_malabar_coast = {
+		icon = mission_humiliate_lubeck
+		position = 2
+		required_missions = {
+			mad_last_of_the_tamils
+		}
+		provinces_to_highlight = {
+			area = malabar_area
+            NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			malabar_area = {
+				type = all
+				is_core = ROOT
+			}
+		}
+		effect = {
+			kanara_area = { 
+				add_perma_claim = yes 
+			}
+		}
+	}
+
+	mad_towards_goa = {
+		icon = mission_humiliate_lubeck
+		position = 3
+		required_missions = {
+			mad_clear_malabar_coast
+		}
+		provinces_to_highlight = {
+			area = kanara_area
+            NOT = { owned_by = ROOT }
+		}
+		trigger = {
+			kanara_area = {
+				type = all
+				is_core = ROOT
+			}
+		}
+		effect = {
+			2030 = {
+				add_base_production = 2
+				add_base_tax = 1
+				add_base_manpower = 1
+				add_center_of_trade_level = 1
+			}
+			531 = {
+				add_base_production = 2
+				add_base_tax = 1
+				add_base_manpower = 1
+				add_center_of_trade_level = 1
+			}
+		}
+	}
 }
 
 tm_MAD_branch_4 = {
