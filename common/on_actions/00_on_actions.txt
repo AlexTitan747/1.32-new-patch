@@ -1827,6 +1827,20 @@ on_bankruptcy = {
 			value = 1
 		}
 	}
+	if = {
+		limit = {
+			has_estate_privilege = estate_sedentary_subjects_indebted_to_sedentary_subjects
+			has_estate_loan = no
+		}
+		remove_estate_privilege= estate_sedentary_subjects_indebted_to_sedentary_subjects
+	}
+	if = {
+		limit = {
+			has_estate_privilege = estate_burghers_indebted_to_burghers
+			has_estate_loan = no
+		}
+		remove_estate_privilege= estate_burghers_indebted_to_burghers
+	}
 }
 
 # country (country annexing, root = target)
@@ -5979,6 +5993,13 @@ on_loan_repaid = {
 	#	limit = { guild_ideas = 4 }
 	#	add_inflation = -0.05
 	#}
+	if = {
+		limit = {
+			has_estate_privilege = estate_sedentary_subjects_indebted_to_sedentary_subjects
+			has_estate_loan = no
+		}
+		remove_estate_privilege= estate_sedentary_subjects_indebted_to_sedentary_subjects
+	}
 }
 
 # this = country

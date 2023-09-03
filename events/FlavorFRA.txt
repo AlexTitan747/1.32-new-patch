@@ -2564,20 +2564,35 @@ country_event = { #The Paypal Domain
 	desc = flavor_fra.115.d 
 	picture = POPE_PREACHING_eventPicture
 	is_triggered_only = yes 
+
+	immediate = {
+		random_ally = {
+			limit = {
+				capital_scope = {
+					region = italy_region
+				}
+			}
+			save_event_target_as = tm_fra_italian_ally
+		}
+	}
 	
 	option = { 
 		name = flavor_fra.115.a 
 		
 		trigger = { 
-			has_country_flag = fra_papal_lap_dop_flag 
-			religion = catholic 
+			has_country_flag = fra_papal_lap_dop_flag
 		}
-		add_historical_friend = PAP 
-		PAP = { 
+		add_historical_friend = event_target:tm_fra_italian_ally 
+		event_target:tm_fra_italian_ally = { 
 			add_historical_friend = ROOT 
 			#country_event = { id = flavor_fra.116 }
-		} 
-		add_papal_influence = 15
+		}
+		if = {
+			limit = {
+				religion = catholic
+			}
+			add_papal_influence = 15			
+		}
 		italy_region = { 
 			limit = { 
 				NOT = { is_core = ROOT } 
