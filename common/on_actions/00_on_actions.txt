@@ -126,6 +126,16 @@ on_startup = {
 			add_rival = AVA
 		}
 	}
+
+	if = {
+		limit = {
+			NOT = { is_year = 1445 }
+		}
+		set_variable = {
+			which = navalBattlesWonMAD
+			value = 0
+		}
+	}
 	every_country = {
 		if = {
 			limit = {
@@ -1313,6 +1323,26 @@ on_battle_won_unit = {
 			change_variable = {
 				which = tmARBWonBattles3
 				value = 1
+			}
+		}
+	}
+
+	hidden_effect = {
+		if = {
+			limit = {
+				unit_owner = {
+					has_country_flag = MAD_battles_start_counting
+				}
+				location = {
+					is_sea = yes
+					heavy_ships_in_province = 10
+				}
+			}
+			MAD = {
+				change_variable = {
+					which = navalBattlesWonMAD
+					value = 1
+				}
 			}
 		}
 	}
@@ -5896,6 +5926,17 @@ on_flagship_captured = {
 			remove_country_modifier = hsa_pride_eagle_of_the_fleet_modifier
 		}
 	}
+	if = {
+		limit = {
+			tag = MAB
+			NOT = {
+				has_country_flag = MAB_flagship_done
+			}
+		}
+		ROOT = {
+			set_country_flag = MAB_flagship_done
+		}
+	}
 }
 
 # ROOT = Tag that destroyed the flagship, FROM = Tag that lost the flagship
@@ -5913,6 +5954,17 @@ on_flagship_destroyed = {
 		if = { 
 			limit = { has_country_modifier = hsa_pride_eagle_of_the_fleet_modifier }
 			remove_country_modifier = hsa_pride_eagle_of_the_fleet_modifier
+		}
+	}
+	if = {
+		limit = {
+			tag = MAB
+			NOT = {
+				has_country_flag = MAB_flagship_done
+			}
+		}
+		ROOT = {
+			set_country_flag = MAB_flagship_done
 		}
 	}
 }
