@@ -6,10 +6,36 @@ gc_morocco_1 = {
 		tag = MOR
 	}
 	has_country_shield = yes
-	
+
+	tm_moroccan_shipbuilding = {
+		icon = mission_raid_christian_trade
+		required_missions = {  }
+		position = 1
+		
+		provinces_to_highlight = {
+		}
+		
+		trigger = {
+			num_of_light_ship = 10
+			OR = {
+				num_of_galley = 15
+				num_of_heavy_ship = 8
+			}
+			num_of_admirals = 1
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "mor_privateering"
+				duration = 7300
+			}
+		}
+	}
+
 	gc_mor_imperial_cities = {
 		icon = mission_imperial_cities
 		required_missions = { }
+		position = 5
 		
 		provinces_to_highlight = {
 			OR = {
@@ -63,6 +89,7 @@ gc_morocco_1 = {
 			}
 		}
 	}
+
 	gc_mor_saharan_route = {
 		icon = mission_saharan_route
 		required_missions = { gc_mor_imperial_cities }
@@ -114,6 +141,7 @@ gc_morocco_1 = {
 			}
 		}
 	}
+
 	gc_mor_timbuktu = {
 		icon = mission_conquer_timbuktu
 		required_missions = { gc_mor_saharan_route }
@@ -173,6 +201,7 @@ gc_morocco_1 = {
 			}
 		}
 	}
+
 	gc_mor_songhai = {
 		icon = mission_the_songhai_campaign
 		required_missions = { gc_mor_timbuktu }
@@ -202,7 +231,7 @@ gc_morocco_1 = {
 				country_or_non_sovereign_subject_holds = ROOT	
 			}
 		}
-		
+
 		effect = {
 			azbin_area = {
 				limit = {
@@ -297,6 +326,7 @@ gc_morocco_1 = {
 			}			
 		}
 	}
+
 	gc_mor_mali = {
 		icon = mission_invade_mali
 		required_missions = { gc_mor_songhai }
@@ -372,6 +402,7 @@ gc_morocco_1 = {
 			}
 		}
 	}
+
 	gc_mor_benin = {
 		icon = mission_conquer_benin
 		required_missions = { gc_mor_mali }
@@ -419,42 +450,16 @@ gc_morocco_2 = {
 		tag = MOR
 	}
 	has_country_shield = yes
-	
-	gc_mor_privateer = {
-		icon = mission_raid_christian_trade
-		required_missions = { gc_mor_imperial_cities }
-		position = 2
-		
-		provinces_to_highlight = {
-			province_id = 1293
-		}
-		
-		trigger = {
-			1293 = {
-				privateer_power = {
-					country = ROOT
-					share = 20
-				}
-			}
-		}
-		
-		effect = {
-			add_country_modifier = {
-				name = mor_privateering
-				duration = 7300
-			}
-		}
-	}
 	gc_mor_palace = {
 		icon = mission_el_badi_palace
-		required_missions = { gc_mor_privateer }
+		required_missions = {  }
 		
 		provinces_to_highlight = {
 			province_id = 227
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 			NOT = { controlled_by = ROOT }
 		}
-		
+
 		trigger = {
 			OR = {
 				227 = {
@@ -475,6 +480,7 @@ gc_morocco_2 = {
 			}
 		}
 	}
+
 	gc_mor_black_guard = {
 		icon = mission_establish_the_black_guard
 		required_missions = { gc_mor_palace gc_mor_timbuktu }
@@ -504,6 +510,7 @@ gc_morocco_2 = {
 			}
 		}
 	}
+
 	gc_mor_kanem = {
 		icon = mission_invade_kanem
 		required_missions = { gc_mor_songhai }
@@ -566,13 +573,15 @@ gc_morocco_3 = {
 		tag = MOR
 	}
 	has_country_shield = yes
-	
+
 	gc_mor_wattasid = {
 		icon = mission_ottoman_harem
 		required_missions = {  }
+
 		trigger = {
 			army_size_percentage = 1
 		}
+
 		effect = {
 			algiers_area = {
 				limit = {
@@ -604,7 +613,7 @@ gc_morocco_3 = {
 			}
 		}
 	}
-	
+
 	gc_mor_algiers = {
 		icon = mission_conquer_algiers
 		required_missions = { gc_mor_wattasid }
@@ -619,7 +628,7 @@ gc_morocco_3 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		
+
 		trigger = {
 			stability = 1
 			algiers_area = {
@@ -651,9 +660,10 @@ gc_morocco_3 = {
 			}
 		}
 	}
+
 	gc_mor_pirates = {
 		icon = mission_pirate_havens
-		required_missions = { gc_mor_algiers gc_mor_privateer }
+		required_missions = { gc_mor_algiers }
 		
 		provinces_to_highlight = {
 			province_id = 1298
@@ -734,6 +744,7 @@ gc_morocco_3 = {
 			}
 		}
 	}
+
 	gc_mor_iceland = {
 		icon = mission_raid_on_iceland
 		required_missions = { gc_mor_pirates }
@@ -822,6 +833,7 @@ gc_morocco_3 = {
 	}
 }
 
+
 gc_morocco_4 = {
 	slot = 4
 	generic = no
@@ -830,7 +842,21 @@ gc_morocco_4 = {
 		tag = MOR
 	}
 	has_country_shield = yes
-	
+
+	tm_army_recruitment = {
+		icon = mission_ottoman_harem
+		required_missions = {  }
+		trigger = {
+			mil_tech = 5
+			max_manpower = 30
+			army_size_percentage = 1
+		}
+		effect = {
+
+
+		}
+	}
+
 	gc_mor_ceuta = {
 		icon = mission_reconquer_ceuta
 		required_missions = { gc_mor_wattasid }
@@ -845,7 +871,7 @@ gc_morocco_4 = {
 				owned_by = ROOT
 			}
 		}
-		
+
 		effect = {
 			if = {
 				limit = {
@@ -872,7 +898,7 @@ gc_morocco_4 = {
 			}
 		}
 	}
-	
+
 	gc_mor_protect_granada = {
 		icon = mission_protect_granada
 		required_missions = { gc_mor_ceuta }		
@@ -933,6 +959,7 @@ gc_morocco_4 = {
 			}
 		}
 	}
+
 	gc_mor_tunis = {
 		icon = mission_conquer_tunis
 		required_missions = { gc_mor_pirates }
@@ -945,7 +972,7 @@ gc_morocco_4 = {
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
-		
+
 		trigger = {
 			kabylia_area = {
 				type = all
@@ -964,7 +991,7 @@ gc_morocco_4 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		
+
 		effect = {
 			add_country_modifier = {
 				name = "mor_tunis_conquest"
@@ -982,10 +1009,11 @@ gc_morocco_5 = {
 		tag = MOR
 	}
 	has_country_shield = yes
-	
+
 	gc_mor_canaries = {
 		icon = mission_claim_the_canaries
 		required_missions = {  }
+		position = 5
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1012,6 +1040,7 @@ gc_morocco_5 = {
 			}
 		}
 	}
+
 	gc_mor_brazil = {
 		icon = mission_colonize_the_west
 		required_missions = { gc_mor_canaries }
@@ -1052,6 +1081,7 @@ gc_morocco_5 = {
 			}
 		}
 	}
+
 	gc_mor_new_world = {
 		icon = mission_new_world_power
 		required_missions = { gc_mor_brazil }
@@ -1122,10 +1152,12 @@ gc_morocco_5 = {
 			}
 		}
 	}
+
 	gc_mor_reclaim_andalucia = {
 		icon = mission_reclaim_andalucia
 		required_missions = { gc_mor_protect_granada }
-		
+		position = 8
+
 		provinces_to_highlight = {
 			OR = {
 				area = lower_andalucia_area
