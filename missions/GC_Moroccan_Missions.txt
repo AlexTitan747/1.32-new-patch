@@ -11,10 +11,10 @@ gc_morocco_1 = {
 		icon = mission_raid_christian_trade
 		required_missions = {  }
 		position = 1
-		
+
 		provinces_to_highlight = {
 		}
-		
+
 		trigger = {
 			num_of_light_ship = 10
 			OR = {
@@ -23,7 +23,7 @@ gc_morocco_1 = {
 			}
 			num_of_admirals = 1
 		}
-		
+
 		effect = {
 			add_country_modifier = {
 				name = "mor_privateering"
@@ -51,7 +51,7 @@ gc_morocco_1 = {
 				}
 			}
 		}
-		
+
 		trigger = {
 			343 = {
 				owned_by = ROOT
@@ -82,7 +82,7 @@ gc_morocco_1 = {
 				}
 			}
 		}
-		
+
 		effect = {
 			country_event = {
 				id = flavor_mor.12
@@ -100,7 +100,7 @@ gc_morocco_1 = {
 				province_id = 1110
 			}
 		}
-		
+
 		trigger = {
 			1110 = {
 				is_strongest_trade_power = ROOT
@@ -121,7 +121,8 @@ gc_morocco_1 = {
 					has_building = marketplace
 				}
 			}
-		}		
+		}
+
 		effect = {
 			if = {
 				limit = {
@@ -140,12 +141,13 @@ gc_morocco_1 = {
 				duration = 7300
 			}
 		}
+
 	}
 
 	gc_mor_timbuktu = {
 		icon = mission_conquer_timbuktu
 		required_missions = { gc_mor_saharan_route }
-		
+
 		provinces_to_highlight = {
 			OR = {
 				province_id = 1128
@@ -157,7 +159,7 @@ gc_morocco_1 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		
+
 		trigger = {
 			1128 = {
 				country_or_non_sovereign_subject_holds = ROOT
@@ -172,7 +174,7 @@ gc_morocco_1 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		
+
 		effect = {
 			niger_bend_area = {
 				limit = {
@@ -323,7 +325,7 @@ gc_morocco_1 = {
 					NOT = { is_core = ROOT	}
 				}
 				add_permanent_claim = ROOT
-			}			
+			}
 		}
 	}
 
@@ -345,7 +347,7 @@ gc_morocco_1 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		
+
 		trigger = {
 			jenne_area = {
 				type = all
@@ -376,7 +378,7 @@ gc_morocco_1 = {
 				country_or_non_sovereign_subject_holds = ROOT	
 			}
 		}
-		
+
 		effect = {
 			add_treasury = 1000
 			atacora_oueme_area = {
@@ -406,7 +408,7 @@ gc_morocco_1 = {
 	gc_mor_benin = {
 		icon = mission_conquer_benin
 		required_missions = { gc_mor_mali }
-		
+
 		provinces_to_highlight = {
 			OR = {
 				area = atacora_oueme_area
@@ -417,7 +419,7 @@ gc_morocco_1 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		
+
 		trigger = {
 			atacora_oueme_area = {
 				type = all
@@ -432,7 +434,7 @@ gc_morocco_1 = {
 				country_or_non_sovereign_subject_holds = ROOT	
 			}
 		}
-		
+
 		effect = {
 			add_country_modifier = {
 				name = conquest_of_benin_mor
@@ -440,6 +442,7 @@ gc_morocco_1 = {
 			}
 		}
 	}
+
 }
 
 gc_morocco_2 = {
@@ -450,9 +453,11 @@ gc_morocco_2 = {
 		tag = MOR
 	}
 	has_country_shield = yes
+
 	gc_mor_palace = {
 		icon = mission_el_badi_palace
 		required_missions = {  }
+		position = 2
 		
 		provinces_to_highlight = {
 			province_id = 227
@@ -483,7 +488,7 @@ gc_morocco_2 = {
 
 	gc_mor_black_guard = {
 		icon = mission_establish_the_black_guard
-		required_missions = { gc_mor_palace gc_mor_timbuktu }
+		required_missions = { gc_mor_palace }
 		
 		provinces_to_highlight = {
 			province_id = 1132
@@ -514,6 +519,7 @@ gc_morocco_2 = {
 	gc_mor_kanem = {
 		icon = mission_invade_kanem
 		required_missions = { gc_mor_songhai }
+		position = 9
 		
 		provinces_to_highlight = {
 			OR = {
@@ -578,8 +584,14 @@ gc_morocco_3 = {
 		icon = mission_ottoman_harem
 		required_missions = {  }
 
+		provinces_to_highlight = {
+			is_capital_of = root
+		}
+
 		trigger = {
+
 			army_size_percentage = 1
+
 		}
 
 		effect = {
@@ -843,20 +855,6 @@ gc_morocco_4 = {
 	}
 	has_country_shield = yes
 
-	tm_army_recruitment = {
-		icon = mission_ottoman_harem
-		required_missions = {  }
-		trigger = {
-			mil_tech = 5
-			max_manpower = 30
-			army_size_percentage = 1
-		}
-		effect = {
-
-
-		}
-	}
-
 	gc_mor_ceuta = {
 		icon = mission_reconquer_ceuta
 		required_missions = { gc_mor_wattasid }
@@ -1009,6 +1007,20 @@ gc_morocco_5 = {
 		tag = MOR
 	}
 	has_country_shield = yes
+
+	tm_army_recruitment = {
+		icon = mission_ottoman_harem
+		required_missions = {  }
+		trigger = {
+			mil_tech = 5
+			max_manpower = 30
+			army_size_percentage = 1
+		}
+		effect = {
+
+
+		}
+	}
 
 	gc_mor_canaries = {
 		icon = mission_claim_the_canaries
