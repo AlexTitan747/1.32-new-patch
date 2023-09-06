@@ -13,16 +13,18 @@ gc_morocco_1 = {
 		position = 1
 
 		provinces_to_highlight = {
-			
+
 		}
 
 		trigger = {
+
 			num_of_light_ship = 10
 			OR = {
 				num_of_galley = 15
 				num_of_heavy_ship = 8
 			}
 			num_of_admirals = 1
+
 		}
 
 		effect = {
@@ -256,7 +258,7 @@ gc_morocco_1 = {
 	gc_mor_songhai = {
 		icon = mission_the_songhai_campaign
 		required_missions = { gc_mor_timbuktu }
-		
+
 		provinces_to_highlight = {
 			OR = {
 				area = niger_bend_area
@@ -267,7 +269,7 @@ gc_morocco_1 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		
+
 		trigger = {
 			niger_bend_area = {
 				type = all
@@ -381,7 +383,7 @@ gc_morocco_1 = {
 	gc_mor_mali = {
 		icon = mission_invade_mali
 		required_missions = { gc_mor_songhai }
-		
+
 		provinces_to_highlight = {
 			OR = {
 				area = jenne_area
@@ -627,7 +629,7 @@ gc_morocco_2 = {
 	gc_mor_kanem = {
 		icon = mission_invade_kanem
 		required_missions = { gc_mor_songhai }
-		position = 9
+		position = 8
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1172,42 +1174,4 @@ gc_morocco_5 = {
 		}
 	}
 
-	gc_mor_reclaim_andalucia = {
-		icon = mission_reclaim_andalucia
-		required_missions = { gc_mor_protect_granada }
-		position = 8
-
-		provinces_to_highlight = {
-			OR = {
-				area = lower_andalucia_area
-				province_id = 221
-				province_id = 4547
-				province_id = 218
-			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		
-		trigger = {
-			lower_andalucia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			221 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			4547 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			218 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		
-		effect = {
-			add_country_modifier = {
-				name = "mor_andalucia"
-				duration = 7300
-			}
-		}
-	}
 }
