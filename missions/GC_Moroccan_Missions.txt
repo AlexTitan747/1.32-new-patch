@@ -13,6 +13,7 @@ gc_morocco_1 = {
 		position = 1
 
 		provinces_to_highlight = {
+			
 		}
 
 		trigger = {
@@ -32,60 +33,107 @@ gc_morocco_1 = {
 		}
 	}
 
-	gc_mor_imperial_cities = {
-		icon = mission_imperial_cities
-		required_missions = { }
-		position = 5
-		
+	gc_mor_ceuta = {
+		icon = mission_reconquer_ceuta
+		required_missions = { tm_moroccan_shipbuilding }
+		position = 3
 		provinces_to_highlight = {
-			OR = {
-				province_id = 343
-				province_id = 344
-				province_id = 342
-				province_id = 2467
-			}
-			NOT = {
-				OR = {
-					has_building = temple
-					development = 15
-				}
-			}
+			province_id = 1751
+			NOT = { owned_by = ROOT }
 		}
-
+		
 		trigger = {
-			343 = {
+			1751 = {
 				owned_by = ROOT
-				OR = {
-					has_building = temple
-					development = 15
-				}
-			}
-			344 = {
-				owned_by = ROOT
-				OR = {
-					has_building = temple
-					development = 15
-				}
-			}
-			2467 = {
-				owned_by = ROOT
-				OR = {
-					has_building = temple
-					development = 15
-				}
-			}
-			342 = {
-				owned_by = ROOT
-				OR = {
-					has_building = temple
-					development = 15
-				}
 			}
 		}
 
 		effect = {
-			country_event = {
-				id = flavor_mor.12
+			if = {
+				limit = {
+					exists = GRA
+					GRA = {
+						is_subject = no
+						religion_group = muslim
+					}
+				}
+				add_casus_belli = {
+					type = cb_vassalize_mission
+					months = 300
+					target = GRA
+				}
+			}
+			else = {
+				upper_andalucia_area = {
+					limit = {
+						NOT = { is_permanent_claim = ROOT	}
+						NOT = { is_core = ROOT	}
+					}
+					add_permanent_claim = ROOT
+				}		
+			}
+		}
+	}
+
+	gc_mor_protect_granada = {
+		icon = mission_protect_granada
+		required_missions = { gc_mor_ceuta }	
+		position = 4
+		
+		provinces_to_highlight = {
+			area = upper_andalucia_area
+			NOT = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		trigger = {
+			upper_andalucia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+		}
+		
+		effect = {
+			lower_andalucia_area = {
+				limit = {
+					NOT = { is_permanent_claim = ROOT	}
+					NOT = { is_core = ROOT	}
+				}
+				add_permanent_claim = ROOT
+			}
+			221 = {
+				if = {
+					limit = {
+						NOT = {
+							is_permanent_claim = ROOT
+							is_core = ROOT
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			4547 = {
+				if = {
+					limit = {
+						NOT = {
+							is_permanent_claim = ROOT
+							is_core = ROOT
+						}
+					}
+					add_permanent_claim = ROOT
+				}
+			}
+			218 = {
+				if = {
+					limit = {
+						NOT = {
+							is_permanent_claim = ROOT
+							is_core = ROOT
+						}
+					}
+					add_permanent_claim = ROOT
+				}
 			}
 		}
 	}
@@ -93,6 +141,7 @@ gc_morocco_1 = {
 	gc_mor_saharan_route = {
 		icon = mission_saharan_route
 		required_missions = { gc_mor_imperial_cities }
+		position = 5
 		
 		provinces_to_highlight = {
 			OR = {
@@ -454,10 +503,68 @@ gc_morocco_2 = {
 	}
 	has_country_shield = yes
 
+	gc_mor_imperial_cities = {
+		icon = mission_imperial_cities
+		required_missions = { tm_mor_mobilisation }
+		position = 2
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 343
+				province_id = 344
+				province_id = 342
+				province_id = 2467
+			}
+			NOT = {
+				OR = {
+					has_building = temple
+					development = 15
+				}
+			}
+		}
+
+		trigger = {
+			343 = {
+				owned_by = ROOT
+				OR = {
+					has_building = temple
+					development = 15
+				}
+			}
+			344 = {
+				owned_by = ROOT
+				OR = {
+					has_building = temple
+					development = 15
+				}
+			}
+			2467 = {
+				owned_by = ROOT
+				OR = {
+					has_building = temple
+					development = 15
+				}
+			}
+			342 = {
+				owned_by = ROOT
+				OR = {
+					has_building = temple
+					development = 15
+				}
+			}
+		}
+
+		effect = {
+			country_event = {
+				id = flavor_mor.12
+			}
+		}
+	}
+
 	gc_mor_palace = {
 		icon = mission_el_badi_palace
-		required_missions = {  }
-		position = 2
+		required_missions = { gc_mor_imperial_cities }
+		position = 3
 		
 		provinces_to_highlight = {
 			province_id = 227
@@ -489,6 +596,7 @@ gc_morocco_2 = {
 	gc_mor_black_guard = {
 		icon = mission_establish_the_black_guard
 		required_missions = { gc_mor_palace }
+		position = 4
 		
 		provinces_to_highlight = {
 			province_id = 1132
@@ -534,7 +642,7 @@ gc_morocco_2 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		
+
 		trigger = {
 			azbin_area = {
 				type = all
@@ -561,7 +669,7 @@ gc_morocco_2 = {
 				country_or_non_sovereign_subject_holds = ROOT	
 			}
 		}
-		
+
 		effect = {
 			add_country_modifier = {
 				name = "mor_conquest_of_kanem"
@@ -580,7 +688,7 @@ gc_morocco_3 = {
 	}
 	has_country_shield = yes
 
-	gc_mor_wattasid = {
+	tm_mor_mobilisation = {
 		icon = mission_ottoman_harem
 		required_missions = {  }
 
@@ -628,7 +736,7 @@ gc_morocco_3 = {
 
 	gc_mor_algiers = {
 		icon = mission_conquer_algiers
-		required_missions = { gc_mor_wattasid }
+		required_missions = { tm_mor_mobilisation }
 		provinces_to_highlight = {
 			OR = {
 				area = algiers_area
@@ -642,7 +750,6 @@ gc_morocco_3 = {
 		}
 
 		trigger = {
-			stability = 1
 			algiers_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT	
@@ -660,7 +767,7 @@ gc_morocco_3 = {
 				country_or_non_sovereign_subject_holds = ROOT	
 			}
 		}
-		
+
 		effect = {
 			change_ruler_stat = {
 				stat = adm
@@ -676,6 +783,7 @@ gc_morocco_3 = {
 	gc_mor_pirates = {
 		icon = mission_pirate_havens
 		required_missions = { gc_mor_algiers }
+		position = 4
 		
 		provinces_to_highlight = {
 			province_id = 1298
@@ -818,7 +926,7 @@ gc_morocco_3 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
-		
+
 		trigger = {
 			1975 = {
 				privateer_power = {
@@ -855,112 +963,11 @@ gc_morocco_4 = {
 	}
 	has_country_shield = yes
 
-	gc_mor_ceuta = {
-		icon = mission_reconquer_ceuta
-		required_missions = { gc_mor_wattasid }
-		position = 2
-		provinces_to_highlight = {
-			province_id = 1751
-			NOT = { owned_by = ROOT }
-		}
-		
-		trigger = {
-			1751 = {
-				owned_by = ROOT
-			}
-		}
-
-		effect = {
-			if = {
-				limit = {
-					exists = GRA
-					GRA = {
-						is_subject = no
-						religion_group = muslim
-					}
-				}
-				add_casus_belli = {
-					type = cb_vassalize_mission
-					months = 300
-					target = GRA
-				}
-			}
-			else = {
-				upper_andalucia_area = {
-					limit = {
-						NOT = { is_permanent_claim = ROOT	}
-						NOT = { is_core = ROOT	}
-					}
-					add_permanent_claim = ROOT
-				}		
-			}
-		}
-	}
-
-	gc_mor_protect_granada = {
-		icon = mission_protect_granada
-		required_missions = { gc_mor_ceuta }		
-		provinces_to_highlight = {
-			area = upper_andalucia_area
-			NOT = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		
-		trigger = {
-			upper_andalucia_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		
-		effect = {
-			lower_andalucia_area = {
-				limit = {
-					NOT = { is_permanent_claim = ROOT	}
-					NOT = { is_core = ROOT	}
-				}
-				add_permanent_claim = ROOT
-			}
-			221 = {
-				if = {
-					limit = {
-						NOT = {
-							is_permanent_claim = ROOT
-							is_core = ROOT
-						}
-					}
-					add_permanent_claim = ROOT
-				}
-			}
-			4547 = {
-				if = {
-					limit = {
-						NOT = {
-							is_permanent_claim = ROOT
-							is_core = ROOT
-						}
-					}
-					add_permanent_claim = ROOT
-				}
-			}
-			218 = {
-				if = {
-					limit = {
-						NOT = {
-							is_permanent_claim = ROOT
-							is_core = ROOT
-						}
-					}
-					add_permanent_claim = ROOT
-				}
-			}
-		}
-	}
-
 	gc_mor_tunis = {
 		icon = mission_conquer_tunis
 		required_missions = { gc_mor_pirates }
+		position = 5
+
 		provinces_to_highlight = {
 			OR = {
 				area = kabylia_area
