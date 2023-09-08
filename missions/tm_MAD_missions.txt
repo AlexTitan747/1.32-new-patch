@@ -186,13 +186,13 @@ tm_MAD_branch_2 = {
 		}
 		trigger = {
 			tag = TMK
-			coromandel_region = {
-				value = 25
-				country_or_non_sovereign_subject_holds = ROOT
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				amount = 25
+				region = coromandel_region
 			}
-			deccan_region = {
-				value = 25
-				country_or_non_sovereign_subject_holds = ROOT
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				amount = 25
+				region = deccan_region
 			}
 		}
 		effect = {
@@ -317,7 +317,7 @@ tm_MAD_branch_4 = {
 				}
 				add_province_modifier = {
 					name = MAB_increase_production
-					value = 3650
+					duration = 3650
 				}
 				add_base_production = 2
 			}
@@ -476,16 +476,12 @@ tm_MAD_branch_5 = {
 						province_has_center_of_trade_of_level = 2
 						province_has_center_of_trade_of_level = 3
 					}
-				}
-				if = {
-					limit = {
-						NOT = {
-							has_building = marketplace
-						}
-						add_building = marketplace
-						add_base_production = 2
+					NOT = {
+						has_building = marketplace
 					}
 				}
+				add_building = marketplace
+				add_base_production = 2
 			}
 		}
 	}
@@ -548,7 +544,7 @@ tm_MAD_branch_5 = {
 		}
 		trigger = {
 			custom_trigger_tooltip = {
-				name = MAD_has_won_naval_battles
+				tooltip = MAD_has_won_naval_battles
 				check_variable = {
 					which = navalBattlesWonMAD
 					value = 10
@@ -596,24 +592,6 @@ tm_TMK_branch_1 = {
 		
 		}
 	}
-
-	tmk_onwards_to_gujerat = {
-		icon = mission_humiliate_lubeck
-		position = 7
-		required_missions = {
-			mad_south_indian_unity
-		}
-		provinces_to_highlight = {
-			
-		}
-		trigger = {
-			
-		}
-		effect = {
-		
-		}
-	}
-
 }
 
 tm_TMK_branch_2 = {
