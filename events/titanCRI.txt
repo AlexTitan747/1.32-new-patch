@@ -17,11 +17,19 @@ country_event = {
 		}
 		add_treasury = 500
 		add_manpower = 30
+		add_adm_power = 100
+		add_dip_power = 100
+		add_mil_power = 100
 	}
 
 	option = {
 		name = "titanCRI.1.b"
 
+		trigger = {
+			any_subject_country = {
+				is_subject_of_type = tributary_state
+			}
+		}
 
 		custom_tooltip = inherit_the_tributaries_TT
 
@@ -29,6 +37,14 @@ country_event = {
 			every_subject_country = {
 				limit = {
 					is_subject_of_type = tributary_state
+					OR = {
+						capital_scope = {
+							region = russia_region
+						}
+						capital_scope = {
+							region = ural_region
+						}
+					}
 				}
 				ROOT = {
 					inherit = PREV
