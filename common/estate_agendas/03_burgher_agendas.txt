@@ -1320,6 +1320,12 @@ estate_burghers_colonise_X = {
 				NOT = { colonial_claim_by_anyone_of_religion = root }
 				is_religion_grant_colonial_claim = root
 			}
+			OR = {
+				ROOT = { is_colonial_nation = no }
+				colonial_region_for_scope_province = {
+					is_capital_of = ROOT
+				}
+			}
 		}
 		NOT = { has_country_modifier = colonial_enthusiasm }
 	}
@@ -1380,6 +1386,12 @@ estate_burghers_colonise_X = {
 					NOT = { colonial_claim_by_anyone_of_religion = root }
 					is_religion_grant_colonial_claim = root
 				}
+				OR = {
+					ROOT = { is_colonial_nation = no }
+					colonial_region_for_scope_province = {
+						is_capital_of = ROOT
+					}
+				}
 			}
 			save_event_target_as = agenda_province
 		}
@@ -1414,6 +1426,12 @@ estate_burghers_colonise_X = {
 				OR = {
 					NOT = { colonial_claim_by_anyone_of_religion = root }
 					is_religion_grant_colonial_claim = root
+				}
+				OR = {
+					ROOT = { is_colonial_nation = no }
+					colonial_region_for_scope_province = {
+						is_capital_of = ROOT
+					}
 				}
 			}
 			save_event_target_as = agenda_province
