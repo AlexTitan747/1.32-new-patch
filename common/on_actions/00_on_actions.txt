@@ -131,9 +131,11 @@ on_startup = {
 		limit = {
 			NOT = { is_year = 1445 }
 		}
-		set_variable = {
-			which = navalBattlesWonMAD
-			value = 0
+		MAD = {
+			set_variable = {
+				which = navalBattlesWonMAD
+				value = 0
+			}
 		}
 	}
 	every_country = {
@@ -1338,7 +1340,7 @@ on_battle_won_unit = {
 					heavy_ships_in_province = 10
 				}
 			}
-			MAD = {
+			unit_owner = {
 				change_variable = {
 					which = navalBattlesWonMAD
 					value = 1
@@ -5928,9 +5930,14 @@ on_flagship_captured = {
 	}
 	if = {
 		limit = {
-			tag = MAB
-			NOT = {
-				has_country_flag = MAB_flagship_done
+			ROOT = {
+				OR  = {
+					tag = MAB
+					was_tag = MAB
+				}
+				NOT = {
+					has_country_flag = MAB_flagship_done
+				}
 			}
 		}
 		ROOT = {
@@ -5958,9 +5965,14 @@ on_flagship_destroyed = {
 	}
 	if = {
 		limit = {
-			tag = MAB
-			NOT = {
-				has_country_flag = MAB_flagship_done
+			ROOT = {
+				OR = {
+					tag = MAB
+					was_tag = MAB
+				}
+				NOT = {
+					has_country_flag = MAB_flagship_done
+				}
 			}
 		}
 		ROOT = {

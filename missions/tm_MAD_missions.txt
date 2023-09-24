@@ -13,7 +13,7 @@ tm_MAD_branch_1 = {
 	}
 
 	mad_seize_ceylon = {
-		icon = mission_humiliate_lubeck
+		icon = mission_conquer_lanka
 		position = 2
 		required_missions = {
 			mad_last_of_the_tamils
@@ -23,32 +23,26 @@ tm_MAD_branch_1 = {
 				area = lanka_area
 				area = south_lanka_area
 			}
-            NOT = { owned_by = ROOT }
+            NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
 			lanka_area = {
 				type = all
-				is_core = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 			south_lanka_area = {
 				type = all
-				is_core = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		effect = {
 			lanka_area = {
-				limit = {
-					country_or_non_sovereign_subject_holds = ROOT
-				}
 				add_province_modifier = {
 					name = controling_ceylon
 					duration = 3650
 				}
 			}
 			south_lanka_area = {
-				limit = {
-					country_or_non_sovereign_subject_holds = ROOT
-				}
 				add_province_modifier = {
 					name = controling_ceylon
 					duration = 3650
@@ -73,14 +67,10 @@ tm_MAD_branch_2 = {
 	}
 
 	mad_last_of_the_tamils = {
-		icon = mission_humiliate_lubeck
+		icon = mission_kings_crown
 		position = 1
-		required_missions = {
-			
-		}
-		provinces_to_highlight = {
-			
-		}
+		required_missions = {}
+		provinces_to_highlight = {}
 		trigger = {
 			army_size_percentage = 1
 			manpower_percentage = 0.5
@@ -109,12 +99,12 @@ tm_MAD_branch_2 = {
 		}
 		provinces_to_highlight = {
 			area = mysore_area
-            NOT = { owned_by = ROOT }
+            NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
 			mysore_area = {
 				type = all
-				is_core = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		effect = {
@@ -130,11 +120,17 @@ tm_MAD_branch_2 = {
 			raichur_doab_area = { 
 				add_perma_claim = yes 
 			}
+			mysore_area = {
+				add_base_tax = -1
+			}
+			madura_area = {
+				add_base_tax = 2
+			}
 		}
 	}
 
 	mad_march_on_vijayanagar = {
-		icon = mission_humiliate_lubeck
+		icon = mission_city_of_victory_bah
 		position = 3
 		required_missions = {
 			mad_destroy_mysore
@@ -144,34 +140,66 @@ tm_MAD_branch_2 = {
 				area = south_carnatic_area
 				area = north_carnatic_area
 				area = rayalaseema_area
+				owned_by = VIJ
 			}
-            NOT = { owned_by = ROOT }
+            NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
 			south_carnatic_area = {
 				type = all
-				is_core = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 			north_carnatic_area = {
 				type = all
-				is_core = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 			rayalaseema_area = {
 				type = all
-				is_core = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
+			NOT = { exists = VIJ }
 		}
 		effect = {
-			add_stability = 1
 			add_country_modifier = {
 				name = defeated_vij
 				duration = 3650
 			}
+			if = {
+				limit = {
+					541 = {
+						NOT = {
+							has_great_project = {
+								type = hampi
+								tier = 2
+							}
+						}
+					}
+				}
+				541 = {
+					add_great_project_tier = {
+						type = hampi
+						tier = 1
+					}
+				}
+				custom_tooltip = tm_upgrades_great_project_up_to_tier_2_tt
+			}
+			else = {
+				541 = {
+					random_list = {
+						1 = { add_base_tax = 3 }
+						1 = { add_base_production = 3 }
+						1 = { add_base_manpower = 3 }
+					}
+				}
+			}
+			andhra_area = { add_perma_claim = yes }
+			golconda_area = { add_perma_claim = yes }
+			maidan_area = { add_perma_claim = yes }
 		}
 	}
 
 	mad_south_indian_unity = {
-		icon = mission_humiliate_lubeck
+		icon = mission_unite_home_region
 		position = 4
 		required_missions = {
 			mad_march_on_vijayanagar
@@ -182,7 +210,7 @@ tm_MAD_branch_2 = {
 				region = coromandel_region
 				region = deccan_region
 			}
-            NOT = { owned_by = ROOT }
+            NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
 			tag = TMK
@@ -196,7 +224,25 @@ tm_MAD_branch_2 = {
 			}
 		}
 		effect = {
-			
+			add_stability_or_adm_power = yes
+			add_prestige_or_monarch_power = { amount = 50 }
+			add_power_projection = {
+				type = mission_rewards_power_projection
+				amount = 25
+			}
+			add_legitimacy_equivalent = {
+				amount = 40
+				republican_tradition = 20
+			}
+			change_government_reform_progress = 50
+			tapti_area = { add_perma_claim = yes }
+			ahmednagar_area = { add_perma_claim = yes }
+			telingana_area = { add_perma_claim = yes }
+			berar_area = { add_perma_claim = yes }
+			garjat_area = { add_perma_claim = yes }
+			orissa_area = { add_perma_claim = yes }
+			khandesh_area = { add_perma_claim = yes }
+			ahmedabad_area = { add_perma_claim = yes }
 		}
 	}
 }
@@ -216,19 +262,19 @@ tm_MAD_branch_3 = {
 	}
 
 	mad_clear_malabar_coast = {
-		icon = mission_humiliate_lubeck
+		icon = mission_raid_on_venice
 		position = 2
 		required_missions = {
 			mad_last_of_the_tamils
 		}
 		provinces_to_highlight = {
 			area = malabar_area
-            NOT = { owned_by = ROOT }
+            NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
 			malabar_area = {
 				type = all
-				is_core = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		effect = {
@@ -239,19 +285,19 @@ tm_MAD_branch_3 = {
 	}
 
 	mad_towards_goa = {
-		icon = mission_humiliate_lubeck
+		icon = mission_conquer_kannauj
 		position = 3
 		required_missions = {
 			mad_clear_malabar_coast
 		}
 		provinces_to_highlight = {
 			area = kanara_area
-            NOT = { owned_by = ROOT }
+            NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
 			kanara_area = {
 				type = all
-				is_core = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		effect = {
@@ -267,6 +313,8 @@ tm_MAD_branch_3 = {
 				add_base_manpower = 1
 				add_center_of_trade_level = 1
 			}
+			desh_area = { add_perma_claim = yes }
+			konkan_area = { add_perma_claim = yes }
 		}
 	}
 }
@@ -286,16 +334,25 @@ tm_MAD_branch_4 = {
 	}
 
 	mad_harness_gems_and_spices = {
-		icon = mission_humiliate_lubeck
+		icon = mission_riches_of_golconda
 		position = 2
 		required_missions = {
 			mad_increase_tax_efficiency
 		}
 		provinces_to_highlight = {
-			
+			owned_by = ROOT
+			OR = {
+				trade_goods = spices
+				trade_goods = gems
+			}
+			OR = {
+				NOT = { has_production_building = yes }
+				NOT = { base_production = 8 }
+			}
 		}
+
 		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+			num_of_owned_provinces_with = {
 				value = 8
 				has_production_building = yes
 				base_production = 8
@@ -305,43 +362,77 @@ tm_MAD_branch_4 = {
 				}
 			}
 		}
+
 		effect = {
-			every_owned_province = {
-				limit = {
-					has_production_building = yes
-					base_production = 8
-					OR = {
-						trade_goods = spices
-						trade_goods = gems
-					}
-				}
+			custom_tooltip = tm_every_province_meets_req_gains_mission
+			tooltip = {
 				add_province_modifier = {
 					name = MAB_increase_production
 					duration = 3650
 				}
 				add_base_production = 2
 			}
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						has_production_building = yes
+						base_production = 8
+						OR = {
+							trade_goods = spices
+							trade_goods = gems
+						}
+					}
+					add_province_modifier = {
+						name = MAB_increase_production
+						duration = 3650
+					}
+					add_base_production = 2
+				}
+			}
 		}
 	}
 	
 	mad_industrialise_cloth = {
-		icon = mission_humiliate_lubeck
+		icon = mission_develop_cloth
 		position = 3
 		required_missions = {
 			mad_harness_gems_and_spices
 		}
 		provinces_to_highlight = {
+			owned_by = ROOT
+			OR = {
+				trade_goods = cloth
+				trade_goods = uniforms
+			}
+			OR = {
+				NOT = { has_manufactory = yes }
+				NOT = { base_production = 8 }
+			}
 		}
+
 		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+			num_of_owned_provinces_with = {
 				value = 5
 				has_manufactory = yes
 				base_production = 8
-				trade_goods = cloth
+				OR = {
+					trade_goods = cloth
+					trade_goods = uniforms
+				}
 			}
 		}
+
 		effect = {
-			add_years_of_income = 2
+			#add_years_of_income = 2
+			add_years_of_owned_provinces_production_income = {
+				years = 3
+				trigger = {
+					OR = {
+						trade_goods = cloth
+						trade_goods = uniforms
+					}
+				}
+			}
 			add_country_modifier = {
 				name = mad_building_frenzy
 				duration = 3650
@@ -350,13 +441,13 @@ tm_MAD_branch_4 = {
 	}
 
 	mad_ports_of_the_world = {
-		icon = mission_humiliate_lubeck
+		icon = control_coromandel
 		position = 5
 		required_missions = {
 			mad_construct_trade_fleet
 		}
 		provinces_to_highlight = {
-			
+			province_id = 1340
 		}
 		trigger = {
 			1340 = {
@@ -371,36 +462,54 @@ tm_MAD_branch_4 = {
 				skill = 3
 				cost_multiplier = 0.5
 			}
-			every_province = {
-				limit = {
-					trade_company_region = trade_company_coromandel
-					province_has_center_of_trade_of_level = 3
-				}
+			custom_tooltip = tm_MAD_ports_of_the_world_reward_tt
+			tooltip = {
 				add_province_modifier = {
 					name = mad_trading_boom
 					duration = 7300
+				}
+			}
+			hidden_effect = {
+				every_province = {
+					limit = {
+						trade_company_region = trade_company_coromandel
+						province_has_center_of_trade_of_level = 3
+					}
+					add_province_modifier = {
+						name = mad_trading_boom
+						duration = 7300
+					}
 				}
 			}
 		}
 	}
 
 	mad_universities = {
-		icon = mission_humiliate_lubeck
+		icon = mission_early_modern_university
 		position = 6
 		required_missions = {
 			mad_ports_of_the_world
 		}
 		provinces_to_highlight = {
-			
+			owned_by = ROOT
+			NOT = {
+				area_for_scope_province = {
+					has_building = university
+				}
+			}
 		}
 		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+			num_of_owned_provinces_with = {
 				value = 10
 				has_building = university
 			}
 		}
 		effect = {
-			change_innovativeness = 25
+			add_country_modifier = {
+				name = tm_mad_learning_drive
+				duration = 3650
+			}
+			change_innovativeness = 10
 			define_advisor = {
 				type = natural_scientist
 				skill = 3
@@ -425,18 +534,22 @@ tm_MAD_branch_5 = {
 	}
 
 	mad_increase_tax_efficiency = {
-		icon = mission_humiliate_lubeck
+		icon = mission_sindh_campaign
 		position = 1
 		required_missions = {
 			
 		}
 		provinces_to_highlight = {
-			
+			owned_by = ROOT
+			OR = {
+				NOT = { has_tax_building_trigger = yes }
+				NOT = { base_tax = 6 }
+			}
 		}
 		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+			num_of_owned_provinces_with = {
 				value = 5
-				has_building = temple
+				has_tax_building_trigger = yes
 				base_tax = 6
 			}
 		}
@@ -450,13 +563,18 @@ tm_MAD_branch_5 = {
 	}
 
 	mad_seize_coromandel = {
-		icon = mission_humiliate_lubeck
+		icon = mission_dominate_home_trade_node
 		position = 2
 		required_missions = {
 			mad_increase_tax_efficiency
 		}
 		provinces_to_highlight = {
-			
+			trade_company_region = trade_company_coromandel
+			province_has_center_of_trade_of_level = 1
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { province_has_center_of_trade_of_level = 2 }
+			}
 		}
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
@@ -469,34 +587,49 @@ tm_MAD_branch_5 = {
 			}
 		}
 		effect = {
-			every_owned_province = {
-				limit = {
-					trade_company_region = trade_company_coromandel
-					OR = {
-						province_has_center_of_trade_of_level = 2
-						province_has_center_of_trade_of_level = 3
+			custom_tooltip = tm_mad_seize_coromandel_reward_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						trade_company_region = trade_company_coromandel
+						OR = {
+							province_has_center_of_trade_of_level = 2
+							province_has_center_of_trade_of_level = 3
+						}
 					}
-					NOT = {
-						has_building = marketplace
+					if = {
+						limit = { has_trade_building_trigger = yes }
+						add_building = marketplace
 					}
+					add_base_production = 2
 				}
-				add_building = marketplace
-				add_base_production = 2
 			}
 		}
 	}
 
 	mad_construct_trade_fleet = {
-		icon = mission_humiliate_lubeck
+		icon = mission_arabian_trade
 		position = 4
 		required_missions = {
 			mad_seize_coromandel
 		}
 		provinces_to_highlight = {
-			
+			owned_by = ROOT
+			OR = {
+				NOT = { has_dock_building_trigger = yes }
+				NOT = { has_shipyard_building_trigger = yes }
+			}
+			has_port = yes
 		}
 		trigger = {
 			num_of_light_ship = 15
+			num_of_owned_provinces_with = {
+				value = 5
+				OR = {
+					has_dock_building_trigger = yes
+					has_shipyard_building_trigger = yes
+				}
+			}
 		}
 		effect = {
 			add_country_modifier = {
@@ -507,7 +640,7 @@ tm_MAD_branch_5 = {
 	}
 
 	mad_build_a_flagship = {
-		icon = mission_humiliate_lubeck
+		icon = mission_corsairs_of_the_north_sea
 		position = 5
 		required_missions = {
 			mad_construct_trade_fleet
@@ -527,21 +660,17 @@ tm_MAD_branch_5 = {
 				name = mab_shipbuilding_frenzy
 				duration = 1825
 			}
-			hidden_effect = {
-				set_country_flag = MAD_battles_start_counting
-			}
+			set_country_flag = MAD_battles_start_counting
 		}
 	}
 
 	mad_indian_ocean_dominance = {
-		icon = mission_humiliate_lubeck
+		icon = mission_raid_christian_trade
 		position = 6
 		required_missions = {
 			mad_build_a_flagship
 		}
-		provinces_to_highlight = {
-			
-		}
+		provinces_to_highlight = {}
 		trigger = {
 			custom_trigger_tooltip = {
 				tooltip = MAD_has_won_naval_battles
@@ -549,6 +678,9 @@ tm_MAD_branch_5 = {
 					which = navalBattlesWonMAD
 					value = 10
 				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = MAB_sunk_flagship_tt
 				has_country_flag = MAB_flagship_done
 			}
 		}
@@ -577,19 +709,112 @@ tm_TMK_branch_1 = {
 	}
 
 	tmk_onwards_to_gujerat = {
-		icon = mission_humiliate_lubeck
+		icon = mission_invade_gujarat
 		position = 5
 		required_missions = {
 			mad_south_indian_unity
 		}
 		provinces_to_highlight = {
-			
+			OR = {
+				area = tapti_area
+				area = ahmedabad_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			
+			tapti_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
+			ahmedabad_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 		}
 		effect = {
-		
+			saurashtra_area = { add_perma_claim = yes }
+			patan_area = { add_perma_claim = yes }
+			sindh_area = { add_perma_claim = yes }
+			mewar_area = { add_perma_claim = yes }
+			marwar_area = { add_perma_claim = yes }
+		}
+	}
+
+	tmk_take_rajputana = {
+		icon = mission_subjugate_rajputana
+		position = 6
+		required_missions = {
+			tmk_onwards_to_gujerat
+		}
+		provinces_to_highlight = {
+			OR = {
+				area = patan_area
+				area = sindh_area
+				area = mewar_area
+				area = marwar_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 12
+				OR = {
+					area = patan_area
+					area = sindh_area
+					area = mewar_area
+					area = marwar_area
+				}
+			}
+		}
+		effect = {
+			west_india_region = { add_perma_claim = yes }
+			504 = {
+				add_trade_modifier = {
+					who = ROOT
+					duration = 7300
+					power = 25
+					key = STRONG_MERCHANTS
+				}
+			}
+			add_army_tradition = 10
+			add_mil_power = 100
+		}
+	}
+
+	tmk_unite_west_india = {
+		icon = mission_unite_west_india
+		position = 7
+		required_missions = {
+			tmk_take_rajputana
+		}
+		provinces_to_highlight = {
+			region = west_india_region
+			OR = {
+				unrest = 1
+				local_autonomy = 20
+				nationalism = 5
+				NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			}
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 30
+				region = west_india_region
+				NOT = { unrest = 1 }
+				NOT = { local_autonomy = 20 }
+				NOT = { nationalism = 5 }
+			}
+			stability = 1
+		}
+		effect = {
+			add_country_modifier = {
+				name = tm_mad_uniter_of_west_india
+				duration = -1
+			}
+			add_country_modifier = {
+				name = tm_mad_the_rajputs
+				duration = -1
+			}
 		}
 	}
 }
@@ -609,73 +834,205 @@ tm_TMK_branch_2 = {
 	}
 
 	tmk_central_thrust = {
-		icon = mission_humiliate_lubeck
+		icon = mission_advance_to_kalyana
 		position = 5
 		required_missions = {
 			mad_south_indian_unity
 		}
 		provinces_to_highlight = {
-			
+			OR = {
+				area = maidan_area
+				area = golconda_area
+				area = telingana_area
+				area = ahmednagar_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 15
+				OR = {
+					area = maidan_area
+					area = golconda_area
+					area = telingana_area
+					area = ahmednagar_area
+				}
+			}
 		}
 		effect = {
-		
+			malwa_area = { add_perma_claim = yes }
+			gondwana_area = { add_perma_claim = yes }
 		}
 	}
 
 	tmk_finish_bahmanis = {
-		icon = mission_humiliate_lubeck
+		icon = mission_invade_maharashtra
 		position = 6
 		required_missions = {
 			tmk_central_thrust
 		}
 		provinces_to_highlight = {
-			
+			OR = {
+				owned_by = BAH
+				area = berar_area
+				area = khandesh_area
+				area = malwa_area
+				area = gondwana_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			
+			NOT = { exists = BAH }
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 10
+				OR = {
+					area = berar_area
+					area = khandesh_area
+					area = malwa_area
+					area = gondwana_area
+				}
+			}
 		}
 		effect = {
-		
+			gird_area = { add_perma_claim = yes }
+			bundelkhand_area = { add_perma_claim = yes }
+			baghelkhand_area = { add_perma_claim = yes }
+			lower_doab_area = { add_perma_claim = yes }
+			bihar_area = { add_perma_claim = yes }
+			oudh_area = { add_perma_claim = yes }
+			purvanchal_area = { add_perma_claim = yes }
+			katehar_area = { add_perma_claim = yes }
+			add_adm_power = 100
+			add_prestige_or_monarch_power = { amount = 50 }
 		}
 	}
 
 	tmk_towards_jaunpur = {
-		icon = mission_humiliate_lubeck
+		icon = mission_defeat_jaunpur
 		position = 7
 		required_missions = {
 			tmk_finish_bahmanis
 		}
 		provinces_to_highlight = {
-			
+			OR = {
+				area = gird_area
+				area = bundelkhand_area
+				area = baghelkhand_area
+				area = lower_doab_area
+				area = bihar_area
+				area = oudh_area
+				area = purvanchal_area
+				area = katehar_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 25
+				OR = {
+					area = gird_area
+					area = bundelkhand_area
+					area = baghelkhand_area
+					area = lower_doab_area
+					area = bihar_area
+					area = oudh_area
+					area = purvanchal_area
+					area = katehar_area
+				}
+			}
 		}
 		effect = {
-		
+			hindusthan_region = { add_perma_claim = yes }
+			add_splendor = 200
+			add_ruler_personality = conqueror_personality
+			define_general = {
+				shock = 5
+				fire = 4
+				manuever = 6
+				siege = 4
+				trait = cannoneer_personality
+			}
 		}
 	}
 
 	tmk_seize_delhi = {
-		icon = mission_humiliate_lubeck
+		icon = mission_crush_delhi
 		position = 8
 		required_missions = {
 			tmk_towards_jaunpur
 		}
 		provinces_to_highlight = {
-			
+			OR = {
+				area = upper_doab_area
+				area = sirhind_area
+				area = sirhind_area
+				area = jaipur_area
+				area = jangladesh_area
+				area = himalayan_hills_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			
+			522 = { country_or_non_sovereign_subject_holds = ROOT }
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 20
+				OR = {
+					area = upper_doab_area
+					area = sirhind_area
+					area = sirhind_area
+					area = jaipur_area
+					area = jangladesh_area
+					area = himalayan_hills_area
+				}
+			}
 		}
 		effect = {
-		
+			add_adm_power = 50
+			add_dip_power = 50
+			add_mil_power = 50
+			change_ruler_stat = {
+				stat = adm
+				amount = 2
+			}
+			change_ruler_stat = {
+				stat = dip
+				amount = 1
+			}
+			change_ruler_stat = {
+				stat = mil
+				amount = 1
+			}
 		}
 	}
 
+	tmk_ruler_of_all_india = {
+		icon = mission_dharma_mission_the_riches_of_india
+		position = 9
+		required_missions = {
+			tmk_seize_delhi
+		}
+		provinces_to_highlight = {
+			superregion = india_superregion
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 200
+				superregion = india_superregion
+			}
+		}
+		effect = {
+			add_country_modifier = {
+				name = tm_mad_king_of_all_india
+				duration = -1
+			}
+			add_power_projection = {
+				type = mission_rewards_power_projection
+				amount = 20
+			}
+			custom_tooltip = zim_amongst_the_great_powers_tt
+		}
+	}
 }
 
 tm_TMK_branch_3 = {
@@ -693,36 +1050,112 @@ tm_TMK_branch_3 = {
 	}
 
 	tmk_march_to_orissa = {
-		icon = mission_humiliate_lubeck
+		icon = mission_conquer_orissa_vij
 		position = 5
 		required_missions = {
 			mad_south_indian_unity
 		}
 		provinces_to_highlight = {
-			
+			OR = {
+				area = garjat_area
+				area = orissa_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 10
+				OR = {
+					area = garjat_area
+					area = orissa_area
+				}
+			}
 		}
 		effect = {
-		
+			upper_mahanadi_area = { add_perma_claim = yes }
+			jharkhand_area = { add_perma_claim = yes }
+			west_bengal_area = { add_perma_claim = yes }
+			east_bengal_area = { add_perma_claim = yes }
 		}
 	}
 
 	tmk_bengalese_coast = {
-		icon = mission_humiliate_lubeck
+		icon = mission_conquer_bengal_dlh
 		position = 6
 		required_missions = {
 			tmk_march_to_orissa
 		}
 		provinces_to_highlight = {
-			
+			OR = {
+				area = jharkhand_area
+				area = west_bengal_area
+				area = east_bengal_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 12
+				OR = {
+					area = jharkhand_area
+					area = west_bengal_area
+					area = east_bengal_area
+				}
+			}
 		}
 		effect = {
-		
+			bengal_region = { add_perma_claim = yes }
+			1343 = {
+				add_trade_modifier = {
+					who = ROOT
+					duration = 7300
+					power = 25
+					key = STRONG_MERCHANTS
+				}
+			}
+			add_navy_tradition = 10
+			add_dip_power = 100
+		}
+	}
+
+	tmk_the_flow_of_trade = {
+		icon = mission_dominate_trade_in_bengal
+		position = 7
+		required_missions = {
+			tmk_bengalese_coast
+		}
+		provinces_to_highlight = {
+			province_id = 1343
+		}
+		trigger = {
+			1343 = {
+				is_strongest_trade_power = ROOT
+				trade_share = {
+					country = ROOT
+					share = 50
+				}
+				trade_node_value = 80
+				has_merchant = ROOT
+			}
+		}
+		effect = {
+			1343 = {
+				add_trade_node_income = 24
+			}
+			define_advisor = {
+				type = trader
+				skill = 3
+   				culture = ROOT
+   				religion = ROOT
+				cost_multiplier = 0.1
+			}
+			define_advisor = {
+				type = natural_scientist
+				skill = 3
+   				culture = ROOT
+   				religion = ROOT
+				cost_multiplier = 0.1
+			}
 		}
 	}
 }
