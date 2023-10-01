@@ -114,26 +114,26 @@ gc_morocco_1 = {
 		}
 	}
 
-	gc_mor_brazil = {
+	tm_mor_colombia = {
 		icon = mission_colonize_the_west
 		required_missions = { tm_mor_colonial_ambition }
 		
 		provinces_to_highlight = {
-			colonial_region = colonial_brazil
+			colonial_region = colonial_colombia
 			OR = {
 				is_city = no
 				NOT = { owned_by = ROOT }
 			}
 			has_discovered = ROOT
 		}
-		
+
 		trigger = {
 			if = {
 				limit = {
 					is_random_new_world = no
 				}
 				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					value = 10
+					value = 5
 					colonial_region = colonial_brazil
 					is_city = yes
 				}
@@ -146,7 +146,7 @@ gc_morocco_1 = {
 				}
 			}
 		}
-		
+
 		effect = {
 			add_country_modifier = {
 				name = "mor_colonized_brazil"
@@ -157,7 +157,7 @@ gc_morocco_1 = {
 
 	gc_mor_new_world = {
 		icon = mission_new_world_power
-		required_missions = { gc_mor_brazil }
+		required_missions = { tm_mor_colombia }
 		
 		provinces_to_highlight = {
 			OR = {
