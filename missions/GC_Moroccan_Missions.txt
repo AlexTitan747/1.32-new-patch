@@ -79,27 +79,18 @@ gc_morocco_1 = {
 		}
 	}
 
-	gc_mor_canaries = {
+	tm_mor_colonial_ambition = {
 		icon = mission_claim_the_canaries
 		required_missions = {  }
 		position = 4
 		
 		provinces_to_highlight = {
-			OR = {
-				province_id = 366
-				province_id = 4565
-			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			is_capital_of = root
 		}
 		
 		trigger = {
-			num_of_explorers = 1
-			366 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			4565 = {
-				country_or_non_sovereign_subject_holds = ROOT
-			}
+			has_country_modifier = tm_colonisation_start
+			monthly_income = 80
 		}
 		
 		effect = {
@@ -107,12 +98,25 @@ gc_morocco_1 = {
 				name = "mor_beyond_the_canaries"
 				duration = 7300
 			}
+			country_event = {
+				id = titanmor.3
+			}
+			add_mercantilism = 5
+			caribbean_sea_region = {
+				discover_country = ROOT
+			}
+			atlantic_south_america_region = {
+				discover_country = ROOT
+			}
+			south_america_superregion = {
+				discover_country = ROOT
+			}
 		}
 	}
 
 	gc_mor_brazil = {
 		icon = mission_colonize_the_west
-		required_missions = { gc_mor_canaries }
+		required_missions = { tm_mor_colonial_ambition }
 		
 		provinces_to_highlight = {
 			colonial_region = colonial_brazil
