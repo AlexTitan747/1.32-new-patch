@@ -383,22 +383,18 @@ gc_morocco_2 = {
 		}
 		
 		trigger = {
-			OR = {
-				370 = {
-					devastation = 25
-					owner = {
-						war_with = ROOT
-					}
-				}
-				AND = {
-					owns_or_non_sovereign_subject_of = 370
-					owns_or_non_sovereign_subject_of = 371
-				}
+			lower_andalucia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT	
+			}
+			upper_andalucia_area = {
+				type = all
+				country_or_non_sovereign_subject_holds = ROOT	
 			}
 		}
 		
 		effect = {
-			add_yearly_sailors = 20
+			add_yearly_sailors = 10
 			add_country_modifier = {
 				name = stolen_spanish_ship_designs
 				duration = -1
