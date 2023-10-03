@@ -543,6 +543,9 @@ estate_maratha_monopoly_of_metals = {
 			OR = {
 				trade_goods = iron
 				trade_goods = copper
+				trade_goods = tin
+				trade_goods = bronze
+				trade_goods = steel
 			}
 		}
 		NOT = { has_estate = estate_nobles }
@@ -573,6 +576,9 @@ estate_maratha_monopoly_of_metals = {
 				OR = {
 					iron = 1
 					copper = 1
+					tin = 1
+					bronze = 1
+					steel = 1
 				}
 			}
 			add_mercantilism = 1
@@ -583,6 +589,9 @@ estate_maratha_monopoly_of_metals = {
 				OR = {
 					trade_goods = iron
 					trade_goods = copper
+					trade_goods = tin
+					trade_goods = bronze
+					trade_goods = steel
 				}
 			}
 			custom_tooltip = MONOPOLY_INCOME_IRON_AND_COPPER_DESC
@@ -595,6 +604,9 @@ estate_maratha_monopoly_of_metals = {
 				OR = {
 					trade_goods = iron
 					trade_goods = copper
+					trade_goods = tin
+					trade_goods = bronze
+					trade_goods = steel
 				}
 			}
 			add_province_modifier = {
@@ -688,7 +700,10 @@ estate_maratha_monopoly_of_livestock = {
 			has_country_flag = buffed_monopolies
 		}
 		any_owned_province = {
-			trade_goods = livestock
+			OR = {
+				trade_goods = livestock
+				trade_goods = cheese
+			}
 		}
 		NOT = { has_estate = estate_nobles }
 	}
@@ -715,14 +730,20 @@ estate_maratha_monopoly_of_livestock = {
 	on_granted = {
 		if = {
 			limit = {
-				livestock = 1
+				OR = {
+					livestock = 1
+					cheese = 1
+				}
 			}
 			add_mercantilism = 1
 		}
 		add_years_of_owned_provinces_production_income = {
 			years = 8
 			trigger = {
-				trade_goods = livestock
+				OR = {
+					trade_goods = livestock
+					trade_goods = cheese
+				}
 			}
 			custom_tooltip = MONOPOLY_INCOME_LIVESTOCK_DESC
 		}
@@ -731,7 +752,10 @@ estate_maratha_monopoly_of_livestock = {
 	on_granted_province = {
 		if = {
 			limit = {
-				trade_goods = livestock
+				OR = {
+					trade_goods = livestock
+					trade_goods = cheese
+				}
 			}
 			add_province_modifier = {
 				name = estate_maratha_monopoly_of_livestock_mod
@@ -820,7 +844,10 @@ estate_maratha_monopoly_of_gems = {
 			has_country_flag = buffed_monopolies
 		}
 		any_owned_province = {
-			trade_goods = gems
+			OR = {
+				trade_goods = gems
+				trade_goods = jewellery
+			}
 		}
 		NOT = { has_estate = estate_nobles }
 	}
@@ -847,14 +874,20 @@ estate_maratha_monopoly_of_gems = {
 	on_granted = {
 		if = {
 			limit = {
-				gems = 1
+				OR = {
+					gems = 1
+					jewellery = 1
+				}
 			}
 			add_mercantilism = 1
 		}
 		add_years_of_owned_provinces_production_income = {
 			years = 8
 			trigger = {
-				trade_goods = gems
+				OR = {
+					trade_goods = gems
+					trade_goods = jewellery
+				}
 			}
 			custom_tooltip = MONOPOLY_INCOME_GEMS_DESC
 		}
@@ -863,7 +896,10 @@ estate_maratha_monopoly_of_gems = {
 	on_granted_province = {
 		if = {
 			limit = {
-				trade_goods = gems
+				OR = {
+					trade_goods = gems
+					trade_goods = jewellery
+				}
 			}
 			add_province_modifier = {
 				name = estate_maratha_monopoly_of_gems_mod
