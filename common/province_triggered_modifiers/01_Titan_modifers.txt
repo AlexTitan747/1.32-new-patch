@@ -129,8 +129,10 @@ occupation_of_copinghagen = {
 					was_tag = DAN
 					tag = DAN
 				}
-			}  
-		}	
+			}
+			is_core = 12
+			controls = 12
+		}
 	}
 
 	infantry_power = 0.05
@@ -157,7 +159,9 @@ new_ruler_of_the_waves = {
 					was_tag = ENG
 					tag = ENG
 				}
-			}  
+			}
+			is_core = 236
+			controls = 236
 		}
 	}	
 
@@ -190,7 +194,9 @@ french_traditions = {
 					tag = BUR
 					culture_group = french
 				}
-			}  
+			}
+			is_core = 183
+			controls = 183
 		}
 	}	
 
@@ -221,8 +227,10 @@ fall_of_toledo_fortress = {
 					tag = ARA
 					was_tag = POR
 					tag = POR
-				} 
-			} 
+				}
+			}
+			is_core = 219
+			controls = 219
 		}
 	}	
 
@@ -252,8 +260,10 @@ fall_of_constantinople = {
 					tag = TUR
 					was_tag = BYZ
 					tag = BYZ
-				} 
-			} 
+				}
+			}
+			is_core = 151
+			controls = 151
 		}
 	}	
 
@@ -281,14 +291,17 @@ collapse_of_cairo = {
 				OR = {
 					was_tag = MAM 
 					tag = MAM
-				} 
-			} 
-		}	
+				}
+			}
+			is_core = 361
+			controls = 361
+		}
 	}	
 
 	war_exhaustion = -0.05
 	caravan_power = 0.05
 	infantry_power = 0.05
+	cavalry_power = 0.05
 	
 	#Province scope
 	on_activation = {
@@ -303,12 +316,19 @@ collapse_of_cairo = {
 owner_of_moscow = {
 	potential = {
 		normal_or_historical_nations = yes
-		has_province_flag = russia_existed
+		#has_province_flag = russia_existed
 	}
 
 	trigger = {
 		owner = {
-			NOT = { tag = RUS }
+			NOT = {
+				OR = {
+					tag = RUS
+					tag = MOS
+				}
+			}
+			is_core = 295
+			controls = 295
 		}
 	}	
 
@@ -340,6 +360,8 @@ destruction_of_delhi = {
 					tag = SRH
 				} 
 			}
+			is_core = 522
+			controls = 522
 		}
 	}
 
@@ -363,8 +385,12 @@ portuguese_macau = {
 
 	trigger = {
 		owner = {
-			tag = POR
-			tag = PBR
+			OR = {
+				tag = POR
+				tag = PBR
+			}
+			is_core = 668
+			controls = 668
 		}
 	}
 
@@ -391,9 +417,13 @@ great_british_singapore = {
 
 	trigger = {
 		owner = {
-			tag = ENG
-			tag = GBR
-			tag = ANG
+			OR = {
+				tag = ENG
+				tag = GBR
+				tag = ANG
+			}
+			is_core = 4815
+			controls = 4815
 		}	
 	}
 
@@ -428,6 +458,8 @@ owner_of_prague = {
 					tag = KSM
 				}
 			}
+			is_core = 266
+			controls = 266
 		}	
 	}	
 
@@ -456,7 +488,9 @@ trade_city_of_the_adriatic = {
 					was_tag = VEN
 					tag = VEN
 				} 
-			} 
+			}
+			is_core = 112
+			controls = 112
 		}
 	}
 
@@ -487,6 +521,8 @@ training_fields_of_the_hussars = {
 					tag = MAZ
 				} 
 			}
+			is_core = 257
+			controls = 257
 		}	
 	}	
 
@@ -506,7 +542,7 @@ training_fields_of_the_hussars = {
 bastion_of_beijing = {
 	potential = {
 		normal_or_historical_nations = yes
-		has_province_flag = wei_existed
+		#has_province_flag = wei_existed
 	}
 
 	trigger = {
@@ -515,8 +551,12 @@ bastion_of_beijing = {
 				OR = {
 					was_tag = WEI
 					tag = WEI
+					was_tag = LNI
+					tag = LNI
 				} 
-			} 
+			}
+			is_core = 1816
+			controls = 1816
 		}	
 	}	
 
@@ -536,7 +576,7 @@ bastion_of_beijing = {
 capture_of_canton = {
 	potential = {
 		normal_or_historical_nations = yes
-		has_province_flag = wuu_existed
+		#has_province_flag = wuu_existed
 	}
 
 	trigger = {
@@ -545,8 +585,12 @@ capture_of_canton = {
 				OR = {
 					was_tag = WUU 
 					tag = WUU
+					was_tag = GDO
+					tag = GDO
 				} 
-			} 
+			}
+			is_core = 667
+			controls = 667
 		}
 	}	
 
@@ -566,7 +610,7 @@ capture_of_canton = {
 occupation_of_chengdu = {
 	potential = {
 		normal_or_historical_nations = yes
-		has_province_flag =shu_existed
+		#has_province_flag =shu_existed
 	}
 
 	trigger = {
@@ -575,8 +619,12 @@ occupation_of_chengdu = {
 				OR = {
 					was_tag = SHU
 					tag = SHU
+					was_tag = SCH
+					tag = SCH
 				} 
-			} 
+			}
+			is_core = 679
+			controls = 679
 		}
 	}	
 
@@ -604,8 +652,12 @@ occupation_of_ayutthaya = {
 				OR = {
 					was_tag = AYU
 					tag = AYU
+					was_tag = SIA
+					tag = SIA
 				}
-			}  
+			}
+			is_core = 600
+			controls = 600
 		}	
 	}
 
@@ -634,7 +686,9 @@ fall_of_pest = {
 					was_tag = HUN
 					tag = HUN
 				} 
-			} 
+			}
+			is_core = 153
+			controls = 153
 		}	
 	}	
 
@@ -654,17 +708,20 @@ fall_of_pest = {
 ancient_city_of_babylon = {
 	potential = {
 		normal_or_historical_nations = yes
-		has_province_flag = babylon_existed
+		#has_province_flag = babylon_existed
 	}
 
 	trigger = {
 		owner = {
 			NOT = { tag = BAB }
+			is_core = 410
+			controls = 410
 		}
 	}	
 
-	discipline = 0.025
+	#discipline = 0.025
 	prestige = 0.025
+	culture_conversion_cost = -0.05
 	
 	#Province scope
 	on_activation = {
