@@ -90,7 +90,7 @@ gc_morocco_1 = {
 		
 		trigger = {
 			has_country_modifier = tm_colonisation_start
-			monthly_income = 80
+			monthly_income = 70
 		}
 		
 		effect = {
@@ -161,7 +161,6 @@ gc_morocco_1 = {
 		
 		provinces_to_highlight = {
 			OR = {
-				colonial_region = colonial_the_carribean
 				colonial_region = colonial_colombia
 			}
 			OR = {
@@ -177,12 +176,7 @@ gc_morocco_1 = {
 					is_random_new_world = no
 				}
 				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					value = 10
-					colonial_region = colonial_the_carribean
-					is_city = yes
-				}
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					value = 10
+					value = 20
 					colonial_region = colonial_colombia
 					is_city = yes
 				}
@@ -196,7 +190,7 @@ gc_morocco_1 = {
 							is_subject_of_type = private_enterprise
 							is_subject_of_type = self_governing_colony
 						}
-						num_of_cities = 25
+						num_of_cities = 20
 					}
 				}
 			}
@@ -211,7 +205,7 @@ gc_morocco_1 = {
 							is_subject_of_type = private_enterprise
 							is_subject_of_type = self_governing_colony
 						}
-						num_of_cities = 25
+						num_of_cities = 20
 					}
 				}
 			}
@@ -370,7 +364,7 @@ gc_morocco_2 = {
 	tm_mor_spanish_shipbuilding = {
 		icon = mission_raid_on_iceland
 		required_missions = { tm_mor_a_moroccan_armada }
-		position = 5
+		position = 4
 		
 		provinces_to_highlight = {
 			OR = {
@@ -391,6 +385,22 @@ gc_morocco_2 = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT	
 			}
+			if = {
+				limit = { exists = SPA }
+				CAS = {
+					NOT = {
+						num_of_heavy_ship = 25
+					}
+				}
+			}
+			else_if = {
+				limit = { exists = CAS }
+				SPA = {
+					NOT = {
+						num_of_heavy_ship = 25
+					}
+				}
+			}
 		}
 		
 		effect = {
@@ -399,6 +409,51 @@ gc_morocco_2 = {
 				name = stolen_spanish_ship_designs
 				duration = -1
 			}
+		}
+	}
+
+	tm_mor_colonial_manufacturing = {
+		icon = mission_new_world_power
+		required_missions = { tm_mor_colombia }
+		position = 5
+		
+		provinces_to_highlight = {
+			OR = {
+				colonial_region = colonial_colombia
+			}
+			OR = {
+				is_city = no
+				NOT = { owned_by = ROOT }
+			}
+			has_discovered = ROOT
+		}
+		
+		trigger = {
+			if = {
+				limit = {
+					is_random_new_world = no
+				}
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 35
+					colonial_region = colonial_colombia
+					is_city = yes
+					has_production_building = yes
+				}
+				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+					value = 20
+					colonial_region = colonial_colombia
+					is_city = yes
+					development = 20
+				}
+			}
+		}
+		
+		effect = {
+			add_mercantilism = 3
+			add_country_modifier = {
+				name = "mor_new_world_power"
+				duration = -1
+			}	
 		}
 	}
 
@@ -827,8 +882,8 @@ gc_morocco_4 = {
 
 	gc_mor_north_sea = {
 		icon = mission_corsairs_of_the_north_sea
-		required_missions = {  }
-		position = 6
+		required_missions = { gc_mor_tunis }
+		position = 4
 		
 		provinces_to_highlight = {
 			OR = {
@@ -841,12 +896,28 @@ gc_morocco_4 = {
 		}
 
 		trigger = {
-			1975 = {
+			1298 = {
 				privateer_power = {
 					country = ROOT
 					share = 33
 				}
 			}
+			101 = {
+				devastation = 5
+			}
+			2980 = {
+				devastation = 5
+			}
+			1247 = {
+				devastation = 5
+			}
+			118 = {
+				devastation = 5
+			}
+			201 = {
+				devastation = 5
+			}
+
 			kingdom_of_the_isles_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -855,6 +926,7 @@ gc_morocco_4 = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
+			
 		}
 		
 		effect = {
@@ -868,7 +940,7 @@ gc_morocco_4 = {
 	gc_mor_kanem = {
 		icon = mission_invade_kanem
 		required_missions = { gc_mor_songhai }
-		position = 9
+		position = 7
 		
 		provinces_to_highlight = {
 			OR = {
@@ -922,7 +994,7 @@ gc_morocco_4 = {
 	gc_mor_palace = {
 		icon = mission_el_badi_palace
 		required_missions = { }
-		position = 10
+		position = 8
 		
 		provinces_to_highlight = {
 			province_id = 227
@@ -1036,7 +1108,7 @@ gc_morocco_5 = {
 	gc_mor_saharan_route = {
 		icon = mission_saharan_route
 		required_missions = { }
-		position = 6
+		position = 4
 		
 		provinces_to_highlight = {
 			OR = {
@@ -1091,6 +1163,7 @@ gc_morocco_5 = {
 	gc_mor_timbuktu = {
 		icon = mission_conquer_timbuktu
 		required_missions = { gc_mor_saharan_route }
+		position = 5
 
 		provinces_to_highlight = {
 			OR = {
@@ -1151,6 +1224,7 @@ gc_morocco_5 = {
 	gc_mor_songhai = {
 		icon = mission_the_songhai_campaign
 		required_missions = { gc_mor_timbuktu }
+		position = 6
 
 		provinces_to_highlight = {
 			OR = {
@@ -1276,6 +1350,7 @@ gc_morocco_5 = {
 	gc_mor_mali = {
 		icon = mission_invade_mali
 		required_missions = { gc_mor_songhai }
+		position = 7
 
 		provinces_to_highlight = {
 			OR = {
@@ -1352,6 +1427,7 @@ gc_morocco_5 = {
 	gc_mor_benin = {
 		icon = mission_conquer_benin
 		required_missions = { gc_mor_mali }
+		position = 8
 
 		provinces_to_highlight = {
 			OR = {
