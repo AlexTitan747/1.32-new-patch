@@ -414,8 +414,8 @@ gc_morocco_2 = {
 
 	tm_mor_colonial_manufacturing = {
 		icon = mission_new_world_power
-		required_missions = { tm_mor_colombia }
-		position = 6
+		required_missions = { tm_mor_colonial_ambition }
+		position = 5
 		
 		provinces_to_highlight = {
 			OR = {
@@ -427,7 +427,7 @@ gc_morocco_2 = {
 			}
 			has_discovered = ROOT
 		}
-		
+
 		trigger = {
 			if = {
 				limit = {
@@ -459,8 +459,8 @@ gc_morocco_2 = {
 
 	gc_mor_black_guard = {
 		icon = mission_establish_the_black_guard
-		required_missions = {  }
-		position = 7
+		required_missions = { tm_mor_colonial_manufacturing }
+		position = 6
 		
 		provinces_to_highlight = {
 			province_id = 1132
@@ -937,6 +937,82 @@ gc_morocco_4 = {
 		}
 	}
 
+	tm_mor_moroccan_cloth = {
+		icon = mission_develop_cloth
+		position = 5
+		required_missions = { gc_mor_saharan_route }
+
+		provinces_to_highlight = {
+			region = maghreb_region
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 4
+				development = 12
+				has_production_building = yes
+			}
+			337 = {
+				owned_by = ROOT
+				province_has_center_of_trade_of_level = 2
+			}
+			334 = {
+				owned_by = ROOT
+				province_has_center_of_trade_of_level = 3
+			}
+		}
+
+		effect = {
+			337 = {
+				add_center_of_trade_level = 1
+				add_base_tax = 1
+				add_base_production = 2
+				add_base_manpower = 1
+			}
+			334 = {
+				add_base_tax = 1
+				add_base_production = 2
+				add_base_manpower = 1
+			}
+			add_treasury = 325
+			add_dip_power = 150
+		}
+	}
+
+	tm_mor_african_olive_oil = {
+		icon = mission_develop_cloth
+		position = 6
+		required_missions = { tm_mor_moroccan_cloth }
+
+		provinces_to_highlight = {
+			if = {
+				limit = { region = maghreb_region }
+
+					trade_goods = olives
+				}
+			}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 6
+				has_building = olive_oil_mill
+			}
+		}
+
+		effect = {
+			add_province_modifier = {
+				name = new_olive_oil_demands
+				duration = -1
+			}
+			337 = {
+
+				add_base_tax = 1
+				add_base_production = 2
+				add_base_manpower = 1
+			}
+		}
+	}
+
 	gc_mor_kanem = {
 		icon = mission_invade_kanem
 		required_missions = { gc_mor_songhai }
@@ -1158,53 +1234,6 @@ gc_morocco_5 = {
 			}
 		}
 
-	}
-
-	tm_mor_moroccan_cloth = {
-		icon = mission_develop_cloth
-		position = 5
-		required_missions = { gc_mor_saharan_route }
-
-		provinces_to_highlight = {
-			OR = {
-			region = maghreb_region
-			}
-		}
-
-		trigger = {
-			num_of_owned_provinces_with = {
-				value = 4
-				development = 12
-				has_production_building = yes
-			}
-			337 = {
-				owned_by = ROOT
-				province_has_center_of_trade_of_level = 2
-			}
-			334 = {
-				owned_by = ROOT
-				province_has_center_of_trade_of_level = 3
-			}
-		}
-
-		effect = {
-			337 = {
-				add_center_of_trade_level = 1
-				add_base_tax = 1
-				add_base_production = 1
-				add_base_manpower = 1
-			}
-			334 = {
-				add_base_tax = 1
-				add_base_production = 1
-				add_base_manpower = 1
-			}
-			152 = {
-				add_base_tax = 1
-				add_base_production = 1
-				add_base_manpower = 1
-			}
-		}
 	}
 
 	gc_mor_timbuktu = {
