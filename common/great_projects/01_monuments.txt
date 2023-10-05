@@ -1,6 +1,113 @@
 #####################################TITAN MONUMENTS#####################################
 
 
+skala_du_port = {
+    start = 2469 #Dukkala                
+    date = 1162.01.01
+    time = { months = 0 }
+    build_cost = 0
+    can_be_moved = no
+    move_days_per_unit_distance = 10
+    starting_tier = 1
+    type = monument
+
+    build_trigger = {
+		owner = {
+			OR = {
+			  tag = MOR
+			  was_tag = MOR
+		 }
+		 mission_completed = tm_mor_colonial_ambition
+	  }
+	}
+
+    on_built = {
+		owner = {
+			add_country_modifier = {
+				name = new_world_enthusiasm
+				duration = 3650
+			}
+		}
+	}
+
+    on_destroyed = {}
+
+    can_use_modifiers_trigger = {
+        owner = {
+			OR = {
+			  tag = MOR
+			  was_tag = MOR
+		 }
+		 mission_completed = tm_mor_colonial_ambition
+	  }
+    }
+    
+
+    can_upgrade_trigger = {
+		owner = {
+      		OR = {
+				tag = MOR
+				was_tag = MOR
+		   }
+		   mission_completed = tm_mor_colonial_ambition
+		}
+    }
+
+    keep_trigger = {}
+
+    tier_0 = {
+        upgrade_time = {
+            months = 0
+        }
+        cost_to_upgrade = {
+            factor = 0
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {}
+        on_upgraded = {}
+    }
+    
+    tier_1 = {
+        upgrade_time = {
+            months = 120
+        }
+        cost_to_upgrade = {
+            factor = 1000
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {}
+        on_upgraded = {}
+    }
+
+    tier_2 = {
+        upgrade_time = {
+            months = 240
+        }
+        cost_to_upgrade = {
+            factor = 2500
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {}
+        on_upgraded = {}
+    }
+
+    tier_3 = {
+        upgrade_time = {
+            months = 480
+        }
+        cost_to_upgrade = {
+            factor = 5000
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {}
+        on_upgraded = {}
+    }
+}
+
 garabaghlar_mausoleum = {
     start = 2205 #Nakhchivan                    
     date = 1162.01.01
