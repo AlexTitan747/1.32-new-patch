@@ -11,7 +11,7 @@ tm_CRI_branch_1 = {
 			was_tag = CRI
 		}
 	}
-	
+
 	tm_CRI_branch1_mission_1 = {
 		icon = mission_enter_moldavia
 		position = 2
@@ -355,18 +355,9 @@ tm_CRI_branch_2 = {
 		}
 
 		effect = {
-			add_adm_power = 100
-			add_dip_power = 100
-			add_mil_power = 100
-			if = {
-				limit = {
-					any_subject_country = {
-						is_subject_of_type = tributary_state
-					}
-				}
-				country_event = {
-					id = titanCRI.1
-				}
+			custom_tooltip = tm_cri_any_trib_integrate_info_tt
+			country_event = {
+				id = titanCRI.1
 			}
 		}
 	}
@@ -560,15 +551,15 @@ tm_CRI_branch_3 = {
 				AND = {
 					sloboda_ukraine_area = {
 						type = all
-						owned_by = ROOT 
+						country_or_non_sovereign_subject_holds = ROOT
 					}
 					east_dniepr_area = {
 						type = all
-						owned_by = ROOT
+						country_or_non_sovereign_subject_holds = ROOT
 					}
 					chernigov_area = {
 						type = all
-						owned_by = ROOT
+						country_or_non_sovereign_subject_holds = ROOT
 					}
 				}
 			}
