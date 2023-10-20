@@ -109,6 +109,188 @@ garabaghlar_mausoleum = {
     }
 }
 
+
+umayyad_mosque = {
+    start = 382 #Dimashq                 
+    date = 715.01.01
+    time = { months = 0 }
+    build_cost = 0
+    can_be_moved = no
+    move_days_per_unit_distance = 10
+    starting_tier = 2
+    type = monument
+
+    build_trigger = {}
+
+    on_built = {}
+
+    on_destroyed = {}
+
+    can_use_modifiers_trigger = {
+        religion_group = muslim
+    }
+    
+
+    can_upgrade_trigger = {
+        religion_group = muslim
+    }
+
+    keep_trigger = {}
+
+    tier_0 = {
+        upgrade_time = {
+            months = 0
+        }
+        cost_to_upgrade = {
+            factor = 0
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {}
+        on_upgraded = {}
+    }
+    
+    tier_1 = {
+        upgrade_time = {
+            months = 120
+        }
+        cost_to_upgrade = {
+            factor = 1000
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {
+            tolerance_own = 0.5
+            tolerance_heretic = 0.5 
+            monthly_piety = -0.001
+        }
+        on_upgraded = {}
+    }
+
+    tier_2 = {
+        upgrade_time = {
+            months = 240
+        }
+        cost_to_upgrade = {
+            factor = 2500
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {
+            tolerance_own = 1 
+            tolerance_heretic = 1 
+            tolerance_heathen = 0.5 
+            monthly_piety = -0.002
+        }
+        on_upgraded = {}
+    }
+
+    tier_3 = {
+        upgrade_time = {
+            months = 480
+        }
+        cost_to_upgrade = {
+            factor = 5000
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {
+            tolerance_own = 1 
+            tolerance_heretic = 1 
+            tolerance_heathen = 1
+            tolerance_of_heathens_capacity = 1 
+            monthly_piety = -0.003
+        }
+        on_upgraded = {}
+    }
+}
+
+genoa_kaffa_fort = {
+    start = 285 #Kefe               
+    date = 1444.01.01
+    time = { months = 0 }
+    build_cost = 0
+    can_be_moved = no
+    move_days_per_unit_distance = 10
+    starting_tier = 0
+    type = monument
+
+    build_trigger = {}
+
+    on_built = {}
+
+    on_destroyed = {}
+
+    can_use_modifiers_trigger = {}
+    
+    can_upgrade_trigger = {}
+
+    keep_trigger = {}
+
+    tier_0 = {
+        upgrade_time = {
+            months = 0
+        }
+        cost_to_upgrade = {
+            factor = 0
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {}       
+        on_upgraded = {}
+    }
+    
+    tier_1 = {
+        upgrade_time = {
+            months = 120
+        }
+        cost_to_upgrade = {
+            factor = 1000
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {
+            garrison_size = 0.05
+            fort_maintenance_modifier = -0.05
+        }
+        on_upgraded = {}
+    }
+
+    tier_2 = {
+        upgrade_time = {
+            months = 240
+        }
+        cost_to_upgrade = {
+            factor = 2500
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {
+            garrison_size = 0.10
+            garrison_growth = 0.05
+            fort_maintenance_modifier = -0.10 
+        }
+        on_upgraded = {}
+    }
+
+    tier_3 = {
+        upgrade_time = {
+            months = 480
+        }
+        cost_to_upgrade = {
+            factor = 5000
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {
+            fort_maintenance_modifier = -0.10 
+    	    garrison_growth = 0.10
+            garrison_size = 0.20 
+        }
+        on_upgraded = {}
+    }
+}
+
 cape_port_monument = {
 	start = 0 #Out of game
 	date = 1431.01.01
