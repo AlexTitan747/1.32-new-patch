@@ -4,63 +4,56 @@ country_decisions = {
 			color = { 23 223 234 }
 			major = yes
 			potential = {
-				normal_or_historical_nations = yes
-				was_never_end_game_tag_trigger = yes
+				NOT = { exists = TMK }
 				NOT = { has_country_flag = formed_tamil_flag }
 				OR = {
 					ai = no
 					is_playing_custom_nation = no
 				}
-				NOT = { exists = TMK }
-				NOT = { tag = MUG }
-				#NOT = { tag = TIM }
-				NOT = { tag = PER }
 				is_colonial_nation = no
-				OR = {
-					is_former_colonial_nation = no
-					AND = {
-						is_former_colonial_nation = yes
-						ai = no
-					}
-				}
 				OR = {
 					primary_culture = tamil
 					primary_culture = sinhala
 					primary_culture = malayalam
 				}
-				
-				OR = {
-					ai = no
-					AND = {
-						NOT = { exists = TMK }
-						num_of_cities = 10
-					}
-				}
 			}
 			
 			provinces_to_highlight = {
 				OR = {
-				province_id = 2026			# Tanjore
-				province_id = 534			# Calicut
-				province_id = 2100			# Vanni
-				province_id = 4410			# Kumari
-				AND = {
-					culture = tamil
-					region = coromandel_region
-					ROOT = {
-						NOT = {
-							num_of_owned_provinces_with = {
-								value = 6 
-								culture = tamil
-								region = coromandel_region
-								is_core = root
+					province_id = 2026			# Tanjore
+					province_id = 534			# Calicut
+					province_id = 2100			# Vanni
+					province_id = 4410			# Kumari
+					province_id = 2083			# Udayagiri
+					province_id = 541			# Vijanagar
+					province_id = 2030			# Goa
+					AND = {
+						culture = tamil
+						region = coromandel_region
+						ROOT = {
+							NOT = {
+								num_of_owned_provinces_with = {
+									value = 15 
+									culture = tamil
+									region = coromandel_region
+									is_core = ROOT
+								}
+							}
+						}
+					}
+					AND = {
+						trade_company_region = trade_company_coromandel
+						ROOT = {
+							NOT = {
+								num_of_owned_provinces_with = {
+									value = 40 
+									trade_company_region = trade_company_coromandel
+									is_core = ROOT
+								}
 							}
 						}
 					}
 				}
-				
-				}
-					
 				OR = {
 					NOT = { owned_by = ROOT }
 					NOT = { is_core = ROOT }
@@ -68,42 +61,48 @@ country_decisions = {
 			}
 			
 			allow = {
-				NOT = { exists = TMK }
+				adm_tech = 7
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
 				owns_core_province = 2026			# Tanjore
 				owns_core_province = 534			# Calicut
 				owns_core_province = 2100			# Vanni
 				owns_core_province = 4410			# Kumari
+				owns_core_province = 2083			# Udayagiri
+				owns_core_province = 541			# Vijanagar
+				owns_core_province = 2030			# Goa
 				
 				num_of_owned_provinces_with = {
-				value = 6
-				region = coromandel_region
-				culture = tamil
-				is_core = root
-				
+					value = 15
+					region = coromandel_region
+					culture = tamil
+					is_core = ROOT
+				}
+
+				num_of_owned_provinces_with = {
+					value = 40
+					trade_company_region = trade_company_coromandel
+					is_core = ROOT
+				}
 			}
-				
-			}
+
 			effect = {
 				2026 = {	#Tanjore
-					move_capital_effect = yes
-					change_religion = buddhism
+					#move_capital_effect = yes
+					change_religion = jainism
 				}
 				change_tag = TMK
-				change_religion = buddhism
-				set_ruler_religion = buddhism
-				set_heir_religion = buddhism
-				add_stability = 1
-				swap_non_generic_missions = yes
-				remove_non_electors_emperors_from_empire_effect = yes
+				change_religion = jainism
+				change_ruling_family_religions_effect = { religion = jainism }
+				add_stability_or_adm_power = yes
+				additional_missions_scripted_effect = yes
 				if = {
 					limit = {
-						NOT = { government_rank = 3 }
+						NOT = { government_rank = 2 }
 					}
-					set_government_rank = 3
+					set_government_rank = 2
 				}
-				add_prestige = 75
+				add_prestige = 25
 				add_country_modifier = {
 					name = centralization_modifier
 					duration = 3650
@@ -112,16 +111,10 @@ country_decisions = {
 					name = return_of_the_true_faith
 					duration = 7300
 				}
-				set_capital = 2026 # Tanjore
-				if = {
-                limit = { is_revolutionary = no }
-                change_government = monarchy
-            }
+				coromandel_region = { add_perma_claim = yes }
+				#set_capital = 2026 # Tanjore
 				set_country_flag = formed_tamil_flag
-				if = {
-				limit = { has_custom_ideas = no }
 				country_event = { id = ideagroups.1 } #Swap Ideas
-				}
 			}
 			
 		}

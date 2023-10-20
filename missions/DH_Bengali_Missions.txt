@@ -273,10 +273,13 @@ bng_slot_2 = {
 		provinces_to_highlight = {
 			OR = {
 				area = bihar_area
-				area = oudh_area
 				area = purvanchal_area
-				area = lower_doab_area
-				area = katehar_area
+				province_id = 556
+				province_id = 4496
+				province_id = 523
+				province_id = 4495
+				province_id = 2094
+				province_id = 4487
 			}
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
@@ -287,20 +290,26 @@ bng_slot_2 = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT	
 			}
-			oudh_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT	
-			}
 			purvanchal_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT	
 			}
-			lower_doab_area = {
-				type = all
+			556 = {
 				country_or_non_sovereign_subject_holds = ROOT	
 			}
-			katehar_area = {
-				type = all
+			4496 = {
+				country_or_non_sovereign_subject_holds = ROOT	
+			}
+			523 = {
+				country_or_non_sovereign_subject_holds = ROOT	
+			}
+			4495 = {
+				country_or_non_sovereign_subject_holds = ROOT	
+			}
+			2094 = {
+				country_or_non_sovereign_subject_holds = ROOT	
+			}
+			4487 = {
 				country_or_non_sovereign_subject_holds = ROOT	
 			}
 		}
@@ -346,6 +355,10 @@ bng_slot_2 = {
 					NOT = { is_core = ROOT	}
 				}
 				add_permanent_claim = ROOT
+			}
+			add_country_modifier = {
+				name = bengali_elite_infantry
+				duration = 3650
 			}
 		}
 	}
@@ -558,14 +571,13 @@ bng_slot_3 = {
 		icon = mission_end_arakan_piracy
 		required_missions = {  }
 		provinces_to_highlight = {
-			area = arakan_area
+			province_id = 568
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		trigger = {
-			arakan_area = {
-				type = all
+			568 = {
 				country_or_non_sovereign_subject_holds = ROOT	
 			}
 			num_of_light_ship = 10
@@ -679,7 +691,7 @@ bng_slot_3 = {
 				}
 				add_country_modifier = {
 					name = "tiger_triumphant"
-					duration = 18250
+					duration = -1
 				}
 			}
 		}
@@ -710,15 +722,15 @@ bng_slot_4 = {
 		required_missions = {  }
 		provinces_to_highlight = {
 			OR = {
-				province_id = 562
 				province_id = 2042
+				area = north_bengal_area
 			}
 			NOT = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		trigger = {
-			562 = {
+			north_bengal_area = {
 				country_or_non_sovereign_subject_holds = ROOT	
 			}
 			2042 = {
