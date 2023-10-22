@@ -108,399 +108,6 @@ skala_du_port = {
     }
 }
 
-garabaghlar_mausoleum = {
-    start = 2205 #Nakhchivan                    
-    date = 1162.01.01
-    time = { months = 0 }
-    build_cost = 0
-    can_be_moved = no
-    move_days_per_unit_distance = 10
-    starting_tier = 1
-    type = monument
-
-    build_trigger = {}
-
-    on_built = {}
-
-    on_destroyed = {}
-
-    can_use_modifiers_trigger = {
-        OR = {
-            AND = {
-                culture = armenian
-                has_owner_accepted_culture = yes
-                }
-            AND = {
-                religion_group = muslim
-                has_owner_religion = yes 
-            }   
-        }
-    }
-    
-
-    can_upgrade_trigger = {
-        OR = {
-            AND = {
-                culture = armenian
-                has_owner_accepted_culture = yes
-                }
-            AND = {
-                religion_group = muslim
-                has_owner_religion = yes 
-            }   
-        }
-    }
-
-    keep_trigger = {}
-
-    tier_0 = {
-        upgrade_time = {
-            months = 0
-        }
-        cost_to_upgrade = {
-            factor = 0
-        }
-        province_modifiers = {}
-        area_modifier = {}
-        country_modifiers = {}
-        on_upgraded = {}
-    }
-    
-    tier_1 = {
-        upgrade_time = {
-            months = 120
-        }
-        cost_to_upgrade = {
-            factor = 1000
-        }
-        province_modifiers = {
-            local_build_cost = -0.05
-        }
-        area_modifier = {}
-        country_modifiers = {
-            advisor_cost = -0.05
-        }
-        on_upgraded = {}
-    }
-
-    tier_2 = {
-        upgrade_time = {
-            months = 240
-        }
-        cost_to_upgrade = {
-            factor = 2500
-        }
-        province_modifiers = {}
-        area_modifier = {
-            local_build_cost= -0.05
-        }
-        country_modifiers = {
-            advisor_cost = -0.1
-        }
-        on_upgraded = {}
-    }
-
-    tier_3 = {
-        upgrade_time = {
-            months = 480
-        }
-        cost_to_upgrade = {
-            factor = 5000
-        }
-        province_modifiers = {}
-        area_modifier = {}
-        country_modifiers = {
-            advisor_cost = -0.15
-            build_cost = -0.05
-
-        }
-        on_upgraded = {}
-    }
-}
-
-umayyad_mosque = {
-    start = 382 #Dimashq                 
-    date = 715.01.01
-    time = { months = 0 }
-    build_cost = 0
-    can_be_moved = no
-    move_days_per_unit_distance = 10
-    starting_tier = 2
-    type = monument
-
-    build_trigger = {}
-
-    on_built = {}
-
-    on_destroyed = {}
-
-    can_use_modifiers_trigger = {
-        religion_group = muslim
-    }
-    
-
-    can_upgrade_trigger = {
-        religion_group = muslim
-    }
-
-    keep_trigger = {}
-
-    tier_0 = {
-        upgrade_time = {
-            months = 0
-        }
-        cost_to_upgrade = {
-            factor = 0
-        }
-        province_modifiers = {}
-        area_modifier = {}
-        country_modifiers = {}
-        on_upgraded = {}
-    }
-    
-    tier_1 = {
-        upgrade_time = {
-            months = 120
-        }
-        cost_to_upgrade = {
-            factor = 1000
-        }
-        province_modifiers = {}
-        area_modifier = {}
-        country_modifiers = {
-            tolerance_own = 0.5
-            tolerance_heretic = 0.5 
-            monthly_piety = -0.001
-        }
-        on_upgraded = {}
-    }
-
-    tier_2 = {
-        upgrade_time = {
-            months = 240
-        }
-        cost_to_upgrade = {
-            factor = 2500
-        }
-        province_modifiers = {}
-        area_modifier = {}
-        country_modifiers = {
-            tolerance_own = 1 
-            tolerance_heretic = 1 
-            tolerance_heathen = 0.5 
-            monthly_piety = -0.002
-        }
-        on_upgraded = {}
-    }
-
-    tier_3 = {
-        upgrade_time = {
-            months = 480
-        }
-        cost_to_upgrade = {
-            factor = 5000
-        }
-        province_modifiers = {}
-        area_modifier = {}
-        country_modifiers = {
-            tolerance_own = 1 
-            tolerance_heretic = 1 
-            tolerance_heathen = 1
-            tolerance_of_heathens_capacity = 1 
-            monthly_piety = -0.003
-        }
-        on_upgraded = {}
-    }
-}
-
-genoa_kaffa_fort = {
-    start = 285 #Kefe               
-    date = 1444.01.01
-    time = { months = 0 }
-    build_cost = 0
-    can_be_moved = no
-    move_days_per_unit_distance = 10
-    starting_tier = 0
-    type = monument
-
-    build_trigger = {}
-
-    on_built = {}
-
-    on_destroyed = {}
-
-    can_use_modifiers_trigger = {}
-    
-    can_upgrade_trigger = {}
-
-    keep_trigger = {}
-
-    tier_0 = {
-        upgrade_time = {
-            months = 0
-        }
-        cost_to_upgrade = {
-            factor = 0
-        }
-        province_modifiers = {}
-        area_modifier = {}
-        country_modifiers = {}       
-        on_upgraded = {}
-    }
-    
-    tier_1 = {
-        upgrade_time = {
-            months = 120
-        }
-        cost_to_upgrade = {
-            factor = 1000
-        }
-        province_modifiers = {}
-        area_modifier = {}
-        country_modifiers = {
-            garrison_size = 0.05
-            fort_maintenance_modifier = -0.05
-        }
-        on_upgraded = {}
-    }
-
-    tier_2 = {
-        upgrade_time = {
-            months = 240
-        }
-        cost_to_upgrade = {
-            factor = 2500
-        }
-        province_modifiers = {}
-        area_modifier = {}
-        country_modifiers = {
-            garrison_size = 0.10
-            garrison_growth = 0.05
-            fort_maintenance_modifier = -0.10 
-        }
-        on_upgraded = {}
-    }
-
-    tier_3 = {
-        upgrade_time = {
-            months = 480
-        }
-        cost_to_upgrade = {
-            factor = 5000
-        }
-        province_modifiers = {}
-        area_modifier = {}
-        country_modifiers = {
-            fort_maintenance_modifier = -0.10 
-    	    garrison_growth = 0.10
-            garrison_size = 0.20 
-        }
-        on_upgraded = {}
-    }
-}
-
-astrakhan_kremlin = {
-    start = 464 #Astrakhan               
-    date = 1444.01.01
-    time = { months = 0 }
-    build_cost = 0
-    can_be_moved = no
-    move_days_per_unit_distance = 10
-    starting_tier = 0
-    type = monument
-
-    build_trigger = {}
-
-    on_built = {}
-
-    on_destroyed = {}
-
-    can_use_modifiers_trigger = {
-        culture_group = tartar
-
-        OR ={
-            has_owner_accepted_culture = yes
-            has_owner_culture = yes
-        }
-    }
-    
-    can_upgrade_trigger = {
-        culture_group = tartar
-
-        OR ={
-            has_owner_accepted_culture = yes
-            has_owner_culture = yes
-        }
-    }
-
-    keep_trigger = {}
-
-    tier_0 = {
-        upgrade_time = {
-            months = 0
-        }
-        cost_to_upgrade = {
-            factor = 0
-        }
-        province_modifiers = {}
-        area_modifier = {}
-        country_modifiers = {}       
-        on_upgraded = {}
-    }
-    
-    tier_1 = {
-        upgrade_time = {
-            months = 120
-        }
-        cost_to_upgrade = {
-            factor = 1000
-        }
-        province_modifiers = {
-            local_manpower_modifier = 0.25 
-            local_defensiveness = 0.15 
-        }
-        area_modifier = {}
-        country_modifiers = {}
-        on_upgraded = {}
-    }
-
-    tier_2 = {
-        upgrade_time = {
-            months = 240
-        }
-        cost_to_upgrade = {
-            factor = 2500
-        }
-        province_modifiers = {
-            local_defensiveness = 0.25 
-        }
-        area_modifier = {
-            local_manpower_modifier = 0.25 
-        }
-        country_modifiers = {}
-        on_upgraded = {}
-    }
-
-    tier_3 = {
-        upgrade_time = {
-            months = 480
-        }
-        cost_to_upgrade = {
-            factor = 5000
-        }
-        province_modifiers = {
-            local_defensiveness = 0.33 
-        }
-        area_modifier = {
-            local_manpower_modifier = 0.50
-        }
-        country_modifiers = {
-            reinforce_speed = 0.10 
-        }
-        on_upgraded = {}
-    }
-}
-
 baluarte_de_la_bandera = {
 	start = 1751 #ceuta
 	date = 927.01.01
@@ -1708,6 +1315,401 @@ al_qarawiyyin = {
 		}
 		on_upgraded = {}
 	}
+}
+
+astrakhan_kremlin = {
+    start = 464 #Astrakhan               
+    date = 1444.01.01
+    time = { months = 0 }
+    build_cost = 0
+    can_be_moved = no
+    move_days_per_unit_distance = 10
+    starting_tier = 0
+    type = monument
+
+    build_trigger = {}
+
+    on_built = {}
+
+    on_destroyed = {}
+
+    can_use_modifiers_trigger = {
+        culture_group = tartar
+
+        OR ={
+            has_owner_accepted_culture = yes
+            has_owner_culture = yes
+        }
+    }
+    
+    can_upgrade_trigger = {
+        culture_group = tartar
+
+        OR ={
+            has_owner_accepted_culture = yes
+            has_owner_culture = yes
+        }
+    }
+
+    keep_trigger = {}
+
+    tier_0 = {
+        upgrade_time = {
+            months = 0
+        }
+        cost_to_upgrade = {
+            factor = 0
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {}       
+        on_upgraded = {}
+    }
+    
+    tier_1 = {
+        upgrade_time = {
+            months = 120
+        }
+        cost_to_upgrade = {
+            factor = 1000
+        }
+        province_modifiers = {
+            local_manpower_modifier = 0.25 
+            local_defensiveness = 0.15 
+        }
+        area_modifier = {}
+        country_modifiers = {}
+        on_upgraded = {}
+    }
+
+    tier_2 = {
+        upgrade_time = {
+            months = 240
+        }
+        cost_to_upgrade = {
+            factor = 2500
+        }
+        province_modifiers = {
+            local_defensiveness = 0.25 
+        }
+        area_modifier = {
+            local_manpower_modifier = 0.25 
+        }
+        country_modifiers = {}
+        on_upgraded = {}
+    }
+
+    tier_3 = {
+        upgrade_time = {
+            months = 480
+        }
+        cost_to_upgrade = {
+            factor = 5000
+        }
+        province_modifiers = {
+            local_defensiveness = 0.33 
+        }
+        area_modifier = {
+            local_manpower_modifier = 0.50
+        }
+        country_modifiers = {
+            reinforce_speed = 0.10 
+        }
+        on_upgraded = {}
+    }
+}
+
+genoa_kaffa_fort = {
+    start = 285 #Kefe               
+    date = 1444.01.01
+    time = { months = 0 }
+    build_cost = 0
+    can_be_moved = no
+    move_days_per_unit_distance = 10
+    starting_tier = 0
+    type = monument
+
+    build_trigger = {}
+
+    on_built = {}
+
+    on_destroyed = {}
+
+    can_use_modifiers_trigger = {}
+    
+    can_upgrade_trigger = {}
+
+    keep_trigger = {}
+
+    tier_0 = {
+        upgrade_time = {
+            months = 0
+        }
+        cost_to_upgrade = {
+            factor = 0
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {}       
+        on_upgraded = {}
+    }
+    
+    tier_1 = {
+        upgrade_time = {
+            months = 120
+        }
+        cost_to_upgrade = {
+            factor = 1000
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {
+            garrison_size = 0.05
+            fort_maintenance_modifier = -0.05
+        }
+        on_upgraded = {}
+    }
+
+    tier_2 = {
+        upgrade_time = {
+            months = 240
+        }
+        cost_to_upgrade = {
+            factor = 2500
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {
+            garrison_size = 0.10
+            garrison_growth = 0.05
+            fort_maintenance_modifier = -0.10 
+        }
+        on_upgraded = {}
+    }
+
+    tier_3 = {
+        upgrade_time = {
+            months = 480
+        }
+        cost_to_upgrade = {
+            factor = 5000
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {
+            fort_maintenance_modifier = -0.10 
+    	    garrison_growth = 0.10
+            garrison_size = 0.20 
+        }
+        on_upgraded = {}
+    }
+}
+
+umayyad_mosque = {
+    start = 382 #Dimashq                 
+    date = 715.01.01
+    time = { months = 0 }
+    build_cost = 0
+    can_be_moved = no
+    move_days_per_unit_distance = 10
+    starting_tier = 2
+    type = monument
+
+    build_trigger = {}
+
+    on_built = {}
+
+    on_destroyed = {}
+
+    can_use_modifiers_trigger = {
+        religion_group = muslim
+		has_owner_religion = yes 
+    }
+    
+
+    can_upgrade_trigger = {
+        religion_group = muslim
+		has_owner_religion = yes 
+    }
+
+    keep_trigger = {}
+
+    tier_0 = {
+        upgrade_time = {
+            months = 0
+        }
+        cost_to_upgrade = {
+            factor = 0
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {}
+        on_upgraded = {}
+    }
+    
+    tier_1 = {
+        upgrade_time = {
+            months = 120
+        }
+        cost_to_upgrade = {
+            factor = 1000
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {
+            tolerance_own = 0.5
+            tolerance_heretic = 0.5 
+            monthly_piety_accelerator = 0.001
+        }
+        on_upgraded = {}
+    }
+
+    tier_2 = {
+        upgrade_time = {
+            months = 240
+        }
+        cost_to_upgrade = {
+            factor = 2500
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {
+            tolerance_own = 1 
+            tolerance_heretic = 1 
+            tolerance_heathen = 0.5 
+            monthly_piety_accelerator = 0.002
+        }
+        on_upgraded = {}
+    }
+
+    tier_3 = {
+        upgrade_time = {
+            months = 480
+        }
+        cost_to_upgrade = {
+            factor = 5000
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {
+            tolerance_own = 1 
+            tolerance_heretic = 1 
+            tolerance_heathen = 1
+            tolerance_of_heathens_capacity = 1 
+            monthly_piety_accelerator = 0.003
+        }
+        on_upgraded = {}
+    }
+}
+
+garabaghlar_mausoleum = {
+    start = 2205 #Nakhchivan                    
+    date = 1162.01.01
+    time = { months = 0 }
+    build_cost = 0
+    can_be_moved = no
+    move_days_per_unit_distance = 10
+    starting_tier = 1
+    type = monument
+
+    build_trigger = {}
+
+    on_built = {}
+
+    on_destroyed = {}
+
+    can_use_modifiers_trigger = {
+        OR = {
+            AND = {
+                culture = armenian
+                has_owner_accepted_culture = yes
+                }
+            AND = {
+                religion_group = muslim
+                has_owner_religion = yes 
+            }   
+        }
+    }
+    
+
+    can_upgrade_trigger = {
+        OR = {
+            AND = {
+                culture = armenian
+                has_owner_accepted_culture = yes
+                }
+            AND = {
+                religion_group = muslim
+                has_owner_religion = yes 
+            }   
+        }
+    }
+
+    keep_trigger = {}
+
+    tier_0 = {
+        upgrade_time = {
+            months = 0
+        }
+        cost_to_upgrade = {
+            factor = 0
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {}
+        on_upgraded = {}
+    }
+    
+    tier_1 = {
+        upgrade_time = {
+            months = 120
+        }
+        cost_to_upgrade = {
+            factor = 1000
+        }
+        province_modifiers = {
+            local_build_cost = -0.05
+        }
+        area_modifier = {}
+        country_modifiers = {
+            advisor_cost = -0.05
+        }
+        on_upgraded = {}
+    }
+
+    tier_2 = {
+        upgrade_time = {
+            months = 240
+        }
+        cost_to_upgrade = {
+            factor = 2500
+        }
+        province_modifiers = {}
+        area_modifier = {
+            local_build_cost= -0.05
+        }
+        country_modifiers = {
+            advisor_cost = -0.1
+        }
+        on_upgraded = {}
+    }
+
+    tier_3 = {
+        upgrade_time = {
+            months = 480
+        }
+        cost_to_upgrade = {
+            factor = 5000
+        }
+        province_modifiers = {}
+        area_modifier = {}
+        country_modifiers = {
+            advisor_cost = -0.15
+            build_cost = -0.05
+
+        }
+        on_upgraded = {}
+    }
 }
 
 cape_port_monument = {
@@ -13132,7 +13134,7 @@ el_escorial = {
 		#what modifiers are added to the country when we have this project here on this tier
 		country_modifiers = {
 			global_autonomy = -0.01	
-			global_tariffs = 0.05
+			global_tariffs = 0.025
 			treasure_fleet_income = 0.05			
 		}
 
@@ -13164,7 +13166,7 @@ el_escorial = {
 		country_modifiers = {
 			global_autonomy = -0.025
 			governing_capacity_modifier = 0.05
-			global_tariffs = 0.1
+			global_tariffs = 0.05
 			treasure_fleet_income = 0.1
 		}
 
@@ -13196,7 +13198,7 @@ el_escorial = {
 		country_modifiers = {
 			global_autonomy = -0.05
 			governing_capacity_modifier = 0.1
-			global_tariffs = 0.2
+			global_tariffs = 0.1
 			treasure_fleet_income = 0.2
 		}
 

@@ -639,6 +639,13 @@ province_event = {
 			owner = { colonial_office = 1 }
 		}
 		has_empty_adjacent_province = yes
+		any_empty_neighbor_province = {
+			has_discovered = ROOT
+			is_wasteland = no
+			colonial_region_for_scope_province = {
+				is_capital_of = ROOT
+			}
+		}
 		owner = { NOT = { num_of_colonies = 2 } }
 	}
 
@@ -648,15 +655,16 @@ province_event = {
 
 	immediate = {
 		hidden_effect = {
-			random_province = {
+			random_empty_neighbor_province = {
 				limit = {
-					any_neighbor_province = {
-						owned_by = ROOT
-					}
 					is_city = no
 					has_colonist = no
+					has_discovered = ROOT
+					is_wasteland = no
+					colonial_region_for_scope_province = {
+						is_capital_of = ROOT
+					}
 				}
-
 				save_event_target_as = empty_neighbor_target
 			}
 		}

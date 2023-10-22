@@ -789,6 +789,8 @@ estate_burghers_monopoly_of_textiles = {
 			OR = {
 				trade_goods = cloth
 				trade_goods = silk
+				trade_goods = uniforms
+				trade_goods = tailored_clothes
 			}
 		}
 	}
@@ -818,6 +820,8 @@ estate_burghers_monopoly_of_textiles = {
 				OR = {
 					cloth = 1
 					silk = 1
+					uniforms = 1
+					tailored_clothes = 1
 				}
 			}
 			add_mercantilism = 1
@@ -828,6 +832,8 @@ estate_burghers_monopoly_of_textiles = {
 				OR = {
 					trade_goods = cloth
 					trade_goods = silk
+					trade_goods = uniforms
+					trade_goods = tailored_clothes
 				}
 			}
 			custom_tooltip = MONOPOLY_INCOME_CLOTH_SILK_DESC
@@ -840,6 +846,8 @@ estate_burghers_monopoly_of_textiles = {
 				OR = {
 					trade_goods = cloth
 					trade_goods = silk
+					trade_goods = uniforms
+					trade_goods = tailored_clothes
 				}
 			}
 			add_province_modifier = {
@@ -1208,7 +1216,10 @@ estate_burghers_monopoly_of_paper = {
 			has_country_flag = buffed_monopolies
 		}
 		any_owned_province = {
-			trade_goods = paper
+			OR = {
+				trade_goods = paper
+				trade_goods = books
+			}
 		}
 	}
 	can_select = {
@@ -1234,14 +1245,20 @@ estate_burghers_monopoly_of_paper = {
 	on_granted = {
 		if = {
 			limit = {
-				paper = 1
+				OR = {
+					paper = 1
+					books = 1
+				}
 			}
 			add_mercantilism = 1
 		}
 		add_years_of_owned_provinces_production_income = {
 			years = 8
 			trigger = {
-				trade_goods = paper
+				OR = {
+					trade_goods = paper
+					trade_goods = books
+				}
 			}
 			custom_tooltip = MONOPOLY_INCOME_PAPER_DESC
 		}
@@ -1250,7 +1267,10 @@ estate_burghers_monopoly_of_paper = {
 	on_granted_province = {
 		if = {
 			limit = {
-				trade_goods = paper
+				OR = {
+					trade_goods = paper
+					trade_goods = books
+				}
 			}
 			add_province_modifier = {
 				name = estate_burghers_monopoly_of_paper_mod

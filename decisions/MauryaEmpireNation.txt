@@ -16,7 +16,6 @@ country_decisions = {
 					culture_group = hindusthani # not nepal culture?
 					culture_group = western_aryan
 					culture_group = central_indic
-					culture_group = dravidian
 				}
 			}
 			
@@ -57,7 +56,7 @@ country_decisions = {
 			}
 			
 			allow = {
-				NOT = { exists = MRY }
+				adm_tech = 7
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
 				owns_core_province = 558			# Pataliputra
@@ -74,26 +73,25 @@ country_decisions = {
 					value = 20
 					region = west_india_region
 				}
-				
 			}
 			effect = {
 				558 = {	#Pataliputra
-					move_capital_effect = yes
+					#move_capital_effect = yes
 					change_religion = buddhism
 				}
-				set_capital = 558 # Pataliputra
+				#set_capital = 558 # Pataliputra
 				change_tag = MRY
 				change_religion = buddhism
 				set_ruler_religion = buddhism
 				set_heir_religion = buddhism
-				add_stability = 1
+				add_stability_or_adm_power = yes
 				if = {
 					limit = {
-						NOT = { government_rank = 3 }
+						NOT = { government_rank = 2 }
 					}
-					set_government_rank = 3
+					set_government_rank = 2
 				}
-				add_prestige = 75
+				add_prestige = 25
 				add_country_modifier = {
 					name = centralization_modifier
 					duration = 3650

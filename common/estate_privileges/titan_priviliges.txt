@@ -569,7 +569,10 @@ estate_burghers_monopoly_of_olives = {
 	is_valid = {
 		has_dlc = "Emperor"
 		any_owned_province = {
-			trade_goods = olives
+			OR = {
+				trade_goods = olives
+				trade_goods = olive_oil
+			}
 		}
 	}
 	can_select = {
@@ -595,14 +598,20 @@ estate_burghers_monopoly_of_olives = {
 	on_granted = {
 		if = {
 			limit = {
-				olives = 1
+				OR = {
+					olives = 1
+					olive_oil = 1
+				}
 			}
 			add_mercantilism = 1
 		}
 		add_years_of_owned_provinces_production_income = {
 			years = 8
 			trigger = {
-				trade_goods = olives
+				OR = {
+					trade_goods = olives
+					trade_goods = olive_oil
+				}
 			}
 			custom_tooltip = MONOPOLY_INCOME_OLIVES_DESC
 		}
@@ -611,7 +620,10 @@ estate_burghers_monopoly_of_olives = {
 	on_granted_province = {
 		if = {
 			limit = {
-				trade_goods = olives
+				OR = {
+					trade_goods = olives
+					trade_goods = olive_oil
+				}
 			}
 			add_province_modifier = {
 				name = estate_burghers_monopoly_of_olives_mod
