@@ -183,6 +183,10 @@ westphalia_missions_1 = {
 				province_id = 1758
 			}
 			country_or_non_sovereign_subject_holds = ROOT
+			OR = {
+				NOT = { has_building = workshop }
+				NOT = { base_production = 12 }
+			}
 		}
 
 		trigger = {
@@ -554,6 +558,18 @@ westphalia_missions_3 = {
 		position = 5
 
 		required_missions = { path_to_confederacy }
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1761
+				province_id = 5085
+				province_id = 77
+			}
+			OR = {
+				NOT =  { base_production = 10 }
+				NOT =  { has_building = farm_estate }
+				NOT =  { owned_by = ROOT }
+			}
+		}
 
 		trigger = {
 			1761 = {
