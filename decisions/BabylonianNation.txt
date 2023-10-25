@@ -1,89 +1,88 @@
 country_decisions = {
-
-		babylonia_nation = {
-			color = { 23 223 234 }
-			major = yes
-			potential = {
-				NOT = { has_country_flag = formed_babylonia_flag }
-				NOT = { exists = BAB }
-				OR = {
-					tag = SRV
-					was_tag = SRV
-				}
+	babylonia_nation = {
+		color = { 23 223 234 }
+		major = yes
+		potential = {
+			NOT = { has_country_flag = formed_babylonia_flag }
+			NOT = { exists = BAB }
+			OR = {
+				tag = SRV
+				was_tag = SRV
+			}
+		}
+		
+		provinces_to_highlight = {
+			OR = {
+			province_id = 410			# baghdad
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		
+		allow = {
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			owns_core_province = 410		    # Baghdad
+			mission_completed = tm_SRV_embrace_traditions
+			mission_completed = tm_SRV_develop_fertile_lands
+			custom_trigger_tooltip = {
+				tooltip = tm_SRV_completed_BAB_mission
 				has_country_flag = SRV_babylon_path_unlocked
 			}
-			
-			provinces_to_highlight = {
-				OR = {
-				province_id = 410			# baghdad
-				}
-				OR = {
-					NOT = { owned_by = ROOT }
-					NOT = { is_core = ROOT }
-				}
-			}
-			
-			allow = {
-				is_free_or_tributary_trigger = yes
-				is_at_war = no
-				owns_core_province = 410		    # Baghdad
-
-				mission_completed = tm_SRV_embrace_traditions
-				mission_completed = tm_SRV_develop_fertile_lands
-			}
-
-			effect = {
-				410 = {	#Baghdad
-					move_capital_effect = yes
-					change_religion = zoroastrian
-					change_province_name = Babylon
-				}
-				change_tag = BAB
-				set_ruler_religion = zoroastrian
-				set_heir_religion = zoroastrian
-				change_primary_culture = babylonian
-				swap_non_generic_missions = yes
-				remove_non_electors_emperors_from_empire_effect = yes
-				add_prestige = 50
-				add_country_modifier = {
-					name = centralization_modifier
-					duration = 3650
-				}
-				add_country_modifier = {
-					name = return_of_the_true_faith
-					duration = 7300
-				}
-				set_capital = 410 # Babylon
-				if = {
-					limit = { is_revolutionary = no }
-					change_government = monarchy
-				}
-				change_technology_group = ottoman
-
-				hidden_effect = {
-					every_owned_province = {
-						limit = {
-							OR = {
-								culture = al_iraqiya_arabic
-								culture = kurdish
-							}
-							region = mashriq_region
-							owned_by = ROOT
-						}
-						change_culture = babylonian
-					}
-				}
-				set_country_flag = formed_babylonia_flag
-				if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
-				}
-				410 = {
-					set_province_flag = babylon_existed
-				}
-			}
-			
 		}
+
+		effect = {
+			410 = {	#Baghdad
+				move_capital_effect = yes
+				change_religion = zoroastrian
+				change_province_name = Babylon
+			}
+			change_tag = BAB
+			set_ruler_religion = zoroastrian
+			set_heir_religion = zoroastrian
+			change_primary_culture = babylonian
+			swap_non_generic_missions = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			add_prestige = 50
+			add_country_modifier = {
+				name = centralization_modifier
+				duration = 3650
+			}
+			add_country_modifier = {
+				name = return_of_the_true_faith
+				duration = 7300
+			}
+			set_capital = 410 # Babylon
+			if = {
+				limit = { is_revolutionary = no }
+				change_government = monarchy
+			}
+			change_technology_group = ottoman
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						OR = {
+							culture = al_iraqiya_arabic
+							culture = kurdish
+						}
+						region = mashriq_region
+						owned_by = ROOT
+					}
+					change_culture = babylonian
+				}
+			}
+			set_country_flag = formed_babylonia_flag
+			if = {
+			limit = { has_custom_ideas = no }
+			country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			410 = {
+				set_province_flag = babylon_existed
+			}
+		}
+	}
 
 		babylon_empire = {
 			major = yes

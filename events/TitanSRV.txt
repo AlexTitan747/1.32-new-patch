@@ -7,6 +7,12 @@ country_event = {
 	picture = shirivan_event_1
 
 	is_triggered_only = yes
+
+	immediate = {
+		clr_country_flag = tm_srv_chose_shia
+		clr_country_flag = tm_srv_chose_zoroastrian
+		clr_country_flag = tm_srv_chose_orthodox
+	} 
 	
 	option = {
 		name = titansrv.1.a
@@ -61,6 +67,7 @@ country_event = {
 			name = "tm_AFG_religious_conversions"
 			duration = 3650
 		}
+		set_country_flag = tm_srv_chose_zoroastrian
 	}
 
     option = {
@@ -82,15 +89,18 @@ country_event = {
 		custom_tooltip = srv_titansrv_1_a_tt
 		hidden_effect = {
 			set_country_flag = srv_religion_backup
-			dagestan_area = {
-				change_religion = orthodox
-			}
+		}
+		dagestan_area = {
+			limit = { owned_by = ROOT }
+			change_religion = orthodox
 		}
 		add_country_modifier = {
 			name = "tm_AFG_religious_conversions"
 			duration = 3650
 		}
         
+		set_country_flag = tm_srv_chose_orthodox
+
         if = {
             limit = {
                 owns = 419
@@ -139,7 +149,6 @@ country_event = {
 					}
 				}
 			}
-
         }
 	}
 }
@@ -306,6 +315,4 @@ country_event = {
 			age = 20
 		}
 	}
-
-
 }

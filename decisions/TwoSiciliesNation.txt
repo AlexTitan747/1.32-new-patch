@@ -5,8 +5,10 @@ country_decisions = {
 		potential = {
 			NOT = { has_country_flag = formed_two_sicilies_flag }
 			NOT = { exists = TTS }
-			has_country_flag = naples_has_sunni_ruler
-			religion = sunni
+			#has_country_flag = naples_has_sunni_ruler
+			#religion = sunni
+			tag = NAP
+			NOT = { has_country_flag = nap_aims_for_italy }
 		}
 
 		provinces_to_highlight = {
@@ -21,10 +23,19 @@ country_decisions = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
-			hidden_trigger = {
+			religion = sunni
+			custom_trigger_tooltip = {
+				tooltip = tm_NAP_completed_TTS_mission
+				has_country_flag = fired_sunni_revolt
+			}
+			custom_trigger_tooltip = {
+				tooltip = tm_NAP_sunni_ruler_event
 				has_country_flag = naples_has_sunni_ruler
 			}
-			religion = sunni
+			custom_trigger_tooltip = {
+				tooltip = tm_NAP_not_completed_ITA_mission
+				NOT = { has_country_flag = nap_aims_for_italy }
+			}
 		}
 
 		effect = {
