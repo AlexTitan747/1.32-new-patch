@@ -2334,7 +2334,8 @@ japanese_missions_eoc_3 = {
 			NOT = { num_of_loans = 1 } 
 			OR = { 
 				in_golden_age = yes  
-				monthly_income = 500 
+				monthly_income = 500
+				NOT = { great_power_rank = 5 }
 			}
 		}
 		
@@ -2349,17 +2350,17 @@ japanese_missions_eoc_3 = {
 				name = mng_prosperous_era_modifier
 				duration = -1 
 			}
-			if = { 
-				limit = { has_dlc = "Mandate of Heaven" }
-				if = {
-					limit = { has_had_golden_age = yes } 
-					reset_golden_age = yes 
-				}
-				else_if = {
-					limit = { in_golden_age = yes } 
-					extend_golden_age = 240
-				}
-			}
+			#if = { 
+			#	limit = { has_dlc = "Mandate of Heaven" }
+			#	if = {
+			#		limit = { has_had_golden_age = yes } 
+			#		reset_golden_age = yes 
+			#	}
+			#	else_if = {
+			#		limit = { in_golden_age = yes } 
+			#		extend_golden_age = 240
+			#	}
+			#}
 			set_country_flag = mng_shengshi_reward_flag 
 			add_country_modifier = {
 				name = mng_well_governed_era_modifier 
