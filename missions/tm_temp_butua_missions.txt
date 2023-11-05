@@ -1,0 +1,81 @@
+tm_RZW_TEMP_slot_1 = {
+	slot = 1
+	generic = no
+	ai = yes
+	potential = {
+		OR = {
+			tag = RZW
+			was_tag = RZW
+		}
+	}
+	has_country_shield = yes
+
+    tm_rzw_temp_miss_1 = {
+		icon = mission_african_soldier
+		required_missions = { }
+		position = 3
+		
+		trigger = {
+			army_size_percentage = 0.9
+            num_of_generals = 1
+		}
+		
+		effect = {
+			upper_zambezi_area = { add_perma_claim = yes }
+            shire_area = { add_perma_claim = yes }
+            ngonde_area = { add_perma_claim = yes }
+            uticulo_makuana_area = { add_perma_claim = yes }
+            ruvuma_area = { add_perma_claim = yes }
+		}
+    }
+
+    tm_rzw_temp_miss_2 = {
+		icon = mission_kon_conquer_ksj
+		required_missions = { tm_rzw_temp_miss_1 }
+		position = 4
+        provinces_to_highlight = {
+            region = east_africa_region
+            is_city = yes
+            NOT = { country_or_non_sovereign_subject_holds = ROOT }
+        }
+		
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+                value = 10
+                region = east_africa_region
+            }
+		}
+		
+		effect = {
+			quelimane_area = { add_perma_claim = yes }
+			mozambique_area = { add_perma_claim = yes }
+			central_swahili_coast_area = { add_perma_claim = yes }
+			buha_area = { add_perma_claim = yes }
+		}
+    }
+
+    tm_rzw_temp_miss_3 = {
+		icon = mission_invade_kanem
+		required_missions = { tm_rzw_temp_miss_2 }
+		position = 5
+        provinces_to_highlight = {
+            OR = {
+                area = quelimane_area
+                area = mozambique_area
+                area = central_swahili_coast_area
+            }
+            NOT = { country_or_non_sovereign_subject_holds = ROOT }
+        }
+		
+		trigger = {
+			quelimane_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+			mozambique_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+			central_swahili_coast_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		effect = {
+			east_africa_region = { add_perma_claim = yes }
+			central_africa_region = { add_perma_claim = yes }
+		}
+    }
+}
