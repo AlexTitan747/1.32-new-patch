@@ -17,21 +17,11 @@ on_startup = {
 		#flavor_mos.1 #Event regarding the Tatar Yoke
 		flavor_fra.206 # Setup the general for missions
 		flavor_geo.1 # Disaster info
-		flavor_mam.111 # Mamluks-Syria relations
+		#flavor_mam.111 # Mamluks-Syria relations
 	}
 	on_startup_effect = yes
 	on_startup_dlc_cleanup_effect = yes
 	initialize_schools_effect = yes #This is only used here but is used for readability of on_action file.
-
-	if = {
-		limit = {
-			exists = LNA
-			NOT = { is_year = 1445 }
-		}
-		LNA = {
-			add_rival = AVA
-		}
-	}
 
 	if = {
 		limit = {
