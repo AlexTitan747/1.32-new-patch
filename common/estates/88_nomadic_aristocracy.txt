@@ -1,5 +1,5 @@
 nomadic_aristocracy = {
-	icon = 12
+	icon = 16
 	
 	# Used for when declaring independence
 	independence_government = tribal
@@ -94,21 +94,18 @@ nomadic_aristocracy = {
 	influence_modifier = {
 		desc = EST_VAL_OTHER_ESTATE_IN_POWER
 		trigger = {
-			OR = {
-				has_disaster = estate_church_disaster
-			}
+			has_any_estate_disaster_active = yes
+			has_not_own_estate_disaster_active = { estate = nomadic_aristocracy }
 		}
 		influence = -40
 	}
-
-	influence_from_dev_modifier = 1.0
 	
+	#Loyalty Modifiers
 	loyalty_modifier = {
 		desc = EST_VAL_OTHER_ESTATE_IN_POWER_LOY
 		trigger = {
-			OR = {
-				has_disaster = estate_church_disaster
-			}
+			has_any_estate_disaster_active = yes
+			has_not_own_estate_disaster_active = { estate = nomadic_aristocracy }
 		}
 		loyalty = -20
 	}

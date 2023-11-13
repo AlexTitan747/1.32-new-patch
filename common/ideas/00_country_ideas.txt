@@ -869,11 +869,8 @@ FRA_ideas = {
 			tag = FRA
 			has_country_flag = tm_aqi_getting_french_ideas_flag
 		}
-		if = {
-			limit = { has_dlc = "Emperor" }
-			is_revolution_target = no 
-		}
-		else = { is_revolutionary = no } 
+		is_revolutionary = no 
+		is_revolution_target = no 
 	}
 	free = yes		#will be added at load.
 	
@@ -915,12 +912,14 @@ FRA_ideas_2 = {
 	}	
 
 	trigger = {
-		tag = FRA
-		if = {
-			limit = { has_dlc = "Emperor" }
-			is_revolution_target = yes 
+		OR = {
+			tag = FRA
+			has_country_flag = tm_aqi_getting_french_ideas_flag
 		}
-		else = { is_revolutionary = yes } 
+		OR = {
+			is_revolution_target = yes
+			is_revolutionary = yes 
+		} 
 	}
 	free = yes		#will be added at load.
 	
@@ -1242,7 +1241,7 @@ SZO_ideas = {
 
 MFA_ideas = {
 	start = {
-		recover_army_morale_speed = 0.05
+		recover_army_morale_speed = 0.10
 		legitimacy = 1
 		devotion = 1
 		republican_tradition = 0.3
@@ -1759,6 +1758,7 @@ PLC_ideas = {
 	
 	trigger = {
 		tag = PLC
+		#NOT = { has_country_flag = is_LPC_flag }
 	}
 	free = yes		#will be added at load.
 	
@@ -1801,7 +1801,7 @@ PLC_LIT_ideas = {
 	
 	trigger = {
 		tag = PLC 
-		primary_culture = lithuanian
+		has_country_flag = is_LPC_flag
 	}
 	free = yes	
 	
@@ -1937,12 +1937,14 @@ PER_ideas = {
 
 	the_qizilbash = {
 		manpower_in_true_faith_provinces = 0.15
+		qizilbash_privilege_slots = 1
 	}
 	persian_rug_production = {
 		global_trade_goods_size_modifier = 0.1
 	}
 	the_ghulams = {
 		infantry_power = 0.10
+		ghulams_privilege_slots = 1
 	}
 	improved_silk_road = {
 		global_tax_modifier = 0.1
@@ -1955,9 +1957,48 @@ PER_ideas = {
 		manpower_recovery_speed = 0.10
 	}
 	increased_crown_lands = {
-		
 		recover_army_morale_speed = 0.05
 		inflation_reduction = 0.33
+	}
+}
+
+ERANSHAHR_ideas = {
+	start = {
+		land_morale = 0.15
+		diplomatic_reputation = 2
+	}
+	
+	bonus = {
+		overextension_impact_modifier = -0.2
+	}
+	
+	trigger = {
+		tag = ERS
+	}
+	free = yes
+	ers_guardians_of_the_sacred_fire = {
+		tolerance_own = 2
+		yearly_government_power = 1
+	}
+	ers_restore_the_academy_of_gondishapur = {
+		technology_cost = -0.05
+	}
+	ers_wuzurg_framadar = {
+		same_religion_advisor_cost = -0.2
+	}
+	ers_reform_the_savaran_cavalry = {
+		cavalry_power = 0.2
+	}
+	improved_silk_road = {
+		#same as in PER_ideas
+		#caravan_power = 0.2
+	}
+	ers_rebuild_the_caspian_gates = {
+		defensiveness = 0.2
+		garrison_size = 0.2
+	}
+	ers_sasanian_siege_warfare = {
+		artillery_level_modifier = 0.5
 	}
 }
 
@@ -2088,7 +2129,7 @@ SCO_Ideas = {
 HUN_ideas = {
 	start = {
 		cavalry_power = 0.05
-		recover_army_morale_speed = 0.05
+		recover_army_morale_speed = 0.10
 	}
 	
 	bonus = {
@@ -2246,10 +2287,10 @@ JAP_ideas = {
 }
 
 
-MAM_ideas = {
+MAM2_ideas = { #Mission reward to double mam_monopoly_ports // see mam_establish_merchant_escorts
 	start = {
 		trade_steering = 0.25
-		cavalry_power = 0.05
+		cavalry_power = 0.10
 	}
 	
 	bonus = {
@@ -2258,12 +2299,16 @@ MAM_ideas = {
 	
 	trigger = {
 		tag = MAM
+		has_country_flag = mam_upgrade_national_idea_flag
 	}
 	free = yes
 	
 	red_sea_trade = {
 		global_trade_power = 0.05
 		trade_range_modifier = 0.10
+	}
+	mam_monopoly_ports_evolved = {
+		trade_efficiency = 0.2
 	}
 	monuments_to_greatness = {
 		prestige = 1
@@ -2280,8 +2325,46 @@ MAM_ideas = {
 	reformed_succession = {
 		stability_cost_modifier = -0.15
 	}
+}
+
+
+MAM_ideas = {
+	start = {
+		trade_steering = 0.25
+		cavalry_power = 0.10
+	}
+	
+	bonus = {
+		global_prov_trade_power_modifier = 0.25
+	}
+	
+	trigger = {
+		tag = MAM
+		NOT = { has_country_flag = mam_upgrade_national_idea_flag }
+	}
+	free = yes
+	
+	red_sea_trade = {
+		global_trade_power = 0.05
+		trade_range_modifier = 0.10
+	}
 	mam_monopoly_ports = {
 		trade_efficiency = 0.10
+	}
+	monuments_to_greatness = {
+		prestige = 1
+	}
+	purchase_new_mamelukes = {
+		manpower_recovery_speed = 0.15
+	}
+	mam_army_reform = {
+		discipline = 0.05
+	}
+	reform_fellah_system = {
+		production_efficiency = 0.1
+	}
+	reformed_succession = {
+		stability_cost_modifier = -0.15
 	}
 }
 
@@ -2576,12 +2659,11 @@ MLO_ideas = {
 BYZ_ideas = {
 	start = {
 		advisor_cost = -0.10
-		tolerance_own = 3
+		improve_relation_modifier = 0.2
 	}
 	
 	bonus = {
-		artillery_power = 0.15
-		siege_ability = 0.15
+		manpower_recovery_speed = 0.10
 	}
 	
 	trigger = {
@@ -2589,26 +2671,33 @@ BYZ_ideas = {
 	}
 	free = yes
 	
-	regulations_for_mercenaries = {
-		land_maintenance_modifier = -0.1
+	byz_roman_empire = {
+		core_creation = -0.25
 	}
-	repopulation_of_countryside = {
-		global_manpower_modifier = 0.10
-	}
-	byz_state_admin_reform = {
-		global_tax_modifier = 0.10
-	}
-	byz_admin_power = {
-		technology_cost = -0.10
-	}
-	merchant_class = {
-		global_trade_power = 0.15
-	}
-	new_imperial_army = {
+
+	byz_strategikon = {
 		discipline = 0.05
 	}
+	
 	ecumenical_patriarch = {
-		global_missionary_strength = 0.02
+		global_missionary_strength = 0.03
+		yearly_patriarch_authority = 0.003
+	}
+	
+	byz_corpus_iuris_civilis = {	#Replaces byz_admin_power for Purple Phoenix events
+		reform_progress_growth = 0.2
+	}
+	
+	byz_protect_the_frontiers = {
+		defensiveness = 0.15
+	}
+
+	new_imperial_army = {
+		global_manpower_modifier = 0.15
+	}
+
+	repopulation_of_countryside = {
+		global_trade_goods_size_modifier = 0.1
 	}
 }
 
@@ -5308,7 +5397,7 @@ AJU_ideas = {
 RYA_ideas = {
 	start = {
 		global_unrest = -1
-		recover_army_morale_speed = 0.05
+		recover_army_morale_speed = 0.10
 	}
 	
 	bonus = {
@@ -5441,7 +5530,7 @@ PSK_ideas = {
 		advisor_pool = 1
 	}
 	legacy_of_daumantas = {
-		recover_army_morale_speed = 0.05
+		recover_army_morale_speed = 0.10
 	}
 	balt_mercenaries = {
 		merc_maintenance_modifier = -0.1
@@ -5719,7 +5808,7 @@ mossi_ideas = {
 
 fulani_jihad_ideas = {
 	start = {
-		recover_army_morale_speed = 0.05
+		recover_army_morale_speed = 0.10
 		cavalry_cost = -0.10
 	}
 	
@@ -6709,7 +6798,7 @@ KAZ_ideas = {
 ARM_ideas = {
 	start = {
 		war_exhaustion = -0.02
-		recover_army_morale_speed = 0.05
+		recover_army_morale_speed = 0.10
 	}
 
 	bonus = {
@@ -17784,3 +17873,130 @@ UKR_ideas = {
 		yearly_patriarch_authority = 0.005
 	}
 }
+
+
+#1.36
+#(Great) Armenia
+
+ARM1_ideas = {
+	start = {
+		war_exhaustion = -0.05
+		recover_army_morale_speed = 0.10
+	}
+
+	bonus = {
+		hostile_attrition = 1
+	}
+	
+	trigger = {
+		OR = {
+			tag = ARM
+			tag = MLK
+		}
+		has_country_flag = arm_great_armenian_ideas
+	}
+	free = yes		#will be added at load.
+	
+	apostolic_church = {
+		global_missionary_strength = 0.02
+		prestige_per_development_from_conversion = 0.25
+	}
+	land_reclamation1 = {
+		development_cost = -0.15
+	}
+	border_nation = {
+		diplomatic_reputation = 1
+	}
+	melikdom_organization1 = {
+		global_tax_modifier = 0.2
+	}
+	sygnakhs = {
+		global_regiment_cost = -0.1
+	}
+	nakharar_titles1 = {
+		army_tradition = 1
+	}
+	end_of_armenian_diaspora1 = {
+		production_efficiency = 0.1
+		manpower_in_own_culture_provinces = 0.2
+	}
+}
+
+#ARB_ideas = {
+#	start = {
+#		tolerance_own = 2
+#		years_of_nationalism = -10
+#	}
+#
+#	bonus = {
+#		siege_ability = 0.15
+#	}
+#
+#	trigger = {
+#		tag = ARB
+#	}
+#	free = yes
+#
+#	ARB_arabian_pincers = {
+#		cav_to_inf_ratio = 0.25
+#		cavalry_power = 0.25
+#	}
+#	ARB_pact_of_umar = {
+#		dhimmi_loyalty_modifier = 0.1
+#		global_tax_modifier = 0.2
+#	}
+#	ARB_engage_in_indian_ocean_trade = {
+#		trade_steering = 0.2	
+#	}
+#	ARB_conversion = {
+#		global_missionary_strength = 0.03
+#	}
+#	ARB_jihad = {
+#		warscore_cost_vs_other_religion = -0.1
+#	}
+#	ARB_new_caliphate_rising = {
+#		missionaries = 2
+#	}
+#	ARB_mubarizun = {
+#		army_tradition_decay = -0.01
+#	}
+#}
+#
+#EGY_ideas = {
+#	start = {
+#		trade_efficiency = 0.1
+#		administrative_efficiency = 0.05
+#	}
+#
+#	bonus = {
+#		free_policy = 1
+#	}
+#	
+#	trigger = {
+#		tag = EGY
+#	}
+#	free = yes		#will be added at load.
+#	
+#	egy_centralization_works = {
+#		development_cost = -0.1
+#	}
+#	training_missions_in_egypt = {
+#		country_military_power = 1
+#	}
+#	legacy_of_the_karimis = {
+#		burghers_loyalty_modifier = 0.1
+#	}
+#	nile_production = {
+#		production_efficiency = 0.10
+#	}
+#	westernize_the_military = {
+#		max_general_fire = 1
+#		fire_damage = 0.1
+#	}
+#	mediterranean_shipwrights = {
+#		sea_repair = yes
+#	}
+#	crossroads_between_europe_and_africa = {
+#		global_trade_power = 0.1
+#	}
+#}

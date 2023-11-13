@@ -1,6 +1,6 @@
 estate_mamluks = {
 
-	icon = 14
+	icon = 18
 	
 	trigger = {
 		NOT = { is_revolutionary_republic_trigger = yes }
@@ -104,15 +104,8 @@ estate_mamluks = {
 	influence_modifier = {
 		desc = EST_VAL_OTHER_ESTATE_IN_POWER
 		trigger = {
-			OR = {
-				has_disaster = estate_nobility_disaster
-				has_disaster = estate_church_disaster
-				has_disaster = estate_burghers_disaster
-				has_disaster = estate_brahmins_disaster
-				has_disaster = estate_vaisyas_disaster
-				has_disaster = estate_jains_disaster
-				has_disaster = janissary_decadence
-			}
+			has_any_estate_disaster_active = yes
+			has_not_own_estate_disaster_active = { estate = estate_mamluks }
 		}
 		influence = -40
 	}
@@ -121,15 +114,8 @@ estate_mamluks = {
 	loyalty_modifier = {
 		desc = EST_VAL_OTHER_ESTATE_IN_POWER_LOY
 		trigger = {
-			OR = {
-				has_disaster = estate_nobility_disaster
-				has_disaster = estate_church_disaster
-				has_disaster = estate_burghers_disaster
-				has_disaster = estate_brahmins_disaster
-				has_disaster = estate_vaisyas_disaster
-				has_disaster = estate_jains_disaster
-				has_disaster = janissary_decadence
-			}
+			has_any_estate_disaster_active = yes
+			has_not_own_estate_disaster_active = { estate = estate_mamluks }
 		}
 		loyalty = -20
 	}
