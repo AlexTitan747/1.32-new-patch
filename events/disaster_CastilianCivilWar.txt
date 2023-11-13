@@ -89,6 +89,9 @@ country_event = {
 		set_country_flag = cas_portugal_candidate
 		custom_tooltip = "castilian_civil_war.1.a.tt"
 		add_legitimacy = -20
+		define_heir = {
+			dynasty = ROOT
+		}
 		random_owned_province = {
 			limit = {
 				has_province_flag = cas_civil_war_start
@@ -452,6 +455,7 @@ country_event = {
 	}
 	
 	immediate = {
+		on_non_estate_disaster_end = yes
 		hidden_effect = {
 			set_country_flag = spa_cas_ended_civil_war_flag
 		}
