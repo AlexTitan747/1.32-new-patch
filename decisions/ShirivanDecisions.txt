@@ -6,7 +6,7 @@ country_decisions = {
 			OR = {
 				tag = SRV
 				tag = CAU
-				}
+			}
 			has_country_flag = srv_religion_backup
 
 			NOT = {
@@ -14,13 +14,18 @@ country_decisions = {
 			}
 		}
 		allow = {
-			OR = {
-			religion = orthodox
-			religion = zoroastrian
-			religion = shiite
+			custom_trigger_tooltip = {
+				tooltip = tm_SRV_chose_religion_over_years_ago
+				OR = {
+					had_country_flag = { flag = tm_srv_chose_shia days = 5475 }
+					had_country_flag = { flag = tm_srv_chose_zoroastrian days = 5475 }
+					had_country_flag = { flag = tm_srv_chose_orthodox days = 5475 }
+				}
 			}
-			NOT = {
-				has_country_modifier = warplan_pol_cooldown
+			OR = {
+				religion = orthodox
+				religion = zoroastrian
+				religion = shiite
 			}
 		}
 		effect = {
