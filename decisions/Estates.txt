@@ -520,6 +520,7 @@ country_decisions = {
 		}
 	}
 	horse_breeding_decision = {
+		major = yes
 		potential = {
 			has_unlocked_decision = { type = horse_breeding_decision }
 			NOT = { has_country_flag = bred_a_new_war_steed }
@@ -527,7 +528,7 @@ country_decisions = {
 		allow = {
 			has_global_modifier_value = {
 				which = cavalry_power  
-				value = 0.4
+				value = 0.2
 			}
 			num_of_cavalry = 50 
 			if = {
@@ -541,10 +542,13 @@ country_decisions = {
 				army_tradition = 95 
 			}
 			num_of_owned_provinces_with = {
-				trade_goods = livestock 
+				OR = {
+					trade_goods = livestock
+					trade_goods = cheese
+				}
 				has_manufactory_trigger = yes 
 				base_production = 15 
-				value = 1 
+				value = 1
 			}
 		}
 		effect = {
