@@ -1764,7 +1764,7 @@ estate_nobles_mam_three_privileges = {
 	can_select = {
 		NOT = {
 			num_of_estate_privileges = {
-				estate = estate_nobles
+				estate = estate_mamluks
 				value = 3
 			}
 		}
@@ -1775,24 +1775,24 @@ estate_nobles_mam_three_privileges = {
 	}
 	pre_effect = {
 		set_variable = {
-			which = estate_dhimmi_three_privileges_var
+			which = estate_mamluks_three_privileges_var
 			value = 0
 		}
 		if = {
 			limit = {
 				num_of_estate_privileges = {
-					estate = estate_nobles
+					estate = estate_mamluks
 					value = 1
 				}
 			}
 			set_variable = {
-				which = estate_nobles_three_privileges_var
+				which = estate_mamluks_three_privileges_var
 				value = 2
 			}
 		}
 		else = {
 			set_variable = {
-				which = estate_nobles_three_privileges_var
+				which = estate_mamluks_three_privileges_var
 				value = 1
 			}
 		}
@@ -1801,29 +1801,29 @@ estate_nobles_mam_three_privileges = {
 		if = {
 			limit = {
 				has_estate_agenda_auto_completion = {
-					estate = estate_nobles
+					estate = estate_mamluks
 				}
 			}
 			has_estate_agenda_auto_completion = {
-				estate = estate_nobles
+				estate = estate_mamluks
 			}
 		}
 		else = {
 			if = {
 				limit = {
 					check_variable = {
-						which = estate_nobles_three_privileges_var
+						which = estate_mamluks_three_privileges_var
 						value = 2
 					}
 				}
 				num_of_estate_privileges = {
-					estate = estate_nobles
+					estate = estate_mamluks
 					value = 3
 				}
 			}
 			else = {
 				num_of_estate_privileges = {
-					estate = estate_nobles
+					estate = estate_mamluks
 					value = 2
 				}
 			}
@@ -1831,10 +1831,10 @@ estate_nobles_mam_three_privileges = {
 	}
     task_completed_effect = {
 		on_completed_agenda_effect = {
-			estate = estate_nobles
+			estate = estate_mamluks
 		}
 		add_estate_loyalty = {
-			estate = estate_nobles
+			estate = estate_mamluks
 			loyalty = 20
 		}
 		if = {
@@ -1853,7 +1853,7 @@ estate_nobles_mam_three_privileges = {
 		on_failed_agenda_effect = yes
 		clr_auto_complete_flag = yes
         add_estate_loyalty_modifier = {
-            estate = estate_nobles
+            estate = estate_mamluks
 			desc = EST_VAL_AGENDA_DENIED
 			loyalty = -5
 			duration = 7300
@@ -1885,11 +1885,11 @@ estate_nobles_mam_recruit_mamluks = {
 		if = {
 			limit = {
 				has_estate_agenda_auto_completion = {
-					estate = estate_nobles
+					estate = estate_mamluks
 				}
 			}
 			has_estate_agenda_auto_completion = {
-				estate = estate_nobles
+				estate = estate_mamluks
 			}
 		}
 		else = {
@@ -1902,10 +1902,10 @@ estate_nobles_mam_recruit_mamluks = {
 	}
     task_completed_effect = {
 		on_completed_agenda_effect = {
-			estate = estate_nobles
+			estate = estate_mamluks
 		}
 		add_estate_loyalty = {
-			estate = estate_nobles
+			estate = estate_mamluks
 			loyalty = 10
 		}
 		create_general = {
@@ -1918,7 +1918,7 @@ estate_nobles_mam_recruit_mamluks = {
 		on_failed_agenda_effect = yes
 		clr_auto_complete_flag = yes
         add_estate_loyalty_modifier = {
-            estate = estate_nobles
+            estate = estate_mamluks
 			desc = EST_VAL_AGENDA_DENIED
 			loyalty = -5
 			duration = 7300
@@ -2004,11 +2004,11 @@ estate_nobles_mam_develop_military_infrastructure = {
 		if = {
 			limit = {
 				has_estate_agenda_auto_completion = {
-					estate = estate_nobles
+					estate = estate_mamluks
 				}
 			}
 			has_estate_agenda_auto_completion = {
-				estate = estate_nobles
+				estate = estate_mamluks
 			}
 		}
 		else = {
@@ -2064,10 +2064,10 @@ estate_nobles_mam_develop_military_infrastructure = {
 	}
     task_completed_effect = {
 		on_completed_agenda_effect = {
-			estate = estate_nobles
+			estate = estate_mamluks
 		}
 		add_estate_loyalty = {
-			estate = estate_nobles
+			estate = estate_mamluks
 			loyalty = 15
 		}
 		add_yearly_manpower = 1
@@ -2076,7 +2076,7 @@ estate_nobles_mam_develop_military_infrastructure = {
 		on_failed_agenda_effect = yes
 		clr_auto_complete_flag = yes
         add_estate_loyalty_modifier = {
-            estate = estate_nobles
+            estate = estate_mamluks
 			desc = EST_VAL_AGENDA_DENIED
 			loyalty = -5
 			duration = 7300
@@ -2100,23 +2100,23 @@ estate_nobles_mam_increase_army_tradition = {
 		if = {
 			limit = {
 				has_estate_agenda_auto_completion = {
-					estate = estate_nobles
+					estate = estate_mamluks
 				}
 			}
 			has_estate_agenda_auto_completion = {
-				estate = estate_nobles
+				estate = estate_mamluks
 			}
 		}
 		else = {
-			army_tradition = 30
+			army_tradition = 40
 		}
 	}
     task_completed_effect = {
 		on_completed_agenda_effect = {
-			estate = estate_nobles
+			estate = estate_mamluks
 		}
 		add_estate_loyalty = {
-			estate = estate_nobles
+			estate = estate_mamluks
 			loyalty = 15
 		}
 		add_mil_power = 50
@@ -2125,7 +2125,7 @@ estate_nobles_mam_increase_army_tradition = {
 		on_failed_agenda_effect = yes
 		clr_auto_complete_flag = yes
         add_estate_loyalty_modifier = {
-            estate = estate_nobles
+            estate = estate_mamluks
 			desc = EST_VAL_AGENDA_DENIED
 			loyalty = -5
 			duration = 7300
@@ -2151,11 +2151,11 @@ estate_nobles_mam_increase_army_professionalism = {
 		if = {
 			limit = {
 				has_estate_agenda_auto_completion = {
-					estate = estate_nobles
+					estate = estate_mamluks
 				}
 			}
 			has_estate_agenda_auto_completion = {
-				estate = estate_nobles
+				estate = estate_mamluks
 			}
 		}
 		else = {
@@ -2164,16 +2164,16 @@ estate_nobles_mam_increase_army_professionalism = {
 	}
     task_completed_effect = {
 		on_completed_agenda_effect = {
-			estate = estate_nobles
+			estate = estate_mamluks
 		}
 		add_estate_loyalty = {
-			estate = estate_nobles
+			estate = estate_mamluks
 			loyalty = 15
 		}
 		add_absolutism = 5
 		add_army_professionalism = 0.1
 		define_advisor = {
-			type = commandant
+			type = quartermaster
 			skill = 3
 			discount = yes
 		}
@@ -2182,7 +2182,7 @@ estate_nobles_mam_increase_army_professionalism = {
 		on_failed_agenda_effect = yes
 		clr_auto_complete_flag = yes
         add_estate_loyalty_modifier = {
-            estate = estate_nobles
+            estate = estate_mamluks
 			desc = EST_VAL_AGENDA_DENIED
 			loyalty = -5
 			duration = 7300
@@ -2206,11 +2206,11 @@ estate_nobles_mam_focus_on_military_matters = {
 		if = {
 			limit = {
 				has_estate_agenda_auto_completion = {
-					estate = estate_nobles
+					estate = estate_mamluks
 				}
 			}
 			has_estate_agenda_auto_completion = {
-				estate = estate_nobles
+				estate = estate_mamluks
 			}
 		}
 		else = {
@@ -2219,10 +2219,10 @@ estate_nobles_mam_focus_on_military_matters = {
 	}
     task_completed_effect = {
 		on_completed_agenda_effect = {
-			estate = estate_nobles
+			estate = estate_mamluks
 		}
 		add_estate_loyalty = {
-			estate = estate_nobles
+			estate = estate_mamluks
 			loyalty = 15
 		}
 		capital_scope = { add_base_manpower = 1 }
@@ -2231,7 +2231,7 @@ estate_nobles_mam_focus_on_military_matters = {
 		on_failed_agenda_effect = yes
 		clr_auto_complete_flag = yes
         add_estate_loyalty_modifier = {
-            estate = estate_nobles
+            estate = estate_mamluks
 			desc = EST_VAL_AGENDA_DENIED
 			loyalty = -5
 			duration = 7300
