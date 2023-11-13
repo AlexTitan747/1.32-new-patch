@@ -1,9 +1,6 @@
 ###
 # Persia Missions (Conquest Focused)
 ###
-
-
-
 tm_PER_branch_2 = {
 	slot = 2
 	generic = no
@@ -13,48 +10,6 @@ tm_PER_branch_2 = {
 
 	potential = {
 		tag = PER
-	}
-
-	tm_PER_branch2_mission2_1 = {
-		icon = mission_persian_heavy_cataphract_cavalry
-		position = 1 
-		required_missions = {
-		}
-
-		trigger = {
-			monthly_mil = 13
-			mil_power = 150
-		}
-
-		effect = {
-			country_event = {
-				id = titanper.5
-				tooltip = titanper.5.tt
-			}
-			add_mil_power = -100
-		}
-	}
-	tm_PER_branch2_mission2_2 = {
-		icon = mission_abu_saids_dream 
-		position = 2
-		required_missions = {
-			tm_PER_branch2_mission2_1
-			tm_PER_branch3_mission3_1
-		}
-		trigger = {
-			land_forcelimit = 200
-			army_size_percentage = 1
-			land_maintenance = 1
-			is_in_deficit = no
-			NOT = { num_of_loans = 1 }
-		}
-
-		effect = {
-			add_country_modifier = {
-				name = tm_PER_increased_royal_guards
-				duration = -1
-			}
-		}
 	}
 
 	tm_PER_branch2_mission_1 = {
@@ -196,32 +151,10 @@ tm_PER_branch_3 = {
 	ai = yes
 
 	has_country_shield = yes
-
 	potential = {
 		tag = PER
 	}
 
-
-	tm_PER_branch3_mission3_1 = {
-		icon = mission_persian_heavy_cataphract_cavalry
-		position = 1 
-		required_missions = {
-		}
-
-		trigger = {
-			monthly_mil = 13
-			mil_power = 150
-			mission_completed = tm_PER_branch2_mission2_1
-		}
-
-		effect = {
-			country_event = {
-				id = titanper.6
-				tooltip = titanper.6.tt
-			}
-			add_mil_power = -150
-		}
-	}
 	tm_PER_branch3_mission_1 = {
 		icon = mission_conquer_kannauj
 		position = 2

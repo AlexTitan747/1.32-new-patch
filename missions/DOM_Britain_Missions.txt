@@ -1472,6 +1472,18 @@ gbr_row_3 = {
 			unlock_issue = {
 				issue = act_of_exploration
 			}
+
+			126 = { add_permanent_claim = ROOT }
+			163 = { add_permanent_claim = ROOT }
+			321 = { add_permanent_claim = ROOT }
+			4559 = { add_permanent_claim = ROOT }
+			corsica_sardinia_area = { 
+				limit = {
+					NOT = { is_core = EIC }
+					NOT = { is_permanent_claim = EIC }
+				}
+				add_permanent_claim = ROOT 
+			}
 		}
 		ai_weight = {
 			factor = 250
@@ -1845,15 +1857,15 @@ ave_row_3 = {
 				add_adm_power = 50
 			}
 			change_ruler_stat = {
-				stat = adm
+				type = adm
 				amount = 1
 			}
 			change_ruler_stat = {
-				stat = dip
+				type = dip
 				amount = 1
 			}
 			change_ruler_stat = {
-				stat = mil
+				type = mil
 				amount = 1
 			}
 		}
@@ -2207,7 +2219,7 @@ ave_row_3 = {
 				duration = -1
 			}
 			custom_tooltip = ave_claim_the_empire_title_bt
-			set_country_flag = ave_automatic_renaming_when_government_changes
+			#set_country_flag = ave_automatic_renaming_when_government_changes
 			country_event_with_insight = {
 				id = flavor_gbr.20
 				insight_tooltip = ave_claim_the_empire_title_at
@@ -2587,7 +2599,7 @@ gbr_row_4 = {
 				}
 				west_bengal_area = {
 					limit = {
-						NOT = { is_claim = ROOT }
+						NOT = { is_permanent_claim = ROOT }
 						NOT = { is_core = ROOT }
 					}
 					add_permanent_claim = ROOT
@@ -3161,7 +3173,7 @@ gbr_ave_the_royal_court_slot = {
 				legitimacy = 95
 			}
 			ruler_total_stats = {
-				stats = 10
+				amount = 10
 			}
 			has_adm_advisor = yes
 			has_dip_advisor = yes

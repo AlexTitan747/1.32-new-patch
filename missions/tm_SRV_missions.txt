@@ -542,7 +542,10 @@ tm_SRV_slot_4 = {
 	
 		trigger = {
 			stability = 1
-			is_date = 1447.01.01
+			OR = {
+				inquisitor = 2
+				theologian = 2
+			}
 		}
 		effect = {
 			country_event = {
@@ -896,7 +899,7 @@ tm_SRV_slot_5 = {
 				duration = 5475
 			}
 			change_ruler_stat = {
-				stat = dip
+				type = dip
 				amount = 1
 			}
 		}
@@ -2650,7 +2653,7 @@ tm_SRV_slot_2_babylon = {
 
 		effect = {
 			change_ruler_stat = {
-				stat = mil
+				type = mil
 				amount = 1
 			}
 			add_country_modifier = {
@@ -3035,57 +3038,5 @@ tm_SRV_slot_5_babylon = {
 				remove_province_modifier = tm_bab_town_expansion
 			}
 		}
-	}
-	
-	tm_BAB_royal_guard = {
-		icon = babylonian_royal_guard_2
-		position = 1 
-		required_missions = { tm_BAB_city_of_babylon }
-
-		provinces_to_highlight = {
-			is_capital = yes
-			owned_by = ROOT
-		}
-
-		trigger = {
-			monthly_mil = 13
-			mil_power = 150
-		}
-
-		effect = {
-			country_event = {
-				id = titanper.5
-				tooltip = titanper.5.tt
-			}
-			add_mil_power = -100
-		}
-	}
-
-	tm_BAB_elite_royal_guard = {
-		icon = babylonian_royal_guard_1
-		position = 1 
-		required_missions = { tm_BAB_royal_guard }
-
-		provinces_to_highlight = {
-			is_capital = yes
-			owned_by = ROOT
-		}
-
-		trigger = {
-			monthly_mil = 13
-			mil_power = 150
-		}
-
-		effect = {
-			country_event = {
-				id = titanper.6
-				tooltip = titanper.6.tt
-			}
-			add_mil_power = -150
-		}
-	}
-		
+	}		
 }
-	
-
-

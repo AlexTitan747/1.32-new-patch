@@ -538,12 +538,12 @@ french_missions_1_hre_branch = {
 			#}
 			#else = {
 			#	change_ruler_stat = {
-			#		stat = dip
+			#		type = dip
 			#		amount = 1
 			#	}
 			#}
 			change_ruler_stat ={
-				stat = dip
+				type = dip
 				amount = 1
 			}
 		}
@@ -1255,7 +1255,7 @@ french_rev_missions_1 = {
 		trigger = { 
 			iberia_region = {
 				type = all 
-				NOT = { average_autonomy_above_min = 5 }
+				NOT = { local_autonomy_above_min = 5 }
 				country_or_non_sovereign_subject_holds = ROOT 
 			}
 			OR = { 
@@ -2710,7 +2710,7 @@ french_missions_3_charlemagne_path = {
 		}
 		effect = { 
 			change_ruler_stat = {
-				stat = mil
+				type = mil
 				amount = 1
 			}
 			if = {
@@ -3093,7 +3093,7 @@ french_missions_3_continuation_after_hre_missions = {
 		position = 7
 		provinces_to_highlight = {
 			if = { 
-				limit = { has_country_flag = fra_papal_lap_dop_flag } 
+				limit = { root = { has_country_flag = fra_papal_lap_dop_flag } }
 				area = lazio_area 
 				NOT = { 
 					OR = { 
@@ -3699,6 +3699,7 @@ french_rev_missions_3 = {
 						total_development = 500 
 					}
 					override_country_name = NCP 
+					set_country_flag = is_NCP_flag
 					set_country_flag = has_overriden_name_flag
 					change_country_color = { 
 						color = { 65 105 225 }
@@ -3735,7 +3736,7 @@ french_rev_missions_3 = {
 			}
 			
 			change_ruler_stat = {
-				stat = adm
+				type = adm
 				amount = 1
 			}
 		}
@@ -3802,9 +3803,12 @@ french_missions_4_normal = {
 						who = ROOT 
 						value = 180 
 					}
-					trust = { 
-						who = ROOT 
-						value = 80 
+					if = {
+						limit = { has_dlc = "Leviathan" }
+						trust = {
+							who = ROOT 
+							value = 80
+						}
 					}
 				}
 				AND = {
@@ -3846,9 +3850,12 @@ french_missions_4_normal = {
 							who = ROOT 
 							value = 180 
 						}
-						trust = { 
-							who = ROOT 
-							value = 80 
+						if = {
+							limit = { has_dlc = "Leviathan" }
+							trust = {
+								who = ROOT 
+								value = 80
+							}
 						}
 					}
 					add_country_modifier = {
@@ -3907,9 +3914,12 @@ french_missions_4_normal = {
 								who = ROOT 
 								value = 180 
 							}
-							trust = { 
-								who = ROOT 
-								value = 80 
+							if = {
+								limit = { has_dlc = "Leviathan" }
+								trust = {
+									who = ROOT 
+									value = 80
+								}
 							}
 						}
 						add_country_modifier = {
@@ -4037,7 +4047,7 @@ french_missions_4_italian = {
 				amount = 25
 			}
 			change_ruler_stat = {
-				stat = mil
+				type = mil
 				amount = 1
 			}
 			#custom_tooltip = fra_if_not_catholic_tt
