@@ -199,7 +199,6 @@ tm_hun_slot_2 = {
 
 		trigger = {
 			army_size_percentage = 1
-
 		}
 		
 		effect = {
@@ -390,6 +389,7 @@ tm_hun_slot_2 = {
 		
 		trigger = {
 			is_at_war = no
+			stability = 1
 		}
 		
 		effect = {
@@ -408,9 +408,37 @@ tm_hun_slot_2 = {
 				add_base_production = 2
 				add_base_manpower = 1
 
-				add_great_project_tier = {
-					type = buda_castle
-					tier = 2
+				if = {
+					limit = {
+						has_great_project = {
+							type = buda_castle
+							tier = 3
+						}
+					}
+					add_base_tax = 2
+					add_base_production = 2
+					add_base_manpower = 2
+				}
+				else_if = {
+					limit = {
+						has_great_project = {
+							type = buda_castle
+							tier = 2
+						}
+					}
+					add_base_tax = 1
+					add_base_production = 1
+					add_base_manpower = 1
+					add_great_project_tier = {
+						type = buda_castle
+						tier = 1
+					}
+				}
+				else = {
+					add_great_project_tier = {
+						type = buda_castle
+						tier = 2
+					}
 				}
 			}
 			country_event = {
@@ -486,8 +514,12 @@ tm_hun_slot_3 = {
 		position = 3
 		
 		provinces_to_highlight = {
-			owner = {
-				tag = CRO
+			OR = {
+				owned_by = CRO
+				AND = {
+					area = croatia_area
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
+				}
 			}
 		}
 		
@@ -522,9 +554,27 @@ tm_hun_slot_3 = {
 
 		provinces_to_highlight = {
 			OR = {
-			province_id = 4752
-			province_id = 131
-			province_id = 152
+				AND = {
+					OR = {
+						province_id = 152
+						province_id = 4752
+					}
+					OR = {
+						NOT = { owned_by = ROOT }
+						NOT = { base_production = 13 }
+						NOT = { has_production_building_trigger = yes }
+					}
+				}
+				AND = {
+					province_id = 131
+					OR = {
+						NOT = { owned_by = ROOT }
+						NOT = { base_production = 13 }
+						NOT = { has_production_building_trigger = yes }
+						NOT = { province_has_center_of_trade_of_level = 2 }
+					}
+				}
+				
 			}
 		}
 
@@ -532,18 +582,18 @@ tm_hun_slot_3 = {
 			4752 = {
 				owned_by = ROOT
 				base_production = 13
-				has_building = workshop
+				has_production_building_trigger = yes
 			}
 			131 = {
 				owned_by = ROOT
 				base_production = 12
 				province_has_center_of_trade_of_level = 2
-				has_building = workshop
+				has_production_building_trigger = yes
 			}
 			152 = {
 				owned_by = ROOT
 				base_production = 13
-				has_building = workshop
+				has_production_building_trigger = yes
 			}
 		}
 
@@ -685,7 +735,11 @@ tm_hun_slot_4 = {
 				province_id = 5111
 				province_id = 1952
 			}
-			country_or_non_sovereign_subject_holds = ROOT
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { has_production_building_trigger = yes }
+				NOT = { base_production = 7 }
+			}
 		}
 
 		trigger = {
@@ -697,12 +751,12 @@ tm_hun_slot_4 = {
 			4128 = {
 				owned_by = ROOT
 				has_production_building_trigger = yes
-				base_production = 6
+				base_production = 7
 			}
 			158 = {
 				owned_by = ROOT
 				has_production_building_trigger = yes
-				base_production = 6
+				base_production = 7
 			}
 			4127 = {
 				owned_by = ROOT
@@ -712,12 +766,12 @@ tm_hun_slot_4 = {
 			5111 = {
 				owned_by = ROOT
 				has_production_building_trigger = yes
-				base_production = 10
+				base_production = 7
 			}
 			1952 = {
 				owned_by = ROOT
 				has_production_building_trigger = yes
-				base_production = 6
+				base_production = 7
 			}
 		}
 		effect = {
@@ -782,8 +836,11 @@ tm_hun_slot_5 = {
 		required_missions = {  }
 		position = 1
 		provinces_to_highlight = {
+			province_id = 154
 			OR = {
-				province_id = 154
+				NOT = { owned_by = ROOT }
+				NOT = {	is_core = ROOT }
+				NOT = {	base_production = 10 }
 			}
 		}
 		trigger = {
@@ -909,10 +966,47 @@ tm_hun_slot_5 = {
 		icon = hungarian_farm
 		required_missions = { emp_hun_great_city_of_pest }
 		position = 4
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						province_id = 1772
+						province_id = 5106
+						province_id = 4240
+						province_id = 4125
+						province_id = 155
+					}
+					OR = {
+						NOT = { owned_by = ROOT }
+						NOT = { base_manpower = 9 }
+						NOT = { has_manpower_building_trigger = yes }
+					}
+				}
+				AND = {
+					province_id = 153
+					OR = {
+						NOT = { owned_by = ROOT }
+						NOT = { base_manpower = 9 }
+						NOT = { has_manpower_building_trigger = yes }
+						NOT = { province_has_center_of_trade_of_level = 3 }
+					}
+				}
+				AND = {
+					province_id = 4173
+					OR = {
+						NOT = { owned_by = ROOT }
+						NOT = { base_manpower = 9 }
+						NOT = { has_manpower_building_trigger = yes }
+						NOT = { province_has_center_of_trade_of_level = 2 }
+					}
+				}
+			}
+		}
+
 		trigger = {
 			1772 = {
 				owned_by = ROOT
-				base_manpower = 10
+				base_manpower = 9
 				has_manpower_building_trigger = yes
 			}
 			5106 = {
@@ -1136,8 +1230,13 @@ tm_hun_anatolia_slot_1 = {
 		provinces_to_highlight = {
 			OR = {
 				province_id = 148
-				province_id = 147
 				province_id = 5123
+				province_id = 4780
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { base_production = 13 }
+				NOT = { has_manufactory = yes }
 			}
 		}
 
@@ -1150,14 +1249,22 @@ tm_hun_anatolia_slot_1 = {
 			5123 = {
 				owned_by = ROOT
 				base_production = 13
-				has_production_building_trigger = yes
+				has_manufactory = yes
+			}
+			4780 = {
+				owned_by = ROOT
+				base_production = 13
+				has_manufactory = yes
 			}
 		}
 		effect = {
 			148 = {
 				if = {
 					limit = {
-						trade_goods = cloth
+						OR = {
+							trade_goods = cloth
+							trade_goods = uniforms
+						}
 					}
 					change_trade_goods = silk
 				}
@@ -1166,6 +1273,9 @@ tm_hun_anatolia_slot_1 = {
 				}
 			}
 			5123 = {
+				change_trade_goods = cloth
+			}
+			4780 = {
 				change_trade_goods = cloth
 			}
 
@@ -1592,8 +1702,15 @@ tm_hun_anatolia_slot_3 = {
 		}
 
 		trigger = {
-			NOT = {
-				exists = TUR
+			OR = {
+				NOT = {
+					exists = TUR
+				}
+				NOT = {
+					TUR = {
+						total_development = 200
+					}
+				}
 			}
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				value = 40
@@ -1835,15 +1952,18 @@ tm_hun_anatolia_slot_5 = {
 				owned_by = ROOT
 				base_production = 12
 				has_manufactory = yes
+				has_production_building_trigger = yes
 			}
 			5104 = {
 				owned_by = ROOT
 				base_production = 12
+				has_manufactory = yes
 				has_production_building_trigger = yes
 			}
 			4704 = {
 				owned_by = ROOT
 				base_production = 12
+				has_manufactory = yes
 				has_production_building_trigger = yes
 			}
 		}
@@ -1900,8 +2020,8 @@ tm_hun_west_europe_slot_1 = {
 		
 		provinces_to_highlight = {
 			OR = {
-			area = po_valley_area
-			area = verona_area
+				area = po_valley_area
+				area = verona_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -2039,8 +2159,8 @@ tm_hun_west_europe_slot_2 = {
 		
 		provinces_to_highlight = {
 			OR = {
-			area = carinthia_area
-			area = venetia_area
+				area = carinthia_area
+				area = venetia_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -2112,8 +2232,8 @@ tm_hun_west_europe_slot_2 = {
 		
 		provinces_to_highlight = {
 			OR = {
-			area = emilia_romagna_area
-			area = central_italy_area
+				area = emilia_romagna_area
+				area = central_italy_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -2208,6 +2328,12 @@ tm_hun_west_europe_slot_3 = {
 				province_id = 5069
 				province_id = 5087
 			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { base_production = 10 }
+				NOT = { has_production_building_trigger = yes }
+				NOT = { has_manufactory = yes }
+			}
 		}
 
 		trigger = {
@@ -2218,26 +2344,31 @@ tm_hun_west_europe_slot_3 = {
 				has_manufactory = yes
 			}
 			4762 = {
-				base_production = 14
+				owned_by = ROOT
+				base_production = 10
 				has_production_building_trigger = yes
 				has_manufactory = yes
 			}
 			1770 = {
+				owned_by = ROOT
 				base_production = 10
 				has_production_building_trigger = yes
 				has_manufactory = yes
 			}
 			1863 = {
+				owned_by = ROOT
 				base_production = 10
 				has_production_building_trigger = yes
 				has_manufactory = yes
 			}
 			5069 = {
+				owned_by = ROOT
 				base_production = 10
 				has_production_building_trigger = yes
 				has_manufactory = yes
 			}
 			5087 = {
+				owned_by = ROOT
 				base_production = 10
 				has_production_building_trigger = yes
 				has_manufactory = yes
@@ -2286,7 +2417,6 @@ tm_hun_west_europe_slot_3 = {
 				}
 			}
 			1863 = {
-				change_trade_goods = wine
 				add_permanent_province_modifier = {
 					name = tm_hun_vinyards
 					duration = -1
@@ -2300,7 +2430,6 @@ tm_hun_west_europe_slot_3 = {
 				}
 			}
 			5087 = {
-				change_trade_goods = wine
 				add_permanent_province_modifier = {
 					name = tm_hun_vinyards
 					duration = -1
@@ -2317,9 +2446,11 @@ tm_hun_west_europe_slot_3 = {
 		position = 7
 		
 		provinces_to_highlight = {
-			area = lower_bavaria_area
-			area = upper_bavaria_area
-			area = east_bavaria_area
+			OR = {
+				area = lower_bavaria_area
+				area = upper_bavaria_area
+				area = east_bavaria_area
+			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
@@ -2369,6 +2500,11 @@ tm_hun_west_europe_slot_3 = {
 				province_id = 113
 				province_id = 4729
 			}
+			OR = {
+				NOT = { base_production = 11 }
+				NOT = { base_manpower = 12 }
+				NOT = { owned_by = ROOT }
+			}
 		}
 
 		trigger = {
@@ -2378,8 +2514,8 @@ tm_hun_west_europe_slot_3 = {
 				owned_by = ROOT
 			}
 			4730 = {
-				base_production = 12
-				base_manpower = 13
+				base_production = 11
+				base_manpower = 12
 				owned_by = ROOT
 			}
 			113 = {
@@ -2388,8 +2524,8 @@ tm_hun_west_europe_slot_3 = {
 				owned_by = ROOT
 			}
 			4729 = {
-				base_production = 12
-				base_manpower = 13
+				base_production = 11
+				base_manpower = 12
 				owned_by = ROOT
 			}
 			
@@ -2556,15 +2692,15 @@ tm_hun_west_europe_slot_4 = {
 		effect = {
 			if = {
 				limit = {
-						num_of_owned_provinces_with = {
+					num_of_owned_provinces_with = {
 						value = 4
 						religion = hussite
 						area = moravia_area
-						}
-						HUN = {
-							NOT = { religion = hussite }
-						}
 					}
+					HUN = {
+						NOT = { religion = hussite }
+					}
+				}
 				country_event = {
 					id = titanhun.4
 				}
@@ -2624,6 +2760,7 @@ tm_hun_west_europe_slot_4 = {
 				province_id = 131
 				province_id = 153
 			}
+			NOT = { owned_by = ROOT }
 		}
 
 		trigger = {
@@ -2675,8 +2812,16 @@ tm_hun_west_europe_slot_5 = {
 		
 		provinces_to_highlight = {
 			OR = {
-			area = upper_austria_area
-			area = tirol_area
+				area = upper_austria_area
+				area = tirol_area
+				AND = {
+					OR = {
+						province_id = 4758
+						province_id = 110
+						province_id = 1768
+					}
+					NOT = { has_fort_building_trigger = yes }
+				}
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -2691,22 +2836,13 @@ tm_hun_west_europe_slot_5 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
 			4758 = {
-				OR = {
-				has_building = fort_15th
-				has_building = fort_16th
-				}
+				has_fort_building_trigger = yes
 			}
 			110 = {
-				OR = {
-				has_building = fort_15th
-				has_building = fort_16th
-				}
+				has_fort_building_trigger = yes
 			}
 			1768 = {
-				OR = {
-				has_building = fort_15th
-				has_building = fort_16th
-				}
+				has_fort_building_trigger = yes
 			}
 		}
 		effect = {
@@ -2738,6 +2874,7 @@ tm_hun_west_europe_slot_5 = {
 
 		provinces_to_highlight = {
 			province_id = 73
+			NOT = { base_production = 10 }
 		}
 
 		trigger = {
@@ -2782,9 +2919,7 @@ tm_hun_steppe_slot_1 = {
 
 		required_missions = { tm_hun_kingdom_consolidation }
 
-		provinces_to_highlight = {
-			province_id = 153
-		}
+		provinces_to_highlight = {}
 
 		trigger = {
 			army_tradition = 75
@@ -2824,12 +2959,15 @@ tm_hun_steppe_slot_1 = {
 				area = red_ruthenia_area
 				area = volhynia_area
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			OR = {
+				NOT = { country_or_non_sovereign_subject_holds = ROOT }
+				NOT = { has_fort_building_trigger = yes }
+			}
 		}
 
 		trigger = {
 			moldavia_area = {
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 				OR = {
 					has_building = fort_15th
 					has_building = fort_16th
@@ -2838,7 +2976,7 @@ tm_hun_steppe_slot_1 = {
 				}
 			}
 			north_moldavia = {
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 				OR = {
 					has_building = fort_15th
 					has_building = fort_16th
@@ -2847,7 +2985,7 @@ tm_hun_steppe_slot_1 = {
 				}
 			}
 			red_ruthenia_area = {
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 				OR = {
 					has_building = fort_15th
 					has_building = fort_16th
@@ -2856,7 +2994,7 @@ tm_hun_steppe_slot_1 = {
 				}
 			}
 			volhynia_area = {
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 				OR = {
 					has_building = fort_15th
 					has_building = fort_16th
@@ -2926,6 +3064,11 @@ tm_hun_steppe_slot_1 = {
 
 		provinces_to_highlight = {
 			province_id = 262
+			OR = {
+				NOT = { is_core = ROOT }
+				NOT = { owned_by = ROOT }
+				NOT = { total_development = 30 }
+			}
 		}
 
 		trigger = {
@@ -3158,10 +3301,27 @@ tm_hun_steppe_slot_3 = {
 
 		provinces_to_highlight = {
 			OR = {
-			province_id = 2961
-			province_id = 5116
-			province_id = 281
-			province_id = 4539
+				AND = {
+					OR = {
+						province_id = 5116
+						province_id = 281
+						province_id = 4539
+					}
+					OR = {
+						NOT = { owned_by = ROOT }
+						NOT = { owned_by = base_production = 13 }
+						NOT = { owned_by = has_production_building_trigger = yes }
+					}
+				}
+				AND = {
+					province_id = 2961
+					OR = {
+						NOT = { owned_by = ROOT }
+						NOT = { owned_by = base_production = 13 }
+						NOT = { owned_by = has_production_building_trigger = yes }
+						NOT = { province_has_center_of_trade_of_level = 3 }
+					}
+				}
 			}
 		}
 
@@ -3174,7 +3334,7 @@ tm_hun_steppe_slot_3 = {
 			}
 			5116 = {
 				owned_by = ROOT
-				base_production = 12
+				base_production = 13
 				has_production_building_trigger = yes
 			}
 			281 = {
@@ -3435,12 +3595,16 @@ tm_hun_steppe_slot_4 = {
 				province_id = 303
 				province_id = 466
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { base_production = 12 }
+				NOT = { province_has_center_of_trade_of_level = 2 }
+			}
 		}
 		trigger = {
 			465 = {
 				owned_by = ROOT
-				base_production = 8
+				base_production = 12
 				province_has_center_of_trade_of_level = 2
 			}
 			303 = {
