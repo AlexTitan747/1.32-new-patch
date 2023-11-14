@@ -5067,14 +5067,19 @@ pronoiar_monarchy_reform = {
 	icon = "pronoiar_monarchy_reform"
 	allow_normal_conversion = yes
 	potential = {
-		is_playing_custom_nation = yes
+		OR = {
+			AND = {
+				is_playing_custom_nation = yes
+				has_reform = pronoiar_monarchy_reform
+			}
+			have_had_reform = pronoiar_monarchy_reform
+		}
 	}
 	valid_for_nation_designer = yes
 	nation_designer_cost = 100
 	modifiers = {
 		allow_client_states = yes
 		num_of_pronoiars = 3
-
 	}
 	conditional = {
 		allow = { has_dlc = "King of Kings" }
