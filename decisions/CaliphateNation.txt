@@ -56,7 +56,10 @@ country_decisions = {
             }
 			else_if = {
 				limit = {
-					tag = SRV
+					OR = {
+						tag = SRV
+						tag = CAU
+					}
 				}
 				custom_trigger_tooltip = {
                     tooltip = titan_srv_chose_shia
