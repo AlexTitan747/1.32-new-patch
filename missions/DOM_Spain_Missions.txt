@@ -178,13 +178,13 @@ dom_cas_missions_1 = {
 				num_of_heavy_ship = ENG
 			}
 			else = {
-				num_of_heavy_ship = 20
+				num_of_heavy_ship = 60
 			}
 		}
 		effect = {
 			add_country_modifier = {
 				name = "spa_prepared_armada"
-				duration = 7300
+				duration = 3650
 			}
 			wessex_area = {
 				limit = {
@@ -1132,7 +1132,7 @@ dom_cas_missions_2 = {
 		effect = {
 			add_country_modifier = {
 				name = spa_backed_by_the_army_modifier
-				duration = 9125 
+				duration = 7300
 			}
 		}
 	}
@@ -1146,7 +1146,7 @@ dom_cas_missions_2 = {
 				has_manpower_building_trigger = yes 
 				value = 15
 			}
-			reform_level = 4
+			reform_level = 5
 			NOT = { current_age = age_of_discovery }
 		}
 		effect = {
@@ -2304,6 +2304,20 @@ dom_cas_missions_3 = {
 			total_development = 2500
 			monthly_income = 500
 			army_size = 250
+			OR = {
+				num_of_owned_provinces_with = {
+					value = 35
+					region = france_region
+				}
+				num_of_owned_provinces_with = {
+					value = 35
+					region = british_isles_region
+				}
+				num_of_owned_provinces_with = {
+					value = 35
+					region = italy_region
+				}
+			}
 		}
 		effect = {
 			add_country_modifier = {
