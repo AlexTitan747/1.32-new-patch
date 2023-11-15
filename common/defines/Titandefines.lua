@@ -142,7 +142,7 @@ NDefines.NMilitary.SLACKEN_MAX_MP_PERCENTAGE = 0.95   			--Defines how much manp
 
 NDefines.NMilitary.BANNER_AGE_MULTIPLIER = 0
 NDefines.NMilitary.BANNER_STARTING_STRENGTH = 0.1
-NDefines.NMilitary.CAVALRY_SPEED = 0.8
+NDefines.NMilitary.CAVALRY_SPEED = 0.9
 NDefines.NMilitary.ARTILLERY_SPEED = 0.6
 NDefines.NMilitary.DEFAULT_WARGOAL_TICKINGWARSCORE_BONUS = 1.5
 NDefines.NMilitary.WARGOAL_MAX_BONUS = 50
