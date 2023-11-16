@@ -288,7 +288,7 @@ french_missions_1 = {
 				grown_by_development = 150
 			}
 		}
-		effect = { 
+		effect = {
 			country_event = { id = flavor_fra.102 } 
 			
 			custom_tooltip = fra_event_insight_102_tt
@@ -357,7 +357,8 @@ french_missions_1_kill_hre_path = {
 			}
 			NOT = { owned_by = ROOT }
 		}
-		trigger = { 
+		trigger = {
+			not_in_mission_preview_mode = { key = FRA_HRE }
 			num_of_owned_provinces_with = {
 				value = 20
 				OR = {
@@ -470,6 +471,7 @@ french_missions_1_hre_branch = {
 		required_missions = { fra_border_empire }
 		position = 5
 		trigger = {
+			not_in_mission_preview_mode = { key = FRA_HRE }
 			#calc_true_if = {
 			#	desc = fra_secure_4_electors_tt
 			#	all_elector = {
@@ -538,12 +540,12 @@ french_missions_1_hre_branch = {
 			#}
 			#else = {
 			#	change_ruler_stat = {
-			#		stat = dip
+			#		type = dip
 			#		amount = 1
 			#	}
 			#}
 			change_ruler_stat ={
-				stat = dip
+				type = dip
 				amount = 1
 			}
 		}
@@ -1255,7 +1257,7 @@ french_rev_missions_1 = {
 		trigger = { 
 			iberia_region = {
 				type = all 
-				NOT = { average_autonomy_above_min = 5 }
+				NOT = { local_autonomy_above_min = 5 }
 				country_or_non_sovereign_subject_holds = ROOT 
 			}
 			OR = { 
@@ -1557,6 +1559,7 @@ french_missions_2_charlemagne_path = {
 			is_part_of_hre = yes
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = FRA_HRE }
 			development_in_provinces = {
 				value = 1250
 				is_part_of_hre = yes
@@ -1620,6 +1623,7 @@ french_missions_2_charlemagne_path = {
 		required_missions = { fra_sway_electorate fra_right_blood fra_means_expansion }
 		position = 6
 		trigger = {
+			not_in_mission_preview_mode = { key = FRA_HRE }
 			if = {
 				limit = {
 					hre_size = 1
@@ -1706,7 +1710,8 @@ french_missions_2_kill_hre_path = {
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
-		trigger = { 
+		trigger = {
+			not_in_mission_preview_mode = { key = FRA_HRE }
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				OR = { 
 					region = north_german_region 
@@ -1731,7 +1736,8 @@ french_missions_2_kill_hre_path = {
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
-		trigger = { 
+		trigger = {
+			not_in_mission_preview_mode = { key = FRA_HRE }
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				OR = { 
 					region = north_german_region 
@@ -2209,14 +2215,14 @@ french_rev_missions_2 = {
 				duration = -1 
 			}
 			
-			if = { 
-				limit = { has_had_golden_age = yes } 
-				reset_golden_age = yes 
-			}
-			else_if = {
-				limit = { has_dlc = "Mandate of Heaven" }
-				custom_tooltip = fra_reset_ga_tt
-			}
+			#if = { 
+			#	limit = { has_had_golden_age = yes } 
+			#	reset_golden_age = yes 
+			#}
+			#else_if = {
+			#	limit = { has_dlc = "Mandate of Heaven" }
+			#	custom_tooltip = fra_reset_ga_tt
+			#}
 		}
 	}
 	
@@ -2472,8 +2478,9 @@ french_missions_3_italian = {
 			area = lombardy_area 
 			NOT = { country_or_non_sovereign_subject_holds = ROOT } 
 		}
-		trigger = { 
-			OR = { 	
+		trigger = {
+			not_in_mission_preview_mode = { key = FRA }
+			OR = {
 				MLO = { is_subject_of = ROOT } 
 				lombardy_area = { 
 					type = all 
@@ -2507,7 +2514,7 @@ french_missions_3_crusader_kings = {
 		icon = kingdom_of_heaven
 		required_missions = { fra_ducal_lands_avignon }
 		position = 4
-		provinces_to_highlight = { 
+		provinces_to_highlight = {
 			OR = { 
 				area = northern_morocco_area
 				area = thrace_area
@@ -2520,6 +2527,7 @@ french_missions_3_crusader_kings = {
 			} 
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = FRA }
 			OR = {
 				northern_morocco_area = { 
 					type = all 
@@ -2552,6 +2560,9 @@ french_missions_3_crusader_kings = {
 					religion_group = christian 
 				}
 				custom_tooltip = fra_if_we_complete_mission_while_allied_or_subject_and_175_opinion_and_100_trust_access_to_holy_orders_tt
+			}
+			else = {
+				add_dip_power = 100
 			}
 			hidden_effect = { 
 				if = { 
@@ -2662,7 +2673,8 @@ french_missions_3_charlemagne_path = {
 				}
 			}
 		}
-		trigger = { 
+		trigger = {
+			not_in_mission_preview_mode = { key = FRA_HRE }
 			if = { 
 				limit = { has_dlc = "Leviathan" }
 				183 = { 
@@ -2710,7 +2722,7 @@ french_missions_3_charlemagne_path = {
 		}
 		effect = { 
 			change_ruler_stat = {
-				stat = mil
+				type = mil
 				amount = 1
 			}
 			if = {
@@ -2774,6 +2786,7 @@ french_missions_3_kill_hre_path = {
 			}
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = FRA_HRE }
 			OR = {
 				custom_trigger_tooltip = {
 					tooltip = fra_dismantled_hre_tt
@@ -3093,7 +3106,7 @@ french_missions_3_continuation_after_hre_missions = {
 		position = 7
 		provinces_to_highlight = {
 			if = { 
-				limit = { has_country_flag = fra_papal_lap_dop_flag } 
+				limit = { root = { has_country_flag = fra_papal_lap_dop_flag } }
 				area = lazio_area 
 				NOT = { 
 					OR = { 
@@ -3699,6 +3712,7 @@ french_rev_missions_3 = {
 						total_development = 500 
 					}
 					override_country_name = NCP 
+					set_country_flag = is_NCP_flag
 					set_country_flag = has_overriden_name_flag
 					change_country_color = { 
 						color = { 65 105 225 }
@@ -3735,7 +3749,7 @@ french_rev_missions_3 = {
 			}
 			
 			change_ruler_stat = {
-				stat = adm
+				type = adm
 				amount = 1
 			}
 		}
@@ -3802,9 +3816,12 @@ french_missions_4_normal = {
 						who = ROOT 
 						value = 180 
 					}
-					trust = { 
-						who = ROOT 
-						value = 80 
+					if = {
+						limit = { has_dlc = "Leviathan" }
+						trust = {
+							who = ROOT 
+							value = 80
+						}
 					}
 				}
 				AND = {
@@ -3846,9 +3863,12 @@ french_missions_4_normal = {
 							who = ROOT 
 							value = 180 
 						}
-						trust = { 
-							who = ROOT 
-							value = 80 
+						if = {
+							limit = { has_dlc = "Leviathan" }
+							trust = {
+								who = ROOT 
+								value = 80
+							}
 						}
 					}
 					add_country_modifier = {
@@ -3907,9 +3927,12 @@ french_missions_4_normal = {
 								who = ROOT 
 								value = 180 
 							}
-							trust = { 
-								who = ROOT 
-								value = 80 
+							if = {
+								limit = { has_dlc = "Leviathan" }
+								trust = {
+									who = ROOT 
+									value = 80
+								}
 							}
 						}
 						add_country_modifier = {
@@ -4020,7 +4043,8 @@ french_missions_4_italian = {
 			area = lazio_area
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
-		trigger = { 
+		trigger = {
+			not_in_mission_preview_mode = { key = FRA }
 			lazio_area = { 
 				type = all 
 				country_or_non_sovereign_subject_holds = ROOT 
@@ -4037,7 +4061,7 @@ french_missions_4_italian = {
 				amount = 25
 			}
 			change_ruler_stat = {
-				stat = mil
+				type = mil
 				amount = 1
 			}
 			#custom_tooltip = fra_if_not_catholic_tt
@@ -4090,7 +4114,8 @@ french_missions_4_crusader_kings = {
 		icon = shield_of_christendom
 		required_missions = { fra_ducal_lands_avignon }
 		position = 4
-		trigger = { 
+		trigger = {
+			not_in_mission_preview_mode = { key = FRA }
 			religion_group = christian
 			is_defender_of_faith = yes 
 			OR = { 
@@ -5175,7 +5200,8 @@ french_missions_5_italian = {
 				NOT = { province_has_center_of_trade_of_level = 2 }
 			}
 		}
-		trigger = { 
+		trigger = {
+			not_in_mission_preview_mode = { key = FRA }
 			121 = {
 				country_or_non_sovereign_subject_holds = ROOT 
 				num_of_buildings_in_province = 5 
@@ -5260,8 +5286,9 @@ french_missions_5_crusader_kings = {
 				}
 			}
 		}
-		trigger = { 
-			palestine_area = { 
+		trigger = {
+			not_in_mission_preview_mode = { key = FRA }
+			palestine_area = {
 				type = all
 				owner = { religion_group = christian }
 				religion_group = christian 

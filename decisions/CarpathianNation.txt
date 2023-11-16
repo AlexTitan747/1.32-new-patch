@@ -14,8 +14,7 @@ country_decisions = {
 					primary_culture = hungarian
 					primary_culture = slovak
 				}
-
-				has_country_flag = hun_inf_focus
+				NOT = { has_country_flag = hun_cav_focus }
 			}
 			
 			provinces_to_highlight = {
@@ -25,10 +24,13 @@ country_decisions = {
 					province_id = 4236
 					province_id = 156
 				}
-
 			}
 			
 			allow = {
+				custom_trigger_tooltip = {
+					tooltip = tm_hun_chose_inf_focus
+					has_country_flag = hun_inf_focus
+				}
 				adm_tech = 7
 				NOT = { exists = CRP }
 				is_nomad = no

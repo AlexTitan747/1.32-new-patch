@@ -178,13 +178,13 @@ dom_cas_missions_1 = {
 				num_of_heavy_ship = ENG
 			}
 			else = {
-				num_of_heavy_ship = 20
+				num_of_heavy_ship = 60
 			}
 		}
 		effect = {
 			add_country_modifier = {
 				name = "spa_prepared_armada"
-				duration = 7300
+				duration = 3650
 			}
 			wessex_area = {
 				limit = {
@@ -556,7 +556,7 @@ dom_cas_missions_1_b = {
 						province_id = 220
 					}
 					OR = {
-						NOT = { has_building = marketplace }
+						has_trade_building_trigger = no
 						NOT = { owned_by = ROOT }
 					}
 				}
@@ -576,11 +576,11 @@ dom_cas_missions_1_b = {
 				}
 			}
 			213 = {
-				has_building = marketplace
+				has_trade_building_trigger = yes
 				owned_by = ROOT
 			}
 			220 = {
-				has_building = marketplace
+				has_trade_building_trigger = yes
 				owned_by = ROOT
 			}
 			reform_level = 3
@@ -1002,7 +1002,7 @@ dom_cas_missions_2 = {
 				limit = { 
 					NOT = { religion = catholic }
 				}
-				has_advisor = inquisitor 
+				inquisitor = 1
 			}
 		}
 		effect = {
@@ -1056,7 +1056,7 @@ dom_cas_missions_2 = {
 		}
 		effect = {
 			add_power_projection = {
-				type = 25_permanent_power_projection
+				type = 10_permanent_power_projection
 				amount = 10
 			}
 			custom_tooltip = zim_amongst_the_great_powers_tt
@@ -1109,8 +1109,11 @@ dom_cas_missions_2 = {
 				}
 				OR = { 
 					navy_tradition = 30 
-					has_flagship = yes 
-					num_of_heavy_ship = 8 
+					if = {
+						limit = { has_dlc = "Golden Century" }
+						has_flagship = yes 
+					}
+					num_of_heavy_ship = 8
 				}
 			}
 			else = {
@@ -1129,7 +1132,7 @@ dom_cas_missions_2 = {
 		effect = {
 			add_country_modifier = {
 				name = spa_backed_by_the_army_modifier
-				duration = 9125 
+				duration = 7300
 			}
 		}
 	}
@@ -1143,7 +1146,7 @@ dom_cas_missions_2 = {
 				has_manpower_building_trigger = yes 
 				value = 15
 			}
-			reform_level = 4
+			reform_level = 5
 			NOT = { current_age = age_of_discovery }
 		}
 		effect = {
@@ -1182,7 +1185,7 @@ dom_cas_missions_2 = {
 			}
 			else = { 
 				change_ruler_stat = {
-					stat = mil
+					type = mil
 					amount = 2
 				}
 			}
@@ -1360,9 +1363,15 @@ dom_cas_missions_2_b = {
 		effect = {
 			set_government_rank = 3 
 			
-			add_country_modifier = {
-				name = ara_a_new_power_modifier
-				duration = -1 
+			if = {
+				limit = { has_dlc = "Golden Century" }
+				add_country_modifier = {
+					name = ara_a_new_power_modifier
+					duration = -1 
+				}
+			}
+			else = {
+				add_prestige_or_monarch_power = { amount = 50 }
 			}
 		}
 	}
@@ -1467,11 +1476,11 @@ dom_cas_missions_2_b = {
 				add_claim = ROOT
 			}
 			change_ruler_stat = {
-				stat = dip
+				type = dip
 				amount = 1
 			}
 			change_ruler_stat = {
-				stat = mil
+				type = mil
 				amount = 1
 			}
 		}
@@ -2127,15 +2136,15 @@ dom_cas_missions_3 = {
 					duration = 7300
 				}
 				change_ruler_stat = {
-					stat = adm
+					type = adm
 					amount = 1
 				}
 				change_ruler_stat = {
-					stat = dip
+					type = dip
 					amount = 1
 				}
 				change_ruler_stat = {
-					stat = mil
+					type = mil
 					amount = 1
 				}
 				"
@@ -2295,6 +2304,20 @@ dom_cas_missions_3 = {
 			total_development = 2500
 			monthly_income = 500
 			army_size = 250
+			OR = {
+				num_of_owned_provinces_with = {
+					value = 35
+					region = france_region
+				}
+				num_of_owned_provinces_with = {
+					value = 35
+					region = british_isles_region
+				}
+				num_of_owned_provinces_with = {
+					value = 35
+					region = italy_region
+				}
+			}
 		}
 		effect = {
 			add_country_modifier = {
@@ -2827,15 +2850,15 @@ dom_cas_missions_4 = {
 					duration = 9125
 				}
 				change_ruler_stat = {
-					stat = adm
+					type = adm
 					amount = 1
 				}
 				change_ruler_stat = {
-					stat = dip
+					type = dip
 					amount = 1
 				}
 				change_ruler_stat = {
-					stat = mil
+					type = mil
 					amount = 1
 				}
 			}
@@ -2862,15 +2885,15 @@ dom_cas_missions_4 = {
 						duration = 9125
 					}
 					change_ruler_stat = {
-						stat = adm
+						type = adm
 						amount = 1
 					}
 					change_ruler_stat = {
-						stat = dip
+						type = dip
 						amount = 1
 					}
 					change_ruler_stat = {
-						stat = mil
+						type = mil
 						amount = 1
 					}
 				}
@@ -3159,17 +3182,18 @@ dom_cas_missions_4 = {
 				name = spa_universal_monarchy_modifier
 				duration = -1 
 			}
-			if = {
-				limit = { has_had_golden_age = yes } 
-				reset_golden_age = yes 
-			}
-			else_if = {
-				limit = { in_golden_age = yes } 
-				extend_golden_age = 360
-			}
-			else = { 
-				add_prestige_or_monarch_power = { amount = 100 }
-			}
+			#if = {
+			#	limit = { has_had_golden_age = yes } 
+			#	reset_golden_age = yes 
+			#}
+			#else_if = {
+			#	limit = { in_golden_age = yes } 
+			#	extend_golden_age = 360
+			#}
+			#else = { 
+			#	add_prestige_or_monarch_power = { amount = 100 }
+			#}
+			add_prestige_or_monarch_power = { amount = 100 }
 		}
 	}
 }
@@ -3455,13 +3479,13 @@ dom_cas_missions_4_c = {
 				custom_tooltip = por_more_likely_to_get_expansionist_tt
 				set_country_flag = por_more_likely_to_get_expansionist_flag 
 				change_ruler_stat = {
-					stat = dip
+					type = dip
 					amount = 1
 				}
 			}
 			else = {
 				change_ruler_stat = {
-					stat = dip
+					type = dip
 					amount = 2
 				}
 				add_prestige_or_monarch_power = { amount = 10 }
@@ -3564,7 +3588,7 @@ dom_cas_missions_4_c = {
 				fire = 5
 				manuever = 6
 				siege = 1
-				name = "Hern�n Cort�s"
+				name = "Hernán Cortés"
 			}
 			490 = {
 				add_base_production = 3
@@ -4563,7 +4587,7 @@ dom_cas_missions_5_c = {
 			}
 			else = {
 				change_ruler_stat = {
-					stat = dip 
+					type = dip 
 					amount = 1 
 				}
 				add_mercantilism = 3 

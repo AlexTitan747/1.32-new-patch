@@ -1,4 +1,4 @@
-poland_sca_slot_1 = { #Made by William 'Big Boss' S.
+poland_sca_slot_1 = {
 	slot = 1
 	generic = no
 	ai = yes
@@ -3195,9 +3195,18 @@ poland_sca_slot_4_a = {
 			}
 			OR = { 
 				PAP = { 
-					trust = { 
-						who = ROOT 
-						value = 70 
+					if = {
+						limit = { has_dlc = "Leviathan" }
+						trust = { 	
+							who = ROOT 
+							value = 70
+						}
+					}
+					else = {
+						has_opinion_modifier = {
+							who = ROOT 
+							modifier = sent_gift
+						}
 					}
 				}
 				religious_unity = 0.9 
@@ -3300,14 +3309,14 @@ poland_sca_slot_4_a = {
 					ruler_has_personality = free_thinker_personality 
 					ruler_has_personality = scholar_personality 
 					ruler_total_stats = {
-						stats = 14 
+						amount = 14 
 					}
 				}
 			}
 			else = {
 				OR = {
 					ruler_total_stats = {
-						stats = 14 
+						amount = 14 
 					}
 				}
 			}
@@ -3429,7 +3438,7 @@ poland_sca_slot_4_a = {
 			}
 			else = { 
 				change_ruler_stat = {
-					stat = adm
+					type = adm
 					amount = 1
 				}
 			}
@@ -3512,20 +3521,26 @@ poland_sca_slot_4_a = {
 			OR = {
 				has_had_golden_age = yes
 				in_golden_age = yes
+				NOT = { great_power_rank = 5 }
 			}
 		}
+
 		effect = {
-			if = { 
-				limit = { has_dlc = "Mandate of Heaven" }
-				custom_tooltip = pol_if_used_ge_rest_else_30_years_extension_tt 
-					limit = { in_golden_age = yes } 
-					extend_golden_age = 120
-			}
-			else = {
-				add_country_modifier = {
-					name = pol_golden_era_modifier
-					duration = 10950 
-				}
+			#if = { 
+			#	limit = { has_dlc = "Mandate of Heaven" }
+			#	custom_tooltip = pol_if_used_ge_rest_else_30_years_extension_tt 
+			#		limit = { in_golden_age = yes } 
+			#		extend_golden_age = 120
+			#}
+			#else = {
+			#	add_country_modifier = {
+			#		name = pol_golden_era_modifier
+			#		duration = 10950 
+			#	}
+			#}
+			add_country_modifier = {
+				name = pol_golden_era_modifier
+				duration = 10950 
 			}
 			custom_tooltip = pol_every_province_with_40_dev_tt
 			hidden_effect = { 
@@ -4117,7 +4132,7 @@ poland_sca_slot_5_branching_lit_hre = {
 				else_if = { 
 					limit = { mercantilism = 25 } 
 					change_ruler_stat = {
-						stat = dip
+						type = dip
 						amount = 1
 					}
 					set_country_flag = enable_special_trader_flag
@@ -4807,7 +4822,7 @@ poland_sca_slot_5_branching_lit_hre = {
 				NOT = { 
 					num_of_estate_privileges = {
 						estate = estate_nobles 
-						value = 2
+						value = 4
 					}
 				}
 				crown_land_share = 50
@@ -5123,4 +5138,3 @@ poland_sca_slot_5_branching_lit_hre = {
 		}
 	}
 }
-

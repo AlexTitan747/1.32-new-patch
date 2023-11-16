@@ -88,9 +88,12 @@ ming_missions_1 = {
 						who = ROOT 
 						value = 150 
 					}
-					trust = {
-						who = ROOT 
-						value = 70 
+					if = {
+						limit = { has_dlc = "Leviathan" }
+						trust = {
+							who = ROOT 
+							value = 70 
+						}
 					}
 				}
 				any_subject_country = {
@@ -105,9 +108,12 @@ ming_missions_1 = {
 						who = ROOT 
 						value = 150 
 					}
-					trust = {
-						who = ROOT 
-						value = 70 
+					if = {
+						limit = { has_dlc = "Leviathan" }
+						trust = {
+							who = ROOT 
+							value = 70 
+						}
 					}
 				}
 			}
@@ -142,9 +148,12 @@ ming_missions_1 = {
 								who = ROOT 
 								value = 150 
 							}
-							trust = {
-								who = ROOT 
-								value = 70 
+							if = {
+								limit = { has_dlc = "Leviathan" }
+								trust = {
+									who = ROOT 
+									value = 70 
+								}
 							}
 						}
 					}
@@ -167,9 +176,12 @@ ming_missions_1 = {
 								who = ROOT 
 								value = 150 
 							}
-							trust = {
-								who = ROOT 
-								value = 70 
+							if = {
+								limit = { has_dlc = "Leviathan" }
+								trust = {
+									who = ROOT 
+									value = 70 
+								}
 							}
 						}
 						capital_scope = { 
@@ -199,9 +211,12 @@ ming_missions_1 = {
 							who = ROOT 
 							value = 150 
 						}
-						trust = {
-							who = ROOT 
-							value = 70 
+						if = {
+							limit = { has_dlc = "Leviathan" }
+							trust = {
+								who = ROOT 
+								value = 70 
+							}
 						}
 					}
 					add_country_modifier = {
@@ -228,9 +243,12 @@ ming_missions_1 = {
 							who = ROOT 
 							value = 150 
 						}
-						trust = {
-							who = ROOT 
-							value = 70 
+						if = {
+							limit = { has_dlc = "Leviathan" }
+							trust = {
+								who = ROOT 
+								value = 70 
+							}
 						}
 					}
 					capital_scope = { 
@@ -418,7 +436,7 @@ ming_missions_1_b = {
 				add_corruption = -2
 				change_government_reform_progress = 100
 				change_ruler_stat = {
-					stat = adm
+					type = adm
 					amount = 1
 				}
 			}
@@ -951,13 +969,13 @@ ming_missions_2_b = {
 			
 			if = {
 				limit = {
-					NOT = { has_harmonized_with = pagan }
+					NOT = { has_harmonized_with = tengri_pagan_reformed }
 					NOT = { has_harmonized_with = vajrayana }
 					religion = confucianism
 				}
 				custom_tooltip = mng_db_reward_1_tt
 				tooltip = {
-					add_harmonized_religion = pagan
+					add_harmonized_religion = tengri_pagan_reformed
 					add_harmonized_religion = vajrayana
 					add_harmony = 10
 				}
@@ -1103,12 +1121,11 @@ ming_missions_2_b = {
 				
 				if = {
 					limit = {
-						NOT = { has_harmonized_with = pagan }
+						NOT = { has_harmonized_with = tengri_pagan_reformed  }
 						NOT = { has_harmonized_with = vajrayana }
 						religion = confucianism
 					}
-					change_government_reform_progress = -250
-					add_harmonized_religion = pagan
+					add_harmonized_religion = tengri_pagan_reformed
 					add_harmonized_religion = vajrayana
 					add_harmony = 10
 				}
@@ -1266,29 +1283,30 @@ ming_missions_2_b = {
 		
 		trigger = {
 			OR = {
-			
-					calc_true_if = {
-						all_subject_country = {
-							is_subject_of_type_with_overlord = { who = ROOT type = tributary_state }
-							NOT = { liberty_desire = 10 } 
-							has_opinion = { 
-								who = ROOT 
-								value = 120 
-							}
+				calc_true_if = {
+					all_subject_country = {
+						is_subject_of_type_with_overlord = { who = ROOT type = tributary_state }
+						NOT = { liberty_desire = 10 } 
+						has_opinion = { 
+							who = ROOT 
+							value = 120 
 						}
-						desc = mng_5_tribs_with_opinion_and_lib_desire_tt
-						amount = 5
 					}
-				
+					desc = mng_5_tribs_with_opinion_and_lib_desire_tt
+					amount = 5
+				}
 				calc_true_if = {
 					all_ally = {
 						has_opinion = {
 							who = ROOT 
 							value = 150 
 						}
-						trust = {
-							who = ROOT 
-							value = 70
+						if = {
+							limit = { has_dlc = "Leviathan" }
+							trust = {
+								who = ROOT 
+								value = 70 
+							}
 						}
 					}
 					amount = 4 
@@ -1336,9 +1354,12 @@ ming_missions_2_b = {
 									who = ROOT 
 									value = 150 
 								}
-								trust = {
-									who = ROOT 
-									value = 70
+								if = {
+									limit = { has_dlc = "Leviathan" }
+									trust = {
+										who = ROOT 
+										value = 70 
+									}
 								}
 							}
 							amount = 4 
@@ -1350,9 +1371,12 @@ ming_missions_2_b = {
 								who = ROOT 
 								value = 150 
 							}
-							trust = {
-								who = ROOT 
-								value = 70
+							if = {
+								limit = { has_dlc = "Leviathan" }
+								trust = {
+									who = ROOT 
+									value = 70 
+								}
 							}
 						}
 						add_country_modifier = {
@@ -1373,9 +1397,12 @@ ming_missions_2_b = {
 									who = ROOT 
 									value = 150 
 								}
-								trust = {
-									who = ROOT 
-									value = 70
+								if = {
+									limit = { has_dlc = "Leviathan" }
+									trust = {
+										who = ROOT 
+										value = 70 
+									}
 								}
 							}
 							ROOT = { add_mandate = 5 } 
@@ -1388,9 +1415,12 @@ ming_missions_2_b = {
 									who = ROOT 
 									value = 150 
 								}
-								trust = {
-									who = ROOT 
-									value = 70
+								if = {
+									limit = { has_dlc = "Leviathan" }
+									trust = {
+										who = ROOT 
+										value = 70 
+									}
 								}
 							}
 							ROOT = { 
@@ -1697,7 +1727,7 @@ ming_missions_3 = {
 				any_country = {
 					is_neighbor_of = ROOT 
 					NOT = { army_size = ROOT } 
-					NOT = { development = 300 }
+					NOT = { total_development = 300 }
 				}		
 			}
 		}
@@ -2399,32 +2429,32 @@ ming_missions_3_b = {
 				name = mng_prosperous_era_modifier
 				duration = -1 
 			}
-			if = { 
-				limit = { has_dlc = "Mandate of Heaven" }
-				if = {
-					limit = { has_had_golden_age = yes } 
-					reset_golden_age = yes 
-				}
-				else_if = {
-					limit = { in_golden_age = yes } 
-					extend_golden_age = 240
-				}
-			}
+			#if = { 
+			#	limit = { has_dlc = "Mandate of Heaven" }
+			#	if = {
+			#		limit = { has_had_golden_age = yes } 
+			#		reset_golden_age = yes 
+			#	}
+			#	else_if = {
+			#		limit = { in_golden_age = yes } 
+			#		extend_golden_age = 240
+			#	}
+			#}
 			set_country_flag = mng_shengshi_reward_flag 
 			add_country_modifier = {
 				name = mng_well_governed_era_modifier 
 				duration = 9125 
 			}
 			change_ruler_stat = {
-				stat = adm
+				type = adm
 				amount = 1
 			}
 			change_ruler_stat = {
-				stat = dip
+				type = dip
 				amount = 1
 			}
 			change_ruler_stat = {
-				stat = mil
+				type = mil
 				amount = 1
 			}
 		}
@@ -2710,7 +2740,8 @@ ming_missions_4_dynamic_1 = {
 			}
 		} 
 		
-		trigger = { 
+		trigger = {
+			not_in_mission_preview_mode = { key = MNG }
 			OR = { 
 				has_reform = mercantilistic_approach_reform
 				dip = 6 
@@ -2809,7 +2840,8 @@ ming_missions_4_dynamic_2 = {
 			province_has_center_of_trade_of_level = 1  
 		}
 		
-		trigger = { 
+		trigger = {
+			not_in_mission_preview_mode = { key = MNG }
 			OR = { 
 				full_idea_group = trade_ideas 
 				dip = 6 
@@ -3333,9 +3365,12 @@ ming_missions_5 = {
 							who = ROOT 
 							value = 170 
 						}
-						trust = {
-							who = ROOT 
-							value = 75 
+						if = {
+							limit = { has_dlc = "Leviathan" }
+							trust = {
+								who = ROOT 
+								value = 75 
+							}
 						}
 					}
 				}
@@ -3363,8 +3398,8 @@ ming_missions_5 = {
 		
 		effect = {
 			custom_tooltip = mng_conquest_japan_reward_tt
-			tooltip = { 
-				1020 = { 
+			tooltip = {
+				1020 = {
 					if = { 
 						limit = { 
 							owner = { 
@@ -3389,10 +3424,12 @@ ming_missions_5 = {
 							}
 							NOT = { has_dlc = "Mandate of Heaven" }
 						}
-						reverse_add_casus_belli = {
-							target = ROOT
-							type = cb_vassalize_mission
-							months = 120
+						owner = {
+							reverse_add_casus_belli = {
+								target = ROOT
+								type = cb_vassalize_mission
+								months = 120
+							}
 						}
 					}
 				}
@@ -3433,9 +3470,11 @@ ming_missions_5 = {
 						custom_tooltip = mng_insight_39_tt
 					}
 					else = {
-						add_country_modifier = {
-							name = mng_sinicization_of_japan_modifier
-							duration = -1 
+						root = {
+							add_country_modifier = {
+								name = mng_sinicization_of_japan_modifier
+								duration = -1 
+							}
 						}
 					}
 				}
@@ -3451,7 +3490,7 @@ ming_missions_5 = {
 						}
 						1020 = { country_or_non_sovereign_subject_holds = ROOT } 
 					}
-					1020 = { 
+					1020 = {
 						if = { 
 							limit = { 
 								owner = { 
@@ -3474,10 +3513,12 @@ ming_missions_5 = {
 								}
 								NOT = { has_dlc = "Mandate of Heaven" }
 							}
-							reverse_add_casus_belli = {
-								target = MNG
-								type = cb_vassalize_mission
-								months = 120
+							owner = { 
+								reverse_add_casus_belli = {
+									target = MNG
+									type = cb_vassalize_mission
+									months = 120
+								}
 							}
 						}
 					}
@@ -3503,20 +3544,16 @@ ming_missions_5 = {
 					}
 				}
 				else = {
-					1020 = { 
-						if = {
-							limit = { 
-								NOT = { owned_by = ROOT }
-							}
-							owner = { 
-								country_event = { id = flavor_mng.39 }
-							}
+					if = {
+						limit = {
+							NOT = { owns = 1020 }
 						}
-						else = {
-							add_country_modifier = {
-								name = mng_sinicization_of_japan_modifier
-								duration = -1 
-							}
+						country_event = { id = flavor_mng.39 }
+					}
+					else = {
+						add_country_modifier = {
+							name = mng_sinicization_of_japan_modifier
+							duration = -1 
 						}
 					}
 				}

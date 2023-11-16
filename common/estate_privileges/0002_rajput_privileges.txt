@@ -227,6 +227,9 @@ estate_rajput_rajput_regiments = {
 			}
 		}
 	}
+	additional_description = { #You can put static modifier names here as well as normal localisation keys
+		rajput_regiment
+	}
 }
 
 estate_rajput_military = {
@@ -247,11 +250,9 @@ estate_rajput_military = {
 		}
 	}
 	can_select = {
-		NOT = { has_reform = free_city }
-		custom_trigger_tooltip = {
-			tooltip = no_other_mil_privilege
-			NOT = { has_estate_privilege = estate_nobles_nobility_primacy }
-			NOT = { has_estate_privilege = estate_maratha_military }
+		can_select_monarch_power_privilege = {
+			estate = estate_rajput
+			type = mil
 		}
 	}
 	on_granted = {
@@ -301,7 +302,6 @@ estate_rajput_advisor = {
 	is_valid = {
 		NOT = { religion_group = muslim }
 	}
-	loyalty = 0
 	penalties = {
 		stability_cost_modifier = 0.1
 	}

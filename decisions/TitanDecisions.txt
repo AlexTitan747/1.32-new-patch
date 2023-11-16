@@ -1,5 +1,4 @@
-country_decisions = {
-		
+country_decisions = {	
 	tm_tts_crownland_regain = {
 		major = yes
 		potential = {
@@ -53,7 +52,7 @@ country_decisions = {
 		}
 	}
 
-
+	# Show available strong military events
 	PR_critical_events = {
 		color = { 229 56 18 }
 		major = yes
@@ -92,7 +91,7 @@ country_decisions = {
 		}
 	}
 	
-	# Apply Edict
+	# Apply Manpower Edict
 	PR_manpower_edict = {
 		major = yes
 		potential = {
@@ -111,16 +110,7 @@ country_decisions = {
 					limit = {
 						is_state_core = ROOT
 						NOT = {
-							OR = {
-								has_state_edict = edict_advancement_effort
-								has_state_edict = edict_defensive_edict
-								has_state_edict = edict_feudal_de_jure_law
-								has_state_edict = edict_promote_military_recruitment
-								has_state_edict = edict_protect_trade
-								has_state_edict = edict_religion_enforced
-								has_state_edict = edict_religious_unity
-								has_state_edict = edict_devastation_edict
-							}
+							has_any_state_edict = yes
 						}
 					}
 					add_province_modifier = {
@@ -129,8 +119,9 @@ country_decisions = {
 					}
 				}
 				add_country_modifier = {
-				name = "PR_manpower_edict_cooldown"
-				duration = 365
+					name = "PR_manpower_edict_cooldown"
+					duration = 365
+					hidden = yes
 				}
 			}
 			set_country_flag = PR_manpower_edict_activated
@@ -140,30 +131,24 @@ country_decisions = {
 		}
 	}
 	
-	# Remove Edict
+	# Remove Manpower Edict
 	PR_manpower_edict_removal = {
 		major = yes
 		potential = {
-			AND = {
-				has_country_flag = PR_manpower_edict_activated
-			}
+			has_country_flag = PR_manpower_edict_activated
 		}
 		allow = {
 			ai = no
 			custom_trigger_tooltip = {
 				tooltip = PR_manpower_edict_removal_tooltip
-				NOT = { 
-					has_country_modifier = PR_manpower_edict_cooldown 
-				}
+				NOT = {	has_country_modifier = PR_manpower_edict_cooldown }
 			}
 		}
 		effect = {
 			hidden_effect = {
 				every_owned_province = {
 					if = {
-						limit = {
-							has_province_modifier = PR_manpower_edict_province
-						}
+						limit = { has_province_modifier = PR_manpower_edict_province }
 						remove_province_modifier = PR_manpower_edict_province
 					}
 				}
@@ -516,6 +501,7 @@ country_decisions = {
 	#	}	
 	#}
 	
+	# Activate Cav Mercs
 	tm_cav_mercs = {
 		potential = {
 			NOT = { has_country_flag = cav_mercs_activated }
@@ -524,24 +510,24 @@ country_decisions = {
 			}
 			OR = {
 				AND = {
-				has_idea_group = maneuver_ideas
+					has_idea_group = maneuver_ideas
 				}
 				AND = {
-				has_idea_group = shock_ideas
+					has_idea_group = shock_ideas
 				}
 			}
 		}
 		allow = {
 			ai = no
-			NOT = {
-				num_of_loans = 1
-			}
+			#NOT = {
+			#	num_of_loans = 1
+			#}
 			OR = {
 				AND = {
-				has_idea = i44
+					has_idea = i44
 				}
 				AND = {
-				has_idea = i37
+					has_idea = i37
 				}
 			}
 			NOT = {
@@ -574,9 +560,6 @@ country_decisions = {
 		allow = {
 			ai = no
 			NOT = {
-				num_of_loans = 1
-			}
-			NOT = {
 				num_of_mercenaries = 1
 			}
 		}
@@ -595,6 +578,7 @@ country_decisions = {
 		}
 	}
 
+	#Removal of loan privilige if stuck on 
 	tm_remove_burger_loan_priv = {
 		potential = {
 			OR = {
@@ -629,11 +613,12 @@ country_decisions = {
 		}
 	}
 
+	#European Import Of Silk
 	tm_import_silk = {
 		potential = {
 			NOT = { silk = 1 }
 			dyes = 1
-			OR = { 
+			OR = {
 				capital_scope = { continent = europe }
 				capital_scope = { continent = africa }
 			}
@@ -672,18 +657,13 @@ country_decisions = {
 				add_base_production = -2
 			}
 			set_country_flag = tm_imported_silk
-			hidden_effect = {
-				change_variable = {            
-					which = num_of_dyes
-					value = 1.0
-				}
-			}
 		}
 		ai_will_do = {
 			factor = 0
 		}
 	}
 
+	# Add all stated provinces to Parliment
 	tm_add_provinces_to_parliment = {
 		potential = {
 			has_parliament = yes
@@ -782,6 +762,7 @@ country_decisions = {
 #		}
 #	}
 
+	# Advisor Event
 	tm_recruit_advisor_dec = {
 		major = no
 		potential = {
@@ -802,6 +783,7 @@ country_decisions = {
 		}
 	}
 
+	# Titan Help event
 	tm_help_event_decision = {
 		major = no
 		potential = {

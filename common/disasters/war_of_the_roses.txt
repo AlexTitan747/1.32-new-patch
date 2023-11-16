@@ -10,7 +10,12 @@ war_of_the_roses = {
 	}
 	
 	can_stop = {
-		NOT = { tag = ENG }
+		hidden_trigger = {
+			OR = {
+				NOT = { tag = ENG }
+				has_country_flag = has_war_of_roses_aftermath
+			}
+		}
 	}
 	
 	ended_by_country_breaking_to_rebels = no

@@ -810,7 +810,6 @@ tur_conquest_of_europe = {
 	}
 	
 	tur_address_firman = {
-		#Credit to Big Boss
 		icon = mission_the_firman
 		required_missions = {  }
 		position = 10
@@ -1951,9 +1950,12 @@ tur_african_conquest = {
 						who = ROOT 
 						value = 150 
 					}
-					trust = { 
-						who = ROOT 
-						value = 80 
+					if = {
+						limit = { has_dlc = "Leviathan" }
+						trust = { 
+							who = ROOT 
+							value = 80 
+						}
 					}
 				}
 				num_of_owned_provinces_with = {
@@ -2139,7 +2141,7 @@ tur_egyptian_conquest = {
 	}
 	
 	tur_rebuild_the_hagia_sophia = {
-		icon = mission_hagia_sophia
+		icon = byz_city_of_worlds_desire
 		required_missions = { tur_city_of_worlds_desire }
 		position = 4
 		provinces_to_highlight = {
@@ -2612,7 +2614,7 @@ tur_egyptian_conquest = {
 			#		remove_country_modifier = tur_mamlukian_administration
 			#	}
 			#	change_ruler_stat = {
-			#		stat = dip
+			#		type = dip
 			#		amount = 2
 			#	}
 			#}
@@ -3139,7 +3141,7 @@ tur_arabian_conquest = {
 	}
 	
 	tur_fate_of_the_patriarchate = {
-		icon = mission_pf_cross
+		icon = mission_hagia_sophia
 		required_missions = { tur_city_of_worlds_desire }
 		position = 4
 		provinces_to_highlight = {
@@ -3328,7 +3330,7 @@ tur_arabian_conquest = {
 		}
 	}
 	
-	tur_crimean_khaganate = {	#- written by Big Boss
+	tur_crimean_khaganate = {
 		icon = mission_chinese_general_riding
 		required_missions = {  }
 		position = 6
@@ -3349,10 +3351,13 @@ tur_arabian_conquest = {
 						who = ROOT 
 						value = 150 
 					}
-					trust = { 
-						who = ROOT 
-						value = 60 
-					} 
+					if = {
+						limit = { has_dlc = "Leviathan" }
+						trust = { 
+							who = ROOT 
+							value = 60 
+						} 
+					}
 				}
 				AND = { 
 					azov_area = { 
@@ -3603,7 +3608,6 @@ tur_arabian_conquest = {
 	}
 	
 	tur_seize_the_caliphate = {
-		#Localization written by Big Boss
 		icon = mission_the_caliph
 		required_missions = {
 			tur_conquer_egypt
@@ -3647,16 +3651,17 @@ tur_arabian_conquest = {
 			prestige = 50
 			if = {
 				limit = { religion = sunni }
-				has_country_modifier = khalifah
+				has_ruler_modifier = khalifah
 			}
 		}
 		effect = {
 			if = {
 				limit = { religion_group = muslim }
-				country_event_with_insight = {
-					id = flavor_tur.229
-					insight_tooltip = tur_seize_the_caliphate_at
+				enable_branching_mission_review = {
+					key = TUR
+					ai_event_id = flavor_tur.229
 				}
+				custom_tooltip = tur_seize_the_caliphate_at
 			}
 			else = {
 				country_event_with_insight = {
@@ -4008,6 +4013,7 @@ tur_legalism_path = {
 		provinces_to_highlight = {
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = TUR }
 			religion_group = muslim
 			if = {
 				limit = { has_dlc = "Cradle of Civilization" }
@@ -4046,6 +4052,7 @@ tur_legalism_path = {
 			NOT = { has_tax_building_trigger = yes }
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = TUR }
 			religion_group = muslim
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				religion = ROOT
@@ -4087,6 +4094,7 @@ tur_legalism_path = {
 		provinces_to_highlight = {
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = TUR }
 			religion_group = muslim
 			if = {
 				limit = {
@@ -4168,6 +4176,7 @@ tur_mysticism_path = {
 		provinces_to_highlight = {
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = TUR }
 			religion_group = muslim
 			if = {
 				limit = { has_dlc = "Cradle of Civilization" }
@@ -4208,6 +4217,7 @@ tur_mysticism_path = {
 			}
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = TUR }
 			religion_group = muslim
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				NOT = { religion_group = ROOT }
@@ -4249,6 +4259,7 @@ tur_mysticism_path = {
 		provinces_to_highlight = {
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = TUR }
 			religion_group = muslim
 			if = {
 				limit = {
@@ -4329,6 +4340,7 @@ tur_non_muslim_path = {
 			NOT = { religion = ROOT }
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = TUR }
 			all_owned_province = {
 				religion = ROOT
 			}
@@ -4361,6 +4373,7 @@ tur_non_muslim_path = {
 		provinces_to_highlight = {
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = TUR }	
 			OR = {
 				custom_trigger_tooltip = {
 					tooltip = tur_spread_the_true_faith_at
@@ -4384,15 +4397,15 @@ tur_non_muslim_path = {
 				duration = -1
 			}
 			change_ruler_stat = {
-				stat = adm
+				type = adm
 				amount = 1
 			}
 			change_ruler_stat = {
-				stat = dip
+				type = dip
 				amount = 1
 			}
 			change_ruler_stat = {
-				stat = mil
+				type = mil
 				amount = 1
 			}
 		}
@@ -4463,7 +4476,7 @@ tur_issue_the_kannuname_slot = {
 				insight_tooltip = INSIGHT_JUST_TOOLTIP
 				effect_tooltip = "
 				change_ruler_stat = {
-					stat = adm
+					type = adm
 					amount = 2
 				}
 				add_ruler_modifier = { 
@@ -4806,7 +4819,7 @@ tur_persian_conquest = {
 				add_permanent_claim = ROOT
 			}
 			change_ruler_stat = {
-				stat = dip
+				type = dip
 				amount = 2
 			}
 			country_event_with_insight = {
@@ -4867,7 +4880,6 @@ tur_persian_conquest = {
 	}
 	
 	tur_imperial_fabrics = {
-		#Credit to Big Boss
 		icon = mission_finest_carpets
 		required_missions = { tur_the_silk_road }
 		position = 11

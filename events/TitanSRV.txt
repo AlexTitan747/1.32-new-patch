@@ -10,6 +10,16 @@ country_event = {
 	
 	option = {
 		name = titansrv.1.a
+		trigger = { NOT = { has_country_flag = tm_srv_chose_shia }}
+
+		if = {
+			limit = { has_country_flag = tm_srv_chose_zoroastrian }
+			clr_country_flag = tm_srv_chose_zoroastrian
+		}
+		if = {
+			limit = { has_country_flag = tm_srv_chose_orthodox }
+			clr_country_flag = tm_srv_chose_orthodox
+		}
 
 		capital_scope = {
             area = {
@@ -37,6 +47,16 @@ country_event = {
 
 	option = {
 		name = titansrv.1.b
+		trigger = { NOT = { has_country_flag = tm_srv_chose_zoroastrian }}
+
+		if = {
+			limit = { has_country_flag = tm_srv_chose_shia }
+			clr_country_flag = tm_srv_chose_shia
+		}
+		if = {
+			limit = { has_country_flag = tm_srv_chose_orthodox }
+			clr_country_flag = tm_srv_chose_orthodox
+		}
 
 		change_religion = zoroastrian
 
@@ -61,10 +81,21 @@ country_event = {
 			name = "tm_AFG_religious_conversions"
 			duration = 3650
 		}
+		set_country_flag = tm_srv_chose_zoroastrian
 	}
 
     option = {
 		name = titansrv.1.c
+		trigger = { NOT = { has_country_flag = tm_srv_chose_orthodox }}
+
+		if = {
+			limit = { has_country_flag = tm_srv_chose_shia }
+			clr_country_flag = tm_srv_chose_shia
+		}
+		if = {
+			limit = { has_country_flag = tm_srv_chose_zoroastrian }
+			clr_country_flag = tm_srv_chose_zoroastrian
+		}
 		change_religion = orthodox
         capital_scope = {
             area = {
@@ -82,15 +113,18 @@ country_event = {
 		custom_tooltip = srv_titansrv_1_a_tt
 		hidden_effect = {
 			set_country_flag = srv_religion_backup
-			dagestan_area = {
-				change_religion = orthodox
-			}
+		}
+		dagestan_area = {
+			limit = { owned_by = ROOT }
+			change_religion = orthodox
 		}
 		add_country_modifier = {
 			name = "tm_AFG_religious_conversions"
 			duration = 3650
 		}
         
+		set_country_flag = tm_srv_chose_orthodox
+
         if = {
             limit = {
                 owns = 419
@@ -139,7 +173,6 @@ country_event = {
 					}
 				}
 			}
-
         }
 	}
 }
@@ -306,6 +339,4 @@ country_event = {
 			age = 20
 		}
 	}
-
-
 }

@@ -102,15 +102,15 @@ chinese_kingdoms_1 = {
 				add_ruler_personality = conqueror_personality
 			}
 			change_ruler_stat = {
-				stat = adm
+				type = adm
 				amount = 1
 			}
 			change_ruler_stat = {
-				stat = dip
+				type = dip
 				amount = 1
 			}
 			change_ruler_stat = {
-				stat = mil
+				type = mil
 				amount = 1
 			}
 			add_prestige_or_monarch_power = { amount = 25 }
@@ -320,17 +320,22 @@ chinese_kingdoms_3 = {
 					duration = -1 
 				}
 			}
-			if = {
-				limit = { in_golden_age = yes } 
-				extend_golden_age = 120
+			#if = {
+			#	limit = { in_golden_age = yes } 
+			#	extend_golden_age = 120
+			#}
+			#else = {
+			#	add_power_projection = { 
+			#		type = 25_permanent_power_projection
+			#		amount = 25
+			#	}
+			#	custom_tooltip = chi_permanent_pp
+			#}
+			add_power_projection = { 
+				type = 25_permanent_power_projection
+				amount = 25
 			}
-			else = {
-				add_power_projection = { 
-					type = 25_permanent_power_projection
-					amount = 25
-				}
-				custom_tooltip = chi_permanent_pp
-			}
+			custom_tooltip = chi_permanent_pp
 		}
 	}
 	

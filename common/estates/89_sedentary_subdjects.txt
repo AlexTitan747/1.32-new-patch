@@ -151,6 +151,25 @@ sedentary_subdjects = {
 		influence = 15
 	}
 
+	influence_modifier = {
+		desc = EST_VAL_OTHER_ESTATE_IN_POWER
+		trigger = {
+			has_any_estate_disaster_active = yes
+			has_not_own_estate_disaster_active = { estate = sedentary_subdjects }
+		}
+		influence = -40
+	}
+	
+	#Loyalty Modifiers
+	loyalty_modifier = {
+		desc = EST_VAL_OTHER_ESTATE_IN_POWER_LOY
+		trigger = {
+			has_any_estate_disaster_active = yes
+			has_not_own_estate_disaster_active = { estate = sedentary_subdjects }
+		}
+		loyalty = -20
+	}
+
 	#Custom Names
 	#custom_name = {
 	#	desc = #

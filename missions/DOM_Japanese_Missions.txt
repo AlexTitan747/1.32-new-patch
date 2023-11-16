@@ -123,7 +123,7 @@ DOM_japanse_missions_1 = {
 					limit = { has_dlc = "Rights of Man" NOT = { num_of_ruler_traits = { amount = 3 } } } 
 					add_ruler_personality = scholar_personality 
 				}
-				else = { change_ruler_stat = { stat = dip amount = 1 } }
+				else = { change_ruler_stat = { type = dip amount = 1 } }
 			}
 			
 			custom_tooltip = jap_trade_with_the_west_tt
@@ -159,7 +159,7 @@ DOM_japanse_missions_1 = {
 						limit = { has_dlc = "Rights of Man" NOT = { num_of_ruler_traits = { amount = 3 } } } 
 						add_ruler_personality = scholar_personality 
 					}
-					else = { change_ruler_stat = { stat = dip amount = 1 } }
+					else = { change_ruler_stat = { type = dip amount = 1 } }
 					
 				}
 				else_if = {
@@ -239,7 +239,7 @@ DOM_japanse_missions_1 = {
 				limit = { has_dlc = "Rights of Man" NOT = { num_of_ruler_traits = { amount = 3 } } } 
 				add_ruler_personality = great_engineer_personality 
 			}
-			else = { change_ruler_stat = { stat = adm amount = 1 } }
+			else = { change_ruler_stat = { type = adm amount = 1 } }
 			change_government_reform_progress = 50 
 			add_government_reform = jap_gokaido_reform
 		}
@@ -1054,13 +1054,13 @@ japanese_missions_eoc_2 = {
 			
 			if = {
 				limit = {
-					NOT = { has_harmonized_with = pagan }
+					NOT = { has_harmonized_with = tengri_pagan_reformed }
 					NOT = { has_harmonized_with = vajrayana }
 					religion = confucianism
 				}
 				custom_tooltip = mng_db_reward_1_tt
 				tooltip = {
-					add_harmonized_religion = pagan
+					add_harmonized_religion = tengri_pagan_reformed
 					add_harmonized_religion = vajrayana
 					add_harmony = 10
 				}
@@ -1207,16 +1207,15 @@ japanese_missions_eoc_2 = {
 				if = {
 					limit = {
 						OR = {
-							NOT = { has_harmonized_with = pagan }
+							NOT = { has_harmonized_with = tengri_pagan_reformed  }
 							NOT = { has_harmonized_with = vajrayana }
 						}
 						religion = confucianism
 						has_reform = decentralize_reform
 					}
-					add_harmonized_religion = pagan
+					add_harmonized_religion = tengri_pagan_reformed 
 					add_harmonized_religion = vajrayana
-					add_harmony = 10 
-					change_government_reform_progress = -250
+					add_harmony = 10
 				}
 				else_if = {
 					limit = { has_reform = decentralize_reform } 
@@ -1387,9 +1386,12 @@ japanese_missions_eoc_2 = {
 							who = ROOT 
 							value = 150 
 						}
-						trust = {
-							who = ROOT 
-							value = 70
+						if = {
+							limit = { has_dlc = "Leviathan" }
+							trust = {
+								who = ROOT 
+								value = 70 
+							}
 						}
 					}
 					amount = 4 
@@ -1437,9 +1439,12 @@ japanese_missions_eoc_2 = {
 									who = ROOT 
 									value = 150 
 								}
-								trust = {
-									who = ROOT 
-									value = 70
+								if = {
+									limit = { has_dlc = "Leviathan" }
+									trust = {
+										who = ROOT 
+										value = 70 
+									}
 								}
 							}
 							amount = 4 
@@ -1451,9 +1456,12 @@ japanese_missions_eoc_2 = {
 								who = ROOT 
 								value = 150 
 							}
-							trust = {
-								who = ROOT 
-								value = 70
+							if = {
+								limit = { has_dlc = "Leviathan" }
+								trust = {
+									who = ROOT 
+									value = 70 
+								}
 							}
 						}
 						add_country_modifier = {
@@ -1474,9 +1482,12 @@ japanese_missions_eoc_2 = {
 									who = ROOT 
 									value = 150 
 								}
-								trust = {
-									who = ROOT 
-									value = 70
+								if = {
+									limit = { has_dlc = "Leviathan" }
+									trust = {
+										who = ROOT 
+										value = 70 
+									}
 								}
 							}
 							ROOT = { add_mandate = 5 } 
@@ -1489,9 +1500,12 @@ japanese_missions_eoc_2 = {
 									who = ROOT 
 									value = 150 
 								}
-								trust = {
-									who = ROOT 
-									value = 70
+								if = {
+									limit = { has_dlc = "Leviathan" }
+									trust = {
+										who = ROOT 
+										value = 70 
+									}
 								}
 							}
 							ROOT = { 
@@ -1815,6 +1829,7 @@ DOM_japanse_missions_3_a = {
 				if = {
 					limit = { has_country_flag = a_kirishitan_realm }
 					override_country_name = KRJ
+					set_country_flag = is_KRJ_flag
 					set_country_flag = has_overriden_name_flag
 					add_country_modifier = {
 						name = jap_protectors_east_catholicism
@@ -1898,12 +1913,10 @@ DOM_japanse_missions_3_aa = {
 				value = 1000
 				religion = catholic 
 			}
-			calc_true_if = {
-				all_country = {
-					is_force_converted = yes 
-					religion = ROOT 
-				}
-				amount = 10 
+			OR = { 
+				is_defender_of_faith = yes 
+				is_great_power = yes 
+				full_idea_group = religious_ideas
 			}
 		}
 		effect = {
@@ -1938,6 +1951,7 @@ DOM_japanse_missions_3_b = {
 		required_missions = { jap_new_buddha }
 		position = 8
 		trigger = {
+			not_in_mission_preview_mode = { key = JAP_RELI }
 			stability = 3 
 			prestige = 90 
 			NOT = { num_of_rebel_controlled_provinces = 1 }
@@ -1986,35 +2000,43 @@ DOM_japanse_missions_3_b = {
 			hidden_effect = {
 				if = {
 					limit = { 
-						absolutism = 100 
+						absolutism = 99 
 						if = {
 							limit = { has_estate = estate_nobles }
-							num_of_estate_privileges = {
-								estate = estate_nobles 
-								value = 6 
+							NOT = {
+								num_of_estate_privileges = {
+									estate = estate_nobles 
+									value = 6 
+								}
 							}
 						}
 						if = {
 							limit = { has_estate = estate_burghers }
-							num_of_estate_privileges = {
-								estate = estate_burghers 
-								value = 6 
+							NOT = {
+								num_of_estate_privileges = {
+									estate = estate_burghers 
+									value = 6 
+								}
 							}
 						}
 						if = {
 							limit = { has_estate = estate_church }
-							num_of_estate_privileges = {
-								estate = estate_church 
-								value = 6 
+							NOT = {
+								num_of_estate_privileges = {
+									estate = estate_church 
+									value = 6 
+								}
 							}
 						}
 					} 
 					set_country_flag = has_overriden_name_flag
 					override_country_name = JPS
+					set_country_flag = is_JPS_flag
 					add_government_reform = absolute_shogunate_reform
 				}
 				else = {
 					override_country_name = JPE
+					set_country_flag = is_JPE_flag
 					set_country_flag = has_overriden_name_flag
 					set_country_flag = JPE_gov_flag
 					country_event = { id = flavor_jap.65 }
@@ -2049,6 +2071,7 @@ DOM_japanse_missions_3_c = {
 			
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = JAP_RELI }
 			religion = catholic 
 			development_in_provinces = {
 				value = 1000
@@ -2056,18 +2079,17 @@ DOM_japanse_missions_3_c = {
 			}
 			OR = { 
 				is_defender_of_faith = yes 
-				is_great_power = yes 
-				if = {
-					limit = { has_estate = estate_church }
-					estate_loyalty = {
-						estate = estate_church 
-						loyalty = 60 
-					}
-				}
+				is_great_power = yes
 				full_idea_group = religious_ideas 
 			}
 		}
 		effect = {
+			if = {
+				limit = {
+					NOT = { government = monarchy }
+				}
+				change_government = monarchy
+			}
 			add_government_reform = land_christian_sun_reform
 			
 			custom_tooltip = jap_winning_battles_gains_papal_influence_tt
@@ -2334,7 +2356,8 @@ japanese_missions_eoc_3 = {
 			NOT = { num_of_loans = 1 } 
 			OR = { 
 				in_golden_age = yes  
-				monthly_income = 500 
+				monthly_income = 500
+				NOT = { great_power_rank = 5 }
 			}
 		}
 		
@@ -2349,32 +2372,32 @@ japanese_missions_eoc_3 = {
 				name = mng_prosperous_era_modifier
 				duration = -1 
 			}
-			if = { 
-				limit = { has_dlc = "Mandate of Heaven" }
-				if = {
-					limit = { has_had_golden_age = yes } 
-					reset_golden_age = yes 
-				}
-				else_if = {
-					limit = { in_golden_age = yes } 
-					extend_golden_age = 240
-				}
-			}
+			#if = { 
+			#	limit = { has_dlc = "Mandate of Heaven" }
+			#	if = {
+			#		limit = { has_had_golden_age = yes } 
+			#		reset_golden_age = yes 
+			#	}
+			#	else_if = {
+			#		limit = { in_golden_age = yes } 
+			#		extend_golden_age = 240
+			#	}
+			#}
 			set_country_flag = mng_shengshi_reward_flag 
 			add_country_modifier = {
 				name = mng_well_governed_era_modifier 
 				duration = 9125 
 			}
 			change_ruler_stat = {
-				stat = adm
+				type = adm
 				amount = 1
 			}
 			change_ruler_stat = {
-				stat = dip
+				type = dip
 				amount = 1
 			}
 			change_ruler_stat = {
-				stat = mil
+				type = mil
 				amount = 1
 			}
 		}
@@ -2392,8 +2415,8 @@ DOM_japanse_missions_4_a = {
 		tag = JAP 
 		has_dlc = "Domination" 
 		NOT = { map_setup = map_setup_random }
-		NOT = { has_country_modifier = jap_mushashi_5_books_modifier } 
-		NOT = { has_country_modifier = jap_domineering_naval_focus_modifier }
+		NOT = { has_country_flag = jap_mushashi_5_books_flag } 
+		NOT = { has_country_flag = jap_domineering_naval_focus_flag }
 	}
 	has_country_shield = yes
 	
@@ -2476,8 +2499,8 @@ DOM_japanse_missions_4_b = {
 		tag = JAP 
 		has_dlc = "Domination" 
 		NOT = { map_setup = map_setup_random }
-		has_country_modifier = jap_mushashi_5_books_modifier 
-		NOT = { has_country_modifier = jap_domineering_naval_focus_modifier }
+		has_country_flag = jap_mushashi_5_books_flag 
+		NOT = { has_country_flag = jap_domineering_naval_focus_flag }
 	}
 	has_country_shield = yes
 	
@@ -2486,6 +2509,7 @@ DOM_japanse_missions_4_b = {
 		required_missions = { jap_bushido_code }
 		position = 2
 		trigger = {
+			not_in_mission_preview_mode = { key = JAP }
 			OR = {
 				army_tradition = 85 
 				army_professionalism = 0.8 
@@ -2525,8 +2549,8 @@ DOM_japanse_missions_4_c = {
 		tag = JAP 
 		has_dlc = "Domination" 
 		NOT = { map_setup = map_setup_random }
-		NOT = { has_country_modifier = jap_mushashi_5_books_modifier }
-		has_country_modifier = jap_domineering_naval_focus_modifier 
+		NOT = { has_country_flag = jap_mushashi_5_books_flag }
+		has_country_flag = jap_domineering_naval_focus_flag 
 	}
 	has_country_shield = yes
 	
@@ -2535,6 +2559,7 @@ DOM_japanse_missions_4_c = {
 		required_missions = { jap_bushido_code }
 		position = 2
 		trigger = {
+			not_in_mission_preview_mode = { key = JAP }
 			if = { 
 				limit = { has_dlc = "Rule Britannia" } 
 				has_naval_doctrine = any 
@@ -3053,7 +3078,7 @@ DOM_japanse_missions_5 = {
 			if = {
 				limit = { 
 					OR = {
-						has_country_modifier = jap_domineering_naval_focus_modifier
+						has_country_flag = jap_domineering_naval_focus_flag
 						has_country_modifier = jap_naval_academy_of_japan_modifier
 					}
 				}
@@ -3100,7 +3125,7 @@ DOM_japanse_missions_5 = {
 				if = { 
 					limit = { 
 						OR = {
-							has_country_modifier = jap_domineering_naval_focus_modifier
+							has_country_flag = jap_domineering_naval_focus_flag
 							has_country_modifier = jap_naval_academy_of_japan_modifier
 						}
 						num_of_marines = 1 
@@ -3113,7 +3138,7 @@ DOM_japanse_missions_5 = {
 				else_if = { 
 					limit = { 
 						OR = {
-							has_country_modifier = jap_domineering_naval_focus_modifier
+							has_country_flag = jap_domineering_naval_focus_flag
 							has_country_modifier = jap_naval_academy_of_japan_modifier
 						}
 					}
@@ -3338,7 +3363,7 @@ DOM_japanse_missions_5 = {
 			}
 			
 			change_ruler_stat = {
-				stat = mil
+				type = mil
 				amount = 1
 			} 
 		}
@@ -3819,21 +3844,30 @@ japanese_missions_eoc_5 = {
 					set_country_flag = mng_trade_eff_per_dip_advisor_level_flag
 				}
 				else = {
-					add_province_modifier = {
-						name = mng_safe_coasts_modifier
-						duration = 9125 
+					every_owned_province = {
+						limit = {
+							has_coast_defense_building_trigger = yes 
+							development = 20 
+						}
+						add_province_modifier = {
+							name = mng_safe_coasts_modifier
+							duration = 9125 
+						}
+						if = {
+							limit = { has_dlc = "Mandate of Heaven" }
+							add_prosperity = 100 
+						}
+						else = { 
+							add_base_production = 1 
+						} 
 					}
 					set_country_flag = mng_dev_per_adm_advisor_level_flag
 					if = {
 						limit = { has_dlc = "Mandate of Heaven" }
-						add_prosperity = 100 
 						add_mandate = 5 
 					}
 					else = { 
-						add_base_production = 1 
-						owner = {
-							add_prestige_or_monarch_power = { amount = 35 }
-						}
+						add_prestige_or_monarch_power = { amount = 35 }
 					} 
 				}
 			}
