@@ -3941,7 +3941,7 @@ estate_nobles_tofangchi_regiment = {
 		
 	}
 	benefits = {
-		infantry_power = 0.1
+		infantry_power = 0.075
 	}
 	ai_will_do = {
 		factor = 100
@@ -3952,7 +3952,7 @@ estate_nobles_tupchi_artillery_corps = {
 	icon = privilege_artillery
 	loyalty = 0.05
 	influence = 0.05
-	max_absolutism = -5
+	#max_absolutism = -5
 	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	is_valid = {
 		has_unlocked_estate_privilege = {
@@ -3993,7 +3993,10 @@ estate_nobles_tupchi_artillery_corps = {
 		}
 	}
 	benefits = {
-		artillery_power = 0.05
+		#artillery_power = 0.05
+	}
+	modifier_by_land_ownership = {
+		artillery_power = 0.10
 	}
 	ai_will_do = {
 		factor = 100
@@ -4025,7 +4028,7 @@ estate_nobles_qurchi_service = {
 		}
 	}
 	benefits = {
-		morale_damage_received = -0.1
+		#morale_damage_received = -0.1
 	}
 	loyalty_scaled_conditional_modifier = {
 		trigger = { always = yes }
@@ -4034,6 +4037,7 @@ estate_nobles_qurchi_service = {
 			nobles_influence_modifier = 0.5
 			qizilbash_influence_modifier = -0.5
 			ghulams_influence_modifier = -0.5
+			morale_damage_received = -0.1
 		}
 	}
 	ai_will_do = {
