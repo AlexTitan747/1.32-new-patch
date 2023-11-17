@@ -20,8 +20,8 @@ oman_slot_1 = {
 
 		provinces_to_highlight = {
 			OR = {
-			area = farsistan_area
-			area = persian_gulf_coast
+				area = farsistan_area
+				area = persian_gulf_coast
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -34,14 +34,14 @@ oman_slot_1 = {
 						is_subject = NO
 					}
 				}
-				custom_trigger_tooltip = {
-					tooltip = tm_OMA_humiliation_TT
-					OR = {
-						has_country_flag = humiliated_rival
-						has_country_flag = tm_show_strength
+					custom_trigger_tooltip = {
+						tooltip = tm_OMA_humiliation_TT
+						OR = {
+							has_country_flag = humiliated_rival
+							has_country_flag = tm_show_strength
+						}
 					}
-				}
-				is_rival = FRS
+					is_rival = FRS
 				}
 				else_if = {
 					limit = {
@@ -69,7 +69,7 @@ oman_slot_1 = {
 				}
 			}
 		effect = {
-			add_prestige = 15
+			add_prestige_or_monarch_power = { amount = 25 }
 			add_power_projection = {
 				type = mission_rewards_power_projection
 				amount = 15
@@ -420,25 +420,18 @@ oman_slot_3 = {
 				area = hail_area
 			}
 			NOT = {
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		trigger = {
-			nafud_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			yamamah_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			qasim_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			hail_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 10
+				OR = {
+					area = nafud_area
+					area = yamamah_area
+					area = qasim_area
+					area = hail_area
+				}
 			}
 		}
 		effect = {
@@ -529,13 +522,12 @@ oman_slot_4 = {
 			}
 		}
 		trigger = {
-			mahra_area = {
-				type = all
-				owned_by = ROOT
-			}
-			hadramut_area = {
-				type = all
-				owned_by = ROOT
+			num_of_owned_provinces_with = {
+				OR = {
+					area = mahra_area
+					area = hadramut_area
+				}
+				value = 4
 			}
 		}
 		effect = {
@@ -591,7 +583,7 @@ oman_slot_4 = {
 				area = asir_area
 			}
 			NOT = {
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 
@@ -650,20 +642,18 @@ oman_slot_4 = {
 			OR = {
 				area = medina_area
 				area = mecca_area
-				area = tabuk_area
 			}
 			NOT = {
-				owned_by = ROOT
+				country_or_non_sovereign_subject_holds = ROOT
 			}
 		}
 		trigger = {
-			medina_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			mecca_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
+			num_of_provinces_owned_or_owned_by_subjects_with = {
+				value = 7
+				OR = {
+					area = medina_area
+					area = mecca_area
+				}
 			}
 		}
 		effect = {
