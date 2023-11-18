@@ -2321,6 +2321,9 @@ select_current_branch = {
 	#King of Kings
 	if = { limit = { can_preview_mission_of_key_and_batch = { key = BYZ batch = $batch$ } } select_current_missions = { key = BYZ } }
 	if = { limit = { can_preview_mission_of_key_and_batch = { key = PER batch = $batch$ } } select_current_missions = { key = PER } }
+
+	# TITAN 
+	if = { limit = { can_preview_mission_of_key_and_batch = { key = TM_HUN_CONSOLIATION batch = $batch$ } } select_current_missions = { key = TM_HUN_CONSOLIATION } }
 }
 
 
@@ -2458,6 +2461,15 @@ clear_all_branching_flags = {
 		clr_country_flag = per_sunni_missions
 		clr_country_flag = per_zoroastrian_missions
 	}
+
+	################################### TITAN ###################################
+	# Hungary Kingdom Consolidation
+	if = {
+		limit = { can_preview_mission_of_key_and_batch = { key = TM_HUN_CONSOLIATION batch = $batch$ } }
+		clr_country_flag = hun_anatolia_direction
+		clr_country_flag = hun_west_europe_direction
+		clr_country_flag = hun_steppe_direction
+	}
 }
 
 preview_mission_branch_1 = {
@@ -2583,6 +2595,14 @@ preview_mission_branch_1 = {
 	if = {
 		limit = { can_preview_mission_of_key_and_batch = { key = PER batch = $batch$ } }
 		set_country_flag = per_shia_missions
+		custom_tooltip = per_preview_shia_missions
+	}
+
+	################################### TITAN ###################################
+	# Hungary Kingdom Consolidation
+	if = {
+		limit = { can_preview_mission_of_key_and_batch = { key = TM_HUN_CONSOLIATION batch = $batch$ } }
+		set_country_flag = hun_anatolia_direction
 		custom_tooltip = per_preview_shia_missions
 	}
 }
@@ -2718,6 +2738,14 @@ preview_mission_branch_2 = {
 		set_country_flag = per_sunni_missions
 		custom_tooltip = per_preview_sunni_missions
 	}
+
+	################################### TITAN ###################################
+	# Hungary Kingdom Consolidation
+	if = {
+		limit = { can_preview_mission_of_key_and_batch = { key = TM_HUN_CONSOLIATION batch = $batch$ } }
+		set_country_flag = hun_west_europe_direction
+		custom_tooltip = tm_hun_hre_direction
+	}
 }
 preview_mission_branch_3 = {
 	#Origins
@@ -2760,6 +2788,14 @@ preview_mission_branch_3 = {
 		limit = { can_preview_mission_of_key_and_batch = { key = PER batch = $batch$ } }
 		set_country_flag = per_zoroastrian_missions
 		custom_tooltip = per_preview_zoroastrian_missions
+	}
+
+	################################### TITAN ###################################
+	# Hungary Kingdom Consolidation
+	if = {
+		limit = { can_preview_mission_of_key_and_batch = { key = TM_HUN_CONSOLIATION batch = $batch$ } }
+		set_country_flag = hun_steppe_direction
+		custom_tooltip = tm_hun_crimea_direction
 	}
 }
 preview_mission_branch_4 = {

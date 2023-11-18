@@ -441,8 +441,12 @@ tm_hun_slot_2 = {
 					}
 				}
 			}
-			country_event = {
-				id = titanhun.2
+			#country_event = {
+			#	id = titanhun.2
+			#}
+			enable_branching_mission_review = {
+				key = TM_HUN_CONSOLIATION
+				ai_event_id = titanhun.2
 			}
 		}
 
@@ -817,7 +821,6 @@ tm_hun_slot_4 = {
 	}
 }
 
-
 tm_hun_slot_5 = {
 	slot = 5
 	generic = no
@@ -1166,6 +1169,7 @@ tm_hun_anatolia_slot_1 = {
 		}
 		
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			148 = {
 				owned_by = ROOT
 				has_road_building = yes
@@ -1241,6 +1245,7 @@ tm_hun_anatolia_slot_1 = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			148 = {
 				owned_by = ROOT
 				base_production = 13
@@ -1324,7 +1329,6 @@ tm_hun_anatolia_slot_1 = {
 	}
 }
 
-
 tm_hun_anatolia_slot_2 = {
 	slot = 2
 	generic = no
@@ -1353,6 +1357,7 @@ tm_hun_anatolia_slot_2 = {
 		}
 		
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			macedonia_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -1419,6 +1424,7 @@ tm_hun_anatolia_slot_2 = {
 		}
 		
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			northern_greece_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -1469,6 +1475,7 @@ tm_hun_anatolia_slot_2 = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			germiyan_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -1520,6 +1527,7 @@ tm_hun_anatolia_slot_3 = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			treasury = 450
 			silistria_area = {
 				type = all
@@ -1585,6 +1593,7 @@ tm_hun_anatolia_slot_3 = {
 		}
 		
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			328 = {
 				owned_by = ROOT
 				has_shipyard_building_trigger = yes
@@ -1665,6 +1674,7 @@ tm_hun_anatolia_slot_3 = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			karaman_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -1702,15 +1712,10 @@ tm_hun_anatolia_slot_3 = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			OR = {
-				NOT = {
-					exists = TUR
-				}
-				NOT = {
-					TUR = {
-						total_development = 200
-					}
-				}
+				NOT = {	exists = TUR }
+				NOT = { TUR = { total_development = 200 }}
 			}
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				value = 40
@@ -1728,7 +1733,6 @@ tm_hun_anatolia_slot_3 = {
 			factor = 500	#AI HUngary should WANT to survive against the Ottoman threat
 		}
 	}
-
 }
 
 tm_hun_anatolia_slot_4 = {
@@ -1760,6 +1764,7 @@ tm_hun_anatolia_slot_4 = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			bulgaria_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -1805,6 +1810,7 @@ tm_hun_anatolia_slot_4 = {
 		}
 		
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			thrace_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -1863,6 +1869,7 @@ tm_hun_anatolia_slot_4 = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			rum_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -1882,7 +1889,6 @@ tm_hun_anatolia_slot_4 = {
 			factor = 500	#AI HUngary should WANT to survive against the Ottoman threat
 		}
 	}
-
 }
 
 tm_hun_anatolia_slot_5 = {
@@ -1913,6 +1919,7 @@ tm_hun_anatolia_slot_5 = {
 		}
 	
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			151 = {
 				controlled_by = ROOT
 			}
@@ -1948,6 +1955,7 @@ tm_hun_anatolia_slot_5 = {
 		}
 	
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			1765 = {
 				owned_by = ROOT
 				base_production = 12
@@ -1992,7 +2000,6 @@ tm_hun_anatolia_slot_5 = {
 			}
 		}
 	}
-
 }
 
 # HUN WEST EUROPE
@@ -2027,6 +2034,7 @@ tm_hun_west_europe_slot_1 = {
 		}
 		
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			po_valley_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -2072,6 +2080,7 @@ tm_hun_west_europe_slot_1 = {
 		}
 		
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			tuscany_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -2120,6 +2129,7 @@ tm_hun_west_europe_slot_1 = {
 		}
 	
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			104 = {
 				is_core = ROOT
 				owned_by = ROOT
@@ -2166,6 +2176,7 @@ tm_hun_west_europe_slot_2 = {
 		}
 		
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			carinthia_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -2239,6 +2250,7 @@ tm_hun_west_europe_slot_2 = {
 		}
 		
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			emilia_romagna_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -2283,6 +2295,7 @@ tm_hun_west_europe_slot_2 = {
 		}
 	
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			118 = {
 				country_or_non_sovereign_subject_holds = ROOT
 			}
@@ -2337,6 +2350,7 @@ tm_hun_west_europe_slot_3 = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			134 = {
 				owned_by = ROOT
 				base_production = 10
@@ -2455,6 +2469,7 @@ tm_hun_west_europe_slot_3 = {
 		}
 		
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			lower_bavaria_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -2508,6 +2523,7 @@ tm_hun_west_europe_slot_3 = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			114 = {
 				base_production = 11
 				base_manpower = 12
@@ -2613,6 +2629,7 @@ tm_hun_west_europe_slot_4 = {
 			}
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			owns_or_non_sovereign_subject_of = 134 #Vienna
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				value = 8
@@ -2684,6 +2701,7 @@ tm_hun_west_europe_slot_4 = {
 		}
 		
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			moravia_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -2734,6 +2752,7 @@ tm_hun_west_europe_slot_4 = {
 		}
 	
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			266 = {
 				controlled_by = ROOT
 			}
@@ -2764,6 +2783,7 @@ tm_hun_west_europe_slot_4 = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			custom_trigger_tooltip = {
 				tooltip = tm_hun_chose_cav_tt
 				has_country_flag = hun_cav_focus
@@ -2827,6 +2847,7 @@ tm_hun_west_europe_slot_5 = {
 		}
 		
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			upper_austria_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -2878,6 +2899,7 @@ tm_hun_west_europe_slot_5 = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			73 = {
 				owned_by = ROOT
 				base_production = 10
@@ -2922,6 +2944,7 @@ tm_hun_steppe_slot_1 = {
 		provinces_to_highlight = {}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			army_tradition = 75
 			government_rank = 3
 			army_professionalism = 0.6
@@ -3146,6 +3169,7 @@ tm_hun_steppe_slot_2 = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			OR = {
 				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 					value = 9
@@ -3200,6 +3224,7 @@ tm_hun_steppe_slot_2 = {
 			
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			owns_core_province = 257
 			owns_core_province = 262
 			owns_core_province = 2961
@@ -3242,6 +3267,7 @@ tm_hun_steppe_slot_3 = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			moldavia_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -3309,16 +3335,16 @@ tm_hun_steppe_slot_3 = {
 					}
 					OR = {
 						NOT = { owned_by = ROOT }
-						NOT = { owned_by = base_production = 13 }
-						NOT = { owned_by = has_production_building_trigger = yes }
+						NOT = { base_production = 13 }
+						NOT = { has_production_building_trigger = yes }
 					}
 				}
 				AND = {
 					province_id = 2961
 					OR = {
 						NOT = { owned_by = ROOT }
-						NOT = { owned_by = base_production = 13 }
-						NOT = { owned_by = has_production_building_trigger = yes }
+						NOT = { base_production = 13 }
+						NOT = { has_production_building_trigger = yes }
 						NOT = { province_has_center_of_trade_of_level = 3 }
 					}
 				}
@@ -3326,6 +3352,7 @@ tm_hun_steppe_slot_3 = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			2961 = {
 				owned_by = ROOT
 				base_production = 13
@@ -3405,6 +3432,7 @@ tm_hun_steppe_slot_3 = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			2201 = {
 				owned_by = ROOT
 				base_production = 10
@@ -3433,6 +3461,7 @@ tm_hun_steppe_slot_3 = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			government_rank = 3
 			prestige = 100
 		}
@@ -3483,6 +3512,7 @@ tm_hun_steppe_slot_4 = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			kremenchuk_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -3545,6 +3575,7 @@ tm_hun_steppe_slot_4 = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			crimea_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
@@ -3602,6 +3633,7 @@ tm_hun_steppe_slot_4 = {
 			}
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			465 = {
 				owned_by = ROOT
 				base_production = 12
@@ -3658,6 +3690,7 @@ tm_hun_steppe_slot_5 = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			yedisan_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
