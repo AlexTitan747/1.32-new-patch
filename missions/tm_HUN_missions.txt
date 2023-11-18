@@ -564,16 +564,16 @@ tm_hun_slot_3 = {
 						province_id = 4752
 					}
 					OR = {
-						NOT = { owned_by = ROOT }
-						NOT = { base_production = 13 }
+						NOT = { country_or_non_sovereign_subject_holds = ROOT }
+						NOT = { base_production = 10 }
 						NOT = { has_production_building_trigger = yes }
 					}
 				}
 				AND = {
 					province_id = 131
 					OR = {
-						NOT = { owned_by = ROOT }
-						NOT = { base_production = 13 }
+						NOT = { country_or_non_sovereign_subject_holds = ROOT }
+						NOT = { base_production = 10 }
 						NOT = { has_production_building_trigger = yes }
 						NOT = { province_has_center_of_trade_of_level = 2 }
 					}
@@ -584,19 +584,19 @@ tm_hun_slot_3 = {
 
 		trigger = {
 			4752 = {
-				owned_by = ROOT
-				base_production = 13
+				country_or_non_sovereign_subject_holds = ROOT
+				base_production = 10
 				has_production_building_trigger = yes
 			}
 			131 = {
-				owned_by = ROOT
-				base_production = 12
+				country_or_non_sovereign_subject_holds = ROOT
+				base_production = 10
 				province_has_center_of_trade_of_level = 2
 				has_production_building_trigger = yes
 			}
 			152 = {
-				owned_by = ROOT
-				base_production = 13
+				country_or_non_sovereign_subject_holds = ROOT
+				base_production = 10
 				has_production_building_trigger = yes
 			}
 		}
@@ -1024,7 +1024,7 @@ tm_hun_slot_5 = {
 			}
 			153 = {
 				owned_by = ROOT
-				base_manpower = 10
+				base_manpower = 9
 				province_has_center_of_trade_of_level = 3
 				has_manpower_building_trigger = yes
 			}
@@ -1040,7 +1040,7 @@ tm_hun_slot_5 = {
 			}
 			4173 = {
 				owned_by = ROOT
-				base_manpower = 10
+				base_manpower = 9
 				province_has_center_of_trade_of_level = 2
 				has_manpower_building_trigger = yes
 			}
@@ -1069,10 +1069,22 @@ tm_hun_slot_5 = {
 				}
 			}
 			153 = {
-				add_building = soldier_households
+				if = { 
+					limit = { NOT = { has_building = soldier_households } }
+					add_building = soldier_households
+				}
+				else = {
+					add_base_manpower = 3
+				}
 			}
 			4240 = {
-				add_building = soldier_households
+				if = { 
+					limit = { NOT = { has_building = soldier_households } }
+					add_building = soldier_households
+				}
+				else = {
+					add_base_manpower = 3
+				}
 			}
 			central_hungary_area = {
 				add_base_tax = 2
@@ -1350,10 +1362,17 @@ tm_hun_anatolia_slot_2 = {
 		
 		provinces_to_highlight = {
 			OR = {
-				area = macedonia_area
-				province_id = 148
+				AND = {
+					area = macedonia_area
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
+				}
 			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			OR = {
+				AND = {
+					province_id = 148
+					NOT = { province_has_center_of_trade_of_level = 2 }
+				}
+			}
 		}
 		
 		trigger = {
@@ -1399,6 +1418,7 @@ tm_hun_anatolia_slot_2 = {
 				}
 				add_permanent_claim = ROOT
 			}
+			west_aegean_area = { add_perma_claim = yes }
 			change_ruler_stat = {
 				type = mil
 				amount = 1
@@ -1654,6 +1674,8 @@ tm_hun_anatolia_slot_3 = {
 				add_permanent_claim = ROOT
 			}
 			kastamonu_area = { add_perma_claim = yes }
+			konya_area = { add_perma_claim = yes }
+			teke_area = { add_perma_claim = yes }
 		}
 		ai_weight = {
 			factor = 50	#Less relevant
@@ -1669,6 +1691,7 @@ tm_hun_anatolia_slot_3 = {
 			OR = {
 				area = karaman_area
 				area = cukurova_area
+				area = konya_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -1683,6 +1706,7 @@ tm_hun_anatolia_slot_3 = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 			}
+			konya_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
 		}
 		
 		effect = {
@@ -1915,13 +1939,13 @@ tm_hun_anatolia_slot_5 = {
 	
 		provinces_to_highlight = {
 			province_id = 151
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			NOT = { owned_by = ROOT }
 		}
 	
 		trigger = {
 			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			151 = {
-				controlled_by = ROOT
+				owned_by = ROOT
 			}
 		}
 		effect = {
@@ -1958,19 +1982,19 @@ tm_hun_anatolia_slot_5 = {
 			not_in_mission_preview_mode = { key = TM_HUN_CONSOLIATION }
 			1765 = {
 				owned_by = ROOT
-				base_production = 12
+				base_production = 10
 				has_manufactory = yes
 				has_production_building_trigger = yes
 			}
 			5104 = {
 				owned_by = ROOT
-				base_production = 12
+				base_production = 10
 				has_manufactory = yes
 				has_production_building_trigger = yes
 			}
 			4704 = {
 				owned_by = ROOT
-				base_production = 12
+				base_production = 10
 				has_manufactory = yes
 				has_production_building_trigger = yes
 			}
@@ -1980,6 +2004,20 @@ tm_hun_anatolia_slot_5 = {
 				25 = { 
 					5104 = {
 						change_trade_goods = gems
+					}
+					change_price = {
+						trade_goods = gems
+						key = lovech_gems
+						value = 0.25
+						duration = 3650
+					}
+					hidden_effect = {
+						change_price = {
+							trade_goods = jewellery
+							key = lovech_gems
+							value = 0.25
+							duration = 3650
+						}
 					}
 				}
 				35 = {
