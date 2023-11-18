@@ -140,6 +140,8 @@ NDefines.NMilitary.SLACKEN_AP_DROP = 0.001						--Defines how much AP is lost wh
 NDefines.NMilitary.SLACKEN_MIN_AP = 0 							--Defines how much AP is at least needed to keep the Slacken Modifier active. Put a -1 here if you want the toggle to not turn off automatically
 NDefines.NMilitary.SLACKEN_MAX_MP_PERCENTAGE = 0.95   			--Defines how much manpower percentage of your whole manpower pool you can have before the toggle turns off automatically. "1" would mean "100% of your manpower pool". Put a -1 here if you don't want this toggle to turn off from having manpower
 
+NDefines.NMilitary.BACK_LINE_MORALE_DAMAGE_TAKEN_MODIFIER = 0.25-- Multiplier for morale damage taken by backrow
+
 NDefines.NMilitary.BANNER_AGE_MULTIPLIER = 0
 NDefines.NMilitary.BANNER_STARTING_STRENGTH = 0.1
 NDefines.NMilitary.CAVALRY_SPEED = 0.9
