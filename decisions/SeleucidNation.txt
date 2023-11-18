@@ -1,118 +1,119 @@
 country_decisions = {
-
-		seleucid_nation = {
-			color = { 23 223 234 }
-			major = yes
-			potential = {
-				NOT = { has_country_flag = formed_seleucid_flag }
-				NOT = { tag = MOS }
-				NOT = { tag = RUS }
-				NOT = { tag = PER }
-				NOT = { tag = PLC }
-				NOT = { exists = SLU }
-				is_colonial_nation = no
-				OR = {
-					primary_culture = greek
-					tag = TUR
-				}
+	seleucid_nation = {
+		color = { 23 223 234 }
+		major = yes
+		potential = {
+			NOT = { has_country_flag = formed_seleucid_flag }
+			NOT = { tag = MOS }
+			NOT = { tag = RUS }
+			NOT = { tag = PER }
+			NOT = { tag = PLC }
+			NOT = { exists = SLU }
+			is_colonial_nation = no
+			OR = {
+				primary_culture = greek
+				tag = TUR
 			}
-			
-			provinces_to_highlight = {
-				OR = {
-					province_id = 2313			# Antakiya
-					province_id = 382			# Dimashq
-					province_id = 407			# Ar Raqqa
-					province_id = 327			# Adana
-					province_id = 4309			# Aydin
-					province_id = 4307			# Aksaray
-				}
-					
-				OR = {
-					NOT = { owned_by = ROOT }
-					NOT = { is_core = ROOT }
-				}
+			custom_trigger_tooltip = {
+				tooltip = nap_locked_ily
+				NOT = { has_country_flag = tm_an_ottoman_empire }
 			}
-			
-			allow = {
-				adm_tech = 10
-				is_free_or_tributary_trigger = yes
-				is_at_war = no
-				owns_core_province = 2313			# Antakiya
-				owns_core_province = 382			# Dimashq
-				owns_core_province = 407			# Ar Raqqa
-				owns_core_province = 327			# Adana
-				owns_core_province = 4309			# Aydin
-				owns_core_province = 4307			# Aksaray
+		}
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 2313			# Antakiya
+				province_id = 382			# Dimashq
+				province_id = 407			# Ar Raqqa
+				province_id = 327			# Adana
+				province_id = 4309			# Aydin
+				province_id = 4307			# Aksaray
 			}
-
-			effect = {
-				#2313 = {	#Antakiya
-				#	move_capital_effect = yes
-				#}
-				#set_capital = 2313 # Antakiya
-
-				change_tag = SLU
-				change_religion = orthodox
-				new_mission_tree_scripted_effect = yes
-				SLU = {
-					if = {
-						limit = {
-							NOT = { government = monarchy }
-							is_revolutionary = no
-						}
-						change_government = monarchy
-					}
-					if = {
-						limit = { is_revolutionary = no }
-						add_government_reform = seleucid_monarchy
-					}
-				}
-				if = {
-					limit = {
-						NOT = { government_rank = 3 }
-					}
-					set_government_rank = 3
-				}
-				add_prestige = 25
-				add_country_modifier = {
-					name = centralization_modifier
-					duration = 3650
-				}
-				2313 = {
-					add_base_tax = 2
-					add_base_production = 4
-					add_base_manpower = 4
-				}
-				add_dip_power = 300
 				
-				if = {
-					limit = {
-						NOT = { primary_culture = greek }
-					}
-					change_primary_culture = greek
-			    }
-				hidden_effect = {
-					every_owned_province = {
-						limit = {
-							has_owner_culture = yes
-						}
-						change_culture = greek
-					}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		
+		allow = {
+			adm_tech = 10
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			owns_core_province = 2313			# Antakiya
+			owns_core_province = 382			# Dimashq
+			owns_core_province = 407			# Ar Raqqa
+			owns_core_province = 327			# Adana
+			owns_core_province = 4309			# Aydin
+			owns_core_province = 4307			# Aksaray
+		}
+
+		effect = {
+			#2313 = {	#Antakiya
+			#	move_capital_effect = yes
+			#}
+			#set_capital = 2313 # Antakiya
+			change_tag = SLU
+			#change_religion = orthodox
+			#new_mission_tree_scripted_effect = yes
+			if = {
+				limit = {
+					NOT = { government = monarchy }
+					is_revolutionary = no
 				}
-				set_country_flag = formed_seleucid_flag
-				country_event = { id = ideagroups.1 } #Swap Ideas
-				anatolia_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
+				change_government = monarchy
+			}
+			if = {
+				limit = {
+					NOT = { government_rank = 3 }
 				}
-				mashriq_region = {
+				set_government_rank = 3
+			}
+			country_event = {
+				id = formable_religion_change.2
+				tooltip = formable_religion_change.2.tt
+			}
+			add_prestige = 25
+			add_country_modifier = {
+				name = centralization_modifier
+				duration = 3650
+			}
+			2313 = {
+				add_base_tax = 4
+				add_base_production = 4
+				add_base_manpower = 4
+			}
+			add_dip_power = 300
+
+			hidden_effect = {
+				every_owned_province = {
 					limit = {
-						NOT = { owned_by = ROOT }
+						has_owner_culture = yes
 					}
-					add_permanent_claim = ROOT
+					change_culture = greek
 				}
+			}
+			if = {
+				limit = {
+					NOT = { primary_culture = greek }
+				}
+				change_primary_culture = greek
+		    }
+			
+			set_country_flag = formed_seleucid_flag
+			country_event = { id = ideagroups.1 } #Swap Ideas
+			anatolia_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			mashriq_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
 		}
 	}
+}

@@ -1,0 +1,112 @@
+namespace = formable_religion_change
+
+# Carpathia Orthodox
+country_event = {
+	id = formable_religion_change.1
+	title = formable_religion_change.1.t
+	desc = formable_religion_change.1.d
+	picture = PRAYING_eventPicture
+	
+	fire_only_once = yes
+    is_triggered_only = yes
+
+    trigger = {
+        is_or_was_tag = { tag = HUN }
+    }
+	
+	# Convert To Orthodox
+	option = {
+		name = formable_religion_change.1.a
+
+		change_religion = orthodox
+        capital_scope = {
+            area = {
+                change_religion = orthodox
+            }
+        }
+		if = {
+			limit = { government = monarchy }
+			add_government_reform = panslavic_state
+		}		
+		
+		add_country_modifier = {
+			name = return_of_the_true_faith
+			duration = 7300
+		}
+		every_owned_province = {
+			limit = { has_province_modifier = religious_zeal_at_conv }
+			remove_province_modifier = religious_zeal_at_conv
+		}
+	}
+
+    # Stay Catholic
+	option = {
+		name = formable_religion_change.1.a
+        
+        add_stability_or_adm_power = yes
+		add_prestige_or_monarch_power = { amount = 25 }
+		define_advisor = {
+			type = theologian
+			skill = 3
+			culture = ROOT
+			religion = ROOT
+			cost_multiplier = 0.2
+		}
+	}
+}
+
+# Selucids Orthodox
+country_event = {
+	id = formable_religion_change.2
+	title = formable_religion_change.2.t
+	desc = formable_religion_change.2.d
+	picture = PRAYING_eventPicture
+	
+	fire_only_once = yes
+    is_triggered_only = yes
+
+    trigger = {
+        is_or_was_tag = { tag = TUR }
+    }
+	
+	# Convert To Orthodox
+	option = {
+		name = formable_religion_change.2.a
+
+		change_religion = orthodox
+        capital_scope = {
+            area = {
+                change_religion = orthodox
+            }
+        }
+
+		if = {
+			limit = { government = monarchy }
+			add_government_reform = seleucid_monarchy
+		}
+
+		add_country_modifier = {
+			name = return_of_the_true_faith
+			duration = 7300
+		}
+		every_owned_province = {
+			limit = { has_province_modifier = religious_zeal_at_conv }
+			remove_province_modifier = religious_zeal_at_conv
+		}
+	}
+
+    # Stay Sunni
+	option = {
+		name = formable_religion_change.2.a
+        
+        add_stability_or_adm_power = yes
+		add_prestige_or_monarch_power = { amount = 25 }
+		define_advisor = {
+			type = theologian
+			skill = 3
+			culture = ROOT
+			religion = ROOT
+			cost_multiplier = 0.2
+		}
+	}
+}
