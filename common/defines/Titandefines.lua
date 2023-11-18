@@ -184,6 +184,10 @@ NDefines.NMilitary.LAND_FORCELIMIT_EXTRA_COST_FACTOR = 3
 -- NReligion
 
 NDefines.NReligion.KARMA_RESTORE_ON_RULER_DEATH = 50
+NDefines.NReligion.PIETY_CORRUPTION = -3
+NDefines.NReligion.PIETY_MANPOWER = 1.5
+NDefines.NReligion.APPOINT_CARDINAL_COOLDOWN = 2
+NDefines.NReligion.ORTHODOX_ICON_AUTHORITY_COST = 0.15
 
 -- NGovernment
 
