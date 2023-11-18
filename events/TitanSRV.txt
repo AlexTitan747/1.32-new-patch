@@ -49,6 +49,15 @@ country_event = {
 		name = titansrv.1.b
 		trigger = { NOT = { has_country_flag = tm_srv_chose_zoroastrian }}
 
+		hidden_effect = {
+			transfer_percentage_crownland_share = {
+				custom_tooltip = " "
+				from_estate = estate_dhimmi
+				target_estate = estate_church
+				amount = 0.8
+			}
+		}
+
 		if = {
 			limit = { has_country_flag = tm_srv_chose_shia }
 			clr_country_flag = tm_srv_chose_shia
@@ -87,6 +96,15 @@ country_event = {
     option = {
 		name = titansrv.1.c
 		trigger = { NOT = { has_country_flag = tm_srv_chose_orthodox }}
+
+		hidden_effect = {
+			transfer_percentage_crownland_share = {
+				custom_tooltip = " "
+				from_estate = estate_dhimmi
+				target_estate = estate_church
+				amount = 0.8
+			}
+		}
 
 		if = {
 			limit = { has_country_flag = tm_srv_chose_shia }
