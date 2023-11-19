@@ -1,0 +1,167 @@
+country_decisions = {
+    declare_the_ottoman_empire = {
+        color = { 23 223 234 }
+		major = yes
+		potential = {
+			tag = TUR
+            NOT = { has_country_flag = tm_an_ottoman_empire }
+		}
+
+        provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						area = thessaloniki_area
+						area = macedonia_area
+						area = northern_greece_area
+						area = western_greece_area
+						area = west_aegean_area
+						area = albania_area
+					}
+					NOT = { owned_by = ROOT }
+					ROOT = {
+						NOT = {
+							num_of_owned_provinces_with = {
+								value = 15
+								OR = {
+									area = thessaloniki_area
+									area = macedonia_area
+									area = northern_greece_area
+									area = western_greece_area
+									area = west_aegean_area
+									area = albania_area
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					region = anatolia_region
+					NOT = { owned_by = ROOT }
+					ROOT = { NOT = { num_of_owned_provinces_with = { value = 40 region = anatolia_region } } }
+				}
+				AND = {
+					OR = {
+						area = latakia_area
+						area = aleppo_area
+						area = syria_area
+						area = tadmor_area
+						area = palestine_area
+						area = trans_jordan_area
+						area = syrian_desert_area
+						area = al_jazira_area
+						area = north_kurdistan_area
+					}
+					NOT = { owned_by = ROOT }
+					ROOT = {
+						NOT = {
+							num_of_owned_provinces_with = {
+								value = 20
+								OR = {
+									area = latakia_area
+									area = aleppo_area
+									area = syria_area
+									area = tadmor_area
+									area = palestine_area
+									area = trans_jordan_area
+									area = syrian_desert_area
+									area = al_jazira_area
+									area = north_kurdistan_area
+								}
+							}
+						}
+					}
+				}
+				AND = {
+					owned_by = ROOT
+					ROOT = { NOT = { total_development = 800 } }
+					ROOT = { num_of_owned_provinces_with = { value = 40 region = anatolia_region } }
+					ROOT = {
+						num_of_owned_provinces_with = {
+							value = 15
+							OR = {
+								area = thessaloniki_area
+								area = macedonia_area
+								area = northern_greece_area
+								area = western_greece_area
+								area = west_aegean_area
+								area = albania_area
+							}
+						}
+					}
+					ROOT = {
+						num_of_owned_provinces_with = {
+							value = 20
+							OR = {
+								area = latakia_area
+								area = aleppo_area
+								area = syria_area
+								area = tadmor_area
+								area = palestine_area
+								area = trans_jordan_area
+								area = syrian_desert_area
+								area = al_jazira_area
+								area = north_kurdistan_area
+							}
+						}
+					}
+				}
+			}
+		}
+
+		allow = {
+			151 = { is_capital_of = ROOT development = 30 }
+			total_development = 800
+			num_of_owned_provinces_with = {
+				value = 15
+				OR = {
+					area = thessaloniki_area
+					area = macedonia_area
+					area = northern_greece_area
+					area = western_greece_area
+					area = west_aegean_area
+					area = albania_area
+				}
+			}
+			num_of_owned_provinces_with = {
+				value = 40
+				region = anatolia_region
+			}
+			num_of_owned_provinces_with = {
+				value = 20
+				OR = {
+					area = latakia_area
+					area = aleppo_area
+					area = syria_area
+					area = tadmor_area
+					area = palestine_area
+					area = trans_jordan_area
+					area = syrian_desert_area
+					area = al_jazira_area
+					area = north_kurdistan_area
+				}
+			}
+		}
+
+		effect = {
+			151 = { add_base_production = 3 }
+			if = {
+				limit = { NOT = { government_rank = 3} }
+				set_government_rank = 3
+			}
+            hidden_effect = {
+                set_country_flag = tm_an_ottoman_empire
+			    change_country_color = { color = { 1 219 29 } }
+				swap_free_idea_group = yes
+            }
+            override_country_name = OTTOMAN_EMPIRE
+            custom_tooltip = tm_tur_otto_empire_ideas
+			add_government_reform = tm_ottoman_caliphate_reform
+			custom_tooltip = tm_otto_empire_prevents_selucids
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

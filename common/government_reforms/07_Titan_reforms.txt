@@ -416,8 +416,8 @@ seleucid_monarchy = {
 		monarch_military_power = 1
 		global_autonomy = -0.025
 		shock_damage_received = -0.1
-		legitimacy = 0.25
-		governing_capacity = 100
+		legitimacy = 0.5
+		governing_capacity = 300
 	}
 
 	custom_attributes = {
@@ -1985,5 +1985,65 @@ kushan_empire_not_hindu_reform = {
 	}
 	ai = {
 		factor = 1
+	}
+}
+
+tm_ottoman_caliphate_reform = {
+	lock_level_when_selected = yes
+	allow_normal_conversion = yes
+	icon = "ottoman_government"
+
+	potential = {
+		religion_group = muslim
+		tag = TUR
+		has_country_flag = tm_an_ottoman_empire
+	}
+	legacy_equivalent = ottoman_government_legacy
+
+	maintain_dynasty = yes
+	modifiers = {
+		governing_capacity = 250
+		max_absolutism = 15
+		manpower_in_accepted_culture_provinces = 0.10
+		global_tax_modifier = 0.10
+		stability_cost_modifier = -0.15
+	}
+
+	removed_effect = {
+		remove_country_modifier = tur_weakened_the_harem
+	}
+
+	custom_attributes = {
+		locked_government_type = yes
+	}
+
+	conditional = {
+		allow = { has_dlc = "Domination" }
+		has_pashas = yes
+		has_janissaries = yes
+		has_harem = yes
+		custom_attributes = {
+			has_harem_events = yes
+			enables_estate_janissaries = yes
+			has_eyalets = yes
+		}
+	}
+	conditional = {
+		allow = { 
+			has_dlc = "Cradle of Civilization"
+			NOT = { has_dlc = "Domination" }
+		}
+		has_pashas = yes
+		has_janissaries = yes
+	}
+	conditional = {
+		allow = {
+			has_dlc = "Rights of Man" 
+			NOT = { has_dlc = "Domination" }
+		}
+		has_harem = yes
+		custom_attributes = {
+			has_harem_events = yes
+		}
 	}
 }
