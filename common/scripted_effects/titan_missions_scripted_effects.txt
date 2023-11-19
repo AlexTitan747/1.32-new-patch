@@ -97,3 +97,38 @@ select_current_missions_TM_HUN_CONSOLIATION = {
         clr_country_flag = hun_west_europe_direction
     }
 }
+
+select_current_missions_TM_AFG_REL = {
+	if = {
+		limit = { has_country_flag = tm_AFG_hindu }
+        clr_country_flag = tm_AFG_suuni
+
+		hidden_effect = {
+			transfer_percentage_crownland_share = {
+				from_estate = estate_dhimmi
+				target_estate = estate_church
+				amount = 0.8
+			}
+		}
+
+		change_religion = hinduism
+		custom_tooltip = tm_AFG_hindu_tt
+		add_country_modifier = {
+			name = "tm_AFG_religious_conversions"
+			duration = 5375
+		}
+		set_country_flag = tm_AFG_hindu
+	}
+
+	else = {
+		clr_country_flag = tm_AFG_hindu
+		custom_tooltip = tm_AFG_remain_sunni_tt
+		add_stability_or_adm_power = yes
+		add_stability_or_adm_power = yes
+		add_stability_or_adm_power = yes
+		add_country_modifier = {
+			name = tm_AFG_remained_sunni_modifier
+			duration = 3650
+		}
+	}
+}

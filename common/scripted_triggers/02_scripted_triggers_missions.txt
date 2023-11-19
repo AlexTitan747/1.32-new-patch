@@ -232,6 +232,7 @@ has_branching_missions = {
 
 		### TITAN ###
 		has_mission = tm_hun_kingdom_consolidation
+		has_mission = tm_AFG_branch5_mission_1
 	}
 }
 
@@ -287,6 +288,7 @@ can_preview_missions = {
 
 			### TITAN ###
 			can_preview_mission_of_key = { key = TM_HUN_CONSOLIATION }
+			can_preview_mission_of_key = { key = TM_AFG_REL }
 		}
 	}
 }
@@ -497,6 +499,15 @@ has_selected_a_branch = {
 				}
 				can_preview_mission_of_key_and_batch = { key = TM_HUN_CONSOLIATION batch = $batch$ }
 			}
+
+			# Afghanistan Religious
+			AND = {
+				OR = {
+					has_country_flag = tm_AFG_hindu
+					has_country_flag = tm_AFG_suuni
+				}
+				can_preview_mission_of_key_and_batch = { key = TM_AFG_REL batch = $batch$ }
+			}
 		}
 	}
 }
@@ -655,6 +666,11 @@ currently_selected_branch_1 = {
 			can_preview_mission_of_key_and_batch = { key = TM_HUN_CONSOLIATION batch = $batch$ }
 			has_country_flag = hun_anatolia_direction
 		}
+
+		AND = {
+			can_preview_mission_of_key_and_batch = { key = TM_AFG_REL batch = $batch$ }
+			has_country_flag = tm_AFG_hindu
+		}
 	}
 }
 currently_selected_branch_2 = {
@@ -768,6 +784,11 @@ currently_selected_branch_2 = {
 		AND = {
 			can_preview_mission_of_key_and_batch = { key = TM_HUN_CONSOLIATION batch = $batch$ }
 			has_country_flag = hun_west_europe_direction
+		}
+
+		AND = {
+			can_preview_mission_of_key_and_batch = { key = TM_AFG_REL batch = $batch$ }
+			has_country_flag = tm_AFG_suuni
 		}
 	}
 }
