@@ -574,12 +574,10 @@ naval_supplies = {
 		}
 		modifier = {
 			factor = 0
-			OR = {
-				has_port = no
-				NOT = {
-					any_neighbor_province = {
-						has_port = yes
-					}
+			NOT = {
+				OR = {
+					has_port = yes
+					any_neighbor_province = { has_port = yes }
 				}
 			}
 		}
