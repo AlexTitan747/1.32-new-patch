@@ -16,20 +16,20 @@ country_event = {
 		months = 180
 	
 		modifier = {
-			factor = 0.9
-			innovativeness_ideas = 4
+			factor = 0.8
+			innovative_ideas = 4
 		}
 		modifier = {
-			factor = 0.9
-			innovativeness_ideas = 6
+			factor = 0.8
+			innovative_ideas = 6
 		}
 		modifier = {
-			factor = 1.1
-			NOT = { innovativeness_ideas = 4 }
+			factor = 0.75
+			fortification_expert = 4
 		}
 		modifier = {
-			factor = 1.1
-			NOT = { innovativeness_ideas = 2 }
+			factor = 0.66
+			fortification_expert = 5
 		}
 	}
 	
@@ -43,7 +43,25 @@ country_event = {
 			}
 		}
 		add_meritocracy_effect = yes
-		add_prestige = 25
+		add_stability_or_adm_power = yes
+		add_country_modifier = {
+			name = cannoneer_expert_boost
+			duration = 3650
+		}
+		set_country_flag = cannoneer_expert
+	}
+
+	option = {
+		name = "titancriticalevent.advisor1.ab"	# His reputation will reach further than our borders
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				stability = 1
+			}
+		}
+		add_meritocracy_effect = yes
+		add_prestige = 50
 		add_country_modifier = {
 			name = cannoneer_expert_boost
 			duration = 3650
@@ -87,20 +105,26 @@ country_event = {
 		months = 240
 
 		modifier = {
-			factor = 0.9
-			innovativeness_ideas = 4
+			factor = 0.8
+			innovative_ideas = 4
 		}
 		modifier = {
-			factor = 0.9
-			innovativeness_ideas = 6
+			factor = 0.8
+			innovative_ideas = 6
 		}
 		modifier = {
-			factor = 1.1
-			NOT = { innovativeness_ideas = 4 }
+			factor = 0.75
+			OR = {
+				artillery_bearer = 4
+				shield_bearer = 4
+			}
 		}
 		modifier = {
-			factor = 1.1
-			NOT = { innovativeness_ideas = 2 }
+			factor = 0.66
+			OR = {
+				artillery_bearer = 5
+				shield_bearer = 5
+			}
 		}
 	}
 
@@ -114,7 +138,26 @@ country_event = {
 			}
 		}
 		add_meritocracy_effect = yes
-		add_prestige = 25
+		add_stability_or_adm_power = yes
+		add_treasury = 550
+		add_country_modifier = {
+			name = new_recruitment_boost
+			duration = 1825
+		}
+		set_country_flag = new_recruitment_boost
+	}
+
+	option = {
+		name = "titancriticalevent.advisor2.ab"	# His reputation will reach further than our borders
+		ai_chance = {
+			factor = 50
+			modifier = {
+				factor = 0
+				stability = 1
+			}
+		}
+		add_meritocracy_effect = yes
+		add_prestige = 50
 		add_treasury = 550
 		add_country_modifier = {
 			name = new_recruitment_boost
@@ -134,7 +177,5 @@ country_event = {
 			duration = 1825
 			hidden = yes
 		}
-
 	}
-
 }
