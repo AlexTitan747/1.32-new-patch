@@ -46,28 +46,39 @@ country_decisions = {
 			num_of_owned_provinces_with = {
 				value = 10
 				OR = {
-				culture = al_suryah_arabic
-				culture = asyrian
+					culture = al_suryah_arabic
+					culture = asyrian
 				}
 				is_city = yes
 			}
 			NOT = { has_country_flag = assimilated_esyrian }
 		}
 		effect = {
+			set_global_flag = assimilated_esyrian_global_flag
 			set_country_flag = assimilated_esyrian
-			every_owned_province = {
-				limit = {
-					owned_by = ROOT
-					OR = {
-						culture = al_suryah_arabic
-						culture = asyrian
-					}
-				}
+			custom_tooltip = tm_syrian_assimilation_tt
+			tooltip = {
 				add_province_modifier = {
 					name = recently_assimilated
 					duration = 3650
 				}
 				change_culture = esyrian
+			}
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						owned_by = ROOT
+						OR = {
+							culture = al_suryah_arabic
+							culture = asyrian
+						}
+					}
+					add_province_modifier = {
+						name = recently_assimilated
+						duration = 3650
+					}
+					change_culture = esyrian
+				}
 			}
 		}
 	}
