@@ -457,6 +457,7 @@ kok_persia_conquest_mission_slot_2 = {
 			}
 			custom_tooltip = empty_line_tt
 			add_permanent_claim_multi_provinces = { target = egypt_region }
+			add_permanent_claim_multi_provinces = { target = arabia_region }
 		}
 	}
 	per_subjugate_egypt = {
@@ -474,7 +475,6 @@ kok_persia_conquest_mission_slot_2 = {
 			}
 		}
 		effect = {
-			add_claim_multi_provinces = { target = arabia_region }
 			country_event_with_effect_insight = {
 				id = flavor_per.48
 				effect = "
@@ -850,64 +850,61 @@ kok_persia_defense_mission_slot_3 = {
 		}
 	}
 	has_country_shield = yes
-	per_establish_western_defenses = {
-		icon = per_establish_western_defenses
-		required_missions = { per_butcher_black_sheep }
-		position = 3
-		provinces_to_highlight = {
-			OR = {
-				area = imereti_area
-				area = samtskhe_area
-				area = armenia_area
-				area = north_kurdistan_area
-				area = shahrizor_area
-				area = luristan_area
-				area = khuzestan_area
-			}
-			country_or_non_sovereign_subject_holds = root
-			NOT = { has_building = ramparts_tm }
-		}
-		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				OR = {
-					area = imereti_area
-					area = samtskhe_area
-					area = armenia_area
-					area = north_kurdistan_area
-					area = shahrizor_area
-					area = luristan_area
-					area = khuzestan_area
-				}
-				has_building = ramparts_tm
-				value = 4
-			}
-		}
-		effect = {
-			custom_tooltip = per_establish_western_defenses_at
-			tooltip = {
-				add_province_modifier = {
-					name = per_reinforced_defenses
-					duration = -1
-					desc = per_establish_western_defenses_bt
-				}
-			}
-			hidden_effect = {
-				random_province = { limit = { 	area = imereti_area				country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-				random_province = { limit = { 	area = samtskhe_area			country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-				random_province = { limit = { 	area = armenia_area				country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-				random_province = { limit = { 	area = north_kurdistan_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-				random_province = { limit = { 	area = shahrizor_area			country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-				random_province = { limit = { 	area = luristan_area			country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-				random_province = { limit = { 	area = khuzestan_area			country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-			}
-		}
-	}
+#	per_establish_western_defenses = {
+#		icon = per_establish_western_defenses
+#		required_missions = { per_butcher_black_sheep }
+#		position = 3
+#		provinces_to_highlight = {
+#			OR = {
+#				area = imereti_area
+#				area = samtskhe_area
+#				area = armenia_area
+#				area = north_kurdistan_area
+#				area = shahrizor_area
+#				area = luristan_area
+#				area = khuzestan_area
+#			}
+#			country_or_non_sovereign_subject_holds = root
+#			NOT = { has_building = ramparts_tm }
+#		}
+#		trigger = {
+#			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+#				OR = {
+#					area = imereti_area
+#					area = samtskhe_area
+#					area = armenia_area
+#					area = north_kurdistan_area
+#					area = shahrizor_area
+#					area = luristan_area
+#					area = khuzestan_area
+#				}
+#				has_building = ramparts_tm
+#				value = 4
+#			}
+#		}
+#		effect = {
+#			custom_tooltip = per_establish_western_defenses_at
+#			tooltip = {
+#				add_province_modifier = {
+#					name = per_reinforced_defenses
+#					duration = -1
+#					desc = per_establish_western_defenses_bt
+#				}
+#			}
+#			hidden_effect = {
+#				random_province = { limit = { 	area = imereti_area				country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+#				random_province = { limit = { 	area = samtskhe_area			country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+#				random_province = { limit = { 	area = armenia_area				country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+#				random_province = { limit = { 	area = north_kurdistan_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+#				random_province = { limit = { 	area = shahrizor_area			country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+#				random_province = { limit = { 	area = luristan_area			country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+#				random_province = { limit = { 	area = khuzestan_area			country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+#			}
+#		}
+#	}
 	per_reform_our_defenses = {
 		icon = per_reform_our_defenses
-		required_missions = {
-			per_establish_western_defenses
-			per_establish_eastern_defenses
-		}
+		required_missions = {}
 		position = 4
 		provinces_to_highlight = {
 			OR = {
@@ -933,7 +930,7 @@ kok_persia_defense_mission_slot_3 = {
 					has_terrain = highlands
 				}
 				has_fort_building_trigger = yes
-				value = 12
+				value = 8
 			}
 		}
 		effect = {
@@ -941,6 +938,27 @@ kok_persia_defense_mission_slot_3 = {
 			unlock_estate_privilege = { estate_privilege = estate_nobles_defensive_policy modifier_tooltip = estate_privilege_defensive_policy_tooltip }
 			unlock_estate_privilege = { estate_privilege = estate_qizilbash_defensive_policy }
 			unlock_estate_privilege = { estate_privilege = estate_ghulams_defensive_policy }
+		}
+	}
+
+	tm_per_conquest_of_arabia = {
+		icon = geo_crade_of_civilization
+		required_missions = {
+			per_unite_mashriq
+		}
+		position = 5
+		provinces_to_highlight = {
+			region = arabia_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 30
+				region = arabia_region
+			}
+		}
+		effect = {
+			
 		}
 	}
 }
@@ -989,58 +1007,58 @@ kok_persia_conquest_mission_slot_4 = {
 			}
 		}
 	}
-	per_establish_eastern_defenses = {
-		icon = per_establish_eastern_defenses
-		required_missions = { per_secure_khorasan }
-		position = 3
-		provinces_to_highlight = {
-			OR = {
-				area = kalat_area
-				area = sistan_area
-				area = ghor_area
-				area = kabulistan_area
-				area = mashhad_area
-				area = birjand_area
-				area = makran_area
-			}
-			country_or_non_sovereign_subject_holds = root
-			NOT = { has_building = ramparts_tm }
-		}
-		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				OR = {
-					area = kalat_area
-					area = sistan_area
-					area = ghor_area
-					area = kabulistan_area
-					area = mashhad_area
-					area = birjand_area
-					area = makran_area
-				}
-				has_building = ramparts_tm
-				value = 4
-			}
-		}
-		effect = {
-			custom_tooltip = per_establish_eastern_defenses_at
-			tooltip = {
-				add_province_modifier = {
-					name = per_reinforced_defenses
-					duration = -1
-					desc = per_establish_western_defenses_bt
-				}
-			}
-			hidden_effect = {
-				random_province = { limit = { 	area = kalat_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-				random_province = { limit = { 	area = sistan_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-				random_province = { limit = { 	area = ghor_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-				random_province = { limit = { 	area = kabulistan_area	country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-				random_province = { limit = { 	area = mashhad_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-				random_province = { limit = { 	area = birjand_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-				random_province = { limit = { 	area = makran_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-			}
-		}
-	}
+#	per_establish_eastern_defenses = {
+#		icon = per_establish_eastern_defenses
+#		required_missions = { per_secure_khorasan }
+#		position = 3
+#		provinces_to_highlight = {
+#			OR = {
+#				area = kalat_area
+#				area = sistan_area
+#				area = ghor_area
+#				area = kabulistan_area
+#				area = mashhad_area
+#				area = birjand_area
+#				area = makran_area
+#			}
+#			country_or_non_sovereign_subject_holds = root
+#			NOT = { has_building = ramparts_tm }
+#		}
+#		trigger = {
+#			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+#				OR = {
+#					area = kalat_area
+#					area = sistan_area
+#					area = ghor_area
+#					area = kabulistan_area
+#					area = mashhad_area
+#					area = birjand_area
+#					area = makran_area
+#				}
+#				has_building = ramparts_tm
+#				value = 4
+#			}
+#		}
+#		effect = {
+#			custom_tooltip = per_establish_eastern_defenses_at
+#			tooltip = {
+#				add_province_modifier = {
+#					name = per_reinforced_defenses
+#					duration = -1
+#					desc = per_establish_western_defenses_bt
+#				}
+#			}
+#			hidden_effect = {
+#				random_province = { limit = { 	area = kalat_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+#				random_province = { limit = { 	area = sistan_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+#				random_province = { limit = { 	area = ghor_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+#				random_province = { limit = { 	area = kabulistan_area	country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+#				random_province = { limit = { 	area = mashhad_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+#				random_province = { limit = { 	area = birjand_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+#				random_province = { limit = { 	area = makran_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+#			}
+#		}
+#	}
 }
 kok_persia_conquest_mission_slot_5 = {
 	slot = 5
@@ -1098,72 +1116,72 @@ kok_persia_conquest_mission_slot_5 = {
 		required_missions = { par_invade_india }
 		position = 3
 		provinces_to_highlight = {
-			OR = {
-				AND = {
-					OR = {
-						area = northern_sindh_area
-						area = sindh_area
-						area = jangladesh_area
-						area = marwar_area
-						area = patan_area
-						area = saurashtra_area
-						area = jaipur_area
-					}
-					NOT = { country_or_non_sovereign_subject_holds = root }
-				}
-				AND = {
-					OR = {
-						area = sindh_area
-						area = jangladesh_area
-						area = marwar_area
-						area = patan_area
-					}
-					NOT = { has_building = ramparts_tm }
-					country_or_non_sovereign_subject_holds = root
-				}
-			}
+			#OR = {
+			#	AND = {
+			#		OR = {
+			#			area = northern_sindh_area
+			#			area = sindh_area
+			#			area = jangladesh_area
+			#			area = marwar_area
+			#			area = patan_area
+			#			area = saurashtra_area
+			#			area = jaipur_area
+			#		}
+			#		NOT = { country_or_non_sovereign_subject_holds = root }
+			#	}
+			#	AND = {
+			#		OR = {
+			#			area = sindh_area
+			#			area = jangladesh_area
+			#			area = marwar_area
+			#			area = patan_area
+			#		}
+			#		NOT = { has_building = ramparts_tm }
+			#		country_or_non_sovereign_subject_holds = root
+			#	}
+			#}
 		}
 		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				OR = {
-					area = northern_sindh_area
-					area = sindh_area
-					area = jangladesh_area
-					area = marwar_area
-					area = patan_area
-					area = saurashtra_area
-					area = jaipur_area
-				}
-				value = 20
-			}
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				OR = {
-					area = sindh_area
-					area = jangladesh_area
-					area = marwar_area
-					area = patan_area
-				}
-				has_building = ramparts_tm
-				value = 4
-			}
+			#num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+			#	OR = {
+			#		area = northern_sindh_area
+			#		area = sindh_area
+			#		area = jangladesh_area
+			#		area = marwar_area
+			#		area = patan_area
+			#		area = saurashtra_area
+			#		area = jaipur_area
+			#	}
+			#	value = 20
+			#}
+			#num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+			#	OR = {
+			#		area = sindh_area
+			#		area = jangladesh_area
+			#		area = marwar_area
+			#		area = patan_area
+			#	}
+			#	has_building = ramparts_tm
+			#	value = 4
+			#}
 		}
 		effect = {
 			add_permanent_claim_multi_provinces = { target = west_india_region }
 			add_permanent_claim_multi_provinces = { target = hindusthan_region }
-			custom_tooltip = per_fortify_the_thar_desert_at
-			tooltip = {
-				add_province_modifier = {
-					name = per_reinforced_defenses
-					duration = -1
-					desc = per_establish_western_defenses_bt
-				}
-			}
-			hidden_effect = {
-				random_province = { limit = { 	area = sindh_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-				random_province = { limit = { 	area = jangladesh_area	country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-				random_province = { limit = { 	area = marwar_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-				random_province = { limit = { 	area = patan_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
-			}
+			#custom_tooltip = per_fortify_the_thar_desert_at
+			#tooltip = {
+			#	add_province_modifier = {
+			#		name = per_reinforced_defenses
+			#		duration = -1
+			#		desc = per_establish_western_defenses_bt
+			#	}
+			#}
+			#hidden_effect = {
+			#	random_province = { limit = { 	area = sindh_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+			#	random_province = { limit = { 	area = jangladesh_area	country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+			#	random_province = { limit = { 	area = marwar_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+			#	random_province = { limit = { 	area = patan_area		country_or_non_sovereign_subject_holds = root has_building = ramparts_tm } add_province_modifier = { name = per_reinforced_defenses duration = -1 } }
+			#}
 		}
 	}
 	per_master_of_india = {
@@ -2215,10 +2233,14 @@ kok_persia_culture_mission_slot_1 = {
 			OR = {
 				production_leader = { trade_goods = silk } 
 				trade_goods_produced_amount = { trade_goods = silk amount = 20 }
+				production_leader = { trade_goods = tailored_clothes }
+				trade_goods_produced_amount = { trade_goods = tailored_clothes amount = 5 } 
 			}
 			OR = {
 				production_leader = { trade_goods = cloth } 
 				trade_goods_produced_amount = { trade_goods = cloth amount = 20 }
+				production_leader = { trade_goods = uniforms }
+				trade_goods_produced_amount = { trade_goods = uniforms amount = 20 }
 			}
 			OR = {
 				production_leader = { trade_goods = dyes } 
@@ -2394,7 +2416,10 @@ kok_persia_culture_mission_slot_2 = {
 		}
 		trigger = {
 			monthly_income = 200
-			trade_income_percentage = 0.5
+			OR = {
+				trade_income_percentage = 0.5
+				trade_efficiency = 0.5
+			}
 			calc_true_if = {
 				trading_bonus = { trade_goods = silk value = yes }
 				trading_bonus = { trade_goods = cloth value = yes }
@@ -2403,6 +2428,8 @@ kok_persia_culture_mission_slot_2 = {
 				trading_bonus = { trade_goods = cotton value = yes }
 				trading_bonus = { trade_goods = gems value = yes }
 				trading_bonus = { trade_goods = wool value = yes }
+				trading_bonus = { trade_goods = uniforms value = yes }
+				trading_bonus = { trade_goods = tailored_clothes value = yes }
 				amount = 3
 			}
 		}
@@ -2821,10 +2848,7 @@ kok_persia_culture_mission_slot_4 = {
 			}
 		}
 		effect = {
-			unlock_diplomatic_action = {
-				type = send_royal_ambassador
-				custom_tooltip = send_royal_ambassador_tt
-			}
+			
 		}
 	}
 }
