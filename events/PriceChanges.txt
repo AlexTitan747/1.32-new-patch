@@ -3477,6 +3477,7 @@ country_event = {
 			value = -0.25
 			duration = -1
 		}
+		set_global_flag = reduced_safron_demand
 	}
 }
 
@@ -3526,6 +3527,177 @@ country_event = {
 			upgrade_building = {
 				production = yes
 			}
+		}
+	}
+}
+
+# Bronze and Copper for cannons
+country_event = {
+	id = prices.64
+	title = prices.64.t
+	desc = prices.64.d
+	picture = TRADE_GOODS_METALS_AND_MINING_EQUIPENT_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		num_of_artillery = 90
+		OR = {
+			bronze = 3
+			copper = 5
+		}
+		full_idea_group = firepower_ideas
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	
+	option = {
+		name = prices.64.a
+		change_price = {
+			trade_goods = bronze
+			key = COPPER_FOR_CANNONS
+			value = 0.25
+			duration = -1
+		}
+		change_price = {
+			trade_goods = copper
+			key = COPPER_FOR_CANNONS
+			value = 0.2
+			duration = -1
+		}
+		if = {
+			limit = { bronze = 1 }
+			random_owned_province = { 
+				limit = { trade_goods = bronze }
+				add_base_production = 5
+			}
+		}
+		else = {
+			random_owned_province = {
+				limit = { trade_goods = copper }
+				add_base_production = 5
+			}
+		}
+	}
+}
+
+# Renewed Saffron Demand
+country_event = {
+	id = prices.65
+	title = prices.65.t
+	desc = prices.65.d
+	picture = TRADEGOODS_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		OR = {
+			had_global_flag = { flag = reduced_safron_demand days = 9125 }
+			is_year = 1550
+		}
+		trading_part = {
+			trade_goods = saffron
+			value = 0.30
+		}
+		trade_efficiency = 0.25
+		any_owned_province = {
+			trade_goods = saffron
+			base_production = 8
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 1
+	}
+
+	option = {
+		name = prices.65.a
+
+		add_mercantilism = 3
+		change_price = {
+			trade_goods = saffron
+			key = SAFFRON_DEMAND
+			value = 0.35
+			duration = -1
+		}
+	}
+}
+
+# Fish and Crabs popular with the high class
+country_event = {
+	id = prices.66
+	title = prices.66.t
+	desc = prices.66.d
+	picture = TRADE_GOODS_FURS_FISH_AND_SALT_eventPicture
+
+	fire_only_once = yes
+	
+	major = yes
+
+	trigger = {
+		calc_true_if = {
+			any_province = {
+				country_or_non_sovereign_subject_holds = ROOT
+				OR = {
+					trade_goods = fish
+					trade_goods = crab
+				}
+			}
+			amount = 8
+		}
+		any_owned_province = {
+			OR = {
+				trade_goods = crab
+				trade_goods = fish
+			}
+			development = 20
+		}
+		estate_loyalty = {
+			estate = estate_nobles
+			loyalty = 70
+		}
+		estate_influence = {
+			estate = estate_nobles
+			influence = 70
+		}
+		num_of_estate_privileges = {
+			estate = estate_nobles
+			value = 3
+		}
+	}
+
+	mean_time_to_happen = {
+		months = 1
+	}
+	
+	
+	option = {
+		name = prices.66.a
+
+		change_price = {
+			trade_goods = fish
+			key = SEA_FOOD_POPULAR_WITH_NOBLILITY
+			value = 0.4
+			duration = -1
+		}
+		change_price = {
+			trade_goods = crab
+			key = SEA_FOOD_POPULAR_WITH_NOBLILITY
+			value = 0.4
+			duration = -1
+		}
+		change_price = {
+			trade_goods = salt
+			key = SEA_FOOD_POPULAR_WITH_NOBLILITY
+			value = 0.1
+			duration = -1
 		}
 	}
 }

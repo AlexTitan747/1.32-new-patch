@@ -389,6 +389,7 @@ estate_burghers_admirals = {
 	#max_absolutism = -5
 	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	influence = 0.05
+	is_valid = { num_of_ports = 1 }
 	can_select = {
 		navy_tradition = 30
 	}
@@ -1675,7 +1676,6 @@ estate_burghers_private_trade_fleets = {
 	}
 	benefits = {
 		light_ship_cost = -0.2
-		global_ship_trade_power = 0.1
 	}
 	conditional_modifier = {
 		trigger = {
@@ -1713,7 +1713,7 @@ estate_burghers_private_trade_fleets = {
 	}
 	conditional_modifier = {
 		trigger = { has_country_flag = mam_upgrade_private_trade_fleets_flag }
-		modifier = { 
+		modifier = {
 			global_ship_trade_power = 0.1 
 			burghers_influence_modifier = -0.1
 		}
@@ -2919,49 +2919,50 @@ estate_burghers_economical_boost = {
 #		}
 #	}
 #}
-estate_burghers_force_impressment = {
-	icon = privilege_heavy_ship
-	loyalty = 0.0
-	influence = 0.05
-	#max_absolutism = -5
-	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
-	is_valid = {
-		has_dlc = "Domination"
-		primitives = no
-	}
-	can_select = {
-		num_of_ports = 1
-	}
-	benefits = {
-		global_sailors_modifier = 0.15
-	}
-	on_granted = {
-		enable_estate_action = {
-			estate_action = COMISSION_MERCHANT_SHIPS_FOR_WAR_BURGHERS
-		}
-	}
-	on_revoked = {
-		disable_estate_action = {
-			estate_action = COMISSION_MERCHANT_SHIPS_FOR_WAR_BURGHERS
-		}
-	}
-	on_invalid = {
-		disable_estate_action = {
-			estate_action = COMISSION_MERCHANT_SHIPS_FOR_WAR_BURGHERS
-		}
-	}
-	#conditional_modifier = {
-	#	trigger = { has_government_mechanic = russian_modernization_mechanic }
-	#	modifier = { monthly_russian_modernization = -0.03 }
-	#}
-	#conditional_modifier = {
-	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
-	#	modifier = { monthly_ottoman_decadence = 0.02 }
-	#}
-	ai_will_do = {
-		factor = 0
-	}
-}
+#estate_burghers_force_impressment = {
+#	icon = privilege_heavy_ship
+#	loyalty = 0.0
+#	influence = 0.05
+#	#max_absolutism = -5
+#	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+#	is_valid = {
+#		has_dlc = "Domination"
+#		primitives = no
+#		num_of_ports = 1
+#	}
+#	can_select = {
+#		num_of_ports = 1
+#	}
+#	benefits = {
+#		global_sailors_modifier = 0.15
+#	}
+#	on_granted = {
+#		enable_estate_action = {
+#			estate_action = COMISSION_MERCHANT_SHIPS_FOR_WAR_BURGHERS
+#		}
+#	}
+#	on_revoked = {
+#		disable_estate_action = {
+#			estate_action = COMISSION_MERCHANT_SHIPS_FOR_WAR_BURGHERS
+#		}
+#	}
+#	on_invalid = {
+#		disable_estate_action = {
+#			estate_action = COMISSION_MERCHANT_SHIPS_FOR_WAR_BURGHERS
+#		}
+#	}
+#	#conditional_modifier = {
+#	#	trigger = { has_government_mechanic = russian_modernization_mechanic }
+#	#	modifier = { monthly_russian_modernization = -0.03 }
+#	#}
+#	#conditional_modifier = {
+#	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
+#	#	modifier = { monthly_ottoman_decadence = 0.02 }
+#	#}
+#	ai_will_do = {
+#		factor = 0
+#	}
+#}
 estate_burghers_naval_school_right = {
 	icon = privilege_navy_tradition
 	loyalty = 0.0
@@ -2971,24 +2972,36 @@ estate_burghers_naval_school_right = {
 	is_valid = {
 		has_dlc = "Domination"
 		is_primitive = no
+		num_of_ports = 1
 	}
 	benefits = {
 		prestige_from_naval = 0.5
+		#From above priv
+		global_sailors_modifier = 0.15
 	}
 	can_select = {
 		num_of_ports = 1
 	}
 	on_granted = {
 		enable_estate_action = {
+			estate_action = COMISSION_MERCHANT_SHIPS_FOR_WAR_BURGHERS
+		}
+		enable_estate_action = {
 			estate_action = GRANT_ADMIRALSHIP_BURGHERS
 		}
 	}
 	on_invalid = {
 		disable_estate_action = {
+			estate_action = COMISSION_MERCHANT_SHIPS_FOR_WAR_BURGHERS
+		}
+		disable_estate_action = {
 			estate_action = GRANT_ADMIRALSHIP_BURGHERS
 		}
 	}
 	on_revoked = {
+		disable_estate_action = {
+			estate_action = COMISSION_MERCHANT_SHIPS_FOR_WAR_BURGHERS
+		}
 		disable_estate_action = {
 			estate_action = GRANT_ADMIRALSHIP_BURGHERS
 		}
@@ -3099,7 +3112,6 @@ estate_burghers_promote_burgher_bookkeeping = {
 estate_burghers_great_works_of_iran = {
 	icon = privilege_dev_cost_desert
 	land_share = 5
-	max_absolutism = -10
 	loyalty = 0.05
 	influence = 0.05
 	is_valid = {
@@ -3234,8 +3246,8 @@ estate_burghers_great_works_of_iran = {
 
 estate_burghers_fund_karimi = {
 	icon = estate_burghers_fund_karimi
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	land_share = 5
 	loyalty = 0.1
 	influence = 0.1
@@ -3258,8 +3270,8 @@ estate_burghers_fund_karimi = {
 
 estate_burghers_foreign_expeditions = {
 	icon = estate_burghers_foreign_expeditions
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	loyalty = 0.05
 	influence = 0.1
 	is_valid = {
@@ -3285,8 +3297,8 @@ estate_burghers_foreign_expeditions = {
 
 estate_burghers_nile_goods_transport = {
 	icon = estate_burghers_nile_goods_transport
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	loyalty = 0.05
 	influence = 0.1
 	is_valid = {
@@ -3312,8 +3324,8 @@ estate_burghers_nile_goods_transport = {
 
 estate_burghers_monopoly_of_coffee = {
 	icon = estate_burghers_monopoly_of_coffee
-	max_absolutism = -10
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	loyalty = 0.1
 	is_valid = {
 		has_country_flag = mam_enable_coffee_monopoly_flag
@@ -3428,8 +3440,8 @@ estate_burghers_reliance_on_republics = {
 	icon = estate_burghers_reliance_on_republics
 	loyalty = -0.05
 	influence = 0
-	max_absolutism = -10
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	is_valid = {
 		OR = {
 			tag = BYZ
@@ -3510,8 +3522,8 @@ estate_burghers_exkousseiai_for_latins = {
 	icon = estate_burghers_exkousseiai_for_latins
 	loyalty = -0.1
 	influence = -0.05
-	max_absolutism = -10
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	is_valid = {
 		OR = {
 			tag = BYZ
@@ -3567,7 +3579,7 @@ estate_burghers_BYZ_single_market = {
 	icon = estate_burghers_BYZ_single_market
 	loyalty = 0.1
 	influence = 0.05
-	max_absolutism = -5
+	#max_absolutism = -5
 	is_valid = {
 		has_unlocked_estate_privilege = { estate_privilege = estate_burghers_BYZ_single_market }
 	}
@@ -3606,8 +3618,8 @@ estate_burghers_ARB_oasis_development = {
 	icon = estate_burghers_arb_oasis_development
 	loyalty = 0.05
 	influence = 0.15
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	is_valid = {
 		has_country_flag = ARB_unlock_oasis_development_flag
 	}
@@ -3670,8 +3682,8 @@ estate_burghers_YEM_coffee_monopoly = {
 	icon = estate_burghers_monopoly_of_coffee
 	loyalty = 0.1
 	influence = 0
-	max_absolutism = -10
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	is_valid = {
 		mission_completed = YEM_coffee
 		any_owned_province = {
@@ -3772,6 +3784,8 @@ estate_burghers_persian_rugs = {
 				trade_goods = cloth
 				trade_goods = silk
 				trade_goods = dyes
+				trade_goods = uniforms
+				trade_goods = tailored_clothes
 			}
 		}
 	}
@@ -3792,6 +3806,8 @@ estate_burghers_persian_rugs = {
 					trade_goods = cloth
 					trade_goods = silk
 					trade_goods = dyes
+					trade_goods = uniforms
+					trade_goods = tailored_clothes
 				}
 			}
 			add_province_modifier = {

@@ -3445,88 +3445,88 @@ estate_nobles_development_of_castles = {
 #		factor = 0
 #	}
 #}
-estate_nobles_royal_court_tasks = {
-	icon = privilege_build_jain_temple
-	loyalty = 0.0
-	influence = 0.05
-	#max_absolutism = -5
-	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
-	is_valid = {
-		has_dlc = "Domination"
-	}
-	can_select = {
-		if = {
-			limit = { has_estate_privilege = estate_rajput_royal_court_tasks }
-			NOT = { has_estate_privilege = estate_rajput_royal_court_tasks }
-		}
-		if = {
-			limit = { has_estate_privilege = estate_maratha_royal_court_tasks }
-			NOT = { has_estate_privilege = estate_maratha_royal_court_tasks }
-		}
-	}
-	on_granted = {
-		scaling_with_influence_privilege_tooltip = {
-			estate_privilege = estate_nobles_royal_court_tasks
-		}
-	}
-	on_revoked = {
-		scaling_with_influence_privilege_tooltip = {
-			estate_privilege = estate_nobles_royal_court_tasks
-		}
-	}
-	influence_scaled_conditional_modifier = {	#Modifier that are applied if the specified conditions are true. At 100% Influence you gain 100% of the modifier.
-		trigger = {
-			NOT = {
-				estate_loyalty = {
-					estate = estate_nobles
-					loyalty = 30
-				}
-			}
-		}
-		modifier = {
-			prestige_decay = 0.01
-		}
-	}
-	influence_scaled_conditional_modifier = {	#Modifier that are applied if the specified conditions are true. At 100% Influence you gain 100% of the modifier.
-		trigger = {
-			estate_loyalty = {
-				estate = estate_nobles
-				loyalty = 30
-			}
-			NOT = {
-				estate_loyalty = {
-					estate = estate_nobles
-					loyalty = 60
-				}
-			}
-		}
-		modifier = {
-			prestige_decay = -0.005
-		}
-	}
-	influence_scaled_conditional_modifier = {	#Modifier that are applied if the specified conditions are true. At 100% Influence you gain 100% of the modifier.
-		trigger = {
-			estate_loyalty = {
-				estate = estate_nobles
-				loyalty = 60
-			}
-		}
-		modifier = {
-			prestige_decay = -0.01
-		}
-	}
-	#conditional_modifier = {
-	#	trigger = { has_government_mechanic = russian_modernization_mechanic }
-	#	modifier = { monthly_russian_modernization = -0.05 }
-	#}
-	#conditional_modifier = {
-	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
-	#	modifier = { monthly_ottoman_decadence = 0.02 }
-	#}
-	ai_will_do = {
-		factor = 0
-	}
-}
+#estate_nobles_royal_court_tasks = {
+#	icon = privilege_build_jain_temple
+#	loyalty = 0.0
+#	influence = 0.05
+#	#max_absolutism = -5
+#	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+#	is_valid = {
+#		has_dlc = "Domination"
+#	}
+#	can_select = {
+#		if = {
+#			limit = { has_estate_privilege = estate_rajput_royal_court_tasks }
+#			NOT = { has_estate_privilege = estate_rajput_royal_court_tasks }
+#		}
+#		if = {
+#			limit = { has_estate_privilege = estate_maratha_royal_court_tasks }
+#			NOT = { has_estate_privilege = estate_maratha_royal_court_tasks }
+#		}
+#	}
+#	on_granted = {
+#		scaling_with_influence_privilege_tooltip = {
+#			estate_privilege = estate_nobles_royal_court_tasks
+#		}
+#	}
+#	on_revoked = {
+#		scaling_with_influence_privilege_tooltip = {
+#			estate_privilege = estate_nobles_royal_court_tasks
+#		}
+#	}
+#	influence_scaled_conditional_modifier = {	#Modifier that are applied if the specified conditions are true. At 100% Influence you gain 100% of the modifier.
+#		trigger = {
+#			NOT = {
+#				estate_loyalty = {
+#					estate = estate_nobles
+#					loyalty = 30
+#				}
+#			}
+#		}
+#		modifier = {
+#			prestige_decay = 0.01
+#		}
+#	}
+#	influence_scaled_conditional_modifier = {	#Modifier that are applied if the specified conditions are true. At 100% Influence you gain 100% of the modifier.
+#		trigger = {
+#			estate_loyalty = {
+#				estate = estate_nobles
+#				loyalty = 30
+#			}
+#			NOT = {
+#				estate_loyalty = {
+#					estate = estate_nobles
+#					loyalty = 60
+#				}
+#			}
+#		}
+#		modifier = {
+#			prestige_decay = -0.005
+#		}
+#	}
+#	influence_scaled_conditional_modifier = {	#Modifier that are applied if the specified conditions are true. At 100% Influence you gain 100% of the modifier.
+#		trigger = {
+#			estate_loyalty = {
+#				estate = estate_nobles
+#				loyalty = 60
+#			}
+#		}
+#		modifier = {
+#			prestige_decay = -0.01
+#		}
+#	}
+#	#conditional_modifier = {
+#	#	trigger = { has_government_mechanic = russian_modernization_mechanic }
+#	#	modifier = { monthly_russian_modernization = -0.05 }
+#	#}
+#	#conditional_modifier = {
+#	#	trigger = { has_government_mechanic = ottoman_decadence_mechanic }
+#	#	modifier = { monthly_ottoman_decadence = 0.02 }
+#	#}
+#	ai_will_do = {
+#		factor = 0
+#	}
+#}
 #estate_nobles_diet_right = {
 #	icon = privilege_government
 #	loyalty = 0.0
@@ -3712,7 +3712,7 @@ estate_nobles_noble_officer_right = {
 
 estate_nobles_highland_fortifications = {
 	icon = privilege_fort
-	max_absolutism = -5
+	#max_absolutism = -5
 	loyalty = 0.05
 	influence = 0.05
 	is_valid = {
@@ -3781,7 +3781,7 @@ estate_nobles_highland_fortifications = {
 estate_nobles_emirs_of_baghdad = {
 	icon = privilege_build_jain_temple
 	land_share = 0
-	max_absolutism = -15
+	#max_absolutism = -15
 	loyalty = 0.1
 	influence = 0.1
 	is_valid = {
@@ -3846,8 +3846,8 @@ estate_nobles_deteriorating_army = {
 	icon = estate_nobles_deteriorating_army
 	loyalty = -0.05
 	influence = 0.1
-	max_absolutism = -10
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
+	#max_absolutism = -10
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 2 } }
 	is_valid = {
 		OR = {
 			tag = BYZ
@@ -3941,7 +3941,7 @@ estate_nobles_tofangchi_regiment = {
 		
 	}
 	benefits = {
-		infantry_power = 0.1
+		infantry_power = 0.075
 	}
 	ai_will_do = {
 		factor = 100
@@ -3952,8 +3952,8 @@ estate_nobles_tupchi_artillery_corps = {
 	icon = privilege_artillery
 	loyalty = 0.05
 	influence = 0.05
-	max_absolutism = -5
-	conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
+	#max_absolutism = -5
+	#conditional_modifier = { trigger = { has_absolutism_reduction_for_estate_privileges = yes } modifier = { max_absolutism = 1 } }
 	is_valid = {
 		has_unlocked_estate_privilege = {
 			estate_privilege = estate_nobles_tupchi_artillery_corps
@@ -3995,6 +3995,9 @@ estate_nobles_tupchi_artillery_corps = {
 	benefits = {
 		artillery_power = 0.05
 	}
+	modifier_by_land_ownership = {
+		#artillery_power = 0.10
+	}
 	ai_will_do = {
 		factor = 100
 	}
@@ -4025,7 +4028,7 @@ estate_nobles_qurchi_service = {
 		}
 	}
 	benefits = {
-		morale_damage_received = -0.1
+		#morale_damage_received = -0.1
 	}
 	loyalty_scaled_conditional_modifier = {
 		trigger = { always = yes }
@@ -4034,6 +4037,7 @@ estate_nobles_qurchi_service = {
 			nobles_influence_modifier = 0.5
 			qizilbash_influence_modifier = -0.5
 			ghulams_influence_modifier = -0.5
+			morale_damage_received = -0.1
 		}
 	}
 	ai_will_do = {

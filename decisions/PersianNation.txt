@@ -8,8 +8,8 @@ country_decisions = {
 			NOT = { tag = PER }
 			OR = {
 				tag = AFG
-				tag = SRV
-				tag = CAU
+				#tag = SRV
+				#tag = CAU
 			}
 			OR = {
 				culture_group = iranian
@@ -29,8 +29,14 @@ country_decisions = {
 				province_id = 432		# Kerman
 				province_id = 433		# Yazd
 				province_id = 2213		# Qom
-				province_id = 2215      # Qazvin
-				province_id = 2221		# Mashhad
+				AND = {
+					province_id = 2215      # Qazvin
+					NOT = { 2221 = { owned_by = ROOT } }
+				}
+				AND = {
+					province_id = 2221		# Mashhad
+					NOT = { 2215 = { owned_by = ROOT } }
+				}
 			}
 			OR = {
 				NOT = { owned_by = ROOT }
@@ -59,15 +65,26 @@ country_decisions = {
 						was_tag = SRV
 					}
 				}
-				adm_tech = 10
 				custom_trigger_tooltip = {
-					custom_tooltip = tm_srv_chose_zoro_tt
+					tooltip = tm_srv_chose_zoro_tt
 					has_country_flag = tm_srv_chose_zoroastrian
 				}
 			}
+			if = {
+				limit = {
+					tag = AFG
+				}
+				custom_trigger_tooltip = {
+					tooltip = tm_afg_chose_zoro_tt
+					has_country_flag = tm_AFG_zoro
+				}
+			}
+			adm_tech = 10
 		}
 
 		effect = {
+			persia_region = { add_perma_claim = yes }
+			khorasan_region = { add_perma_claim = yes }
 			capital_scope = {
 				change_culture = persian
 			}

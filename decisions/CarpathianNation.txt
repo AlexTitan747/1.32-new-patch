@@ -1,101 +1,108 @@
 country_decisions = {
-
-		carpathian_nation = {
-			color = { 23 223 234 }
-			major = yes
-			potential = {
-				NOT = { has_country_flag = formed_carpathia_flag }
-				NOT = { exists = CRP }
-				tag = HUN
-				is_colonial_nation = no
-				OR = {
-					primary_culture = ruthenian
-					primary_culture = transylvanian
-					primary_culture = hungarian
-					primary_culture = slovak
-				}
-				NOT = { has_country_flag = hun_cav_focus }
+	carpathian_nation = {
+		color = { 23 223 234 }
+		major = yes
+		potential = {
+			NOT = { has_country_flag = formed_carpathia_flag }
+			NOT = { exists = CRP }
+			tag = HUN
+			is_colonial_nation = no
+			OR = {
+				primary_culture = ruthenian
+				primary_culture = transylvanian
+				primary_culture = hungarian
+				primary_culture = slovak
 			}
-			
-			provinces_to_highlight = {
-				OR = {
-					province_id = 4128
-					province_id = 162
-					province_id = 4236
-					province_id = 156
-				}
-			}
-			
-			allow = {
-				custom_trigger_tooltip = {
-					tooltip = tm_hun_chose_inf_focus
-					has_country_flag = hun_inf_focus
-				}
-				adm_tech = 7
-				NOT = { exists = CRP }
-				is_nomad = no
-				is_free_or_tributary_trigger = yes
-				is_at_war = no
-				is_tribal = no
-				
-				owns_core_province = 4128
-				owns_core_province = 162
-				owns_core_province = 4236
-				owns_core_province = 156
-				
-				162 = {
-					development = 15
-				}
-				4128 = {
-					development = 15
-				}
-				4236 = {
-					development = 10
-				}
-				156 = {
-					development = 10
-				}
-				num_of_owned_provinces_with = {
-					value = 15
-					region = carpathia_region
-					is_core = root
-				}
-			}
-			effect = {
-				change_tag = CRP
-				remove_non_electors_emperors_from_empire_effect = yes
-				add_prestige = 25
-				add_country_modifier = {
-					name = centralization_modifier
-					duration = 3650
-				}
-				add_country_modifier = {
-					name = return_of_the_true_faith
-					duration = 7300
-				}
-				if = {
-					limit = { 
-						is_revolutionary = no 
-						religion = orthodox
-					}
-					if = {
-						limit = { is_revolutionary = no }
-						add_government_reform = panslavic_state
-					}
-				}
-				#set_capital = 1953 # Szabolcs
-				carpathia_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				set_country_flag = formed_carpathia_flag
-				if = {
-					limit = { has_custom_ideas = no }
-					country_event = { id = ideagroups.1 } #Swap Ideas
-				}
-			}
-			
+			NOT = { has_country_flag = hun_cav_focus }
 		}
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					OR = {
+						province_id = 4128
+						province_id = 162
+					}
+					NOT = { development = 15 }
+				}
+				AND = {
+					OR = {
+						province_id = 4236
+						province_id = 156
+					}
+					NOT = { development = 10 }
+				}
+			}
+		}
+		
+		allow = {
+			custom_trigger_tooltip = {
+				tooltip = tm_hun_chose_inf_focus
+				has_country_flag = hun_inf_focus
+			}
+			adm_tech = 7
+			NOT = { exists = CRP }
+			is_nomad = no
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			is_tribal = no
+			
+			owns_core_province = 4128
+			owns_core_province = 162
+			owns_core_province = 4236
+			owns_core_province = 156
+			
+			162 = {
+				development = 15
+			}
+			4128 = {
+				development = 15
+			}
+			4236 = {
+				development = 10
+			}
+			156 = {
+				development = 10
+			}
+			num_of_owned_provinces_with = {
+				value = 15
+				region = carpathia_region
+				is_core = root
+			}
+		}
+		
+		effect = {
+			change_tag = CRP
+			remove_non_electors_emperors_from_empire_effect = yes
+			add_prestige = 25
+			add_country_modifier = {
+				name = centralization_modifier
+				duration = 3650
+			}
+			if = {
+				limit = {
+					NOT = { government = monarchy }
+					is_revolutionary = no
+				}
+				change_government = monarchy
+			}
+			country_event = {
+				id = formable_religion_change.1
+				tooltip = formable_religion_change.1.tt
+			}
+			#set_capital = 1953 # Szabolcs
+			carpathia_region = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			set_country_flag = formed_carpathia_flag
+			if = {
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+		}
+		
 	}
+}

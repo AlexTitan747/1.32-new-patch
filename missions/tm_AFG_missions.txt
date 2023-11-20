@@ -255,9 +255,9 @@ tm_AFG_branch_3 = {
 
 		effect = {
 			add_country_modifier = { # -10% AE // -5% CCR
-			name = tm_AFG_early_conquests
-			duration = 3650
-		}
+				name = tm_AFG_early_conquests
+				duration = 3650
+			}
 			custom_tooltip = tm_AFG_claim_surroundings_tt
 			hidden_effect = { #West of Afghan
 				herat_area = {
@@ -703,8 +703,12 @@ tm_AFG_branch_5 = {
 
 		trigger = {
 			stability = 2
-			religious_unity = 0.85
-			is_year = 1480
+			religious_unity = 0.75
+			OR = {
+				is_year = 1480
+				theologian = 3
+				inquisitor = 2
+			}
 		}
 
 		effect = {
@@ -1459,8 +1463,12 @@ tm_KUS_slot_5_not_hindu = {
 	has_country_shield = yes
 
 	potential = {
-		tag = KUS
+		OR = {
+			tag = AFG
+			tag = KUS
+		}
 		NOT = { has_country_flag = tm_AFG_hindu }
+		has_country_flag = tm_AFG_had_religious_event
 	}
 
 	tm_KUS_branch5_not_hindu_mission_1 = {
@@ -1475,6 +1483,7 @@ tm_KUS_slot_5_not_hindu = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_AFG_REL }
 			num_of_owned_provinces_with = {
 				value = 20
 				superregion = india_superregion
@@ -1495,10 +1504,12 @@ tm_KUS_slot_5_not_hindu = {
 		required_missions = { tm_KUS_branch5_not_hindu_mission_1 }
 
 		provinces_to_highlight = {
-			
+			owned_by = ROOT
+			NOT = { religion = ROOT }
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_AFG_REL }
 			OR = {
 				employed_advisor = {
 					type = inquisitor
@@ -1529,6 +1540,7 @@ tm_KUS_slot_5_not_hindu = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_AFG_REL }
 			religious_unity = 0.95
 			num_of_owned_provinces_with = {
 				value = 80
@@ -1586,6 +1598,7 @@ tm_KUS_slot_5_not_hindu = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_AFG_REL }
 			religious_unity = 0.99
 			num_of_owned_provinces_with = {
 				value = 100
@@ -1615,7 +1628,10 @@ tm_KUS_slot_5_hindu = {
 	has_country_shield = yes
 
 	potential = {
-		tag = KUS
+		OR = {
+			tag = AFG
+			tag = KUS
+		}
 		has_country_flag = tm_AFG_hindu
 	}
 
@@ -1631,6 +1647,7 @@ tm_KUS_slot_5_hindu = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_AFG_REL }
 			num_of_owned_provinces_with = {
 				value = 25
 				region = khorasan_region
@@ -1652,6 +1669,7 @@ tm_KUS_slot_5_hindu = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_AFG_REL }
 			development_in_provinces = {
 				value = 800
 				religion = hinduism
@@ -1690,6 +1708,7 @@ tm_KUS_slot_5_hindu = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_AFG_REL }
 			OR = {
 				num_of_owned_provinces_with = {
 					value = 3
@@ -1748,6 +1767,7 @@ tm_KUS_slot_5_hindu = {
 		}
 
 		trigger = {
+			not_in_mission_preview_mode = { key = TM_AFG_REL }
 			custom_trigger_tooltip = {
 				tooltip = KUS_25_year_buddha_ruler_tt
 				has_personal_deity = buddha

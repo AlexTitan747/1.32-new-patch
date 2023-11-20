@@ -1,1239 +1,1238 @@
 ###
 # Persia Missions (Conquest Focused)
 ###
-tm_PER_branch_2 = {
-	slot = 2
-	generic = no
-	ai = yes
-
-	has_country_shield = yes
-
-	potential = {
-		tag = PER
-	}
-
-	tm_PER_branch2_mission_1 = {
-		icon = league_of_the_public_weal
-		position = 3
-		required_missions = { tm_PER_branch3_mission_1 }
-
-		provinces_to_highlight = {
-			OR = {
-				area = ardabil_area
-				area = tabriz_area
-				area = shirvan_area
-				area = armenia_area
-				area = yerevan_area
-			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-
-		trigger = {
-			ardabil_area = {
-				type = all
-				owned_by = ROOT
-			}
-			tabriz_area = {
-				type = all
-				owned_by = ROOT
-			}
-			shirvan_area = {
-				type = all
-				owned_by = ROOT
-			}
-			armenia_area = {
-				type = all
-				owned_by = ROOT
-			}
-			yerevan_area = {
-				type = all
-				owned_by = ROOT
-			}
-		}
-
-		effect = {
-			if = {
-				limit = { was_tag = AFG }
-
-				country_event = {
-					id = titanper.1 # Duchy of Armenia March, or Lose Autonomy and Culture Convert the Land
-	
-					tooltip = titanper.1.tt
-				}
-			}
-			caucasia_region = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-	}
-
-	tm_PER_branch2_mission_2 = {
-		icon = consolidate_the_stadholders 
-		position = 5
-		required_missions = { 
-			tm_PER_branch2_mission_1
-		}
-
-		provinces_to_highlight = {
-			region = caucasia_region
-		}
-
-		trigger = {
-			caucasia_region = {
-				type = all
-				owned_by = ROOT
-			}
-		}
-		
-		effect = {
-			if = {
-				limit = { was_tag = AFG }
-				add_power_projection = {
-					type = tm_PER_conqueror_of_the_caucasus
-					amount = 20
-				}
-				custom_tooltip = tm_Permanent_PP_TT
-	
-				add_adm_power = 75
-				add_dip_power = 75
-				add_mil_power = 75
-				add_treasury = 500
-			}
-			if = {
-				limit = { was_tag = SRV }
-				add_treasury = 500
-			}
-		}
-	}
-	tm_PER_branch2_mission_3 = {
-		icon = mission_found_the_city_of_agra
-		position = 6
-		required_missions = {
-			tm_PER_branch3_mission_3
-		}
-
-		provinces_to_highlight = {
-			province_id = 410
-		}
-
-		trigger = {
-			410 = {
-				owned_by = ROOT
-				development = 30
-			}
-		}
-
-		effect = {
-			add_country_modifier = {
-				name = tm_PER_zoro_house_of_wisdom
-				duration = -1
-			}
-		}
-	}
-}
-
-tm_PER_branch_3 = {
-	slot = 3
-	generic = no
-	ai = yes
-
-	has_country_shield = yes
-	potential = {
-		tag = PER
-	}
-
-	tm_PER_branch3_mission_1 = {
-		icon = mission_conquer_kannauj
-		position = 2
-		required_missions = { tm_PER_branch4_mission_1 }
-
-		provinces_to_highlight = {
-			area = azerbaijan_area 
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-
-		trigger = {
-			azerbaijan_area = {
-				type = all
-				owned_by = ROOT
-			}
-		}
-
-		effect = {
-			add_prestige = 10
-			add_adm_power = 50
-		}
-	}
-	tm_PER_branch3_mission_2 = {
-		icon = mission_invade_maharashtra
-		position = 4
-		required_missions = {
-			tm_PER_branch3_mission_1
-			tm_PER_branch4_mission_2
-		}
-
-		provinces_to_highlight = {
-			area = luristan_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-
-		trigger = {
-			luristan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-
-		effect = {
-			custom_tooltip = tm_PER_claim_mashriq_basra_TT
-			add_country_modifier = {
-				name = tm_PER_change_of_administration
-				duration = 3650
-			}
-			hidden_effect = {
-				iraq_arabi_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				shahrizor_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				arbil_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				tikrit_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				khuzestan_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				radah_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				basra_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-			}
-		}
-	}
-	tm_PER_branch3_mission_3 = {
-		icon = mission_invade_the_deccan_ori
-		position = 5 
-		required_missions = {
-			tm_PER_branch3_mission_2
-		}
-
-		provinces_to_highlight = {
-			OR = {
-				area = iraq_arabi_area
-				area = shahrizor_area
-				area = arbil_area
-				area = tikrit_area
-				area = khuzestan_area
-				area = radah_area
-				area = basra_area
-			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-
-		trigger = {
-			iraq_arabi_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			shahrizor_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			arbil_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			tikrit_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			khuzestan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			radah_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			basra_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-
-		effect = {
-			custom_tooltip = tm_PER_claim_arabian_basra_TT
-			hidden_effect = {
-				nafud_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				hail_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				qasim_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				yamamah_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				bahrain_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-			}
-		}
-	}
-	tm_PER_branch3_mission_4 = {
-		icon = mission_sw_against_the_desert 
-		position = 6
-		required_missions = {
-			tm_PER_branch3_mission_3
-		}
-
-		provinces_to_highlight = {
-			OR = {
-				area = nafud_area
-				area = hail_area
-				area = qasim_area
-				area = yamamah_area
-				area = bahrain_area
-			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-
-		trigger = {
-			nafud_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			hail_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			qasim_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			yamamah_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			bahrain_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-
-		effect = {
-			add_mil_power = 150
-			custom_tooltip = tm_PER_devastation_in_arabia_TT
-			hidden_effect = {
-				arabia_region = {
-					limit = {
-						owned_by = ROOT
-					}
-					add_devastation = -100
-					add_prosperity = 100
-				}
-			}
-			
-		}
-	}
-}
-
-tm_PER_branch_4 = {
-	slot = 4
-	generic = no
-	ai = yes
-
-	has_country_shield = yes
-
-	potential = {
-		tag = PER
-	}
-
-	tm_PER_branch4_mission_1 = {
-		icon = mission_persian_soldiers
-		position = 1
-		required_missions = {}
-
-		trigger = {
-			army_size_percentage = 1
-			OR = {
-				has_global_modifier_value = {
-					which = land_morale 
-					value = 0.30
-				}
-				has_global_modifier_value = {
-					which = infantry_power 
-					value = 0.30
-				}
-			}
-		}
-
-		effect = {
-			persia_region = {				
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}	
-		}
-	}
-
-	tm_PER_branch4_mission_2 = {
-		icon = mission_cannons_firing 
-		position = 3
-		required_missions = {
-			tm_PER_branch4_mission_1
-			tm_PER_branch3_mission_1
-		}
-
-		provinces_to_highlight = {
-			OR = {
-				area = espakh_area
-				area = farsistan_area
-				area = persian_gulf_coast
-				area = mogostan_area
-			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-
-		trigger = {
-			farsistan_area = {
-				type = all
-				owned_by = ROOT
-			}
-			espakh_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT 
-			}
-			persian_gulf_coast = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT 
-			}
-			mogostan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT 
-			}
-		}
-
-		effect = {
-			add_ruler_modifier = {
-				name = tm_PER_master_of_persia
-			}
-			custom_tooltip = tm_PER_ruler_legacy_tt
-			set_country_flag = tm_PER_legacy_siege_flag
-		}
-	}
-
-	tm_PER_branch4_mission_3 = {
-		icon = mission_afghan_frontier
-		position = 5
-		required_missions = {
-			tm_PER_branch4_mission_2
-		}
-
-		provinces_to_highlight = {
-			OR = {
-				area = saravan_area
-				area = makran_area
-			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-
-		trigger = {
-			saravan_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			makran_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-
-		effect = {
-			add_prestige = 10
-		}
-	}
-	tm_PER_branch4_mission_4 = {
-		icon = mission_order_in_the_domain 
-		position = 6
-		required_missions = {
-			tm_PER_branch3_mission_3
-			tm_PER_branch4_mission_3
-		}
-		provinces_to_highlight = {
-			OR = {
-				area = pirate_coast_area
-				area = oman_area
-				area = mascat_area
-				area = inner_gulf_area
-				area = dhofar_area
-			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-
-		trigger = {
-			pirate_coast_area = {
-				type = all
-				owned_by = ROOT
-			}
-			oman_area = {
-				type = all
-				owned_by = ROOT
-			}
-			mascat_area = {
-				type = all
-				owned_by = ROOT
-			}
-			inner_gulf_area = {
-				type = all
-				owned_by = ROOT
-			}
-			dhofar_area = {
-				type = all
-				owned_by = ROOT
-			}
-		}
-
-		effect = {
-			add_country_modifier = {
-				name = tm_PER_reconquer_arabia
-				duration = -1
-			}
-			custom_tooltip = tm_PER_arabian_levies_TT
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
-						owned_by = PER
-						has_military_building = yes
-						base_manpower = 8
-						region = arabia_region
-					}
-					add_permanent_province_modifier = {
-						name = tm_PER_arabian_levies
-						duration = 12775
-					}
-				}
-			}
-		}
-	}
-}
-
-tm_PER_branch_5 = {
-	slot = 5
-	generic = no
-	ai = yes
-
-	has_country_shield = yes
-
-	potential = {
-		tag = PER
-	}
-
-	tm_PER_branch5_mission_1 = {
-		icon = mission_bijapur_karnatak
-		position = 2
-		required_missions = { tm_PER_branch4_mission_1 }
-
-		provinces_to_highlight = {
-			area = tabarestan_area 
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-
-		trigger = {
-			tabarestan_area = {
-				type = all
-				owned_by = ROOT
-			}
-		}
-
-		effect = {
-			add_ruler_modifier = {
-				name = tm_PER_honor_the_dabuyids
-			}
-			custom_tooltip = tm_PER_ruler_legacy_tt
-			set_country_flag = tm_PER_legacy_trade_flag
-			add_mercantilism = 5
-		}
-	}
-
-	tm_PER_branch5_mission_2 = {
-		icon = mission_bengal_campaign
-		position = 5
-		required_missions = {
-			tm_PER_branch5_mission_1
-		}
-
-		provinces_to_highlight = {
-			region = khorasan_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-
-		trigger = {
-			khorasan_region = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-
-		effect = {
-			if = {
-				limit = { was_tag = SRV }
-				add_power_projection = {
-					type = tm_PER_ruler_of_the_afghani_people
-					amount = 20
-				}
-				custom_tooltip = tm_Permanent_PP_TT
-				add_adm_power = 75
-				add_dip_power = 75
-				add_mil_power = 75
-				add_treasury = 500
-			}
-			if = {
-				limit = { was_tag = AFG }
-				add_treasury = 500
-			}
-		}
-	}
-
-	tm_PER_branch5_mission_3 = {
-		icon = mission_invade_the_deccan_dlh
-		position = 6
-		required_missions = {
-			tm_PER_branch4_mission_3
-			tm_PER_branch5_mission_2
-		}
-
-		provinces_to_highlight = {
-			area = lahore_area
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-
-		trigger = { 
-			lahore_area = {
-				type = all
-				owned_by = ROOT
-			}
-		}
-		effect = { 
-			507 = {
-				add_permanent_province_modifier = {
-					name = tm_PER_city_of_lava
-					duration = -1
-				}
-			}
-		}
-	}
-}
-
-###
-# Development of Persia
-###
-
-tm_PER_branch_1 = {
-	slot = 1
-	generic = no
-	ai = yes
-
-	has_country_shield = yes
-
-	potential = {
-		tag = PER
-	}
-
-	tm_PER_branch1_mission_1 = {
-		icon = imperial_capitals 
-		position = 1
-		required_missions = {}
-
-		provinces_to_highlight = {
-			province_id = 2213
-		}
-
-		trigger = {
-			2213 = {
-				owned_by = ROOT
-				development = 25
-			}
-		}
-
-		effect = {
-			2213 = {
-				add_permanent_province_modifier = {
-					name = tm_PER_imperial_city
-					duration = -1
-				}
-			}
-		}
-	}
-
-	tm_PER_branch1_mission_2 = {
-		icon = mission_guilds_of_barcelona 
-		position = 3
-		required_missions = { tm_PER_branch1_mission_1 }
-
-		provinces_to_highlight = {
-			OR = {
-				NOT = { development = 25 }
-				NOT = { has_production_building = yes }
-				NOT = { has_military_building = yes }
-			}
-			owned_by = PER
-		}
-
-		trigger = {
-			num_of_owned_provinces_with = {
-				development = 25
-				has_production_building = yes
-				has_military_building = yes
-				value = 3 
-			}
-		}
-
-		effect = {
-			custom_tooltip = tm_PER_imperial_cities_tt
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
-						owned_by = PER
-						development = 30
-						has_production_building = yes
-						has_military_building = yes
-					}
-					add_permanent_province_modifier = {
-						name = tm_PER_imperial_city
-						duration = -1
-					}
-				}
-			}
-		}
-	}
-	tm_PER_branch1_mission_3 = {
-		icon = mission_riches_of_golconda 
-		position = 5
-		required_missions = {
-			tm_PER_branch1_mission_2 
-		}
-
-		provinces_to_highlight = {
-			area = farsistan_area
-		}
-
-		trigger = {
-			farsistan_area = {
-				type = all
-				owned_by = ROOT
-				development = 20
-				NOT = { local_autonomy = 10 }
-			}
-		}
-
-		effect = {
-			country_event = {
-				id = titanper.2
-				tooltip = titanper.2.tt
-			}
-			tooltip = {
-				2218 = {
-					change_province_name = "Persepolis"
-					change_trade_goods = saffron
-					add_base_production = 5
-					add_base_tax = 5
-					add_base_manpower = 5
-					add_province_modifier = {
-						name = tm_PER_envy_of_the_world
-						duration = -1
-					}
-				}
-			}
-		}
-	}
-
-	tm_PER_branch1_mission_4 = {
-		icon = mission_kings_crown
-		position = 6
-		required_missions = {}	
-
-		trigger = {
-			AND = {
-				OR = {
-					free_thinker = 4
-					philosopher = 4
-					artist = 4
-					natural_scientist = 4
-				}
-				OR = {
-					statesman = 4
-					trader = 4
-				}
-				army_reformer = 5
-			}
-		}
-
-		effect = {
-			country_event = {
-				id = titanper.4
-				tooltip = titanper.4.tt
-			}
-		}
-	}
-	tm_PER_branch1_mission_5 = {
-		icon = mission_conquer_the_doab 
-		position = 7
-		required_missions = {
-			tm_PER_branch1_mission_4
-		}
-
-		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = tm_PER_mil_positive_trait_TT
-				OR = {
-					ruler_has_personality = kind_hearted_personality 
-					ruler_has_personality = conqueror_personality
-					ruler_has_personality = tactical_genius_personality
-					ruler_has_personality = bold_fighter_personality
-					ruler_has_personality = strict_personality
-					ruler_has_personality = inspiring_leader_personality
-				}
-			}
-			MIL = 5
-			years_of_income = 3.3
-		}
-
-		effect = {
-			custom_tooltip = tm_per_education_explanation_tt
-			add_years_of_income = -3.3
-			if = {
-				limit = { 
-					OR = {
-						ruler_has_personality = kind_hearted_personality 
-						ruler_has_personality = conqueror_personality
-					}
-				}
-				add_country_modifier = {
-					name = tm_PER_for_the_common_folk  #-War Exhaustion + 5%MPR
-					duration = -1
-				}	
-			}
-
-			else_if = {
-				limit = { 
-					OR = { 
-						ruler_has_personality = tactical_genius_personality 
-						ruler_has_personality = bold_fighter_personality 
-					} 
-				}
-				add_country_modifier = {
-					name = tm_PER_ruler_general # +1 LLS +1LLM
-					duration = -1
-				}	
-			}
-			else_if = {
-				limit = { ruler_has_personality = strict_personality }
-				add_country_modifier = {
-					name = tm_PER_strict_ruler #2.5% Disc
-					duration = -1
-				}
-			}
-			else_if = {
-				limit = { ruler_has_personality = inspiring_leader_personality }
-				add_country_modifier = {
-					name = tm_PER_inspiring_ruler #5% Morale of Armies
-					duration = x
-				}
-			}
-		}
-	}
-}
-
-tm_PER_branch2_2 = {
-	slot = 2
-	generic = no
-	ai = yes
-
-	has_country_shield = yes
-
-	potential = {
-		tag = PER
-	}
-	tm_PER_branch2_mission_4 = {
-		icon = sponsor_the_arts
-		position = 7
-		required_missions = {
-			tm_PER_branch1_mission_4
-		}
-
-		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = tm_PER_adm_positive_trait_TT
-				OR = {
-					ruler_has_personality = just_personality 
-					ruler_has_personality = righteous_personality
-					ruler_has_personality = tolerant_personality
-					ruler_has_personality = free_thinker_personality
-					ruler_has_personality = calm_personality
-					ruler_has_personality = zealot_personality
-					ruler_has_personality = lawgiver_personality
-					ruler_has_personality = midas_touched_personality
-					ruler_has_personality = architecural_visionary_personality
-					ruler_has_personality = scholar_personality
-					ruler_has_personality = reformist_personality
-				}
-			}
-			ADM = 5
-			years_of_income = 3.3
-		}
-
-		effect = {
-			custom_tooltip = tm_per_education_explanation_tt
-			add_years_of_income = -3.3
-
-			if = {
-				limit = { ruler_has_personality = just_personality }
-				add_country_modifier = {
-					name = tm_PER_just_ruler #-3 Global Unrest Prestige +0.75
-					duration = -1
-				}	
-			}
-			else_if = {
-				limit = { ruler_has_personality = righteous_personality }
-				add_country_modifier = {
-					name = tm_PER_righteous_ruler # +2 Legitimacy Prestige +0.5
-					duration = -1
-				}
-			}
-			else_if = {
-				limit = { ruler_has_personality = tolerant_personality }
-				add_country_modifier = {
-					name = tm_PER_tolerant_ruler #Heretic and Heathen Provs give no Penalty
-					duration = -1
-				}
-			}
-			else_if = {
-				limit = { ruler_has_personality = free_thinker_personality }
-				add_country_modifier = {
-					name = tm_PER_free_thinker #-7.5% Idea Cost, 75% Inno Gain
-					duration = -1
-				}
-			}
-			else_if = {
-				limit = { ruler_has_personality = calm_personality }
-				add_country_modifier = {
-					name = tm_PER_calm_ruler #-20% Stab Cost
-					duration = -1
-				}
-			}
-			else_if = {
-				limit = { ruler_has_personality = Zealot_personality }
-				add_country_modifier = {
-					name = tm_PER_zealots #+2 Missionaries, +2.5% Missonary Strength
-					duration = -1
-				}
-			}
-			else_if = {
-				limit = { ruler_has_personality = lawgiver_personality }
-				add_country_modifier = {
-					name = tm_PER_rule_of_law #-0.1 Autonomy Monthly -10% Minimum Autonomy in Territories
-					duration = -1
-				}
-			}
-			else_if = {
-				limit = { ruler_has_personality = midas_touched_personality }
-				add_country_modifier = {
-					name = tm_PER_taxman #+15 Tax
-					duration = -1
-				}
-			}
-			else_if = {
-				limit = { ruler_has_personality = architecural_visionary_personality }
-				add_country_modifier = {
-					name = tm_PER_architect #-7.5% Build Cost & Time
-					duration = -1
-				}
-			}
-			else_if = {
-				limit = { ruler_has_personality = scholar_personality }
-				add_country_modifier = {
-					name = tm_PER_scholar #-10% Tech Cost
-					duration = -1
-				}
-			}
-			else_if = {
-				limit = { ruler_has_personality = Reformist_personality }
-				add_country_modifier = {
-					name = tm_PER_reformist #+50% Reform Progress Growth
-					duration = -1
-				}
-			}
-		}
-	}
-}
-
-tm_PER_branch3_2 = {
-	slot = 3
-	generic = no
-	ai = yes
-
-	has_country_shield = yes
-
-	potential = {
-		tag = PER
-	}
-
-	tm_PER_branch3_mission_5 = {
-		icon = sources_of_trade
-		position = 7
-		required_missions = {
-			tm_PER_branch1_mission_4
-		}
-
-		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = tm_PER_dip_positive_trait_TT
-				OR = {
-					ruler_has_personality = well_connected_personality 
-					ruler_has_personality = industrious_personality
-					ruler_has_personality = entrepeneur_personality
-					ruler_has_personality = charismatic_negotiator_personality
-					ruler_has_personality = silver_tongue_personality
-					ruler_has_personality = navigator_personality
-				}
-			}
-			DIP = 5
-			years_of_income = 3.3
-		}
-
-		effect = {
-			custom_tooltip = tm_per_education_explanation_tt
-			add_years_of_income = -3.3
-
-			if = {
-				limit = { ruler_has_personality = well_connected_personality }
-				add_country_modifier = {
-					name = tm_PER_room_for_advisors #-7.5% Advisor Cost +1 Advisor Pool
-					duration = -1
-				}	
-			}
-			else_if = {  
-				limit = { 
-					OR = {
-						ruler_has_personality = industrious_personality
-						ruler_has_personality = entrepeneur_personality
-					}
-				}
-				add_country_modifier = {
-					name = tm_PER_prosperous_land # 5% Prod 5% Trade Eff
-					duration = -1
-				}
-			}
-			else_if = {
-				limit = {
-					OR = {
-						ruler_has_personality = charismatic_negotiator_personality
-						ruler_has_personality = silver_tongue_personality
-					}
-				}
-				add_country_modifier = {
-					name = tm_PER_persian_diplomacy #-25% Liberty Desire +1 Diplo Relations +1 Diplo Rep
-					duration = -1
-				}
-			}
-			else_if = {
-				limit = {
-					ruler_has_personality = navigator_personality
-				}
-				add_country_modifier = {
-					name = tm_PER_ships_of_persia #10% Ship Durability 5% Heavy Combat, 10% Galley Combat
-					duration = -1
-				}
-			}
-		}
-	}
-
-	tm_PER_branch3_mission_6 = {
-		icon = mission_monarch_in_throne_room
-		position = 8
-		required_missions = {
-			tm_PER_branch1_mission_5
-			tm_PER_branch2_mission_4
-			tm_PER_branch3_mission_5
-		}
-
-		trigger = {
-			monthly_income = 300
-			num_of_loans = 0
-			adm = 6
-			dip = 5
-			mil = 5
-		}
-
-		effect = {
-			add_country_modifier = {
-				name = tm_PER_3rd_Golden_Age
-				duration = -1
-			}
-		}
-	}
-}
-
-tm_PER_branch5_2 = {
-	slot = 5
-	generic = no
-	ai = yes
-
-	has_country_shield = yes
-
-	potential = {
-		tag = PER
-	}
-
-	tm_PER_branch5_mission_4 = {
-		icon = mission_develop_cloth
-		position = 7
-		required_missions = {}
-		provinces_to_highlight = {
-			OR = {
-				trade_goods = silk
-				trade_goods = cloth
-			}
-			owned_by = ROOT
-			NOT = { development = 15 }
-		}
-
-		trigger = {
-			num_of_owned_provinces_with = {
-				development = 15
-				OR = {
-					trade_goods = silk
-					trade_goods = cloth
-				}
-				value = 5 
-			}
-		}
-
-		effect = {
-			custom_tooltip = tm_PER_br5_mis5_TT
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
-						OR = {
-							trade_goods = silk
-							trade_goods = cloth
-						}
-						development = 15
-					}
-					if = {
-						limit = {
-							NOT = {
-								has_building = workshop
-							}
-						}
-						add_building = workshop
-					}
-					add_base_production = 2
-				}
-			}
-		}
-	}
-	tm_PER_branch5_mission_5 = {
-		icon = mission_saffron_production_ramps_up
-		position = 8
-		required_missions = { tm_PER_branch5_mission_4 }
-
-		provinces_to_highlight = {
-			trade_goods = saffron
-			owned_by = ROOT
-			NOT = { development = 25 }
-		}
-
-		trigger = {
-			num_of_owned_provinces_with = {
-				development = 25
-				trade_goods = saffron
-				value = 4
-			}
-		}
-
-		effect = {
-			custom_tooltip = tm_PER_br5_mis5_TT
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
-						trade_goods = saffron
-						development = 15
-					}
-					if = {
-						limit = {
-							NOT = {
-								has_building = workshop
-							}
-						}
-						add_building = workshop
-					}
-					add_base_production = 2
-				}
-			}
-		}
-	}
-}
-
+#tm_PER_branch_2 = {
+#	slot = 2
+#	generic = no
+#	ai = yes
+#
+#	has_country_shield = yes
+#
+#	potential = {
+#		tag = PER
+#	}
+#
+#	tm_PER_branch2_mission_1 = {
+#		icon = league_of_the_public_weal
+#		position = 3
+#		required_missions = { tm_PER_branch3_mission_1 }
+#
+#		provinces_to_highlight = {
+#			OR = {
+#				area = ardabil_area
+#				area = tabriz_area
+#				area = shirvan_area
+#				area = armenia_area
+#				area = yerevan_area
+#			}
+#			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+#		}
+#
+#		trigger = {
+#			ardabil_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			tabriz_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			shirvan_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			armenia_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			yerevan_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#		}
+#
+#		effect = {
+#			if = {
+#				limit = { was_tag = AFG }
+#
+#				country_event = {
+#					id = titanper.1 # Duchy of Armenia March, or Lose Autonomy and Culture Convert the Land
+#	
+#					tooltip = titanper.1.tt
+#				}
+#			}
+#			caucasia_region = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#		}
+#	}
+#
+#	tm_PER_branch2_mission_2 = {
+#		icon = consolidate_the_stadholders 
+#		position = 5
+#		required_missions = { 
+#			tm_PER_branch2_mission_1
+#		}
+#
+#		provinces_to_highlight = {
+#			region = caucasia_region
+#		}
+#
+#		trigger = {
+#			caucasia_region = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		effect = {
+#			if = {
+#				limit = { was_tag = AFG }
+#				add_power_projection = {
+#					type = tm_PER_conqueror_of_the_caucasus
+#					amount = 20
+#				}
+#				custom_tooltip = tm_Permanent_PP_TT
+#	
+#				add_adm_power = 75
+#				add_dip_power = 75
+#				add_mil_power = 75
+#				add_treasury = 500
+#			}
+#			if = {
+#				limit = { was_tag = SRV }
+#				add_treasury = 500
+#			}
+#		}
+#	}
+#	tm_PER_branch2_mission_3 = {
+#		icon = mission_found_the_city_of_agra
+#		position = 6
+#		required_missions = {
+#			tm_PER_branch3_mission_3
+#		}
+#
+#		provinces_to_highlight = {
+#			province_id = 410
+#		}
+#
+#		trigger = {
+#			410 = {
+#				owned_by = ROOT
+#				development = 30
+#			}
+#		}
+#
+#		effect = {
+#			add_country_modifier = {
+#				name = tm_PER_zoro_house_of_wisdom
+#				duration = -1
+#			}
+#		}
+#	}
+#}
+#
+#tm_PER_branch_3 = {
+#	slot = 3
+#	generic = no
+#	ai = yes
+#
+#	has_country_shield = yes
+#	potential = {
+#		tag = PER
+#	}
+#
+#	tm_PER_branch3_mission_1 = {
+#		icon = mission_conquer_kannauj
+#		position = 2
+#		required_missions = { tm_PER_branch4_mission_1 }
+#
+#		provinces_to_highlight = {
+#			area = azerbaijan_area 
+#			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+#		}
+#
+#		trigger = {
+#			azerbaijan_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#		}
+#
+#		effect = {
+#			add_prestige = 10
+#			add_adm_power = 50
+#		}
+#	}
+#	tm_PER_branch3_mission_2 = {
+#		icon = mission_invade_maharashtra
+#		position = 4
+#		required_missions = {
+#			tm_PER_branch3_mission_1
+#			tm_PER_branch4_mission_2
+#		}
+#
+#		provinces_to_highlight = {
+#			area = luristan_area
+#			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+#		}
+#
+#		trigger = {
+#			luristan_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#
+#		effect = {
+#			custom_tooltip = tm_PER_claim_mashriq_basra_TT
+#			add_country_modifier = {
+#				name = tm_PER_change_of_administration
+#				duration = 3650
+#			}
+#			hidden_effect = {
+#				iraq_arabi_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_permanent_claim = ROOT
+#				}
+#				shahrizor_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_permanent_claim = ROOT
+#				}
+#				arbil_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_permanent_claim = ROOT
+#				}
+#				tikrit_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_permanent_claim = ROOT
+#				}
+#				khuzestan_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_permanent_claim = ROOT
+#				}
+#				radah_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_permanent_claim = ROOT
+#				}
+#				basra_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_permanent_claim = ROOT
+#				}
+#			}
+#		}
+#	}
+#	tm_PER_branch3_mission_3 = {
+#		icon = mission_invade_the_deccan_ori
+#		position = 5 
+#		required_missions = {
+#			tm_PER_branch3_mission_2
+#		}
+#
+#		provinces_to_highlight = {
+#			OR = {
+#				area = iraq_arabi_area
+#				area = shahrizor_area
+#				area = arbil_area
+#				area = tikrit_area
+#				area = khuzestan_area
+#				area = radah_area
+#				area = basra_area
+#			}
+#			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+#		}
+#
+#		trigger = {
+#			iraq_arabi_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			shahrizor_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			arbil_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			tikrit_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			khuzestan_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			radah_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			basra_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#
+#		effect = {
+#			custom_tooltip = tm_PER_claim_arabian_basra_TT
+#			hidden_effect = {
+#				nafud_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_permanent_claim = ROOT
+#				}
+#				hail_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_permanent_claim = ROOT
+#				}
+#				qasim_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_permanent_claim = ROOT
+#				}
+#				yamamah_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_permanent_claim = ROOT
+#				}
+#				bahrain_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_permanent_claim = ROOT
+#				}
+#			}
+#		}
+#	}
+#	tm_PER_branch3_mission_4 = {
+#		icon = mission_sw_against_the_desert 
+#		position = 6
+#		required_missions = {
+#			tm_PER_branch3_mission_3
+#		}
+#
+#		provinces_to_highlight = {
+#			OR = {
+#				area = nafud_area
+#				area = hail_area
+#				area = qasim_area
+#				area = yamamah_area
+#				area = bahrain_area
+#			}
+#			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+#		}
+#
+#		trigger = {
+#			nafud_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			hail_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			qasim_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			yamamah_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			bahrain_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#
+#		effect = {
+#			add_mil_power = 150
+#			custom_tooltip = tm_PER_devastation_in_arabia_TT
+#			hidden_effect = {
+#				arabia_region = {
+#					limit = {
+#						owned_by = ROOT
+#					}
+#					add_devastation = -100
+#					add_prosperity = 100
+#				}
+#			}
+#			
+#		}
+#	}
+#}
+#
+#tm_PER_branch_4 = {
+#	slot = 4
+#	generic = no
+#	ai = yes
+#
+#	has_country_shield = yes
+#
+#	potential = {
+#		tag = PER
+#	}
+#
+#	tm_PER_branch4_mission_1 = {
+#		icon = mission_persian_soldiers
+#		position = 1
+#		required_missions = {}
+#
+#		trigger = {
+#			army_size_percentage = 1
+#			OR = {
+#				has_global_modifier_value = {
+#					which = land_morale 
+#					value = 0.30
+#				}
+#				has_global_modifier_value = {
+#					which = infantry_power 
+#					value = 0.30
+#				}
+#			}
+#		}
+#
+#		effect = {
+#			persia_region = {				
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}	
+#		}
+#	}
+#
+#	tm_PER_branch4_mission_2 = {
+#		icon = mission_cannons_firing 
+#		position = 3
+#		required_missions = {
+#			tm_PER_branch4_mission_1
+#			tm_PER_branch3_mission_1
+#		}
+#
+#		provinces_to_highlight = {
+#			OR = {
+#				area = espakh_area
+#				area = farsistan_area
+#				area = persian_gulf_coast
+#				area = mogostan_area
+#			}
+#			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+#		}
+#
+#		trigger = {
+#			farsistan_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			espakh_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT 
+#			}
+#			persian_gulf_coast = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT 
+#			}
+#			mogostan_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT 
+#			}
+#		}
+#
+#		effect = {
+#			add_ruler_modifier = {
+#				name = tm_PER_master_of_persia
+#			}
+#			custom_tooltip = tm_PER_ruler_legacy_tt
+#			set_country_flag = tm_PER_legacy_siege_flag
+#		}
+#	}
+#
+#	tm_PER_branch4_mission_3 = {
+#		icon = mission_afghan_frontier
+#		position = 5
+#		required_missions = {
+#			tm_PER_branch4_mission_2
+#		}
+#
+#		provinces_to_highlight = {
+#			OR = {
+#				area = saravan_area
+#				area = makran_area
+#			}
+#			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+#		}
+#
+#		trigger = {
+#			saravan_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			makran_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#
+#		effect = {
+#			add_prestige = 10
+#		}
+#	}
+#	tm_PER_branch4_mission_4 = {
+#		icon = mission_order_in_the_domain 
+#		position = 6
+#		required_missions = {
+#			tm_PER_branch3_mission_3
+#			tm_PER_branch4_mission_3
+#		}
+#		provinces_to_highlight = {
+#			OR = {
+#				area = pirate_coast_area
+#				area = oman_area
+#				area = mascat_area
+#				area = inner_gulf_area
+#				area = dhofar_area
+#			}
+#			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+#		}
+#
+#		trigger = {
+#			pirate_coast_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			oman_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			mascat_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			inner_gulf_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			dhofar_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#		}
+#
+#		effect = {
+#			add_country_modifier = {
+#				name = tm_PER_reconquer_arabia
+#				duration = -1
+#			}
+#			custom_tooltip = tm_PER_arabian_levies_TT
+#			hidden_effect = {
+#				every_owned_province = {
+#					limit = {
+#						owned_by = PER
+#						has_military_building = yes
+#						base_manpower = 8
+#						region = arabia_region
+#					}
+#					add_permanent_province_modifier = {
+#						name = tm_PER_arabian_levies
+#						duration = 12775
+#					}
+#				}
+#			}
+#		}
+#	}
+#}
+#
+#tm_PER_branch_5 = {
+#	slot = 5
+#	generic = no
+#	ai = yes
+#
+#	has_country_shield = yes
+#
+#	potential = {
+#		tag = PER
+#	}
+#
+#	tm_PER_branch5_mission_1 = {
+#		icon = mission_bijapur_karnatak
+#		position = 2
+#		required_missions = { tm_PER_branch4_mission_1 }
+#
+#		provinces_to_highlight = {
+#			area = tabarestan_area 
+#			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+#		}
+#
+#		trigger = {
+#			tabarestan_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#		}
+#
+#		effect = {
+#			add_ruler_modifier = {
+#				name = tm_PER_honor_the_dabuyids
+#			}
+#			custom_tooltip = tm_PER_ruler_legacy_tt
+#			set_country_flag = tm_PER_legacy_trade_flag
+#			add_mercantilism = 5
+#		}
+#	}
+#
+#	tm_PER_branch5_mission_2 = {
+#		icon = mission_bengal_campaign
+#		position = 5
+#		required_missions = {
+#			tm_PER_branch5_mission_1
+#		}
+#
+#		provinces_to_highlight = {
+#			region = khorasan_region
+#			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+#		}
+#
+#		trigger = {
+#			khorasan_region = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#
+#		effect = {
+#			if = {
+#				limit = { was_tag = SRV }
+#				add_power_projection = {
+#					type = tm_PER_ruler_of_the_afghani_people
+#					amount = 20
+#				}
+#				custom_tooltip = tm_Permanent_PP_TT
+#				add_adm_power = 75
+#				add_dip_power = 75
+#				add_mil_power = 75
+#				add_treasury = 500
+#			}
+#			if = {
+#				limit = { was_tag = AFG }
+#				add_treasury = 500
+#			}
+#		}
+#	}
+#
+#	tm_PER_branch5_mission_3 = {
+#		icon = mission_invade_the_deccan_dlh
+#		position = 6
+#		required_missions = {
+#			tm_PER_branch4_mission_3
+#			tm_PER_branch5_mission_2
+#		}
+#
+#		provinces_to_highlight = {
+#			area = lahore_area
+#			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+#		}
+#
+#		trigger = { 
+#			lahore_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#		}
+#		effect = { 
+#			507 = {
+#				add_permanent_province_modifier = {
+#					name = tm_PER_city_of_lava
+#					duration = -1
+#				}
+#			}
+#		}
+#	}
+#}
+#
+####
+## Development of Persia
+####
+#
+#tm_PER_branch_1 = {
+#	slot = 1
+#	generic = no
+#	ai = yes
+#
+#	has_country_shield = yes
+#
+#	potential = {
+#		tag = PER
+#	}
+#
+#	tm_PER_branch1_mission_1 = {
+#		icon = imperial_capitals 
+#		position = 1
+#		required_missions = {}
+#
+#		provinces_to_highlight = {
+#			province_id = 2213
+#		}
+#
+#		trigger = {
+#			2213 = {
+#				owned_by = ROOT
+#				development = 25
+#			}
+#		}
+#
+#		effect = {
+#			2213 = {
+#				add_permanent_province_modifier = {
+#					name = tm_PER_imperial_city
+#					duration = -1
+#				}
+#			}
+#		}
+#	}
+#
+#	tm_PER_branch1_mission_2 = {
+#		icon = mission_guilds_of_barcelona 
+#		position = 3
+#		required_missions = { tm_PER_branch1_mission_1 }
+#
+#		provinces_to_highlight = {
+#			OR = {
+#				NOT = { development = 25 }
+#				NOT = { has_production_building = yes }
+#				NOT = { has_military_building = yes }
+#			}
+#			owned_by = PER
+#		}
+#
+#		trigger = {
+#			num_of_owned_provinces_with = {
+#				development = 25
+#				has_production_building = yes
+#				has_military_building = yes
+#				value = 3 
+#			}
+#		}
+#
+#		effect = {
+#			custom_tooltip = tm_PER_imperial_cities_tt
+#			hidden_effect = {
+#				every_owned_province = {
+#					limit = {
+#						owned_by = PER
+#						development = 30
+#						has_production_building = yes
+#						has_military_building = yes
+#					}
+#					add_permanent_province_modifier = {
+#						name = tm_PER_imperial_city
+#						duration = -1
+#					}
+#				}
+#			}
+#		}
+#	}
+#	tm_PER_branch1_mission_3 = {
+#		icon = mission_riches_of_golconda 
+#		position = 5
+#		required_missions = {
+#			tm_PER_branch1_mission_2 
+#		}
+#
+#		provinces_to_highlight = {
+#			area = farsistan_area
+#		}
+#
+#		trigger = {
+#			farsistan_area = {
+#				type = all
+#				owned_by = ROOT
+#				development = 20
+#				NOT = { local_autonomy = 10 }
+#			}
+#		}
+#
+#		effect = {
+#			country_event = {
+#				id = titanper.2
+#				tooltip = titanper.2.tt
+#			}
+#			tooltip = {
+#				2218 = {
+#					change_province_name = "Persepolis"
+#					change_trade_goods = saffron
+#					add_base_production = 5
+#					add_base_tax = 5
+#					add_base_manpower = 5
+#					add_province_modifier = {
+#						name = tm_PER_envy_of_the_world
+#						duration = -1
+#					}
+#				}
+#			}
+#		}
+#	}
+#
+#	tm_PER_branch1_mission_4 = {
+#		icon = mission_kings_crown
+#		position = 6
+#		required_missions = {}	
+#
+#		trigger = {
+#			AND = {
+#				OR = {
+#					free_thinker = 4
+#					philosopher = 4
+#					artist = 4
+#					natural_scientist = 4
+#				}
+#				OR = {
+#					statesman = 4
+#					trader = 4
+#				}
+#				army_reformer = 5
+#			}
+#		}
+#
+#		effect = {
+#			country_event = {
+#				id = titanper.4
+#				tooltip = titanper.4.tt
+#			}
+#		}
+#	}
+#	tm_PER_branch1_mission_5 = {
+#		icon = mission_conquer_the_doab 
+#		position = 7
+#		required_missions = {
+#			tm_PER_branch1_mission_4
+#		}
+#
+#		trigger = {
+#			custom_trigger_tooltip = {
+#				tooltip = tm_PER_mil_positive_trait_TT
+#				OR = {
+#					ruler_has_personality = kind_hearted_personality 
+#					ruler_has_personality = conqueror_personality
+#					ruler_has_personality = tactical_genius_personality
+#					ruler_has_personality = bold_fighter_personality
+#					ruler_has_personality = strict_personality
+#					ruler_has_personality = inspiring_leader_personality
+#				}
+#			}
+#			MIL = 5
+#			years_of_income = 3.3
+#		}
+#
+#		effect = {
+#			custom_tooltip = tm_per_education_explanation_tt
+#			add_years_of_income = -3.3
+#			if = {
+#				limit = { 
+#					OR = {
+#						ruler_has_personality = kind_hearted_personality 
+#						ruler_has_personality = conqueror_personality
+#					}
+#				}
+#				add_country_modifier = {
+#					name = tm_PER_for_the_common_folk  #-War Exhaustion + 5%MPR
+#					duration = -1
+#				}	
+#			}
+#
+#			else_if = {
+#				limit = { 
+#					OR = { 
+#						ruler_has_personality = tactical_genius_personality 
+#						ruler_has_personality = bold_fighter_personality 
+#					} 
+#				}
+#				add_country_modifier = {
+#					name = tm_PER_ruler_general # +1 LLS +1LLM
+#					duration = -1
+#				}	
+#			}
+#			else_if = {
+#				limit = { ruler_has_personality = strict_personality }
+#				add_country_modifier = {
+#					name = tm_PER_strict_ruler #2.5% Disc
+#					duration = -1
+#				}
+#			}
+#			else_if = {
+#				limit = { ruler_has_personality = inspiring_leader_personality }
+#				add_country_modifier = {
+#					name = tm_PER_inspiring_ruler #5% Morale of Armies
+#					duration = -1
+#				}
+#			}
+#		}
+#	}
+#}
+#
+#tm_PER_branch2_2 = {
+#	slot = 2
+#	generic = no
+#	ai = yes
+#
+#	has_country_shield = yes
+#
+#	potential = {
+#		tag = PER
+#	}
+#	tm_PER_branch2_mission_4 = {
+#		icon = sponsor_the_arts
+#		position = 7
+#		required_missions = {
+#			tm_PER_branch1_mission_4
+#		}
+#
+#		trigger = {
+#			custom_trigger_tooltip = {
+#				tooltip = tm_PER_adm_positive_trait_TT
+#				OR = {
+#					ruler_has_personality = just_personality 
+#					ruler_has_personality = righteous_personality
+#					ruler_has_personality = tolerant_personality
+#					ruler_has_personality = free_thinker_personality
+#					ruler_has_personality = calm_personality
+#					ruler_has_personality = zealot_personality
+#					ruler_has_personality = lawgiver_personality
+#					ruler_has_personality = midas_touched_personality
+#					ruler_has_personality = architecural_visionary_personality
+#					ruler_has_personality = scholar_personality
+#					ruler_has_personality = reformist_personality
+#				}
+#			}
+#			ADM = 5
+#			years_of_income = 3.3
+#		}
+#
+#		effect = {
+#			custom_tooltip = tm_per_education_explanation_tt
+#			add_years_of_income = -3.3
+#
+#			if = {
+#				limit = { ruler_has_personality = just_personality }
+#				add_country_modifier = {
+#					name = tm_PER_just_ruler #-3 Global Unrest Prestige +0.75
+#					duration = -1
+#				}	
+#			}
+#			else_if = {
+#				limit = { ruler_has_personality = righteous_personality }
+#				add_country_modifier = {
+#					name = tm_PER_righteous_ruler # +2 Legitimacy Prestige +0.5
+#					duration = -1
+#				}
+#			}
+#			else_if = {
+#				limit = { ruler_has_personality = tolerant_personality }
+#				add_country_modifier = {
+#					name = tm_PER_tolerant_ruler #Heretic and Heathen Provs give no Penalty
+#					duration = -1
+#				}
+#			}
+#			else_if = {
+#				limit = { ruler_has_personality = free_thinker_personality }
+#				add_country_modifier = {
+#					name = tm_PER_free_thinker #-7.5% Idea Cost, 75% Inno Gain
+#					duration = -1
+#				}
+#			}
+#			else_if = {
+#				limit = { ruler_has_personality = calm_personality }
+#				add_country_modifier = {
+#					name = tm_PER_calm_ruler #-20% Stab Cost
+#					duration = -1
+#				}
+#			}
+#			else_if = {
+#				limit = { ruler_has_personality = Zealot_personality }
+#				add_country_modifier = {
+#					name = tm_PER_zealots #+2 Missionaries, +2.5% Missonary Strength
+#					duration = -1
+#				}
+#			}
+#			else_if = {
+#				limit = { ruler_has_personality = lawgiver_personality }
+#				add_country_modifier = {
+#					name = tm_PER_rule_of_law #-0.1 Autonomy Monthly -10% Minimum Autonomy in Territories
+#					duration = -1
+#				}
+#			}
+#			else_if = {
+#				limit = { ruler_has_personality = midas_touched_personality }
+#				add_country_modifier = {
+#					name = tm_PER_taxman #+15 Tax
+#					duration = -1
+#				}
+#			}
+#			else_if = {
+#				limit = { ruler_has_personality = architecural_visionary_personality }
+#				add_country_modifier = {
+#					name = tm_PER_architect #-7.5% Build Cost & Time
+#					duration = -1
+#				}
+#			}
+#			else_if = {
+#				limit = { ruler_has_personality = scholar_personality }
+#				add_country_modifier = {
+#					name = tm_PER_scholar #-10% Tech Cost
+#					duration = -1
+#				}
+#			}
+#			else_if = {
+#				limit = { ruler_has_personality = Reformist_personality }
+#				add_country_modifier = {
+#					name = tm_PER_reformist #+50% Reform Progress Growth
+#					duration = -1
+#				}
+#			}
+#		}
+#	}
+#}
+#
+#tm_PER_branch3_2 = {
+#	slot = 3
+#	generic = no
+#	ai = yes
+#
+#	has_country_shield = yes
+#
+#	potential = {
+#		tag = PER
+#	}
+#
+#	tm_PER_branch3_mission_5 = {
+#		icon = sources_of_trade
+#		position = 7
+#		required_missions = {
+#			tm_PER_branch1_mission_4
+#		}
+#
+#		trigger = {
+#			custom_trigger_tooltip = {
+#				tooltip = tm_PER_dip_positive_trait_TT
+#				OR = {
+#					ruler_has_personality = well_connected_personality 
+#					ruler_has_personality = industrious_personality
+#					ruler_has_personality = entrepeneur_personality
+#					ruler_has_personality = charismatic_negotiator_personality
+#					ruler_has_personality = silver_tongue_personality
+#					ruler_has_personality = navigator_personality
+#				}
+#			}
+#			DIP = 5
+#			years_of_income = 3.3
+#		}
+#
+#		effect = {
+#			custom_tooltip = tm_per_education_explanation_tt
+#			add_years_of_income = -3.3
+#
+#			if = {
+#				limit = { ruler_has_personality = well_connected_personality }
+#				add_country_modifier = {
+#					name = tm_PER_room_for_advisors #-7.5% Advisor Cost +1 Advisor Pool
+#					duration = -1
+#				}	
+#			}
+#			else_if = {  
+#				limit = { 
+#					OR = {
+#						ruler_has_personality = industrious_personality
+#						ruler_has_personality = entrepeneur_personality
+#					}
+#				}
+#				add_country_modifier = {
+#					name = tm_PER_prosperous_land # 5% Prod 5% Trade Eff
+#					duration = -1
+#				}
+#			}
+#			else_if = {
+#				limit = {
+#					OR = {
+#						ruler_has_personality = charismatic_negotiator_personality
+#						ruler_has_personality = silver_tongue_personality
+#					}
+#				}
+#				add_country_modifier = {
+#					name = tm_PER_persian_diplomacy #-25% Liberty Desire +1 Diplo Relations +1 Diplo Rep
+#					duration = -1
+#				}
+#			}
+#			else_if = {
+#				limit = {
+#					ruler_has_personality = navigator_personality
+#				}
+#				add_country_modifier = {
+#					name = tm_PER_ships_of_persia #10% Ship Durability 5% Heavy Combat, 10% Galley Combat
+#					duration = -1
+#				}
+#			}
+#		}
+#	}
+#
+#	tm_PER_branch3_mission_6 = {
+#		icon = mission_monarch_in_throne_room
+#		position = 8
+#		required_missions = {
+#			tm_PER_branch1_mission_5
+#			tm_PER_branch2_mission_4
+#			tm_PER_branch3_mission_5
+#		}
+#
+#		trigger = {
+#			monthly_income = 300
+#			num_of_loans = 0
+#			adm = 6
+#			dip = 5
+#			mil = 5
+#		}
+#
+#		effect = {
+#			add_country_modifier = {
+#				name = tm_PER_3rd_Golden_Age
+#				duration = -1
+#			}
+#		}
+#	}
+#}
+#
+#tm_PER_branch5_2 = {
+#	slot = 5
+#	generic = no
+#	ai = yes
+#
+#	has_country_shield = yes
+#
+#	potential = {
+#		tag = PER
+#	}
+#
+#	tm_PER_branch5_mission_4 = {
+#		icon = mission_develop_cloth
+#		position = 7
+#		required_missions = {}
+#		provinces_to_highlight = {
+#			OR = {
+#				trade_goods = silk
+#				trade_goods = cloth
+#			}
+#			owned_by = ROOT
+#			NOT = { development = 15 }
+#		}
+#
+#		trigger = {
+#			num_of_owned_provinces_with = {
+#				development = 15
+#				OR = {
+#					trade_goods = silk
+#					trade_goods = cloth
+#				}
+#				value = 5 
+#			}
+#		}
+#
+#		effect = {
+#			custom_tooltip = tm_PER_br5_mis5_TT
+#			hidden_effect = {
+#				every_owned_province = {
+#					limit = {
+#						OR = {
+#							trade_goods = silk
+#							trade_goods = cloth
+#						}
+#						development = 15
+#					}
+#					if = {
+#						limit = {
+#							NOT = {
+#								has_building = workshop
+#							}
+#						}
+#						add_building = workshop
+#					}
+#					add_base_production = 2
+#				}
+#			}
+#		}
+#	}
+#	tm_PER_branch5_mission_5 = {
+#		icon = mission_saffron_production_ramps_up
+#		position = 8
+#		required_missions = { tm_PER_branch5_mission_4 }
+#
+#		provinces_to_highlight = {
+#			trade_goods = saffron
+#			owned_by = ROOT
+#			NOT = { development = 25 }
+#		}
+#
+#		trigger = {
+#			num_of_owned_provinces_with = {
+#				development = 25
+#				trade_goods = saffron
+#				value = 4
+#			}
+#		}
+#
+#		effect = {
+#			custom_tooltip = tm_PER_br5_mis5_TT
+#			hidden_effect = {
+#				every_owned_province = {
+#					limit = {
+#						trade_goods = saffron
+#						development = 15
+#					}
+#					if = {
+#						limit = {
+#							NOT = {
+#								has_building = workshop
+#							}
+#						}
+#						add_building = workshop
+#					}
+#					add_base_production = 2
+#				}
+#			}
+#		}
+#	}
+#}

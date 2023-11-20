@@ -9,6 +9,8 @@ country_decisions = {
 				tag = SRV
 				was_tag = SRV
 			}
+			NOT = { has_country_flag = tm_srv_chose_shia }
+			NOT = { has_country_flag = tm_srv_chose_orthodox }
 		}
 		
 		provinces_to_highlight = {
@@ -30,6 +32,10 @@ country_decisions = {
 			custom_trigger_tooltip = {
 				tooltip = tm_SRV_completed_BAB_mission
 				has_country_flag = SRV_babylon_path_unlocked
+			}
+			custom_trigger_tooltip = {
+				tooltip = tm_srv_chose_zoro_tt
+				has_country_flag = tm_srv_chose_zoroastrian
 			}
 		}
 
@@ -75,11 +81,14 @@ country_decisions = {
 			}
 			set_country_flag = formed_babylonia_flag
 			if = {
-			limit = { has_custom_ideas = no }
-			country_event = { id = ideagroups.1 } #Swap Ideas
+				limit = { has_custom_ideas = no }
+				country_event = { id = ideagroups.1 } #Swap Ideas
 			}
 			410 = {
 				set_province_flag = babylon_existed
+			}
+			unlock_estate = {
+				estate = estate_qizilbash
 			}
 		}
 	}

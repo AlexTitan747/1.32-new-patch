@@ -9,8 +9,24 @@ country_event = {
 	is_triggered_only = yes
 	fire_only_once = yes
 
+	immediate = {
+		set_country_flag = tm_AFG_had_religious_event
+	}
+
 	option = {
 		name = "titanafg.1.a"
+
+		hidden_effect = {
+			transfer_percentage_crownland_share = {
+				from_estate = estate_dhimmi
+				target_estate = estate_church
+				amount = 0.8
+			}
+		}
+		every_owned_province = {
+			limit = { has_province_modifier = religious_zeal_at_conv }
+			remove_province_modifier = religious_zeal_at_conv
+		}
 
 		change_religion = zoroastrian
 		custom_tooltip = tm_AFG_zoro_tt
@@ -18,26 +34,66 @@ country_event = {
 			name = "tm_AFG_religious_conversions"
 			duration = 3650
 		}
-		set_country_flag = tm_AFG_zoro 
+		set_country_flag = tm_AFG_zoro
+
+		ai_chance = { 
+			factor = 0
+		}
 	}
 	
+#	option = {
+#		name = "titanafg.1.b"
+#
+#		hidden_effect = {
+#			transfer_percentage_crownland_share = {
+#				from_estate = estate_dhimmi
+#				target_estate = estate_church
+#				amount = 0.8
+#			}
+#		}
+#
+#		change_religion = hinduism
+#		custom_tooltip = tm_AFG_hindu_tt
+#		add_country_modifier = {
+#			name = "tm_AFG_religious_conversions"
+#			duration = 3650
+#		}
+#		set_country_flag = tm_AFG_hindu
+#	}
+#
+#	option = {
+#		name = "titanafg.1.c"
+#
+#		add_stability_or_adm_power = yes
+#		custom_tooltip = tm_AFG_remain_sunni_tt
+#		set_country_flag = tm_AFG_suuni
+#	}
 	option = {
-		name = "titanafg.1.b"
+		name = "titanafg.1.d"
 
-		change_religion = hinduism
-		custom_tooltip = tm_AFG_hindu_tt
-		add_country_modifier = {
-			name = "tm_AFG_religious_conversions"
-			duration = 3650
+		if = {
+			limit = {
+				ai = yes
+			}
+			transfer_percentage_crownland_share = {
+				from_estate = estate_dhimmi
+				target_estate = estate_church
+				amount = 0.8
+			}
+			change_religion = hinduism
+			add_country_modifier = {
+				name = "tm_AFG_religious_conversions"
+				duration = 3650
+			}
+			set_country_flag = tm_AFG_hindu
 		}
-		set_country_flag = tm_AFG_hindu
-	}
 
-	option = {
-		name = "titanafg.1.c"
-
-		custom_tooltip = tm_AFG_remain_sunni_tt
-		set_country_flag = tm_AFG_suuni
+		else = {
+			enable_branching_mission_review_without_ai = {
+				key = TM_AFG_REL
+			}
+			custom_tooltip = tm_AFG_religious_choices
+		}
 	}
 }
 
