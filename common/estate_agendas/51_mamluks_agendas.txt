@@ -1895,7 +1895,7 @@ estate_nobles_mam_recruit_mamluks = {
 		else = {
 			if = {
 				limit = { NOT = { land_forcelimit = 200 } }
-				mamluks_percentage = 0.1
+				mamluks_percentage = 0.15
 			}
 			else = { num_of_mamluks = 40 }
 		}
@@ -1909,7 +1909,7 @@ estate_nobles_mam_recruit_mamluks = {
 			loyalty = 10
 		}
 		create_general = {
-			tradition = 60
+			tradition = 70
 			add_fire = 1
 			add_shock = 1
 		}
@@ -2108,7 +2108,7 @@ estate_nobles_mam_increase_army_tradition = {
 			}
 		}
 		else = {
-			army_tradition = 40
+			army_tradition = 50
 		}
 	}
     task_completed_effect = {
@@ -2171,7 +2171,7 @@ estate_nobles_mam_increase_army_professionalism = {
 			loyalty = 15
 		}
 		add_absolutism = 5
-		add_army_professionalism = 0.1
+		add_army_professionalism = 0.05
 		define_advisor = {
 			type = quartermaster
 			skill = 3
@@ -2226,6 +2226,7 @@ estate_nobles_mam_focus_on_military_matters = {
 			loyalty = 15
 		}
 		capital_scope = { add_base_manpower = 1 }
+		add_army_tradition = 5
 	}
     failing_effect = {
 		on_failed_agenda_effect = yes

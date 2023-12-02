@@ -28,7 +28,6 @@ country_decisions = {
 		}
 
 		allow = {
-			capital = 361 # Cairo
 			adm_tech = 10
 			is_free_or_tributary_trigger = yes
 			is_at_war = no
@@ -41,11 +40,8 @@ country_decisions = {
 
 		effect = {
 			change_tag = EGY
-			remove_non_electors_emperors_from_empire_effect = yes
 			if = {
-				limit = {
-					NOT = { government_rank = 2 }
-				}
+				limit = { NOT = { government_rank = 2 }}
 				set_government_rank = 2
 			}
 			add_prestige = 25
@@ -53,123 +49,108 @@ country_decisions = {
 				name = "centralization_modifier"
 				duration = 7300
 			}
-			random_owned_province = {
-				limit = { culture = al_misr_arabic }
-				add_base_tax = 1
-				add_base_production = 1
-			}
-			361 = {
-				add_base_tax = 1
-				add_base_production = 1
-			}
-			egypt_region = {
-				limit = {
-					NOT = { owned_by = ROOT }
-				}
-				add_permanent_claim = EGY
-			}
-			
 			set_country_flag = formed_fatimid_flag
-			if = {
-				limit = { has_custom_ideas = no }
-				country_event = { id = ideagroups.1 } #Swap Ideas
-				}
-			}
-		}
-	
-	
-	
-	adopt_mamluk_government = {
-		major = yes
-		potential = {
-			has_reform = iqta
-			NOT = { has_country_flag = formed_mamluks }
-			was_never_end_game_tag_trigger = yes
-			NOT = { exists = MAM }
-			NOT = { tag = TUR }
-			NOT = { tag = ARB }
-			NOT = { tag = EGY }
-			ai = no
-			any_owned_province = {
-				OR = {
-					region = egypt_region
-					region = arabia_region
-					region = mashriq_region
-					region = maghreb_region
-					region = horn_of_africa_region
-				}
-			}
-		}
-
-		provinces_to_highlight = {
-			province_id = 361 	# Cairo
-			361 = { 			# Cairo
-				is_state = yes
-			}
-			OR = {
-				NOT = { owned_by = ROOT }
-				NOT = { is_core = ROOT }
-			}
-		}
-
-		allow = {
-			NOT = { exists = MAM } #To Show why it might disappear
-			owns_core_province = 361
-		}
-
-		effect = {
-			361 = { # Cairo
-				move_capital_effect = yes
-			}
-			change_tag = MAM
-			new_mission_tree_scripted_effect = yes
-			if = {
-				limit = { has_regency = no }
-				kill_ruler = yes
-			}
-			if = {
-				limit = { has_heir = yes }
-				kill_heir = {}
-			}
-			MAM = {
-				if = {
-					limit = {
-						NOT = {
-							government = monarchy
-						}
-					}
-					change_government = monarchy
-				}
-				set_government_rank = 2
-				add_government_reform = mamluk_government
-				add_country_modifier = {
-					name = "centralization_modifier"
-					duration = 7300
-				}
-				if = {
-					limit = {
-						has_custom_ideas = no
-					}
-					country_event = { id = ideagroups.1 } #Swap Ideas
-				}
-				egypt_region = {
-					limit = {
-						NOT = { is_core = MAM }
-						NOT = { is_claim = MAM }
-					}
-					add_permanent_claim = MAM
-				}
-				set_country_flag = formed_mamluks
-			}
-			hidden_effect = { save_global_event_target_as = mamluks_event_target }
-		}
-		ai_will_do = {
-			factor = 1
-			modifier = {
-				factor = 0
-				adm_tech = 20
-			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
+			hidden_effect = { event_target_updating = yes }
 		}
 	}
-
+	
+	
+#	adopt_mamluk_government = {
+#		major = yes
+#		potential = {
+#			has_reform = iqta
+#			NOT = { has_country_flag = formed_mamluks }
+#			NOT = { exists = MAM }
+#			NOT = { tag = TUR }
+#			NOT = { tag = ARB }
+#			NOT = { tag = EGY }
+#			ai = no
+#			any_owned_province = {
+#				OR = {
+#					region = egypt_region
+#					region = arabia_region
+#					region = mashriq_region
+#					region = maghreb_region
+#					region = horn_of_africa_region
+#				}
+#			}
+#		}
+#
+#		provinces_to_highlight = {
+#			province_id = 361 	# Cairo
+#			361 = { 			# Cairo
+#				is_state = yes
+#			}
+#			OR = {
+#				NOT = { owned_by = ROOT }
+#				NOT = { is_core = ROOT }
+#			}
+#		}
+#
+#		allow = {
+#			NOT = { exists = MAM } #To Show why it might disappear
+#			owns_core_province = 361
+#		}
+#
+#		effect = {
+#			361 = { # Cairo
+#				move_capital_effect = yes
+#			}
+#			change_tag = MAM
+#			new_mission_tree_scripted_effect = yes
+#			if = {
+#				limit = { has_regency = no }
+#				kill_ruler = yes
+#			}
+#			if = {
+#				limit = { has_heir = yes }
+#				kill_heir = {}
+#			}
+#			MAM = {
+#				if = {
+#					limit = {
+#						NOT = {
+#							government = monarchy
+#						}
+#					}
+#					change_government = monarchy
+#				}
+#				set_government_rank = 2
+#				add_government_reform = mamluk_government
+#				add_country_modifier = {
+#					name = "centralization_modifier"
+#					duration = 7300
+#				}
+#				if = {
+#					limit = {
+#						has_custom_ideas = no
+#					}
+#					country_event = { id = ideagroups.1 } #Swap Ideas
+#				}
+#				egypt_region = {
+#					limit = {
+#						NOT = { is_core = MAM }
+#						NOT = { is_claim = MAM }
+#					}
+#					add_permanent_claim = MAM
+#				}
+#				set_country_flag = formed_mamluks
+#			}
+#			hidden_effect = {
+#				if = {
+#					limit = { has_saved_event_target = mamluks_event_target }
+#					clear_global_event_target = mamluks_event_target
+#				}
+#				save_global_event_target_as = mamluks_event_target
+#			}
+#		}
+#		ai_will_do = {
+#			factor = 1
+#			modifier = {
+#				factor = 0
+#				adm_tech = 20
+#			}
+#		}
+#	}
 }

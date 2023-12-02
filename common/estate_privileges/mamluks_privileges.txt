@@ -126,6 +126,7 @@ estate_mamluks_promote_leadership = {
 	influence = 0.1
 	can_select = {
 		army_tradition = 30
+		NOT = { has_estate_privilege = estate_mamluks_promote_leadership }
 	}
 	on_granted = {
 		add_army_tradition = -15
@@ -341,6 +342,7 @@ estate_mamluks_recruit_from_tribes = {
 	}
 	can_select = {
 		#tag = PER
+		NOT = { mamluks_percentage = 0.20 }
 	}
 	on_granted = {
 		if = {
@@ -349,13 +351,20 @@ estate_mamluks_recruit_from_tribes = {
 			}
 			add_legitimacy = -10
 			capital_scope = {
-				add_unit_construction = {
-					type = cavalry
-					amount = 20
-					speed = 0.1
-					cost = 0.5
+				#add_unit_construction = {
+				#	type = cavalry
+				#	amount = 20
+				#	speed = 0.1
+				#	cost = 0.5
+				#}
+				create_units_of_type_in_province = {
+					custom_tooltip = tm_mam_recruit_from_tribes_d
+					amount = 30
+					unit_type = mamluks_cavalry
+					who = root
 				}
 			}
+			add_treasury = -300
 		}
 		if = {
 			limit = {
@@ -364,13 +373,20 @@ estate_mamluks_recruit_from_tribes = {
 			}
 			add_legitimacy  = -8
 			capital_scope = {
-				add_unit_construction = {
-					type = cavalry
-					amount = 12
-					speed = 0.2
-					cost = 0.5
+				#add_unit_construction = {
+				#	type = cavalry
+				#	amount = 12
+				#	speed = 0.2
+				#	cost = 0.5
+				#}
+				create_units_of_type_in_province = {
+					custom_tooltip = tm_mam_recruit_from_tribes_c
+					amount = 15
+					unit_type = mamluks_cavalry
+					who = root
 				}
 			}
+			add_treasury = -150
 		}
 		else_if = {
 			limit = {
@@ -379,13 +395,20 @@ estate_mamluks_recruit_from_tribes = {
 			}
 			add_legitimacy  = -6
 			capital_scope = {
-				add_unit_construction = {
-					type = cavalry
-					amount = 8
-					speed = 0.5
-					cost = 0.5
+				#add_unit_construction = {
+				#	type = cavalry
+				#	amount = 8
+				#	speed = 0.5
+				#	cost = 0.5
+				#}
+				create_units_of_type_in_province = {
+					custom_tooltip = tm_mam_recruit_from_tribes_b
+					amount = 10
+					unit_type = mamluks_cavalry
+					who = root
 				}
 			}
+			add_treasury = -100
 		}
 		else_if = {
 			limit = {
@@ -393,13 +416,20 @@ estate_mamluks_recruit_from_tribes = {
 			}
 			add_legitimacy  = -5
 			capital_scope = {
-				add_unit_construction = {
-					type = cavalry
-					amount = 4
-					speed = 1
-					cost = 0.5
+				#add_unit_construction = {
+				#	type = cavalry
+				#	amount = 4
+				#	speed = 1
+				#	cost = 0.5
+				#}
+				create_units_of_type_in_province = {
+					custom_tooltip = tm_mam_recruit_from_tribes_a
+					amount = 6
+					unit_type = mamluks_cavalry
+					who = root
 				}
 			}
+			add_treasury = -60
 		}
 	}
 	cooldown_years = 10

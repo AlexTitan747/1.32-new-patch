@@ -1,0 +1,38 @@
+namespace = mamluks_flavour
+
+country_event = { #Choose Religion Event
+    id = mamluks_flavour.1
+    title = mamluks_flavour.1.t
+    desc = mamluks_flavour.1.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = { #Stay Sunni
+		name = mamluks_flavour.1.a
+
+		set_country_flag = tm_mams_sunni
+		hidden_effect = { swap_non_generic_missions = yes }
+		
+		ai_chance = { #Keep AI as default religion
+			factor = 100
+		}
+	}
+
+	option = { #Convert to Shia
+		name = mamluks_flavour.1.b
+
+		change_religion = shiite
+        capital_scope = { area = { change_religion = shiite }}
+        change_ruling_family_religions_effect = { religion = shiite }
+
+        set_country_flag = tm_mams_shia
+		hidden_effect = { swap_non_generic_missions = yes }
+
+        ai_chance = {
+			factor = 0
+		}
+	}
+}

@@ -576,6 +576,7 @@ holy_state_reform = {
 					tag = KOJ
 					tag = LAE
 					has_country_modifier = sisters_takeover
+					has_country_flag = can_use_holy_state_reform
 				}
 				NOT = { map_setup = map_setup_random }
 			}
@@ -586,7 +587,10 @@ holy_state_reform = {
 		}
 	}
 	trigger = {
-		religion = catholic
+		OR = {
+			religion = catholic
+			has_country_flag = can_use_holy_state_reform
+		}
 	}
 	nation_designer_cost = 50
 	modifiers = {
@@ -4558,7 +4562,7 @@ modernized_furusiyya_reform = {
 		
 	}
 	modifiers = {
-		allowed_mamluks_fraction = 0.05
+		allowed_mamluks_fraction = 0.10
 	}
 
 	custom_attributes = {
@@ -4605,6 +4609,7 @@ karimi_stations_reform = {
 	modifiers = {
 		trade_steering = 0.2
 		global_foreign_trade_power = 0.25
+		trade_efficiency = 0.05
 	}
 
 	conditional = {
@@ -4681,15 +4686,9 @@ integrated_ottoman_officials = {
 	}
 	modifiers = {
 		global_autonomy = -0.05
-		tolerance_of_heathens_capacity = 1
-	}
-
-	conditional = {
-		allow = { 
-			has_dlc = "Cradle of Civilization"
-		}
-		has_pashas = yes
-		custom_attributes = { reveal_ruler_skills_for_mamluks = yes }
+		tolerance_of_heathens_capacity = 2
+		advisor_cost = -0.10
+		num_accepted_cultures = 1
 	}
 
 	ai = {

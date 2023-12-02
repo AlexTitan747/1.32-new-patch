@@ -1,6 +1,4 @@
 #####################################TITAN MONUMENTS#####################################
-
-
 skala_du_port = {
     start = 2469 #Dukkala                
     date = 1162.01.01
@@ -14,11 +12,11 @@ skala_du_port = {
     build_trigger = {
 		owner = {
 			OR = {
-			  tag = MOR
-			  was_tag = MOR
-		 }
-		 mission_completed = tm_mor_colonial_ambition
-	  }
+				tag = MOR
+				was_tag = MOR
+			}
+			mission_completed = tm_mor_colonial_ambition
+		}
 	}
 
     on_built = {
@@ -37,9 +35,9 @@ skala_du_port = {
 			OR = {
 			  tag = MOR
 			  was_tag = MOR
-		 }
-		 mission_completed = tm_mor_colonial_ambition
-	  }
+			}
+			mission_completed = tm_mor_colonial_ambition
+	  	}
     }
     
 
@@ -48,8 +46,8 @@ skala_du_port = {
       		OR = {
 				tag = MOR
 				was_tag = MOR
-		   }
-		   mission_completed = tm_mor_colonial_ambition
+		   	}
+		   	mission_completed = tm_mor_colonial_ambition
 		}
     }
 
@@ -78,7 +76,15 @@ skala_du_port = {
         province_modifiers = {}
         area_modifier = {}
         country_modifiers = {}
-        on_upgraded = {}
+        on_upgraded = {
+			owner = { if = { limit = { tag = MOR } set_country_flag = tm_skala_du_port_mor } }
+			owner = {
+			add_country_modifier = {
+					name = new_world_enthusiasm
+					duration = 3650
+				}
+			}
+		}
     }
 
     tier_2 = {
@@ -118,15 +124,7 @@ baluarte_de_la_bandera = {
 	starting_tier = 0
 	type = monument
 
-	build_trigger = {
-		owner = {
-			OR = {
-				tag = MOR
-				was_tag = MOR
-			}
-			mission_completed = tm_mor_ceuta
-		}
-	}
+	build_trigger = {}
 
 	on_built = {}
 
@@ -172,10 +170,10 @@ baluarte_de_la_bandera = {
 			months = 120
 		}
 		cost_to_upgrade = {
-			factor = 1250
+			factor = 1000
 		}
 		province_modifiers = {
-			defensiveness = 0.05
+			local_defensiveness = 0.1
 		}
 		area_modifier = {}
 		country_modifiers = {}
@@ -187,10 +185,10 @@ baluarte_de_la_bandera = {
 			months = 240
 		}
 		cost_to_upgrade = {
-			factor = 3000
+			factor = 2500
 		}
 		province_modifiers = {
-			defensiveness = 0.1
+			local_defensiveness = 0.2
 		}
 		area_modifier = {}
 		country_modifiers = {}
@@ -205,11 +203,11 @@ baluarte_de_la_bandera = {
 			factor = 7500
 		}
 		province_modifiers = {
-			defensiveness = 0.15
+			local_defensiveness = 0.3
 		}
 		area_modifier = {}
 		country_modifiers = {
-			discipline = 0.025
+			discipline = 0.05
 		}
 		on_upgraded = {}
 	}
@@ -231,9 +229,15 @@ senegambian_stone_circles = {
 
 	on_destroyed = {}
 
-	can_use_modifiers_trigger = {}
+	can_use_modifiers_trigger = {
+		culture = senegambian
+		province_is_or_accepts_culture = yes
+	}
 
-	can_upgrade_trigger = {}
+	can_upgrade_trigger = {
+		culture = senegambian
+		province_is_or_accepts_culture = yes
+	}
 
 	keep_trigger = {}
 
@@ -259,7 +263,11 @@ senegambian_stone_circles = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			all_estate_loyalty_equilibrium = 0.025
+			global_unrest = -0.5
+			tolerance_own = 0.5
+		}
 		on_upgraded = {}
 	}
 
@@ -272,7 +280,12 @@ senegambian_stone_circles = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			num_accepted_cultures = 1
+			all_estate_loyalty_equilibrium = 0.05
+			global_unrest = -1
+			tolerance_own = 1
+		}
 		on_upgraded = {}
 	}
 
@@ -285,7 +298,12 @@ senegambian_stone_circles = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			num_accepted_cultures = 2
+			all_estate_loyalty_equilibrium = 0.1
+			global_unrest = -2
+			tolerance_own = 2
+		}
 		on_upgraded = {}
 	}
 }
@@ -297,7 +315,7 @@ abu_simbel = {
 	build_cost = 0
 	can_be_moved = no
 	move_days_per_unit_distance = 10
-	starting_tier = 0
+	starting_tier = 1
 	type = monument
 
 	build_trigger = {}
@@ -306,9 +324,15 @@ abu_simbel = {
 
 	on_destroyed = {}
 
-	can_use_modifiers_trigger = {}
+	can_use_modifiers_trigger = {
+		culture_group = egyptian
+		province_is_or_accepts_culture = yes
+	}
 
-	can_upgrade_trigger = {}
+	can_upgrade_trigger = {
+		culture_group = egyptian
+		province_is_or_accepts_culture = yes
+	}
 
 	keep_trigger = {}
 
@@ -334,7 +358,10 @@ abu_simbel = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			global_missionary_strength = 0.005
+			tolerance_own = 0.5
+		}
 		on_upgraded = {}
 	}
 
@@ -347,7 +374,11 @@ abu_simbel = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			global_missionary_strength = 0.01
+			tolerance_own = 1
+			stability_cost_modifier = -0.05
+		}
 		on_upgraded = {}
 	}
 
@@ -360,7 +391,11 @@ abu_simbel = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			global_missionary_strength = 0.02
+			tolerance_own = 2
+			stability_cost_modifier = -0.15
+		}
 		on_upgraded = {}
 	}
 }
@@ -372,7 +407,7 @@ valley_of_the_kings = {
 	build_cost = 0
 	can_be_moved = no
 	move_days_per_unit_distance = 10
-	starting_tier = 0
+	starting_tier = 1
 	type = monument
 
 	build_trigger = {}
@@ -381,9 +416,15 @@ valley_of_the_kings = {
 
 	on_destroyed = {}
 
-	can_use_modifiers_trigger = {}
+	can_use_modifiers_trigger = {
+		province_is_or_accepts_culture = yes
+		culture = al_misr_arabic
+	}
 
-	can_upgrade_trigger = {}
+	can_upgrade_trigger = {
+		province_is_or_accepts_culture = yes
+		culture = al_misr_arabic
+	}
 
 	keep_trigger = {}
 
@@ -409,7 +450,12 @@ valley_of_the_kings = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			monthly_heir_claim_increase_modifier = 0.25
+			legitimacy = 0.25
+			republican_tradition = 0.1
+			devotion = 0.25
+		}
 		on_upgraded = {}
 	}
 
@@ -422,7 +468,13 @@ valley_of_the_kings = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			monarch_lifespan = 0.05
+			monthly_heir_claim_increase_modifier = 0.5
+			legitimacy = 0.5
+			republican_tradition = 0.25
+			devotion = 0.5
+		}
 		on_upgraded = {}
 	}
 
@@ -435,7 +487,14 @@ valley_of_the_kings = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			monarch_lifespan = 0.1
+			monarch_admin_power = 1
+			monthly_heir_claim_increase_modifier = 1.0
+			legitimacy = 1
+			republican_tradition = 0.75
+			devotion = 1
+		}
 		on_upgraded = {}
 	}
 }
@@ -456,9 +515,15 @@ royal_palace_abomey = {
 
 	on_destroyed = {}
 
-	can_use_modifiers_trigger = {}
+	can_use_modifiers_trigger = {
+		province_is_or_accepts_culture = yes
+		culture_group = west_african
+	}
 
-	can_upgrade_trigger = {}
+	can_upgrade_trigger = {
+		province_is_or_accepts_culture = yes
+		culture_group = west_african
+	}
 
 	keep_trigger = {}
 
@@ -484,7 +549,12 @@ royal_palace_abomey = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			legitimacy = 0.25
+			republican_tradition = 0.1
+			devotion = 0.25
+			centralize_state_cost = -0.1
+		}
 		on_upgraded = {}
 	}
 
@@ -497,7 +567,13 @@ royal_palace_abomey = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			legitimacy = 0.5
+			republican_tradition = 0.25
+			devotion = 0.5
+			centralize_state_cost = -0.25
+			envoy_travel_time = -0.1
+		}
 		on_upgraded = {}
 	}
 
@@ -510,7 +586,14 @@ royal_palace_abomey = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			legitimacy = 1.0
+			republican_tradition = 0.5
+			devotion = 1.0
+			centralize_state_cost = -0.5
+			envoy_travel_time = -0.2
+			free_dip_policy = 1
+		}
 		on_upgraded = {}
 	}
 }
@@ -533,91 +616,12 @@ monastery_of_saint_catherine = {
 
 	can_use_modifiers_trigger = {
 		religion_group = christian
-		owner = { religion_group = christian }
+		has_owner_religion = yes
 	}
 	
 	can_upgrade_trigger = {
 		religion_group = christian
-		owner = { religion_group = christian }
-	}
-
-	keep_trigger = {}
-
-	tier_0 = {
-		upgrade_time = {
-			months = 0
-		}
-		cost_to_upgrade = {
-			factor = 0
-		}
-		province_modifiers = {}
-		area_modifier = {}
-		country_modifiers = {}
-		on_upgraded = {}
-	}
-	
-	tier_1 = {
-		upgrade_time = {
-			months = 120
-		}
-		cost_to_upgrade = {
-			factor = 1000
-		}
-		province_modifiers = {}
-		area_modifier = {}
-		country_modifiers = {}
-		on_upgraded = {}
-	}
-
-	tier_2 = {
-		upgrade_time = {
-			months = 240
-		}
-		cost_to_upgrade = {
-			factor = 2500
-		}
-		province_modifiers = {}
-		area_modifier = {}
-		country_modifiers = {}
-		on_upgraded = {}
-	}
-
-	tier_3 = {
-		upgrade_time = {
-			months = 480
-		}
-		cost_to_upgrade = {
-			factor = 5000
-		}
-		province_modifiers = {}
-		area_modifier = {}
-		country_modifiers = {}
-		on_upgraded = {}
-	}
-}
-
-fort_jesus = {
-	start = 1202 #Mombasa
-	date = 1444.01.01 #1593
-	time = { months = 0	}
-	build_cost = 0
-	can_be_moved = no
-	move_days_per_unit_distance = 10
-	starting_tier = 0
-	type = monument
-
-	build_trigger = {}
-
-	on_built = {}
-
-	on_destroyed = {}
-
-	can_use_modifiers_trigger = {
-		province_is_or_accepts_culture = yes
-	}
-
-	can_upgrade_trigger = {
-		province_is_or_accepts_culture = yes
+		has_owner_religion = yes
 	}
 
 	keep_trigger = {}
@@ -645,7 +649,8 @@ fort_jesus = {
 		province_modifiers = {}
 		area_modifier = {}
 		country_modifiers = {
-			
+			missionary_maintenance_cost = -0.1
+			tolerance_own = 0.5
 		}
 		on_upgraded = {}
 	}
@@ -659,7 +664,11 @@ fort_jesus = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			missionaries = 1
+			missionary_maintenance_cost = -0.2
+			tolerance_own = 1
+		}
 		on_upgraded = {}
 	}
 
@@ -672,7 +681,107 @@ fort_jesus = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
+		country_modifiers = {
+			missionaries = 1
+			missionary_maintenance_cost = -0.3
+			tolerance_own = 2
+			global_missionary_strength = 0.01
+		}
+		on_upgraded = {}
+	}
+}
+
+fort_jesus = {
+	start = 1202 #Mombasa
+	date = 1444.01.01 #1593
+	time = { months = 0	}
+	build_cost = 0
+	can_be_moved = no
+	move_days_per_unit_distance = 10
+	starting_tier = 0
+	type = monument
+
+	build_trigger = {}
+
+	on_built = {}
+
+	on_destroyed = {}
+
+	can_use_modifiers_trigger = {}
+
+	can_upgrade_trigger = {}
+
+	keep_trigger = {}
+
+	tier_0 = {
+		upgrade_time = {
+			months = 0
+		}
+		cost_to_upgrade = {
+			factor = 0
+		}
+		province_modifiers = {}
+		area_modifier = {}
 		country_modifiers = {}
+		on_upgraded = {}
+	}
+	
+	tier_1 = {
+		upgrade_time = {
+			months = 120
+		}
+		cost_to_upgrade = {
+			factor = 1000
+		}
+		province_modifiers = {}
+		area_modifier = {
+			local_defensiveness = 0.1
+		}
+		country_modifiers = {
+			defensiveness = 0.05
+			garrison_size = 0.05
+		}
+		on_upgraded = {}
+	}
+
+	tier_2 = {
+		upgrade_time = {
+			months = 240
+		}
+		cost_to_upgrade = {
+			factor = 2500
+		}
+		province_modifiers = {}
+		area_modifier = {
+			local_fort_maintenance_modifier = -0.2
+			local_defensiveness = 0.2		
+		}
+		country_modifiers = {
+			defensiveness = 0.1
+			garrison_size = 0.10
+		}
+		on_upgraded = {}
+	}
+
+	tier_3 = {
+		upgrade_time = {
+			months = 480
+		}
+		cost_to_upgrade = {
+			factor = 5000
+		}
+		province_modifiers = {
+			local_defender_dice_roll_bonus = 1
+			fort_level = 1
+		}
+		area_modifier = {
+			local_fort_maintenance_modifier = -0.5
+			local_defensiveness = 0.3
+		}
+		country_modifiers = {
+			defensiveness = 0.25
+			garrison_size = 0.15
+		}
 		on_upgraded = {}
 	}
 }
@@ -695,10 +804,18 @@ el_jem_amphitheatre = {
 
 	can_use_modifiers_trigger = {
 		province_is_or_accepts_culture = yes
+		OR = {
+			culture = tunisian
+			culture_group = lost_cultures_group
+		}
 	}
 
 	can_upgrade_trigger = {
 		province_is_or_accepts_culture = yes
+		OR = {
+			culture = tunisian
+			culture_group = lost_cultures_group
+		}
 	}
 
 	keep_trigger = {}
@@ -710,7 +827,7 @@ el_jem_amphitheatre = {
 		cost_to_upgrade = {
 			factor = 0
 		}
-		province_modifiers = {}
+		province_modifiers = {} 
 		area_modifier = {}
 		country_modifiers = {}
 		on_upgraded = {}
@@ -726,7 +843,8 @@ el_jem_amphitheatre = {
 		province_modifiers = {}
 		area_modifier = {}
 		country_modifiers = {
-			
+			promote_culture_cost = -0.10
+			culture_conversion_time = -0.05
 		}
 		on_upgraded = {}
 	}
@@ -740,7 +858,11 @@ el_jem_amphitheatre = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			army_tradition = 0.25
+			promote_culture_cost = -0.25
+			culture_conversion_time = -0.10
+		}
 		on_upgraded = {}
 	}
 
@@ -753,7 +875,12 @@ el_jem_amphitheatre = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			army_tradition = 0.5
+			num_accepted_cultures = 1
+			promote_culture_cost = -0.5
+			culture_conversion_time = -0.20
+		}
 		on_upgraded = {}
 	}
 }
@@ -772,7 +899,6 @@ great_zimbabwe_monument = {
 		FROM = {
 			tag = ZBW
 		}
-		has_country_flag = can_build_great_zim_mon
 	}
 
 	on_built = {}
@@ -780,14 +906,12 @@ great_zimbabwe_monument = {
 	on_destroyed = {}
 
 	can_use_modifiers_trigger = {
-		province_is_or_accepts_culture = yes
 		owner = {
 			tag = ZBW
 		}
 	}
 	
 	can_upgrade_trigger = {
-		province_is_or_accepts_culture = yes
 		owner = {
 			tag = ZBW
 		}
@@ -816,14 +940,14 @@ great_zimbabwe_monument = {
 			factor = 1500
 		}
 		province_modifiers = {
+			trade_goods_size = 0.1
+			local_build_time = -0.05
+		}
+		area_modifier = {}
+		country_modifiers = {
 			
 		}
-		area_modifier = {
-		}
-		country_modifiers = {
-		}
-		on_upgraded = {
-		}
+		on_upgraded = {}
 	}
 
 	tier_2 = {
@@ -834,15 +958,16 @@ great_zimbabwe_monument = {
 			factor = 2500
 		}
 		province_modifiers = {
-			
+			trade_goods_size = 0.2
 		}
 		area_modifier = {
+			local_build_cost = -0.10
+			local_build_time = -0.10
 		}
 		country_modifiers = {
-			
+		
 		}
-		on_upgraded = {
-		}
+		on_upgraded = {}
 	}
 
 	tier_3 = {
@@ -853,13 +978,15 @@ great_zimbabwe_monument = {
 			factor = 5000
 		}
 		province_modifiers = {
-			
+			trade_goods_size = 0.3
+			allowed_num_of_buildings = 1
 		}
 		area_modifier = {
-			
+			local_build_cost = -0.25
+			local_build_time = -0.20
 		}
 		country_modifiers = {
-		
+			trade_efficiency = 0.05
 		}
 		on_upgraded = {}
 	}
@@ -882,10 +1009,12 @@ pyramid_of_meroe = {
 	on_destroyed = {}
 
 	can_use_modifiers_trigger = {
+		culture_group = egyptian
 		province_is_or_accepts_culture = yes
 	}
 
 	can_upgrade_trigger = {
+		culture_group = egyptian
 		province_is_or_accepts_culture = yes
 	}
 
@@ -914,7 +1043,8 @@ pyramid_of_meroe = {
 		province_modifiers = {}
 		area_modifier = {}
 		country_modifiers = {
-			
+			culture_conversion_time = -0.025
+			same_culture_advisor_cost = -0.025
 		}
 		on_upgraded = {}
 	}
@@ -928,7 +1058,10 @@ pyramid_of_meroe = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			culture_conversion_time = -0.05
+			same_culture_advisor_cost = -0.05
+		}
 		on_upgraded = {}
 	}
 
@@ -941,7 +1074,12 @@ pyramid_of_meroe = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			culture_conversion_time = -0.1
+			same_culture_advisor_cost = -0.10
+			manpower_in_culture_group_provinces = 0.10
+			manpower_in_own_culture_provinces = 0.10
+		}
 		on_upgraded = {}
 	}
 }
@@ -957,7 +1095,9 @@ fasil_ghebbi = {
 	type = monument
 
 	build_trigger = {
-		has_country_flag = tm_eth_fasil_ghebbi_building
+		FROM = {
+			has_country_flag = tm_eth_fasil_ghebbi_building
+		}
 	}
 
 	on_built = {}
@@ -966,10 +1106,12 @@ fasil_ghebbi = {
 
 	can_use_modifiers_trigger = {
 		province_is_or_accepts_culture = yes
+		culture = amhara
 	}
 	
 	can_upgrade_trigger = {
 		province_is_or_accepts_culture = yes
+		culture = amhara
 	}
 
 	keep_trigger = {}
@@ -981,9 +1123,13 @@ fasil_ghebbi = {
 		cost_to_upgrade = {
 			factor = 0
 		}
-		province_modifiers = {}
+		province_modifiers = {
+			trade_goods_size_modifier = 0.25
+		}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			governing_capacity = 50
+		}
 		on_upgraded = {}
 	}
 	
@@ -994,12 +1140,23 @@ fasil_ghebbi = {
 		cost_to_upgrade = {
 			factor = 1000
 		}
-		province_modifiers = {}
+		province_modifiers = {
+			trade_goods_size_modifier = 0.5
+		}
 		area_modifier = {}
 		country_modifiers = {
-			
+			stability_cost_modifier = -0.1
+			governing_capacity = 100
 		}
-		on_upgraded = {}
+		on_upgraded = {
+			owner = {
+				add_legitimacy_equivalent = {
+					amount = 5
+					republican_tradition = 5
+				}
+				add_prestige_or_monarch_power = { amount = 5 }
+			}
+		}
 	}
 
 	tier_2 = {
@@ -1009,10 +1166,24 @@ fasil_ghebbi = {
 		cost_to_upgrade = {
 			factor = 2500
 		}
-		province_modifiers = {}
+		province_modifiers = {
+			trade_goods_size_modifier = 0.75
+		}
 		area_modifier = {}
-		country_modifiers = {}
-		on_upgraded = {}
+		country_modifiers = {
+			stability_cost_modifier = -0.25
+			state_maintenance_modifier = -0.10
+			governing_capacity = 200
+		}
+		on_upgraded = {
+			owner = {
+				add_legitimacy_equivalent = {
+					amount = 10
+					republican_tradition = 10
+				}
+				add_prestige_or_monarch_power = { amount = 10 }
+			}
+		}
 	}
 
 	tier_3 = {
@@ -1023,9 +1194,32 @@ fasil_ghebbi = {
 			factor = 5000
 		}
 		province_modifiers = {}
-		area_modifier = {}
-		country_modifiers = {}
-		on_upgraded = {}
+		area_modifier = {
+			trade_goods_size_modifier = 1.0
+		}
+		country_modifiers = {
+			stability_cost_modifier = -0.5
+			state_maintenance_modifier = -0.25
+			governing_capacity = 300
+			max_absolutism = 10
+			max_absolutism_effect = 0.1
+		}
+		on_upgraded = {
+			owner = {
+				change_ruler_stat = {
+					type = adm
+					amount = 1
+				}
+				add_legitimacy_equivalent = {
+					amount = 15
+					republican_tradition = 15
+				}
+				add_prestige_or_monarch_power = { amount = 15 }
+			}
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
+		}
 	}
 }
 
@@ -1047,10 +1241,12 @@ obelisk_of_axum = {
 
 	can_use_modifiers_trigger = {
 		province_is_or_accepts_culture = yes
+		culture_group = cushitic
 	}
 
 	can_upgrade_trigger = {
 		province_is_or_accepts_culture = yes
+		culture_group = cushitic
 	}
 
 	keep_trigger = {}
@@ -1076,8 +1272,8 @@ obelisk_of_axum = {
 			factor = 1000
 		}
 		province_modifiers = {
-			local_tax_modifier = 0.1
-			local_development_cost = -0.05
+			local_tax_modifier = 0.25
+			local_development_cost = -0.10
 		}
 		area_modifier = {}
 		country_modifiers = {
@@ -1094,8 +1290,8 @@ obelisk_of_axum = {
 			factor = 2500
 		}
 		province_modifiers = {
-			local_tax_modifier = 0.25
-			local_development_cost = -0.10
+			local_tax_modifier = 0.5
+			local_development_cost = -0.20
 		}
 		area_modifier = {}
 		country_modifiers = {
@@ -1114,20 +1310,20 @@ obelisk_of_axum = {
 			factor = 5000
 		}
 		province_modifiers = {
-			local_tax_modifier = 0.5
-			local_development_cost = -0.15
+			local_tax_modifier = 1.0
+			local_development_cost = -0.30
 		}
 		area_modifier = {}
 		country_modifiers = {
 			prestige = 0.5
 			church_power_modifier = 0.25
-			culture_conversion_cost = -0.10
+			culture_conversion_cost = -0.15
 		}
 		on_upgraded = {}
 	}
 }
 
-lighthouse_of_alexandria = { 
+lighthouse_of_alexandria = {
 	start = 358 #Alexandria
 	date = 280.01.01
 	time = { months = 0	}
@@ -1145,10 +1341,20 @@ lighthouse_of_alexandria = {
 
 	can_use_modifiers_trigger = {
 		province_is_or_accepts_culture = yes
+		culture = al_misr_arabic
+		OR = {
+			has_dock_building_trigger = yes
+			has_shipyard_building_trigger = yes
+		}
 	}
 
 	can_upgrade_trigger = {
 		province_is_or_accepts_culture = yes
+		culture = al_misr_arabic
+		OR = {
+			has_dock_building_trigger = yes
+			has_shipyard_building_trigger = yes
+		}
 	}
 
 	keep_trigger = {}
@@ -1209,10 +1415,10 @@ lighthouse_of_alexandria = {
 		}
 		province_modifiers = {
 			province_trade_power_modifier = 0.25
-			local_own_coast_naval_combat_bonus = 1
 		}
 		area_modifier = {
 			local_ship_repair = 0.5
+			local_own_coast_naval_combat_bonus = 1
 		}
 		country_modifiers = {
 			ship_trade_power_modifier = 0.25
@@ -1221,7 +1427,7 @@ lighthouse_of_alexandria = {
 	}
 }
 
-al_qarawiyyin = { 
+al_qarawiyyin = {
 	start = 343 #Fez
 	date = 857.01.01
 	time = { months = 0	}
@@ -1240,11 +1446,15 @@ al_qarawiyyin = {
 	can_use_modifiers_trigger = {
 		province_is_or_accepts_culture = yes
 		culture = moroccan
+		religion_group = muslim
+		has_owner_religion = yes
 	}
 	
 	can_upgrade_trigger = {
 		province_is_or_accepts_culture = yes
 		culture = moroccan
+		religion_group = muslim
+		has_owner_religion = yes
 	}
 
 	keep_trigger = {}
@@ -1288,9 +1498,11 @@ al_qarawiyyin = {
 		}
 		province_modifiers = {
 			local_development_cost = -0.15
-			institution_growth = 3
+			institution_growth = 6
 		}
-		area_modifier = {}
+		area_modifier = {
+			local_development_cost = -0.05
+		}
 		country_modifiers = {
 			innovativeness_gain = 0.4
 		}
@@ -1306,12 +1518,14 @@ al_qarawiyyin = {
 		}
 		province_modifiers = {
 			local_development_cost = -0.30
-			institution_growth = 6
+			institution_growth = 12
 		}
-		area_modifier = {}
+		area_modifier = {
+			local_development_cost = -0.10
+		}
 		country_modifiers = {
 			innovativeness_gain = 0.5
-			idea_cost = -0.1
+			idea_cost = -0.10
 		}
 		on_upgraded = {}
 	}
@@ -1723,7 +1937,6 @@ cape_port_monument = {
 	type = monument
 
 	build_trigger = {
-		province_is_or_accepts_culture = yes
 		FROM = {
 			has_country_flag = tm_can_build_cape_port
 		}
@@ -1944,7 +2157,6 @@ ishtar_gate = {
 		on_upgraded = {
 		}
 	}
-	
 }
 
 roman_colosseum = {
@@ -2067,7 +2279,6 @@ roman_colosseum = {
 			custom_tooltip = roman_colosseum_tier_3_tt
 		}
 	}
-	
 }
 
 danevirke = {
@@ -2179,7 +2390,6 @@ danevirke = {
 		on_upgraded = {
 		}
 	}
-	
 }
 
 drottingholm_palace = {
@@ -2899,25 +3109,21 @@ agadez = {
 	}
 
 	can_use_modifiers_trigger = {
-		AND = {
-			owner = {
-				capital_scope = {
-					continent = africa
-				}
+		owner = {
+			capital_scope = {
+				continent = africa
 			}
-			religion_group = muslim
 		}
+		religion_group = muslim
 	}
 
 	can_upgrade_trigger = {
-		AND = {
-			owner = {
-				capital_scope = {
-					continent = africa
-				}
+		owner = {
+			capital_scope = {
+				continent = africa
 			}
-			religion_group = muslim
 		}
+		religion_group = muslim
 	}
 
 	keep_trigger = {
@@ -3272,6 +3478,7 @@ tm_city_of_sanaa = {
 	}
 
 	can_use_modifiers_trigger = {
+		has_owner_religion = yes
 		OR = {
 			religion_group = muslim
 			religion = coptic
@@ -3280,6 +3487,7 @@ tm_city_of_sanaa = {
 	}
 
 	can_upgrade_trigger = {
+		has_owner_religion = yes
 		OR = {
 			religion_group = muslim
 			religion = coptic
@@ -11131,6 +11339,8 @@ khami_ruins = {
 			local_defensiveness = 0.15
 		}
 
+		region_modifier = { local_friendly_movement_speed = 0.05 }
+
 		#what modifiers are added to the country when we have this project here on this tier
 		country_modifiers = {
 			fabricate_claims_cost = -0.1
@@ -11160,6 +11370,8 @@ khami_ruins = {
 		area_modifier = {
 			local_defensiveness = 0.2
 		}
+
+		region_modifier = { local_friendly_movement_speed = 0.10 }
 
 		#what modifiers are added to the country when we have this project here on this tier
 		country_modifiers = {
@@ -11191,6 +11403,8 @@ khami_ruins = {
 		area_modifier = {
 			local_defensiveness = 0.25
 		}
+
+		region_modifier = { local_friendly_movement_speed = 0.15 }
 
 		#what modifiers are added to the country when we have this project here on this tier
 		country_modifiers = {
@@ -20097,7 +20311,10 @@ walls_benin = {
 	type = monument
 
 	build_trigger = {
-		religion_group = pagan
+		OR = {
+			religion_group = pagan
+			owner = { mission_completed = mal_walls_of_benin }
+		}
 		has_owner_religion = yes
 	}
 
@@ -20108,12 +20325,18 @@ walls_benin = {
 	}
 
 	can_use_modifiers_trigger = {
-		religion_group = pagan
+		OR = {
+			religion_group = pagan
+			owner = { mission_completed = mal_walls_of_benin }
+		}
 		has_owner_religion = yes
 	}
 
 	can_upgrade_trigger = {
-		religion_group = pagan
+		OR = {
+			religion_group = pagan
+			owner = { mission_completed = mal_walls_of_benin }
+		}
 		has_owner_religion = yes
 	}
 
@@ -23316,18 +23539,6 @@ al_azhar_university = {
 					change_innovativeness = 1
 				}
 			}
-			if = {
-				limit = {
-					owner = { has_government_mechanic = egyptian_westernization }
-				}
-				owner = {
-					add_government_power = {
-						mechanic_type = egyptian_westernization
-						power_type = egyptian_westernization
-						value = 30
-					}
-				}
-			}
 		}
 	}
 
@@ -23360,16 +23571,9 @@ al_azhar_university = {
 				}
 			}
 			if = {
-				limit = {
-					owner = { has_government_mechanic = egyptian_westernization }
-				}
-				owner = {
-					add_government_power = {
-						mechanic_type = egyptian_westernization
-						power_type = egyptian_westernization
-						value = 30
-					}
-				}
+				limit = { FROM = { has_reform = mamluk_government } }
+				custom_tooltip = tm_mam_can_see_ruler_skills_tt
+				FROM = { set_country_flag = tm_mam_can_see_ruler_skills_flag }
 			}
 		}
 	}
@@ -23396,18 +23600,6 @@ al_azhar_university = {
 				limit = { has_dlc = "Rule Britannia" }
 				owner = {
 					change_innovativeness = 5
-				}
-			}
-			if = {
-				limit = {
-					owner = { has_government_mechanic = egyptian_westernization }
-				}
-				owner = {
-					add_government_power = {
-						mechanic_type = egyptian_westernization
-						power_type = egyptian_westernization
-						value = 30
-					}
 				}
 			}
 		}

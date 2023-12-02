@@ -978,21 +978,21 @@ country_event = {
 	
 	is_triggered_only = yes
 
-	option = {
-		name = flavor_mam.101.a
-
-		if = {
-			limit = {
-				has_dlc = "Rule Britannia"
-			}
-			change_innovativeness = 3
-		}
-		else = {
-			add_adm_power = 100
-			add_dip_power = 100
-			add_mil_power = 100
-		}
-	}
+#	option = {
+#		name = flavor_mam.101.a
+#
+#		if = {
+#			limit = {
+#				has_dlc = "Rule Britannia"
+#			}
+#			change_innovativeness = 3
+#		}
+#		else = {
+#			add_adm_power = 100
+#			add_dip_power = 100
+#			add_mil_power = 100
+#		}
+#	}
 
 	option = {
 		name = flavor_mam.101.b
@@ -1037,7 +1037,7 @@ country_event = {
 
 		add_mercantilism = 2
 		custom_tooltip = mam_expand_grain_production_tt
-		custom_tooltip = mam_more_exports_2_tt
+		#custom_tooltip = mam_more_exports_2_tt
 		hidden_effect = {
 			every_owned_province = {
 				limit = {
@@ -1049,7 +1049,7 @@ country_event = {
 					duration = -1 
 				}
 			}
-			set_country_flag = increase_exports_to_6_flag
+			#set_country_flag = increase_exports_to_6_flag
 		}
 	}
 }
@@ -1097,32 +1097,32 @@ country_event = {
 		}
 	}
 
-	option = {
-		name = flavor_mam.103.b 
-
-		capital_scope = {
-			set_province_flag = chose_egy_mission_flag
-		}
-		if = {
-			limit = { stability = 0 }
-			add_stability = -5
-		}
-		else = {
-			add_adm_power = -200
-			add_dip_power = -100
-		}
-		if = {
-			limit = { 
-				EGY = { exists = no }
-			}
-			change_tag = EGY
-			swap_free_idea_group = yes
-		}
-		else = { add_prestige_or_monarch_power = { amount = 25 } }
-		
-		set_country_flag = egyptian_government_reform_flag
-		add_government_reform = egyptian_government_reform
-	}
+#	option = {
+#		name = flavor_mam.103.b 
+#
+#		capital_scope = {
+#			set_province_flag = chose_egy_mission_flag
+#		}
+#		if = {
+#			limit = { stability = 0 }
+#			add_stability = -5
+#		}
+#		else = {
+#			add_adm_power = -200
+#			add_dip_power = -100
+#		}
+#		if = {
+#			limit = { 
+#				EGY = { exists = no }
+#			}
+#			change_tag = EGY
+#			swap_free_idea_group = yes
+#		}
+#		else = { add_prestige_or_monarch_power = { amount = 25 } }
+#		
+#		set_country_flag = egyptian_government_reform_flag
+#		add_government_reform = egyptian_government_reform
+#	}
 }
 
 #The Waqf of [Root.Monarch.GetName]
@@ -1140,7 +1140,7 @@ country_event = {
 		add_years_of_income = -2
 		capital_scope = {
 			if = {
-				limit = { has_building = university }
+				limit = { area_for_scope_province = { has_building = university } }
 				add_base_production = 2
 			}
 			else = { add_building = university }
@@ -1149,7 +1149,7 @@ country_event = {
 		hidden_effect = {
 			add_country_modifier = {
 				name = mam_adm_advisors_generate_idea_cost_modifier
-				duration = 7300
+				duration = -1
 				hidden = yes
 			}
 		}
@@ -1180,7 +1180,7 @@ country_event = {
 		hidden_effect = {
 			add_country_modifier = {
 				name = mam_mosque_great_mosque_generates_crown_land_modifier
-				duration = 7300
+				duration = -1
 				hidden = yes
 			}
 		}
@@ -1255,7 +1255,7 @@ country_event = {
 		hidden_effect = {
 			every_owned_province = {
 				limit = { trade_goods = coffee }
-				add_base_production = 1
+				add_base_production = 3
 			}
 		}
 	}
@@ -1554,15 +1554,15 @@ country_event = { #The Heart of an Empire
 		name = flavor_mam.112.b 
 
 		trigger = {
-			TUR = {
-				NOT = { total_development = ROOT }
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 30
+				region = anatolia_region
 			}
 		}
 		
 		unlock_government_reform = { 
 			government_reform = integrated_ottoman_officials
-		} 
-
+		}
 	}
 
 	option = {
@@ -1642,20 +1642,24 @@ country_event = { #Architecture in Safavid Persia
 	option = {
 		name = flavor_mam.114.a 
 
-		if = {
-			limit = { 
-				has_dlc = "Mandate of Heaven"
-				current_age = age_of_reformation
-				NOT = { is_year = 1590 }
-			}
-			custom_tooltip = enable_persian_age_ability_tt
-			set_country_flag = enable_persian_age_ability_flag
-		}
-		else = {
-			add_country_modifier = {
-				name = mam_adopted_persian_architecture_modifier
-				duration = 9125
-			}
+		#if = {
+		#	limit = { 
+		#		has_dlc = "Mandate of Heaven"
+		#		current_age = age_of_reformation
+		#		NOT = { is_year = 1590 }
+		#	}
+		#	custom_tooltip = enable_persian_age_ability_tt
+		#	set_country_flag = enable_persian_age_ability_flag
+		#}
+		#else = {
+		#	add_country_modifier = {
+		#		name = mam_adopted_persian_architecture_modifier
+		#		duration = 9125
+		#	}
+		#}
+		add_country_modifier = {
+			name = mam_adopted_persian_architecture_modifier
+			duration = 9125
 		}
 	}
 }
