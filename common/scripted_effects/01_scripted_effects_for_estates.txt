@@ -3102,6 +3102,13 @@ on_loan_repaid_estate_privileges_effect = {
 			has_estate_loan = no
 		}
 		remove_estate_privilege = estate_burghers_indebted_to_burghers
+		if = {
+			limit = { is_or_was_tag = { tag = MAL } }
+			change_variable = {
+				which = tm_mal_repaid_loans_times
+				value = 1
+			}
+		}
 	}
 	if = {
 		limit = {

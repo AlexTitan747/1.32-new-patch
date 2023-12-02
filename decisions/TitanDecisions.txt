@@ -1,4 +1,4 @@
-country_decisions = {	
+country_decisions = {
 	tm_tts_crownland_regain = {
 		major = yes
 		potential = {
@@ -160,108 +160,6 @@ country_decisions = {
 		}
 	}
 
-	titan_african_colonising = {
-		major = yes
-		potential = {
-			ai = no
-			OR = {
-				technology_group = central_african
-				technology_group = east_african
-				technology_group = sub_saharan
-				tag = MAL
-				was_tag = MAL
-				tag = RZW
-				was_tag = RZW
-				tag = ETH
-				was_tag = ETH
-			}
-			NOT = { has_country_modifier = titan_afr_colonist }
-		}
-		allow = {
-			adm_tech = 5
-			adm_power = 150
-			dip_power = 150
-			NOT = { has_country_modifier = titan_afr_colonist }
-		}
-		effect = {
-			create_conquistador = {
-				tradition = 20
-			}
-			create_explorer = {
-				tradition = 20
-			}
-			add_country_modifier = {
-				name = titan_afr_colonist
-				duration = 18250
-			}
-			adm_power_cost = 150
-			dip_power_cost = 150
-		}
-	}
-
-	titan_african_colonising_plus = {
-		major = yes
-		potential = {
-			ai = no
-			OR = {
-				technology_group = central_african
-				technology_group = east_african
-				technology_group = sub_saharan
-			}
-			has_country_modifier = titan_afr_colonist
-			NOT = { has_country_modifier = titan_afr_colonist_upgrade }
-		}
-		allow = {
-			adm_tech = 7
-			treasury = 500
-			has_country_modifier = titan_afr_colonist
-			NOT = { has_country_modifier = titan_afr_colonist_upgrade }
-		}
-		effect = {
-			add_country_modifier = {
-				name = titan_afr_colonist_upgrade
-				duration = 3650
-			}
-			add_treasury = -500
-		}
-	}
-
-	titan_tech_group = {
-		major = yes
-		potential = {
-			ai = no
-			OR = {
-				technology_group = central_african
-				technology_group = east_african
-				technology_group = sub_saharan
-				technology_group = nomad_group
-			}
-			mil_tech = 15
-		}
-		allow = {
-			mil_tech = 15
-			is_at_war = no
-			treasury = 2500
-			OR = {
-				technology_group = central_african
-				technology_group = east_african
-				technology_group = sub_saharan
-				technology_group = nomad_group
-			}
-		}
-		effect = {
-			add_country_modifier = {
-				name = titan_modernising_army
-				duration = 1825
-			}
-			add_treasury = -2500
-			country_event = {
-				id = extras.6
-			}
-			add_army_tradition = -20
-		}
-	}
-
 	sm_hire_general = {
 		potential = {
 			is_bankrupt = no
@@ -277,6 +175,7 @@ country_decisions = {
 			set_country_flag = sm_hire_general
 		}
 	}
+
 	educate_ruler = {
 		color = { 229 56 18 }
 		major = yes
@@ -440,6 +339,7 @@ country_decisions = {
 			set_country_flag = educate_ruler_flag
 		}
 	}
+	
 	tm_hire_conq_or_exp = {
 		potential = {
 			is_bankrupt = no
@@ -793,7 +693,7 @@ country_decisions = {
 		allow = {}
 		effect = {
 			country_event = {
-				id = help_events.1
+				id = help_events.0
 			}
 		}
 	}

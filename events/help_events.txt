@@ -1,5 +1,37 @@
 namespace = help_events
 
+# Menu
+country_event = {
+	id = help_events.0
+	title = help_events.0.t
+	desc = help_events.0.desc
+	picture = titan_logo
+	
+    is_triggered_only = yes
+	
+	option = {
+		name = help_events.0.a
+		custom_tooltip = tm_help_event_through_descisions
+	}
+
+	option = {
+		name = help_events.0.b
+		country_event = { id = help_events.1 }
+	}
+
+	option = {
+		name = help_events.0.c
+		country_event = { id = help_events.100 }
+	}
+
+	option = {
+		name = help_events.0.d
+        set_country_flag = no_more_help_event
+		custom_tooltip = tm_disables_help_event
+	}
+}
+
+# General Mod Help
 country_event = {
 	id = help_events.1
 	title = help_events.1.t
@@ -10,11 +42,28 @@ country_event = {
 	
 	option = {
 		name = help_events.1.a
-        set_country_flag = no_more_help_event
-		custom_tooltip = tm_disables_help_event
 	}
 	option = {
 		name = help_events.1.b
-		custom_tooltip = tm_help_event_through_descisions
+		country_event = { id = help_events.0 }
+	}
+}
+
+# Country Specific Event, text is done through custom localisation
+country_event = {
+	id = help_events.100
+	title = help_events.100.t
+	desc = help_events.100.d
+	picture = titan_logo
+	
+    is_triggered_only = yes
+	
+	option = {
+		name = help_events.100.a
+	}
+
+	option = {
+		name = help_events.100.b
+		country_event = { id = help_events.0 }
 	}
 }

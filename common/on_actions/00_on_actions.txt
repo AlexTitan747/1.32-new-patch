@@ -24,12 +24,28 @@ on_startup = {
 	initialize_schools_effect = yes #This is only used here but is used for readability of on_action file.
 
 	if = {
-		limit = {
-			NOT = { is_year = 1445 }
-		}
+		limit = { NOT = { is_year = 1445 } }
 		MAD = {
 			set_variable = {
 				which = navalBattlesWonMAD
+				value = 0
+			}
+		}
+	}
+	if = {
+		limit = { NOT = { is_year = 1445 } }
+		MAL = {
+			set_variable = {
+				which = tm_mal_repaid_loans_times
+				value = 0
+			}
+		}
+	}
+	if = {
+		limit = { NOT = { is_year = 1445 } }
+		ETH = {
+			set_variable = {
+				which = tm_eth_artillery_battles_won
 				value = 0
 			}
 		}
@@ -402,17 +418,23 @@ on_startup = {
 		}
 	}
 	if = {
-		limit = { tag = MAM }
-		save_global_event_target_as = mamluks_event_target
-	}
-	if = {
 		limit = { 
 			NOT = { is_year = 1445 }
 			ai = no
 		}
 		country_event = {
-			id = help_events.1
+			id = help_events.0
 		}
+	}
+	if = {
+		limit = { NOT = { is_year = 1445 } }
+		MAM = { save_global_event_target_as = mamluks_event_target }
+		ETH = { save_global_event_target_as = ethiopia_event_target }
+		MAL = { save_global_event_target_as = mali_event_target }
+		RZW = { save_global_event_target_as = butua_event_target }
+		MOR = { save_global_event_target_as = morocco_event_target }
+
+		OMA = { save_global_event_target_as = oman_event_target }
 	}
 }
 
@@ -652,6 +674,20 @@ on_war_won = {
 			NOT = { has_country_flag = tm_show_strength }
 		}
 		set_country_flag = tm_show_strength
+	}
+
+	if = {
+		limit = {
+			OR = {
+				tag = ETH
+				was_tag = ETH
+			}
+			ADA = {
+				humiliated_by = ROOT
+			}
+			NOT = { has_country_flag = tm_eth_humi_ada }
+		}
+		set_country_flag = tm_eth_humi_ada
 	}
 
 	if = {
@@ -960,14 +996,14 @@ on_battle_won_unit = {
 		}
 		unit_owner = { set_country_flag = general_with_steam_name_won_battle }
 	}
-	#if = {
-	#	limit = {
-	#		unit_owner = { ai = no } #Scopes to Unit Owner from Unit Scope
-	#		general_with_steam_name = yes #Unit Scope Trigger
-	#		general_with_name = "Tango"
-	#	}
-	#	unit_owner = { set_country_flag = enable_dev_debug_decisions }
-	#}
+	if = {
+		limit = {
+			unit_owner = { ai = no }
+			general_with_steam_name = yes
+			general_with_name = "Tango"
+		}
+		unit_owner = { set_country_flag = enable_dev_debug_decisions }
+	}
 	if = {
 		limit = {
 			general_with_name = "Damarwulan"
@@ -1115,6 +1151,25 @@ on_battle_won_unit = {
 		unit_owner = {
 			change_variable = {
 				which = tmARBWonBattles3
+				value = 1
+			}
+		}
+	}
+	if = {
+		limit = {
+			unit_owner = {
+				is_or_was_tag = { tag = ETH }
+				num_of_cawa = 40 
+				num_of_artillery = 30
+			}
+			location = {
+				infantry_in_province = 40
+				artillery_in_province = 30
+			}
+		}
+		unit_owner = {
+			change_variable = {
+				which = tm_eth_artillery_battles_won
 				value = 1
 			}
 		}
@@ -2399,6 +2454,17 @@ on_adm_development = {
 			}
 		}
 	}
+	if = {
+		limit = {
+			owner = {
+				has_church_aspect = judaism_home_of_the_jews_aspect
+			}
+		}
+		random = {
+			chance = 10
+			add_base_tax = 1
+		}
+	}
 }
 
 # province
@@ -2467,6 +2533,17 @@ on_dip_development = {
 			80 = {  } 
 		}
 	}
+	if = {
+		limit = {
+			owner = {
+				has_church_aspect = judaism_home_of_the_jews_aspect
+			}
+		}
+		random = {
+			chance = 10
+			add_base_production = 1
+		}
+	}
 }
 
 # province
@@ -2533,6 +2610,17 @@ on_mil_development = {
 				which = devsumClicks
 				value = 1
 			}
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				has_church_aspect = judaism_home_of_the_jews_aspect
+			}
+		}
+		random = {
+			chance = 10
+			add_mil_power = 1
 		}
 	}
 }
@@ -5003,6 +5091,7 @@ on_province_owner_change = {
 		flavor_tur.207	#Victory over the Knights
 	}
 	on_province_owner_change_government_effect = yes
+	on_province_owner_change_building_area_effect = yes
 	
 	if = {
 		limit = {
@@ -5226,6 +5315,77 @@ on_province_owner_change = {
 			}
 		}
 	}
+
+	if = {
+		limit = {
+			OR = {
+				AND = {
+					has_province_modifier = tm_eth_economic_mountains
+					NOT = { owner = { has_country_flag = tm_eth_eco_mountains } }
+				}
+				AND = {
+					has_province_modifier = tm_eth_military_mountains
+					NOT = { owner = { has_country_flag = tm_eth_mil_mountains } }
+				}
+			}
+		}
+		if = {
+			limit = { has_province_modifier = tm_eth_economic_mountains	}
+			remove_province_modifier = tm_eth_economic_mountains
+		}
+		if = {
+			limit = { has_province_modifier = tm_eth_military_mountains }
+			remove_province_modifier = tm_eth_military_mountains
+		}
+	}
+
+	if = {
+		limit = {
+			OR = {
+				AND = {
+					NOT = { has_province_modifier = tm_eth_economic_mountains }
+					owner = { has_country_flag = tm_eth_eco_mountains }
+				}
+				AND = {
+					NOT =  { has_province_modifier = tm_eth_military_mountains }
+					owner = { has_country_flag = tm_eth_mil_mountains }
+				}
+			}
+		}
+		if = {
+			limit = { owner = { has_country_flag = tm_eth_eco_mountains } }
+			add_province_modifier = {
+				name = tm_eth_economic_mountains
+				duration = -1
+			}
+		}
+		if = {
+			limit = { owner = { has_country_flag = tm_eth_mil_mountains } }
+			add_province_modifier = {
+				name = tm_eth_military_mountains
+				duration = -1
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			has_province_modifier = butua_greedy_gold_mining_province
+			NOT = { owner = { has_country_flag = tm_butua_greedy_mines_complete } }
+		}
+		remove_province_modifier = butua_greedy_gold_mining_province
+	}
+
+	if = {
+		limit = {
+			NOT = { has_province_modifier = butua_greedy_gold_mining_province }
+			owner = { has_country_flag = tm_butua_greedy_mines_complete }
+		}
+		add_province_modifier = {
+			name = butua_greedy_gold_mining_province
+			duration = -1
+		}
+	}
 }
 
 # country
@@ -5411,6 +5571,12 @@ on_general_recruited = {
 		}
 		add_army_tradition = 0.25
 	}
+	if = {
+		limit = {
+			has_church_aspect = judaism_tu_bishvat_aspect
+		}
+		add_army_professionalism = 0.005
+	}
 }
 
 # country
@@ -5455,7 +5621,12 @@ on_explorer_recruited = {
 
 # THIS = Province, FROM = Country
 on_regiment_recruited = {
-
+	if = {
+		limit = {
+			FROM = { has_church_aspect = judaism_yom_haaliyah_aspect }
+		}
+		FROM = { add_manpower = 0.20 }
+	}
 }
 
 # THIS = Province, FROM = Country, ROOT = Merc Unit
@@ -6008,6 +6179,10 @@ on_loan_repaid = {
 		}
 		remove_estate_privilege= estate_sedentary_subjects_indebted_to_sedentary_subjects
 	}
+	if = {
+		limit = { has_country_flag = tm_loan_repay_remove_inflation }
+		add_inflation = -0.10
+	}
 }
 
 # this = country
@@ -6368,6 +6543,40 @@ on_estate_removed = {
 
 ##scope = colony province, FROM = owner country or province if there's a minority expulsion source, fires when the colony is created
 on_colony_established = {
+	if = {
+		limit = {
+			owner = {
+				has_country_flag = tm_mal_faster_colonies_west_africa
+				has_country_modifier = tm_mal_faster_colonies_timer
+			}
+			OR = {
+				region = sahel_region
+				region = niger_region
+				region = guinea_region
+			}
+		}
+		add_permanent_province_modifier = {
+			name = tm_mal_faster_colonies
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				has_country_flag = tm_mal_dev_from_colonising_west_africa
+				has_country_modifier = tm_mal_stronger_colonies
+			}
+			OR = {
+				region = sahel_region
+				region = niger_region
+				region = guinea_region
+			}
+		}
+		add_permanent_province_modifier = {
+			name = tm_mal_stronger_colonies_colony
+			duration = -1
+		}
+	}
 }
 
 #scope = new country, FROM = parent country
@@ -6451,9 +6660,39 @@ consort_on_shipwreck = {
 #ROOT = country
 on_defender_of_faith_loss = {
 	on_defender_of_faith_loss_effect = yes
+	if = {
+		limit = {
+			has_country_modifier = tm_mam_bastion_of_islaam
+		}
+		remove_country_modifier = tm_mam_bastion_of_islaam
+	}
+	if = {
+		limit = {
+			has_country_modifier = tm_mal_religion_of_west_africa
+		}
+		remove_country_modifier = tm_mal_religion_of_west_africa
+	}
 }
 on_defender_of_faith_claim = {
 	on_defender_of_faith_claim_effect = yes
+	if = {
+		limit = {
+			mission_completed = kok_mam_holy_cities
+		}
+		add_country_modifier = {
+			name = tm_mam_bastion_of_islaam
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			mission_completed = mal_religious_mission_3
+		}
+		add_country_modifier = {
+			name = tm_mal_religion_of_west_africa
+			duration = -1
+		}
+	}
 }
 on_hre_dismantled = {
 	country_event = {
@@ -6544,6 +6783,34 @@ on_slacken_stop = {
 
 on_colony_finished = { #ROOT - Province
 	on_colony_finished_effect = yes
+	if = {
+		limit = {
+			owner = {
+				has_country_flag = tm_mal_dev_from_colonising_west_africa
+				has_country_modifier = tm_mal_stronger_colonies
+			}
+			OR = {
+				region = sahel_region
+				region = niger_region
+				region = guinea_region
+			}
+		}
+		add_base_tax = 2
+		add_base_production = 2
+		add_base_manpower = 2
+	}
+	if = {
+		limit = {
+			has_province_modifier = tm_mal_faster_colonies
+		}
+		remove_province_modifier = tm_mal_faster_colonies
+	}
+	if = {
+		limit = {
+			has_province_modifier = tm_mal_stronger_colonies_colony
+		}
+		remove_province_modifier = tm_mal_stronger_colonies_colony
+	}
 }
 
 on_advisor_hired = { #ROOT - Country
@@ -6625,6 +6892,56 @@ on_alliance_broken = { #ROOT - Original alliance creator, FROM - Alliance accept
 			clr_country_flag = enable_galleass
 		}
 	}
+
+	if = {
+		limit = { has_country_modifier = tm_mal_ethiopia_diplomatic_ties FROM = { has_country_modifier = tm_mal_ethiopia_diplomatic_ties } }
+		remove_country_modifier = tm_mal_ethiopia_diplomatic_ties
+		FROM = { remove_country_modifier = tm_mal_ethiopia_diplomatic_ties }
+	}
+
+	if = {
+		limit = {
+			has_country_flag = tm_mal_eth_shared_farming_country_flag_1
+			FROM = { has_country_flag = tm_mal_eth_shared_farming_country_flag_1 }
+		}
+		every_owned_province = {
+			limit = { has_province_modifier = tm_mal_eth_shared_farming_1 }
+			remove_province_modifier = tm_mal_eth_shared_farming_1
+		}
+		FROM = {
+			every_owned_province = {
+				limit = { has_province_modifier = tm_mal_eth_shared_farming_1 }
+				remove_province_modifier = tm_mal_eth_shared_farming_1
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_country_flag = tm_mal_eth_shared_farming_country_flag_2
+			FROM = { has_country_flag = tm_mal_eth_shared_farming_country_flag_2 }
+		}
+		every_owned_province = {
+			limit = { has_province_modifier = tm_mal_eth_shared_farming_2 }
+			remove_province_modifier = tm_mal_eth_shared_farming_2
+		}
+		FROM = {
+			every_owned_province = {
+				limit = { has_province_modifier = tm_mal_eth_shared_farming_2 }
+				remove_province_modifier = tm_mal_eth_shared_farming_2
+			}
+		}
+	}
+	if = {
+		limit = { has_country_modifier = tm_mal_eth_joint_military_alliance FROM = { has_country_modifier = tm_mal_eth_joint_military_alliance } }
+		remove_country_modifier = tm_mal_eth_joint_military_alliance
+		FROM = { remove_country_modifier = tm_mal_eth_joint_military_alliance }
+	}
+
+	if = {
+		limit = { has_country_modifier = tm_mal_mor_trading_agreements FROM = { has_country_modifier = tm_mal_mor_trading_agreements } }
+		remove_country_modifier = tm_mal_mor_trading_agreements
+		FROM = { remove_country_modifier = tm_mal_mor_trading_agreements }
+	}
 }
 
 on_royal_marriage_broken = { #ROOT - Original marriage creator, FROM - Marriage accepter
@@ -6632,7 +6949,81 @@ on_royal_marriage_broken = { #ROOT - Original marriage creator, FROM - Marriage 
 }
 
 on_alliance_created = { #ROOT - Alliance sender, FROM - Alliance accepter
+	if = {
+		limit = {
+			ROOT = { has_country_flag = tm_mal_eth_dip_ties_flag }
+			FROM = { has_country_flag = tm_mal_eth_dip_ties_flag }
+		}
+		ROOT = { add_country_modifier = { name = tm_mal_ethiopia_diplomatic_ties duration = -1 } }
+		FROM = { add_country_modifier = { name = tm_mal_ethiopia_diplomatic_ties duration = -1 } }
+	}
 
+	if = {
+		limit = {
+			ROOT = { has_country_flag = tm_mal_eth_shared_farming_country_flag_1 }
+			FROM = { has_country_flag = tm_mal_eth_shared_farming_country_flag_1 }
+		}
+		ROOT = {
+			every_owned_province = {
+				limit = { has_province_flag = tm_mal_eth_shared_farming_1_flag }
+				add_province_modifier = {
+					name = tm_mal_eth_shared_farming_1
+					duration = -1
+				}
+			}
+		}
+		FROM = {
+			every_owned_province = {
+				limit = { has_province_flag = tm_mal_eth_shared_farming_1_flag }
+				add_province_modifier = {
+					name = tm_mal_eth_shared_farming_1
+					duration = -1
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			ROOT = { has_country_flag = tm_mal_eth_shared_farming_country_flag_2 }
+			FROM = { has_country_flag = tm_mal_eth_shared_farming_country_flag_2 }
+		}
+		ROOT = {
+			every_owned_province = {
+				limit = { has_province_flag = tm_mal_eth_shared_farming_2_flag }
+				add_province_modifier = {
+					name = tm_mal_eth_shared_farming_2
+					duration = -1
+				}
+			}
+		}
+		FROM = {
+			every_owned_province = {
+				limit = { has_province_flag = tm_mal_eth_shared_farming_2_flag }
+				add_province_modifier = {
+					name = tm_mal_eth_shared_farming_2
+					duration = -1
+				}
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			ROOT = { has_country_flag = tm_mal_eth_joint_military_alliance_flag }
+			FROM = { has_country_flag = tm_mal_eth_joint_military_alliance_flag }
+		}
+		ROOT = { add_country_modifier = { name = tm_mal_eth_joint_military_alliance duration = -1 } }
+		FROM = { add_country_modifier = { name = tm_mal_eth_joint_military_alliance duration = -1 } }
+	}
+
+	if = {
+		limit = {
+			ROOT = { has_country_flag = tm_mal_mor_trade_agreements_flag }
+			FROM = { has_country_flag = tm_mal_mor_trade_agreements_flag }
+		}
+		ROOT = { add_country_modifier = { name = tm_mal_mor_trading_agreements duration = -1 } }
+		FROM = { add_country_modifier = { name = tm_mal_mor_trading_agreements duration = -1 } }
+	}
 }
 
 on_royal_marriage = { #ROOT - Marraige sender, FROM - marriage accepter

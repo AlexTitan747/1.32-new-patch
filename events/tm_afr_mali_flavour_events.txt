@@ -1,0 +1,256 @@
+namespace = mali_flavour
+
+country_event = { #Military Direction
+    id = mali_flavour.1
+    title = mali_flavour.1.t
+    desc = mali_flavour.1.d
+	picture = muslimgfx_LAND_MILITARY_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = { #Reform
+		name = mali_flavour.1.a
+
+        if = {
+            limit = { has_country_flag = tm_mal_mercenery_army }
+            clr_country_flag = tm_mal_mercenery_army
+        }
+
+		set_country_flag = tm_mal_westernise_army
+        hidden_effect = { swap_non_generic_missions = yes }
+        custom_tooltip = tm_mal_westernise_event_option_tt
+
+		ai_chance = { factor = 100 }
+	}
+
+    option = { #Mercenaries
+		name = mali_flavour.1.b
+
+        if = {
+            limit = { has_country_flag = tm_mal_westernise_army }
+            clr_country_flag = tm_mal_westernise_army
+        }
+
+		set_country_flag = tm_mal_mercenery_army
+        hidden_effect = { swap_non_generic_missions = yes }
+        custom_tooltip = tm_mal_mercenary_event_option_tt
+
+		ai_chance = { factor = 0 }
+	}
+}
+
+country_event = { #Colonising Bonus
+    id = mali_flavour.2
+    title = mali_flavour.2.t
+    desc = mali_flavour.2.d
+	picture = COLONIZATION_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = { #Speed
+		name = mali_flavour.2.a
+
+        if = {
+            limit = { has_country_flag = tm_mal_dev_from_colonising_west_africa }
+            clr_country_flag = tm_mal_dev_from_colonising_west_africa
+        }
+
+        set_country_flag = tm_mal_faster_colonies_west_africa
+        custom_tooltip = tm_mal_colonise_west_afirca_tt
+		tooltip = {
+            add_province_modifier = {
+                name = tm_mal_faster_colonies
+                duration = -1
+            }
+        }
+        hidden_effect = {
+            add_country_modifier = {
+                name = tm_mal_faster_colonies_timer
+                duration = 9125
+                hidden = yes
+            }
+        }
+
+		ai_chance = { factor = 100 }
+	}
+
+    option = { #Development
+		name = mali_flavour.2.b
+
+        if = {
+            limit = { has_country_flag = tm_mal_faster_colonies_west_africa }
+            clr_country_flag = tm_mal_faster_colonies_west_africa
+        }
+
+		set_country_flag = tm_mal_dev_from_colonising_west_africa
+        add_country_modifier = {
+            name = tm_mal_stronger_colonies
+            duration = 9125
+        }
+        custom_tooltip = mal_dev_from_colonising
+        custom_tooltip = tm_mal_colonise_west_afirca_tt
+        tooltip = {
+            add_province_modifier = {
+                name = tm_mal_stronger_colonies_colony
+                duration = -1
+            }
+        }
+        
+
+		ai_chance = { factor = 0 }
+	}
+}
+
+country_event = { #Mercenary group choice
+    id = mali_flavour.3
+    title = mali_flavour.3.t
+    desc = mali_flavour.3.d
+	picture = 17_Trade_Company_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = { #Elite
+		name = mali_flavour.3.a
+
+        if = {
+            limit = { has_country_flag = tm_mal_more_mercenary_groups }
+            clr_country_flag = tm_mal_more_mercenary_groups
+        }
+
+        set_country_flag = tm_mal_elite_mercenary_group
+        custom_tooltip = tm_mal_elite_mercenary_group_tt
+
+		ai_chance = { factor = 0 }
+	}
+
+    option = { #Cheaper but numerous
+		name = mali_flavour.3.b
+
+        if = {
+            limit = { has_country_flag = tm_mal_elite_mercenary_group }
+            clr_country_flag = tm_mal_elite_mercenary_group
+        }
+
+		set_country_flag = tm_mal_more_mercenary_groups
+        custom_tooltip = tm_mal_more_mercenary_groups_tt      
+
+		ai_chance = { factor = 1 }
+	}
+}
+
+country_event = { #Offense vs Defense
+    id = mali_flavour.4
+    title = mali_flavour.4.t
+    desc = mali_flavour.4.d
+	picture = muslimgfx_CITY_VIEW_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = { # Defense
+		name = mali_flavour.4.a
+        trigger = {
+            army_size = 30
+			has_mil_advisor = yes
+        }
+
+        define_advisor = {
+            type = fortification_expert
+            skill = 3
+            cost_multiplier = 0.1
+            culture = al_misr_arabic
+            religion = ROOT
+        }
+        add_country_modifier = {
+            name = tm_mal_defense_choice
+            duration = -1
+        }
+ 
+		ai_chance = { factor = 1 }
+	}
+
+    option = { # Offense
+		name = mali_flavour.4.b
+        trigger = {
+            army_size = 30
+			has_mil_advisor = yes
+        }
+
+        define_advisor = {
+            type = commandant
+            skill = 2
+            cost_multiplier = 0.1
+            culture = al_misr_arabic
+            religion = ROOT
+        }
+        add_country_modifier = {
+            name = tm_mal_offense_choice
+            duration = -1
+        }
+        add_country_modifier = {
+            name = tm_mal_immediate_offensive
+            duration = 3650
+        }
+
+        ai_chance = { factor = 0 }
+	}
+
+    option = { # Quick Defense
+        name = mali_flavour.4.c
+        trigger = { defensive_war_with = event_target:morocco_event_target }
+
+        if = {
+            limit = {
+                1129 = { country_or_non_sovereign_subject_holds = ROOT }
+            }
+            1129 = { add_building = fort_16th }
+            random_country = {
+                limit = { owns = 1129 }
+                1129 = { change_controller = PREV }
+            }
+        }
+        else_if = {
+            limit = {
+                1132 = { country_or_non_sovereign_subject_holds = ROOT }
+            }
+            1132 = { add_building = fort_16th }
+            random_country = {
+                limit = { owns = 1132 }
+                1132 = { change_controller = PREV }
+            }
+        }
+        else = {
+            capital_scope = {
+                add_building = fort_16th
+                change_controller = ROOT
+            }
+        }
+        add_country_modifier = {
+            name = tm_mal_quick_defense
+            duration = 3650
+        }
+        add_treasury = 300
+        add_manpower = 15
+        add_loan = {
+			fixed_interest = 1
+			duration = 60
+		}
+        add_loan = {
+			fixed_interest = 1
+			duration = 60
+		}
+        add_loan = {
+			fixed_interest = 1
+			duration = 60
+		}
+
+        ai_chance = { factor = 0 }
+    }
+}
