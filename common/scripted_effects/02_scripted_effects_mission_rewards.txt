@@ -2325,6 +2325,8 @@ select_current_branch = {
 	# TITAN 
 	if = { limit = { can_preview_mission_of_key_and_batch = { key = TM_HUN_CONSOLIATION batch = $batch$ } } select_current_missions = { key = TM_HUN_CONSOLIATION } }
 	if = { limit = { can_preview_mission_of_key_and_batch = { key = TM_AFG_REL batch = $batch$ } } select_current_missions = { key = TM_AFG_REL } }
+	if = { limit = { can_preview_mission_of_key_and_batch = { key = TM_MAL_MIL batch = $batch$ } } select_current_missions = { key = TM_MAL_MIL } }
+	if = { limit = { can_preview_mission_of_key_and_batch = { key = TM_RZW_COL batch = $batch$ } } select_current_missions = { key = TM_RZW_COL } }
 }
 
 
@@ -2478,6 +2480,21 @@ clear_all_branching_flags = {
 		clr_country_flag = tm_AFG_suuni
 		clr_country_flag = tm_AFG_hindu
 	}
+
+	# Mali Military
+	if = {
+		limit = { can_preview_mission_of_key_and_batch = { key = TM_MAL_MIL batch = $batch$ } }
+		clr_country_flag = tm_mal_westernise_army
+		clr_country_flag = tm_mal_mercenery_army
+	}
+
+	# Butua Colonising
+	if = {
+		limit = { can_preview_mission_of_key_and_batch = { key = TM_RZW_COL batch = $batch$ } }
+		clr_country_flag = butua_india_choice
+		clr_country_flag = butua_china_choice
+		clr_country_flag = butua_indonesia_choice
+	}
 }
 
 preview_mission_branch_1 = {
@@ -2619,6 +2636,20 @@ preview_mission_branch_1 = {
 		limit = { can_preview_mission_of_key_and_batch = { key = TM_AFG_REL batch = $batch$ } }
 		set_country_flag = tm_AFG_hindu
 		custom_tooltip = tm_AFG_hindu_branch
+	}
+
+	# Mali Military
+	if = {
+		limit = { can_preview_mission_of_key_and_batch = { key = TM_MAL_MIL batch = $batch$ } }
+		set_country_flag = tm_mal_westernise_army
+		custom_tooltip = tm_MAL_western_army_branch_tt
+	}
+
+	# Buta Colonising Military
+	if = {
+		limit = { can_preview_mission_of_key_and_batch = { key = TM_RZW_COL batch = $batch$ } }
+		set_country_flag = butua_india_choice
+		custom_tooltip = tm_BUTUA_india_choice_tt
 	}
 }
 preview_mission_branch_2 = {
@@ -2768,6 +2799,20 @@ preview_mission_branch_2 = {
 		set_country_flag = tm_AFG_suuni
 		custom_tooltip = tm_AFG_sunni_branch
 	}
+
+	# Mali Military
+	if = {
+		limit = { can_preview_mission_of_key_and_batch = { key = TM_MAL_MIL batch = $batch$ } }
+		set_country_flag = tm_mal_mercenery_army
+		custom_tooltip = tm_MAL_mercenary_branch_tt
+	}
+
+	# Butua Colonising
+	if = {
+		limit = { can_preview_mission_of_key_and_batch = { key = TM_RZW_COL batch = $batch$ } }
+		set_country_flag = butua_china_choice
+		custom_tooltip = tm_BUTUA_china_choice_tt
+	}
 }
 preview_mission_branch_3 = {
 	#Origins
@@ -2818,6 +2863,13 @@ preview_mission_branch_3 = {
 		limit = { can_preview_mission_of_key_and_batch = { key = TM_HUN_CONSOLIATION batch = $batch$ } }
 		set_country_flag = hun_steppe_direction
 		custom_tooltip = tm_hun_crimea_direction
+	}
+
+	# Butua Colonising
+	if = {
+		limit = { can_preview_mission_of_key_and_batch = { key = TM_RZW_COL batch = $batch$ } }
+		set_country_flag = butua_indonesia_choice
+		custom_tooltip = tm_BUTUA_indonesia_choice_tt
 	}
 }
 preview_mission_branch_4 = {

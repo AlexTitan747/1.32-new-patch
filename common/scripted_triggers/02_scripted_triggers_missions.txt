@@ -233,6 +233,8 @@ has_branching_missions = {
 		### TITAN ###
 		has_mission = tm_hun_kingdom_consolidation
 		has_mission = tm_AFG_branch5_mission_1
+		has_mission = mal_army_direction
+		has_mission = butua_madagascar_secured
 	}
 }
 
@@ -289,6 +291,8 @@ can_preview_missions = {
 			### TITAN ###
 			can_preview_mission_of_key = { key = TM_HUN_CONSOLIATION }
 			can_preview_mission_of_key = { key = TM_AFG_REL }
+			can_preview_mission_of_key = { key = TM_MAL_MIL }
+			can_preview_mission_of_key = { key = TM_RZW_COL }
 		}
 	}
 }
@@ -508,6 +512,25 @@ has_selected_a_branch = {
 				}
 				can_preview_mission_of_key_and_batch = { key = TM_AFG_REL batch = $batch$ }
 			}
+
+			# Mali Military
+			AND = {
+				OR = {
+					has_country_flag = tm_mal_westernise_army
+					has_country_flag = tm_mal_mercenery_army
+				}
+				can_preview_mission_of_key_and_batch = { key = TM_MAL_MIL batch = $batch$ }
+			}
+
+			# Butua Colonisation
+			AND = {
+				OR = {
+					has_country_flag = butua_india_choice
+					has_country_flag = butua_china_choice
+					has_country_flag = butua_indonesia_choice
+				}
+				can_preview_mission_of_key_and_batch = { key = TM_RZW_COL batch = $batch$ }
+			}
 		}
 	}
 }
@@ -528,6 +551,7 @@ num_of_mission_branches_3 = {
 
 		### Titan ###
 		can_preview_mission_of_key_and_batch = { key = TM_HUN_CONSOLIATION batch = $batch$ }
+		can_preview_mission_of_key_and_batch = { key = TM_RZW_COL batch = $batch$ }
 	}
 }
 
@@ -671,6 +695,16 @@ currently_selected_branch_1 = {
 			can_preview_mission_of_key_and_batch = { key = TM_AFG_REL batch = $batch$ }
 			has_country_flag = tm_AFG_hindu
 		}
+
+		AND = {
+			can_preview_mission_of_key_and_batch = { key = TM_MAL_MIL batch = $batch$ }
+			has_country_flag = tm_mal_westernise_army
+		}
+
+		AND = {
+			can_preview_mission_of_key_and_batch = { key = TM_RZW_COL batch = $batch$ }
+			has_country_flag = butua_india_choice
+		}
 	}
 }
 currently_selected_branch_2 = {
@@ -790,6 +824,16 @@ currently_selected_branch_2 = {
 			can_preview_mission_of_key_and_batch = { key = TM_AFG_REL batch = $batch$ }
 			has_country_flag = tm_AFG_suuni
 		}
+
+		AND = {
+			can_preview_mission_of_key_and_batch = { key = TM_MAL_MIL batch = $batch$ }
+			has_country_flag = tm_mal_mercenery_army
+		}
+
+		AND = {
+			can_preview_mission_of_key_and_batch = { key = TM_RZW_COL batch = $batch$ }
+			has_country_flag = butua_china_choice
+		}
 	}
 }
 currently_selected_branch_3 = {
@@ -834,6 +878,11 @@ currently_selected_branch_3 = {
 		AND = {
 			can_preview_mission_of_key_and_batch = { key = TM_HUN_CONSOLIATION batch = $batch$ }
 			has_country_flag = hun_steppe_direction
+		}
+
+		AND = {
+			can_preview_mission_of_key_and_batch = { key = TM_RZW_COL batch = $batch$ }
+			has_country_flag = butua_indonesia_choice
 		}
 	}
 }

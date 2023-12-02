@@ -19,6 +19,9 @@ country_decisions = {
 					province_id = 1120			# Bambuk
 					province_id = 2243			# Termes
 					province_id = 1122			# Bagoe
+					province_id = 1132			# Bagoe
+					province_id = 2266			# Bagoe
+					province_id = 1140			# Bagoe
 				}
 					
 				OR = {
@@ -28,16 +31,18 @@ country_decisions = {
 			}
 			
 			allow = {
-				NOT = { exists = GHN }
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
 				owns_core_province = 1123			# Segu
 				owns_core_province = 1120			# Bambuk
 				owns_core_province = 2243			# Termes
 				owns_core_province = 1122			# Bagoe
+				owns_core_province = 1132			# Timbaktu
+				owns_core_province = 2266			# Bilanga
+				owns_core_province = 1140			# Abomey
 				
 				adm_tech = 7
-				total_development = 200
+				total_development = 500
 			}
 
 			effect = {
@@ -55,60 +60,7 @@ country_decisions = {
 				}
 				set_country_flag = formed_ghani_flag
 				country_event = { id = ideagroups.1 } #Swap Ideas
-				niger_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				guinea_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				sahel_region = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				tafilalt_area = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				sus_area = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				southern_morocco_area = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				western_morocco_area = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				marrekesh_area = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				northern_morocco_area = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
+				hidden_effect = { event_target_updating = yes }
 			}
 		}
 	}

@@ -423,7 +423,6 @@ mali_slot_1_morocco_diplomacy = {
 			}
 			else = { custom_tooltip = BONUS_REWARD_NO }
 			tooltip = {
-				add_historical_friend = event_target:morocco_event_target
 				define_advisor = {
 					type = diplomat
 					skill = 3
@@ -432,7 +431,7 @@ mali_slot_1_morocco_diplomacy = {
 					culture = event_target:morocco_event_target
 				}
 				custom_tooltip = tm_ally_has_effects_too
-
+				add_historical_friend = event_target:morocco_event_target
 				custom_tooltip = tm_mal_unlock_friendly_mor
 			}
 
@@ -470,7 +469,6 @@ mali_slot_1_morocco_diplomacy = {
 						culture = event_target:morocco_event_target
 					}
 					event_target:morocco_event_target = {
-						add_historical_friend = ROOT
 						define_advisor = {
 							type = diplomat
 							skill = 3
@@ -1697,7 +1695,7 @@ mali_slot_2_eco = {
 	has_country_shield = yes
 
 	mal_new_farming_methods = {
-		icon = mission_secure_khandesh
+		icon = mission_wine_monopolies
 		required_missions = { }
 		position = 14
 
@@ -1936,7 +1934,6 @@ mali_slot_3 = {
 					random_owned_province = {
 						limit = {
 							trade_goods = gold
-							base_production = 10
 						}
 						add_province_modifier = {
 							name = tm_mal_early_gold_mining
@@ -2455,11 +2452,10 @@ mali_slot_3_southern_missions = {
 			}
 		}
 		effect = {
-			sankuru_area = { add_perma_claim = yes }
-			chokwe_area = { add_perma_claim = yes }
 			luba_area = { add_perma_claim = yes }
 			katanga_area = { add_perma_claim = yes }
 			zambia_area = { add_perma_claim = yes }
+			buha_area = { add_perma_claim = yes }
 		}
 	}
 
@@ -3080,6 +3076,7 @@ mali_slot_4_southern_missions = {
 				area = lower_kasai
 				area = kasai_area
 				area = matamba_area
+				area = buha_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
@@ -3095,6 +3092,7 @@ mali_slot_4_southern_missions = {
 					area = lower_kasai
 					area = kasai_area
 					area = matamba_area
+					area = buha_area
 				}
 			}
 		}
@@ -3489,7 +3487,7 @@ mali_slot_5_religious = {
 	has_country_shield = yes
 
 	mal_religious_mission_2 = {
-		icon = mission_mal_jihad_upon_own_population
+		icon = mission_hands_praying
 		required_missions = { }
 		position = 8
 
@@ -3577,7 +3575,7 @@ mali_slot_5_ethiopia_diplomacy = {
 	has_country_shield = yes
 
 	mal_approach_to_ethiopia = {
-		icon = befriend_ethiopia
+		icon = mission_mal_jihad_upon_own_population
 		required_missions = { }
 		position = 10
 
@@ -3598,9 +3596,15 @@ mali_slot_5_ethiopia_diplomacy = {
 					area = medwa_area
 				}
 			}
-			event_target:ethiopia_event_target = {
-				OR = {
+			OR = {
+				event_target:ethiopia_event_target = {
 					alliance_with = ROOT
+					has_opinion = {
+						who = ROOT
+						value = 100
+					}
+				}
+				event_target:ethiopia_event_target = {
 					has_been_insulted_by_root = yes
 				}
 			}
@@ -3636,7 +3640,6 @@ mali_slot_5_ethiopia_diplomacy = {
 			}
 			else = { custom_tooltip = BONUS_REWARD_NO }
 			tooltip = {
-				add_historical_friend = event_target:ethiopia_event_target
 				define_advisor = {
 					type = diplomat
 					skill = 3
@@ -3645,7 +3648,7 @@ mali_slot_5_ethiopia_diplomacy = {
 					culture = event_target:ethiopia_event_target
 				}
 				custom_tooltip = tm_ally_has_effects_too
-
+				add_historical_friend = event_target:ethiopia_event_target
 				custom_tooltip = tm_mal_unlock_friendly_eth
 			}
 			hidden_effect = {
@@ -3680,7 +3683,6 @@ mali_slot_5_ethiopia_diplomacy = {
 						culture = event_target:ethiopia_event_target
 					}
 					event_target:ethiopia_event_target = {
-						add_historical_friend = ROOT
 						define_advisor = {
 							type = diplomat
 							skill = 3
@@ -4132,7 +4134,7 @@ mali_slot_5_ethiopia_diplomacy_friendly = {
 			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 			if = {
 				limit = {
-					NOT = { always = no }
+					NOT = { event_target:mali_event_target = { mission_completed = tm_eth_diplomacy_with_mali_friendly_2 } }
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -4150,7 +4152,7 @@ mali_slot_5_ethiopia_diplomacy_friendly = {
 			custom_tooltip = tm_mal_eth_dip_friendly_if_they_have
 			if = {
 				limit = {
-					always = no
+					event_target:mali_event_target = { mission_completed = tm_eth_diplomacy_with_mali_friendly_2 }
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -4161,9 +4163,9 @@ mali_slot_5_ethiopia_diplomacy_friendly = {
 				custom_tooltip = tm_ally_has_effects_too
 			}
 			hidden_effect = {
-				set_country_flag = tm_mal_eth_shared_farming_country_flag_1
 				if = {
-					limit = { NOT = { always = no } }
+					limit = { NOT = { event_target:mali_event_target = { mission_completed = tm_eth_diplomacy_with_mali_friendly_2 } } }
+					set_country_flag = tm_mal_eth_shared_farming_country_flag_1
 					for = {
 						amount = 5
 						effect = "
@@ -4243,7 +4245,7 @@ mali_slot_5_ethiopia_diplomacy_friendly = {
 					}
 				}
 				if = {
-					limit = { always = no }
+					limit = { event_target:mali_event_target = { mission_completed = tm_eth_diplomacy_with_mali_friendly_2 } }
 					every_province = {
 						limit = { has_province_flag = tm_mal_eth_shared_farming_1_flag }
 						clr_province_flag = tm_mal_eth_shared_farming_1_flag
@@ -4295,7 +4297,7 @@ mali_slot_5_ethiopia_diplomacy_friendly = {
 			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 			if = {
 				limit = {
-					NOT = { always = no }
+					NOT = { event_target:ethiopia_event_target = { mission_completed = tm_eth_diplomacy_with_mali_friendly_3 } }
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -4308,7 +4310,7 @@ mali_slot_5_ethiopia_diplomacy_friendly = {
 			custom_tooltip = tm_mal_eth_dip_friendly_if_they_have
 			if = {
 				limit = {
-					always = no
+					event_target:ethiopia_event_target = { mission_completed = tm_eth_diplomacy_with_mali_friendly_3 }
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -4322,7 +4324,7 @@ mali_slot_5_ethiopia_diplomacy_friendly = {
 			}
 			hidden_effect = {
 				if = {
-					limit = { NOT = { always = no } }
+					limit = { NOT = { event_target:ethiopia_event_target = { mission_completed = tm_eth_diplomacy_with_mali_friendly_3 } } }
 					for = {
 						amount = 5
 						effect = "
@@ -4353,7 +4355,7 @@ mali_slot_5_ethiopia_diplomacy_friendly = {
 					}
 				}
 				if = {
-					limit = { always = no }
+					limit = { event_target:ethiopia_event_target = { mission_completed = tm_eth_diplomacy_with_mali_friendly_3 } }
 					add_country_modifier = {
 						name = tm_mal_metal_production
 						duration = 5475
@@ -4373,7 +4375,10 @@ mali_slot_5_ethiopia_diplomacy_friendly = {
 		required_missions = { mal_approach_to_ethiopia_friendly_3 }
 		position = 14
 
-		provinces_to_highlight = {}
+		provinces_to_highlight = {
+			owned_by = ROOT
+			has_military_building = no
+		}
 		trigger = {
 			event_target:ethiopia_event_target = {
 				alliance_with = ROOT
@@ -4394,7 +4399,7 @@ mali_slot_5_ethiopia_diplomacy_friendly = {
 			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 			if = {
 				limit = {
-					NOT = { always = no }
+					NOT = { event_target:ethiopia_event_target = { mission_completed = tm_eth_diplomacy_with_mali_friendly_4 } }
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -4411,7 +4416,7 @@ mali_slot_5_ethiopia_diplomacy_friendly = {
 			custom_tooltip = tm_mal_eth_dip_friendly_if_they_have
 			if = {
 				limit = {
-					always = no
+					event_target:ethiopia_event_target = { mission_completed = tm_eth_diplomacy_with_mali_friendly_4 }
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -4421,7 +4426,7 @@ mali_slot_5_ethiopia_diplomacy_friendly = {
 			}
 			hidden_effect = {
 				if = {
-					limit = { NOT = { always = no } }
+					limit = { NOT = { event_target:ethiopia_event_target = { mission_completed = tm_eth_diplomacy_with_mali_friendly_4 } } }
 					add_country_modifier = {
 						name = tm_mal_eth_joint_military_alliance
 						duration = -1
@@ -4436,7 +4441,7 @@ mali_slot_5_ethiopia_diplomacy_friendly = {
 					}
 				}
 				if = {
-					limit = { always = no }
+					limit = { event_target:ethiopia_event_target = { mission_completed = tm_eth_diplomacy_with_mali_friendly_4 } }
 					set_country_flag = tm_mal_eth_combined_military_might_flag
 					event_target:ethiopia_event_target = { set_country_flag = tm_mal_eth_combined_military_might_flag }
 				}

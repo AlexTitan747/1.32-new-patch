@@ -132,3 +132,35 @@ select_current_missions_TM_AFG_REL = {
 		}
 	}
 }
+
+select_current_missions_TM_MAL_MIL = {
+	if = {
+		limit = { has_country_flag = tm_mal_westernise_army }
+		clr_country_flag = tm_mal_mercenery_army
+		custom_tooltip = tm_mal_westernise_event_option_tt
+	}
+
+	else = {
+		clr_country_flag = tm_mal_westernise_army
+		custom_tooltip = tm_mal_mercenary_event_option_tt
+	}
+}
+
+select_current_missions_TM_RZW_COL = {
+	if = {
+		limit = { has_country_flag = butua_india_choice }
+		clr_country_flag = butua_china_choice
+		clr_country_flag = butua_indonesia_choice
+	}
+
+	else_if = {
+		limit = { has_country_flag = butua_china_choice }
+		clr_country_flag = butua_india_choice
+		clr_country_flag = butua_indonesia_choice
+	}
+
+	else = {
+		clr_country_flag = butua_india_choice
+		clr_country_flag = butua_china_choice
+	}
+}

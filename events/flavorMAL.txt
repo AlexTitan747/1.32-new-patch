@@ -79,6 +79,7 @@ province_event = {
 	}
 	
 	immediate = {
+		set_global_flag = tm_fulo_exists_slash_event_happened
 		hidden_effect = {
 			every_province = {
 				limit = {
@@ -187,61 +188,60 @@ province_event = {
 		}
 	}
 	
-	
-	option = {	#Switch tag to Fulo
-		name = flavor_mal.2.b
-		trigger = {
-			owner = {
-				ai = no
-			}
-		}
-		every_province = {
-			limit = {
-				OR = {
-					area = tekrur_area
-					province_id = 1112 #Trarza
-					province_id = 1120 #Bambuk
-					province_id = 2238 #Kantor
-					province_id = 2243 #Termes
-					province_id = 2245 #Wagadu
-					province_id = 2246 #Bagena
-				}
-				is_empty = yes
-			}
-			cede_province = FUL
-		}
-		hidden_effect = {
-			FUL = {
-				define_ruler = {
-					name = "Koli Tengella"
-					dynasty = "Denianke"
-					change_mil = 4
-					claim = 100
-				}
-				if = {
-					limit = {
-						has_dlc = "Rights of Man" 
-					}
-					add_ruler_personality_ancestor = { key = conqueror }
-				}
-				adopt_reform_progress = ROOT
-				capital_scope = {
-					build_to_forcelimit = {
-						infantry = 0.7
-						cavalry = 0.3
-					}
-					add_base_tax = 3
-					add_base_production = 3
-					add_base_manpower = 2
-				}
-				add_manpower = 10
-				add_treasury = 300
-			}
-		}
-		owner = {
-			switch_tag = FUL
-		}
-	}
+	#option = {	#Switch tag to Fulo
+	#	name = flavor_mal.2.b
+	#	trigger = {
+	#		owner = {
+	#			ai = no
+	#		}
+	#	}
+	#	every_province = {
+	#		limit = {
+	#			OR = {
+	#				area = tekrur_area
+	#				province_id = 1112 #Trarza
+	#				province_id = 1120 #Bambuk
+	#				province_id = 2238 #Kantor
+	#				province_id = 2243 #Termes
+	#				province_id = 2245 #Wagadu
+	#				province_id = 2246 #Bagena
+	#			}
+	#			is_empty = yes
+	#		}
+	#		cede_province = FUL
+	#	}
+	#	hidden_effect = {
+	#		FUL = {
+	#			define_ruler = {
+	#				name = "Koli Tengella"
+	#				dynasty = "Denianke"
+	#				change_mil = 4
+	#				claim = 100
+	#			}
+	#			if = {
+	#				limit = {
+	#					has_dlc = "Rights of Man" 
+	#				}
+	#				add_ruler_personality_ancestor = { key = conqueror }
+	#			}
+	#			adopt_reform_progress = ROOT
+	#			capital_scope = {
+	#				build_to_forcelimit = {
+	#					infantry = 0.7
+	#					cavalry = 0.3
+	#				}
+	#				add_base_tax = 3
+	#				add_base_production = 3
+	#				add_base_manpower = 2
+	#			}
+	#			add_manpower = 10
+	#			add_treasury = 300
+	#		}
+	#	}
+	#	owner = {
+	#		switch_tag = FUL
+	#	}
+	#}
 }
 
 # Event to send to other province owners of the area when Fulo is formed.
@@ -383,45 +383,58 @@ country_event = {
 	
 	mean_time_to_happen = {
 		months = 12
+		modifier = {
+			factor = 0.1
+			is_year = 1445
+		}
+		modifier = {
+			factor = 0.1
+			is_year = 1446
+		}
+		modifier = {
+			factor = 0.1
+			is_year = 1447
+		}
 	}
 
 	option = {
 		name = flavor_mal.6.a	#Convert our people!
+
 		add_piety = 0.15
-		if = {
-			limit = {
-				NOT = { has_completed_all_reforms_trigger = yes }
-			}
-			add_reform_progress_small_effect = yes
-		}
+		add_reform_progress_small_effect = yes
 		add_country_modifier = {
 			name = mal_islamisation_of_the_aristocracy
-			duration = -1
+			duration = 7300
 		}
-		if = {
-			limit = {
-				has_dlc = "Origins"
-			}
-			custom_tooltip = flavor_mal.6.a.tt
-			hidden_effect = {
-				set_country_flag = mal_decide_for_conversion
-			}
-		}
+		#if = {
+		#	limit = {
+		#		has_dlc = "Origins"
+		#	}
+		#	custom_tooltip = flavor_mal.6.a.tt
+		#	hidden_effect = {
+		#		set_country_flag = mal_decide_for_conversion
+		#	}
+		#}
+		set_country_flag = mal_decide_for_conversion
+		custom_tooltip = tm_mal_this_choice_will_effect_our_religious_mission
 	}
 	
 	option = {
 		name = flavor_mal.6.b	#Let us not rock the boat.
 		add_stability_or_adm_power = yes
+		add_reform_progress_small_effect = yes
 		add_piety = -0.15
-		if = {
-			limit = {
-				has_dlc = "Origins"
-			}
-			custom_tooltip = flavor_mal.6.b.tt
-			hidden_effect = {
-				set_country_flag = mal_decide_for_tolerance
-			}
-		}
+		#if = {
+		#	limit = {
+		#		has_dlc = "Origins"
+		#	}
+		#	custom_tooltip = flavor_mal.6.b.tt
+		#	hidden_effect = {
+		#		set_country_flag = mal_decide_for_tolerance
+		#	}
+		#}
+		set_country_flag = mal_decide_for_tolerance
+		custom_tooltip = tm_mal_this_choice_will_effect_our_religious_mission
 	}
 }
 
@@ -1657,22 +1670,28 @@ country_event = {
 						is_empty = yes
 					}
 				}
+				discover_country = ROOT
 				cede_province = ROOT
 				add_core = ROOT
 				add_base_tax = 2
 				add_base_production = 2
-				add_base_manpower = 1
+				add_base_manpower = 2
 				change_religion = ROOT
 				change_culture = ROOT
+				add_center_of_trade_level = 1
 			}
 			else = {
+				discover_country = ROOT
 				add_core = ROOT
+				change_religion = ROOT
+				change_culture = ROOT
 			}
 		}
 
 		colonial_brazil = {
 			add_permanent_claim = ROOT
 		}
+		custom_tooltip = tm_mal_claim_brazil_tt
 
 		ai_chance = {
 			factor = 1
@@ -1924,6 +1943,7 @@ country_event = {
 		name = flavor_mal.28.a
 		set_capital = 1132
 		1132 = {
+			add_core = ROOT
 			add_base_tax = 2
 			add_base_production = 2
 			add_base_manpower = 1
@@ -2015,7 +2035,11 @@ country_event = {
 
 	option = {
 		name = flavor_mal.30.a
-		add_accepted_culture = songhai
+		add_country_modifier = {
+			name = tm_mal_songhai_peoples
+			duration = -1
+		}
+		add_accepted_culture_or_dip_power = { culture = songhai }
 		custom_tooltip = flavor_mal.30.a.tt
 		hidden_effect = {
 			every_owned_province = {
