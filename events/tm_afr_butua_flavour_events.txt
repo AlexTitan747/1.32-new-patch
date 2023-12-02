@@ -17,10 +17,14 @@ country_event = { #Choose Religion Event
             name = "butua_stays_fetishist"
             duration = -1
         }
-        add_stability = 1
+        add_stability_or_adm_power = yes
+
+		if = { limit = { has_country_flag = butua_sunni } clr_country_flag = butua_sunni }
+
 		set_country_flag = butua_fetishist
 
 		hidden_effect = { swap_non_generic_missions = yes }
+		
 		
 		ai_chance = { #Keep AI as default religion
 			factor = 100
@@ -31,9 +35,10 @@ country_event = { #Choose Religion Event
 		name = butua_flavour.1.b
 		change_religion = sunni
         capital_scope = { change_religion = sunni }
-        set_ruler_religion = sunni
-        set_heir_religion = sunni
-        set_consort_religion = sunni
+        change_ruling_family_religions_effect = { religion = sunni }
+
+		if = { limit = { has_country_flag = butua_fetishist } clr_country_flag = butua_fetishist }
+
 		set_country_flag = butua_sunni
 
 		hidden_effect = { swap_non_generic_missions = yes }
@@ -63,6 +68,8 @@ country_event = { #Asian Focus
 		name = butua_flavour.2.a
 
 		hidden_effect = {
+			if = { limit = { has_country_flag = butua_china_choice } clr_country_flag = butua_china_choice }
+			if = { limit = { has_country_flag = butua_indonesia_choice } clr_country_flag = butua_indonesia_choice }
 			set_country_flag = butua_india_choice
 			swap_non_generic_missions = yes
 		}
@@ -73,6 +80,8 @@ country_event = { #Asian Focus
 		name = butua_flavour.2.b
 
 		hidden_effect = {
+			if = { limit = { has_country_flag = butua_india_choice } clr_country_flag = butua_india_choice }
+			if = { limit = { has_country_flag = butua_indonesia_choice } clr_country_flag = butua_indonesia_choice }
 			set_country_flag = butua_china_choice
 			swap_non_generic_missions = yes
 		}
@@ -82,6 +91,8 @@ country_event = { #Asian Focus
 		name = butua_flavour.2.c
 
 		hidden_effect = {
+			if = { limit = { has_country_flag = butua_india_choice } clr_country_flag = butua_india_choice }
+			if = { limit = { has_country_flag = butua_china_choice } clr_country_flag = butua_china_choice }
 			set_country_flag = butua_indonesia_choice
 			swap_non_generic_missions = yes
 		}
@@ -570,5 +581,28 @@ country_event = { #Ethiopia Integrate Subjects
 				add_core = ROOT
 			}
 		}
+	}
+}
+
+country_event = { #Gold Mining
+    id = butua_flavour.20
+    title = butua_flavour.20.t
+    desc = butua_flavour.20.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = butua_flavour.20.a
+
+		set_country_flag = tm_butua_careful_mines
+	}
+
+	option = {
+		name = butua_flavour.20.b
+
+		set_country_flag = tm_butua_greedy_mines
 	}
 }

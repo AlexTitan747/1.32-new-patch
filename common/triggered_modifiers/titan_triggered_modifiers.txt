@@ -71,39 +71,6 @@ planned_invasion_of_poland = {
 	infantry_power = 0.05
 }
 
-moroccan_last_stand = {
-	potential = {
-		ai = no
-		tag = MOR
-		NOT = { is_year = 1490 }
-	}
-	trigger  = {
-		tag = MOR
-		defensive_war_with = CAS
-		
-		OR = {
-			AND = { defensive_war_with = NAP }
-			AND = { defensive_war_with = TTS }
-			AND = { defensive_war_with = POR }
-		}	
-		any_country = {
-			total_development = ROOT
-		}
-		NOT = { is_year = 1490 }
-		NOT = { num_of_allies = 1 }
-	}
-			
-		
-	land_morale = 0.1
-	naval_morale = 0.1
-	discipline = 0.025
-	manpower_recovery_speed = 0.1
-	reinforce_cost_modifier = -0.05
-	merc_maintenance_modifier = -0.10
-	mercenary_cost = -0.05
-	land_forcelimit = 10
-}
-
 founders_of_the_niger_company = {
 	potential = {
 		normal_or_historical_nations = yes
@@ -246,14 +213,14 @@ founders_of_the_cape_company = {
 	}
 
 	trigger = {
-		root = {
+		ROOT = {
 			has_country_flag = founded_cape_company
 			owns = 1177
 		}
-		}
-		trade_efficiency = 0.05
-		trade_steering = 0.10
-	
+	}
+
+	trade_efficiency = 0.05
+	trade_steering = 0.10
 }
 
 defense_of_china = {

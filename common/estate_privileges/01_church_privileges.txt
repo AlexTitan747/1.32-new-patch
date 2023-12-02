@@ -1553,9 +1553,8 @@ estate_church_for_the_faith = {
 		}
 		modifier = {
 			church_loyalty_modifier = 0.1
-			land_morale = 0.15
-			war_exhaustion = -0.05
-			max_absolutism = 5
+			land_morale = 0.10
+			war_exhaustion = -0.10
 		}
 	}
 	conditional_modifier = {
@@ -2130,6 +2129,7 @@ estate_church_scholar_connections = {
 	loyalty = 0
 	is_valid = {
 		NOT = { has_country_flag = enabled_baseline_invite_scholar_no_priv }
+		NOT = { mission_completed = butua_religion_sunni_1 }
 		religion_group = muslim
 		has_dlc = "Cradle of Civilization"
 	}
@@ -2235,23 +2235,6 @@ estate_church_yakobs_churches = {
 	}
 	ai_will_do = {
 		factor = 10
-		modifier = {
-			factor = 0.5
-			current_age = age_of_discovery
-		}
-		modifier = {
-			factor = 0.5
-			is_absolutism_active = yes
-		}
-		modifier = {
-			factor = 2
-			NOT = { dominant_religion = ROOT }
-		}
-		modifier = {
-			factor = 1000
-			has_mission = eth_reform_the_negusa_government
-			NOT = { mission_completed = eth_reform_the_negusa_government }
-		}
 	}
 }
 estate_church_anti_heresy_act = {

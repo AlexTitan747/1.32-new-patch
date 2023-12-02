@@ -2406,7 +2406,25 @@ cloves = {
 		province_trade_power_modifier = 0.2
 	}
 	chance = {
-		factor = 0
+		factor = 150
+		modifier = {
+			factor = 0
+			NOT = {
+				OR = {
+					area = molluca_area
+					area = spice_islands_area
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			FROM = {
+				OR = {
+					has_increased_trade_goods_discovery = { trade_goods = cloves }
+					colonial_parent = { has_increased_trade_goods_discovery = { trade_goods = cloves } }
+				}
+			}
+		}
 	}
 }
 
@@ -2810,8 +2828,10 @@ deer = {
 		modifier = {
 			factor = 0
 			OR = {
-				colonial_region = colonial_saf
+				continent = africa
 				continent = asia
+				superregion = southern_africa_superregion
+				superregion = africa_superregion
 			}
 		}
 		modifier = {
@@ -3015,7 +3035,7 @@ horses = {
 olives = {
 	color = { 0.05 0.4 0.25 }
 	modifier = {
-		global_monthly_devastation = -0.1
+		global_monthly_devastation = -0.5
 	}
 	province = {
 		local_production_efficiency = 0.05

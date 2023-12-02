@@ -1,0 +1,259 @@
+country_decisions = {
+    butua_request_against_eth = {
+        major = yes
+
+		potential = {
+            has_saved_event_target = help_butua_with_eth
+			OR = {
+                tag = RZW
+                was_tag = RZW
+            }
+            mission_completed = butua_rival_eth_path_1
+		}
+
+		allow = {
+			OR = {
+                is_in_war = {
+                    attacker_leader = ROOT
+                    defender_leader = ETH
+                }
+                is_in_war = {
+                    attacker_leader = ETH
+                    defender_leader = ROOT
+                }
+            }
+		}
+
+		effect = {
+			event_target:help_butua_with_eth = {
+                country_event = { id = butua_flavour.9 }
+            }
+		}
+	}
+
+    helper_against_eth_request_aid_from_butua = {
+        major = yes
+
+		potential = {
+            if = {
+                limit = { has_saved_event_target = help_butua_with_eth }
+                tag = event_target:help_butua_with_eth
+            }
+			else = {
+                always = no
+            }
+            any_country = {
+                mission_completed = butua_rival_eth_path_1
+            }
+		}
+
+		allow = {
+            is_at_war = yes
+			any_war_enemy_country = {
+                total_development = ROOT
+            }
+		}
+
+		effect = {
+			RZW = {
+                country_event =  { id = butua_flavour.10 }
+            }
+		}
+    }
+
+    butua_colonise_the_island = {
+        major = yes
+
+        potential = {
+            mission_completed = butua_china_1
+            OR = {
+                tag = RZW
+                was_tag = RZW
+            }
+            NOT = {
+                taiwan_area = {
+                    type = all
+                    is_city = yes
+                }
+            }
+        }
+
+        allow = {
+            taiwan_area = {
+                owned_by = ROOT
+                is_city = yes
+            }
+            treasury = 500
+        }
+
+        effect = {
+            if = {
+                limit = {
+                    2155 = {
+                        is_empty = yes
+                    }
+                }
+                create_colony_mission_reward = {
+                    province = 2155
+                }
+            }
+            if = {
+                limit = {
+                    2154 = {
+                        is_empty = yes
+                    }
+                }
+                create_colony_mission_reward = {
+                    province = 2154
+                }
+            }
+            if = {
+                limit = {
+                    738 = {
+                        is_empty = yes
+                    }
+                }
+                create_colony_mission_reward = {
+                    province = 738
+                }
+            }
+            
+            add_treasury = -500
+		}
+    }
+
+	ethiopia_colonise_the_horn = {
+        major = yes
+		potential = {
+            mission_completed = tm_eth_unified_horn
+			OR = {
+				tag = ETH
+				was_tag = ETH
+			}
+            OR = {
+                urgoma_area = { is_empty = yes }
+                jubba_area = { is_empty = yes }
+            }
+		}
+		allow = {
+			treasury = 200
+		}
+		effect = {
+            add_treasury = -200
+			random_neighbor_province = {
+                limit = {
+                    is_empty = yes
+                    OR = {
+                        area = urgoma_area
+                        area = jubba_area
+                    }
+                }
+                add_siberian_construction = 200
+            }
+		}
+    }
+    
+    titan_african_colonising = {
+		major = yes
+		potential = {
+			ai = no
+			OR = {
+				tag = RZW
+				was_tag = RZW
+			}
+			NOT = { has_country_modifier = titan_afr_colonist }
+		}
+		allow = {
+			OR = { adm_tech = 5 mission_completed = butua_consolidation }
+			if = {
+				limit = { mission_completed = butua_consolidation }
+				adm_power = 75
+				dip_power = 75
+			}
+			else = {
+				adm_power = 100
+				dip_power = 100
+			}
+			NOT = { has_country_modifier = titan_afr_colonist }
+		}
+		effect = {
+			create_conquistador = {
+				tradition = 20
+			}
+			create_explorer = {
+				tradition = 20
+			}
+			add_country_modifier = {
+				name = titan_afr_colonist
+				duration = 18250
+			}
+			if = {
+				limit = { mission_completed = butua_consolidation }
+				adm_power_cost = 75
+				dip_power_cost = 75
+			}
+			else = {
+				adm_power_cost = 100
+				dip_power_cost = 100
+			}
+		}
+	}
+
+	titan_african_colonising_plus = {
+		major = yes
+		potential = {
+			ai = no
+			has_country_modifier = titan_afr_colonist
+			NOT = { has_country_modifier = titan_afr_colonist_upgrade }
+		}
+		allow = {
+			adm_tech = 7
+			treasury = 500
+			has_country_modifier = titan_afr_colonist
+			NOT = { has_country_modifier = titan_afr_colonist_upgrade }
+		}
+		effect = {
+			add_country_modifier = {
+				name = titan_afr_colonist_upgrade
+				duration = 3650
+			}
+			add_treasury = -500
+		}
+	}
+
+    #titan_tech_group = {
+	#	major = yes
+	#	potential = {
+	#		ai = no
+	#		OR = {
+	#			technology_group = central_african
+	#			technology_group = east_african
+	#			technology_group = sub_saharan
+	#			technology_group = nomad_group
+	#		}
+	#		mil_tech = 15
+	#	}
+	#	allow = {
+	#		mil_tech = 15
+	#		is_at_war = no
+	#		treasury = 2500
+	#		OR = {
+	#			technology_group = central_african
+	#			technology_group = east_african
+	#			technology_group = sub_saharan
+	#			technology_group = nomad_group
+	#		}
+	#	}
+	#	effect = {
+	#		add_country_modifier = {
+	#			name = titan_modernising_army
+	#			duration = 1825
+	#		}
+	#		add_treasury = -2500
+	#		country_event = {
+	#			id = extras.6
+	#		}
+	#		add_army_tradition = -20
+	#	}
+	#}
+}

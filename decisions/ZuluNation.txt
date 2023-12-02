@@ -1,0 +1,93 @@
+country_decisions = {
+	zulu_nation = {
+		major = yes
+        color = { 23 223 234 }
+		potential = {
+            NOT = { has_country_flag = formed_zulu_flag }
+			NOT = { has_country_flag = zulu_attracted_flag }
+			NOT = { exists = ZUL }
+            NOT = { tag = ZBW }
+            culture_group = southern_african
+            is_colonial_nation = no
+            NOT = { has_country_flag = butua_sunni }
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 789	# Mtetwa
+				province_id = 1181	# Natal
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { base_manpower = 10 }
+			}
+		}
+
+		allow = {
+			is_at_war = no
+			is_free_or_tributary_trigger = yes
+			789 = {
+				owned_by = ROOT
+				base_manpower = 10
+			}
+			1181 = {
+				owned_by = ROOT
+				base_manpower = 10
+			}
+            development_in_provinces = {
+                value = 700
+                culture_group = southern_african
+            }
+            has_unified_culture_group = yes
+
+			adm_tech = 10
+            religion_group = pagan
+		}
+
+		effect = {
+            change_tag = ZUL
+            if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			add_prestige = 25
+			add_country_modifier = {
+				name = centralization_modifier
+				duration = 3650
+			}
+            set_country_flag = formed_zulu_flag
+            change_government = tribal
+            add_government_reform = shaka_regime
+            789 = {
+                change_province_name = "Bulawayo"
+                rename_capital = "Bulawayo"
+                add_base_tax = 2
+                add_base_production = 2
+                add_base_manpower = 2
+            }
+            define_ruler = {
+                name = "Shaka"
+                dynasty = "Zulu"
+                adm = 5
+                dip = 3
+                mil = 6
+                age = 23
+                claim = 100
+            }
+            define_ruler_to_general = {
+                fire = 4
+                shock = 5
+                manuever = 4
+                siege = 2
+            }
+
+            country_event = { id = ideagroups.1 } #Swap Ideas			
+			add_yearly_manpower = 1
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+}

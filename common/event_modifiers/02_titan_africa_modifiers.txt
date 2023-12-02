@@ -31,20 +31,18 @@ butua_continuing_conversion = {
 }
 
 butua_technology_better = {
-    technology_cost = -0.1
-    idea_cost = -0.1
+    technology_cost = -0.075
+    idea_cost = -0.075
 }
 
 butua_empire_of_south_africa = {
     land_morale = 0.10 
     recover_army_morale_speed = 0.10
     leader_land_fire = 1
-    leader_land_shock = 1
 }
 
 butua_master_of_africa = {
-    army_tradition = 1
-    movement_speed = 0.15
+    movement_speed = 0.10
     discipline = 0.05
     fire_damage = 0.10
     manpower_recovery_speed = 0.10
@@ -136,14 +134,14 @@ butua_grand_navy = {
     naval_maintenance_modifier = -0.1
     naval_attrition = -0.5
     ship_durability = 0.05
+    blockade_efficiency = 0.25
 }
 
 butua_indonesia_reward = {
     merchants = 1
-    global_trade_power = 0.1
+    global_trade_power = 0.05
     trade_efficiency = 0.1
     trade_steering = 0.1
-    global_ship_trade_power = 0.1
 }
 
 tm_butua_extra_building_slot = {
@@ -161,10 +159,54 @@ failed_to_attack_eth = {
     global_manpower_modifier = -0.10
 }
 
+butua_starting_colonisation = {
+    colony_cost_modifier = -0.25
+}
 
+tm_butua_spice_trade_modifier = {
+    global_trade_power = 0.1
+    trade_efficiency = 0.15
+}
 
+tm_butua_control_the_church = {
+    church_privilege_slots = 2
+    church_loyalty_modifier = 0.15
+}
 
+tm_butua_landing_parties = {
+    landing_penalty = -2
+    transport_attrition = -0.25
+    regiment_disembark_speed = 0.25
+}
 
+tm_butua_india_upgrading_reward_1 = {
+    trade_efficiency = 0.05
+}
+
+tm_butua_india_upgrading_reward_2 = {
+    trade_efficiency = 0.05
+    trade_steering = 0.1
+}
+
+butua_gold_mining = {
+    trade_goods_size = 2
+    local_gold_depletion_chance_modifier = -0.1
+}
+
+butua_careful_gold_mining = {
+    gold_depletion_chance_modifier = -0.20
+    monthly_gold_inflation_modifier = -0.1
+}
+
+butua_greedy_gold_mining = {
+    gold_depletion_chance_modifier = 0.25
+    monthly_gold_inflation_modifier = 0.20
+    inflation_action_cost = 0.20
+}
+
+butua_greedy_gold_mining_province = {
+    trade_goods_size_modifier = 0.75
+}
 
 #Ethiopia 
 
@@ -173,35 +215,416 @@ eth_developed_lands = {
     governing_capacity_modifier = -0.2
 }
 
+tm_eth_quantity_cawa_1_modifier = {
+    reinforce_speed = 0.1
+    regiment_manpower_usage = -0.1
+    land_maintenance_modifier = -0.10
+    is_cawa_modifier = yes
+}
+
+tm_eth_quality_cawa_1_modifier = {
+    infantry_power = 0.05
+    discipline = 0.025
+    is_cawa_modifier = yes
+}
+
 eth_lots_of_cawa_cawa = {
-    reinforce_speed = 0.2
-    reinforce_cost_modifier = -0.25
-    land_maintenance_modifier = -0.15
+    reinforce_speed = 0.25
+    reinforce_cost_modifier = -0.10
+    land_maintenance_modifier = -0.10
+    regiment_manpower_usage = -0.1
     is_cawa_modifier = yes
 }
 
 eth_lots_of_cawa = {
-    cawa_cost_modifier = -0.8
-    amount_of_cawa = 0.2
+    cawa_cost_modifier = -0.5
+    amount_of_cawa = 0.25
 }
 
 eth_specialised_cawa = {
-    cawa_cost_modifier = 1.0
-    amount_of_cawa = -0.3
+    cawa_cost_modifier = 5.0
+    amount_of_cawa = -0.5
 }
 
 eth_specialised_cawa_cawa = {
-    discipline = 0.025
+    reinforce_speed = -0.15
+    discipline = 0.05
     shock_damage = 0.15
     shock_damage_received = -0.10
     reinforce_cost_modifier = 0.5
-    drill_gain_modifier = 0.25
+    drill_gain_modifier = 0.5
+    drill_decay_modifier = -0.5
+    land_maintenance_modifier = 0.15
+    regiment_manpower_usage = 0.5
     is_cawa_modifier = yes
 }
 
+tm_eth_modernise_cawa = {
+    infantry_fire = 0.3
+    fire_damage_received = -0.075
+    is_cawa_modifier = yes
+}
+
+tm_eth_try_to_convert_them = {
+    missionaries = 1
+    global_missionary_strength = 0.01
+}
+
+tm_coptic_holy_site_province_ally = {
+    local_religious_unity_contribution = -1.0
+    local_missionary_strength = -2.0
+}
+
+tm_coptic_government_blessing_ally = {
+    advisor_cost = -0.15
+    legitimacy = 1
+}
+
+tm_coptic_missionary_blessing_ally = {
+    global_missionary_strength = 0.02
+    core_creation = -0.15
+}
+
+tm_coptic_manpower_blessing_ally = {
+    manpower_in_true_faith_provinces = 0.15
+}
+
+tm_coptic_production_blessing_ally = {
+    production_efficiency = 0.2
+    inflation_reduction = 0.1
+}
+
+tm_coptic_discipline_blessing_ally = {
+    discipline = 0.05
+}
+
+tm_eth_starting_industrialisation = {
+    global_trade_goods_size_modifier = 0.1
+    build_cost = -0.15
+}
+
+tm_eth_military_mountains = {
+    local_defender_dice_roll_bonus = 2
+    local_manpower_modifier = 0.15
+    local_development_cost = -0.05
+}
+
+tm_eth_economic_mountains = {
+    local_development_cost = -0.25
+    local_production_efficiency = 0.15
+    trade_goods_size_modifier = 0.1
+    local_defensiveness = 0.1
+}
+
+tm_eth_church_going_people = {
+    global_tax_modifier = 0.10
+    global_missionary_strength = 0.01
+}
+
+tm_eth_our_mountains_modifier = {
+    land_attrition = -0.10
+    hostile_attrition = 5
+    max_hostile_attrition = 5
+}
+
+tm_judaism_temp_adm_dev = {}
+tm_judaism_temp_dip_dev = {}
+tm_judaism_temp_mil_dev = {}
+
+tm_eth_cheese_trade = { global_tax_modifier = 0.1 }
+tm_eth_ale_trade = { land_forcelimit_modifier = 0.1 }
+tm_eth_olive_oil_trade = { production_efficiency = 0.1 }
+tm_eth_book_trade = { technology_cost = -0.075 }
+tm_eth_armour_trade = { morale_damage_received = -0.1 }
+tm_eth_silverware_trade = { inflation_reduction = 0.15 }
+tm_eth_uniforms_trade = { land_maintenance_modifier = -0.1 }
+tm_eth_perfume_trade = { global_missionary_strength = 0.02 }
+tm_eth_jewellery_trade = { prestige = 1 }
+tm_eth_bronze_trade = { artillery_power = 0.1 }
+tm_eth_tailored_clothes_trade = { culture_conversion_cost = -0.1 }
+tm_eth_steel_trade = { discipline = 0.05 }
+
+tm_eth_conquest_of_oman = {
+    global_trade_power = 0.1
+    trade_efficiency = 0.1
+}
+
+tm_eth_controling_ethiopian_trade = {
+    global_own_trade_power = 0.1
+    placed_merchant_power = 5
+    trade_efficiency = 0.1
+}
 
 #Mali
 
-mal_stronger_colonies = {
-    colony_development_boost = 1
+tm_mal_colonising_south_america = {
+    range = 0.25
+    colonists = 2
+    global_colonial_growth = 40
+    may_explore = yes
+}
+
+tm_mal_colonising_western_africa = {
+    colonists = 2
+    global_colonial_growth = 50
+}
+
+tm_mal_faster_colonies = {
+    local_colonial_growth = 50
+    local_colonist_placement_chance = 0.10
+}
+
+tm_mal_faster_colonies_timer = {}
+
+tm_mal_stronger_colonies = {
+    global_tax_modifier = -0.10
+}
+
+tm_mal_stronger_colonies_colony = {
+    local_colonial_growth = -25
+    local_colonist_placement_chance = -0.05
+    local_colony_cost_modifier = 0.2
+}
+
+tm_mal_fortify_the_coast = {
+    blockade_force_required = 0.5
+    hostile_disembark_speed = 0.5
+    hostile_fleet_attrition = 3
+    local_defensiveness = 0.1
+}
+
+tm_mal_songhai_peoples = {
+    num_accepted_cultures = 1
+}
+
+tm_mal_general_drive = {
+    leader_land_shock = 1
+    leader_land_manuever = 1
+    leader_cost = -0.10
+}
+
+tm_mal_western_exercising = {
+    yearly_army_professionalism = 0.01
+    drill_gain_modifier = 0.10
+    army_tradition_decay = -0.005
+}
+
+tm_mal_army_expansion = {
+    land_forcelimit_modifier = 0.15
+    land_maintenance_modifier = -0.05
+}
+
+tm_mal_western_discipline = {
+    infantry_power = 0.005
+}
+
+tm_mal_well_paid_mercenaries = {
+    merc_maintenance_modifier = 0.33
+    mercenary_discipline = 0.10
+    merc_leader_army_tradition = 0.5
+}
+
+tm_mal_integrating_mercenaries = {
+    drill_gain_modifier = 0.25
+    allow_mercenary_drill = yes
+    allow_mercenaries_to_split = yes
+}
+
+tm_mal_enticing_mercenary_contracts = {
+    mercenary_cost = 0.4
+    mercenary_manpower = 0.33
+}
+
+tm_mal_managing_estates = {
+    estate_interaction_cooldown_modifier = -0.2
+	loyalty_change_on_revoked = 0.10    
+}
+
+tm_mal_empower_brughers_estate = {
+    burghers_loyalty_modifier = 0.15
+    burghers_influence_modifier = 0.1
+    burghers_privilege_slots = 1
+}
+
+tm_mal_debt_structuring = {
+    interest = -1
+    monthly_gold_inflation_modifier = 0.5
+    inflation_reduction = -0.25
+}
+
+tm_mal_spreading_islaam = {
+    global_missionary_strength = 0.02
+    missionary_maintenance_cost = -0.15
+}
+
+tm_mal_legacy_of_the_cawa = {
+    shock_damage_received = -0.10
+    shock_damage = 0.10
+    infantry_shock = 0.2
+}
+
+tm_mal_protector_west_africa = {
+    infantry_power = 0.15
+    army_tradition = 0.5
+    land_forcelimit_modifier = 0.10
+    morale_damage_received = -0.10
+}
+
+tm_mal_ethiopia_diplomatic_ties = {
+    dip_advisor_cost = -0.1
+    dip_tech_cost_modifier = -0.05
+}
+
+tm_mal_ethiopia_diplomatic_ties_province = {
+    allowed_num_of_buildings = 1
+    diplomats = 1
+}
+
+tm_mal_eth_shared_farming_1 = {
+    local_development_cost = -0.1
+    local_production_efficiency = 0.15
+}
+
+tm_mal_eth_shared_farming_2 = {
+    local_development_cost = -0.2
+    local_production_efficiency = 0.30
+}
+
+tm_mal_metal_production = {
+    build_cost = -0.1
+    build_time = -0.1
+    global_trade_goods_size_modifier = 0.075
+}
+
+tm_mal_expanding_goods = {
+    production_efficiency = 0.15
+    global_trade_goods_size_modifier = 0.1
+    build_cost = -0.1
+}
+
+tm_mal_african_diamonds = {
+    trade_goods_size = 2
+}
+
+tm_mal_conquest_of_morocco = {
+    may_perform_slave_raid = yes
+    naval_forcelimit_modifier = 0.15
+    naval_morale = 0.1
+}
+
+tm_mal_early_gold_mining = {
+    trade_goods_size = 1
+}
+
+tm_mal_eth_joint_military_alliance = {
+    global_manpower_modifier = 0.1
+    mil_tech_cost_modifier = -0.05
+    drill_gain_modifier = 0.15
+    army_tradition_decay = -0.01
+}
+
+tm_mal_religion_of_west_africa = {
+    manpower_in_true_faith_provinces = 0.1
+}
+
+tm_mal_religion_of_west_africa_churches = {
+    local_manpower_modifier = 0.1
+}
+
+tm_mal_religion_of_west_africa_cathedrals = {
+    local_manpower_modifier = 0.25
+}
+
+tm_mal_mor_trading_agreements = {
+    trade_efficiency = 0.1
+    caravan_power = 0.05
+}
+
+tm_mal_quick_defense = {
+    defensiveness = 0.1
+    manpower_recovery_speed = 0.2
+    global_manpower_modifier = 0.15
+    recover_army_morale_speed = 0.1
+}
+
+tm_mal_defense_choice = {
+    defensiveness = 0.1
+    fort_maintenance_modifier = -0.10
+    garrison_size = 0.10
+    may_refill_garrison = yes
+    war_exhaustion = -0.10
+    hostile_attrition = 2
+    max_hostile_attrition = 2
+}
+
+tm_mal_offense_choice = {
+    recover_army_morale_speed = 0.1
+    manpower_recovery_speed = 0.1
+}
+
+tm_mal_immediate_offensive = {
+    land_forcelimit = 15
+    land_forcelimit_modifier = 0.1
+    land_morale = 0.1
+    siege_ability = 0.15
+}
+
+
+
+#Morocco
+
+stolen_spanish_ship_designs = {
+	allowed_galleon_fraction = 0.1
+	allowed_caravel_fraction = 0.1
+	has_caravel = yes 
+	has_galleon = yes
+}
+
+new_offensive_prepared = {
+	infantry_power = 0.075
+}
+
+new_olive_oil_demands = {
+	trade_goods_size_modifier = 0.1
+}
+
+new_world_enthusiasm = {
+    global_colonial_growth = 15
+    range = 0.5
+    colony_cost_modifier = -0.25
+}
+
+mor_privateering = {
+    global_sailors_modifier = 0.1
+    global_ship_recruit_speed = -0.1
+}
+
+tm_mor_caliphate_modifier = {
+    missionaries = 1
+    global_missionary_strength = 0.02
+}
+
+# Mamluks
+tm_mal_pearl_of_the_med = {
+    max_flagships = 1
+    naval_tradition_from_battle = 0.5
+    movement_speed_in_fleet_modifier = 1
+    ship_durability = 0.05
+}
+
+tm_mam_triumph_over_ottomans = {
+    infantry_power = 0.10
+    land_morale_constant = 0.3
+    manpower_recovery_speed = 0.10
+}
+
+tm_mam_bastion_of_islaam = {
+    land_morale = 0.05
+    manpower_in_true_faith_provinces = 0.1
+}
+
+tm_mam_unified_arabia = {
+    land_forcelimit_modifier = 0.1
+    missionaries = 1
+    warscore_cost_vs_other_religion = -0.10
 }

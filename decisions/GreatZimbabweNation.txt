@@ -1,5 +1,4 @@
 country_decisions = {
-
 		zimbabwe_nation = {
 			color = { 23 223 234 }
 			major = yes
@@ -12,11 +11,15 @@ country_decisions = {
 				NOT = { exists = ZBW }
 				is_colonial_nation = no
 				culture_group = southern_african
+				NOT = { has_country_flag = butua_fetishist }
 			}
 			
 			provinces_to_highlight = {
 				OR = {
-					province_id = 2951			# Manikya		
+					province_id = 1184 # Zimbabwe
+					province_id = 1186 # Sofala
+					province_id = 4035 # Ngindo
+					province_id = 4044 # Ngonde
 				}
 
 				OR = {
@@ -28,16 +31,21 @@ country_decisions = {
 			allow = {
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
+				owns_core_province = 1184
+				owns_core_province = 1186
+				owns_core_province = 4035
+				owns_core_province = 4044
 				
-				adm_tech = 8
+				adm_tech = 7
 				total_development = 500
+				religion_group = muslim
 			}
 
-			effect = {				
+			effect = {	
 				change_tag = ZBW
 				if = { limit = { NOT = { government_rank = 2 }}	set_government_rank = 2	}
 				set_country_flag = great_zimbabwe_gov_reform_flag
-				hidden_effect = { change_government = monarchy }
+				change_government = monarchy
 				add_government_reform = great_zimbabwe_reform
 				add_prestige = 25
 				add_country_modifier = {
@@ -48,6 +56,13 @@ country_decisions = {
 				set_country_flag = formed_zimbabwe_flag
 				country_event = { id = ideagroups.1 } #Swap Ideas
 				additional_missions_scripted_effect = yes
+				1184 = {
+					add_great_project = {
+						type = great_zimbabwe_monument
+						instant = yes
+					}
+				}
+				hidden_effect = { event_target_updating = yes }
 			}
 		}
 	}
