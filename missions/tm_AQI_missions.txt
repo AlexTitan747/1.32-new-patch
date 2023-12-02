@@ -2493,6 +2493,7 @@ tm_aquitaine_slot_5 = {
 		effect = {
 			languedoc_area = { add_perma_claim = yes }
 			4694 =  { add_permanent_claim = ROOT }
+			5284 =  { add_permanent_claim = ROOT }
 		}
 	}
 
@@ -2519,7 +2520,15 @@ tm_aquitaine_slot_5 = {
 		effect = {
 			add_manpower = 5
 			add_prestige = 15
-			4695 = { add_building = fort_15th }
+			4695 = {
+				if = {
+					limit = { NOT = { has_building = fort_15th }}
+					add_building = fort_15th
+				}
+				else = {
+					upgrade_building = { fort = yes }
+				}
+			}
 		}
 	}
 }
