@@ -1310,7 +1310,6 @@ country_event = {
 			change_government = monarchy
 		}
 		add_government_reform = solomonic_empire
-		remove_country_modifier = eth_negusa_nagast_issues
 
 		ai_chance = {
 			factor = 1
@@ -1319,7 +1318,6 @@ country_event = {
 
 	option = {
 		name = flavor_eth.30.b
-		remove_country_modifier = eth_negusa_nagast_issues
 		capital_scope = {
 			region = {
 				limit = {
@@ -1406,7 +1404,7 @@ country_event = {
 	option = {
 		name = flavor_eth.37.a
 		1232 = {
-			change_religion = coptic
+			change_religion = ROOT
 			add_base_tax = 2
 			add_base_production = 2
 			add_base_manpower = 1
@@ -1503,7 +1501,21 @@ country_event = {
 	
 	option = {	#Try to convert them
 		name = flavor_eth.40.a
-		add_stability = -2
+
+		trigger = {
+			OR = {
+				AND = {
+					owns = 2771
+					2771 = { NOT = { religion = ROOT }}
+				}
+				AND = {
+					owns = 2772
+					2772 = { NOT = { religion = ROOT }}
+				}
+			}
+		}
+
+		reduce_stability_or_adm_power = yes
 		if = {
 			limit = {
 				owns = 1227
@@ -1531,6 +1543,13 @@ country_event = {
 				remove_core = BTI
 			}
 		}
+		add_country_modifier = {
+			name = tm_eth_try_to_convert_them
+			duration = 9125
+		}
+		custom_tooltip = flavor_eth_40_a_b_tt
+		hidden_effect = { swap_non_generic_missions = yes }
+		set_country_flag = tm_eth_coptic
 
 		ai_chance = {
 			factor = 0
@@ -1539,10 +1558,25 @@ country_event = {
 	
 	option = {	#We should not create a bigger rift between our people
 		name = flavor_eth.40.b
-		add_stability = 1
+
+		trigger = {
+			OR = {
+				AND = {
+					owns = 2771
+					2771 = { NOT = { religion = ROOT }}
+				}
+				AND = {
+					owns = 2772
+					2772 = { NOT = { religion = ROOT }}
+				}
+			}
+		}
+
+		add_stability_or_adm_power = yes
 		if = {
 			limit = {
 				owns = 2771
+				2771 = { NOT = { religion = ROOT }}
 			}
 			2771 = {
 				add_province_modifier = {
@@ -1554,6 +1588,7 @@ country_event = {
 		if = {
 			limit = {
 				owns = 2772
+				2772 = { NOT = { religion = ROOT }}
 			}
 			2772 = {
 				add_province_modifier = {
@@ -1562,8 +1597,99 @@ country_event = {
 				}
 			}
 		}
+		custom_tooltip = flavor_eth_40_a_b_tt
+		hidden_effect = { swap_non_generic_missions = yes }
+		set_country_flag = tm_eth_coptic
+
 		ai_chance = {
 			factor = 100
+		}
+	}
+
+	option = {	#Join Them
+		name = flavor_eth.40.c
+
+		trigger = {
+			NOT = { religion = jewish }
+			OR = {
+				AND = {
+					owns = 2771
+					2771 = {  religion = jewish }
+				}
+				AND = {
+					owns = 2772
+					2772 = {  religion = jewish }
+				}
+			}
+		}
+
+		change_religion = jewish
+		if = {
+			limit = {
+				NOT = {
+					ruler_religion = jewish
+				}
+			}
+			set_ruler_religion = jewish
+		}
+		custom_tooltip = tm_eth_jewish_path_difficult_tt
+
+		custom_tooltip = flavor_eth_40_c_tt
+		hidden_effect = { swap_non_generic_missions = yes }
+		set_country_flag = tm_eth_jewish
+		hidden_effect = {
+			if = {
+				limit = { num_of_subjects = 1 }
+				country_event = { id = ethiopia_flavour.50 days = 180 random = 60 }
+			}
+			if = {
+				limit = { has_heir = yes } 
+				country_event = { id = ethiopia_flavour.51 days = 30 random = 10 } 
+			}
+			if = {
+				limit = { has_consort = yes }
+				country_event = { id = ethiopia_flavour.52 days = 80 random = 20 }
+			}
+			else = {
+				country_event = { id = ethiopia_flavour.53 days = 80 random = 20 }
+			}
+		}
+
+		ai_chance = {
+			factor = 0
+		}
+	}
+
+	option = {	#Fall back
+		name = flavor_eth.40.d
+
+		trigger = {
+			owns = 2771
+			2771 = {  religion = ROOT }
+			owns = 2772
+			2772 = {  religion = ROOT }
+		}
+
+		add_stability_or_adm_power = yes
+		add_prestige_or_monarch_power = { amount = 15 }
+		if = {
+			limit = {
+				religion = jewish
+			}
+			custom_tooltip = flavor_eth_40_c_tt
+			set_country_flag = tm_eth_jewish
+		}
+		else_if = {
+			limit = {
+				religion = coptic
+			}
+			custom_tooltip = flavor_eth_40_a_b_tt
+			hidden_effect = { swap_non_generic_missions = yes }
+			set_country_flag = tm_eth_coptic
+		}
+
+		ai_chance = {
+			factor = 0
 		}
 	}
 }

@@ -1,9 +1,9 @@
 country_decisions = {
-
 		somali_nation = {
 			color = { 23 223 234 }
 			major = yes
 			potential = {
+				religion_group = muslim
 				NOT = { has_country_flag = formed_somali_flag }
 				NOT = { exists = SOM }
 				NOT = { tag = OME }
@@ -27,7 +27,6 @@ country_decisions = {
 					province_id = 1209			# 
 					province_id = 2789			# 
 				}
-					
 				OR = {
 					NOT = { owned_by = ROOT }
 					NOT = { is_core = ROOT }
@@ -35,6 +34,7 @@ country_decisions = {
 			}
 			
 			allow = {
+				adm_tech = 7
 				is_free_or_tributary_trigger = yes
 				is_at_war = no
 				owns_core_province = 1205			#  
@@ -49,7 +49,6 @@ country_decisions = {
 
 			effect = {
 				change_tag = SOM
-				new_mission_tree_scripted_effect = yes
 				if = {
 					limit = {
 						NOT = { government_rank = 2 }
@@ -71,6 +70,7 @@ country_decisions = {
 				}
 				set_country_flag = formed_somali_flag
 				country_event = { id = ideagroups.1 } #Swap Ideas
+				hidden_effect = { event_target_updating = yes }
 			}
 			
 		}

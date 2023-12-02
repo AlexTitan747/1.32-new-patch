@@ -1,0 +1,57 @@
+country_decisions = {
+	israel_nation = {
+		color = { 23 223 234 }
+		major = yes
+		potential = {
+			NOT = { has_country_flag = formed_israel_flag }
+			NOT = { exists = ISR }
+			NOT = { tag = MAM }	#RIP irony
+			religion = jewish
+			is_colonial_nation = no
+			has_country_flag = tm_can_form_israel
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 379	# Jerusalem
+				province_id = 364	# Gaza
+				province_id = 1854	# Jaffa
+				province_id = 1854	# Arish
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			is_at_war = no
+			is_free_or_tributary_trigger = yes
+			owns_core_province = 379	# Jerusalem
+			owns_core_province = 364	# Gaza
+			owns_core_province = 1854	# Jaffa
+			owns_core_province = 5170	# Arish
+			religion = jewish
+		}
+		effect = {
+			change_tag = ISR
+			on_change_tag_effect = yes
+			if = {
+				limit = { NOT = { government_rank = 2 } }
+				set_government_rank = 2
+			}
+			add_prestige = 25
+			if = {
+				limit = {
+					has_custom_ideas = no
+					NOT = { has_idea_group = ISR_ideas }
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			set_country_flag = formed_israel_flag
+		}
+		ai_will_do = {
+			factor = 1
+		}
+		ai_importance = 400 #
+	}
+	
+}

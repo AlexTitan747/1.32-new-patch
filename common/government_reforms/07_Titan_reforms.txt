@@ -21,8 +21,8 @@ moroccan_monarchy = {
 	allow_normal_conversion = yes
 	potential = {
 		OR = {
-		tag = MOR
-		was_tag = MOR
+			tag = MOR
+			was_tag = MOR
 		}
 		has_country_flag = a_time_of_change
 	}
@@ -121,8 +121,8 @@ kingdom_of_naples = {
 	allow_normal_conversion = yes
 	potential = {
 		OR = {
-		tag = NAP
-		was_tag = NAP
+			tag = NAP
+			was_tag = NAP
 		}
 	}
 	valid_for_nation_designer = yes
@@ -242,8 +242,8 @@ margraviate_of_Brandenburg = {
 	allow_normal_conversion = yes
 	potential = {
 		OR = {
-		tag = BRA
-		has_country_flag = boh_unlock_bradenburg_reform
+			tag = BRA
+			has_country_flag = boh_unlock_bradenburg_reform
 		}
 	}
 	valid_for_nation_designer = yes
@@ -320,15 +320,15 @@ portuguese_monarchy_reform = {
 	nation_designer_cost = 0
 	potential = {
 		OR = {
-		tag = POR
-		tag = PEA
+			tag = POR
+			tag = PEA
 		}
 	}
 	modifiers = {
 		burghers_loyalty_modifier = 0.1
 		monarch_diplomatic_power = 1
 		great_project_upgrade_cost = -0.15
-		colonists = 2
+		colonists = 1
 		global_tax_modifier = 0.1
 	}
 	conditional = {
@@ -520,8 +520,8 @@ baltic_federation_of_states = {
 	royal_marriage = yes
 	potential = {
 		OR = {
-		culture_group = scandinavian
-		tag = BLC
+			culture_group = scandinavian
+			tag = BLC
 		}
 	}
 	nation_designer_trigger = {
@@ -1396,8 +1396,8 @@ compulsory_military_service = {
 	potential = {
 		is_revolutionary = no
 		OR = {
-		tag = BRA
-		owns_core_province = 50
+			tag = BRA
+			owns_core_province = 50
 		}
 
 	}
@@ -1416,8 +1416,8 @@ establish_hessian_trade_stations = {
 	potential = {
 		is_revolutionary = no
 		OR = {
-		tag = HES
-		was_tag = HES
+			tag = HES
+			was_tag = HES
 		}
 
 	}
@@ -1447,8 +1447,8 @@ privy_council_for_the_electorate = {
 	potential = {
 		is_revolutionary = no
 		OR = {
-		tag = BRA
-		tag = PRU
+			tag = BRA
+			tag = PRU
 		}
 
 	}
@@ -1470,10 +1470,9 @@ the_hessian_mercenary_state = {
 	potential = {
 		is_revolutionary = no
 		OR = {
-		tag = HES
-		was_tag = HES
+			tag = HES
+			was_tag = HES
 		}
-
 	}
 	ai = {
 		factor = 1
@@ -1662,9 +1661,9 @@ amtskammer_chambers = {
 	potential = {
 		is_revolutionary = no
 		OR = {
-		tag = BRA
-		tag = PRU
-		owns_core_province = 50
+			tag = BRA
+			tag = PRU
+			owns_core_province = 50
 		}
 	}
 	modifiers = {
@@ -2056,11 +2055,39 @@ great_zimbabwe_reform = {
 	}
 	modifiers = {
 		trade_efficiency = 0.1
-		trade_range_modifier = 0.1
-		mercenary_cost = -0.10
+		trade_range_modifier = 0.25
 		merc_maintenance_modifier = -0.10
 		mercantilism_cost = -0.25
-		burghers_loyalty_modifier = 0.1
+		merchants = 1
+	}
+	ai = {
+		factor = 1
+	}
+}
+
+semien_governement_reform = {
+	icon = "stone_tablet"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			have_had_reform = semien_governement_reform
+			has_country_flag = tm_unlocked_semien_governement_reform
+		}
+	}
+	trigger = {
+		OR = {
+			have_had_reform = semien_governement_reform
+			has_country_flag = tm_unlocked_semien_governement_reform
+		}
+	}
+	rulers_can_be_generals = yes
+	heirs_can_be_generals = yes
+	modifiers = {
+		global_missionary_strength = 0.01
+		missionary_maintenance_cost = -0.1
+		church_power_modifier = 0.15
+		church_loyalty_modifier = 0.1
+		stability_cost_modifier = -0.1
 	}
 	ai = {
 		factor = 1

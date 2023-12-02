@@ -1,0 +1,371 @@
+namespace = ethiopia_flavour
+
+country_event = { #Cawa choices
+    id = ethiopia_flavour.1
+    title = ethiopia_flavour.1.t
+    desc = ethiopia_flavour.1.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = { #Quantity
+		name = ethiopia_flavour.1.a
+
+        set_country_flag = tm_eth_quantity_cawa
+        add_country_modifier = {
+            name = tm_eth_quantity_cawa_1_modifier
+            duration = -1
+        }
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+	option = { #Quality
+		name = ethiopia_flavour.1.b
+
+        set_country_flag = tm_eth_quality_cawa
+        add_country_modifier = {
+            name = tm_eth_quality_cawa_1_modifier
+            duration = -1
+        }
+		
+        ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+country_event = { #Mountain Specialisation choices
+    id = ethiopia_flavour.2
+    title = ethiopia_flavour.2.t
+    desc = ethiopia_flavour.2.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = { #Eco
+		name = ethiopia_flavour.2.a
+
+        set_country_flag = tm_eth_eco_mountains
+
+        custom_tooltip = tm_eth_every_mountainais_province_in_horn_tt   
+        tooltip = {
+            add_province_modifier = {
+                name = tm_eth_economic_mountains
+                duration = -1
+            }
+        }
+
+        hidden_effect = {
+            every_owned_province = {
+                limit = {
+                    OR = {
+                        has_terrain = mountain
+                        has_terrain = highlands
+                    }
+                    region = horn_of_africa_region
+                }
+                add_province_modifier = {
+                    name = tm_eth_economic_mountains
+                    duration = -1
+                }
+            }
+        }
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+	option = { #Military
+		name = ethiopia_flavour.2.b
+
+        set_country_flag = tm_eth_mil_mountains
+        
+        custom_tooltip = tm_eth_every_mountainais_province_in_horn_tt
+        tooltip = {
+            add_province_modifier = {
+                name = tm_eth_military_mountains
+                duration = -1
+            }
+        }
+
+        hidden_effect = {
+            every_owned_province = {
+                limit = {
+                    OR = {
+                        has_terrain = mountain
+                        has_terrain = highlands
+                    }
+                    region = horn_of_africa_region
+                }
+                add_province_modifier = {
+                    name = tm_eth_military_mountains
+                    duration = -1
+                }
+            }
+        }
+		
+        ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+
+
+
+country_event = { # Subjects coverting
+    id = ethiopia_flavour.50
+    title = ethiopia_flavour.50.t
+    desc = ethiopia_flavour.50.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = ethiopia_flavour.50.a
+        
+        
+        
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+country_event = { # Heir coverting
+    id = ethiopia_flavour.51
+    title = ethiopia_flavour.51.t
+    desc = ethiopia_flavour.51.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = ethiopia_flavour.51.a
+
+        random_list = {
+            40 = {
+                remove_heir = { allow_new_heir = no }
+            }
+            50 = {
+                set_heir_religion = ROOT
+            }
+            10 = {
+                capital_scope = {
+                    random_province_in_state = {
+                        limit = { owned_by  = ROOT }
+                        spawn_rebels = {
+                            size = 4
+                            use_heir_as_leader = yes
+                            type = pretender_rebels
+                            win = yes
+                            unrest = 5
+                        }
+                    }
+                }
+            }
+        }
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+country_event = { # Consort coverting
+    id = ethiopia_flavour.52
+    title = ethiopia_flavour.52.t
+    desc = ethiopia_flavour.52.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = ethiopia_flavour.52.a
+
+        random_list = {
+            33 = {
+                remove_consort = yes
+            }
+            33 = {
+                set_consort_religion = ROOT
+            }
+            33 = {
+                capital_scope = {
+                    random_province_in_state = {
+                        limit = { owned_by  = ROOT }
+                        spawn_rebels = {
+                            size = 3
+                            use_consort_as_leader = yes
+                            type = pretender_rebels
+                            win = yes
+                            unrest = 2
+                        }
+                    }
+                }
+            }
+        }
+        
+		
+		ai_chance = { factor = 100 }
+	}
+}
+
+country_event = { # New Consort
+    id = ethiopia_flavour.53
+    title = ethiopia_flavour.53.t
+    desc = ethiopia_flavour.53.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = {
+		name = ethiopia_flavour.53.a
+
+        define_consort = {
+            country_of_origin = ROOT
+            religion = ROOT
+            age = 25
+            adm = 5
+            dip = 4
+            mil = 5
+        }
+        add_queen_personality = righteous_personality
+        add_queen_personality = tolerant_personality
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+province_event = { #Jewish Adm Dev Removing
+    id = ethiopia_flavour.100
+    title = ethiopia_flavour.100.t
+    desc = ethiopia_flavour.100.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+    mean_time_to_happen = {
+        days = 1
+    }
+
+    hidden = yes
+
+    trigger = {
+        has_province_flag = tm_judasim_temp_adm_dev_flag
+        NOT = { has_province_modifier = tm_judaism_temp_adm_dev }
+    }
+
+    immediate = {
+        clr_province_flag = tm_judasim_temp_adm_dev_flag
+        add_base_tax = -3
+    } 
+
+	option = {
+		name = ethiopia_flavour.100.a
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+province_event = { #Jewish Dip Dev Removing
+    id = ethiopia_flavour.101
+    title = ethiopia_flavour.101.t
+    desc = ethiopia_flavour.101.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+    mean_time_to_happen = {
+        days = 1
+    }
+
+    hidden = yes
+
+    trigger = {
+        has_province_flag = tm_judasim_temp_dip_dev_flag
+        NOT = { has_province_modifier = tm_judaism_temp_dip_dev }
+    }
+
+    immediate = {
+        clr_province_flag = tm_judasim_temp_dip_dev_flag
+        add_base_production = -3
+    } 
+
+	option = {
+		name = ethiopia_flavour.101.a
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+province_event = { #Jewish Mil Dev Removing
+    id = ethiopia_flavour.102
+    title = ethiopia_flavour.102.t
+    desc = ethiopia_flavour.102.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+    mean_time_to_happen = {
+        days = 1
+    }
+
+    hidden = yes
+
+    trigger = {
+        has_province_flag = tm_judasim_temp_mil_dev_flag
+        NOT = { has_province_modifier = tm_judaism_temp_mil_dev }
+    }
+
+    immediate = {
+        clr_province_flag = tm_judasim_temp_mil_dev_flag
+        add_base_manpower = -3
+    } 
+
+	option = {
+		name = ethiopia_flavour.102.a
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+}

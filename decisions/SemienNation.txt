@@ -1,0 +1,63 @@
+country_decisions = {
+	semien_nation = {
+		color = { 23 223 234 }
+		major = yes
+		potential = {
+			tag = ETH
+			NOT = { has_country_flag = formed_simien_empire_flag }
+			NOT = { exists = BTI }
+			is_colonial_nation = no
+			NOT = { has_country_flag = tm_eth_coptic }
+		}
+		
+		provinces_to_highlight = {
+            
+		}
+
+		allow = {
+			adm_tech = 7
+			religion = jewish
+			is_at_war = no
+			is_free_or_tributary_trigger = yes
+
+			development_in_provinces = {
+				value = 600
+				religion = jewish
+			}
+		}
+
+		effect = {
+			set_country_flag = can_use_holy_state_reform
+			change_tag = BTI
+			if = {
+				limit = { NOT = { government_rank = 2 } }
+				set_government_rank = 2
+			}
+			if = {
+				limit = {
+					NOT = { government = theocracy }
+				}
+				change_government = theocracy
+			}
+			if = {
+				limit = {
+					mission_completed = tm_eth_establish_a_permanent_capital
+				}
+				set_country_flag = tm_unlocked_semien_governement_reform
+				add_government_reform = semien_governement_reform
+			}
+			else = {
+				add_government_reform = holy_state_reform
+			}
+			add_prestige = 25
+			add_country_modifier = {
+				name = centralization_modifier
+				duration = 3650
+			}
+			additional_missions_scripted_effect = yes
+			country_event = { id = ideagroups.1 } #Swap Ideas
+			set_country_flag = formed_simien_empire_flag
+			hidden_effect = { event_target_updating = yes }
+		}
+	}
+}

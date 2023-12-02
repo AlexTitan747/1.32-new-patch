@@ -762,7 +762,7 @@ christian = {
 			}
 
 			icon_pancreator = {
-				development_cost = -0.10
+				development_cost = -0.05
 				build_cost = -0.1
 				
 				allow = {
@@ -864,7 +864,8 @@ christian = {
 		
 		misguided_heretic = yes
 		
-		holy_sites = { 358 1227 2313 1234 419 }
+		#holy_sites = { 358 1227 2313 1234 419 } #"Original"
+		holy_sites = { 1158 2775 1234 1227 1196 }
 		
 		blessings = {
 			legitimize_government
@@ -915,6 +916,11 @@ muslim = {
 				#	NOT = { piety = -0.5 }
 				#}
 				if = {
+					limit = { has_country_flag = tm_easier_scholar_invite }
+					reverse_has_opinion = { who = FROM value = 75 }
+					hidden_progressive_opinion_for_scholar_trigger = yes
+				}
+				else_if = {
 					limit = {
 						NOT = { has_country_flag = can_always_invite_hanafi_school }
 						NOT = { has_country_flag = privilege_can_always_invite_hanafi_school }
@@ -961,7 +967,7 @@ muslim = {
 			picture = "GFX_icon_muslim_school_hanafi"
 
 			# religion_sub_modifier = no is possible, will hide icon in religious screen
-			adm_tech_cost_modifier = -0.05
+			technology_cost = -0.05
 		}
 		hanbali_school = {
 			potential_invite_scholar = {
@@ -988,6 +994,11 @@ muslim = {
 				#	NOT = { piety = -0.5 }
 				#}
 				if = {
+					limit = { has_country_flag = tm_easier_scholar_invite }
+					reverse_has_opinion = { who = FROM value = 75 }
+					hidden_progressive_opinion_for_scholar_trigger = yes
+				}
+				else_if = {
 					limit = {
 						NOT = { has_country_flag = can_always_invite_hanbali_school }
 						NOT = { has_country_flag = privilege_can_always_invite_hanbali_school }
@@ -1033,7 +1044,7 @@ muslim = {
 
 			picture = "GFX_icon_muslim_school_hanbali"
 
-			ae_impact = -0.1
+			production_efficiency = 0.1
 		}
 		maliki_school = {
 			potential_invite_scholar = {
@@ -1060,6 +1071,11 @@ muslim = {
 				#	NOT = { piety = -0.5 }
 				#}
 				if = {
+					limit = { has_country_flag = tm_easier_scholar_invite }
+					reverse_has_opinion = { who = FROM value = 75 }
+					hidden_progressive_opinion_for_scholar_trigger = yes
+				}
+				else_if = {
 					limit = {
 						NOT = { has_country_flag = can_always_invite_maliki_school }
 						NOT = { has_country_flag = privilege_can_always_invite_maliki_school }
@@ -1105,7 +1121,7 @@ muslim = {
 
 			picture = "GFX_icon_muslim_school_maliki"
 
-			development_cost = -0.1
+			development_cost = -0.05
 		}
 		shafii_school = {
 			potential_invite_scholar = {
@@ -1132,6 +1148,11 @@ muslim = {
 				#	NOT = { piety = -0.5 }
 				#}
 				if = {
+					limit = { has_country_flag = tm_easier_scholar_invite }
+					reverse_has_opinion = { who = FROM value = 75 }
+					hidden_progressive_opinion_for_scholar_trigger = yes
+				}
+				else_if = {
 					limit = {
 						NOT = { has_country_flag = can_always_invite_shafii_school }
 						NOT = { has_country_flag = privilege_can_always_invite_shafii_school }
@@ -1206,6 +1227,11 @@ muslim = {
 				#	NOT = { piety = -0.5 }
 				#}
 				if = {
+					limit = { has_country_flag = tm_easier_scholar_invite }
+					reverse_has_opinion = { who = FROM value = 75 }
+					hidden_progressive_opinion_for_scholar_trigger = yes
+				}
+				else_if = {
 					limit = {
 						NOT = { has_country_flag = can_always_invite_ismaili_school }
 						NOT = { has_country_flag = privilege_can_always_invite_ismaili_school }
@@ -1279,6 +1305,11 @@ muslim = {
 				#	NOT = { piety = -0.5 }
 				#}
 				if = {
+					limit = { has_country_flag = tm_easier_scholar_invite }
+					reverse_has_opinion = { who = FROM value = 75 }
+					hidden_progressive_opinion_for_scholar_trigger = yes
+				}
+				else_if = {
 					limit = {
 						NOT = { has_country_flag = can_always_invite_jafari_school }
 						NOT = { has_country_flag = privilege_can_always_invite_jafari_school }
@@ -1351,6 +1382,11 @@ muslim = {
 				#	NOT = { piety = -0.5 }
 				#}
 				if = {
+					limit = { has_country_flag = tm_easier_scholar_invite }
+					reverse_has_opinion = { who = FROM value = 75 }
+					hidden_progressive_opinion_for_scholar_trigger = yes
+				}
+				else_if = {
 					limit = {
 						NOT = { has_country_flag = can_always_invite_zaidi_school }
 						NOT = { has_country_flag = privilege_can_always_invite_zaidi_school }
@@ -1398,7 +1434,6 @@ muslim = {
 
 			shock_damage_received = -0.10
 		}
-		
 	}
 	
 	sunni = {
@@ -2569,12 +2604,18 @@ jewish_group = {
 			judaism_rosh_hashanah_aspect
 			judaism_simchat_torah_aspect
 			judaism_sukkot_aspect
+			judaism_shemini_atzeret_aspect
+			judaism_hanukkah_aspect
 			judaism_communities_aspect
 			jewish_abrahamic_aspect
 			judaism_diplomatic_rabbi_aspect
+			judaism_home_of_the_jews_aspect
+			judaism_jewish_workers_aspect
 			judaism_yom_kippur_aspect
 			judaism_remember_passover_aspect
 			judaism_purim_teachings_aspect
+			judaism_yom_haaliyah_aspect
+			judaism_tu_bishvat_aspect
 		}
 		
 		heretic = { SAMARITAN KARAITE }
@@ -2590,13 +2631,9 @@ jewish_group = {
 						has_church_aspect = judaism_rosh_hashanah_aspect
 						has_church_aspect = judaism_simchat_torah_aspect
 						has_church_aspect = judaism_sukkot_aspect
+						has_church_aspect = judaism_shemini_atzeret_aspect
+						has_church_aspect = judaism_hanukkah_aspect
 					}
-				}
-				if = {
-					limit = {
-						has_church_aspect = judaism_rosh_hashanah_aspect
-					}
-					NOT = { stability = 3 }
 				}
 			}
 			effect = {
@@ -2604,23 +2641,14 @@ jewish_group = {
 					limit = {
 						has_church_aspect = judaism_rosh_hashanah_aspect
 					}
-					add_stability = 1
+					add_stability_or_adm_power = yes
 				}
 				if = {
 					limit = {
 						has_church_aspect = judaism_simchat_torah_aspect
 					}
-					change_government_reform_progress = 20
-					add_legitimacy_equivalent = {
-						amount = 5
-						republican_tradition = 5
-					}
-					if = {
-						limit = {
-							has_heir = yes
-						}
-						add_heir_claim = 5
-					}
+					add_splendor = 50
+					change_innovativeness = 2
 				}
 				if = {
 					limit = {
@@ -2628,6 +2656,35 @@ jewish_group = {
 					}
 					add_years_of_income = 0.3
 					add_inflation = -1
+				}
+				if = {
+					limit = {
+						has_church_aspect = judaism_shemini_atzeret_aspect
+					}
+					change_government_reform_progress = 50
+					add_legitimacy_equivalent = {
+						amount = 10
+						republican_tradition = 10
+					}
+					if = {
+						limit = {
+							has_heir = yes
+						}
+						add_heir_claim = 10
+					}
+				}
+				if = {
+					limit = {
+						has_church_aspect = judaism_hanukkah_aspect
+					}
+					every_owned_province = {
+						limit = {
+							has_missionary = yes
+						}
+						change_religion = ROOT
+						change_culture = ROOT
+						add_base_tax = 2
+					}
 				}
 				if = {
 					limit = {
@@ -2720,12 +2777,7 @@ zoroastrian_group = {
 			blessing_dakhma
 		}
 		
-		heretic = { MAZDAKI MANICHEAN }	
-		will_get_center = { #Refered to even for initial CoR Spawn
-			any_owned_province = {
-				religion = zoroastrian
-			}
-		}
+		heretic = { MAZDAKI MANICHEAN }
 	}
 	
 	harmonized_modifier = harmonized_zoroastrian_group

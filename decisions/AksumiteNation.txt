@@ -1,0 +1,79 @@
+country_decisions = {
+	aksumite_nation = {
+		color = { 23 223 234 }
+		major = yes
+		potential = {
+			tag = ETH
+			NOT = { has_country_flag = formed_aksumite_empire_flag }
+			NOT = { exists = AKS }
+			is_colonial_nation = no
+			NOT = { has_country_flag = tm_eth_jewish }
+		}
+		provinces_to_highlight = {
+			OR = {
+				area = central_ethiopia_area
+				area = southern_ethiopia_area
+				area = damot_area
+				area = tigray_area
+				area = aussa_area
+				province_id = 1208
+				province_id = 1222
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+
+		allow = {
+			adm_tech = 7
+			religion = coptic
+			is_at_war = no
+			is_free_or_tributary_trigger = yes
+			central_ethiopia_area = {
+				owned_by = ROOT
+				type = all
+			}
+			southern_ethiopia_area = {
+				owned_by = ROOT
+				type = all
+			}
+			damot_area = {
+				owned_by = ROOT
+				type = all
+			}
+			tigray_area = {
+				owned_by = ROOT
+				type = all
+			}
+			aussa_area = {
+				owned_by = ROOT
+				type = all
+			}
+			owns_core_province = 1208
+			owns_core_province = 1222
+			development_in_provinces = {
+				value = 600
+				religion = coptic
+			}
+		}
+
+		effect = {
+			change_tag = AKS
+			if = {
+				limit = { NOT = { government_rank = 2 } }
+				set_government_rank = 2
+			}
+			add_prestige = 25
+			add_country_modifier = {
+				name = centralization_modifier
+				duration = 3650
+			}
+			additional_missions_scripted_effect = yes
+			country_event = { id = ideagroups.1 } #Swap Ideas
+			set_country_flag = formed_aksumite_empire_flag
+			hidden_effect = { event_target_updating = yes }
+		}
+	}
+	
+}

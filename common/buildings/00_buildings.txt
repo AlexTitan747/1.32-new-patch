@@ -58,6 +58,29 @@ marketplace = {
 			}
 			add_prosperity = 5
 		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_dip_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_production = 3
+				set_province_flag = tm_judasim_temp_dip_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+		}
 	}
 	on_destroyed = {
 		if = {
@@ -134,6 +157,29 @@ workshop = {
 			building = workshop
 			type = production
 			value = 1
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_dip_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_production = 3
+				set_province_flag = tm_judasim_temp_dip_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
 		}
 	}
 	on_destroyed = {
@@ -225,6 +271,40 @@ temple = {
 				}
 			}
 		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_adm_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_adm_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_tax = 3
+				set_province_flag = tm_judasim_temp_adm_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_adm_dev
+					duration = 1095
+				}
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					has_country_flag = tm_manpower_in_churches
+				}
+			}
+			add_province_modifier = {
+				name = tm_mal_religion_of_west_africa_churches
+				duration = -1
+			}
+		}
 	}
 	on_destroyed = {
 		on_province_tax_building_destroyed_estate_privileges_effect = yes
@@ -264,6 +344,7 @@ temple = {
 			}
 		}
 		remove_province_modifier = gov_expanded_temple_rights_mod
+		remove_province_modifier = tm_mal_religion_of_west_africa_churches
 	}
 	on_obsolete = {
 	}
@@ -325,6 +406,29 @@ barracks = {
 		}
 		update_improved_military_buildings_modifier = {
 			building = barracks
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_mil_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_mil_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_manpower = 3
+				set_province_flag = tm_judasim_temp_mil_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_mil_dev
+					duration = 1095
+				}
+			}
 		}
 	}
 	on_destroyed = {
@@ -422,6 +526,29 @@ shipyard = {
 			}
 			add_base_production = 1
 			set_province_flag = tm_admiralty_dockyard_encouragement_added_dev_shipyard
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_dip_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_production = 3
+				set_province_flag = tm_judasim_temp_dip_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
 		}
 	}
 	on_destroyed = {
@@ -565,6 +692,28 @@ fort_15th = {
 				duration = -1
 			}
 		}
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_mil_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_mil_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_manpower = 3
+				set_province_flag = tm_judasim_temp_mil_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_mil_dev
+					duration = 1095
+				}
+			}
+		}
 	}
 
 	# THIS = Province, FROM = Destroyer, Will not be called on buildings made obsolete!
@@ -591,16 +740,7 @@ fort_15th = {
 			NOT = {
 				any_neighbor_province = {
 					owned_by = ROOT
-					OR = {
-						has_building = fort_15th
-						has_construction = fort_15th
-						has_building = fort_16th
-						has_construction = fort_16th
-						has_building = fort_17th
-						has_construction = fort_17th
-						has_building = fort_18th
-						has_construction = fort_18th
-					}
+					has_fort_building_trigger = yes
 					NOT = { is_capital = yes }
 				}
 			}
@@ -767,9 +907,11 @@ coastal_defence = {
 		blockade_force_required = 0.5
 		hostile_disembark_speed = 1.0
 		local_defensiveness = 0.10
+		block_slave_raid = yes
+		hostile_fleet_attrition = 2
 	}
 	on_built = {
-		custom_tooltip = block_slave_raid_area_m_tt
+		#custom_tooltip = block_slave_raid_area_m_tt
 		hidden_effect = { owner = { save_event_target_as = new_owner } }
 		area = {
 			if = {
@@ -844,6 +986,29 @@ warehouse = {
 			type = production
 			value = 1
 		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_dip_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_production = 3
+				set_province_flag = tm_judasim_temp_dip_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+		}
 	}
 	on_destroyed = {
 		remove_development_from_building = {
@@ -884,6 +1049,29 @@ courthouse = {
 			add_province_modifier = {
 				name = fra_improved_court_houses_modifier
 				duration = -1 
+			}
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_adm_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_adm_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_tax = 3
+				set_province_flag = tm_judasim_temp_adm_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_adm_dev
+					duration = 1095
+				}
 			}
 		}
 	}
@@ -1006,6 +1194,29 @@ dock = {
 			add_base_production = 1
 			set_province_flag = tm_admiralty_dockyard_encouragement_added_dev_dock
 		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_dip_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_production = 3
+				set_province_flag = tm_judasim_temp_dip_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+		}
 	}
 	
 	on_destroyed = {
@@ -1121,6 +1332,29 @@ regimental_camp = {
 			}
 			FROM = {
 				add_army_professionalism = 0.001
+			}
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_mil_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_mil_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_manpower = 3
+				set_province_flag = tm_judasim_temp_mil_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_mil_dev
+					duration = 1095
+				}
 			}
 		}
 	}
@@ -1275,6 +1509,29 @@ fort_16th = {
 			add_province_modifier = {
 				name = estate_nobles_development_of_castles_mod
 				duration = -1
+			}
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_mil_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_mil_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_manpower = 3
+				set_province_flag = tm_judasim_temp_mil_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_mil_dev
+					duration = 1095
+				}
 			}
 		}
 	}
@@ -1476,6 +1733,7 @@ naval_battery = {
 		hostile_disembark_speed = 2.0
 		hostile_fleet_attrition = 5
 		local_defensiveness = 0.15
+		block_slave_raid = yes
 	}
 	on_built = {
 		custom_tooltip = block_slave_raid_area_m_tt
@@ -1600,6 +1858,40 @@ cathedral = {
 				}
 			}
 		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_adm_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_adm_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_tax = 3
+				set_province_flag = tm_judasim_temp_adm_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_adm_dev
+					duration = 1095
+				}
+			}
+		}
+		if = {
+			limit = {
+				FROM = {
+					has_country_flag = tm_manpower_in_churches
+				}
+			}
+			add_province_modifier = {
+				name = tm_mal_religion_of_west_africa_cathedrals
+				duration = -1
+			}
+		}
 	}
 	on_destroyed = {
 		on_province_tax_building_destroyed_estate_privileges_effect = yes
@@ -1639,6 +1931,7 @@ cathedral = {
 			}
 		}
 		remove_province_modifier = gov_expanded_temple_rights_mod
+		remove_country_modifier = tm_mal_religion_of_west_africa_cathedrals
 	}
 	on_obsolete = {
 	}
@@ -1711,7 +2004,7 @@ university = {
 			type = tax
 			value = 2
 		}
-		custom_tooltip = dif_university_dev_cost_tt
+		#custom_tooltip = dif_university_dev_cost_tt
 		hidden_effect = { owner = { save_event_target_as = new_owner } }
 		area = {
 			if = {
@@ -1722,6 +2015,29 @@ university = {
 				add_province_modifier = {
 					name = dif_university_dev_cost
 					duration = -1
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_adm_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_adm_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_tax = 3
+				set_province_flag = tm_judasim_temp_adm_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_adm_dev
+					duration = 1095
 				}
 			}
 		}
@@ -1871,6 +2187,29 @@ trade_depot = {
 			value = 2
 			upgrade_value = 1
 		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_dip_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_production = 3
+				set_province_flag = tm_judasim_temp_dip_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+		}
 	}
 	on_destroyed = {
 		if = {
@@ -1961,6 +2300,29 @@ grand_shipyard = {
 			add_base_production = 2
 			set_province_flag = tm_admiralty_dockyard_encouragement_added_dev_grand_shipyard
 		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_dip_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_production = 3
+				set_province_flag = tm_judasim_temp_dip_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+		}
 	}
 	on_destroyed = {
 		remove_development_from_building = {
@@ -2040,6 +2402,29 @@ training_fields = {
 			}
 			FROM = {
 				add_army_professionalism = 0.001
+			}
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_mil_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_mil_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_manpower = 3
+				set_province_flag = tm_judasim_temp_mil_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_mil_dev
+					duration = 1095
+				}
 			}
 		}
 	}
@@ -2215,6 +2600,29 @@ fort_17th = {
 			add_province_modifier = {
 				name = estate_nobles_development_of_castles_mod
 				duration = -1
+			}
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_mil_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_mil_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_manpower = 3
+				set_province_flag = tm_judasim_temp_mil_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_mil_dev
+					duration = 1095
+				}
 			}
 		}
 	}
@@ -2460,6 +2868,29 @@ stock_exchange = {
 				value = 3
 			}
 		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_dip_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_production = 3
+				set_province_flag = tm_judasim_temp_dip_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+		}
 	}
 	on_destroyed = {
 		if = {
@@ -2534,6 +2965,29 @@ counting_house = {
 			value = 2
 			upgrade_value = 1
 		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_dip_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_production = 3
+				set_province_flag = tm_judasim_temp_dip_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+		}
 	}
 	on_destroyed = {
 		remove_development_from_building = {
@@ -2598,6 +3052,29 @@ town_hall = {
 			add_province_modifier = {
 				name = fra_improved_court_houses_modifier
 				duration = -1 
+			}
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_adm_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_adm_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_tax = 3
+				set_province_flag = tm_judasim_temp_adm_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_adm_dev
+					duration = 1095
+				}
 			}
 		}
 	}
@@ -2728,6 +3205,29 @@ drydock = {
 			add_base_production = 2
 			set_province_flag = tm_admiralty_dockyard_encouragement_added_dev_drydock
 		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_dip_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_production = 3
+				set_province_flag = tm_judasim_temp_dip_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_dip_dev
+					duration = 1095
+				}
+			}
+		}
 	}
 	
 	on_destroyed = {
@@ -2822,6 +3322,29 @@ conscription_center = {
 			}
 			FROM = {
 				add_army_professionalism = 0.001
+			}
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_mil_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_mil_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_manpower = 3
+				set_province_flag = tm_judasim_temp_mil_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_mil_dev
+					duration = 1095
+				}
 			}
 		}
 	}
@@ -2979,6 +3502,29 @@ fort_18th = {
 			add_province_modifier = {
 				name = estate_nobles_development_of_castles_mod
 				duration = -1
+			}
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_mil_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_mil_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_manpower = 3
+				set_province_flag = tm_judasim_temp_mil_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_mil_dev
+					duration = 1095
+				}
 			}
 		}
 	}
@@ -4090,10 +4636,10 @@ guardhouse = {
 ###### TITAN ROAD ######
 
 dirt_path = {
-	cost = 50
+	cost = 20
 	time = 6
 	modifier = {
-		local_friendly_movement_speed = 0.05
+		local_friendly_movement_speed = 0.20
 		local_institution_spread = 0.1
 		allowed_num_of_buildings = 1
 	}
@@ -4110,6 +4656,29 @@ dirt_path = {
 				duration = -1
 			}
 		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_adm_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_adm_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_production = 3
+				set_province_flag = tm_judasim_temp_adm_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_adm_dev
+					duration = 1095
+				}
+			}
+		}
 	}
 	on_destroyed = {
 		if = {
@@ -4124,12 +4693,12 @@ dirt_path = {
 }
 
 road = {
-	cost = 70
+	cost = 50
 	time = 12
 
 	make_obsolete = dirt_path
 	modifier = {
-		local_friendly_movement_speed = 0.10
+		local_friendly_movement_speed = 0.30
 		local_institution_spread = 0.15
 		allowed_num_of_buildings = 1
 	}
@@ -4144,6 +4713,29 @@ road = {
 			add_province_modifier = {
 				name = estate_nomadic_aristocracy_development_of_roads_mod
 				duration = -1
+			}
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_adm_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_adm_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_production = 3
+				set_province_flag = tm_judasim_temp_adm_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_adm_dev
+					duration = 1095
+				}
 			}
 		}
 	}
@@ -4160,12 +4752,12 @@ road = {
 }
 
 highway = {
-	cost = 100
+	cost = 80
 	time = 18
 
 	make_obsolete = road
 	modifier = {
-		local_friendly_movement_speed = 0.10
+		local_friendly_movement_speed = 0.40
 		local_institution_spread = 0.15
 		province_trade_power_value = 1
 		allowed_num_of_buildings = 1
@@ -4181,6 +4773,29 @@ highway = {
 			add_province_modifier = {
 				name = estate_nomadic_aristocracy_development_of_roads_mod
 				duration = -1
+			}
+		}
+
+		if = {
+			limit = {
+				FROM = {
+					has_church_aspect = judaism_jewish_workers_aspect
+				}
+			}
+			if = {
+				limit = { has_province_modifier = tm_judaism_temp_adm_dev }
+				extend_province_modifier = { 
+					name = tm_judaism_temp_adm_dev
+					duration = 1095
+				}
+			}
+			else = {
+				add_base_production = 3
+				set_province_flag = tm_judasim_temp_adm_dev_flag
+				add_province_modifier = {
+					name = tm_judaism_temp_adm_dev
+					duration = 1095
+				}
 			}
 		}
 	}
@@ -4650,7 +5265,7 @@ cultural_ministry = {
 }
 
 colonial_office = {
-	cost = 2000
+	cost = 1500
 	time = 30
 	modifier = {
 		colonists = 1
