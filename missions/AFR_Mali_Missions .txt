@@ -1007,6 +1007,9 @@ mali_slot_2 = {
 				limit = { NOT = { has_global_flag = tm_fulo_exists_slash_event_happened } }
 				2238 = { province_event = { id = flavor_mal.2 } }
 			}
+			jolof_area = {
+				add_base_manpower = 2
+			}
 		}
 	}
 
@@ -1041,6 +1044,9 @@ mali_slot_2 = {
 					add_nationalism = -5
 				}
 				add_adm_power = 50
+			}
+			tekrur_area = {
+				add_base_manpower = 3
 			}
 		}
 	}
@@ -1822,6 +1828,8 @@ mali_slot_3 = {
 					months = 600
 				}
 			}
+			manding_area = { add_base_manpower = 1 }
+			futa_jallon_area = { add_base_manpower = 1 }
 		}
 	}
 
@@ -1846,6 +1854,7 @@ mali_slot_3 = {
 			}
 		}
 		effect = {
+			1123 = { add_base_manpower = 3 }
 			niger_bend_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -1887,6 +1896,7 @@ mali_slot_3 = {
 			owns_core_province = 1132
 		}
 		effect = {
+			1132 = { add_base_manpower = 2 }
 			add_adm_power = 100
 			country_event = {
 				id = flavor_mal.28
@@ -2728,6 +2738,8 @@ mali_slot_4 = {
 		}
 
 		effect = {
+			add_adm_power = 75
+			add_mil_power = 100
 			custom_tooltip = tm_mal_claims_in_sahel
 			sahel_region = { add_perma_claim = yes }
 			niger_region = { add_perma_claim = yes }
@@ -2762,7 +2774,7 @@ mali_slot_4 = {
 			NOT = { average_autonomy = 20 }
 		}
 		effect = {
-			add_adm_power = 50
+			add_adm_power = 150
 			if = {
 				limit = {
 					NOT = { government_rank = 3 }
@@ -2770,6 +2782,12 @@ mali_slot_4 = {
 				set_government_rank = 3
 			}
 			add_prestige_or_monarch_power = { amount = 50 }
+			if = {
+				limit = { NOT = { num_of_ruler_traits = { amount = 3 } } }
+				add_ruler_personality = lawgiver_personality
+			}
+			add_dip_power = 75
+			every_owned_province = { 	add_nationalism = -5 }
 		}
 	}	
 
@@ -3266,6 +3284,7 @@ mali_slot_5 = {
 			lower_volta_area = { add_perma_claim = yes }
 			upper_volta_area = { add_perma_claim = yes }
 			atacora_oueme_area = { add_perma_claim = yes }
+			kong_area = { add_base_manpower = 1 }
 		}
 	}
 
@@ -3300,11 +3319,9 @@ mali_slot_5 = {
 				limit = { NOT = { num_of_ruler_traits = { amount = 3 } } }
 				add_ruler_personality = conqueror_personality
 			}
-			else = {
-				change_ruler_stat = {
-					type = adm
-					amount = 1
-				}
+			change_ruler_stat = {
+				type = adm
+				amount = 1
 			}
 		}
 	}
@@ -3580,22 +3597,9 @@ mali_slot_5_ethiopia_diplomacy = {
 		position = 10
 
 		provinces_to_highlight = {
-			OR = {
-				area = kanem_area
-				area = nyala_area
-				area = medwa_area
-				is_capital_of = event_target:ethiopia_event_target
-			}
+			is_capital_of = event_target:ethiopia_event_target
 		}
 		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 10
-				OR = {
-					area = kanem_area
-					area = nyala_area
-					area = medwa_area
-				}
-			}
 			OR = {
 				event_target:ethiopia_event_target = {
 					alliance_with = ROOT
@@ -4029,10 +4033,6 @@ mali_slot_5_ethiopia_diplomacy_friendly = {
 				has_opinion = {
 					who = ROOT
 					value = 125
-				}
-				owes_favors = { 
-					who = ROOT
-					value = 15
 				}
 				alliance_with = ROOT
 			}
