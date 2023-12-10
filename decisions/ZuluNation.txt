@@ -27,19 +27,18 @@ country_decisions = {
 			is_free_or_tributary_trigger = yes
 			789 = {
 				owned_by = ROOT
-				base_manpower = 10
+				base_manpower = 8
 			}
 			1181 = {
 				owned_by = ROOT
-				base_manpower = 10
+				base_manpower = 8
 			}
             development_in_provinces = {
-                value = 700
+                value = 500
                 culture_group = southern_african
             }
-            has_unified_culture_group = yes
 
-			adm_tech = 10
+			adm_tech = 8
             religion_group = pagan
 		}
 
@@ -81,9 +80,14 @@ country_decisions = {
                 manuever = 4
                 siege = 2
             }
-
-            country_event = { id = ideagroups.1 } #Swap Ideas			
+			additional_missions_scripted_effect = yes
+            country_event = { id = ideagroups.1 } #Swap Ideas	
 			add_yearly_manpower = 1
+			if = {
+				limit = { mission_completed = butua_sa_empire }
+				set_country_flag = tm_rzw_enable_eosa_name
+			}
+			hidden_effect = { event_target_updating = yes }
 		}
 
 		ai_will_do = {

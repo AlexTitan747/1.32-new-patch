@@ -75,7 +75,10 @@ skala_du_port = {
         }
         province_modifiers = {}
         area_modifier = {}
-        country_modifiers = {}
+        country_modifiers = {
+			colonists = 1
+			global_colonial_growth = 10
+		}
         on_upgraded = {
 			owner = { if = { limit = { tag = MOR } set_country_flag = tm_skala_du_port_mor } }
 			owner = {
@@ -96,7 +99,12 @@ skala_du_port = {
         }
         province_modifiers = {}
         area_modifier = {}
-        country_modifiers = {}
+        country_modifiers = {
+			colonists = 1
+			global_colonial_growth = 25
+			colonist_placement_chance = 0.01
+			range = 0.25
+		}
         on_upgraded = {}
     }
 
@@ -109,45 +117,45 @@ skala_du_port = {
         }
         province_modifiers = {}
         area_modifier = {}
-        country_modifiers = {}
+        country_modifiers = {
+			colonists = 2
+			global_colonial_growth = 50
+			colonist_placement_chance = 0.05
+			range = 0.5
+			native_assimilation = 0.25
+		}
         on_upgraded = {}
     }
 }
 
 baluarte_de_la_bandera = {
-	start = 1751 #ceuta
-	date = 927.01.01
+	start = 0 # Goes to 1751 Ceuta
+	date = 1444.01.01 # 1543
 	time = { months = 0	}
 	build_cost = 0
 	can_be_moved = no
 	move_days_per_unit_distance = 10
-	starting_tier = 0
+	starting_tier = 1
 	type = monument
 
-	build_trigger = {}
+	build_trigger = {
+		FROM = {
+			has_country_flag = tm_mor_can_build_baluarte_de_la_bandera
+		}
+	}
 
 	on_built = {}
 
 	on_destroyed = {}
 
 	can_use_modifiers_trigger = {
-		owner = {
-			OR = {
-				tag = MOR
-				was_tag = MOR
-			}
-			mission_completed = tm_mor_ceuta
-		}
+		culture = moroccan
+		province_is_or_accepts_culture = yes
 	}
 
 	can_upgrade_trigger = {
-		owner = {
-			OR = {
-				tag = MOR
-				was_tag = MOR
-			}
-			mission_completed = tm_mor_ceuta
-		}
+		culture = moroccan
+		province_is_or_accepts_culture = yes
 	}
 
 	keep_trigger = {}
@@ -176,7 +184,9 @@ baluarte_de_la_bandera = {
 			local_defensiveness = 0.1
 		}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			fort_maintenance_modifier = -0.1
+		}
 		on_upgraded = {}
 	}
 
@@ -191,7 +201,10 @@ baluarte_de_la_bandera = {
 			local_defensiveness = 0.2
 		}
 		area_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			garrison_size = 0.1
+			fort_maintenance_modifier = -0.2
+		}
 		on_upgraded = {}
 	}
 
@@ -200,14 +213,16 @@ baluarte_de_la_bandera = {
 			months = 480
 		}
 		cost_to_upgrade = {
-			factor = 7500
+			factor = 5000
 		}
 		province_modifiers = {
 			local_defensiveness = 0.3
 		}
 		area_modifier = {}
 		country_modifiers = {
-			discipline = 0.05
+			garrison_size = 0.2
+			fort_maintenance_modifier = -0.25
+			discipline = 0.025
 		}
 		on_upgraded = {}
 	}
@@ -733,7 +748,10 @@ fort_jesus = {
 		cost_to_upgrade = {
 			factor = 1000
 		}
-		province_modifiers = {}
+		province_modifiers = {
+			local_defender_dice_roll_bonus = 1
+			fort_level = 1
+		}
 		area_modifier = {
 			local_defensiveness = 0.1
 		}
@@ -751,13 +769,16 @@ fort_jesus = {
 		cost_to_upgrade = {
 			factor = 2500
 		}
-		province_modifiers = {}
+		province_modifiers = {
+			local_defender_dice_roll_bonus = 2
+			fort_level = 2
+		}
 		area_modifier = {
+			local_defensiveness = 0.2
 			local_fort_maintenance_modifier = -0.2
-			local_defensiveness = 0.2		
 		}
 		country_modifiers = {
-			defensiveness = 0.1
+			defensiveness = 0.10
 			garrison_size = 0.10
 		}
 		on_upgraded = {}
@@ -771,16 +792,16 @@ fort_jesus = {
 			factor = 5000
 		}
 		province_modifiers = {
-			local_defender_dice_roll_bonus = 1
-			fort_level = 1
+			local_defender_dice_roll_bonus = 3
+			fort_level = 3
 		}
 		area_modifier = {
-			local_fort_maintenance_modifier = -0.5
 			local_defensiveness = 0.3
+			local_fort_maintenance_modifier = -0.5
 		}
 		country_modifiers = {
 			defensiveness = 0.25
-			garrison_size = 0.15
+			garrison_size = 0.20
 		}
 		on_upgraded = {}
 	}
@@ -1127,6 +1148,9 @@ fasil_ghebbi = {
 			trade_goods_size_modifier = 0.25
 		}
 		area_modifier = {}
+		region_modifier = {
+			local_friendly_movement_speed = 0.05
+		}
 		country_modifiers = {
 			governing_capacity = 50
 		}
@@ -1144,9 +1168,13 @@ fasil_ghebbi = {
 			trade_goods_size_modifier = 0.5
 		}
 		area_modifier = {}
+		region_modifier = {
+			local_friendly_movement_speed = 0.1
+		}
 		country_modifiers = {
 			stability_cost_modifier = -0.1
 			governing_capacity = 100
+			global_tax_modifier = 0.05
 		}
 		on_upgraded = {
 			owner = {
@@ -1169,11 +1197,17 @@ fasil_ghebbi = {
 		province_modifiers = {
 			trade_goods_size_modifier = 0.75
 		}
-		area_modifier = {}
+		area_modifier = {
+			trade_goods_size_modifier = 0.25
+		}
+		region_modifier = {
+			local_friendly_movement_speed = 0.2
+		}
 		country_modifiers = {
 			stability_cost_modifier = -0.25
 			state_maintenance_modifier = -0.10
 			governing_capacity = 200
+			global_tax_modifier = 0.1
 		}
 		on_upgraded = {
 			owner = {
@@ -1193,9 +1227,14 @@ fasil_ghebbi = {
 		cost_to_upgrade = {
 			factor = 5000
 		}
-		province_modifiers = {}
+		province_modifiers = {
+			trade_goods_size_modifier = 1
+		}
 		area_modifier = {
-			trade_goods_size_modifier = 1.0
+			trade_goods_size_modifier = 0.5
+		}
+		region_modifier = {
+			local_friendly_movement_speed = 0.3
 		}
 		country_modifiers = {
 			stability_cost_modifier = -0.5
@@ -1203,6 +1242,7 @@ fasil_ghebbi = {
 			governing_capacity = 300
 			max_absolutism = 10
 			max_absolutism_effect = 0.1
+			global_tax_modifier = 0.25
 		}
 		on_upgraded = {
 			owner = {
@@ -1216,9 +1256,9 @@ fasil_ghebbi = {
 				}
 				add_prestige_or_monarch_power = { amount = 15 }
 			}
-			add_base_tax = 1
-			add_base_production = 1
-			add_base_manpower = 1
+			add_base_tax = 2
+			add_base_production = 2
+			add_base_manpower = 2
 		}
 	}
 }
@@ -1293,7 +1333,9 @@ obelisk_of_axum = {
 			local_tax_modifier = 0.5
 			local_development_cost = -0.20
 		}
-		area_modifier = {}
+		area_modifier = {
+			local_development_cost = -0.025
+		}
 		country_modifiers = {
 			prestige = 0.25
 			church_power_modifier = 0.1
@@ -1313,7 +1355,9 @@ obelisk_of_axum = {
 			local_tax_modifier = 1.0
 			local_development_cost = -0.30
 		}
-		area_modifier = {}
+		area_modifier = {
+			local_development_cost = -0.05	
+		}
 		country_modifiers = {
 			prestige = 0.5
 			church_power_modifier = 0.25
@@ -1401,7 +1445,7 @@ lighthouse_of_alexandria = {
 		}
 		area_modifier = {}
 		country_modifiers = {
-			ship_trade_power_modifier = 0.1
+			global_ship_trade_power = 0.1
 		}
 		on_upgraded = {}
 	}
@@ -1421,7 +1465,7 @@ lighthouse_of_alexandria = {
 			local_own_coast_naval_combat_bonus = 1
 		}
 		country_modifiers = {
-			ship_trade_power_modifier = 0.25
+			global_ship_trade_power = 0.25
 		}
 		on_upgraded = {}
 	}
@@ -3457,7 +3501,8 @@ ancient_city_of_qalhat = {
 	
 }
 
-tm_city_of_sanaa = {
+# tm_city_of_sanaa
+city_of_sanaa = {
 	start = 390 #sanaa
 	date = 1431.01.01
 	time = { months = 0	}
@@ -11339,7 +11384,7 @@ khami_ruins = {
 			local_defensiveness = 0.15
 		}
 
-		region_modifier = { local_friendly_movement_speed = 0.05 }
+		region_modifier = { local_friendly_movement_speed = 0.10 }
 
 		#what modifiers are added to the country when we have this project here on this tier
 		country_modifiers = {
@@ -11371,7 +11416,7 @@ khami_ruins = {
 			local_defensiveness = 0.2
 		}
 
-		region_modifier = { local_friendly_movement_speed = 0.10 }
+		region_modifier = { local_friendly_movement_speed = 0.20 }
 
 		#what modifiers are added to the country when we have this project here on this tier
 		country_modifiers = {
@@ -11404,7 +11449,7 @@ khami_ruins = {
 			local_defensiveness = 0.25
 		}
 
-		region_modifier = { local_friendly_movement_speed = 0.15 }
+		region_modifier = { local_friendly_movement_speed = 0.30 }
 
 		#what modifiers are added to the country when we have this project here on this tier
 		country_modifiers = {
@@ -14019,6 +14064,14 @@ holy_city_jerusalem = {
 			global_heretic_missionary_strength = 0.01
 		}
 
+		conditional_modifier = {
+			trigger = { owner = { tag = BTI mission_completed = tm_eth_semien_4 } }
+			modifier = {
+				land_morale_constant = 0.05
+				morale_damage_received = -0.025
+			}
+		}
+
 		#what effects happen when this tier is achieved
 		on_upgraded = {
 		}
@@ -14048,6 +14101,14 @@ holy_city_jerusalem = {
 		country_modifiers = {
 			prestige = 0.25
 			global_heretic_missionary_strength = 0.02
+		}
+
+		conditional_modifier = {
+			trigger = { owner = { tag = BTI mission_completed = tm_eth_semien_4 } }
+			modifier = {
+				land_morale_constant = 0.1
+				morale_damage_received = -0.025
+			}
 		}
 
 		#what effects happen when this tier is achieved
@@ -14080,6 +14141,14 @@ holy_city_jerusalem = {
 			prestige = 0.5
 			global_heretic_missionary_strength = 0.03
 			missionaries = 1
+		}
+
+		conditional_modifier = {
+			trigger = { owner = { tag = BTI mission_completed = tm_eth_semien_4 } }
+			modifier = {
+				land_morale_constant = 0.2
+				morale_damage_received = -0.05
+			}
 		}
 
 		#what effects happen when this tier is achieved
@@ -17578,7 +17647,10 @@ kilwa_city = {
 	type = monument
 
 	build_trigger = {
-		religion_group = muslim
+		OR = {
+			owner = { tag = ZAN }
+			has_navy_building = yes
+		}	
 		has_owner_religion = yes
 	}
 
@@ -17589,12 +17661,18 @@ kilwa_city = {
 	}
 
 	can_use_modifiers_trigger = {
-		religion_group = muslim
+		OR = {
+			owner = { tag = ZAN }
+			has_navy_building = yes
+		}
 		has_owner_religion = yes
 	}
 
 	can_upgrade_trigger = {
-		religion_group = muslim
+		OR = {
+			owner = { tag = ZAN }
+			has_navy_building = yes
+		}
 		has_owner_religion = yes
 	}
 
@@ -17672,6 +17750,7 @@ kilwa_city = {
 			prestige = 0.75
 			global_ship_trade_power = 0.20
 			placed_merchant_power = 2
+			naval_forcelimit_modifier = 0.1
 		}
 		on_upgraded = {
 		}
@@ -23299,182 +23378,182 @@ nizwa_fort = {
 	}
 }
 
-city_of_sanaa = {
-	start = 390 
-	date = 622.1.2 #The era of the prohet, symbolic date
-	time = { months = 0	}
-	build_cost = 0
-	can_be_moved = no
-	move_days_per_unit_distance = 10
-	starting_tier = 2
-	type = monument
-	build_trigger = {
-	}
-	on_built = {
-	}
-	on_destroyed = {
-	}
-	can_use_modifiers_trigger = {
-	}
-	can_upgrade_trigger = {
-	}
-	keep_trigger = {
-	}
-
-	tier_0 = {
-		upgrade_time = {
-			months = 0
-		}
-		cost_to_upgrade = {
-			factor = 0
-		}
-		province_modifiers = {
-		}
-		area_modifier = {
-		}
-		country_modifiers = {
-		}
-		on_upgraded = {
-		}
-	}
-
-	tier_1 = {
-		upgrade_time = {
-			months = 120
-		}
-		cost_to_upgrade = {
-			factor = 1000
-		}
-		province_modifiers = {
-			province_trade_power_modifier = 0.1 
-		}
-		area_modifier = {
-			
-		}
-		country_modifiers = {
-			mercantilism_cost = -0.1
-		}
-		on_upgraded = {
-		}
-		conditional_modifier = {
-			trigger = {
-				custom_trigger_tooltip = {
-					tooltip = YEM_upgrade_city_of_sanaa_flag_tt
-					owner = { has_country_flag = YEM_upgrade_city_of_sanaa_flag }
-				}
-			}
-			modifier = {
-				manpower_in_true_faith_provinces = 0.05
-				dip_tech_cost_modifier = -0.025
-			}
-		}
-		conditional_modifier = {
-			trigger = {
-				custom_trigger_tooltip = {
-					tooltip = YEM_upgrade_city_of_sanaa_non_ras_flag_tt
-					owner = { has_country_flag = YEM_upgrade_city_of_sanaa_non_ras_flag }
-				}
-			}
-			modifier = {
-				tolerance_own = 0
-				global_missionary_strength = 0.01
-			}
-		}
-	}
-
-	tier_2 = {
-		upgrade_time = {
-			months = 240
-		}
-		cost_to_upgrade = {
-			factor = 2500
-		}
-		province_modifiers = {
-			province_trade_power_modifier = 0.15
-		}
-		area_modifier = {
-			
-		}
-		region_modifier = { 
-			
-		}
-		country_modifiers = {
-			mercantilism_cost = -0.2
-		}	
-		on_upgraded = {
-		}
-		conditional_modifier = {
-			trigger = {
-				custom_trigger_tooltip = {
-					tooltip = YEM_upgrade_city_of_sanaa_flag_tt
-					owner = { has_country_flag = YEM_upgrade_city_of_sanaa_flag }
-				}
-			}
-			modifier = {
-				manpower_in_true_faith_provinces = 0.15
-				dip_tech_cost_modifier = -0.05
-			}
-		}
-		conditional_modifier = {
-			trigger = {
-				custom_trigger_tooltip = {
-					tooltip = YEM_upgrade_city_of_sanaa_non_ras_flag_tt
-					owner = { has_country_flag = YEM_upgrade_city_of_sanaa_non_ras_flag }
-				}
-			}
-			modifier = {
-				tolerance_own = 1
-				global_missionary_strength = 0.02
-			}
-		}
-	}
-
-	tier_3 = {
-		upgrade_time = {
-			months = 480
-		}
-		cost_to_upgrade = {
-			factor = 5000
-		}
-		province_modifiers = {
-			
-		}
-		area_modifier = {
-			province_trade_power_modifier = 0.25
-		}
-		country_modifiers = {
-			mercantilism_cost = -0.33
-			merchants = 1
-		}
-		on_upgraded = {
-			center_of_trade = 1
-		}
-		conditional_modifier = {
-			trigger = {
-				custom_trigger_tooltip = {
-					tooltip = YEM_upgrade_city_of_sanaa_flag_tt
-					owner = { has_country_flag = YEM_upgrade_city_of_sanaa_flag }
-				}
-			}
-			modifier = {
-				manpower_in_true_faith_provinces = 0.25
-				dip_tech_cost_modifier = -0.1
-			}
-		}
-		conditional_modifier = {
-			trigger = {
-				custom_trigger_tooltip = {
-					tooltip = YEM_upgrade_city_of_sanaa_non_ras_flag_tt
-					owner = { has_country_flag = YEM_upgrade_city_of_sanaa_non_ras_flag }
-				}
-			}
-			modifier = {
-				tolerance_own = 2
-				global_missionary_strength = 0.03
-			}
-		}
-	}
-}
+#city_of_sanaa = {
+#	start = 390 
+#	date = 622.1.2 #The era of the prohet, symbolic date
+#	time = { months = 0	}
+#	build_cost = 0
+#	can_be_moved = no
+#	move_days_per_unit_distance = 10
+#	starting_tier = 2
+#	type = monument
+#	build_trigger = {
+#	}
+#	on_built = {
+#	}
+#	on_destroyed = {
+#	}
+#	can_use_modifiers_trigger = {
+#	}
+#	can_upgrade_trigger = {
+#	}
+#	keep_trigger = {
+#	}
+#
+#	tier_0 = {
+#		upgrade_time = {
+#			months = 0
+#		}
+#		cost_to_upgrade = {
+#			factor = 0
+#		}
+#		province_modifiers = {
+#		}
+#		area_modifier = {
+#		}
+#		country_modifiers = {
+#		}
+#		on_upgraded = {
+#		}
+#	}
+#
+#	tier_1 = {
+#		upgrade_time = {
+#			months = 120
+#		}
+#		cost_to_upgrade = {
+#			factor = 1000
+#		}
+#		province_modifiers = {
+#			province_trade_power_modifier = 0.1 
+#		}
+#		area_modifier = {
+#			
+#		}
+#		country_modifiers = {
+#			mercantilism_cost = -0.1
+#		}
+#		on_upgraded = {
+#		}
+#		conditional_modifier = {
+#			trigger = {
+#				custom_trigger_tooltip = {
+#					tooltip = YEM_upgrade_city_of_sanaa_flag_tt
+#					owner = { has_country_flag = YEM_upgrade_city_of_sanaa_flag }
+#				}
+#			}
+#			modifier = {
+#				manpower_in_true_faith_provinces = 0.05
+#				dip_tech_cost_modifier = -0.025
+#			}
+#		}
+#		conditional_modifier = {
+#			trigger = {
+#				custom_trigger_tooltip = {
+#					tooltip = YEM_upgrade_city_of_sanaa_non_ras_flag_tt
+#					owner = { has_country_flag = YEM_upgrade_city_of_sanaa_non_ras_flag }
+#				}
+#			}
+#			modifier = {
+#				tolerance_own = 0
+#				global_missionary_strength = 0.01
+#			}
+#		}
+#	}
+#
+#	tier_2 = {
+#		upgrade_time = {
+#			months = 240
+#		}
+#		cost_to_upgrade = {
+#			factor = 2500
+#		}
+#		province_modifiers = {
+#			province_trade_power_modifier = 0.15
+#		}
+#		area_modifier = {
+#			
+#		}
+#		region_modifier = { 
+#			
+#		}
+#		country_modifiers = {
+#			mercantilism_cost = -0.2
+#		}	
+#		on_upgraded = {
+#		}
+#		conditional_modifier = {
+#			trigger = {
+#				custom_trigger_tooltip = {
+#					tooltip = YEM_upgrade_city_of_sanaa_flag_tt
+#					owner = { has_country_flag = YEM_upgrade_city_of_sanaa_flag }
+#				}
+#			}
+#			modifier = {
+#				manpower_in_true_faith_provinces = 0.15
+#				dip_tech_cost_modifier = -0.05
+#			}
+#		}
+#		conditional_modifier = {
+#			trigger = {
+#				custom_trigger_tooltip = {
+#					tooltip = YEM_upgrade_city_of_sanaa_non_ras_flag_tt
+#					owner = { has_country_flag = YEM_upgrade_city_of_sanaa_non_ras_flag }
+#				}
+#			}
+#			modifier = {
+#				tolerance_own = 1
+#				global_missionary_strength = 0.02
+#			}
+#		}
+#	}
+#
+#	tier_3 = {
+#		upgrade_time = {
+#			months = 480
+#		}
+#		cost_to_upgrade = {
+#			factor = 5000
+#		}
+#		province_modifiers = {
+#			
+#		}
+#		area_modifier = {
+#			province_trade_power_modifier = 0.25
+#		}
+#		country_modifiers = {
+#			mercantilism_cost = -0.33
+#			merchants = 1
+#		}
+#		on_upgraded = {
+#			center_of_trade = 1
+#		}
+#		conditional_modifier = {
+#			trigger = {
+#				custom_trigger_tooltip = {
+#					tooltip = YEM_upgrade_city_of_sanaa_flag_tt
+#					owner = { has_country_flag = YEM_upgrade_city_of_sanaa_flag }
+#				}
+#			}
+#			modifier = {
+#				manpower_in_true_faith_provinces = 0.25
+#				dip_tech_cost_modifier = -0.1
+#			}
+#		}
+#		conditional_modifier = {
+#			trigger = {
+#				custom_trigger_tooltip = {
+#					tooltip = YEM_upgrade_city_of_sanaa_non_ras_flag_tt
+#					owner = { has_country_flag = YEM_upgrade_city_of_sanaa_non_ras_flag }
+#				}
+#			}
+#			modifier = {
+#				tolerance_own = 2
+#				global_missionary_strength = 0.03
+#			}
+#		}
+#	}
+#}
 
 al_azhar_university = {
 	start = 361 
@@ -23602,6 +23681,9 @@ al_azhar_university = {
 					change_innovativeness = 5
 				}
 			}
+			add_base_tax = 1
+			add_base_production = 1
+			add_base_manpower = 1
 		}
 	}
 }
