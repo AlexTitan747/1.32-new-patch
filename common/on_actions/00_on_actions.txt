@@ -2465,6 +2465,22 @@ on_adm_development = {
 			add_base_tax = 1
 		}
 	}
+	if = {
+		limit = {
+			owner = {
+				has_country_flag = tm_advisor_religion_dev_chance
+				employed_advisor = {
+					category = ADM
+					religion = coptic
+				}
+			}
+		}
+		random_list = {
+			5 = { add_base_tax = 2 }
+			10 = { add_base_tax = 1 }
+			85 = { }
+		}
+	}
 }
 
 # province
@@ -2544,6 +2560,22 @@ on_dip_development = {
 			add_base_production = 1
 		}
 	}
+	if = {
+		limit = {
+			owner = {
+				has_country_flag = tm_advisor_religion_dev_chance
+				employed_advisor = {
+					category = DIP
+					religion = coptic
+				}
+			}
+		}
+		random_list = {
+			5 = { add_base_production = 2 }
+			10 = { add_base_production = 1 }
+			85 = { }
+		}
+	}
 }
 
 # province
@@ -2621,6 +2653,22 @@ on_mil_development = {
 		random = {
 			chance = 10
 			add_mil_power = 1
+		}
+	}
+	if = {
+		limit = {
+			owner = {
+				has_country_flag = tm_advisor_religion_dev_chance
+				employed_advisor = {
+					category = MIL
+					religion = coptic
+				}
+			}
+		}
+		random_list = {
+			5 = { add_base_manpower = 2 }
+			10 = { add_base_manpower = 1 }
+			85 = { }
 		}
 	}
 }
@@ -6942,6 +6990,42 @@ on_alliance_broken = { #ROOT - Original alliance creator, FROM - Alliance accept
 		remove_country_modifier = tm_mal_mor_trading_agreements
 		FROM = { remove_country_modifier = tm_mal_mor_trading_agreements }
 	}
+
+	if = {
+		limit = { has_country_modifier = tm_eth_mam_naval_cooperation_modifier_1 FROM = { has_country_modifier = tm_eth_mam_naval_cooperation_modifier_1 } }
+		remove_country_modifier = tm_eth_mam_naval_cooperation_modifier_1
+		FROM = { remove_country_modifier = tm_eth_mam_naval_cooperation_modifier_1 }
+	}
+
+	if = {
+		limit = { has_country_modifier = tm_eth_mam_naval_cooperation_modifier_2 FROM = { has_country_modifier = tm_eth_mam_naval_cooperation_modifier_2 } }
+		remove_country_modifier = tm_eth_mam_naval_cooperation_modifier_2
+		FROM = { remove_country_modifier = tm_eth_mam_naval_cooperation_modifier_2 }
+	}
+
+	if = {
+		limit = { has_country_modifier = tm_eth_trading_agreements FROM = { has_country_modifier = tm_eth_trading_agreements } }
+		remove_country_modifier = tm_eth_trading_agreements
+		FROM = { remove_country_modifier = tm_eth_trading_agreements }
+	}
+
+	if = {
+		limit = { has_country_modifier = butua_advisor_collab FROM = { has_country_modifier = butua_advisor_collab } }
+		remove_country_modifier = butua_advisor_collab
+		FROM = { remove_country_modifier = butua_advisor_collab }
+	}
+
+	if = {
+		limit = { has_country_modifier = butua_military_coop_with_eth FROM = { has_country_modifier = butua_military_coop_with_eth } }
+		remove_country_modifier = butua_military_coop_with_eth
+		FROM = { remove_country_modifier = butua_military_coop_with_eth }
+	}
+
+	if = {
+		limit = { has_country_modifier = butua_coloborating_on_gold FROM = { has_country_modifier = butua_coloborating_on_gold } }
+		remove_country_modifier = butua_coloborating_on_gold
+		FROM = { remove_country_modifier = butua_coloborating_on_gold }
+	}
 }
 
 on_royal_marriage_broken = { #ROOT - Original marriage creator, FROM - Marriage accepter
@@ -7023,6 +7107,60 @@ on_alliance_created = { #ROOT - Alliance sender, FROM - Alliance accepter
 		}
 		ROOT = { add_country_modifier = { name = tm_mal_mor_trading_agreements duration = -1 } }
 		FROM = { add_country_modifier = { name = tm_mal_mor_trading_agreements duration = -1 } }
+	}
+
+	if = {
+		limit = {
+			ROOT = { has_country_flag = tm_eth_mam_navy_coop_1 }
+			FROM = { has_country_flag = tm_eth_mam_navy_coop_1 }
+		}
+		ROOT = { add_country_modifier = { name = tm_eth_mam_naval_cooperation_modifier_1 duration = -1 } }
+		FROM = { add_country_modifier = { name = tm_eth_mam_naval_cooperation_modifier_1 duration = -1 } }
+	}
+
+	if = {
+		limit = {
+			ROOT = { has_country_flag = tm_eth_mam_navy_coop_2 }
+			FROM = { has_country_flag = tm_eth_mam_navy_coop_2 }
+		}
+		ROOT = { add_country_modifier = { name = tm_eth_mam_naval_cooperation_modifier_2 duration = -1 } }
+		FROM = { add_country_modifier = { name = tm_eth_mam_naval_cooperation_modifier_2 duration = -1 } }
+	}
+
+	if = {
+		limit = {
+			ROOT = { has_country_flag = tm_eth_mam_trading_agreements }
+			FROM = { has_country_flag = tm_eth_mam_trading_agreements }
+		}
+		ROOT = { add_country_modifier = { name = tm_eth_trading_agreements duration = -1 } }
+		FROM = { add_country_modifier = { name = tm_eth_trading_agreements duration = -1 } }
+	}
+
+	if = {
+		limit = {
+			ROOT = { has_country_flag = tm_eth_rzw_advisor_collab_flag }
+			FROM = { has_country_flag = tm_eth_rzw_advisor_collab_flag }
+		}
+		ROOT = { add_country_modifier = { name = butua_advisor_collab duration = -1 } }
+		FROM = { add_country_modifier = { name = butua_advisor_collab duration = -1 } }
+	}
+
+	if = {
+		limit = {
+			ROOT = { has_country_flag = tm_eth_rzw_military_cooperation_flag }
+			FROM = { has_country_flag = tm_eth_rzw_military_cooperation_flag }
+		}
+		ROOT = { add_country_modifier = { name = butua_military_coop_with_eth duration = -1 } }
+		FROM = { add_country_modifier = { name = butua_military_coop_with_eth duration = -1 } }
+	}
+
+	if = {
+		limit = {
+			ROOT = { has_country_flag = tm_eth_rzw_gold_collab_flag }
+			FROM = { has_country_flag = tm_eth_rzw_gold_collab_flag }
+		}
+		ROOT = { add_country_modifier = { name = butua_coloborating_on_gold duration = -1 } }
+		FROM = { add_country_modifier = { name = butua_coloborating_on_gold duration = -1 } }
 	}
 }
 

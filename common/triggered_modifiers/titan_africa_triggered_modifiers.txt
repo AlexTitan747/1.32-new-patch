@@ -4,8 +4,13 @@ butua_lakes_colonisation_triggered_modifier = {
 	}
 
 	trigger = {
-		central_africa_region = {
-			has_colonist = yes
+		OR = {
+			central_africa_region = {
+				has_colonist = yes
+			}
+			east_africa_region = {
+				has_colonist = yes
+			}
 		}
 	}
 
@@ -27,10 +32,23 @@ buuta_improved_military_coop_with_eth = {
 				defender_leader = ROOT
 			}
 			is_in_war = {
-				attacker_leader = ETH
+				attacker_leader = event_target:ethiopia_event_target
 			}
 			is_in_war = {
-				defender_leader = ETH
+				defender_leader = event_target:ethiopia_event_target
+			}
+		}
+		if = {
+			limit = { tag = event_target:ethiopia_event_target }
+			alliance_with = event_target:butua_event_target
+			is_in_war = {
+				participants = event_target:butua_event_target
+			}
+		}
+		else = {
+			alliance_with = event_target:ethiopia_event_target
+			is_in_war = {
+				participants = event_target:ethiopia_event_target
 			}
 		}
 	}
@@ -41,51 +59,6 @@ buuta_improved_military_coop_with_eth = {
     manpower_recovery_speed = 0.10
 }
 
-butua_against_eth = {
-	potential = {
-		is_or_was_tag = { tag = RZW }
-		mission_completed = butua_rival_eth_path_1
-		OR = {
-			exists = ETH
-			exists = AKS
-			exists = BTI
-		}
-	}
-
-	trigger = {
-		OR = {
-			is_in_war = {
-				attacker_leader = ROOT
-				defender_leader = ETH
-			}
-			is_in_war = {
-				attacker_leader = ETH
-				defender_leader = ROOT
-			}
-			is_in_war = {
-				attacker_leader = ROOT
-				defender_leader = AKS
-			}
-			is_in_war = {
-				attacker_leader = AKS
-				defender_leader = ROOT
-			}
-			is_in_war = {
-				attacker_leader = ROOT
-				defender_leader = BTI
-			}
-			is_in_war = {
-				attacker_leader = BTI
-				defender_leader = ROOT
-			}
-		}
-	}
-
-	land_morale = 0.10
-	land_maintenance_modifier = -0.10
-	manpower_recovery_speed = 0.10
-}
-
 mal_colonising_south_africa = {
 	potential = {
 		mission_completed = mal_continue_south
@@ -93,7 +66,7 @@ mal_colonising_south_africa = {
 	}
 
 	trigger = {
-		south_africa_region = { has_colonist = yes }
+		south_africa_region = { has_colonist = yes is_city = no }
 	}
 
 	colonists = 1
@@ -115,12 +88,17 @@ moroccan_last_stand = {
 		}
 	}
 	trigger  = {
-		defensive_war_with = CAS
-		
-		OR = {
-			AND = { defensive_war_with = NAP }
-			AND = { defensive_war_with = TTS }
-			AND = { defensive_war_with = POR }
+		calc_true_if = {
+			defensive_war_with = CAS
+			defensive_war_with = SPA
+			defensive_war_with = NAP
+			defensive_war_with = TTS
+			defensive_war_with = CRG
+			defensive_war_with = POR
+			defensive_war_with = PEA
+			defensive_war_with = PBR
+
+			amount = 2
 		}
 		OR = {
 			NOT = { is_year = 1490 }
@@ -131,7 +109,6 @@ moroccan_last_stand = {
 				current_age = age_of_discovery
 			}
 		}
-		NOT = { is_year = 1490 }
 		OR = {
 			NOT = { num_of_allies = 1 }
 			any_ally = {

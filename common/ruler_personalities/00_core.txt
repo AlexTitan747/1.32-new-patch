@@ -3783,3 +3783,34 @@ peasant_revolt_leader_personality = {
 	chance = {	
 	}
 }
+
+crusader_personality = {
+	allow = {
+		has_country_flag = tm_allows_crusader_personality
+	}
+	
+	chance = {
+		modifier = {
+			factor = 1
+			dominant_religion = ROOT
+		}
+		modifier = {
+			factor = 2
+			owns_core_province = 379
+		}
+	}
+
+	missionaries = 1
+	manpower_in_true_faith_provinces = 0.1
+	land_morale = 0.1
+	warscore_cost_vs_other_religion = -0.2
+	
+	
+	different_religion_war_multiplier = 5
+	heretic_ally_acceptance = -1000
+	heathen_ally_acceptance = -1000
+	wants_heathen_land = yes
+	wants_heretic_land = yes
+	
+	nation_designer_cost = 50
+}

@@ -1,66 +1,4 @@
 country_decisions = {
-    butua_request_against_eth = {
-        major = yes
-
-		potential = {
-            has_saved_event_target = help_butua_with_eth
-			OR = {
-                tag = RZW
-                was_tag = RZW
-            }
-            mission_completed = butua_rival_eth_path_1
-		}
-
-		allow = {
-			OR = {
-                is_in_war = {
-                    attacker_leader = ROOT
-                    defender_leader = ETH
-                }
-                is_in_war = {
-                    attacker_leader = ETH
-                    defender_leader = ROOT
-                }
-            }
-		}
-
-		effect = {
-			event_target:help_butua_with_eth = {
-                country_event = { id = butua_flavour.9 }
-            }
-		}
-	}
-
-    helper_against_eth_request_aid_from_butua = {
-        major = yes
-
-		potential = {
-            if = {
-                limit = { has_saved_event_target = help_butua_with_eth }
-                tag = event_target:help_butua_with_eth
-            }
-			else = {
-                always = no
-            }
-            any_country = {
-                mission_completed = butua_rival_eth_path_1
-            }
-		}
-
-		allow = {
-            is_at_war = yes
-			any_war_enemy_country = {
-                total_development = ROOT
-            }
-		}
-
-		effect = {
-			RZW = {
-                country_event =  { id = butua_flavour.10 }
-            }
-		}
-    }
-
     butua_colonise_the_island = {
         major = yes
 
@@ -140,13 +78,16 @@ country_decisions = {
 		}
 		effect = {
             add_treasury = -200
-			random_neighbor_province = {
+			random_province = {
                 limit = {
                     is_empty = yes
                     OR = {
                         area = urgoma_area
                         area = jubba_area
                     }
+					any_neighbor_province = {
+						country_or_non_sovereign_subject_holds = ROOT
+					}
                 }
                 add_siberian_construction = 200
             }
@@ -160,6 +101,10 @@ country_decisions = {
 			OR = {
 				tag = RZW
 				was_tag = RZW
+				AND = {
+					is_or_was_tag = { tag = ETH }
+					mission_completed = tm_eth_diplomacy_with_rzw_hostile_2
+				}
 			}
 			NOT = { has_country_modifier = titan_afr_colonist }
 		}
@@ -256,4 +201,23 @@ country_decisions = {
 	#		add_army_tradition = -20
 	#	}
 	#}
+
+	titan_rzw_restore_name = {
+		potential = {
+			OR = {
+				tag = ZBW
+				tag = ZIM
+			}
+			has_country_flag = tm_rzw_enable_eosa_name
+			NOT = { had_country_flag = { flag = tm_rzw_enable_eosa_name days = 3650  } }
+		}
+
+		allow = {
+			always = yes
+		}
+
+		effect = {
+			override_country_name = EMPIRE_OF_SOUTH_AFRICA
+		}
+	}
 }

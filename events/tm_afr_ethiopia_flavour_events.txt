@@ -134,7 +134,76 @@ country_event = { # Subjects coverting
 	option = {
 		name = ethiopia_flavour.50.a
         
+        hidden_effect = {
+            every_subject_country = {
+                ROOT = { add_treasury = -100 }
+            }
+        }
         
+        every_subject_country = {
+            random_list = {
+                70 = {
+                    change_religion = ROOT
+                    add_liberty_desire = -10
+                }
+                20 = {
+                    grant_independence = yes
+                    add_truce_with = ROOT
+                    hidden_effect = {
+                        add_treasury = 500
+                        add_manpower = 20
+                    }
+                }
+                10 = {
+                    grant_independence = yes
+                    declare_war_with_cb = {
+                        who = ROOT
+                        casus_belli = cb_annex
+                    }
+                    hidden_effect = {
+                        add_treasury = 500
+                        add_manpower = 20
+                    }
+                }
+            }
+        }
+        
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+
+    option = {
+		name = ethiopia_flavour.50.b
+
+        every_subject_country = {
+            random_list = {
+                50 = {
+                    change_religion = ROOT
+                    add_liberty_desire = -10
+                }
+                30 = {
+                    grant_independence = yes
+                    add_truce_with = ROOT
+                    hidden_effect = {
+                        add_treasury = 500
+                        add_manpower = 20
+                    }
+                }
+                20 = {
+                    grant_independence = yes
+                    declare_war_with_cb = {
+                        who = ROOT
+                        casus_belli = cb_annex
+                    }
+                    hidden_effect = {
+                        add_treasury = 500
+                        add_manpower = 20
+                    }
+                }
+            }
+        }
         
 		
 		ai_chance = {
