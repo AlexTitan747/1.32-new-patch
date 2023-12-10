@@ -4348,8 +4348,10 @@ ramparts_tm = {
 
 	modifier = {
 		fort_level = 2
-		local_assault_fort_cost_modifier = 0.5
-		local_fort_maintenance_modifier = 0.25
+		local_assault_fort_cost_modifier = 1.0
+		local_assault_fort_ability = -0.25
+		local_fort_maintenance_modifier = 0.2
+		local_hostile_attrition = 2
 	}
 	onmap = no
 	show_separate = yes # Means as a manufactory it will be shown according to the old way
@@ -4545,8 +4547,8 @@ armoury = {
 	}	
 
 	modifier = {
-		local_defensiveness = 0.20
-		local_hostile_movement_speed = -0.15
+		local_defensiveness = 0.25
+		local_hostile_movement_speed = -0.20
 	}
 	onmap = no
 	show_separate = yes # Means as a manufactory it will be shown according to the old way
@@ -4596,8 +4598,8 @@ guardhouse = {
 	}	
 
 	modifier = {
-		local_garrison_size = 0.2
-		garrison_growth = 0.2
+		local_garrison_size = 0.25
+		garrison_growth = 0.3
 	}
 	onmap = no
 	show_separate = yes # Means as a manufactory it will be shown according to the old way
@@ -4689,6 +4691,10 @@ dirt_path = {
 
 	ai_will_do = {
 		factor = 25
+		modifier = {
+			factor = 0
+			NOT = { treasury = 500 }
+		}
 	}
 }
 
@@ -4748,6 +4754,10 @@ road = {
 
 	ai_will_do = {
 		factor = 25
+		modifier = {
+			factor = 0
+			NOT = { treasury = 500 }
+		}
 	}
 }
 
@@ -4808,6 +4818,10 @@ highway = {
 
 	ai_will_do = {
 		factor = 25
+		modifier = {
+			factor = 0
+			NOT = { treasury = 500 }
+		}
 	} 
 }
 
@@ -5191,7 +5205,7 @@ grand_fortress = {
 }
 
 cultural_ministry = {
-	cost = 2000
+	cost = 1500
 	time = 30
 	modifier = {
 		num_accepted_cultures = 2
