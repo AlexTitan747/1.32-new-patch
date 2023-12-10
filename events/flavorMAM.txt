@@ -103,8 +103,9 @@ country_event = {
 		is_year = 1458
 		is_at_war = no
 		exists = CYP
-		CYP = { 
+		CYP = {
 			owns = 321
+			owns = 5171
 			is_subject = no 
 			is_at_war = no
 			government = monarchy
@@ -997,7 +998,6 @@ country_event = {
 	option = {
 		name = flavor_mam.101.b
 
-		add_years_of_income = -2
 		unlock_government_reform = {
 			government_reform = state_madrasas_reform
 		}
@@ -1027,8 +1027,11 @@ country_event = {
 					name = expanded_nile_estuary_modifier
 					duration = -1 
 				}
-				add_base_production = 1
+				add_base_production = 2
 			}
+			358 = { add_province_modifier = { name = expanded_nile_estuary_modifier duration = -1 } add_base_production = 2 }
+			2316 = { add_province_modifier = { name = expanded_nile_estuary_modifier duration = -1 } add_base_production = 2 }
+			4316 = { add_province_modifier = { name = expanded_nile_estuary_modifier duration = -1 } add_base_production = 2 }
 		}
 	}
 
@@ -1075,10 +1078,9 @@ country_event = {
 		}
 		else = {
 			add_power_projection = {
-				type = mam_new_caliphate_pp 
-				amount = 10
+				type = mission_rewards_power_projection 
+				amount = 25
 			}
-			custom_tooltip = sca_scandinavian_european_empire_tt
 		}
 
 		capital_scope = {
@@ -1163,10 +1165,11 @@ country_event = {
 		capital_scope = {
 			if = {
 				limit = { has_building = cathedral }
-				add_base_tax = 3
+				add_base_tax = 5
 			}
 			else = {
 				add_building = cathedral
+				add_base_tax = 2
 				if = {
 					limit = { has_building = temple }
 					hidden_effect = {
@@ -1208,7 +1211,7 @@ country_event = {
 				}
 			}
 		}
-		add_years_of_income = -2
+		add_treasury = -3000
 		361 = {
 			add_great_project_tier = {
 				type = al_azhar_university
@@ -1269,51 +1272,51 @@ country_event = { #The Beacons of Gonder
 
 	is_triggered_only = yes
 
-	option = {
-		name = flavor_mam.106.a 
-
-		custom_tooltip =  mam_eth_flavor_tt
-		set_country_flag = mam_eth_flavor_flag
-
-		if = {
-			limit = {
-				ETH = {
-					has_opinion = {
-						who = ROOT 
-						value = 100
-					}
-					OR = {
-						is_subject_of = ROOT
-						alliance_with = ROOT 
-					}
-				}
-			}
-			add_historical_friend = ETH
-			ETH = { add_historical_friend = ROOT }
-			add_trust = {
-				who = ETH
-				value = 25
-				mutual = yes
-			}
-		}
-		else = {
-			add_dip_power = 100
-			if = {
-				limit = { 
-					has_dlc = "Cradle of Civilization" 
-					religion_group = muslim 
-				}
-				if = {
-					limit = { piety = 0 }
-					add_piety = 0.25
-				}
-				else = { add_piety = -0.25 }
-			}
-			else = {
-				add_prestige_or_monarch_power = { amount = 10 }
-			}
-		}
-	}
+#	option = {
+#		name = flavor_mam.106.a 
+#
+#		custom_tooltip =  mam_eth_flavor_tt
+#		set_country_flag = mam_eth_flavor_flag
+#
+#		if = {
+#			limit = {
+#				ETH = {
+#					has_opinion = {
+#						who = ROOT 
+#						value = 100
+#					}
+#					OR = {
+#						is_subject_of = ROOT
+#						alliance_with = ROOT 
+#					}
+#				}
+#			}
+#			add_historical_friend = ETH
+#			ETH = { add_historical_friend = ROOT }
+#			add_trust = {
+#				who = ETH
+#				value = 25
+#				mutual = yes
+#			}
+#		}
+#		else = {
+#			add_dip_power = 100
+#			if = {
+#				limit = { 
+#					has_dlc = "Cradle of Civilization" 
+#					religion_group = muslim 
+#				}
+#				if = {
+#					limit = { piety = 0 }
+#					add_piety = 0.25
+#				}
+#				else = { add_piety = -0.25 }
+#			}
+#			else = {
+#				add_prestige_or_monarch_power = { amount = 10 }
+#			}
+#		}
+#	}
 
 	option = {
 		name = flavor_mam.106.b 

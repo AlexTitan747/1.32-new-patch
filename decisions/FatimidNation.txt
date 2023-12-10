@@ -1,16 +1,17 @@
 country_decisions = {
-	
 	fatimid_nation = {
 		color = { 23 223 234 }
 		major = yes
 		potential = {
 			NOT = { has_country_flag = formed_fatimid_flag }
+			NOT = { has_country_flag = formed_ayyubids_flag }
 			NOT = { tag = TUR }
 			NOT = { tag = ARB }
 			NOT = { tag = CPH }
-			NOT = { exists = EGY }
+			NOT = { exists = FAT }
 			primary_culture = al_misr_arabic
 			is_colonial_nation = no
+			NOT = { has_country_flag = tm_mams_shia }
 		}
 
 		provinces_to_highlight = {
@@ -20,6 +21,10 @@ country_decisions = {
 				province_id = 363 # Dumyat
 				province_id = 358 # Alexandria
 				province_id = 359 # Faiyum
+				province_id = 4987 # Zawiyat
+				province_id = 2326 # Bardiyah
+				province_id = 382 # Dimashq
+				province_id = 5167 # Al Wajh
 			}
 			OR = {
 				NOT = { owned_by = ROOT }
@@ -36,10 +41,24 @@ country_decisions = {
 			owns_core_province = 363 # Dumyat
 			owns_core_province = 358 # Alexandria
 			owns_core_province = 359 # Faiyum
+			owns_core_province = 4987 # Zawiyat
+			owns_core_province = 2326 # Bardiyah
+			owns_core_province = 382 # Dimashq
+			owns_core_province = 5167 # Al Wajh
+			if = {
+				limit = {
+					has_mission = tm_mam_islamic_scholar
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = tm_mams_sunni
+					tooltip = tm_mams_chose_sunni_tt
+				}
+			}
+			NOT = { tag = AYY }
 		}
 
 		effect = {
-			change_tag = EGY
+			change_tag = FAT
 			if = {
 				limit = { NOT = { government_rank = 2 }}
 				set_government_rank = 2

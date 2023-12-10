@@ -14,7 +14,16 @@ country_event = { #Choose Religion Event
 		name = mamluks_flavour.1.a
 
 		set_country_flag = tm_mams_sunni
-		hidden_effect = { swap_non_generic_missions = yes }
+		add_stability_or_adm_power = yes
+		define_advisor = {
+			type = inquisitor
+			skill = 3
+			religion = ROOT
+			culture = ROOT
+			cost_multiplier = 0.25
+		}
+		add_adm_power = 100
+		custom_tooltip = tm_mam_lock_cph_tt
 		
 		ai_chance = { #Keep AI as default religion
 			factor = 100
@@ -25,11 +34,26 @@ country_event = { #Choose Religion Event
 		name = mamluks_flavour.1.b
 
 		change_religion = shiite
-        capital_scope = { area = { change_religion = shiite }}
         change_ruling_family_religions_effect = { religion = shiite }
+		
+		custom_tooltip = tm_mams_add_shia_reformation_centre
+		hidden_effect = {
+			capital_scope = { change_religion = shiite add_reform_center = shiite }
+		}
 
         set_country_flag = tm_mams_shia
-		hidden_effect = { swap_non_generic_missions = yes }
+		every_owned_province = {
+			limit = { has_province_modifier = religious_zeal_at_conv }
+			remove_province_modifier = religious_zeal_at_conv
+		}
+		define_advisor = {
+			type = inquisitor
+			skill = 2
+			religion = shiite
+			culture = ROOT
+			cost_multiplier = 0.66
+		}
+		custom_tooltip = tm_mam_lock_fat_tt
 
         ai_chance = {
 			factor = 0

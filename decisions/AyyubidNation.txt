@@ -1,0 +1,96 @@
+country_decisions = {
+	ayyubid_nation = {
+		color = { 23 223 234 }
+		major = yes
+		potential = {
+			NOT = { has_country_flag = formed_ayyubids_flag }
+			NOT = { has_country_flag = formed_fatimid_flag }
+			NOT = { tag = TUR }
+			NOT = { tag = ARB }
+			NOT = { tag = CPH }
+			NOT = { exists = AYY }
+			primary_culture = al_misr_arabic
+			is_colonial_nation = no
+			NOT = { has_country_flag = tm_mams_shia }
+		}
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 361 # Cairo
+				province_id = 356 # Benghazi
+				province_id = 358 # Alexandria
+				province_id = 360 # Qus
+				province_id = 379 # Jerusalem
+				province_id = 382 # Dimashq
+				province_id = 2313 # Antakiya
+				province_id = 407 # Rakka
+				province_id = 4269 # Al Wajh
+				province_id = 2329 # Yanbu
+				province_id = 385 # Mecca
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+
+		allow = {
+			adm_tech = 10
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			owns_core_province = 361 # Cairo
+			owns_core_province = 356 # Benghazi
+			owns_core_province = 358 # Alexandria
+			owns_core_province = 360 # Qus
+			owns_core_province = 379 # Jerusalem
+			owns_core_province = 382 # Dimashq
+			owns_core_province = 2313 # Antakiya
+			owns_core_province = 407 # Rakka
+			owns_core_province = 4269 # Al Wajh
+			owns_core_province = 2329 # Yanbu
+			owns_core_province = 385 # Mecca
+			if = {
+				limit = {
+					has_mission = tm_mam_islamic_scholar
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = tm_mams_sunni
+					tooltip = tm_mams_chose_sunni_tt
+				}
+			}
+			NOT = { tag = FAT }
+		}
+
+		effect = {
+			change_tag = AYY
+			if = {
+				limit = { NOT = { government_rank = 2 }}
+				set_government_rank = 2
+			}
+			add_prestige = 25
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 7300
+			}
+			set_country_flag = formed_ayyubids_flag
+			define_ruler = {
+				dynasty = "Ayyub"
+				culture = ROOT
+				religion = ROOT
+				adm = 5
+				dip = 4
+				mil = 5
+				age = 20
+				claim = 95
+			}
+			define_ruler_to_general = {
+				fire = 4
+				shock = 6
+				manuever = 5
+				siege = 4
+			}
+			country_event = { id = ideagroups.1 } #Swap Ideas
+			hidden_effect = { event_target_updating = yes }
+		}
+	}
+}

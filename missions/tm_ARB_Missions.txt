@@ -297,7 +297,8 @@ tm_ARB_slot_2 = {
 		provinces_to_highlight = {
             OR = {
 				owned_by = MAM
-				owned_by = EGY
+				owned_by = FAT
+				owned_by = AYY
 			}
 		}
 
@@ -318,14 +319,28 @@ tm_ARB_slot_2 = {
 			}
 			else_if = {
 				limit = {
-					EGY = { exists = yes }
+					FAT = { exists = yes }
 				}
-				EGY = {
+				FAT = {
 					has_been_insulted_by_root = yes
 				}
 				any_owned_province = {
 					any_neighbor_province = { 
-						country_or_non_sovereign_subject_holds = EGY
+						country_or_non_sovereign_subject_holds = FAT
+					}
+					fort_level = 2
+				}
+			}
+			else_if = {
+				limit = {
+					AYY = { exists = yes }
+				}
+				AYY = {
+					has_been_insulted_by_root = yes
+				}
+				any_owned_province = {
+					any_neighbor_province = { 
+						country_or_non_sovereign_subject_holds = AYY
 					}
 					fort_level = 2
 				}
@@ -388,13 +403,40 @@ tm_ARB_slot_2 = {
 			}
 			else_if = {
 				limit = {
-					exists = EGY
+					exists = FAT
 				}
 				random_owned_province = {
 					limit = {
 						fort_level = 2
 						any_neighbor_province = { 
-							country_or_non_sovereign_subject_holds = EGY
+							country_or_non_sovereign_subject_holds = FAT
+						}
+					}
+					if = {
+						limit = {
+							NOT = { has_building = guardhouse }
+						}
+						add_building = guardhouse
+					}
+					else = { add_base_manpower = 2 }
+					if = {
+						limit = {
+							NOT = { has_building = armoury }
+						}
+						add_building = armoury
+					}
+					else = { add_base_manpower = 2 }
+				}
+			}
+			else_if = {
+				limit = {
+					exists = AYY
+				}
+				random_owned_province = {
+					limit = {
+						fort_level = 2
+						any_neighbor_province = { 
+							country_or_non_sovereign_subject_holds = AYY
 						}
 					}
 					if = {
@@ -507,7 +549,7 @@ tm_ARB_slot_2 = {
 		provinces_to_highlight = {
             OR = {
 				owned_by = MAM
-				owned_by = EGY
+				owned_by = FAT
 			}
 		}
 
@@ -520,9 +562,15 @@ tm_ARB_slot_2 = {
 			}
 			else_if = {
 				limit = {
-					exists = EGY
+					exists = FAT
 				}
-				total_development = EGY
+				total_development = FAT
+			}
+			else_if = {
+				limit = {
+					exists = AYY
+				}
+				total_development = AYY
 			}
 			else_if = {
 				limit = {

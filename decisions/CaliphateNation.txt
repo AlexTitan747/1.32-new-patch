@@ -7,19 +7,6 @@ country_decisions = {
 			NOT = { has_country_flag = formed_caliphate_flag }
 			is_colonial_nation = no
             religion_group = muslim
-            if = {
-                limit = {
-                    tag = OMA
-                }
-                NOT = { has_country_flag = ibadi_scholar_selected }
-			    NOT = { has_country_flag = sunni_scholar_selected }
-            }
-			if = {
-                limit = {
-                    tag = MOR
-                }
-                has_country_flag = caliphate_selected
-            }
 			NOT = { exists = CPH }
 			NOT = {
 				capital_scope = {
@@ -40,17 +27,33 @@ country_decisions = {
 					}
 				}
 			}
+            NOT = { has_country_flag = ibadi_scholar_selected } # Oman restriction
+			NOT = { has_country_flag = sunni_scholar_selected } # Oman restriction
+			NOT = { has_country_flag = moors_selected } #Morocco restriction
+			NOT = { has_country_flag = maghreb_selected } # Morocco restriction
+			NOT = { has_country_flag = tm_mams_sunni } #Mamluks restriction
 		}
 
 		provinces_to_highlight = {
 			OR = {
 				province_id = 384			#Medina
 				province_id = 385			#Mecca
-                religion_group = muslim
+				AND = {
+					religion_group = muslim
+					NOT = {
+						ROOT = {
+							num_of_cities = 75
+						}
+					}
+				}
 			}
 			OR = {
 				NOT = { owned_by = ROOT }
 				NOT = { is_core = ROOT }
+				AND = {
+					owned_by = ROOT
+					NOT = { religion = shiite }
+				}
 			}
 		}
 
@@ -75,6 +78,15 @@ country_decisions = {
                     tooltip = titan_srv_chose_shia
 					has_country_flag = tm_srv_chose_shia
                 }
+			}
+			else_if = {
+				limit = {
+					has_mission = tm_mam_islamic_scholar
+				}
+				custom_trigger_tooltip = {
+					has_country_flag = tm_mams_shia
+					tooltip = tm_mams_chose_shia_tt
+				}
 			}
             else = {
                 religion = shiite

@@ -7,8 +7,9 @@ mam_missions_1 = {
 	}
 	potential = {
 		OR = {
-			tag = EGY
 			tag = MAM
+			tag = FAT
+			tag = AYY
 		}
 		has_dlc = "King of Kings"
 	}
@@ -35,10 +36,8 @@ mam_missions_1 = {
 		}
 		effect = {
 			if = {
-				limit = {
-					tag = MAM 
-				}
-				custom_tooltip = mam_upgrade_national_idea_tt 
+				limit = { OR = { tag = MAM tag = FAT tag = AYY } }
+				custom_tooltip = mam_upgrade_national_idea_tt
 				set_country_flag = mam_upgrade_national_idea_flag
 				hidden_effect = {
 					swap_free_idea_group = yes
@@ -46,6 +45,28 @@ mam_missions_1 = {
 			}
 			else = { add_dip_power = 100 }
 			create_admiral = { tradition = 70 }
+		}
+	}
+
+	tm_mam_islamic_scholar = {
+		icon = mission_quran
+		required_missions = { }
+		position = 4
+		provinces_to_highlight = {}
+		trigger = {
+			religious_unity = 0.8
+			OR = {
+				inquisitor = 1
+				theologian = 1
+			}
+			OR = {
+				estate_loyalty = { estate = estate_church loyalty = 70 }
+				estate_loyalty = { estate = estate_dhimmi loyalty = 70 }
+			}
+		}
+		effect = {
+			country_event = { id = mamluks_flavour.1 }
+			custom_tooltip = tm_mams_islamic_scholar_event_tt
 		}
 	}
 
@@ -63,12 +84,11 @@ mam_missions_1 = {
 					CYR = {
 						exists = yes
 						owns_core_province = 4982
-						is_free_or_tributary_trigger = yes
 					}
 				}
 				has_spy_network_in = {
 					who = CYR
-					value = 25
+					value = 20
 				}
 			}
 			else = {
@@ -254,34 +274,20 @@ mam_missions_1 = {
 
 	mam_harness_spice_trade = {
 		icon = mam_harness_spice_trade
-		required_missions = { mam_karimi_merchants }
+		required_missions = { mam_karimi_merchants mam_alexandrian_trade }
 		position = 13
 		provinces_to_highlight = {
 			province_id = 358
 		}
 		trigger = {
-			OR = {
-				exploration_ideas = 1
-				mercantilism = 30
-				full_idea_group = trade_ideas
-			}
-			OR = {
-				custom_trigger_tooltip = {
-					tooltip = no_westerner_trading_in_cloves_tt
-					NOT = {
-						any_known_country = {
-							technology_group = western 
-							trading_bonus = {
-								trade_goods = cloves
-								value = yes
-							}
-						}
-					}
-				}
-				358 = { 
-					trade_node_value = 30
+			358 = {
+				trade_node_value = 40
+				trade_share = {
+					country = ROOT
+					share = 75
 				}
 			}
+			navy_size = 40
 		}
 		effect = {
 			create_explorer = { tradition = 75 }
@@ -321,22 +327,25 @@ mam_missions_1 = {
 				if = {
 					limit = { NOT = { trade_goods = cloves } }
 					change_trade_goods = cloves 
+					add_base_production = 2
 				}
-				else = { add_base_production = 2 upgrade_building = { production = yes } }
+				else = { add_base_production = 4 add_building = counting_house }
 			}
 			649 = {
 				if = {
 					limit = { NOT = { trade_goods = cloves } }
-					change_trade_goods = cloves 
+					change_trade_goods = cloves
+					add_base_production = 2
 				}
-				else = { add_base_production = 2 upgrade_building = { production = yes } }
+				else = { add_base_production = 4 add_building = counting_house }
 			}
 			650 = {
 				if = {
 					limit = { NOT = { trade_goods = cloves } }
-					change_trade_goods = cloves 
+					change_trade_goods = cloves
+					add_base_production = 2
 				}
-				else = { add_base_production = 2 upgrade_building = { production = yes } }
+				else = { add_base_production = 4 add_building = counting_house }
 			}
 			custom_tooltip = mam_1_merc_for_every_cloves_province_tt
 			every_province = {
@@ -359,8 +368,9 @@ mam_missions_2 = {
 	}
 	potential = {
 		OR = {
-			tag = EGY
 			tag = MAM
+			tag = FAT
+			tag = AYY
 		}
 		has_dlc = "King of Kings"
 	}
@@ -417,7 +427,7 @@ mam_missions_2 = {
 				duration = -1
 			}
 		}
-	}	
+	}
 
 	mam_tabriz = {
 		icon = mam_tabriz
@@ -554,93 +564,46 @@ mam_missions_2 = {
 		required_missions = { mam_alexandrian_trade }
 		position = 13
 		provinces_to_highlight = {
-			if = {
-				limit = { has_dlc = "Mandate of Heaven" }
-				OR = {
-					province_id = 362 
-					province_id = 363
-					province_id = 4316 
-					province_id = 2316 
-				}
-				OR = {
-					NOT = { owned_by = ROOT }
-					NOT = { num_of_times_improved = 4 }
-					is_prosperous = no
-				}
+			OR = {
+				province_id = 362 
+				province_id = 363
+				province_id = 4316 
+				province_id = 2316 
 			}
-			else = {
-				OR = {
-					province_id = 362 
-					province_id = 363
-					province_id = 4316 
-					province_id = 2316 
-				}
-				OR = {
-					NOT = { owned_by = ROOT }
-					NOT = { num_of_times_improved = 4 }
-				}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { num_of_times_improved = 4 }
+				is_prosperous = no
 			}
 		}
 		trigger = {
-			if = {
-				limit = { has_dlc = "Mandate of Heaven" }
-				362 = {
-					OR = {
-						is_prosperous = yes 
-						num_of_times_improved = 4
-					}
-					owned_by = ROOT
+			362 = {
+				OR = {
+					is_prosperous = yes 
+					num_of_times_improved = 4
 				}
-				2316 = {
-					OR = {
-						is_prosperous = yes 
-						num_of_times_improved = 4
-					}
-					owned_by = ROOT
-				}
-				363 = {
-					OR = {
-						is_prosperous = yes 
-						num_of_times_improved = 4
-					}
-					owned_by = ROOT
-				}
-				4316 = {
-					OR = {
-						is_prosperous = yes 
-						num_of_times_improved = 4
-					}
-					owned_by = ROOT
-				}
-				2316 = {
-					OR = {
-						is_prosperous = yes 
-						num_of_times_improved = 4
-					}
-					owned_by = ROOT
-				}
+				owned_by = ROOT
 			}
-			else = {
-				362 = {
+			2316 = {
+				OR = {
+					is_prosperous = yes 
 					num_of_times_improved = 4
-					owned_by = ROOT
 				}
-				2316 = {
+				owned_by = ROOT
+			}
+			363 = {
+				OR = {
+					is_prosperous = yes 
 					num_of_times_improved = 4
-					owned_by = ROOT
 				}
-				363 = {
+				owned_by = ROOT
+			}
+			4316 = {
+				OR = {
+					is_prosperous = yes 
 					num_of_times_improved = 4
-					owned_by = ROOT
 				}
-				4316 = {
-					num_of_times_improved = 4
-					owned_by = ROOT
-				}
-				2316 = {
-					num_of_times_improved = 4
-					owned_by = ROOT
-				}
+				owned_by = ROOT
 			}
 		}
 		effect = {
@@ -649,66 +612,94 @@ mam_missions_2 = {
 		}
 	}
 
+	tm_mam_exporting_ale = {
+		icon = prosperity_for_all
+		required_missions = { mam_cultivate_the_delta }
+		position = 14
+		provinces_to_highlight = {
+			OR = {
+				province_id = 362
+				province_id = 363
+				province_id = 4316
+				province_id = 2316
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { trade_goods = ale }
+				NOT = { base_production = 10 }
+			}
+		}
+		trigger = {
+			362 = {
+				owned_by = ROOT
+				trade_goods = ale
+				base_production = 10
+				has_production_building = yes
+			}
+			2316 = {
+				owned_by = ROOT
+				trade_goods = ale
+				base_production = 10
+				has_production_building = yes
+			}
+			363 = {
+				owned_by = ROOT
+				trade_goods = ale
+				base_production = 10
+				has_production_building = yes
+			}
+			4316 = {
+				owned_by = ROOT
+				trade_goods = ale
+				base_production = 10
+				has_production_building = yes
+			}				
+			trading_part = {
+				trade_goods = ale
+				value = 0.10
+			}
+		}
+		effect = {
+			362 = { add_building = counting_house add_manufactory = yes }
+			363 = { add_building = counting_house add_manufactory = yes }
+			4316 = { add_building = counting_house add_manufactory = yes }
+			2316 = { add_building = counting_house add_manufactory = yes }
+			add_years_of_owned_provinces_production_income = {
+				years = 3
+				trigger = {
+					OR = {
+						province_id = 362
+						province_id = 363
+						province_id = 4316
+						province_id = 2316
+					}
+				}
+			}
+			add_mercantilism = 3
+		}
+	}
+
 	mam_dar_al_hadith_turba = {
 		icon = reform_the_nomocanon
 		required_missions = { mam_city_thousand_minarets }
 		position = 15
 		trigger = {
-			if = {
-				limit = {
-					has_dlc = "Rule Britannia"
-					has_estate = estate_church
-				}
-				OR = {
-					innovativeness = 20
-					AND = {
-						estate_loyalty = {
-							estate = estate_church 
-							loyalty = 60 
-						}
-						OR = {
-							has_estate_privilege = estate_church_fund_dar_al_hadith
-							has_estate_privilege = estate_church_fund_madrasas
-						} 
-					}
-				}
+			OR = {
+				has_estate_privilege = estate_church_fund_dar_al_hadith
+				has_estate_privilege = estate_church_fund_madrasas
+				num_of_estate_agendas_completed = { estate = estate_church value = 3 }
+				NOT = { has_estate = estate_church }
 			}
-			else_if = {
-				limit = {
-					has_dlc = "Rule Britannia"
-					NOT = { has_estate = estate_church }
-				}
-				innovativeness = 20
-				stability = 2
-			}
-			else_if = {
-				limit = {
-					NOT = { has_dlc = "Rule Britannia" }
-					has_estate = estate_church
-				}
-				adm_tech = 7
-				AND = {
-					estate_loyalty = {
-						estate = estate_church 
-						loyalty = 60 
-					}
-					OR = {
-						has_estate_privilege = estate_church_fund_dar_al_hadith
-						has_estate_privilege = estate_church_fund_madrasas
-					} 
-				}
-			}
-			else = {
-				stability = 2
-				prestige = 30
-			}
+			stability = 1
+			prestige = 30
 			years_of_income = 2
+			NOT = { num_of_loans = 6 }
 		}
 		effect = {
+			add_years_of_income = -2
 			country_event = { id = flavor_mam.101 }
 			custom_tooltip = flavor_mam.101_tt
 			tooltip = {
-				add_years_of_income = -2
 				unlock_government_reform = {
 					government_reform = state_madrasas_reform
 				}
@@ -726,8 +717,9 @@ mam_missions_3 = {
 	}
 	potential = {
 		OR = {
-			tag = EGY
 			tag = MAM
+			tag = FAT
+			tag = AYY
 		}
 		has_dlc = "King of Kings"
 	}
@@ -753,6 +745,7 @@ mam_missions_3 = {
 				type = dip
 				amount = 1
 			}
+			add_army_tradition = 10
 		}
 	}
 
@@ -1017,8 +1010,23 @@ mam_missions_3 = {
 			#}
 			#else = { add_years_of_estate_land_income = 0.25 }
 			358 = {
-				upgrade_building = { trade = yes }
-				add_building = grand_shipyard 
+				add_building = stock_exchange
+				add_building = grand_shipyard
+				if = {
+					limit = {
+						NOT = {
+							has_great_project = {
+								type = lighthouse_of_alexandria
+								tier = 1
+							}
+						}
+					}
+					add_great_project_tier = {
+						type = lighthouse_of_alexandria
+						tier = 1
+					}
+					custom_tooltip = tm_upgrades_great_project_up_to_tier_1_tt
+				}				
 			}
 		}
 	}
@@ -1189,26 +1197,31 @@ mam_missions_3 = {
 			OR = {
 				full_idea_group = bureaucratic_ideas
 				adm = 6
-				AND = {
-					crown_land_share = 50 
-					has_reform = centralize_empire_reform
+				crown_land_share = 50
+				custom_trigger_tooltip = {
+					tooltip = tm_has_level_5_adm_advisor
+
+					treasurer = 5
+					philosopher = 5
+					artist = 5
+					theologian = 5
+					master_of_mint = 5
+					inquisitor = 5
+					natural_scientist = 5
+					master_of_construction = 5
+					free_thinker = 5
 				}
 			}
 			OR = {
 				adm_tech = 12
 				NOT = { average_autonomy_above_min = 5 }
 			}
-			if = {
-				limit = { num_of_subjects = 1 }
-				NOT = { 
-					any_subject_country = {
-						liberty_desire = 20
-					}
-				}
-			}
 			is_at_war = no 
+			years_of_income = 2
+			NOT = { num_of_loans = 6 }
 		}
 		effect = {
+			add_years_of_income = -2
 			country_event = { id = flavor_mam.103 }
 
 			custom_tooltip = flavor_mam.103_tt
@@ -1221,10 +1234,9 @@ mam_missions_3 = {
 				}
 				else = {
 					add_power_projection = {
-						type = mam_new_caliphate_pp 
-						amount = 10
+						type = mission_rewards_power_projection 
+						amount = 25
 					}
-					custom_tooltip = sca_scandinavian_european_empire_tt
 				}
 
 				if = {
@@ -1251,8 +1263,9 @@ mam_missions_4 = {
 	}
 	potential = {
 		OR = {
-			tag = EGY
 			tag = MAM
+			tag = FAT
+			tag = AYY
 		}
 		has_dlc = "King of Kings"
 	}
@@ -1281,7 +1294,7 @@ mam_missions_4 = {
 			5171 = { add_permanent_claim = ROOT }
 			add_country_modifier = {
 				name = "mamluk_training"
-				duration = 1825
+				duration = 3650
 			}
 		}
 	}
@@ -1422,6 +1435,7 @@ mam_missions_4 = {
 			konya_area = { add_perma_claim = yes }
 			karaman_area = { add_perma_claim = yes }
 			mush_area = { add_perma_claim = yes }
+			add_prestige_or_monarch_power = { amount = 25 }
 		}
 	}
 
@@ -1453,6 +1467,11 @@ mam_missions_4 = {
 		}
 		effect = {
 			anatolia_region = { add_perma_claim = yes }
+			add_prestige_or_monarch_power = { amount = 50 }
+			add_power_projection = {
+				type = mission_rewards_power_projection
+				amount = 25
+			}
 		}
 	}
 
@@ -1505,6 +1524,11 @@ mam_missions_4 = {
 			}
 		}
 		effect = {
+			add_power_projection = {
+				type = 25_permanent_power_projection
+				amount = 25
+			}
+			custom_tooltip = sca_scandinavian_european_empire_tt
 			balkan_region = { add_perma_claim = yes }
 			capital_scope = {
 				create_units_of_type_in_province = {
@@ -1612,7 +1636,6 @@ mam_missions_4 = {
 			}
 		}
 	}
-
 	
 	mam_highway_empire = {
 		icon = mam_highway_empire
@@ -1663,9 +1686,57 @@ mam_missions_4 = {
 				custom_tooltip = flavor_mam.115_tt
 			}
 			else = {
-				4316 = { add_base_production = 3 }
+				4316 = { add_base_production = 5 }
 			}
 			add_mercantilism = 3
+		}
+	}
+
+	tm_mam_suez_trade = {
+		icon = mission_steer_trade_to_bengal
+		required_missions = { mam_highway_empire }
+		position = 14
+		provinces_to_highlight = {}
+		trigger = {
+			num_of_light_ship = 75
+			has_or_building_flagship = yes
+			num_of_owned_provinces_with = {
+				value = 3
+				province_has_center_of_trade_of_level = 3
+			}
+			num_of_owned_provinces_with = {
+				value = 10
+				has_trade_building_trigger = yes
+			}
+			4316 = {
+				owned_by = ROOT
+				has_great_project = {
+					type = suez_canal
+					tier = 3
+				}
+			}
+			358 = {
+				trade_share = {
+					country = ROOT
+					share = 75
+				}
+				trade_node_value = 50
+			}
+		}
+		effect = {
+			custom_tooltip = tm_upgrade_suez_canal_modifier
+			define_advisor = {
+				type = trader
+				skill = 3
+				culture = ROOT
+				religion = ROOT
+				cost_multiplier = 0.1
+			}
+			add_mercantilism = 5
+			add_country_modifier = {
+				name = tm_mam_suez_trade_modifier
+				duration = -1
+			}
 		}
 	}
 
@@ -1673,17 +1744,24 @@ mam_missions_4 = {
 		icon = mission_hands_praying
 		required_missions = { mam_city_thousand_minarets }
 		position = 15
+		provinces_to_highlight = { province_id = 361 OR = { NOT = { development = 35 } has_tax_building_trigger = no } }
 		trigger = {
-			years_of_income = 2
 			stability = 2
 			OR = {
-				full_idea_group = humanist_ideas 
-				full_idea_group = religious_ideas
-				#has_estate_privilege = estate_church_sponsor_waqf_payments
-
+				has_estate_privilege = estate_church_sponsor_waqf_payments
+				NOT = { has_estate = estate_church }
+				estate_loyalty = { estate = estate_church loyalty = 75 }
+			}			
+			361 = { development = 35 has_tax_building_trigger = yes }
+			OR = {
+				inquisitor = 2
+				theologian = 2
 			}
+			years_of_income = 2
+			NOT = { num_of_loans = 6 }
 		}
 		effect = {
+			add_years_of_income = -2
 			country_event = { id = flavor_mam.104 }
 			custom_tooltip = flavor_mam.104_tt
 		}
@@ -1699,8 +1777,9 @@ mam_missions_5 = {
 	}
 	potential = {
 		OR = {
-			tag = EGY
 			tag = MAM
+			tag = FAT
+			tag = AYY
 		}
 		has_dlc = "King of Kings"
 	}
@@ -1756,10 +1835,25 @@ mam_missions_5 = {
 		required_missions = { tm_mam_victory_over_the_ottomans }
 		position = 5
 		provinces_to_highlight = {
-
+			region = anatolia_region
+			OR = {
+				NOT = { owned_by = ROOT }
+				AND = {
+					owned_by = ROOT
+					OR = {
+						local_autonomy = 25
+						nationalism = 10
+					}
+				}
+			}
 		}
 		trigger = {
-			
+			num_of_owned_provinces_with = {
+				value = 20
+				region = anatolia_region
+				NOT = { local_autonomy = 25 }
+				NOT = { nationalism = 10 }
+			}
 		}
 		effect = {
 			if = {
@@ -1858,8 +1952,9 @@ mam_missions_5_placeholder = {
 	}
 	potential = {
 		OR = {
-			tag = EGY
 			tag = MAM
+			tag = FAT
+			tag = AYY
 		}
 		has_dlc = "King of Kings"
 		NOT = { has_country_flag = tm_mam_kill_eth }
@@ -1881,7 +1976,44 @@ mam_missions_5_placeholder = {
 			}
 		} 
 		effect = {
-			
+			custom_tooltip = tm_mal_eth_dip_hostile_choice_reward
+			tooltip = {
+				dongola_area = { add_perma_claim = yes }
+				shendy_area = { add_perma_claim = yes }
+				red_sea_coast_area = { add_perma_claim = yes }
+				upper_nubia_area = { add_perma_claim = yes }		
+			}
+			custom_tooltip = tm_mal_eth_dip_friendly_choice_reward
+			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
+			if = {
+				limit = {
+					NOT = { event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_1 } }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				custom_tooltip = tm_eth_mam_ally_trade_1_tt
+				custom_tooltip = tm_ally_has_effects_too
+			}
+			custom_tooltip = mission_alternatively_tt
+			custom_tooltip = tm_mam_eth_dip_friendly_if_they_have
+			if = {
+				limit = {
+					event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_1 }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				custom_tooltip = tm_eth_dip_advisors_give_trade_eff
+				custom_tooltip = tm_any_time_we_are_allied_tt
+				add_country_modifier = {
+					name = tm_eth_trading_agreements
+					duration = -1
+				}
+				custom_tooltip = tm_ally_has_effects_too
+			}
 		}
 	}
 
@@ -1899,7 +2031,38 @@ mam_missions_5_placeholder = {
 			}
 		} 
 		effect = {
-			
+			custom_tooltip = tm_mal_eth_dip_hostile_choice_reward
+			tooltip = {
+				horn_of_africa_region = { add_perma_claim = yes }	
+			}
+			custom_tooltip = tm_mal_eth_dip_friendly_choice_reward
+			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
+			if = {
+				limit = {
+					NOT = { event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_2 } }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				custom_tooltip = tm_eth_expand_nile_farming_1
+				add_province_modifier = {
+					name = tm_eth_expand_nile_floodplains_1
+					duration = -1
+				}
+			}
+			custom_tooltip = mission_alternatively_tt
+			custom_tooltip = tm_mam_eth_dip_friendly_if_they_have
+			if = {
+				limit = {
+					event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_2 }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				custom_tooltip = tm_the_previous_modifier_is_doubled
+			}
 		}
 	}
 
@@ -1917,7 +2080,59 @@ mam_missions_5_placeholder = {
 			}
 		} 
 		effect = {
-			
+			custom_tooltip = tm_mal_eth_dip_hostile_choice_reward
+			tooltip = {
+				add_country_modifier = { name = tm_mam_cushtic_acceptance duration = -1 }
+				add_accepted_culture_or_dip_power = { culture = amhara }
+				custom_tooltip = tm_mam_cushtic_acceptance_tt
+				tooltip = {
+					add_nationalism = -5
+					add_unrest = -5
+				}
+				every_owned_province = {
+					limit = {
+						culture_group = cushitic
+					}
+					add_nationalism = -5
+					add_unrest = -5
+				}
+			}
+			custom_tooltip = tm_mal_eth_dip_friendly_choice_reward
+			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
+			if = {
+				limit = {
+					NOT = { event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_3 } }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				365 = { change_trade_goods = gold }
+				2317 = { change_trade_goods = tin }
+				2315 = { change_trade_goods = iron }
+				359 = { change_trade_goods = iron }
+				2758 = { change_trade_goods = gold }
+				1211 = { change_trade_goods = tin }
+				2778 = { change_trade_goods = iron }
+				1207 = { change_trade_goods = iron }
+			}
+			custom_tooltip = mission_alternatively_tt
+			custom_tooltip = tm_mam_eth_dip_friendly_if_they_have
+			if = {
+				limit = {
+					event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_3 }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				custom_tooltip = tm_eth_mam_metal_production
+				add_province_modifier = {
+					name = tm_eth_mam_metal_production_modifier
+					duration = -1
+				}
+				custom_tooltip = tm_ally_has_effects_too
+			}
 		}
 	}
 
@@ -1935,7 +2150,60 @@ mam_missions_5_placeholder = {
 			}
 		} 
 		effect = {
-			
+			custom_tooltip = tm_mal_eth_dip_hostile_choice_reward
+			tooltip = {
+				country_event = { id = flavor_mam.106 }
+				custom_tooltip = flavor_mam.106_tt
+				if = {
+					limit = { has_dlc = "Origins" }
+					set_country_flag = allow_cawa_auxiliary_forces_flag
+					custom_tooltip = enable_cawa_auxiliary_forces_tt
+					tooltip = {
+						add_government_reform = cawa_auxiliary_forces
+					}
+				}
+				else_if = {
+					limit = { has_dlc = "Cradle of Civilization" }
+					add_army_professionalism = 0.1
+				}
+				else = {
+					add_army_tradition = 20
+				}
+			}
+			custom_tooltip = tm_mal_eth_dip_friendly_choice_reward
+			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
+			if = {
+				limit = {
+					NOT = { event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_4 } }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				custom_tooltip = tm_any_time_we_are_allied_tt
+				add_country_modifier = {
+					name = tm_eth_mam_naval_cooperation_modifier_1
+					duration = -1
+				}
+				custom_tooltip = tm_ally_has_effects_too
+			}
+			custom_tooltip = mission_alternatively_tt
+			custom_tooltip = tm_mam_eth_dip_friendly_if_they_have
+			if = {
+				limit = {
+					event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_4 }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				custom_tooltip = tm_any_time_we_are_allied_tt
+				add_country_modifier = {
+					name = tm_eth_mam_naval_cooperation_modifier_2
+					duration = -1
+				}
+				custom_tooltip = tm_ally_has_effects_too
+			}
 		}
 	}
 }
@@ -1949,8 +2217,9 @@ mam_missions_5_kill_eth = {
 	}
 	potential = {
 		OR = {
-			tag = EGY
 			tag = MAM
+			tag = FAT
+			tag = AYY
 		}
 		has_dlc = "King of Kings"
 		has_country_flag = tm_mam_kill_eth
@@ -1958,7 +2227,7 @@ mam_missions_5_kill_eth = {
 	has_country_shield = yes
 
 	tm_mam_kill_eth_1 = {
-		icon = NEED_ICON
+		icon = mission_egyptian_mamluk_soldier
 		required_missions = { tm_mam_southern_campaign }
 		position = 8
 		provinces_to_highlight = {
@@ -1981,7 +2250,7 @@ mam_missions_5_kill_eth = {
 	}
 
 	tm_mam_kill_eth_2 = {
-		icon = NEED_ICON
+		icon = mission_tumu_crisis
 		required_missions = { tm_mam_kill_eth_1 }
 		position = 9
 		provinces_to_highlight = {
@@ -2022,17 +2291,34 @@ mam_missions_5_kill_eth = {
 	}
 
 	tm_mam_kill_eth_3 = {
-		icon = NEED_ICON
+		icon = mission_african_trade_post
 		required_missions = { tm_mam_kill_eth_2 }
 		position = 10
 		provinces_to_highlight = {
-			
+			region = east_africa_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			
+			num_of_owned_provinces_with = {
+				value = 25
+				region = east_africa_region
+			}
 		}
 		effect = {
-			
+			add_country_modifier = { name = tm_mam_cushtic_acceptance duration = -1 }
+			add_accepted_culture_or_dip_power = { culture = amhara }
+			custom_tooltip = tm_mam_cushtic_acceptance_tt
+			tooltip = {
+				add_nationalism = -5
+				add_unrest = -5
+			}
+			every_owned_province = {
+				limit = {
+					culture_group = cushitic
+				}
+				add_nationalism = -5
+				add_unrest = -5
+			}			
 		}
 	}
 
@@ -2047,7 +2333,7 @@ mam_missions_5_kill_eth = {
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				region = horn_of_africa_region
-				value = 35
+				value = 40
 			}
 			1227 = { country_or_non_sovereign_subject_holds = ROOT }
 			1224 = { country_or_non_sovereign_subject_holds = ROOT }
@@ -2055,6 +2341,23 @@ mam_missions_5_kill_eth = {
 		effect = {
 			country_event = { id = flavor_mam.106 }
 			custom_tooltip = flavor_mam.106_tt
+			tooltip = {
+				if = {
+					limit = { has_dlc = "Origins" }
+					set_country_flag = allow_cawa_auxiliary_forces_flag
+					custom_tooltip = enable_cawa_auxiliary_forces_tt
+					tooltip = {
+						add_government_reform = cawa_auxiliary_forces
+					}
+				}
+				else_if = {
+					limit = { has_dlc = "Cradle of Civilization" }
+					add_army_professionalism = 0.1
+				}
+				else = {
+					add_army_tradition = 20
+				}
+			}
 		}
 	}
 }
@@ -2068,8 +2371,9 @@ mam_missions_5_ally_eth = {
 	}
 	potential = {
 		OR = {
-			tag = EGY
 			tag = MAM
+			tag = FAT
+			tag = AYY
 		}
 		has_dlc = "King of Kings"
 		has_country_flag = tm_mam_ally_eth
@@ -2077,62 +2381,522 @@ mam_missions_5_ally_eth = {
 	has_country_shield = yes
 
 	tm_mam_ally_eth_1 = {
-		icon = NEED_ICON
+		icon = mission_market_place_with_asian_traders
 		required_missions = { tm_mam_southern_campaign }
 		position = 8
 		provinces_to_highlight = {
-			
+			owned_by = ROOT
+			province_has_center_of_trade_of_level = 1
+			NOT = { province_has_center_of_trade_of_level = 2 }
 		}
 		trigger = {
-			
-		} 
+			event_target:ethiopia_event_target = {
+				alliance_with = ROOT
+				has_opinion = {
+					who = ROOT
+					value = 125
+				}
+				trust = {
+					who = ROOT
+					value = 75
+				}
+			}
+			num_of_owned_provinces_with = {
+				value = 8
+				has_trade_building_trigger = yes
+				development = 10
+			}
+			trader = 2
+		}
 		effect = {
-			
+			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
+			if = {
+				limit = {
+					NOT = { event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_1 } }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				custom_tooltip = tm_eth_mam_ally_trade_1_tt
+				custom_tooltip = tm_ally_has_effects_too
+			}
+			custom_tooltip = mission_alternatively_tt
+			custom_tooltip = tm_mam_eth_dip_friendly_if_they_have
+			if = {
+				limit = {
+					event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_1 }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				custom_tooltip = tm_eth_dip_advisors_give_trade_eff
+				custom_tooltip = tm_any_time_we_are_allied_tt
+				add_country_modifier = {
+					name = tm_eth_trading_agreements
+					duration = -1
+				}
+				custom_tooltip = tm_ally_has_effects_too
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_1 } } }
+					for = {
+						amount = 5
+						effect = "
+						random_owned_province = {
+							limit = {
+								development = 10
+								has_trade_building_trigger = yes
+							}
+							upgrade_building = { trade = yes }
+							add_base_production = 3
+						}
+						"
+					}
+					event_target:ethiopia_event_target = {
+						for = {
+							amount = 5
+							effect = "
+							random_owned_province = {
+								limit = {
+									development = 10
+									has_trade_building_trigger = yes
+								}
+								upgrade_building = { trade = yes }
+								add_base_production = 3
+							}
+							"
+						}
+					}
+				}
+				if = {
+					limit = { event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_1 } }
+					set_country_flag = tm_dip_advisors_give_trade_eff
+					event_target:ethiopia_event_target = { set_country_flag = tm_dip_advisors_give_trade_eff }
+					add_country_modifier = {
+						name = tm_eth_trading_agreements
+						duration = -1
+					}
+					set_country_flag = tm_eth_mam_trading_agreements
+					event_target:ethiopia_event_target = {
+						add_country_modifier = {
+							name = tm_eth_trading_agreements
+							duration = -1
+						}
+						set_country_flag = tm_eth_mam_trading_agreements
+					}
+				}
+			}
 		}
 	}
 
 	tm_mam_ally_eth_2 = {
-		icon = NEED_ICON
+		icon = mission_pue_irrigation_cannals
 		required_missions = { tm_mam_ally_eth_1 }
 		position = 9
 		provinces_to_highlight = {
-			
+			OR = {
+				province_id = 362
+				province_id = 363
+				province_id = 2316
+				province_id = 361
+				province_id = 359
+				province_id = 2317
+				province_id = 2319
+				province_id = 4320
+				province_id = 360
+				province_id = 4319
+				province_id = 1231
+				province_id = 1234
+				province_id = 2322
+				province_id = 1228
+				province_id = 5178
+				province_id = 5177
+				province_id = 5179
+				province_id = 2797
+				province_id = 2798
+				province_id = 1222
+				province_id = 2799
+				province_id = 1217
+			}
 		}
 		trigger = {
-			
+			event_target:ethiopia_event_target = {
+				alliance_with = ROOT
+				has_opinion = {
+					who = ROOT
+					value = 125
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = tm_eth_mam_own_nile
+				362  = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				363  = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				2316 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				361  = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				359  = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				2317 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				2319 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				4320 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				360  = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				4319 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				1231 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				1234 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				2322 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				1228 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				5178 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				5177 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				5179 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				2797 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				2798 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				1222 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				2799 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+				1217 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:ethiopia_event_target} }
+			}
+			custom_trigger_tooltip = {
+				tooltip = tm_eth_mam_dev_nil
+				calc_true_if = {
+					amount = 10
+
+					362  = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					363  = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					2316 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					361  = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					359  = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					2317 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					2319 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					4320 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					360  = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					4319 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					1231 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					1234 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					2322 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					1228 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					5178 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					5177 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					5179 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					2797 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					2798 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					1222 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					2799 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+					1217 = { is_prosperous = yes num_of_times_improved = 1 num_of_buildings_in_province = 1 }
+				}
+			}
 		} 
 		effect = {
-			
+			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
+			if = {
+				limit = {
+					NOT = { event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_2 } }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				custom_tooltip = tm_eth_expand_nile_farming_1
+				add_province_modifier = {
+					name = tm_eth_expand_nile_floodplains_1
+					duration = -1
+				}
+			}
+			custom_tooltip = mission_alternatively_tt
+			custom_tooltip = tm_mam_eth_dip_friendly_if_they_have
+			if = {
+				limit = {
+					event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_2 }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				custom_tooltip = tm_the_previous_modifier_is_doubled
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_2 } } }
+					362  = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					363  = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					2316 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					361  = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					359  = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					2317 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					2319 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					4320 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					360  = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					4319 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					1231 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					1234 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					2322 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					1228 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					5178 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					5177 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					5179 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					2797 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					2798 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					1222 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					2799 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+					1217 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_1 duration = -1 } }
+				}
+				if = {
+					limit = { event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_2 } }
+					362  = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					363  = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					2316 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					361  = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					359  = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					2317 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					2319 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					4320 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					360  = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					4319 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					1231 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					1234 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					2322 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					1228 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					5178 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					5177 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					5179 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					2797 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					2798 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					1222 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					2799 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					1217 = { remove_province_modifier = tm_eth_expand_nile_floodplains_1 }
+					362  = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					363  = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					2316 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					361  = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					359  = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					2317 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					2319 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					4320 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					360  = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					4319 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					1231 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					1234 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					2322 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					1228 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					5178 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					5177 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					5179 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					2797 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					2798 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					1222 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					2799 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+					1217 = { add_province_modifier = { name = tm_eth_expand_nile_floodplains_2 duration = -1 } }
+				}
+			}
 		}
 	}
 
 	tm_mam_ally_eth_3 = {
-		icon = NEED_ICON
+		icon = mission_kon_anzikus_copper
 		required_missions = { tm_mam_ally_eth_2 }
 		position = 10
 		provinces_to_highlight = {
-			
+			OR = {
+				trade_goods = salt
+				trade_goods = gems					
+			}
+			owned_by = ROOT
+			OR = {
+				NOT = { development = 15 }
+				NOT = {
+					OR = {
+						has_production_building_trigger = yes
+						num_of_buildings_in_province = 2
+					}
+				}
+			}
 		}
 		trigger = {
-			
+			event_target:ethiopia_event_target = {
+				alliance_with = ROOT
+				has_opinion = {
+					who = ROOT
+					value = 125
+				}
+			}
+			num_of_owned_provinces_with = {
+				value = 8
+				OR = {
+					trade_goods = salt
+					trade_goods = gems					
+				}
+				development = 15
+				OR = {
+					has_production_building_trigger = yes
+					num_of_buildings_in_province = 2
+				}
+			}
 		} 
 		effect = {
-			
+			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
+			if = {
+				limit = {
+					NOT = { event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_3 } }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				365 = { change_trade_goods = gold }
+				2317 = { change_trade_goods = tin }
+				2315 = { change_trade_goods = iron }
+				359 = { change_trade_goods = iron }
+				2758 = { change_trade_goods = gold }
+				1211 = { change_trade_goods = tin }
+				2778 = { change_trade_goods = iron }
+				1207 = { change_trade_goods = iron }
+			}
+			custom_tooltip = mission_alternatively_tt
+			custom_tooltip = tm_mam_eth_dip_friendly_if_they_have
+			if = {
+				limit = {
+					event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_3 }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				custom_tooltip = tm_eth_mam_metal_production
+				add_province_modifier = {
+					name = tm_eth_mam_metal_production_modifier
+					duration = -1
+				}
+				custom_tooltip = tm_ally_has_effects_too
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_3 } } }
+					2758 = { change_trade_goods = gold }
+					1211 = { change_trade_goods = tin }
+					2778 = { change_trade_goods = iron }
+					365 = { change_trade_goods = gold }
+					2317 = { change_trade_goods = tin }
+					2315 = { change_trade_goods = iron }
+				}
+				if = {
+					limit = { event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_3 } }
+					for = {
+						amount = 3
+						effect = "
+						random_owned_province = {
+							limit = {
+								prov_has_metal_good = yes
+								NOT = { has_province_modifier = tm_eth_mam_metal_production_modifier }
+							}
+							add_province_modifier = {
+								name = tm_eth_mam_metal_production_modifier
+								duration = -1
+							}
+						}
+						"
+					}
+					event_target:ethiopia_event_target = {
+						for = {
+							amount = 3
+							effect = "
+							random_owned_province = {
+								limit = {
+									prov_has_metal_good = yes
+									NOT = { has_province_modifier = tm_eth_mam_metal_production_modifier }
+								}
+								add_province_modifier = {
+									name = tm_eth_mam_metal_production_modifier
+									duration = -1
+								}
+							}
+							"
+						}
+					}
+				}
+			}
 		}
 	}
 
 	tm_mam_ally_eth_4 = {
-		icon = NEED_ICON
+		icon = mission_arabian_trade
 		required_missions = { tm_mam_ally_eth_3 }
 		position = 11
 		provinces_to_highlight = {
-			
+			owned_by = ROOT
+			has_navy_building = no
+			has_port = yes
 		}
 		trigger = {
-			
+			event_target:ethiopia_event_target = {
+				alliance_with = ROOT
+				has_opinion = {
+					who = ROOT
+					value = 125
+				}
+			}
+			num_of_owned_provinces_with = {
+				value = 10
+				has_navy_building = yes
+				base_production = 5
+			}
 		} 
 		effect = {
-			
+			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
+			if = {
+				limit = {
+					NOT = { event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_4 } }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				custom_tooltip = tm_any_time_we_are_allied_tt
+				add_country_modifier = {
+					name = tm_eth_mam_naval_cooperation_modifier_1
+					duration = -1
+				}
+				custom_tooltip = tm_ally_has_effects_too
+			}
+			custom_tooltip = mission_alternatively_tt
+			custom_tooltip = tm_mam_eth_dip_friendly_if_they_have
+			if = {
+				limit = {
+					event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_4 }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				custom_tooltip = tm_any_time_we_are_allied_tt
+				add_country_modifier = {
+					name = tm_eth_mam_naval_cooperation_modifier_2
+					duration = -1
+				}
+				custom_tooltip = tm_ally_has_effects_too
+			}
+			hidden_effect = {
+				if = {
+					limit = { NOT = { event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_4 } } }
+					add_country_modifier = { name = tm_eth_mam_naval_cooperation_modifier_1 duration = -1 }
+					set_country_flag = tm_eth_mam_navy_coop_1
+					event_target:ethiopia_event_target = {
+						add_country_modifier = { name = tm_eth_mam_naval_cooperation_modifier_1 duration = -1 }
+						set_country_flag = tm_eth_mam_navy_coop_1
+					}
+				}
+				if = {
+					limit = { event_target:ethiopia_event_target = { mission_completed = tm_eth_friendly_to_mams_4 } }
+					clr_country_flag = tm_eth_mam_navy_coop_1
+					set_country_flag = tm_eth_mam_navy_coop_2
+					remove_country_modifier = tm_eth_mam_naval_cooperation_modifier_1
+					add_country_modifier = { name = tm_eth_mam_naval_cooperation_modifier_2 duration = -1 }
+					event_target:ethiopia_event_target = {
+						clr_country_flag = tm_eth_mam_navy_coop_1
+						set_country_flag = tm_eth_mam_navy_coop_2
+						remove_country_modifier = tm_eth_mam_naval_cooperation_modifier_1
+						add_country_modifier = { name = tm_eth_mam_naval_cooperation_modifier_2 duration = -1 }
+					}
+				}
+			}
 		}
 	}
 }
@@ -2146,8 +2910,9 @@ mam_missions_5_continued = {
 	}
 	potential = {
 		OR = {
-			tag = EGY
 			tag = MAM
+			tag = FAT
+			tag = AYY
 		}
 		has_dlc = "King of Kings"
 	}
@@ -2168,7 +2933,6 @@ mam_missions_5_continued = {
 			361 = { num_of_buildings_in_province = 5 }
 			361 = { num_of_times_expanded_infrastructure = 2 }
 			361 = { has_courthouse_building_trigger = yes }
-			361 = { has_manufactory = yes }
 		}
 		effect = {
 			361 = {
@@ -2185,7 +2949,18 @@ mam_missions_5_continued = {
 						type = al_azhar_university
 						tier = 1
 					}
-					set_country_flag = tm_mam_can_see_ruler_skills_flag
+					if = {
+						limit = {
+							NOT = {
+								has_great_project = {
+									type = al_azhar_university
+									tier = 2
+								}
+							}
+						}
+						custom_tooltip = tm_mam_can_see_ruler_skills_tt
+						set_country_flag = tm_mam_can_see_ruler_skills_flag
+					}
 				}
 				else_if = {
 					limit = {
@@ -2209,7 +2984,7 @@ mam_missions_5_continued = {
 		provinces_to_highlight = {}
 
 		trigger = {
-			total_development = 800
+			grown_by_development = 1000
 			is_lacking_institutions = no
 			has_better_tech_than_westerns = yes
 		}
@@ -2244,6 +3019,8 @@ mam_missions_5_continued = {
 				full_idea_group = innovative_ideas
 				innovativeness = 30
 			}
+			legitimacy_equivalent = 90
+			prestige = 90
 		}
 		effect = {
 			if = {
