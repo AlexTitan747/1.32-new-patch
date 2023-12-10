@@ -60,22 +60,11 @@ gc_morocco_1 = {
 			#		tier = 1
 			#	}
 			#}
+			set_country_flag =  tm_mor_can_build_baluarte_de_la_bandera
 			1751 = {
-				if = {
-					limit = {
-						has_great_project = {
-							type = baluarte_de_la_bandera
-							tier = 0
-						}
-					}
-					custom_tooltip = tm_upgrades_great_project_up_to_tier_1_tt
-					add_great_project_tier = {
-						type = baluarte_de_la_bandera
-						tier = 1
-					}
-				}
-				else = {
-					add_random_development = 2
+				add_great_project = {
+					type = baluarte_de_la_bandera
+					instant = yes
 				}
 			}
 			lower_andalucia_area = {
@@ -115,25 +104,31 @@ gc_morocco_1 = {
 				name = "mor_beyond_the_canaries"
 				duration = 7300
 			}
-			country_event = {
-				id = titanmor.3
-			}
 			add_mercantilism = 5
-			caribbean_sea_region = {
-				discover_country = ROOT
-			}
-			atlantic_south_america_region = {
-				discover_country = ROOT
-			}
-			south_america_superregion = {
-				discover_country = ROOT
-			}
+			create_explorer = { tradition = 75 }
+		}
+	}
+
+	tm_mor_construct_the_port = {
+		icon = NEED_ICON
+		required_missions = { tm_mor_colonial_ambition }
+		
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+			
+		}
+
+		effect = {
+			
 		}
 	}
 
 	tm_mor_colombia = {
 		icon = mission_colonize_the_west
-		required_missions = { tm_mor_colonial_ambition }
+		required_missions = { tm_mor_construct_the_port }
 		
 		provinces_to_highlight = {
 			colonial_region = colonial_colombia
@@ -145,22 +140,10 @@ gc_morocco_1 = {
 		}
 
 		trigger = {
-			if = {
-				limit = {
-					is_random_new_world = no
-				}
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					value = 5
-					colonial_region = colonial_brazil
-					is_city = yes
-				}
-			}
-			else = {
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					value = 10
-					continent = new_world
-					is_city = yes
-				}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 8
+				colonial_region = colonial_colombia
+				is_city = yes
 			}
 		}
 
@@ -188,42 +171,17 @@ gc_morocco_1 = {
 		}
 		
 		trigger = {
-			if = {
-				limit = {
-					is_random_new_world = no
-				}
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					value = 20
-					colonial_region = colonial_colombia
-					is_city = yes
-				}
-				custom_trigger_tooltip = {
-					tooltip = mor_big_colony.tooltip
-					any_country = {
-						is_subject_of = ROOT
-						OR = {
-							is_subject_of_type = colony
-							is_subject_of_type = crown_colony
-							is_subject_of_type = private_enterprise
-							is_subject_of_type = self_governing_colony
-						}
-						num_of_cities = 20
+			custom_trigger_tooltip = {
+				tooltip = mor_big_colony.tooltip
+				any_country = {
+					is_subject_of = ROOT
+					OR = {
+						is_subject_of_type = colony
+						is_subject_of_type = crown_colony
+						is_subject_of_type = private_enterprise
+						is_subject_of_type = self_governing_colony
 					}
-				}
-			}
-			else = {
-				custom_trigger_tooltip = {
-					tooltip = mor_big_colony.tooltip
-					any_country = {
-						is_subject_of = ROOT
-						OR = {
-							is_subject_of_type = colony
-							is_subject_of_type = crown_colony
-							is_subject_of_type = private_enterprise
-							is_subject_of_type = self_governing_colony
-						}
-						num_of_cities = 20
-					}
+					num_of_cities = 25
 				}
 			}
 		}
@@ -236,7 +194,6 @@ gc_morocco_1 = {
 			}
 		}
 	}
-
 }
 
 gc_morocco_2 = {
@@ -448,38 +405,6 @@ gc_morocco_2 = {
 			}	
 		}
 	}
-
-	gc_mor_black_guard = {
-		icon = mission_establish_the_black_guard
-		required_missions = { tm_mor_colonial_manufacturing }
-		position = 6
-		
-		provinces_to_highlight = {
-			province_id = 1132
-			NOT = { is_strongest_trade_power = ROOT }
-		}
-		
-		trigger = {
-			1132 = {
-				is_strongest_trade_power = ROOT
-			}
-			num_of_owned_provinces_with = {
-				value = 10
-				OR = {
-					has_building = regimental_camp
-					has_building = conscription_center
-				}
-			}
-		}
-		
-		effect = {
-			add_country_modifier = {
-				name = "mor_black_guard"
-				duration = -1
-			}
-		}
-	}
-
 }
 
 gc_morocco_3 = {
@@ -1104,34 +1029,33 @@ gc_morocco_4 = {
 		}
 	}
 
-	gc_mor_palace = {
-		icon = mission_el_badi_palace
+	gc_mor_black_guard = {
+		icon = mission_establish_the_black_guard
 		required_missions = { }
 		position = 8
 		
 		provinces_to_highlight = {
-			province_id = 227
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-			NOT = { controlled_by = ROOT }
+			province_id = 1132
+			NOT = { is_strongest_trade_power = ROOT }
 		}
-
+		
 		trigger = {
-			OR = {
-				227 = {
-					controlled_by = ROOT
-				}
-				227 = {
-					country_or_non_sovereign_subject_holds = ROOT
+			1132 = {
+				is_strongest_trade_power = ROOT
+			}
+			num_of_owned_provinces_with = {
+				value = 10
+				OR = {
+					has_building = regimental_camp
+					has_building = conscription_center
 				}
 			}
 		}
 		
 		effect = {
-			capital_scope = {
-				add_province_modifier = {
-					name = mor_el_badi_palace
-					duration = 7300
-				}
+			add_country_modifier = {
+				name = "mor_black_guard"
+				duration = -1
 			}
 		}
 	}
@@ -1201,11 +1125,10 @@ gc_morocco_5 = {
 		
 		trigger = {
 			num_of_owned_provinces_with = {
-				value = 15
+				value = 20
 				has_military_building = yes
 				owned_by = ROOT
 			}
-			has_building = grand_fortress
 		}
 
 		effect = {
@@ -1575,5 +1498,4 @@ gc_morocco_5 = {
 			}
 		}
 	}
-
 }
