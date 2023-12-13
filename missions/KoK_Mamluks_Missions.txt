@@ -1648,23 +1648,22 @@ mam_missions_4 = {
 			}
 		}
 		trigger = {
-			if = {
-				limit = { has_dlc = "Leviathan" }
-				4316 = {
-					owned_by = ROOT
-					OR = {
-						num_of_times_improved = 10
-						has_great_project = { 
-							type = suez_canal 
-							tier = 3 
-						}
+			4316 = {
+				owned_by = ROOT
+				controlled_by = ROOT
+				has_siege = no
+			}
+			4316 = {
+				OR = {
+					num_of_times_improved = 10
+					has_great_project = { 
+						type = suez_canal
+						tier = 3 
 					}
 				}
-				4316 = { has_any_ongoing_construction = no }
 			}
-			else = {
-				4316 = { num_of_times_improved = 10 }
-			}
+			4316 = { has_any_ongoing_construction = no }
+			4316 = { num_of_buildings_in_province = 4 }
 			2315 = { owned_by = ROOT }
 			is_at_war = no			
 		}

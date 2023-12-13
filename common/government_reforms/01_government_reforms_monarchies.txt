@@ -1582,10 +1582,16 @@ persian_government_reform = {
 				is_playing_custom_nation = yes
 			}
 		}
-		NOT = { religion_group = zoroastrian_group }
+		OR = {
+			NOT = { religion_group = zoroastrian_group }
+			is_playing_custom_nation = yes
+		}
 	}
 	trigger = {
-		NOT = { religion_group = zoroastrian_group }
+		OR = {
+			NOT = { religion_group = zoroastrian_group }
+			is_playing_custom_nation = yes
+		}
 	}
 	nation_designer_trigger = {
 		NOT = { religion_group = zoroastrian_group }
@@ -5052,7 +5058,7 @@ reform_the_pronoiars_reform = {
 	icon = "reform_the_pronoiars_reform"
 	allow_normal_conversion = yes
 	potential = {
-		culture_group = byzantine
+		has_government_attribute = enables_pronoias
 	}
 	modifiers = {
 		allow_client_states = yes

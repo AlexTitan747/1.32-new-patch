@@ -3,6 +3,6 @@ tags={
 	"Balance"
 }
 name="1.34 new patch"
-supported_version="1.36.1"
+supported_version="1.36.2"
 path="C:/Users/Alexander/Documents/Paradox Interactive/Europa Universalis IV/mod/1.32-new-patch"
 remote_file_id="2800327006"
