@@ -3,7 +3,6 @@
 #
 # if a modifier is scaled, its multiplied with development in the province.
 
-
 # any_friendly_coast_border_province is a special scope made for institution spread.
 # It checks for adjacent provinces or provinces one seazone away.
 # Friendly is defined as at positive relations or owned by the same country that owns the province.
@@ -13,7 +12,6 @@
 # 
 # Most in the old world start with it.
 #######################################
-
 feudalism = {
 	
 	bonus = {
@@ -276,15 +274,13 @@ feudalism = {
 	}
 }
 
+
 #######################################
 # Renaissance
 # 
 # Flows from italy
 #######################################
-
 renaissance = {
-
-
 	bonus = {
 		development_cost = -0.05
 		monthly_reform_progress_modifier = 0.15
@@ -353,30 +349,21 @@ renaissance = {
 		is_year = 1450
 		region = italy_region
 		is_state = yes
-		NOT = { province_id = 126 }
 		is_island = no
 		OR = {
 			development = 20
 			is_capital = yes
-			normal_or_historical_nations = no
 		}
 	}
 	start_chance = 5		#in 100 for when a province can_start
 	
 	
 	on_start = institution_events.2
-	
-	
-	
-
-	
-	
+		
 	can_embrace = {
 		owner = { has_institution = feudalism }
 	}
 
-
-	
 	embracement_speed = {
 		modifier = {
 			scale = yes
@@ -444,13 +431,11 @@ renaissance = {
 			factor = 1
 			scale = no
 			potential = {
+				is_capital = yes
 			}
 			custom_trigger_tooltip = {
-				tooltip = PR_renaissance_capital_country_over_100_dev
-				is_capital = yes
-				owner = { total_development = 100 }
-
-
+				tooltip = PR_renaissance_capital_country_over_150_dev
+				owner = { total_development = 150 }
 			}
 		}
 		#modifier = {
@@ -555,8 +540,6 @@ renaissance = {
 # Colonising is good.. mkay.-.
 #######################################
 new_world_i = {
-	
-
 	bonus = {
 		global_prov_trade_power_modifier = 0.10
 		monthly_reform_progress_modifier = 0.15
@@ -564,7 +547,6 @@ new_world_i = {
 	}
 
 	trade_company_efficiency = 0.1
-
 
 	historical_start_date = 1500.1.1
 	historical_start_province = 224 #Sevilla
@@ -575,10 +557,12 @@ new_world_i = {
 				is_year = 1500
 				continent = europe
 				OR = {
-					owner = { OR = {
-						has_idea = i150
-						has_idea = quest_for_the_new_world
-						}}
+					owner = { 
+						OR = {
+							has_idea = i150
+							has_idea = quest_for_the_new_world
+						}
+					}
 					owner = { colony = 1 }
 				}
 			}
@@ -650,7 +634,7 @@ new_world_i = {
 	can_start = {
 		OR = {
 			AND = {
-				is_year = 1500
+				is_year = 1490
 				custom_trigger_tooltip = {
 					tooltip = tm_colonialism_can_spawn_1
 					owner = {
@@ -667,7 +651,7 @@ new_world_i = {
 				}
 			}
 			AND = {
-				is_year = 1502
+				is_year = 1493
 				custom_trigger_tooltip = {
 					tooltip = tm_colonialism_can_spawn_2
 					owner = { 
@@ -682,7 +666,7 @@ new_world_i = {
 				}
 			}
 			AND = {
-				is_year = 1504
+				is_year = 1496
 				custom_trigger_tooltip = {
 					tooltip = tm_colonialism_can_spawn_3
 					owner = {
@@ -695,7 +679,7 @@ new_world_i = {
 				}
 			}
 			AND = {
-				is_year = 1510
+				is_year = 1500
 				NOT = { current_age = age_of_discovery }
 			}
 		}
@@ -713,16 +697,12 @@ new_world_i = {
 			development = 12
 			is_capital = yes
 		}
-		is_in_capital_area = yes
+		region_for_scope_province = { is_capital_of = ROOT }
 	}
 	start_chance = 5		#in 100 for when a province can_start
 	
 	
 	on_start = institution_events.3
-	
-	
-	
-
 	
 	
 	can_embrace = {
@@ -732,7 +712,6 @@ new_world_i = {
 
 	
 	embracement_speed = {
-	
 		modifier = {
 			factor = 1.2
 			scale = yes
@@ -742,7 +721,6 @@ new_world_i = {
 					new_world_i = 100
 				}
 			}
-			
 		}
 		
 		modifier = {
@@ -925,15 +903,12 @@ new_world_i = {
 }
 
 
-
 #######################################
 # Printing Press
 #######################################
 printing_press = {
-	
-
 	bonus = {
-		stability_cost_modifier = -0.05
+		stability_cost_modifier = -0.10
 		monthly_reform_progress_modifier = 0.15
 		imperial_authority_value = 0.05
 	}
@@ -1022,13 +997,13 @@ printing_press = {
 	}
 	
 	can_start = {
-		is_year = 1550
-		is_in_capital_area = yes
+		is_year = 1530
 		is_island = no
 		is_state = yes
+		region_for_scope_province = { is_capital_of = ROOT }
 		OR = {
-			development = 15
 			is_capital = yes
+			development = 15
 			trade_goods = paper
 			trade_goods = books
 		}
@@ -1038,6 +1013,7 @@ printing_press = {
 			religion = hussite
 			region = north_german_region
 			region = south_german_region
+			area = denmark_area
 		}
 
 	}
@@ -1053,7 +1029,6 @@ printing_press = {
 
 	
 	embracement_speed = {
-	
 		modifier = {
 			factor = 0.6
 			scale = yes
@@ -1111,10 +1086,10 @@ printing_press = {
 		modifier = {
 			factor = 1
 			custom_trigger_tooltip = {
-				tooltip = tooltip_dip_tech15_capital
+				tooltip = tooltip_dip_tech11_capital
 				is_capital = yes
 				owner = {
-					dip_tech = 15
+					dip_tech = 11
 				}
 			}
 		}
@@ -1127,15 +1102,13 @@ printing_press = {
 			custom_trigger_tooltip = {
 				tooltip = PR_printing_press_capital_20_dev
 				development = 20
-				is_capital = yes
+				is_in_capital_area = yes
 			}
 		}
 		modifier = {
 			factor = 6
 			scale = no
-			potential = {
-				NOT = { continent = europe }
-			}
+			potential = {}
 			custom_trigger_tooltip = {
 				tooltip = PR_printing_press_paper
 				OR = {
@@ -1264,6 +1237,12 @@ printing_press = {
 				}
 			}
 		}
+		modifier = {
+			factor = 0.10
+			scale = yes
+			potential = {}
+			development = 20
+		}
 	}
 	
 	ai_will_do = { #Cost of embracing institution must be lower than this factor * last month's regular income, and higher if loans are needed. (Or it has a more than long term goal...)
@@ -1293,15 +1272,10 @@ printing_press = {
 }
 
 
-
-
-
 #######################################
 # Global Trade
 #######################################
 global_trade = {
-	
-
 	bonus = {
 		merchants = 1
 		monthly_reform_progress_modifier = 0.10
@@ -1384,7 +1358,7 @@ global_trade = {
 	}
 	
 	can_start = {
-		is_year = 1600
+		is_year = 1570
 		is_island = no
 		highest_value_trade_node = yes
 		OR = {
@@ -1392,7 +1366,7 @@ global_trade = {
 			province_has_center_of_trade_of_level = 2
 			is_capital = yes
 			AND = {
-				is_year = 1630 #fallback
+				is_year = 1600 #fallback
 				province_has_center_of_trade_of_level = 1
 			}
 		}
@@ -1607,8 +1581,6 @@ global_trade = {
 # Manufactories
 #######################################
 manufactories = {
-	
-
 	bonus = {
 		global_trade_goods_size_modifier = 0.1
 		monthly_reform_progress_modifier = 0.10
@@ -1691,8 +1663,7 @@ manufactories = {
 	}
 	
 	can_start = {
-		is_year = 1650
-		is_in_capital_area = yes
+		is_year = 1610
 		is_island = no
 		is_state = yes
 		development = 20
@@ -1707,14 +1678,7 @@ manufactories = {
 				}
 			}
 		}
-		OR = {
-			has_building = wharf
-			has_building = weapons
-			has_building = textile
-			has_building = plantations
-			has_building = tradecompany
-			has_building = mills
-		}
+		has_manufactory = yes
 	}
 	start_chance = 10		#in 100 for when a province can_start
 	
@@ -2134,13 +2098,10 @@ manufactories = {
 }
 
 
-
 #######################################
 # Enlightenment
 #######################################
 enlightenment = {
-	
-
 	bonus = {
 		culture_conversion_cost = -0.25
 		monthly_reform_progress_modifier = 0.10
@@ -2202,8 +2163,7 @@ enlightenment = {
 	}
 	
 	can_start = {
-		is_year = 1700
-		is_in_capital_area = yes
+		is_year = 1650
 		is_island = no
 		is_state = yes
 		printing_press = 100
@@ -2215,15 +2175,11 @@ enlightenment = {
 				has_seat_in_parliament = yes
 			}
 			has_building = university
-			AND = {
-				continent = europe
-				owner = {
-					ADM = 5
-					MIL = 5
-					DIP = 5
-				}
+			owner = {
+				ADM = 5
+				MIL = 5
+				DIP = 5
 			}
-			
 		}
 	}
 	start_chance = 10		#in 100 for when a province can_start
@@ -2518,13 +2474,10 @@ enlightenment = {
 }
 
 
-
 #######################################
 # Industrialisation
 #######################################
 industrialization = {
-	
-	
 	trade_company_efficiency = 0.25
 
 	bonus = {
@@ -2555,8 +2508,7 @@ industrialization = {
 	}
 	
 	can_start = {
-		is_year = 1750
-		is_in_capital_area = yes
+		is_year = 1690
 		is_island = no
 		is_state = yes
 		development = 30
@@ -2565,7 +2517,7 @@ industrialization = {
 		if = {
 			limit = {
 				has_dlc = "Rule Britannia"
-				NOT = { is_year = 1780 } #just in case no one develops their coal provinces
+				NOT = { is_year = 1720 } #just in case no one develops their coal provinces
 			}
 			has_building = furnace
 			owner = {
@@ -2589,12 +2541,12 @@ industrialization = {
 						trade_goods = bronze
 					}
 					num_of_trading_bonuses = 3
-					is_year = 1770 #fallback
+					#is_year = 1770 #fallback
 				}
 			}
 			OR = {
 				highest_value_trade_node = yes
-				is_year = 1760 #fallback
+				is_year = 1730 #fallback
 			}
 		}
 		else = {
@@ -2620,12 +2572,12 @@ industrialization = {
 						trade_goods = bronze
 					}
 					num_of_trading_bonuses = 3
-					is_year = 1770 #fallback
+					is_year = 1740 #fallback
 				}
 			}
 			OR = {
 				highest_value_trade_node = yes
-				is_year = 1760 #fallback
+				is_year = 1750 #fallback
 			}
 		}
 	}

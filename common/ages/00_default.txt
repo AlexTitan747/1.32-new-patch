@@ -132,6 +132,8 @@ age_of_discovery = {
 			modifier = {
 				can_transfer_vassal_wargoal = yes
 				can_chain_claim = yes
+				fabricate_claims_cost = -0.2
+				can_fabricate_for_vassals = yes
 			}
 			ai_will_do = {
 				factor = 10
@@ -167,81 +169,75 @@ age_of_discovery = {
 				}
 			}
 		}
-		ab_attack_bonus_in_capital_terrain = {
+		#ab_attack_bonus_in_capital_terrain = {
+		#	allow = {
+		#		is_year = 1470
+		#		NOT = { is_year = 1475 }
+		#		is_colonial_nation = no
+		#	}
+		#	modifier = {
+		#		build_cost = -0.05
+		#		trade_efficiency = 0.1
+		#		global_autonomy = -0.025
+		#		global_prosperity_growth = 0.2
+		#		inflation_reduction = 0.05
+		#	}
+		#	ai_will_do = {
+		#		factor = 10
+		#	}
+		#}
+		ab_dis_eco_golden_era = {
 			allow = {
 				is_year = 1470
-				NOT = { is_year = 1475 }
-				is_colonial_nation = no
 			}
-			modifier = {
-				build_cost = -0.05
-				trade_efficiency = 0.1
-				global_autonomy = -0.025
-				global_prosperity_growth = 0.2
-				inflation_reduction = 0.05
-			}
-			ai_will_do = {
-				factor = 10
-			}
-		}
-		ab_denmark_reduced_lib_desire = {
-			allow = {
-				OR = {
-					tag = DAN
-					tag = SCA
-					tag = DNL
-					tag = NOV
-					tag = RUS
-					tag = BLC
+			effect = {
+				add_country_modifier = {
+					name = tm_eco_golden_era_discovery
+					duration = 3650
 				}
 			}
-			modifier = {
-				production_efficiency = 0.2
-				shock_damage_received = -0.1
-			}
-			ai_will_do = {
-				factor = 100
-				modifier = {
-					factor = 0
-					NOT = {
-						any_subject_country = {
-							liberty_desire = 20
+		}
+		ab_seeking_discovery = {
+			allow = {
+				OR = {
+					tag = POR
+					tag = CAS
+					tag = ENG
+					tag = AQI
+					tag = BUR
+					tag = DAN
+					tag = MOR
+					tag = MAL
+					hidden_trigger = {
+						OR = {
+							was_tag = POR
+							was_tag = CAS
+							was_tag = ENG
+							was_tag = AQI
+							was_tag = BUR
+							was_tag = DAN
+							was_tag = MOR
+							was_tag = MAL
 						}
 					}
 				}
 			}
-		}
-		ab_ottoman_siege_ability = {
-			allow = {
-				tag = TUR
-			}
 			modifier = {
-				shock_damage_received = -0.10
-				is_janissary_modifier = yes
-			}
-			ai_will_do = {
-				factor = 100
+				range = 0.25
+				global_colonial_growth = 30
 			}
 		}
-		ab_portugal_colonial_growth = {
-			allow = {
-				tag = POR
-			}
-			modifier = {
-				global_colonial_growth = 25
-			}
-			ai_will_do = {
-				factor = 100
-			}
-		}
-		ab_venice_ship_trade = {
+		ab_italian_mercenaries = {
 			allow = {
 				OR = {
 					tag = MLO
-					tag = SIC
-					tag = TTS
-					tag = SPI
 					tag = NAP
+					hidden_trigger = {
+						OR = {
+							was_tag = MLO
+							was_tag = NAP
+						}						
+					}
 				}
 			}
 			modifier = {
@@ -249,15 +245,109 @@ age_of_discovery = {
 				merc_leader_army_tradition = 0.25
 				mercenary_manpower = 0.10
 			}
-			ai_will_do = {
-				factor = 100
+		}
+		ab_hardy_northerners = {
+			allow = {
+				OR = {
+					tag = DAN
+					tag = NOV
+					hidden_trigger = {
+						OR = {
+							was_tag = NOV
+							was_tag = NOV
+						}						
+					}
+				}
+			}
+			modifier = {
+				production_efficiency = 0.2
+				shock_damage_received = -0.1
 			}
 		}
+		ab_guns_of_urban = {
+			allow = {
+				tag = TUR
+			}
+			modifier = {
+				infantry_shock = 0.2
+				shock_damage_received = -0.10
+				is_janissary_modifier = yes
+			}
+		}
+		#ab_denmark_reduced_lib_desire = {
+		#	allow = {
+		#		OR = {
+		#			tag = DAN
+		#			tag = SCA
+		#			tag = DNL
+		#			tag = NOV
+		#			tag = RUS
+		#			tag = BLC
+		#		}
+		#	}
+		#	modifier = {
+		#		production_efficiency = 0.2
+		#		shock_damage_received = -0.1
+		#	}
+		#	ai_will_do = {
+		#		factor = 100
+		#		modifier = {
+		#			factor = 0
+		#			NOT = {
+		#				any_subject_country = {
+		#					liberty_desire = 20
+		#				}
+		#			}
+		#		}
+		#	}
+		#}
+		#ab_ottoman_siege_ability = {
+		#	allow = {
+		#		tag = TUR
+		#	}
+		#	modifier = {
+		#		shock_damage_received = -0.10
+		#		is_janissary_modifier = yes
+		#	}
+		#	ai_will_do = {
+		#		factor = 100
+		#	}
+		#}
+		#ab_portugal_colonial_growth = {
+		#	allow = {
+		#		tag = POR
+		#	}
+		#	modifier = {
+		#		global_colonial_growth = 25
+		#	}
+		#	ai_will_do = {
+		#		factor = 100
+		#	}
+		#}
+		#ab_venice_ship_trade = {
+		#	allow = {
+		#		OR = {
+		#			tag = MLO
+		#			tag = SIC
+		#			tag = TTS
+		#			tag = SPI
+		#			tag = NAP
+		#		}
+		#	}
+		#	modifier = {
+		#		allow_mercenary_drill = yes
+		#		merc_leader_army_tradition = 0.25
+		#		mercenary_manpower = 0.10
+		#	}
+		#	ai_will_do = {
+		#		factor = 100
+		#	}
+		#}
 	}
 }
 
 age_of_reformation = {
-	start = 1500
+	start = 1490
 	
 	can_start = {
 		is_year = 1500
@@ -388,6 +478,10 @@ age_of_reformation = {
 					value = yes
 				}
 				trading_bonus = {
+					trade_goods = tailored_clothes
+					value = yes
+				}
+				trading_bonus = {
 					trade_goods = tea
 					value = yes
 				}
@@ -399,7 +493,7 @@ age_of_reformation = {
 		}
 		obj_unify_culture = {
 			development_in_provinces = {
-				value = 200
+				value = 250
 				has_owner_culture = yes
 			}
 		}
@@ -467,19 +561,30 @@ age_of_reformation = {
 				factor = 10
 			}
 		}
-		ab_siege_blockades = {
+		#ab_siege_blockades = {
+		#	allow = {
+		#		is_year = 1550
+		#		NOT = { is_year = 1552 }
+		#		is_colonial_nation = no
+		#	}
+		#	modifier = {
+		#		production_efficiency = 0.15
+		#		global_trade_goods_size_modifier = 0.05
+		#		global_prosperity_growth = 0.2
+		#	}
+		#	ai_will_do = {
+		#		factor = 10
+		#	}
+		#}
+		ab_ref_eco_golden_era = {
 			allow = {
 				is_year = 1550
-				NOT = { is_year = 1552 }
-				is_colonial_nation = no
 			}
-			modifier = {
-				production_efficiency = 0.15
-				global_trade_goods_size_modifier = 0.05
-				global_prosperity_growth = 0.2
-			}
-			ai_will_do = {
-				factor = 10
+			effect = {
+				add_country_modifier = {
+					name = tm_eco_golden_era_reformation
+					duration = 3650
+				}
 			}
 		}
 		ab_spain_tercio = {
@@ -562,7 +667,7 @@ age_of_reformation = {
 }
 
 age_of_absolutism = {
-	start = 1620
+	start = 1570
 	
 	can_start = {
 		is_institution_enabled = global_trade
@@ -582,7 +687,6 @@ age_of_absolutism = {
 		seat_in_parliament = -3
 		war_exhaustion = -1
 	}
-	
 	
 	
 	objectives = {
@@ -659,8 +763,6 @@ age_of_absolutism = {
 	}	
 	
 	
-	
-	
 	abilities = {
 		ab_allow_edict_of_absolutism = {
 			modifier = {
@@ -721,21 +823,32 @@ age_of_absolutism = {
 				factor = 100
 			}
 		}
-		ab_harsh_treatment = {
+		#ab_harsh_treatment = {
+		#	allow = {
+		#		is_year = 1623
+		#		NOT = { is_year = 1625 }
+		#		is_colonial_nation = no
+		#	}
+		#	modifier = {
+		#		production_efficiency = 0.05
+		#		trade_efficiency = 0.1
+		#		inflation_reduction = 0.025
+		#		global_prosperity_growth = 0.2
+		#		development_cost = -0.05
+		#	}
+		#	ai_will_do = {
+		#		factor = 10
+		#	}
+		#}
+		ab_abs_eco_golden_era = {
 			allow = {
-				is_year = 1623
-				NOT = { is_year = 1625 }
-				is_colonial_nation = no
+				is_year = 1625
 			}
-			modifier = {
-				production_efficiency = 0.05
-				trade_efficiency = 0.1
-				inflation_reduction = 0.025
-				global_prosperity_growth = 0.2
-				development_cost = -0.05
-			}
-			ai_will_do = {
-				factor = 10
+			effect = {
+				add_country_modifier = {
+					name = tm_eco_golden_era_absolutism
+					duration = 3650
+				}
 			}
 		}
 		ab_french_absolutism = {
@@ -810,7 +923,7 @@ age_of_absolutism = {
 }
 
 age_of_revolutions = {
-	start = 1710
+	start = 1650
 	
 	can_start = {
 		is_institution_enabled = enlightenment
