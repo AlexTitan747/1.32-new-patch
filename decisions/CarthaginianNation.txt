@@ -1,108 +1,109 @@
 country_decisions = {
+	carthaginian_nation = {
+		color = { 23 223 234 }
+		major = yes
 
-		carthaginian_nation = {
-			color = { 23 223 234 }
-			major = yes
-			potential = {
-				NOT = { has_country_flag = formed_carthage_flag }
-				NOT = { tag = ROM }
-				NOT = { tag = SPA }
-				NOT = { exists = CRG }
-				is_colonial_nation = no
-				OR = {
-					primary_culture = tunisian
-					primary_culture = sicilian
-					primary_culture = maltese
-					primary_culture = sardinian
-				}
-				has_country_flag = carthage_reborn
+		potential = {
+			NOT = { has_country_flag = formed_carthage_flag }
+			NOT = { tag = ROM }
+			NOT = { tag = SPA }
+			NOT = { exists = CRG }
+			is_colonial_nation = no
+			OR = {
+				primary_culture = tunisian
+				primary_culture = sicilian
+				primary_culture = maltese
+				primary_culture = sardinian
 			}
-			
-			provinces_to_highlight = {
-				OR = {
-					province_id = 341			# Tunis
-					province_id = 2473			# Susa
-					province_id = 4566			# Kairwan
-					province_id = 2454			# kef
-					province_id = 2455			# Bizerte
-					province_id = 126			# Malta
-					province_id = 2986			# Caller
-					province_id = 4735			# Arborea
-					province_id = 127			# sasa
-					province_id = 4560			# Ibiza
-					province_id = 333			# Balares
-					province_id = 4559			# Minorca
-					AND = {
-						OR = {
-							province_id = 125
-							province_id = 4736
-							province_id = 4737
-						}
-						ROOT = { NOT = { owns_core_province = 4546 } }
-						ROOT = { NOT = { owns_core_province = 226 } }
-						ROOT = { NOT = { owns_core_province = 223 } }
-						ROOT = { NOT = { owns_core_province = 222 } }
+			has_country_flag = carthage_reborn
+		}
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 341			# Tunis
+				province_id = 2473			# Susa
+				province_id = 4566			# Kairwan
+				province_id = 2454			# kef
+				province_id = 2455			# Bizerte
+				province_id = 126			# Malta
+				province_id = 2986			# Caller
+				province_id = 4735			# Arborea
+				province_id = 127			# sasa
+				province_id = 4560			# Ibiza
+				province_id = 333			# Balares
+				province_id = 4559			# Minorca
+				AND = {
+					OR = {
+						province_id = 125
+						province_id = 4736
+						province_id = 4737
 					}
-					AND = {
-						OR = {
-							province_id = 4546
-							province_id = 226
-							province_id = 223
-							province_id = 222	
-						}
-						ROOT = { NOT = { owns_core_province = 125 } }
-						ROOT = { NOT = { owns_core_province = 4736 } }
-						ROOT = { NOT = { owns_core_province = 4737 } }
-					}
+					ROOT = { NOT = { owns_core_province = 4546 } }
+					ROOT = { NOT = { owns_core_province = 226 } }
+					ROOT = { NOT = { owns_core_province = 223 } }
+					ROOT = { NOT = { owns_core_province = 222 } }
 				}
+				AND = {
+					OR = {
+						province_id = 4546
+						province_id = 226
+						province_id = 223
+						province_id = 222	
+					}
+					ROOT = { NOT = { owns_core_province = 125 } }
+					ROOT = { NOT = { owns_core_province = 4736 } }
+					ROOT = { NOT = { owns_core_province = 4737 } }
+				}
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		
+		allow = {
+			adm_tech = 12
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			owns_core_province = 341			# Tunis
+			owns_core_province = 2473			# Susa
+			owns_core_province = 4566			# Kairwan
+			owns_core_province = 2454			# kef
+			owns_core_province = 2455			# Bizerte
+			owns_core_province = 126			# Malta
+			owns_core_province = 2986			# Caller
+			owns_core_province = 4735			# Arborea
+			owns_core_province = 127			# sasa
+			owns_core_province = 4560			# Ibiza
+			owns_core_province = 333			# Balares
+			owns_core_province = 4559			# Minorca
+			OR = {
+				AND = {
+					owns_core_province = 125			# Palermo
+					owns_core_province = 4736			# tripani
+					owns_core_province = 4737			# girgenti
+				}
+				AND = {
+					owns_core_province = 4546			# Malaga
+					owns_core_province = 226			# Gibraltar
+					owns_core_province = 223			# Granada
+					owns_core_province = 222			# Almeria
+				}
+			}
+		}
 
-				OR = {
-					NOT = { owned_by = ROOT }
-					NOT = { is_core = ROOT }
-				}
+		effect = {
+			change_tag = CRG
+			341 = {	#Tunis
+				#move_capital_effect = yes
+				change_province_name = Carthage
 			}
+			#set_capital = 341 # Carthage
 			
-			allow = {
-				adm_tech = 12
-				is_free_or_tributary_trigger = yes
-				is_at_war = no
-				owns_core_province = 341			# Tunis
-				owns_core_province = 2473			# Susa
-				owns_core_province = 4566			# Kairwan
-				owns_core_province = 2454			# kef
-				owns_core_province = 2455			# Bizerte
-				owns_core_province = 126			# Malta
-				owns_core_province = 2986			# Caller
-				owns_core_province = 4735			# Arborea
-				owns_core_province = 127			# sasa
-				owns_core_province = 4560			# Ibiza
-				owns_core_province = 333			# Balares
-				owns_core_province = 4559			# Minorca
-				OR = {
-					AND = {
-						owns_core_province = 125			# Palermo
-						owns_core_province = 4736			# tripani
-						owns_core_province = 4737			# girgenti
-					}
-					AND = {
-						owns_core_province = 4546			# Malaga
-						owns_core_province = 226			# Gibraltar
-						owns_core_province = 223			# Granada
-						owns_core_province = 222			# Almeria
-					}
-				}
-			}
-			effect = {
-				341 = {	#Tunis
-					move_capital_effect = yes
-					change_province_name = Carthage
-				}
-				set_capital = 341 # Carthage
-				
-				hidden_effect = {
-					every_owned_province = {
-						limit = {
-							OR = {
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						OR = {
 							has_owner_culture = yes
 							area = tunisia_area
 							area = kef_area
@@ -115,50 +116,51 @@ country_decisions = {
 							area = djerba_area
 							area = tripolitania_area
 							area = naples_area
-							}
 						}
-						change_culture = phoenician
 					}
+					change_culture = phoenician
 				}
-
-				change_tag = CRG
-				set_ruler_culture = phoenician
-				set_heir_culture = phoenician
-				additional_missions_scripted_effect = yes
-				remove_non_electors_emperors_from_empire_effect = yes
-				if = {
-					limit = {
-						NOT = { government_rank = 3 }
-					}
-					set_government_rank = 3
-				}
-				add_prestige = 25
-				add_country_modifier = {
-					name = centralization_modifier
-					duration = 3650
-				}
-				add_dip_power = 200
-				if = {
-					limit = {
-						NOT = { primary_culture = phoenician }
-					}
-					change_primary_culture = phoenician
-				}
-				if = {
-					limit = {
-						NOT = { government = republic }
-						is_revolutionary = no
-					}
-					change_government_to_republic = yes 
-				}
-				if = {
-					limit = { is_revolutionary = no }
-					add_government_reform = shophet_republic
-				}
-
-				set_country_flag = formed_carthage_flag
-				country_event = { id = ideagroups.1 } #Swap Ideas
 			}
-			
+			set_ruler_culture = phoenician
+			set_heir_culture = phoenician
+			additional_missions_scripted_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 3 }
+				}
+				set_government_rank = 3
+			}
+			add_prestige = 25
+			add_country_modifier = {
+				name = centralization_modifier
+				duration = 3650
+			}
+			add_dip_power = 200
+			if = {
+				limit = {
+					NOT = { primary_culture = phoenician }
+				}
+				change_primary_culture = phoenician
+			}
+			if = {
+				limit = {
+					NOT = { government = republic }
+					is_revolutionary = no
+				}
+				change_government_to_republic = yes 
+			}
+			if = {
+				limit = { is_revolutionary = no }
+				add_government_reform = shophet_republic
+			}
+			set_country_flag = formed_carthage_flag
+			country_event = { id = ideagroups.1 } #Swap Ideas
+			341 = {
+				add_great_project = {
+					type = carthaginian_cothon
+					instant = yes
+				}
+			}
 		}
 	}
+}
