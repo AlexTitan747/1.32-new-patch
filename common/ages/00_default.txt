@@ -260,7 +260,7 @@ age_of_discovery = {
 				}
 			}
 			modifier = {
-				production_efficiency = 0.2
+				global_tax_modifier = 0.15
 				shock_damage_received = -0.1
 			}
 		}
@@ -270,7 +270,7 @@ age_of_discovery = {
 			}
 			modifier = {
 				infantry_shock = 0.2
-				shock_damage_received = -0.10
+				shock_damage = 0.1
 				is_janissary_modifier = yes
 			}
 		}
@@ -578,7 +578,7 @@ age_of_reformation = {
 		#}
 		ab_ref_eco_golden_era = {
 			allow = {
-				is_year = 1550
+				is_year = 1540
 			}
 			effect = {
 				add_country_modifier = {
@@ -590,10 +590,11 @@ age_of_reformation = {
 		ab_spain_tercio = {
 			allow = {
 				OR = {
+					tag = CAS
 					tag = SPA
 					tag = POR
 					tag = PBR
-					tag = CAS
+					tag = PEA
 				}
 			}
 			modifier = {
@@ -608,8 +609,9 @@ age_of_reformation = {
 		ab_mughal_artillery = {
 			allow = {
 				OR = {
-					tag = KUS
 					tag = AFG
+					tag = KUS
+					tag = PER
 				}
 			}
 			modifier = {
@@ -632,7 +634,7 @@ age_of_reformation = {
 				}
 			}
 			modifier = {
-				global_trade_goods_size_modifier = 0.25
+				global_trade_goods_size_modifier = 0.20
 			}
 			ai_will_do = {
 				factor = 100
@@ -641,10 +643,9 @@ age_of_reformation = {
 		ab_persia_reinforce = {
 			allow = {
 				OR = {
-					tag = VIJ
-					tag = CAK
-					tag = BNG
+					tag = MAD
 					tag = MER
+					tag = BNG
 					tag = TMK
 					tag = GJP
 					tag = MRY
@@ -662,7 +663,62 @@ age_of_reformation = {
 				factor = 100
 			}
 		}
-	
+		ab_german_religious_freedom = {
+			allow = {
+				OR = {
+					tag = BOH
+					tag = SWI
+					tag = HES
+					tag = BUR
+					hidden_trigger = {
+						OR = {
+							was_tag = BOH
+							was_tag = SWI
+							was_tag = HES
+							was_tag = BUR
+						}
+					}
+				}
+			}
+			modifier = {
+				idea_cost = -0.05
+				manpower_in_true_faith_provinces= 0.075
+			}
+		}
+		ab_mamluks_increased_mamluks = {
+			allow = {
+				OR = {
+					tag = MAM
+					was_tag = MAM
+				}
+			}
+			modifier = {
+				allowed_mamluks_fraction = 0.1
+			}
+		}
+		ab_crimea_increased_migration = {
+			allow = {
+				OR = {
+					tag = CRI
+					was_tag = CRI
+				}
+			}
+			modifier = {
+				development_cost = -0.075
+			}
+		}
+		ab_barbery_pirates = {
+			allow = {
+				OR = {
+					tag = MOR
+					was_tag = MOR
+				}
+			}
+			modifier = {
+				privateer_efficiency = 0.15
+				trade_efficiency = 0.05
+			}
+		}
 	}
 }
 
@@ -842,7 +898,7 @@ age_of_absolutism = {
 		#}
 		ab_abs_eco_golden_era = {
 			allow = {
-				is_year = 1625
+				is_year = 1610
 			}
 			effect = {
 				add_country_modifier = {
@@ -877,13 +933,7 @@ age_of_absolutism = {
 		}	
 		ab_sweden_manpower = {
 			allow = {
-				OR = {
-					tag = SWE
-					tag = SCA
-					tag = BLC
-					tag = DAN
-					tag = DNL
-				}
+				is_or_was_tag = { tag = DAN }
 			}
 			modifier = {
 				manpower_recovery_speed = 0.15
@@ -917,6 +967,54 @@ age_of_absolutism = {
 			}
 			ai_will_do = {
 				factor = 100
+			}
+		}
+		ab_hungarian_traditions = {
+			allow = {
+				OR = {
+					tag = HUN
+					was_tag = HUN
+				}
+			}
+			modifier = {
+				army_tradition_decay = -0.01
+				army_tradition_from_battle = 1.0
+			}
+		}
+		ab_butuan_manuever = {
+			allow = {
+				OR = {
+					tag = RZW
+					was_tag = RZW
+				}
+			}
+			modifier = {
+				movement_speed = 0.10
+				movement_speed_in_fleet_modifier = 1
+			}
+		}
+		ab_malian_banking = {
+			allow = {
+				OR = {
+					tag = MAL
+					was_tag = MAL
+				}
+			}
+			modifier = {
+				interest = -0.25
+				inflation_reduction = 0.05
+			}
+		}
+		ab_ethiopia_train_the_cawa = {
+			allow = {
+				OR = {
+					tag = ETH
+					was_tag = ETH
+				}
+			}
+			modifier = {
+				discipline = 0.05
+				is_cawa_modifier = yes
 			}
 		}
 	}
