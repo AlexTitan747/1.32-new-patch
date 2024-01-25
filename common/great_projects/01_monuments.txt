@@ -6,7 +6,7 @@ kasubi_tombs = {
 	build_cost = 0
 	can_be_moved = no
 	move_days_per_unit_distance = 10
-	starting_tier = 0
+	starting_tier = 1
 	type = monument
 
 	build_trigger = {}
@@ -15,9 +15,15 @@ kasubi_tombs = {
 
 	on_destroyed = {}
 
-	can_use_modifiers_trigger = {}
+	can_use_modifiers_trigger = {
+		province_is_or_accepts_culture = yes
+		culture_group = great_lakes_group
+	}
 
-	can_upgrade_trigger = {}
+	can_upgrade_trigger = {
+		province_is_or_accepts_culture = yes
+		culture_group = great_lakes_group
+	}
 
 	keep_trigger = {}
 
@@ -30,7 +36,9 @@ kasubi_tombs = {
 		}
 		province_modifiers = {}
 		area_modifier = {}
-		region_modifier = {}
+		region_modifier = {
+			local_friendly_movement_speed = 0.05
+		}
 		country_modifiers = {}
 		on_upgraded = {}
 	}
@@ -43,9 +51,15 @@ kasubi_tombs = {
 			factor = 1000
 		}
 		province_modifiers = {}
-		area_modifier = {}
-		region_modifier = {}
-		country_modifiers = {}
+		area_modifier = {
+			local_manpower_modifier = 0.1
+		}
+		region_modifier = {
+			local_friendly_movement_speed = 0.10
+		}
+		country_modifiers = {
+			war_exhaustion = -0.10
+		}
 		on_upgraded = {}
 	}
 
@@ -57,9 +71,16 @@ kasubi_tombs = {
 			factor = 2500
 		}
 		province_modifiers = {}
-		area_modifier = {}
-		region_modifier = {}
-		country_modifiers = {}
+		area_modifier = {
+			local_manpower_modifier = 0.25
+		}
+		region_modifier = {
+			local_friendly_movement_speed = 0.20
+		}
+		country_modifiers = {
+			reinforce_speed = 0.075
+			war_exhaustion = -0.2
+		}
 		on_upgraded = {}
 	}
 
@@ -71,9 +92,17 @@ kasubi_tombs = {
 			factor = 5000
 		}
 		province_modifiers = {}
-		area_modifier = {}
-		region_modifier = {}
-		country_modifiers = {}
+		area_modifier = {
+			local_manpower_modifier = 0.5
+		}
+		region_modifier = {
+			local_friendly_movement_speed = 0.30
+		}
+		country_modifiers = {
+			reinforce_speed = 0.15
+			war_exhaustion = -0.3
+			free_leader_pool = 1
+		}
 		on_upgraded = {}
 	}
 }
@@ -124,9 +153,13 @@ mount_nimba_nature_reserve = {
 		province_modifiers = {
 			local_development_cost = -0.1
 		}
-		area_modifier = {}
+		area_modifier = {
+			local_tax_modifier = 0.1
+		}
 		region_modifier = {}
-		country_modifiers = {}
+		country_modifiers = {
+			prestige = 0.1
+		}
 		on_upgraded = {}
 	}
 
@@ -140,10 +173,12 @@ mount_nimba_nature_reserve = {
 		province_modifiers = {}
 		area_modifier = {
 			local_development_cost = -0.1
+			local_tax_modifier = 0.2
 		}
 		region_modifier = {}
 		country_modifiers = {
 			global_prosperity_growth = 0.1
+			prestige = 0.25
 		}
 		on_upgraded = {}
 	}
@@ -158,239 +193,13 @@ mount_nimba_nature_reserve = {
 		province_modifiers = {}
 		area_modifier = {
 			local_development_cost = -0.2
+			local_tax_modifier = 0.33
 		}
 		region_modifier = {}
 		country_modifiers = {
-			global_prosperity_growth = 0.2
-		}
-		on_upgraded = {}
-	}
-}
-
-skala_du_port = {
-    start = 2469 #Dukkala                
-    date = 1162.01.01
-    time = { months = 0 }
-    build_cost = 0
-    can_be_moved = no
-    move_days_per_unit_distance = 10
-    starting_tier = 1
-    type = monument
-
-    build_trigger = {
-		owner = {
-			OR = {
-				tag = MOR
-				was_tag = MOR
-			}
-			mission_completed = tm_mor_colonial_ambition
-		}
-	}
-
-    on_built = {
-		owner = {
-			add_country_modifier = {
-				name = new_world_enthusiasm
-				duration = 3650
-			}
-		}
-	}
-
-    on_destroyed = {}
-
-    can_use_modifiers_trigger = {
-        owner = {
-			OR = {
-			  tag = MOR
-			  was_tag = MOR
-			}
-			mission_completed = tm_mor_colonial_ambition
-	  	}
-    }
-    
-
-    can_upgrade_trigger = {
-		owner = {
-      		OR = {
-				tag = MOR
-				was_tag = MOR
-		   	}
-		   	mission_completed = tm_mor_colonial_ambition
-		}
-    }
-
-    keep_trigger = {}
-
-    tier_0 = {
-        upgrade_time = {
-            months = 0
-        }
-        cost_to_upgrade = {
-            factor = 0
-        }
-        province_modifiers = {}
-        area_modifier = {}
-        country_modifiers = {}
-        on_upgraded = {}
-    }
-    
-    tier_1 = {
-        upgrade_time = {
-            months = 120
-        }
-        cost_to_upgrade = {
-            factor = 1000
-        }
-        province_modifiers = {}
-        area_modifier = {}
-        country_modifiers = {
-			colonists = 1
-			global_colonial_growth = 10
-		}
-        on_upgraded = {
-			owner = { if = { limit = { tag = MOR } set_country_flag = tm_skala_du_port_mor } }
-			owner = {
-			add_country_modifier = {
-					name = new_world_enthusiasm
-					duration = 3650
-				}
-			}
-		}
-    }
-
-    tier_2 = {
-        upgrade_time = {
-            months = 240
-        }
-        cost_to_upgrade = {
-            factor = 2500
-        }
-        province_modifiers = {}
-        area_modifier = {}
-        country_modifiers = {
-			colonists = 1
+			global_prosperity_growth = 0.25
+			prestige = 0.5
 			global_colonial_growth = 25
-			colonist_placement_chance = 0.01
-			range = 0.25
-		}
-        on_upgraded = {}
-    }
-
-    tier_3 = {
-        upgrade_time = {
-            months = 480
-        }
-        cost_to_upgrade = {
-            factor = 5000
-        }
-        province_modifiers = {}
-        area_modifier = {}
-        country_modifiers = {
-			colonists = 2
-			global_colonial_growth = 50
-			colonist_placement_chance = 0.05
-			range = 0.5
-			native_assimilation = 0.25
-		}
-        on_upgraded = {}
-    }
-}
-
-baluarte_de_la_bandera = {
-	start = 0 # Goes to 1751 Ceuta
-	date = 1444.01.01 # 1543
-	time = { months = 0	}
-	build_cost = 0
-	can_be_moved = no
-	move_days_per_unit_distance = 10
-	starting_tier = 1
-	type = monument
-
-	build_trigger = {
-		FROM = {
-			has_country_flag = tm_mor_can_build_baluarte_de_la_bandera
-		}
-	}
-
-	on_built = {}
-
-	on_destroyed = {}
-
-	can_use_modifiers_trigger = {
-		culture = moroccan
-		province_is_or_accepts_culture = yes
-	}
-
-	can_upgrade_trigger = {
-		culture = moroccan
-		province_is_or_accepts_culture = yes
-	}
-
-	keep_trigger = {}
-
-	tier_0 = {
-		upgrade_time = {
-			months = 0
-		}
-		cost_to_upgrade = {
-			factor = 0
-		}
-		province_modifiers = {}
-		area_modifier = {}
-		country_modifiers = {}
-		on_upgraded = {}
-	}
-
-	tier_1 = {
-		upgrade_time = {
-			months = 120
-		}
-		cost_to_upgrade = {
-			factor = 1000
-		}
-		province_modifiers = {
-			local_defensiveness = 0.1
-		}
-		area_modifier = {}
-		country_modifiers = {
-			fort_maintenance_modifier = -0.1
-		}
-		on_upgraded = {}
-	}
-
-	tier_2 = {
-		upgrade_time = {
-			months = 240
-		}
-		cost_to_upgrade = {
-			factor = 2500
-		}
-		province_modifiers = {
-			local_defensiveness = 0.2
-		}
-		area_modifier = {}
-		country_modifiers = {
-			garrison_size = 0.1
-			fort_maintenance_modifier = -0.2
-		}
-		on_upgraded = {}
-	}
-
-	tier_3 = {
-		upgrade_time = {
-			months = 480
-		}
-		cost_to_upgrade = {
-			factor = 5000
-		}
-		province_modifiers = {
-			local_defensiveness = 0.3
-		}
-		area_modifier = {}
-		country_modifiers = {
-			garrison_size = 0.2
-			fort_maintenance_modifier = -0.25
-			discipline = 0.025
 		}
 		on_upgraded = {}
 	}
@@ -754,7 +563,7 @@ royal_palace_abomey = {
 			legitimacy = 0.25
 			republican_tradition = 0.1
 			devotion = 0.25
-			centralize_state_cost = -0.1
+			centralize_state_cost = -0.25
 		}
 		on_upgraded = {}
 	}
@@ -776,7 +585,7 @@ royal_palace_abomey = {
 			republican_tradition = 0.25
 			devotion = 0.5
 			centralize_state_cost = -0.25
-			envoy_travel_time = -0.1
+			envoy_travel_time = -0.5
 		}
 		on_upgraded = {}
 	}
@@ -797,8 +606,9 @@ royal_palace_abomey = {
 			legitimacy = 1.0
 			republican_tradition = 0.5
 			devotion = 1.0
-			centralize_state_cost = -0.5
+			centralize_state_cost = -0.75
 			envoy_travel_time = -0.2
+			free_adm_policy = 1
 			free_dip_policy = 1
 		}
 		on_upgraded = {}
@@ -1532,7 +1342,7 @@ obelisk_of_axum = {
 		}
 		province_modifiers = {
 			local_tax_modifier = 0.25
-			local_development_cost = -0.10
+			local_development_cost = -0.20
 		}
 		area_modifier = {}
 		region_modifier = {
@@ -1553,10 +1363,10 @@ obelisk_of_axum = {
 		}
 		province_modifiers = {
 			local_tax_modifier = 0.5
-			local_development_cost = -0.20
+			local_development_cost = -0.10
 		}
 		area_modifier = {
-			local_development_cost = -0.025
+			local_development_cost = -0.10
 		}
 		region_modifier = {
 			local_friendly_movement_speed = 0.15
@@ -1578,10 +1388,10 @@ obelisk_of_axum = {
 		}
 		province_modifiers = {
 			local_tax_modifier = 1.0
-			local_development_cost = -0.30
+			local_development_cost = -0.10
 		}
 		area_modifier = {
-			local_development_cost = -0.05	
+			local_development_cost = -0.25
 		}
 		region_modifier = {
 			local_friendly_movement_speed = 0.25
@@ -1673,7 +1483,7 @@ lighthouse_of_alexandria = {
 		}
 		area_modifier = {}
 		country_modifiers = {
-			global_ship_trade_power = 0.1
+			global_ship_trade_power = 0.15
 		}
 		on_upgraded = {}
 	}
@@ -1693,7 +1503,7 @@ lighthouse_of_alexandria = {
 			local_own_coast_naval_combat_bonus = 1
 		}
 		country_modifiers = {
-			global_ship_trade_power = 0.25
+			global_ship_trade_power = 0.33
 		}
 		on_upgraded = {}
 	}
@@ -1777,6 +1587,7 @@ al_qarawiyyin = {
 		}
 		country_modifiers = {
 			innovativeness_gain = 0.4
+			idea_cost = -0.025
 		}
 		on_upgraded = {}
 	}
@@ -3581,7 +3392,7 @@ mbanza_kongo = {
 			local_friendly_movement_speed = 0.10
 		}
 		country_modifiers = {
-			prestige = 0.5
+			prestige = 0.1
 		}
 		on_upgraded = {
 		}
@@ -3603,7 +3414,7 @@ mbanza_kongo = {
 			local_friendly_movement_speed = 0.20
 		}
 		country_modifiers = {
-			prestige = 0.75
+			prestige = 0.25
 			land_morale = 0.025
 			army_tradition = 0.1
 		}
@@ -3627,7 +3438,7 @@ mbanza_kongo = {
 			local_friendly_movement_speed = 0.30
 		}
 		country_modifiers = {
-			prestige = 1
+			prestige = 0.5
 			land_morale = 0.05
 			army_tradition = 0.25
 		}
@@ -11692,7 +11503,7 @@ khami_ruins = {
 
 		#what modifiers are added to the country when we have this project here on this tier
 		country_modifiers = {
-			technology_cost = -0.05
+			technology_cost = -0.03
 			fabricate_claims_cost = -0.2
 		}
 
@@ -14418,8 +14229,8 @@ holy_city_jerusalem = {
 		conditional_modifier = {
 			trigger = { owner = { tag = BTI mission_completed = tm_eth_semien_4 } }
 			modifier = {
-				land_morale_constant = 0.2
-				morale_damage_received = -0.05
+				land_morale_constant = 0.25
+				morale_damage_received = -0.10
 			}
 		}
 
@@ -23952,7 +23763,7 @@ al_azhar_university = {
 		}
 		country_modifiers = {
 			advisor_pool = 2
-			idea_cost = -0.05
+			idea_cost = -0.075
 			yearly_government_power = 1
 		}
 		on_upgraded = {
