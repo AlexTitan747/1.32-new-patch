@@ -66,7 +66,6 @@ butua_technology = {
 	}
 }
 
-
 #Butua South Africa (Continued)
 butua_south_afroia_continued = {
 	slot = 1
@@ -115,7 +114,7 @@ butua_south_afroia_continued = {
 					name = "butua_cape_trade"
 					duration = -1
 				}
-				add_base_tax = 2
+				add_base_tax = 3
 				add_base_production = 4
 				add_base_manpower = 5
 			}
@@ -455,7 +454,7 @@ butua_religion_sunni = { #Sunni Missions
 	has_country_shield = yes
 
 	butua_religion_sunni_1 = {
-		icon = mal_more_tolerance_to_heathens
+		icon = mission_mal_more_tolerance_to_heathens
 		required_missions = { butua_control_the_church }
 		required_missions = { butua_choose_religion }
 		provinces_to_highlight = { }
@@ -497,7 +496,7 @@ butua_religion_sunni = { #Sunni Missions
 	}
 
 	butua_religion_sunni_2 = {
-		icon = zim_strong_rulership
+		icon = mission_zim_strong_rulership
 		required_missions = { butua_religion_sunni_1 }
 		provinces_to_highlight = { }
 
@@ -603,10 +602,7 @@ butua_eco_development_1 = {
 		required_missions = { butua_mines_of_butua }
 
 		provinces_to_highlight = {
-			OR = {
-				superregion = africa_superregion
-				superregion = southern_africa_superregion
-			}
+			superregion = southern_africa_superregion
 			trade_goods = gold
 		}
 
@@ -721,6 +717,7 @@ butua_eco_development_1 = {
         }
 	}
 }
+
 
 #Upgrading City Of Khami
 buta_monument = {
@@ -1064,7 +1061,7 @@ butua_empire_of_sa = {
 		
 		effect = {
 			add_country_modifier = {
-				name = "butua_master_of_africa"
+				name = butua_master_of_africa_modifier
 				duration = -1
 			}
 		}       
@@ -1234,10 +1231,28 @@ butua_eco_development_2 = {
 	}
 	has_country_shield = yes
 
-	butua_mines_of_butua_3 = {
-		icon = mission_kon_conquer_lub
+	butua_new_mines_of_butua = {
+		icon = mission_kon_anzikus_copper
 		position = 12
 		required_missions = { butua_mines_of_butua }
+
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+			
+		}
+
+		effect = {
+			
+        }
+	}
+
+	butua_mines_of_butua_3 = {
+		icon = mission_kon_conquer_lub
+		position = 13
+		required_missions = { butua_new_mines_of_butua }
 
 		provinces_to_highlight = {
 			OR = {
@@ -1267,6 +1282,7 @@ butua_eco_development_2 = {
 				}
 				has_production_building_trigger = yes
 				has_manufactory = yes
+				base_production = 8
 			}
 		}
 
@@ -1289,6 +1305,7 @@ butua_eco_development_2 = {
         }
 	}
 }
+
 
 #Integrating Mutapa
 butua_integration = {
@@ -1563,6 +1580,7 @@ butua_into_lakes = {
 	}
 }
 
+#Ally or kill path for Eth
 butua_eth_direction_slot = {
 	slot = 3
 	generic = no
@@ -1711,7 +1729,7 @@ butua_horn_place_holder = {
 		}
 
 		effect = {
-			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_ally
+			custom_tooltip = tm_mal_eth_dip_friendly_choice_reward
 			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 			if = {
 				limit = {
@@ -1736,7 +1754,7 @@ butua_horn_place_holder = {
 				custom_tooltip = tm_eth_rzw_build_road_2_effect_tt
 			}
 
-			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_conq
+			custom_tooltip = tm_mal_eth_dip_hostile_choice_reward
 			tooltip = {
 				hadiya_area = {
 					limit = {
@@ -1800,7 +1818,7 @@ butua_horn_place_holder = {
 		}
 
 		effect = {
-			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_ally
+			custom_tooltip = tm_mal_eth_dip_friendly_choice_reward
 			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 			if = {
 				limit = {
@@ -1838,7 +1856,7 @@ butua_horn_place_holder = {
 				}
 				custom_tooltip = tm_ally_has_effects_too
 			}
-			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_conq
+			custom_tooltip = tm_mal_eth_dip_hostile_choice_reward
 			tooltip = {
 				horn_of_africa_region = {
 					limit = {
@@ -1867,7 +1885,7 @@ butua_horn_place_holder = {
 		}
 
 		effect = {
-			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_ally
+			custom_tooltip = tm_mal_eth_dip_friendly_choice_reward
 			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 			if = {
 				limit = {
@@ -1906,7 +1924,7 @@ butua_horn_place_holder = {
 				}
 				custom_tooltip = tm_ally_has_effects_too
 			}
-			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_conq
+			custom_tooltip = tm_mal_eth_dip_hostile_choice_reward
 			tooltip = {
 				add_stability_or_adm_power = yes
 				add_prestige_or_monarch_power = { amount = 50 }
@@ -1928,7 +1946,7 @@ butua_horn_place_holder = {
 		}
 
 		effect = {
-			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_ally
+			custom_tooltip = tm_mal_eth_dip_friendly_choice_reward
 			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 			if = {
 				limit = {
@@ -1957,7 +1975,7 @@ butua_horn_place_holder = {
 			tooltip = {
 				custom_tooltip = butua_ally_3_tt
 			}
-			custom_tooltip = butua_horn_place_holder_mission_effect_tooltip_conq
+			custom_tooltip = tm_mal_eth_dip_hostile_choice_reward
 			tooltip = {
 				add_country_modifier = {
 					name = butua_legacy_cawa
@@ -1987,6 +2005,33 @@ butua_friendly_eth = {
 		icon = mission_pue_chaco_roads
 		required_missions = { butua_eth_direction }
 		position = 7
+		provinces_to_highlight = {
+			province_id = 1224
+			province_id = 1214
+			province_id = 2791
+			province_id = 2761
+			province_id = 1210
+			province_id = 2779
+			province_id = 2781
+			province_id = 2777
+			province_id = 2774
+			province_id = 2796
+			province_id = 1204
+			province_id = 1203
+			province_id = 1202
+			province_id = 1200
+			province_id = 1199
+			province_id = 1197
+			province_id = 1196
+			province_id = 1198
+			province_id = 4036
+			province_id = 4037
+			province_id = 4040
+			province_id = 4039
+			province_id = 1191
+			province_id = 1188
+			province_id = 1185
+		}
 
 		trigger = {
 			event_target:ethiopia_event_target = {
@@ -2436,7 +2481,7 @@ butua_fight_eth_alone = {
 	has_country_shield = yes
 
 	butua_conquer_eth_path_1 = {
-		icon = test
+		icon = mission_mal_fighting_musa
 		required_missions = { butua_eth_direction }
 		position = 7
 
@@ -2448,7 +2493,6 @@ butua_fight_eth_alone = {
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				value = 20
-
 				region = horn_of_africa_region
 			}
 		}
@@ -2500,7 +2544,7 @@ butua_fight_eth_alone = {
 	}
 
 	butua_conquer_eth_path_2 = {
-		icon = test
+		icon = befriend_ethiopia
 		required_missions = { butua_conquer_eth_path_1 }
 
 		provinces_to_highlight = {
@@ -2524,11 +2568,20 @@ butua_fight_eth_alone = {
 				}
 				add_permanent_claim = ROOT
 			}
+			add_prestige_or_monarch_power = { amount = 35 }
+			add_adm_power = 150
+			horn_of_africa_region = {
+				limit = {
+					country_or_non_sovereign_subject_holds = ROOT
+				}
+				add_nationalism = -5
+				add_devastation = -25
+			}
 		}
 	}
 
 	butua_conquer_eth_path_3 = {
-		icon = test
+		icon = mam_ethiopia
 		required_missions = { butua_conquer_eth_path_2 }
 
 		provinces_to_highlight = {
@@ -2552,11 +2605,14 @@ butua_fight_eth_alone = {
 				amount = 10
 			}
 			custom_tooltip = butua_conquest_of_eth_pp_tt
+			add_adm_power = 75
+			add_dip_power = 75
+			add_mil_power = 75
 		}
 	}
 
 	butua_conquer_eth_path_4 = {
-		icon = test
+		icon = mission_son_military_expertise
 		required_missions = { butua_conquer_eth_path_3 }
 
 		provinces_to_highlight = {
@@ -2581,6 +2637,220 @@ butua_fight_eth_alone = {
 		}
 	}
 }
+
+# Colonialism Placeholders
+butua_placeholder_for_future_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		OR = {
+			tag = RZW
+			tag = ZBW
+			tag = ZUL
+		}
+		NOT = { has_country_flag = butua_india_choice }
+		NOT = { has_country_flag = butua_china_choice }
+		NOT = { has_country_flag = butua_indonesia_choice }
+	}
+	has_country_shield = yes
+
+	butua_future_direction_placeholder3_1 = {
+		icon = mission_locked_mission
+		required_missions = { butua_future_direction_placeholder2_5 }
+		position = 11
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = butua_choose_future_direction_mission_tooltip
+				always = no
+			}
+		}
+
+		effect = {
+			custom_tooltip = butua_unlock_rest_of_tree_tooltip_effect
+        }
+	}
+}
+
+butua_indonesia_tertiary_branch = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		OR = {
+			tag = RZW
+			tag = ZBW
+			tag = ZUL
+		}
+		has_country_flag = butua_indonesia_choice
+	}
+	has_country_shield = yes
+
+	
+	butua_indonesia_cloves = {
+		icon = test
+		required_missions = { butua_spice_islands }
+		position = 11
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 648
+				province_id = 649
+				province_id = 650
+			}
+		}
+
+		trigger = {
+			648 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_production = 10
+				has_production_building_trigger = yes
+				has_manufactory = yes
+			}
+			649 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_production = 10
+				has_production_building_trigger = yes
+				has_manufactory = yes
+			}
+			650 = {
+				country_or_non_sovereign_subject_holds = ROOT
+				base_production = 10
+				has_production_building_trigger = yes
+				has_manufactory = yes
+			}
+		}
+
+		effect = {
+			649 = {
+				change_trade_goods = cloves
+			}
+			648 = {
+				change_trade_goods = cloves
+			}
+			650 = {
+				change_trade_goods = cloves
+			}
+        }	
+	}
+}
+
+butua_eco_development_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		OR = {
+			tag = RZW
+			tag = ZBW
+			tag = ZUL
+		}
+	}
+	has_country_shield = yes
+
+	butua_expand_elephant_hunting = {
+		icon = mission_hills_of_gondwana
+		required_missions = { }
+		position = 12
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			trade_goods = ivory
+			NOT = { has_production_building_trigger = yes }
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 10
+				trade_goods = ivory
+				has_production_building_trigger = yes
+			}
+		}
+		
+		effect = {
+			custom_tooltip = tm_every_province_meets_req_gains_mission
+			tooltip = {
+				add_base_production = 3
+			}
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						trade_goods = ivory
+						has_production_building_trigger = yes
+					}
+					add_base_production = 3
+				}
+			}
+		}
+	}
+
+	butua_expand_elephant_hunting_2 = {
+		icon = seize_ceylon
+		required_missions = { butua_expand_elephant_hunting }
+		position = 13
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			trade_goods = ivory
+			OR = {
+				NOT = { base_production = 8 }
+				has_manufactory = no
+				has_production_building_trigger = no
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 15
+				trade_goods = ivory
+				base_production = 8
+				has_manufactory = yes
+				has_production_building_trigger = yes
+			}
+		}
+		
+		effect = {
+			add_treasury = 1000
+			change_price = {
+				trade_goods = ivory
+				key = RZW_ivory
+				value = 0.33
+				duration = 9475
+			}
+		}
+	}
+}
+
+rzw_nation_formable_3 = {
+	slot = 3
+	generic = no
+	ai = yes
+	potential = {
+		tag = RZW
+	}
+	has_country_shield = yes
+
+	rzw_formable_placeholder = {
+		icon = mission_locked_mission
+		required_missions = { }
+		position = 14
+
+		provinces_to_highlight = {}
+
+		trigger = {
+			OR = {
+				tag = ZUL
+				tag = ZBW
+			}
+		}
+		
+		effect = {
+			custom_tooltip = tm_eth_formable_mission_tt
+		}
+	}
+}
+
 
 #Gives claims and direction for expansion
 butua_expansion = {
@@ -2681,7 +2951,6 @@ butua_expansion = {
 		}
 
 		effect = {
-			custom_tooltip = tm_rzw_can_use_kilwa_city
 			mombasa_area = {
 				limit = {
 					NOT = { is_core = ROOT }
@@ -2817,6 +3086,550 @@ butua_expansion = {
         }
 	}
 }
+
+butua_placeholder_for_future_2 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		OR = {
+			tag = RZW
+			tag = ZBW
+			tag = ZUL
+		}
+		NOT = { has_country_flag = butua_india_choice }
+		NOT = { has_country_flag = butua_china_choice }
+		NOT = { has_country_flag = butua_indonesia_choice }
+	}
+	has_country_shield = yes
+
+	butua_future_direction_placeholder2_1 = {
+		icon = mission_locked_mission
+		required_missions = { butua_future_direction_placeholder }
+		position = 6
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = butua_choose_future_direction_mission_tooltip
+				always = no
+			}
+		}
+
+		effect = {
+			custom_tooltip = butua_unlock_rest_of_tree_tooltip_effect
+        }
+	}
+
+	butua_future_direction_placeholder2_2 = {
+		icon = mission_locked_mission
+		required_missions = { butua_future_direction_placeholder2_1 }
+		position = 7
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = butua_choose_future_direction_mission_tooltip
+				always = no
+			}
+		}
+
+		effect = {
+			custom_tooltip = butua_unlock_rest_of_tree_tooltip_effect
+        }
+	}
+
+	butua_future_direction_placeholder2_3 = {
+		icon = mission_locked_mission
+		required_missions = { butua_future_direction_placeholder2_2 }
+		position = 8
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = butua_choose_future_direction_mission_tooltip
+				always = no
+			}
+		}
+
+		effect = {
+			custom_tooltip = butua_unlock_rest_of_tree_tooltip_effect
+        }
+	}
+
+	butua_future_direction_placeholder2_4 = {
+		icon = mission_locked_mission
+		required_missions = { butua_future_direction_placeholder2_3 }
+		position = 9
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = butua_choose_future_direction_mission_tooltip
+				always = no
+			}
+		}
+
+		effect = {
+			custom_tooltip = butua_unlock_rest_of_tree_tooltip_effect
+        }
+	}
+
+	butua_future_direction_placeholder2_5 = {
+		icon = mission_locked_mission
+		required_missions = { butua_future_direction_placeholder2_4 }
+		position = 10
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = butua_choose_future_direction_mission_tooltip
+				always = no
+			}
+		}
+
+		effect = {
+			custom_tooltip = butua_unlock_rest_of_tree_tooltip_effect
+        }	
+	}
+
+	butua_future_direction_placeholder2_6 = {
+		icon = mission_locked_mission
+		required_missions = { butua_future_direction_placeholder2_5 }
+		position = 11
+
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = butua_choose_future_direction_mission_tooltip
+				always = no
+			}
+		}
+
+		effect = {
+			custom_tooltip = butua_unlock_rest_of_tree_tooltip_effect
+        }	
+	}
+}
+
+butua_indonesia_secondary_branch = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		OR = {
+			tag = RZW
+			tag = ZBW
+			tag = ZUL
+		}
+		has_country_flag = butua_indonesia_choice
+	}
+	has_country_shield = yes
+
+	butua_colonial_office = {
+		icon = test
+		required_missions = { butua_indonesia_1 }
+		position = 6
+
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+			OR = {
+				colonial_office = 1
+				any_owned_province = {
+					has_construction = colonial_office
+				}
+				AND = {
+					treasury = 1000
+					num_of_owned_provinces_with = {
+						value = 5
+						continent = asia
+					}
+				}
+			}
+		}
+
+		effect = {
+			custom_tooltip = tm_butua_has_colonial_office
+			if = { 
+				limit = { 
+					OR = {
+						colonial_office = 1
+						any_owned_province = {
+							has_construction = colonial_office
+						}
+					}
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				define_advisor = {
+					type = navigator
+					skill = 3
+					culture = ROOT
+					religion = ROOT
+					cost_multiplier = 0.2
+				}
+				add_country_modifier = {
+					name = butua_starting_colonisation
+					duration = 5475
+				}
+			}
+
+			custom_tooltip = mission_alternatively_tt
+			custom_tooltip = tm_butua_not_has_colonial_office
+			if = { 
+				limit = { 
+					NOt = {
+						OR = {
+							colonial_office = 1
+							any_owned_province = {
+								has_construction = colonial_office
+							}
+						}
+					}
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				capital_scope = {
+					add_building_construction = {
+						building = colonial_office
+						speed = 0.5
+						cost = 0.5
+					}
+					add_permanent_province_modifier = {
+						name = tm_butua_extra_building_slot
+						duration = -1
+					}
+				}
+			}
+
+			hidden_effect = {
+				if = {
+					limit = {
+						OR = {
+							colonial_office = 1
+							any_owned_province = {
+								has_construction = colonial_office
+							}
+						}
+					}
+					define_advisor = {
+						type = navigator
+						skill = 3
+						culture = ROOT
+						religion = ROOT
+						cost_multiplier = 0.2
+					}
+					add_country_modifier = {
+						name = butua_starting_colonisation
+						duration = 5475
+					}
+				}
+				else = {
+					capital_scope = {
+						add_building_construction = {
+							building = colonial_office
+							speed = 0.5
+							cost = 0.5
+						}
+						add_permanent_province_modifier = {
+							name = tm_butua_extra_building_slot
+							duration = -1
+						}
+					}
+				}
+			}
+        }	
+	}
+
+	butua_sumatra = {
+		icon = test
+		required_missions = { butua_indonesia_3 }
+		position = 8
+
+		provinces_to_highlight = {
+			OR = {
+				area = south_sumatra_area
+				area = minangkabau_area
+				area = batak_area
+				area = north_sumatra_area
+				area = central_sumatra_area
+				area = jambi_area
+			}
+		}
+
+		trigger = {
+			any_subject_country = {
+				capital_scope = {
+					colonial_region = colonial_indonesia
+				}
+				development_in_provinces = {
+					value = 400
+					OR = {
+						area = south_sumatra_area
+						area = minangkabau_area
+						area = batak_area
+						area = north_sumatra_area
+						area = central_sumatra_area
+						area = jambi_area
+					}
+				}
+			}
+		}
+
+		effect = {
+
+        }	
+	}
+
+	butua_java = {
+		icon = test
+		required_missions = { butua_indonesia_4 }
+		position = 9
+
+		provinces_to_highlight = {
+			OR = {
+				area = banten_area
+				area = west_java_area
+				area = central_java_area
+				area = surabaya_area
+				area = east_java_area
+				area = lesser_sunda_islands_area
+			}
+		}
+
+		trigger = {
+			any_subject_country = {
+				capital_scope = {
+					colonial_region = colonial_indonesia
+				}
+				development_in_provinces = {
+					value = 400
+					OR = {
+						area = banten_area
+						area = west_java_area
+						area = central_java_area
+						area = surabaya_area
+						area = east_java_area
+						area = lesser_sunda_islands_area
+					}
+				}
+			}
+		}
+
+		effect = {
+
+        }	
+	}
+
+	butua_spice_islands = {
+		icon = test
+		required_missions = { butua_indonesia_5 }
+		position = 10
+		provinces_to_highlight = {
+			OR  = {
+				area = south_sulawesi_area
+				area = makassar_area
+				area = sulawesi_area
+				area = molluca_area
+				area = spice_islands_area
+			}
+		}
+
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 15
+				OR = {
+					area = south_sulawesi_area
+					area = makassar_area
+					area = sulawesi_area
+					area = molluca_area
+					area = spice_islands_area
+				}
+				OR = {
+					has_trade_building_trigger = yes
+					has_production_building_trigger = yes
+					has_manufactory = yes
+				}
+			}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 5
+				OR = {
+					area = south_sulawesi_area
+					area = makassar_area
+					area = sulawesi_area
+					area = molluca_area
+					area = spice_islands_area
+				}
+				development = 15
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_butua_spice_trade_modifier
+				duration = 5475
+			}
+			change_price = {
+				trade_goods = spices
+				key = tm_butua_spice_trade
+				value = 1.5
+				duration = 3650
+			}
+        }
+	}
+	
+	butua_indonesia_reward = {
+		icon = test
+		required_missions = { butua_spice_islands }
+		required_missions = { butua_indonesia_6 }
+		position = 11
+
+		trigger = {
+			2699 = {
+				trade_share = {
+					country = ROOT
+					share = 75
+				}
+			}
+			1357 = {
+				trade_share = {
+					country = ROOT
+					share = 75
+				}
+			}
+			1361 = {
+				trade_share = {
+					country = ROOT
+					share = 50
+				}
+				trade_node_value = 40
+			}
+			OR = {
+				trade_income_percentage = 0.33
+				monthly_income = 400
+			}
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = butua_indonesia_reward
+				duration = -1
+			}
+        }	
+	}
+}
+
+butua_eco_development_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		OR = {
+			tag = RZW
+			tag = ZBW
+			tag = ZUL
+		}
+	}
+	has_country_shield = yes
+
+	butua_improve_farming_industries = {
+		icon = prosperity_for_all
+		required_missions = { }
+		position = 12
+
+		provinces_to_highlight = {
+			OR = {
+				trade_goods = citrus
+				trade_goods = livestock
+				trade_goods = cheese
+				trade_goods = grain
+				trade_goods = ale
+				trade_goods = rice
+				trade_goods = banana
+				trade_goods = horses
+			}
+			superregion = southern_africa_superregion
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 10
+				has_production_building = yes
+				has_manpower_building_trigger = yes
+				OR = {
+					trade_goods = citrus
+					trade_goods = livestock
+					trade_goods = cheese
+					trade_goods = grain
+					trade_goods = ale
+					trade_goods = rice
+					trade_goods = banana
+					trade_goods = horses
+				}
+			}
+		}
+		
+		effect = {
+			
+		}
+	}
+
+	butua_improve_irrigation_works = {
+		icon = mission_pue_irrigation_cannals
+		required_missions = { butua_improve_farming_industries }
+		position = 13
+
+		provinces_to_highlight = {
+			
+		}
+
+		trigger = {
+			
+		}
+		
+		effect = {
+			
+		}
+	}
+
+	butua_industrialising = {
+		icon = saxon_manufacturing
+		required_missions = { butua_expand_elephant_hunting_2 butua_improve_irrigation_works butua_freeing_slaves }
+		position = 14
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			OR = {
+				has_manufactory = no
+				prov_can_have_developed_good = yes
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 25
+				has_manufactory = yes
+			}
+			num_of_owned_provinces_with = {
+				value = 10
+				prov_has_developed_good = yes
+			}
+			OR = {
+				innovativeness = 30
+				has_better_tech_than_westerns = yes
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = tm_butua_african_industrialisation
+				duration = 5475
+			}
+		}
+	}
+}
+
 
 #Butua Coast and Beyond
 butua_expansion_2 = {
@@ -2998,161 +3811,20 @@ butua_expansion_2 = {
 			add_accepted_culture_or_dip_power = {
 				culture = madagasque
 				free = yes
-			} 
+			}
+			madagascar_highlands_area = {
+				add_base_manpower = 1
+			}
+			sakalava_area = {
+				add_base_manpower = 1
+			}
+			southern_madagascar = {
+				add_base_production = 1
+			}
+			betsimasaraka_area = {
+				add_base_production = 1
+			}
         }
-	}
-}
-
-butua_placeholder_for_future_3 = {
-	slot = 3
-	generic = no
-	ai = yes
-	potential = {
-		OR = {
-			tag = RZW
-			tag = ZBW
-			tag = ZUL
-		}
-		NOT = { has_country_flag = butua_india_choice }
-		NOT = { has_country_flag = butua_china_choice }
-		NOT = { has_country_flag = butua_indonesia_choice }
-	}
-	has_country_shield = yes
-
-	butua_future_direction_placeholder3_1 = {
-		icon = mission_locked_mission
-		required_missions = { butua_future_direction_placeholder2_5 }
-		position = 11
-
-		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = butua_choose_future_direction_mission_tooltip
-				always = no
-			}
-		}
-
-		effect = {
-			custom_tooltip = butua_unlock_rest_of_tree_tooltip_effect
-        }
-	}
-}
-
-butua_placeholder_for_future_2 = {
-	slot = 4
-	generic = no
-	ai = yes
-	potential = {
-		OR = {
-			tag = RZW
-			tag = ZBW
-			tag = ZUL
-		}
-		NOT = { has_country_flag = butua_india_choice }
-		NOT = { has_country_flag = butua_china_choice }
-		NOT = { has_country_flag = butua_indonesia_choice }
-	}
-	has_country_shield = yes
-
-	butua_future_direction_placeholder2_1 = {
-		icon = mission_locked_mission
-		required_missions = { butua_future_direction_placeholder }
-		position = 6
-
-		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = butua_choose_future_direction_mission_tooltip
-				always = no
-			}
-		}
-
-		effect = {
-			custom_tooltip = butua_unlock_rest_of_tree_tooltip_effect
-        }
-	}
-
-	butua_future_direction_placeholder2_2 = {
-		icon = mission_locked_mission
-		required_missions = { butua_future_direction_placeholder2_1 }
-		position = 7
-
-		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = butua_choose_future_direction_mission_tooltip
-				always = no
-			}
-		}
-
-		effect = {
-			custom_tooltip = butua_unlock_rest_of_tree_tooltip_effect
-        }
-	}
-
-	butua_future_direction_placeholder2_3 = {
-		icon = mission_locked_mission
-		required_missions = { butua_future_direction_placeholder2_2 }
-		position = 8
-
-		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = butua_choose_future_direction_mission_tooltip
-				always = no
-			}
-		}
-
-		effect = {
-			custom_tooltip = butua_unlock_rest_of_tree_tooltip_effect
-        }
-	}
-
-	butua_future_direction_placeholder2_4 = {
-		icon = mission_locked_mission
-		required_missions = { butua_future_direction_placeholder2_3 }
-		position = 9
-
-		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = butua_choose_future_direction_mission_tooltip
-				always = no
-			}
-		}
-
-		effect = {
-			custom_tooltip = butua_unlock_rest_of_tree_tooltip_effect
-        }
-	}
-
-	butua_future_direction_placeholder2_5 = {
-		icon = mission_locked_mission
-		required_missions = { butua_future_direction_placeholder2_4 }
-		position = 10
-
-		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = butua_choose_future_direction_mission_tooltip
-				always = no
-			}
-		}
-
-		effect = {
-			custom_tooltip = butua_unlock_rest_of_tree_tooltip_effect
-        }	
-	}
-
-	butua_future_direction_placeholder2_6 = {
-		icon = mission_locked_mission
-		required_missions = { butua_future_direction_placeholder2_5 }
-		position = 11
-
-		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = butua_choose_future_direction_mission_tooltip
-				always = no
-			}
-		}
-
-		effect = {
-			custom_tooltip = butua_unlock_rest_of_tree_tooltip_effect
-        }	
 	}
 }
 
@@ -3294,7 +3966,7 @@ butua_placeholder_for_future = {
 }
 
 #Indian Focus
-butua_india = {
+butua_india_primary = {
 	slot = 5
 	generic = no
 	ai = yes
@@ -3515,7 +4187,7 @@ butua_india = {
 }
 
 #China Focus
-butua_china = {
+butua_china_primary = {
 	slot = 5
 	generic = no
 	ai = yes
@@ -3668,7 +4340,7 @@ butua_china = {
 }
 
 #Indonesia Focus
-butua_indonesia = {
+butua_indonesia_primary = {
 	slot = 5
 	generic = no
 	ai = yes
@@ -4052,385 +4724,8 @@ butua_indonesia = {
 	}
 }
 
-butua_indonesia_secondary_branch = {
-	slot = 4
-	generic = no
-	ai = yes
-	potential = {
-		OR = {
-			tag = RZW
-			tag = ZBW
-			tag = ZUL
-		}
-		has_country_flag = butua_indonesia_choice
-	}
-	has_country_shield = yes
-
-	butua_colonial_office = {
-		icon = test
-		required_missions = { butua_indonesia_1 }
-		position = 6
-
-		provinces_to_highlight = {
-			
-		}
-
-		trigger = {
-			OR = {
-				colonial_office = 1
-				any_owned_province = {
-					has_construction = colonial_office
-				}
-				AND = {
-					treasury = 1000
-					num_of_owned_provinces_with = {
-						value = 5
-						continent = asia
-					}
-				}
-			}
-		}
-
-		effect = {
-			custom_tooltip = tm_butua_has_colonial_office
-			if = { 
-				limit = { 
-					OR = {
-						colonial_office = 1
-						any_owned_province = {
-							has_construction = colonial_office
-						}
-					}
-				}
-				custom_tooltip = BONUS_REWARD_YES
-			}
-			else = { custom_tooltip = BONUS_REWARD_NO }
-			tooltip = {
-				define_advisor = {
-					type = navigator
-					skill = 3
-					culture = ROOT
-					religion = ROOT
-					cost_multiplier = 0.2
-				}
-				add_country_modifier = {
-					name = butua_starting_colonisation
-					duration = 5475
-				}
-			}
-
-			custom_tooltip = mission_alternatively_tt
-			custom_tooltip = tm_butua_not_has_colonial_office
-			if = { 
-				limit = { 
-					NOt = {
-						OR = {
-							colonial_office = 1
-							any_owned_province = {
-								has_construction = colonial_office
-							}
-						}
-					}
-				}
-				custom_tooltip = BONUS_REWARD_YES
-			}
-			else = { custom_tooltip = BONUS_REWARD_NO }
-			tooltip = {
-				capital_scope = {
-					add_building_construction = {
-						building = colonial_office
-						speed = 0.5
-						cost = 0.5
-					}
-					add_permanent_province_modifier = {
-						name = tm_butua_extra_building_slot
-						duration = -1
-					}
-				}
-			}
-
-			hidden_effect = {
-				if = {
-					limit = {
-						OR = {
-							colonial_office = 1
-							any_owned_province = {
-								has_construction = colonial_office
-							}
-						}
-					}
-					define_advisor = {
-						type = navigator
-						skill = 3
-						culture = ROOT
-						religion = ROOT
-						cost_multiplier = 0.2
-					}
-					add_country_modifier = {
-						name = butua_starting_colonisation
-						duration = 5475
-					}
-				}
-				else = {
-					capital_scope = {
-						add_building_construction = {
-							building = colonial_office
-							speed = 0.5
-							cost = 0.5
-						}
-						add_permanent_province_modifier = {
-							name = tm_butua_extra_building_slot
-							duration = -1
-						}
-					}
-				}
-			}
-        }	
-	}
-
-	butua_sumatra = {
-		icon = test
-		required_missions = { butua_indonesia_3 }
-		position = 8
-
-		provinces_to_highlight = {
-			OR = {
-				area = south_sumatra_area
-				area = minangkabau_area
-				area = batak_area
-				area = north_sumatra_area
-				area = central_sumatra_area
-				area = jambi_area
-			}
-		}
-
-		trigger = {
-			any_subject_country = {
-				capital_scope = {
-					colonial_region = colonial_indonesia
-				}
-				development_in_provinces = {
-					value = 400
-					OR = {
-						area = south_sumatra_area
-						area = minangkabau_area
-						area = batak_area
-						area = north_sumatra_area
-						area = central_sumatra_area
-						area = jambi_area
-					}
-				}
-			}
-		}
-
-		effect = {
-
-        }	
-	}
-
-	butua_java = {
-		icon = test
-		required_missions = { butua_indonesia_4 }
-		position = 9
-
-		provinces_to_highlight = {
-			OR = {
-				area = banten_area
-				area = west_java_area
-				area = central_java_area
-				area = surabaya_area
-				area = east_java_area
-				area = lesser_sunda_islands_area
-			}
-		}
-
-		trigger = {
-			any_subject_country = {
-				capital_scope = {
-					colonial_region = colonial_indonesia
-				}
-				development_in_provinces = {
-					value = 400
-					OR = {
-						area = banten_area
-						area = west_java_area
-						area = central_java_area
-						area = surabaya_area
-						area = east_java_area
-						area = lesser_sunda_islands_area
-					}
-				}
-			}
-		}
-
-		effect = {
-
-        }	
-	}
-
-	butua_spice_islands = {
-		icon = test
-		required_missions = { butua_indonesia_5 }
-		position = 10
-		provinces_to_highlight = {
-			OR  = {
-				area = south_sulawesi_area
-				area = makassar_area
-				area = sulawesi_area
-				area = molluca_area
-				area = spice_islands_area
-			}
-		}
-
-		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 15
-				OR = {
-					area = south_sulawesi_area
-					area = makassar_area
-					area = sulawesi_area
-					area = molluca_area
-					area = spice_islands_area
-				}
-				OR = {
-					has_trade_building_trigger = yes
-					has_production_building_trigger = yes
-					has_manufactory = yes
-				}
-			}
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 5
-				OR = {
-					area = south_sulawesi_area
-					area = makassar_area
-					area = sulawesi_area
-					area = molluca_area
-					area = spice_islands_area
-				}
-				development = 15
-			}
-		}
-
-		effect = {
-			add_country_modifier = {
-				name = tm_butua_spice_trade_modifier
-				duration = 5475
-			}
-			change_price = {
-				trade_goods = spices
-				key = tm_butua_spice_trade
-				value = 1.5
-				duration = 3650
-			}
-        }
-	}
-	
-	butua_indonesia_reward = {
-		icon = test
-		required_missions = { butua_spice_islands }
-		required_missions = { butua_indonesia_6 }
-		position = 11
-
-		trigger = {
-			2699 = {
-				trade_share = {
-					country = ROOT
-					share = 75
-				}
-			}
-			1357 = {
-				trade_share = {
-					country = ROOT
-					share = 75
-				}
-			}
-			1361 = {
-				trade_share = {
-					country = ROOT
-					share = 50
-				}
-				trade_node_value = 40
-			}
-			OR = {
-				trade_income_percentage = 0.33
-				monthly_income = 400
-			}
-		}
-
-		effect = {
-			add_country_modifier = {
-				name = butua_indonesia_reward
-				duration = -1
-			}
-        }	
-	}
-}
-
-butua_indonesia_tertiary_branch = {
-	slot = 3
-	generic = no
-	ai = yes
-	potential = {
-		OR = {
-			tag = RZW
-			tag = ZBW
-			tag = ZUL
-		}
-		has_country_flag = butua_indonesia_choice
-	}
-	has_country_shield = yes
-
-	
-	butua_indonesia_cloves = {
-		icon = test
-		required_missions = { butua_spice_islands }
-		position = 11
-
-		provinces_to_highlight = {
-			OR = {
-				province_id = 648
-				province_id = 649
-				province_id = 650
-			}
-		}
-
-		trigger = {
-			648 = {
-				country_or_non_sovereign_subject_holds = ROOT
-				base_production = 10
-				has_production_building_trigger = yes
-				has_manufactory = yes
-			}
-			649 = {
-				country_or_non_sovereign_subject_holds = ROOT
-				base_production = 10
-				has_production_building_trigger = yes
-				has_manufactory = yes
-			}
-			650 = {
-				country_or_non_sovereign_subject_holds = ROOT
-				base_production = 10
-				has_production_building_trigger = yes
-				has_manufactory = yes
-			}
-		}
-
-		effect = {
-			649 = {
-				change_trade_goods = cloves
-			}
-			648 = {
-				change_trade_goods = cloves
-			}
-			650 = {
-				change_trade_goods = cloves
-			}
-        }	
-	}
-}
-
-butua_eco_development_3 = {
-	slot = 3
+butua_eco_development_5 = {
+	slot = 5
 	generic = no
 	ai = yes
 	potential = {
@@ -4442,137 +4737,73 @@ butua_eco_development_3 = {
 	}
 	has_country_shield = yes
 
-	butua_expand_elephant_hunting = {
-		icon = mission_hills_of_gondwana
+	butua_new_governmental_ideas = {
+		icon = mission_reclaim_morocco
 		required_missions = { }
 		position = 12
-
-		provinces_to_highlight = {
-			owned_by = ROOT
-			trade_goods = ivory
-			NOT = { has_production_building_trigger = yes }
-		}
-
-		trigger = {
-			num_of_owned_provinces_with = {
-				value = 10
-				trade_goods = ivory
-				has_production_building_trigger = yes
-			}
-		}
-		
-		effect = {
-			custom_tooltip = tm_every_province_meets_req_gains_mission
-			tooltip = {
-				add_base_production = 3
-			}
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
-						trade_goods = ivory
-						has_production_building_trigger = yes
-					}
-					add_base_production = 3
-				}
-			}
-		}
-	}
-
-	butua_expand_elephant_hunting_2 = {
-		icon = seize_ceylon
-		required_missions = { butua_expand_elephant_hunting }
-		position = 13
-
-		provinces_to_highlight = {
-			owned_by = ROOT
-			trade_goods = ivory
-			OR = {
-				NOT = { base_production = 8 }
-				has_manufactory = no
-				has_production_building_trigger = no
-			}
-		}
-
-		trigger = {
-			num_of_owned_provinces_with = {
-				value = 15
-				trade_goods = ivory
-				base_production = 8
-				has_manufactory = yes
-				has_production_building_trigger = yes
-			}
-		}
-		
-		effect = {
-			change_price = {
-				trade_goods = ivory
-				key = RZW_ivory
-				value = 0.5
-				duration = 9475
-			}
-		}
-	}
-}
-
-
-rzw_nation_formable_3 = {
-	slot = 3
-	generic = no
-	ai = yes
-	potential = {
-		tag = RZW
-	}
-	has_country_shield = yes
-
-	rzw_formable_placeholder = {
-		icon = mission_locked_mission
-		required_missions = { }
-		position = 14
 
 		provinces_to_highlight = {}
 
 		trigger = {
+			legitimacy_equivalent = 90
+			prestige = 50
+			power_projection = 25
+			NOT = { average_unrest = 3 }
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = tm_butua_new_governmental_ideas
+				duration = 3650
+			}
+		}
+	}
+
+	butua_freeing_slaves = {
+		icon = mission_gain_mana
+		required_missions = { butua_new_governmental_ideas }
+		position = 13
+
+		provinces_to_highlight = {
+			trade_goods = slaves
 			OR = {
-				tag = ZUL
-				tag = ZBW
+				AND = {
+					NOT = { owned_by = ROOT }
+					superregion = southern_africa_superregion
+				}
+				AND = {
+					owned_by = ROOT
+					NOT = { development = 15 }
+				}
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 5
+				trade_goods = slaves
+				development = 15
 			}
 		}
 		
 		effect = {
-			custom_tooltip = tm_eth_formable_mission_tt
+			custom_tooltip = butua_free_slaves_tt
+			set_country_flag = tm_free_slaves
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						trade_goods = slaves
+					}
+					change_trade_goods = unknown
+					remove_building = tradecompany
+					add_base_tax = 2
+					add_base_production = 2
+					add_base_manpower = 2
+					ROOT = {
+						add_treasury = 100
+					}
+				}
+			}
 		}
 	}
 }
-
-#Privlages - Crown land 
-#States / Auto
-#Reform prog
-#Reforms 
-#Formable
-#Maps
-
-
-#Techs
-#Ideas
-#Innovativeness
-
-#Religion - Change / miss stre + cost
-#Stab / Prestiege
-
-#Gold
-#Dev
-#Powers
-#Trade
-
-#	effect = {
-#		add_country_modifier = {
-#			name = "butua_exploiting_egypt"
-#			duration = -1
-#		}
-#		361 = {
-#			add_great_project_tier = {
-#				type = pyramid_of_cheops
-#				tier = 2
-#			}
-#		}
-#	}
