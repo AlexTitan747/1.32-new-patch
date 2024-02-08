@@ -763,7 +763,7 @@ peace = {
 	monthly_militarized_society = -0.1
 	monthly_ottoman_decadence = 0.1
 	monthly_asha_vahishta = 0.25
-	movement_speed = 0.20
+	movement_speed = 0.33
 }
 
 unconditional_surrender = {
@@ -1724,7 +1724,7 @@ support_loyalists = {
 
 send_officers = {
 	discipline = 0.05
-	land_morale = 0.2
+	land_morale = 0.1
 }
 
 divert_trade = {
@@ -2044,6 +2044,7 @@ regiment_drill_modifier = { # Used by individual regiments
 	fire_damage = 0.1
 	fire_damage_received = -0.25
 	shock_damage_received = -0.25
+	morale_damage_received = -0.1
 	land_attrition = -0.25
 }
 
@@ -2218,12 +2219,13 @@ over_governing_capacity_modifier = {
 	monthly_prussian_militarized_society_3 = -1
 	administrative_efficiency = -0.5
 	monthly_ottoman_decadence = 2
+	development_cost_modifier = 0.5
 }
 
 #Scales with used capacity, being at full capacity means 100% of the modifier
 under_governing_capacity_modifier = {
 }
-#Scales with unused capacity, eing at full capacity means 0% of the modifier
+#Scales with unused capacity, being at full capacity means 0% of the modifier
 reverse_under_governing_capacity_modifier = {
 }
 
@@ -2252,8 +2254,10 @@ expanded_infrastructure = {
 
 centralize_state = {
 	statewide_governing_cost = -0.25
-	local_prosperity_growth = 0.1
+	local_prosperity_growth = 0.25
 	local_state_maintenance_modifier = -0.2
+	local_governing_cost_increase = -5
+	local_tax_modifier = 0.1
 	picture = "centralize_state"
 }
 
