@@ -1,191 +1,191 @@
-granada_development_missions = {
-	slot = 1
-	generic = no
-	ai = yes
-	potential_on_load = {
-		has_dlc = "Golden Century"
-	}
-	potential = {
-		has_dlc = "Golden Century"
-		OR = {
-			tag = GRA
-			tag = ADU
-		}
-		NOT = { map_setup = map_setup_random }
-	}
-	has_country_shield = yes
-	
-	gra_refugees_flock_to_us = {
-		icon = mission_cope_with_refugees
-		required_missions = { }
-		position = 1
-		
-		trigger = {
-			if = {
-				limit = {
-					has_estate = estate_church
-				}
-				estate_influence = {
-					estate = estate_church
-					influence = 65 #starting: 48 
-				}
-				NOT = {
-					estate_influence = {
-						estate = estate_church
-						influence = 100
-					}
-				}
-			}
-			else = {
-				religious_unity = 0.90
-			}
-			stability = 2
-		}
-		
-		effect = {
-			capital_scope = {
-				add_base_tax = 2
-				add_base_manpower = 4
-			}
-		}
-	}
-	
-	gra_palace_of_alhambra = {
-		icon = mission_develop_alhambra
-		required_missions = { gra_refugees_flock_to_us }
-		position = 3
-		
-		provinces_to_highlight = {
-			province_id = 223
-		}
-		trigger = {
-			223 = {
-				owned_by = ROOT
-				development = 20
-				has_building = temple
-			}
-		}
-		
-		effect = {
-			223 = {
-				add_province_modifier = {
-					name = "renovated_palace_of_alhambra"
-					duration = -1
-				}
-			}
-		}
-	}
-	
-}
+#granada_development_missions = {
+#	slot = 1
+#	generic = no
+#	ai = yes
+#	potential_on_load = {
+#		has_dlc = "Golden Century"
+#	}
+#	potential = {
+#		has_dlc = "Golden Century"
+#		OR = {
+#			tag = GRA
+#			#tag = ADU
+#		}
+#		NOT = { map_setup = map_setup_random }
+#	}
+#	has_country_shield = yes
+#	
+#	gra_refugees_flock_to_us = {
+#		icon = mission_cope_with_refugees
+#		required_missions = { }
+#		position = 1
+#		
+#		trigger = {
+#			if = {
+#				limit = {
+#					has_estate = estate_church
+#				}
+#				estate_influence = {
+#					estate = estate_church
+#					influence = 65 #starting: 48 
+#				}
+#				NOT = {
+#					estate_influence = {
+#						estate = estate_church
+#						influence = 100
+#					}
+#				}
+#			}
+#			else = {
+#				religious_unity = 0.90
+#			}
+#			stability = 2
+#		}
+#		
+#		effect = {
+#			capital_scope = {
+#				add_base_tax = 2
+#				add_base_manpower = 4
+#			}
+#		}
+#	}
+#	
+#	gra_palace_of_alhambra = {
+#		icon = mission_develop_alhambra
+#		required_missions = { gra_refugees_flock_to_us }
+#		position = 3
+#		
+#		provinces_to_highlight = {
+#			province_id = 223
+#		}
+#		trigger = {
+#			223 = {
+#				owned_by = ROOT
+#				development = 20
+#				has_building = temple
+#			}
+#		}
+#		
+#		effect = {
+#			223 = {
+#				add_province_modifier = {
+#					name = "renovated_palace_of_alhambra"
+#					duration = -1
+#				}
+#			}
+#		}
+#	}
+#	
+#}
 
-andalusia_slot_1_missions = {
-	slot = 1
-	generic = no
-	ai = yes
-	potential_on_load = {
-		has_dlc = "Golden Century"
-	}
-	potential = {
-		OR = {
-			tag = ADU
-		}
-		NOT = { map_setup = map_setup_random }
-		has_dlc = "Golden Century"
-	}
-	has_country_shield = yes
-	
-	adu_develop_cordoba = {
-		icon = mission_develop_cordoba
-		required_missions = { gra_palace_of_alhambra }
-		position = 5
-		
-		provinces_to_highlight = {
-			OR = {
-				AND = {
-					OR = {
-						area = lower_andalucia_area
-						area = upper_andalucia_area
-					}
-					OR = {
-						NOT = { owned_by = ROOT }
-						NOT = { religion = ROOT }
-					}
-				}
-				province_id = 225
-			}
-		}
-		
-		trigger = {
-			225 = {
-				owned_by = ROOT
-				OR = {
-					development = 15
-					has_building = temple
-				}
-			}
-			lower_andalucia_area = {
-				type = all
-				owned_by = ROOT
-				religion = ROOT
-			}
-			upper_andalucia_area = {
-				type = all
-				owned_by = ROOT
-				religion = ROOT
-			}
-		}
-		
-		effect = {
-			custom_tooltip = alandalus_returns_tooltip
-			225 = {
-				add_province_triggered_modifier = alandalus_returns
-			}
-		}
-	}
-	
-	adu_monopolize_africa = { #art
-		icon = mission_trade_in_gold_coast
-		required_missions = { adu_explore_further }
-		position = 8
-		
-		provinces_to_highlight = {
-			province_id = 1466
-			NOT = {
-				trade_share = {
-					country = ROOT
-					share = 90
-				}
-			}
-			has_discovered = ROOT
-		}
-		
-		trigger = {
-			1466 = {
-				trade_share = {
-					country = ROOT
-					share = 90
-				}
-			}
-		}
-		
-		effect = {
-			if = {
-				limit = {
-					223 = {
-						owned_by = ROOT
-					}
-				}
-				223 = {
-					center_of_trade = 1
-				}
-			}
-			else = {
-				add_dip_power = 200
-			}
-		}
-	}
-	
-}
+#andalusia_slot_1_missions = {
+#	slot = 1
+#	generic = no
+#	ai = yes
+#	potential_on_load = {
+#		has_dlc = "Golden Century"
+#	}
+#	potential = {
+#		OR = {
+#			tag = ADU
+#		}
+#		NOT = { map_setup = map_setup_random }
+#		has_dlc = "Golden Century"
+#	}
+#	has_country_shield = yes
+#	
+#	adu_develop_cordoba = {
+#		icon = mission_develop_cordoba
+#		required_missions = { gra_palace_of_alhambra }
+#		position = 5
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				AND = {
+#					OR = {
+#						area = lower_andalucia_area
+#						area = upper_andalucia_area
+#					}
+#					OR = {
+#						NOT = { owned_by = ROOT }
+#						NOT = { religion = ROOT }
+#					}
+#				}
+#				province_id = 225
+#			}
+#		}
+#		
+#		trigger = {
+#			225 = {
+#				owned_by = ROOT
+#				OR = {
+#					development = 15
+#					has_building = temple
+#				}
+#			}
+#			lower_andalucia_area = {
+#				type = all
+#				owned_by = ROOT
+#				religion = ROOT
+#			}
+#			upper_andalucia_area = {
+#				type = all
+#				owned_by = ROOT
+#				religion = ROOT
+#			}
+#		}
+#		
+#		effect = {
+#			custom_tooltip = alandalus_returns_tooltip
+#			225 = {
+#				add_province_triggered_modifier = alandalus_returns
+#			}
+#		}
+#	}
+#	
+#	adu_monopolize_africa = { #art
+#		icon = mission_trade_in_gold_coast
+#		required_missions = { adu_explore_further }
+#		position = 8
+#		
+#		provinces_to_highlight = {
+#			province_id = 1466
+#			NOT = {
+#				trade_share = {
+#					country = ROOT
+#					share = 90
+#				}
+#			}
+#			has_discovered = ROOT
+#		}
+#		
+#		trigger = {
+#			1466 = {
+#				trade_share = {
+#					country = ROOT
+#					share = 90
+#				}
+#			}
+#		}
+#		
+#		effect = {
+#			if = {
+#				limit = {
+#					223 = {
+#						owned_by = ROOT
+#					}
+#				}
+#				223 = {
+#					center_of_trade = 1
+#				}
+#			}
+#			else = {
+#				add_dip_power = 200
+#			}
+#		}
+#	}
+#	
+#}
 
 granada_slot_2_missions = {
 	slot = 2
@@ -197,7 +197,7 @@ granada_slot_2_missions = {
 	potential = {
 		OR = {
 			tag = GRA
-			tag = ADU
+			#tag = ADU
 		}
 		NOT = { map_setup = map_setup_random }
 		has_dlc = "Golden Century"
@@ -536,297 +536,297 @@ granada_slot_2_missions = {
 	
 }
 
-adu_slot_2_missions = {
-	slot = 2
-	generic = no
-	ai = yes
-	potential_on_load = {
-		has_dlc = "Golden Century"
-	}
-	potential = {
-		OR = {
-			tag = ADU
-		}
-		NOT = { map_setup = map_setup_random }
-		has_dlc = "Golden Century"
-	}
-	has_country_shield = yes
-	
-	gra_restore_caliphate_cordoba = {
-		icon = mission_restore_caliphate_of_cordoba
-		required_missions = { gra_restore_the_andalusian_caliphate }
-		position = 5
-		
-		provinces_to_highlight = {
-			OR = {
-				area = toledo_area
-				area = castille_area
-				area = aragon_area
-				province_id = 218
-				province_id = 1747
-				province_id = 216
-			}
-			NOT = {
-				owned_by = ROOT
-			}
-		}
-		
-		trigger = {
-			toledo_area = {
-				type = all
-				owned_by = ROOT
-			}
-			castille_area = {
-				type = all
-				owned_by = ROOT
-			}
-			aragon_area = {
-				type = all
-				owned_by = ROOT
-			}
-			218 = {
-				owned_by = ROOT
-			}
-			1747 = {
-				owned_by = ROOT
-			}
-			216 = {
-				owned_by = ROOT
-			}
-		}
-		
-		effect = {
-			add_adm_power = 200
-			galicia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			asturias_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			leon_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			extremadura_area = {
-				limit = {
-					NOT = { is_permanent_claim = ROOT }
-					NOT = { is_core = ROOT	}
-				}
-				add_permanent_claim = ROOT
-			}
-			basque_country = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			catalonia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-		
-	}
-	
-	gra_own_iberia = {
-		icon = mission_tear_down_spanish_strongholds
-		required_missions = { gra_restore_caliphate_cordoba adu_conquer_portugal }
-		position = 6
-		
-		provinces_to_highlight = {
-			OR = {
-				area = galicia_area
-				area = asturias_area
-				area = leon_area
-				area = extremadura_area
-				area = basque_country
-				area = catalonia_area
-				area = alentejo_area
-				area = beieras_area
-			}
-			NOT = {
-				owned_by = ROOT
-			}
-		}
-		
-		trigger = {
-			galicia_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			asturias_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			leon_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			extremadura_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			basque_country = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			catalonia_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			alentejo_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			beieras_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-		}
-		
-		effect = {
-			add_country_modifier = {
-				name = adu_white_phoenix
-				duration = 7300
-			}
-			languedoc_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			provence_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-		
-	}
-	
-	gra_into_france = {
-		icon = mission_the_french_menace
-		required_missions = { gra_own_iberia }
-		position = 7
-		
-		provinces_to_highlight = {
-			OR = {
-				area = languedoc_area
-				area = provence_area
-			}
-			NOT = {
-				owned_by = ROOT
-			}
-		}
-		
-		trigger = {
-			languedoc_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			provence_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-		}
-		
-		effect = {
-			liguria_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			piedmont_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-		}
-		
-	}
-	
-	adu_buy_africa = {
-		icon = mission_african_trade_post
-		required_missions = { adu_explore_further }
-		position = 8
-		
-		provinces_to_highlight = {
-			OR = {
-				region = guinea_region
-			}
-			NOT = {
-				owned_by = ROOT
-			}
-		}
-		
-		trigger = {
-			if = {
-				limit = {
-					OR = {
-						has_dlc = "Wealth of Nations"
-						has_dlc = "Dharma"
-					}
-				}
-				guinea_region = {
-					owned_by = ROOT
-					is_owned_by_trade_company = yes
-				}
-			}
-			else = {
-				guinea_region = {
-					owned_by = ROOT
-				}
-			}
-		}
-		
-		effect = {
-			add_country_modifier = {
-				name = "adu_trade_company_founded"
-				duration = 7300
-			}
-			define_advisor = {
-				type = naval_reformer
-				skill = 4
-				culture = ROOT
-				religion = ROOT
-				cost_multiplier = 0.25
-			}
-		}
-	}
-	
-}
+#adu_slot_2_missions = {
+#	slot = 2
+#	generic = no
+#	ai = yes
+#	potential_on_load = {
+#		has_dlc = "Golden Century"
+#	}
+#	potential = {
+#		OR = {
+#			tag = ADU
+#		}
+#		NOT = { map_setup = map_setup_random }
+#		has_dlc = "Golden Century"
+#	}
+#	has_country_shield = yes
+#	
+#	gra_restore_caliphate_cordoba = {
+#		icon = mission_restore_caliphate_of_cordoba
+#		required_missions = { gra_restore_the_andalusian_caliphate }
+#		position = 5
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = toledo_area
+#				area = castille_area
+#				area = aragon_area
+#				province_id = 218
+#				province_id = 1747
+#				province_id = 216
+#			}
+#			NOT = {
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		trigger = {
+#			toledo_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			castille_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			aragon_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			218 = {
+#				owned_by = ROOT
+#			}
+#			1747 = {
+#				owned_by = ROOT
+#			}
+#			216 = {
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		effect = {
+#			add_adm_power = 200
+#			galicia_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			asturias_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			leon_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			extremadura_area = {
+#				limit = {
+#					NOT = { is_permanent_claim = ROOT }
+#					NOT = { is_core = ROOT	}
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			basque_country = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			catalonia_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#		}
+#		
+#	}
+#	
+#	gra_own_iberia = {
+#		icon = mission_tear_down_spanish_strongholds
+#		required_missions = { gra_restore_caliphate_cordoba adu_conquer_portugal }
+#		position = 6
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = galicia_area
+#				area = asturias_area
+#				area = leon_area
+#				area = extremadura_area
+#				area = basque_country
+#				area = catalonia_area
+#				area = alentejo_area
+#				area = beieras_area
+#			}
+#			NOT = {
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		trigger = {
+#			galicia_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			asturias_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			leon_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			extremadura_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			basque_country = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			catalonia_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			alentejo_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			beieras_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#		}
+#		
+#		effect = {
+#			add_country_modifier = {
+#				name = adu_white_phoenix
+#				duration = 7300
+#			}
+#			languedoc_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			provence_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#		}
+#		
+#	}
+#	
+#	gra_into_france = {
+#		icon = mission_the_french_menace
+#		required_missions = { gra_own_iberia }
+#		position = 7
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = languedoc_area
+#				area = provence_area
+#			}
+#			NOT = {
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		trigger = {
+#			languedoc_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			provence_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#		}
+#		
+#		effect = {
+#			liguria_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_claim = ROOT }
+#				}
+#				add_claim = ROOT
+#			}
+#			piedmont_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_claim = ROOT }
+#				}
+#				add_claim = ROOT
+#			}
+#		}
+#		
+#	}
+#	
+#	adu_buy_africa = {
+#		icon = mission_african_trade_post
+#		required_missions = { adu_explore_further }
+#		position = 8
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				region = guinea_region
+#			}
+#			NOT = {
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		trigger = {
+#			if = {
+#				limit = {
+#					OR = {
+#						has_dlc = "Wealth of Nations"
+#						has_dlc = "Dharma"
+#					}
+#				}
+#				guinea_region = {
+#					owned_by = ROOT
+#					is_owned_by_trade_company = yes
+#				}
+#			}
+#			else = {
+#				guinea_region = {
+#					owned_by = ROOT
+#				}
+#			}
+#		}
+#		
+#		effect = {
+#			add_country_modifier = {
+#				name = "adu_trade_company_founded"
+#				duration = 7300
+#			}
+#			define_advisor = {
+#				type = naval_reformer
+#				skill = 4
+#				culture = ROOT
+#				religion = ROOT
+#				cost_multiplier = 0.25
+#			}
+#		}
+#	}
+#	
+#}
 
 granada_slot_3_missions = {
 	slot = 3
@@ -838,7 +838,7 @@ granada_slot_3_missions = {
 	potential = {
 		OR = {
 			tag = GRA
-			tag = ADU
+			#tag = ADU
 		}
 		NOT = { map_setup = map_setup_random }
 		has_dlc = "Golden Century"
@@ -973,171 +973,171 @@ granada_slot_3_missions = {
 	
 }
 
-andalusia_slot_3_missions = {
-	slot = 3
-	generic = no
-	ai = yes
-	potential_on_load = {
-		has_dlc = "Golden Century"
-	}
-	potential = {
-		OR = {
-			tag = ADU
-		}
-		NOT = { map_setup = map_setup_random }
-		has_dlc = "Golden Century"
-	}
-	has_country_shield = yes
+#andalusia_slot_3_missions = {
+#	slot = 3
+#	generic = no
+#	ai = yes
+#	potential_on_load = {
+#		has_dlc = "Golden Century"
+#	}
+#	potential = {
+#		OR = {
+#			tag = ADU
+#		}
+#		NOT = { map_setup = map_setup_random }
+#		has_dlc = "Golden Century"
+#	}
+#	has_country_shield = yes
+#	
+#	adu_conquer_portugal = {
+#		icon = mission_portuguese_interference
+#		required_missions = { gra_reconquer_sevilla }
+#		position = 5
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = alentejo_area
+#				area = beieras_area
+#			}
+#			NOT = {
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		trigger = {
+#			alentejo_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			beieras_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#		}
+#		
+#		effect = {
+#			if = {
+#				limit = {
+#					is_random_new_world = no
+#					ceara_area = {
+#						NOT = {
+#							has_discovered = ROOT
+#						}
+#					}
+#				}
+#				ceara_area = {
+#					discover_country = ROOT
+#				}
+#			}
+#			add_country_modifier = {
+#				name = "adu_new_world_discoveries"
+#				duration = 7300
+#			}
+#		}
+#		
+#	}
+#}
 	
-	adu_conquer_portugal = {
-		icon = mission_portuguese_interference
-		required_missions = { gra_reconquer_sevilla }
-		position = 5
-		
-		provinces_to_highlight = {
-			OR = {
-				area = alentejo_area
-				area = beieras_area
-			}
-			NOT = {
-				owned_by = ROOT
-			}
-		}
-		
-		trigger = {
-			alentejo_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			beieras_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-		}
-		
-		effect = {
-			if = {
-				limit = {
-					is_random_new_world = no
-					ceara_area = {
-						NOT = {
-							has_discovered = ROOT
-						}
-					}
-				}
-				ceara_area = {
-					discover_country = ROOT
-				}
-			}
-			add_country_modifier = {
-				name = "adu_new_world_discoveries"
-				duration = 7300
-			}
-		}
-		
-	}
-}
+#andalusia_slot_3_missions_b = {
+#	slot = 3
+#	generic = no
+#	ai = yes
+#	potential_on_load = {
+#		has_dlc = "Golden Century"
+#	}
+#	potential = {
+#		OR = {
+#			tag = ADU
+#		}
+#		has_dlc = "Golden Century"
+#		NOT = { map_setup = map_setup_random }
+#	}
+#	has_country_shield = yes
+#	
+#	adu_explore_further = {
+#		icon = mission_look_west
+#		required_missions = { adu_conquer_portugal }
+#		position = 7
+#		
+#		trigger = {
+#			if = {
+#				limit = {
+#					is_random_new_world = no
+#				}
+#				custom_trigger_tooltip = {
+#					tooltip = miss_discover_caribbean
+#					colonial_the_carribean = {
+#						has_discovered = ROOT
+#					}
+#				}
+#			}
+#			custom_trigger_tooltip = {
+#				tooltip = miss_discover_west_africa
+#				west_africa_coast_area = {
+#					has_discovered = ROOT
+#				}
+#			}
+#		}
+#		
+#		effect = {
+#			define_conquistador = {
+#				shock = 5
+#				fire = 5
+#				manuever = 6
+#				siege = 1
+#				name = "Mustafa Azemmouri"
+#			}
+#		}
+#	}
+#}
 	
-andalusia_slot_3_missions_b = {
-	slot = 3
-	generic = no
-	ai = yes
-	potential_on_load = {
-		has_dlc = "Golden Century"
-	}
-	potential = {
-		OR = {
-			tag = ADU
-		}
-		has_dlc = "Golden Century"
-		NOT = { map_setup = map_setup_random }
-	}
-	has_country_shield = yes
-	
-	adu_explore_further = {
-		icon = mission_look_west
-		required_missions = { adu_conquer_portugal }
-		position = 7
-		
-		trigger = {
-			if = {
-				limit = {
-					is_random_new_world = no
-				}
-				custom_trigger_tooltip = {
-					tooltip = miss_discover_caribbean
-					colonial_the_carribean = {
-						has_discovered = ROOT
-					}
-				}
-			}
-			custom_trigger_tooltip = {
-				tooltip = miss_discover_west_africa
-				west_africa_coast_area = {
-					has_discovered = ROOT
-				}
-			}
-		}
-		
-		effect = {
-			define_conquistador = {
-				shock = 5
-				fire = 5
-				manuever = 6
-				siege = 1
-				name = "Mustafa Azemmouri"
-			}
-		}
-	}
-}
-	
-andalusia_slot_3_missions_c = {
-	slot = 3
-	generic = no
-	ai = yes
-	potential_on_load = {
-		has_dlc = "Golden Century"
-	}
-	potential = {
-		OR = {
-			tag = ADU
-		}
-		has_dlc = "Golden Century"
-		NOT = { map_setup = map_setup_random }
-		is_random_new_world = no
-	}
-	has_country_shield = yes
-	
-	adu_caribbean_cn = {
-		icon = mission_caribbean_cn
-		required_missions = { adu_explore_further }
-		position = 8
-
-		provinces_to_highlight = {
-			colonial_region = colonial_the_carribean
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-			has_discovered = ROOT
-		}
-		
-		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 5
-				colonial_region = colonial_the_carribean
-				is_city = yes
-			}
-		}
-
-		effect = {
-			add_prestige = 25
-			add_country_modifier = {
-				name = "the_unknown_frontier"
-				duration = 7300
-			}
-		}
-	}
-}
+#andalusia_slot_3_missions_c = {
+#	slot = 3
+#	generic = no
+#	ai = yes
+#	potential_on_load = {
+#		has_dlc = "Golden Century"
+#	}
+#	potential = {
+#		OR = {
+#			tag = ADU
+#		}
+#		has_dlc = "Golden Century"
+#		NOT = { map_setup = map_setup_random }
+#		is_random_new_world = no
+#	}
+#	has_country_shield = yes
+#	
+#	adu_caribbean_cn = {
+#		icon = mission_caribbean_cn
+#		required_missions = { adu_explore_further }
+#		position = 8
+#
+#		provinces_to_highlight = {
+#			colonial_region = colonial_the_carribean
+#			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+#			has_discovered = ROOT
+#		}
+#		
+#		trigger = {
+#			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+#				value = 5
+#				colonial_region = colonial_the_carribean
+#				is_city = yes
+#			}
+#		}
+#
+#		effect = {
+#			add_prestige = 25
+#			add_country_modifier = {
+#				name = "the_unknown_frontier"
+#				duration = 7300
+#			}
+#		}
+#	}
+#}
 
 granada_slot_4_missions = {
 	slot = 4
@@ -1149,7 +1149,7 @@ granada_slot_4_missions = {
 	potential = {
 		OR = {
 			tag = GRA
-			tag = ADU
+			#tag = ADU
 		}
 		NOT = { map_setup = map_setup_random }
 		has_dlc = "Golden Century"
@@ -1222,396 +1222,397 @@ granada_slot_4_missions = {
 
 }
 
-andalusia_slot_4_missions = {
-	slot = 4
-	generic = no
-	ai = yes
-	potential_on_load = {
-		has_dlc = "Golden Century"
-	}
-	potential = {
-		OR = {
-			tag = ADU
-		}
-		NOT = { map_setup = map_setup_random }
-		has_dlc = "Golden Century"
-	}
-	has_country_shield = yes
+#andalusia_slot_4_missions = {
+#	slot = 4
+#	generic = no
+#	ai = yes
+#	potential_on_load = {
+#		has_dlc = "Golden Century"
+#	}
+#	potential = {
+#		always = no
+#		OR = {
+#			tag = ADU
+#		}
+#		NOT = { map_setup = map_setup_random }
+#		has_dlc = "Golden Century"
+#	}
+#	has_country_shield = yes
+#	
+#	adu_conquer_med_islands = {
+#		icon = mission_mediterranean_islands
+#		required_missions = { gra_restore_trade_superiority }
+#		position = 3
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = baleares_area
+#				area = corsica_sardinia_area
+#			}
+#			NOT = {
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		trigger = {
+#			corsica_sardinia_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			baleares_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#		}
+#		
+#		effect = {
+#			2986 = {
+#				add_base_tax = 4
+#				add_base_production = 4
+#				add_province_modifier = {
+#					name = "adu_trade_hub"
+#					duration = -1
+#				}
+#			}
+#			sicily_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			western_sicily_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#		}
+#		
+#	}
+#	
+#	adu_retake_sicily = {
+#		icon = mission_break_sicily
+#		required_missions = { adu_conquer_med_islands }
+#		position = 4
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = sicily_area
+#				area = western_sicily_area
+#			}
+#			NOT = {
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		trigger = {
+#			western_sicily_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			sicily_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#		}
+#		
+#		effect = {
+#			if = {
+#				limit = {
+#					NOT = {
+#						exists = SIC
+#					}
+#				}
+#				country_event = {
+#					id = flavor_gra.2
+#				}
+#			}
+#			else = {
+#				calabria_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_claim = ROOT
+#				}
+#				naples_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_claim = ROOT
+#				}
+#				apulia_area = {
+#					limit = {
+#						NOT = { is_core = ROOT }
+#						NOT = { is_permanent_claim = ROOT }
+#					}
+#					add_claim = ROOT
+#				}
+#			}
+#		}
+#		
+#	}
+#	
+#	adu_moroccan_conquest = {
+#		icon = mission_reclaim_morocco
+#		required_missions = { gra_restore_faith_in_the_throne }
+#		position = 5
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = northern_morocco_area
+#				area = marrekesh_area
+#				area = western_morocco_area
+#			}
+#			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+#		}
+#		
+#		trigger = {
+#			northern_morocco_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			marrekesh_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#			western_morocco_area = {
+#				type = all
+#				country_or_non_sovereign_subject_holds = ROOT
+#			}
+#		}
+#		
+#		effect = {
+#			tafilalt_area = {
+#				limit = {
+#					NOT = {
+#						owned_by = ROOT
+#						is_core = ROOT
+#					}
+#				}
+#				add_claim = ROOT
+#			}
+#			sus_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_claim = ROOT }
+#				}
+#				add_claim = ROOT
+#			}
+#			southern_morocco_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_claim = ROOT }
+#				}
+#				add_claim = ROOT
+#			}
+#		}
+#	}
+#}
 	
-	adu_conquer_med_islands = {
-		icon = mission_mediterranean_islands
-		required_missions = { gra_restore_trade_superiority }
-		position = 3
-		
-		provinces_to_highlight = {
-			OR = {
-				area = baleares_area
-				area = corsica_sardinia_area
-			}
-			NOT = {
-				owned_by = ROOT
-			}
-		}
-		
-		trigger = {
-			corsica_sardinia_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			baleares_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-		}
-		
-		effect = {
-			2986 = {
-				add_base_tax = 4
-				add_base_production = 4
-				add_province_modifier = {
-					name = "adu_trade_hub"
-					duration = -1
-				}
-			}
-			sicily_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			western_sicily_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-		
-	}
-	
-	adu_retake_sicily = {
-		icon = mission_break_sicily
-		required_missions = { adu_conquer_med_islands }
-		position = 4
-		
-		provinces_to_highlight = {
-			OR = {
-				area = sicily_area
-				area = western_sicily_area
-			}
-			NOT = {
-				owned_by = ROOT
-			}
-		}
-		
-		trigger = {
-			western_sicily_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			sicily_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-		}
-		
-		effect = {
-			if = {
-				limit = {
-					NOT = {
-						exists = SIC
-					}
-				}
-				country_event = {
-					id = flavor_gra.2
-				}
-			}
-			else = {
-				calabria_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_claim = ROOT
-				}
-				naples_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_claim = ROOT
-				}
-				apulia_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_claim = ROOT
-				}
-			}
-		}
-		
-	}
-	
-	adu_moroccan_conquest = {
-		icon = mission_reclaim_morocco
-		required_missions = { gra_restore_faith_in_the_throne }
-		position = 5
-		
-		provinces_to_highlight = {
-			OR = {
-				area = northern_morocco_area
-				area = marrekesh_area
-				area = western_morocco_area
-			}
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-		}
-		
-		trigger = {
-			northern_morocco_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			marrekesh_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-			western_morocco_area = {
-				type = all
-				country_or_non_sovereign_subject_holds = ROOT
-			}
-		}
-		
-		effect = {
-			tafilalt_area = {
-				limit = {
-					NOT = {
-						owned_by = ROOT
-						is_core = ROOT
-					}
-				}
-				add_claim = ROOT
-			}
-			sus_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			southern_morocco_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-		}
-	}
-}
-	
-andalusia_slot_4_missions_b = {
-	slot = 4
-	generic = no
-	ai = yes
-	potential_on_load = {
-		has_dlc = "Golden Century"
-	}
-	potential = {
-		OR = {
-			tag = ADU
-		}
-		NOT = { map_setup = map_setup_random }
-		is_random_new_world = no
-		has_dlc = "Golden Century"
-	}
-	has_country_shield = yes
-	
-	adu_brazilian_cn = {
-		icon = mission_colonise_brazil
-		required_missions = { adu_conquer_portugal }
-		position = 6
-		
-		provinces_to_highlight = {
-			colonial_region = colonial_brazil
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-			has_discovered = ROOT
-		}
-		
-		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 10
-				colonial_region = colonial_brazil
-				is_city = yes
-			}
-		}
-		
-		effect = {
-			add_country_modifier = {
-				name = "adu_native_concord"
-				duration = 18250
-			}
-		}
-	}
-}
+#andalusia_slot_4_missions_b = {
+#	slot = 4
+#	generic = no
+#	ai = yes
+#	potential_on_load = {
+#		has_dlc = "Golden Century"
+#	}
+#	potential = {
+#		OR = {
+#			tag = ADU
+#		}
+#		NOT = { map_setup = map_setup_random }
+#		is_random_new_world = no
+#		has_dlc = "Golden Century"
+#	}
+#	has_country_shield = yes
+#	
+#	adu_brazilian_cn = {
+#		icon = mission_colonise_brazil
+#		required_missions = { adu_conquer_portugal }
+#		position = 6
+#		
+#		provinces_to_highlight = {
+#			colonial_region = colonial_brazil
+#			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+#			has_discovered = ROOT
+#		}
+#		
+#		trigger = {
+#			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+#				value = 10
+#				colonial_region = colonial_brazil
+#				is_city = yes
+#			}
+#		}
+#		
+#		effect = {
+#			add_country_modifier = {
+#				name = "adu_native_concord"
+#				duration = 18250
+#			}
+#		}
+#	}
+#}
 
-andalusia_slot_4_missions_c = {
-	slot = 4
-	generic = no
-	ai = yes
-	potential_on_load = {
-		has_dlc = "Golden Century"
-	}
-	potential = {
-		OR = {
-			tag = ADU
-		}
-		NOT = { map_setup = map_setup_random }
-		has_dlc = "Golden Century"
-	}
-	has_country_shield = yes
-	
-	adu_reclaim_mecca = {
-		icon = mission_into_arabia
-		required_missions = { adu_fatimid_lands }
-		position = 7
-		
-		provinces_to_highlight = {
-			OR = {
-				area = gulf_of_arabia_area
-				area = tabuk_area
-				area = medina_area
-				area = mecca_area
-			}
-			NOT = {
-				owned_by = ROOT
-			}
-		}
-		
-		trigger = {
-			gulf_of_arabia_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			tabuk_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			medina_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			mecca_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-		}
-		
-		effect = {
-			add_country_modifier = {
-				name = "adu_tolerance_heretics_mod"
-				duration = 7300
-			}
-		}
-	}
-	
-	adu_down_tigris = {
-		icon = mission_into_persia_1
-		required_missions = { adu_levantine_restoration }
-		position = 8
-		
-		provinces_to_highlight = {
-			OR = {
-				area = iraq_arabi_area
-				area = basra_area
-				area = khuzestan_area
-				area = luristan_area
-			}
-			NOT = {
-				owned_by = ROOT
-			}
-		}
-		
-		trigger = {
-			iraq_arabi_area = {
-				type = all
-				owned_by = ROOT
-			}
-			basra_area = {
-				type = all
-				owned_by = ROOT
-			}
-			khuzestan_area = {
-				type = all
-				owned_by = ROOT
-			}
-			luristan_area = {
-				type = all
-				owned_by = ROOT
-			}
-		}
-		
-		effect = {
-			add_adm_power = 300
-			408 = {
-				if = {
-					limit = {	
-						NOT = {
-							province_has_center_of_trade_of_level = 2
-						}
-					}
-					add_center_of_trade_level = 2
-				}
-				else_if = {
-					limit = {	
-						NOT = {
-							province_has_center_of_trade_of_level = 3
-						}
-					}
-					add_center_of_trade_level = 1
-				}
-			}
-			persian_gulf_coast = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			farsistan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			kerman_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			mogostan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-		}
-	}
-}
+#andalusia_slot_4_missions_c = {
+#	slot = 4
+#	generic = no
+#	ai = yes
+#	potential_on_load = {
+#		has_dlc = "Golden Century"
+#	}
+#	potential = {
+#		OR = {
+#			tag = ADU
+#		}
+#		NOT = { map_setup = map_setup_random }
+#		has_dlc = "Golden Century"
+#	}
+#	has_country_shield = yes
+#	
+#	adu_reclaim_mecca = {
+#		icon = mission_into_arabia
+#		required_missions = { adu_fatimid_lands }
+#		position = 7
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = gulf_of_arabia_area
+#				area = tabuk_area
+#				area = medina_area
+#				area = mecca_area
+#			}
+#			NOT = {
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		trigger = {
+#			gulf_of_arabia_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			tabuk_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			medina_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			mecca_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#		}
+#		
+#		effect = {
+#			add_country_modifier = {
+#				name = "adu_tolerance_heretics_mod"
+#				duration = 7300
+#			}
+#		}
+#	}
+#	
+#	adu_down_tigris = {
+#		icon = mission_into_persia_1
+#		required_missions = { adu_levantine_restoration }
+#		position = 8
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = iraq_arabi_area
+#				area = basra_area
+#				area = khuzestan_area
+#				area = luristan_area
+#			}
+#			NOT = {
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		trigger = {
+#			iraq_arabi_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			basra_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			khuzestan_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			luristan_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		effect = {
+#			add_adm_power = 300
+#			408 = {
+#				if = {
+#					limit = {	
+#						NOT = {
+#							province_has_center_of_trade_of_level = 2
+#						}
+#					}
+#					add_center_of_trade_level = 2
+#				}
+#				else_if = {
+#					limit = {	
+#						NOT = {
+#							province_has_center_of_trade_of_level = 3
+#						}
+#					}
+#					add_center_of_trade_level = 1
+#				}
+#			}
+#			persian_gulf_coast = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_claim = ROOT }
+#				}
+#				add_claim = ROOT
+#			}
+#			farsistan_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_claim = ROOT }
+#				}
+#				add_claim = ROOT
+#			}
+#			kerman_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_claim = ROOT }
+#				}
+#				add_claim = ROOT
+#			}
+#			mogostan_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_claim = ROOT }
+#				}
+#				add_claim = ROOT
+#			}
+#		}
+#	}
+#}
 
 granada_slot_5_missions = {
 	slot = 5
@@ -1623,7 +1624,7 @@ granada_slot_5_missions = {
 	potential = {
 		OR = {
 			tag = GRA
-			tag = ADU
+			#tag = ADU
 		}
 		NOT = { map_setup = map_setup_random }
 		has_dlc = "Golden Century"
@@ -1787,449 +1788,449 @@ granada_slot_5_missions = {
 	
 }
 
-andalusia_slot_5_missions = {
-	slot = 5
-	generic = no
-	ai = yes
-	potential_on_load = {
-		has_dlc = "Golden Century"
-	}
-	potential = {
-		OR = {
-			tag = ADU
-		}
-		NOT = { map_setup = map_setup_random }
-		has_dlc = "Golden Century"
-	}
-	has_country_shield = yes
-	
-	adu_own_tunisia_1 = {
-		icon = mission_conquer_tunisia
-		required_missions = { gra_restore_faith_in_the_throne }
-		position = 5
-		
-		provinces_to_highlight = {
-			OR = {
-				area = algiers_area
-				area = hautes_plaines_area
-				area = barbary_coast_area
-				area = kabylia_area
-				area = tunisia_area
-				area = djerba_area
-				area = tripolitania_area
-			}
-			NOT = {
-				owned_by = ROOT
-			}
-		}
-		
-		trigger = {
-			algiers_area = {
-				type = all
-				owned_by = ROOT
-			}
-			hautes_plaines_area = {
-				type = all
-				owned_by = ROOT
-			}
-			barbary_coast_area = {
-				type = all
-				owned_by = ROOT
-			}
-			kabylia_area = {
-				type = all
-				owned_by = ROOT
-			}
-			tunisia_area = {
-				type = all
-				owned_by = ROOT
-			}
-			djerba_area = {
-				type = all
-				owned_by = ROOT
-			}
-			tripolitania_area = {
-				type = all
-				owned_by = ROOT
-			}
-		}
-		
-		effect = {
-			north_saharan_area = {
-				limit = {
-					NOT = {
-						owned_by = ROOT
-					}
-					NOT = {
-						is_core = ROOT
-					}
-				}
-				add_claim = ROOT
-			}
-			ouled_nail_area = {
-				limit = {
-					NOT = {
-						owned_by = ROOT
-					}
-					NOT = {
-						is_core = ROOT
-					}
-				}
-				add_claim = ROOT
-			}
-			fezzan_area = {
-				limit = {
-					NOT = {
-						owned_by = ROOT
-					}
-					NOT = {
-						is_core = ROOT
-					}
-					NOT = {
-						province_id = 2474
-					}
-				}
-				add_claim = ROOT
-			}
-			cyrenaica_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			delta_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			bahari_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			vostani_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-		
-	}
-	
-	adu_fatimid_lands = {
-		icon = mission_fatimid_caliphate
-		required_missions = { adu_own_tunisia_1 }
-		position = 6
-		
-		provinces_to_highlight = {
-			OR = {
-				area = cyrenaica_area
-				area = delta_area
-				area = bahari_area
-				area = vostani_area
-			}
-			NOT = {
-				owned_by = ROOT
-			}
-		}
-		
-		trigger = {
-			cyrenaica_area = {
-				type = all
-				owned_by = ROOT
-			}
-			delta_area = {
-				type = all
-				owned_by = ROOT
-			}
-			bahari_area = {
-				type = all
-				owned_by = ROOT
-			}
-			vostani_area = {
-				type = all
-				owned_by = ROOT
-			}
-		}
-		
-		effect = {
-			country_event = {
-				id = flavor_gra.3
-			}
-			said_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			palestine_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			syria_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			aleppo_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			al_jazira_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			gulf_of_arabia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			tabuk_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			medina_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			mecca_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-	}
-	
-	adu_levantine_restoration = {
-		icon = mission_levantine_restoration
-		required_missions = { adu_fatimid_lands }
-		position = 7
-		
-		provinces_to_highlight = {
-			OR = {
-				area = palestine_area
-				area = syria_area
-				area = aleppo_area
-				area = al_jazira_area
-			}
-			NOT = {
-				owned_by = ROOT
-			}
-		}
-		
-		trigger = {
-			palestine_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			syria_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			aleppo_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-			al_jazira_area = {
-				type = all
-				owned_by = ROOT
-				is_core = ROOT
-			}
-		}
-		
-		effect = {
-			382 = {
-				add_base_tax = 3
-				add_base_production = 3
-				add_base_manpower = 3
-				add_province_modifier = {
-					name = "adu_summer_capital"
-					duration = -1
-				}
-			}
-			syrian_desert_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			trans_jordan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			iraq_arabi_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			basra_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			khuzestan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			luristan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			shahrizor_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			tabriz_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			azerbaijan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			armenia_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-	}
-	
-	adu_persian_conquest = {
-		icon = mission_into_persia_2
-		required_missions = { adu_levantine_restoration }
-		position = 8
-		
-		provinces_to_highlight = {
-			OR = {
-				area = shahrizor_area
-				area = tabriz_area
-				area = azerbaijan_area
-				area = armenia_area
-			}
-			NOT = {
-				owned_by = ROOT
-			}
-		}
-		
-		trigger = {
-			shahrizor_area = {
-				type = all
-				owned_by = ROOT
-			}
-			tabriz_area = {
-				type = all
-				owned_by = ROOT
-			}
-			azerbaijan_area = {
-				type = all
-				owned_by = ROOT
-			}
-			armenia_area = {
-				type = all
-				owned_by = ROOT
-			}
-		}
-		
-		effect = {
-			add_adm_power = 300
-			add_country_modifier = {
-				name = "adu_greater_than_alexander"
-				duration = 7300
-			}
-			iraq_e_ajam_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			isfahan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			shirvan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			tabarestan_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-			kartli_kakheti_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_claim = ROOT }
-				}
-				add_claim = ROOT
-			}
-		}
-		
-	}
-}
+#andalusia_slot_5_missions = {
+#	slot = 5
+#	generic = no
+#	ai = yes
+#	potential_on_load = {
+#		has_dlc = "Golden Century"
+#	}
+#	potential = {
+#		OR = {
+#			tag = ADU
+#		}
+#		NOT = { map_setup = map_setup_random }
+#		has_dlc = "Golden Century"
+#	}
+#	has_country_shield = yes
+#	
+#	adu_own_tunisia_1 = {
+#		icon = mission_conquer_tunisia
+#		required_missions = { gra_restore_faith_in_the_throne }
+#		position = 5
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = algiers_area
+#				area = hautes_plaines_area
+#				area = barbary_coast_area
+#				area = kabylia_area
+#				area = tunisia_area
+#				area = djerba_area
+#				area = tripolitania_area
+#			}
+#			NOT = {
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		trigger = {
+#			algiers_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			hautes_plaines_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			barbary_coast_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			kabylia_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			tunisia_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			djerba_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			tripolitania_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		effect = {
+#			north_saharan_area = {
+#				limit = {
+#					NOT = {
+#						owned_by = ROOT
+#					}
+#					NOT = {
+#						is_core = ROOT
+#					}
+#				}
+#				add_claim = ROOT
+#			}
+#			ouled_nail_area = {
+#				limit = {
+#					NOT = {
+#						owned_by = ROOT
+#					}
+#					NOT = {
+#						is_core = ROOT
+#					}
+#				}
+#				add_claim = ROOT
+#			}
+#			fezzan_area = {
+#				limit = {
+#					NOT = {
+#						owned_by = ROOT
+#					}
+#					NOT = {
+#						is_core = ROOT
+#					}
+#					NOT = {
+#						province_id = 2474
+#					}
+#				}
+#				add_claim = ROOT
+#			}
+#			cyrenaica_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			delta_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			bahari_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			vostani_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#		}
+#		
+#	}
+#	
+#	adu_fatimid_lands = {
+#		icon = mission_fatimid_caliphate
+#		required_missions = { adu_own_tunisia_1 }
+#		position = 6
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = cyrenaica_area
+#				area = delta_area
+#				area = bahari_area
+#				area = vostani_area
+#			}
+#			NOT = {
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		trigger = {
+#			cyrenaica_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			delta_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			bahari_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			vostani_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		effect = {
+#			country_event = {
+#				id = flavor_gra.3
+#			}
+#			said_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_claim = ROOT }
+#				}
+#				add_claim = ROOT
+#			}
+#			palestine_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			syria_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			aleppo_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			al_jazira_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			gulf_of_arabia_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			tabuk_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			medina_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			mecca_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#		}
+#	}
+#	
+#	adu_levantine_restoration = {
+#		icon = mission_levantine_restoration
+#		required_missions = { adu_fatimid_lands }
+#		position = 7
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = palestine_area
+#				area = syria_area
+#				area = aleppo_area
+#				area = al_jazira_area
+#			}
+#			NOT = {
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		trigger = {
+#			palestine_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			syria_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			aleppo_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#			al_jazira_area = {
+#				type = all
+#				owned_by = ROOT
+#				is_core = ROOT
+#			}
+#		}
+#		
+#		effect = {
+#			382 = {
+#				add_base_tax = 3
+#				add_base_production = 3
+#				add_base_manpower = 3
+#				add_province_modifier = {
+#					name = "adu_summer_capital"
+#					duration = -1
+#				}
+#			}
+#			syrian_desert_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_claim = ROOT }
+#				}
+#				add_claim = ROOT
+#			}
+#			trans_jordan_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_claim = ROOT }
+#				}
+#				add_claim = ROOT
+#			}
+#			iraq_arabi_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			basra_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			khuzestan_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			luristan_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			shahrizor_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			tabriz_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			azerbaijan_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#			armenia_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_permanent_claim = ROOT }
+#				}
+#				add_permanent_claim = ROOT
+#			}
+#		}
+#	}
+#	
+#	adu_persian_conquest = {
+#		icon = mission_into_persia_2
+#		required_missions = { adu_levantine_restoration }
+#		position = 8
+#		
+#		provinces_to_highlight = {
+#			OR = {
+#				area = shahrizor_area
+#				area = tabriz_area
+#				area = azerbaijan_area
+#				area = armenia_area
+#			}
+#			NOT = {
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		trigger = {
+#			shahrizor_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			tabriz_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			azerbaijan_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#			armenia_area = {
+#				type = all
+#				owned_by = ROOT
+#			}
+#		}
+#		
+#		effect = {
+#			add_adm_power = 300
+#			add_country_modifier = {
+#				name = "adu_greater_than_alexander"
+#				duration = 7300
+#			}
+#			iraq_e_ajam_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_claim = ROOT }
+#				}
+#				add_claim = ROOT
+#			}
+#			isfahan_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_claim = ROOT }
+#				}
+#				add_claim = ROOT
+#			}
+#			shirvan_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_claim = ROOT }
+#				}
+#				add_claim = ROOT
+#			}
+#			tabarestan_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_claim = ROOT }
+#				}
+#				add_claim = ROOT
+#			}
+#			kartli_kakheti_area = {
+#				limit = {
+#					NOT = { is_core = ROOT }
+#					NOT = { is_claim = ROOT }
+#				}
+#				add_claim = ROOT
+#			}
+#		}
+#		
+#	}
+#}

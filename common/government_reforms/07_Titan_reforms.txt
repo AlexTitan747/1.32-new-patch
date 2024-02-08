@@ -16,41 +16,6 @@ united_alpine_cantons_reform = {
 	}
 }
 
-moroccan_monarchy = {
-	icon = "castle"
-	allow_normal_conversion = yes
-	potential = {
-		OR = {
-			tag = MOR
-			was_tag = MOR
-		}
-		has_country_flag = a_time_of_change
-	}
-	valid_for_nation_designer = yes
-	nation_designer_cost = 0
-	legacy_equivalent = iqta_legacy
-
-	modifiers = {
-		legitimacy = 0.25
-		prestige = 0.2
-		monarch_lifespan = 0.25
-		global_tax_modifier = 0.05
-		stability_cost_modifier = -0.1
-		galley_cost = -0.1
-	}
-
-	conditional = {
-		allow = { has_dlc = "Cradle of Civilization" }
-		government_abilities = {
-			iqta_mechanic
-		}
-	}
-
-	ai = {
-		factor = 0.5 #generic
-	}
-}
-
 fragmented_moroccan_monarchy = {
 	icon = "noble_muslim"
 	allow_normal_conversion = yes
@@ -87,6 +52,64 @@ fragmented_moroccan_monarchy = {
 		factor = 0.5 #generic
 	}
 }
+
+moroccan_monarchy = {
+	icon = "castle"
+	allow_normal_conversion = yes
+	potential = {
+		OR = {
+			tag = MOR
+			was_tag = MOR
+		}
+		has_country_flag = a_time_of_change
+	}
+	valid_for_nation_designer = yes
+	nation_designer_cost = 0
+	legacy_equivalent = iqta_legacy
+
+	modifiers = {
+		legitimacy = 0.25
+		global_autonomy = -0.025
+		global_tax_modifier = 0.10
+		galley_cost = -0.1
+	}
+
+	conditional = {
+		allow = { has_dlc = "Cradle of Civilization" }
+		government_abilities = {
+			iqta_mechanic
+		}
+	}
+
+	ai = {
+		factor = 0.5 #generic
+	}
+}
+
+islamic_emirate = {
+    icon = "peacock_throne"
+    allow_normal_conversion = no
+    potential = {
+    	tag = ZRD
+    }
+    valid_for_nation_designer = yes
+    nation_designer_cost = 30
+	legacy_equivalent = iqta_legacy
+    nation_designer_trigger = {
+		tag = ZRD 
+    }
+    modifiers = {
+        tolerance_own = 1
+		state_maintenance_modifier = -0.1
+		advisor_cost = -0.05
+    }
+	conditional = {
+		allow = { has_dlc = "Cradle of Civilization" }
+		government_abilities = {
+			iqta_mechanic
+		}
+	}
+} 
 
 sicilian_emirate = {
 	icon = "muslim"
@@ -446,31 +469,6 @@ imperial_duchy = {
 		land_forcelimit_modifier = 0.1
     }
 }
-
-islamic_emirate = {
-    icon = "peacock_throne"
-    allow_normal_conversion = no
-    potential = {
-      tag = ZRD
-    }
-    valid_for_nation_designer = yes
-    nation_designer_cost = 30
-	legacy_equivalent = iqta_legacy
-    nation_designer_trigger = {
-		tag = ZRD 
-    }
-    modifiers = {
-        tolerance_own = 1
-		state_maintenance_modifier = -0.1
-		advisor_cost = -0.05
-    }
-	conditional = {
-		allow = { has_dlc = "Cradle of Civilization" }
-		government_abilities = {
-			iqta_mechanic
-		}
-	}
-} 
 
 vikking_kingdom = {
     icon = "chieftain"

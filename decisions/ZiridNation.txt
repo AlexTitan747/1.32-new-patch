@@ -1,74 +1,79 @@
 country_decisions = {
-
-		zirid_nation = {
-			color = { 23 223 234 }
-			major = yes
-			potential = {
-				NOT = { has_country_flag = formed_zirid_flag }
-				NOT = { exists = ZRD }
-				NOT = { tag = SPA }
-				NOT = { tag = POR }
-				is_colonial_nation = no
-				culture_group = maghrebi
-				has_country_flag = maghreb_selected
-			}
-			
-			provinces_to_highlight = {
-				OR = {
-					province_id = 341			# Tunis
-					province_id = 354			# Tripoli
-					province_id = 1751			# Ceuta
-					province_id = 2461			# Dahra
-					province_id = 346			# Tafilalt
-				}
-				AND = {
-					region = maghreb_region
-					ROOT = {
-						NOT = {
-							num_of_owned_provinces_with = {
-								value = 50
-								region = maghreb_region
-								is_core = root
-							}
-						}
-					}
-				}
-
-				OR = {
-					NOT = { owned_by = ROOT }
-					NOT = { is_core = ROOT }
-				}
-			}
-
-			allow = {
-				adm_tech = 10
-				is_free_or_tributary_trigger = yes
-				is_at_war = no
-
-				mission_completed = tm_mor_unification_of_maghreb
-			}
-
-			effect = {
-				change_tag = ZRD
-				remove_non_electors_emperors_from_empire_effect = yes
-				add_prestige = 25
-				add_country_modifier = {
-					name = centralization_modifier
-					duration = 3650
-				}
-				add_government_reform = islamic_emirate
-				maghreb_region = {
-					limit = {
-						NOT = {
-							owned_by = ROOT
-						}
-					}
-					add_permanent_claim = ROOT
-				}
-				
-				set_country_flag = formed_zirid_flag
-				country_event = { id = ideagroups.1 } #Swap Ideas
-			}
-			
+	zirid_nation = {
+		color = { 23 223 234 }
+		major = yes
+		potential = {
+			NOT = { has_country_flag = formed_zirid_flag }
+			NOT = { exists = ZRD }
+			NOT = { tag = SPA }
+			NOT = { tag = POR }
+			is_colonial_nation = no
+			culture_group = maghrebi
 		}
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 341			# Tunis
+				province_id = 354			# Tripoli
+				province_id = 1751			# Ceuta
+				province_id = 2461			# Dahra
+				province_id = 346			# Tafilalt
+			}
+			AND = {
+				region = maghreb_region
+				ROOT = {
+					NOT = {
+						num_of_owned_provinces_with = {
+							value = 50
+							region = maghreb_region
+							is_core = root
+						}
+					}
+				}
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+
+		allow = {
+			adm_tech = 10
+			is_free_or_tributary_trigger = yes
+			is_at_war = no
+			owns_core_province = 341			# Tunis
+			owns_core_province = 354			# Tripoli
+			owns_core_province = 1751			# Ceuta
+			owns_core_province = 2461			# Dahra
+			owns_core_province = 346			# Tafilalt
+			num_of_owned_provinces_with = {
+				value = 50
+				region = maghreb_region
+				is_core = ROOT
+			}
+		}
+
+		effect = {
+			change_tag = ZRD
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			add_prestige = 25
+			add_country_modifier = {
+				name = centralization_modifier
+				duration = 3650
+			}
+			add_government_reform = islamic_emirate
+			maghreb_region = {
+				add_perma_claim = yes
+			}
+			
+			set_country_flag = formed_zirid_flag
+			country_event = { id = ideagroups.1 } #Swap Ideas
+		}
+		
 	}
+}
