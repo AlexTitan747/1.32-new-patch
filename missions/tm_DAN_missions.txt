@@ -234,7 +234,12 @@ dan_secure_baltic_mission_slot = {
 				NOT = { is_core = ROOT }
 				NOT = { is_permanent_claim = ROOT }
 				NOT = { has_trade_building_trigger = yes }
-				NOT = { has_coast_defense_building_trigger = yes }
+				NOT = { 
+					OR = {
+						has_coast_defense_building_trigger = yes
+						has_province_modifier = block_slave_raid_area_m
+					}
+				}
 			}
 		}
 		trigger = {
