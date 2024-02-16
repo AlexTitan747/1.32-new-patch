@@ -9558,6 +9558,18 @@ ait_benhaddou = {
 			global_trade_power = 0.05
 		}
 
+		conditional_modifier = {
+			trigger = {
+				owner = { 
+					mission_completed = tm_mor_great_trading_empire
+				}
+			}
+			modifier = {
+				merchants = 1
+				trade_steering = 0.1
+			}
+		}
+
 		#what effects happen when this tier is achieved
 		on_upgraded = {	
 		}
@@ -17730,13 +17742,7 @@ kilwa_city = {
 	type = monument
 
 	build_trigger = {
-		OR = {
-			owner = { tag = ZAN }
-			has_building = shipyard
-			has_building = grand_shipyard
-			has_building = dock
-			has_building = drydock
-		}	
+		religion_group = muslim	
 		has_owner_religion = yes
 	}
 
@@ -17747,24 +17753,12 @@ kilwa_city = {
 	}
 
 	can_use_modifiers_trigger = {
-		OR = {
-			owner = { tag = ZAN }
-			has_building = shipyard
-			has_building = grand_shipyard
-			has_building = dock
-			has_building = drydock
-		}
+		religion_group = muslim
 		has_owner_religion = yes
 	}
 
 	can_upgrade_trigger = {
-		OR = {
-			owner = { tag = ZAN }
-			has_building = shipyard
-			has_building = grand_shipyard
-			has_building = dock
-			has_building = drydock
-		}
+		religion_group = muslim
 		has_owner_religion = yes
 	}
 
