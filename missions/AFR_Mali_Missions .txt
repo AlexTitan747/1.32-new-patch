@@ -531,7 +531,11 @@ mali_slot_1_morocco_diplomacy_placeholders = {
 				custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 				if = {
 					limit = {
-						NOT = { always = no }
+						NOT = { 
+							event_target:morocco_event_target = {
+								mission_completed = mor_approach_to_mal_friendly_2
+							}
+						}
 					}
 					custom_tooltip = BONUS_REWARD_YES
 				}
@@ -543,7 +547,9 @@ mali_slot_1_morocco_diplomacy_placeholders = {
 				custom_tooltip = tm_mal_mor_dip_friendly_if_they_have
 				if = {
 					limit = {
-						always = no
+						event_target:morocco_event_target = {
+							mission_completed = mor_approach_to_mal_friendly_2
+						}
 					}
 					custom_tooltip = BONUS_REWARD_YES
 				}
@@ -577,7 +583,11 @@ mali_slot_1_morocco_diplomacy_placeholders = {
 			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 			if = {
 				limit = {
-					NOT = { always = no }
+					NOT = {
+						event_target:morocco_event_target = {
+							mission_completed = mor_approach_to_mal_friendly_3
+						}
+					}
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -601,7 +611,9 @@ mali_slot_1_morocco_diplomacy_placeholders = {
 			custom_tooltip = tm_mal_mor_dip_friendly_if_they_have
 			if = {
 				limit = {
-					always = no
+					event_target:morocco_event_target = {
+						mission_completed = mor_approach_to_mal_friendly_3
+					}
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -718,7 +730,11 @@ mali_slot_1_morocco_diplomacy_friendly = {
 			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 			if = {
 				limit = {
-					NOT = { always = no }
+					NOT = { 
+						event_target:morocco_event_target = {
+							mission_completed = mor_approach_to_mal_friendly_2
+						}
+					}
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -730,7 +746,9 @@ mali_slot_1_morocco_diplomacy_friendly = {
 			custom_tooltip = tm_mal_mor_dip_friendly_if_they_have
 			if = {
 				limit = {
-					always = no
+					event_target:morocco_event_target = {
+						mission_completed = mor_approach_to_mal_friendly_2
+					}
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -740,7 +758,7 @@ mali_slot_1_morocco_diplomacy_friendly = {
 			}
 			hidden_effect = {
 				if = {
-					limit = { NOT = { always = no } }
+					limit = { NOT = { event_target:morocco_event_target = {	mission_completed = mor_approach_to_mal_friendly_2 } } }
 					1124 = { add_building = road }
 					1123 = { add_building = road }
 					2246 = { add_building = road }
@@ -758,7 +776,7 @@ mali_slot_1_morocco_diplomacy_friendly = {
 					343 = { add_building = road }
 				}
 				if = {
-					limit = { always = no }
+					limit = { event_target:morocco_event_target = {	mission_completed = mor_approach_to_mal_friendly_2 } }
 					1124 = { add_building = highway }
 					1123 = { add_building = highway }
 					2246 = { add_building = highway }
@@ -817,7 +835,11 @@ mali_slot_1_morocco_diplomacy_friendly = {
 			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 			if = {
 				limit = {
-					NOT = { always = no }
+					NOT = {
+						event_target:morocco_event_target = {
+							mission_completed = mor_approach_to_mal_friendly_3
+						}
+					}
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -842,7 +864,9 @@ mali_slot_1_morocco_diplomacy_friendly = {
 			custom_tooltip = tm_mal_mor_dip_friendly_if_they_have
 			if = {
 				limit = {
-					always = no
+					event_target:morocco_event_target = {
+						mission_completed = mor_approach_to_mal_friendly_3
+					}
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -853,7 +877,7 @@ mali_slot_1_morocco_diplomacy_friendly = {
 			}
 			hidden_effect = {
 				if = {
-					limit = { NOT = { always = no } }
+					limit = { NOT = { event_target:morocco_event_target = {	mission_completed = mor_approach_to_mal_friendly_3 } } }
 					random_owned_province = { add_base_manpower = 1 }
 					random_owned_province = { add_base_manpower = 1 }
 					random_owned_province = { add_base_manpower = 1 }
@@ -892,7 +916,7 @@ mali_slot_1_morocco_diplomacy_friendly = {
 					}
 				}
 				if = {
-					limit = { always = no }
+					limit = { event_target:morocco_event_target = {	mission_completed = mor_approach_to_mal_friendly_3 } }
 					for = {
 						amount = 10
 						effect = "
@@ -1533,7 +1557,11 @@ mali_slot_2_morocco_diplomacy_placeholders = {
 				custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 				if = {
 					limit = {
-						NOT = { always = no }
+						NOT = { 
+							event_target:morocco_event_target = {
+								mission_completed = mor_approach_to_mal_friendly_1
+							}
+						}
 					}
 					custom_tooltip = BONUS_REWARD_YES
 				}
@@ -1546,7 +1574,9 @@ mali_slot_2_morocco_diplomacy_placeholders = {
 				custom_tooltip = tm_mal_mor_dip_friendly_if_they_have
 				if = {
 					limit = {
-						always = no
+						event_target:morocco_event_target = {
+							mission_completed = mor_approach_to_mal_friendly_1
+						}
 					}
 					custom_tooltip = BONUS_REWARD_YES
 				}
@@ -1631,8 +1661,12 @@ mali_slot_2_morocco_diplomacy_friendly = {
 		effect = {
 			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 			if = {
-				limit = {
-					NOT = { always = no }
+				limit = { 
+					NOT = { 
+						event_target:morocco_event_target = {
+							mission_completed = mor_approach_to_mal_friendly_1
+						}
+					}
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -1645,7 +1679,9 @@ mali_slot_2_morocco_diplomacy_friendly = {
 			custom_tooltip = tm_mal_mor_dip_friendly_if_they_have
 			if = {
 				limit = {
-					always = no
+					event_target:morocco_event_target = {
+						mission_completed = mor_approach_to_mal_friendly_1
+					}
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -1660,12 +1696,12 @@ mali_slot_2_morocco_diplomacy_friendly = {
 			}
 			hidden_effect = {
 				if = {
-					limit = { NOT = { always = no } }
+					limit = { NOT = { event_target:morocco_event_target = {	mission_completed = mor_approach_to_mal_friendly_1 } } }
 					2249 = { change_trade_goods = saffron add_base_production = 3 }
 					2465 = { change_trade_goods = gold add_base_production = 3 }
 				}
 				if = {
-					limit = { always = no }
+					limit = { event_target:morocco_event_target = {	mission_completed = mor_approach_to_mal_friendly_1 } }
 					set_country_flag = tm_mal_mor_trade_agreements_flag
 					add_country_modifier = {
 						name = tm_mal_mor_trading_agreements
@@ -2247,15 +2283,22 @@ mali_army_reforms_westernise_slot_3 = {
 
 		trigger = {
 			not_in_mission_preview_mode = { key = TM_MAL_MIL }
-			any_country = {
-				technology_group = western
-				OR = {
-					army_tradition = 60
-					army_professionalism = 0.4
+			OR = {
+				any_country = {
+					technology_group = western
+					OR = {
+						army_tradition = 60
+						army_professionalism = 0.4
+					}
+					has_opinion = {
+						who = ROOT
+						value = 100
+					}
 				}
-				has_opinion = {
-					who = ROOT
-					value = 100
+				AND = {
+					has_better_tech_than_westerns = yes
+					has_more_institutions_than_westerns = yes
+					army_professionalism = 0.25
 				}
 			}
 		}
