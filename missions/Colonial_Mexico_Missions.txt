@@ -570,14 +570,18 @@ colonial_MEX_slot_4 = {
 		}
 
 		effect = {
-			custom_tooltip = gain_perma_claim_on_mexico_colonial_region_tt
-			hidden_effect = {
-				colonial_mexico = {
-					limit = {
-						NOT = { owned_by = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
+			#custom_tooltip = gain_perma_claim_on_mexico_colonial_region_tt
+			#hidden_effect = {
+			#	colonial_mexico = {
+			#		limit = {
+			#			NOT = { owned_by = ROOT }
+			#		}
+			#		add_permanent_claim = ROOT
+			#	}
+			#}
+			add_country_modifier = {
+				name = "col_colonising_quick"
+				duration = 5475
 			}
 		}
 	}
@@ -598,26 +602,27 @@ colonial_MEX_slot_4 = {
 		}
 
 		effect = {
-			custom_tooltip = every_owned_province_gets_fa_tt
-			tooltip = {
-				add_province_modifier = {
-					name = col_forced_pacification
-					duration = 5475
-				}
-			}
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
-						colonial_region = colonial_mexico
-					}
-					add_province_modifier = {
-						name = col_forced_pacification
-						duration = 5475
-					}
-				}
-			}
-			set_country_flag = tm_colonial_forced_pacification
-			custom_tooltip = tm_this_applies_to_conquered_in_region_tt
+			#custom_tooltip = every_owned_province_gets_fa_tt
+			#tooltip = {
+			#	add_province_modifier = {
+			#		name = col_forced_pacification
+			#		duration = 5475
+			#	}
+			#}
+			#hidden_effect = {
+			#	every_owned_province = {
+			#		limit = {
+			#			colonial_region = colonial_mexico
+			#		}
+			#		add_province_modifier = {
+			#			name = col_forced_pacification
+			#			duration = 5475
+			#		}
+			#	}
+			#}
+			#set_country_flag = tm_colonial_forced_pacification
+			#custom_tooltip = tm_this_applies_to_conquered_in_region_tt
+			custom_tooltip = mex_goods_bonus_colonising
 		}
 	}
 
@@ -636,26 +641,37 @@ colonial_MEX_slot_4 = {
 		}
 
 		effect = {
-			custom_tooltip = every_owned_province_gets_fa_tt
-			tooltip = {
-				add_province_modifier = {
-					name = col_forced_assimilation
-					duration = 5475
-				}
-			}
-			hidden_effect = {
-				every_owned_province = {
-					limit = {
-						colonial_region = colonial_mexico
-					}
-					add_province_modifier = {
-						name = col_forced_assimilation
-						duration = 5475
-					}
-				}
-			}
-			set_country_flag = tm_colonial_forced_assimilation
-			custom_tooltip = tm_this_applies_to_conquered_in_region_tt
+			#custom_tooltip = every_owned_province_gets_fa_tt
+			#tooltip = {
+			#	add_province_modifier = {
+			#		name = col_forced_assimilation
+			#		duration = 5475
+			#	}
+			#}
+			#hidden_effect = {
+			#	every_owned_province = {
+			#		limit = {
+			#			colonial_region = colonial_mexico
+			#		}
+			#		add_province_modifier = {
+			#			name = col_forced_assimilation
+			#			duration = 5475
+			#		}
+			#	}
+			#}
+			#set_country_flag = tm_colonial_forced_assimilation
+			#custom_tooltip = tm_this_applies_to_conquered_in_region_tt
+			if = {
+                limit = {
+                    stability = 3
+                }
+                add_adm_power = 100
+            }
+            else = {
+                add_stability = 1
+            }
+            add_dip_power = 100
+            add_mil_power = 100
 		}
 	}
 
