@@ -5457,6 +5457,26 @@ on_province_owner_change = {
 			}
 		}
 	}
+
+	if = {
+		limit = {
+			owner = { has_country_flag = tm_butua_improved_irrigation_works }
+			OR = {
+				trade_goods = citrus
+				trade_goods = livestock
+				trade_goods = cheese
+				trade_goods = grain
+				trade_goods = ale
+				trade_goods = rice
+				trade_goods = banana
+				trade_goods = horses
+			}
+		}
+		add_province_modifier = {
+			name = tm_butua_irrigated_farming_works
+			duration = -1
+		}
+	}
 }
 
 # country

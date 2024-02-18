@@ -443,6 +443,26 @@ barracks = {
 				}
 			}
 		}
+
+		if = {
+			limit = {
+				FROM = { has_country_flag = tm_butua_farmed_goods_manpower_bonus }
+				OR = {
+					trade_goods = citrus
+					trade_goods = livestock
+					trade_goods = cheese
+					trade_goods = grain
+					trade_goods = ale
+					trade_goods = rice
+					trade_goods = banana
+					trade_goods = horses
+				}
+			}
+			add_province_modifier = {
+				name = tm_butua_the_farming_industries
+				duration = -1
+			}
+		}
 	}
 	on_destroyed = {
 		if = {
@@ -473,6 +493,10 @@ barracks = {
 		}
 		update_improved_military_buildings_modifier = {
 			building = barracks
+		}
+		if = {
+			limit = { has_province_modifier = tm_butua_the_farming_industries }
+			remove_province_modifier = tm_butua_the_farming_industries
 		}
 	}
 	on_obsolete = {
@@ -2452,6 +2476,26 @@ training_fields = {
 				}
 			}
 		}
+
+		if = {
+			limit = {
+				FROM = { has_country_flag = tm_butua_farmed_goods_manpower_bonus }
+				OR = {
+					trade_goods = citrus
+					trade_goods = livestock
+					trade_goods = cheese
+					trade_goods = grain
+					trade_goods = ale
+					trade_goods = rice
+					trade_goods = banana
+					trade_goods = horses
+				}
+			}
+			add_province_modifier = {
+				name = tm_butua_the_farming_industries
+				duration = -1
+			}
+		}
 	}
 	on_destroyed = {
 		if = {
@@ -2482,6 +2526,10 @@ training_fields = {
 			building = training_fields
 			type = manpower
 			value = 2
+		}
+		if = {
+			limit = { has_province_modifier = tm_butua_the_farming_industries }
+			remove_province_modifier = tm_butua_the_farming_industries
 		}
 	}
 	on_obsolete = {

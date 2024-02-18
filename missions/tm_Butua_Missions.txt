@@ -648,6 +648,7 @@ butua_eco_development_1 = {
 					NOT = { has_country_flag = tm_butua_careful_mines }
 					NOT = { has_country_flag = tm_butua_greedy_mines }
 				}
+				custom_tooltip = tm_choose_careful_gold_tt
 				tooltip = {
 					add_country_modifier = {
 						name = butua_careful_gold_mining
@@ -658,7 +659,7 @@ butua_eco_development_1 = {
 				tooltip = {
 					add_base_production = 2
 				}
-
+				custom_tooltip = tm_choose_greedy_gold_tt
 				custom_tooltip = mission_alternatively_tt
 				tooltip = {
 					add_country_modifier = {
@@ -1241,15 +1242,64 @@ butua_eco_development_2 = {
 		required_missions = { butua_mines_of_butua }
 
 		provinces_to_highlight = {
-			
+			OR = {
+				trade_goods = silver
+				trade_goods = silverware
+				trade_goods = iron
+				trade_goods = armour
+				trade_goods = steel
+				trade_goods = copper
+				trade_goods = tin
+				trade_goods = bronze
+			}
+			superregion = southern_africa_superregion
+			OR = {
+				NOT = { owned_by = ROOT }
+				has_production_building = no
+				NOT = { development = 10 }
+			}
 		}
 
 		trigger = {
-			
+			num_of_owned_provinces_with = {
+				value = 10
+				OR = {
+					trade_goods = silver
+					trade_goods = silverware
+					trade_goods = iron
+					trade_goods = armour
+					trade_goods = steel
+					trade_goods = copper
+					trade_goods = tin
+					trade_goods = bronze
+				}
+				has_production_building = yes
+				development = 10
+			}
 		}
 
 		effect = {
-			
+			custom_tooltip = tm_new_mines_of_butua_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						OR = {
+							trade_goods = silver
+							trade_goods = silverware
+							trade_goods = iron
+							trade_goods = armour
+							trade_goods = steel
+							trade_goods = copper
+							trade_goods = tin
+							trade_goods = bronze
+						}
+						has_production_building = yes
+						development = 10
+					}
+					upgrade_building = { production = yes }
+					add_base_production = 1
+				}
+			}
         }
 	}
 
@@ -1291,6 +1341,10 @@ butua_eco_development_2 = {
 		}
 
 		effect = {
+			add_country_modifier = {
+				name = tm_rzw_metal_production
+				duration = -1
+			}
 			add_years_of_owned_provinces_production_income = {
 				years = 3
 				trigger = {
@@ -3575,7 +3629,29 @@ butua_eco_development_4 = {
 		}
 		
 		effect = {
-			
+			custom_tooltip = tm_butua_farmed_goods_manpower_bonus_tt
+			set_country_flag = tm_butua_farmed_goods_manpower_bonus
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						has_manpower_building_trigger = yes
+						OR = {
+							trade_goods = citrus
+							trade_goods = livestock
+							trade_goods = cheese
+							trade_goods = grain
+							trade_goods = ale
+							trade_goods = rice
+							trade_goods = banana
+							trade_goods = horses
+						}
+					}
+					add_province_modifier = {
+						name = tm_butua_the_farming_industries
+						duration = -1
+					}
+				}
+			}
 		}
 	}
 
@@ -3585,15 +3661,70 @@ butua_eco_development_4 = {
 		position = 13
 
 		provinces_to_highlight = {
-			
+			superregion = southern_africa_superregion
+			OR = {
+				trade_goods = citrus
+				trade_goods = livestock
+				trade_goods = cheese
+				trade_goods = grain
+				trade_goods = ale
+				trade_goods = rice
+				trade_goods = banana
+				trade_goods = horses
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { num_of_buildings_in_province = 4 }
+				NOT = { num_of_times_expanded_infrastructure = 1 }
+			}
 		}
 
 		trigger = {
-			
+			num_of_owned_provinces_with = {
+				OR = {
+					trade_goods = citrus
+					trade_goods = livestock
+					trade_goods = cheese
+					trade_goods = grain
+					trade_goods = ale
+					trade_goods = rice
+					trade_goods = banana
+					trade_goods = horses
+				}
+				num_of_buildings_in_province = 4
+				num_of_times_expanded_infrastructure = 1
+			}
 		}
 		
 		effect = {
-			
+			change_price = {
+				trade_goods = citrus
+				key = cirtus_farms
+				value = 0.25
+				duration = -1
+			}
+			custom_tooltip = tm_butua_irrigated_farming_works_tt
+			set_country_flag = tm_butua_improved_irrigation_works
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						OR = {
+							trade_goods = citrus
+							trade_goods = livestock
+							trade_goods = cheese
+							trade_goods = grain
+							trade_goods = ale
+							trade_goods = rice
+							trade_goods = banana
+							trade_goods = horses
+						}
+					}
+					add_province_modifier = {
+						name = tm_butua_irrigated_farming_works
+						duration = -1
+					}
+				}
+			}
 		}
 	}
 
