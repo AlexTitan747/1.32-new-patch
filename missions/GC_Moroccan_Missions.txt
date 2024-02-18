@@ -11,72 +11,86 @@ gc_morocco_1 = {
 	}
 	has_country_shield = yes
 
-	tm_moroccan_shipbuilding = {
-		icon = mission_raid_christian_trade
-		required_missions = {}
-		position = 6
-
-		provinces_to_highlight = {
-			owned_by = ROOT
-			has_port = yes
-		}
-
+	tm_mor_ulema_1 = {
+		icon = mission_ottoman_harem
+		required_missions = { }
+		position = 3
+		
 		trigger = {
-			num_of_light_ship = 10
-			OR = {
-				num_of_galley = 20
-				num_of_heavy_ship = 6
+			estate_loyalty = {
+				estate = estate_church
+				loyalty = 70
 			}
-			num_of_admirals = 1
+			num_of_estate_privileges = {
+				estate = estate_church
+				value = 3
+			}
 		}
-
+		
 		effect = {
+			auto_complete_estate_agenda = {
+				estate = estate_church
+			}
 			add_country_modifier = {
-				name = mor_shipbuilding
-				duration = 7300
+				name = tm_mor_appeased_ulema
+				duration = 9125
+			}
+			disable_rebels_from_seize_land_for_estate = {
+				estate = estate_church
 			}
 		}
 	}
 
-	tm_mor_a_moroccan_armada = {
-		icon = mission_pirate_havens
-		required_missions = { tm_moroccan_shipbuilding tm_mor_prepare_for_jihad }
-		position = 9
-		
-		provinces_to_highlight = {
-			owned_by = ROOT
-			has_port = yes
-			has_navy_building = no
-		}
+	tm_mor_ulema_2 = {
+		icon = mission_rajput_trade_guilds
+		required_missions = { tm_mor_ulema_1 }
 		
 		trigger = {
-			num_of_owned_provinces_with = {
-				value = 8
-				has_navy_building = yes
+			estate_loyalty = {
+				estate = estate_church
+				loyalty = 80
 			}
-			has_flagship = yes
-			if = {
-				limit = {
-					exists = SPA
-				}
-				num_of_heavy_ship = SPA
+			num_of_estate_agendas_completed = {
+				estate = estate_church
+				value = 5
 			}
-			else_if = {
-				limit = {
-					exists = CAS
-				}
-				num_of_heavy_ship = CAS
-			}
-			else = {
-				OR = {
-					num_of_heavy_ship = 20
-					num_of_galley = 75
-				}
+			num_of_estate_privileges = {
+				estate = estate_church
+				value = 5
 			}
 		}
 		
 		effect = {
-			
+			custom_tooltip = tm_mor_improve_ulema_tt
+			set_country_flag = tm_mor_improve_ulema
+		}
+	}
+
+	tm_mor_ulema_3 = {
+		icon = per_muslim_integration
+		required_missions = { tm_mor_ulema_2 }
+		
+		trigger = {
+			custom_trigger_tooltip = {
+				tooltip = tm_mor_converted_x_provs_tt
+				check_variable = {
+					which = tm_converted_provs
+					value = 30
+				}
+			}
+			estate_loyalty = {
+				estate = estate_church
+				loyalty = 90
+			}
+			num_of_estate_agendas_completed = {
+				estate = estate_church
+				value = 8
+			}
+		}
+		
+		effect = {
+			set_country_flag = tm_dev_on_convert_province
+			custom_tooltip = tm_dev_on_convert_province_tt
 		}
 	}
 
@@ -126,7 +140,7 @@ gc_morocco_1 = {
 			223 = {
 				country_or_non_sovereign_subject_holds = ROOT
 				development = 20
-				has_tax_building_trigger = yes
+				num_of_buildings_in_province = 4
 			}
 		}
 		
@@ -135,6 +149,21 @@ gc_morocco_1 = {
 				add_province_modifier = {
 					name = "renovated_palace_of_alhambra"
 					duration = -1
+				}
+				if = {
+					limit = {
+						NOT = {
+							has_great_project = {
+								type = alhambra
+								tier = 2
+							}
+						}
+					}
+					add_great_project_tier = {
+						type = alhambra
+						tier = 1
+					}
+					custom_tooltip = tm_upgrades_great_project_up_to_tier_2_tt
 				}
 			}
 		}
@@ -163,25 +192,30 @@ gc_morocco_1 = {
 		trigger = {
 			225 = {
 				country_or_non_sovereign_subject_holds = ROOT
-				development = 15
-				has_tax_building_trigger = yes
+				development = 20
 			}
 			lower_andalucia_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 				religion = ROOT
+				has_tax_building_trigger = yes
 			}
 			upper_andalucia_area = {
 				type = all
 				country_or_non_sovereign_subject_holds = ROOT
 				religion = ROOT
+				has_tax_building_trigger = yes
 			}
 		}
 		
 		effect = {
 			#custom_tooltip = alandalus_returns_tooltip
 			225 = {
-				add_province_triggered_modifier = alandalus_returns
+				#add_province_triggered_modifier = alandalus_returns
+				add_province_modifier = {
+					name = alandalus_returns
+					duration = -1
+				}
 			}
 		}
 	}
@@ -200,24 +234,73 @@ tm_morocco_eco_1 = {
 	}
 	has_country_shield = yes
 
-	
-
-	tm_mor_saffron = {
-		icon = NEED_ICON
+	tm_mor_building_production = {
+		icon = industrialized_rhineland
 		required_missions = { }
-		position = 15
-
+		position = 16
+		
 		provinces_to_highlight = {
-			region = maghreb_region
-			trade_goods = saffron
+			owned_by = ROOT
+			has_production_building = no
 		}
 
 		trigger = {
-			
+			num_of_owned_provinces_with = {
+				value = 15
+				has_production_building = yes
+			}
 		}
 
 		effect = {
-			
+			add_country_modifier = {
+				name = tm_mor_building_production_modifier
+				duration = 5475
+			}
+		}
+	}
+
+	tm_mor_innovation = {
+		icon = mission_conquer_punjab
+		required_missions = { tm_mor_building_production }
+
+		provinces_to_highlight = {
+			province_id = 343
+		}
+		
+		trigger = {
+			has_more_institutions_than_westerns = yes
+			has_better_tech_than_westerns = yes
+			343 = {
+				has_great_project = {
+					type = al_qarawiyyin
+					tier = 3
+				}
+			}
+		}
+
+		effect = {
+			change_innovativeness = 5
+			if = {
+				limit = {
+					capital_scope = {
+						area_for_scope_province = {
+							NOT = { has_building = university }
+						}
+					}
+				}
+				capital_scope = {
+					add_building = university
+				}
+			}
+			else = {
+				capital_scope = { add_random_development = 3 }
+			}
+			#capital_scope = {
+			#	add_province_modifier = {
+			#		name = tm_mor_centre_of_islamic_learning
+			#		duration = -1
+			#	}
+			#}
 		}
 	}
 }
@@ -236,9 +319,9 @@ tm_mor_colonisation_1 = {
 	has_country_shield = yes
 
 	tm_mor_carribean_start = {
-		icon = NEED_ICON
+		icon = mission_caribbean_cn
 		required_missions = { tm_mor_colonial_ambition }
-		position = 25
+		position = 20
 		
 		provinces_to_highlight = {
 			colonial_region = colonial_the_carribean
@@ -258,12 +341,54 @@ tm_mor_colonisation_1 = {
 		}
 
 		effect = {
-			
+			define_advisor = {
+				type = navigator
+				skill = 3
+				religion = ROOT
+				culture = ROOT
+				cost_multiplier = 0.3
+			}
+			if = {
+				limit = {
+					NOT = { any_province = { country_or_non_sovereign_subject_holds = ROOT colonial_region = colonial_the_carribean } }
+				}
+				custom_tooltip = tm_mor_5_provs_in_carribean_gain
+			}
+			random_province = {
+				limit = { country_or_non_sovereign_subject_holds = ROOT colonial_region = colonial_the_carribean }
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+			}
+			random_province = {
+				limit = { country_or_non_sovereign_subject_holds = ROOT colonial_region = colonial_the_carribean }
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+			}
+			random_province = {
+				limit = { country_or_non_sovereign_subject_holds = ROOT colonial_region = colonial_the_carribean }
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+			}
+			random_province = {
+				limit = { country_or_non_sovereign_subject_holds = ROOT colonial_region = colonial_the_carribean }
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+			}
+			random_province = {
+				limit = { country_or_non_sovereign_subject_holds = ROOT colonial_region = colonial_the_carribean }
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+			}
 		}
 	}
 
 	tm_mor_carribean_control = {
-		icon = NEED_ICON
+		icon = mission_colonize_the_caribbean
 		required_missions = { tm_mor_carribean_start }
 		
 		provinces_to_highlight = {
@@ -284,43 +409,73 @@ tm_mor_colonisation_1 = {
 		}
 
 		effect = {
-			
+			add_mercantilism = 3
+			add_country_modifier = {
+				name = tm_mor_trading_nation
+				duration = -1
+			}
 		}
 	}
 
 	tm_mor_carribean_trade = {
-		icon = NEED_ICON
+		icon = mission_secure_hajj_ports
 		required_missions = { tm_mor_carribean_control }
 		
 		provinces_to_highlight = {
-			colonial_region = colonial_the_carribean
+			province_id = 1516
 			has_discovered = ROOT
 		}
 
 		trigger = {
-			
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 5
+				colonial_region = colonial_the_carribean
+				OR = {
+					has_trade_building_trigger = yes
+					province_has_center_of_trade_of_level = 2
+				}
+			}
+			1516 = {
+				trade_node_value = 50
+				trade_share = {
+					country = ROOT
+					share = 40
+				}
+			}
 		}
 
 		effect = {
-			
+			add_country_modifier = {
+				name = tm_mor_carribean_trading
+				duration = -1
+			}
 		}
 	}
 
 	tm_mor_carribean_privateering = {
-		icon = NEED_ICON
+		icon = mission_sponsor_piracy
 		required_missions = { tm_mor_carribean_trade }
 		
 		provinces_to_highlight = {
-			colonial_region = colonial_the_carribean
+			province_id = 1516
 			has_discovered = ROOT
 		}
 
 		trigger = {
-			
+			1516 = {
+				has_privateer_share_in_trade_node = {
+					who = ROOT
+					share = 0.2
+				}
+			}
+			num_ships_privateering = 50
 		}
 
 		effect = {
-			
+			add_country_modifier = {
+				name = tm_mor_pirates_of_the_carribean
+				duration = 9125
+			}
 		}
 	}
 }
@@ -340,7 +495,7 @@ gc_morocco_2 = {
 	has_country_shield = yes
 
 	tm_mor_military_academys = {
-		icon = mission_levantine_restoration
+		icon = mission_conquer_malwa_mer
 		required_missions = { tm_mor_mobilisation }
 		position = 2
 
@@ -368,7 +523,7 @@ gc_morocco_2 = {
 	}
 
 	tm_mor_develop_inside = {
-		icon = NEED_ICON
+		icon = mission_mal_subjugate_zaf
 		required_missions = { tm_mor_secure_the_interior }
 		position = 4
 
@@ -467,139 +622,105 @@ gc_morocco_2 = {
 		}
 	}
 
-	tm_mor_corsairs_of_the_mediterranean = {
-		icon = mission_corsairs_of_the_north_sea
-		required_missions = { tm_moroccan_shipbuilding }
-		position = 7
-		
+	tm_mor_march_on_egypt = {
+		icon = mission_egyptian_mamluk_soldier
+		required_missions = { tm_mor_carry_onwards }
+		position = 6
+
 		provinces_to_highlight = {
-			OR = {
-				AND = {
-					OR = {
-						province_id = 101
-						province_id = 2980
-						province_id = 1247
-						province_id = 118
-						province_id = 201
-					}
-					OR = {
-						NOT = { devastation = 5 }
-						NOT = { has_province_modifier = block_slave_raid_area_m }
-					}
-				}
-				AND = {
-					province_id = 1298
-					NOT = {
-						1298 = {
-							privateer_power = {
-								country = ROOT
-								share = 33
-							}
-						}
-					}
-				}
-			}
+			region = egypt_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 
 		trigger = {
-			1298 = {
-				privateer_power = {
-					country = ROOT
-					share = 33
-				}
-			}
-			101 = {
-				OR = {
-					devastation = 5
-					has_province_modifier = block_slave_raid_area_m
-				}
-			}
-			2980 = {
-				OR = {
-					devastation = 5
-					has_province_modifier = block_slave_raid_area_m
-				}
-			}
-			1247 = {
-				OR = {
-					devastation = 5
-					has_province_modifier = block_slave_raid_area_m
-				}
-			}
-			118 = {
-				OR = {
-					devastation = 5
-					has_province_modifier = block_slave_raid_area_m
-				}
-			}
-			201 = {
-				OR = {
-					devastation = 5
-					has_province_modifier = block_slave_raid_area_m
-				}
-			}
-			naval_forcelimit = 50
-			navy_size_percentage = 1.0
-			num_of_admirals = 2
-			OR = {
-				num_of_heavy_ship = 20
-				num_of_galley = 100
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 10
+				region = egypt_region
 			}
 		}
 
 		effect = {
+			egypt_region = { add_perma_claim = yes }
+			add_army_tradition = 10
+			add_mil_power = 100
+		}
+	}
+
+	tm_mor_control_egypt = {
+		icon = mission_break_the_mamluks
+		required_missions = { tm_mor_march_on_egypt }
+
+		provinces_to_highlight = {
+			region = egypt_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 25
+				region = egypt_region
+			}
+		}
+
+		effect = {
+			add_adm_power = 75
+			add_dip_power = 75
 			add_country_modifier = {
-				name = mor_north_sea_corsairs
+				name = tm_mor_control_trade_from_alexandria
 				duration = -1
+			}
+			358 = {
+				add_trade_modifier = {
+					who = ROOT
+					duration = 5475
+					power = 25
+					key = STRONG_MERCHANTS
+				}
 			}
 		}
 	}
 
-	tm_mor_prepare_for_jihad = {
-		icon = NEED_ICON
-		required_missions = { }
+	tm_mor_riches_of_egypt = {
+		icon = mission_steer_trade_to_bengal
+		required_missions = { tm_mor_control_egypt }
 		position = 8
 
 		provinces_to_highlight = {
-			
+			region = egypt_region
+			owned_by = ROOT
+			OR = {
+				NOT = { development = 20 }
+				NOT = { num_of_buildings_in_province = 4 }
+			}
 		}
-		
+
 		trigger = {
-			if = {
-				limit = { exists = CAS }
-				CAS = { has_been_insulted_by_root = yes }
+			num_of_owned_provinces_with = {
+				value = 20
+				region = egypt_region
+				num_of_buildings_in_province = 4
+				development = 20
 			}
-			else_if = {
-				limit = { exists = SPA }
-				SPA = { has_been_insulted_by_root = yes }
-			}
-			else = {
-				power_projection = 30
-			}
-			prestige = 25
-			employed_advisor = {
-				category = ADM
-				religion = ROOT
-			}
-			employed_advisor = {
-				category = DIP
-				religion = ROOT
-			}
-			employed_advisor = {
-				category = MIL
-				religion = ROOT
+			358 = {
+				has_merchant = ROOT
 			}
 		}
 
 		effect = {
-			upper_andalucia_area = { add_perma_claim = yes }
-			lower_andalucia_area = { add_perma_claim = yes }
-			algarve_area = { add_perma_claim = yes }
+			358 = {
+				add_trade_node_income = 12
+			}
+			add_years_of_owned_provinces_production_income = {
+				years = 5
+				trigger = {
+					region = egypt_region
+				}
+			}
 		}
 	}
 
 	tm_mor_build_defenses = {
-		icon = NEED_ICON
+		icon = fortify_malta
 		required_missions = { tm_mor_prepare_for_jihad }
 		position = 9
 
@@ -703,6 +824,33 @@ gc_morocco_2 = {
 			}
 		}
 	}
+
+	tm_mor_end_portugal = {
+		icon = mission_portuguese_interference
+		required_missions = { tm_mor_push_further }
+		
+		provinces_to_highlight = {
+			OR = {
+				area = beieras_area
+				area = alentejo_area
+				area = algarve_area
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		trigger = {
+			beieras_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+			alentejo_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+			algarve_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = "adu_new_world_discoveries"
+				duration = 7300
+			}
+		}
+	}
 }
 
 tm_morocco_eco_2 = {
@@ -718,18 +866,21 @@ tm_morocco_eco_2 = {
 	}
 	has_country_shield = yes
 
-	
-
 	tm_mor_moroccan_cloth = {
 		icon = mission_develop_cloth
 		required_missions = { }
-		position = 15
+		position = 16
 
 		provinces_to_highlight = {
 			region = maghreb_region
 			OR = {
 				trade_goods = cloth
 				trade_goods = uniforms
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { development = 12 }
+				has_production_building = no
 			}
 		}
 
@@ -739,7 +890,7 @@ tm_morocco_eco_2 = {
 					trade_goods = cloth
 					trade_goods = uniforms
 				}
-				value = 4
+				value = 5
 				development = 12
 				has_production_building = yes
 			}
@@ -749,13 +900,12 @@ tm_morocco_eco_2 = {
 			}
 			334 = {
 				owned_by = ROOT
-				province_has_center_of_trade_of_level = 3
+				province_has_center_of_trade_of_level = 2
 			}
 		}
 
 		effect = {
 			337 = {
-				add_center_of_trade_level = 1
 				add_base_tax = 1
 				add_base_production = 2
 				add_base_manpower = 1
@@ -766,23 +916,36 @@ tm_morocco_eco_2 = {
 				add_base_manpower = 1
 			}
 			add_treasury = 350
-			add_dip_power = 150
+			add_dip_power = 75
 		}
 	}
 
 	tm_mor_african_olive_oil = {
-		icon = NEED_ICON
+		icon = mission_che_botanical_exports
 		required_missions = { tm_mor_moroccan_cloth }
 
 		provinces_to_highlight = {
-			trade_goods = olives
 			region = maghreb_region
+			OR = {
+				trade_goods = olives
+				AND = {
+					trade_goods = olive_oil
+					OR = {
+						NOT = { development = 15 }
+						has_manufactory = no
+					}
+				}
+			}
 		}
 
 		trigger = {
 			num_of_owned_provinces_with = {
-				value = 6
-				has_building = olive_oil_mill
+				value = 8
+				trade_goods = olive_oil
+				OR = {
+					has_manufactory = yes
+					development = 15
+				}
 			}
 		}
 
@@ -831,6 +994,47 @@ tm_morocco_eco_2 = {
 					}
 				}
 			}
+			add_years_of_owned_provinces_production_income = {
+				years = 2
+				trigger = {
+					OR = {
+						trade_goods = olives
+						trade_goods = olive_oil
+					}
+				}
+			}
+		}
+	}
+
+	tm_mor_new_industries = {
+		icon = mission_industrialize_bengal
+		required_missions = { tm_mor_innovation tm_mor_african_olive_oil  }
+
+		provinces_to_highlight = {
+			OR = {
+				prov_can_have_developed_good = yes
+				has_manufactory = no
+			}			
+			owned_by = ROOT
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 25
+				prov_has_developed_good = yes
+			}
+			num_of_owned_provinces_with = {
+				value = 40
+				has_manufactory = yes
+			}
+			
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = tm_mor_modernised_nation
+				duration = -1
+			}
 		}
 	}
 }
@@ -849,9 +1053,9 @@ tm_mor_colonisation_2 = {
 	has_country_shield = yes
 
 	tm_mor_colombia_start = {
-		icon = NEED_ICON
+		icon = mission_clear_the_delta
 		required_missions = { tm_mor_colonial_ambition }
-		position = 25
+		position = 20
 		
 		provinces_to_highlight = {
 			colonial_region = colonial_colombia
@@ -871,12 +1075,15 @@ tm_mor_colonisation_2 = {
 		}
 
 		effect = {
-			
+			add_country_modifier = {
+				name = tm_mor_expand_into_colombia
+				duration = 9125
+			}
 		}
 	}
 
 	tm_mor_colombia_control = {
-		icon = NEED_ICON
+		icon = mission_new_kingdom_of_granada
 		required_missions = { tm_mor_colombia_start }
 		
 		provinces_to_highlight = {
@@ -897,12 +1104,16 @@ tm_mor_colonisation_2 = {
 		}
 
 		effect = {
-			
+			add_ruler_personality = expansionist_personality
+			add_country_modifier = {
+				name = tm_mor_expanded_goods_market
+				duration = 3650
+			}
 		}
 	}
 
 	tm_mor_peru_start = {
-		icon = NEED_ICON
+		icon = mission_iberian_conquistador
 		required_missions = { tm_mor_colombia_control }
 		
 		provinces_to_highlight = {
@@ -917,18 +1128,21 @@ tm_mor_colonisation_2 = {
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				value = 8
-				colonial_region = colonial_colombia
+				colonial_region = colonial_peru
 				is_city = yes
 			}
 		}
 
 		effect = {
-			
+			add_country_modifier = {
+				name = tm_mor_colonising_peru
+				duration = 10950
+			}
 		}
 	}
 
 	tm_mor_peru_control = {
-		icon = NEED_ICON
+		icon = mission_potosi_silver
 		required_missions = { tm_mor_peru_start }
 		
 		provinces_to_highlight = {
@@ -943,16 +1157,28 @@ tm_mor_colonisation_2 = {
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				value = 25
-				colonial_region = colonial_colombia
+				colonial_region = colonial_peru
 				is_city = yes
 			}
 		}
 
 		effect = {
-			
+			custom_tooltip = tm_gold_and_silver_from_incas
+			hidden_effect = {
+				every_province = {
+					limit = {
+						country_or_non_sovereign_subject_holds = ROOT
+						OR = {
+							trade_goods = gold
+							trade_goods = silver
+							trade_goods = silverware
+						}
+					}
+					add_base_production = 3
+				}
+			}
 		}
 	}
-
 }
 
 
@@ -1041,7 +1267,7 @@ gc_morocco_3 = {
 	}
 
 	tm_mor_secure_the_interior = {
-		icon = NEED_ICON
+		icon = mission_nah_dinetah
 		required_missions = { gc_mor_algiers }
 
 		provinces_to_highlight = {
@@ -1076,7 +1302,7 @@ gc_morocco_3 = {
 	}
 
 	tm_mor_carry_onwards = {
-		icon = NEED_ICON
+		icon = mission_spoils_of_war
 		required_missions = { tm_mor_secure_the_interior gc_mor_tunis }
 		position = 5
 
@@ -1098,11 +1324,14 @@ gc_morocco_3 = {
 			tripolitania_area = { add_perma_claim = yes }
 			fezzan_area = { add_perma_claim = yes }
 			zaltan_area = { add_perma_claim = yes }
+			cyrenaica_area = { add_perma_claim = yes }
+			butnan_area = { add_perma_claim = yes }
+			siwa_area = { add_perma_claim = yes }			
 		}
 	}
 
 	tm_mor_conquered_maghreb = {
-		icon = NEED_ICON
+		icon = mission_empire
 		required_missions = { tm_mor_carry_onwards }
 
 		provinces_to_highlight = {
@@ -1136,7 +1365,7 @@ gc_morocco_3 = {
 	}
 
 	tm_mor_prepare_offense = {
-		icon = NEED_ICON
+		icon = protect_against_austria
 		required_missions = { tm_mor_prepare_for_jihad }
 		position = 9
 
@@ -1160,8 +1389,8 @@ gc_morocco_3 = {
 	}
 
 	tm_mor_crossed_the_straight = {
-		icon = NEED_ICON
-		required_missions = { tm_mor_a_moroccan_armada tm_mor_build_defenses tm_mor_prepare_offense tm_mor_infiltrate_spanish_administration }
+		icon = mission_rb_take_gibraltar
+		required_missions = { tm_mor_a_moroccan_fleet tm_mor_build_defenses tm_mor_prepare_offense tm_mor_infiltrate_spanish_administration }
 
 		provinces_to_highlight = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
@@ -1214,6 +1443,7 @@ gc_morocco_3 = {
 		}
 
 		effect = {
+			add_adm_power = 100
 			add_prestige_or_monarch_power = { amount = 50 }
 			alentejo_area = { add_perma_claim = yes }
 			extremadura_area = { add_perma_claim = yes }
@@ -1221,11 +1451,40 @@ gc_morocco_3 = {
 			albacete_area = { add_perma_claim = yes }
 			valencia_area = { add_perma_claim = yes }
 			baleares_area = { add_perma_claim = yes }
+			add_country_modifier = {
+				name = "mor_andalucia"
+				duration = 7300
+			}
+			custom_tooltip = tm_mor_own_224_tt
+			tooltip = {
+				224 = {
+					add_province_modifier = {
+						name = gra_reconvert_giralda
+						duration = -1
+					}
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						224 = { country_or_non_sovereign_subject_holds = ROOT }
+					}
+					224 = {
+						add_province_modifier = {
+							name = gra_reconvert_giralda
+							duration = -1
+						}
+					}
+				}
+				else = {
+					set_country_flag = tm_mor_owns_224_flag
+				}
+			}
 		}
 	}
 
 	tm_mor_push_further = {
-		icon = NEED_ICON
+		icon = mission_protect_granada
 		required_missions = { tm_mor_crossed_the_straight }
 
 		provinces_to_highlight = {
@@ -1241,12 +1500,17 @@ gc_morocco_3 = {
 		}
 
 		effect = {
+			add_adm_power = 150
 			iberia_region = { add_perma_claim = yes }
+			add_country_modifier = {
+				name = "adu_righteous_conquest"
+				duration = 7300
+			}
 		}
 	}
 
 	tm_mor_reclaim_iberia = {
-		icon = NEED_ICON
+		icon = mission_al_andalus
 		required_missions = { tm_mor_push_further }
 
 		provinces_to_highlight = {
@@ -1263,7 +1527,72 @@ gc_morocco_3 = {
 		}
 
 		effect = {
-			
+			add_country_modifier = {
+				name = adu_white_phoenix
+				duration = 9125
+			}
+			pyrenees_area = { add_perma_claim = yes }
+			languedoc_area = { add_perma_claim = yes }
+			bordeaux_area = { add_perma_claim = yes }
+			guyenne_area = { add_perma_claim = yes }
+			add_power_projection = {
+				type = mission_rewards_power_projection
+				amount = 50
+			}
+			add_prestige_or_monarch_power = { amount = 50 }
+			add_splendor = 100
+		}
+	}
+
+	tm_mor_avenge_tours = {
+		icon = mission_battle_of_varna
+		required_missions = { tm_mor_reclaim_iberia }
+
+		provinces_to_highlight = {
+			region = france_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 10
+				region = france_region
+			}
+		}
+
+		effect = {
+			france_region = { add_perma_claim = yes }
+			add_army_tradition = 25
+			add_mil_power = 150
+		}
+	}
+
+	tm_mor_crusader_kings = {
+		icon = mission_the_french_menace
+		required_missions = { tm_mor_avenge_tours }
+
+		provinces_to_highlight = {
+			region = france_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
+
+		trigger = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 25
+				region = france_region
+			}
+		}
+
+		effect = {
+			add_power_projection = {
+				type = mission_rewards_power_projection
+				amount = 100
+			}
+			add_prestige_or_monarch_power = { amount = 100 }
+			add_country_modifier = {
+				name = tm_mor_crusader_kings_modifier
+				duration = -1
+			}
 		}
 	}
 }
@@ -1281,9 +1610,9 @@ tm_morocco_eco_3 = {
 	}
 	has_country_shield = yes
 
-		tm_mor_a_new_gold_mine = {
+	tm_mor_a_new_gold_mine = {
 		icon = mission_war_chest
-		position = 15
+		position = 16
 		required_missions = { }
 
 		provinces_to_highlight = {
@@ -1307,6 +1636,93 @@ tm_morocco_eco_3 = {
 			}
 		}
 	}
+
+	tm_mor_saffron = {
+		icon = mission_saffron_production_begins
+		required_missions = { tm_mor_a_new_gold_mine gc_mor_saharan_route }
+
+		provinces_to_highlight = {
+			region = maghreb_region
+			trade_goods = saffron
+			OR = {
+				has_production_building = no
+				NOT = { base_production = 8 }
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 4
+				trade_goods = saffron
+				has_production_building = yes
+				base_production = 8
+			}
+		}
+
+		effect = {
+			custom_tooltip = tm_mor_saffron_upgrade
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						trade_goods = saffron
+					}
+					add_building = counting_house
+					add_base_production = 1
+				}
+			}
+		}
+	}
+
+	tm_mor_saffron_2 = {
+		icon = mission_saffron_production_ramps_up
+		required_missions = { tm_mor_saffron }
+
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					trade_goods = saffron
+					OR = {
+						region = maghreb_region
+						region = egypt_region
+					}
+				}
+				AND = {
+					OR = {
+						province_id = 2456
+						province_id = 5046
+						province_id = 2450
+						province_id = 4989
+					}
+					OR = {
+						NOT = { country_or_non_sovereign_subject_holds = ROOT }
+						has_production_building = no
+						has_manufactory = no
+						NOT = { development = 15 }
+					}
+				}
+			}
+		}
+
+		trigger = {
+			2456 = { country_or_non_sovereign_subject_holds = ROOT has_production_building = yes has_manufactory = yes development = 15 }
+			5046 = { country_or_non_sovereign_subject_holds = ROOT has_production_building = yes has_manufactory = yes development = 15 }
+			2450 = { country_or_non_sovereign_subject_holds = ROOT has_production_building = yes has_manufactory = yes development = 15 }
+			4989 = { country_or_non_sovereign_subject_holds = ROOT has_production_building = yes has_manufactory = yes development = 15 }
+			trading_part = {
+				trade_goods = saffron
+				value = 0.30
+			}
+		}
+
+		effect = {
+			2456 = { change_trade_goods = saffron add_base_production = 2 }
+			5046 = { change_trade_goods = saffron add_base_production = 2 }
+			2450 = { change_trade_goods = saffron add_base_production = 2 }
+			4989 = { change_trade_goods = saffron add_base_production = 2 }
+			if = { limit = { 4988 = { country_or_non_sovereign_subject_holds = ROOT } } 4988 = { change_trade_goods = saffron add_base_production = 2 } }
+			if = { limit = { 358 = { country_or_non_sovereign_subject_holds = ROOT } } 358 = { change_trade_goods = saffron add_base_production = 2 } }
+		}
+	}
 }
 
 tm_mor_colonisation_3 = {
@@ -1325,7 +1741,7 @@ tm_mor_colonisation_3 = {
 	tm_mor_colonial_ambition = {
 		icon = mission_claim_the_canaries
 		required_missions = {  }
-		position = 24
+		position = 19
 		
 		provinces_to_highlight = {
 			is_capital_of = ROOT
@@ -1342,7 +1758,7 @@ tm_mor_colonisation_3 = {
 			macaronesia_area = { add_perma_claim = yes }
 			add_country_modifier = {
 				name = "mor_beyond_the_canaries"
-				duration = 7300
+				duration = 9125
 			}
 			add_mercantilism = 3
 			create_explorer = { tradition = 75 }
@@ -1352,15 +1768,30 @@ tm_mor_colonisation_3 = {
 	adu_explore_further = {
 		icon = mission_look_west
 		required_missions = { tm_mor_colonial_ambition }
-		position = 26
+		position = 21
 		
 		provinces_to_highlight = {}
 		
 		trigger = {
-			
+			treasury = 250
+			manpower = 2
+			calc_true_if = {
+				amount = 10
+				all_province = {
+					OR = {
+						continent = north_america
+						continent = south_america
+					}
+					has_discovered = ROOT
+				}
+			}
 		}
 		
 		effect = {
+			add_treasury = -250
+			add_manpower = -2
+			custom_tooltip = tm_navy_trad_from_explorers_tt
+			set_country_flag = tm_navy_trad_from_explorers
 			define_conquistador = {
 				shock = 5
 				fire = 5
@@ -1374,14 +1805,31 @@ tm_mor_colonisation_3 = {
 	gc_mor_new_world = {
 		icon = mission_new_world_power
 		required_missions = { adu_explore_further }
-		position = 28
+		position = 23
 		
 		provinces_to_highlight = {
-			
+			OR = {
+				continent = north_america
+				continent = south_america
+			}
 		}
 		
 		trigger = {
-			
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 50
+				OR = {
+					continent = north_america
+					continent = south_america
+				}
+			}
+			any_subject_country = {
+				OR = {
+					is_subject_of_type = crown_colony
+					is_subject_of_type = private_enterprise
+					is_subject_of_type = self_governing_colony
+				}
+				total_development = 500
+			}
 		}
 		
 		effect = {
@@ -1389,6 +1837,103 @@ tm_mor_colonisation_3 = {
 			add_country_modifier = {
 				name = "mor_new_world_power"
 				duration = -1
+			}
+			custom_tooltip = tm_mor_new_world_power_miss_tt_1
+			if = {
+				limit = { mission_completed = tm_mor_carribean_control }
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				add_country_modifier = {
+					name = tm_mor_new_world_power_carribean
+					duration = -1
+				}
+			}
+			custom_tooltip = tm_mor_new_world_power_miss_tt_2
+			if = {
+				limit = { mission_completed = tm_mor_colombia_control }
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				add_country_modifier = {
+					name = tm_mor_new_world_power_colombia
+					duration = -1
+				}
+			}
+			custom_tooltip = tm_mor_new_world_power_miss_tt_3
+			if = {
+				limit = { mission_completed = tm_mor_peru_control }
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				add_country_modifier = {
+					name = tm_mor_new_world_power_peru
+					duration = -1
+				}
+			}
+			custom_tooltip = tm_mor_new_world_power_miss_tt_4
+			if = {
+				limit = { mission_completed = tm_mor_brazil_control }
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				add_country_modifier = {
+					name = tm_mor_new_world_power_brazil
+					duration = -1
+				}
+			}
+			custom_tooltip = tm_mor_new_world_power_miss_tt_5
+			if = {
+				limit = { mission_completed = tm_mor_argentina_control }
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				add_country_modifier = {
+					name = tm_mor_new_world_power_plata
+					duration = -1
+				}
+			}
+			hidden_effect = {
+				if = {
+					limit = { mission_completed = tm_mor_carribean_control }
+					add_country_modifier = {
+						name = tm_mor_new_world_power_carribean
+						duration = -1
+					}
+				}
+				if = {
+					limit = { mission_completed = tm_mor_colombia_control }
+					add_country_modifier = {
+						name = tm_mor_new_world_power_colombia
+						duration = -1
+					}
+				}
+				if = {
+					limit = { mission_completed = tm_mor_peru_control }
+					add_country_modifier = {
+						name = tm_mor_new_world_power_peru
+						duration = -1
+					}
+				}
+				if = {
+					limit = { mission_completed = tm_mor_brazil_control }
+					add_country_modifier = {
+						name = tm_mor_new_world_power_brazil
+						duration = -1
+					}
+				}
+				if = {
+					limit = { mission_completed = tm_mor_argentina_control }
+					add_country_modifier = {
+						name = tm_mor_new_world_power_plata
+						duration = -1
+					}
+				}
 			}
 		}
 	}
@@ -1468,7 +2013,7 @@ gc_morocco_4 = {
 	}
 
 	tm_mor_reform_government = {
-		icon = NEED_ICON
+		icon = mission_restore_faith_in_the_throne
 		required_missions = { gc_mor_imperial_cities }
 		position = 2
 		
@@ -1481,7 +2026,7 @@ gc_morocco_4 = {
 			legitimacy_equivalent = 80
 			government_reform_progress = 30
 			NOT = { average_autonomy = 25 }
-			total_development = 250
+			grown_by_development = 200
 		}
 
 		effect = {
@@ -1492,7 +2037,7 @@ gc_morocco_4 = {
 	}
 
 	tm_mor_claim_the_coast = {
-		icon = NEED_ICON
+		icon = mission_arabian_sea_trade
 		required_missions = { gc_mor_algiers }
 		position = 3
 
@@ -1552,7 +2097,7 @@ gc_morocco_4 = {
 	}
 
 	tm_mor_mediterranean_islands = {
-		icon = NEED_ICON
+		icon = mission_mediterranean_islands
 		required_missions = { gc_mor_tunis }
 
 		provinces_to_highlight = {
@@ -1666,7 +2211,7 @@ gc_morocco_4 = {
 	}
 
 	tm_mor_into_italy = {
-		icon = NEED_ICON
+		icon = mission_impaled_soldies
 		required_missions = { tm_mor_mediterranean_islands }
 
 		provinces_to_highlight = {
@@ -1683,11 +2228,89 @@ gc_morocco_4 = {
 
 		effect = {
 			italy_region = { add_perma_claim = yes }
+			add_country_modifier = {
+				name = tm_mor_riches_of_italy
+				duration = 7300
+			}
+			add_prestige_or_monarch_power = { amount = 75 }
+		}
+	}
+
+	tm_mor_prepare_for_jihad = {
+		icon = mission_castillian_aggression
+		required_missions = { }
+		position = 8
+
+		provinces_to_highlight = {}
+		
+		trigger = {
+			if = {
+				limit = { exists = CAS }
+				CAS = { has_been_insulted_by_root = yes }
+			}
+			else_if = {
+				limit = { exists = SPA }
+				SPA = { has_been_insulted_by_root = yes }
+			}
+			else = {
+				power_projection = 30
+			}
+			prestige = 25
+			employed_advisor = {
+				category = ADM
+				religion = ROOT
+			}
+			employed_advisor = {
+				category = DIP
+				religion = ROOT
+			}
+			employed_advisor = {
+				category = MIL
+				religion = ROOT
+			}
+		}
+
+		effect = {
+			upper_andalucia_area = { add_perma_claim = yes }
+			lower_andalucia_area = { add_perma_claim = yes }
+			algarve_area = { add_perma_claim = yes }
+			if = {
+				limit = {
+					OR = {
+						AND = {
+							exists = CAS
+							CAS = {
+								has_opinion_modifier = {
+									who = ROOT
+									modifier = scornfully_insulted
+								}
+							}
+						}
+						AND = {
+							exists = SPA
+							SPA = {
+								has_opinion_modifier = {
+									who = ROOT
+									modifier = scornfully_insulted
+								}
+							}
+						}
+					}
+				}
+				create_general = {
+					tradition = 100
+				}
+			}
+			else = {
+				create_general = {
+					tradition = 60
+				}
+			}
 		}
 	}
 
 	tm_mor_infiltrate_spanish_administration = {
-		icon = NEED_ICON
+		icon = mission_eliminate_pretenders
 		required_missions = { tm_mor_prepare_for_jihad }
 		position = 9
 
@@ -1729,34 +2352,24 @@ gc_morocco_4 = {
 				}
 			}
 			else = {
-				
+				226 = { NOT = { local_autonomy = 15 } }
 			}
 		}
 
 		effect = {
-			custom_tooltip = tm_mor_infiltrate_spanish_administration_tt
 			if = {
-				limit = {
-					OR = {
-						war_with = SPA
-						war_with = CAS
-						war_with = POR
-						war_with = PEA
-						war_with = PBR
-					}
-				}
-				every_country = {
-					limit = {
-						OR = {
-							is_or_was_tag = { tag = CAS }
-							is_or_was_tag = { tag = POR }
-						}
-					}
-					remove_fow = 12
-				}
+				limit = { 226 = { country_or_non_sovereign_subject_holds = ROOT } }
+				add_random_development = 1
 			}
 			else = {
-				set_country_flag = tm_mor_infiltrated_admin
+				country_event = {
+					id = morocco_flavour.2
+				}
+				custom_tooltip = tm_event_insight_insight_tt
+				custom_tooltip = tm_event_insight_option_1
+				custom_tooltip = tm_mor_infiltrate_spanish_administration_tt
+				custom_tooltip = tm_event_insight_option_2
+				custom_tooltip = tm_mor_infiltrate_spanish_administration_2_tt
 			}
 		}
 	}
@@ -1767,8 +2380,10 @@ gc_morocco_4 = {
 		position = 11
 		
 		provinces_to_highlight = {
-			country_or_non_sovereign_subject_holds = ROOT
-			NOT = { religion = ROOT }
+			OR = {
+				NOT = { country_or_non_sovereign_subject_holds = ROOT }
+				NOT = { religion = ROOT }
+			}
 			region = iberia_region
 		}
 		
@@ -1781,7 +2396,104 @@ gc_morocco_4 = {
 		}
 		
 		effect = {
-			
+			custom_tooltip = tm_mor_every_owned_province_in_iberia
+			tooltip = {
+				add_province_modifier = {
+					name = gra_rebuilding_mosques
+					duration = 7300
+				}
+			}
+			every_province = {
+				limit = {
+					country_or_non_sovereign_subject_holds = ROOT
+					region = iberia_region
+				}
+				add_province_modifier = {
+					name = gra_rebuilding_mosques
+					duration = 7300
+				}
+			}
+			change_piety_effect = { amount = 0.25 }
+		}
+	}
+
+	tm_mor_continue_conversion = {
+		icon = per_convert_persia
+		required_missions = { tm_mor_push_further tm_mor_reconvert_lands }
+		
+		provinces_to_highlight = {
+			region = iberia_region
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { religion_group = ROOT }
+			}
+		}
+		
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 20
+				region = iberia_region
+				religion_group = ROOT
+			}
+		}
+		
+		effect = {
+			custom_tooltip = ARB_grant_access_to_muslim_holy_orders
+			set_country_flag = ARB_grant_access_to_muslim_holy_orders_flag
+			custom_tooltip = tm_blank_line
+			define_advisor = {
+				type = inquisitor
+				skill = 3
+				culture = ROOT
+				religion = ROOT
+				cost_multiplier = 0.2
+			}
+		}
+	}
+
+	tm_mor_restore_iberia = {
+		icon = mission_islamic_golden_age
+		required_missions = { tm_mor_reclaim_iberia tm_mor_continue_conversion tm_mor_cultural_acceptance }
+		
+		provinces_to_highlight = {
+			region = iberia_region
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { religion_group = ROOT }
+				has_tax_building_trigger = no
+			}
+		}
+		
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 50
+				region = iberia_region
+				religion_group = ROOT
+				has_tax_building_trigger = yes
+			}
+			num_of_owned_provinces_with = {
+				value = 25
+				has_holy_order_trigger = yes
+			}
+		}
+		
+		effect = {
+			change_ruler_stat = {
+				type = adm
+				amount = 1
+			}
+			change_ruler_stat = {
+				type = dip
+				amount = 1
+			}
+			change_ruler_stat = {
+				type = mil
+				amount = 1
+			}
+			add_ruler_personality = zealot_personality
+			add_ruler_modifier = {
+				name = tm_mor_reclaimed_iberia
+			}
 		}
 	}
 }
@@ -1804,13 +2516,13 @@ mor_slot_4_mali_diplomacy_placeholders = {
 	tm_mor_approach_to_mali_placeholder_1 = {
 		icon = mission_locked_mission
 		required_missions = { tm_mor_approach_to_mal }
-		position = 17
+		position = 14
 
 		provinces_to_highlight = {}
 		trigger = {
-			custom_trigger_tooltip = { tooltip = tm_mal_mor_dip_this_is_a_branching_mission always = no }
-			custom_trigger_tooltip = { tooltip = tm_mal_mor_dip_friendly_miss_1_req always = no }
-			custom_trigger_tooltip = { tooltip = tm_mal_mor_dip_hostile_miss_1_req always = no }
+			custom_trigger_tooltip = { tooltip = tm_mor_mal_dip_this_is_a_branching_mission always = no }
+			#custom_trigger_tooltip = { tooltip = tm_mal_mor_dip_friendly_miss_1_req always = no }
+			#custom_trigger_tooltip = { tooltip = tm_mal_mor_dip_hostile_miss_1_req always = no }
 		}
 		effect = {
 			custom_tooltip = tm_mal_eth_dip_friendly_choice_reward
@@ -1818,20 +2530,20 @@ mor_slot_4_mali_diplomacy_placeholders = {
 				custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 				if = {
 					limit = {
-						NOT = { always = no }
+						NOT = { event_target:mali_event_target = { mission_completed = mal_approach_to_morocco_placeholder_1 } }
 					}
 					custom_tooltip = BONUS_REWARD_YES
 				}
 				else = { custom_tooltip = BONUS_REWARD_NO }
 				tooltip = {
-					2249 = { change_trade_goods = saffron add_base_production = 3 }
 					2465 = { change_trade_goods = gold add_base_production = 3 }
+					event_target:mali_event_target = { 2249 = { change_trade_goods = saffron add_base_production = 3 } }
 				}
 				custom_tooltip = mission_alternatively_tt
-				custom_tooltip = tm_mal_mor_dip_friendly_if_they_have
+				custom_tooltip = tm_mor_mal_dip_friendly_if_they_have
 				if = {
 					limit = {
-						always = no
+						event_target:mali_event_target = { mission_completed = mal_approach_to_morocco_placeholder_1 }
 					}
 					custom_tooltip = BONUS_REWARD_YES
 				}
@@ -1846,7 +2558,7 @@ mor_slot_4_mali_diplomacy_placeholders = {
 				}
 			}
 			custom_tooltip = tm_mal_eth_dip_hostile_choice_reward
-			tooltip = { country_event = { id = mali_flavour.4 tooltip = tm_mali_flavour_4_tt } }
+			
 		}
 	}
 }
@@ -1866,9 +2578,9 @@ mor_slot_4_mali_diplomacy_friendly = {
 	has_country_shield = yes
 
 	mor_approach_to_mal_friendly_1 = {
-		icon = mission_saharan_route
+		icon = mission_high_income
 		required_missions = { tm_mor_approach_to_mal }
-		position = 17
+		position = 14
 
 		provinces_to_highlight = {
 			owned_by = ROOT
@@ -1882,7 +2594,7 @@ mor_slot_4_mali_diplomacy_friendly = {
 					}
 				}
 				AND = {
-					province_id = 2249
+					province_id = 2465
 					OR = {
 						NOT = { development = 15 }
 						NOT = { num_of_buildings_in_province = 3 }
@@ -1892,14 +2604,14 @@ mor_slot_4_mali_diplomacy_friendly = {
 			}
 		}
 		trigger = {
-			event_target:morocco_event_target = {
+			event_target:mali_event_target = {
 				alliance_with = ROOT
 				has_opinion = {
 					who = ROOT
 					value = 150
 				}
 			}
-			2249 = {
+			2465 = {
 				owned_by = ROOT
 				development = 15
 				num_of_buildings_in_province = 3
@@ -1918,20 +2630,26 @@ mor_slot_4_mali_diplomacy_friendly = {
 			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 			if = {
 				limit = {
-					NOT = { always = no }
+					NOT = {
+						event_target:mali_event_target = {
+							mission_completed = mal_approach_to_morocco_friendly_1
+						}
+					}
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
 			else = { custom_tooltip = BONUS_REWARD_NO }
 			tooltip = {
-				2249 = { change_trade_goods = saffron add_base_production = 3 }
 				2465 = { change_trade_goods = gold add_base_production = 3 }
+				MAL = { 2249 = { change_trade_goods = saffron add_base_production = 3 } }
 			}
 			custom_tooltip = mission_alternatively_tt
-			custom_tooltip = tm_mal_mor_dip_friendly_if_they_have
+			custom_tooltip = tm_mor_mal_dip_friendly_if_they_have
 			if = {
 				limit = {
-					always = no
+					event_target:mali_event_target = {
+						mission_completed = mal_approach_to_morocco_friendly_1
+					}
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -1946,18 +2664,18 @@ mor_slot_4_mali_diplomacy_friendly = {
 			}
 			hidden_effect = {
 				if = {
-					limit = { NOT = { always = no } }
+					limit = { NOT = { event_target:mali_event_target = { mission_completed = mal_approach_to_morocco_friendly_1	} } }
 					2249 = { change_trade_goods = saffron add_base_production = 3 }
 					2465 = { change_trade_goods = gold add_base_production = 3 }
 				}
 				if = {
-					limit = { always = no }
+					limit = { event_target:mali_event_target = { mission_completed = mal_approach_to_morocco_friendly_1	} }
 					set_country_flag = tm_mal_mor_trade_agreements_flag
 					add_country_modifier = {
 						name = tm_mal_mor_trading_agreements
 						duration = -1
 					}
-					event_target:morocco_event_target = {
+					event_target:mali_event_target = {
 						set_country_flag = tm_mal_mor_trade_agreements_flag
 						add_country_modifier = {
 							name = tm_mal_mor_trading_agreements
@@ -1985,22 +2703,201 @@ mor_slot_4_mali_diplomacy_hostile = {
 	has_country_shield = yes
 
 	mor_approach_to_mal_hostile_1 = {
-		icon = mission_ottoman_early_army
-		required_missions = { tm_mor_approach_to_mal }
-		position = 17
+		icon = NEED_ICON
+		required_missions = { mor_approach_to_mal_hostile_2 }
+		position = 14
 
-		provinces_to_highlight = {}
+		provinces_to_highlight = {
+			
+		}
 		trigger = {
+			
+		}
+		effect = {
+			
+		}
+	}
+}
+
+tm_morocco_eco_4 = {
+	slot = 4
+	generic = no
+	ai = yes
+	potential = {
+		OR = {
+			tag = MOR
+			tag = ZRD
+			tag = ADU
+		}
+	}
+	has_country_shield = yes
+
+	gc_mor_saharan_route = {
+		icon = mission_saharan_route
+		required_missions = { }
+		position = 16
+		
+		provinces_to_highlight = {
 			OR = {
-				defensive_war_with = event_target:morocco_event_target
 				AND = {
-					army_size = 30
-					has_mil_advisor = yes
+					province_id = 2466
+					OR = {
+						NOT = { owned_by = ROOT }
+						NOT = {
+							OR = {
+								province_has_center_of_trade_of_level = 2
+								has_trade_building_trigger = yes
+							}
+						}
+						NOT = { development = 15 }
+					}
+				}				
+				province_id = 343
+			}
+		}
+
+		trigger = {
+			343 = {
+				is_strongest_trade_power = ROOT
+			}
+			if = {
+				limit = {
+					has_dlc = "Dharma"
+				}
+				2466 = {
+					OR = {
+						province_has_center_of_trade_of_level = 2
+						has_trade_building_trigger = yes
+					}
+					development = 15
+				}
+			}
+			else = {
+				2466 = {
+					has_trade_building_trigger = yes
+					development = 15
 				}
 			}
 		}
+
 		effect = {
-			country_event = { id = mali_flavour.4 tooltip = tm_mali_flavour_4_tt }
+			if = {
+				limit = {
+					1127 = {
+						is_empty = yes
+						any_neighbor_province = {
+							owned_by = ROOT
+						}
+					}
+				}
+				set_country_flag = mor_sudanese_expedition
+				country_event = { id = flavor_mor.9 }
+			}
+			add_country_modifier = {
+				name = mor_saharan_trade
+				duration = 7300
+			}
+		}
+	}
+
+	tm_mor_improving_trade = {
+		icon = mam_harness_spice_trade
+		required_missions = { gc_mor_saharan_route tm_mor_port_of_sebta }
+		position = 17
+		
+		provinces_to_highlight = {
+			owned_by = ROOT
+			province_has_center_of_trade_of_level = 1
+			OR = {
+				has_trade_building_trigger = no
+				NOT = { province_has_center_of_trade_of_level = 2 }
+			}
+		}
+
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 10
+				has_trade_building_trigger = yes
+				province_has_center_of_trade_of_level = 2
+			}
+		}
+
+		effect = {
+			add_treasury = 500
+			set_country_flag = tm_mor_improving_trade_flag
+			custom_tooltip = tm_mor_improving_trade_tt
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						has_trade_building_trigger = yes
+					}
+					add_base_production = 1
+					add_province_modifier = {
+						name = tm_mor_improving_trade_modifier
+						duration = -1
+					}
+				}
+			}
+		}
+	}
+
+	tm_mor_great_trading_empire = {
+		icon = mission_silk_road
+		required_missions = { tm_mor_improving_trade }
+		position = 18
+		
+		provinces_to_highlight = {
+			OR = {
+				AND = {
+					province_id = 4568
+					OR = {
+						NOT = {
+							has_great_project = {
+								type = ait_benhaddou
+								tier = 3
+							}
+						}
+						NOT = { development = 20 }
+						NOT = { owned_by = ROOT }
+					}					
+				}
+				AND = {
+					province_id = 343
+					NOT = {
+						trade_share = {
+							country = ROOT
+							share = 66
+						}
+					}
+				}
+			}
+		}
+
+		trigger = {
+			monthly_income = 100
+			4568 = {
+				owned_by = ROOT
+				has_great_project = {
+					type = ait_benhaddou
+					tier = 3
+				}
+				development = 20
+			}
+			343 = {
+				trade_share = {
+					country = ROOT
+					share = 66
+				}
+			}
+		}
+
+		effect = {
+			4568 = {
+				add_base_tax = 1
+				add_base_production = 1
+				add_base_manpower = 1
+			}
+			custom_tooltip = tm_improved_ait_benhaddou_tt
 		}
 	}
 }
@@ -2019,9 +2916,9 @@ tm_mor_colonisation_4 = {
 	has_country_shield = yes
 
 	tm_mor_brazil_start = {
-		icon = NEED_ICON
+		icon = mission_colonise_brazil
 		required_missions = { tm_mor_colonial_ambition }
-		position = 25
+		position = 20
 		
 		provinces_to_highlight = {
 			colonial_region = colonial_brazil
@@ -2043,13 +2940,13 @@ tm_mor_colonisation_4 = {
 		effect = {
 			add_country_modifier = {
 				name = "mor_colonized_brazil"
-				duration = 7300
+				duration = 9125
 			}
 		}
 	}
 
 	tm_mor_brazil_control = {
-		icon = NEED_ICON
+		icon = colonize_brazil
 		required_missions = { tm_mor_brazil_start }
 		
 		provinces_to_highlight = {
@@ -2070,12 +2967,16 @@ tm_mor_colonisation_4 = {
 		}
 		
 		effect = {
-			
+			add_stability = 1
+			add_adm_power = 100
+			add_dip_power = 100
+			add_mil_power = 100
+			343 = { add_trade_node_income = 12 }
 		}
 	}
 
 	tm_mor_build_brazilian_strength = {
-		icon = NEED_ICON
+		icon = imperial_capitals
 		required_missions = { tm_mor_brazil_control }
 		
 		provinces_to_highlight = {
@@ -2084,15 +2985,26 @@ tm_mor_colonisation_4 = {
 		}
 		
 		trigger = {
-			
+			any_subject_country = {
+				capital_scope = {
+					colonial_region = colonial_brazil
+				}
+				total_development = 450
+				num_of_owned_provinces_with = {
+					value = 15
+					num_of_buildings_in_province = 2
+				}
+			}
 		}
 		
 		effect = {
-			
+			add_country_modifier = {
+				name = tm_mor_powerful_brazil
+				duration = -1
+			}
 		}
 	}
 }
-
 
 
 gc_morocco_5_a = {
@@ -2109,7 +3021,7 @@ gc_morocco_5_a = {
 	has_country_shield = yes
 
 	tm_mor_integrate_sus = {
-		icon = NEED_ICON
+		icon = mission_reclaim_morocco
 		required_missions = { }
 		position = 1
 		
@@ -2163,7 +3075,7 @@ gc_morocco_5_a = {
 	}
 
 	tm_mor_colonise_hamra = {
-		icon = NEED_ICON
+		icon = mission_conquer_malwa_bah
 		required_missions = { gc_mor_imperial_cities tm_mor_integrate_sus }
 		position = 2
 		
@@ -2190,74 +3102,328 @@ gc_morocco_5_a = {
 		}
 	}
 
-	gc_mor_saharan_route = {
-		icon = mission_saharan_route
-		required_missions = { }
-		position = 15
+	tm_mor_corsairs_of_the_mediterranean = {
+		icon = mission_corsairs_of_the_north_sea
+		required_missions = { tm_mor_claim_the_coast }
+		position = 4
 		
 		provinces_to_highlight = {
 			OR = {
-				province_id = 2466
-				province_id = 1110
+				AND = {
+					OR = {
+						province_id = 101
+						province_id = 2980
+						province_id = 1247
+						province_id = 118
+						province_id = 201
+					}
+					OR = {
+						NOT = { devastation = 5 }
+						NOT = { has_province_modifier = block_slave_raid_area_m }
+					}
+				}
+				AND = {
+					province_id = 1298
+					NOT = {
+						1298 = {
+							privateer_power = {
+								country = ROOT
+								share = 33
+							}
+						}
+					}
+				}
 			}
 		}
 
 		trigger = {
-			1110 = {
-				is_strongest_trade_power = ROOT
-			}
-			if = {
-				limit = {
-					has_dlc = "Dharma"
-				}
-				2466 = {
-					OR = {
-						province_has_center_of_trade_of_level = 2
-						has_building = marketplace
-					}
+			1298 = {
+				privateer_power = {
+					country = ROOT
+					share = 33
 				}
 			}
-			else = {
-				2466 = {
-					has_building = marketplace
+			101 = {
+				OR = {
+					devastation = 5
+					has_province_modifier = block_slave_raid_area_m
 				}
 			}
+			2980 = {
+				OR = {
+					devastation = 5
+					has_province_modifier = block_slave_raid_area_m
+				}
+			}
+			1247 = {
+				OR = {
+					devastation = 5
+					has_province_modifier = block_slave_raid_area_m
+				}
+			}
+			118 = {
+				OR = {
+					devastation = 5
+					has_province_modifier = block_slave_raid_area_m
+				}
+			}
+			201 = {
+				OR = {
+					devastation = 5
+					has_province_modifier = block_slave_raid_area_m
+				}
+			}
+			naval_forcelimit = 50
+			navy_size_percentage = 1.0
+			num_of_admirals = 2
+			OR = {
+				num_of_heavy_ship = 20
+				num_of_galley = 100
+			}
+			num_of_light_ship = 25
 		}
 
 		effect = {
-			if = {
-				limit = {
-					1127 = {
-						is_empty = yes
-						any_neighbor_province = {
-							owned_by = ROOT
-						}
-					}
-				}
-				set_country_flag = mor_sudanese_expedition
-				country_event = { id = flavor_mor.9 }
-			}
 			add_country_modifier = {
-				name = mor_saharan_trade
+				name = mor_north_sea_corsairs
+				duration = -1
+			}
+		}
+	}
+
+	tm_moroccan_shipbuilding = {
+		icon = mission_conquer_andhra_bah
+		required_missions = {}
+		position = 7
+
+		provinces_to_highlight = {
+			owned_by = ROOT
+			has_port = yes
+		}
+
+		trigger = {
+			num_of_light_ship = 10
+			OR = {
+				num_of_galley = 20
+				num_of_heavy_ship = 6
+			}
+			num_of_admirals = 1
+		}
+
+		effect = {
+			add_country_modifier = {
+				name = mor_shipbuilding
 				duration = 7300
 			}
 		}
 	}
 
-	tm_mor_approach_to_mal = {
-		icon = NEED_ICON
-		required_missions = { gc_mor_saharan_route }
+	tm_mor_a_moroccan_fleet = {
+		icon = mission_raid_christian_trade
+		required_missions = { tm_moroccan_shipbuilding tm_mor_prepare_for_jihad }
+		position = 9
 		
 		provinces_to_highlight = {
+			owned_by = ROOT
+			has_port = yes
+			has_navy_building = no
+		}
+		
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 8
+				has_navy_building = yes
+			}
+			has_flagship = yes
+			OR = {
+				if = {
+					limit = { exists = CAS }
+					navy_size = CAS
+				}
+				else_if = {
+					limit = { exists = SPA }
+					navy_size = SPA
+				}
+				else = {
+					navy_size_percentage = 0.7
+				}
+				navy_size = 40
+			}
 			
+		}
+		
+		effect = {
+			create_admiral = { tradition = 75 add_manuever = 2 }
+			add_country_modifier = {
+				name = tm_mor_prepared_navies
+				duration = 3650
+			}
+		}
+	}
+
+	tm_mor_a_moroccan_armada = {
+		icon = mission_aragonese_navy
+		required_missions = { tm_mor_a_moroccan_fleet }
+		position = 10
+		
+		provinces_to_highlight = {
+			owned_by = ROOT
+			has_port = yes
+			has_navy_building = no
+		}
+		
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 20
+				has_navy_building = yes
+			}
+			has_flagship = yes
+			OR = {
+				num_of_heavy_ship = 20
+				num_of_galley = 75
+			}
+			navy_size = 80
+		}
+		
+		effect = {
+			add_navy_tradition = 20
+			add_country_modifier = {
+				name = tm_mor_moroccan_armada
+				duration = -1
+			}
+		}
+	}
+
+	tm_mor_cultural_acceptance = {
+		icon = spa_infantes_aragon
+		required_missions = { tm_mor_reconvert_lands }
+		position = 12
+		
+		provinces_to_highlight = {
+			region = iberia_region
+			culture_group = iberian
+			OR = {
+				unrest = 2
+				nationalism = 5
+			}
+			owned_by = ROOT
+		}
+		
+		trigger = {
+			num_of_owned_provinces_with = {
+				value = 30
+				culture_group = iberian
+				NOT = { unrest = 2 }
+				NOT = { nationalism = 5 }
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = tm_mor_accept_iberia
+				duration = -1
+			}
+			add_accepted_culture_or_dip_power = { culture = andalucian }
+			add_accepted_culture = castillian
+			add_accepted_culture = catalan
+			add_accepted_culture = portugese
+		}
+	}
+
+	tm_mor_approach_to_mal = {
+		icon = befriend_ethiopia
+		required_missions = { }
+		position = 13
+		
+		provinces_to_highlight = {
+			is_capital_of = event_target:mali_event_target
 		}
 
 		trigger = {
-			
+			OR = {
+				event_target:mali_event_target = { 
+					alliance_with = ROOT
+					has_opinion = {
+						who = ROOT
+						value = 125
+					}
+				}
+				event_target:mali_event_target = { has_been_insulted_by_root = yes }				
+			}
 		}
 
 		effect = {
-			
+			custom_tooltip = tm_mal_eth_dip_friendly_choice_reward_first_mission
+			if = {
+				limit = {
+					event_target:mali_event_target = { alliance_with = ROOT }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				define_advisor = {
+					type = diplomat
+					skill = 3
+					cost_multiplier = 0.33
+					religion = event_target:mali_event_target
+					culture = event_target:mali_event_target
+				}
+				custom_tooltip = tm_ally_has_effects_too
+				add_historical_friend = event_target:mali_event_target
+				custom_tooltip = tm_mor_unlock_friendly_mal
+			}
+
+			custom_tooltip = mission_alternatively_tt
+			custom_tooltip = tm_mal_mor_dip_hostile_choice_reward_first_mission
+			if = {
+				limit = {
+					event_target:mali_event_target = { OR = { has_been_insulted_by_root = yes war_with = ROOT } }
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				western_sahara_area = { add_perma_claim = yes }
+				north_timbaktu_area = { add_perma_claim = yes }
+				baghena_area = { add_perma_claim = yes }
+				niger_bend_area = { add_perma_claim = yes }
+				add_manpower = 10
+				custom_tooltip = tm_mor_unlock_hostile_mal
+			}
+			hidden_effect = {
+				if = {
+					limit = { event_target:mali_event_target = { alliance_with = ROOT } }
+					add_historical_friend = event_target:mali_event_target
+					define_advisor = {
+						type = diplomat
+						skill = 3
+						cost_multiplier = 0.33
+						religion = event_target:mali_event_target
+						culture = event_target:mali_event_target
+					}
+					event_target:mali_event_target = {
+						define_advisor = {
+							type = diplomat
+							skill = 3
+							cost_multiplier = 0.33
+							religion = ROOT
+							culture = ROOT
+						}
+					}
+					set_country_flag = tm_mor_friendly_mal
+					swap_non_generic_missions = yes
+				}
+				else = {
+					western_sahara_area = { add_perma_claim = yes }
+					north_timbaktu_area = { add_perma_claim = yes }
+					baghena_area = { add_perma_claim = yes }
+					niger_bend_area = { add_perma_claim = yes }
+					add_manpower = 10
+					set_country_flag = tm_mor_hostile_mal
+					swap_non_generic_missions = yes
+				}
+			}
 		}
 	}
 }
@@ -2280,13 +3446,13 @@ mor_slot_5_mali_diplomacy_placeholders = {
 	tm_mor_approach_to_mali_placeholder_2 = {
 		icon = mission_locked_mission
 		required_missions = { tm_mor_approach_to_mal }
-		position = 17
+		position = 14
 
 		provinces_to_highlight = {}
 		trigger = {
-			custom_trigger_tooltip = { tooltip = tm_mal_mor_dip_this_is_a_branching_mission always = no }
-			custom_trigger_tooltip = { tooltip = tm_mal_mor_dip_friendly_miss_2_req always = no }
-			custom_trigger_tooltip = { tooltip = tm_mal_mor_dip_hostile_miss_2_req always = no }
+			custom_trigger_tooltip = { tooltip = tm_mor_mal_dip_this_is_a_branching_mission always = no }
+			#custom_trigger_tooltip = { tooltip = tm_mal_mor_dip_friendly_miss_2_req always = no }
+			#custom_trigger_tooltip = { tooltip = tm_mal_mor_dip_hostile_miss_2_req always = no }
 		}
 		effect = {
 			custom_tooltip = tm_mal_eth_dip_friendly_choice_reward
@@ -2294,7 +3460,7 @@ mor_slot_5_mali_diplomacy_placeholders = {
 				custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 				if = {
 					limit = {
-						NOT = { always = no }
+						NOT = { event_target:mali_event_target = { mission_completed = mal_approach_to_morocco_friendly_2 } }
 					}
 					custom_tooltip = BONUS_REWARD_YES
 				}
@@ -2303,10 +3469,10 @@ mor_slot_5_mali_diplomacy_placeholders = {
 					custom_tooltip = tm_mal_mor_build_road_effect_tt
 				}
 				custom_tooltip = mission_alternatively_tt
-				custom_tooltip = tm_mal_mor_dip_friendly_if_they_have
+				custom_tooltip = tm_mor_mal_dip_friendly_if_they_have
 				if = {
 					limit = {
-						always = no
+						event_target:mali_event_target = { mission_completed = mal_approach_to_morocco_friendly_2 }
 					}
 					custom_tooltip = BONUS_REWARD_YES
 				}
@@ -2328,15 +3494,52 @@ mor_slot_5_mali_diplomacy_placeholders = {
 
 		provinces_to_highlight = {}
 		trigger = {
-			custom_trigger_tooltip = { tooltip = tm_mal_mor_dip_this_is_a_branching_mission always = no }
-			custom_trigger_tooltip = { tooltip = tm_mal_mor_dip_friendly_miss_3_req always = no }
-			custom_trigger_tooltip = { tooltip = tm_mal_mor_dip_hostile_miss_3_req always = no }
+			custom_trigger_tooltip = { tooltip = tm_mor_mal_dip_this_is_a_branching_mission always = no }
+			#custom_trigger_tooltip = { tooltip = tm_mal_mor_dip_friendly_miss_3_req always = no }
+			#custom_trigger_tooltip = { tooltip = tm_mal_mor_dip_hostile_miss_3_req always = no }
 		}
 		effect = {
 			custom_tooltip = tm_mal_eth_dip_friendly_choice_reward
-			tooltip = {
-				
+			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
+			if = {
+				limit = {
+					NOT = {
+						event_target:mali_event_target = {
+							mission_completed = mal_approach_to_morocco_friendly_3
+						}
+					}
+				}
+				custom_tooltip = BONUS_REWARD_YES
 			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			custom_tooltip = tm_mal_mor_manpower_against_iberia
+			tooltip = {
+				define_advisor = {
+					type = recruitmaster
+					skill = 2
+					cost_multiplier = 0.3
+					culture = event_target:mali_event_target
+					religion = event_target:mali_event_target
+				}
+			}
+			custom_tooltip = tm_ally_has_effects_too
+			if = {
+				limit = { current_age = age_of_discovery }
+				custom_tooltip = tm_mal_mor_ally_can_use_last_stand
+			}
+			custom_tooltip = mission_alternatively_tt
+			custom_tooltip = tm_mal_mor_dip_friendly_if_they_have
+			if = {
+				limit = {
+					event_target:mali_event_target = {
+						mission_completed = mal_approach_to_morocco_friendly_3
+					}
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			custom_tooltip = tm_mal_mor_manpower_against_iberia_2
+			custom_tooltip = tm_ally_has_effects_too
 			custom_tooltip = tm_mal_eth_dip_hostile_choice_reward
 			tooltip = {
 				
@@ -2362,7 +3565,6 @@ mor_slot_5_mali_diplomacy_friendly = {
 	mor_approach_to_mal_friendly_2 = {
 		icon = mission_traverse_the_sahara
 		required_missions = { tm_mor_approach_to_mal }
-		position = 13
 
 		provinces_to_highlight = {
 			OR = {
@@ -2386,7 +3588,7 @@ mor_slot_5_mali_diplomacy_friendly = {
 				NOT = {
 					OR = {
 						country_or_non_sovereign_subject_holds = ROOT
-						country_or_non_sovereign_subject_holds = event_target:morocco_event_target
+						country_or_non_sovereign_subject_holds = event_target:mali_event_target
 					}
 				}
 				OR = {
@@ -2397,7 +3599,7 @@ mor_slot_5_mali_diplomacy_friendly = {
 			
 		}
 		trigger = {
-			event_target:morocco_event_target = {
+			event_target:mali_event_target = {
 				alliance_with = ROOT
 				has_opinion = {
 					who = ROOT
@@ -2406,21 +3608,21 @@ mor_slot_5_mali_diplomacy_friendly = {
 			}
 			custom_trigger_tooltip = {
 				tooltip = tm_mal_mor_build_road_trigger_tt
-				1124 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:morocco_event_target } }
-				1123 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:morocco_event_target } }
-				2246 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:morocco_event_target } }
-				2247 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:morocco_event_target } }
-				1129 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:morocco_event_target } }
-				1128 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:morocco_event_target } }
-				4993 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:morocco_event_target } }
-				1127 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:morocco_event_target } }
-				2466 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:morocco_event_target } }
-				2464 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:morocco_event_target } }
-				4568 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:morocco_event_target } }
-				2468 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:morocco_event_target } }
-				5054 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:morocco_event_target } }
-				2467 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:morocco_event_target } }
-				343 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:morocco_event_target } }
+				1124 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:mali_event_target } }
+				1123 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:mali_event_target } }
+				2246 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:mali_event_target } }
+				2247 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:mali_event_target } }
+				1129 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:mali_event_target } }
+				1128 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:mali_event_target } }
+				4993 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:mali_event_target } }
+				1127 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:mali_event_target } }
+				2466 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:mali_event_target } }
+				2464 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:mali_event_target } }
+				4568 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:mali_event_target } }
+				2468 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:mali_event_target } }
+				5054 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:mali_event_target } }
+				2467 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:mali_event_target } }
+				343 = { OR = { country_or_non_sovereign_subject_holds = ROOT country_or_non_sovereign_subject_holds = event_target:mali_event_target } }
 			}
 			custom_trigger_tooltip = {
 				tooltip = tm_mal_mor_build_road_trigger_2_tt
@@ -2445,7 +3647,11 @@ mor_slot_5_mali_diplomacy_friendly = {
 			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 			if = {
 				limit = {
-					NOT = { always = no }
+					NOT = {
+						event_target:mali_event_target = {
+							mission_completed = mal_approach_to_morocco_friendly_2
+						}
+					}
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -2454,10 +3660,12 @@ mor_slot_5_mali_diplomacy_friendly = {
 				custom_tooltip = tm_mal_mor_build_road_effect_tt
 			}
 			custom_tooltip = mission_alternatively_tt
-			custom_tooltip = tm_mal_mor_dip_friendly_if_they_have
+			custom_tooltip = tm_mor_mal_dip_friendly_if_they_have
 			if = {
 				limit = {
-					always = no
+					event_target:mali_event_target = {
+						mission_completed = mal_approach_to_morocco_friendly_2
+					}
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -2467,7 +3675,7 @@ mor_slot_5_mali_diplomacy_friendly = {
 			}
 			hidden_effect = {
 				if = {
-					limit = { NOT = { always = no } }
+					limit = { NOT = { event_target:mali_event_target = {mission_completed = mal_approach_to_morocco_friendly_2 } } }
 					1124 = { add_building = road }
 					1123 = { add_building = road }
 					2246 = { add_building = road }
@@ -2485,7 +3693,7 @@ mor_slot_5_mali_diplomacy_friendly = {
 					343 = { add_building = road }
 				}
 				if = {
-					limit = { always = no }
+					limit = { event_target:mali_event_target = {	mission_completed = mal_approach_to_morocco_friendly_2 } }
 					1124 = { add_building = highway }
 					1123 = { add_building = highway }
 					2246 = { add_building = highway }
@@ -2513,7 +3721,7 @@ mor_slot_5_mali_diplomacy_friendly = {
 
 		provinces_to_highlight = {}
 		trigger = {
-			event_target:morocco_event_target = {
+			event_target:mali_event_target = {
 				alliance_with = ROOT
 				has_opinion = {
 					who = ROOT
@@ -2544,7 +3752,11 @@ mor_slot_5_mali_diplomacy_friendly = {
 			custom_tooltip = tm_mal_eth_dip_friendly_if_we_are
 			if = {
 				limit = {
-					NOT = { always = no }
+					NOT = {
+						event_target:mali_event_target = {
+							mission_completed = mal_approach_to_morocco_friendly_3
+						}
+					}
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -2555,8 +3767,8 @@ mor_slot_5_mali_diplomacy_friendly = {
 					type = recruitmaster
 					skill = 2
 					cost_multiplier = 0.3
-					culture = event_target:morocco_event_target
-					religion = event_target:morocco_event_target
+					culture = event_target:mali_event_target
+					religion = event_target:mali_event_target
 				}
 				custom_tooltip = tm_ally_has_effects_too
 
@@ -2566,10 +3778,12 @@ mor_slot_5_mali_diplomacy_friendly = {
 				}
 			}
 			custom_tooltip = mission_alternatively_tt
-			custom_tooltip = tm_mal_mor_dip_friendly_if_they_have
+			custom_tooltip = tm_mor_mal_dip_friendly_if_they_have
 			if = {
 				limit = {
-					always = no
+					event_target:mali_event_target = {
+						mission_completed = mal_approach_to_morocco_friendly_3
+					}
 				}
 				custom_tooltip = BONUS_REWARD_YES
 			}
@@ -2580,7 +3794,7 @@ mor_slot_5_mali_diplomacy_friendly = {
 			}
 			hidden_effect = {
 				if = {
-					limit = { NOT = { always = no } }
+					limit = { NOT = { event_target:mali_event_target = { mission_completed = mal_approach_to_morocco_friendly_3 } } }
 					random_owned_province = { add_base_manpower = 1 }
 					random_owned_province = { add_base_manpower = 1 }
 					random_owned_province = { add_base_manpower = 1 }
@@ -2595,10 +3809,10 @@ mor_slot_5_mali_diplomacy_friendly = {
 						type = recruitmaster
 						skill = 2
 						cost_multiplier = 0.3
-						culture = event_target:morocco_event_target
-						religion = event_target:morocco_event_target
+						culture = event_target:mali_event_target
+						religion = event_target:mali_event_target
 					}
-					event_target:morocco_event_target = {
+					event_target:mali_event_target = {
 						random_owned_province = { add_base_manpower = 1 }
 						random_owned_province = { add_base_manpower = 1 }
 						random_owned_province = { add_base_manpower = 1 }
@@ -2619,7 +3833,7 @@ mor_slot_5_mali_diplomacy_friendly = {
 					}
 				}
 				if = {
-					limit = { always = no }
+					limit = { event_target:mali_event_target = { mission_completed = mal_approach_to_morocco_friendly_3 } }
 					for = {
 						amount = 10
 						effect = "
@@ -2630,7 +3844,7 @@ mor_slot_5_mali_diplomacy_friendly = {
 						}
 						"
 					}
-					event_target:morocco_event_target = {
+					event_target:mali_event_target = {
 						for = {
 							amount = 10
 							effect = "
@@ -2663,49 +3877,198 @@ mor_slot_5_mali_diplomacy_hostile = {
 	has_country_shield = yes
 
 	mor_approach_to_mal_hostile_2 = {
-		icon = mission_spoils_of_war
+		icon = NEED_ICON
 		required_missions = { tm_mor_approach_to_mal }
-		position = 13
+		position = 14
 
 		provinces_to_highlight = {
-			region = maghreb_region
+			region = sahel_region
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 8
-				region = maghreb_region
+				value = 10
+				region = sahel_region
 			}
 		}
 		effect = {
-			maghreb_region = { add_perma_claim = yes }
-			add_prestige_or_monarch_power = { amount = 25 }
-			add_adm_power = 150
+			
 		}
 	}
 
 	mor_approach_to_mal_hostile_3 = {
-		icon = boh_humiliate_austria
+		icon = NEED_ICON
 		required_missions = { mor_approach_to_mal_hostile_2 }
-		position = 14
+		
 
 		provinces_to_highlight = {
-			region = maghreb_region
-			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+			
 		}
 		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				value = 30
-				region = maghreb_region
-			}
+			
 		}
 		effect = {
+			
+		}
+	}
+}
+
+tm_morocco_eco_5 = {
+	slot = 5
+	generic = no
+	ai = yes
+	potential = {
+		OR = {
+			tag = MOR
+			tag = ZRD
+			tag = ADU
+		}
+	}
+	has_country_shield = yes
+
+	tm_mor_port_of_sebta = {
+		icon = mission_retake_ceuta
+		required_missions = {}
+		position = 16
+		
+		provinces_to_highlight = {
+			province_id = 1751
+		}
+		
+		trigger = {
+			1751 = {
+				owned_by = ROOT
+				num_of_buildings_in_province = 3
+				has_trade_building_trigger = yes
+				development = 12
+			}
+		}
+		
+		effect = {
+			1751 = {
+				change_trade_goods = grain
+				center_of_trade = 1
+				add_province_modifier = {
+					name = "gra_mouth_of_mediterranean"
+					duration = -1
+				}
+				upgrade_building = { trade = yes }
+			}
+		}
+	}
+
+	tm_mor_merchants = {
+		icon = mission_disrupt_portuguese_trade
+		required_missions = { tm_mor_port_of_sebta }
+		
+		trigger = {
+			calc_true_if = {
+				amount = 2
+				any_rival_country = { trade_embargo_by = ROOT }
+			}
+			if = {
+				limit = { exists = CAS }
+				CAS = { trade_embargo_by = ROOT }
+			}
+			else_if = {
+				limit = { exists = SPA }
+				SPA = { trade_embargo_by = ROOT }
+			}
+			else_if = {
+				limit = { 227 = { OR = { owner = { is_or_was_tag  = { tag = POR } } } } }
+				any_country = {
+					is_or_was_tag = { tag = POR }
+					trade_embargo_by = ROOT
+				}
+			}
+			else = {
+				4548 = {
+					trade_share = {
+						country = ROOT
+						share = 50
+					}
+				}
+			}
+			num_of_light_ship = 20
+		}
+		
+		effect = {
 			add_country_modifier = {
-				name = tm_mal_conquest_of_morocco
+				name = gra_merchants_inspired
+				duration = 7300
+			}
+		}
+	}
+
+	tm_mor_rich_trade = {
+		icon = reform_the_monte
+		required_missions = { tm_mor_improving_trade tm_mor_merchants }
+
+		provinces_to_highlight = {
+			OR = {
+				province_id = 343
+				province_id = 341
+				province_id = 1132
+			}
+		}
+		
+		trigger = {
+			monthly_income = 500
+			343 = {
+				has_merchant = ROOT
+				trade_share = {
+					country = ROOT
+					share = 80
+				}
+				trade_node_value = 100
+			}
+			341 = {
+				trade_share = {
+					country = ROOT
+					share = 50
+				}
+			}
+			1132 = {
+				trade_share = {
+					country = ROOT
+					share = 15
+				}
+			}
+		}
+		
+		effect = {
+			add_country_modifier = {
+				name = tm_mor_lucrative_nation
 				duration = -1
 			}
 		}
 	}
+
+	#gc_mor_privateer = {
+	#	icon = mission_raid_christian_trade
+	#	required_missions = { }
+	#	position = 18
+	#	
+	#	provinces_to_highlight = {
+	#		province_id = 1293
+	#	}
+	#	
+	#	trigger = {
+	#		1293 = {
+	#			privateer_power = {
+	#				country = ROOT
+	#				share = 25
+	#			}
+	#		}
+	#	}
+	#	
+	#	effect = {
+	#		add_country_modifier = {
+	#			name = mor_privateering
+	#			duration = 7300
+	#		}
+	#	}
+	#}
 }
 
 tm_mor_colonisation_5 = {
@@ -2722,9 +4085,9 @@ tm_mor_colonisation_5 = {
 	has_country_shield = yes
 
 	tm_mor_argentina_start = {
-		icon = NEED_ICON
+		icon = mission_clear_the_delta
 		required_missions = { tm_mor_brazil_start }
-		position = 26
+		position = 21
 		
 		provinces_to_highlight = {
 			colonial_region = colonial_la_plata
@@ -2744,12 +4107,15 @@ tm_mor_colonisation_5 = {
 		}
 
 		effect = {
-			
+			add_country_modifier = {
+				name = tm_mor_bearing_the_harsh
+				duration = 9125
+			}
 		}
 	}
 
 	tm_mor_argentina_control = {
-		icon = NEED_ICON
+		icon = mission_control_unrest
 		required_missions = { tm_mor_argentina_start }
 		
 		provinces_to_highlight = {
@@ -2770,7 +4136,11 @@ tm_mor_colonisation_5 = {
 		}
 		
 		effect = {
-			
+			add_mercantilism = 3
+			add_country_modifier = {
+				name = tm_mor_steering_trade
+				duration = -1
+			}
 		}
 	}
 }

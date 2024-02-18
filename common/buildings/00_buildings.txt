@@ -81,6 +81,12 @@ marketplace = {
 				}
 			}
 		}
+
+		if = {
+			limit = { FROM = { has_country_flag = tm_mor_improving_trade_flag } NOT = { trade_goods = gold } }
+			add_base_production = 1
+			add_province_modifier = { name = tm_mor_improving_trade_modifier duration = -1 }
+		}
 	}
 	on_destroyed = {
 		if = {
@@ -101,6 +107,13 @@ marketplace = {
 				
 			}
 			add_prosperity = -5
+		}
+		if = {
+			limit = {
+				has_province_modifier = tm_mor_improving_trade_modifier
+			}
+			remove_province_modifier = tm_mor_improving_trade_modifier
+			add_base_production = -1
 		}
 	}
 	on_obsolete = {
@@ -2210,6 +2223,11 @@ trade_depot = {
 				}
 			}
 		}
+		if = {
+			limit = { FROM = { has_country_flag = tm_mor_improving_trade_flag } NOT = { trade_goods = gold } }
+			add_base_production = 1
+			add_province_modifier = { name = tm_mor_improving_trade_modifier duration = -1 }
+		}
 	}
 	on_destroyed = {
 		if = {
@@ -2220,6 +2238,13 @@ trade_depot = {
 			building = trade_depot
 			type = production
 			value = 2
+		}
+		if = {
+			limit = {
+				has_province_modifier = tm_mor_improving_trade_modifier
+			}
+			remove_province_modifier = tm_mor_improving_trade_modifier
+			add_base_production = -1
 		}
 	}
 	on_obsolete = {
@@ -2891,6 +2916,11 @@ stock_exchange = {
 				}
 			}
 		}
+		if = {
+			limit = { FROM = { has_country_flag = tm_mor_improving_trade_flag } NOT = { trade_goods = gold } }
+			add_base_production = 1
+			add_province_modifier = { name = tm_mor_improving_trade_modifier duration = -1 }
+		}
 	}
 	on_destroyed = {
 		if = {
@@ -2901,6 +2931,13 @@ stock_exchange = {
 			building = stock_exchange
 			type = production
 			value = 3
+		}
+		if = {
+			limit = {
+				has_province_modifier = tm_mor_improving_trade_modifier
+			}
+			remove_province_modifier = tm_mor_improving_trade_modifier
+			add_base_production = -1
 		}
 	}
 	on_obsolete = {

@@ -1,0 +1,234 @@
+namespace = morocco_flavour
+
+country_event = { #Choose Defense Type Event
+    id = morocco_flavour.1
+    title = morocco_flavour.1.t
+    desc = morocco_flavour.1.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = { #Land
+		name = morocco_flavour.1.a
+
+        1751 = {
+			add_province_modifier = {
+				name = defense_of_ceuta_land
+				duration = -1
+			}
+		}
+		custom_tooltip = tm_of_ceuta_has_fort
+		if = {
+			limit = {
+				1751 = { has_fort_building_trigger = yes }
+			}
+			custom_tooltip = BONUS_REWARD_YES
+		}
+		else = { custom_tooltip = BONUS_REWARD_NO }
+        tooltip = {
+            1751 = {
+                add_building = ramparts_tm
+            }
+        }
+		hidden_effect = {
+            if = {
+                limit = {
+                    1751 = { has_fort_building_trigger = yes }
+                }
+                1751 = {
+                    add_building = ramparts_tm
+                }
+            }
+        }
+		
+		
+		ai_chance = { #AI better at land combat
+			factor = 100
+		}
+	}
+
+	option = { #Naval
+		name = morocco_flavour.1.b
+		
+        1751 = {
+			add_province_modifier = {
+				name = defense_of_ceuta_sea
+				duration = -1
+			}
+		}
+		custom_tooltip = tm_of_ceuta_has_fort
+		if = {
+			limit = {
+				1751 = { has_fort_building_trigger = yes }
+			}
+			custom_tooltip = BONUS_REWARD_YES
+		}
+		else = { custom_tooltip = BONUS_REWARD_NO }
+        tooltip = {
+            1751 = {
+                add_building = naval_battery
+            }
+        }
+		hidden_effect = {
+            if = {
+                limit = {
+                    1751 = { has_fort_building_trigger = yes }
+                }
+                1751 = {
+                    add_building = naval_battery
+                }
+            }
+        }
+
+        ai_chance = {
+			factor = 0
+		}
+	}
+}
+
+country_event = { #Choose Infiltration Type
+    id = morocco_flavour.2
+    title = morocco_flavour.2.t
+    desc = morocco_flavour.2.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+
+	option = { #Army
+		name = morocco_flavour.2.a
+		trigger = { OR = { exists = SPA exists = CAS } }
+
+        custom_tooltip = tm_mor_infiltrate_spanish_administration_tt
+
+		hidden_effect = {
+			if = {
+				limit = {
+					OR = {
+						war_with = SPA
+						war_with = CAS
+						war_with = POR
+						war_with = PEA
+						war_with = PBR
+					}
+				}
+				every_country = {
+					limit = {
+						OR = {
+							is_or_was_tag = { tag = CAS }
+							is_or_was_tag = { tag = POR }
+						}
+					}
+					remove_fow = 24
+				}
+			}
+			else = {
+				set_country_flag = tm_mor_infiltrated_admin
+			}
+		}
+		
+		ai_chance = { factor = 0 }
+	}
+
+	option = { #Administration
+		name = morocco_flavour.2.b
+
+		custom_tooltip = tm_mor_infiltrate_spanish_administration_2_tt
+		set_country_flag = tm_mor_infiltrated_admin_administration
+		
+        ai_chance = { factor = 100 }
+	}
+}
+
+
+country_event = { #Remove Spanish FOW
+    id = morocco_flavour.100
+    title = morocco_flavour.100.t
+    desc = morocco_flavour.100.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+	fire_only_once = yes
+
+    mean_time_to_happen = {
+        days = 1
+    }
+
+    hidden = yes
+
+    trigger = {
+        is_or_was_tag = { tag = MOR }
+        OR = {
+			war_with = SPA
+			war_with = CAS
+			war_with = POR
+			war_with = PEA
+			war_with = PBR
+		}
+        has_country_flag = tm_mor_infiltrated_admin
+    }
+
+    immediate = {
+        clr_country_flag = tm_mor_infiltrated_admin
+        every_country = {
+			limit = {
+				OR = {
+					is_or_was_tag = { tag = CAS }
+					is_or_was_tag = { tag = POR }
+				}
+			}
+			remove_fow = 24
+		}
+    } 
+
+	option = {
+		name = morocco_flavour.100.a
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+}
+
+country_event = { #Spanish cores
+    id = morocco_flavour.101
+    title = morocco_flavour.101.t
+    desc = morocco_flavour.101.d
+	picture = SHWEDAGON_PAGON_eventPicture
+
+	fire_only_once = yes
+
+    mean_time_to_happen = {
+        days = 1
+    }
+
+    hidden = yes
+
+    trigger = {
+        is_or_was_tag = { tag = MOR }
+        has_country_flag = tm_mor_infiltrated_admin_administration
+		has_country_flag = tm_mor_infiltrate_spanish_administration_trigger
+    }
+
+    immediate = {
+        clr_country_flag = tm_mor_infiltrated_admin_administration
+		clr_country_flag = tm_mor_infiltrate_spanish_administration_trigger
+		every_owned_province = {
+			limit = { region = iberia_region }
+			add_core_construction = {
+				speed = 0.50
+				cost = 1
+			}
+		}
+    } 
+
+	option = {
+		name = morocco_flavour.101.a
+		
+		ai_chance = {
+			factor = 100
+		}
+	}
+}

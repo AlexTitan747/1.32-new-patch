@@ -50,6 +50,15 @@ on_startup = {
 			}
 		}
 	}
+	if = {
+		limit = { NOT = { is_year = 1445 } }
+		MOR = {
+			set_variable = {
+				which = tm_converted_provs
+				value = 0
+			}
+		}
+	}
 	every_country = {
 		if = {
 			limit = {
@@ -4946,6 +4955,18 @@ on_province_religion_converted = {
 		}
 		remove_province_modifier = ottoman_siyasah_tax_reform_manpower
 	}
+
+	if = {
+		limit = { owner = { has_country_flag = tm_dev_on_convert_province } }
+		add_random_development = 2
+	}
+	if = {
+		limit = { owner = { is_or_was_tag = { tag = MOR } } }
+		change_variable = {
+			which = tm_converted_provs
+			value = 1
+		}
+	}
 }
 
 on_province_religion_changed = {
@@ -5009,6 +5030,21 @@ on_province_culture_converted = {
 	imperial_modifiers_on_province_change_culture_or_change_owner_effect = yes
 	on_province_culture_change_effect = yes
 	on_province_culture_converted_effect = yes
+
+	if = {
+		limit = {
+			owner = { has_country_flag = tm_dev_on_convert_province }
+			has_owner_culture = yes
+		}
+		add_random_development = 2
+	}
+	if = {
+		limit = { owner = { is_or_was_tag = { tag = MOR } } has_owner_culture = yes }
+		change_variable = {
+			which = tm_converted_provs
+			value = 1
+		}
+	}
 }
 
 # province, general conversion through effects
@@ -5378,6 +5414,49 @@ on_province_owner_change = {
 			add_treasury = 100
 		}
 	}
+
+	if = {
+		limit = {
+			province_id = 224
+			OR = {
+				owner = { has_country_flag = tm_mor_owns_224_flag }
+				owner = { overlord = { has_country_flag = tm_mor_owns_224_flag } }
+			}
+		}
+		224 = {
+			add_province_modifier = {
+				name = gra_reconvert_giralda
+				duration = -1
+			}
+		}
+		every_country = {
+			limit = { has_country_flag = tm_mor_owns_224_flag }
+			clr_country_flag = tm_mor_owns_224_flag
+		}
+	}
+
+	if = {
+		limit = {
+			region = iberia_region
+			owner = { is_or_was_tag = { tag = MOR } has_country_flag = tm_mor_infiltrated_admin_administration }
+		}
+		owner = { set_country_flag = tm_mor_infiltrate_spanish_administration_trigger }
+	}
+
+	if = {
+		limit = {
+			any_province_in_state = { has_building = university }
+		}
+		area = {
+			limit = {
+				owner = { country_or_non_sovereign_subject_holds = THIS }
+			}
+			add_province_modifier = {
+				name = dif_university_dev_cost
+				duration = -1
+			}
+		}
+	}
 }
 
 # country
@@ -5596,6 +5675,12 @@ on_admiral_recruited = {
 
 # country
 on_conquistador_recruited = {
+	if = {
+		limit = {
+			has_country_flag = tm_navy_trad_from_explorers
+		}
+		add_navy_tradition = 1
+	}
 }
 
 # country
@@ -5608,6 +5693,13 @@ on_explorer_recruited = {
 			}
 		}
 		add_navy_tradition = 1 
+	}
+
+	if = {
+		limit = {
+			has_country_flag = tm_navy_trad_from_explorers
+		}
+		add_navy_tradition = 1
 	}
 }
 
