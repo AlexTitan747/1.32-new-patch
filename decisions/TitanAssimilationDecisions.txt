@@ -183,19 +183,23 @@ country_decisions = {
 		major = yes
 		potential = {
 			ai = no
-			culture_group = germanic
+			#culture_group = germanic
+			OR = {
+				primary_culture = czech
+				primary_culture = schlesian
+				primary_culture = sorbian
+			}
 			NOT = { has_country_flag = assimilated_czechs }
 		}
 		allow = {
-			government_rank = 3
-			num_of_owned_provinces_with = {
-				value = 15
+			government_rank = 2
+			development_in_provinces = {
+				value = 300
 				OR = {
 					culture = czech
 					culture = schlesian
 					culture = sorbian
 				}
-				is_city = yes
 			}
 			NOT = { has_country_flag = assimilated_czechs }
 		}
