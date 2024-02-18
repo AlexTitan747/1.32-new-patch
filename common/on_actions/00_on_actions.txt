@@ -749,6 +749,20 @@ on_war_won = {
 			id = flavor_swe.121
 		}
 	}
+	if = {
+		limit = {
+			ROOT = { tag = SRV }
+			FROM = { tag = GEO }
+			GEO = { is_subject_of = SRV }
+		}
+		GEO = {
+			remove_opinion = {
+				who = SRV
+				modifier = they_force_vassalized_us
+			}
+			add_liberty_desire = -0.1
+		}
+	}
 }
 
 # country
