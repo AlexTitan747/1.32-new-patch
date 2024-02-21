@@ -1,0 +1,184 @@
+custom_button = {
+	name = toggle_estate_privs_open
+	potential = {
+		ai = no
+        OR = {
+            has_estate = estate_church
+            has_estate = estate_nobles
+            has_estate = estate_burghers
+            has_estate = estate_dhimmi
+        }
+	}
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_country_flag = showing_toggle_estate_privs_menu }
+			}
+			set_country_flag = showing_toggle_estate_privs_menu
+		}
+		else = { clr_country_flag = showing_toggle_estate_privs_menu }
+	}
+	tooltip = "Open Toggle Viewing Estate Privelges Menu"
+}
+
+custom_icon = {
+    name = toggle_estate_privs_menu_bg
+    potential = {
+		ai = no
+        has_country_flag = showing_toggle_estate_privs_menu
+	}
+}
+
+custom_button = {
+	name = toggle_church_estate_land_rights
+	potential = {
+		ai = no
+        has_country_flag = showing_toggle_estate_privs_menu
+	}
+    trigger = {
+        has_estate = estate_church
+        NOT = { has_estate_privilege = estate_church_land_rights }
+    }
+	effect = {
+        if = {
+			limit = { NOT = { has_country_flag = tm_hide_church_land_rights } }
+			set_country_flag = tm_hide_church_land_rights
+		}
+		else = { clr_country_flag = tm_hide_church_land_rights }
+	}
+	tooltip = "Toggle Showing Clergy Land Rights"
+}
+
+custom_button = {
+	name = toggle_church_monopolies
+	potential = {
+		ai = no
+        has_country_flag = showing_toggle_estate_privs_menu
+	}
+    trigger = {
+        has_estate = estate_church
+        NOT = { has_estate_privilege = estate_church_monopoly_of_incense }
+        NOT = { has_estate_privilege = estate_church_monopoly_of_wool }
+        NOT = { has_estate_privilege = estate_church_monopoly_of_wine }
+        NOT = { has_estate_privilege = estate_church_monopoly_of_slaves }
+    }
+	effect = {
+        if = {
+			limit = { NOT = { has_country_flag = tm_hide_church_monopolies } }
+			set_country_flag = tm_hide_church_monopolies
+		}
+		else = { clr_country_flag = tm_hide_church_monopolies }
+	}
+	tooltip = "Toggle Showing Clergy Monopolies"
+}
+
+
+custom_button = {
+	name = toggle_nobles_estate_land_rights
+	potential = {
+		ai = no
+        has_country_flag = showing_toggle_estate_privs_menu
+	}
+    trigger = {
+        has_estate = estate_nobles
+        NOT = { has_estate_privilege = estate_nobles_land_rights }
+    }
+	effect = {
+        if = {
+			limit = { NOT = { has_country_flag = tm_hide_nobles_land_rights } }
+			set_country_flag = tm_hide_nobles_land_rights
+		}
+		else = { clr_country_flag = tm_hide_nobles_land_rights }
+	}
+	tooltip = "Toggle Showing Nobles Land Rights"
+}
+
+custom_button = {
+	name = toggle_nobles_monopolies
+	potential = {
+		ai = no
+        has_country_flag = showing_toggle_estate_privs_menu
+	}
+    trigger = {
+        has_estate = estate_nobles
+        NOT = { has_estate_privilege = estate_nobles_monopoly_of_metals }
+        NOT = { has_estate_privilege = estate_nobles_monopoly_of_livestock }
+        NOT = { has_estate_privilege = estate_nobles_monopoly_of_gems }
+        NOT = { has_estate_privilege = estate_nobles_monopoly_of_deer }
+        NOT = { has_estate_privilege = estate_nobles_monopoly_of_horses }
+    }
+	effect = {
+        if = {
+			limit = { NOT = { has_country_flag = tm_hide_nobles_monopolies } }
+			set_country_flag = tm_hide_nobles_monopolies
+		}
+		else = { clr_country_flag = tm_hide_nobles_monopolies }
+	}
+	tooltip = "Toggle Showing Nobles Monopolies"
+}
+
+
+custom_button = {
+	name = toggle_burghers_estate_land_rights
+	potential = {
+		ai = no
+        has_country_flag = showing_toggle_estate_privs_menu
+	}
+    trigger = {
+        has_estate = estate_burghers
+        NOT = { has_estate_privilege = estate_burghers_land_rights }
+    }
+	effect = {
+        if = {
+			limit = { NOT = { has_country_flag = tm_hide_burghers_land_rights } }
+			set_country_flag = tm_hide_burghers_land_rights
+		}
+		else = { clr_country_flag = tm_hide_burghers_land_rights }
+	}
+	tooltip = "Toggle Showing Burghers Land Rights"
+}
+
+custom_button = {
+	name = toggle_burghers_monopolies
+	potential = {
+		ai = no
+        has_country_flag = showing_toggle_estate_privs_menu
+	}
+    trigger = {
+        has_estate = estate_burghers
+        NOT = { has_estate_privilege = estate_burghers_monopoly_of_textiles }
+        NOT = { has_estate_privilege = estate_burghers_monopoly_of_dyes }
+        NOT = { has_estate_privilege = estate_burghers_monopoly_of_glass }
+        NOT = { has_estate_privilege = estate_burghers_monopoly_of_paper }
+        NOT = { has_estate_privilege = estate_burghers_monopoly_of_olives }
+    }
+	effect = {
+        if = {
+			limit = { NOT = { has_country_flag = tm_hide_burghers_monopolies } }
+			set_country_flag = tm_hide_burghers_monopolies
+		}
+		else = { clr_country_flag = tm_hide_burghers_monopolies }
+	}
+	tooltip = "Toggle Showing Burghers Monopolies"
+}
+
+
+custom_button = {
+	name = toggle_dhimmi_estate_land_rights
+	potential = {
+		ai = no
+        has_country_flag = showing_toggle_estate_privs_menu
+	}
+    trigger = {
+        has_estate = estate_dhimmi
+        NOT = { has_estate_privilege = estate_dhimmi_land_rights }
+    }
+	effect = {
+        if = {
+			limit = { NOT = { has_country_flag = tm_hide_dhimmi_land_rights } }
+			set_country_flag = tm_hide_dhimmi_land_rights
+		}
+		else = { clr_country_flag = tm_hide_dhimmi_land_rights }
+	}
+	tooltip = "Toggle Showing Dhimmi Land Rights"
+}
