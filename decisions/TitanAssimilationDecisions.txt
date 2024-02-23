@@ -14,22 +14,32 @@ country_decisions = {
 				culture = kurdish
 				is_city = yes
 			}
-			NOT = { has_country_flag = assimilated_kurds }
 		}
 		effect = {
 			set_country_flag = assimilated_kurds
-			every_owned_province = {
-				limit = {
-					owned_by = ROOT
-					OR = {
-						culture = kurdish
-					}
-				}
+			custom_tooltip = tm_kurdish_assimilation_tt
+			tooltip = {
 				add_province_modifier = {
 					name = recently_assimilated
 					duration = 3650
 				}
 				change_culture = ckurdish
+			}
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						owned_by = ROOT
+						OR = {
+							culture = kurdish
+						}
+					}
+					add_province_modifier = {
+						name = recently_assimilated
+						duration = 3650
+					}
+					change_culture = ckurdish
+				}
+				if = { limit = { accepted_culture = kurdish } remove_accepted_culture = kurdish add_accepted_culture = ckurdish }
 			}
 		}
 	}
@@ -51,7 +61,6 @@ country_decisions = {
 				}
 				is_city = yes
 			}
-			NOT = { has_country_flag = assimilated_esyrian }
 		}
 		effect = {
 			set_global_flag = assimilated_esyrian_global_flag
@@ -102,28 +111,38 @@ country_decisions = {
 			num_of_owned_provinces_with = {
 				value = 10
 				OR = {
-				culture = al_suryah_arabic
-				culture = esyrian
+					culture = al_suryah_arabic
+					culture = esyrian
 				}
 				is_city = yes
 			}
-			NOT = { has_country_flag = assimilated_asyrian }
 		}
 		effect = {
 			set_country_flag = assimilated_asyrian
-			every_owned_province = {
-				limit = {
-					owned_by = ROOT
-					OR = {
-						culture = al_suryah_arabic
-						culture = esyrian
-					}
-				}
+			custom_tooltip = tm_syrian_assimilation_tt
+			tooltip = {
 				add_province_modifier = {
 					name = recently_assimilated
 					duration = 3650
 				}
 				change_culture = asyrian
+			}
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						owned_by = ROOT
+						OR = {
+							culture = al_suryah_arabic
+							culture = esyrian
+						}
+					}
+					add_province_modifier = {
+						name = recently_assimilated
+						duration = 3650
+					}
+					change_culture = asyrian
+				}
+				if = { limit = { accepted_culture = al_suryah_arabic } remove_accepted_culture = al_suryah_arabic add_accepted_culture = asyrian }
 			}
 		}
 	}
@@ -140,41 +159,52 @@ country_decisions = {
 			num_of_owned_provinces_with = {
 				value = 30
 				culture_group = south_slavic
-				is_city = yes
 			}
-			NOT = { has_country_flag = assimilated_balkans }
 		}
 		effect = {
 			set_country_flag = assimilated_balkans
-			every_owned_province = {
-				limit = {
-					owned_by = ROOT
-					OR = {
-						culture = croatian
-						culture = serbian
-						culture = albanian
-						culture = slovene
-						culture = bosnian
-					}
-				}
+			custom_tooltip = tm_balkan_assimilation_tt
+			tooltip = {
 				add_province_modifier = {
 					name = recently_assimilated
 					duration = 3650
 				}
 				change_culture = hbalkanite
 			}
-			every_owned_province = {
-				limit = {
-					owned_by = ROOT
-					OR = {
-						culture = bulgarian
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						owned_by = ROOT
+						OR = {
+							culture = croatian
+							culture = serbian
+							culture = albanian
+							culture = slovene
+							culture = bosnian
+							culture = greek
+						}
 					}
+					add_province_modifier = {
+						name = recently_assimilated
+						duration = 3650
+					}
+					change_culture = hbalkanite
 				}
-				add_province_modifier = {
-					name = recently_assimilated
-					duration = 3650
+			}
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						owned_by = ROOT
+						OR = {
+							culture = bulgarian
+						}
+					}
+					add_province_modifier = {
+						name = recently_assimilated
+						duration = 3650
+					}
+					change_culture = hbulgarian
 				}
-				change_culture = hbulgarian
 			}
 		}
 	}
@@ -212,25 +242,35 @@ country_decisions = {
 					culture = sorbian
 				}
 			}
-			NOT = { has_country_flag = assimilated_czechs }
 		}
 		effect = {
 			set_country_flag = assimilated_czechs
-			every_owned_province = {
-				limit = {
-					owned_by = ROOT
-					OR = {
-						culture = czech
-						culture = schlesian
-						culture = sorbian
-					}
-				}
+			custom_tooltip = tm_czech_assimilation_tt
+			tooltip = {
 				change_culture = gczech
 				add_province_modifier = {
 					name = recently_assimilated
 					duration = 3650
 				}
 			}
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						owned_by = ROOT
+						OR = {
+							culture = czech
+							culture = schlesian
+							culture = sorbian
+						}
+					}
+					change_culture = gczech
+					add_province_modifier = {
+						name = recently_assimilated
+						duration = 3650
+					}
+				}
+			}
+			if = { limit = { accepted_culture = czech } remove_accepted_culture = czech add_accepted_culture = gczech }
 		}
 	}
 
@@ -244,7 +284,6 @@ country_decisions = {
 		}
 		allow = {
 			government_rank = 3
-			NOT = { has_country_flag = assimilated_carpathia }
 		}
 		effect = {
 			set_country_flag = assimilated_carpathia
@@ -280,39 +319,48 @@ country_decisions = {
 	east_bantu_assimilation = {
 		major = yes
 		potential = {
-			ai = no
 			culture_group = southern_african
 			NOT = { has_country_flag = assimilated_swahili }
-			has_country_flag = pol_hungarian_assimilation_unlocked
 		}
 		allow = {
 			government_rank = 3
-			NOT = { has_country_flag = assimilated_swahili }
 		}
 		effect = {
 			set_country_flag = assimilated_swahili
-			every_owned_province = {
-				limit = {
-					owned_by = ROOT
-					culture = swahili
-				}
+			custom_tooltip = tm_bantu_assimilation_tt
+			tooltip = {
 				add_province_modifier = {
 					name = recently_assimilated
 					duration = 5475
 				}
 				change_culture = ebswahili
 			}
-			every_owned_province = {
-				limit = {
-					owned_by = ROOT
-					culture = madagasque
+			hidden_effect = {
+				every_owned_province = {
+					limit = {
+						owned_by = ROOT
+						culture = swahili
+					}
+					add_province_modifier = {
+						name = recently_assimilated
+						duration = 5475
+					}
+					change_culture = ebswahili
 				}
-				add_province_modifier = {
-					name = recently_assimilated
-					duration = 5475
+				every_owned_province = {
+					limit = {
+						owned_by = ROOT
+						culture = madagasque
+					}
+					add_province_modifier = {
+						name = recently_assimilated
+						duration = 5475
+					}
+					change_culture = ebmadagasque
 				}
-				change_culture = ebmadagasque
 			}
+			if = { limit = { accepted_culture = swahili } remove_accepted_culture = swahili add_accepted_culture = ebswahili }
+			if = { limit = { accepted_culture = madagasque } remove_accepted_culture = madagasque add_accepted_culture = ebmadagasque }
 		}
 	}		
 }		
