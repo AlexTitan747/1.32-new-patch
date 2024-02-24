@@ -51,7 +51,7 @@ NDefines.NDiplomacy.HRE_VOTE_VASSAL_ELECTOR = 0
 NDefines.NDiplomacy.HRE_VOTE_TOO_SMALL = 0
 NDefines.NDiplomacy.HRE_VOTE_BIG_COUNTRY = 50
 NDefines.NDiplomacy.HRE_VOTE_VERY_BIG_COUNTRY = 100
-NDefines.NDiplomacy.HRE_VOTE_NON_MEMBER = -50
+NDefines.NDiplomacy.HRE_VOTE_NON_MEMBER = -25
 NDefines.NDiplomacy.HRE_VOTE_SAME_CULTURE_GROUP = -1
 NDefines.NDiplomacy.HRE_VOTE_ALLIANCE = 50
 NDefines.NDiplomacy.HRE_VOTE_ROYAL_MARRIAGE = 30
@@ -65,6 +65,17 @@ NDefines.NDiplomacy.TRIBUTE_BASE_ADM = 0.16
 NDefines.NDiplomacy.TRIBUTE_BASE_DIP = 0.16
 NDefines.NDiplomacy.TRIBUTE_BASE_MIL = 0.16
 NDefines.NDiplomacy.TRIBUTE_BASE_MANPOWER = 0.16
+
+NDefines.NDiplomacy.CONDOTTIERI_MIN_DURATION = 1 -- Minimum duration for Condottieri agreements that must be paid for in advance and that cannot be cancelled.
+NDefines.NDiplomacy.UNCONDITIONAL_SURRENDER_MONTHS = 1 -- Months before unconditional surrender starts having an effect on Call for Peace. Set to negative values to disable feature.
+NDefines.NDiplomacy.INCREASE_TRUST_AMOUNT = 10						-- Amount of trust per increase
+NDefines.NDiplomacy.PREPARE_FOR_WAR_MONTHS = 24					-- Number of months AI will prepare for war
+NDefines.NDiplomacy.VASSALIZE_BASE_DEVELOPMENT_CAP = 300		-- Countries with more total development than this cannot be vassalized
+NDefines.NDiplomacy.MARCH_BASE_DEVELOPMENT_CAP = 300 				-- Countries with more total development than this cannot be made into a march
+NDefines.NDiplomacy.GREAT_PROJECT_WARSCORE_COST_MODIFIER = 0.5  	-- How much each great project multiplies a war score cost by (so 1 GP adds 33%, 2 add 66% etc)
+NDefines.NDiplomacy.JOIN_HRE_DEVELOPMENT_CAP_VASSAL = 300			-- Max cap of development of vassals to join the empire
+NDefines.NDiplomacy.ANNUL_TREATIES_YEARS = 12						-- Years before annul treaties expire
+NDefines.NDiplomacy.AGITATE_FOR_LIBERTY_COST = 70
 
 -- NCountry
 
@@ -181,6 +192,11 @@ NDefines.NMilitary.BASE_MP_TO_MANPOWER = 0.35
 NDefines.NMilitary.BACK_LINE_MORALE_DAMAGE_TAKEN_MODIFIER = 0.4
 NDefines.NMilitary.LAND_FORCELIMIT_EXTRA_COST_FACTOR = 3
 NDefines.NMilitary.CREATE_JANISSARIES_MIL_COST = 5
+NDefines.NMilitary.CREATE_CAWA_MIL_COST = 4
+NDefines.NMilitary.ADMIRAL_BLOCKADE_BONUS_PER_SIEGE_PIP = 0.5
+NDefines.NMilitary.REBEL_LEADER_POWER = 25							-- The higher this value, the more pips rebel leaders will have on average
+NDefines.NMilitary.CAV_LOOT = 0.4								-- How many ducats/month will a single full strength cavalry regiment loot?
+NDefines.NMilitary.CAV_SUPPRESSION = 0.4						-- The amount of reduction to unrest for each friendly cavalry regiment in a province
 
 -- NReligion
 
