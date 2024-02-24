@@ -743,27 +743,28 @@ influence_ideas = {
 	}
 
 	i78 = {
-		mercenary_cost = -0.1
+		reduced_liberty_desire = 15
   	}
   	i79 = {
   		vassal_income = 0.20
   	}
 	i80 = {
-		liberty_desire_from_subject_development = -0.2
+		diplomatic_reputation = 2
 		diplomatic_upkeep = 2
-	}
-	i81 = {
-		mercenary_manpower = 0.15
-	}
-	i82 = {
-		land_forcelimit = 1
-	}
-	i83 = {
-		vassal_forcelimit_bonus = 0.40
 	}
 	i84 = {
 		unjustified_demands = -0.5
 		can_transfer_vassal_wargoal = yes
+	}
+	i82 = {
+		land_forcelimit = 1
+	}
+	i81 = {
+		vassal_forcelimit_bonus = 0.40
+		vassal_naval_forcelimit_bonus = 0.25
+	}
+	i83 = {
+		liberty_desire_from_subject_development = -0.2
 	}
 
 	ai_will_do = {
@@ -808,6 +809,7 @@ colonialism_ideas = {
 		colonists = 2
 	}
   	i170 = {
+		merc_independent_from_trade_range = yes
   		global_colonial_growth = 20
   	}
 	i171 = {
@@ -1024,31 +1026,33 @@ assault_ideas = {
 	category = MIL
 
 	bonus = {
-		artillery_levels_available_vs_fort = 1
+		army_tradition_from_battle = 1
+		special_unit_forcelimit = 0.1
+		special_unit_manpower_modifier = -0.1
 	}
 
 	i8 = {
-		reinforce_speed = 0.20
+		morale_damage_received = -0.1
 	}
 	i9 = {
-		discipline = 0.025
+		reinforce_speed = 0.15
 	}
 	i10 = {
-		artillery_barrage_cost = -0.25
-		assault_fort_ability = 0.25
+		leader_cost = -0.1
 	}
 	i12 = {
-		leader_land_shock = 1
+		military_tactics = 0.1
 	}
 	i11 = {
-		siege_ability = 0.10
-		leader_siege = 1
+		mil_tech_cost_modifier = -0.1
+		possible_mil_policy = 1
 	}
 	i13 = {
-		fire_damage_received = -0.075
+		leader_land_fire = 1
+		leader_land_shock = 1
 	}
 	i14 = {
-		leader_land_fire = 1
+		leader_siege = 1
 		leader_land_manuever = 1
 	}
 
@@ -1074,30 +1078,35 @@ drill_ideas = {
 	category = MIL
 
 	bonus = {
-		army_tradition = 0.25
+		yearly_army_professionalism = 0.0033
+		global_manpower_modifier = -0.15
 	}
 
 	i15 = {
-		land_maintenance_modifier = -0.1
-	}
-	i16 = {
-		infantry_power = 0.1
+		drill_gain_modifier = 0.5
 		drill_decay_modifier = -0.25
 	}
+	i16 = {
+		infantry_power = 0.15
+		infantry_cost = 0.2
+	}
 	i17 = {
-		mil_tech_cost_modifier = -0.1
+		morale_damage_received = -0.075
+		sunk_ship_morale_hit_recieved = -0.2
 	}
 	i18 = {
-		yearly_army_professionalism = 0.003
+		shock_damage = 0.05
+		fire_damage = 0.05
 	}
 	i19 = {
-		drill_gain_modifier = 0.5
+		army_tradition = 0.25
 	}
 	i20 = {
-		shock_damage_received = -0.075
+		land_attrition = -0.15
+		naval_attrition = -0.15
 	}
 	i21 = {
-		discipline = 0.025
+		discipline = 0.05
 	}
 
 	ai_will_do = {
@@ -1121,28 +1130,29 @@ quantity_ideas = {
 	category = MIL
 
 	bonus = {
-		land_forcelimit_modifier = 0.33
-		naval_forcelimit_modifier = 0.15
+		manpower_recovery_speed = 0.20
 	}
 
 	i22 = {
 		global_manpower_modifier = 0.40
 	}
 	i23 = {
-		manpower_recovery_speed = 0.20
+		land_maintenance_modifier = -0.1
+		naval_maintenance_modifier = -0.1
 	}
 	i24 = {
 		reinforce_cost_modifier = -0.20
-		reinforce_speed = 0.1
 	}
 	i25 = {
-		land_attrition = -0.2
+		land_forcelimit_modifier = 0.33
+		naval_forcelimit_modifier = 0.15
 	}
 	i26 = {
-		land_maintenance_modifier = -0.1
+		reinforce_speed = 0.2
+		global_regiment_recruit_speed = -0.1
 	}
 	i27 = {
-		morale_damage_received = -0.1
+		land_attrition = -0.2
 	}
 	i28 = {
 		free_leader_pool = 3
@@ -1176,31 +1186,37 @@ firepower_ideas = {
 	category = MIL
 
 	bonus = {
-		fire_damage = 0.1
+		leader_land_fire = 1
+		max_general_fire = 1
+		leader_naval_fire = 1
+		max_admiral_fire = 1
 	}
 
 	i29 = {
-		siege_ability = 0.1
+		infantry_fire = 0.3
+		cavalry_fire = 0.5
 	}
 	i30 = {
-		global_manpower_modifier = 0.15
+		shock_damage_received = -0.1
+		galley_power = 0.1
 	}
 	i31 = {
-		artillery_power = 0.1
+		siege_ability = 0.1
+		artillery_barrage_cost = -0.25
 	}
 	i32 = {
-		shock_damage_received = -0.075
+		fire_damage = 0.1
 	}
 	i33 = {
-		backrow_artillery_damage = 0.10
+		artillery_cost = -0.15
 	}
 	i34 = {
-		leader_land_fire = 1
-		max_general_fire = 1
-		naval_morale = 0.1
+		backrow_artillery_damage = 0.10
+		artillery_levels_available_vs_fort = 1
 	}
 	i35 = {
-		artillery_cost = -0.15
+		artillery_power = 0.1
+		heavy_ship_power = 0.1
 	}
 
 	ai_will_do = {
@@ -1224,30 +1240,35 @@ shock_ideas = {
 	category = MIL
 
 	bonus = {
-		shock_damage = 0.1
+		leader_land_shock = 1
+		max_general_shock = 1
+		leader_naval_shock = 1
+		max_admiral_shock = 1
 	}
 
 	i36 = {
-		cav_to_inf_ratio = 0.25
+		infantry_shock = 0.3
+		cavalry_shock = 0.5
 	}
 	i37 = {
-		manpower_recovery_speed = 0.15
+		fire_damage_received = -0.1
 	}
 	i38 = {
-		cavalry_power = 0.075
+		morale_damage_received = -0.05
 	}
 	i39 = {
-		fire_damage_received = -0.075
+		shock_damage = 0.1
 	}
 	i40 = {
-		cavalry_flanking = 0.50
+		morale_damage = 0.1
+		naval_morale = 0.1
 	}
 	i41 = {
-		leader_land_shock = 1
-		max_general_shock = 1
+		artilelry_shock = 0.5
+		assault_fort_ability = 0.25
 	}
 	i42 = {
-		cavalry_cost = -0.05
+		reserves_organisation = 0.15
 	}
 
 	ai_will_do = {
@@ -1288,29 +1309,36 @@ maneuver_ideas = {
 	category = MIL
 
 	bonus = {
-		movement_speed = 0.1
+		loot_amount = 0.5
+		available_province_loot = 0.5
 	}
 
 	i43 = {
-		land_morale = 0.075
+		cavalry_cost = -0.05
+		cav_to_inf_ratio = 0.5
 	}
 	i44 = {
-		cavalry_power = 0.075
+		land_morale = 0.1
 	}
 	i45 = {
-		cavalry_cost = -0.05
+		movement_speed = 0.1
+		movement_speed_in_fleet_modifier = 1
 	}
 	i46 = {
-		reserves_organisation = 0.1
+		cavalry_power = 0.15
 	}
 	i47 = {
-		land_attrition = -0.2
+		cavalry_flanking = 0.5
+		global_naval_engagement_modifier = 0.1
 	}
 	i48 = {
-		leader_land_manuever = 1
+		manpower_recovery_speed = 0.15
+		land_attrition = -0.2
 	}
 	i49 = {
-		cav_to_inf_ratio = 0.25
+		leader_land_manuever = 1
+		leader_naval_manuever = 1
+		max_general_manuever = 1		
 	}
 
 	ai_will_do = {
@@ -1351,31 +1379,37 @@ defensive_ideas = {
 	category = MIL
 
 	bonus = {
-		land_morale = 0.05
+		global_regiment_recruit_speed = -0.10
 	}
 
 	i50 = {
-		fire_damage_received = -0.075
-		shock_damage_received = -0.075
+		defensiveness = 0.15
+		garrison_size = 0.15
+		
 	}
 	i51 = {
-		defensiveness = 0.1
-		garrison_size = 0.15
+		land_morale = 0.10
 	}
 	i52 = {
-		global_manpower_modifier = 0.20
+		fire_damage_received = -0.05
+		shock_damage_received = -0.05
+		morale_damage_received = -0.05
 	}
 	i53 = {
-		land_morale = 0.05
+		fort_maintenance_modifier = -0.15
+		war_exhaustion = -0.05
 	}
 	i54 = {
-		army_tradition_from_battle = 0.5
+		recover_army_morale_speed = 0.15
+		ship_durability = 0.1
 	}
 	i55 = {
-		recover_army_morale_speed = 0.15
+		land_forcelimit_modifier = 0.10
+		global_manpower_modifier = 0.10
 	}
 	i56 = {
-		land_forcelimit_modifier = 0.125
+		hostile_attrition = 1
+		max_hostile_attrition = 1
 	}
 
 	ai_will_do = {
