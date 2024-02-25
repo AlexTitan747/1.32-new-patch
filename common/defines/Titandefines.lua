@@ -203,6 +203,7 @@ NDefines.NMilitary.ART_REGIMENT_MANPOWER_COST = 0.8 				-- 1 = 1000 men in cost.
 NDefines.NMilitary.NOMAD_NON_PLAINS_SHOCK_PENALTY = -0.15
 NDefines.NMilitary.NOMAD_PLAINS_SHOCK_BONUS = 0.15 				--
 NDefines.NMilitary.BACK_LINE_MORALE_DAMAGE_TAKEN_MODIFIER = 0.25-- Multiplier for morale damage taken by backrow
+NDefines.NMilitary.WAR_LENGTH_DAMAGE_MODIFIER = 0.02            -- How much (by percentage) the damage dealt will be increased each day of the combat
 
 -- NReligion
 
