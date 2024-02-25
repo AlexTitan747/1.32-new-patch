@@ -151,8 +151,6 @@ NDefines.NMilitary.SLACKEN_AP_DROP = 0.001						--Defines how much AP is lost wh
 NDefines.NMilitary.SLACKEN_MIN_AP = 0 							--Defines how much AP is at least needed to keep the Slacken Modifier active. Put a -1 here if you want the toggle to not turn off automatically
 NDefines.NMilitary.SLACKEN_MAX_MP_PERCENTAGE = 0.95   			--Defines how much manpower percentage of your whole manpower pool you can have before the toggle turns off automatically. "1" would mean "100% of your manpower pool". Put a -1 here if you don't want this toggle to turn off from having manpower
 
-NDefines.NMilitary.BACK_LINE_MORALE_DAMAGE_TAKEN_MODIFIER = 0.25-- Multiplier for morale damage taken by backrow
-
 NDefines.NMilitary.BANNER_AGE_MULTIPLIER = 0
 NDefines.NMilitary.BANNER_STARTING_STRENGTH = 0.1
 NDefines.NMilitary.CAVALRY_SPEED = 0.9
@@ -189,7 +187,6 @@ NDefines.NMilitary.HUSSARS_MANPOWER_COST_MODIFIER = 1.0
 NDefines.NMilitary.HUSSARS_STARTING_STRENGTH = 1.0
 NDefines.NMilitary.HUSSARS_STARTING_MORALE = 0.1
 NDefines.NMilitary.BASE_MP_TO_MANPOWER = 0.35
-NDefines.NMilitary.BACK_LINE_MORALE_DAMAGE_TAKEN_MODIFIER = 0.4
 NDefines.NMilitary.LAND_FORCELIMIT_EXTRA_COST_FACTOR = 3
 NDefines.NMilitary.CREATE_JANISSARIES_MIL_COST = 5
 NDefines.NMilitary.CREATE_CAWA_MIL_COST = 4
@@ -205,6 +202,7 @@ NDefines.NMilitary.MORALE_RECOVERY_SPEED_OWN_TERRITORY = 0.10 		-- How much the 
 NDefines.NMilitary.ART_REGIMENT_MANPOWER_COST = 0.8 				-- 1 = 1000 men in cost.
 NDefines.NMilitary.NOMAD_NON_PLAINS_SHOCK_PENALTY = -0.15
 NDefines.NMilitary.NOMAD_PLAINS_SHOCK_BONUS = 0.15 				--
+NDefines.NMilitary.BACK_LINE_MORALE_DAMAGE_TAKEN_MODIFIER = 0.25-- Multiplier for morale damage taken by backrow
 
 -- NReligion
 
