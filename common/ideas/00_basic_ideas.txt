@@ -9,47 +9,7 @@
 
 #ideas in the group can have effect = {} and removed_effect = {}
 
-justice_ideas = {
-	category = ADM
-
-	bonus = {
-		autonomy_change_time = -0.2
-	}
-
-	i183 = {
- 		global_unrest = -2
-  	}
-  	i184 = {
-  		administrative_efficiency = 0.05
-  	}
-	i185 = {
-		yearly_absolutism = 0.5
-	}
-	i186 = {
-		stability_cost_modifier = -0.3
-	}
-	i187 = {
-		monarch_lifespan = 0.15
-	}
-	i188 = {
-		adm_tech_cost_modifier = -0.1
-		build_cost = -0.05
-	}
-	i189 = {
-		production_efficiency = 0.1
-		power_projection_from_insults = 1.0
-	}
-
-	ai_will_do = {
-		factor = 0.7
-		modifier = {
-			factor = 3
-			has_idea_group = assault_ideas
-			has_idea_group = quantity_ideas
-			has_idea_group = assimilation_ideas
-		}
-	}
-}
+# Admin Idea Groups
 
 guild_ideas = {
 	category = ADM
@@ -89,6 +49,62 @@ guild_ideas = {
 			OR = {
 				has_idea_group = maneuver_ideas
 				has_idea_group = empire_ideas
+			}
+		}
+	}
+}
+
+infrastructure_ideas = {
+	category = ADM
+	
+	bonus = {
+		development_cost = -0.05
+	}
+
+	state_efficiency = {
+		global_prosperity_growth = 0.15
+		state_maintenance_modifier = -0.25
+	}
+	organised_construction = {
+		build_cost = -0.10
+	}
+	efficient_construction_plans = {
+		expand_infrastructure_cost_modifier = -0.25
+	}
+	expanded_infrastructure_network = {
+		#movement_speed = 0.1
+		center_of_trade_upgrade_cost = -0.2
+	}
+	administrative_efficiency_idea = {
+		state_governing_cost = -0.1
+	}
+	fort_logistics = {
+		fort_maintenance_modifier = -0.25
+ 	}
+	regulation_bureau = {
+		#expand_administration_cost = -1
+		build_time = -0.10
+	}
+
+	ai_will_do = {
+		factor = 0.7
+		modifier = {
+			factor = 1.1 
+			personality = ai_capitalist
+		}
+		modifier = {
+			factor = 1.1
+			national_focus = ADM 
+		}
+		modifier = { 
+			factor = 0.75 
+			NOT = { monthly_adm = 8 }
+		}
+		modifier = {
+			factor = 1.15
+			OR = {
+				has_idea_group = trade_ideas
+				has_idea_group = naval_ideas
 			}
 		}
 	}
@@ -325,6 +341,7 @@ religious_ideas = {
 		harmonization_speed = 0.2
 	}
 	i137 = {
+		tolerance_own = 1
 		tolerance_heretic = 2
 		tolerance_heathen = 2
 	}
@@ -391,6 +408,48 @@ religious_ideas = {
 	}
 }
 
+justice_ideas = {
+	category = ADM
+
+	bonus = {
+		autonomy_change_time = -0.2
+	}
+
+	i183 = {
+ 		global_unrest = -2
+  	}
+  	i184 = {
+  		administrative_efficiency = 0.05
+  	}
+	i185 = {
+		yearly_absolutism = 0.5
+	}
+	i186 = {
+		stability_cost_modifier = -0.3
+	}
+	i187 = {
+		monarch_lifespan = 0.15
+	}
+	i188 = {
+		adm_tech_cost_modifier = -0.1
+		build_cost = -0.05
+	}
+	i189 = {
+		production_efficiency = 0.1
+		power_projection_from_insults = 1.0
+	}
+
+	ai_will_do = {
+		factor = 0.7
+		modifier = {
+			factor = 3
+			has_idea_group = assault_ideas
+			has_idea_group = quantity_ideas
+			has_idea_group = assimilation_ideas
+		}
+	}
+}
+
 bureaucratic_ideas = {
 	category = ADM
 
@@ -433,6 +492,64 @@ bureaucratic_ideas = {
 		modifier = {
 			factor = 0.5
 			NOT = { adm_tech = 11 }
+		}
+	}
+}
+
+court_ideas = {
+	category = ADM
+
+	bonus = {
+		possible_policy = 1
+	}
+	
+	long_echo = {
+		#power_projection_from_insults = 1
+		#global_spy_defence = 0.25
+		global_autonomy = -0.15
+	}
+	recognize_hierarchy = {
+		all_estate_loyalty_equilibrium = 0.1
+		loyalty_change_on_revoked = 0.10
+	}
+	welcoming_ceremonies = {
+		#prestige = 1
+		yearly_corruption = -0.2
+		interest = -0.20
+	}
+	tranquil_coordination = {
+		same_culture_advisor_cost = -0.15
+	}
+	respected_authority = {
+		all_estate_possible_privileges = 1
+		estate_interaction_cooldown_modifier = -0.20
+	}
+	palace_of_splendor = {
+		move_capital_cost_modifier = -0.3
+		global_monthly_devastation = -0.5
+	}
+	court_embassies = {
+		monarch_diplomatic_power = 1
+		free_dip_policy = 1
+	}
+
+	ai_will_do = {
+		factor = 0.5
+		modifier = {
+			factor = 1.25
+			num_of_powerful_estates = 3 
+		}
+		modifier = {
+			factor = 1.2
+			personality = ai_diplomat
+		}
+		modifier = {
+			factor = 1.1 
+			national_focus = DIP 
+		}
+		modifier = {
+			factor = 0.75
+			NOT = { monthly_dip = 8 } 
 		}
 	}
 }
@@ -491,6 +608,10 @@ bureaucratic_ideas = {
 #	}
 #}
 
+
+
+# Dip Idea Groups
+
 assimilation_ideas = {
 	category = DIP
 
@@ -539,58 +660,6 @@ assimilation_ideas = {
 	}
 }
 
-#manufacturing_ideas = {
-#	category = DIP
-#
-#	bonus = {
-#		production_efficiency = 0.2
-#	}
-#
-#	i106 = {
-# 		global_trade_goods_size_modifier = 0.1
-#  	}
-#  	i107 = {
-#  		burghers_loyalty_modifier = 0.1
-#		jains_loyalty_modifier = 0.1
-#  	}
-#	i108 = {
-#		caravan_power = 0.1
-#	}
-#	i109 = {
-#		innovativeness_gain = 0.25
-#	}
-#	i110 = {
-#		development_cost = -0.05
-#	}
-#	i111 = {
-#		global_own_trade_power = 0.1 
-#	}
-#	i112 = {
-#		prestige = 1
-#	}
-#
-#	ai_will_do = {
-#		factor = 0.7
-#		modifier = {
-#			factor = 0.5
-#			NOT = { adm_tech = 9 }
-#		}
-#		modifier = {
-#			factor = 2.5
-#			capital_scope = {
-#				OR = {
-#					superregion = china_superregion
-#					superregion = india_superregion
-#				}
-#			}
-#		}
-#		modifier = {
-#			factor = 2.5
-#			tag = KOR
-#		}
-#	}
-#}
-
 empire_ideas = {
 	category = DIP
 
@@ -633,166 +702,6 @@ empire_ideas = {
 	}
 }
 
-diplomatic_ideas = {
-	category = DIP
-
-	bonus = {
-		administrative_efficiency = 0.05
-	}
-
-	i92 = {
- 		diplomats = 1
-		diplomatic_reputation = 2
-  	}
-  	i93 = {
-  		ae_impact = -0.15
-  	}
-	i94 = {
-		diplomatic_annexation_cost = -0.15
-		improve_relation_modifier = 0.20
-	}
-	i95 = {
-		global_manpower_modifier = 0.1
-	}
-	i96 = {
-		infantry_cost = -0.1
-		cavalry_cost = -0.1
-	}
-	i97 = {
-		spy_offence = 0.2
-		global_spy_defence = 0.2
-	}
-	i98 = {
-		province_warscore_cost = -0.10
-		unjustified_demands = -0.5
-	}
-
-	ai_will_do = {
-		factor = 0.7
-		modifier = {
-			factor = 0.5
-			NOT = { is_emperor = yes }
-			NOT = { num_of_subjects = 1 }
-		}
-		modifier = {
-			factor = 0.5
-			NOT = { adm_tech = 15 }
-		}
-		modifier = {
-			factor = 1.5
-			is_emperor = yes
-		}
-		modifier = {
-			factor = 1.5
-			vassal = 3
-		}
-		modifier = {
-			factor = 0.25
-			has_idea_group = influence_ideas
-		}
-	}
-}
-
-#enterprise_ideas = {
-#	category = DIP
-#
-#	bonus = {
-#		trade_steering = 0.15
-#	}
-#
-#	i85 = {
-# 		trade_company_investment_cost = -0.25
-#		center_of_trade_upgrade_cost = -0.25
-#  	}
-#  	i86 = {
-#  		global_trade_goods_size_modifier = 0.1
-#  	}
-#	i87 = {
-#		min_autonomy_in_territories = -0.15
-#	}
-#	i88 = {
-#		monarch_diplomatic_power = 1
-#		free_policy = 1
-#	}
-#	i89 = {
-#		privateer_efficiency = 0.2
-#		global_ship_trade_power = 0.2
-#	}
-#	i90 = {
-#		merchants = 1
-#		placed_merchant_power = 25
-#	}
-#	i91 = {
-#		development_cost = -0.05 
-#	}
-#
-#	ai_will_do = {
-#		factor = 0.7
-#		modifier = {
-#			factor = 0.5
-#			NOT = { adm_tech = 11 }
-#		}
-#	}
-#}
-
-influence_ideas = {
-	category = DIP
-
-	bonus = {
-		vassal_manpower_bonus = 0.30
-	}
-
-	i78 = {
-		reduced_liberty_desire = 15
-  	}
-  	i79 = {
-  		vassal_income = 0.20
-  	}
-	i80 = {
-		diplomatic_reputation = 2
-		diplomatic_upkeep = 2
-	}
-	i84 = {
-		unjustified_demands = -0.5
-		can_transfer_vassal_wargoal = yes
-	}
-	i82 = {
-		land_forcelimit = 1
-	}
-	i81 = {
-		vassal_forcelimit_bonus = 0.40
-		vassal_naval_forcelimit_bonus = 0.25
-	}
-	i83 = {
-		liberty_desire_from_subject_development = -0.2
-	}
-
-	ai_will_do = {
-		factor = 0.7
-		modifier = {
-			factor = 0.5
-			NOT = { is_emperor = yes }
-			NOT = { num_of_subjects = 1 }
-		}
-		modifier = {
-			factor = 0.5
-			NOT = { adm_tech = 15 }
-		}
-		modifier = {
-			factor = 1.5
-			is_emperor = yes
-		}
-		modifier = {
-			factor = 1.5
-			vassal = 3
-		}
-		modifier = {
-			factor = 0.25
-			has_idea_group = diplomatic_ideas
-		}
-	}
-}
-
 colonialism_ideas = {
 	category = DIP
 
@@ -809,11 +718,11 @@ colonialism_ideas = {
 		colonists = 2
 	}
   	i170 = {
-		merc_independent_from_trade_range = yes
   		global_colonial_growth = 20
   	}
 	i171 = {
 		merchants = 1
+		merc_independent_from_trade_range = yes
 	}
 	i172 = {
 		native_uprising_chance = -0.5
@@ -971,6 +880,177 @@ colonialism_ideas = {
 	}
 }
 
+diplomatic_ideas = {
+	category = DIP
+
+	bonus = {
+		administrative_efficiency = 0.05
+	}
+
+	i92 = {
+ 		diplomats = 1
+		diplomatic_reputation = 2
+  	}
+  	i93 = {
+  		ae_impact = -0.15
+  	}
+	i94 = {
+		diplomatic_annexation_cost = -0.15
+		improve_relation_modifier = 0.20
+	}
+	i95 = {
+		global_manpower_modifier = 0.1
+	}
+	i96 = {
+		infantry_cost = -0.1
+		cavalry_cost = -0.1
+	}
+	i97 = {
+		spy_offence = 0.2
+		global_spy_defence = 0.2
+	}
+	i98 = {
+		province_warscore_cost = -0.10
+		unjustified_demands = -0.5
+	}
+
+	ai_will_do = {
+		factor = 0.7
+		modifier = {
+			factor = 0.5
+			NOT = { is_emperor = yes }
+			NOT = { num_of_subjects = 1 }
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 15 }
+		}
+		modifier = {
+			factor = 1.5
+			is_emperor = yes
+		}
+		modifier = {
+			factor = 1.5
+			vassal = 3
+		}
+		modifier = {
+			factor = 0.25
+			has_idea_group = influence_ideas
+		}
+	}
+}
+
+influence_ideas = {
+	category = DIP
+
+	bonus = {
+		vassal_manpower_bonus = 0.30
+	}
+
+	i78 = {
+		reduced_liberty_desire = 15
+  	}
+  	i79 = {
+  		vassal_income = 0.20
+  	}
+	i80 = {
+		diplomatic_reputation = 2
+		diplomatic_upkeep = 2
+	}
+	i84 = {
+		unjustified_demands = -0.5
+		can_transfer_vassal_wargoal = yes
+	}
+	i82 = {
+		land_forcelimit = 1
+	}
+	i81 = {
+		vassal_forcelimit_bonus = 0.40
+		vassal_naval_forcelimit_bonus = 0.25
+	}
+	i83 = {
+		liberty_desire_from_subject_development = -0.2
+	}
+
+	ai_will_do = {
+		factor = 0.7
+		modifier = {
+			factor = 0.5
+			NOT = { is_emperor = yes }
+			NOT = { num_of_subjects = 1 }
+		}
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 15 }
+		}
+		modifier = {
+			factor = 1.5
+			is_emperor = yes
+		}
+		modifier = {
+			factor = 1.5
+			vassal = 3
+		}
+		modifier = {
+			factor = 0.25
+			has_idea_group = diplomatic_ideas
+		}
+	}
+}
+
+manufacturing_ideas = {
+	category = DIP
+
+	bonus = {
+ 		global_trade_goods_size_modifier = 0.15
+	}
+
+	i106 = {
+		production_efficiency = 0.1
+  	}
+  	i107 = {
+  		burghers_loyalty_modifier = 0.1
+		jains_loyalty_modifier = 0.1
+  	}
+	i108 = {
+		caravan_power = 0.1
+	}
+	i109 = {
+		innovativeness_gain = 0.25
+	}
+	i110 = {
+		build_cost = -0.10
+	}
+	i111 = {
+		global_own_trade_power = 0.1 
+	}
+	i112 = {
+		#prestige = 1
+		build_time = -0.1
+	}
+
+	ai_will_do = {
+		factor = 0.7
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 9 }
+		}
+		modifier = {
+			factor = 2.5
+			capital_scope = {
+				OR = {
+					superregion = china_superregion
+					superregion = india_superregion
+				}
+			}
+		}
+		modifier = {
+			factor = 2.5
+			tag = KOR
+		}
+	}
+}
+
 trade_ideas = {
 	category = DIP
 
@@ -1021,6 +1101,59 @@ trade_ideas = {
 		}
 	}
 }
+
+enterprise_ideas = {
+	category = DIP
+
+	bonus = {
+		#trade_steering = 0.15
+		trade_efficiency = 0.1
+	}
+
+	i85 = {
+ 		trade_company_investment_cost = -0.25
+		center_of_trade_upgrade_cost = -0.25
+  	}
+  	i86 = {
+  		#global_trade_goods_size_modifier = 0.1
+		sea_repair = yes
+		global_ship_recruit_speed = -0.15
+  	}
+	i87 = {
+		#min_autonomy_in_territories = -0.15
+		naval_tradition_from_trade = 1
+		light_ship_power = 0.2
+	}
+	i88 = {
+		mercantilism_cost = -0.25
+		global_ship_trade_power = 0.2
+	}
+	i89 = {
+		#privateer_efficiency = 0.2
+		#
+		allowed_marine_fraction = 0.2
+	}
+	i90 = {
+		merchants = 1
+		placed_merchant_power = 5
+	}
+	i91 = {
+		#development_cost = -0.05
+		global_trade_power = 0.1
+	}
+
+	ai_will_do = {
+		factor = 0.7
+		modifier = {
+			factor = 0.5
+			NOT = { adm_tech = 11 }
+		}
+	}
+}
+
+
+
+# Military Idea Groups
 
 assault_ideas = {
 	category = MIL
@@ -1087,16 +1220,16 @@ drill_ideas = {
 		drill_decay_modifier = -0.25
 	}
 	i16 = {
-		infantry_power = 0.15
 		infantry_cost = 0.2
+		infantry_power = 0.15
 	}
 	i17 = {
-		morale_damage_received = -0.075
 		sunk_ship_morale_hit_recieved = -0.2
+		morale_damage_received = -0.075
 	}
 	i18 = {
-		shock_damage = 0.05
-		fire_damage = 0.05
+		shock_damage = 0.075
+		fire_damage = 0.075
 	}
 	i19 = {
 		army_tradition = 0.25
@@ -1107,6 +1240,7 @@ drill_ideas = {
 	}
 	i21 = {
 		discipline = 0.05
+		land_forcelimit_modifier = -0.15
 	}
 
 	ai_will_do = {
@@ -1424,6 +1558,47 @@ defensive_ideas = {
 		}
 	}
 }
+
+mercenary_ideas = {
+	category = MIL 
+
+	bonus = {
+		allow_mercenary_drill = yes
+	}
+
+	organised_mercenary_payment = {
+		mercenary_cost = -0.20
+	}
+	war_council = {
+		mercenary_discipline = 0.05
+		merc_independent_from_trade_range = yes
+	}
+	expanded_contracts = {
+		#mil_advisor_cost = -0.15
+		merc_maintenance_modifier = -0.20
+		capture_ship_chance = 0.3
+	}
+	nation_of_war = {
+		#mil_tech_cost_modifier = -0.1
+		prestige = 1
+	}
+	tm_seasoned_veterans = {
+		infantry_power = 0.1
+	}
+	benefits_for_mercenaries = {
+		#war_taxes_cost_modifier = -0.5
+		free_leader_pool = 2
+		merc_leader_army_tradition = 0.5
+	}
+	organised_mercenary_recruitment = { 
+		mercenary_manpower = 0.25
+	}
+
+	ai_will_do = {
+		factor = 0
+	}
+}
+
 
 #blank vanilla ideas
 aristocracy_ideas = {
@@ -1765,158 +1940,5 @@ exploration_ideas = {
 	}
 	i70 = {
 		global_colonial_growth = 10
-	}
-}
-
-court_ideas = {
-	category = DIP
-
-	bonus = {
-		development_cost_in_primary_culture = -0.10
-		#development_cost = -0.05
-	}
-	
-	long_echo = {
-		#power_projection_from_insults = 1
-		#global_spy_defence = 0.25
-		global_autonomy = -0.15
-	}
-	recognize_hierarchy = {
-		all_estate_loyalty_equilibrium = 0.1
-		loyalty_change_on_revoked = 0.10
-	}
-	welcoming_ceremonies = {
-		#prestige = 1
-		yearly_corruption = -0.2
-		interest = -0.20
-		monthly_persian_influence = 0.1
-	}
-	tranquil_coordination = {
-		same_culture_advisor_cost = -0.15
-	}
-	respected_authority = {
-		all_estate_possible_privileges = 1
-		estate_interaction_cooldown_modifier = -0.20
-	}
-	palace_of_splendor = {
-		move_capital_cost_modifier = -0.3
-		global_monthly_devastation = -0.5
-	}
-	court_embassies = {
-		#possible_policy = 1
-		monarch_diplomatic_power = 1 
-	}
-
-	ai_will_do = {
-		factor = 0.5
-		modifier = {
-			factor = 1.25
-			num_of_powerful_estates = 3 
-		}
-		modifier = {
-			factor = 1.2
-			personality = ai_diplomat
-		}
-		modifier = {
-			factor = 1.1 
-			national_focus = DIP 
-		}
-		modifier = {
-			factor = 0.75
-			NOT = { monthly_dip = 8 } 
-		}
-	}
-}
-
-mercenary_ideas = {
-	category = MIL 
-
-	bonus = {
-		mercenary_discipline = 0.05
-	}
-
-	organised_mercenary_payment = {
-		mercenary_cost = -0.15
-	}
-	war_council = {
-		mil_advisor_cost = -0.15
-		merc_independent_from_trade_range = yes
-	}
-	expanded_contracts = {
-		merc_maintenance_modifier = -0.15
-	}
-	nation_of_war = {
-		mil_tech_cost_modifier = -0.1
-	}
-	benefits_for_mercenaries = {
-		war_taxes_cost_modifier = -0.5
-		merc_leader_army_tradition = 0.5
-	}
-	tm_seasoned_veterans = {
-		infantry_power = 0.1
-	}
-	organised_mercenary_recruitment = { 
-		mercenary_manpower = 0.20
-		allow_mercenary_drill = yes
-	}
-
-	ai_will_do = {
-		factor = 0
-	}
-}
-
-infrastructure_ideas = {
-	category = ADM
-	
-	bonus = {
-		development_cost = -0.05
-	}
-
-	state_efficiency = {
-		global_prosperity_growth = 0.15
-		state_maintenance_modifier = -0.25
-	}
-	organised_construction = {
-		build_cost = -0.10
-	}
-	efficient_construction_plans = {
-		expand_infrastructure_cost_modifier = -0.25
-	}
-	expanded_infrastructure_network = {
-		#movement_speed = 0.1
-		center_of_trade_upgrade_cost = -0.2
-	}
-	administrative_efficiency_idea = {
-		state_governing_cost = -0.1
-	}
-	fort_logistics = {
-		fort_maintenance_modifier = -0.25
- 	}
-	regulation_bureau = {
-		#expand_administration_cost = -1
-		build_time = -0.10
-	}
-
-	ai_will_do = {
-		factor = 0.7
-		modifier = {
-			factor = 1.1 
-			personality = ai_capitalist
-		}
-		modifier = {
-			factor = 1.1
-			national_focus = ADM 
-		}
-		modifier = { 
-			factor = 0.75 
-			NOT = { monthly_adm = 8 }
-		}
-		modifier = {
-			factor = 1.15
-			OR = {
-				has_idea_group = trade_ideas
-				has_idea_group = naval_ideas
-			}
-		}
 	}
 }

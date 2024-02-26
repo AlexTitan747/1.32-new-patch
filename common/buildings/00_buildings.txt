@@ -3105,9 +3105,6 @@ counting_house = {
 	}
 }
 
-
-
-
 town_hall = {
 	cost = 200
 	time = 12
@@ -3484,7 +3481,6 @@ conscription_center = {
 }
 
 
-
 fort_18th = {
 	cost = 800
 	time = 30
@@ -3840,7 +3836,10 @@ wharf = {
 			type = production 
 			value = 1 
 		}
-		
+		if = {
+			limit = { FROM = { has_idea = i112 } }
+			add_base_production = 1
+		}
 	}
 	on_destroyed = {
 		remove_development_from_building = {
@@ -3852,6 +3851,10 @@ wharf = {
 			building = manufactory 
 			type = production 
 			value = 1
+		}
+		if = {
+			limit = { FROM = { has_idea = i112 } }
+			add_base_production = -1
 		}
 	}
 	on_obsolete = {
@@ -3911,6 +3914,10 @@ weapons = {
 			type = manpower 
 			value = 1 
 		}
+		if = {
+			limit = { FROM = { has_idea = i112 } }
+			add_base_production = 1
+		}
 	}
 	on_destroyed = {
 		remove_development_from_building = {
@@ -3922,6 +3929,10 @@ weapons = {
 			building = manufactory 
 			type = manpower 
 			value = 1
+		}
+		if = {
+			limit = { FROM = { has_idea = i112 } }
+			add_base_production = -1
 		}
 	}
 	on_obsolete = {
@@ -3980,6 +3991,10 @@ textile = {
 			type = production 
 			value = 1 
 		}
+		if = {
+			limit = { FROM = { has_idea = i112 } }
+			add_base_production = 1
+		}
 	}
 	on_destroyed = {
 		remove_development_from_building = {
@@ -3991,6 +4006,10 @@ textile = {
 			building = manufactory 
 			type = production 
 			value = 1
+		}
+		if = {
+			limit = { FROM = { has_idea = i112 } }
+			add_base_production = -1
 		}
 	}
 	on_obsolete = {
@@ -4059,6 +4078,10 @@ plantations = {
 			type = production 
 			value = 1 
 		}
+		if = {
+			limit = { FROM = { has_idea = i112 } }
+			add_base_production = 1
+		}
 	}
 	on_destroyed = {
 		remove_development_from_building = {
@@ -4070,6 +4093,10 @@ plantations = {
 			building = manufactory 
 			type = production 
 			value = 1
+		}
+		if = {
+			limit = { FROM = { has_idea = i112 } }
+			add_base_production = -1
 		}
 	}
 	on_obsolete = {
@@ -4136,6 +4163,10 @@ tradecompany = {
 			type = production 
 			value = 1 
 		}
+		if = {
+			limit = { FROM = { has_idea = i112 } }
+			add_base_production = 1
+		}
 	}
 	on_destroyed = {
 		remove_development_from_building = {
@@ -4147,6 +4178,10 @@ tradecompany = {
 			building = manufactory 
 			type = production 
 			value = 1
+		}
+		if = {
+			limit = { FROM = { has_idea = i112 } }
+			add_base_production = -1
 		}
 	}
 	on_obsolete = {
@@ -4236,6 +4271,10 @@ farm_estate = {
 			}
 			add_base_production = 1
 		}
+		if = {
+			limit = { FROM = { has_idea = i112 } }
+			add_base_production = 1
+		}
 	}
 	on_destroyed = {
 		if = {
@@ -4258,6 +4297,10 @@ farm_estate = {
 					has_country_flag = geo_wine_manufactory_flag
 				}
 			}
+			add_base_production = -1
+		}
+		if = {
+			limit = { FROM = { has_idea = i112 } }
 			add_base_production = -1
 		}
 	}
@@ -4323,6 +4366,10 @@ mills = {
 			type = production 
 			value = 1 
 		}
+		if = {
+			limit = { FROM = { has_idea = i112 } }
+			add_base_production = 1
+		}
 	}
 	on_destroyed = {
 		remove_development_from_building = {
@@ -4334,6 +4381,10 @@ mills = {
 			building = manufactory 
 			type = production 
 			value = 1
+		}
+		if = {
+			limit = { FROM = { has_idea = i112 } }
+			add_base_production = -1
 		}
 	}
 	on_obsolete = {
@@ -4389,12 +4440,20 @@ furnace = {
 			type = production
 			value = 2
 		}
+		if = {
+			limit = { FROM = { has_idea = i112 } }
+			add_base_production = 1
+		}
 	}
 	on_destroyed = {
 		remove_development_from_building = {
 			building = manufactory
 			type = production
 			value = 2
+		}
+		if = {
+			limit = { FROM = { has_idea = i112 } }
+			add_base_production = -1
 		}
 	}
 	on_obsolete = {
@@ -4413,71 +4472,6 @@ furnace = {
 				has_building = workshop
 				has_building = counting_house
 			}
-		}
-	}
-}
-
-ramparts_tm = {
-	cost = 400
-	time = 36
-	#manufactory = {
-	#	all
-	#}
-	build_trigger = {
-		has_fort_building_trigger = yes
-	}
-	
-	keep_trigger = {
-		has_fort_building_trigger = yes
-	}
-
-	modifier = {
-		fort_level = 2
-		local_assault_fort_cost_modifier = 1.0
-		local_assault_fort_ability = -0.25
-		local_fort_maintenance_modifier = 0.2
-		local_hostile_attrition = 1
-	}
-	onmap = no
-	show_separate = yes # Means as a manufactory it will be shown according to the old way
-
-	on_destroyed = {
-		if = {
-			limit = { has_province_modifier = per_reinforced_defenses }
-			remove_province_modifier = per_reinforced_defenses
-		}
-	}
-
-	ai_will_do = {
-		factor = 4
-		modifier = {
-			factor = 1.667
-			OR = {
-				has_terrain = forest
-				has_terrain = hills
-				has_terrain = marsh
-				has_terrain = highlands
-				has_terrain = jungle
-			}
-		}
-		modifier = {
-			factor = 20
-			has_terrain = mountain
-		}
-		modifier = {
-			factor = 1.25
-			trade_goods = salt
-		}
-		modifier = {
-			factor = 1.25
-			OR = {
-				has_province_modifier = arid
-				has_province_modifier = tropical
-			}
-		}
-		modifier = {
-			factor = 0
-			from = { num_of_loans = 3 }
 		}
 	}
 }
@@ -4719,6 +4713,70 @@ guardhouse = {
 	}
 }
 
+ramparts_tm = {
+	cost = 400
+	time = 36
+	#manufactory = {
+	#	all
+	#}
+	build_trigger = {
+		has_fort_building_trigger = yes
+	}
+	
+	keep_trigger = {
+		has_fort_building_trigger = yes
+	}
+
+	modifier = {
+		fort_level = 2
+		local_assault_fort_cost_modifier = 1.0
+		local_assault_fort_ability = -0.25
+		local_fort_maintenance_modifier = 0.2
+		local_hostile_attrition = 1
+	}
+	onmap = no
+	show_separate = yes # Means as a manufactory it will be shown according to the old way
+
+	on_destroyed = {
+		if = {
+			limit = { has_province_modifier = per_reinforced_defenses }
+			remove_province_modifier = per_reinforced_defenses
+		}
+	}
+
+	ai_will_do = {
+		factor = 4
+		modifier = {
+			factor = 1.667
+			OR = {
+				has_terrain = forest
+				has_terrain = hills
+				has_terrain = marsh
+				has_terrain = highlands
+				has_terrain = jungle
+			}
+		}
+		modifier = {
+			factor = 20
+			has_terrain = mountain
+		}
+		modifier = {
+			factor = 1.25
+			trade_goods = salt
+		}
+		modifier = {
+			factor = 1.25
+			OR = {
+				has_province_modifier = arid
+				has_province_modifier = tropical
+			}
+		}
+		modifier = {
+			factor = 0
+			from = { num_of_loans = 3 }
+		}
+	}
+}
 
 ###### TITAN ROAD ######
 
@@ -6573,6 +6631,3 @@ steel_furnace = {
 }
 
 ##Unique Buildings
-
-
-

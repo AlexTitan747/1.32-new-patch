@@ -566,7 +566,10 @@ estate_burghers_indebted_to_burghers = {
 	on_granted = {
 		if = {
 			limit = {
-				has_country_flag = BYZ_buff_burgher_loans_flag
+				OR = {
+					has_idea = i107
+					has_country_flag = BYZ_buff_burgher_loans_flag
+				}
 			}
 			custom_tooltip = BYZ_estate_burghers_indebted_to_burghers_effect_tooltip
 		}
@@ -612,7 +615,10 @@ estate_burghers_indebted_to_burghers = {
 			}
 			if = {
 				limit = {
-					has_country_flag = BYZ_buff_burgher_loans_flag
+					OR = {
+						has_idea = i107
+						has_country_flag = BYZ_buff_burgher_loans_flag
+					}
 				}
 				add_loan = {
 					fixed_interest = 1
