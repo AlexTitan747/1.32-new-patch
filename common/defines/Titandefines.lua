@@ -190,6 +190,7 @@ NDefines.NMilitary.BASE_MP_TO_MANPOWER = 0.35
 NDefines.NMilitary.LAND_FORCELIMIT_EXTRA_COST_FACTOR = 3
 NDefines.NMilitary.CREATE_JANISSARIES_MIL_COST = 5
 NDefines.NMilitary.CREATE_CAWA_MIL_COST = 4
+NDefines.NMilitary.CAWA_STARTING_STRENGTH = 0.2
 NDefines.NMilitary.ADMIRAL_BLOCKADE_BONUS_PER_SIEGE_PIP = 0.5
 NDefines.NMilitary.REBEL_LEADER_POWER = 25							-- The higher this value, the more pips rebel leaders will have on average
 NDefines.NMilitary.CAV_LOOT = 0.4								-- How many ducats/month will a single full strength cavalry regiment loot?
@@ -202,7 +203,7 @@ NDefines.NMilitary.MORALE_RECOVERY_SPEED_OWN_TERRITORY = 0.10 		-- How much the 
 NDefines.NMilitary.ART_REGIMENT_MANPOWER_COST = 0.8 				-- 1 = 1000 men in cost.
 NDefines.NMilitary.NOMAD_NON_PLAINS_SHOCK_PENALTY = -0.15
 NDefines.NMilitary.NOMAD_PLAINS_SHOCK_BONUS = 0.15 				--
-NDefines.NMilitary.BACK_LINE_MORALE_DAMAGE_TAKEN_MODIFIER = 0.25-- Multiplier for morale damage taken by backrow
+NDefines.NMilitary.BACK_LINE_MORALE_DAMAGE_TAKEN_MODIFIER = 0.2 -- Multiplier for morale damage taken by backrow
 NDefines.NMilitary.WAR_LENGTH_DAMAGE_MODIFIER = 0.02            -- How much (by percentage) the damage dealt will be increased each day of the combat
 
 -- NReligion
