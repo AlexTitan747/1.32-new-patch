@@ -369,7 +369,19 @@ country_event = {
 	desc = "twarofroses.desc101"
 	picture = WAR_OF_THE_ROSES_eventPicture
 
-	is_triggered_only = yes	
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			NOT = { has_country_flag = tm_twarofroses_101_timer }
+			had_country_flag = { flag = tm_twarofroses_101_timer days = 730 }
+		}
+	}
+
+	immediate = {
+		clr_country_flag = tm_twarofroses_101_timer
+		set_country_flag = tm_twarofroses_101_timer
+	}
 	
 	option = {		
 		name = "twarofroses.101a"
@@ -404,7 +416,19 @@ country_event = {
 	desc = "twarofroses.desc102"
 	picture = WAR_OF_THE_ROSES_eventPicture
 
-	is_triggered_only = yes	
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			NOT = { has_country_flag = tm_twarofroses_102_timer }
+			had_country_flag = { flag = tm_twarofroses_102_timer days = 365 }
+		}
+	}
+
+	immediate = {
+		clr_country_flag = tm_twarofroses_102_timer
+		set_country_flag = tm_twarofroses_102_timer
+	}
 	
 	option = {		
 		name = "twarofroses.102a"
@@ -441,6 +465,18 @@ country_event = {
 	picture = WAR_OF_THE_ROSES_eventPicture
 
 	is_triggered_only = yes	
+
+	trigger = {
+		OR = {
+			NOT = { has_country_flag = tm_twarofroses_103_timer }
+			had_country_flag = { flag = tm_twarofroses_103_timer days = 365 }
+		}
+	}
+
+	immediate = {
+		clr_country_flag = tm_twarofroses_103_timer
+		set_country_flag = tm_twarofroses_103_timer
+	}
 	
 	option = {		
 		name = "twarofroses.103a"
@@ -474,10 +510,22 @@ country_event = {
 	picture = WAR_OF_THE_ROSES_eventPicture
 
 	is_triggered_only = yes	
+
+	trigger = {
+		OR = {
+			NOT = { has_country_flag = tm_twarofroses_104_timer }
+			had_country_flag = { flag = tm_twarofroses_104_timer days = 3650 }
+		}
+	}
+
+	immediate = {
+		clr_country_flag = tm_twarofroses_104_timer
+		set_country_flag = tm_twarofroses_104_timer
+	}
 	
 	option = {		
 		name = "twarofroses.104a"
-		add_years_of_income = -1	
+		add_years_of_income = -1
 	}
 
 	option = {		
@@ -496,7 +544,19 @@ country_event = {
 	desc = "twarofroses.desc105"
 	picture = WAR_OF_THE_ROSES_eventPicture
 
-	is_triggered_only = yes	
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			NOT = { has_country_flag = tm_twarofroses_105_timer }
+			had_country_flag = { flag = tm_twarofroses_105_timer days = 730 }
+		}
+	}
+
+	immediate = {
+		clr_country_flag = tm_twarofroses_105_timer
+		set_country_flag = tm_twarofroses_105_timer
+	}
 	
 	option = {		
 		name = "twarofroses.105a"
@@ -505,22 +565,22 @@ country_event = {
 
 	option = {		
 		name = "twarofroses.105b"
-			random_owned_province = {
-				add_devastation = 50
-				add_local_autonomy = 25
-				random = {
-					chance = 10
-					anti_tax_rebels = 1
-				}
+		random_owned_province = {
+			add_devastation = 50
+			add_local_autonomy = 25
+			random = {
+				chance = 10
+				anti_tax_rebels = 1
 			}
-			random_owned_province = {
-				add_devastation = 50
-				add_local_autonomy = 25
-				random = {
-					chance = 10
-					anti_tax_rebels = 1
-				}
+		}
+		random_owned_province = {
+			add_devastation = 50
+			add_local_autonomy = 25
+			random = {
+				chance = 10
+				anti_tax_rebels = 1
 			}
+		}
 	}
 }
 
@@ -530,6 +590,18 @@ country_event = {
 	title = "twarofroses.106"
 	desc = "twarofroses.desc106"
 	picture = WAR_OF_THE_ROSES_eventPicture
+
+	trigger = {
+		OR = {
+			NOT = { has_country_flag = tm_twarofroses_106_timer }
+			had_country_flag = { flag = tm_twarofroses_106_timer days = 1825 }
+		}
+	}
+
+	immediate = {
+		clr_country_flag = tm_twarofroses_106_timer
+		set_country_flag = tm_twarofroses_106_timer
+	}
 
 	is_triggered_only = yes	
 	
@@ -560,6 +632,18 @@ country_event = {
 	desc = "twarofroses.desc107"
 	picture = WAR_OF_THE_ROSES_eventPicture
 
+	trigger = {
+		OR = {
+			NOT = { has_country_flag = tm_twarofroses_107_timer }
+			had_country_flag = { flag = tm_twarofroses_107_timer days = 730 }
+		}
+	}
+
+	immediate = {
+		clr_country_flag = tm_twarofroses_107_timer
+		set_country_flag = tm_twarofroses_107_timer
+	}
+
 	is_triggered_only = yes	
 	
 	option = {		
@@ -585,9 +669,18 @@ country_event = {
 	desc = "twarofroses.desc201"
 	picture = WAR_OF_THE_ROSES_eventPicture
 
+	immediate = {
+		clr_country_flag = tm_twarofroses_201_timer
+		set_country_flag = tm_twarofroses_201_timer
+	}
+
 	trigger = {
 		is_at_war = yes
 		has_disaster = war_of_the_roses
+		OR = {
+			NOT = { has_country_flag = tm_twarofroses_201_timer }
+			had_country_flag = { flag = tm_twarofroses_201_timer days = 1825 }
+		}
 	}
 
 	mean_time_to_happen = {
@@ -599,7 +692,7 @@ country_event = {
 	option = {		
 		name = "twarofroses.201a"
 		add_army_tradition = -25
-		add_army_professionalism = -0.1 
+		add_army_professionalism = -0.02
 	}
 
 	option = {		
@@ -619,9 +712,18 @@ country_event = {
 	desc = "twarofroses.desc202"
 	picture = WAR_OF_THE_ROSES_eventPicture
 
+	immediate = {
+		clr_country_flag = tm_twarofroses_202_timer
+		set_country_flag = tm_twarofroses_202_timer
+	}
+
 	trigger = {
 		is_at_war = yes
 		has_disaster = war_of_the_roses
+		OR = {
+			NOT = { has_country_flag = tm_twarofroses_202_timer }
+			had_country_flag = { flag = tm_twarofroses_202_timer days = 1825 }
+		}
 	}
 
 	mean_time_to_happen = {
@@ -652,9 +754,18 @@ country_event = {
 	desc = "twarofroses.desc203"
 	picture = WAR_OF_THE_ROSES_eventPicture
 
+	immediate = {
+		clr_country_flag = tm_twarofroses_203_timer
+		set_country_flag = tm_twarofroses_203_timer
+	}
+
 	trigger = {
 		is_at_war = yes
 		has_disaster = war_of_the_roses
+		OR = {
+			NOT = { has_country_flag = tm_twarofroses_203_timer }
+			had_country_flag = { flag = tm_twarofroses_203_timer days = 1825 }
+		}
 	}
 
 	mean_time_to_happen = {
@@ -685,9 +796,18 @@ country_event = {
 	desc = "twarofroses.desc204"
 	picture = WAR_OF_THE_ROSES_eventPicture
 
+	immediate = {
+		clr_country_flag = tm_twarofroses_204_timer
+		set_country_flag = tm_twarofroses_204_timer
+	}
+
 	trigger = {
 		is_at_war = yes
 		has_disaster = war_of_the_roses
+		OR = {
+			NOT = { has_country_flag = tm_twarofroses_204_timer }
+			had_country_flag = { flag = tm_twarofroses_204_timer days = 1825 }
+		}
 	}
 
 	mean_time_to_happen = {
