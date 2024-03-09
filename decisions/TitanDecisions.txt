@@ -347,14 +347,14 @@ country_decisions = {
 			is_bankrupt = no
 			ai = no
 			adm_tech = 7
-			#has_institution = new_world_i
 			OR = {
 				NOT = { has_country_modifier = hired_explorer }
 				NOT = { has_country_modifier = hired_conquistador }
 			}
+			NOT = { has_country_flag = tm_hide_hire_conq_explo }
 		}
 		allow = {
-
+			#has_institution = new_world_i
 		}
 		effect = {
 			country_event = { id = extras.11 }
@@ -569,6 +569,7 @@ country_decisions = {
 	tm_add_provinces_to_parliment = {
 		potential = {
 			has_parliament = yes
+			NOT = { has_country_flag = tm_hide_add_all_provinces_to_parliment }
 		}
 		allow = {
 			any_owned_province = {
