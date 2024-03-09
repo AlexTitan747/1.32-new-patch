@@ -928,17 +928,20 @@ emp_sav_missions_security = {
 		icon = friends_in_high_places
 		required_missions = {  }
 		trigger = {
-			army_size = 10
-			any_ally = {
-				army_strength = {
-					who = root
-					value = 1.5
-				}
-				has_opinion = {
-					who = root
-					value = 150
+			OR = {
+				army_size = 50
+				any_ally = {
+					army_strength = {
+						who = root
+						value = 1.5
+					}
+					has_opinion = {
+						who = root
+						value = 150
+					}
 				}
 			}
+			
 		}
 		effect = {
 			add_country_modifier = {
