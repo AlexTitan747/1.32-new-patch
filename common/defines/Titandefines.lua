@@ -57,7 +57,7 @@ NDefines.NDiplomacy.HRE_VOTE_ALLIANCE = 50
 NDefines.NDiplomacy.HRE_VOTE_ROYAL_MARRIAGE = 30
 NDefines.NDiplomacy.HRE_VOTE_CORE_CLAIM = 0
 NDefines.NDiplomacy.DAYS_TO_DECLARE_WAR = 30
-NDefines.NDiplomacy.AE_HRE_INTERNAL = 0.3
+NDefines.NDiplomacy.AE_HRE_INTERNAL = 0.0
 NDefines.NDiplomacy.PO_DEMAND_PROVINCES_AE = 0.7
 
 NDefines.NDiplomacy.TRIBUTE_BASE_CASH = 0.16
