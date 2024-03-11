@@ -200,7 +200,6 @@ NDefines.NMilitary.CAVALRY_BREAKTHROUGH = 0.2					-- Between 0 and 1
 NDefines.NMilitary.BACK_LINE_REINFORCE_SPEED = 4
 NDefines.NMilitary.BACK_LINE_MODIFIER = 0.6 						-- _MDEF_BACK_LINE_MODIFIER_
 NDefines.NMilitary.MORALE_RECOVERY_SPEED_OWN_TERRITORY = 0.10 		-- How much the recovery speed for morale will be modified if unit is in controlled territory
-NDefines.NMilitary.ART_REGIMENT_MANPOWER_COST = 0.8 				-- 1 = 1000 men in cost.
 NDefines.NMilitary.NOMAD_NON_PLAINS_SHOCK_PENALTY = -0.15
 NDefines.NMilitary.NOMAD_PLAINS_SHOCK_BONUS = 0.15 				--
 NDefines.NMilitary.BACK_LINE_MORALE_DAMAGE_TAKEN_MODIFIER = 0.2 -- Multiplier for morale damage taken by backrow
