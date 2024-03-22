@@ -228,7 +228,7 @@ on_startup = {
 				}
 			}
 			random_owned_province = {
-				limit = { 
+				limit = {
 					has_province_flag = tm_gold_or_silver_province_temp_flag_for_startup
 				}
 				clr_province_flag = tm_gold_or_silver_province_temp_flag_for_startup
@@ -410,6 +410,19 @@ on_startup = {
 				which = num_of_coal
 				value = 1
 			}
+		}
+
+		set_variable = {
+			which = tm_shock_ideas_per_mil_tech_var
+			value = 0.105
+		}
+		set_variable = {
+			which = tm_fire_ideas_per_mil_tech_var
+			value = 0.105
+		}
+		set_variable = {
+			which = tm_leader_ideas_per_mil_tech_var
+			value = 0.045
 		}
 	}
 	every_province = {
@@ -6865,7 +6878,21 @@ on_dip_tech_taken = { #ROOT - Country, executed after on_tech_taken!
 }
 
 on_mil_tech_taken = { #ROOT - Country, executed after on_tech_taken!
-
+	change_variable = {
+		which = tm_shock_ideas_per_mil_tech_var
+		value = 0.035
+	}
+	change_variable = {
+		which = tm_fire_ideas_per_mil_tech_var
+		value = 0.035
+	}
+	change_variable = {
+		which = tm_leader_ideas_per_mil_tech_var
+		value = 0.015
+	}
+	shock_ideas_1_update_modifier = yes
+	fire_ideas_1_update_modifier = yes
+	leader_ideas_1_update_modifier = yes
 } 
 
 on_barrage = { #ROOT - barraging country, FROM - barraged province 
