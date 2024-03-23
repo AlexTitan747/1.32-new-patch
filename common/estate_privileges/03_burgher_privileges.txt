@@ -1565,8 +1565,6 @@ estate_burghers_exclusive_trade_rights = {
 	}
 	on_revoked = {
 		custom_tooltip = estate_burghers_exclusive_trade_rights_revoke_tooltip
-		if = { limit = { has_country_flag = burghers_exclusive_trade_rights_5_merc } add_mercantilism = -5 }
-		else = { add_mercantilism = -3 }
 	}
 	on_revoked_province = {
 		if = {
@@ -1578,8 +1576,6 @@ estate_burghers_exclusive_trade_rights = {
 	}
 	on_invalid = {
 		custom_tooltip = estate_burghers_exclusive_trade_rights_revoke_tooltip
-		if = { limit = { has_country_flag = burghers_exclusive_trade_rights_5_merc } add_mercantilism = -5 }
-		else = { add_mercantilism = -3 }
 	}
 	on_invalid_province = {
 		if = {
@@ -1593,6 +1589,7 @@ estate_burghers_exclusive_trade_rights = {
 	}
 	benefits = {
 	}
+	cooldown_years = 3
 	#conditional_modifier = {
 	#	trigger = { has_government_mechanic = russian_modernization_mechanic }
 	#	modifier = { monthly_russian_modernization = -0.03 }
