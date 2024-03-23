@@ -1557,7 +1557,9 @@ estate_burghers_exclusive_trade_rights = {
 		if = { limit = { has_country_flag = burghers_exclusive_trade_rights_5_merc } add_mercantilism = 5 }
 		else = { add_mercantilism = 3 }
 	}
-	on_revoked = {}
+	on_revoked = {
+		custom_tooltip = estate_burghers_exclusive_trade_rights_revoke_tooltip
+	}
 	on_revoked_province = {
 		if = {
 			limit = {
@@ -1568,8 +1570,6 @@ estate_burghers_exclusive_trade_rights = {
 	}
 	on_invalid = {
 		custom_tooltip = estate_burghers_exclusive_trade_rights_revoke_tooltip
-		if = { limit = { has_country_flag = burghers_exclusive_trade_rights_5_merc } add_mercantilism = -5 }
-		else = { add_mercantilism = -3 }
 	}
 	on_invalid_province = {
 		if = {
