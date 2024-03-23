@@ -375,3 +375,20 @@ ai_player_nation_buff = {
 	ae_impact = -0.2
 	improve_relation_modifier = 0.25
 }
+
+tm_religious_ideas_modifier = {
+	potential = {
+		has_idea_group = religious_ideas
+	}
+
+	trigger = {
+		has_idea = i138
+		is_at_war = yes
+		any_war_enemy_country = {
+			NOT = { religion = ROOT }
+		}
+	}
+
+	land_morale = 0.05
+	manpower_recovery_speed = 0.1
+}
