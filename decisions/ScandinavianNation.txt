@@ -31,7 +31,7 @@ country_decisions = {
 					has_dlc = "Lions of the North"
 				}
 				OR = {
-					adm_tech = 20
+					adm_tech = 14
 					custom_trigger_tooltip = {
 						tooltip = scandinavian_nation_tt
 						has_country_flag = can_form_scandinavia_earlier
@@ -39,10 +39,10 @@ country_decisions = {
 				}
 			}
 			else = {
-				adm_tech = 20
+				adm_tech = 14
 			}
 			is_free_or_tributary_trigger = yes
-			adm_tech = 10
+			#adm_tech = 10
 			is_at_war = no
 			owns_core_province = 1		# Uppland
 			owns_core_province = 6		# Skane
@@ -52,15 +52,14 @@ country_decisions = {
 			owns_core_province = 17		# Akershus
 			num_of_owned_provinces_with = {
 				region = scandinavia_region
-				value = 40
+				value = 60
 			}
 		}
 		effect = {
 			change_tag = SCA
-			remove_non_electors_emperors_from_empire_effect = yes
 			if = {
-				limit = { NOT = { government_rank = 2 } }
-				set_government_rank = 2
+				limit = { NOT = { government_rank = 3 } }
+				set_government_rank = 3
 			}
 			if = {
 				limit = {
@@ -278,22 +277,25 @@ country_decisions = {
 				limit = {
 					NOT = { owned_by = ROOT }
 				}
-				add_permanent_claim = SCA
-			}	
+				add_permanent_claim = ROOT
+			}
 			add_country_modifier = {
 				name = "centralization_modifier"
 				duration = 7300
 			}
-			add_country_modifier = {
-				name = tm_scandinavian_troops
-				duration = -1
-			}
+			#add_country_modifier = {
+			#	name = tm_scandinavian_troops
+			#	duration = -1
+			#}
 			add_prestige = 10
 			set_country_flag = formed_scandinavia_flag
 			if = {
 				limit = { has_custom_ideas = no }
 				country_event = { id = ideagroups.1 } #Swap Ideas
 			}
+			additional_missions_scripted_effect = yes
+			custom_tooltip = swe_sca_hire_norwegian_sailors_at
+			set_country_flag = unlock_norwegian_naval_doctrine
 		}
 		ai_will_do = {
 			factor = 1

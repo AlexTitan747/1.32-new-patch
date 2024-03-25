@@ -54,7 +54,7 @@ country_event = {
 			}
 			add_reform_progress_small_effect = yes
 		}
-		# Claim Skåne
+		# Claim Skï¿½ne
 		if = {
 			limit = {
 				NOT = { owns = 6 }
@@ -97,10 +97,10 @@ country_event = {
 		1 = {	# Stockholm
 			add_base_tax = 2
 		}
-		2 = {	#Östergötland
+		2 = {	#ï¿½stergï¿½tland
 			add_base_tax = 1
 		}
-		7 = {	#Västergötland
+		7 = {	#Vï¿½stergï¿½tland
 			add_base_tax = 1
 		}
 		27 = {	#Finland
@@ -298,7 +298,7 @@ country_event = {
 }
 
 
-# The Parliament of Västerås
+# The Parliament of Vï¿½sterï¿½s
 country_event = {
 	id = flavor_swe.2
 	title = flavor_swe.2.t
@@ -340,7 +340,7 @@ country_event = {
 
 }
 
-# Jöran Persson
+# Jï¿½ran Persson
 country_event = {
 	id = flavor_swe.3281
 	title = "flavor_swe.EVTNAME3281"
@@ -380,7 +380,7 @@ country_event = {
 		}
 		define_advisor = {
 			type = spymaster
-			name = "Jöran Persson"
+			name = "Jï¿½ran Persson"
 			culture = swedish
 			location = 4
 			discount = yes
@@ -430,7 +430,7 @@ country_event = {
 		}
 		define_advisor = {
 			type = statesman
-			name = "Per Brahe den äldre"
+			name = "Per Brahe den ï¿½ldre"
 			culture = swedish
 			discount = yes
 			location = 1
@@ -1847,7 +1847,7 @@ country_event = {
 	}
 }
 
-# Carl von Linné
+# Carl von Linnï¿½
 country_event = {
 	id = flavor_swe.5033
 	title = "flavor_swe.EVTNAME5033"
@@ -2557,10 +2557,10 @@ country_event = {
 			}
 			hidden_effect = { set_country_flag = swe_support_from_Gustav_vasa }
 		}
-		add_country_modifier = {
-			name = swe_any_vasa_leads_the_rebellion
-			duration = 10950
-		}
+		#add_country_modifier = {
+		#	name = swe_any_vasa_leads_the_rebellion
+		#	duration = 10950
+		#}
 		custom_tooltip = swe_vasa_will_lead_sweden_tt
 		ai_chance = {
 			factor = 1
@@ -2653,10 +2653,10 @@ country_event = {
 				dip = 4
 				mil = 4
 			}
-			hidden_effect = {
-				add_ruler_personality = lawgiver_personality
-				add_ruler_personality = industrious_personality
-			}
+		}
+		hidden_effect = {
+			add_ruler_personality = lawgiver_personality
+			add_ruler_personality = industrious_personality
 		}
 		add_ruler_modifier = {
 			name = swe_rise_of_a_new_dynasty
@@ -3287,19 +3287,16 @@ country_event = {
 			limit = { NOT = { government_rank = 3 } }
 			set_government_rank = 3
 		}
-		add_country_modifier = {
-			name = sca_great_empire_of_scandinavia
-			duration = -1
-		}
 		custom_tooltip = allow_earlier_scandinavia_formation_tt
 		hidden_effect = { set_country_flag = can_form_scandinavia_earlier }
+		add_prestige_or_monarch_power = { amount = 50 }
 		ai_chance = {
 			factor = 1
 		}
 	}
 }
 
-# Pillage of Lübeck
+# Pillage of Lï¿½beck
 country_event = {
 	id = flavor_swe.110
 	title = flavor_swe.110.t
@@ -3434,7 +3431,7 @@ country_event = {
 				add_base_production = 2
 			}
 			else = {
-			add_building = counting_house
+				add_building = counting_house
 			}
 		}
 		add_treasury = -750
@@ -3542,9 +3539,21 @@ country_event = {
 			duration = 14600
 		}
 		change_price = {
+			trade_goods = bronze
+			key = SWEDEN_COPPER_MONOPOLIZATION
+			value = 0.75
+			duration = 14600
+		}
+		change_price = {
 			trade_goods = iron
 			key = SWEDEN_IRON_MONOPOLIZATION
 			value = 0.25
+			duration = 14600
+		}
+		change_price = {
+			trade_goods = steel
+			key = SWEDEN_IRON_MONOPOLIZATION
+			value = 0.1
 			duration = 14600
 		}
 		ai_chance = {
@@ -3573,7 +3582,19 @@ country_event = {
 			duration = 14600
 		}
 		change_price = {
+			trade_goods = bronze
+			key = SWEDEN_COPPER_FLOOD
+			value = -0.5
+			duration = 14600
+		}
+		change_price = {
 			trade_goods = iron
+			key = SWEDEN_IRON_FLOOD
+			value = -0.15
+			duration = 14600
+		}
+		change_price = {
+			trade_goods = steel
 			key = SWEDEN_IRON_FLOOD
 			value = -0.15
 			duration = 14600
@@ -3605,7 +3626,19 @@ country_event = {
 			duration = 14600
 		}
 		change_price = {
+			trade_goods = bronze
+			key = SWEDEN_COPPER
+			value = 0.2
+			duration = 14600
+		}
+		change_price = {
 			trade_goods = iron
+			key = SWEDEN_IRON
+			value = 0.1
+			duration = 14600
+		}
+		change_price = {
+			trade_goods = steel
 			key = SWEDEN_IRON
 			value = 0.1
 			duration = 14600
@@ -3704,81 +3737,8 @@ country_event = {
 			limit = { NOT = { owns_core_province = 16 } }
 			add_permanent_claim = 16
 		}
-		if = {
-			limit = { NOT = { owns_core_province = 315 } }
-			add_permanent_claim = 315
-		}
-		if = {
-			limit = { NOT = { owns_core_province = 1777 } }
-			add_permanent_claim = 1777
-		}
-		if = {
-			limit = { NOT = { owns_core_province = 1776 } }
-			add_permanent_claim = 1776
-		}
-		karelia_area = {
-			limit = {
-				NOT = { is_core = ROOT }
-				NOT = { is_permanent_claim = ROOT }
-			}
-			add_permanent_claim = ROOT
-		}
-		north_karelia = {
-			limit = {
-				NOT = { is_core = ROOT }
-				NOT = { is_permanent_claim = ROOT }
-			}
-			add_permanent_claim = ROOT
-		}
-		novgorod_area = {
-			limit = {
-				NOT = { is_core = ROOT }
-				NOT = { is_permanent_claim = ROOT }
-			}
-			add_permanent_claim = ROOT
-		}
-		estonia_ingria_area = {
-			limit = {
-				NOT = { is_core = ROOT }
-				NOT = { is_permanent_claim = ROOT }
-			}
-			add_permanent_claim = ROOT
-		}
-		livonia_area = {
-			limit = {
-				NOT = { is_core = ROOT }
-				NOT = { is_permanent_claim = ROOT }
-			}
-			add_permanent_claim = ROOT
-		}
-		curonia_area = {
-			limit = {
-				NOT = { is_core = ROOT }
-				NOT = { is_permanent_claim = ROOT }
-			}
-			add_permanent_claim = ROOT
-		}
-		hinter_pommern_area = {
-			limit = {
-				NOT = { is_core = ROOT }
-				NOT = { is_permanent_claim = ROOT }
-			}
-			add_permanent_claim = ROOT
-		}
-		vorpommern_area = {
-			limit = {
-				NOT = { is_core = ROOT }
-				NOT = { is_permanent_claim = ROOT }
-			}
-			add_permanent_claim = ROOT
-		}
-		mecklenburg_area = {
-			limit = {
-				NOT = { is_core = ROOT }
-				NOT = { is_permanent_claim = ROOT }
-			}
-			add_permanent_claim = ROOT
-		}
+		skaneland_area = { add_perma_claim = yes }
+		add_prestige = 20
 		ai_chance = {
 			factor = 1
 		}
@@ -4197,36 +4157,31 @@ country_event = {
 	option = {		# Reform and claim
 		name = flavor_swe.1.a
 		ai_chance = { factor = 100 }
-		if = {
-			limit = {
-				NOT = { has_completed_all_reforms_trigger = yes }
-			}
-			add_reform_progress_small_effect = yes
-		}		
+		add_reform_progress_small_effect = yes		
 		
 		1 = {	# Stockholm
 			add_base_tax = 2
 		}
-		2 = {	#Östergötland
-			add_base_tax = 1
+		2 = {	#ï¿½stergï¿½tland
+			add_base_tax = 2
 		}
-		7 = {	#Västergötland
-			add_base_tax = 1
+		7 = {	#Vï¿½stergï¿½tland
+			add_base_tax = 2
 		}
 		27 = {	#Finland
-			add_base_tax = 1
+			add_base_tax = 2
 		}
 
 		1 = {	# Stockholm
 			add_base_manpower = 2
 		}
 		27 = {	#Finland
-			add_base_manpower = 1
+			add_base_manpower = 2
 		}
 		
-		add_adm_power = -50
-		add_dip_power = -50
-		add_mil_power = -50
+		add_adm_power = -25
+		add_dip_power = -25
+		add_mil_power = -25
 		
 		add_country_modifier = {
 			name = vasa_centralization_reforms

@@ -18,47 +18,10 @@ swe_scandinavian_colonialism_mission_slot = {
 	}
 	has_country_shield = yes
 	
-	swe_engelbrekt_rebellion = { #aka. build troops
-		icon = mission_engelbrekt
-		position = 1
-		required_missions = {  }
-		provinces_to_highlight = {}
-		trigger = {
-			army_size_percentage = 1
-			OR = {
-				is_subject = no
-				liberty_desire = 100
-				any_hired_mercenary_company = {
-					custom_trigger_tooltip = {
-						tooltip = is_free_merc_company_tt
-						OR = {
-							template = merc__local_free_city_company
-							template = merc__local_small_company
-						}
-					}
-				}
-			}
-		}
-		effect = {
-			if = {
-				limit = {
-					is_subject = yes
-				}
-				country_event = {
-					id = flavor_swe.102
-				}
-			}
-			else = {
-				add_manpower = 10
-			}
-		}
-	}
-	
 	swe_conquer_scania = {
 		icon = mission_conquer_skaneland
 		position = 3
-		required_missions = { 
-			swe_engelbrekt_rebellion
+		required_missions = {
 			swe_declare_independence
 		}
 		provinces_to_highlight = {
@@ -96,7 +59,7 @@ swe_scandinavian_colonialism_mission_slot = {
 							reverse_add_casus_belli = {
 								type = cb_claim_norwegian_throne
 								target = ROOT
-								months = 240
+								months = 600
 							}
 						}
 					}
@@ -105,18 +68,9 @@ swe_scandinavian_colonialism_mission_slot = {
 					add_casus_belli = {
 						type = cb_restore_personal_union
 						target = NOR
-						months = 240
+						months = 600
 					}
 				}
-			}
-			if = {
-				limit = {
-					315 = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-				}
-				add_permanent_claim = 315
 			}
 			eastern_norway = {
 				limit = {
@@ -139,6 +93,7 @@ swe_scandinavian_colonialism_mission_slot = {
 				}
 				add_permanent_claim = ROOT
 			}
+			ryfoss_area = { add_perma_claim = yes }
 		}
 	}
 	
@@ -151,6 +106,7 @@ swe_scandinavian_colonialism_mission_slot = {
 				area = eastern_norway
 				area = western_norway
 				area = northern_norway
+				area = ryfoss_area
 				owned_by = NOR
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
@@ -163,32 +119,22 @@ swe_scandinavian_colonialism_mission_slot = {
 						area = eastern_norway
 						area = western_norway
 						area = northern_norway
+						area = ryfoss_area
 					}
 					value = 8
 				}
 			}
 			owns_or_non_sovereign_subject_of = 17
-			owns_or_non_sovereign_subject_of = 20
-			owns_or_non_sovereign_subject_of = 23
 		}
-		effect = {
-			if = { 	
-				limit = {
-					NOR = { 
-						is_subject_of = ROOT
-						has_opinion = {
-							who = ROOT 
-							value = 50 
-						}
-					}
-				}
-				add_historical_friend = NOR 
-				NOR = { add_historical_friend = ROOT } 
-			}
-			else = { custom_tooltip = swe_historical_friends_nor_tt } 
+		effect = {	
 			add_country_modifier = {
 				name = "norway_subjugated_swe"
 				duration = 5475
+			}
+			add_casus_belli = {
+				type = cb_annex
+				target = DAN
+				months = 600
 			}
 			jutland_area = {
 				limit = {
@@ -211,6 +157,39 @@ swe_scandinavian_colonialism_mission_slot = {
 				}
 				add_permanent_claim = ROOT
 			}
+			custom_tooltip = swe_historical_friends_nor_tt
+			if = {
+				limit = {
+					NOR = { 
+						is_subject_of = ROOT
+						has_opinion = {
+							who = ROOT 
+							value = 50 
+						}
+					}
+				}
+				custom_tooltip = BONUS_REWARD_YES
+			}
+			else = { custom_tooltip = BONUS_REWARD_NO }
+			tooltip = {
+				add_historical_friend = NOR 
+				NOR = { add_historical_friend = ROOT add_liberty_desire = -20 }
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						NOR = { 
+							is_subject_of = ROOT
+							has_opinion = {
+								who = ROOT 
+								value = 50 
+							}
+						}
+					}
+					add_historical_friend = NOR 
+					NOR = { add_historical_friend = ROOT } 
+				}
+			}
 		}
 	}
 	
@@ -220,29 +199,21 @@ swe_scandinavian_colonialism_mission_slot = {
 		required_missions = { swe_claim_norwegian_crown }
 		provinces_to_highlight = {
 			OR = {
-				AND = {
-					owned_by = DAN
-					region = scandinavia_region
-				}
-				AND = {
-					OR = {
-						province_id = 12
-						province_id = 6
-						province_id = 4142
-					}
-					NOT = { country_or_non_sovereign_subject_holds = ROOT }
-				}
+				area = jutland_area
+				area = denmark_area
+				area = holstein_area
 			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			OR = {
-				NOT = { exists = DAN }
-				DAN = { NOT = { any_owned_province = { region = scandinavia_region } } }
-				DAN = { is_subject_of = ROOT }
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				OR = {
+					area = jutland_area
+					area = denmark_area
+					area = holstein_area
+				}
+				value = 8
 			}
-			owns_or_non_sovereign_subject_of = 12
-			owns_or_non_sovereign_subject_of = 6
-			owns_or_non_sovereign_subject_of = 4142
 		}
 		effect = {
 			6 = { center_of_trade = 2 }
@@ -267,6 +238,56 @@ swe_scandinavian_colonialism_mission_slot = {
 			add_mil_power = 200
 		}
 	}
+
+	swe_the_scandinavian_empire = {
+		icon = mission_lion_of_the_north
+		position = 6
+		required_missions = {
+			swe_fall_of_denmark
+		}
+		provinces_to_highlight = {
+			region = scandinavia_region
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		trigger = {
+			stability = 2
+			has_any_disaster = no
+			legitimacy_equivalent = 90
+			is_subject = no
+			total_development = 600
+			num_of_owned_provinces_with = {
+				region = scandinavia_region
+				is_core = ROOT
+				owned_by = ROOT
+				value = 50
+			}
+			owns_core_province = 1
+			owns_core_province = 6
+			owns_core_province = 7
+			owns_core_province = 8
+			owns_core_province = 12
+			owns_core_province = 15
+			owns_core_province = 17
+			owns_core_province = 28
+		}
+		effect = {
+			country_event = {
+				id = flavor_swe.109
+			}
+			custom_tooltip = tm_event_insight_insight_tt
+			tooltip = {
+				if = {
+					limit = { NOT = { government_rank = 3 } }
+					set_government_rank = 3
+				}
+				custom_tooltip = allow_earlier_scandinavia_formation_tt
+				add_prestige_or_monarch_power = { amount = 50 }
+			}
+		}
+	}
 	
 	swe_swedish_peasantry = {
 		icon = mission_swedish_peasantry
@@ -276,7 +297,9 @@ swe_scandinavian_colonialism_mission_slot = {
 			owned_by = ROOT
 			OR = {
 				trade_goods = grain
+				trade_goods = ale
 				trade_goods = livestock
+				trade_goods = cheese
 				trade_goods = fish
 			}
 			if = {
@@ -300,7 +323,9 @@ swe_scandinavian_colonialism_mission_slot = {
 			num_of_owned_provinces_with = {
 				OR = {
 					trade_goods = grain
+					trade_goods = ale
 					trade_goods = livestock
+					trade_goods = cheese
 					trade_goods = fish
 				}
 				has_manufactory_trigger = yes
@@ -314,7 +339,9 @@ swe_scandinavian_colonialism_mission_slot = {
 				num_of_owned_provinces_with = {
 					OR = {
 						trade_goods = grain
+						trade_goods = ale
 						trade_goods = livestock
+						trade_goods = cheese
 						trade_goods = fish
 					}
 					development = 10
@@ -333,14 +360,16 @@ swe_scandinavian_colonialism_mission_slot = {
 					limit = {
 						OR = {
 							trade_goods = grain
+							trade_goods = ale
 							trade_goods = fish
 							trade_goods = livestock
+							trade_goods = cheese
 						}
 					}
 					add_province_modifier = {
 						name = swe_support_of_the_peasantry_prov
 						duration = -1
-						hidden = yes
+						#hidden = yes
 					}
 				}
 			}
@@ -445,25 +474,34 @@ swe_scandinavian_colonialism_mission_slot = {
 			}
 		}
 		trigger = {
-			custom_trigger_tooltip = {
-				tooltip = swe_forest_expansion_tt
-				scandinavia_region = {
-					OR = {
-						AND = {
-							NOT = { has_terrain = woods }
-							NOT = { has_terrain = forest }
-						}
-						AND = {
-							OR = {
-								has_terrain = woods
-								has_terrain = forest
-							}
-							owned_by = ROOT
-							development = 6
-						}
-					}
-					type = all
+			#custom_trigger_tooltip = {
+			#	tooltip = swe_forest_expansion_tt
+			#	scandinavia_region = {
+			#		OR = {
+			#			AND = {
+			#				NOT = { has_terrain = woods }
+			#				NOT = { has_terrain = forest }
+			#			}
+			#			AND = {
+			#				OR = {
+			#					has_terrain = woods
+			#					has_terrain = forest
+			#				}
+			#				owned_by = ROOT
+			#				development = 6
+			#			}
+			#		}
+			#		type = all
+			#	}
+			#}
+			num_of_owned_provinces_with = {
+				value = 15
+				OR = {
+					has_terrain = woods
+					has_terrain = forest
 				}
+				development = 6
+				region = scandinavia_region
 			}
 		}
 		effect = {
@@ -504,81 +542,14 @@ swe_scandinavian_colonialism_mission_slot = {
 			23 = { light_ships_in_province = 3 }
 		}
 		effect = {
-			create_explorer = {
-				tradition = 30
+			define_advisor = {
+				type = navigator
+				cost_multiplier = 0.25
+				skill = 2
 			}
 			add_country_modifier = {
-				name = swe_search_for_new_world
-				duration = 9125
-			}
-			add_temporary_colonist = {
-				duration = 27375
-			}
-			if = {
-				limit = {
-					is_random_new_world = no
-				}
-				delaware_valley_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { owner = { is_subject_of = ROOT } }
-					}
-					add_permanent_claim = ROOT
-				}
-				maryland_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { owner = { is_subject_of = ROOT } }
-					}
-					add_permanent_claim = ROOT
-				}
-				new_york_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { owner = { is_subject_of = ROOT } }
-					}
-					add_permanent_claim = ROOT
-				}
-				west_africa_coast_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { owner = { is_subject_of = ROOT } }
-					}
-					add_permanent_claim = ROOT
-				}
-				custom_tooltip = swe_colonial_ambitions_tt
-				hidden_effect = {
-					colonial_canada = {
-						limit = {
-							OR = {
-								has_river_estuary_trigger = yes
-								province_has_center_of_trade_of_level = 1
-								NOT = { is_core = ROOT }
-								NOT = { is_permanent_claim = ROOT }
-								NOT = { owner = { is_subject_of = ROOT } }
-								has_port = yes
-							}
-						}
-						add_permanent_claim = ROOT
-					}
-					colonial_eastern_america = {
-						limit = {
-							OR = {
-								has_river_estuary_trigger = yes
-								province_has_center_of_trade_of_level = 1
-								NOT = { is_core = ROOT }
-								NOT = { is_permanent_claim = ROOT }
-								NOT = { owner = { is_subject_of = ROOT } }
-								has_port = yes
-							}
-						}
-						add_permanent_claim = ROOT
-					}
-				}
+				name = dan_colonial_ambitions_mod
+				duration = -1
 			}
 		}
 	}
@@ -627,21 +598,34 @@ swe_north_america_mission_slot = {
 		}
 		effect = {
 			add_country_modifier = {
-				name = swe_swedish_colonialism
-				duration = 9125
+				name = dan_new_world_expansion
+				duration = 27375
 			}
-			custom_tooltip = swe_colonize_delaware_tt
+			custom_tooltip = swe_colonial_ambitions_tt
 			hidden_effect = {
-				colonial_the_carribean = {
+				colonial_canada = {
 					limit = {
 						OR = {
 							has_river_estuary_trigger = yes
 							province_has_center_of_trade_of_level = 1
+							NOT = { is_core = ROOT }
+							NOT = { is_permanent_claim = ROOT }
+							NOT = { owner = { is_subject_of = ROOT } }
+							has_port = yes
 						}
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-						NOT = { owner = { is_subject_of = ROOT } }
-						has_port = yes
+					}
+					add_permanent_claim = ROOT
+				}
+				colonial_eastern_america = {
+					limit = {
+						OR = {
+							has_river_estuary_trigger = yes
+							province_has_center_of_trade_of_level = 1
+							NOT = { is_core = ROOT }
+							NOT = { is_permanent_claim = ROOT }
+							NOT = { owner = { is_subject_of = ROOT } }
+							has_port = yes
+						}
 					}
 					add_permanent_claim = ROOT
 				}
@@ -649,30 +633,19 @@ swe_north_america_mission_slot = {
 		}
 	}
 	
-	swe_colonize_caribbeans = {
-		icon = mission_colonize_the_caribbean
+	tm_swe_colonise_america = {
+		icon = mission_rb_the_thirteen_colonies
 		position = 12
 		required_missions = { swe_colonize_delaware }
 		provinces_to_highlight = {
-			colonial_region = colonial_the_carribean
-			OR = {
-				has_trade_building_trigger = yes
-				province_has_center_of_trade_of_level = 1
-			}
+			colonial_region = colonial_eastern_america
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				colonial_region = colonial_the_carribean
-				OR = {
-					has_trade_building_trigger = yes 
-					province_has_center_of_trade_of_level = 1
-				}
-				value = 5
-			}
 			any_subject_country = {
-				num_of_cities = 10
-				is_colonial_nation_of = ROOT
+				capital_scope = { colonial_region = colonial_eastern_america }
+				is_colonial_nation = yes
+				total_development = 350
 			}
 		}
 		effect = {
@@ -696,6 +669,7 @@ swe_north_america_mission_slot = {
 			}
 		}
 	}
+	
 }
 
 swe_rnw_mission_slot = {
@@ -762,300 +736,192 @@ swe_diplomacy_mission_slot = {
 	}
 	has_country_shield = yes
 	
-	swe_swedish_allies = {
-		icon = mission_alliances
-		position = 1
-		required_missions = { }
-		provinces_to_highlight = {
-			owner = {
-				OR = {
-					is_rival = DAN
-					is_enemy = DAN
-				}
-			}
-		}
-		trigger = {
-			if = {
-				limit = {
-					is_subject = yes
-					is_subject_of = DAN
-				}
-				OR = {
-					calc_true_if = {
-						all_known_country = {
-							OR = {
-								is_rival = DAN
-								is_enemy = DAN
-							}
-							has_opinion = {
-								who = ROOT
-								value = 100
-							}
-						}
-						amount = 2
-					}
-					liberty_desire = 100
-				}
-			}
-			else_if = {
-				limit = {
-					is_subject = yes
-					NOT = { is_subject_of = DAN }
-				}
-				OR = {
-					overlord = {
-						calc_true_if = {
-							all_known_country = {
-								OR = {
-									is_rival = PREV
-									is_enemy = PREV
-								}
-								has_opinion = {
-									who = ROOT
-									value = 100
-								}
-							}
-							amount = 2
-						}
-					}
-					liberty_desire = 80
-				}
-			}
-			else = {
-				is_subject = no
-			}
-		}
-		effect = {
-			if = {
-				limit = {
-					is_subject = yes
-				}
-				country_event = {
-					id = flavor_swe.106
-				}
-			}
-			else = {
-				add_dip_power = 100
-			}
-		}
-	}
-	
-	swe_swedish_pommerania = {
-		icon = mission_conquer_pomerania
+	#swe_swedish_allies = {
+	#	icon = mission_alliances
+	#	position = 1
+	#	required_missions = { }
+	#	provinces_to_highlight = {
+	#		owner = {
+	#			OR = {
+	#				is_rival = DAN
+	#				is_enemy = DAN
+	#			}
+	#		}
+	#	}
+	#	trigger = {
+	#		if = {
+	#			limit = {
+	#				is_subject = yes
+	#				is_subject_of = DAN
+	#			}
+	#			OR = {
+	#				calc_true_if = {
+	#					all_known_country = {
+	#						OR = {
+	#							is_rival = DAN
+	#							is_enemy = DAN
+	#						}
+	#						has_opinion = {
+	#							who = ROOT
+	#							value = 100
+	#						}
+	#					}
+	#					amount = 2
+	#				}
+	#				liberty_desire = 100
+	#			}
+	#		}
+	#		else_if = {
+	#			limit = {
+	#				is_subject = yes
+	#				NOT = { is_subject_of = DAN }
+	#			}
+	#			OR = {
+	#				overlord = {
+	#					calc_true_if = {
+	#						all_known_country = {
+	#							OR = {
+	#								is_rival = PREV
+	#								is_enemy = PREV
+	#							}
+	#							has_opinion = {
+	#								who = ROOT
+	#								value = 100
+	#							}
+	#						}
+	#						amount = 2
+	#					}
+	#				}
+	#				liberty_desire = 80
+	#			}
+	#		}
+	#		else = {
+	#			is_subject = no
+	#		}
+	#	}
+	#	effect = {
+	#		if = {
+	#			limit = {
+	#				is_subject = yes
+	#			}
+	#			country_event = {
+	#				id = flavor_swe.106
+	#			}
+	#		}
+	#		else = {
+	#			add_dip_power = 100
+	#		}
+	#	}
+	#}
+
+	#swe_engelbrekt_rebellion = { #aka. build troops
+	#	icon = mission_engelbrekt
+	#	position = 1
+	#	required_missions = {  }
+	#	provinces_to_highlight = {}
+	#	trigger = {
+	#		army_size_percentage = 0.75
+	#		num_of_generals = 1
+	#		#OR = {
+	#		#	is_subject = no
+	#		#	liberty_desire = 100
+	#		#	any_hired_mercenary_company = {
+	#		#		custom_trigger_tooltip = {
+	#		#			tooltip = is_free_merc_company_tt
+	#		#			OR = {
+	#		#				template = merc__local_free_city_company
+	#		#				template = merc__local_small_company
+	#		#			}
+	#		#		}
+	#		#	}
+	#		#}
+	#	}
+	#	effect = {
+	#		#if = {
+	#		#	limit = {
+	#		#		is_subject = yes
+	#		#	}
+	#		#	country_event = {
+	#		#		id = flavor_swe.102
+	#		#	}
+	#		#}
+	#		#else = {
+	#		#	add_manpower = 10
+	#		#}
+	#	}
+	#}
+
+	tm_swe_claims_in_germany = {
+		icon = encroach_on_the_germans
 		position = 3
 		required_missions = { swe_declare_independence }
 		provinces_to_highlight = {
-			OR = {
-				area = hinter_pommern_area
-				area = vorpommern_area
-				area = mecklenburg_area
-			}
+			area = holstein_area
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
-			owner = { NOT = { alliance_with = ROOT } }
 		}
+
 		trigger = {
+			holstein_area = {
+				country_or_non_sovereign_subject_holds = ROOT
+			}
 			OR = {
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					OR = {
-						area = hinter_pommern_area
-						area = vorpommern_area
-						area = mecklenburg_area
-					}
-					value = 7
-				}
-				any_ally = {
-					has_opinion = {
-						who = ROOT
-						value = 100
-					}
-					if = {
-						limit = { has_dlc = "Leviathan" }
-						trust = { 	
-							who = ROOT 
-							value = 70
-						}
-					}
-					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-						OR = {
-							area = hinter_pommern_area
-							area = vorpommern_area
-							area = mecklenburg_area
-						}
-						value = 7
-					}
-				}
+				army_size = 40
+				army_size_percentage = 0.8
 			}
 		}
+
 		effect = {
-			if = {
-				limit = {
-					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-						OR = {
-							area = hinter_pommern_area
-							area = vorpommern_area
-							area = mecklenburg_area
-						}
-						value = 7
-					}
-				}
-				add_country_modifier = {
-					name = "swe_pommerania_conquered"
-					duration = 9125
-				}
-				lower_saxony_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_claim = ROOT
-				}
-				weser_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_claim = ROOT
-				}
-			}
-			else_if = {
-				limit = {
-					any_ally = {
-						has_opinion = {
-							who = ROOT
-							value = 100
-						}
-						if = {
-							limit = { has_dlc = "Leviathan" }
-							trust = { 	
-								who = ROOT 
-								value = 70
-							}
-						}
-						num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-							OR = {
-								area = hinter_pommern_area
-								area = vorpommern_area
-								area = mecklenburg_area
-							}
-							value = 7
-						}
-					}
-				}
-				random_ally = {
-					limit = {
-						has_opinion = {
-							who = ROOT
-							value = 100
-						}
-						if = {
-							limit = { has_dlc = "Leviathan" }
-							trust = { 	
-								who = ROOT 
-								value = 70
-							}
-						}
-						num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-							OR = {
-								area = hinter_pommern_area
-								area = vorpommern_area
-								area = mecklenburg_area
-							}
-							value = 7
-						}
-					}
-					ROOT = {
-						add_favors = {
-							who = PREV
-							amount = 50
-						}
-					}
-				}
-				add_dip_power = 100
-				add_country_modifier = {
-					name = "swe_germanic_alliance"
-					duration = 9125
-				}
-				mecklenburg_area = {
-					limit = {
-						is_permanent_claim = ROOT
-						NOT = { province_id = 45 }
-					}
-					remove_claim = ROOT
-				}
-				vorpommern_area = {
-					limit = {
-						is_permanent_claim = ROOT
-					}
-					remove_claim = ROOT
-				}
-				hinter_pommern_area = {
-					limit = {
-						is_permanent_claim = ROOT
-					}
-					remove_claim = ROOT
-				}
-			}
-			else = {
-				custom_tooltip = swe_swedish_pommerania_ct
+			lower_saxony_area = { add_perma_claim = yes }
+			add_country_modifier = {
+				name = tm_swe_enter_germany
+				duration = 3650
 			}
 		}
 	}
-	
+
 	swe_bane_of_the_hansa = {
 		icon = mission_bane_of_the_hansa
 		position = 4
-		required_missions = { swe_swedish_pommerania }
+		required_missions = { tm_swe_claims_in_germany }
 		provinces_to_highlight = {
 			province_id = 45
 		}
 		trigger = {
-			OR = {
-				NOT = { exists = HSA }
-				owns_or_non_sovereign_subject_of = 45
-				war_score_against = {
-					who = HSA
-					value = 50
-				}
-			}
-			45 = {
-				controller = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-					}
-				}
-			}
+			owns_or_non_sovereign_subject_of = 45
 		}
 		effect = {
-			#Maybe a new event for Lübeck?
-			if = {
-				limit = {
-					owns_or_non_sovereign_subject_of = 45
-				}
-				45 = {
-					add_prosperity = 100
-					add_base_production = 4
-				}
-			}
-			else_if = {
-				limit = {
-					controls = 45
-				}
-				45 = {
-					add_loot_from_rich_province_general_effect = {
-						LOOTER = ROOT
-					}
-					owner = {
-						country_event = {
-							id = flavor_swe.110
-						}
-					}
-				}
-			}
-			else = {
-				custom_tooltip = swe_bane_of_the_hansa_ct
-			}
+			##Maybe a new event for Lübeck?
+			#if = {
+			#	limit = {
+			#		owns_or_non_sovereign_subject_of = 45
+			#	}
+			#	45 = {
+			#		add_prosperity = 100
+			#		add_base_production = 4
+			#	}
+			#}
+			#else_if = {
+			#	limit = {
+			#		controls = 45
+			#	}
+			#	45 = {
+			#		add_loot_from_rich_province_general_effect = {
+			#			LOOTER = ROOT
+			#		}
+			#		owner = {
+			#			country_event = {
+			#				id = flavor_swe.110
+			#			}
+			#		}
+			#	}
+			#}
+			#else = {
+			#	custom_tooltip = swe_bane_of_the_hansa_ct
+			#}
 			45 = {
+				add_devastation = -100
+				add_prosperity = 100
+				add_base_production = 5
 				add_trade_modifier = {
 					who = ROOT
 					duration = 18250
@@ -1063,52 +929,46 @@ swe_diplomacy_mission_slot = {
 					key = swe_bane_of_the_hansa_trade_tt
 				}
 			}
+			custom_tooltip = tm_swe_claims_in_lubeck
+			hidden_effect = { trade_company_lubeck = { add_perma_claim = yes } }
 		}
 	}
 	
-	swe_the_scandinavian_empire = {
-		icon = mission_lion_of_the_north
-		position = 6
-		required_missions = {
-			swe_fall_of_denmark
-			swe_bane_of_the_hansa
-			swe_the_teutonic_order
-		}
+	swe_swedish_pommerania = {
+		icon = mission_conquer_pomerania
+		position = 5
+		required_missions = { swe_bane_of_the_hansa }
 		provinces_to_highlight = {
-			region = scandinavia_region
 			OR = {
-				NOT = { owned_by = ROOT }
-				NOT = { is_core = ROOT }
+				area = hinter_pommern_area
+				area = vorpommern_area
+				area = mecklenburg_area
 			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			stability = 2
-			has_any_disaster = no
-			legitimacy_equivalent = 90
-			is_subject = no
-			total_development = 500
-			num_of_owned_provinces_with = {
-				region = scandinavia_region
-				is_core = ROOT
-				owned_by = ROOT
-				value = 45
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				OR = {
+					area = hinter_pommern_area
+					area = vorpommern_area
+					area = mecklenburg_area
+				}
+				value = 7
 			}
-			owns_core_province = 1
-			owns_core_province = 6
-			owns_core_province = 7
-			owns_core_province = 8
-			owns_core_province = 12
-			owns_core_province = 15
-			owns_core_province = 17
-			owns_core_province = 28
 		}
 		effect = {
-			country_event = {
-				id = flavor_swe.109
+			add_country_modifier = {
+				name = "swe_pommerania_conquered"
+				duration = 5475
 			}
+			neumark_area = { add_perma_claim = yes }
+			mittelmark_area = { add_perma_claim = yes }
+			altmark_area = { add_perma_claim = yes }
+			northern_saxony_area = { add_perma_claim = yes }
+			braunschweig_area = { add_perma_claim = yes }
 		}
 	}
-	
+
 	swe_the_swedish_trade_fleet = {
 		icon = mission_establish_high_seas_navy
 		position = 8
@@ -1121,7 +981,7 @@ swe_diplomacy_mission_slot = {
 		effect = {
 			add_country_modifier = {
 				name = swe_baltic_trade_fleet
-				duration = 9125
+				duration = 7300
 			}
 			add_navy_tradition = 15
 		}
@@ -1181,7 +1041,7 @@ swe_diplomacy_mission_slot = {
 			add_mercantilism = 5
 			add_country_modifier = {
 				name = swe_baltic_trade
-				duration = 9125
+				duration = 7300
 			}
 		}
 	}
@@ -1260,67 +1120,264 @@ swe_diplomacy_mission_slot = {
 			country_event = {
 				id = flavor_swe.114
 			}
+			custom_tooltip = tm_event_insight_insight_tt
+			custom_tooltip = tm_event_insight_option_1
+			tooltip = {
+				add_mercantilism = 5
+				change_price = {
+					trade_goods = copper
+					key = SWEDEN_COPPER_MONOPOLIZATION
+					value = 1.5
+					duration = 14600
+				}
+				change_price = {
+					trade_goods = bronze
+					key = SWEDEN_COPPER_MONOPOLIZATION
+					value = 0.75
+					duration = 14600
+				}
+				change_price = {
+					trade_goods = iron
+					key = SWEDEN_IRON_MONOPOLIZATION
+					value = 0.25
+					duration = 14600
+				}
+				change_price = {
+					trade_goods = steel
+					key = SWEDEN_IRON_MONOPOLIZATION
+					value = 0.1
+					duration = 14600
+				}
+			}
+			custom_tooltip = tm_event_insight_option_2
+			tooltip = {
+				add_years_of_owned_provinces_production_income = {
+					years = 10
+					trigger = {
+						OR = {
+							province_id = 8
+							province_id = 4
+							province_id = 5
+							province_id = 1985
+						}
+					}
+					custom_tooltip = swe_industrialize_sweden_tt
+				}
+				change_price = {
+					trade_goods = copper
+					key = SWEDEN_COPPER_FLOOD
+					value = -0.5
+					duration = 14600
+				}
+				change_price = {
+					trade_goods = bronze
+					key = SWEDEN_COPPER_FLOOD
+					value = -0.5
+					duration = 14600
+				}
+				change_price = {
+					trade_goods = iron
+					key = SWEDEN_IRON_FLOOD
+					value = -0.15
+					duration = 14600
+				}
+				change_price = {
+					trade_goods = steel
+					key = SWEDEN_IRON_FLOOD
+					value = -0.15
+					duration = 14600
+				}
+			}
+			custom_tooltip = tm_event_insight_option_3
+			tooltip = {
+				add_years_of_owned_provinces_production_income = {
+					years = 5
+					trigger = {
+						OR = {
+							province_id = 8
+							province_id = 4
+							province_id = 5
+							province_id = 1985
+						}
+					}
+					custom_tooltip = swe_industrialize_sweden_tt
+				}
+				add_mercantilism = 2
+				change_price = {
+					trade_goods = copper
+					key = SWEDEN_COPPER
+					value = 0.2
+					duration = 14600
+				}
+				change_price = {
+					trade_goods = bronze
+					key = SWEDEN_COPPER
+					value = 0.2
+					duration = 14600
+				}
+				change_price = {
+					trade_goods = iron
+					key = SWEDEN_IRON
+					value = 0.1
+					duration = 14600
+				}
+				change_price = {
+					trade_goods = steel
+					key = SWEDEN_IRON
+					value = 0.1
+					duration = 14600
+				}
+			}
 		}
 	}
-	
-	swe_colonize_west_african_coast = {
-		icon = mission_west_african_ports
-		position = 11
-		required_missions = { swe_colonial_ambitions }
+
+	tm_swe_colonise_canada = {
+		icon = mission_rb_colonise_canada
+		position = 12
+		required_missions = { swe_colonize_delaware }
 		provinces_to_highlight = {
-			region = guinea_region
+			colonial_region = colonial_canada
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
 			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-				region = guinea_region
-				value = 3
+				value = 10
+				colonial_region = colonial_canada
 			}
 		}
 		effect = {
-			create_explorer = {
-				tradition = 50
-			}
-			guinea_coast_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			benin_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-		}
-	}
-	
-	swe_beyond_africa = {
-		icon = mission_coromandel_trade
-		position = 12
-		required_missions = { swe_colonize_west_african_coast }
-		provinces_to_highlight = {
-			has_discovered = ROOT
-			NOT = { owned_by = ROOT }
-			continent = asia
-		}
-		trigger = {
-			num_of_owned_provinces_with = {
-				continent = asia
-				value = 8
-			}
-		}
-		effect = {
-			add_prestige = 25
 			add_country_modifier = {
-				name = swe_swedish_influence_in_asia
-				duration = 18250
+				name = tm_swe_secured_canada
+				duration = -1
+			}
+			custom_tooltip = tm_swe_colonise_canada_expansino_tt
+			tooltip = {
+				add_province_modifier = {
+					name = tm_swe_canada_arctic_expansion
+					duration = -1
+				}
+			}
+			set_country_flag = tm_swe_canada_arctic_expansion_flag
+			hidden_effect = {
+				every_province = {
+					limit = {
+						colonial_region = colonial_canada
+						country_or_non_sovereign_subject_holds = ROOT
+					}
+					add_province_modifier = {
+						name = tm_swe_canada_arctic_expansion
+						duration = -1
+					}
+				}
 			}
 		}
 	}
+
+	#swe_colonize_caribbeans = {
+	#	icon = mission_colonize_the_caribbean
+	#	position = 12
+	#	required_missions = { swe_colonize_delaware }
+	#	provinces_to_highlight = {
+	#		colonial_region = colonial_the_carribean
+	#		OR = {
+	#			has_trade_building_trigger = yes
+	#			province_has_center_of_trade_of_level = 1
+	#		}
+	#		NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	#	}
+	#	trigger = {
+	#		num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+	#			colonial_region = colonial_the_carribean
+	#			OR = {
+	#				has_trade_building_trigger = yes 
+	#				province_has_center_of_trade_of_level = 1
+	#			}
+	#			value = 5
+	#		}
+	#		any_subject_country = {
+	#			num_of_cities = 10
+	#			is_colonial_nation_of = ROOT
+	#		}
+	#	}
+	#	effect = {
+	#		if = {
+	#			limit = { has_dlc = "Golden Century" }
+	#			random_owned_province = { 
+	#				limit = { 
+	#					continent = europe 
+	#					has_port = yes 
+	#				}
+	#				create_flagship = {
+	#					name = "Kronan"
+	#					type = heavy_ship 
+	#				}
+	#			}
+	#		}
+	#		
+	#		add_country_modifier = { 
+	#			name = swe_global_trade_empire_modifier
+	#			duration = -1 
+	#		}
+	#	}
+	#}
+	#swe_colonize_west_african_coast = {
+	#	icon = mission_west_african_ports
+	#	position = 11
+	#	required_missions = { swe_colonial_ambitions }
+	#	provinces_to_highlight = {
+	#		region = guinea_region
+	#		NOT = { country_or_non_sovereign_subject_holds = ROOT }
+	#	}
+	#	trigger = {
+	#		num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+	#			region = guinea_region
+	#			value = 3
+	#		}
+	#	}
+	#	effect = {
+	#		create_explorer = {
+	#			tradition = 50
+	#		}
+	#		guinea_coast_area = {
+	#			limit = {
+	#				NOT = { is_core = ROOT }
+	#				NOT = { is_permanent_claim = ROOT }
+	#			}
+	#			add_permanent_claim = ROOT
+	#		}
+	#		benin_area = {
+	#			limit = {
+	#				NOT = { is_core = ROOT }
+	#				NOT = { is_permanent_claim = ROOT }
+	#			}
+	#			add_permanent_claim = ROOT
+	#		}
+	#	}
+	#}
+	#
+	#swe_beyond_africa = {
+	#	icon = mission_coromandel_trade
+	#	position = 12
+	#	required_missions = { swe_colonize_west_african_coast }
+	#	provinces_to_highlight = {
+	#		has_discovered = ROOT
+	#		NOT = { owned_by = ROOT }
+	#		continent = asia
+	#	}
+	#	trigger = {
+	#		num_of_owned_provinces_with = {
+	#			continent = asia
+	#			value = 8
+	#		}
+	#	}
+	#	effect = {
+	#		add_prestige = 25
+	#		add_country_modifier = {
+	#			name = swe_swedish_influence_in_asia
+	#			duration = 18250
+	#		}
+	#	}
+	#}
 }
 
 swe_kalmar_union_mission_slot = {
@@ -1343,62 +1400,144 @@ swe_kalmar_union_mission_slot = {
 	}
 	has_country_shield = yes
 	
+	swe_military_advisor = {
+		icon = mission_swedish_military_advise
+		position = 1
+		required_missions = {  }
+		provinces_to_highlight = {}
+		trigger = {
+			has_mil_advisor = yes
+			OR = {
+				#is_subject = no
+				#custom_trigger_tooltip = {
+				#	tooltip = swe_military_advisor_tt
+				#	has_country_modifier = swe_vasa_leads_the_rebellion
+				#}
+				#liberty_desire = 100
+				num_of_estate_privileges = { estate = estate_nobles value = 2 }
+				estate_territory = {
+					estate = estate_nobles
+					territory = 30
+				}
+			}
+		}
+		effect = {
+			#if = {
+			#	limit = {
+			#		OR = {
+			#			has_country_modifier = swe_vasa_leads_the_rebellion
+			#			is_subject = no
+			#		}
+			#	}
+			#	add_adm_power = 100
+			#	add_mil_power = 100
+			#}
+			#else = {
+			#	country_event = {
+			#		id = flavor_swe.104
+			#	}
+			#}
+			country_event = {
+				id = flavor_swe.104
+			}
+		}
+	}
+	
 	swe_declare_independence = {
 		icon = mission_swedish_independence
 		position = 2
 		required_missions = {
-			swe_engelbrekt_rebellion
+			#swe_engelbrekt_rebellion
 			swe_military_advisor
-			swe_swedish_allies
-			swe_gain_support_from_estates
+			#swe_swedish_allies
+			#swe_gain_support_from_estates
 		}
 		provinces_to_highlight = {}
 		trigger = {
 			is_subject = no
+			num_of_generals = 1
+			army_size_percentage = 0.8
 		}
 		effect = {
-			add_stability_or_adm_power = yes
-			if = {
-				limit = {
-					is_subject = yes
-				}
-				custom_tooltip = swe_declare_independence_ct
-				hidden_effect = {
-					set_country_flag = swe_declared_independence_war
-				}
+			#add_stability_or_adm_power = yes
+			#if = {
+			#	limit = {
+			#		is_subject = yes
+			#	}
+			#	custom_tooltip = swe_declare_independence_ct
+			#	hidden_effect = {
+			#		set_country_flag = swe_declared_independence_war
+			#	}
+			#}
+			#else_if = {
+			#	limit = {
+			#		is_subject = no
+			#		is_at_war = yes
+			#	}
+			#	custom_tooltip = swe_declare_independence_ct
+			#	hidden_effect = {
+			#		set_country_flag = swe_declared_independence_war
+			#	}
+			#}
+			#else_if = {
+			#	limit = {
+			#		is_subject = no
+			#	}
+			#	country_event = {
+			#		id = flavor_swe.121
+			#	}
+			#}
+			#skaneland_area = {
+			#	limit = {
+			#		NOT = { is_core = ROOT }
+			#		NOT = { is_permanent_claim = ROOT }
+			#	}
+			#	add_permanent_claim = ROOT
+			#}
+			country_event = {
+				id = flavor_swe.121
 			}
-			else_if = {
-				limit = {
-					is_subject = no
-					is_at_war = yes
+			custom_tooltip = tm_event_insight_insight_tt
+			tooltip = {
+				if = {
+					limit = { NOT = { owns_core_province = 16 } }
+					add_permanent_claim = 16
 				}
-				custom_tooltip = swe_declare_independence_ct
-				hidden_effect = {
-					set_country_flag = swe_declared_independence_war
-				}
+				skaneland_area = { add_perma_claim = yes }
+				add_prestige = 20
 			}
-			else_if = {
-				limit = {
-					is_subject = no
-				}
-				country_event = {
-					id = flavor_swe.121
-				}
+		}
+	}
+
+	tm_swe_building_a_navy = {
+		icon = mission_develop_nevas_port
+		position = 3
+		required_missions = { swe_declare_independence }
+		provinces_to_highlight = {
+			has_port = yes
+			owned_by = ROOT
+		}
+		trigger = {
+			OR = {
+				navy_size_percentage = 0.9
+				navy_size = 20
 			}
-			skaneland_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
+			OR = {
+				num_of_galley = 10
+				num_of_heavy_ship = 3
 			}
+		}
+		effect = {
+			estonia_ingria_area = { add_perma_claim = yes }
+			curonia_area = { add_perma_claim = yes }
+			livonia_area = { add_perma_claim = yes }
 		}
 	}
 	
 	swe_the_livonian_order = {
 		icon = mission_the_livonians
-		position = 3
-		required_missions = { swe_declare_independence }
+		position = 4
+		required_missions = { tm_swe_building_a_navy }
 		provinces_to_highlight = {
 			OR = {
 				area = estonia_ingria_area
@@ -1408,167 +1547,36 @@ swe_kalmar_union_mission_slot = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			if = {
-				limit = {
-					NOT = { has_country_flag = swe_polish_swedish_coexistence_goal }
-				}
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					OR = {
-						area = estonia_ingria_area
-						area = livonia_area
-						area = curonia_area
-					}
-					value = 6
-				}
-				owns_or_non_sovereign_subject_of = 38
-			}
-			else = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				OR = {
-					custom_trigger_tooltip = {
-						tooltip = swe_the_livonian_order_at
-						num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-							OR = {
-								area = estonia_ingria_area
-								area = livonia_area
-								area = curonia_area
-							}
-							value = 6
-						}
-						owns_or_non_sovereign_subject_of = 38
-					}
-					if = {
-						limit = {
-							exists = PLC
-						}
-						custom_trigger_tooltip = {
-							tooltip = swe_the_livonian_order_bt
-							alliance_with = PLC
-							reverse_has_opinion = { who = PLC value = 100 }
-							PLC = {
-								num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-									OR = {
-										area = estonia_ingria_area
-										area = livonia_area
-										area = curonia_area
-									}
-									value = 6
-								}
-							}
-							OR = {
-								owns_or_non_sovereign_subject_of = 38
-								AND = {
-									PLC = { owns_or_non_sovereign_subject_of = 38 }
-									treasury = 1000
-								}
-							}
-						}
-					}
-					else_if = {
-						limit = {
-							exists = POL
-						}
-						custom_trigger_tooltip = {
-							tooltip = swe_the_livonian_order_bt
-							alliance_with = POL
-							reverse_has_opinion = { who = POL value = 100 }
-							POL = {
-								num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-									OR = {
-										area = estonia_ingria_area
-										area = livonia_area
-										area = curonia_area
-									}
-									value = 6
-								}
-							}
-							OR = {
-								owns_or_non_sovereign_subject_of = 38
-								AND = {
-									POL = { owns_or_non_sovereign_subject_of = 38 }
-									treasury = 1000
-								}
-							}
-						}
-					}
-					else = {
-						NOT = { exists = POL }
-						NOT = { exists = PLC }
-					}
+					area = estonia_ingria_area
+					area = livonia_area
+					area = curonia_area
 				}
+				value = 6
 			}
+			owns_or_non_sovereign_subject_of = 38
 		}
 		effect = {
-			if = {
-				limit = {
-					OR = {
-						AND = {
-							NOT = { exists = PLC }
-							NOT = { exists = POL }
-						}
-						NOT = { has_country_flag = swe_polish_swedish_coexistence_goal }
+			38 = {
+				hidden_effect = {
+					if = {
+						limit = { NOT = { province_has_center_of_trade_of_level = 2 } }
+						add_center_of_trade_level = 1
 					}
 				}
-				38 = {
-					hidden_effect = {
-						if = {
-							limit = { NOT = { province_has_center_of_trade_of_level = 2 } }
-							add_center_of_trade_level = 1
-						}
-					}
-					custom_tooltip = will_upgrade_center_of_trade_to_level_2_tt
-				}
-				38 = {
-					add_base_tax = 2
-					add_base_production = 2
-					add_base_manpower = 1
-					add_latest_building = {
-						trade = yes
-						builder = ROOT
-					}
-				}
-				east_prussia_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				west_prussia_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
+				custom_tooltip = will_upgrade_center_of_trade_to_level_2_tt
+			}
+			38 = {
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				add_latest_building = {
+					trade = yes
+					builder = ROOT
 				}
 			}
-			else = {
-				if = {
-					limit = {
-						NOT = { owns_or_non_sovereign_subject_of = 38 }
-					}
-					country_event = {
-						id = flavor_swe.129
-					}
-				}
-				else = {
-					38 = {
-						if = {
-							limit = { NOT = { province_has_center_of_trade_of_level = 2 } }
-							add_center_of_trade_level = 1
-						}
-						else = {
-							custom_tooltip = will_upgrade_center_of_trade_to_level_2_tt
-						}
-						add_base_tax = 2
-						add_base_production = 2
-						add_base_manpower = 1
-						add_latest_building = {
-							trade = yes
-							builder = ROOT
-						}
-					}
-				}
-			}
+			baltic_region = { add_perma_claim = yes }
 		}
 	}
 	
@@ -1580,157 +1588,51 @@ swe_kalmar_union_mission_slot = {
 			OR = {
 				area = east_prussia_area
 				area = west_prussia_area
+				area = memel_area
 			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			if = {
-				limit = {
-					NOT = { has_country_flag = swe_polish_swedish_coexistence_goal }
-				}
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					OR = {
-						area = east_prussia_area
-						area = west_prussia_area
-					}
-					value = 5
-				}
-				owns_or_non_sovereign_subject_of = 40
-			}
-			else = {
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
 				OR = {
-					custom_trigger_tooltip = {
-						tooltip = swe_the_teutonic_order_at
-						num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-							OR = {
-								area = east_prussia_area
-								area = west_prussia_area
-							}
-							value = 5
-						}
-						owns_or_non_sovereign_subject_of = 40
-					}
-					if = {
-						limit = {
-							exists = PLC
-						}
-						custom_trigger_tooltip = {
-							tooltip = swe_the_teutonic_order_bt
-							alliance_with = PLC
-							reverse_has_opinion = { who = PLC value = 100 }
-							PLC = {
-								num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-									OR = {
-										area = east_prussia_area
-										area = west_prussia_area
-									}
-									value = 5
-								}
-							}
-							OR = {
-								owns_or_non_sovereign_subject_of = 40
-								AND = {
-									PLC = { owns_or_non_sovereign_subject_of = 40 }
-									treasury = 500
-								}
-							}
-						}
-					}
-					else_if = {
-						limit = {
-							exists = POL
-						}
-						custom_trigger_tooltip = {
-							tooltip = swe_the_teutonic_order_bt
-							alliance_with = POL
-							reverse_has_opinion = { who = POL value = 100 }
-							POL = {
-								num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-									OR = {
-										area = east_prussia_area
-										area = west_prussia_area
-									}
-									value = 5
-								}
-							}
-							OR = {
-								owns_or_non_sovereign_subject_of = 40
-								AND = {
-									POL = { owns_or_non_sovereign_subject_of = 40 }
-									treasury = 500
-								}
-							}
-						}
-					}
-					else = {
-						NOT = { exists = POL }
-						NOT = { exists = PLC }
-					}
+					area = east_prussia_area
+					area = west_prussia_area
+					area = memel_area
 				}
+				value = 5
 			}
+			owns_or_non_sovereign_subject_of = 40
 		}
 		effect = {
-			if = {
-				limit = {
-					OR = {
-						AND = {
-							NOT = { exists = PLC }
-							NOT = { exists = POL }
-						}
-						NOT = { has_country_flag = swe_polish_swedish_coexistence_goal }
-					}
-				}
-				40 = {
-					add_base_tax = 2
-					add_base_production = 2
-					add_base_manpower = 1
-					add_latest_building = {
-						trade = yes
-						builder = ROOT
-					}
-				}
-				hinter_pommern_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				vorpommern_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				mecklenburg_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
+			40 = {
+				add_base_tax = 2
+				add_base_production = 2
+				add_base_manpower = 2
+				add_latest_building = {
+					trade = yes
+					builder = ROOT
 				}
 			}
-			else = {
-				if = {
-					limit = {
-						NOT = { owns_or_non_sovereign_subject_of = 40 }
-					}
-					country_event = {
-						id = flavor_swe.125
-					}
+			hinter_pommern_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
 				}
-				else = {
-					40 = {
-						add_base_tax = 2
-						add_base_production = 2
-						add_base_manpower = 1
-						add_latest_building = {
-							trade = yes
-							builder = ROOT
-						}
-					}
+				add_permanent_claim = ROOT
+			}
+			vorpommern_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
 				}
+				add_permanent_claim = ROOT
+			}
+			mecklenburg_area = {
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
 			}
 		}
 	}
@@ -1738,7 +1640,7 @@ swe_kalmar_union_mission_slot = {
 	swe_dominium_maris_baltici = {
 		icon = mission_baltic_empire
 		position = 6
-		required_missions = { swe_the_teutonic_order }
+		required_missions = { swe_swedish_pommerania swe_the_teutonic_order }
 		provinces_to_highlight = {
 			OR = {
 				region = baltic_region
@@ -1756,84 +1658,36 @@ swe_kalmar_union_mission_slot = {
 				area = vorpommern_area
 				area = hinter_pommern_area
 				area = eastern_norway
+				area = lower_saxony_area
 			}
 			has_port = yes
-			owner = {
-				NOT = { tag = ROOT }
-				NOT = { is_subject_of = ROOT }
-				NOT = { alliance_with = ROOT }
-			}
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
 			custom_trigger_tooltip = {
 				tooltip = swe_dominium_maris_baltici_tt
-				baltic_region = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-				karelia_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-				finland_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-				ostra_svealand_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-				norrland_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-				bothnia_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-				gotaland_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-				skaneland_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-				denmark_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-				jutland_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-				holstein_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-				mecklenburg_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-				vorpommern_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-				hinter_pommern_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-				eastern_norway = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
+				baltic_region = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
+				karelia_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
+				finland_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
+				ostra_svealand_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
+				norrland_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
+				bothnia_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
+				gotaland_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
+				skaneland_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
+				denmark_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
+				jutland_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
+				holstein_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
+				mecklenburg_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
+				vorpommern_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
+				hinter_pommern_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
+				eastern_norway = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
+				lower_saxony_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
 			}
 		}
 		effect = {
-			if = {
-				limit = {
-					baltic_region = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
-					karelia_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
-					finland_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
-					ostra_svealand_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
-					norrland_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
-					bothnia_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
-					gotaland_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
-					skaneland_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
-					denmark_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
-					jutland_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
-					holstein_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
-					mecklenburg_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
-					vorpommern_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
-					hinter_pommern_area = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
-					eastern_norway = { OR = { country_or_non_sovereign_subject_holds = ROOT has_port = no } type = all }
-				}
-				add_country_modifier = {
-					name = swe_dominium_maris_baltici_mod
-					duration = -1
-				}
-			}
-			else_if = {
-				limit = {
-					baltic_region = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-					karelia_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-					finland_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-					ostra_svealand_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-					norrland_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-					bothnia_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-					gotaland_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-					skaneland_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-					denmark_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-					jutland_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-					holstein_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-					mecklenburg_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-					vorpommern_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-					hinter_pommern_area = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-					eastern_norway = { OR = { owner = { OR = { tag = ROOT is_subject_of = ROOT alliance_with = ROOT } } has_port = no } type = all }
-				}
-				add_country_modifier = {
-					name = swe_baltic_diplomacy
-					duration = 9125
-				}
-			}
-			else = {
-				custom_tooltip = swe_dominium_maris_baltici_ct
+			add_country_modifier = {
+				name = sca_great_empire_of_scandinavia
+				duration = -1
 			}
 		}
 	}
@@ -1847,7 +1701,7 @@ swe_kalmar_union_mission_slot = {
 			NOT = { owned_by = ROOT }
 		}
 		trigger = {
-			share_of_starting_income = 2
+			share_of_starting_income = 2.5
 			NOT = { num_of_loans = 1 }
 			NOT = { corruption = 1 }
 			is_bankrupt = no
@@ -1899,6 +1753,41 @@ swe_kalmar_union_mission_slot = {
 			country_event = {
 				id = flavor_swe.112
 			}
+			custom_tooltip = tm_event_insight_insight_tt
+			custom_tooltip = tm_event_insight_option_1
+			tooltip = {
+				8 = {
+					set_great_project_tier_2 = {
+						type = falun_copper_mine
+					}
+				}
+				add_treasury = -1500
+			}
+			custom_tooltip = tm_upgrades_great_project_up_to_tier_2_tt
+			custom_tooltip = tm_event_insight_option_2
+			tooltip = {
+				8 = {
+					if = {
+						limit = {
+							has_manufactory_trigger = yes
+						}
+						add_base_production = 4
+					}
+					else = {
+						add_manufactory = yes
+					}
+					if = {
+						limit = {
+							has_building = counting_house
+						}
+						add_base_production = 2
+					}
+					else = {
+						add_building = counting_house
+					}
+				}
+				add_treasury = -750
+			}
 		}
 	}
 	
@@ -1927,22 +1816,22 @@ swe_kalmar_union_mission_slot = {
 			owns_core_province = 5
 			owns_core_province = 1985
 			8 = {
-				base_production = 5
+				base_production = 8
 				has_production_building_trigger = yes
 				has_manufactory_trigger = yes
 			}
 			4 = {
-				base_production = 5
+				base_production = 8
 				has_production_building_trigger = yes
 				has_manufactory_trigger = yes
 			}
 			5 = {
-				base_production = 5
+				base_production = 8
 				has_production_building_trigger = yes
 				has_manufactory_trigger = yes
 			}
 			1985 = {
-				base_production = 5
+				base_production = 8
 				has_production_building_trigger = yes
 				has_manufactory_trigger = yes
 			}
@@ -1951,7 +1840,8 @@ swe_kalmar_union_mission_slot = {
 		effect = {
 			add_country_modifier = {
 				name = swe_guns_drums_and_steel
-				duration = 9125
+				#duration = 9125
+				duration = 5475
 			}
 			add_years_of_owned_provinces_production_income = {
 				years = 4
@@ -1977,13 +1867,12 @@ swe_kalmar_union_mission_slot = {
 			reform_level = 5
 			OR = {
 				AND = {
-					mil_tech = 19
+					mil_tech = 15
 					army_tradition = 40
 				}
-				absolutism = 75
 				AND = {
 					has_mil_advisor_3 = yes
-					mil_power_cost = 800
+					mil_power_cost = 400
 					if = {
 						limit = {
 							#Promote Advisors - +2
@@ -1992,7 +1881,7 @@ swe_kalmar_union_mission_slot = {
 							has_dlc = "Res Publica"
 							has_dlc = "Common Sense"
 						}
-						monthly_mil = 16
+						monthly_mil = 15
 					}
 					else_if = {
 						limit = {
@@ -2002,10 +1891,10 @@ swe_kalmar_union_mission_slot = {
 								has_dlc = "Common Sense"
 							}
 						}
-						monthly_mil = 14
+						monthly_mil = 13
 					}
 					else = {
-						monthly_mil = 12
+						monthly_mil = 11
 					}
 					has_completed_idea_group_of_category = {
 						mil_ideas = yes
@@ -2016,19 +1905,27 @@ swe_kalmar_union_mission_slot = {
 		effect = {
 			if = {
 				limit = {
-					OR = {
-						mil_tech = 19
-						absolutism = 75
-					}
+					mil_tech = 15
 				}
 				custom_tooltip = swe_the_carolean_units_at
 			}
 			else = {
-				mil_power_cost = 800
+				mil_power_cost = 400
 				custom_tooltip = swe_the_carolean_units_bt
 			}
 			country_event = {
 				id = flavor_swe.103
+			}
+			custom_tooltip = tm_event_insight_insight_tt
+			tooltip = {
+				unlock_government_reform = {
+					government_reform = allotment_system
+				}
+				if = {
+					limit = { government = monarchy }
+					add_government_reform = allotment_system
+				}
+				add_army_professionalism = 0.05
 			}
 		}
 	}
@@ -2082,51 +1979,47 @@ swe_internal_slot = {
 		NOT = { map_setup = map_setup_random }
 	}
 	has_country_shield = yes
-	
-	swe_military_advisor = {
-		icon = mission_swedish_military_advise
-		position = 1
-		required_missions = {  }
-		provinces_to_highlight = {}
-		trigger = {
-			has_mil_advisor = yes
-			OR = {
-				is_subject = no
-				custom_trigger_tooltip = {
-					tooltip = swe_military_advisor_tt
-					has_country_modifier = swe_vasa_leads_the_rebellion
-				}
-				liberty_desire = 100
-				estate_territory = {
-					estate = estate_nobles
-					territory = 30
-				}
-			}
+
+	tm_swe_claims_in_novgorod = {
+		icon = a_show_of_strength
+		position = 3
+		required_missions = {
+			swe_declare_independence
 		}
-		effect = {
+		trigger = {
 			if = {
 				limit = {
-					OR = {
-						has_country_modifier = swe_vasa_leads_the_rebellion
-						is_subject = no
+					310 = {
+						owner = { is_or_was_tag = { tag = NOV }}
 					}
 				}
-				add_adm_power = 100
-				add_mil_power = 100
+				NOV = { has_been_insulted_by_root = yes }
+			}
+			else_if = {
+				limit = {
+					310 = { NOT = { country_or_non_sovereign_subject_holds = ROOT } }
+				}
+				310 = { owner = { has_been_insulted_by_root = yes } }
 			}
 			else = {
-				country_event = {
-					id = flavor_swe.104
-				}
+				310 = { NOT = { unrest = 3 } }
 			}
+			num_of_generals = 2
+			army_size = 30
+		}
+		effect = {
+			karelia_area = { add_perma_claim = yes }
+			north_karelia = { add_perma_claim = yes }
+			pomor_area = { add_perma_claim = yes }
+			novgorod_area = { add_perma_claim = yes }
 		}
 	}
 	
 	swe_conquest_of_novgorod = {
 		icon = mission_novgorod_the_great
-		position = 3
+		position = 4
 		required_missions = {
-			swe_declare_independence
+			tm_swe_claims_in_novgorod
 		}
 		provinces_to_highlight = {
 			OR = {
@@ -2159,7 +2052,7 @@ swe_internal_slot = {
 			}
 		}
 		effect = {
-			add_accepted_culture_or_dip_power = { culture = novgorodian dip_reward = yes }
+			add_accepted_culture_or_dip_power = { culture = novgorodian }
 			310 = {
 				change_province_name = "Hólmgarðr"
 				rename_capital = "Hólmgarðr"
@@ -2193,33 +2086,18 @@ swe_internal_slot = {
 					change_culture = novgorodian
 				}
 			}
-			tver_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			moscow_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
-			pskov_area = {
-				limit = {
-					NOT = { is_core = ROOT }
-					NOT = { is_permanent_claim = ROOT }
-				}
-				add_permanent_claim = ROOT
-			}
+			tver_area = { add_perma_claim = yes }
+			moscow_area = { add_perma_claim = yes }
+			pskov_area = { add_perma_claim = yes }
+			arkhangelsk_area = { add_perma_claim = yes }
+			vologda_area = { add_perma_claim = yes }
+			yaroslavl_area = { add_perma_claim = yes }
 		}
 	}
 	
 	swe_conquest_of_moscovy = {
 		icon = mission_take_over_the_kremlin
-		position = 4
+		position = 5
 		required_missions = { swe_conquest_of_novgorod }
 		provinces_to_highlight = {
 			province_id = 295
@@ -2231,7 +2109,6 @@ swe_internal_slot = {
 		trigger = {
 			owns_core_province = 295
 			295 = {
-				is_in_capital_area = yes
 				NOT = { local_autonomy = 20 }
 				NOT = { unrest = 1 }
 				OR = {
@@ -2245,7 +2122,11 @@ swe_internal_slot = {
 				name = swe_east_european_integration
 				duration = -1
 			}
-			add_prestige = 30
+			add_prestige_or_monarch_power = { amount = 50 }
+			russia_region = { add_perma_claim = yes }
+			smolensk_area = { add_perma_claim = yes }
+			white_ruthenia_area = { add_perma_claim = yes }
+			minsk_area = { add_perma_claim = yes }
 		}
 	}
 	
@@ -2253,81 +2134,70 @@ swe_internal_slot = {
 		icon = mission_king_of_eastern_europe
 		position = 6
 		required_missions = {
-			swe_the_polish_throne
+			#swe_the_polish_throne
+			tm_swe_take_finland
 			swe_conquest_of_moscovy
 			swe_the_teutonic_order
 		}
 		provinces_to_highlight = {
 			OR = {
-				AND = {
-					OR = {
-						province_id = 295
-						province_id = 310
-						province_id = 33
-						province_id = 38
-					}
-					NOT = { country_or_non_sovereign_subject_holds = ROOT }
-				}
-				AND = {
-					OR = {
-						province_id = 262
-						province_id = 272
-					}
-					owner = {
-						NOT = { tag = ROOT }
-						NOT = { is_subject_of = ROOT }
-						NOT = {
-							OR = {
-								alliance_with = ROOT
-								has_opinion = { who = ROOT value = 100 }
-								trust = { who = ROOT value = 75 }
-							}
-						}
-					}
-				}
+				province_id = 295
+				province_id = 310
+				province_id = 33
+				province_id = 38
 			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
 			owns_or_non_sovereign_subject_of = 295
 			owns_or_non_sovereign_subject_of = 310
 			owns_or_non_sovereign_subject_of = 33
 			owns_or_non_sovereign_subject_of = 38
-			262 = {
-				owner = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-						AND = {
-							alliance_with = ROOT
-							has_opinion = { who = ROOT value = 100 }
-							if = {
-								limit = { has_dlc = "Leviathan" }
-								trust = { who = ROOT value = 75 }
-							}
-						}
-					}
-				}
-			}
-			272 = {
-				owner = {
-					OR = {
-						tag = ROOT
-						is_subject_of = ROOT
-						AND = {
-							alliance_with = ROOT
-							has_opinion = { who = ROOT value = 100 }
-							if = {
-								limit = { has_dlc = "Leviathan" }
-								trust = { who = ROOT value = 75 }
-							}
-						}
-					}
-				}
-			}
 		}
 		effect = {
 			country_event = {
 				id = flavor_swe.123
+			}
+			custom_tooltip = tm_event_insight_insight_tt
+			tooltip = {
+				if = {
+					limit = { has_dlc = "Rights of Man" }
+					add_ruler_personality = entrepreneur_personality
+				}
+				else = { add_dip_power = 100 } 
+				change_dip = 1 		
+				33 = {
+					add_trade_modifier = {
+						who = ROOT
+						duration = -1
+						power = 15
+						key = swe_the_varangian_route
+					}
+				}
+				280 = {
+					add_trade_modifier = {
+						who = ROOT
+						duration = -1
+						power = 15
+						key = swe_the_varangian_route
+					}
+				}
+				1322 = {
+					add_trade_modifier = {
+						who = ROOT
+						duration = -1
+						power = 15
+						key = swe_the_varangian_route
+					}
+				}
+				1652 = {
+					add_trade_modifier = {
+						who = ROOT
+						duration = -1
+						power = 15
+						key = swe_the_varangian_route
+					}
+				}
 			}
 		}
 	}
@@ -2338,7 +2208,7 @@ swe_internal_slot = {
 		required_missions = { swe_dabble_into_european_diplomacy }
 		provinces_to_highlight = {
 			owner = {
-				NOT = { great_power_rank = 4 }
+				is_great_power = yes
 				NOT = { tag = ROOT }
 			}
 		}
@@ -2350,7 +2220,13 @@ swe_internal_slot = {
 						has_dlc = "Rights of Man"
 					}
 				}
-				NOT = { great_power_rank = 4 }
+				#NOT = { great_power_rank = 4 }
+				is_great_power = yes
+				total_development = 1000
+				OR = {
+					army_size_percentage = 1.0
+					army_size = 200
+				}
 			}
 			else = {
 				NOT = {
@@ -2368,6 +2244,7 @@ swe_internal_slot = {
 				type = mission_rewards_power_projection
 				amount = 25
 			}
+			add_prestige_or_monarch_power = { amount = 100 }
 		}
 	}
 	
@@ -2410,6 +2287,13 @@ swe_internal_slot = {
 			country_event = {
 				id = flavor_swe.119
 			}
+			custom_tooltip = tm_event_insight_insight_tt
+			tooltip = {
+				add_adm_power = 150
+				change_innovativeness = 3
+				1 = { add_building = university }
+				6 = { add_building = university }
+			}
 		}
 	}
 	
@@ -2417,7 +2301,15 @@ swe_internal_slot = {
 		icon = mission_vasa
 		position = 10
 		required_missions = {  }
-		provinces_to_highlight = {}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 1
+				province_id = 2
+				province_id = 7
+				province_id = 27
+			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
+		}
 		trigger = {
 			monthly_adm = 10
 			religious_unity = 0.8
@@ -2432,10 +2324,46 @@ swe_internal_slot = {
 					legitimacy_equivalent = 95
 				}
 			}
+			1 = { country_or_non_sovereign_subject_holds = ROOT }
+			2 = { country_or_non_sovereign_subject_holds = ROOT }
+			7 = { country_or_non_sovereign_subject_holds = ROOT }
+			27 = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		effect = {
 			country_event = {
 				id = flavor_swe.133
+			}
+			custom_tooltip = tm_event_insight_insight_tt
+			tooltip = {
+				add_reform_progress_small_effect = yes		
+		
+				1 = {	# Stockholm
+					add_base_tax = 2
+				}
+				2 = {	#�sterg�tland
+					add_base_tax = 1
+				}
+				7 = {	#V�sterg�tland
+					add_base_production = 2
+				}
+				27 = {	#Finland
+					add_base_tax = 1
+				}
+				1 = {	# Stockholm
+					add_base_manpower = 2
+				}
+				27 = {	#Finland
+					add_base_manpower = 2
+				}
+				
+				add_adm_power = -25
+				add_dip_power = -25
+				add_mil_power = -25
+				
+				add_country_modifier = {
+					name = vasa_centralization_reforms
+					duration = -1
+				}
 			}
 		}
 	}
@@ -2445,19 +2373,27 @@ swe_internal_slot = {
 		position = 11
 		required_missions = { swe_reforms_of_vasa }
 		provinces_to_highlight = {
-			owned_by = ROOT
-			OR = {
-				province_id = 28
-				culture = finnish
-			}
 			OR = {
 				AND = {
-					NOT = { province_id = 28 }
-					NOT = { development = 10 }
+					owned_by = ROOT
+					OR = {
+						province_id = 28
+						culture = finnish
+					}
+					OR = {
+						AND = {
+							NOT = { province_id = 28 }
+							NOT = { development = 10 }
+						}
+						AND = {
+							province_id = 28 
+							NOT = { development = 15 }
+						}
+					}
 				}
 				AND = {
-					province_id = 28 
-					NOT = { development = 15 }
+					culture = finnish
+					NOT = { country_or_non_sovereign_subject_holds = ROOT }
 				}
 			}
 		}
@@ -2475,6 +2411,9 @@ swe_internal_slot = {
 			28 = { 
 				center_of_trade = 2
 				add_building = town_hall
+				change_trade_goods = grain
+				add_base_production = 1
+				add_base_manpower = 1
 			}
 			add_stability_or_adm_power = yes
 		}
@@ -2492,20 +2431,25 @@ swe_internal_slot = {
 			}
 		}
 		trigger = {
-			has_global_modifier_value = {
-				which = discipline
-				value = 0.1
-			}
+			#has_global_modifier_value = {
+			#	which = discipline
+			#	value = 0.1
+			#}
 			num_of_owned_provinces_with = {
 				culture = finnish
 				has_manpower_building_trigger = yes
-				value = 5
+				base_manpower = 5
+				value = 8
 			}
 		}
 		effect = {
-			unlock_merc_company = {
-				merc_company = merc_hakkapeliita_cavalry
-				free_merc = yes
+			#unlock_merc_company = {
+			#	merc_company = merc_hakkapeliita_cavalry
+			#	#free_merc = yes
+			#}
+			add_country_modifier = {
+				name = tm_swe_finnish_steel
+				duration = 3650
 			}
 		}
 	}
@@ -2537,6 +2481,7 @@ swe_swedish_military_mission_slot = {
 		required_missions = {}
 		provinces_to_highlight = {}
 		trigger = {
+			is_at_war = no
 			OR = {
 				custom_trigger_tooltip = {
 					tooltip = swe_gain_support_from_estates_ct
@@ -2561,54 +2506,47 @@ swe_swedish_military_mission_slot = {
 					NOT = { has_estate = estate_church }
 					amount = 2
 				}
-				AND = {
-					is_subject = yes
-					liberty_desire = 100
-					custom_trigger_tooltip = {
-						tooltip = swe_gain_support_from_estates_tt
-						has_country_flag = dan_had_stockholm_bloodbath
-					}
-				}
-				AND = {
-					is_free_or_tributary_trigger = yes
-					is_at_war = no
-				}
 			}
 		}
 		effect = {
-			if = {
-				limit = {
-					is_free_or_tributary_trigger = yes
-				}
-				add_adm_power = 50
-				add_dip_power = 50
-				add_mil_power = 50
+			#if = {
+			#	limit = {
+			#		is_free_or_tributary_trigger = yes
+			#	}
+			#	add_adm_power = 50
+			#	add_dip_power = 50
+			#	add_mil_power = 50
+			#}
+			#else = {
+			#	if = {
+			#		limit = {
+			#			has_country_flag = dan_had_stockholm_bloodbath
+			#		}
+			#		country_event = {
+			#			id = flavor_swe.1080
+			#		}
+			#	}
+			#	else = {
+			#		custom_tooltip = swe_gain_support_from_estates_at
+			#		country_event = {
+			#			id = flavor_swe.108
+			#		}
+			#	}
+			#}
+			country_event = {
+				id = flavor_swe.108
 			}
-			else = {
-				if = {
-					limit = {
-						has_country_flag = dan_had_stockholm_bloodbath
-					}
-					country_event = {
-						id = flavor_swe.1080
-					}
-				}
-				else = {
-					custom_tooltip = swe_gain_support_from_estates_at
-					country_event = {
-						id = flavor_swe.108
-					}
-				}
-			}
+			custom_tooltip = tm_event_insight_insight_tt
+			custom_tooltip = "We will have the opertunity to make concessions to an estate with at least 3 privileges in order to recieve aid in our expansion or we can choose to not seek their aid."
 		}
 	}
 	
-	swe_a_new_dynasty = { #Get Stability and Legitimacy up
+	swe_a_new_dynasty = {
 		icon = mission_restore_faith_in_the_throne
 		position = 3
-		required_missions = { 
-			swe_gain_support_from_estates
+		required_missions = {
 			swe_declare_independence
+			swe_gain_support_from_estates
 		}
 		provinces_to_highlight = {}
 		trigger = {
@@ -2616,240 +2554,287 @@ swe_swedish_military_mission_slot = {
 			legitimacy_equivalent = 80
 			is_subject = no
 			is_at_war = no
-			OR = {
-				custom_trigger_tooltip = {
-					tooltip = swe_a_new_dynasty_ct
-					NOT = { has_country_modifier = swe_debt_with_the_clergy }
-					NOT = { has_country_modifier = swe_debt_with_the_burghers }
-					NOT = { has_country_modifier = swe_debt_with_the_nobles }
-					NOT = { has_country_flag = swe_in_estate_event }
-				}
-				AND = {
-					NOT = { has_estate = estate_burghers }
-					NOT = { has_estate = estate_church }
-					NOT = { has_estate = estate_nobles }
-				}
-			}
+			years_of_income = 0.25
 		}
 		effect = {
-			country_event = {
-				id = flavor_swe.124
-			}
+			add_stability_or_adm_power = yes
+			vaasa_area = { add_perma_claim = yes }
+			finland_area = { add_perma_claim = yes }
+			bothnia_area = { add_perma_claim = yes }
 		}
 	}
-	
-	swe_the_polish_throne = {
-		icon = mission_the_polish_throne
+
+	tm_swe_take_finland = {
+		icon = mission_unite_home_region
 		position = 5
-		required_missions = { 
-			swe_a_new_dynasty
-		}
+		required_missions = { swe_a_new_dynasty }
 		provinces_to_highlight = {
-			if = {
-				limit = { exists = PLC }
-				owned_by = PLC
+			OR = {
+				area = vaasa_area
+				area = finland_area
+				area = bothnia_area
 			}
-			else = {
-				owned_by = POL
-			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			if = {
-				limit = { 
-					religion_group = christian
-					has_country_flag = swe_polish_throne_goal
-				}
-				OR = {
-					if = {
-						limit = { exists = PLC }
-						PLC = { dynasty = ROOT }
-						prestige = PLC
-						legitimacy_equivalent = PLC
-					}
-					else_if = {
-						limit = { exists = POL }
-						POL = { dynasty = ROOT }
-						prestige = POL
-						legitimacy_equivalent = POL
-					}
-					else = {
-						NOT = { exists = PLC }
-						NOT = { exists = POL }
-					}
-					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-						region = poland_region
-						value = 20
-					}
-				}
-			}
-			else_if = {
-				limit = { 
-					OR = {
-						AND = {
-							NOT = { religion_group = christian }
-							has_country_flag = swe_polish_throne_goal
-						}
-						has_country_flag = swe_poland_conquest_goal
-					}
-				}
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					region = poland_region
-					value = 15
-				}
-			}
-			else_if = {
-				limit = { has_country_flag = swe_polish_swedish_coexistence_goal }
-				if = {
-					limit = { exists = PLC }
-					alliance_with = PLC
-					reverse_has_opinion = { who = PLC value = 150 }
-					if = {
-						limit = { has_dlc = "Leviathan" }
-						PLC = { trust = { who = ROOT value = 80 } }
-					}
-					else = {
-						PLC = {
-							has_opinion_modifier = {
-								who = ROOT 
-								modifier = sent_gift
-							}
-						}
-					}
-					if = {
-						limit = { PLC = { government = monarchy } ROOT = { government = monarchy } }
-						marriage_with = PLC
-					}
-					PLC = { total_own_and_non_tributary_subject_development = 600 }
-				}
-				else_if = {
-					limit = { exists = POL }
-					alliance_with = POL
-					reverse_has_opinion = { who = POL value = 150 }
-					POL = { trust = { who = ROOT value = 80 } }
-					if = {
-						limit = { POL = { government = monarchy } ROOT = { government = monarchy } }
-						marriage_with = POL
-					}
-					POL = { total_own_and_non_tributary_subject_development = 600 }
-				}
-				else = {
-					NOT = { exists = POL }
-					NOT = { exists = PLC }
-				}
-			}
-			else = {	#Fallback case
-				custom_trigger_tooltip = {
-					tooltip = swe_the_polish_throne_tt
-					mission_completed = swe_a_new_dynasty
-					NOT = { has_country_flag = swe_selecting_polish_goal }
-					NOT = { has_country_flag = swe_polish_throne_goal }
-					NOT = { has_country_flag = swe_poland_conquest_goal }
-					NOT = { has_country_flag = swe_polish_swedish_coexistence_goal }
-				}
-			}
+			vaasa_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+			finland_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
+			bothnia_area = { type = all country_or_non_sovereign_subject_holds = ROOT }
 		}
 		effect = {
-			if = {
-				limit = { 
-					has_country_flag = swe_polish_throne_goal
-					religion_group = christian
-				}
-				if = {
-					limit = {
-						exists = PLC
-					}
-					add_casus_belli = {
-						type = cb_restore_personal_union
-						target = PLC
-						months = 240
-					}
-				}
-				else_if = {
-					limit = {
-						exists = POL
-					}
-					add_casus_belli = {
-						type = cb_restore_personal_union
-						target = POL
-						months = 240
-					}
-				}
-				else = {
-					add_adm_power = 100
-					add_dip_power = 100
-					add_mil_power = 100
-				}
-			}
-			else_if = {
-				limit = {
-					OR = {
-						AND = {
-							NOT = { religion_group = christian }
-							has_country_flag = swe_polish_throne_goal
-						}
-						has_country_flag = swe_poland_conquest_goal
-					}
-				}
-				add_adm_power = 150
-				if = {
-				limit = { has_updated_culture = { culture = slavic } }
-					add_accepted_culture_or_dip_power = { culture = polish_new dip_reward = yes }
-				}
-				else = {
-					add_accepted_culture_or_dip_power = { culture = polish dip_reward = yes }
-				}
-				poland_region = {
-					limit = {
-						country_or_non_sovereign_subject_holds = ROOT
-					}
-					add_local_autonomy = -25
-					add_nationalism = -10
-				}
-			}
-			else_if = {
-				limit = { has_country_flag = swe_polish_swedish_coexistence_goal }
-				if = {
-					limit = {
-						exists = PLC
-					}
-					add_historical_friend = PLC
-					PLC = { add_historical_friend = ROOT }
-					hidden_effect = {
-						add_historical_friend = POL
-						POL = { add_historical_friend = ROOT }
-					}
-				}
-				else_if = {
-					limit = {
-						exists = POL
-					}
-					add_historical_friend = POL
-					POL = { add_historical_friend = ROOT }
-					hidden_effect = {
-						add_historical_friend = PLC
-						PLC = { add_historical_friend = ROOT }
-					}
-				}
-				add_dip_power = 100
-				add_splendor = 400
-			}
-			else_if = {	#Fallback case
-				limit = {
-					mission_completed = swe_a_new_dynasty
-					NOT = { has_country_flag = swe_selecting_polish_goal }
-					NOT = { has_country_flag = swe_polish_throne_goal }
-					NOT = { has_country_flag = swe_poland_conquest_goal }
-					NOT = { has_country_flag = swe_polish_swedish_coexistence_goal }
-				}
-				add_adm_power = 100
-				add_dip_power = 100
-				add_mil_power = 100
-			}
-			else = {
-				custom_tooltip = swe_the_polish_throne_ct
-			}
+			add_manpower = 10
+			add_adm_power = 120
+			add_prestige_or_monarch_power = { amount = 20 }
 		}
 	}
+
+#	swe_a_new_dynasty = { #Get Stability and Legitimacy up
+#		icon = mission_restore_faith_in_the_throne
+#		position = 3
+#		required_missions = { 
+#			swe_gain_support_from_estates
+#			swe_declare_independence
+#		}
+#		provinces_to_highlight = {}
+#		trigger = {
+#			stability = 1
+#			legitimacy_equivalent = 80
+#			is_subject = no
+#			is_at_war = no
+#			OR = {
+#				custom_trigger_tooltip = {
+#					tooltip = swe_a_new_dynasty_ct
+#					NOT = { has_country_modifier = swe_debt_with_the_clergy }
+#					NOT = { has_country_modifier = swe_debt_with_the_burghers }
+#					NOT = { has_country_modifier = swe_debt_with_the_nobles }
+#					NOT = { has_country_flag = swe_in_estate_event }
+#				}
+#				AND = {
+#					NOT = { has_estate = estate_burghers }
+#					NOT = { has_estate = estate_church }
+#					NOT = { has_estate = estate_nobles }
+#				}
+#			}
+#		}
+#		effect = {
+#			country_event = {
+#				id = flavor_swe.124
+#			}
+#		}
+#	}
+#	
+#	swe_the_polish_throne = {
+#		icon = mission_the_polish_throne
+#		position = 5
+#		required_missions = { 
+#			swe_a_new_dynasty
+#		}
+#		provinces_to_highlight = {
+#			if = {
+#				limit = { exists = PLC }
+#				owned_by = PLC
+#			}
+#			else = {
+#				owned_by = POL
+#			}
+#		}
+#		trigger = {
+#			if = {
+#				limit = { 
+#					religion_group = christian
+#					has_country_flag = swe_polish_throne_goal
+#				}
+#				OR = {
+#					if = {
+#						limit = { exists = PLC }
+#						PLC = { dynasty = ROOT }
+#						prestige = PLC
+#						legitimacy_equivalent = PLC
+#					}
+#					else_if = {
+#						limit = { exists = POL }
+#						POL = { dynasty = ROOT }
+#						prestige = POL
+#						legitimacy_equivalent = POL
+#					}
+#					else = {
+#						NOT = { exists = PLC }
+#						NOT = { exists = POL }
+#					}
+#					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+#						region = poland_region
+#						value = 20
+#					}
+#				}
+#			}
+#			else_if = {
+#				limit = { 
+#					OR = {
+#						AND = {
+#							NOT = { religion_group = christian }
+#							has_country_flag = swe_polish_throne_goal
+#						}
+#						has_country_flag = swe_poland_conquest_goal
+#					}
+#				}
+#				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+#					region = poland_region
+#					value = 15
+#				}
+#			}
+#			else_if = {
+#				limit = { has_country_flag = swe_polish_swedish_coexistence_goal }
+#				if = {
+#					limit = { exists = PLC }
+#					alliance_with = PLC
+#					reverse_has_opinion = { who = PLC value = 150 }
+#					if = {
+#						limit = { has_dlc = "Leviathan" }
+#						PLC = { trust = { who = ROOT value = 80 } }
+#					}
+#					else = {
+#						PLC = {
+#							has_opinion_modifier = {
+#								who = ROOT 
+#								modifier = sent_gift
+#							}
+#						}
+#					}
+#					if = {
+#						limit = { PLC = { government = monarchy } ROOT = { government = monarchy } }
+#						marriage_with = PLC
+#					}
+#					PLC = { total_own_and_non_tributary_subject_development = 600 }
+#				}
+#				else_if = {
+#					limit = { exists = POL }
+#					alliance_with = POL
+#					reverse_has_opinion = { who = POL value = 150 }
+#					POL = { trust = { who = ROOT value = 80 } }
+#					if = {
+#						limit = { POL = { government = monarchy } ROOT = { government = monarchy } }
+#						marriage_with = POL
+#					}
+#					POL = { total_own_and_non_tributary_subject_development = 600 }
+#				}
+#				else = {
+#					NOT = { exists = POL }
+#					NOT = { exists = PLC }
+#				}
+#			}
+#			else = {	#Fallback case
+#				custom_trigger_tooltip = {
+#					tooltip = swe_the_polish_throne_tt
+#					mission_completed = swe_a_new_dynasty
+#					NOT = { has_country_flag = swe_selecting_polish_goal }
+#					NOT = { has_country_flag = swe_polish_throne_goal }
+#					NOT = { has_country_flag = swe_poland_conquest_goal }
+#					NOT = { has_country_flag = swe_polish_swedish_coexistence_goal }
+#				}
+#			}
+#		}
+#		effect = {
+#			if = {
+#				limit = { 
+#					has_country_flag = swe_polish_throne_goal
+#					religion_group = christian
+#				}
+#				if = {
+#					limit = {
+#						exists = PLC
+#					}
+#					add_casus_belli = {
+#						type = cb_restore_personal_union
+#						target = PLC
+#						months = 240
+#					}
+#				}
+#				else_if = {
+#					limit = {
+#						exists = POL
+#					}
+#					add_casus_belli = {
+#						type = cb_restore_personal_union
+#						target = POL
+#						months = 240
+#					}
+#				}
+#				else = {
+#					add_adm_power = 100
+#					add_dip_power = 100
+#					add_mil_power = 100
+#				}
+#			}
+#			else_if = {
+#				limit = {
+#					OR = {
+#						AND = {
+#							NOT = { religion_group = christian }
+#							has_country_flag = swe_polish_throne_goal
+#						}
+#						has_country_flag = swe_poland_conquest_goal
+#					}
+#				}
+#				add_adm_power = 150
+#				if = {
+#				limit = { has_updated_culture = { culture = slavic } }
+#					add_accepted_culture_or_dip_power = { culture = polish_new dip_reward = yes }
+#				}
+#				else = {
+#					add_accepted_culture_or_dip_power = { culture = polish dip_reward = yes }
+#				}
+#				poland_region = {
+#					limit = {
+#						country_or_non_sovereign_subject_holds = ROOT
+#					}
+#					add_local_autonomy = -25
+#					add_nationalism = -10
+#				}
+#			}
+#			else_if = {
+#				limit = { has_country_flag = swe_polish_swedish_coexistence_goal }
+#				if = {
+#					limit = {
+#						exists = PLC
+#					}
+#					add_historical_friend = PLC
+#					PLC = { add_historical_friend = ROOT }
+#					hidden_effect = {
+#						add_historical_friend = POL
+#						POL = { add_historical_friend = ROOT }
+#					}
+#				}
+#				else_if = {
+#					limit = {
+#						exists = POL
+#					}
+#					add_historical_friend = POL
+#					POL = { add_historical_friend = ROOT }
+#					hidden_effect = {
+#						add_historical_friend = PLC
+#						PLC = { add_historical_friend = ROOT }
+#					}
+#				}
+#				add_dip_power = 100
+#				add_splendor = 400
+#			}
+#			else_if = {	#Fallback case
+#				limit = {
+#					mission_completed = swe_a_new_dynasty
+#					NOT = { has_country_flag = swe_selecting_polish_goal }
+#					NOT = { has_country_flag = swe_polish_throne_goal }
+#					NOT = { has_country_flag = swe_poland_conquest_goal }
+#					NOT = { has_country_flag = swe_polish_swedish_coexistence_goal }
+#				}
+#				add_adm_power = 100
+#				add_dip_power = 100
+#				add_mil_power = 100
+#			}
+#			else = {
+#				custom_tooltip = swe_the_polish_throne_ct
+#			}
+#		}
+#	}
 }
 
 swe_religion_start_mission_slot = {
@@ -2878,43 +2863,33 @@ swe_religion_start_mission_slot = {
 		required_missions = {  }
 		provinces_to_highlight = {
 			owner = {
-				OR = {
-					tag = PAP
-					is_emperor = yes
-					total_own_and_non_tributary_subject_development = 250
-				}
 				capital_scope = { continent = europe }
-				NOT = { alliance_with = ROOT }
+				OR = {
+					AND = { alliance_with = ROOT NOT = { owes_favors = { who = ROOT value = 15 }}}
+					NOT = { alliance_with = ROOT }
+				}
 			}
 		}
 		trigger = {
 			is_subject = no
 			is_at_war = no
 			OR = {
-				total_own_and_non_tributary_subject_development = 1000
+				total_own_and_non_tributary_subject_development = 500
 				calc_true_if = {
 					all_ally = {
-						custom_trigger_tooltip = {
-							tooltip = swe_dabble_into_european_diplomacy_tt
-							OR = {
-								tag = PAP
-								is_emperor = yes
-								total_own_and_non_tributary_subject_development = 250
-							}
-							capital_scope = { continent = europe }
-							has_opinion = {
-								who = ROOT
-								value = 75
-							}
+						capital_scope = { continent = europe }
+						owes_favors = { 
+							who = ROOT
+							value = 15
 						}
 					}
-					amount = 3
+					amount = 2
 				}
 			}
 		}
 		effect = {
 			define_advisor = {
-				type = statesman
+				type = diplomat
 				skill = 1
 				discount = yes
 			}
@@ -2937,16 +2912,17 @@ swe_religion_start_mission_slot = {
 					religion = norse_pagan_reformed
 					AND = {
 						religion = catholic
-						has_country_modifier = counter_reformation
+						OR = {
+							NOT = { current_age = age_of_discovery }
+							has_country_modifier = counter_reformation
+						}
 					}
 					AND = {
 						religion_group = christian
 						NOT = { religion = catholic }
-						NOT = { current_age = age_of_discovery }
 					}
 					AND = {
 						has_idea_group = justice_ideas
-						NOT = { current_age = age_of_discovery }
 					}
 				}
 			}
@@ -2959,16 +2935,17 @@ swe_religion_start_mission_slot = {
 					religion = norse_pagan_reformed
 					AND = {
 						religion = catholic
-						has_country_modifier = counter_reformation
+						OR = {
+							NOT = { current_age = age_of_discovery }
+							has_country_modifier = counter_reformation
+						}
 					}
 					AND = {
 						religion_group = christian
 						NOT = { religion = catholic }
-						NOT = { current_age = age_of_discovery }
 					}
 					AND = {
 						has_idea_group = justice_ideas
-						NOT = { current_age = age_of_discovery }
 					}
 				}
 			}
@@ -2976,16 +2953,17 @@ swe_religion_start_mission_slot = {
 				OR = {
 					AND = {
 						religion = catholic
-						has_country_modifier = counter_reformation
+						OR = {
+							NOT = { current_age = age_of_discovery }
+							has_country_modifier = counter_reformation
+						}
 					}
 					AND = {
 						religion_group = christian
 						NOT = { religion = catholic }
-						NOT = { current_age = age_of_discovery }
 					}
 					AND = {
 						has_idea_group = justice_ideas
-						NOT = { current_age = age_of_discovery }
 					}
 				}
 			}
@@ -3058,6 +3036,7 @@ swe_religion_mission_slot = {
 						tooltip = swe_catholic_triggers_tt
 						always = no
 					}
+					religion = catholic
 					OR = {
 						NOT = { exists = PAP }
 						AND = {
@@ -3079,17 +3058,30 @@ swe_religion_mission_slot = {
 						tooltip = swe_reformation_triggers_tt
 						always = no
 					}
-					calc_true_if = {
-						all_known_country = {
-							OR = {
-								alliance_with = ROOT
-								is_subject_of = ROOT
+					religion_group = christian
+					NOT = { religion = catholic }
+					OR = {
+						calc_true_if = {
+							all_known_country = {
+								OR = {
+									alliance_with = ROOT
+									is_subject_of = ROOT
+								}
+								religion_group = christian
+								NOT = { religion = catholic }
+								NOT = { religion = orthodox }
 							}
-							religion_group = christian
-							NOT = { religion = catholic }
-							NOT = { religion = orthodox }
+							amount = 4
 						}
-						amount = 4
+						development_in_provinces = {
+							value = 500
+							OR = {
+								religion = protestant
+								religion = reformed
+								religion = anglican
+								religion = hussite
+							}
+						}
 					}
 					is_defender_of_faith = yes
 				}
@@ -3098,11 +3090,21 @@ swe_religion_mission_slot = {
 						tooltip = swe_humanist_triggers_tt
 						always = no
 					}
-					has_idea_group = justice_ideas
+					OR = {
+						has_idea_group = justice_ideas
+						has_idea_group = empire_ideas
+						num_accepted_cultures = 5
+					}
 					theologian = 2
 					religious_unity = 0.75
 					num_of_owned_provinces_with = {
-						NOT = { religion = ROOT }
+						OR = {
+							NOT = { religion = ROOT }
+							AND = {
+								has_owner_culture = no
+								has_owner_accepted_culture = no
+							}
+						}
 						value = 6
 					}
 				}
@@ -3113,21 +3115,7 @@ swe_religion_mission_slot = {
 			add_papal_influence = 100
 			add_country_modifier = {
 				name = swe_support_from_the_pope
-				duration = 18250
-			}
-			if = {
-				limit = {
-					alliance_with = PAP
-				}
-				PAP = {
-					add_country_modifier = {
-						name = swe_swedish_steel_for_the_pope
-						duration = 18250
-					}
-				}
-			}
-			else = {
-				custom_tooltip = swe_envies_of_the_pope_tt
+				duration = 9125
 			}
 			custom_tooltip = swe_reformation_effects_tt
 			add_dip_power = 100
@@ -3136,7 +3124,7 @@ swe_religion_mission_slot = {
 			change_government_reform_progress = 100
 			add_country_modifier = {
 				name = swe_support_from_the_reformers
-				duration = 18250
+				duration = 9125
 			}
 			custom_tooltip = swe_humanist_effects_tt
 			add_stability_or_adm_power = yes
@@ -3241,7 +3229,11 @@ swe_religion_mission_slot = {
 						tooltip = swe_humanist_triggers_tt
 						always = no
 					}
-					has_idea_group = justice_ideas
+					OR = {
+						has_idea_group = justice_ideas
+						has_idea_group = empire_ideas
+						num_accepted_cultures = 5
+					}
 					if = {
 						limit = { has_estate = estate_church }
 						NOT = {
@@ -3267,35 +3259,21 @@ swe_religion_mission_slot = {
 		effect = {
 			custom_tooltip = swe_catholic_effects_tt
 			add_mil_power = 100
-			if = {
-				limit = { has_dlc = "Art of War" }
-				custom_tooltip = swe_catholic_bulwark_ct
-			}
+			custom_tooltip = tm_swe_catholic_bulwark_tt
+			set_country_flag = tm_swe_catholic_bulwark_modifier
 			add_estate_loyalty = {
 				estate = estate_church
 				loyalty = 15
 			}
-			add_papal_influence = 50
+			add_papal_influence = 30
+			add_country_modifier = {
+				name = swe_enforcers_of_religious_superiority
+				duration = 9125
+			}
 			custom_tooltip = swe_reformation_effects_tt
 			add_mil_power = 100
-			if = {
-				limit = { 
-					has_dlc = "Art of War"
-					hre_religion_locked = no
-					hre_religion_treaty = no
-				}
-				custom_tooltip = swe_protestant_sword_ct
-				if = {
-					limit = { hre_leagues_enabled = no }
-					custom_tooltip = swe_protestant_sword_dt
-				}
-			}
-			else = {
-				change_ruler_stat = {
-					type = dip
-					amount = 1
-				}
-			}
+			set_country_flag = tm_swe_protestant_sword_modifier
+			custom_tooltip = tm_swe_protestant_sword_tt
 			add_estate_loyalty = {
 				estate = estate_church
 				loyalty = 15
@@ -3304,11 +3282,15 @@ swe_religion_mission_slot = {
 				type = mil
 				amount = 1
 			}
+			add_country_modifier = {
+				name = swe_enforcers_of_religious_superiority
+				duration = 9125
+			}
 			custom_tooltip = swe_humanist_effects_tt
 			disable_rebels_from_seize_land_for_estate = {
 				estate = estate_church
 			}
-			add_years_of_income = 0.5
+			add_years_of_income = 1.0
 		}
 	}
 	
@@ -3328,48 +3310,28 @@ swe_religion_mission_slot = {
 						tooltip = swe_catholic_triggers_tt
 						always = no
 					}
-					if = {
-						limit = {
-							has_dlc = "Art of War"
-						}
-						OR = {
-							NOT = { hre_size = 1 }
-							AND = {
-								custom_trigger_tooltip = {
-									tooltip = obj_religious_league_war_on_winning_side_tooltip
-									has_country_flag = religious_league_war_on_winning_side
-								}
-								hre_religion = catholic
-								hre_religion_locked = yes
-							}
-							custom_trigger_tooltip = {
-								tooltip = swe_catholic_30_years_war_ct
-								OR = {
-									AND = {
-										NOT = { has_global_flag = evangelical_union_happened }
-										is_year = 1625
-									}
-									AND = {
-										hre_religion_locked = yes
-										had_global_flag = {
-											flag = evangelical_union_happened
-											days = 10950
-										}
-									}
-								}
-							}
-						}
+					religion = catholic
+					invested_papal_influence = 50
+					OR = {
+						num_of_cardinals = 5
+						is_papal_controller = yes
 					}
-					else = {
-						OR = {
-							NOT = { hre_size = 1 }
-							NOT = {
-								any_known_country = {
-									is_part_of_hre = yes
-									NOT = { religion = catholic }
-								}
-							}
-						}
+					papal_influence = 100
+					employed_advisor = {
+						category = ADM
+						religion = catholic
+					}
+					employed_advisor = {
+						category = DIP
+						religion = catholic
+					}
+					employed_advisor = {
+						category = MIL
+						religion = catholic
+					}
+					num_of_owned_provinces_with = {
+						value = 50
+						religion = catholic
 					}
 				}
 				AND = {
@@ -3377,35 +3339,37 @@ swe_religion_mission_slot = {
 						tooltip = swe_reformation_triggers_tt
 						always = no
 					}
-					if = {
-						limit = {
-							has_dlc = "Art of War"
+					religion_group = christian
+					NOT = { religion = catholic }
+					OR = {
+						church_power = 100
+						fervor = 75
+					}
+					OR = {
+						AND = {
+							NOT = { religion = reformed }
+							num_of_aspects = 3
 						}
-						OR = {
-							NOT = { hre_size = 1 }
-							AND = {
-								custom_trigger_tooltip = {
-									tooltip = obj_religious_league_war_on_winning_side_tooltip
-									has_country_flag = religious_league_war_on_winning_side
-								}
-								OR = {
-									hre_religion = protestant
-									hre_religion = reformed
-								}
-								hre_religion_locked = yes
-							}
+						AND = {
+							religion = reformed
+							num_of_aspects = 2
 						}
 					}
-					else = {
-						OR = {
-							NOT = { hre_size = 1 }
-							NOT = {
-								any_known_country = {
-									is_part_of_hre = yes
-									religion = catholic
-								}
-							}
-						}
+					employed_advisor = {
+						category = ADM
+						religion = ROOT
+					}
+					employed_advisor = {
+						category = DIP
+						religion = ROOT
+					}
+					employed_advisor = {
+						category = MIL
+						religion = ROOT
+					}
+					num_of_owned_provinces_with = {
+						value = 50
+						religion = ROOT
 					}
 				}
 				AND = {
@@ -3413,9 +3377,11 @@ swe_religion_mission_slot = {
 						tooltip = swe_humanist_triggers_tt
 						always = no
 					}
-					has_idea_group = justice_ideas
-					full_idea_group = justice_ideas
-					num_accepted_cultures = 5
+					OR = {
+						full_idea_group = justice_ideas
+						full_idea_group = empire_ideas
+						num_accepted_cultures = 7
+					}
 					stability = 3
 					has_any_disaster = no
 					NOT = { num_of_rebel_armies = 1 }
@@ -3425,37 +3391,15 @@ swe_religion_mission_slot = {
 		}
 		effect = {
 			custom_tooltip = swe_catholic_effects_tt
-			add_papal_influence = 200
+			add_papal_influence = 100
 			add_war_exhaustion = -2
 			change_ruler_stat = {
 				type = mil
 				amount = 2
 			}
-			if = {
-				limit = {
-					hre_size = 1
-				}
-				custom_tooltip = swe_catholic_30_years_war_tt
-				hidden_effect = {
-					every_known_country = {
-						limit = {
-							OR = {
-								is_emperor = yes
-								is_elector = yes
-							}
-						}
-						add_opinion = {
-							who = ROOT
-							modifier = swe_protected_the_catholic_faith
-						}
-					}
-				}
-			}
-			else = {
-				change_ruler_stat = {
-					type = dip
-					amount = 1
-				}
+			change_ruler_stat = {
+				type = dip
+				amount = 1
 			}
 			custom_tooltip = swe_reformation_effects_tt
 			add_church_power = 200
@@ -3465,38 +3409,16 @@ swe_religion_mission_slot = {
 				type = mil
 				amount = 2
 			}
-			if = {
-				limit = {
-					hre_size = 1
-				}
-				custom_tooltip = swe_protestant_30_years_war_tt
-				hidden_effect = {
-					every_known_country = {
-						limit = {
-							is_part_of_hre = yes
-							OR = {
-								religion = protestant
-								religion = reformed
-							}
-						}
-						add_opinion = {
-							who = ROOT
-							modifier = swe_supported_the_protestant_league
-						}
-					}
-				}
-			}
-			else = {
-				change_ruler_stat = {
-					type = dip
-					amount = 1
-				}
+			change_ruler_stat = {
+				type = dip
+				amount = 1
 			}
 			custom_tooltip = swe_humanist_effects_tt
 			change_ruler_stat = {
 				type = dip
 				amount = 3
 			}
+			add_ruler_personality = well_connected_personality
 		}
 	}
 	
@@ -3672,28 +3594,41 @@ swe_catholic_mission_slot = {
 			num_of_cardinals = 1
 			OR = {
 				is_papal_controller = yes
-				invested_papal_influence = 100
+				invested_papal_influence = 30
 			}
 		}
 		effect = {
 			add_papal_influence = 100
 			add_country_modifier = {
 				name = swe_support_from_the_pope
-				duration = 18250
+				duration = 9125
 			}
-			if = {
-				limit = {
-					alliance_with = PAP
-				}
-				PAP = {
-					add_country_modifier = {
-						name = swe_swedish_steel_for_the_pope
-						duration = 18250
+			#if = {
+			#	limit = {
+			#		alliance_with = PAP
+			#	}
+			#	PAP = {
+			#		add_country_modifier = {
+			#			name = swe_swedish_steel_for_the_pope
+			#			duration = 18250
+			#		}
+			#	}
+			#}
+			#else = {
+			#	custom_tooltip = swe_envies_of_the_pope_tt
+			#}
+			hidden_effect = {
+				if = {
+					limit = {
+						alliance_with = PAP
+					}
+					PAP = {
+						add_country_modifier = {
+							name = swe_swedish_steel_for_the_pope
+							duration = 18250
+						}
 					}
 				}
-			}
-			else = {
-				custom_tooltip = swe_envies_of_the_pope_tt
 			}
 		}
 	}
@@ -3719,16 +3654,18 @@ swe_catholic_mission_slot = {
 		}
 		effect = {
 			add_mil_power = 100
-			if = {
-				limit = { has_dlc = "Art of War" }
-				custom_tooltip = swe_catholic_bulwark_ct
-			}
-			hidden_effect = { set_country_flag = swe_catholic_modifier_for_league_war }
+			#if = {
+			#	limit = { has_dlc = "Art of War" }
+			#	custom_tooltip = swe_catholic_bulwark_ct
+			#}
+			#hidden_effect = { set_country_flag = swe_catholic_modifier_for_league_war }
+			custom_tooltip = tm_swe_catholic_bulwark_tt
+			set_country_flag = tm_swe_catholic_bulwark_modifier
 			add_estate_loyalty = {
 				estate = estate_church
 				loyalty = 15
 			}
-			add_papal_influence = 50
+			add_papal_influence = 30
 			add_country_modifier = {
 				name = swe_enforcers_of_religious_superiority
 				duration = 9125
@@ -3744,112 +3681,39 @@ swe_catholic_mission_slot = {
 		trigger = {
 			not_in_mission_preview_mode = { key = SWE }
 			religion = catholic
-			if = {
-				limit = {
-					has_dlc = "Art of War"
-				}
-				OR = {
-					NOT = { hre_size = 1 }
-					AND = {
-						custom_trigger_tooltip = {
-							tooltip = obj_religious_league_war_on_winning_side_tooltip
-							has_country_flag = religious_league_war_on_winning_side
-						}
-						hre_religion = catholic
-						hre_religion_locked = yes
-					}
-					custom_trigger_tooltip = {
-						tooltip = swe_catholic_30_years_war_ct
-						OR = {
-							AND = {
-								NOT = { has_global_flag = evangelical_union_happened }
-								is_year = 1625
-							}
-							AND = {
-								hre_religion_locked = yes
-								had_global_flag = {
-									flag = evangelical_union_happened
-									days = 10950
-								}
-							}
-						}
-					}
-				}
+			invested_papal_influence = 50
+			OR = {
+				num_of_cardinals = 5
+				is_papal_controller = yes
 			}
-			else = {
-				OR = {
-					NOT = { hre_size = 1 }
-					NOT = {
-						any_known_country = {
-							is_part_of_hre = yes
-							NOT = { religion = catholic }
-						}
-					}
-				}
+			papal_influence = 100
+			employed_advisor = {
+				category = ADM
+				religion = catholic
+			}
+			employed_advisor = {
+				category = DIP
+				religion = catholic
+			}
+			employed_advisor = {
+				category = MIL
+				religion = catholic
+			}
+			num_of_owned_provinces_with = {
+				value = 50
+				religion = catholic
 			}
 		}
 		effect = {
-			add_papal_influence = 200
+			add_papal_influence = 100
 			add_war_exhaustion = -2
 			change_ruler_stat = {
 				type = mil
 				amount = 2
 			}
-			if = {
-				limit = {
-					has_dlc = "Art of War"
-					hre_size = 1
-					custom_trigger_tooltip = {
-						tooltip = obj_religious_league_war_on_winning_side_tooltip
-						has_country_flag = religious_league_war_on_winning_side
-					}
-				}
-				custom_tooltip = swe_catholic_30_years_war_tt
-				hidden_effect = {
-					every_known_country = {
-						limit = {
-							is_part_of_hre = yes
-							religion = catholic
-						}
-						add_opinion = {
-							who = ROOT
-							modifier = swe_protected_the_catholic_faith
-						}
-					}
-				}
-			}
-			else_if = {
-				limit = {
-					has_dlc = "Art of War"
-					hre_size = 1
-					NOT = {
-						OR = {
-							AND = {
-								has_country_flag = religious_league_war_on_winning_side
-								hre_religion = catholic
-								hre_religion_locked = yes
-							}
-							AND = {
-								NOT = { has_global_flag = evangelical_union_happened }
-								is_year = 1625
-							}
-							AND = {
-								hre_religion_locked = yes
-								had_global_flag = {
-									flag = evangelical_union_happened
-									days = 10950
-								}
-							}
-						}
-					}
-				}
-				custom_tooltip = swe_catholic_30_years_war_at
-			}
-			else = {
-				change_ruler_stat = {
-					type = dip
-					amount = 1
-				}
+			change_ruler_stat = {
+				type = dip
+				amount = 1
 			}
 		}
 	}
@@ -3863,7 +3727,7 @@ swe_catholic_mission_slot = {
 			not_in_mission_preview_mode = { key = SWE }
 			religion = catholic
 			NOT = { current_age = age_of_discovery }
-			NOT = { current_age = age_of_reformation }
+			is_year = 1550
 			if = {
 				limit = {
 					has_dlc = "Emperor"
@@ -3876,18 +3740,22 @@ swe_catholic_mission_slot = {
 			OR = {
 				calc_true_if = {
 					custom_trigger_tooltip = {
-						tooltip = swe_catholic_defender_of_faith_ct
+						tooltip = tm_swe_catholic_defender_of_faith_tt
 						all_known_country = {
 							force_converted_by = ROOT
 							religion = ROOT
 						}
 					}
-					amount = 10
+					amount = 5
 				}
 				custom_trigger_tooltip = {
-					tooltip = swe_catholic_defender_of_faith_tt
-					check_variable = { which = num_converted_religion value = 30 }
+					tooltip = tm_swe_catholic_defender_of_faith_btt
+					check_variable = { which = num_converted_religion value = 10 }
 				}
+			}
+			development_in_provinces = {
+				value = 1500
+				religion = catholic
 			}
 		}
 		effect = {
@@ -3929,20 +3797,30 @@ swe_protestant_mission_slot = {
 			not_in_mission_preview_mode = { key = SWE }
 			religion_group = christian
 			NOT = { religion = catholic }
-			calc_true_if = {
-				all_known_country = {
-					OR = {
-						alliance_with = ROOT
-						is_subject_of = ROOT
+			OR = {
+				calc_true_if = {
+					all_known_country = {
+						OR = {
+							alliance_with = ROOT
+							is_subject_of = ROOT
+						}
+						custom_trigger_tooltip = {
+							tooltip = swe_defenders_of_the_reformers_ct
+							religion_group = christian
+							NOT = { religion = catholic }
+						}
 					}
-					custom_trigger_tooltip = {
-						tooltip = swe_defenders_of_the_reformers_ct
-						religion_group = christian
-						NOT = { religion = catholic }
-						NOT = { religion = orthodox }
+					amount = 4
+				}
+				development_in_provinces = {
+					value = 500
+					OR = {
+						religion = protestant
+						religion = reformed
+						religion = anglican
+						religion = hussite
 					}
 				}
-				amount = 4
 			}
 			is_defender_of_faith = yes
 		}
@@ -3953,7 +3831,7 @@ swe_protestant_mission_slot = {
 			change_government_reform_progress = 100
 			add_country_modifier = {
 				name = swe_support_from_the_reformers
-				duration = 18250
+				duration = 9125
 			}
 		}
 	}
@@ -3997,58 +3875,31 @@ swe_protestant_mission_slot = {
 				}
 			}
 			army_size_percentage = 0.8
-			OR = {
-				if = {
-					limit = { has_dlc = "Art of War" }
-					AND = {
-						hre_leagues_enabled = yes
-						in_league = protestant
-					}
-				}
-				custom_trigger_tooltip = {
-					tooltip = swe_protestant_sword_bt
-					any_ally = {
-						is_part_of_hre = yes
-						religion = protestant
-						OR = {
-							is_elector = yes
-							total_own_and_non_tributary_subject_development = 100
-						}
-					}
-				}
-				custom_trigger_tooltip = {
-					tooltip = swe_protestant_sword_at
-					any_known_country = {
-						is_part_of_hre = yes
-						force_converted_by = ROOT
-						religion = ROOT
-					}
-				}
-				NOT = { hre_size = 1 }
-			}
 		}
 		effect = {
 			add_mil_power = 100
-			if = {
-				limit = { 
-					has_dlc = "Art of War"
-					hre_religion_locked = no
-					hre_religion_treaty = no
-				}
-				custom_tooltip = swe_protestant_sword_ct
-				hidden_effect = { set_country_flag = swe_reformation_modifier_for_league_war }
-				if = {
-					limit = { hre_leagues_enabled = no }
-					custom_tooltip = swe_protestant_sword_dt
-					hidden_effect = { set_country_flag = swe_can_provoke_religious_league_forming }
-				}
-			}
-			else = {
-				change_ruler_stat = {
-					type = dip
-					amount = 1
-				}
-			}
+			#if = {
+			#	limit = { 
+			#		has_dlc = "Art of War"
+			#		hre_religion_locked = no
+			#		hre_religion_treaty = no
+			#	}
+			#	custom_tooltip = swe_protestant_sword_ct
+			#	hidden_effect = { set_country_flag = swe_reformation_modifier_for_league_war }
+			#	if = {
+			#		limit = { hre_leagues_enabled = no }
+			#		custom_tooltip = swe_protestant_sword_dt
+			#		hidden_effect = { set_country_flag = swe_can_provoke_religious_league_forming }
+			#	}
+			#}
+			#else = {
+			#	change_ruler_stat = {
+			#		type = dip
+			#		amount = 1
+			#	}
+			#}
+			set_country_flag = tm_swe_protestant_sword_modifier
+			custom_tooltip = tm_swe_protestant_sword_tt
 			add_estate_loyalty = {
 				estate = estate_church
 				loyalty = 15
@@ -4073,35 +3924,35 @@ swe_protestant_mission_slot = {
 			not_in_mission_preview_mode = { key = SWE }
 			religion_group = christian
 			NOT = { religion = catholic }
-			if = {
-				limit = {
-					has_dlc = "Art of War"
+			OR = {
+				church_power = 100
+				fervor = 75
+			}
+			OR = {
+				AND = {
+					NOT = { religion = reformed }
+					num_of_aspects = 3
 				}
-				OR = {
-					NOT = { hre_size = 1 }
-					AND = {
-						custom_trigger_tooltip = {
-							tooltip = obj_religious_league_war_on_winning_side_tooltip
-							has_country_flag = religious_league_war_on_winning_side
-						}
-						OR = {
-							hre_religion = protestant
-							hre_religion = reformed
-						}
-						hre_religion_locked = yes
-					}
+				AND = {
+					religion = reformed
+					num_of_aspects = 2
 				}
 			}
-			else = {
-				OR = {
-					NOT = { hre_size = 1 }
-					NOT = {
-						any_known_country = {
-							is_part_of_hre = yes
-							religion = catholic
-						}
-					}
-				}
+			employed_advisor = {
+				category = ADM
+				religion = ROOT
+			}
+			employed_advisor = {
+				category = DIP
+				religion = ROOT
+			}
+			employed_advisor = {
+				category = MIL
+				religion = ROOT
+			}
+			num_of_owned_provinces_with = {
+				value = 50
+				religion = ROOT
 			}
 		}
 		effect = {
@@ -4112,32 +3963,9 @@ swe_protestant_mission_slot = {
 				type = mil
 				amount = 2
 			}
-			if = {
-				limit = {
-					hre_size = 1
-				}
-				custom_tooltip = swe_protestant_30_years_war_tt
-				hidden_effect = {
-					every_known_country = {
-						limit = {
-							is_part_of_hre = yes
-							OR = {
-								religion = protestant
-								religion = reformed
-							}
-						}
-						add_opinion = {
-							who = ROOT
-							modifier = swe_supported_the_protestant_league
-						}
-					}
-				}
-			}
-			else = {
-				change_ruler_stat = {
-					type = dip
-					amount = 1
-				}
+			change_ruler_stat = {
+				type = dip
+				amount = 1
 			}
 		}
 	}
@@ -4152,29 +3980,24 @@ swe_protestant_mission_slot = {
 			religion_group = christian
 			NOT = { religion = catholic }
 			NOT = { current_age = age_of_discovery }
-			NOT = { current_age = age_of_reformation }
-			if = {
-				limit = {
-					has_dlc = "Emperor"
-				}
-				is_defender_of_faith_of_tier = 4
-			}
-			else = {
-				is_defender_of_faith = yes
+			is_year = 1550			
+			development_in_provinces = {
+				value = 1500
+				religion = ROOT
 			}
 			OR = {
 				calc_true_if = {
 					custom_trigger_tooltip = {
-						tooltip = swe_catholic_defender_of_faith_ct
+						tooltip = swe_protestant_defender_of_faith_ttt
 						all_known_country = {
 							force_converted_by = ROOT
 							religion = ROOT
 						}
 					}
-					amount = 10
+					amount = 5
 				}
 				custom_trigger_tooltip = {
-					tooltip = swe_catholic_defender_of_faith_tt
+					tooltip = tm_swe_protestant_defender_of_faith_btt
 					check_variable = { which = num_converted_religion value = 30 }
 				}
 			}
@@ -4216,11 +4039,21 @@ swe_humanist_mission_slot = {
 		provinces_to_highlight = {}
 		trigger = {
 			not_in_mission_preview_mode = { key = SWE }
-			has_idea_group = justice_ideas
+			OR = {
+				has_idea_group = justice_ideas
+				has_idea_group = empire_ideas
+				num_accepted_cultures = 5
+			}
 			theologian = 2
 			religious_unity = 0.75
 			num_of_owned_provinces_with = {
-				NOT = { religion = ROOT }
+				OR = {
+					NOT = { religion = ROOT }
+					AND = {
+						has_owner_culture = no
+						has_owner_accepted_culture = no
+					}
+				}
 				value = 6
 			}
 		}
@@ -4240,7 +4073,11 @@ swe_humanist_mission_slot = {
 		provinces_to_highlight = {}
 		trigger = {
 			not_in_mission_preview_mode = { key = SWE }
-			has_idea_group = justice_ideas
+			OR = {
+				has_idea_group = justice_ideas
+				has_idea_group = empire_ideas
+				num_accepted_cultures = 5
+			}
 			if = {
 				limit = { has_estate = estate_church }
 				NOT = {
@@ -4253,7 +4090,7 @@ swe_humanist_mission_slot = {
 				NOT = {
 					num_of_estate_privileges = {
 						estate = estate_church
-						value = 2
+						value = 3
 					}
 				}
 			}
@@ -4265,7 +4102,7 @@ swe_humanist_mission_slot = {
 			disable_rebels_from_seize_land_for_estate = {
 				estate = estate_church
 			}
-			add_years_of_income = 0.5
+			add_years_of_income = 1.0
 		}
 	}
 	
@@ -4276,9 +4113,11 @@ swe_humanist_mission_slot = {
 		provinces_to_highlight = {}
 		trigger = {
 			not_in_mission_preview_mode = { key = SWE }
-			has_idea_group = justice_ideas
-			full_idea_group = justice_ideas
-			num_accepted_cultures = 5
+			OR = {
+				full_idea_group = justice_ideas
+				full_idea_group = empire_ideas
+				num_accepted_cultures = 7
+			}
 			stability = 3
 			has_any_disaster = no
 			NOT = { num_of_rebel_armies = 1 }
@@ -4289,6 +4128,7 @@ swe_humanist_mission_slot = {
 				type = dip
 				amount = 3
 			}
+			add_ruler_personality = well_connected_personality
 		}
 	}
 	
@@ -4299,31 +4139,14 @@ swe_humanist_mission_slot = {
 		provinces_to_highlight = {}
 		trigger = {
 			not_in_mission_preview_mode = { key = SWE }
-			has_idea_group = justice_ideas
-			full_idea_group = justice_ideas
 			OR = {
-				NOT = { hre_size = 1 }
-				if = {
-					limit = {
-						has_dlc = "Art of War"
-					}
-					hre_religion_treaty = yes
-				}
-				AND = {
-					OR = {
-						is_emperor = yes
-						alliance_with = emperor
-					}
-					if = {
-						limit = {
-							has_dlc = "Emperor"
-						}
-						hre_reform_passed = emperor_erbkaisertum
-					}
-					else = {
-						hre_reform_passed = erbkaisertum
-					}
-				}
+				full_idea_group = justice_ideas
+				full_idea_group = empire_ideas
+				num_accepted_cultures = 7
+			}
+			num_of_owned_provinces_with = {
+				value = 80
+				NOT = { unrest = 1 }
 			}
 		}
 		effect = {
@@ -4516,135 +4339,29 @@ swe_sca_hre_slot = {
 		required_missions = {  }
 		position = 13		
 		provinces_to_highlight = {
-			OR = {
-				AND = {
-					owner = { is_emperor = yes }
-					root = { is_emperor = no }
-				}
-				AND = {
-					owner = {
-						is_elector = yes
-						OR = {
-							NOT = { preferred_emperor = ROOT }
-							NOT = { has_opinion = { who = ROOT value = 100 } }
-						}
-					}
-					NOT = {
-						ROOT = {
-							calc_true_if = {
-								all_elector = {
-									preferred_emperor = ROOT
-									has_opinion = { who = ROOT value = 100 }
-								}
-								amount = 4
-							}
-						}
-					}
-				}
-			}
+			region = north_german_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			if = {
-				limit = {
-					hre_size = 1
-				}
-				OR = {
-					NOT = { hre_size = 1 }
-					calc_true_if = {
-						desc = secure_the_imperial_crown.tooltip
-						all_elector = {
-							preferred_emperor = ROOT
-							has_opinion = { who = ROOT value = 100 }
-						}
-						amount = 4
-					}
-				}
-			}
-			else = {
-				NOT = { hre_size = 1 }
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 20
+				region = north_german_region
 			}
 		}
 		effect = {
-			if = {
-				limit = {
-					calc_true_if = {
-						desc = secure_the_imperial_crown.tooltip
-						all_elector = {
-							preferred_emperor = ROOT
-							has_opinion = { who = ROOT value = 100 }
-						}
-						amount = 4
-					}
-				}
-				add_country_modifier = {
-					name = "succesful_bid_for_imperial_crown"
-					duration = 5475 #15 years
-				}
-			}
-			else_if = {
-				limit = {
-					NOT = { hre_size = 1 }
-				}
-				neumark_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				mittelmark_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				northern_saxony_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				lower_saxony_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				weser_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				frisia_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				holland_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				north_brabant_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-			}
-			else = {
-				custom_tooltip = swe_sca_secure_electors_tt
-			}
+			frisia_area = { add_perma_claim = yes }
+			holland_area = { add_perma_claim = yes }
+			north_brabant_area = { add_perma_claim = yes }
+
+			westphalia_area = { add_perma_claim = yes }
+			north_westphalia_area = { add_perma_claim = yes }
+			north_rhine_area = { add_perma_claim = yes }
+
+			wielkopolska_area = { add_perma_claim = yes }
+			kuyavia_area = { add_perma_claim = yes }
+			central_poland_area = { add_perma_claim = yes }
+			silesia_area = { add_perma_claim = yes }
+			mazovia_area = { add_perma_claim = yes }
 		}
 	}
 	swe_sca_low_countries = {
@@ -4652,135 +4369,26 @@ swe_sca_hre_slot = {
 		required_missions = { swe_sca_secure_electors }
 		position = 14
 		provinces_to_highlight = {
-			OR = {
-				area = frisia_area
-				area = holland_area
-				area = north_brabant_area
-			}
-			OR = {
-				AND = {
-					ROOT = { is_emperor = yes }
-					OR = {
-						owner = {
-							OR = {
-								NOT = { has_opinion = { who = ROOT value = 100 } }
-								is_part_of_hre = no
-							}
-						}
-						NOT = { country_or_non_sovereign_subject_holds = ROOT }
-					}
-				}
-				AND = {
-					ROOT = { is_emperor = no }
-					NOT = { country_or_non_sovereign_subject_holds = ROOT }
-				}
-			}
+			region = low_countries_region
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			if = {
-				limit = { hre_size = 1 }
-				OR = {
-					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-						OR = {
-							area = frisia_area
-							area = holland_area
-							area = north_brabant_area
-						}
-						value = 8
-					}
-					AND = {
-						is_emperor = yes
-						calc_true_if = {
-							desc = swe_sca_low_countries_tt
-							all_province = {
-								OR = {
-									area = frisia_area
-									area = holland_area
-									area = north_brabant_area
-								}
-								OR = {
-									country_or_non_sovereign_subject_holds = ROOT
-									owner = {
-										has_opinion = {
-											who = ROOT
-											value = 100
-										}
-										is_part_of_hre = yes
-									}
-								}
-							}
-							amount = 8
-						}
-					}
-				}
-			}
-			else = {
-				num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-					OR = {
-						area = frisia_area
-						area = holland_area
-						area = north_brabant_area
-					}
-					value = 8
-				}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				region = low_countries_region
+				value = 8
 			}
 		}
 		effect = {
-			if = {
+			low_countries_region = {
 				limit = {
-					is_emperor = yes
-					calc_true_if = {
-						all_province = {
-							OR = {
-								area = frisia_area
-								area = holland_area
-								area = north_brabant_area
-							}
-							OR = {
-								country_or_non_sovereign_subject_holds = ROOT
-								owner = {
-									has_opinion = {
-										who = ROOT
-										value = 100
-									}
-									is_part_of_hre = yes
-								}
-							}
-						}
-						amount = 8
-					}
+					country_or_non_sovereign_subject_holds = ROOT
 				}
-				add_country_modifier = {
-					name = sca_swe_imperial_low_countries
-					duration = 9125
+				add_province_modifier = {
+					name = sca_swe_control_over_the_low_countries
+					duration = 5475
 				}
-				add_imperial_influence = 25
 			}
-			else_if = {
-				limit = {
-					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-						OR = {
-							area = frisia_area
-							area = holland_area
-							area = north_brabant_area
-						}
-						value = 8
-					}
-				}
-				low_countries_region = {
-					limit = {
-						country_or_non_sovereign_subject_holds = ROOT
-					}
-					add_province_modifier = {
-						name = sca_swe_control_over_the_low_countries
-						duration = 5475
-					}
-				}
-				add_years_of_income = 1
-			}
-			else = {
-				custom_tooltip = swe_sca_low_countries_ct
-			}
+			add_years_of_income = 1
 		}
 	}
 }
@@ -4817,6 +4425,10 @@ swe_sca_caroliner_slot = {
 			OR = {
 				has_global_modifier_value = {
 					which = discipline
+					value = 0.1
+				}
+				has_global_modifier_value = {
+					which = land_morale
 					value = 0.2
 				}
 				monthly_mil = 14
@@ -4836,7 +4448,10 @@ swe_sca_caroliner_slot = {
 			}
 			if = {
 				limit = { has_dlc = "Cradle of Civilization" }
-				army_professionalism = 0.75
+				OR = {
+					army_tradition = 90
+					army_professionalism = 0.75
+				}
 			}
 			else = {
 				army_tradition = 65
@@ -4858,177 +4473,23 @@ swe_sca_caroliner_slot = {
 		required_missions = { swe_sca_secure_electors }
 		position = 14
 		provinces_to_highlight = {
-			OR = {
-				area = neumark_area
-				area = mittelmark_area
-				area = northern_saxony_area
-				area = lower_saxony_area
-				area = weser_area
-			}
+			region = north_german_region
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
 			government_rank = 3
-			OR = {
-				is_emperor = yes
-				AND = {
-					NOT = { hre_size = 1 }
-					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-						OR = {
-							area = neumark_area
-							area = mittelmark_area
-							area = northern_saxony_area
-							area = lower_saxony_area
-							area = weser_area
-						}
-						value = 15
-					}
-				}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				region = north_german_region
+				value = 20
 			}
 		}
 		effect = {
-			if = {
-				limit = {
-					is_emperor = yes
-				}
-				add_country_modifier = {
-					name = gen_hre_emperor_mod
-					duration = 9125
-				}
-				add_imperial_influence = 25
+			add_country_modifier = {
+				name = tm_swe_conquest_of_germany_modifier
+				duration = -1
 			}
-			else_if = {
-				limit = {
-					NOT = { hre_size = 1 }
-					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-						OR = {
-							area = neumark_area
-							area = mittelmark_area
-							area = northern_saxony_area
-							area = lower_saxony_area
-							area = weser_area
-						}
-						value = 15
-					}
-				}
-				lusatia_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				south_saxony_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				thuringia_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				hesse_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				north_rhine_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				north_westphalia_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				westphalia_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-				braunschweig_area = {
-					limit = {
-						NOT = { is_core = ROOT }
-						NOT = { is_permanent_claim = ROOT }
-					}
-					add_permanent_claim = ROOT
-				}
-			}
-			else = {
-				custom_tooltip = swe_sca_north_germany_tt
-				tooltip = {
-					lusatia_area = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_permanent_claim = ROOT
-					}
-					south_saxony_area = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_permanent_claim = ROOT
-					}
-					thuringia_area = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_permanent_claim = ROOT
-					}
-					hesse_area = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_permanent_claim = ROOT
-					}
-					north_rhine_area = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_permanent_claim = ROOT
-					}
-					north_westphalia_area = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_permanent_claim = ROOT
-					}
-					westphalia_area = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_permanent_claim = ROOT
-					}
-					braunschweig_area = {
-						limit = {
-							NOT = { is_core = ROOT }
-							NOT = { is_permanent_claim = ROOT }
-						}
-						add_permanent_claim = ROOT
-					}
-				}
-			}
+			north_german_region = { add_perma_claim = yes }
+			south_german_region = { add_perma_claim = yes }
 		}
 	}
 	swe_sca_emperor_of_the_germans = {
@@ -5047,30 +4508,12 @@ swe_sca_caroliner_slot = {
 			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}
 		trigger = {
-			OR = {
-				AND = {
-					is_emperor = yes
-					if = {
-						limit = { has_dlc = "Emperor" }
-						OR = {
-							hre_reform_passed = emperor_erbkaisertum
-							hre_reform_passed = emperor_rechenschaft
-						}
-					}
-					else = {
-						hre_reform_passed = erbkaisertum
-					}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				OR = {
+					region = north_german_region
+					region = south_german_region
 				}
-				AND = {
-					NOT = { hre_size = 1 }
-					num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
-						OR = {
-							region = north_german_region
-							region = south_german_region
-						}
-						value = 75
-					}
-				}
+				value = 75
 			}
 		}
 		effect = {
@@ -5088,7 +4531,10 @@ swe_sca_caroliner_slot = {
 			hidden_effect = {
 				every_owned_province = {
 					limit = {
-						culture_group = germanic
+						OR = {
+							culture_group = germanic
+							culture_group = rhenish
+						}
 						has_owner_accepted_culture = no
 						owner = {
 							NOT = { primary_culture = PREV }
@@ -5102,7 +4548,10 @@ swe_sca_caroliner_slot = {
 				}
 				every_owned_province = {
 					limit = {
-						culture_group = germanic
+						OR = {
+							culture_group = germanic
+							culture_group = rhenish
+						}
 						has_owner_accepted_culture = no
 						owner = {
 							NOT = { primary_culture = PREV }
@@ -5147,36 +4596,44 @@ swe_sca_hakkapeliitta_slot = {
 			}
 		}
 		trigger = {
-			any_hired_mercenary_company = {
-				template = merc_hakkapeliita_cavalry
-				hired_for_months = 60
+			OR = {
+				any_hired_mercenary_company = {
+					template = merc_finnish_company
+					hired_for_months = 36
+				}
+				army_size = 150
 			}
 			OR = {
 				num_of_cavalry = 50
 				has_global_modifier_value = {
-					which = cavalry_power
+					which = shock_damage
 					value = 0.2
 				}
 			}
 			num_of_owned_provinces_with = {
 				culture = finnish
 				has_manpower_building_trigger = yes
-				development = 10
+				#development = 10
+				base_manpower = 10
 				value = 10
 			}
 		}
 		effect = {
-			unlock_merc_company = {
-				merc_company = merc_large_hakkapeliita_cavalry
-				free_merc = yes
-			}
-			unlock_merc_company = {
-				merc_company = merc_guerilla_hakkapeliita_cavalry
-				free_merc = yes
-			}
-			unlock_merc_company = {
-				merc_company = merc_elite_hakkapeliita_cavalry
-				free_merc = yes
+			#unlock_merc_company = {
+			#	merc_company = merc_large_hakkapeliita_cavalry
+			#	free_merc = yes
+			#}
+			#unlock_merc_company = {
+			#	merc_company = merc_guerilla_hakkapeliita_cavalry
+			#	free_merc = yes
+			#}
+			#unlock_merc_company = {
+			#	merc_company = merc_elite_hakkapeliita_cavalry
+			#	free_merc = yes
+			#}
+			add_country_modifier = {
+				name = tm_swe_incorporate_hakkapeliitta
+				duration = -1
 			}
 		}
 	}
@@ -5185,55 +4642,48 @@ swe_sca_hakkapeliitta_slot = {
 		required_missions = { swe_sca_secure_electors }
 		position = 14		
 		provinces_to_highlight = {
-			AND = {
-				is_part_of_hre = yes
-				owner = {
-					is_part_of_hre = no
-				}
+			OR = {
+				area = wielkopolska_area
+				area = kuyavia_area
+				area = central_poland_area
+				area = silesia_area
+				area = mazovia_area
 			}
+			NOT = { country_or_non_sovereign_subject_holds = ROOT }
 		}		
 		trigger = {
-			if = {
-				limit = {
-					hre_size = 1
-				}
-				if = {
-					limit = { has_dlc = "Emperor" }
-					hre_reform_passed = emperor_reichsreform
-				}
-				else = { hre_reform_passed = reichsreform }
-				is_emperor = yes
-				NOT = { num_of_foreign_hre_provinces = 1 }
-			}
-			else = {
-				custom_trigger_tooltip = {
-					tooltip = imperial_ban_fallback_tt
-					NOT = {
-						any_core_province = {
-							NOT = { owned_by = ROOT }
-						}
-					}
+			num_of_provinces_owned_or_owned_by_non_sovereign_subjects_with = {
+				value = 15
+				OR = {
+					area = wielkopolska_area
+					area = kuyavia_area
+					area = central_poland_area
+					area = silesia_area
+					area = mazovia_area
 				}
 			}
 		}
 		
 		effect = {
-			add_prestige = 10
-			if = {
-				limit = {
-					hre_size = 1
-				}
-				add_imperial_influence = 25
-				add_country_modifier = {
-					name = "gen_hre_imperial_ban_mod"
-					duration = 9125
-				}
-			}
-			else = {
-				add_adm_power = 100
-				add_dip_power = 100
-				add_mil_power = 100
-			}
+			#add_prestige = 10
+			#if = {
+			#	limit = {
+			#		hre_size = 1
+			#	}
+			#	add_imperial_influence = 25
+			#	add_country_modifier = {
+			#		name = "gen_hre_imperial_ban_mod"
+			#		duration = 9125
+			#	}
+			#}
+			#else = {
+			#	add_adm_power = 100
+			#	add_dip_power = 100
+			#	add_mil_power = 100
+			#}
+			add_adm_power = 100
+			add_dip_power = 100
+			add_mil_power = 100
 		}
 	}
 }
@@ -5277,8 +4727,8 @@ sca_swe_industrialize_norway_slot = {
 				NOT = { has_estate = estate_burghers }
 			}
 			OR = {
-				full_idea_group = economic_ideas
-				full_idea_group = innovativeness_ideas
+				full_idea_group = guild_ideas
+				full_idea_group = innovative_ideas
 				full_idea_group = trade_ideas
 				monthly_income = 100
 			}
@@ -5291,13 +4741,14 @@ sca_swe_industrialize_norway_slot = {
 				unlock_estate_privilege = {
 					estate_privilege = estate_burghers_mountain_expansion
 				}
+				add_dip_power = 75
 				add_estate_loyalty = {
 					estate = estate_burghers
 					loyalty = 15
 				}
 			}
 			else = {
-				add_dip_power = 100
+				add_dip_power = 75
 				hidden_effect = {
 					unlock_estate_privilege = {
 						estate_privilege = estate_burghers_mountain_expansion
@@ -5348,6 +4799,14 @@ sca_swe_industrialize_norway_slot = {
 			country_event = {
 				id = flavor_nor.37
 			}
+			custom_tooltip = tm_event_insight_insight_tt
+			custom_tooltip = flavor_nor.17.a.tt
+			tooltip = {
+				add_country_modifier = {
+					name = "nor_prospecting_the_skands"
+					duration = 29200
+				}
+			}
 		}
 	}
 	
@@ -5382,6 +4841,55 @@ sca_swe_industrialize_norway_slot = {
 		effect = {
 			country_event = {
 				id = flavor_nor.48
+			}
+			custom_tooltip = tm_event_insight_insight_tt
+			custom_tooltip = tm_event_insight_option_1
+			tooltip = {
+				add_manpower = 20
+				add_treasury = 500
+				add_country_modifier = {
+					name = nor_iron_for_soldiers
+					duration = 3650
+				}
+			}
+			custom_tooltip = tm_event_insight_option_2
+			tooltip = {
+				capital_scope = {
+					artillery = ROOT
+					artillery = ROOT
+					artillery = ROOT
+					artillery = ROOT
+					artillery = ROOT
+					artillery = ROOT
+					artillery = ROOT
+					artillery = ROOT
+					artillery = ROOT
+					artillery = ROOT
+				}
+				add_country_modifier = {
+					name = nor_copper_for_cannons
+					duration = 10950
+				}
+			}
+			custom_tooltip = tm_event_insight_option_3
+			tooltip = {
+				add_years_of_owned_provinces_production_income = {
+					years = 4
+					trigger = {
+						OR = {
+							trade_goods = iron
+							trade_goods = armour
+							trade_goods = steel
+							trade_goods = copper
+							trade_goods = bronze
+						}
+					}
+					custom_tooltip = MONOPOLY_INCOME_IRON_AND_COPPER_DESC
+				}
+				add_country_modifier = {
+					name = nor_gold_for_the_state
+					duration = 10950
+				}
 			}
 		}
 	}
@@ -5430,16 +4938,12 @@ swe_sca_competent_fleet_slot = {
 				has_shipyard_building_trigger = yes
 				value = 8
 			}
-			OR = {
-				full_idea_group = maritime_ideas
-				full_idea_group = quality_ideas
-				full_idea_group = naval_ideas
-				naval_reformer = 3
-			}
+			naval_reformer = 3
 			naval_forcelimit = 60
 		}
 		effect = {
 			add_navy_tradition = 20
+			custom_tooltip = tm_sca_applies_only_to_shipyards
 			denmark_area = {
 				limit = {
 					owned_by = ROOT
@@ -5478,76 +4982,71 @@ swe_sca_competent_fleet_slot = {
 			}
 		}
 	}
+	
 	swe_sca_hire_norwegian_sailors = {
 		icon = mission_sailor_boat
 		required_missions = { swe_sca_learn_from_the_danes }
 		position = 14
 		provinces_to_highlight = {
-			if = {
-				limit = {
-					ROOT = {
-						NOT = { full_idea_group = maritime_ideas }
-						NOT = { full_idea_group = quality_ideas }
-						NOT = { full_idea_group = naval_ideas }
-					}
-				}
-				OR = {
-					area = northern_norway
-					area = western_norway
-					area = eastern_norway
-				}
-				has_port = yes
-				OR = {
-					NOT = { owned_by = ROOT }
-					NOT = { is_core = ROOT }
-					NOT = { has_building = dock } 
-				}
+			#if = {
+			#	limit = {
+			#		ROOT = {
+			#			NOT = { full_idea_group = maritime_ideas }
+			#			NOT = { full_idea_group = quality_ideas }
+			#			NOT = { full_idea_group = naval_ideas }
+			#		}
+			#	}
+			#	OR = {
+			#		area = northern_norway
+			#		area = western_norway
+			#		area = eastern_norway
+			#	}
+			#	has_port = yes
+			#	OR = {
+			#		NOT = { owned_by = ROOT }
+			#		NOT = { is_core = ROOT }
+			#		NOT = { has_building = dock } 
+			#	}
+			#}
+			region = scandinavia_region
+			has_port = yes
+			OR = {
+				has_navy_building = no
+				NOT = { owned_by = ROOT }
 			}
 		}
 		trigger = {
-			OR = {
-				full_idea_group = naval_ideas
-				full_idea_group = quality_ideas
-				full_idea_group = maritime_ideas
-				AND = {
-					max_sailors = 50000
-					num_of_owned_provinces_with = {
-						OR = {
-							area = northern_norway
-							area = western_norway
-							area = eastern_norway
-						}
-						has_port = yes
-						is_core = ROOT
-						has_building = dock
-						value = 6
-					}
-				}
+			#OR = {
+			#	full_idea_group = naval_ideas
+			#	full_idea_group = quality_ideas
+			#	full_idea_group = maritime_ideas
+			#	AND = {
+			#		max_sailors = 50000
+			#		num_of_owned_provinces_with = {
+			#			OR = {
+			#				area = northern_norway
+			#				area = western_norway
+			#				area = eastern_norway
+			#			}
+			#			has_port = yes
+			#			is_core = ROOT
+			#			has_building = dock
+			#			value = 6
+			#		}
+			#	}
+			#}
+			max_sailors = 30000
+			num_of_owned_provinces_with = {
+				region = scandinavia_region
+				has_navy_building = yes
+				value = 12
 			}
+			navy_size_percentage = 0.75
 		}
 		effect = {
 			add_country_modifier = {
 				name = sca_swe_norwegian_navy
 				duration = 9125
-			}
-			if = {
-				limit = {
-					has_dlc = "Rule Britannia"
-				}
-				if = {
-					limit = {
-						OR = {
-							full_idea_group = naval_ideas
-							full_idea_group = quality_ideas
-							full_idea_group = maritime_ideas
-						}
-					}
-					custom_tooltip = swe_sca_hire_norwegian_sailors_at
-					set_country_flag = unlock_norwegian_naval_doctrine
-				}
-				else = {
-					custom_tooltip = swe_sca_hire_norwegian_sailors_bt
-				}
 			}
 		}
 	}
@@ -5558,20 +5057,60 @@ swe_sca_competent_fleet_slot = {
 		provinces_to_highlight = {}
 		trigger = {
 			treasury = 500
-			navy_tradition = 50
-			sailors = 1000
+			#navy_tradition = 40
+			sailors = 5000
 			num_of_ports = 20
-			dip_tech = 15
-			if = {
-				limit = {
-					has_dlc = "Golden Century"
-				}
-				has_spare_flagship_capacity = yes
-			}
+			navy_size = 50
+			#dip_tech = 15
+			#if = {
+			#	limit = {
+			#		has_dlc = "Golden Century"
+			#	}
+			#	has_spare_flagship_capacity = yes
+			#}
 		}
 		effect = {
+			add_country_modifier = {
+				name = tm_swe_a_new_flagship
+				duration = -1
+			}
 			country_event = {
 				id = flavor_swe.113
+			}
+			custom_tooltip = tm_event_insight_insight_tt
+			tooltip = {
+				if = {
+					limit = { NOT = { has_country_flag = lost_first_vasa_ship } }
+					add_navy_tradition = 20
+					random_owned_province = {
+						limit = {
+							has_port = yes
+						}
+						create_flagship = {
+							name = "Vasa"
+							type = heavy_ship
+						}
+					}
+					create_admiral = {
+						tradition = 100
+					}
+				}
+				else = {
+					add_navy_tradition = 20
+					add_prestige = 10
+					random_owned_province = {
+						limit = {
+							has_port = yes
+						}
+						create_flagship = {
+							name = "Vasa II, the Unsinkable"
+							type = heavy_ship
+						}
+					}
+					create_admiral = {
+						tradition = 100
+					}
+				}
 			}
 		}
 	}

@@ -375,3 +375,43 @@ ai_player_nation_buff = {
 	ae_impact = -0.2
 	improve_relation_modifier = 0.25
 }
+
+tm_swe_catholic_bulwark = {
+	potential = {
+		has_country_flag = tm_swe_catholic_bulwark_modifier
+		current_age = age_of_reformation
+	}
+
+	trigger = {
+		any_war_enemy_country = {
+			OR = {
+				religion = protestant
+				religion = reformed
+				religion = anglican
+				religion = hussite
+			}
+		}
+	}
+
+	papal_influence = 0.5
+	reinforce_speed = 0.1
+	army_tradition_from_battle = 1
+}
+
+tm_swe_protestant_sword = {
+	potential = {
+		has_country_flag = tm_swe_protestant_sword_modifier
+		current_age = age_of_reformation
+	}
+
+	trigger = {
+		any_war_enemy_country = {
+			religion = catholic
+		}
+	}
+
+	monthly_fervor_increase = 0.5
+	church_power_modifier = 0.2
+	reinforce_speed = 0.1
+	army_tradition_from_battle = 1
+}

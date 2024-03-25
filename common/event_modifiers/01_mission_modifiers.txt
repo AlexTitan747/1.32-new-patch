@@ -1563,7 +1563,9 @@ per_pearl_of_khorasan = {
 
 swe_global_trade_empire_modifier = {
 	global_foreign_trade_power = 0.2
-	global_ship_trade_power = 0.25 
+	global_ship_trade_power = 0.33
+	naval_morale = 0.1
+	max_flagships = 1
 }
 consolidated_sweden = {
 	legitimacy = 1
@@ -1656,6 +1658,7 @@ swe_arctic_expansion = {
 
 swe_diplomat_from_the_north = {
 	diplomats = 1
+	envoy_travel_time = -0.2
 }
 
 swe_theologian_discussions = {
@@ -1705,14 +1708,13 @@ swe_might_of_the_varangians = {
 }
 
 swe_enforcers_of_religious_superiority = {
-	enforce_religion_cost = -0.5
+	warscore_cost_vs_other_religion = -0.1
 }
 
 swe_catholic_great_power = {	#Permanent
 	papal_influence = 1
 	manpower_in_true_faith_provinces = 0.15
 	tolerance_own = 1
-	imperial_authority = 0.25
 	religion = yes
 }
 
@@ -1721,7 +1723,6 @@ swe_reformation_great_power = {	#Permanent
 	monthly_fervor_increase = 1
 	manpower_in_true_faith_provinces = 0.15
 	tolerance_own = 1
-	imperial_authority = 0.25
 	religion = yes
 }
 
@@ -1757,7 +1758,18 @@ swe_support_of_the_peasantry = {	#Permanent
 }
 
 swe_support_of_the_peasantry_prov = {
-	trade_goods_size_modifier = 0.33
+	trade_goods_size_modifier = 0.15
+}
+
+tm_swe_canada_arctic_expansion = {
+	allowed_num_of_buildings = 1
+	local_development_cost = -0.35
+	local_colonial_growth = 25
+}
+
+tm_swe_secured_canada = {
+	center_of_trade_upgrade_cost = -0.2
+	trade_efficiency = 0.1
 }
 
 # Danish missions
@@ -1977,7 +1989,7 @@ nor_copper_for_cannons = {
 }
 
 nor_gold_for_the_state = {
-	global_tax_income = 24
+	global_tax_income = 60
 	trade_efficiency = 0.1
 }
 
@@ -2064,10 +2076,11 @@ dan_sca_indian_administration = {	#Permanent
 }
 
 sca_great_empire_of_scandinavia = {	#Permanent
-	legitimacy = 0.25
-	devotion = 0.25
-	republican_tradition = 0.1
-	max_absolutism = 20
+	legitimacy = 1
+	devotion = 1
+	republican_tradition = 0.5
+	max_absolutism = 10
+	max_absolutism_effect = 0.1
 	land_morale = 0.075
 }
 
@@ -2114,7 +2127,7 @@ sca_swe_imperial_low_countries = {
 }
 
 sca_swe_control_over_the_low_countries = {
-	trade_goods_size_modifier = 0.25
+	trade_goods_size_modifier = 0.15
 	local_years_of_nationalism = -10
 }
 
@@ -2122,6 +2135,7 @@ sca_swe_danish_shipyard = {	#Permanent, gets removed if Shipyard gets destroyed 
 	allowed_num_of_buildings = 2
 	local_ship_cost = -0.15
 	local_development_cost = -0.05
+	local_ship_repair = 0.1
 }
 
 sca_swe_norwegian_navy = {
@@ -13264,4 +13278,27 @@ tm_por_controling_south_american_trade = {
 
 tm_SRV_faith_decided = {
 	religious_unity = 0.5
+}
+
+tm_swe_enter_germany = {
+	ae_impact = -0.2
+	core_creation = -0.1
+}
+
+tm_swe_conquest_of_germany_modifier = {
+	production_efficiency = 0.1
+	manpower_recovery_speed = 0.10
+}
+
+tm_swe_finnish_steel = {
+	shock_damage = 0.1
+}
+
+tm_swe_incorporate_hakkapeliitta = {
+	shock_damage = 0.075
+	leader_land_shock = 1
+}
+
+tm_swe_a_new_flagship = {
+	max_flagships = 1
 }

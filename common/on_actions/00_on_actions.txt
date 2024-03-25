@@ -710,45 +710,32 @@ on_war_won = {
 			}
 		}
 	}
-	if = {
-		limit = {
-			ROOT = { 
-				tag = SWE
-				has_country_modifier = swe_vasa_leads_the_rebellion
-				is_subject = no
-			}
-			FROM = { tag = DAN }
-		}
-		country_event = {
-			id = flavor_swe.111
-		}
-	}
-	if = {
-		limit = {
-			ROOT = { 
-				tag = SWE
-				has_country_modifier = swe_any_vasa_leads_the_rebellion
-				is_subject = no
-			}
-			FROM = { tag = DAN }
-		}
-		country_event = {
-			id = flavor_swe.105
-		}
-	}
-	if = {
-		limit = {
-			ROOT = { 
-				tag = SWE
-				has_country_flag = swe_declared_independence_war
-				is_subject = no
-			}
-			FROM = { tag = DAN }
-		}
-		country_event = {
-			id = flavor_swe.121
-		}
-	}
+	#if = {
+	#	limit = {
+	#		ROOT = { 
+	#			tag = SWE
+	#			has_country_modifier = swe_vasa_leads_the_rebellion
+	#			is_subject = no
+	#		}
+	#		FROM = { tag = DAN }
+	#	}
+	#	country_event = {
+	#		id = flavor_swe.111
+	#	}
+	#}
+	#if = {
+	#	limit = {
+	#		ROOT = { 
+	#			tag = SWE
+	#			has_country_flag = swe_declared_independence_war
+	#			is_subject = no
+	#		}
+	#		FROM = { tag = DAN }
+	#	}
+	#	country_event = {
+	#		id = flavor_swe.121
+	#	}
+	#}
 	if = {
 		limit = {
 			ROOT = { tag = SRV }
@@ -781,6 +768,27 @@ on_main_war_won = {
 		add_adm_power = 40
 		add_dip_power = 40
 		add_mil_power = 40
+	}
+	if = {
+		limit = {
+			has_country_flag = swe_had_vasa_event
+			#ROOT = {
+			#	has_country_flag = swe_had_vasa_event
+			#	#has_country_modifier = swe_any_vasa_leads_the_rebellion
+			#	#is_subject = no
+			#}
+			#FROM = { tag = DAN }
+		}
+		if = {
+			limit = { check_variable = { which = tm_vasa_wins_battles_var value = 10 } }
+			clr_country_flag = swe_had_vasa_event
+			country_event = {
+				id = flavor_swe.105
+			}
+		}
+		else = {
+			set_variable = { which = tm_vasa_wins_battles_var value = 0 }
+		}
 	}
 }
 
@@ -1218,6 +1226,24 @@ on_battle_won_unit = {
 		}
 	}
 	
+	if = {
+		limit = {
+			OR = {
+				general_with_name = "Johan Vasa"
+				general_with_name = "Erik Vasa"
+				general_with_name = "Gustav Vasa"
+			}
+			unit_owner = {
+				has_country_flag = swe_had_vasa_event
+			}
+		}
+		unit_owner = {
+			change_variable = {
+				which = tm_vasa_wins_battles_var
+				value = 1
+			}
+		}
+	}
 }
 
 # #Unit Scope OnAction for Battle Lost
@@ -6591,6 +6617,24 @@ on_colony_established = {
 		}
 		add_permanent_province_modifier = {
 			name = tm_mal_stronger_colonies_colony
+			duration = -1
+		}
+	}
+	if = {
+		limit = {
+			colonial_region = colonial_canada
+			OR = {
+				owner = { has_country_flag = tm_swe_canada_arctic_expansion_flag }
+				AND = {
+					owner = {
+						is_subject = yes
+						overlord = { has_country_flag = tm_swe_canada_arctic_expansion_flag }
+					}
+				}
+			}
+		}
+		add_province_modifier = {
+			name = tm_swe_canada_arctic_expansion
 			duration = -1
 		}
 	}
