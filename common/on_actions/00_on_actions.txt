@@ -411,19 +411,6 @@ on_startup = {
 				value = 1
 			}
 		}
-
-		set_variable = {
-			which = tm_shock_ideas_per_mil_tech_var
-			value = 0.09
-		}
-		set_variable = {
-			which = tm_fire_ideas_per_mil_tech_var
-			value = 0.09
-		}
-		set_variable = {
-			which = tm_leader_ideas_per_mil_tech_var
-			value = 0.06
-		}
 	}
 	every_province = {
 		limit = {
@@ -457,6 +444,21 @@ on_startup = {
 		MOR = { save_global_event_target_as = morocco_event_target }
 
 		OMA = { save_global_event_target_as = oman_event_target }
+	}
+	if = {
+		limit = { NOT = { is_year = 1445 } }		
+		set_variable = {
+			which = tm_shock_ideas_per_mil_tech_var
+			value = 0.09
+		}
+		set_variable = {
+			which = tm_fire_ideas_per_mil_tech_var
+			value = 0.09
+		}
+		set_variable = {
+			which = tm_leader_ideas_per_mil_tech_var
+			value = 0.06
+		}
 	}
 }
 
