@@ -31,6 +31,12 @@ on_startup = {
 				value = 0
 			}
 		}
+		RZW = {
+			set_variable = {
+				which = butuawonbattlesinindia
+				value = 0
+			}
+		}
 	}
 	if = {
 		limit = { NOT = { is_year = 1445 } }
@@ -1228,7 +1234,22 @@ on_battle_won_unit = {
 			}
 		}
 	}
-	
+	if = {
+		limit = {
+			unit_owner = {
+				is_or_was_tag = { tag = RZW }
+			}
+			location = {
+				superregion = india_superregion
+			}
+		}
+		unit_owner = {
+			change_variable = {
+				which = butuawonbattlesinindia
+				value = 1
+			}
+		}
+	}
 }
 
 # #Unit Scope OnAction for Battle Lost
