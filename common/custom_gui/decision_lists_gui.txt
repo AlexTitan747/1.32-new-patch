@@ -188,3 +188,99 @@ custom_button = {
 		trigger = { has_country_flag = tm_hide_educate_ruler_decision }
 	}
 }
+
+custom_button = {
+	name = tm_toggle_hire_conq_explo
+	potential = {
+		ai = no
+		has_country_flag = tm_show_decision_list
+	}
+	effect = {
+        if = {
+			limit = { NOT = { has_country_flag = tm_hide_hire_conq_explo } }
+			set_country_flag = tm_hide_hire_conq_explo
+		}
+		else = { clr_country_flag = tm_hide_hire_conq_explo }
+	}
+	tooltip = "Toggle Showing Hire Explorer/Conquisador"
+	frame = {
+		number = 1
+		trigger = { NOT = { has_country_flag = tm_hide_hire_conq_explo } }
+	}
+	frame = {
+		number = 2
+		trigger = { has_country_flag = tm_hide_hire_conq_explo }
+	}
+}
+
+custom_button = {
+	name = tm_toggle_change_government_type
+	potential = {
+		ai = no
+		has_country_flag = tm_show_decision_list
+	}
+	effect = {
+        if = {
+			limit = { NOT = { has_country_flag = tm_hide_change_government_type } }
+			set_country_flag = tm_hide_change_government_type
+		}
+		else = { clr_country_flag = tm_hide_change_government_type }
+	}
+	tooltip = "Toggle Showing Change Government Type"
+	frame = {
+		number = 1
+		trigger = { NOT = { has_country_flag = tm_hide_change_government_type } }
+	}
+	frame = {
+		number = 2
+		trigger = { has_country_flag = tm_hide_change_government_type }
+	}
+}
+
+custom_button = {
+	name = tm_toggle_add_all_provinces_to_parliment
+	potential = {
+		ai = no
+		has_country_flag = tm_show_decision_list
+	}
+	effect = {
+        if = {
+			limit = { NOT = { has_country_flag = tm_hide_add_all_provinces_to_parliment } }
+			set_country_flag = tm_hide_add_all_provinces_to_parliment
+		}
+		else = { clr_country_flag = tm_hide_add_all_provinces_to_parliment }
+	}
+	tooltip = "Toggle Showing Add All Provinces To Parliment"
+	frame = {
+		number = 1
+		trigger = { NOT = { has_country_flag = tm_hide_add_all_provinces_to_parliment } }
+	}
+	frame = {
+		number = 2
+		trigger = { has_country_flag = tm_hide_add_all_provinces_to_parliment }
+	}
+}
+
+custom_button = {
+	name = tm_toggle_abolish_elite_regiments
+	potential = {
+		ai = no
+		has_country_flag = tm_show_decision_list
+	}
+	effect = {
+        if = {
+			limit = { NOT = { has_country_flag = tm_hide_abolish_elite_regiments } }
+			set_country_flag = tm_hide_abolish_elite_regiments
+		}
+		else = { clr_country_flag = tm_hide_abolish_elite_regiments }
+	}
+	tooltip = "Toggle Showing Abolish Elite Regiments"
+	frame = {
+		number = 1
+		trigger = { NOT = { has_country_flag = tm_hide_abolish_elite_regiments } }
+	}
+	frame = {
+		number = 2
+		trigger = { has_country_flag = tm_hide_abolish_elite_regiments }
+	}
+}
