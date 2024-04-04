@@ -658,6 +658,16 @@ form_coalition = {
 			}
 		}
 	}
+	condition = {
+		tooltip = "Player Nations Cannot Join Coalitions Against Other Players"
+		potential = {
+			ai = no
+			FROM = { ai = no }
+		}
+		allow = {
+			always = no
+		}
+	}
 }
 
 request_to_join_trade_league = {
@@ -745,5 +755,16 @@ ask_for_tributary_state_action = {
 break_alliance = {
 	effect = {
 		on_alliance_broken_effect = yes
+	}
+}
+
+support_rebels = {
+	condition = {
+		potential = {
+			ai = no
+		}
+		allow = {
+			always = no
+		}
 	}
 }

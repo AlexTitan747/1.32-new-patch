@@ -26,61 +26,45 @@ swiss_missions_1 = {
 		trigger = {
 			if = {
 				limit = {
-					OR = {
-						DAU = {
-							exists = yes
-							is_subject = NO
-						}
-						NEV = {
-							exists = yes
-							is_subject = NO
-						}
-					}
+					has_country_flag = tm_swi_humiliated_french_nations
 				}
 				custom_trigger_tooltip = {
-					tooltip = tm_SWI_humiliation_TT
-					OR = {
-						has_country_flag = humiliated_rival
-						has_country_flag = tm_show_strength
-					}
-				}
-				OR = {
-					is_rival = NEV
-					is_rival = DAU
+					tooltip = tm_SWI_humiliation_TT_1
+					has_country_flag = tm_swi_humiliated_french_nations
 				}
 			}
 			else_if = {
 				limit = {
 					OR = {
 						DAU = {
-							is_subject = yes
+							exists = yes
+							is_subject = no
 						}
 						NEV = {
-							is_subject = yes
+							exists = yes
+							is_subject = no
 						}
-					}
-				}
-				OR = {
-					DAU = {
-						is_subject_of = ROOT
-					}
-					NEV = {
-						is_subject_of = ROOT
-					}
-				}
-			}
-			else_if = {
-				limit = { 
-					NOT = {
-						exists = DAU
-						exists = DAU
 					}
 				}
 				custom_trigger_tooltip = {
-					tooltip = tm_SWI_humiliation_TT
-					OR = {
-						has_country_flag = humiliated_rival
-						has_country_flag = tm_show_strength
+					tooltip = tm_SWI_humiliation_TT_1
+					has_country_flag = tm_swi_humiliated_french_nations
+				}
+				OR = {
+					is_rival = NEV
+					is_rival = DAU
+				}
+			}
+			else = {
+				OR = {
+					NEV = { is_subject_of = ROOT }
+					DAU = { is_subject_of = ROOT }
+					custom_trigger_tooltip = {
+						tooltip = tm_SWI_humiliation_TT
+						OR = {
+							has_country_flag = humiliated_rival
+							has_country_flag = tm_show_strength
+						}
 					}
 				}
 			}
@@ -763,94 +747,27 @@ swiss_missions_3 = {
 		position = 5
 		provinces_to_highlight = {
 			is_capital = yes
-			OR = {
-				owned_by = MLO
-				owned_by = ITA
-				owned_by = SPI
-				owned_by = HES
-				owned_by = WES
-				owned_by = CFR
-				owned_by = BOH
-				owned_by = KSM
-				owned_by = PRU
-				owned_by = GER
-			}
+			continent = europe
+			NOT = { owned_by = ROOT }
+			owner = { total_development = 500 }
 		}
 		trigger = {
 			tag = ALP
 			OR = {
-				AND = {
-					is_rival = MLO
-					MLO = {
-						has_been_insulted_by_root = yes
-					}
+				any_country = {
+					capital_scope = { continent = europe }
+					total_development = 500
+					has_been_insulted_by_root = yes
 				}
-				AND = {
-					is_rival = SPI
-					SPI = {
-						has_been_insulted_by_root = yes
-					}
-				}
-				AND = {
-					is_rival = ITA
-					ITA = {
-						has_been_insulted_by_root = yes
-					}
-				}
-				AND = {
-					is_rival = HES
-					HES = {
-						has_been_insulted_by_root = yes
-					}
-				}
-				AND = {
-					is_rival = WES
-					WES = {
-						has_been_insulted_by_root = yes
-					}
-				}
-				AND = {
-					is_rival = CFR
-					CFR = {
-						has_been_insulted_by_root = yes
-					}
-				}
-				AND = {
-					is_rival = BOH
-					BOH = {
-						has_been_insulted_by_root = yes
-					}
-				}
-				AND = {
-					is_rival = PRU
-					PRU = {
-						has_been_insulted_by_root = yes
-					}
-				}
-				AND = {
-					is_rival = KSM
-					KSM = {
-						has_been_insulted_by_root = yes
-					}
-				}
-				AND = {
-					is_rival = GER
-					GER = {
-						has_been_insulted_by_root = yes
-					}
-				}
+				manpower_percentage = 0.8
 			}
 			OR = {
-				alliance_with = MLO
-				alliance_with = SPI
-				alliance_with = ITA
-				alliance_with = HES
-				alliance_with = WES
-				alliance_with = CFR
-				alliance_with = BOH
-				alliance_with = PRU
-				alliance_with = KSM
-				alliance_with = GER
+				any_ally = {
+					capital_scope = { continent = europe }
+					total_development = 500
+					trust = { who = ROOT value = 60 }
+				}
+				army_size = 75
 			}
 		}
 		effect = {
